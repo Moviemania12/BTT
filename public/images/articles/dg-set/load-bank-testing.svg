@@ -1,0 +1,97 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="900" fill="#ffffff"/>
+
+<text x="800" y="58" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e293b" text-anchor="middle">LOAD BANK TESTING</text>
+<text x="800" y="86" font-family="Arial,sans-serif" font-size="16" fill="#94a3b8" text-anchor="middle">Capacity test without connecting real IT load — safe, repeatable</text>
+
+<!-- 4 main boxes horizontal -->
+<!-- Box 1: DG Set -->
+<rect x="60" y="200" width="280" height="360" rx="20" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<text x="200" y="260" font-family="Arial,sans-serif" font-size="50" text-anchor="middle">🛢️</text>
+<text x="200" y="330" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1e40af" text-anchor="middle">DG SET</text>
+<text x="200" y="360" font-family="Arial,sans-serif" font-size="15" fill="#2563eb" text-anchor="middle">Running at</text>
+<text x="200" y="382" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#1e40af" text-anchor="middle">Full Load</text>
+<text x="200" y="412" font-family="Arial,sans-serif" font-size="14" fill="#64748b" text-anchor="middle">1500 kVA</text>
+<text x="200" y="432" font-family="Arial,sans-serif" font-size="14" fill="#64748b" text-anchor="middle">415V  50Hz</text>
+<text x="200" y="456" font-family="Arial,sans-serif" font-size="14" fill="#64748b" text-anchor="middle">No real IT load</text>
+<text x="200" y="476" font-family="Arial,sans-serif" font-size="14" fill="#64748b" text-anchor="middle">connected</text>
+
+<!-- Arrow 1→2 -->
+<line x1="346" y1="380" x2="414" y2="380" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="410,370 432,380 410,390" fill="#e2e8f0"/>
+<text x="380" y="364" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">cables</text>
+
+<!-- Box 2: Load Bank -->
+<rect x="436" y="200" width="280" height="360" rx="20" fill="#fff7ed" stroke="#f97316" stroke-width="2.5"/>
+<text x="576" y="260" font-family="Arial,sans-serif" font-size="50" text-anchor="middle">🔥</text>
+<text x="576" y="330" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#c2410c" text-anchor="middle">LOAD BANK</text>
+<text x="576" y="362" font-family="Arial,sans-serif" font-size="15" fill="#ea580c" text-anchor="middle">Resistive heating</text>
+<text x="576" y="382" font-family="Arial,sans-serif" font-size="15" fill="#ea580c" text-anchor="middle">elements</text>
+<text x="576" y="416" font-family="Arial,sans-serif" font-size="14" fill="#64748b" text-anchor="middle">Steps:</text>
+<text x="576" y="438" font-family="Arial,sans-serif" font-size="14" fill="#c2410c" text-anchor="middle">25% → 50%</text>
+<text x="576" y="460" font-family="Arial,sans-serif" font-size="14" fill="#c2410c" text-anchor="middle">→ 75% → 100%</text>
+<text x="576" y="490" font-family="Arial,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Converts power to heat</text>
+
+<!-- Arrow 2→3 -->
+<line x1="720" y1="380" x2="788" y2="380" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="784,370 806,380 784,390" fill="#e2e8f0"/>
+<text x="754" y="364" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">reads</text>
+
+<!-- Box 3: Simulated Load -->
+<rect x="810" y="200" width="280" height="360" rx="20" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<text x="950" y="260" font-family="Arial,sans-serif" font-size="50" text-anchor="middle">📊</text>
+<text x="950" y="330" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#5b21b6" text-anchor="middle">LIVE READINGS</text>
+<text x="950" y="370" font-family="Arial,sans-serif" font-size="15" fill="#7c3aed" text-anchor="middle">Monitoring:</text>
+<text x="950" y="396" font-family="Arial,sans-serif" font-size="14" fill="#1e293b" text-anchor="middle">Voltage:  415.2 V</text>
+<text x="950" y="418" font-family="Arial,sans-serif" font-size="14" fill="#1e293b" text-anchor="middle">Frequency:  50.01 Hz</text>
+<text x="950" y="440" font-family="Arial,sans-serif" font-size="14" fill="#1e293b" text-anchor="middle">Oil Pressure:  4.1 bar</text>
+<text x="950" y="462" font-family="Arial,sans-serif" font-size="14" fill="#1e293b" text-anchor="middle">Coolant:  84°C</text>
+<text x="950" y="484" font-family="Arial,sans-serif" font-size="14" fill="#1e293b" text-anchor="middle">Fuel use:  ~330 L/hr</text>
+<text x="950" y="506" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">Logged every 15 min</text>
+
+<!-- Arrow 3→4 -->
+<line x1="1094" y1="380" x2="1162" y2="380" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="1158,370 1180,380 1158,390" fill="#e2e8f0"/>
+<text x="1128" y="364" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">result</text>
+
+<!-- Box 4: Performance Check -->
+<rect x="1184" y="200" width="350" height="360" rx="20" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+<text x="1359" y="260" font-family="Arial,sans-serif" font-size="50" text-anchor="middle">✅</text>
+<text x="1359" y="326" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#166534" text-anchor="middle">PERFORMANCE</text>
+<text x="1359" y="352" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#166534" text-anchor="middle">CHECK</text>
+<text x="1359" y="392" font-family="Arial,sans-serif" font-size="14" fill="#16a34a" text-anchor="middle">✓  Rated kVA confirmed</text>
+<text x="1359" y="416" font-family="Arial,sans-serif" font-size="14" fill="#16a34a" text-anchor="middle">✓  Voltage stable</text>
+<text x="1359" y="440" font-family="Arial,sans-serif" font-size="14" fill="#16a34a" text-anchor="middle">✓  Frequency stable</text>
+<text x="1359" y="464" font-family="Arial,sans-serif" font-size="14" fill="#16a34a" text-anchor="middle">✓  Cooling adequate</text>
+<text x="1359" y="488" font-family="Arial,sans-serif" font-size="14" fill="#16a34a" text-anchor="middle">✓  No alarms</text>
+<text x="1359" y="512" font-family="Arial,sans-serif" font-size="13" fill="#064e3b" font-weight="600" text-anchor="middle">Certificate issued</text>
+
+<!-- Bottom: duration table -->
+<rect x="60" y="620" width="1474" height="200" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="797" y="654" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#1e293b" text-anchor="middle">LOAD BANK TEST — HOW LONG?</text>
+<line x1="80" y1="666" x2="1514" y2="666" stroke="#e2e8f0" stroke-width="1"/>
+
+<rect x="100" y="680" width="320" height="116" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+<text x="260" y="704" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#166534" text-anchor="middle">B CHECK</text>
+<text x="260" y="726" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">Monthly</text>
+<text x="260" y="750" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#16a34a" text-anchor="middle">30 minutes</text>
+<text x="260" y="774" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">50–75% rated load</text>
+
+<rect x="458" y="680" width="320" height="116" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="618" y="704" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#c2410c" text-anchor="middle">C CHECK</text>
+<text x="618" y="726" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">6-Monthly</text>
+<text x="618" y="750" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#ea580c" text-anchor="middle">2 hours</text>
+<text x="618" y="774" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">25%→50%→75%→100%</text>
+
+<rect x="816" y="680" width="320" height="116" rx="10" fill="#fdf4ff" stroke="#ddd6fe" stroke-width="1.5"/>
+<text x="976" y="704" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#5b21b6" text-anchor="middle">D CHECK</text>
+<text x="976" y="726" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">Annual</text>
+<text x="976" y="750" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#7c3aed" text-anchor="middle">4+ hours</text>
+<text x="976" y="774" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">Full rated load + certificate</text>
+
+<rect x="1174" y="680" width="320" height="116" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="1334" y="704" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#1e40af" text-anchor="middle">TIER IV</text>
+<text x="1334" y="726" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">Concurrent</text>
+<text x="1334" y="750" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#2563eb" text-anchor="middle">4+ hours</text>
+<text x="1334" y="774" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">System A while B runs live</text>
+</svg>

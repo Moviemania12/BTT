@@ -1,0 +1,87 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="900" fill="#ffffff"/>
+
+<!-- Title -->
+<text x="800" y="46" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e293b" text-anchor="middle">HOW A DG SET WORKS</text>
+<text x="800" y="74" font-family="Arial,sans-serif" font-size="16" fill="#94a3b8" text-anchor="middle">From diesel fuel to critical load — 6 steps</text>
+
+<!-- ── Box 1: Fuel Tank ── -->
+<circle cx="530" cy="132" r="26" fill="#f97316"/>
+<text x="530" y="137" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">01</text>
+<rect x="572" y="94" width="456" height="76" rx="16" fill="#fff7ed" stroke="#f97316" stroke-width="2.5"/>
+<text x="800" y="126" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#c2410c" text-anchor="middle">FUEL TANK</text>
+<text x="800" y="152" font-family="Arial,sans-serif" font-size="14" fill="#ea580c" text-anchor="middle">Underground diesel storage (HSD)</text>
+<!-- right hint -->
+<text x="1072" y="132" font-family="Arial,sans-serif" font-size="13" fill="#cbd5e1" text-anchor="start">PESO licensed</text>
+
+<!-- Arrow 1→2 -->
+<line x1="800" y1="174" x2="800" y2="202" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+<polygon points="791,200 809,200 800,215" fill="#e2e8f0"/>
+
+<!-- ── Box 2: Diesel Engine ── -->
+<circle cx="530" cy="252" r="26" fill="#2563eb"/>
+<text x="530" y="257" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">02</text>
+<rect x="572" y="214" width="456" height="76" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<text x="800" y="246" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1e40af" text-anchor="middle">DIESEL ENGINE</text>
+<text x="800" y="272" font-family="Arial,sans-serif" font-size="14" fill="#2563eb" text-anchor="middle">Burns fuel → mechanical rotation at 1500 RPM</text>
+<text x="1072" y="252" font-family="Arial,sans-serif" font-size="13" fill="#cbd5e1" text-anchor="start">1500 RPM / 50 Hz</text>
+
+<!-- Arrow 2→3 -->
+<line x1="800" y1="294" x2="800" y2="322" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+<polygon points="791,320 809,320 800,335" fill="#e2e8f0"/>
+
+<!-- ── Box 3: Alternator ── -->
+<circle cx="530" cy="372" r="26" fill="#0891b2"/>
+<text x="530" y="377" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">03</text>
+<rect x="572" y="334" width="456" height="76" rx="16" fill="#ecfeff" stroke="#0891b2" stroke-width="2.5"/>
+<text x="800" y="366" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#164e63" text-anchor="middle">ALTERNATOR</text>
+<text x="800" y="392" font-family="Arial,sans-serif" font-size="14" fill="#0891b2" text-anchor="middle">Generates 415V 3-phase AC electricity</text>
+<text x="1072" y="372" font-family="Arial,sans-serif" font-size="13" fill="#cbd5e1" text-anchor="start">415V / 50 Hz</text>
+
+<!-- Arrow 3→4 -->
+<line x1="800" y1="414" x2="800" y2="442" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+<polygon points="791,440 809,440 800,455" fill="#e2e8f0"/>
+
+<!-- ── Box 4: AMF Panel ── -->
+<circle cx="530" cy="492" r="26" fill="#7c3aed"/>
+<text x="530" y="497" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">04</text>
+<rect x="572" y="454" width="456" height="76" rx="16" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<text x="800" y="486" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#5b21b6" text-anchor="middle">AMF PANEL</text>
+<text x="800" y="512" font-family="Arial,sans-serif" font-size="14" fill="#7c3aed" text-anchor="middle">Auto start, protection, monitoring, control</text>
+<text x="1072" y="492" font-family="Arial,sans-serif" font-size="13" fill="#cbd5e1" text-anchor="start">DSE / ComAp</text>
+
+<!-- Arrow 4→5 -->
+<line x1="800" y1="534" x2="800" y2="562" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+<polygon points="791,560 809,560 800,575" fill="#e2e8f0"/>
+
+<!-- ── Box 5: ATS ── -->
+<circle cx="530" cy="612" r="26" fill="#475569"/>
+<text x="530" y="617" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">05</text>
+<rect x="572" y="574" width="456" height="76" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="800" y="606" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1e293b" text-anchor="middle">ATS / ATSS</text>
+<text x="800" y="632" font-family="Arial,sans-serif" font-size="14" fill="#64748b" text-anchor="middle">Automatic Transfer Switch — shifts load to DG</text>
+<text x="1072" y="612" font-family="Arial,sans-serif" font-size="13" fill="#cbd5e1" text-anchor="start">10–30 seconds</text>
+
+<!-- Arrow 5→6 -->
+<line x1="800" y1="654" x2="800" y2="682" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+<polygon points="791,680 809,680 800,695" fill="#e2e8f0"/>
+
+<!-- ── Box 6: Critical Load ── -->
+<circle cx="530" cy="732" r="26" fill="#16a34a"/>
+<text x="530" y="737" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">06</text>
+<rect x="572" y="694" width="456" height="76" rx="16" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+<text x="800" y="726" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#166534" text-anchor="middle">CRITICAL LOAD</text>
+<text x="800" y="752" font-family="Arial,sans-serif" font-size="14" fill="#16a34a" text-anchor="middle">Servers, cooling, IT equipment — fully protected</text>
+<text x="1072" y="732" font-family="Arial,sans-serif" font-size="13" fill="#cbd5e1" text-anchor="start">Zero downtime</text>
+
+<!-- Left label -->
+<text x="80" y="450" font-family="Arial,sans-serif" font-size="13" fill="#e2e8f0" text-anchor="middle" transform="rotate(-90,80,450)">POWER GENERATION CHAIN</text>
+
+<!-- Right result box -->
+<rect x="1160" y="480" width="340" height="130" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+<text x="1330" y="510" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">GRID FAILS</text>
+<text x="1330" y="534" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#166534" text-anchor="middle">DG TAKES OVER</text>
+<text x="1330" y="558" font-family="Arial,sans-serif" font-size="15" fill="#16a34a" text-anchor="middle">in 15–30 seconds</text>
+<text x="1330" y="578" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">IT equipment unaffected</text>
+<text x="1330" y="596" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">UPS bridges the gap</text>
+</svg>

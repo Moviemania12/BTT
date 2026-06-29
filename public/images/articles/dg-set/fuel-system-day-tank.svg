@@ -1,0 +1,88 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="900" fill="#ffffff"/>
+
+<!-- Title -->
+<text x="800" y="60" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e293b" text-anchor="middle">DIESEL FUEL SYSTEM</text>
+<text x="800" y="90" font-family="Arial,sans-serif" font-size="16" fill="#94a3b8" text-anchor="middle">From underground storage to the DG engine — 4 steps</text>
+
+<!-- Ground line visual hint -->
+<line x1="200" y1="360" x2="560" y2="360" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="8,6"/>
+<text x="140" y="365" font-family="Arial,sans-serif" font-size="13" fill="#cbd5e1" text-anchor="middle">GROUND</text>
+
+<!-- ── 4 boxes vertical, centered ── -->
+<!-- Box height 100, gap 60, total = 4×100+3×60=580, start y=160 -->
+
+<!-- Box 1: Underground Tank (orange) -->
+<circle cx="512" cy="210" r="28" fill="#f97316"/>
+<text x="512" y="215" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">01</text>
+<rect x="556" y="160" width="488" height="100" rx="18" fill="#fff7ed" stroke="#f97316" stroke-width="2.5"/>
+<text x="800" y="200" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#c2410c" text-anchor="middle">UNDERGROUND MAIN TANK</text>
+<text x="800" y="228" font-family="Arial,sans-serif" font-size="15" fill="#ea580c" text-anchor="middle">HSD diesel stored below ground  ·  PESO licensed  ·  Bund wall</text>
+<text x="800" y="248" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Capacity: 24,000 L (Tier III example)  ·  Class C petroleum</text>
+
+<!-- Arrow 1→2 -->
+<line x1="800" y1="264" x2="800" y2="302" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="789,300 811,300 800,318" fill="#e2e8f0"/>
+<text x="870" y="290" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8">Auto pump</text>
+
+<!-- Box 2: Transfer Pump (blue) -->
+<circle cx="512" cy="370" r="28" fill="#2563eb"/>
+<text x="512" y="375" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">02</text>
+<rect x="556" y="320" width="488" height="100" rx="18" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<text x="800" y="360" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1e40af" text-anchor="middle">FUEL TRANSFER PUMP</text>
+<text x="800" y="388" font-family="Arial,sans-serif" font-size="15" fill="#2563eb" text-anchor="middle">Duty + Standby (N+1)  ·  Auto level control</text>
+<text x="800" y="408" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Starts automatically when day tank drops below 50%</text>
+
+<!-- Arrow 2→3 -->
+<line x1="800" y1="424" x2="800" y2="462" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="789,460 811,460 800,478" fill="#e2e8f0"/>
+<text x="870" y="450" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8">Refill line</text>
+
+<!-- Box 3: Day Tank (amber) -->
+<circle cx="512" cy="530" r="28" fill="#d97706"/>
+<text x="512" y="535" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">03</text>
+<rect x="556" y="480" width="488" height="100" rx="18" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="800" y="520" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#92400e" text-anchor="middle">DAY TANK (SERVICE TANK)</text>
+<text x="800" y="548" font-family="Arial,sans-serif" font-size="15" fill="#d97706" text-anchor="middle">Small tank near DG  ·  1000–2000 L  ·  Above ground</text>
+<text x="800" y="568" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Auto refill on low level  ·  Level sensor sends alert to SCADA</text>
+
+<!-- Arrow 3→4 -->
+<line x1="800" y1="584" x2="800" y2="622" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="789,620 811,620 800,638" fill="#e2e8f0"/>
+<text x="870" y="610" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8">Fuel feed</text>
+
+<!-- Box 4: DG Engine (green) -->
+<circle cx="512" cy="690" r="28" fill="#16a34a"/>
+<text x="512" y="695" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">04</text>
+<rect x="556" y="640" width="488" height="100" rx="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+<text x="800" y="680" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#166534" text-anchor="middle">DG ENGINE</text>
+<text x="800" y="708" font-family="Arial,sans-serif" font-size="15" fill="#16a34a" text-anchor="middle">Injectors burn diesel  →  Alternator generates 415V</text>
+<text x="800" y="728" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Excess fuel returned to day tank via return line</text>
+
+<!-- Right: Key facts panel -->
+<rect x="1140" y="160" width="380" height="580" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="1330" y="198" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="middle">KEY FACTS</text>
+<line x1="1158" y1="210" x2="1502" y2="210" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1158" y="240" font-family="Arial,sans-serif" font-size="14" fill="#1e293b" font-weight="600">Fuel Polishing</text>
+<text x="1158" y="260" font-family="Arial,sans-serif" font-size="13" fill="#64748b">Old diesel grows bacteria.</text>
+<text x="1158" y="278" font-family="Arial,sans-serif" font-size="13" fill="#64748b">Polish quarterly minimum.</text>
+<line x1="1158" y1="300" x2="1502" y2="300" stroke="#f1f5f9" stroke-width="1"/>
+<text x="1158" y="330" font-family="Arial,sans-serif" font-size="14" fill="#1e293b" font-weight="600">Storage Target</text>
+<text x="1158" y="350" font-family="Arial,sans-serif" font-size="13" fill="#64748b">Tier III:  12 hours min</text>
+<text x="1158" y="370" font-family="Arial,sans-serif" font-size="13" fill="#16a34a" font-weight="600">Tier IV:  24–72 hours</text>
+<line x1="1158" y1="392" x2="1502" y2="392" stroke="#f1f5f9" stroke-width="1"/>
+<text x="1158" y="422" font-family="Arial,sans-serif" font-size="14" fill="#1e293b" font-weight="600">Consumption</text>
+<text x="1158" y="442" font-family="Arial,sans-serif" font-size="13" fill="#64748b">1500 kVA → ~330 L/hr</text>
+<text x="1158" y="462" font-family="Arial,sans-serif" font-size="13" fill="#64748b">1000 kVA → ~220 L/hr</text>
+<line x1="1158" y1="484" x2="1502" y2="484" stroke="#f1f5f9" stroke-width="1"/>
+<text x="1158" y="514" font-family="Arial,sans-serif" font-size="14" fill="#dc2626" font-weight="600">Warning</text>
+<text x="1158" y="534" font-family="Arial,sans-serif" font-size="13" fill="#64748b">Stale fuel = DG start</text>
+<text x="1158" y="552" font-family="Arial,sans-serif" font-size="13" fill="#64748b">failure. Most common</text>
+<text x="1158" y="570" font-family="Arial,sans-serif" font-size="13" fill="#64748b">root cause in Data Centers.</text>
+<line x1="1158" y1="594" x2="1502" y2="594" stroke="#f1f5f9" stroke-width="1"/>
+<text x="1158" y="624" font-family="Arial,sans-serif" font-size="14" fill="#1e293b" font-weight="600">PESO License</text>
+<text x="1158" y="644" font-family="Arial,sans-serif" font-size="13" fill="#64748b">HSD = Class C petroleum.</text>
+<text x="1158" y="662" font-family="Arial,sans-serif" font-size="13" fill="#64748b">License required above</text>
+<text x="1158" y="680" font-family="Arial,sans-serif" font-size="13" fill="#64748b">prescribed storage limits.</text>
+<text x="1158" y="710" font-family="Arial,sans-serif" font-size="13" fill="#64748b">Petroleum Act 1934.</text>
+</svg>

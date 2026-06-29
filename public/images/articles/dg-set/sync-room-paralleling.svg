@@ -1,0 +1,89 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="900" fill="#ffffff"/>
+
+<text x="800" y="56" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e293b" text-anchor="middle">DG PARALLEL OPERATION</text>
+<text x="800" y="84" font-family="Arial,sans-serif" font-size="16" fill="#94a3b8" text-anchor="middle">Multiple DGs running together on one bus — synchronised, load-sharing</text>
+
+<!-- 3 DG boxes at top level -->
+<!-- DG1 left -->
+<rect x="60" y="120" width="380" height="200" rx="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+<rect x="60" y="120" width="380" height="50" rx="18" fill="#16a34a"/>
+<text x="250" y="152" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">DG-1  1500 kVA</text>
+<text x="250" y="170" font-family="Arial,sans-serif" font-size="13" fill="#bbf7d0" text-anchor="middle">● RUNNING</text>
+<text x="250" y="218" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#166534" text-anchor="middle">V: 415V  f: 50.01 Hz</text>
+<text x="250" y="244" font-family="Arial,sans-serif" font-size="14" fill="#16a34a" text-anchor="middle">Load: 412 kW  (49.6%)</text>
+<text x="250" y="268" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">GCB-1 ● CLOSED</text>
+<text x="250" y="292" font-family="Arial,sans-serif" font-size="13" fill="#064e3b" text-anchor="middle">Cummins  ·  Stamford</text>
+
+<!-- DG2 centre -->
+<rect x="610" y="120" width="380" height="200" rx="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+<rect x="610" y="120" width="380" height="50" rx="18" fill="#16a34a"/>
+<text x="800" y="152" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">DG-2  1500 kVA</text>
+<text x="800" y="170" font-family="Arial,sans-serif" font-size="13" fill="#bbf7d0" text-anchor="middle">● RUNNING</text>
+<text x="800" y="218" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#166534" text-anchor="middle">V: 415V  f: 50.00 Hz</text>
+<text x="800" y="244" font-family="Arial,sans-serif" font-size="14" fill="#16a34a" text-anchor="middle">Load: 415 kW  (50.4%)</text>
+<text x="800" y="268" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">GCB-2 ● CLOSED</text>
+<text x="800" y="292" font-family="Arial,sans-serif" font-size="13" fill="#064e3b" text-anchor="middle">Cummins  ·  Stamford</text>
+
+<!-- DG3 right standby -->
+<rect x="1160" y="120" width="380" height="200" rx="18" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<rect x="1160" y="120" width="380" height="50" rx="18" fill="#64748b"/>
+<text x="1350" y="152" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">DG-3  STANDBY</text>
+<text x="1350" y="170" font-family="Arial,sans-serif" font-size="13" fill="#cbd5e1" text-anchor="middle">○ READY — N+1</text>
+<text x="1350" y="218" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#94a3b8" text-anchor="middle">V: 0V  f: 0 Hz</text>
+<text x="1350" y="244" font-family="Arial,sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Load: 0 kW</text>
+<text x="1350" y="268" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">GCB-3 ○ OPEN</text>
+<text x="1350" y="292" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">Auto-start on fault</text>
+
+<!-- Lines converging to sync panel -->
+<line x1="250" y1="322" x2="250" y2="390" stroke="#16a34a" stroke-width="3"/>
+<line x1="250" y1="390" x2="800" y2="390" stroke="#16a34a" stroke-width="3"/>
+<line x1="800" y1="322" x2="800" y2="390" stroke="#16a34a" stroke-width="3"/>
+<line x1="1350" y1="322" x2="1350" y2="390" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8,5"/>
+<line x1="1350" y1="390" x2="800" y2="390" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8,5"/>
+<line x1="800" y1="390" x2="800" y2="418" stroke="#2563eb" stroke-width="4"/>
+<polygon points="789,416 811,416 800,434" fill="#2563eb"/>
+
+<!-- Sync Panel -->
+<rect x="390" y="436" width="820" height="100" rx="18" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="800" y="476" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1e40af" text-anchor="middle">SYNCHRONIZING PANEL</text>
+<text x="800" y="504" font-family="Arial,sans-serif" font-size="14" fill="#2563eb" text-anchor="middle">Auto sync · Isochronous load sharing · ΔV ΔHz Δφ all within tolerance</text>
+<text x="800" y="524" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">Total bus: 827 kW on 3000 kVA plant</text>
+
+<!-- Arrow down to common bus -->
+<line x1="800" y1="540" x2="800" y2="578" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="789,576 811,576 800,592" fill="#e2e8f0"/>
+
+<!-- Common Bus -->
+<rect x="200" y="594" width="1200" height="60" rx="14" fill="#1e40af"/>
+<text x="800" y="631" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">COMMON BUS  —  415V  3-phase  ·  50 Hz</text>
+
+<!-- Arrow down to ATS -->
+<line x1="800" y1="658" x2="800" y2="694" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="789,692 811,692 800,708" fill="#e2e8f0"/>
+
+<!-- ATS -->
+<rect x="500" y="710" width="600" height="76" rx="16" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<text x="800" y="748" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#5b21b6" text-anchor="middle">ATS / ATSS</text>
+<text x="800" y="772" font-family="Arial,sans-serif" font-size="14" fill="#7c3aed" text-anchor="middle">Transfers load to DG bus on grid failure</text>
+
+<!-- Arrow down to load -->
+<line x1="800" y1="790" x2="800" y2="822" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="789,820 811,820 800,836" fill="#e2e8f0"/>
+
+<!-- Critical Load -->
+<rect x="560" y="838" width="480" height="50" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+<text x="800" y="869" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#166534" text-anchor="middle">CRITICAL LOAD — Protected</text>
+
+<!-- Sync condition badge on right -->
+<rect x="1280" y="436" width="280" height="178" rx="14" fill="#fafafa" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="1420" y="462" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#1e293b" text-anchor="middle">SYNC CONDITIONS</text>
+<line x1="1294" y1="472" x2="1546" y2="472" stroke="#f1f5f9" stroke-width="1"/>
+<text x="1294" y="496" font-family="Arial,sans-serif" font-size="13" fill="#16a34a">✓  ΔV    within ±5V</text>
+<text x="1294" y="516" font-family="Arial,sans-serif" font-size="13" fill="#16a34a">✓  Δf    within ±0.2 Hz</text>
+<text x="1294" y="536" font-family="Arial,sans-serif" font-size="13" fill="#16a34a">✓  Δφ   within ±10°</text>
+<text x="1294" y="556" font-family="Arial,sans-serif" font-size="13" fill="#16a34a">✓  Phase RYB = RYB</text>
+<line x1="1294" y1="570" x2="1546" y2="570" stroke="#f1f5f9" stroke-width="1"/>
+<text x="1294" y="592" font-family="Arial,sans-serif" font-size="12" fill="#2563eb">PLC closes breaker</text>
+<text x="1294" y="610" font-family="Arial,sans-serif" font-size="12" fill="#64748b">when all 4 match</text>
+</svg>

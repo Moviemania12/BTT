@@ -1,0 +1,89 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="900" fill="#ffffff"/>
+
+<text x="800" y="58" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e293b" text-anchor="middle">UNDERGROUND FUEL TANK (UST)</text>
+<text x="800" y="86" font-family="Arial,sans-serif" font-size="16" fill="#94a3b8" text-anchor="middle">Installation cross-section — from fill point to day tank</text>
+
+<!-- Ground surface -->
+<rect x="0" y="330" width="1600" height="12" fill="#e2e8f0" rx="2"/>
+<text x="80" y="324" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8">GROUND LEVEL</text>
+<text x="80" y="380" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8">UNDERGROUND</text>
+<!-- Ground fill (light) -->
+<rect x="0" y="342" width="1600" height="558" fill="#fafaf9" rx="0"/>
+
+<!-- 4 main components across the width -->
+
+<!-- 1. Fill Point -->
+<rect x="80" y="140" width="280" height="180" rx="16" fill="#fff7ed" stroke="#f97316" stroke-width="2.5"/>
+<text x="220" y="190" font-family="Arial,sans-serif" font-size="36" text-anchor="middle">🚛</text>
+<text x="220" y="238" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#c2410c" text-anchor="middle">FILL POINT</text>
+<text x="220" y="262" font-family="Arial,sans-serif" font-size="13" fill="#ea580c" text-anchor="middle">Tanker connects here</text>
+<text x="220" y="280" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Lockable access cover</text>
+<!-- fill pipe going down -->
+<rect x="208" y="320" width="24" height="200" rx="4" fill="#f97316" opacity="0.6"/>
+<text x="248" y="430" font-family="Arial,sans-serif" font-size="12" fill="#ea580c">Fill pipe</text>
+
+<!-- Vent pipe next to fill -->
+<rect x="290" y="160" width="12" height="192" rx="3" fill="#94a3b8"/>
+<rect x="278" y="156" width="36" height="16" rx="4" fill="#64748b"/>
+<text x="304" y="152" font-family="Arial,sans-serif" font-size="12" fill="#94a3b8">Vent</text>
+
+<!-- 2. Underground Tank -->
+<rect x="400" y="380" width="500" height="360" rx="24" fill="#fef3c7" stroke="#d97706" stroke-width="3"/>
+<!-- fuel level inside tank -->
+<rect x="412" y="530" width="476" height="198" rx="14" fill="#fbbf24" opacity="0.45"/>
+<text x="650" y="430" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#92400e" text-anchor="middle">UNDERGROUND</text>
+<text x="650" y="458" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#92400e" text-anchor="middle">STORAGE TANK</text>
+<text x="650" y="490" font-family="Arial,sans-serif" font-size="15" fill="#d97706" text-anchor="middle">Carbon Steel / GRP Double-Wall</text>
+<text x="650" y="560" font-family="Arial,sans-serif" font-size="18" fill="#92400e" text-anchor="middle">DIESEL — HSD</text>
+<text x="650" y="586" font-family="Arial,sans-serif" font-size="15" fill="#92400e" text-anchor="middle">IS 1460 — Class C Petroleum</text>
+<text x="650" y="610" font-family="Arial,sans-serif" font-size="14" fill="#d97706" text-anchor="middle">Capacity: 24,000 L</text>
+<text x="650" y="630" font-family="Arial,sans-serif" font-size="14" fill="#d97706" text-anchor="middle">Current: 78% = 18,720 L</text>
+<!-- PESO badge -->
+<rect x="440" y="650" width="420" height="72" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+<text x="650" y="674" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#dc2626" text-anchor="middle">⚠  PESO LICENSE REQUIRED</text>
+<text x="650" y="694" font-family="Arial,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Petroleum Act 1934 + Petroleum Rules 2002</text>
+<text x="650" y="710" font-family="Arial,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Consult local PESO office for limits</text>
+
+<!-- Bund wall -->
+<rect x="370" y="360" width="560" height="400" rx="4" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="12,6"/>
+<text x="394" y="780" font-family="Arial,sans-serif" font-size="12" fill="#dc2626">Concrete bund — 110% tank capacity</text>
+
+<!-- Pipe from tank to pump -->
+<rect x="900" y="540" width="150" height="12" rx="3" fill="#94a3b8"/>
+<text x="940" y="530" font-family="Arial,sans-serif" font-size="12" fill="#94a3b8">Supply line</text>
+
+<!-- 3. Transfer Pump -->
+<rect x="1060" y="380" width="220" height="200" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<text x="1170" y="440" font-family="Arial,sans-serif" font-size="34" text-anchor="middle">⚙️</text>
+<text x="1170" y="490" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#1e40af" text-anchor="middle">TRANSFER</text>
+<text x="1170" y="514" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#1e40af" text-anchor="middle">PUMP</text>
+<text x="1170" y="540" font-family="Arial,sans-serif" font-size="13" fill="#2563eb" text-anchor="middle">Duty + Standby</text>
+<text x="1170" y="558" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Auto level control</text>
+
+<!-- Arrow pump to day tank -->
+<line x1="1285" y1="480" x2="1338" y2="480" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="1334,471 1354,480 1334,489" fill="#e2e8f0"/>
+
+<!-- 4. Day Tank -->
+<rect x="1358" y="140" width="220" height="560" rx="16" fill="#ecfdf5" stroke="#16a34a" stroke-width="2.5"/>
+<text x="1468" y="190" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#166534" text-anchor="middle">DAY TANK</text>
+<text x="1468" y="212" font-family="Arial,sans-serif" font-size="12" fill="#16a34a" text-anchor="middle">1000–2000 L</text>
+<!-- fuel in day tank -->
+<rect x="1370" y="490" width="196" height="196" rx="10" fill="#86efac" opacity="0.45"/>
+<text x="1468" y="540" font-family="Arial,sans-serif" font-size="15" fill="#166534" text-anchor="middle">Level: 64%</text>
+<text x="1468" y="562" font-family="Arial,sans-serif" font-size="14" fill="#16a34a" text-anchor="middle">640 L</text>
+<text x="1468" y="590" font-family="Arial,sans-serif" font-size="13" fill="#16a34a" text-anchor="middle">████████████</text>
+<text x="1468" y="608" font-family="Arial,sans-serif" font-size="13" fill="#16a34a" text-anchor="middle">░░░░░░  64%</text>
+<text x="1468" y="640" font-family="Arial,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Auto refill &lt; 50%</text>
+<text x="1468" y="658" font-family="Arial,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">High alarm: 95%</text>
+<text x="1468" y="676" font-family="Arial,sans-serif" font-size="12" fill="#dc2626" text-anchor="middle">Low alarm: 30%</text>
+<!-- To DG arrow (bottom) -->
+<line x1="1468" y1="700" x2="1468" y2="750" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/>
+<polygon points="1457,748 1479,748 1468,766" fill="#16a34a"/>
+<text x="1468" y="790" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#166534" text-anchor="middle">TO DG ENGINE</text>
+<text x="1468" y="810" font-family="Arial,sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">LVMDB via ATS</text>
+
+<!-- Above-ground labels -->
+<text x="80" y="360" font-family="Arial,sans-serif" font-size="12" fill="#94a3b8">ABOVE GROUND</text>
+</svg>

@@ -1,0 +1,80 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="900" fill="#ffffff"/>
+
+<text x="800" y="58" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e293b" text-anchor="middle">AMF PANEL — HOW IT WORKS</text>
+<text x="800" y="86" font-family="Arial,sans-serif" font-size="16" fill="#94a3b8" text-anchor="middle">Automatic Main Failure — two situations, one outcome</text>
+
+<!-- ── LEFT PATH: NORMAL ── -->
+<text x="320" y="136" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#16a34a" text-anchor="middle">NORMAL OPERATION</text>
+
+<rect x="120" y="150" width="400" height="90" rx="16" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+<text x="320" y="190" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#166534" text-anchor="middle">✓  GRID AVAILABLE</text>
+<text x="320" y="218" font-family="Arial,sans-serif" font-size="14" fill="#16a34a" text-anchor="middle">415V · 50Hz · All phases present</text>
+
+<line x1="320" y1="244" x2="320" y2="294" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+<polygon points="311,292 329,292 320,308" fill="#e2e8f0"/>
+
+<rect x="120" y="310" width="400" height="90" rx="16" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+<text x="320" y="350" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#475569" text-anchor="middle">DG ON STANDBY</text>
+<text x="320" y="378" font-family="Arial,sans-serif" font-size="14" fill="#64748b" text-anchor="middle">Warmed, ready, auto mode</text>
+
+<line x1="320" y1="404" x2="320" y2="454" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+<polygon points="311,452 329,452 320,468" fill="#e2e8f0"/>
+
+<rect x="120" y="470" width="400" height="90" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+<text x="320" y="510" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#94a3b8" text-anchor="middle">MAINS BREAKER CLOSED</text>
+<text x="320" y="538" font-family="Arial,sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Grid feeds critical load directly</text>
+
+<!-- ── DIVIDER ── -->
+<line x1="800" y1="120" x2="800" y2="880" stroke="#f1f5f9" stroke-width="2"/>
+<rect x="764" y="260" width="72" height="36" rx="18" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="800" y="283" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#94a3b8" text-anchor="middle">OR</text>
+
+<!-- ── RIGHT PATH: FAILURE ── -->
+<text x="1280" y="136" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#dc2626" text-anchor="middle">GRID FAILURE</text>
+
+<rect x="1080" y="150" width="400" height="90" rx="16" fill="#fef2f2" stroke="#dc2626" stroke-width="2.5"/>
+<text x="1280" y="190" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#dc2626" text-anchor="middle">✗  GRID FAILS</text>
+<text x="1280" y="218" font-family="Arial,sans-serif" font-size="14" fill="#ef4444" text-anchor="middle">Voltage drops or phases lost</text>
+
+<line x1="1280" y1="244" x2="1280" y2="294" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+<polygon points="1271,292 1289,292 1280,308" fill="#e2e8f0"/>
+
+<rect x="1080" y="310" width="400" height="90" rx="16" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<text x="1280" y="348" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#5b21b6" text-anchor="middle">AMF DETECTS</text>
+<text x="1280" y="374" font-family="Arial,sans-serif" font-size="14" fill="#7c3aed" text-anchor="middle">2–5 sec settling delay to confirm</text>
+
+<line x1="1280" y1="404" x2="1280" y2="454" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+<polygon points="1271,452 1289,452 1280,468" fill="#e2e8f0"/>
+
+<rect x="1080" y="470" width="400" height="90" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<text x="1280" y="510" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1e40af" text-anchor="middle">DG STARTS</text>
+<text x="1280" y="538" font-family="Arial,sans-serif" font-size="14" fill="#2563eb" text-anchor="middle">Engine cranks · V+F builds in 10–20 sec</text>
+
+<line x1="1280" y1="564" x2="1280" y2="614" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+<polygon points="1271,612 1289,612 1280,628" fill="#e2e8f0"/>
+
+<rect x="1080" y="630" width="400" height="90" rx="16" fill="#eff6ff" stroke="#0891b2" stroke-width="2.5"/>
+<text x="1280" y="670" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#164e63" text-anchor="middle">ATS TRANSFERS</text>
+<text x="1280" y="698" font-family="Arial,sans-serif" font-size="14" fill="#0891b2" text-anchor="middle">Mains breaker opens · DG breaker closes</text>
+
+<!-- ── MERGE POINT: Critical Load ── -->
+<!-- Lines converging to bottom center -->
+<line x1="320" y1="560" x2="320" y2="800" stroke="#e2e8f0" stroke-width="2.5" stroke-dasharray="8,5"/>
+<line x1="320" y1="800" x2="740" y2="800" stroke="#e2e8f0" stroke-width="2.5"/>
+<line x1="1280" y1="724" x2="1280" y2="800" stroke="#16a34a" stroke-width="3"/>
+<line x1="1280" y1="800" x2="860" y2="800" stroke="#16a34a" stroke-width="3"/>
+
+<!-- Central result box -->
+<rect x="560" y="760" width="480" height="100" rx="20" fill="#f0fdf4" stroke="#16a34a" stroke-width="3"/>
+<text x="800" y="805" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#166534" text-anchor="middle">CRITICAL LOAD</text>
+<text x="800" y="835" font-family="Arial,sans-serif" font-size="15" fill="#16a34a" text-anchor="middle">Always protected  ·  UPS bridges the 15–30 second gap</text>
+
+<!-- Bottom arrows pointing to result -->
+<polygon points="791,758 809,758 800,742" fill="#16a34a"/>
+
+<!-- Total time badge -->
+<rect x="1100" y="756" width="280" height="46" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+<text x="1240" y="774" font-family="Arial,sans-serif" font-size="13" fill="#92400e" text-anchor="middle">Total switchover time</text>
+<text x="1240" y="794" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#c2410c" text-anchor="middle">15 – 30 seconds</text>
+</svg>

@@ -1,0 +1,96 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="900" fill="#ffffff"/>
+
+<text x="800" y="56" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e293b" text-anchor="middle">EXHAUST SYSTEM</text>
+<text x="800" y="82" font-family="Arial,sans-serif" font-size="16" fill="#94a3b8" text-anchor="middle">From engine combustion to safe outdoor discharge — 5 stages</text>
+
+<!-- 5 boxes vertical, each 90px tall, gap 42px, step=132 -->
+<!-- Centers: 152, 284, 416, 548, 680 -->
+<!-- Box tops: 107, 239, 371, 503, 635  box bottoms: 197, 329, 461, 593, 725 -->
+
+<!-- Box 1: Engine -->
+<circle cx="530" cy="152" r="28" fill="#dc2626"/>
+<text x="530" y="157" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">01</text>
+<rect x="570" y="107" width="460" height="90" rx="18" fill="#fef2f2" stroke="#dc2626" stroke-width="2.5"/>
+<text x="800" y="147" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#991b1b" text-anchor="middle">ENGINE EXHAUST</text>
+<text x="800" y="177" font-family="Arial,sans-serif" font-size="15" fill="#dc2626" text-anchor="middle">Hot gases exit cylinders · 300–600°C · All cylinder gases collected</text>
+
+<!-- Arrow 1→2 -->
+<line x1="800" y1="201" x2="800" y2="233" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="789,231 811,231 800,247" fill="#e2e8f0"/>
+
+<!-- Box 2: Turbocharger -->
+<circle cx="530" cy="284" r="28" fill="#f97316"/>
+<text x="530" y="289" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">02</text>
+<rect x="570" y="239" width="460" height="90" rx="18" fill="#fff7ed" stroke="#f97316" stroke-width="2.5"/>
+<text x="800" y="279" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#c2410c" text-anchor="middle">TURBOCHARGER</text>
+<text x="800" y="309" font-family="Arial,sans-serif" font-size="15" fill="#ea580c" text-anchor="middle">Exhaust spins turbine · Compresses intake air · Increases engine power</text>
+
+<!-- Arrow 2→3 -->
+<line x1="800" y1="333" x2="800" y2="365" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="789,363 811,363 800,379" fill="#e2e8f0"/>
+<!-- label: flexible bellows -->
+<rect x="866" y="338" width="220" height="28" rx="8" fill="#f1f5f9"/>
+<text x="976" y="356" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">Flexible bellows (vibration)</text>
+
+<!-- Box 3: Silencer -->
+<circle cx="530" cy="416" r="28" fill="#64748b"/>
+<text x="530" y="421" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">03</text>
+<rect x="570" y="371" width="460" height="90" rx="18" fill="#f8fafc" stroke="#64748b" stroke-width="2.5"/>
+<text x="800" y="411" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1e293b" text-anchor="middle">SILENCER / MUFFLER</text>
+<text x="800" y="441" font-family="Arial,sans-serif" font-size="15" fill="#64748b" text-anchor="middle">Reduces exhaust noise · CPCB standard: ≤75 dB(A) at 1 metre</text>
+
+<!-- Arrow 3→4 -->
+<line x1="800" y1="465" x2="800" y2="497" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="789,495 811,495 800,511" fill="#e2e8f0"/>
+<!-- label: insulated pipe -->
+<rect x="866" y="470" width="220" height="28" rx="8" fill="#f1f5f9"/>
+<text x="976" y="488" font-family="Arial,sans-serif" font-size="13" fill="#64748b" text-anchor="middle">Insulated pipe (mineral wool)</text>
+
+<!-- Box 4: Exhaust Stack -->
+<circle cx="530" cy="548" r="28" fill="#475569"/>
+<text x="530" y="553" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">04</text>
+<rect x="570" y="503" width="460" height="90" rx="18" fill="#f1f5f9" stroke="#475569" stroke-width="2.5"/>
+<text x="800" y="543" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1e293b" text-anchor="middle">EXHAUST STACK</text>
+<text x="800" y="573" font-family="Arial,sans-serif" font-size="15" fill="#64748b" text-anchor="middle">Vertical pipe · Height: H = h + 0.2 × √kVA · Rain cowl at top</text>
+
+<!-- Arrow 4→5 -->
+<line x1="800" y1="597" x2="800" y2="629" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/>
+<polygon points="789,627 811,627 800,643" fill="#e2e8f0"/>
+
+<!-- Box 5: Atmosphere -->
+<circle cx="530" cy="680" r="28" fill="#16a34a"/>
+<text x="530" y="685" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">05</text>
+<rect x="570" y="635" width="460" height="90" rx="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+<text x="800" y="675" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#166534" text-anchor="middle">OUTSIDE ATMOSPHERE</text>
+<text x="800" y="705" font-family="Arial,sans-serif" font-size="15" fill="#16a34a" text-anchor="middle">CPCB emission norms complied · Safe outdoor discharge</text>
+
+<!-- Right info panel -->
+<rect x="1140" y="107" width="400" height="618" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="1340" y="146" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#1e293b" text-anchor="middle">CPCB RULES</text>
+<line x1="1158" y1="158" x2="1522" y2="158" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1158" y="186" font-family="Arial,sans-serif" font-size="14" fill="#1e293b" font-weight="600">Stack Height Formula</text>
+<rect x="1158" y="196" width="364" height="50" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="1340" y="227" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e40af" text-anchor="middle">H = h + 0.2 × √kVA</text>
+<text x="1158" y="268" font-family="Arial,sans-serif" font-size="13" fill="#64748b">Example — 1500 kVA, 10m building:</text>
+<text x="1158" y="288" font-family="Arial,sans-serif" font-size="13" fill="#1e293b">H = 10 + 0.2 × √1500 = 17.7 m</text>
+<line x1="1158" y1="308" x2="1522" y2="308" stroke="#f1f5f9" stroke-width="1"/>
+<text x="1158" y="334" font-family="Arial,sans-serif" font-size="14" fill="#1e293b" font-weight="600">Acoustic Limit</text>
+<text x="1158" y="356" font-family="Arial,sans-serif" font-size="13" fill="#64748b">≤ 75 dB(A) at 1 metre</text>
+<text x="1158" y="376" font-family="Arial,sans-serif" font-size="13" fill="#64748b">from DG enclosure</text>
+<line x1="1158" y1="396" x2="1522" y2="396" stroke="#f1f5f9" stroke-width="1"/>
+<text x="1158" y="422" font-family="Arial,sans-serif" font-size="14" fill="#1e293b" font-weight="600">Smoke Colour Guide</text>
+<text x="1158" y="444" font-family="Arial,sans-serif" font-size="13" fill="#475569">⬛ Black = overload / rich mix</text>
+<text x="1158" y="464" font-family="Arial,sans-serif" font-size="13" fill="#3b82f6">⬜ White = coolant leak</text>
+<text x="1158" y="484" font-family="Arial,sans-serif" font-size="13" fill="#a855f7">🟣 Blue = oil burning</text>
+<text x="1158" y="504" font-family="Arial,sans-serif" font-size="13" fill="#16a34a">🩶 Light grey = NORMAL</text>
+<line x1="1158" y1="524" x2="1522" y2="524" stroke="#f1f5f9" stroke-width="1"/>
+<text x="1158" y="550" font-family="Arial,sans-serif" font-size="14" fill="#dc2626" font-weight="600">⚠  CO Detector</text>
+<text x="1158" y="570" font-family="Arial,sans-serif" font-size="13" fill="#64748b">Carbon monoxide in DG</text>
+<text x="1158" y="590" font-family="Arial,sans-serif" font-size="13" fill="#64748b">room = toxic danger.</text>
+<text x="1158" y="610" font-family="Arial,sans-serif" font-size="13" fill="#64748b">CO alarm at 25 ppm</text>
+<text x="1158" y="630" font-family="Arial,sans-serif" font-size="13" fill="#dc2626" font-weight="600">mandatory in DG room.</text>
+<text x="1158" y="660" font-family="Arial,sans-serif" font-size="14" fill="#1e293b" font-weight="600">CPCB Plate</text>
+<text x="1158" y="680" font-family="Arial,sans-serif" font-size="13" fill="#64748b">Mandatory on every</text>
+<text x="1158" y="700" font-family="Arial,sans-serif" font-size="13" fill="#64748b">DG set in India.</text>
+</svg>
