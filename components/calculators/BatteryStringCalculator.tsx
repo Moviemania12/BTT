@@ -3,6 +3,7 @@
 import { useState, useMemo, type ChangeEvent } from "react";
 import { calculateBatteriesPerString } from "@/lib/engineering/electrical";
 import { CalculatorCard } from "@/components/engineering/CalculatorCard";
+import { CalculatorField } from "@/components/engineering/CalculatorField";
 import { FormulaBox } from "@/components/engineering/FormulaBox";
 
 export default function BatteryStringCalculator() {
@@ -21,18 +22,13 @@ export default function BatteryStringCalculator() {
       errorMessage={isValid ? null : "Please enter a valid positive bus voltage."}
     >
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "1rem" }}>
-        <div>
-          <label style={{ fontSize: "0.85rem", color: "#475569", display: "block", marginBottom: "0.3rem" }}>
-            Required DC Bus Voltage (V)
-          </label>
-          <input
-            type="number"
-            min={0}
-            value={busVoltage}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setBusVoltage(Number(e.target.value) || 0)}
-            style={{ width: "100%", padding: "0.45rem 0.6rem", borderRadius: "6px", border: "1.5px solid #cbd5e1" }}
-          />
-        </div>
+        <CalculatorField
+          label="Required DC Bus Voltage"
+          unit="V"
+          min={0}
+          value={busVoltage}
+          onChange={setBusVoltage}
+        />
         <div>
           <label style={{ fontSize: "0.85rem", color: "#475569", display: "block", marginBottom: "0.3rem" }}>
             Per-Battery Voltage (V)
@@ -40,7 +36,14 @@ export default function BatteryStringCalculator() {
           <select
             value={unitVoltage}
             onChange={(e: ChangeEvent<HTMLSelectElement>) => setUnitVoltage(Number(e.target.value))}
-            style={{ width: "100%", padding: "0.45rem 0.6rem", borderRadius: "6px", border: "1.5px solid #cbd5e1" }}
+            style={{
+              width: "100%",
+              padding: "0.45rem 0.6rem",
+              borderRadius: "6px",
+              border: "1.5px solid #cbd5e1",
+              background: "#ffffff",
+              color: "#111827",
+            }}
           >
             <option value={2}>2V (Flooded cell)</option>
             <option value={6}>6V</option>

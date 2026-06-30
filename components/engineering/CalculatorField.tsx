@@ -35,8 +35,24 @@ export function CalculatorField({ label, value, onChange, min, max, step, unit }
         step={step}
         value={value}
         onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(Number(e.target.value) || 0)}
-        style={{ width: "100%", padding: "0.45rem 0.6rem", borderRadius: "6px", border: "1.5px solid #cbd5e1" }}
+        className="btt-calc-field-input"
+        style={{
+          width: "100%",
+          padding: "0.45rem 0.6rem",
+          borderRadius: "6px",
+          border: "1.5px solid #cbd5e1",
+          background: "#ffffff",
+          color: "#111827",
+          caretColor: "#111827",
+        }}
       />
+      {/* Inline styles can't target ::placeholder — scoped rule fixes visibility without touching border/focus */}
+      <style>{`
+        .btt-calc-field-input::placeholder {
+          color: #6B7280;
+          opacity: 1;
+        }
+      `}</style>
     </div>
   );
 }
