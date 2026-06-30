@@ -29,6 +29,7 @@ import {
   type Track,
   type TopicCategory,
 } from "./topics";
+import { getAllCalculators } from "@/lib/engineering/registry";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -158,6 +159,29 @@ function staticLink(
   description?: string
 ): NavLink {
   return { label, href, comingSoon: false, icon, description };
+}
+
+// ─── Helper: append calculator-registry entries to an existing link list ─────
+//
+// Used to MERGE registry-driven calculators (lib/engineering/registry) onto
+// existing hand-written tool links (e.g. PUE, RCI, Cooling, Unit Converter)
+// without removing or duplicating anything. Existing entries are matched by
+// href — if a registry calculator's route already has a manual entry, the
+// manual one wins and the registry entry is skipped, so this never produces
+// duplicate menu rows.
+
+function appendCalculatorLinks(existing: NavLink[]): NavLink[] {
+  const existingHrefs = new Set(existing.map((link) => link.href));
+  const fromRegistry: NavLink[] = getAllCalculators()
+    .filter((calc) => !existingHrefs.has(calc.route))
+    .map((calc) => ({
+      label: calc.title,
+      href: calc.route,
+      comingSoon: false,
+      icon: "🧮",
+      description: calc.description,
+    }));
+  return [...existing, ...fromRegistry];
 }
 
 // ─── LEARN Mega Menu ──────────────────────────────────────────────────────────
@@ -412,13 +436,13 @@ const TOOLS_MENU: MegaMenu = {
       icon: "🔢",
       accentRgb: "0,212,255",
       categoryHref: "/tools",
-      links: [
+      links: appendCalculatorLinks([
         staticLink("PUE Calculator", "/tools/pue-calculator", "⚡", "Calculate Power Usage Effectiveness"),
         staticLink("RCI Calculator", "/tools/rci-calculator", "❄️", "Calculate Rack Cooling Index"),
         staticLink("UPS Runtime Calculator", "/tools/ups-runtime-calculator", "🔋", "Calculate battery runtime under load"),
         staticLink("Cooling Calculator", "/tools/cooling-calculator", "🌡️", "Size your cooling requirements"),
         staticLink("Unit Converter", "/tools/unit-converter", "🔄", "Convert kW, BTU, tons of cooling, and more"),
-      ],
+      ]),
     },
   ],
 };
@@ -762,13 +786,18 @@ export const MOBILE_NAV: MobileSection[] = [
     id: "tools",
     label: "Tools",
     icon: "🔢",
-    children: [
-      { id: "pue",          label: "PUE Calculator",          icon: "⚡", href: "/tools/pue-calculator" },
-      { id: "rci-tool",     label: "RCI Calculator",          icon: "❄️", href: "/tools/rci-calculator" },
-      { id: "ups-runtime",  label: "UPS Runtime Calculator",  icon: "🔋", href: "/tools/ups-runtime-calculator" },
-      { id: "cooling-calc", label: "Cooling Calculator",      icon: "🌡️", href: "/tools/cooling-calculator" },
-      { id: "unit-conv",    label: "Unit Converter",          icon: "🔄", href: "/tools/unit-converter" },
-    ],
+    children: appendCalculatorLinks([
+      { label: "PUE Calculator", href: "/tools/pue-calculator", comingSoon: false, icon: "⚡" },
+      { label: "RCI Calculator", href: "/tools/rci-calculator", comingSoon: false, icon: "❄️" },
+      { label: "UPS Runtime Calculator", href: "/tools/ups-runtime-calculator", comingSoon: false, icon: "🔋" },
+      { label: "Cooling Calculator", href: "/tools/cooling-calculator", comingSoon: false, icon: "🌡️" },
+      { label: "Unit Converter", href: "/tools/unit-converter", comingSoon: false, icon: "🔄" },
+    ]).map((link, i) => ({
+      id: `tool-${i}`,
+      label: link.label,
+      icon: link.icon ?? "🧮",
+      href: link.href,
+    })),
   },
   {
     id: "resources",
