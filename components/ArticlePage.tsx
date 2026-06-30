@@ -155,7 +155,7 @@ function ArticleHero({ topic, readingTimeMinutes }: { topic: Topic; readingTimeM
             AK
           </span>
           <span style={{ fontFamily: "var(--font-body)", fontSize: 13.5, color: "var(--color-text-secondary)" }}>
-            Kumar Anil
+            Anil Kumar
           </span>
         </span>
 
@@ -176,6 +176,14 @@ function ArticleHero({ topic, readingTimeMinutes }: { topic: Topic; readingTimeM
   );
 }
 
+// ─── Shared scroll offset constant — keeps sticky header clearance, CSS
+//     scroll-margin-top, and the click-handler's manual scroll all in sync.
+//     Previously these used three different values (90 / 96 / 104) which
+//     caused clicking a TOC item to land in the wrong place and made the
+//     active section drift out from under the sticky TOC's tracking logic.
+
+const SCROLL_OFFSET = 112;
+
 // ─── Table of Contents — flat numbered list, no card chrome ──────────────────
 
 function TableOfContents({ headings }: { headings: ArticleHeading[] }) {
@@ -190,7 +198,7 @@ function TableOfContents({ headings }: { headings: ArticleHeading[] }) {
           if (e.isIntersecting) setActiveId(e.target.id);
         });
       },
-      { rootMargin: "-80px 0px -70% 0px", threshold: 0 }
+      { rootMargin: `-${SCROLL_OFFSET}px 0px -70% 0px`, threshold: 0 }
     );
     headings.forEach(({ id }) => {
       const el = document.getElementById(id);
@@ -203,7 +211,7 @@ function TableOfContents({ headings }: { headings: ArticleHeading[] }) {
     setMobileOpen(false);
     const el = document.getElementById(id);
     if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 90;
+      const top = el.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
       window.scrollTo({ top, behavior: "smooth" });
     }
   };
@@ -276,8 +284,8 @@ function TableOfContents({ headings }: { headings: ArticleHeading[] }) {
         className="hidden lg:block"
         style={{
           position: "sticky",
-          top: 96,
-          maxHeight: "calc(100vh - 128px)",
+          top: SCROLL_OFFSET,
+          maxHeight: `calc(100vh - ${SCROLL_OFFSET + 32}px)`,
           overflowY: "auto",
         }}
       >
@@ -305,14 +313,13 @@ function TableOfContents({ headings }: { headings: ArticleHeading[] }) {
                   title={text}
                   style={{
                     display: "flex",
-                    alignItems: "baseline",
+                    alignItems: "flex-start",
                     gap: 9,
                     width: "100%",
                     textAlign: "left",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    padding: "6px 0",
+                    whiteSpace: "normal",
+                    wordBreak: "break-word",
+                    padding: "7px 0",
                     background: "transparent",
                     border: "none",
                     borderLeft: isActive ? "2px solid var(--color-neon-blue)" : "2px solid transparent",
@@ -320,9 +327,9 @@ function TableOfContents({ headings }: { headings: ArticleHeading[] }) {
                     cursor: "pointer",
                     fontFamily: "var(--font-body)",
                     fontSize: 12.5,
-                    fontWeight: isActive ? 500 : 400,
+                    fontWeight: isActive ? 600 : 400,
                     color: isActive ? "var(--color-text-primary)" : "var(--color-text-secondary)",
-                    lineHeight: 1.4,
+                    lineHeight: 1.45,
                     transition: "color 0.15s ease, border-color 0.15s ease, padding-left 0.15s ease",
                   }}
                   onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.color = "var(--color-text-primary)"; }}
@@ -334,12 +341,13 @@ function TableOfContents({ headings }: { headings: ArticleHeading[] }) {
                       fontSize: 10,
                       color: isActive ? "var(--color-neon-blue)" : "var(--color-text-muted)",
                       flexShrink: 0,
-                      opacity: isActive ? 1 : 0.7,
+                      opacity: isActive ? 1 : 0.85,
+                      marginTop: 1,
                     }}
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>{text}</span>
+                  <span>{text}</span>
                 </button>
               </li>
             );
@@ -467,8 +475,8 @@ export default function ArticlePage({
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "180px minmax(0, 700px) 1fr",
-              gap: "0 48px",
+              gridTemplateColumns: "248px minmax(0, 700px) 1fr",
+              gap: "0 40px",
               alignItems: "start",
             }}
             className="article-layout"
@@ -522,7 +530,7 @@ export default function ArticlePage({
         .btt-article-content h2,
         .btt-article-content h3,
         .btt-article-content h4 {
-          scroll-margin-top: 104px;
+          scroll-margin-top: 112px;
         }
 
         .btt-article-content h2 {
