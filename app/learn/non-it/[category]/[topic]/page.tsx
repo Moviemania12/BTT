@@ -13,8 +13,27 @@ type PageProps = {
   params: Promise<PageParams>;
 };
 
+// ─── Static article slugs ─────────────────────────────────────────────────────
+// Topics that have their own dedicated static page.tsx under
+// app/learn/non-it/electrical/<slug>/page.tsx must NOT be served by this
+// dynamic catch-all. Adding a slug here causes Next.js to fall through to
+// the static file instead of rendering the placeholder below.
+//
+// Why: Next.js dynamic routes ([category]/[topic]) take precedence over
+// static nested folders at build time via generateStaticParams(). Excluding
+// a slug from generateStaticParams() AND returning notFound() at runtime
+// forces Next.js to resolve the static page.tsx instead.
+//
+// Add every new article slug here as it is published.
+const STATIC_ARTICLE_SLUGS = new Set(["ups", "battery-bank"]);
+
 export default async function NonItTopicPage(props: PageProps) {
   const params = await props.params;
+
+  // Delegate to static page.tsx for articles that have their own implementation
+  if (STATIC_ARTICLE_SLUGS.has(params.topic)) {
+    notFound();
+  }
 
   const topic = getTopic("non-it", params.category as NonItCategory, params.topic);
 
@@ -66,11 +85,19 @@ export async function generateStaticParams(): Promise<PageParams[]> {
   const topics: Topic[] = ALL_TOPICS;
   return topics
     .filter((t) => t.track === "non-it")
+    // Exclude slugs that have their own static page.tsx — they handle their own routing
+    .filter((t) => !STATIC_ARTICLE_SLUGS.has(t.slug))
     .map((t) => ({ category: t.category, topic: t.slug }));
 }
 
 export async function generateMetadata(props: PageProps) {
   const params = await props.params;
+
+  // Static articles export their own metadata — return empty here
+  if (STATIC_ARTICLE_SLUGS.has(params.topic)) {
+    return {};
+  }
+
   const topic = getTopic("non-it", params.category as NonItCategory, params.topic);
 
   if (!topic) {
