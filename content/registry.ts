@@ -22,12 +22,14 @@ import type {
 } from "@/types/engineering/registry";
 import { upsContent } from "./ups";
 import { batteryBankContent } from "./battery-bank";
+import { stsContent } from "./sts";
 
 // ─── Plain content lookup (used by React pages) ───────────────────────────────
 
 const CONTENT_MAP: Record<string, ArticleContent> = {
   ups: upsContent,
   "battery-bank": batteryBankContent,
+  sts: stsContent,
 };
 
 export function getArticleContent(slug: string): ArticleContent | undefined {
@@ -42,6 +44,7 @@ export function getArticleContent(slug: string): ArticleContent | undefined {
 const ARTICLE_DOMAIN: Record<string, GlossaryRegistryEntry["domain"]> = {
   ups: "electrical",
   "battery-bank": "electrical",
+  sts: "electrical",
 };
 
 function enrichGlossary(slug: string, content: ArticleContent): GlossaryRegistryEntry[] {
