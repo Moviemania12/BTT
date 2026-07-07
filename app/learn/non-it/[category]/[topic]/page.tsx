@@ -25,7 +25,7 @@ type PageProps = {
 // forces Next.js to resolve the static page.tsx instead.
 //
 // Add every new article slug here as it is published.
-const STATIC_ARTICLE_SLUGS = new Set(["ups", "battery-bank", "sts"]);
+const STATIC_ARTICLE_SLUGS = new Set(["ups", "battery-bank", "sts", "pdu"]);
 
 export default async function NonItTopicPage(props: PageProps) {
   const params = await props.params;
