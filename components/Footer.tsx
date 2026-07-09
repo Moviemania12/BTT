@@ -53,7 +53,7 @@ export default function Footer() {
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Main footer grid */}
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
 
           {/* Brand column */}
           <div className="lg:col-span-2">
@@ -123,7 +123,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-[rgba(255,255,255,0.05)] py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-[rgba(255,255,255,0.05)] py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p
             className="text-xs text-[var(--color-text-muted)]"
             style={{ fontFamily: "var(--font-mono)" }}

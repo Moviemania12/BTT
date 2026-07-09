@@ -1,27 +1,38 @@
-import Hero from "@/components/Hero";
-import ArticlesSection from "@/components/ArticlesSection";
-import About from "@/components/About";
-import Categories from "@/components/Categories";
-import Videos from "@/components/Videos";
-import Stats from "@/components/Stats";
-import Newsletter from "@/components/Newsletter";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
+import HeroV2 from "@/components/homepage/HeroV2";
+import LearningTracks from "@/components/homepage/LearningTracks";
+import PopularTopics from "@/components/homepage/PopularTopics";
+import ContinueLearning from "@/components/homepage/ContinueLearning";
+import EngineeringTools from "@/components/homepage/EngineeringTools";
+import WhyBehindTheTech from "@/components/homepage/WhyBehindTheTech";
+import HowItWorks from "@/components/homepage/HowItWorks";
+import LearningRoadmapSimple from "@/components/homepage/LearningRoadmapSimple";
+import StatsBar from "@/components/homepage/StatsBar";
+
+// ═══════════════════════════════════════════════════════════════════════════
+// app/page.tsx — Homepage V2
+//
+// HowItWorks and StatsBar are new sections, added per explicit instruction.
+// LearningRoadmapSimple (the subject-matter timeline) is KEPT alongside
+// HowItWorks (the process explainer) — both exist, neither replaces the
+// other. All other sections and their import names are unchanged from V1.
+// ═══════════════════════════════════════════════════════════════════════════
 
 export default function Home() {
   return (
     <>
       <LoadingScreen />
       <main>
-        <Hero />
-        <ArticlesSection />
-        <About />
-        <Categories />
-        <Videos />
-        <Stats />
-        <Newsletter />
-        <Contact />
+        <HeroV2 />
+        <LearningTracks />
+        <PopularTopics />
+        <ContinueLearning />
+        <WhyBehindTheTech />
+        <HowItWorks />
+        <EngineeringTools />
+        <LearningRoadmapSimple />
+        <StatsBar />
       </main>
       <Footer />
     </>
