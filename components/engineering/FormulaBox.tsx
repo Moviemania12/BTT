@@ -17,8 +17,9 @@ export function FormulaBox({ formula, workedExample, result }: FormulaBoxProps) 
   return (
     <div
       style={{
-        background: "#f1f5f9",
-        borderRadius: "8px",
+        background: "#F8FAFC",
+        border: "1px solid #E5E7EB",
+        borderRadius: "12px",
         padding: "1rem 1.3rem",
         margin: "1rem 0",
         fontFamily: "monospace",
@@ -26,10 +27,10 @@ export function FormulaBox({ formula, workedExample, result }: FormulaBoxProps) 
         lineHeight: 1.8,
       }}
     >
-      <div>{formula}</div>
-      {workedExample && <div style={{ marginTop: "0.4rem", color: "#475569" }}>{workedExample}</div>}
+      <div style={{ color: "#374151" }}>{formula}</div>
+      {workedExample && <div style={{ marginTop: "0.4rem", color: "#6B7280" }}>{workedExample}</div>}
       {result && (
-        <div style={{ marginTop: "0.4rem" }}>
+        <div style={{ marginTop: "0.4rem", color: "#111827" }}>
           <strong>{result}</strong>
         </div>
       )}

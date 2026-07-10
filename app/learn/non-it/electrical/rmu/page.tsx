@@ -68,7 +68,7 @@ const S = {
     fontFamily: "var(--font-display)",
     fontSize: "clamp(1.5rem, 2.5vw, 1.9rem)",
     letterSpacing: "0.04em",
-    color: "var(--color-text-primary)",
+    color: "#111827",
     lineHeight: 1.15,
     marginTop: 64,
     marginBottom: 16,
@@ -78,7 +78,7 @@ const S = {
     fontFamily: "var(--font-display)",
     fontSize: "clamp(1.2rem, 2vw, 1.5rem)",
     letterSpacing: "0.04em",
-    color: "var(--color-text-primary)",
+    color: "#111827",
     lineHeight: 1.2,
     marginTop: 56,
     marginBottom: 14,
@@ -88,7 +88,7 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: "1rem",
     fontWeight: 600,
-    color: "var(--color-text-primary)",
+    color: "#111827",
     lineHeight: 1.3,
     marginTop: 28,
     marginBottom: 10,
@@ -96,7 +96,7 @@ const S = {
 
   p: {
     marginBottom: 16,
-    color: "var(--color-text-secondary)",
+    color: "#1f2937",
   } as React.CSSProperties,
 
   ul: {
@@ -108,13 +108,13 @@ const S = {
   } as React.CSSProperties,
 
   li: {
-    color: "var(--color-text-secondary)",
+    color: "#1f2937",
     lineHeight: 1.65,
   } as React.CSSProperties,
 
   divider: {
     border: "none",
-    borderTop: "1px solid rgba(0,212,255,0.08)",
+    borderTop: "1px solid rgba(37,99,235,0.08)",
     margin: "12px 0",
   } as React.CSSProperties,
 
@@ -135,13 +135,12 @@ const S = {
 
   cardAccentBlue: {
     height: 2,
-    background: "var(--color-neon-blue)",
-    boxShadow: "0 0 8px rgba(0,212,255,0.5)",
+    background: "#2563EB",
   } as React.CSSProperties,
 
   cardBodyInsight: {
-    background: "rgba(0,212,255,0.035)",
-    border: "1px solid rgba(0,212,255,0.16)",
+    background: "rgba(37,99,235,0.035)",
+    border: "1px solid rgba(37,99,235,0.16)",
     borderTop: "none",
     padding: "18px 22px 20px",
   } as React.CSSProperties,
@@ -159,21 +158,21 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: 15,
     lineHeight: 1.7,
-    color: "var(--color-text-primary)",
+    color: "#1f2937",
   } as React.CSSProperties,
 
   takeawayCard: {
     position: "relative" as const,
     borderRadius: 12,
-    background: "linear-gradient(135deg, rgba(0,212,255,0.05), rgba(0,255,204,0.03))",
-    border: "1px solid rgba(0,212,255,0.16)",
+    background: "linear-gradient(135deg, rgba(37,99,235,0.05), rgba(0,255,204,0.03))",
+    border: "1px solid rgba(37,99,235,0.16)",
     overflow: "hidden" as const,
     margin: "32px 0",
   } as React.CSSProperties,
 
   takeawayAccent: {
     height: 2,
-    background: "linear-gradient(90deg, var(--color-neon-blue), var(--color-neon-cyan))",
+    background: "linear-gradient(90deg, #2563EB, #2563EB)",
   } as React.CSSProperties,
 
   takeawayBody: {
@@ -185,7 +184,7 @@ const S = {
     fontFamily: "var(--font-mono)",
     fontSize: 9,
     letterSpacing: "0.26em",
-    color: "var(--color-neon-blue)",
+    color: "#2563EB",
     fontWeight: 600,
     marginBottom: 16,
   } as React.CSSProperties,
@@ -222,7 +221,7 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: 14.5,
     lineHeight: 1.6,
-    color: "var(--color-text-primary)",
+    color: "#1f2937",
   } as React.CSSProperties,
 
   articleImage: {
@@ -232,7 +231,7 @@ const S = {
     borderRadius: 10,
     overflow: "hidden",
     margin: 0,
-    border: "1px solid rgba(0,212,255,0.12)",
+    border: "1px solid rgba(37,99,235,0.12)",
   } as React.CSSProperties,
 
   imageFigure: {
@@ -242,7 +241,7 @@ const S = {
   imageCaption: {
     fontFamily: "var(--font-body)",
     fontSize: 12.5,
-    color: "var(--color-text-muted)",
+    color: "#1f2937",
     textAlign: "center" as const,
     marginTop: 8,
   } as React.CSSProperties,
@@ -251,7 +250,7 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: 13,
     fontStyle: "italic" as const,
-    color: "var(--color-text-muted)",
+    color: "#1f2937",
     marginBottom: 16,
     lineHeight: 1.6,
   } as React.CSSProperties,
@@ -296,13 +295,13 @@ function QuickSummary() {
       <div
         style={{
           height: 2,
-          background: "linear-gradient(90deg, var(--color-neon-blue), var(--color-neon-cyan))",
+          background: "linear-gradient(90deg, #2563EB, #2563EB)",
         }}
       />
       <div
         style={{
-          background: "rgba(0,212,255,0.03)",
-          border: "1px solid rgba(0,212,255,0.14)",
+          background: "rgba(37,99,235,0.03)",
+          border: "1px solid rgba(37,99,235,0.14)",
           borderTop: "none",
           padding: "20px 22px 22px",
         }}
@@ -315,7 +314,7 @@ function QuickSummary() {
             fontFamily: "var(--font-mono)",
             fontSize: 9,
             letterSpacing: "0.26em",
-            color: "var(--color-neon-blue)",
+            color: "#2563EB",
             fontWeight: 600,
             marginBottom: 16,
           }}
@@ -345,7 +344,7 @@ function QuickSummary() {
                   fontSize: 9,
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
-                  color: "var(--color-neon-cyan)",
+                  color: "#2563EB",
                   paddingTop: 3,
                   minWidth: 130,
                 }}
@@ -357,7 +356,7 @@ function QuickSummary() {
                   fontFamily: "var(--font-body)",
                   fontSize: 14,
                   lineHeight: 1.65,
-                  color: "var(--color-text-secondary)",
+                  color: "#1f2937",
                 }}
               >
                 {pt.text}
@@ -369,10 +368,10 @@ function QuickSummary() {
           style={{
             marginTop: 16,
             paddingTop: 14,
-            borderTop: "1px solid rgba(0,212,255,0.08)",
+            borderTop: "1px solid rgba(37,99,235,0.08)",
             fontFamily: "var(--font-body)",
             fontSize: 13,
-            color: "var(--color-text-muted)",
+            color: "#1f2937",
           }}
         >
           Bas itna samajh gaye to RMU ka concept clear hai. Agar deeper jaana ho — neeche poora article hai.
@@ -389,7 +388,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
     <div style={S.cardWrap}>
       <div style={S.cardAccentBlue} />
       <div style={S.cardBodyInsight}>
-        <span style={{ ...S.cardLabel, color: "var(--color-neon-blue)" }}>INSIGHT</span>
+        <span style={{ ...S.cardLabel, color: "#2563EB" }}>INSIGHT</span>
         <div style={S.cardContent}>{children}</div>
       </div>
     </div>
@@ -413,7 +412,7 @@ function WhyThisMatters({ children }: { children: React.ReactNode }) {
       <div
         style={{
           height: 2,
-          background: "var(--color-neon-cyan)",
+          background: "#2563EB",
           boxShadow: "0 0 8px rgba(0,255,204,0.4)",
         }}
       />
@@ -425,7 +424,7 @@ function WhyThisMatters({ children }: { children: React.ReactNode }) {
             fontSize: 9,
             letterSpacing: "0.2em",
             textTransform: "uppercase",
-            color: "var(--color-neon-cyan)",
+            color: "#2563EB",
             fontWeight: 600,
             marginBottom: 9,
           }}
@@ -437,7 +436,7 @@ function WhyThisMatters({ children }: { children: React.ReactNode }) {
             fontFamily: "var(--font-body)",
             fontSize: 14,
             lineHeight: 1.65,
-            color: "var(--color-text-primary)",
+            color: "#1f2937",
           }}
         >
           {children}
@@ -454,8 +453,8 @@ function WhatYouAreLooking({ children }: { children: React.ReactNode }) {
     <div
       style={{
         borderRadius: 8,
-        background: "rgba(0,212,255,0.025)",
-        border: "1px dashed rgba(0,212,255,0.2)",
+        background: "rgba(37,99,235,0.025)",
+        border: "1px dashed rgba(37,99,235,0.2)",
         padding: "12px 16px",
         margin: "0 0 24px",
       }}
@@ -467,7 +466,7 @@ function WhatYouAreLooking({ children }: { children: React.ReactNode }) {
           fontSize: 8.5,
           letterSpacing: "0.18em",
           textTransform: "uppercase",
-          color: "var(--color-neon-blue)",
+          color: "#2563EB",
           fontWeight: 600,
           marginBottom: 6,
         }}
@@ -479,7 +478,7 @@ function WhatYouAreLooking({ children }: { children: React.ReactNode }) {
           fontFamily: "var(--font-body)",
           fontSize: 13,
           lineHeight: 1.6,
-          color: "var(--color-text-secondary)",
+          color: "#1f2937",
         }}
       >
         {children}
@@ -500,7 +499,7 @@ function DCMapNote({ components }: { components: string[] }) {
           fontSize: 8.5,
           letterSpacing: "0.18em",
           textTransform: "uppercase",
-          color: "var(--color-text-muted)",
+          color: "#1f2937",
           marginBottom: 8,
         }}
       >
@@ -515,9 +514,9 @@ function DCMapNote({ components }: { components: string[] }) {
               fontSize: 12,
               padding: "4px 10px",
               borderRadius: 980,
-              background: "rgba(0,212,255,0.05)",
-              border: "1px solid rgba(0,212,255,0.16)",
-              color: "var(--color-text-secondary)",
+              background: "rgba(37,99,235,0.05)",
+              border: "1px solid rgba(37,99,235,0.16)",
+              color: "#1f2937",
             }}
           >
             {c}
@@ -543,7 +542,7 @@ function KeyTakeawayCard({ items }: { items: string[] }) {
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M4 13l5 5L20 6"
-                    stroke="var(--color-neon-cyan)"
+                    stroke="#2563EB"
                     strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -579,13 +578,13 @@ function ComparisonCard({
       style={{
         position: "relative",
         borderRadius: 10,
-        background: "rgba(0,212,255,0.03)",
-        border: "1px solid rgba(0,212,255,0.12)",
+        background: "rgba(37,99,235,0.03)",
+        border: "1px solid rgba(37,99,235,0.12)",
         overflow: "hidden",
         margin: "20px 0 32px",
       }}
     >
-      <div style={{ height: 2, background: "var(--color-neon-blue)", opacity: 0.5 }} />
+      <div style={{ height: 2, background: "#2563EB", opacity: 0.5 }} />
       <div style={{ padding: "20px 22px 22px" }}>
         <span
           style={{
@@ -594,7 +593,7 @@ function ComparisonCard({
             fontSize: 9,
             letterSpacing: "0.2em",
             textTransform: "uppercase",
-            color: "var(--color-neon-blue)",
+            color: "#2563EB",
             fontWeight: 600,
             marginBottom: 14,
           }}
@@ -610,7 +609,7 @@ function ComparisonCard({
                 fontSize: 9,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
-                color: "var(--color-neon-cyan)",
+                color: "#2563EB",
                 marginBottom: 8,
               }}
             >
@@ -633,7 +632,7 @@ function ComparisonCard({
                     fontFamily: "var(--font-body)",
                     fontSize: 13,
                     lineHeight: 1.5,
-                    color: "var(--color-text-secondary)",
+                    color: "#1f2937",
                   }}
                 >
                   {a}
@@ -649,7 +648,7 @@ function ComparisonCard({
                 fontSize: 9,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
-                color: "var(--color-neon-blue)",
+                color: "#2563EB",
                 marginBottom: 8,
               }}
             >
@@ -672,7 +671,7 @@ function ComparisonCard({
                     fontFamily: "var(--font-body)",
                     fontSize: 13,
                     lineHeight: 1.5,
-                    color: "var(--color-text-secondary)",
+                    color: "#1f2937",
                   }}
                 >
                   {d}
@@ -702,14 +701,14 @@ function OEMTable() {
       style={{
         margin: "20px 0 28px",
         borderRadius: 10,
-        border: "1px solid rgba(0,212,255,0.12)",
+        border: "1px solid rgba(37,99,235,0.12)",
         overflow: "hidden",
       }}
     >
       <div style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 480 }}>
           <thead>
-            <tr style={{ background: "rgba(0,212,255,0.06)" }}>
+            <tr style={{ background: "rgba(37,99,235,0.06)" }}>
               {["Equipment", "Common OEMs"].map((h) => (
                 <th
                   key={h}
@@ -720,8 +719,8 @@ function OEMTable() {
                     fontSize: 10.5,
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
-                    color: "var(--color-neon-blue)",
-                    borderBottom: "1px solid rgba(0,212,255,0.14)",
+                    color: "#2563EB",
+                    borderBottom: "1px solid rgba(37,99,235,0.14)",
                     whiteSpace: "nowrap",
                   }}
                 >
@@ -736,7 +735,7 @@ function OEMTable() {
                 key={row.equipment}
                 style={{
                   background:
-                    i % 2 === 0 ? "transparent" : "rgba(0,212,255,0.015)",
+                    i % 2 === 0 ? "transparent" : "rgba(37,99,235,0.015)",
                 }}
               >
                 <td
@@ -745,7 +744,7 @@ function OEMTable() {
                     fontFamily: "var(--font-body)",
                     fontSize: 13.5,
                     fontWeight: 600,
-                    color: "var(--color-text-primary)",
+                    color: "#1f2937",
                     borderBottom: "1px solid rgba(255,255,255,0.04)",
                     whiteSpace: "nowrap",
                   }}
@@ -757,7 +756,7 @@ function OEMTable() {
                     padding: "12px 16px",
                     fontFamily: "var(--font-body)",
                     fontSize: 13,
-                    color: "var(--color-text-secondary)",
+                    color: "#1f2937",
                     borderBottom: "1px solid rgba(255,255,255,0.04)",
                   }}
                 >
@@ -786,8 +785,8 @@ function FlowDiagram({ caption, steps }: { caption: string; steps: FlowStep[] })
       <div
         style={{
           borderRadius: 10,
-          background: "rgba(0,212,255,0.025)",
-          border: "1px solid rgba(0,212,255,0.10)",
+          background: "rgba(37,99,235,0.025)",
+          border: "1px solid rgba(37,99,235,0.10)",
           padding: "22px 20px",
         }}
       >
@@ -818,8 +817,8 @@ function FlowDiagram({ caption, steps }: { caption: string; steps: FlowStep[] })
                     width: 38,
                     height: 38,
                     borderRadius: "50%",
-                    background: "rgba(0,212,255,0.08)",
-                    border: "1px solid rgba(0,212,255,0.25)",
+                    background: "rgba(37,99,235,0.08)",
+                    border: "1px solid rgba(37,99,235,0.25)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -833,7 +832,7 @@ function FlowDiagram({ caption, steps }: { caption: string; steps: FlowStep[] })
                     fontFamily: "var(--font-body)",
                     fontSize: 12,
                     fontWeight: 600,
-                    color: "var(--color-text-primary)",
+                    color: "#1f2937",
                     lineHeight: 1.3,
                   }}
                 >
@@ -844,7 +843,7 @@ function FlowDiagram({ caption, steps }: { caption: string; steps: FlowStep[] })
                     style={{
                       fontFamily: "var(--font-mono)",
                       fontSize: 10,
-                      color: "var(--color-text-muted)",
+                      color: "#1f2937",
                     }}
                   >
                     {step.sublabel}
@@ -857,7 +856,7 @@ function FlowDiagram({ caption, steps }: { caption: string; steps: FlowStep[] })
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: 14,
-                    color: "var(--color-neon-blue)",
+                    color: "#2563EB",
                     margin: "0 4px",
                     opacity: 0.7,
                   }}
@@ -919,8 +918,8 @@ function PrevNextNav() {
       <div
         style={{
           borderRadius: 10,
-          background: "rgba(0,212,255,0.03)",
-          border: "1px solid rgba(0,212,255,0.12)",
+          background: "rgba(37,99,235,0.03)",
+          border: "1px solid rgba(37,99,235,0.12)",
           padding: "14px 16px",
         }}
       >
@@ -931,7 +930,7 @@ function PrevNextNav() {
             fontSize: 8.5,
             letterSpacing: "0.18em",
             textTransform: "uppercase",
-            color: "var(--color-text-muted)",
+            color: "#1f2937",
             marginBottom: 8,
           }}
         >
@@ -942,8 +941,8 @@ function PrevNextNav() {
       <div
         style={{
           borderRadius: 10,
-          background: "rgba(0,212,255,0.03)",
-          border: "1px solid rgba(0,212,255,0.12)",
+          background: "rgba(37,99,235,0.03)",
+          border: "1px solid rgba(37,99,235,0.12)",
           padding: "14px 16px",
           textAlign: "right",
         }}
@@ -955,7 +954,7 @@ function PrevNextNav() {
             fontSize: 8.5,
             letterSpacing: "0.18em",
             textTransform: "uppercase",
-            color: "var(--color-text-muted)",
+            color: "#1f2937",
             marginBottom: 8,
           }}
         >
@@ -1003,7 +1002,7 @@ function FAQSection() {
             borderBottom:
               i === FAQS.length - 1
                 ? "none"
-                : "1px solid rgba(0,212,255,0.08)",
+                : "1px solid rgba(37,99,235,0.08)",
           }}
         >
           <p
@@ -1011,7 +1010,7 @@ function FAQSection() {
               fontFamily: "var(--font-body)",
               fontSize: 15,
               fontWeight: 600,
-              color: "var(--color-text-primary)",
+              color: "#1f2937",
               marginBottom: 8,
             }}
           >
@@ -1022,7 +1021,7 @@ function FAQSection() {
               fontFamily: "var(--font-body)",
               fontSize: 14,
               lineHeight: 1.65,
-              color: "var(--color-text-secondary)",
+              color: "#1f2937",
               margin: 0,
             }}
           >
@@ -1594,11 +1593,11 @@ export default function RmuPage() {
             style={{
               height: 2,
               background:
-                "linear-gradient(90deg, var(--color-neon-blue), var(--color-neon-cyan))",
+                "linear-gradient(90deg, #2563EB, #2563EB)",
             }}
           />
           <div style={S.cardBodyInsight}>
-            <span style={{ ...S.cardLabel, color: "var(--color-neon-cyan)" }}>
+            <span style={{ ...S.cardLabel, color: "#2563EB" }}>
               WHAT&apos;S NEXT
             </span>
             <div style={S.cardContent}>

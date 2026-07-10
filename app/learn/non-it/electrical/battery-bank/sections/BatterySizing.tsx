@@ -97,16 +97,16 @@ export default function BatterySizing() {
         add kiye gaye hain:
       </p>
 
-      <div style={{ background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.2)", borderRadius: "8px", padding: "1rem 1.25rem", margin: "1rem 0", fontFamily: "var(--font-mono)", fontSize: "0.95rem" }}>
-        <div style={{ color: "var(--color-neon-blue)", fontWeight: 700, marginBottom: "0.5rem" }}>
+      <div style={{ background: "#EFF6FF", border: "1px solid #E5E7EB", borderRadius: "12px", padding: "1rem 1.25rem", margin: "1rem 0", fontFamily: "var(--font-mono)", fontSize: "0.95rem" }}>
+        <div style={{ color: "#2563EB", fontWeight: 700, marginBottom: "0.5rem" }}>
           Core Sizing Formula:
         </div>
-        <div style={{ color: "var(--color-text-primary)", lineHeight: 1.8 }}>
+        <div style={{ color: "#1f2937", lineHeight: 1.8 }}>
           Ah = (Load_W × Runtime_hr)
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;÷ (V_bus × DoD × η × Temp_factor × Age_factor)
         </div>
-        <div style={{ color: "var(--color-text-secondary)", fontSize: "0.8rem", marginTop: "0.75rem" }}>
+        <div style={{ color: "#1f2937", fontSize: "0.8rem", marginTop: "0.75rem" }}>
           Where: η = system efficiency (0.92–0.96) | Temp_factor = 0.75–0.85 at Indian ambient
           | Age_factor = 0.80 (replace at 80% SoH)
         </div>

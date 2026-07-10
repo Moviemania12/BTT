@@ -38,7 +38,7 @@ export function Callout({ type, title, children }: CalloutProps) {
       <p style={{ fontWeight: 700, color: s.titleColor, marginBottom: "0.4rem", fontSize: "0.95rem" }}>
         <span aria-hidden="true">{s.icon}</span> {title}
       </p>
-      <div style={{ fontSize: "0.98rem", lineHeight: 1.7, color: "#334155" }}>{children}</div>
+      <div style={{ fontSize: "0.98rem", lineHeight: 1.7, color: "#374151" }}>{children}</div>
     </div>
   );
 }

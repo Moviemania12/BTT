@@ -1269,3 +1269,38 @@ img[loading="lazy"] {
 .hp-category-card--v2 {
   padding: 22px 24px 20px;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   GLOBAL CHROME — White Theme Migration (Phase A: Navbar, MegaMenu, Footer)
+
+   Additive only. Adds a --hp-danger token (needed for alert/badge states
+   previously using --color-neon-red) and nothing else new — every other
+   token needed already exists from the homepage work.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+[data-homepage-theme="light"] {
+  --hp-danger: #e11d48;
+}
+[data-homepage-theme="dark"] {
+  --hp-danger: #fb7185;
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.grid-bg-light {
+  background-image:
+    linear-gradient(rgba(16, 24, 40, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 24, 40, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.tech-line-light {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hp-accent), transparent);
+  opacity: 0.3;
+}

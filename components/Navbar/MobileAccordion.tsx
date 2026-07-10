@@ -130,7 +130,7 @@ export interface AccordionItemProps {
 
   /**
    * Optional left-side accent line color for the open panel.
-   * Defaults to rgba(0,212,255,0.08) — neon-blue at low opacity.
+   * Defaults to var(--hp-border) — flat, non-glow accent.
    */
   accentBorderColor?: string;
 }
@@ -181,7 +181,7 @@ export function AccordionItem({
   maxHeightOpen,
   isActive = false,
   children,
-  accentBorderColor = "rgba(0,212,255,0.08)",
+  accentBorderColor = "var(--hp-border)",
 }: AccordionItemProps) {
 
   // Uncontrolled internal state — ignored when controlled props are passed
@@ -204,18 +204,16 @@ export function AccordionItem({
   const chevronSize   = isL1 ? 16 : 13;
   const iconSize      = isL1 ? 16 : 14;
   const iconGap       = isL1 ? 12 : 8;
-  const borderBottom  = isL1 ? "1px solid rgba(0,212,255,0.06)" : "none";
+  const borderBottom  = isL1 ? "1px solid var(--hp-border)" : "none";
   const childIndent   = isL1 ? 36 : 28;
 
   const triggerColor = isActive
-    ? "var(--color-neon-blue)"
-    : isOpen
-    ? "var(--color-text-primary)"
-    : "var(--color-text-primary)";
+    ? "var(--hp-accent)"
+    : "var(--hp-text-primary)";
 
   const chevronColor = isOpen
-    ? "var(--color-neon-blue)"
-    : "var(--color-text-muted)";
+    ? "var(--hp-accent)"
+    : "var(--hp-text-muted)";
 
   return (
     <div
@@ -237,7 +235,7 @@ export function AccordionItem({
           paddingTop: paddingY,
           paddingBottom: paddingY,
           minHeight: isL1 ? 52 : 40,
-          background: isOpen && isL1 ? "rgba(0,212,255,0.03)" : "transparent",
+          background: isOpen && isL1 ? "var(--hp-bg-subtle)" : "transparent",
           border: "none",
           cursor: "pointer",
           textAlign: "left",
@@ -347,8 +345,8 @@ export function LeafLink({
         aria-disabled="true"
         style={{
           ...base,
-          color: "var(--color-text-muted)",
-          opacity: 0.5,
+          color: "var(--hp-text-muted)",
+          opacity: 0.6,
           cursor: "default",
           pointerEvents: "none",
         }}
@@ -374,16 +372,16 @@ export function LeafLink({
       onClick={onClose}
       style={{
         ...base,
-        color: "var(--color-text-secondary)",
+        color: "var(--hp-text-secondary)",
         textDecoration: "none",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.color          = "var(--color-text-primary)";
-        e.currentTarget.style.background     = "rgba(0,212,255,0.04)";
-        e.currentTarget.style.borderLeftColor = "rgba(0,212,255,0.35)";
+        e.currentTarget.style.color          = "var(--hp-text-primary)";
+        e.currentTarget.style.background     = "var(--hp-bg-subtle)";
+        e.currentTarget.style.borderLeftColor = "var(--hp-accent)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.color          = "var(--color-text-secondary)";
+        e.currentTarget.style.color          = "var(--hp-text-secondary)";
         e.currentTarget.style.background     = "transparent";
         e.currentTarget.style.borderLeftColor = "transparent";
       }}
@@ -403,7 +401,7 @@ export function LeafLink({
         aria-hidden="true"
         style={{
           fontSize: 10,
-          color: "var(--color-text-muted)",
+          color: "var(--hp-text-muted)",
           fontFamily: "var(--font-mono)",
           flexShrink: 0,
         }}

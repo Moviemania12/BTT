@@ -23,7 +23,7 @@ function Logo() {
       >
         <div
           className="absolute inset-0 rounded-sm rotate-45 transition-opacity duration-300 group-hover:opacity-40"
-          style={{ background: "var(--color-neon-blue)", opacity: 0.18 }}
+          style={{ background: "var(--hp-accent)", opacity: 0.12 }}
         />
         <img
           src="/favicon.svg"
@@ -32,16 +32,16 @@ function Logo() {
           height={18}
           className="relative z-10"
           style={{
-            filter: "brightness(1) drop-shadow(0 0 4px rgba(0,212,255,0.6))",
+            filter: "brightness(1)",
             transition: "filter 0.3s ease",
           }}
           onMouseEnter={(e) => {
             (e.currentTarget as HTMLImageElement).style.filter =
-              "brightness(1.2) drop-shadow(0 0 8px rgba(0,212,255,0.9))";
+              "brightness(1.05)";
           }}
           onMouseLeave={(e) => {
             (e.currentTarget as HTMLImageElement).style.filter =
-              "brightness(1) drop-shadow(0 0 4px rgba(0,212,255,0.6))";
+              "brightness(1)";
           }}
         />
       </div>
@@ -51,7 +51,7 @@ function Logo() {
           fontFamily: "var(--font-display)",
           fontSize: "1.15rem",
           letterSpacing: "0.14em",
-          color: "var(--color-text-primary)",
+          color: "var(--hp-text-primary)",
           lineHeight: 1,
           whiteSpace: "nowrap",
         }}
@@ -214,7 +214,7 @@ export default function Navbar() {
         ref={navRef}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled || openMenuId
-            ? "glass border-b border-[rgba(0,212,255,0.10)]"
+            ? "glass-light border-b border-[rgba(0,0,0,0.06)]"
             : "bg-transparent"
         }`}
         aria-label="Main navigation"
@@ -259,10 +259,10 @@ export default function Navbar() {
             <button
               className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg transition-colors duration-200"
               style={{
-                color: "var(--color-neon-blue)",
-                background: mobileOpen ? "rgba(0,212,255,0.08)" : "transparent",
+                color: "var(--hp-accent)",
+                background: mobileOpen ? "var(--hp-accent-subtle)" : "transparent",
                 border: "1px solid",
-                borderColor: mobileOpen ? "rgba(0,212,255,0.25)" : "rgba(0,212,255,0.12)",
+                borderColor: mobileOpen ? "var(--hp-accent)" : "var(--hp-border)",
               }}
               onClick={() => setMobileOpen((v) => !v)}
               aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
@@ -285,7 +285,7 @@ export default function Navbar() {
         className={`fixed inset-0 z-40 transition-opacity duration-300 lg:hidden ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
-        style={{ background: "rgba(0,0,0,0.60)" }}
+        style={{ background: "rgba(0,0,0,0.35)" }}
         onClick={() => setMobileOpen(false)}
         aria-hidden="true"
       />

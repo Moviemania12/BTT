@@ -13,13 +13,13 @@
 export const ENGINEERING_COLORS = {
   background: "#ffffff",
   outline: "#222222",
-  textPrimary: "#0f172a",
-  textSecondary: "#334155",
-  textMuted: "#64748b",
+  textPrimary: "#111827",
+  textSecondary: "#374151",
+  textMuted: "#6b7280",
   textFaint: "#94a3b8",
 
-  blue: "#0066CC",
-  blueLight: "#eaf4ff",
+  blue: "#2563EB",
+  blueLight: "#eff6ff",
   blueBorder: "#bfdbfe",
 
   green: "#16a34a",
@@ -48,14 +48,28 @@ export const ENGINEERING_COLORS = {
 
 export type EngineeringColorKey = keyof typeof ENGINEERING_COLORS;
 
+// ─── Callout identity mapping (Phase B final polish) ──────────────────────────
+// The requested 6 named types (Summary/Insight/Engineer Tip/Warning/Danger/
+// Definition) do not literally match this file's existing 7 keys — those keys
+// are used as literal `type="..."` props across dozens of call-sites in
+// already-shipped article content, so renaming them would be a content change
+// (out of scope). Instead, each existing key is mapped to the closest new
+// named identity by semantic role:
+//   maintenance     -> Summary        (soft blue)   — general informational note
+//   important       -> Insight        (soft indigo) — a highlighted key fact
+//   best-practice   -> Engineer Tip   (soft green)  — practical field advice
+//   warning         -> Warning        (soft amber)
+//   danger          -> Danger         (soft red)
+//   common-mistake  -> Danger variant (soft red)     — same family as danger
+//   interview       -> Definition     (light gray)   — neutral reference note
 export const CALLOUT_COLORS = {
-  danger: { bg: ENGINEERING_COLORS.redLight, border: ENGINEERING_COLORS.red, icon: "🔴", titleColor: ENGINEERING_COLORS.redDark },
-  important: { bg: "#fffbeb", border: "#f59e0b", icon: "🟡", titleColor: "#92400e" },
-  "best-practice": { bg: ENGINEERING_COLORS.greenLight, border: ENGINEERING_COLORS.green, icon: "🟢", titleColor: ENGINEERING_COLORS.greenDark },
-  maintenance: { bg: ENGINEERING_COLORS.blueLight, border: "#3b82f6", icon: "🔧", titleColor: "#1e40af" },
-  interview: { bg: ENGINEERING_COLORS.purpleLight, border: ENGINEERING_COLORS.purple, icon: "💼", titleColor: ENGINEERING_COLORS.purpleDark },
-  warning: { bg: ENGINEERING_COLORS.orangeLight, border: "#ea580c", icon: "⚠️", titleColor: "#9a3412" },
-  "common-mistake": { bg: ENGINEERING_COLORS.redLight, border: "#f87171", icon: "❌", titleColor: ENGINEERING_COLORS.redDark },
+  danger: { bg: "#fef2f2", border: "#DC2626", icon: "🔴", titleColor: "#991b1b" },
+  important: { bg: "#eef2ff", border: "#4F46E5", icon: "🟣", titleColor: "#3730a3" },
+  "best-practice": { bg: "#f0fdf4", border: "#16A34A", icon: "🟢", titleColor: "#166534" },
+  maintenance: { bg: "#eff6ff", border: "#2563EB", icon: "🔧", titleColor: "#1e40af" },
+  interview: { bg: "#f8fafc", border: "#94a3b8", icon: "💼", titleColor: "#374151" },
+  warning: { bg: "#fffbeb", border: "#D97706", icon: "⚠️", titleColor: "#92400e" },
+  "common-mistake": { bg: "#fef2f2", border: "#DC2626", icon: "❌", titleColor: "#991b1b" },
 } as const;
 
 export type CalloutType = keyof typeof CALLOUT_COLORS;

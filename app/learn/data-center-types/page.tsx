@@ -66,7 +66,7 @@ const S = {
     fontFamily: "var(--font-display)",
     fontSize: "clamp(1.5rem, 2.5vw, 1.9rem)",
     letterSpacing: "0.04em",
-    color: "var(--color-text-primary)",
+    color: "#111827",
     lineHeight: 1.15,
     marginTop: 64,
     marginBottom: 16,
@@ -76,7 +76,7 @@ const S = {
     fontFamily: "var(--font-display)",
     fontSize: "clamp(1.2rem, 2vw, 1.5rem)",
     letterSpacing: "0.04em",
-    color: "var(--color-text-primary)",
+    color: "#111827",
     lineHeight: 1.2,
     marginTop: 56,
     marginBottom: 14,
@@ -86,7 +86,7 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: "1rem",
     fontWeight: 600,
-    color: "var(--color-text-primary)",
+    color: "#111827",
     lineHeight: 1.3,
     marginTop: 28,
     marginBottom: 10,
@@ -94,7 +94,7 @@ const S = {
 
   p: {
     marginBottom: 16,
-    color: "var(--color-text-secondary)",
+    color: "#1f2937",
   } as React.CSSProperties,
 
   ul: {
@@ -106,13 +106,13 @@ const S = {
   } as React.CSSProperties,
 
   li: {
-    color: "var(--color-text-secondary)",
+    color: "#1f2937",
     lineHeight: 1.65,
   } as React.CSSProperties,
 
   divider: {
     border: "none",
-    borderTop: "1px solid rgba(0,212,255,0.08)",
+    borderTop: "1px solid rgba(37,99,235,0.08)",
     margin: "12px 0",
   } as React.CSSProperties,
 
@@ -131,13 +131,12 @@ const S = {
 
   cardAccentBlue: {
     height: 2,
-    background: "var(--color-neon-blue)",
-    boxShadow: "0 0 8px rgba(0,212,255,0.5)",
+    background: "#2563EB",
   } as React.CSSProperties,
 
   cardBodyInsight: {
-    background: "rgba(0,212,255,0.035)",
-    border: "1px solid rgba(0,212,255,0.16)",
+    background: "rgba(37,99,235,0.035)",
+    border: "1px solid rgba(37,99,235,0.16)",
     borderTop: "none",
     padding: "18px 22px 20px",
   } as React.CSSProperties,
@@ -155,21 +154,21 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: 15,
     lineHeight: 1.7,
-    color: "var(--color-text-primary)",
+    color: "#1f2937",
   } as React.CSSProperties,
 
   takeawayCard: {
     position: "relative" as const,
     borderRadius: 12,
-    background: "linear-gradient(135deg, rgba(0,212,255,0.05), rgba(0,255,204,0.03))",
-    border: "1px solid rgba(0,212,255,0.16)",
+    background: "linear-gradient(135deg, rgba(37,99,235,0.05), rgba(0,255,204,0.03))",
+    border: "1px solid rgba(37,99,235,0.16)",
     overflow: "hidden" as const,
     margin: "32px 0",
   } as React.CSSProperties,
 
   takeawayAccent: {
     height: 2,
-    background: "linear-gradient(90deg, var(--color-neon-blue), var(--color-neon-cyan))",
+    background: "linear-gradient(90deg, #2563EB, #2563EB)",
   } as React.CSSProperties,
 
   takeawayBody: {
@@ -181,7 +180,7 @@ const S = {
     fontFamily: "var(--font-mono)",
     fontSize: 9,
     letterSpacing: "0.26em",
-    color: "var(--color-neon-blue)",
+    color: "#2563EB",
     fontWeight: 600,
     marginBottom: 16,
   } as React.CSSProperties,
@@ -218,7 +217,7 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: 14.5,
     lineHeight: 1.6,
-    color: "var(--color-text-primary)",
+    color: "#1f2937",
   } as React.CSSProperties,
 
   articleImage: {
@@ -228,7 +227,7 @@ const S = {
     borderRadius: 10,
     overflow: "hidden",
     margin: 0,
-    border: "1px solid rgba(0,212,255,0.12)",
+    border: "1px solid rgba(37,99,235,0.12)",
   } as React.CSSProperties,
 
   imageFigure: {
@@ -238,7 +237,7 @@ const S = {
   imageCaption: {
     fontFamily: "var(--font-body)",
     fontSize: 12.5,
-    color: "var(--color-text-muted)",
+    color: "#1f2937",
     textAlign: "center" as const,
     marginTop: 8,
   } as React.CSSProperties,
@@ -251,7 +250,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
     <div style={S.cardWrap}>
       <div style={S.cardAccentBlue} />
       <div style={S.cardBodyInsight}>
-        <span style={{ ...S.cardLabel, color: "var(--color-neon-blue)" }}>INSIGHT</span>
+        <span style={{ ...S.cardLabel, color: "#2563EB" }}>INSIGHT</span>
         <div style={S.cardContent}>{children}</div>
       </div>
     </div>
@@ -269,7 +268,7 @@ function KeyTakeawayCard({ items }: { items: string[] }) {
             <li key={i} style={S.takeawayItem}>
               <span style={S.takeawayCheck}>
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
-                  <path d="M4 13l5 5L20 6" stroke="var(--color-neon-cyan)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M4 13l5 5L20 6" stroke="#2563EB" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
               <span style={S.takeawayText}>{item}</span>
@@ -305,13 +304,13 @@ function TypeProfileCard({
       style={{
         position: "relative",
         borderRadius: 10,
-        background: "rgba(0,212,255,0.03)",
-        border: "1px solid rgba(0,212,255,0.12)",
+        background: "rgba(37,99,235,0.03)",
+        border: "1px solid rgba(37,99,235,0.12)",
         overflow: "hidden",
         margin: "20px 0 32px",
       }}
     >
-      <div style={{ height: 2, background: "var(--color-neon-blue)", opacity: 0.5 }} />
+      <div style={{ height: 2, background: "#2563EB", opacity: 0.5 }} />
       <div style={{ padding: "20px 22px 22px" }}>
         <span
           style={{
@@ -320,7 +319,7 @@ function TypeProfileCard({
             fontSize: 9,
             letterSpacing: "0.2em",
             textTransform: "uppercase",
-            color: "var(--color-neon-blue)",
+            color: "#2563EB",
             fontWeight: 600,
             marginBottom: 14,
           }}
@@ -328,7 +327,7 @@ function TypeProfileCard({
           {tag}
         </span>
 
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: "var(--color-text-primary)", marginBottom: 18 }}>
+        <div style={{ fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: "#1f2937", marginBottom: 18 }}>
           {definition}
         </div>
 
@@ -340,13 +339,13 @@ function TypeProfileCard({
               fontSize: 9,
               letterSpacing: "0.14em",
               textTransform: "uppercase",
-              color: "var(--color-text-muted)",
+              color: "#1f2937",
               marginBottom: 8,
             }}
           >
             {analogyTitle}
           </span>
-          <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "var(--color-text-secondary)" }}>{analogy}</div>
+          <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{analogy}</div>
         </div>
 
         <div style={{ marginBottom: 18 }}>
@@ -357,7 +356,7 @@ function TypeProfileCard({
               fontSize: 9,
               letterSpacing: "0.14em",
               textTransform: "uppercase",
-              color: "var(--color-text-muted)",
+              color: "#1f2937",
               marginBottom: 8,
             }}
           >
@@ -372,9 +371,9 @@ function TypeProfileCard({
                   fontSize: 12.5,
                   padding: "5px 11px",
                   borderRadius: 980,
-                  background: "rgba(0,212,255,0.06)",
-                  border: "1px solid rgba(0,212,255,0.16)",
-                  color: "var(--color-text-secondary)",
+                  background: "rgba(37,99,235,0.06)",
+                  border: "1px solid rgba(37,99,235,0.16)",
+                  color: "#1f2937",
                 }}
               >
                 {w}
@@ -392,7 +391,7 @@ function TypeProfileCard({
                 fontSize: 9,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
-                color: "var(--color-neon-cyan)",
+                color: "#2563EB",
                 marginBottom: 8,
               }}
             >
@@ -400,7 +399,7 @@ function TypeProfileCard({
             </span>
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 6 }}>
               {advantages.map((a, i) => (
-                <li key={i} style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.5, color: "var(--color-text-secondary)" }}>
+                <li key={i} style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.5, color: "#1f2937" }}>
                   {a}
                 </li>
               ))}
@@ -414,7 +413,7 @@ function TypeProfileCard({
                 fontSize: 9,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
-                color: "var(--color-neon-red)",
+                color: "#DC2626",
                 marginBottom: 8,
               }}
             >
@@ -422,7 +421,7 @@ function TypeProfileCard({
             </span>
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 6 }}>
               {disadvantages.map((d, i) => (
-                <li key={i} style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.5, color: "var(--color-text-secondary)" }}>
+                <li key={i} style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.5, color: "#1f2937" }}>
                   {d}
                 </li>
               ))}
@@ -439,7 +438,7 @@ function TypeProfileCard({
                 fontSize: 9,
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
-                color: "var(--color-text-muted)",
+                color: "#1f2937",
                 marginBottom: 8,
               }}
             >
@@ -456,7 +455,7 @@ function TypeProfileCard({
                     borderRadius: 980,
                     background: "rgba(0,255,204,0.05)",
                     border: "1px solid rgba(0,255,204,0.18)",
-                    color: "var(--color-text-secondary)",
+                    color: "#1f2937",
                   }}
                 >
                   {u}
@@ -484,11 +483,11 @@ const COMPARISON_ROWS = [
 
 function ComparisonTable() {
   return (
-    <div style={{ margin: "20px 0 28px", borderRadius: 10, border: "1px solid rgba(0,212,255,0.12)", overflow: "hidden" }}>
+    <div style={{ margin: "20px 0 28px", borderRadius: 10, border: "1px solid rgba(37,99,235,0.12)", overflow: "hidden" }}>
       <div style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 640 }}>
           <thead>
-            <tr style={{ background: "rgba(0,212,255,0.06)" }}>
+            <tr style={{ background: "rgba(37,99,235,0.06)" }}>
               {["Type", "Ownership", "Control", "Cost", "Scalability", "Best For"].map((h) => (
                 <th
                   key={h}
@@ -499,8 +498,8 @@ function ComparisonTable() {
                     fontSize: 10.5,
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
-                    color: "var(--color-neon-blue)",
-                    borderBottom: "1px solid rgba(0,212,255,0.14)",
+                    color: "#2563EB",
+                    borderBottom: "1px solid rgba(37,99,235,0.14)",
                     whiteSpace: "nowrap",
                   }}
                 >
@@ -511,15 +510,15 @@ function ComparisonTable() {
           </thead>
           <tbody>
             {COMPARISON_ROWS.map((row, i) => (
-              <tr key={row.type} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,212,255,0.015)" }}>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13.5, fontWeight: 600, color: "var(--color-text-primary)", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>
+              <tr key={row.type} style={{ background: i % 2 === 0 ? "transparent" : "rgba(37,99,235,0.015)" }}>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13.5, fontWeight: 600, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>
                   {row.type}
                 </td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-secondary)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.ownership}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-secondary)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.control}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-secondary)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.cost}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-secondary)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.scalability}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-secondary)", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.bestFor}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.ownership}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.control}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.cost}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.scalability}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.bestFor}</td>
               </tr>
             ))}
           </tbody>
@@ -562,11 +561,11 @@ function FAQSection() {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {FAQS.map((item, i) => (
-        <div key={i} style={{ padding: "18px 0", borderBottom: i === FAQS.length - 1 ? "none" : "1px solid rgba(0,212,255,0.08)" }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 600, color: "var(--color-text-primary)", marginBottom: 8 }}>
+        <div key={i} style={{ padding: "18px 0", borderBottom: i === FAQS.length - 1 ? "none" : "1px solid rgba(37,99,235,0.08)" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 600, color: "#1f2937", marginBottom: 8 }}>
             {item.q}
           </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "var(--color-text-secondary)", margin: 0 }}>{item.a}</p>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937", margin: 0 }}>{item.a}</p>
         </div>
       ))}
     </div>
@@ -627,9 +626,9 @@ export default function DataCenterTypesPage() {
             { icon: "🚑", label: "Ambulance — emergency ke liye" },
             { icon: "✈️", label: "Aeroplane — long-distance travel ke liye" },
           ].map((item, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 14px", borderRadius: 8, background: "rgba(0,212,255,0.035)", border: "1px solid rgba(0,212,255,0.12)" }}>
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 14px", borderRadius: 8, background: "rgba(37,99,235,0.035)", border: "1px solid rgba(37,99,235,0.12)" }}>
               <span style={{ fontSize: 18, lineHeight: 1, flexShrink: 0 }}>{item.icon}</span>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: 13.5, color: "var(--color-text-secondary)", lineHeight: 1.4 }}>{item.label}</span>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: 13.5, color: "#1f2937", lineHeight: 1.4 }}>{item.label}</span>
             </div>
           ))}
         </div>
@@ -644,7 +643,7 @@ export default function DataCenterTypesPage() {
         <h2 id="are-all-data-centers-same" style={S.h1}>Kya Sabhi Data Centers Same Hote Hain?</h2>
 
         <p style={S.p}>Short answer?</p>
-        <p style={{ ...S.p, color: "var(--color-text-primary)", fontWeight: 600, fontSize: 16 }}>Nahi.</p>
+        <p style={{ ...S.p, color: "#1f2937", fontWeight: 600, fontSize: 16 }}>Nahi.</p>
         <p style={S.p}>Bahar se dekhne par shayad sab Data Centers similar lagen.</p>
         <p style={S.p}>Ek building. Bahut saare servers. Cooling systems. Power backup. Security.</p>
         <p style={S.p}>Lekin andar ka business model, ownership aur purpose bahut alag ho sakta hai.</p>

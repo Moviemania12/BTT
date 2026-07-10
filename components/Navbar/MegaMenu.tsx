@@ -50,8 +50,8 @@ function Column({ column }: { column: MegaMenuColumn }) {
     <div className="flex flex-col min-w-0">
       <div
         role="none"
-        className="flex items-center gap-2 mb-3 pb-2"
-        style={{ borderBottom: "1px solid rgba(0,212,255,0.10)" }}
+        className="flex items-center gap-2 mb-4 pb-3"
+        style={{ borderBottom: "1px solid var(--hp-border)" }}
       >
         {column.categoryHref ? (
           <Link
@@ -65,7 +65,7 @@ function Column({ column }: { column: MegaMenuColumn }) {
                 fontFamily: "var(--font-mono)",
                 letterSpacing: "0.30em",
                 textTransform: "uppercase",
-                color: "var(--color-neon-blue)",
+                color: "var(--hp-accent)",
                 fontWeight: 600,
                 transition: "opacity 0.15s ease",
               }}
@@ -75,7 +75,7 @@ function Column({ column }: { column: MegaMenuColumn }) {
             </span>
             <span
               className="opacity-0 group-hover/heading:opacity-60 transition-opacity duration-150"
-              style={{ fontSize: 8, color: "var(--color-neon-blue)", fontFamily: "var(--font-mono)" }}
+              style={{ fontSize: 8, color: "var(--hp-accent)", fontFamily: "var(--font-mono)" }}
               aria-hidden="true"
             >
               →
@@ -88,7 +88,7 @@ function Column({ column }: { column: MegaMenuColumn }) {
               fontFamily: "var(--font-mono)",
               letterSpacing: "0.30em",
               textTransform: "uppercase",
-              color: "var(--color-neon-blue)",
+              color: "var(--hp-accent)",
               fontWeight: 600,
             }}
           >
@@ -97,7 +97,7 @@ function Column({ column }: { column: MegaMenuColumn }) {
         )}
       </div>
 
-      <ul role="none" className="flex flex-col gap-0.5">
+      <ul role="none" className="flex flex-col gap-1">
         {column.links.map((link) => (
           <li key={link.href} role="none">
             <NavLinkItem link={link} accentRgb={column.accentRgb} />
@@ -124,13 +124,13 @@ function NavLinkItem({
     alignItems: "center",
     justifyContent: "space-between",
     gap: 8,
-    padding: compact ? "3px 0 3px 10px" : "5px 0 5px 10px",
+    padding: compact ? "3px 0 3px 10px" : "7px 0 7px 10px",
     borderLeft: "2px solid transparent",
     borderRadius: "0 4px 4px 0",
     fontFamily: "var(--font-body)",
     fontSize: compact ? 12 : 13,
     lineHeight: 1.4,
-    color: "var(--color-text-secondary)",
+    color: "var(--hp-text-secondary)",
     textDecoration: "none",
     transition: "color 0.15s ease, border-color 0.15s ease, padding-left 0.15s ease, background 0.15s ease",
     opacity: link.comingSoon ? 0.42 : 1,
@@ -179,16 +179,16 @@ function NavLinkItem({
       style={sharedStyle}
       onMouseEnter={(e) => {
         const el = e.currentTarget;
-        el.style.color = "var(--color-text-primary)";
+        el.style.color = "var(--hp-text-primary)";
         el.style.borderLeftColor = `rgba(${accentRgb},0.7)`;
         el.style.paddingLeft = "14px";
-        el.style.background = `rgba(${accentRgb},0.04)`;
+        el.style.background = `rgba(${accentRgb},0.06)`;
         const arrow = el.querySelector<HTMLSpanElement>(".link-arrow");
         if (arrow) arrow.style.color = `rgba(${accentRgb},0.8)`;
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget;
-        el.style.color = "var(--color-text-secondary)";
+        el.style.color = "var(--hp-text-secondary)";
         el.style.borderLeftColor = "transparent";
         el.style.paddingLeft = "10px";
         el.style.background = "transparent";
@@ -205,7 +205,7 @@ function NavLinkItem({
 
 function BottomBanner({ banner }: { banner: NonNullable<MegaMenuType["bottomBanner"]> }) {
   return (
-    <div className="mt-5 pt-4" style={{ borderTop: "1px solid rgba(0,212,255,0.08)" }}>
+    <div className="mt-7 pt-6" style={{ borderTop: "1px solid var(--hp-border)" }}>
       <div className="flex items-start gap-6 flex-wrap">
         <span
           style={{
@@ -213,7 +213,7 @@ function BottomBanner({ banner }: { banner: NonNullable<MegaMenuType["bottomBann
             fontFamily: "var(--font-mono)",
             letterSpacing: "0.28em",
             textTransform: "uppercase",
-            color: "var(--color-neon-blue)",
+            color: "var(--hp-accent)",
             fontWeight: 600,
             paddingTop: 4,
             whiteSpace: "nowrap",
@@ -227,7 +227,7 @@ function BottomBanner({ banner }: { banner: NonNullable<MegaMenuType["bottomBann
           {banner.links.map((link, i) => (
             <span key={link.href} className="flex items-center">
               {i > 0 && (
-                <span aria-hidden="true" style={{ color: "var(--color-text-muted)", fontSize: 10, margin: "0 4px" }}>·</span>
+                <span aria-hidden="true" style={{ color: "var(--hp-text-muted)", fontSize: 10, margin: "0 4px" }}>·</span>
               )}
               {link.comingSoon ? (
                 <span
@@ -236,8 +236,8 @@ function BottomBanner({ banner }: { banner: NonNullable<MegaMenuType["bottomBann
                   style={{
                     fontSize: 12,
                     fontFamily: "var(--font-body)",
-                    color: "var(--color-text-muted)",
-                    opacity: 0.45,
+                    color: "var(--hp-text-muted)",
+                    opacity: 0.6,
                     pointerEvents: "none",
                     cursor: "default",
                     display: "inline-flex",
@@ -255,12 +255,12 @@ function BottomBanner({ banner }: { banner: NonNullable<MegaMenuType["bottomBann
                   style={{
                     fontSize: 12,
                     fontFamily: "var(--font-body)",
-                    color: "var(--color-text-secondary)",
+                    color: "var(--hp-text-secondary)",
                     textDecoration: "none",
                     transition: "color 0.15s ease",
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = "var(--color-text-primary)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = "var(--color-text-secondary)"; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "var(--hp-text-primary)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = "var(--hp-text-secondary)"; }}
                 >
                   {link.label}
                 </Link>
@@ -284,31 +284,29 @@ function FeaturedCard({ card }: { card: NonNullable<MegaMenuType["featuredCard"]
       style={{
         minWidth: 200,
         maxWidth: 240,
-        background: "rgba(0,212,255,0.04)",
-        border: "1px solid rgba(0,212,255,0.12)",
+        background: "var(--hp-accent-subtle)",
+        border: "1px solid var(--hp-border)",
         textDecoration: "none",
         transition: "border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease",
         flexShrink: 0,
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = "rgba(0,212,255,0.28)";
-        e.currentTarget.style.background = "rgba(0,212,255,0.07)";
-        e.currentTarget.style.boxShadow = "0 0 20px rgba(0,212,255,0.08)";
+        e.currentTarget.style.borderColor = "var(--hp-accent)";
+        e.currentTarget.style.boxShadow = "var(--hp-shadow-hover)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "rgba(0,212,255,0.12)";
-        e.currentTarget.style.background = "rgba(0,212,255,0.04)";
+        e.currentTarget.style.borderColor = "var(--hp-border)";
         e.currentTarget.style.boxShadow = "none";
       }}
     >
       <span style={{ fontSize: 22 }} aria-hidden="true">{card.icon}</span>
-      <span style={{ fontSize: 12, fontFamily: "var(--font-display)", letterSpacing: "0.08em", color: "var(--color-text-primary)", lineHeight: 1.2 }}>
+      <span style={{ fontSize: 12, fontFamily: "var(--font-display)", letterSpacing: "0.08em", color: "var(--hp-text-primary)", lineHeight: 1.2 }}>
         {card.title.toUpperCase()}
       </span>
-      <span style={{ fontSize: 11, fontFamily: "var(--font-body)", color: "var(--color-text-secondary)", lineHeight: 1.55 }}>
+      <span style={{ fontSize: 11, fontFamily: "var(--font-body)", color: "var(--hp-text-secondary)", lineHeight: 1.55 }}>
         {card.description}
       </span>
-      <span style={{ fontSize: 10, fontFamily: "var(--font-mono)", letterSpacing: "0.18em", color: "var(--color-neon-blue)", marginTop: "auto" }} aria-hidden="true">
+      <span style={{ fontSize: 10, fontFamily: "var(--font-mono)", letterSpacing: "0.18em", color: "var(--hp-accent)", marginTop: "auto" }} aria-hidden="true">
         {card.cta}
       </span>
     </Link>
@@ -390,23 +388,25 @@ export default function MegaMenu({
           ? "opacity 200ms cubic-bezier(0.16,1,0.3,1), transform 200ms cubic-bezier(0.16,1,0.3,1), visibility 0s"
           : "opacity 150ms ease-in, transform 150ms ease-in, visibility 0s 150ms",
 
-        // Panel background
-        background: "rgba(7,12,18,0.97)",
-        backdropFilter: "blur(28px) saturate(160%)",
-        WebkitBackdropFilter: "blur(28px) saturate(160%)",
-        borderBottom: "1px solid rgba(0,212,255,0.08)",
-        boxShadow: "0 32px 80px rgba(0,0,0,0.60), 0 1px 0 rgba(0,212,255,0.06) inset",
+        // Panel background — fully opaque, no bleed-through. Backdrop blur
+        // removed: it was compositing with the 0.98 alpha to let content
+        // behind the panel show through at the edges. Solid white + a
+        // proper soft shadow reads as "floating card", matching the
+        // homepage's card language, with zero transparency artifacts.
+        background: "#ffffff",
+        borderBottom: "1px solid var(--hp-border)",
+        boxShadow: "0 24px 48px -8px rgba(16,24,40,0.16), 0 8px 16px -4px rgba(16,24,40,0.08)",
       }}
     >
       {/* Inner wrapper — centered, max-width controlled by variant */}
-      <div className={`${maxWidthClass} mx-auto px-8 py-7`}>
-        <div className="flex gap-8">
+      <div className={`${maxWidthClass} mx-auto px-10 py-9`}>
+        <div className="flex gap-10">
           <div
             className="flex-1 min-w-0"
             style={{
               display: "grid",
               gridTemplateColumns: `repeat(${menu.columns.length}, minmax(0, 1fr))`,
-              gap: "0 32px",
+              gap: "0 40px",
             }}
           >
             {menu.columns.map((column) => (
@@ -429,7 +429,8 @@ export default function MegaMenu({
           left: 0,
           right: 0,
           height: 1,
-          background: "linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.20) 30%, rgba(0,212,255,0.20) 70%, transparent 100%)",
+          background: "linear-gradient(90deg, transparent 0%, var(--hp-accent) 30%, var(--hp-accent) 70%, transparent 100%)",
+          opacity: 0.25,
           pointerEvents: "none",
         }}
       />

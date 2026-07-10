@@ -119,14 +119,14 @@ export default function SearchButton({
         gap:            6,
         padding:        "6px 10px",
         borderRadius:   8,
-        background:     isOpen ? "rgba(0,212,255,0.10)" : "transparent",
+        background:     isOpen ? "var(--hp-accent-subtle)" : "transparent",
         border:         "1px solid",
         borderColor:    isOpen
-          ? "rgba(0,212,255,0.35)"
-          : "rgba(0,212,255,0.12)",
+          ? "var(--hp-accent)"
+          : "var(--hp-border)",
         color:          isOpen
-          ? "var(--color-neon-blue)"
-          : "var(--color-text-muted)",
+          ? "var(--hp-accent)"
+          : "var(--hp-text-muted)",
         cursor:         "pointer",
         transition:     "background 0.15s ease, border-color 0.15s ease, color 0.15s ease",
         flexShrink:     0,
@@ -134,29 +134,25 @@ export default function SearchButton({
       }}
       onMouseEnter={(e) => {
         if (!isOpen) {
-          e.currentTarget.style.background   = "rgba(0,212,255,0.06)";
-          e.currentTarget.style.borderColor  = "rgba(0,212,255,0.28)";
-          e.currentTarget.style.color        = "var(--color-text-secondary)";
+          e.currentTarget.style.background   = "var(--hp-bg-subtle)";
+          e.currentTarget.style.borderColor  = "var(--hp-border-hover)";
+          e.currentTarget.style.color        = "var(--hp-text-secondary)";
         }
       }}
       onMouseLeave={(e) => {
         if (!isOpen) {
           e.currentTarget.style.background   = "transparent";
-          e.currentTarget.style.borderColor  = "rgba(0,212,255,0.12)";
-          e.currentTarget.style.color        = "var(--color-text-muted)";
+          e.currentTarget.style.borderColor  = "var(--hp-border)";
+          e.currentTarget.style.color        = "var(--hp-text-muted)";
         }
       }}
       onMouseDown={(e) => {
-        e.currentTarget.style.background  = "rgba(0,212,255,0.14)";
-        e.currentTarget.style.borderColor = "rgba(0,212,255,0.45)";
+        e.currentTarget.style.background  = "var(--hp-accent-subtle)";
+        e.currentTarget.style.borderColor = "var(--hp-accent)";
       }}
       onMouseUp={(e) => {
-        e.currentTarget.style.background  = isOpen
-          ? "rgba(0,212,255,0.10)"
-          : "rgba(0,212,255,0.06)";
-        e.currentTarget.style.borderColor = isOpen
-          ? "rgba(0,212,255,0.35)"
-          : "rgba(0,212,255,0.28)";
+        e.currentTarget.style.background  = "var(--hp-accent-subtle)";
+        e.currentTarget.style.borderColor = "var(--hp-accent)";
       }}
     >
       {/* Search icon */}

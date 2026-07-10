@@ -67,7 +67,7 @@ const S = {
     fontFamily: "var(--font-display)",
     fontSize: "clamp(1.5rem, 2.5vw, 1.9rem)",
     letterSpacing: "0.04em",
-    color: "var(--color-text-primary)",
+    color: "#111827",
     lineHeight: 1.15,
     marginTop: 44,
     marginBottom: 16,
@@ -77,7 +77,7 @@ const S = {
     fontFamily: "var(--font-display)",
     fontSize: "clamp(1.2rem, 2vw, 1.5rem)",
     letterSpacing: "0.04em",
-    color: "var(--color-text-primary)",
+    color: "#111827",
     lineHeight: 1.2,
     marginTop: 36,
     marginBottom: 14,
@@ -87,7 +87,7 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: "1rem",
     fontWeight: 600,
-    color: "var(--color-text-primary)",
+    color: "#111827",
     lineHeight: 1.3,
     marginTop: 28,
     marginBottom: 10,
@@ -98,17 +98,17 @@ const S = {
 
   p: {
     marginBottom: 16,
-    color: "var(--color-text-secondary)",
+    color: "#1f2937",
   } as React.CSSProperties,
 
   blockquote: {
     margin: "24px 0",
     padding: "16px 20px",
-    borderLeft: "3px solid var(--color-neon-blue)",
-    background: "rgba(0,212,255,0.04)",
+    borderLeft: "3px solid #2563EB",
+    background: "rgba(37,99,235,0.04)",
     borderRadius: "0 8px 8px 0",
     fontStyle: "italic",
-    color: "var(--color-text-primary)",
+    color: "#1f2937",
   } as React.CSSProperties,
 
   ul: {
@@ -120,23 +120,23 @@ const S = {
   } as React.CSSProperties,
 
   li: {
-    color: "var(--color-text-secondary)",
+    color: "#1f2937",
     lineHeight: 1.65,
   } as React.CSSProperties,
 
   divider: {
     border: "none",
-    borderTop: "1px solid rgba(0,212,255,0.08)",
+    borderTop: "1px solid rgba(37,99,235,0.08)",
     margin: "32px 0",
   } as React.CSSProperties,
 
   check: {
-    color: "var(--color-neon-cyan)",
+    color: "#2563EB",
     marginRight: 6,
   } as React.CSSProperties,
 
   cross: {
-    color: "var(--color-neon-red)",
+    color: "#DC2626",
     marginRight: 6,
   } as React.CSSProperties,
 
@@ -157,19 +157,18 @@ const S = {
 
   cardAccentCyan: {
     height: 2,
-    background: "var(--color-neon-cyan)",
+    background: "#2563EB",
     boxShadow: "0 0 8px rgba(0,255,204,0.5)",
   } as React.CSSProperties,
 
   cardAccentBlue: {
     height: 2,
-    background: "var(--color-neon-blue)",
-    boxShadow: "0 0 8px rgba(0,212,255,0.5)",
+    background: "#2563EB",
   } as React.CSSProperties,
 
   cardAccentRed: {
     height: 2,
-    background: "var(--color-neon-red)",
+    background: "#DC2626",
     boxShadow: "0 0 8px rgba(255,34,68,0.5)",
   } as React.CSSProperties,
 
@@ -181,8 +180,8 @@ const S = {
   } as React.CSSProperties,
 
   cardBodyInsight: {
-    background: "rgba(0,212,255,0.035)",
-    border: "1px solid rgba(0,212,255,0.16)",
+    background: "rgba(37,99,235,0.035)",
+    border: "1px solid rgba(37,99,235,0.16)",
     borderTop: "none",
     padding: "18px 22px 20px",
   } as React.CSSProperties,
@@ -207,7 +206,7 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: 15,
     lineHeight: 1.7,
-    color: "var(--color-text-primary)",
+    color: "#1f2937",
   } as React.CSSProperties,
 
   featureGrid3: {
@@ -227,8 +226,8 @@ const S = {
   featureCard: {
     position: "relative" as const,
     borderRadius: 10,
-    background: "rgba(0,212,255,0.03)",
-    border: "1px solid rgba(0,212,255,0.12)",
+    background: "rgba(37,99,235,0.03)",
+    border: "1px solid rgba(37,99,235,0.12)",
     overflow: "hidden" as const,
     display: "flex",
     flexDirection: "column" as const,
@@ -236,7 +235,7 @@ const S = {
 
   featureCardAccent: {
     height: 2,
-    background: "var(--color-neon-blue)",
+    background: "#2563EB",
     opacity: 0.5,
   } as React.CSSProperties,
 
@@ -263,7 +262,7 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: 15,
     fontWeight: 600,
-    color: "var(--color-text-primary)",
+    color: "#1f2937",
     margin: 0,
   } as React.CSSProperties,
 
@@ -271,7 +270,7 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: 13.5,
     lineHeight: 1.65,
-    color: "var(--color-text-secondary)",
+    color: "#1f2937",
     flex: 1,
   } as React.CSSProperties,
 
@@ -282,8 +281,8 @@ const S = {
   timelineWrap: {
     margin: "24px 0",
     borderRadius: 10,
-    background: "rgba(0,212,255,0.025)",
-    border: "1px solid rgba(0,212,255,0.10)",
+    background: "rgba(37,99,235,0.025)",
+    border: "1px solid rgba(37,99,235,0.10)",
     padding: "20px 22px",
   } as React.CSSProperties,
 
@@ -305,8 +304,8 @@ const S = {
     width: 32,
     height: 32,
     borderRadius: 8,
-    background: "rgba(0,212,255,0.08)",
-    border: "1px solid rgba(0,212,255,0.3)",
+    background: "rgba(37,99,235,0.08)",
+    border: "1px solid rgba(37,99,235,0.3)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -318,29 +317,29 @@ const S = {
     width: 1.5,
     flex: 1,
     minHeight: 22,
-    background: "rgba(0,212,255,0.2)",
+    background: "rgba(37,99,235,0.2)",
     marginTop: 2,
   } as React.CSSProperties,
 
   timelineText: {
     fontFamily: "var(--font-body)",
     fontSize: 14,
-    color: "var(--color-text-secondary)",
+    color: "#1f2937",
     lineHeight: 1.5,
   } as React.CSSProperties,
 
   takeawayCard: {
     position: "relative" as const,
     borderRadius: 12,
-    background: "linear-gradient(135deg, rgba(0,212,255,0.05), rgba(0,255,204,0.03))",
-    border: "1px solid rgba(0,212,255,0.16)",
+    background: "linear-gradient(135deg, rgba(37,99,235,0.05), rgba(0,255,204,0.03))",
+    border: "1px solid rgba(37,99,235,0.16)",
     overflow: "hidden" as const,
     margin: "32px 0",
   } as React.CSSProperties,
 
   takeawayAccent: {
     height: 2,
-    background: "linear-gradient(90deg, var(--color-neon-blue), var(--color-neon-cyan))",
+    background: "linear-gradient(90deg, #2563EB, #2563EB)",
   } as React.CSSProperties,
 
   takeawayBody: {
@@ -352,7 +351,7 @@ const S = {
     fontFamily: "var(--font-mono)",
     fontSize: 9,
     letterSpacing: "0.26em",
-    color: "var(--color-neon-blue)",
+    color: "#2563EB",
     fontWeight: 600,
     marginBottom: 16,
   } as React.CSSProperties,
@@ -389,7 +388,7 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: 14.5,
     lineHeight: 1.6,
-    color: "var(--color-text-primary)",
+    color: "#1f2937",
   } as React.CSSProperties,
 } as const;
 
@@ -400,7 +399,7 @@ function DefinitionCard({ children }: { children: React.ReactNode }) {
     <div style={S.cardWrap}>
       <div style={S.cardAccentCyan} />
       <div style={S.cardBodyDefinition}>
-        <span style={{ ...S.cardLabel, color: "var(--color-neon-cyan)" }}>DEFINITION</span>
+        <span style={{ ...S.cardLabel, color: "#2563EB" }}>DEFINITION</span>
         <div style={S.cardContent}>{children}</div>
       </div>
     </div>
@@ -412,7 +411,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
     <div style={S.cardWrap}>
       <div style={S.cardAccentBlue} />
       <div style={S.cardBodyInsight}>
-        <span style={{ ...S.cardLabel, color: "var(--color-neon-blue)" }}>INSIGHT</span>
+        <span style={{ ...S.cardLabel, color: "#2563EB" }}>INSIGHT</span>
         <div style={S.cardContent}>{children}</div>
       </div>
     </div>
@@ -424,7 +423,7 @@ function WarningCard({ children }: { children: React.ReactNode }) {
     <div style={S.cardWrap}>
       <div style={S.cardAccentRed} />
       <div style={S.cardBodyWarning}>
-        <span style={{ ...S.cardLabel, color: "var(--color-neon-red)" }}>NOTE</span>
+        <span style={{ ...S.cardLabel, color: "#DC2626" }}>NOTE</span>
         <div style={S.cardContent}>{children}</div>
       </div>
     </div>
@@ -495,7 +494,7 @@ function KeyTakeawayCard({ items }: { items: string[] }) {
             <li key={i} style={S.takeawayItem}>
               <span style={S.takeawayCheck}>
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
-                  <path d="M4 13l5 5L20 6" stroke="var(--color-neon-cyan)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M4 13l5 5L20 6" stroke="#2563EB" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
               <span style={S.takeawayText}>{item}</span>
@@ -514,7 +513,7 @@ function IntroLead({ children }: { children: React.ReactNode }) {
         position: "relative",
         margin: "8px 0 28px",
         paddingLeft: 20,
-        borderLeft: "2px solid var(--color-neon-blue)",
+        borderLeft: "2px solid #2563EB",
       }}
     >
       <div
@@ -523,7 +522,7 @@ function IntroLead({ children }: { children: React.ReactNode }) {
           fontSize: "clamp(1.15rem, 2vw, 1.4rem)",
           letterSpacing: "0.01em",
           lineHeight: 1.5,
-          color: "var(--color-text-primary)",
+          color: "#1f2937",
         }}
       >
         {children}
@@ -551,8 +550,8 @@ function AppGrid({ items }: { items: { icon: string; label: string }[] }) {
             gap: 10,
             padding: "12px 14px",
             borderRadius: 8,
-            background: "rgba(0,212,255,0.035)",
-            border: "1px solid rgba(0,212,255,0.12)",
+            background: "rgba(37,99,235,0.035)",
+            border: "1px solid rgba(37,99,235,0.12)",
           }}
         >
           <span style={{ fontSize: 18, lineHeight: 1, flexShrink: 0 }}>{item.icon}</span>
@@ -560,7 +559,7 @@ function AppGrid({ items }: { items: { icon: string; label: string }[] }) {
             style={{
               fontFamily: "var(--font-body)",
               fontSize: 13.5,
-              color: "var(--color-text-secondary)",
+              color: "#1f2937",
               lineHeight: 1.4,
             }}
           >
@@ -795,7 +794,7 @@ export default function WhatIsADataCenterPage() {
       </WarningCard>
 
       <p style={S.p}>Answer:</p>
-      <p style={{ ...S.p, color: "var(--color-text-primary)", fontWeight: 600, fontSize: 16 }}>Nahi.</p>
+      <p style={{ ...S.p, color: "#1f2937", fontWeight: 600, fontSize: 16 }}>Nahi.</p>
       <p style={S.p}>Modern Data Centers multiple backup layers use karte hain.</p>
 
       <JourneyTimeline

@@ -16,6 +16,12 @@
  * MegaMenu uses position:absolute on the wrapper + left:50% + translateX(-50%)
  * + width:100vw to achieve full-viewport-width visually while remaining
  * in the correct DOM tree for hover detection.
+ *
+ * WHITE THEME MIGRATION (Phase A):
+ * All neon-blue glow effects (box-shadow blur) removed — replaced with
+ * flat hp-accent colors and opacity-based state changes, matching the
+ * homepage's restrained, non-neon design language. Interaction logic,
+ * structure, and every prop are unchanged.
  */
 
 import Link from "next/link";
@@ -63,35 +69,28 @@ export default function NavItem({
           letterSpacing: "0.18em",
           textTransform: "uppercase",
           fontWeight: 600,
-          color: isActive ? "var(--color-void)" : "var(--color-neon-blue)",
-          background: isActive ? "var(--color-neon-blue)" : "rgba(0,212,255,0.06)",
+          color: isActive ? "#ffffff" : "var(--hp-accent)",
+          background: isActive ? "var(--hp-accent)" : "var(--hp-accent-subtle)",
           border: "1px solid",
-          borderColor: isActive ? "var(--color-neon-blue)" : "rgba(0,212,255,0.35)",
-          boxShadow: isActive ? "0 0 18px rgba(0,212,255,0.45)" : "none",
+          borderColor: isActive ? "var(--hp-accent)" : "var(--hp-border)",
           textDecoration: "none",
           whiteSpace: "nowrap",
         }}
         onMouseEnter={(e) => {
           if (!isActive) {
-            e.currentTarget.style.background = "rgba(0,212,255,0.12)";
-            e.currentTarget.style.borderColor = "rgba(0,212,255,0.65)";
-            e.currentTarget.style.boxShadow = "0 0 14px rgba(0,212,255,0.30)";
+            e.currentTarget.style.borderColor = "var(--hp-accent)";
           }
         }}
         onMouseLeave={(e) => {
           if (!isActive) {
-            e.currentTarget.style.background = "rgba(0,212,255,0.06)";
-            e.currentTarget.style.borderColor = "rgba(0,212,255,0.35)";
-            e.currentTarget.style.boxShadow = "none";
+            e.currentTarget.style.borderColor = "var(--hp-border)";
           }
         }}
       >
         <span
           className="w-1.5 h-1.5 rounded-full shrink-0"
           style={{
-            background: isActive ? "var(--color-void)" : "var(--color-neon-blue)",
-            boxShadow: isActive ? "none" : "0 0 6px rgba(0,212,255,0.8)",
-            animation: "pulseBlue 2.5s ease-in-out infinite",
+            background: isActive ? "#ffffff" : "var(--hp-accent)",
           }}
           aria-hidden="true"
         />
@@ -137,21 +136,20 @@ export default function NavItem({
             letterSpacing: "0.18em",
             textTransform: "uppercase",
             fontWeight: 500,
-            color: isActive || isOpen
-              ? "var(--color-text-primary)"
-              : "var(--color-text-secondary)",
-            background: isOpen ? "rgba(0,212,255,0.05)" : "transparent",
+            color: "var(--hp-text-primary)",
+            opacity: isActive || isOpen ? 1 : 0.72,
+            background: isOpen ? "var(--hp-accent-subtle)" : "transparent",
             border: "none",
             cursor: "pointer",
             whiteSpace: "nowrap",
-            transition: "color 0.2s ease, background 0.2s ease",
+            transition: "opacity 0.2s ease, background 0.2s ease",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.color = "var(--color-text-primary)";
+            e.currentTarget.style.opacity = "1";
           }}
           onMouseLeave={(e) => {
             if (!isActive && !isOpen) {
-              e.currentTarget.style.color = "var(--color-text-secondary)";
+              e.currentTarget.style.opacity = "0.72";
             }
           }}
         >
@@ -162,8 +160,8 @@ export default function NavItem({
             aria-hidden="true"
             style={{
               color: isActive || isOpen
-                ? "var(--color-neon-blue)"
-                : "var(--color-text-muted)",
+                ? "var(--hp-accent)"
+                : "var(--hp-text-muted)",
               transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
               transition: "transform 0.22s ease, color 0.2s ease",
               marginLeft: 1,
@@ -180,12 +178,11 @@ export default function NavItem({
               right: 12,
               height: 1.5,
               borderRadius: 1,
-              background: "var(--color-neon-blue)",
+              background: "var(--hp-accent)",
               opacity: isActive ? 1 : 0,
               transform: isActive ? "scaleX(1)" : "scaleX(0)",
               transformOrigin: "left",
               transition: "opacity 0.2s ease, transform 0.2s ease",
-              boxShadow: "0 0 6px rgba(0,212,255,0.6)",
             }}
           />
 
@@ -200,7 +197,7 @@ export default function NavItem({
                 right: 12,
                 height: 1,
                 borderRadius: 1,
-                background: "var(--color-neon-blue)",
+                background: "var(--hp-accent)",
                 opacity: 0.4,
                 transform: "scaleX(0)",
                 transformOrigin: "left",
@@ -221,19 +218,18 @@ export default function NavItem({
             letterSpacing: "0.18em",
             textTransform: "uppercase",
             fontWeight: 500,
-            color: isActive
-              ? "var(--color-text-primary)"
-              : "var(--color-text-secondary)",
+            color: "var(--hp-text-primary)",
+            opacity: isActive ? 1 : 0.72,
             textDecoration: "none",
             whiteSpace: "nowrap",
-            transition: "color 0.2s ease",
+            transition: "opacity 0.2s ease",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.color = "var(--color-text-primary)";
+            e.currentTarget.style.opacity = "1";
           }}
           onMouseLeave={(e) => {
             if (!isActive) {
-              e.currentTarget.style.color = "var(--color-text-secondary)";
+              e.currentTarget.style.opacity = "0.72";
             }
           }}
         >
@@ -249,12 +245,11 @@ export default function NavItem({
               right: 12,
               height: 1.5,
               borderRadius: 1,
-              background: "var(--color-neon-blue)",
+              background: "var(--hp-accent)",
               opacity: isActive ? 1 : 0,
               transform: isActive ? "scaleX(1)" : "scaleX(0)",
               transformOrigin: "left",
               transition: "opacity 0.2s ease, transform 0.2s ease",
-              boxShadow: "0 0 6px rgba(0,212,255,0.6)",
             }}
           />
 
@@ -269,7 +264,7 @@ export default function NavItem({
                 right: 12,
                 height: 1,
                 borderRadius: 1,
-                background: "var(--color-neon-blue)",
+                background: "var(--hp-accent)",
                 opacity: 0.4,
                 transform: "scaleX(0)",
                 transformOrigin: "left",

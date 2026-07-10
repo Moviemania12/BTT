@@ -74,26 +74,26 @@ interface BadgeConfig {
   glow?: string;           // optional box-shadow glow
 }
 
+// White-theme (Phase A migration): flat, restrained badge colors —
+// no glow/box-shadow, matching the homepage's non-neon design language.
 const STATUS_CONFIG: Record<TopicStatus, BadgeConfig> = {
   "coming-soon": {
     label:      "SOON",
-    color:      "var(--color-neon-blue)",
-    background: "rgba(0,212,255,0.06)",
-    border:     "rgba(0,212,255,0.20)",
+    color:      "var(--hp-text-muted)",
+    background: "var(--hp-bg-subtle)",
+    border:     "var(--hp-border)",
   },
   "in-progress": {
     label:      "IN PROGRESS",
-    color:      "rgba(255,180,0,1)",
-    background: "rgba(255,180,0,0.07)",
-    border:     "rgba(255,180,0,0.25)",
-    glow:       "0 0 6px rgba(255,180,0,0.20)",
+    color:      "#92400e",
+    background: "#fffbeb",
+    border:     "#fde68a",
   },
   "published": {
     label:      "LIVE",
-    color:      "rgba(0,220,100,1)",
-    background: "rgba(0,220,100,0.07)",
-    border:     "rgba(0,220,100,0.25)",
-    glow:       "0 0 6px rgba(0,220,100,0.20)",
+    color:      "#166534",
+    background: "#f0fdf4",
+    border:     "#bbf7d0",
   },
 };
 
@@ -142,8 +142,7 @@ export default function ComingSoonBadge({
         color:          config.color,
         background:     config.background,
         border:         `1px solid ${config.border}`,
-        boxShadow:      config.glow ?? "none",
-
+        
         // Prevent badge from inheriting pointer-events from disabled parent
         pointerEvents:  "none",
         userSelect:     "none",

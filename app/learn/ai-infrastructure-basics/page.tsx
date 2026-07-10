@@ -63,7 +63,7 @@ const S = {
     fontFamily: "var(--font-display)",
     fontSize: "clamp(1.5rem, 2.5vw, 1.9rem)",
     letterSpacing: "0.04em",
-    color: "var(--color-text-primary)",
+    color: "#111827",
     lineHeight: 1.15,
     marginTop: 64,
     marginBottom: 16,
@@ -73,7 +73,7 @@ const S = {
     fontFamily: "var(--font-display)",
     fontSize: "clamp(1.2rem, 2vw, 1.5rem)",
     letterSpacing: "0.04em",
-    color: "var(--color-text-primary)",
+    color: "#111827",
     lineHeight: 1.2,
     marginTop: 56,
     marginBottom: 14,
@@ -83,7 +83,7 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: "1rem",
     fontWeight: 600,
-    color: "var(--color-text-primary)",
+    color: "#111827",
     lineHeight: 1.3,
     marginTop: 28,
     marginBottom: 10,
@@ -91,7 +91,7 @@ const S = {
 
   p: {
     marginBottom: 16,
-    color: "var(--color-text-secondary)",
+    color: "#1f2937",
   } as React.CSSProperties,
 
   ul: {
@@ -103,13 +103,13 @@ const S = {
   } as React.CSSProperties,
 
   li: {
-    color: "var(--color-text-secondary)",
+    color: "#1f2937",
     lineHeight: 1.65,
   } as React.CSSProperties,
 
   divider: {
     border: "none",
-    borderTop: "1px solid rgba(0,212,255,0.08)",
+    borderTop: "1px solid rgba(37,99,235,0.08)",
     margin: "12px 0",
   } as React.CSSProperties,
 
@@ -128,13 +128,12 @@ const S = {
 
   cardAccentBlue: {
     height: 2,
-    background: "var(--color-neon-blue)",
-    boxShadow: "0 0 8px rgba(0,212,255,0.5)",
+    background: "#2563EB",
   } as React.CSSProperties,
 
   cardBodyInsight: {
-    background: "rgba(0,212,255,0.035)",
-    border: "1px solid rgba(0,212,255,0.16)",
+    background: "rgba(37,99,235,0.035)",
+    border: "1px solid rgba(37,99,235,0.16)",
     borderTop: "none",
     padding: "18px 22px 20px",
   } as React.CSSProperties,
@@ -152,21 +151,21 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: 15,
     lineHeight: 1.7,
-    color: "var(--color-text-primary)",
+    color: "#1f2937",
   } as React.CSSProperties,
 
   takeawayCard: {
     position: "relative" as const,
     borderRadius: 12,
-    background: "linear-gradient(135deg, rgba(0,212,255,0.05), rgba(0,255,204,0.03))",
-    border: "1px solid rgba(0,212,255,0.16)",
+    background: "linear-gradient(135deg, rgba(37,99,235,0.05), rgba(0,255,204,0.03))",
+    border: "1px solid rgba(37,99,235,0.16)",
     overflow: "hidden" as const,
     margin: "32px 0",
   } as React.CSSProperties,
 
   takeawayAccent: {
     height: 2,
-    background: "linear-gradient(90deg, var(--color-neon-blue), var(--color-neon-cyan))",
+    background: "linear-gradient(90deg, #2563EB, #2563EB)",
   } as React.CSSProperties,
 
   takeawayBody: {
@@ -178,7 +177,7 @@ const S = {
     fontFamily: "var(--font-mono)",
     fontSize: 9,
     letterSpacing: "0.26em",
-    color: "var(--color-neon-blue)",
+    color: "#2563EB",
     fontWeight: 600,
     marginBottom: 16,
   } as React.CSSProperties,
@@ -215,7 +214,7 @@ const S = {
     fontFamily: "var(--font-body)",
     fontSize: 14.5,
     lineHeight: 1.6,
-    color: "var(--color-text-primary)",
+    color: "#1f2937",
   } as React.CSSProperties,
 
   articleImage: {
@@ -225,7 +224,7 @@ const S = {
     borderRadius: 10,
     overflow: "hidden",
     margin: 0,
-    border: "1px solid rgba(0,212,255,0.12)",
+    border: "1px solid rgba(37,99,235,0.12)",
   } as React.CSSProperties,
 
   imageFigure: {
@@ -235,7 +234,7 @@ const S = {
   imageCaption: {
     fontFamily: "var(--font-body)",
     fontSize: 12.5,
-    color: "var(--color-text-muted)",
+    color: "#1f2937",
     textAlign: "center" as const,
     marginTop: 8,
   } as React.CSSProperties,
@@ -248,7 +247,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
     <div style={S.cardWrap}>
       <div style={S.cardAccentBlue} />
       <div style={S.cardBodyInsight}>
-        <span style={{ ...S.cardLabel, color: "var(--color-neon-blue)" }}>INSIGHT</span>
+        <span style={{ ...S.cardLabel, color: "#2563EB" }}>INSIGHT</span>
         <div style={S.cardContent}>{children}</div>
       </div>
     </div>
@@ -268,7 +267,7 @@ function KeyTakeawayCard({ items }: { items: string[] }) {
             <li key={i} style={S.takeawayItem}>
               <span style={S.takeawayCheck}>
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
-                  <path d="M4 13l5 5L20 6" stroke="var(--color-neon-cyan)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M4 13l5 5L20 6" stroke="#2563EB" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
               <span style={S.takeawayText}>{item}</span>
@@ -300,13 +299,13 @@ function ComparisonCard({
       style={{
         position: "relative",
         borderRadius: 10,
-        background: "rgba(0,212,255,0.03)",
-        border: "1px solid rgba(0,212,255,0.12)",
+        background: "rgba(37,99,235,0.03)",
+        border: "1px solid rgba(37,99,235,0.12)",
         overflow: "hidden",
         margin: "20px 0 32px",
       }}
     >
-      <div style={{ height: 2, background: "var(--color-neon-blue)", opacity: 0.5 }} />
+      <div style={{ height: 2, background: "#2563EB", opacity: 0.5 }} />
       <div style={{ padding: "20px 22px 22px" }}>
         <span
           style={{
@@ -315,7 +314,7 @@ function ComparisonCard({
             fontSize: 9,
             letterSpacing: "0.2em",
             textTransform: "uppercase",
-            color: "var(--color-neon-blue)",
+            color: "#2563EB",
             fontWeight: 600,
             marginBottom: 14,
           }}
@@ -332,7 +331,7 @@ function ComparisonCard({
                 fontSize: 9,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
-                color: "var(--color-neon-cyan)",
+                color: "#2563EB",
                 marginBottom: 8,
               }}
             >
@@ -340,7 +339,7 @@ function ComparisonCard({
             </span>
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 6 }}>
               {leftItems.map((item, i) => (
-                <li key={i} style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.5, color: "var(--color-text-secondary)" }}>
+                <li key={i} style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.5, color: "#1f2937" }}>
                   {item}
                 </li>
               ))}
@@ -354,7 +353,7 @@ function ComparisonCard({
                 fontSize: 9,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
-                color: "var(--color-neon-blue)",
+                color: "#2563EB",
                 marginBottom: 8,
               }}
             >
@@ -362,7 +361,7 @@ function ComparisonCard({
             </span>
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 6 }}>
               {rightItems.map((item, i) => (
-                <li key={i} style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.5, color: "var(--color-text-secondary)" }}>
+                <li key={i} style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.5, color: "#1f2937" }}>
                   {item}
                 </li>
               ))}
@@ -388,8 +387,8 @@ function RequestFlowDiagram({ caption, steps }: { caption: string; steps: FlowSt
       <div
         style={{
           borderRadius: 10,
-          background: "rgba(0,212,255,0.025)",
-          border: "1px solid rgba(0,212,255,0.10)",
+          background: "rgba(37,99,235,0.025)",
+          border: "1px solid rgba(37,99,235,0.10)",
           padding: "22px 20px",
         }}
       >
@@ -412,8 +411,8 @@ function RequestFlowDiagram({ caption, steps }: { caption: string; steps: FlowSt
                     width: 38,
                     height: 38,
                     borderRadius: "50%",
-                    background: "rgba(0,212,255,0.08)",
-                    border: "1px solid rgba(0,212,255,0.25)",
+                    background: "rgba(37,99,235,0.08)",
+                    border: "1px solid rgba(37,99,235,0.25)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -422,11 +421,11 @@ function RequestFlowDiagram({ caption, steps }: { caption: string; steps: FlowSt
                 >
                   {step.icon}
                 </span>
-                <span style={{ fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 600, color: "var(--color-text-primary)", lineHeight: 1.3 }}>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 600, color: "#1f2937", lineHeight: 1.3 }}>
                   {step.label}
                 </span>
                 {step.sublabel && (
-                  <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--color-text-muted)" }}>
+                  <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "#1f2937" }}>
                     {step.sublabel}
                   </span>
                 )}
@@ -437,7 +436,7 @@ function RequestFlowDiagram({ caption, steps }: { caption: string; steps: FlowSt
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: 14,
-                    color: "var(--color-neon-blue)",
+                    color: "#2563EB",
                     margin: "0 4px",
                     opacity: 0.7,
                   }}
@@ -483,11 +482,11 @@ function FAQSection() {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {FAQS.map((item, i) => (
-        <div key={i} style={{ padding: "18px 0", borderBottom: i === FAQS.length - 1 ? "none" : "1px solid rgba(0,212,255,0.08)" }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 600, color: "var(--color-text-primary)", marginBottom: 8 }}>
+        <div key={i} style={{ padding: "18px 0", borderBottom: i === FAQS.length - 1 ? "none" : "1px solid rgba(37,99,235,0.08)" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 600, color: "#1f2937", marginBottom: 8 }}>
             {item.q}
           </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "var(--color-text-secondary)", margin: 0 }}>{item.a}</p>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937", margin: 0 }}>{item.a}</p>
         </div>
       ))}
     </div>
@@ -811,7 +810,7 @@ export default function AiInfrastructureBasicsPage() {
         <h2 id="chatgpt-request-flow" style={S.h1}>ChatGPT Ka Request Infrastructure Ke Through Kaise Travel Karta Hai?</h2>
 
         <p style={S.p}>Maan lo aap ChatGPT ko puchte ho:</p>
-        <p style={{ ...S.p, fontStyle: "italic", color: "var(--color-text-primary)" }}>"What is a Data Center?"</p>
+        <p style={{ ...S.p, fontStyle: "italic", color: "#1f2937" }}>"What is a Data Center?"</p>
         <p style={S.p}>Process kuch is tarah hoti hai:</p>
 
         <figure style={S.imageFigure}>

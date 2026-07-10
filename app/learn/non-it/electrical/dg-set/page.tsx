@@ -49,23 +49,23 @@ const HEADINGS: ArticleHeading[] = [
 // ─── Shared styles ────────────────────────────────────────────────────────────
 
 const S = {
-  h1: { fontFamily: "var(--font-display)", fontSize: "clamp(1.5rem,2.5vw,1.9rem)", letterSpacing: "0.04em", color: "var(--color-text-primary)", lineHeight: 1.15, marginTop: 64, marginBottom: 16 } as React.CSSProperties,
-  h2: { fontFamily: "var(--font-display)", fontSize: "clamp(1.2rem,2vw,1.5rem)", letterSpacing: "0.04em", color: "var(--color-text-primary)", lineHeight: 1.2, marginTop: 56, marginBottom: 14 } as React.CSSProperties,
-  h3: { fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, color: "var(--color-text-primary)", lineHeight: 1.3, marginTop: 28, marginBottom: 10 } as React.CSSProperties,
-  p: { marginBottom: 16, color: "var(--color-text-secondary)" } as React.CSSProperties,
+  h1: { fontFamily: "var(--font-display)", fontSize: "clamp(1.5rem,2.5vw,1.9rem)", letterSpacing: "0.04em", color: "#111827", lineHeight: 1.15, marginTop: 64, marginBottom: 16 } as React.CSSProperties,
+  h2: { fontFamily: "var(--font-display)", fontSize: "clamp(1.2rem,2vw,1.5rem)", letterSpacing: "0.04em", color: "#111827", lineHeight: 1.2, marginTop: 56, marginBottom: 14 } as React.CSSProperties,
+  h3: { fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, color: "#111827", lineHeight: 1.3, marginTop: 28, marginBottom: 10 } as React.CSSProperties,
+  p: { marginBottom: 16, color: "#1f2937" } as React.CSSProperties,
   ul: { paddingLeft: 20, marginBottom: 16, display: "flex", flexDirection: "column" as const, gap: 6 } as React.CSSProperties,
-  li: { color: "var(--color-text-secondary)", lineHeight: 1.65 } as React.CSSProperties,
-  divider: { border: "none", borderTop: "1px solid rgba(0,212,255,0.08)", margin: "12px 0" } as React.CSSProperties,
+  li: { color: "#1f2937", lineHeight: 1.65 } as React.CSSProperties,
+  divider: { border: "none", borderTop: "1px solid rgba(37,99,235,0.08)", margin: "12px 0" } as React.CSSProperties,
   learnMore: { margin: "10px 0 4px", display: "flex", alignItems: "center", flexWrap: "wrap" as const, gap: 6 } as React.CSSProperties,
-  articleImage: { position: "relative", width: "100%", aspectRatio: "16 / 9", borderRadius: 10, overflow: "hidden", margin: 0, border: "1px solid rgba(0,212,255,0.12)" } as React.CSSProperties,
+  articleImage: { position: "relative", width: "100%", aspectRatio: "16 / 9", borderRadius: 10, overflow: "hidden", margin: 0, border: "1px solid rgba(37,99,235,0.12)" } as React.CSSProperties,
   imageFigure: { margin: "8px 0 24px" } as React.CSSProperties,
-  imageCaption: { fontFamily: "var(--font-body)", fontSize: 12.5, color: "var(--color-text-muted)", textAlign: "center" as const, marginTop: 8 } as React.CSSProperties,
-  noteText: { fontFamily: "var(--font-body)", fontSize: 13, fontStyle: "italic" as const, color: "var(--color-text-muted)", marginBottom: 16, lineHeight: 1.6 } as React.CSSProperties,
+  imageCaption: { fontFamily: "var(--font-body)", fontSize: 12.5, color: "#1f2937", textAlign: "center" as const, marginTop: 8 } as React.CSSProperties,
+  noteText: { fontFamily: "var(--font-body)", fontSize: 13, fontStyle: "italic" as const, color: "#1f2937", marginBottom: 16, lineHeight: 1.6 } as React.CSSProperties,
   cardWrap: { position: "relative" as const, borderRadius: 10, overflow: "hidden" as const, margin: "28px 0" } as React.CSSProperties,
-  cardAccentBlue: { height: 2, background: "var(--color-neon-blue)", boxShadow: "0 0 8px rgba(0,212,255,0.5)" } as React.CSSProperties,
-  cardBodyInsight: { background: "rgba(0,212,255,0.035)", border: "1px solid rgba(0,212,255,0.16)", borderTop: "none", padding: "18px 22px 20px" } as React.CSSProperties,
+  cardAccentBlue: { height: 2, background: "#2563EB" } as React.CSSProperties,
+  cardBodyInsight: { background: "rgba(37,99,235,0.035)", border: "1px solid rgba(37,99,235,0.16)", borderTop: "none", padding: "18px 22px 20px" } as React.CSSProperties,
   cardLabel: { display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.22em", fontWeight: 600, marginBottom: 10 } as React.CSSProperties,
-  cardContent: { fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: "var(--color-text-primary)" } as React.CSSProperties,
+  cardContent: { fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: "#1f2937" } as React.CSSProperties,
 } as const;
 
 // ─── QuickSummary ─────────────────────────────────────────────────────────────
@@ -81,18 +81,18 @@ function QuickSummary() {
   ];
   return (
     <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", margin: "8px 0 32px" }}>
-      <div style={{ height: 2, background: "linear-gradient(90deg,var(--color-neon-blue),var(--color-neon-cyan))" }} />
-      <div style={{ background: "rgba(0,212,255,0.03)", border: "1px solid rgba(0,212,255,0.14)", borderTop: "none", padding: "20px 22px 22px" }}>
-        <span style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.26em", color: "var(--color-neon-blue)", fontWeight: 600, marginBottom: 16 }}>⚡ QUICK SUMMARY — 2 MINUTE READ</span>
+      <div style={{ height: 2, background: "linear-gradient(90deg,#2563EB,#2563EB)" }} />
+      <div style={{ background: "rgba(37,99,235,0.03)", border: "1px solid rgba(37,99,235,0.14)", borderTop: "none", padding: "20px 22px 22px" }}>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.26em", color: "#2563EB", fontWeight: 600, marginBottom: 16 }}>⚡ QUICK SUMMARY — 2 MINUTE READ</span>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {pts.map((pt, i) => (
             <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-              <span style={{ flexShrink: 0, fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-neon-cyan)", paddingTop: 3, minWidth: 130 }}>{pt.label}</span>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "var(--color-text-secondary)" }}>{pt.text}</span>
+              <span style={{ flexShrink: 0, fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase", color: "#2563EB", paddingTop: 3, minWidth: 130 }}>{pt.label}</span>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{pt.text}</span>
             </div>
           ))}
         </div>
-        <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid rgba(0,212,255,0.08)", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-muted)" }}>
+        <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid rgba(37,99,235,0.08)", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937" }}>
           Bas itna samajh gaye to DG Set ka concept clear hai. Deeper jaana ho to neeche poora article hai.
         </div>
       </div>
@@ -107,7 +107,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
     <div style={S.cardWrap}>
       <div style={S.cardAccentBlue} />
       <div style={S.cardBodyInsight}>
-        <span style={{ ...S.cardLabel, color: "var(--color-neon-blue)" }}>INSIGHT</span>
+        <span style={{ ...S.cardLabel, color: "#2563EB" }}>INSIGHT</span>
         <div style={S.cardContent}>{children}</div>
       </div>
     </div>
@@ -122,7 +122,7 @@ function EngineerTip({ children }: { children: React.ReactNode }) {
       <div style={{ height: 2, background: "#ffa500", boxShadow: "0 0 8px rgba(255,165,0,0.4)" }} />
       <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}>
         <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer Ki Tip</span>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "var(--color-text-primary)" }}>{children}</div>
+        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
       </div>
     </div>
   );
@@ -133,10 +133,10 @@ function EngineerTip({ children }: { children: React.ReactNode }) {
 function WhyThisMatters({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", margin: "20px 0 24px" }}>
-      <div style={{ height: 2, background: "var(--color-neon-cyan)", boxShadow: "0 0 8px rgba(0,255,204,0.4)" }} />
+      <div style={{ height: 2, background: "#2563EB", boxShadow: "0 0 8px rgba(0,255,204,0.4)" }} />
       <div style={{ background: "rgba(0,255,204,0.04)", border: "1px solid rgba(0,255,204,0.18)", borderTop: "none", padding: "16px 20px 18px" }}>
-        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neon-cyan)", fontWeight: 600, marginBottom: 9 }}>Why This Matters In A Data Center</span>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "var(--color-text-primary)" }}>{children}</div>
+        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "#2563EB", fontWeight: 600, marginBottom: 9 }}>Why This Matters In A Data Center</span>
+        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
       </div>
     </div>
   );
@@ -146,9 +146,9 @@ function WhyThisMatters({ children }: { children: React.ReactNode }) {
 
 function WhatYouAreLooking({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ borderRadius: 8, background: "rgba(0,212,255,0.025)", border: "1px dashed rgba(0,212,255,0.2)", padding: "12px 16px", margin: "0 0 24px" }}>
-      <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 8.5, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neon-blue)", fontWeight: 600, marginBottom: 6 }}>What You Are Looking At</span>
-      <div style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.6, color: "var(--color-text-secondary)" }}>{children}</div>
+    <div style={{ borderRadius: 8, background: "rgba(37,99,235,0.025)", border: "1px dashed rgba(37,99,235,0.2)", padding: "12px 16px", margin: "0 0 24px" }}>
+      <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 8.5, letterSpacing: "0.18em", textTransform: "uppercase", color: "#2563EB", fontWeight: 600, marginBottom: 6 }}>What You Are Looking At</span>
+      <div style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.6, color: "#1f2937" }}>{children}</div>
     </div>
   );
 }
@@ -158,10 +158,10 @@ function WhatYouAreLooking({ children }: { children: React.ReactNode }) {
 function DCMapNote({ components }: { components: string[] }) {
   return (
     <div style={{ margin: "16px 0 24px" }}>
-      <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 8.5, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-text-muted)", marginBottom: 8 }}>On The Data Center Map</span>
+      <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 8.5, letterSpacing: "0.18em", textTransform: "uppercase", color: "#1f2937", marginBottom: 8 }}>On The Data Center Map</span>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
         {components.map((c) => (
-          <span key={c} style={{ fontFamily: "var(--font-body)", fontSize: 12, padding: "4px 10px", borderRadius: 980, background: "rgba(0,212,255,0.05)", border: "1px solid rgba(0,212,255,0.16)", color: "var(--color-text-secondary)" }}>{c}</span>
+          <span key={c} style={{ fontFamily: "var(--font-body)", fontSize: 12, padding: "4px 10px", borderRadius: 980, background: "rgba(37,99,235,0.05)", border: "1px solid rgba(37,99,235,0.16)", color: "#1f2937" }}>{c}</span>
         ))}
       </div>
     </div>
@@ -172,17 +172,17 @@ function DCMapNote({ components }: { components: string[] }) {
 
 function KeyTakeawayCard({ items }: { items: string[] }) {
   return (
-    <div style={{ position: "relative", borderRadius: 12, background: "linear-gradient(135deg,rgba(0,212,255,0.05),rgba(0,255,204,0.03))", border: "1px solid rgba(0,212,255,0.16)", overflow: "hidden", margin: "32px 0" }}>
-      <div style={{ height: 2, background: "linear-gradient(90deg,var(--color-neon-blue),var(--color-neon-cyan))" }} />
+    <div style={{ position: "relative", borderRadius: 12, background: "linear-gradient(135deg,rgba(37,99,235,0.05),rgba(0,255,204,0.03))", border: "1px solid rgba(37,99,235,0.16)", overflow: "hidden", margin: "32px 0" }}>
+      <div style={{ height: 2, background: "linear-gradient(90deg,#2563EB,#2563EB)" }} />
       <div style={{ padding: "22px 24px 24px" }}>
-        <span style={{ display: "inline-block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.26em", color: "var(--color-neon-blue)", fontWeight: 600, marginBottom: 16 }}>KEY TAKEAWAYS</span>
+        <span style={{ display: "inline-block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.26em", color: "#2563EB", fontWeight: 600, marginBottom: 16 }}>KEY TAKEAWAYS</span>
         <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 12 }}>
           {items.map((item, i) => (
             <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
               <span style={{ flexShrink: 0, width: 18, height: 18, borderRadius: 4, background: "rgba(0,255,204,0.12)", border: "1px solid rgba(0,255,204,0.4)", display: "flex", alignItems: "center", justifyContent: "center", marginTop: 1 }}>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 13l5 5L20 6" stroke="var(--color-neon-cyan)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 13l5 5L20 6" stroke="#2563EB" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </span>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: 14.5, lineHeight: 1.6, color: "var(--color-text-primary)" }}>{item}</span>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: 14.5, lineHeight: 1.6, color: "#1f2937" }}>{item}</span>
             </li>
           ))}
         </ul>
@@ -196,21 +196,21 @@ function KeyTakeawayCard({ items }: { items: string[] }) {
 function FlowDiagram({ caption, steps }: { caption: string; steps: { icon: string; label: string; sublabel?: string }[] }) {
   return (
     <figure style={{ margin: "20px 0 24px" }}>
-      <div style={{ borderRadius: 10, background: "rgba(0,212,255,0.025)", border: "1px solid rgba(0,212,255,0.10)", padding: "22px 20px" }}>
+      <div style={{ borderRadius: 10, background: "rgba(37,99,235,0.025)", border: "1px solid rgba(37,99,235,0.10)", padding: "22px 20px" }}>
         <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 4, justifyContent: "center" }}>
           {steps.map((step, i) => (
             <div key={i} style={{ display: "flex", alignItems: "center" }}>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6, minWidth: 82, textAlign: "center" }}>
-                <span style={{ width: 38, height: 38, borderRadius: "50%", background: "rgba(0,212,255,0.08)", border: "1px solid rgba(0,212,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 17 }}>{step.icon}</span>
-                <span style={{ fontFamily: "var(--font-body)", fontSize: 11.5, fontWeight: 600, color: "var(--color-text-primary)", lineHeight: 1.3 }}>{step.label}</span>
-                {step.sublabel && <span style={{ fontFamily: "var(--font-mono)", fontSize: 9.5, color: "var(--color-text-muted)" }}>{step.sublabel}</span>}
+                <span style={{ width: 38, height: 38, borderRadius: "50%", background: "rgba(37,99,235,0.08)", border: "1px solid rgba(37,99,235,0.25)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 17 }}>{step.icon}</span>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: 11.5, fontWeight: 600, color: "#1f2937", lineHeight: 1.3 }}>{step.label}</span>
+                {step.sublabel && <span style={{ fontFamily: "var(--font-mono)", fontSize: 9.5, color: "#1f2937" }}>{step.sublabel}</span>}
               </div>
-              {i < steps.length - 1 && <span style={{ fontFamily: "var(--font-mono)", fontSize: 14, color: "var(--color-neon-blue)", margin: "0 4px", opacity: 0.7 }}>→</span>}
+              {i < steps.length - 1 && <span style={{ fontFamily: "var(--font-mono)", fontSize: 14, color: "#2563EB", margin: "0 4px", opacity: 0.7 }}>→</span>}
             </div>
           ))}
         </div>
       </div>
-      <figcaption style={{ fontFamily: "var(--font-body)", fontSize: 12.5, color: "var(--color-text-muted)", textAlign: "center", marginTop: 8 }}>{caption}</figcaption>
+      <figcaption style={{ fontFamily: "var(--font-body)", fontSize: 12.5, color: "#1f2937", textAlign: "center", marginTop: 8 }}>{caption}</figcaption>
     </figure>
   );
 }
@@ -221,21 +221,21 @@ function ComparisonCard({ tag, leftTitle, leftItems, rightTitle, rightItems }: {
   tag: string; leftTitle: string; leftItems: string[]; rightTitle: string; rightItems: string[];
 }) {
   return (
-    <div style={{ position: "relative", borderRadius: 10, background: "rgba(0,212,255,0.03)", border: "1px solid rgba(0,212,255,0.12)", overflow: "hidden", margin: "20px 0 32px" }}>
-      <div style={{ height: 2, background: "var(--color-neon-blue)", opacity: 0.5 }} />
+    <div style={{ position: "relative", borderRadius: 10, background: "rgba(37,99,235,0.03)", border: "1px solid rgba(37,99,235,0.12)", overflow: "hidden", margin: "20px 0 32px" }}>
+      <div style={{ height: 2, background: "#2563EB", opacity: 0.5 }} />
       <div style={{ padding: "20px 22px 22px" }}>
-        <span style={{ display: "inline-block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neon-blue)", fontWeight: 600, marginBottom: 14 }}>{tag}</span>
+        <span style={{ display: "inline-block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "#2563EB", fontWeight: 600, marginBottom: 14 }}>{tag}</span>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
           <div>
-            <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-neon-cyan)", marginBottom: 8 }}>{leftTitle}</span>
+            <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase", color: "#2563EB", marginBottom: 8 }}>{leftTitle}</span>
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 6 }}>
-              {leftItems.map((a, i) => <li key={i} style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.5, color: "var(--color-text-secondary)" }}>{a}</li>)}
+              {leftItems.map((a, i) => <li key={i} style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.5, color: "#1f2937" }}>{a}</li>)}
             </ul>
           </div>
           <div>
-            <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-neon-blue)", marginBottom: 8 }}>{rightTitle}</span>
+            <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase", color: "#2563EB", marginBottom: 8 }}>{rightTitle}</span>
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 6 }}>
-              {rightItems.map((d, i) => <li key={i} style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.5, color: "var(--color-text-secondary)" }}>{d}</li>)}
+              {rightItems.map((d, i) => <li key={i} style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.5, color: "#1f2937" }}>{d}</li>)}
             </ul>
           </div>
         </div>
@@ -259,21 +259,21 @@ const AMF_ROWS = [
 
 function AMFProtectionTable() {
   return (
-    <div style={{ margin: "20px 0 28px", borderRadius: 10, border: "1px solid rgba(0,212,255,0.12)", overflow: "hidden" }}>
+    <div style={{ margin: "20px 0 28px", borderRadius: 10, border: "1px solid rgba(37,99,235,0.12)", overflow: "hidden" }}>
       <div style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 480 }}>
           <thead>
-            <tr style={{ background: "rgba(0,212,255,0.06)" }}>
+            <tr style={{ background: "rgba(37,99,235,0.06)" }}>
               {["Protection", "Kya Detect Karta Hai"].map((h) => (
-                <th key={h} style={{ textAlign: "left", padding: "12px 16px", fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-neon-blue)", borderBottom: "1px solid rgba(0,212,255,0.14)", whiteSpace: "nowrap" }}>{h}</th>
+                <th key={h} style={{ textAlign: "left", padding: "12px 16px", fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "#2563EB", borderBottom: "1px solid rgba(37,99,235,0.14)", whiteSpace: "nowrap" }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {AMF_ROWS.map((row, i) => (
-              <tr key={row.protection} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,212,255,0.015)" }}>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13.5, fontWeight: 600, color: "var(--color-text-primary)", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.protection}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-secondary)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.detects}</td>
+              <tr key={row.protection} style={{ background: i % 2 === 0 ? "transparent" : "rgba(37,99,235,0.015)" }}>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13.5, fontWeight: 600, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.protection}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.detects}</td>
               </tr>
             ))}
           </tbody>
@@ -296,24 +296,24 @@ const FUEL_ROWS = [
 
 function FuelConsumptionTable() {
   return (
-    <div style={{ margin: "20px 0 28px", borderRadius: 10, border: "1px solid rgba(0,212,255,0.12)", overflow: "hidden" }}>
+    <div style={{ margin: "20px 0 28px", borderRadius: 10, border: "1px solid rgba(37,99,235,0.12)", overflow: "hidden" }}>
       <div style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 560 }}>
           <thead>
-            <tr style={{ background: "rgba(0,212,255,0.06)" }}>
+            <tr style={{ background: "rgba(37,99,235,0.06)" }}>
               {["DG Rating", "Full Load L/hr", "12 Hours", "24 Hours", "48 Hours"].map((h) => (
-                <th key={h} style={{ textAlign: "left", padding: "12px 16px", fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-neon-blue)", borderBottom: "1px solid rgba(0,212,255,0.14)", whiteSpace: "nowrap" }}>{h}</th>
+                <th key={h} style={{ textAlign: "left", padding: "12px 16px", fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "#2563EB", borderBottom: "1px solid rgba(37,99,235,0.14)", whiteSpace: "nowrap" }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {FUEL_ROWS.map((row, i) => (
-              <tr key={row.rating} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,212,255,0.015)" }}>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13.5, fontWeight: 600, color: "var(--color-text-primary)", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.rating}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-neon-cyan)", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.lph}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-secondary)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.hrs12}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-secondary)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.hrs24}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-secondary)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.hrs48}</td>
+              <tr key={row.rating} style={{ background: i % 2 === 0 ? "transparent" : "rgba(37,99,235,0.015)" }}>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13.5, fontWeight: 600, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.rating}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#2563EB", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.lph}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.hrs12}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.hrs24}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.hrs48}</td>
               </tr>
             ))}
           </tbody>
@@ -334,22 +334,22 @@ const MAINT_ROWS = [
 
 function MaintenanceTable() {
   return (
-    <div style={{ margin: "20px 0 28px", borderRadius: 10, border: "1px solid rgba(0,212,255,0.12)", overflow: "hidden" }}>
+    <div style={{ margin: "20px 0 28px", borderRadius: 10, border: "1px solid rgba(37,99,235,0.12)", overflow: "hidden" }}>
       <div style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 520 }}>
           <thead>
-            <tr style={{ background: "rgba(0,212,255,0.06)" }}>
+            <tr style={{ background: "rgba(37,99,235,0.06)" }}>
               {["Check", "Frequency", "Key Activities"].map((h) => (
-                <th key={h} style={{ textAlign: "left", padding: "12px 16px", fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-neon-blue)", borderBottom: "1px solid rgba(0,212,255,0.14)", whiteSpace: "nowrap" }}>{h}</th>
+                <th key={h} style={{ textAlign: "left", padding: "12px 16px", fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "#2563EB", borderBottom: "1px solid rgba(37,99,235,0.14)", whiteSpace: "nowrap" }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {MAINT_ROWS.map((row, i) => (
-              <tr key={row.check} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,212,255,0.015)" }}>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13.5, fontWeight: 600, color: "var(--color-neon-cyan)", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.check}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-primary)", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.freq}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-secondary)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.key}</td>
+              <tr key={row.check} style={{ background: i % 2 === 0 ? "transparent" : "rgba(37,99,235,0.015)" }}>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13.5, fontWeight: 600, color: "#2563EB", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.check}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.freq}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.key}</td>
               </tr>
             ))}
           </tbody>
@@ -381,22 +381,22 @@ const SCADA_ROWS = [
 
 function SCADATable() {
   return (
-    <div style={{ margin: "20px 0 28px", borderRadius: 10, border: "1px solid rgba(0,212,255,0.12)", overflow: "hidden" }}>
+    <div style={{ margin: "20px 0 28px", borderRadius: 10, border: "1px solid rgba(37,99,235,0.12)", overflow: "hidden" }}>
       <div style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 520 }}>
           <thead>
-            <tr style={{ background: "rgba(0,212,255,0.06)" }}>
+            <tr style={{ background: "rgba(37,99,235,0.06)" }}>
               {["Parameter", "Type", "Purpose"].map((h) => (
-                <th key={h} style={{ textAlign: "left", padding: "12px 16px", fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-neon-blue)", borderBottom: "1px solid rgba(0,212,255,0.14)", whiteSpace: "nowrap" }}>{h}</th>
+                <th key={h} style={{ textAlign: "left", padding: "12px 16px", fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "#2563EB", borderBottom: "1px solid rgba(37,99,235,0.14)", whiteSpace: "nowrap" }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {SCADA_ROWS.map((row, i) => (
-              <tr key={row.param} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,212,255,0.015)" }}>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, color: "var(--color-text-primary)", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.param}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 12, color: "var(--color-neon-cyan)", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.type}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-secondary)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.purpose}</td>
+              <tr key={row.param} style={{ background: i % 2 === 0 ? "transparent" : "rgba(37,99,235,0.015)" }}>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.param}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 12, color: "#2563EB", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.type}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.purpose}</td>
               </tr>
             ))}
           </tbody>
@@ -420,21 +420,21 @@ const OEM_ROWS = [
 
 function OEMTable() {
   return (
-    <div style={{ margin: "20px 0 28px", borderRadius: 10, border: "1px solid rgba(0,212,255,0.12)", overflow: "hidden" }}>
+    <div style={{ margin: "20px 0 28px", borderRadius: 10, border: "1px solid rgba(37,99,235,0.12)", overflow: "hidden" }}>
       <div style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 480 }}>
           <thead>
-            <tr style={{ background: "rgba(0,212,255,0.06)" }}>
+            <tr style={{ background: "rgba(37,99,235,0.06)" }}>
               {["Component", "Common OEMs"].map((h) => (
-                <th key={h} style={{ textAlign: "left", padding: "12px 16px", fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-neon-blue)", borderBottom: "1px solid rgba(0,212,255,0.14)", whiteSpace: "nowrap" }}>{h}</th>
+                <th key={h} style={{ textAlign: "left", padding: "12px 16px", fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "#2563EB", borderBottom: "1px solid rgba(37,99,235,0.14)", whiteSpace: "nowrap" }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {OEM_ROWS.map((row, i) => (
-              <tr key={row.component} style={{ background: i % 2 === 0 ? "transparent" : "rgba(0,212,255,0.015)" }}>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13.5, fontWeight: 600, color: "var(--color-text-primary)", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.component}</td>
-                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--color-text-secondary)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.oems}</td>
+              <tr key={row.component} style={{ background: i % 2 === 0 ? "transparent" : "rgba(37,99,235,0.015)" }}>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13.5, fontWeight: 600, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)", whiteSpace: "nowrap" }}>{row.component}</td>
+                <td style={{ padding: "12px 16px", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.oems}</td>
               </tr>
             ))}
           </tbody>
@@ -461,12 +461,12 @@ function ContinueLearning() {
 function PrevNextNav() {
   return (
     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, margin: "24px 0 8px" }}>
-      <div style={{ borderRadius: 10, background: "rgba(0,212,255,0.03)", border: "1px solid rgba(0,212,255,0.12)", padding: "14px 16px" }}>
-        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 8.5, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-text-muted)", marginBottom: 8 }}>← Previous</span>
+      <div style={{ borderRadius: 10, background: "rgba(37,99,235,0.03)", border: "1px solid rgba(37,99,235,0.12)", padding: "14px 16px" }}>
+        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 8.5, letterSpacing: "0.18em", textTransform: "uppercase", color: "#1f2937", marginBottom: 8 }}>← Previous</span>
         <TopicLink slug="transformer" label="Transformer" variant="inline" />
       </div>
-      <div style={{ borderRadius: 10, background: "rgba(0,212,255,0.03)", border: "1px solid rgba(0,212,255,0.12)", padding: "14px 16px", textAlign: "right" }}>
-        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 8.5, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-text-muted)", marginBottom: 8 }}>Next →</span>
+      <div style={{ borderRadius: 10, background: "rgba(37,99,235,0.03)", border: "1px solid rgba(37,99,235,0.12)", padding: "14px 16px", textAlign: "right" }}>
+        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 8.5, letterSpacing: "0.18em", textTransform: "uppercase", color: "#1f2937", marginBottom: 8 }}>Next →</span>
         <TopicLink slug="ups" label="UPS System" variant="inline" />
       </div>
     </div>
@@ -488,9 +488,9 @@ function FAQSection() {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {FAQS.map((item, i) => (
-        <div key={i} style={{ padding: "18px 0", borderBottom: i === FAQS.length - 1 ? "none" : "1px solid rgba(0,212,255,0.08)" }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 600, color: "var(--color-text-primary)", marginBottom: 8 }}>{item.q}</p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "var(--color-text-secondary)", margin: 0 }}>{item.a}</p>
+        <div key={i} style={{ padding: "18px 0", borderBottom: i === FAQS.length - 1 ? "none" : "1px solid rgba(37,99,235,0.08)" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 600, color: "#1f2937", marginBottom: 8 }}>{item.q}</p>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937", margin: 0 }}>{item.a}</p>
         </div>
       ))}
     </div>
@@ -1220,9 +1220,9 @@ export default function DgSetPage() {
 
         {/* ── What's Next ── */}
         <div style={S.cardWrap}>
-          <div style={{ height: 2, background: "linear-gradient(90deg,var(--color-neon-blue),var(--color-neon-cyan))" }} />
+          <div style={{ height: 2, background: "linear-gradient(90deg,#2563EB,#2563EB)" }} />
           <div style={S.cardBodyInsight}>
-            <span style={{ ...S.cardLabel, color: "var(--color-neon-cyan)" }}>WHAT&apos;S NEXT</span>
+            <span style={{ ...S.cardLabel, color: "#2563EB" }}>WHAT&apos;S NEXT</span>
             <div style={S.cardContent}>DG Set grid failure cover karta hai. Lekin DG start hone ke 10–30 seconds — us beech kaun power deta hai? Yahi kaam karta hai UPS aur Battery Bank.</div>
             <div style={{ marginTop: 14, display: "flex", gap: 8, flexWrap: "wrap" }}>
               <TopicLink slug="ups" label="Next: UPS System →" variant="inline" />

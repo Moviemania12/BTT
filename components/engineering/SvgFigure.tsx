@@ -43,7 +43,7 @@ export function SvgFigure({ caption, source, description, engineeringNote, id, c
       <figcaption
         style={{
           fontSize: "0.85rem",
-          color: "#64748b",
+          color: "#4b5563",
           marginTop: "0.6rem",
           textAlign: "center",
           fontStyle: "italic",
@@ -53,7 +53,7 @@ export function SvgFigure({ caption, source, description, engineeringNote, id, c
       </figcaption>
 
       {(source || description || engineeringNote) && (
-        <div style={{ marginTop: "0.5rem", fontSize: "0.78rem", color: "#94a3b8", lineHeight: 1.6 }}>
+        <div style={{ marginTop: "0.5rem", fontSize: "0.78rem", color: "#4b5563", lineHeight: 1.6 }}>
           {description && <p style={{ margin: "2px 0" }}>{description}</p>}
           {source && <p style={{ margin: "2px 0" }}><strong>Source:</strong> {source}</p>}
           {engineeringNote && (

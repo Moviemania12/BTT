@@ -57,7 +57,7 @@ export default function TopicLink({
         style={{
           fontFamily: "var(--font-mono)",
           fontSize: 11,
-          color: "var(--color-text-muted)",
+          color: "var(--hp-text-muted)",
           opacity: 0.5,
         }}
       >
@@ -84,22 +84,22 @@ export default function TopicLink({
             gap: 6,
             fontFamily: "var(--font-body)",
             fontSize: 13,
-            color: "var(--color-text-muted)",
-            opacity: 0.55,
+            color: "var(--hp-text-muted)",
+            opacity: 0.6,
             cursor: "default",
           }}
           title="Coming Soon"
         >
-          <span style={{ color: "var(--color-neon-blue)", opacity: 0.4 }}>➡</span>
+          <span style={{ color: "var(--hp-accent)", opacity: 0.5 }}>➡</span>
           {displayLabel}
           <span
             style={{
               fontSize: 9,
               fontFamily: "var(--font-mono)",
               letterSpacing: "0.18em",
-              color: "var(--color-neon-blue)",
-              opacity: 0.45,
-              border: "1px solid rgba(0,212,255,0.2)",
+              color: "var(--hp-accent)",
+              opacity: 0.7,
+              border: "1px solid var(--hp-border)",
               borderRadius: 3,
               padding: "1px 5px",
             }}
@@ -120,7 +120,7 @@ export default function TopicLink({
           gap: 6,
           fontFamily: "var(--font-body)",
           fontSize: 13,
-          color: "var(--color-neon-blue)",
+          color: "var(--hp-accent)",
           textDecoration: "none",
           transition: "opacity 0.15s ease",
         }}
@@ -147,9 +147,9 @@ export default function TopicLink({
             gap: 10,
             padding: "12px 16px",
             borderRadius: 8,
-            background: "rgba(0,212,255,0.02)",
-            border: "1px solid rgba(0,212,255,0.08)",
-            opacity: 0.45,
+            background: "var(--hp-bg-subtle)",
+            border: "1px solid var(--hp-border)",
+            opacity: 0.6,
             cursor: "default",
           }}
         >
@@ -159,7 +159,7 @@ export default function TopicLink({
               style={{
                 fontSize: 12,
                 fontFamily: "var(--font-body)",
-                color: "var(--color-text-secondary)",
+                color: "var(--hp-text-secondary)",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 whiteSpace: "nowrap",
@@ -172,8 +172,8 @@ export default function TopicLink({
                 fontSize: 9,
                 fontFamily: "var(--font-mono)",
                 letterSpacing: "0.16em",
-                color: "var(--color-neon-blue)",
-                opacity: 0.5,
+                color: "var(--hp-text-muted)",
+                opacity: 0.8,
                 marginTop: 2,
               }}
             >
@@ -194,19 +194,19 @@ export default function TopicLink({
           gap: 10,
           padding: "12px 16px",
           borderRadius: 8,
-          background: "rgba(0,212,255,0.03)",
-          border: "1px solid rgba(0,212,255,0.12)",
+          background: "var(--hp-surface)",
+          border: "1px solid var(--hp-border)",
           textDecoration: "none",
-          transition: "background 0.18s ease, border-color 0.18s ease, transform 0.18s ease",
+          transition: "border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.background = "rgba(0,212,255,0.07)";
-          e.currentTarget.style.borderColor = "rgba(0,212,255,0.28)";
+          e.currentTarget.style.borderColor = "var(--hp-border-hover)";
+          e.currentTarget.style.boxShadow = "var(--hp-shadow-hover)";
           e.currentTarget.style.transform = "translateY(-1px)";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.background = "rgba(0,212,255,0.03)";
-          e.currentTarget.style.borderColor = "rgba(0,212,255,0.12)";
+          e.currentTarget.style.borderColor = "var(--hp-border)";
+          e.currentTarget.style.boxShadow = "none";
           e.currentTarget.style.transform = "translateY(0)";
         }}
       >
@@ -216,7 +216,7 @@ export default function TopicLink({
             style={{
               fontSize: 12,
               fontFamily: "var(--font-body)",
-              color: "var(--color-text-primary)",
+              color: "var(--hp-text-primary)",
               overflow: "hidden",
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
@@ -229,7 +229,7 @@ export default function TopicLink({
               fontSize: 9,
               fontFamily: "var(--font-mono)",
               letterSpacing: "0.16em",
-              color: "var(--color-text-muted)",
+              color: "var(--hp-text-muted)",
               marginTop: 2,
             }}
           >
@@ -241,7 +241,7 @@ export default function TopicLink({
           style={{
             marginLeft: "auto",
             fontSize: 10,
-            color: "var(--color-neon-blue)",
+            color: "var(--hp-accent)",
             fontFamily: "var(--font-mono)",
             flexShrink: 0,
           }}
@@ -268,10 +268,10 @@ export default function TopicLink({
           fontSize: 11,
           fontFamily: "var(--font-mono)",
           letterSpacing: "0.10em",
-          color: "var(--color-text-muted)",
-          background: "rgba(0,212,255,0.03)",
-          border: "1px solid rgba(0,212,255,0.08)",
-          opacity: 0.5,
+          color: "var(--hp-text-muted)",
+          background: "var(--hp-bg-subtle)",
+          border: "1px solid var(--hp-border)",
+          opacity: 0.6,
           cursor: "default",
         }}
       >
@@ -293,19 +293,17 @@ export default function TopicLink({
         fontSize: 11,
         fontFamily: "var(--font-mono)",
         letterSpacing: "0.10em",
-        color: "var(--color-neon-blue)",
-        background: "rgba(0,212,255,0.05)",
-        border: "1px solid rgba(0,212,255,0.18)",
+        color: "var(--hp-accent)",
+        background: "var(--hp-accent-subtle)",
+        border: "1px solid var(--hp-border)",
         textDecoration: "none",
-        transition: "background 0.15s ease, border-color 0.15s ease",
+        transition: "border-color 0.15s ease",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.background = "rgba(0,212,255,0.10)";
-        e.currentTarget.style.borderColor = "rgba(0,212,255,0.35)";
+        e.currentTarget.style.borderColor = "var(--hp-accent)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.background = "rgba(0,212,255,0.05)";
-        e.currentTarget.style.borderColor = "rgba(0,212,255,0.18)";
+        e.currentTarget.style.borderColor = "var(--hp-border)";
       }}
     >
       {topic.icon} {displayLabel}
