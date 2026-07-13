@@ -38,14 +38,23 @@ export default function DataCenterUpsDesignerPage() {
   if (!entry) notFound();
 
   return (
-    <main style={{ maxWidth: "800px", margin: "0 auto", padding: "2rem 1.25rem" }}>
-      <h1 style={{ fontSize: "2rem", fontWeight: 800, color: "#0f172a", marginBottom: "0.5rem" }}>
-        {entry.title}
-      </h1>
-      <p style={{ fontSize: "1.05rem", color: "#475569", marginBottom: "2rem" }}>
-        {entry.description}
-      </p>
-      <DataCenterUpsDesigner />
+    <main
+      data-homepage-theme="light"
+      style={{
+        background: "#ffffff",
+        minHeight: "100vh",
+        paddingTop: "2.5rem",
+      }}
+    >
+      <div style={{ maxWidth: "960px", margin: "0 auto", padding: "0 1.5rem 4rem" }}>
+        <h1 style={{ fontSize: "2rem", fontWeight: 800, color: "#111827", marginBottom: "0.6rem", letterSpacing: "-0.01em" }}>
+          {entry.title}
+        </h1>
+        <p style={{ fontSize: "1.05rem", color: "#374151", marginBottom: "2.5rem", maxWidth: "640px" }}>
+          {entry.description}
+        </p>
+        <DataCenterUpsDesigner />
+      </div>
     </main>
   );
 }

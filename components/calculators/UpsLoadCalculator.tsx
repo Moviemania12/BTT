@@ -68,17 +68,17 @@ export default function UpsLoadCalculator() {
       </div>
 
       {aggregation && (
-        <div style={{ marginTop: "1.2rem", padding: "1rem", background: "#ffffff", borderRadius: "8px", border: "1px solid #bfdbfe" }}>
-          <p style={{ fontSize: "0.9rem", color: "#475569", marginBottom: "0.3rem" }}>
+        <div style={{ marginTop: "1.2rem", padding: "1rem", background: "#ffffff", borderRadius: "8px", border: "1px solid #E5E7EB" }}>
+          <p style={{ fontSize: "0.9rem", color: "#374151", marginBottom: "0.3rem" }}>
             Total Connected Load: <strong>{totalKw.toFixed(2)} kW</strong>
           </p>
-          <p style={{ fontSize: "0.9rem", color: "#475569", marginBottom: "0.3rem" }}>
+          <p style={{ fontSize: "0.9rem", color: "#374151", marginBottom: "0.3rem" }}>
             After Demand Factor: <strong>{aggregation.appliedKw.toFixed(2)} kW</strong>
           </p>
-          <p style={{ fontSize: "1.1rem", color: "#0066CC", fontWeight: 800, marginTop: "0.5rem" }}>
+          <p style={{ fontSize: "1.1rem", color: "#2563EB", fontWeight: 800, marginTop: "0.5rem" }}>
             Recommended UPS Size: {aggregation.finalKva.toFixed(1)} kVA
           </p>
-          <p style={{ fontSize: "0.8rem", color: "#94a3b8", marginTop: "0.3rem" }}>
+          <p style={{ fontSize: "0.8rem", color: "#6B7280", marginTop: "0.3rem" }}>
             (Includes {futureGrowth}% headroom for future expansion)
           </p>
         </div>

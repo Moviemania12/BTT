@@ -11,7 +11,6 @@ import Link from "next/link";
 import {
   X,
   Send,
-  Loader2,
   ChevronDown,
   BookOpen,
   Square,
@@ -106,62 +105,69 @@ interface Theme {
   scrollbarThumb: string;
 }
 
+// Premium White Theme (final visual migration). Every value below maps
+// directly to the platform-wide design system (Page/Section/Card/Border/
+// Text/Accent tokens) — flat colors only, gradients removed per spec.
+// codeBg switched from dark (#1e293b) to a GitHub-light-style background,
+// since "Code Blocks: light theme" was explicit. DARK theme (below,
+// unchanged) remains available via the existing toggle for users who
+// prefer it — this migration only corrects the default/light theme.
 const LIGHT: Theme = {
   panelBg: "#ffffff",
-  panelBorder: "#e5e7eb",
-  panelShadow: "0 24px 64px rgba(0,0,0,0.14), 0 8px 24px rgba(0,0,0,0.08)",
-  headerGradient: "linear-gradient(135deg, #1e2d5a 0%, #1d4ed8 100%)",
-  modeBarBg: "#f9fafb",
-  modeBarBorder: "#f1f0f0",
+  panelBorder: "#E5E7EB",
+  panelShadow: "0 8px 30px rgba(15,23,42,.06)",
+  headerGradient: "#2563EB",
+  modeBarBg: "#F8FAFC",
+  modeBarBorder: "#E5E7EB",
   modeBtnBg: "#ffffff",
-  modeBtnBorder: "#e5e7eb",
-  modeBtnText: "#64748b",
-  modeBtnHoverBg: "#eff6ff",
-  modeBtnHoverBorder: "#1d4ed8",
-  modeBtnHoverText: "#1d4ed8",
-  msgUserBg: "linear-gradient(135deg, #1e2d5a 0%, #1d4ed8 100%)",
+  modeBtnBorder: "#E5E7EB",
+  modeBtnText: "#6B7280",
+  modeBtnHoverBg: "#EFF6FF",
+  modeBtnHoverBorder: "#2563EB",
+  modeBtnHoverText: "#1D4ED8",
+  msgUserBg: "#2563EB",
   msgUserText: "#ffffff",
-  msgAssistantBg: "#f8f9fa",
-  msgAssistantBorder: "#e5e7eb",
-  msgAssistantText: "#1e293b",
-  inputAreaBg: "#fafaf9",
-  inputAreaBorder: "#f1f0f0",
+  msgAssistantBg: "#ffffff",
+  msgAssistantBorder: "#E5E7EB",
+  msgAssistantText: "#111827",
+  inputAreaBg: "#F8FAFC",
+  inputAreaBorder: "#E5E7EB",
   inputBg: "#ffffff",
-  inputBorder: "#e5e7eb",
-  inputBorderFocus: "#1d4ed8",
-  inputText: "#1e293b",
-  inputPlaceholder: "#9ca3af",
-  sendBtnActive: "linear-gradient(135deg, #1e2d5a, #1d4ed8)",
-  sendBtnDisabled: "#f1f5f9",
+  inputBorder: "#D1D5DB",
+  inputBorderFocus: "#2563EB",
+  inputText: "#111827",
+  inputPlaceholder: "#6B7280",
+  sendBtnActive: "#2563EB",
+  sendBtnDisabled: "#F8FAFC",
   sendBtnIconActive: "#ffffff",
-  sendBtnIconDisabled: "#94a3b8",
+  sendBtnIconDisabled: "#6B7280",
   stopBtnBg: "#fef2f2",
-  stopBtnText: "#dc2626",
-  footerText: "#d1d5db",
-  labelText: "#94a3b8",
-  sourceText: "#cbd5e1",
-  suggestionBg: "#f8f9fa",
-  suggestionBorder: "#e5e7eb",
-  suggestionText: "#475569",
-  suggestionHoverBg: "#eff6ff",
-  suggestionHoverBorder: "#bfdbfe",
-  suggestionHoverText: "#1d4ed8",
+  stopBtnText: "#DC2626",
+  footerText: "#6B7280",
+  labelText: "#6B7280",
+  sourceText: "#6B7280",
+  suggestionBg: "#ffffff",
+  suggestionBorder: "#E5E7EB",
+  suggestionText: "#374151",
+  suggestionHoverBg: "#EFF6FF",
+  suggestionHoverBorder: "#2563EB",
+  suggestionHoverText: "#1D4ED8",
   followupBg: "#ffffff",
-  followupBorder: "#e5e7eb",
-  followupText: "#475569",
-  followupHoverBg: "#eff6ff",
-  followupHoverBorder: "#1d4ed8",
-  followupHoverText: "#1d4ed8",
-  retryColor: "#94a3b8",
-  codeBg: "#1e293b",
-  codeText: "#e2e8f0",
-  tableBorder: "#e5e7eb",
-  tableHeaderBg: "#f1f5f9",
-  tableHeaderText: "#374151",
-  tableAltRow: "rgba(0,0,0,0.02)",
-  hrColor: "#e5e7eb",
+  followupBorder: "#E5E7EB",
+  followupText: "#374151",
+  followupHoverBg: "#EFF6FF",
+  followupHoverBorder: "#2563EB",
+  followupHoverText: "#1D4ED8",
+  retryColor: "#6B7280",
+  codeBg: "#F6F8FA",
+  codeText: "#24292F",
+  tableBorder: "#E5E7EB",
+  tableHeaderBg: "#F8FAFC",
+  tableHeaderText: "#111827",
+  tableAltRow: "rgba(15,23,42,0.02)",
+  hrColor: "#E5E7EB",
   scrollbarTrack: "transparent",
-  scrollbarThumb: "#e5e7eb",
+  scrollbarThumb: "#D1D5DB",
 };
 
 const DARK: Theme = {
@@ -173,7 +179,7 @@ const DARK: Theme = {
   modeBarBorder: "#1e2535",
   modeBtnBg: "#1e2535",
   modeBtnBorder: "#2d3748",
-  modeBtnText: "#9ca3af",
+  modeBtnText: "#6B7280",
   modeBtnHoverBg: "#1e3a8a22",
   modeBtnHoverBorder: "#3b82f6",
   modeBtnHoverText: "#93c5fd",
@@ -347,9 +353,9 @@ function MarkdownRenderer({ text, theme }: MarkdownProps) {
 
   const baseStyle: React.CSSProperties = {
     fontFamily: "var(--font-body, system-ui, sans-serif)",
-    fontSize: 13.5,
+    fontSize: 11.5,
     color: t.msgAssistantText,
-    lineHeight: 1.65,
+    lineHeight: 1.6,
   };
 
   while (i < lines.length) {
@@ -374,7 +380,7 @@ function MarkdownRenderer({ text, theme }: MarkdownProps) {
     // Headings
     if (line.startsWith("### ")) {
       elements.push(
-        <p key={key++} style={{ ...baseStyle, fontWeight: 700, fontSize: 13.5, margin: "10px 0 4px" }}>
+        <p key={key++} style={{ ...baseStyle, fontWeight: 700, fontSize: 11.5, margin: "10px 0 4px" }}>
           <MarkdownLine text={line.slice(4)} color={t.msgAssistantText} />
         </p>
       );
@@ -414,7 +420,7 @@ function MarkdownRenderer({ text, theme }: MarkdownProps) {
           {lang && (
             <div style={{
               background: "#374151",
-              color: "#9ca3af",
+              color: "#6B7280",
               fontFamily: "monospace",
               fontSize: 10,
               padding: "3px 12px",
@@ -624,15 +630,16 @@ function ChatMessage({ msg, theme: t, onFollowUp, onRetry, isLast }: ChatMessage
     >
       {!isUser && (
         <div style={{
-          width: 28,
-          height: 28,
-          borderRadius: "50%",
+          width: 32,
+          height: 32,
+          borderRadius: "10px",
           background: t.headerGradient,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           flexShrink: 0,
-          fontSize: 13,
+          fontSize: 15,
+          boxShadow: "0 2px 8px rgba(37,99,235,0.25)",
         }}>
           🤖
         </div>
@@ -641,15 +648,16 @@ function ChatMessage({ msg, theme: t, onFollowUp, onRetry, isLast }: ChatMessage
       <div style={{ maxWidth: "85%", display: "flex", flexDirection: "column", gap: 6, minWidth: 0 }}>
         {/* Bubble */}
         <div style={{
-          padding: "11px 14px",
-          borderRadius: isUser ? "18px 18px 4px 18px" : "18px 18px 18px 4px",
+          padding: "14px 18px",
+          borderRadius: isUser ? "20px 20px 6px 20px" : "20px 20px 20px 6px",
           background: isUser ? t.msgUserBg : t.msgAssistantBg,
           color: isUser ? t.msgUserText : t.msgAssistantText,
-          border: isUser ? "none" : `1.5px solid ${t.msgAssistantBorder}`,
+          border: isUser ? "none" : `1px solid ${t.msgAssistantBorder}`,
+          boxShadow: isUser ? "0 2px 12px rgba(37,99,235,0.2)" : "0 2px 8px rgba(15,23,42,0.04)",
           wordBreak: "break-word",
         }}>
           {isUser ? (
-            <p style={{ fontFamily: "var(--font-body, sans-serif)", fontSize: 13.5, lineHeight: 1.55, margin: 0, color: t.msgUserText }}>
+            <p style={{ fontFamily: "var(--font-body, sans-serif)", fontSize: 12.5, lineHeight: 1.55, margin: 0, color: t.msgUserText }}>
               {msg.content}
             </p>
           ) : (
@@ -1043,7 +1051,7 @@ export default function BttAssistant() {
           width: 58,
           height: 58,
           borderRadius: "50%",
-          background: open ? "#475569" : t.headerGradient,
+          background: open ? "#374151" : t.headerGradient,
           border: "none",
           cursor: "pointer",
           display: "flex",
@@ -1070,7 +1078,7 @@ export default function BttAssistant() {
             right: 4,
             width: 11,
             height: 11,
-            background: "#22c55e",
+            background: "#16A34A",
             borderRadius: "50%",
             border: "2px solid #ffffff",
           }} />
@@ -1088,14 +1096,15 @@ export default function BttAssistant() {
             bottom: 94,
             right: 24,
             zIndex: 8999,
-            width: 368,
-            maxWidth: "calc(100vw - 32px)",
-            maxHeight: "calc(100dvh - 130px)",
+            width: 390,
+            height: 640,
+            maxWidth: "calc(100vw - 24px)",
+            maxHeight: "calc(100vh - 118px)",
             display: "flex",
             flexDirection: "column",
             background: t.panelBg,
-            border: `1.5px solid ${t.panelBorder}`,
-            borderRadius: 20,
+            border: `1px solid ${t.panelBorder}`,
+            borderRadius: 24,
             boxShadow: t.panelShadow,
             overflow: "hidden",
             animation: "bttSlideUp 0.22s ease forwards",
@@ -1104,37 +1113,37 @@ export default function BttAssistant() {
           {/* Header */}
           <div style={{
             background: t.headerGradient,
-            padding: "14px 16px",
+            padding: "8px 14px",
             display: "flex",
             alignItems: "center",
             gap: 10,
             flexShrink: 0,
           }}>
             <div style={{
-              width: 38,
-              height: 38,
-              borderRadius: "50%",
-              background: "rgba(255,255,255,0.15)",
+              width: 34,
+              height: 34,
+              borderRadius: "10px",
+              background: "rgba(255,255,255,0.16)",
               border: "1.5px solid rgba(255,255,255,0.25)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: 18,
+              fontSize: 16,
               flexShrink: 0,
             }}>
               🤖
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontFamily: "var(--font-display, sans-serif)", fontSize: 15, color: "#ffffff", letterSpacing: "0.06em", lineHeight: 1.2 }}>
-                BTT ASSISTANT
+              <div style={{ fontFamily: "var(--font-display, sans-serif)", fontSize: 17, fontWeight: 700, color: "#ffffff", letterSpacing: "0.01em", lineHeight: 1.2 }}>
+                Behind The Tech AI
               </div>
-              <div style={{ fontFamily: "monospace", fontSize: 8.5, color: "rgba(255,255,255,0.6)", letterSpacing: "0.14em", marginTop: 2 }}>
-                ASK ANYTHING · LEARN EVERYTHING
+              <div style={{ fontFamily: "var(--font-body, sans-serif)", fontSize: 12, color: "rgba(255,255,255,0.75)", marginTop: 1 }}>
+                Ask anything about Data Centers
               </div>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 5, marginRight: 4 }}>
-              <span style={{ width: 7, height: 7, background: "#22c55e", borderRadius: "50%", display: "inline-block" }} />
-              <span style={{ fontFamily: "monospace", fontSize: 9, color: "rgba(255,255,255,0.6)" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 5, marginRight: 2 }}>
+              <span style={{ width: 6, height: 6, background: "#16A34A", borderRadius: "50%", display: "inline-block" }} />
+              <span style={{ fontFamily: "monospace", fontSize: 8.5, color: "rgba(255,255,255,0.6)" }}>
                 {loading ? "Thinking..." : "Ready"}
               </span>
             </div>
@@ -1154,7 +1163,7 @@ export default function BttAssistant() {
               onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "#ffffff"; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.7)"; }}
             >
-              <X size={16} />
+              <X size={15} />
             </button>
           </div>
 
@@ -1175,12 +1184,12 @@ export default function BttAssistant() {
                 disabled={loading}
                 style={{
                   fontFamily: "var(--font-body, sans-serif)",
-                  fontSize: 11,
+                  fontSize: 10,
                   color: t.modeBtnText,
                   background: t.modeBtnBg,
                   border: `1.5px solid ${t.modeBtnBorder}`,
                   borderRadius: 980,
-                  padding: "3px 10px",
+                  padding: "9px 12px",
                   cursor: loading ? "not-allowed" : "pointer",
                   whiteSpace: "nowrap",
                   flexShrink: 0,
@@ -1213,9 +1222,10 @@ export default function BttAssistant() {
             style={{
               flex: 1,
               overflowY: "auto",
-              padding: "14px 14px 4px",
+              padding: "16px 14px 6px",
               display: "flex",
               flexDirection: "column",
+              gap: 14,
               minHeight: 0,
             }}
           >
@@ -1232,13 +1242,17 @@ export default function BttAssistant() {
 
             {/* Initial loading (before first token) */}
             {loading && messages[messages.length - 1]?.content === "" && (
-              <div style={{ display: "flex", gap: 8, alignItems: "flex-end", marginBottom: 14 }}>
-                <div style={{ width: 28, height: 28, borderRadius: "50%", background: t.headerGradient, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 13 }}>
+              <div style={{ display: "flex", gap: 10, alignItems: "flex-end", marginBottom: 14 }}>
+                <div style={{ width: 32, height: 32, borderRadius: "10px", background: t.headerGradient, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 15, boxShadow: "0 2px 8px rgba(37,99,235,0.25)" }}>
                   🤖
                 </div>
-                <div style={{ padding: "11px 14px", background: t.msgAssistantBg, border: `1.5px solid ${t.msgAssistantBorder}`, borderRadius: "18px 18px 18px 4px", display: "flex", alignItems: "center", gap: 7 }}>
-                  <Loader2 size={13} color="#1d4ed8" style={{ animation: "bttSpin 0.8s linear infinite" }} />
-                  <span style={{ fontFamily: "var(--font-body, sans-serif)", fontSize: 13, color: t.labelText }}>
+                <div style={{ padding: "14px 18px", background: t.msgAssistantBg, border: `1px solid ${t.msgAssistantBorder}`, borderRadius: "20px 20px 20px 6px", boxShadow: "0 2px 8px rgba(15,23,42,0.04)", display: "flex", alignItems: "center", gap: 8 }}>
+                  <span style={{ display: "flex", gap: 4 }}>
+                    <span className="btt-typing-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "#9CA3AF", display: "inline-block" }} />
+                    <span className="btt-typing-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "#9CA3AF", display: "inline-block", animationDelay: "0.15s" }} />
+                    <span className="btt-typing-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "#9CA3AF", display: "inline-block", animationDelay: "0.3s" }} />
+                  </span>
+                  <span style={{ fontFamily: "var(--font-body, sans-serif)", fontSize: 13.5, color: t.labelText }}>
                     Soch raha hoon...
                   </span>
                 </div>
@@ -1250,27 +1264,34 @@ export default function BttAssistant() {
 
           {/* Suggestions (only on first message) */}
           {isFirstMessage && !loading && (
-            <div style={{ padding: "4px 12px 8px", flexShrink: 0, borderTop: `1px solid ${t.modeBarBorder}` }}>
-              <p style={{ fontFamily: "monospace", fontSize: 8.5, color: t.labelText, letterSpacing: "0.14em", margin: "6px 0" }}>
-                POPULAR QUESTIONS
+            <div style={{ padding: "8px 16px 14px", flexShrink: 0, borderTop: `1px solid ${t.modeBarBorder}` }}>
+              <p style={{ fontFamily: "var(--font-body, sans-serif)", fontSize: 13, fontWeight: 700, color: t.labelText, letterSpacing: "0.06em", textTransform: "uppercase", margin: "8px 0 6px" }}>
+                Popular Questions
               </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 7 }}>
                 {SUGGESTIONS.map((s) => (
                   <button
                     key={s.label}
                     onClick={() => sendMessage(s.label)}
                     style={{
                       fontFamily: "var(--font-body, sans-serif)",
-                      fontSize: 11.5,
+                      fontSize: 15,
+                      fontWeight: 500,
                       color: t.suggestionText,
                       background: t.suggestionBg,
-                      border: `1.5px solid ${t.suggestionBorder}`,
-                      borderRadius: 980,
-                      padding: "5px 11px",
+                      border: `1px solid ${t.suggestionBorder}`,
+                      borderRadius: 8,
+                      padding: "8px 10px",
+                      height: 70,
                       cursor: "pointer",
                       display: "flex",
-                      alignItems: "center",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      alignItems: "flex-start",
                       gap: 4,
+                      textAlign: "left",
+                      lineHeight: 1.25,
+                      boxShadow: "0 1px 3px rgba(15,23,42,0.03)",
                       transition: "all 0.15s",
                     }}
                     onMouseEnter={(e) => {
@@ -1286,8 +1307,8 @@ export default function BttAssistant() {
                       el.style.color = t.suggestionText;
                     }}
                   >
-                    <span>{s.emoji}</span>
-                    {s.label}
+                    <span style={{ fontSize: 12, flexShrink: 0 }}>{s.emoji}</span>
+                    <span style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{s.label}</span>
                   </button>
                 ))}
               </div>
@@ -1296,24 +1317,24 @@ export default function BttAssistant() {
 
           {/* Input area */}
           <div style={{
-            padding: "10px 12px 14px",
+            padding: "14px 16px 16px",
             borderTop: `1px solid ${t.inputAreaBorder}`,
             background: t.inputAreaBg,
             flexShrink: 0,
-            paddingBottom: "max(14px, env(safe-area-inset-bottom, 14px))",
+            paddingBottom: "max(16px, env(safe-area-inset-bottom, 16px))",
           }}>
             <div style={{
               display: "flex",
-              gap: 8,
+              gap: 10,
               alignItems: "center",
               background: t.inputBg,
               border: `1.5px solid ${inputFocused ? t.inputBorderFocus : t.inputBorder}`,
-              borderRadius: 14,
-              padding: "9px 10px 9px 14px",
+              borderRadius: 999,
+              padding: "6px 6px 6px 15px",
               transition: "border-color 0.2s, box-shadow 0.2s",
               boxShadow: inputFocused
-                ? `0 0 0 3px ${dark ? "rgba(59,130,246,0.15)" : "rgba(29,78,216,0.08)"}`
-                : "none",
+                ? `0 0 0 4px ${dark ? "rgba(59,130,246,0.18)" : "rgba(37,99,235,0.12)"}`
+                : "0 2px 8px rgba(15,23,42,0.03)",
             }}>
               <input
                 ref={inputRef}
@@ -1335,7 +1356,7 @@ export default function BttAssistant() {
                   border: "none",
                   outline: "none",
                   fontFamily: "var(--font-body, sans-serif)",
-                  fontSize: 13.5,
+                  fontSize: 16,
                   color: t.inputText,
                   background: "transparent",
                   lineHeight: 1.5,
@@ -1348,9 +1369,9 @@ export default function BttAssistant() {
                   onClick={stopGeneration}
                   aria-label="Stop generating"
                   style={{
-                    width: 34,
-                    height: 34,
-                    borderRadius: 10,
+                    width: 38,
+                    height: 38,
+                    borderRadius: "50%",
                     background: t.stopBtnBg,
                     border: "none",
                     cursor: "pointer",
@@ -1361,7 +1382,7 @@ export default function BttAssistant() {
                     transition: "opacity 0.15s",
                   }}
                 >
-                  <Square size={13} color={t.stopBtnText} />
+                  <Square size={14} color={t.stopBtnText} />
                 </button>
               ) : (
                 <button
@@ -1369,9 +1390,9 @@ export default function BttAssistant() {
                   disabled={!input.trim()}
                   aria-label="Send message"
                   style={{
-                    width: 34,
-                    height: 34,
-                    borderRadius: 10,
+                    width: 38,
+                    height: 38,
+                    borderRadius: "50%",
                     background: input.trim() ? t.sendBtnActive : t.sendBtnDisabled,
                     border: "none",
                     cursor: input.trim() ? "pointer" : "not-allowed",
@@ -1379,10 +1400,11 @@ export default function BttAssistant() {
                     alignItems: "center",
                     justifyContent: "center",
                     flexShrink: 0,
+                    boxShadow: input.trim() ? "0 2px 8px rgba(37,99,235,0.3)" : "none",
                     transition: "all 0.15s",
                   }}
                 >
-                  <Send size={14} color={input.trim() ? t.sendBtnIconActive : t.sendBtnIconDisabled} />
+                  <Send size={15} color={input.trim() ? t.sendBtnIconActive : t.sendBtnIconDisabled} />
                 </button>
               )}
             </div>
@@ -1407,6 +1429,13 @@ export default function BttAssistant() {
         @keyframes bttBlink {
           0%, 100% { opacity: 1; }
           50%       { opacity: 0; }
+        }
+        @keyframes bttDotBounce {
+          0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+          30%            { transform: translateY(-4px); opacity: 1; }
+        }
+        .btt-typing-dot {
+          animation: bttDotBounce 1.1s ease-in-out infinite;
         }
       `}</style>
     </>

@@ -22,14 +22,18 @@ export const metadata: Metadata = {
 
 export default function RciCalculatorPage() {
   return (
-    <main style={{ maxWidth: "640px", margin: "0 auto", padding: "4rem 1.25rem", textAlign: "center" }}>
+    <main
+      data-homepage-theme="light"
+      style={{ background: "#ffffff", minHeight: "100vh", display: "flex", alignItems: "center" }}
+    >
+      <div style={{ maxWidth: "640px", margin: "0 auto", padding: "4rem 1.5rem", textAlign: "center" }}>
       <div
         style={{
           width: "72px",
           height: "72px",
           borderRadius: "50%",
-          background: "#eaf4ff",
-          border: "2px solid #bfdbfe",
+          background: "#EFF6FF",
+          border: "2px solid #E5E7EB",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -45,7 +49,7 @@ export default function RciCalculatorPage() {
         style={{
           fontSize: "0.8rem",
           fontWeight: 700,
-          color: "#0066CC",
+          color: "#2563EB",
           letterSpacing: "0.08em",
           textTransform: "uppercase",
           marginBottom: "0.75rem",
@@ -54,15 +58,15 @@ export default function RciCalculatorPage() {
         Coming Soon
       </p>
 
-      <h1 style={{ fontSize: "2rem", fontWeight: 800, color: "#0f172a", marginBottom: "0.75rem" }}>
+      <h1 style={{ fontSize: "2rem", fontWeight: 800, color: "#111827", marginBottom: "0.75rem" }}>
         RCI Calculator
       </h1>
 
-      <p style={{ fontSize: "1.05rem", color: "#475569", lineHeight: 1.7, marginBottom: "0.5rem" }}>
+      <p style={{ fontSize: "1.05rem", color: "#374151", lineHeight: 1.7, marginBottom: "0.5rem" }}>
         Calculate Rack Cooling Index for your Data Center cooling design.
       </p>
 
-      <p style={{ fontSize: "0.95rem", color: "#94a3b8", lineHeight: 1.6, marginBottom: "2.5rem" }}>
+      <p style={{ fontSize: "0.95rem", color: "#6B7280", lineHeight: 1.6, marginBottom: "2.5rem" }}>
         We&apos;re building this calculator. In the meantime, explore the engineering calculators
         already available.
       </p>
@@ -74,7 +78,7 @@ export default function RciCalculatorPage() {
           alignItems: "center",
           gap: "0.5rem",
           padding: "0.75rem 1.5rem",
-          background: "#0066CC",
+          background: "#2563EB",
           color: "#ffffff",
           borderRadius: "8px",
           fontWeight: 700,
@@ -84,6 +88,7 @@ export default function RciCalculatorPage() {
       >
         ← Back to All Calculators
       </Link>
+    </div>
     </main>
   );
 }

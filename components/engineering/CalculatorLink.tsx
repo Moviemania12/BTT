@@ -22,29 +22,53 @@ export function CalculatorLink({ calculator }: CalculatorLinkProps) {
   return (
     <Link
       href={calculator.route}
+      className="btt-calc-link-card"
       style={{
-        display: "block",
-        border: "1.5px solid #bfdbfe",
-        borderRadius: "10px",
-        padding: "1rem 1.25rem",
+        display: "flex",
+        alignItems: "center",
+        gap: "1rem",
+        border: "1px solid #E5E7EB",
+        borderRadius: "16px",
+        padding: "1.1rem 1.4rem",
         margin: "1rem 0",
         textDecoration: "none",
-        background: "#eaf4ff",
-        transition: "border-color 0.15s ease",
+        background: "#ffffff",
+        boxShadow: "0 8px 30px rgba(15,23,42,.06)",
+        transition: "border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease",
       }}
     >
-      <span style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
-        <span style={{ fontSize: "1.3rem" }} aria-hidden="true">🧮</span>
-        <span>
-          <span style={{ display: "block", fontWeight: 700, color: "#0066CC", fontSize: "1rem" }}>
-            {calculator.title}
-          </span>
-          <span style={{ display: "block", color: "#475569", fontSize: "0.9rem", marginTop: "0.2rem" }}>
-            {calculator.description}
-          </span>
-        </span>
-        <span style={{ marginLeft: "auto", color: "#0066CC", fontWeight: 700 }} aria-hidden="true">→</span>
-      </span>
+      <div
+        style={{
+          width: 44,
+          height: 44,
+          borderRadius: "10px",
+          background: "#EFF6FF",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: "1.3rem",
+          flexShrink: 0,
+        }}
+        aria-hidden="true"
+      >
+        🧮
+      </div>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <p style={{ margin: 0, fontWeight: 700, color: "#111827", fontSize: "1.02rem" }}>
+          {calculator.title}
+        </p>
+        <p style={{ margin: 0, marginTop: "0.15rem", color: "#374151", fontSize: "0.88rem", lineHeight: 1.5 }}>
+          {calculator.description}
+        </p>
+      </div>
+      <span style={{ color: "#2563EB", fontWeight: 700, fontSize: "1.2rem", flexShrink: 0 }} aria-hidden="true">→</span>
+      <style>{`
+        .btt-calc-link-card:hover {
+          border-color: #2563EB;
+          box-shadow: 0 12px 40px rgba(37,99,235,.12);
+          transform: translateY(-2px);
+        }
+      `}</style>
     </Link>
   );
 }
@@ -54,7 +78,7 @@ export function CalculatorLinkList({ calculators }: { calculators: CalculatorReg
   if (calculators.length === 0) return null;
   return (
     <div style={{ margin: "1.5rem 0" }}>
-      <p style={{ fontSize: "0.85rem", fontWeight: 700, color: "#64748b", marginBottom: "0.5rem", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+      <p style={{ fontSize: "0.85rem", fontWeight: 700, color: "#6B7280", marginBottom: "0.5rem", textTransform: "uppercase", letterSpacing: "0.04em" }}>
         Related Calculators
       </p>
       {calculators.map((calc) => (

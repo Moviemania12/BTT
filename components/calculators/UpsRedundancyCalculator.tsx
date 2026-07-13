@@ -33,13 +33,13 @@ export default function UpsRedundancyCalculator() {
         <CalculatorField label="IT Load" unit="kVA" min={0} value={itLoadKva} onChange={setItLoadKva} />
         <CalculatorField label="UPS Module Size" unit="kVA" min={1} value={moduleSizeKva} onChange={setModuleSizeKva} />
         <div>
-          <label style={{ fontSize: "0.85rem", color: "#475569", display: "block", marginBottom: "0.3rem" }}>
+          <label style={{ fontSize: "0.85rem", color: "#374151", display: "block", marginBottom: "0.3rem" }}>
             Architecture
           </label>
           <select
             value={architecture}
             onChange={(e: ChangeEvent<HTMLSelectElement>) => setArchitecture(e.target.value as RedundancyArchitectureKey)}
-            style={{ width: "100%", padding: "0.45rem 0.6rem", borderRadius: "6px", border: "1.5px solid #cbd5e1" }}
+            style={{ width: "100%", padding: "0.45rem 0.6rem", borderRadius: "6px", border: "1.5px solid #D1D5DB" }}
           >
             <option value="N">N</option>
             <option value="N+1">N+1</option>
@@ -50,29 +50,29 @@ export default function UpsRedundancyCalculator() {
       </div>
 
       {result && (
-        <div style={{ marginTop: "1.2rem", padding: "1rem", background: "#ffffff", borderRadius: "8px", border: "1px solid #bfdbfe" }}>
-          <p style={{ fontSize: "0.85rem", color: "#94a3b8", marginBottom: "0.6rem" }}>{archInfo.label}</p>
+        <div style={{ marginTop: "1.2rem", padding: "1rem", background: "#ffffff", borderRadius: "8px", border: "1px solid #E5E7EB" }}>
+          <p style={{ fontSize: "0.85rem", color: "#6B7280", marginBottom: "0.6rem" }}>{archInfo.label}</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "0.6rem" }}>
             <div>
-              <p style={{ fontSize: "0.78rem", color: "#64748b" }}>Required Modules</p>
-              <p style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0066CC" }}>{result.baseModules}</p>
+              <p style={{ fontSize: "0.78rem", color: "#6B7280" }}>Required Modules</p>
+              <p style={{ fontSize: "1.1rem", fontWeight: 800, color: "#2563EB" }}>{result.baseModules}</p>
             </div>
             <div>
-              <p style={{ fontSize: "0.78rem", color: "#64748b" }}>Spare Modules</p>
-              <p style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0066CC" }}>{result.spareModules}</p>
+              <p style={{ fontSize: "0.78rem", color: "#6B7280" }}>Spare Modules</p>
+              <p style={{ fontSize: "1.1rem", fontWeight: 800, color: "#2563EB" }}>{result.spareModules}</p>
             </div>
             <div>
-              <p style={{ fontSize: "0.78rem", color: "#64748b" }}>Total Modules</p>
-              <p style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0066CC" }}>{result.totalModules}</p>
+              <p style={{ fontSize: "0.78rem", color: "#6B7280" }}>Total Modules</p>
+              <p style={{ fontSize: "1.1rem", fontWeight: 800, color: "#2563EB" }}>{result.totalModules}</p>
             </div>
             <div>
-              <p style={{ fontSize: "0.78rem", color: "#64748b" }}>Capacity Utilization</p>
+              <p style={{ fontSize: "0.78rem", color: "#6B7280" }}>Capacity Utilization</p>
               <p style={{ fontSize: "1.1rem", fontWeight: 800, color: result.capacityUtilizationPercent > 80 ? "#dc2626" : "#16a34a" }}>
                 {result.capacityUtilizationPercent.toFixed(1)}%
               </p>
             </div>
           </div>
-          <p style={{ fontSize: "0.85rem", color: "#475569", marginTop: "0.7rem" }}>
+          <p style={{ fontSize: "0.85rem", color: "#374151", marginTop: "0.7rem" }}>
             <strong>Fault Tolerance:</strong> {archInfo.faultTolerance}
           </p>
         </div>

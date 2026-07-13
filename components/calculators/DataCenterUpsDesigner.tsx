@@ -103,17 +103,18 @@ export default function DataCenterUpsDesigner() {
   return (
     <div
       style={{
-        border: "3px solid #0066CC",
-        borderRadius: "14px",
+        border: "1px solid #E5E7EB",
+        borderRadius: "16px",
         padding: "1.75rem",
         margin: "2rem 0",
-        background: "linear-gradient(135deg, #eaf4ff 0%, #ffffff 100%)",
+        background: "#ffffff",
+        boxShadow: "0 8px 30px rgba(15,23,42,.06)",
       }}
     >
-      <p style={{ fontWeight: 800, fontSize: "1.2rem", color: "#0066CC", marginBottom: "0.3rem" }}>
+      <p style={{ fontWeight: 800, fontSize: "1.2rem", color: "#111827", marginBottom: "0.3rem" }}>
         🧮 Data Center UPS Designer — Complete System Sizing Tool
       </p>
-      <p style={{ fontSize: "0.85rem", color: "#64748b", marginBottom: "1.2rem" }}>
+      <p style={{ fontSize: "0.85rem", color: "#6B7280", marginBottom: "1.2rem" }}>
         Enter rack details to get a full first-pass sizing across UPS, battery, generator, transformer, PDU, and cabling.
       </p>
 
@@ -121,8 +122,8 @@ export default function DataCenterUpsDesigner() {
         <CalculatorField label="Number of Racks" min={1} value={rackCount} onChange={setRackCount} />
         <CalculatorField label="kW per Rack" min={0.5} step={0.5} value={kwPerRack} onChange={setKwPerRack} />
         <div>
-          <label style={{ fontSize: "0.85rem", color: "#475569", display: "block", marginBottom: "0.3rem" }}>Tier Level</label>
-          <select value={tier} onChange={(e: ChangeEvent<HTMLSelectElement>) => setTier(e.target.value as TierLevel)} style={{ width: "100%", padding: "0.5rem 0.7rem", borderRadius: "6px", border: "1.5px solid #cbd5e1" }}>
+          <label style={{ fontSize: "0.85rem", color: "#374151", display: "block", marginBottom: "0.3rem" }}>Tier Level</label>
+          <select value={tier} onChange={(e: ChangeEvent<HTMLSelectElement>) => setTier(e.target.value as TierLevel)} className="btt-tier-select" style={{ width: "100%", padding: "0.5rem 0.7rem", borderRadius: "8px", border: "1.5px solid #D1D5DB", background: "#ffffff", color: "#111827" }}>
             <option value="II">Tier II (N)</option>
             <option value="III">Tier III (N+1)</option>
             <option value="IV">Tier IV (2N)</option>
@@ -134,22 +135,22 @@ export default function DataCenterUpsDesigner() {
 
       {result === null ? (
         <div style={{ padding: "1rem", background: "#fef2f2", borderRadius: "8px", border: "1px solid #fecaca" }}>
-          <p style={{ fontSize: "0.95rem", color: "#dc2626", fontWeight: 600 }}>
+          <p style={{ fontSize: "0.95rem", color: "#DC2626", fontWeight: 600 }}>
             ⚠️ Please enter valid positive values — racks &gt; 0, kW/rack &gt; 0, backup time &gt; 0, and PF between 0.1 and 1.
           </p>
         </div>
       ) : (
         <>
-          <div style={{ background: "#0f172a", borderRadius: "10px", padding: "1rem 1.3rem", marginBottom: "1rem" }}>
-            <p style={{ fontSize: "0.8rem", color: "#94a3b8", marginBottom: "0.2rem" }}>
+          <div style={{ background: "#EFF6FF", borderLeft: "4px solid #2563EB", borderRadius: "12px", padding: "1rem 1.3rem", marginBottom: "1rem" }}>
+            <p style={{ fontSize: "0.8rem", color: "#374151", marginBottom: "0.2rem" }}>
               {result.tierInfo.label} — {result.tierInfo.description}
             </p>
-            <p style={{ fontSize: "1.4rem", fontWeight: 800, color: "#ffffff" }}>
+            <p style={{ fontSize: "1.4rem", fontWeight: 800, color: "#111827" }}>
               Total UPS Capacity Required: {result.redundancy.totalCapacityKva.toFixed(0)} kVA
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "0.8rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: "1rem" }}>
             {[
               { label: "Recommended UPS Modules", value: `${result.redundancy.totalModules} × ${MODULE_KVA} kVA`, note: `Base need: ${result.redundancy.baseModules} modules` },
               { label: "Number of Batteries", value: `${result.totalBatteries}`, note: `${result.batteriesPerString} per string × ${result.parallelPerString} parallel` },
@@ -163,15 +164,24 @@ export default function DataCenterUpsDesigner() {
               { label: "Estimated UPS Efficiency", value: `~${result.redundancy.totalCapacityKva > 500 ? 96 : result.redundancy.totalCapacityKva > 100 ? 95 : 94}%`, note: "Double conversion, typical at this scale" },
               { label: "Required Battery Capacity", value: `${result.requiredAh.toFixed(0)} Ah`, note: `Per string, at ${backupMin} min backup` },
             ].map((item) => (
-              <div key={item.label} style={{ background: "#ffffff", border: "1.5px solid #bfdbfe", borderRadius: "8px", padding: "0.8rem 1rem" }}>
-                <p style={{ fontSize: "0.78rem", color: "#64748b", marginBottom: "0.25rem" }}>{item.label}</p>
-                <p style={{ fontSize: "1.05rem", fontWeight: 800, color: "#0066CC", marginBottom: "0.2rem" }}>{item.value}</p>
-                <p style={{ fontSize: "0.72rem", color: "#94a3b8" }}>{item.note}</p>
+              <div
+                key={item.label}
+                style={{
+                  background: "#ffffff",
+                  border: "1px solid #E5E7EB",
+                  borderRadius: "16px",
+                  padding: "1.25rem 1.4rem",
+                  boxShadow: "0 4px 16px rgba(15,23,42,.04)",
+                }}
+              >
+                <p style={{ fontSize: "0.72rem", fontWeight: 700, color: "#6B7280", letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: "0.5rem" }}>{item.label}</p>
+                <p style={{ fontSize: "1.5rem", fontWeight: 800, color: "#2563EB", marginBottom: "0.35rem", lineHeight: 1.1 }}>{item.value}</p>
+                <p style={{ fontSize: "0.78rem", color: "#6B7280", lineHeight: 1.4 }}>{item.note}</p>
               </div>
             ))}
           </div>
 
-          <p style={{ fontSize: "0.78rem", color: "#94a3b8", marginTop: "1rem", lineHeight: 1.5 }}>
+          <p style={{ fontSize: "0.78rem", color: "#6B7280", marginTop: "1rem", lineHeight: 1.5 }}>
             ⚠️ Yeh sizing tool first-pass estimation deta hai using industry-standard rules of thumb
             (192V DC bus, 100Ah VRLA units, 250kVA modular blocks, 4 A/mm² cable density). Actual
             project design OEM datasheet, site survey, aur structural/electrical consultant verification
@@ -180,6 +190,13 @@ export default function DataCenterUpsDesigner() {
           </p>
         </>
       )}
+      <style>{`
+        .btt-tier-select:focus {
+          border-color: #2563EB;
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+        }
+      `}</style>
     </div>
   );
 }

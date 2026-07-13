@@ -51,17 +51,21 @@ export default function ToolsPage() {
   const domains = Object.keys(byDomain).sort();
 
   return (
-    <main style={{ maxWidth: "900px", margin: "0 auto", padding: "2.5rem 1.25rem" }}>
-      <h1 style={{ fontSize: "2.2rem", fontWeight: 800, color: "#0f172a", marginBottom: "0.5rem" }}>
+    <main
+      data-homepage-theme="light"
+      style={{ background: "#ffffff", minHeight: "100vh", paddingTop: "2.5rem" }}
+    >
+      <div style={{ maxWidth: "960px", margin: "0 auto", padding: "0 1.5rem 4rem" }}>
+      <h1 style={{ fontSize: "2.2rem", fontWeight: 800, color: "#111827", marginBottom: "0.5rem" }}>
         Engineering Calculators
       </h1>
-      <p style={{ fontSize: "1.05rem", color: "#475569", marginBottom: "2.5rem" }}>
+      <p style={{ fontSize: "1.05rem", color: "#374151", marginBottom: "2.5rem" }}>
         Free, interactive Data Center engineering calculators — sizing, capacity, redundancy, and
         more. {calculators.length} calculator{calculators.length === 1 ? "" : "s"} available.
       </p>
 
       {domains.length === 0 && (
-        <p style={{ color: "#94a3b8" }}>No calculators published yet.</p>
+        <p style={{ color: "#6B7280" }}>No calculators published yet.</p>
       )}
 
       {domains.map((domain) => (
@@ -70,10 +74,10 @@ export default function ToolsPage() {
             style={{
               fontSize: "1.3rem",
               fontWeight: 700,
-              color: "#1e293b",
+              color: "#111827",
               marginBottom: "1rem",
               paddingBottom: "0.5rem",
-              borderBottom: "2px solid #e2e8f0",
+              borderBottom: "2px solid #E5E7EB",
             }}
           >
             {DOMAIN_LABELS[domain] ?? domain}
@@ -83,6 +87,7 @@ export default function ToolsPage() {
           ))}
         </section>
       ))}
+      </div>
     </main>
   );
 }

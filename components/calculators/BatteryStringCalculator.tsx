@@ -30,7 +30,7 @@ export default function BatteryStringCalculator() {
           onChange={setBusVoltage}
         />
         <div>
-          <label style={{ fontSize: "0.85rem", color: "#475569", display: "block", marginBottom: "0.3rem" }}>
+          <label style={{ fontSize: "0.85rem", color: "#374151", display: "block", marginBottom: "0.3rem" }}>
             Per-Battery Voltage (V)
           </label>
           <select
@@ -40,7 +40,7 @@ export default function BatteryStringCalculator() {
               width: "100%",
               padding: "0.45rem 0.6rem",
               borderRadius: "6px",
-              border: "1.5px solid #cbd5e1",
+              border: "1.5px solid #D1D5DB",
               background: "#ffffff",
               color: "#111827",
             }}
