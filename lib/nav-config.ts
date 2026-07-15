@@ -526,7 +526,7 @@ export const NAV_ITEMS: NavItem[] = [
   {
     id: "dc-map",
     label: "DC Map",
-    href: "/dc-map",
+    href: "/data-center-map",
     variant: "badge",      // renders as neon-blue pill, no dropdown
   },
   {
@@ -779,7 +779,7 @@ export const MOBILE_NAV: MobileSection[] = [
     id: "dc-map",
     label: "DC Map",
     icon: "🗺️",
-    href: "/dc-map",
+    href: "/data-center-map",
     variant: "badge",
   },
   {
@@ -849,7 +849,7 @@ export function getActiveNavId(pathname: string): string | null {
     ["/learn/it",     "it-infra"],
     ["/learn/ai",     "ai-infra"],
     ["/learn",        "learn"],
-    ["/dc-map",       "dc-map"],
+    ["/data-center-map",       "dc-map"],
     ["/tools",        "tools"],
     ["/resources",    "resources"],
     ["/about",        "about"],
