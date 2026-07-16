@@ -409,6 +409,27 @@
   fill: var(--hp-text-primary);
 }
 
+/* Decorative layers never intercept clicks — hotspots stay tappable */
+.dcm-static,
+.dcm-static * {
+  pointer-events: none;
+}
+
+.dcm-room-label {
+  font-family: var(--hp-font-body);
+  font-size: 7.4px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  fill: #a8b3c0;
+  paint-order: stroke;
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 2.2px;
+  pointer-events: none;
+  user-select: none;
+  text-rendering: geometricPrecision;
+}
+
 .dcm-zone-label {
   font-family: var(--hp-font-body);
   font-size: 9.5px;
@@ -1047,5 +1068,87 @@
   .dcm-node-art,
   .dcm-edge {
     transition: none;
+  }
+}
+
+/* ─── Master engineering plate mode ─────────────────────────────────────────
+ *
+ * When body[data-dcm-plate="1"] is set (by DcMapPlateActivator):
+ *   · The PNG plate (<image class="dcm-plate">) becomes visible.
+ *   · ALL SVG-drawn artwork is hidden: zones, walls, scenery, equipment
+ *     shapes, aisle bands, hall grid, labels, defs gradients.
+ *   · Hotspot HIT AREAS stay fully interactive (transparent, clickable).
+ *   · Selection RINGS stay visible (they highlight over the plate).
+ *   · Edges (power/cooling/network flows) stay visible and animated.
+ *   · Tooltip, info panel, minimap, controls: completely unchanged.
+ *
+ * Default state (no attribute): plate hidden, SVG artwork shows.
+ * A missing plate file leaves the map unchanged (SVG artwork renders).
+ * ───────────────────────────────────────────────────────────────────────── */
+
+/* ── Default: plate hidden ── */
+.dcm-plate {
+  display: none;
+  pointer-events: none;
+}
+
+/* ── Plate ON: show image ── */
+body[data-dcm-plate="1"] .dcm-plate {
+  display: block;
+  image-rendering: auto;
+}
+
+/* ── Plate ON: hide ALL SVG artwork layers ── */
+
+/* Zone ground polygons */
+body[data-dcm-plate="1"] .dcm-scene > polygon {
+  display: none;
+}
+
+/* All static decoration: walls, scenery, hall grid, building shells,
+   parking, roads, trees, crates, grass, aisle bands, room captions */
+body[data-dcm-plate="1"] .dcm-static {
+  display: none;
+}
+
+/* Equipment shape artwork (Box, Cyl, Fan, Screen, Led geometry) */
+body[data-dcm-plate="1"] .dcm-node-art {
+  display: none;
+}
+
+/* All text labels */
+body[data-dcm-plate="1"] .dcm-node-label,
+body[data-dcm-plate="1"] .dcm-zone-label,
+body[data-dcm-plate="1"] .dcm-room-label {
+  display: none;
+}
+
+/* ShapeDefs <defs> block — invisible but still referenced; hide is harmless */
+body[data-dcm-plate="1"] defs {
+  display: none;
+}
+
+/* ── Plate ON: keep interactions ── */
+
+/* Hit area stays transparent and fully clickable */
+body[data-dcm-plate="1"] .dcm-node-hit {
+  fill: transparent;
+  pointer-events: fill;
+}
+
+/* Selection / hover ring stays visible over the plate so user knows what's selected */
+body[data-dcm-plate="1"] .dcm-node-ring {
+  display: block;
+}
+
+/* Edge flow animations stay ON in all learning modes */
+body[data-dcm-plate="1"] .dcm-edge {
+  display: block;
+}
+
+/* ── Plate ON: mobile ── */
+@media (max-width: 860px) {
+  body[data-dcm-plate="1"] .dcm-plate {
+    image-rendering: auto;
   }
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import DcMapExperience from "@/components/dc-map/DcMapExperience";
 import "@/components/dc-map/dc-map.css";
+import DcMapPlateActivator from "@/components/dc-map/DcMapPlateActivator";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // app/data-center-map/page.tsx
@@ -67,6 +68,9 @@ const LEARNING_RESOURCE_SCHEMA = {
 export default function DataCenterMapPage() {
   return (
     <main className="dcm-page" data-homepage-theme="light">
+      {/* Activates plate mode: hides SVG artwork, shows PNG master plate */}
+      <DcMapPlateActivator />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(LEARNING_RESOURCE_SCHEMA) }}
