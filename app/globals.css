@@ -1304,3 +1304,93 @@ img[loading="lazy"] {
   background: linear-gradient(90deg, transparent, var(--hp-accent), transparent);
   opacity: 0.3;
 }
+
+/* ── Policy / legal page prose ─────────────────────────────────────── */
+.hp-prose {
+  color: var(--hp-text-secondary);
+  font-size: 16px;
+  line-height: 1.75;
+}
+.hp-prose h2 {
+  font-family: var(--hp-font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--hp-text-primary);
+  margin: 2.25em 0 0.6em;
+  letter-spacing: -0.01em;
+}
+.hp-prose h3 {
+  font-family: var(--hp-font-heading);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--hp-text-primary);
+  margin: 1.75em 0 0.4em;
+}
+.hp-prose p {
+  margin: 0 0 1.1em;
+}
+.hp-prose ul,
+.hp-prose ol {
+  margin: 0 0 1.1em;
+  padding-left: 1.4em;
+}
+.hp-prose li {
+  margin-bottom: 0.4em;
+}
+.hp-prose a {
+  color: var(--hp-accent);
+  text-decoration: none;
+}
+.hp-prose a:hover {
+  text-decoration: underline;
+}
+.hp-prose strong {
+  color: var(--hp-text-primary);
+  font-weight: 600;
+}
+.hp-prose hr {
+  border: none;
+  border-top: 1px solid var(--hp-border);
+  margin: 2em 0;
+}
+.hp-page-hero {
+  padding: 64px 24px 40px;
+  border-bottom: 1px solid var(--hp-border);
+  background: var(--hp-bg-subtle);
+}
+.hp-page-hero .hp-eyebrow {
+  margin-bottom: 8px;
+}
+.hp-page-meta {
+  font-size: 13px;
+  color: var(--hp-text-muted);
+  margin-top: 12px;
+}
+
+/* ── Breadcrumb nav ─────────────────────────────────────────────────── */
+.hp-breadcrumb {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.hp-page-h1 {
+  font-family: var(--hp-font-heading);
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--hp-text-primary);
+  margin: 6px 0 0;
+  text-align: left;
+}
+
+/* ── Breadcrumb bar (slim strip above page hero) ─────────────────────── */
+.hp-breadcrumb-bar {
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--hp-border);
+  background: var(--hp-bg);
+}
+

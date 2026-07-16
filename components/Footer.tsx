@@ -1,12 +1,36 @@
+import Link from "next/link";
 import { Zap, Youtube, Instagram, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 
 // White theme migration (Phase A): all neon-glow colors replaced with
-// flat hp-* tokens. Structure, links, and copy unchanged.
+// flat hp-* tokens. Footer links updated with real hrefs (Phase 2).
 
-const footerLinks = {
-  "Explore": ["Data Centers", "AI Systems", "Electrical Engineering", "Future Tech", "Smart Infrastructure", "Server Technology"],
-  "Company": ["About Us", "Our Mission", "Press Kit", "Privacy Policy", "Terms of Service"],
-  "Connect": ["YouTube Channel", "Newsletter", "Contact Us", "Partnerships", "Advertise"],
+const footerLinks: Record<string, Array<{ label: string; href: string }>> = {
+  "Resources": [
+    { label: "Non-IT Infrastructure", href: "/learn/non-it" },
+    { label: "IT Infrastructure",     href: "/learn/it" },
+    { label: "AI Infrastructure",     href: "/learn/ai" },
+    { label: "DC Map",                href: "/data-center-map" },
+    { label: "Engineering Tools",     href: "/tools" },
+  ],
+  "Company": [
+    { label: "About BTT",     href: "/about" },
+    { label: "Our Mission",   href: "/about/mission" },
+    { label: "Kumar Anil",    href: "/about/kumar-anil" },
+    { label: "Editorial Policy", href: "/editorial-policy" },
+    { label: "Contact",       href: "/about/contact" },
+  ],
+  "Legal": [
+    { label: "Privacy Policy",          href: "/privacy-policy" },
+    { label: "Terms & Conditions",      href: "/terms-and-conditions" },
+    { label: "Disclaimer",              href: "/disclaimer" },
+    { label: "Cookie Policy",           href: "/cookie-policy" },
+    { label: "Advertising Disclosure",  href: "/advertising-disclosure" },
+    { label: "Affiliate Disclosure",    href: "/affiliate-disclosure" },
+    { label: "Accessibility",           href: "/accessibility" },
+    { label: "Correction Policy",       href: "/correction-policy" },
+    { label: "Fact-Checking Policy",    href: "/fact-checking-policy" },
+    { label: "Content Policy",          href: "/content-policy" },
+  ],
 };
 
 const socialLinks = [
@@ -107,18 +131,18 @@ export default function Footer() {
                 {title}
               </h4>
               <ul className="space-y-4">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
+                {links.map(({ label, href }) => (
+                  <li key={label}>
+                    <Link
+                      href={href}
                       className="text-sm text-[var(--hp-text-secondary)] hover:text-[var(--hp-text-primary)] transition-colors flex items-center gap-1.5 group"
                     >
-                      {link}
+                      {label}
                       <ArrowUpRight
                         size={10}
                         className="opacity-0 group-hover:opacity-100 transition-opacity"
                       />
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -150,7 +174,7 @@ export default function Footer() {
             className="text-xs text-[var(--hp-text-muted)]"
             style={{ fontFamily: "var(--font-mono)" }}
           >
-            support@behindthetech.io
+            hello@behindthetech.in
           </p>
         </div>
       </div>
