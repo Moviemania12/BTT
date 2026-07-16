@@ -4,7 +4,7 @@ import PolicyLayout from "@/components/PolicyLayout";
 export const metadata: Metadata = {
   title: "Fact-Checking Policy — Behind The Tech",
   description:
-    "Behind The Tech technical claims kaise verify karta hai — sources, standards, aur verification process.",
+    "How Behind The Tech verifies technical claims — primary sources used, what we avoid, and how we handle uncertainty.",
   alternates: { canonical: "https://behindthetech.in/fact-checking-policy" },
   robots: { index: true, follow: true },
   openGraph: {

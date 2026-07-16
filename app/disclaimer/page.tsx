@@ -4,7 +4,7 @@ import PolicyLayout from "@/components/PolicyLayout";
 export const metadata: Metadata = {
   title: "Disclaimer — Behind The Tech",
   description:
-    "Behind The Tech content disclaimer — educational purpose, engineering accuracy limits, aur professional advice ke baare mein.",
+    "Behind The Tech publishes educational content. Nothing here replaces professional engineering judgement or site-specific design work.",
   alternates: { canonical: "https://behindthetech.in/disclaimer" },
   robots: { index: true, follow: true },
   openGraph: {

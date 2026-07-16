@@ -4,7 +4,7 @@ import PolicyLayout from "@/components/PolicyLayout";
 export const metadata: Metadata = {
   title: "Cookie Policy — Behind The Tech",
   description:
-    "Behind The Tech kaunse cookies use karta hai, kyu, aur unhe kaise control karein.",
+    "Which cookies behindthetech.in sets, why each is used, and how to manage or disable them.",
   alternates: { canonical: "https://behindthetech.in/cookie-policy" },
   robots: { index: true, follow: true },
   openGraph: {

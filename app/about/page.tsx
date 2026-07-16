@@ -6,14 +6,14 @@ const SITE_URL = "https://behindthetech.in";
 const PAGE_URL = `${SITE_URL}/about`;
 
 export const metadata: Metadata = {
-  title: "About Behind The Tech — India's Data Center Knowledge Platform",
+  title: "About Behind The Tech — Data Center Knowledge Platform",
   description:
-    "Behind The Tech ek engineering education platform hai jo Data Center infrastructure ko beginner se professional level tak explain karta hai. Utility grid se server rack tak — sab kuch ek jagah.",
+    "Behind The Tech is a free engineering education platform covering data center infrastructure — power, cooling, IT, and AI systems — built by a practising data center professional.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "About Behind The Tech",
     description:
-      "India ka pehla dedicated Data Center Knowledge Platform — Non-IT, IT aur AI Infrastructure ko depth mein explain karta hai.",
+      "Free, depth-first data center education covering Non-IT, IT, and AI Infrastructure — built for engineers, by an engineer.",
     url: PAGE_URL,
     siteName: "Behind The Tech",
     type: "website",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "About Behind The Tech",
-    description: "India's Data Center Knowledge Platform — Zero se Engineer tak.",
+    description: "Free, depth-first data center education — built for engineers, by an engineer.",
   },
 };
 
@@ -30,7 +30,7 @@ const ABOUT_SCHEMA = {
   "@type": "AboutPage",
   name: "About Behind The Tech",
   description:
-    "Behind The Tech is India's dedicated Data Center Knowledge Platform — explaining Non-IT, IT and AI Infrastructure from first principles.",
+    "Behind The Tech is a free data center knowledge platform covering Non-IT, IT, and AI Infrastructure — written from hands-on field experience.",
   url: PAGE_URL,
   publisher: {
     "@type": "Organization",
@@ -44,51 +44,51 @@ const PILLARS = [
   {
     icon: "⚡",
     title: "Power Infrastructure",
-    desc: "Utility grid, transformers, UPS systems, gensets, batteries — complete power chain from the grid to the server.",
+    desc: "Utility grid, transformers, UPS systems, gensets, battery banks — the complete power chain from the grid to the server rack.",
   },
   {
     icon: "❄️",
     title: "Cooling Systems",
-    desc: "Chillers, CRAH, cooling towers, pump rooms, free cooling — every method that keeps servers at the right temperature.",
+    desc: "Chillers, CRAH, CRAC, cooling towers, pump rooms, free cooling — every method used to keep IT equipment within operating temperature.",
   },
   {
     icon: "🖥️",
     title: "IT Infrastructure",
-    desc: "Servers, storage, networking, virtualization, hypervisors — the technology stack inside the data hall.",
+    desc: "Servers, storage, networking, virtualization, and hypervisors — the technology stack that runs inside the data hall.",
   },
   {
     icon: "🤖",
     title: "AI Infrastructure",
-    desc: "GPU clusters, high-density cooling, ML platforms, and the infrastructure powering modern AI workloads.",
+    desc: "GPU clusters, high-density cooling, ML platform infrastructure, and the operational characteristics of AI workloads.",
   },
   {
     icon: "🔥",
     title: "Fire & Safety",
-    desc: "VESDA, FM200, suppression systems, evacuation — life safety systems that protect people and equipment.",
+    desc: "VESDA, FM200, clean agent suppression, emergency procedures — the life safety systems that protect both people and equipment.",
   },
   {
     icon: "🛡️",
     title: "Security & Monitoring",
-    desc: "Access control, CCTV, BMS, DCIM, NOC — the systems that keep a data center secure and visible.",
+    desc: "Access control, CCTV, BMS, DCIM, NOC operations — the systems that keep a facility secure and operationally visible.",
   },
 ];
 
 const PHILOSOPHY = [
   {
-    label: "Real Language",
-    body: "Hinglish mein likhte hain — Hindi aur English ka mix — kyunki yahi woh language hai jisme Indian engineers actually sochte hain. Corporate textbook language nahi.",
+    label: "Plain English First",
+    body: "Technical topics are explained in clear, direct language. No jargon without explanation, no padding, no generic marketing copy. Educational articles are written in Hinglish — the natural language Indian engineers think in — while all site pages use plain English.",
   },
   {
-    label: "Engineer-First Depth",
-    body: "Har article sirf define nahi karta — woh explain karta hai kaise kaam karta hai, kahan fail hota hai, kaise commission hota hai, aur Tier III vs Tier IV mein difference kya hota hai.",
+    label: "Mechanism Over Definition",
+    body: "Every article explains how something works, not just what it is. That includes failure modes, commissioning steps, and the difference between how a system behaves in a Tier III versus a Tier IV design.",
   },
   {
     label: "No Paywalls",
-    body: "Sari knowledge free hai. Ek student jo apne shehre mein koi mentor nahi dhundh sakta, woh bhi wahi seekh sake jo ek metro mein baith kar koi senior engineer se seekhta hai.",
+    body: "Everything on this platform is free. A junior engineer in a tier-2 city should have access to the same quality of technical explanation as someone mentored by a senior in a metropolitan data center.",
   },
   {
     label: "Interactive Learning",
-    body: "Static articles kafi nahi hote. Calculators, diagrams, interactive maps, aur quizzes — ye sab milkar learning ko sticky banate hain.",
+    body: "Static text only goes so far. Calculators, diagrams, the interactive DC Map, and hands-on tools make concepts easier to retain and apply.",
   },
 ];
 
@@ -101,13 +101,14 @@ export default function AboutPage() {
           <div className="hp-container hp-container--medium">
             <nav aria-label="Breadcrumb">
               <ol className="hp-breadcrumb">
-          <li><Link href="/" className="hp-link">Home</Link></li>
-          <li aria-hidden="true" className="hp-text-muted">/</li>
-          <li className="hp-text-muted" aria-current="page">About</li>
+                <li><Link href="/" className="hp-link">Home</Link></li>
+                <li aria-hidden="true" className="hp-text-muted">/</li>
+                <li className="hp-text-muted" aria-current="page">About</li>
               </ol>
             </nav>
           </div>
         </div>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ABOUT_SCHEMA) }}
@@ -118,12 +119,12 @@ export default function AboutPage() {
           <div className="hp-container hp-container--narrow" style={{ textAlign: "center" }}>
             <span className="hp-eyebrow">About the Platform</span>
             <h1 className="hp-h1">
-              India&rsquo;s Data Center<br />Knowledge Platform
+              Data Center Knowledge,<br />Taught Properly
             </h1>
             <p className="hp-body">
-              Behind The Tech ek engineering education platform hai jo Data Center infrastructure ko
-              zero se engineer level tak explain karta hai — Hinglish mein, practical depth ke saath,
-              bilkul free.
+              Behind The Tech is a free engineering education platform covering data center
+              infrastructure from first principles — power, cooling, IT, and AI systems, explained
+              with the depth that working engineers actually need.
             </p>
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/learn/non-it" className="hp-btn hp-btn--primary">
@@ -143,21 +144,21 @@ export default function AboutPage() {
               <div>
                 <span className="hp-eyebrow">What is Behind The Tech</span>
                 <h2 id="what-heading" className="hp-h2 hp-h2--spaced">
-                  Ek platform jahan Data Centers seriously padhaate hain
+                  A platform that takes data centers seriously
                 </h2>
                 <p style={{ fontSize: "16px", lineHeight: "1.7", color: "var(--hp-text-secondary)", marginBottom: "16px" }}>
-                  Behind The Tech 2024 mein ek simple problem solve karne ke liye banaya gaya tha:
-                  India mein lakhs of engineers data centers mein kaam karte hain, lekin unhe
-                  practically train karne ke liye koi dedicated platform nahi tha.
+                  Behind The Tech was built to solve a specific problem: India has tens of thousands
+                  of engineers working in data centers, but almost no structured, accessible resource
+                  to help them understand what they are actually working with.
                 </p>
                 <p style={{ fontSize: "16px", lineHeight: "1.7", color: "var(--hp-text-secondary)", marginBottom: "16px" }}>
-                  Engineering colleges power systems padhate hain — lekin data center ke context mein
-                  nahi. Companies on-the-job training deti hain — lekin structured nahi. YouTube pe
-                  videos hain — lekin depth nahi.
+                  Engineering colleges teach power systems — but not in a data center context.
+                  Companies provide on-the-job training — but it is rarely documented or transferable.
+                  YouTube has overviews — but not the operational depth a working engineer needs.
                 </p>
                 <p style={{ fontSize: "16px", lineHeight: "1.7", color: "var(--hp-text-secondary)" }}>
-                  Yahi gap fill karta hai Behind The Tech — ek jagah jahan ek fresher bhi aur ek
-                  senior engineer bhi apni knowledge grow kar sake.
+                  This platform fills that gap: one place where a fresher and a senior engineer can
+                  both find something genuinely useful.
                 </p>
               </div>
               <div>
@@ -184,7 +185,7 @@ export default function AboutPage() {
           <div className="hp-container">
             <div style={{ textAlign: "center", marginBottom: "36px" }}>
               <span className="hp-eyebrow">Curriculum</span>
-              <h2 id="learn-heading" className="hp-h2">Kya seekh sakte ho yahan</h2>
+              <h2 id="learn-heading" className="hp-h2">What you can learn here</h2>
             </div>
             <ul className="hp-grid hp-grid--wide" style={{ listStyle: "none", margin: 0, padding: 0 }}>
               {PILLARS.map((p) => (
@@ -221,17 +222,17 @@ export default function AboutPage() {
           <div className="hp-container hp-container--narrow" style={{ textAlign: "center" }}>
             <span className="hp-eyebrow">The Bigger Picture</span>
             <h2 id="vision-heading" className="hp-h2 hp-h2--spaced">
-              Data Center Knowledge Platform Vision
+              Why this platform exists
             </h2>
             <p style={{ fontSize: "16px", lineHeight: "1.7", color: "var(--hp-text-secondary)", marginBottom: "20px" }}>
-              India 2030 tak duniya ka ek bada data center hub banne ki taraf badh raha hai. Iske liye
-              lakhs of trained professionals chahiye — engineers jo not just hardware handle kar sakein
-              lekin systems ko deeply samjhein.
+              India is building out data center capacity at a rate that outpaces the supply of
+              well-trained infrastructure professionals. The gap is not technical talent — it is
+              access to structured, practical knowledge.
             </p>
             <p style={{ fontSize: "16px", lineHeight: "1.7", color: "var(--hp-text-secondary)", marginBottom: "32px" }}>
-              Behind The Tech ka vision hai ki koi bhi student ya engineer — chahe woh Jaipur mein
-              ho, Jharkhand mein ya Jammu mein — world-class data center education access kar sake.
-              Bina kisi fee ke, bina kisi campus ke.
+              An engineer in Jaipur, Jharkhand, or Jammu should have the same access to data center
+              education as someone being mentored on a project site in Mumbai or Bangalore. That is
+              what this platform is for — no fees, no campus required.
             </p>
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/about/mission" className="hp-btn hp-btn--primary">
@@ -249,7 +250,7 @@ export default function AboutPage() {
           <div className="hp-container hp-container--narrow" style={{ textAlign: "center" }}>
             <h2 className="hp-h2 hp-h2--spaced">Ready to start?</h2>
             <p className="hp-body">
-              Choose your track and begin your Data Center learning journey today.
+              Pick a learning track and work through it at your own pace. Everything is free.
             </p>
             <Link href="/learn/non-it" className="hp-btn hp-btn--primary">
               Explore Learning Tracks →

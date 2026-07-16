@@ -4,7 +4,7 @@ import PolicyLayout from "@/components/PolicyLayout";
 export const metadata: Metadata = {
   title: "Advertising Disclosure — Behind The Tech",
   description:
-    "Behind The Tech par advertising kaise kaam karta hai — Google AdSense, editorial independence, aur sponsored content policy.",
+    "How advertising works on Behind The Tech — Google AdSense, editorial independence, and our policy on sponsored content.",
   alternates: { canonical: "https://behindthetech.in/advertising-disclosure" },
   robots: { index: true, follow: true },
   openGraph: {

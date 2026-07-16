@@ -4,7 +4,7 @@ import PolicyLayout from "@/components/PolicyLayout";
 export const metadata: Metadata = {
   title: "Terms and Conditions — Behind The Tech",
   description:
-    "Behind The Tech ke Terms and Conditions — site use karne ke rules, content ownership, aur limitations.",
+    "Terms governing use of behindthetech.in — permitted uses, content ownership, accuracy limits, and applicable law.",
   alternates: { canonical: "https://behindthetech.in/terms-and-conditions" },
   robots: { index: true, follow: true },
   openGraph: {

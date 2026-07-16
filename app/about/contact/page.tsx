@@ -9,11 +9,11 @@ const PAGE_URL = `${SITE_URL}/about/contact`;
 export const metadata: Metadata = {
   title: "Contact — Behind The Tech",
   description:
-    "Behind The Tech se contact karein — collaboration, topic suggestions, issue reporting, ya business enquiries ke liye. Hum har message padhte hain.",
+    "Get in touch with Behind The Tech — for collaboration, topic suggestions, issue reports, or business enquiries. We read every message.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "Contact — Behind The Tech",
-    description: "Reach out for collaborations, topic suggestions, or business enquiries.",
+    description: "Get in touch for collaborations, topic suggestions, or business enquiries.",
     url: PAGE_URL,
     siteName: "Behind The Tech",
     type: "website",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Contact — Behind The Tech",
-    description: "Reach out for collaborations, topic suggestions, or business enquiries.",
+    description: "Get in touch for collaborations, topic suggestions, or business enquiries.",
   },
 };
 
@@ -51,14 +51,14 @@ const CHANNELS = [
     label: "LinkedIn",
     value: "linkedin.com/company/behindthetech",
     href: "https://linkedin.com/company/behindthetech",
-    desc: "Professional network & updates",
+    desc: "Professional network and updates",
   },
   {
     icon: "▶️",
     label: "YouTube",
     value: "@behindthe_tech",
     href: "https://youtube.com/@behindthe_tech",
-    desc: "Video content & explanations",
+    desc: "Video content and explanations",
   },
 ];
 
@@ -71,15 +71,16 @@ export default function ContactPage() {
           <div className="hp-container hp-container--medium">
             <nav aria-label="Breadcrumb">
               <ol className="hp-breadcrumb">
-          <li><Link href="/" className="hp-link">Home</Link></li>
-          <li aria-hidden="true" className="hp-text-muted">/</li>
-          <li><Link href="/about" className="hp-link">About</Link></li>
-          <li aria-hidden="true" className="hp-text-muted">/</li>
-          <li className="hp-text-muted" aria-current="page">Contact</li>
+                <li><Link href="/" className="hp-link">Home</Link></li>
+                <li aria-hidden="true" className="hp-text-muted">/</li>
+                <li><Link href="/about" className="hp-link">About</Link></li>
+                <li aria-hidden="true" className="hp-text-muted">/</li>
+                <li className="hp-text-muted" aria-current="page">Contact</li>
               </ol>
             </nav>
           </div>
         </div>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(CONTACT_SCHEMA) }}
@@ -91,18 +92,18 @@ export default function ContactPage() {
             <span className="hp-eyebrow">Get In Touch</span>
             <h1 className="hp-h1">Contact Us</h1>
             <p className="hp-body">
-              Collaboration, feedback, topic suggestions, ya koi bhi sawaal — hum har message
-              padhte hain aur reply karte hain.
+              Whether it is a collaboration proposal, a topic you would like to see covered, an
+              error you have spotted, or a business enquiry — we read every message and respond.
             </p>
           </div>
         </section>
 
-        {/* ── Contact Channels + Form ── */}
+        {/* ── Channels + Form ── */}
         <section className="hp-section hp-section--subtle">
           <div className="hp-container hp-container--medium">
             <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "40px", alignItems: "start" }}>
 
-              {/* Left: channels & enquiry types */}
+              {/* Left: channels and enquiry types */}
               <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
                 <div>
                   <span className="hp-eyebrow">Direct Channels</span>
@@ -131,10 +132,10 @@ export default function ContactPage() {
                   <span className="hp-eyebrow">Enquiry Types</span>
                   <div style={{ marginTop: "12px", display: "flex", flexDirection: "column", gap: "8px" }}>
                     {[
-                      { icon: "🤝", label: "Business & Collaboration", desc: "Partnerships, sponsorships, co-creation" },
-                      { icon: "💡", label: "Suggest a Topic", desc: "Koi topic chahiye jo nahi hai?" },
-                      { icon: "🐛", label: "Report an Issue", desc: "Broken page, wrong info, typo" },
-                      { icon: "📰", label: "Newsletter", desc: "New content alerts subscribe karna" },
+                      { icon: "🤝", label: "Business & Collaboration", desc: "Partnerships, sponsorships, co-created content" },
+                      { icon: "💡", label: "Suggest a Topic", desc: "A system or concept you would like covered" },
+                      { icon: "🐛", label: "Report an Issue", desc: "Broken page, incorrect technical information, or a typo" },
+                      { icon: "📰", label: "Newsletter", desc: "Get notified when new content is published" },
                     ].map(({ icon, label, desc }) => (
                       <div key={label} style={{ display: "flex", gap: "10px", alignItems: "flex-start", padding: "10px 0", borderBottom: "1px solid var(--hp-border)" }}>
                         <span style={{ fontSize: "16px", flexShrink: 0 }}>{icon}</span>
@@ -154,17 +155,14 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* ── Newsletter signup ── */}
+        {/* ── Newsletter ── */}
         <section className="hp-section" aria-labelledby="newsletter-heading">
           <div className="hp-container hp-container--narrow" style={{ textAlign: "center" }}>
             <span className="hp-eyebrow">Stay Updated</span>
             <h2 id="newsletter-heading" className="hp-h2 hp-h2--spaced">Newsletter</h2>
             <p className="hp-body">
-              Naye articles, tools aur updates ke liye subscribe karein. Spam nahi — sirf genuine
-              engineering content.
-            </p>
-            <p style={{ fontSize: "14px", color: "var(--hp-text-muted)", marginTop: "-16px", marginBottom: "24px" }}>
-              Newsletter signup coming soon — LinkedIn follow karein updates ke liye abhi.
+              New articles, tools, and updates — no spam, no frequency pressure. Follow on
+              LinkedIn for immediate notifications while the newsletter is being set up.
             </p>
             <a
               href="https://linkedin.com/company/behindthetech"

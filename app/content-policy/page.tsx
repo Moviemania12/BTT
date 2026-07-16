@@ -4,7 +4,7 @@ import PolicyLayout from "@/components/PolicyLayout";
 export const metadata: Metadata = {
   title: "Content Policy — Behind The Tech",
   description:
-    "Behind The Tech content policy — hum kya publish karte hain, kya nahi, aur content standards kya hain.",
+    "What Behind The Tech publishes, the quality standards each article must meet, and what we do not cover.",
   alternates: { canonical: "https://behindthetech.in/content-policy" },
   robots: { index: true, follow: true },
   openGraph: {

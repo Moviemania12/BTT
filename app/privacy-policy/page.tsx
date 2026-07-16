@@ -4,7 +4,7 @@ import PolicyLayout from "@/components/PolicyLayout";
 export const metadata: Metadata = {
   title: "Privacy Policy — Behind The Tech",
   description:
-    "Behind The Tech ki Privacy Policy — hum kya data collect karte hain, kaise use karte hain, aur aapke rights kya hain.",
+    "What data Behind The Tech collects, how it is used, and your rights over that data.",
   alternates: { canonical: "https://behindthetech.in/privacy-policy" },
   robots: { index: true, follow: true },
   openGraph: {

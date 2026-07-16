@@ -4,7 +4,7 @@ import PolicyLayout from "@/components/PolicyLayout";
 export const metadata: Metadata = {
   title: "Affiliate Disclosure — Behind The Tech",
   description:
-    "Behind The Tech affiliate relationships ke baare mein full transparency — kya hai, kya nahi, aur editorial independence.",
+    "Behind The Tech does not currently participate in any affiliate programmes. Full transparency on our commercial relationships.",
   alternates: { canonical: "https://behindthetech.in/affiliate-disclosure" },
   robots: { index: true, follow: true },
   openGraph: {

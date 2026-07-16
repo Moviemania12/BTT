@@ -6,14 +6,14 @@ const SITE_URL = "https://behindthetech.in";
 const PAGE_URL = `${SITE_URL}/about/mission`;
 
 export const metadata: Metadata = {
-  title: "Mission — Behind The Tech | Data Center Education for India",
+  title: "Mission — Behind The Tech | Data Center Education",
   description:
-    "Behind The Tech ka mission hai India mein Data Center professionals ki next generation tayar karna — free, practical, aur depth mein. Vision, roadmap aur knowledge philosophy.",
+    "Behind The Tech's mission: make world-class data center infrastructure education accessible to every engineer in India — free, practical, and built from real field experience.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "Our Mission — Behind The Tech",
     description:
-      "India ko data center professionals chahiye. Behind The Tech unhe engineer bana raha hai — bilkul free.",
+      "Free, depth-first data center education for engineers across India. No paywalls, no campus required.",
     url: PAGE_URL,
     siteName: "Behind The Tech",
     type: "website",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Mission — Behind The Tech",
-    description: "Free, practical Data Center education for every Indian engineer.",
+    description: "Free, practical data center education for every engineer in India.",
   },
 };
 
@@ -44,30 +44,30 @@ const AUDIENCE = [
     icon: "🎓",
     title: "Students",
     items: [
-      "Data center field mein career kaise banayein",
-      "Engineering concepts jo textbooks mein nahi hote",
-      "Real industry terminology aur standards",
-      "Portfolio projects aur learning paths",
+      "How to build a career in the data center field",
+      "Engineering concepts that textbooks rarely cover in this context",
+      "Real industry terminology, standards, and practices",
+      "Structured learning paths from basics to advanced systems",
     ],
   },
   {
     icon: "⚙️",
     title: "Engineers",
     items: [
-      "Cross-domain knowledge — Power engineer cooling samjhe",
-      "Tier II se Tier IV ka implementation difference",
-      "OEM products aur vendor comparison",
-      "Troubleshooting aur failure analysis",
+      "Cross-domain knowledge — a power engineer understanding cooling systems",
+      "The practical difference between Tier II, III, and IV implementations",
+      "OEM product comparison and vendor-neutral technical assessment",
+      "Failure analysis, troubleshooting approaches, and incident response",
     ],
   },
   {
     icon: "🏢",
     title: "Companies",
     items: [
-      "New hires ko faster onboard karna",
-      "Team training material jo internally share ho sake",
-      "Common reference language for multi-discipline teams",
-      "Free resource jo HR budget save kare",
+      "A shared reference for multi-discipline project teams",
+      "Onboarding material that does not need to be built from scratch",
+      "Foundation knowledge that reduces dependence on informal knowledge transfer",
+      "A free resource that extends the reach of internal training",
     ],
   },
 ];
@@ -85,14 +85,14 @@ const ROADMAP = [
     status: "In Progress",
     statusColor: "#f59e0b",
     title: "Non-IT Infrastructure Deep Dives",
-    items: ["Power chain: Grid → UPS → PDU → Rack", "Cooling: Chiller → CRAH → Cold Aisle", "Fire & Safety systems", "Security & Access"],
+    items: ["Power chain: Grid → UPS → PDU → Rack", "Cooling: Chiller → CRAH → Cold Aisle", "Fire detection and suppression systems", "Physical security and access control"],
   },
   {
     phase: "Phase 3",
     status: "Upcoming",
     statusColor: "var(--hp-text-muted)",
     title: "IT Infrastructure",
-    items: ["Servers & Compute", "Storage architecture", "Data center networking", "Virtualization & hypervisors"],
+    items: ["Servers and compute", "Storage architecture", "Data center networking", "Virtualization and hypervisors"],
   },
   {
     phase: "Phase 4",
@@ -105,8 +105,8 @@ const ROADMAP = [
     phase: "Phase 5",
     status: "Vision",
     statusColor: "var(--hp-text-muted)",
-    title: "Certification Prep & Assessments",
-    items: ["CDCP preparation", "Uptime Institute concepts", "Practice quizzes", "Community learning"],
+    title: "Assessments and Community",
+    items: ["Topic quizzes and knowledge checks", "Certification preparation guides", "Community Q&A", "Case study library"],
   },
 ];
 
@@ -119,15 +119,16 @@ export default function MissionPage() {
           <div className="hp-container hp-container--medium">
             <nav aria-label="Breadcrumb">
               <ol className="hp-breadcrumb">
-          <li><Link href="/" className="hp-link">Home</Link></li>
-          <li aria-hidden="true" className="hp-text-muted">/</li>
-          <li><Link href="/about" className="hp-link">About</Link></li>
-          <li aria-hidden="true" className="hp-text-muted">/</li>
-          <li className="hp-text-muted" aria-current="page">Mission</li>
+                <li><Link href="/" className="hp-link">Home</Link></li>
+                <li aria-hidden="true" className="hp-text-muted">/</li>
+                <li><Link href="/about" className="hp-link">About</Link></li>
+                <li aria-hidden="true" className="hp-text-muted">/</li>
+                <li className="hp-text-muted" aria-current="page">Mission</li>
               </ol>
             </nav>
           </div>
         </div>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(MISSION_SCHEMA) }}
@@ -139,37 +140,39 @@ export default function MissionPage() {
             <span className="hp-eyebrow">Why We Exist</span>
             <h1 className="hp-h1">Mission &amp; Vision</h1>
             <p className="hp-body">
-              Behind The Tech ek simple belief pe built hai: world-class engineering education
-              kisi bhi Indian engineer ke liye accessible honi chahiye — chahe unka background,
-              location ya financial status kuch bhi ho.
+              Behind The Tech exists on one simple premise: practical engineering knowledge about
+              data center infrastructure should be freely accessible to anyone who works in or
+              wants to work in this field.
             </p>
           </div>
         </section>
 
-        {/* ── Vision ── */}
+        {/* ── Vision + Mission ── */}
         <section className="hp-section hp-section--subtle" aria-labelledby="vision-heading">
           <div className="hp-container hp-container--medium">
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px" }}>
               <div className="hp-card hp-card--padded" style={{ borderLeft: "3px solid var(--hp-accent)", borderRadius: "var(--hp-radius-card)" }}>
                 <span className="hp-eyebrow">Vision</span>
                 <h2 id="vision-heading" className="hp-h2" style={{ marginBottom: "16px", marginTop: "4px" }}>
-                  Ek aisa India jahan har data center engineer world-class ho
+                  Every data center engineer in India, properly trained
                 </h2>
                 <p style={{ fontSize: "15px", lineHeight: "1.7", color: "var(--hp-text-secondary)", margin: 0 }}>
-                  India 2030 tak ek major data center hub ban raha hai. Humara vision hai ki is
-                  growth ke saath ek trained, knowledgeable engineering workforce bhi ho — jo
-                  globally competitive ho aur locally impactful.
+                  India is expanding its data center capacity rapidly. That growth requires a
+                  large base of engineers who understand these systems at an operational level —
+                  not just on paper. The vision is a generation of professionals who know what
+                  they are working with, because the knowledge was available to them.
                 </p>
               </div>
               <div className="hp-card hp-card--padded" style={{ borderLeft: "3px solid #10b981", borderRadius: "var(--hp-radius-card)" }}>
                 <span className="hp-eyebrow">Mission</span>
                 <h2 className="hp-h2" style={{ marginBottom: "16px", marginTop: "4px" }}>
-                  Data Center knowledge ko India mein democratize karna
+                  Make data center education accessible — no barriers
                 </h2>
                 <p style={{ fontSize: "15px", lineHeight: "1.7", color: "var(--hp-text-secondary)", margin: 0 }}>
-                  Practical, depth-first, free engineering education provide karna — Hinglish mein
-                  — jo students, freshers aur working engineers sabko ek hi platform pe serve
-                  kare. No paywalls. No gatekeeping.
+                  Publish practical, depth-first technical content that engineers can actually
+                  use — written from real field experience, kept free, and structured so that
+                  someone starting from zero can build to a professional level without needing
+                  an expensive course or a mentor on the same project site.
                 </p>
               </div>
             </div>
@@ -180,30 +183,30 @@ export default function MissionPage() {
         <section className="hp-section" aria-labelledby="india-heading">
           <div className="hp-container hp-container--medium">
             <div style={{ textAlign: "center", marginBottom: "36px" }}>
-              <span className="hp-eyebrow">The Problem We're Solving</span>
-              <h2 id="india-heading" className="hp-h2">Why India Needs Data Center Education</h2>
+              <span className="hp-eyebrow">Context</span>
+              <h2 id="india-heading" className="hp-h2">Why this matters in India</h2>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
               {[
                 {
-                  stat: "₹2.3 Lakh Cr+",
-                  label: "India's data center investment pipeline by 2027",
-                  context: "India ek massive data center boom se guzar raha hai lekin trained professionals ki critical shortage hai.",
+                  stat: "₹2.3L Cr+",
+                  label: "Data center investment pipeline in India by 2027",
+                  context: "Massive infrastructure build-out is underway, but the trained professional base to support it is still catching up.",
                 },
                 {
                   stat: "1M+",
-                  label: "New data center jobs projected in India by 2030",
-                  context: "In jobs ke liye power, cooling, IT aur AI infrastructure — sab samajhne wale chahiye.",
+                  label: "Data center jobs projected in India by 2030",
+                  context: "These roles require engineers who understand power, cooling, IT systems, and facility operations — not just one discipline.",
                 },
                 {
                   stat: "0",
-                  label: "Dedicated Indian Data Center education platforms",
-                  context: "International platforms hain — lekin woh India-specific context, Hindi content ya local examples nahi dete.",
+                  label: "Dedicated Indian data center education platforms before this one",
+                  context: "International resources exist, but they rarely address the Indian regulatory context, OEM landscape, or practical field conditions.",
                 },
                 {
                   stat: "84+",
                   label: "Topics published on Behind The Tech — growing weekly",
-                  context: "Har topic real engineering depth ke saath — sirf definitions nahi, complete implementation guide.",
+                  context: "Each article goes beyond definitions — it covers working principles, failure modes, commissioning, and real-world application.",
                 },
               ].map(({ stat, label, context }) => (
                 <div key={stat} className="hp-card hp-card--padded">
@@ -246,18 +249,20 @@ export default function MissionPage() {
         <section className="hp-section" aria-labelledby="open-heading">
           <div className="hp-container hp-container--narrow" style={{ textAlign: "center" }}>
             <span className="hp-eyebrow">Our Commitment</span>
-            <h2 id="open-heading" className="hp-h2 hp-h2--spaced">Open Knowledge Philosophy</h2>
+            <h2 id="open-heading" className="hp-h2 hp-h2--spaced">Open Knowledge</h2>
             <p style={{ fontSize: "16px", lineHeight: "1.7", color: "var(--hp-text-secondary)", marginBottom: "16px" }}>
-              Engineering knowledge kisi ke property nahi hoti. Jo kuch ek generation ne seekha,
-              woh agli generation tak reach karna chahiye — bina kisi barrier ke.
+              Engineering knowledge does not belong to the people who already have it. It belongs
+              to the people who need it. The job of a good educator is to transfer that knowledge
+              as clearly and completely as possible.
             </p>
             <p style={{ fontSize: "16px", lineHeight: "1.7", color: "var(--hp-text-secondary)", marginBottom: "16px" }}>
-              Behind The Tech pe koi paywall nahi hoga. Koi subscription nahi. Koi premium content
-              nahi. Sari articles, diagrams, calculators aur interactive tools — sabke liye, hamesha free.
+              There will be no paywalls on this platform. No premium tiers. No subscription to
+              unlock the useful parts. Every article, calculator, diagram, and tool is free — and
+              will remain free.
             </p>
             <p style={{ fontSize: "16px", lineHeight: "1.7", color: "var(--hp-text-secondary)" }}>
-              Agar ek student Jodhpur ya Jalgaon mein baith kar wahi seekh sakta hai jo ek senior
-              engineer Mumbai ke data center mein decades mein seekhta hai — tabhi yeh platform successful hai.
+              The measure of success is simple: can an engineer anywhere in India use this platform
+              to genuinely understand how a data center works? If yes, the mission is being met.
             </p>
           </div>
         </section>
@@ -295,9 +300,9 @@ export default function MissionPage() {
         {/* ── CTA ── */}
         <section className="hp-section">
           <div className="hp-container hp-container--narrow" style={{ textAlign: "center" }}>
-            <h2 className="hp-h2 hp-h2--spaced">Join the learning community</h2>
+            <h2 className="hp-h2 hp-h2--spaced">Start learning</h2>
             <p className="hp-body">
-              Is mission ka hissa bano. Padho, seekho, aur apne network mein share karo.
+              Work through the learning tracks at your own pace. Everything is free and always will be.
             </p>
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/learn/non-it" className="hp-btn hp-btn--primary">Start with Non-IT</Link>

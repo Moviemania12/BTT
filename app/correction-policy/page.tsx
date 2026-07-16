@@ -4,7 +4,7 @@ import PolicyLayout from "@/components/PolicyLayout";
 export const metadata: Metadata = {
   title: "Correction Policy — Behind The Tech",
   description:
-    "Behind The Tech errors kaise handle karta hai — reporting process, correction timeline, aur transparency.",
+    "How Behind The Tech handles factual errors — how to report them, our review process, and our commitment to transparency.",
   alternates: { canonical: "https://behindthetech.in/correction-policy" },
   robots: { index: true, follow: true },
   openGraph: {

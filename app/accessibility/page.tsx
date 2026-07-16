@@ -4,7 +4,7 @@ import PolicyLayout from "@/components/PolicyLayout";
 export const metadata: Metadata = {
   title: "Accessibility Statement — Behind The Tech",
   description:
-    "Behind The Tech ki accessibility commitment — WCAG standards, current status, aur improvements roadmap.",
+    "Behind The Tech targets WCAG 2.1 Level AA. This page covers current status, known limitations, and our improvement roadmap.",
   alternates: { canonical: "https://behindthetech.in/accessibility" },
   robots: { index: true, follow: true },
   openGraph: {

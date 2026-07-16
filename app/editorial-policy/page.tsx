@@ -4,7 +4,7 @@ import PolicyLayout from "@/components/PolicyLayout";
 export const metadata: Metadata = {
   title: "Editorial Policy — Behind The Tech",
   description:
-    "Behind The Tech ki editorial standards — hum content kaise research, write, review aur update karte hain.",
+    "How Behind The Tech researches, writes, reviews, and updates data center engineering content.",
   alternates: { canonical: "https://behindthetech.in/editorial-policy" },
   robots: { index: true, follow: true },
   openGraph: {
