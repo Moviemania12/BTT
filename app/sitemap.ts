@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://behindthetech.in/articles', lastModified: new Date() },
     { url: 'https://behindthetech.in/learn', lastModified: new Date() },
     { url: 'https://behindthetech.in/tools', lastModified: new Date() },
-    { url: 'https://behindthetech.in/contact', lastModified: new Date() },
+  { url: 'https://behindthetech.in/about/contact', lastModified: new Date() },
 
     { url: 'https://behindthetech.in/privacy-policy', lastModified: new Date() },
     { url: 'https://behindthetech.in/terms-and-conditions', lastModified: new Date() },
