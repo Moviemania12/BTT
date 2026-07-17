@@ -1394,3 +1394,72 @@ img[loading="lazy"] {
   background: var(--hp-bg);
 }
 
+/* ── HeroV2 responsive fix ────────────────────────────────────────────────
+   ADDITIVE ONLY. Desktop layout (≥1024px) is completely unchanged.
+   All rules below only activate at tablet / mobile breakpoints.
+   ──────────────────────────────────────────────────────────────────────── */
+
+/* ── Tablet (768px – 1023px): keep two columns, scale proportionally ── */
+@media (max-width: 1023px) {
+  /* Reduce hero section padding on tablet */
+  .hp-section--hero-compact {
+    padding: 40px 20px 32px;
+  }
+
+  /* Narrow the gap slightly so columns breathe on tablet */
+  .hp-hero-grid,
+  .hp-hero-grid--v2 {
+    gap: 24px;
+  }
+
+  /* Allow illustration to shrink naturally on tablet */
+  .hp-hero-illustration-col .hp-illustration {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ── Mobile (<768px): stack vertically, text first, image below ─────── */
+@media (max-width: 767px) {
+  /* Collapse hero to single column — text column stacks above image column */
+  .hp-hero-grid,
+  .hp-hero-grid--v2 {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  /* Reduce hero section padding on mobile */
+  .hp-section--hero-compact {
+    padding: 28px 16px 32px;
+  }
+
+  /* Illustration column: full width, natural aspect ratio, no fixed height */
+  .hp-hero-illustration-col {
+    width: 100%;
+  }
+
+  .hp-hero-illustration-col .hp-illustration {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    display: block;
+  }
+
+  /* Scale down the hero heading for narrow screens */
+  .hp-h1--xl {
+    font-size: clamp(28px, 7.5vw, 40px);
+    line-height: 1.1;
+  }
+}
+
+/* ── Very small phones (≤390px): extra headroom ────────────────────── */
+@media (max-width: 390px) {
+  .hp-section--hero-compact {
+    padding: 20px 14px 28px;
+  }
+
+  .hp-h1--xl {
+    font-size: clamp(26px, 7vw, 36px);
+  }
+}
