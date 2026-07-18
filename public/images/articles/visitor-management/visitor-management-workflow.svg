@@ -1,0 +1,142 @@
+<svg viewBox="0 0 820 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Visitor management complete workflow showing pre-registration through approval check-in identity verification badge issue access provisioning escort checkout credential expiry and audit record with access control and CCTV integration">
+  <rect width="820" height="520" fill="#f8fafc"/>
+  <text x="410" y="26" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#1e293b">Visitor Management — Complete Workflow</text>
+
+  <!-- ROW 1: Pre-reg → Approval → Check-in → ID Verify -->
+  <!-- PRE-REGISTRATION -->
+  <rect x="20" y="50" width="140" height="72" rx="8" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="90" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#1e40af">1. Pre-Registration</text>
+  <text x="90" y="87" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#3b82f6">Host submits visitor</text>
+  <text x="90" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#3b82f6">name, purpose, time</text>
+  <text x="90" y="113" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#3b82f6">window &amp; areas</text>
+
+  <line x1="160" y1="86" x2="183" y2="86" stroke="#3b82f6" stroke-width="2" marker-end="url(#f1)"/>
+
+  <!-- APPROVAL -->
+  <rect x="185" y="50" width="130" height="72" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="250" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#14532d">2. Approval</text>
+  <text x="250" y="87" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#166534">Authorized approver</text>
+  <text x="250" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#166534">reviews &amp; accepts</text>
+  <text x="250" y="113" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#166534">or rejects</text>
+
+  <line x1="315" y1="86" x2="338" y2="86" stroke="#16a34a" stroke-width="2" marker-end="url(#f2)"/>
+
+  <!-- CHECK-IN -->
+  <rect x="340" y="50" width="130" height="72" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="405" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#6d28d9">3. On-Site</text>
+  <text x="405" y="85" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#6d28d9">Check-In</text>
+  <text x="405" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#7c3aed">Visitor arrives</text>
+  <text x="405" y="113" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#7c3aed">Host notified</text>
+
+  <line x1="470" y1="86" x2="493" y2="86" stroke="#7c3aed" stroke-width="2" marker-end="url(#f3)"/>
+
+  <!-- IDENTITY VERIFY -->
+  <rect x="495" y="50" width="140" height="72" rx="8" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <text x="565" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#92400e">4. Identity</text>
+  <text x="565" y="85" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#92400e">Verification</text>
+  <text x="565" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a16207">Govt ID checked</text>
+  <text x="565" y="113" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a16207">Photo captured</text>
+
+  <line x1="635" y1="86" x2="658" y2="86" stroke="#ca8a04" stroke-width="2" marker-end="url(#f4)"/>
+
+  <!-- BADGE ISSUE -->
+  <rect x="660" y="50" width="140" height="72" rx="8" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="730" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#0369a1">5. Badge /</text>
+  <text x="730" y="85" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#0369a1">Credential Issue</text>
+  <text x="730" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#0284c7">Temporary badge</text>
+  <text x="730" y="113" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#0284c7">printed, RFID issued</text>
+
+  <!-- ROW 2: Access Provisioning → Escort/Visit → Checkout → Expiry/Revoke → Audit -->
+  <!-- down arrow -->
+  <line x1="730" y1="122" x2="730" y2="158" stroke="#0ea5e9" stroke-width="2" marker-end="url(#f5)"/>
+
+  <!-- ACCESS PROVISIONING -->
+  <rect x="660" y="160" width="140" height="72" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+  <text x="730" y="182" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#15803d">6. Access</text>
+  <text x="730" y="195" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#15803d">Provisioning</text>
+  <text x="730" y="210" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#166534">Credential added to</text>
+  <text x="730" y="223" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#166534">access control system</text>
+
+  <line x1="660" y1="196" x2="637" y2="196" stroke="#22c55e" stroke-width="2" marker-end="url(#f6)"/>
+
+  <!-- ESCORT / VISIT -->
+  <rect x="495" y="160" width="140" height="72" rx="8" fill="#fff7ed" stroke="#f59e0b" stroke-width="2"/>
+  <text x="565" y="182" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#92400e">7. Escort /</text>
+  <text x="565" y="195" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#92400e">Authorized Visit</text>
+  <text x="565" y="210" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a16207">Zone-limited access</text>
+  <text x="565" y="223" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a16207">Escort per policy</text>
+
+  <line x1="495" y1="196" x2="472" y2="196" stroke="#f59e0b" stroke-width="2" marker-end="url(#f7)"/>
+
+  <!-- CHECK-OUT -->
+  <rect x="330" y="160" width="140" height="72" rx="8" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="400" y="182" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#991b1b">8. Check-Out</text>
+  <text x="400" y="197" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b91c1c">Visitor signs out</text>
+  <text x="400" y="210" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b91c1c">Badge returned</text>
+  <text x="400" y="223" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b91c1c">to reception</text>
+
+  <line x1="330" y1="196" x2="307" y2="196" stroke="#ef4444" stroke-width="2" marker-end="url(#f8)"/>
+
+  <!-- CREDENTIAL EXPIRY / REVOKE -->
+  <rect x="165" y="160" width="140" height="72" rx="8" fill="#fce7f3" stroke="#db2777" stroke-width="2"/>
+  <text x="235" y="182" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#9d174d">9. Credential</text>
+  <text x="235" y="195" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#9d174d">Expiry / Revoke</text>
+  <text x="235" y="210" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#be185d">Removed from</text>
+  <text x="235" y="223" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#be185d">access control</text>
+
+  <line x1="165" y1="196" x2="142" y2="196" stroke="#db2777" stroke-width="2" marker-end="url(#f9)"/>
+
+  <!-- AUDIT RECORD -->
+  <rect x="20" y="160" width="120" height="72" rx="8" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <text x="80" y="182" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#f1f5f9">10. Audit</text>
+  <text x="80" y="195" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#f1f5f9">Record</text>
+  <text x="80" y="210" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#94a3b8">Retained per</text>
+  <text x="80" y="223" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#94a3b8">policy</text>
+
+  <!-- INTEGRATION BOXES (bottom) -->
+  <rect x="20" y="280" width="780" height="32" rx="6" fill="#0f172a"/>
+  <text x="410" y="301" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10.5" font-weight="700" fill="#e0f2fe">System Integration: Visitor Management System ↔ Access Control System ↔ CCTV / Video Management System</text>
+
+  <!-- AC box -->
+  <rect x="20" y="328" width="260" height="88" rx="8" fill="#1e40af" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="150" y="352" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#dbeafe">Access Control System</text>
+  <text x="150" y="370" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#bfdbfe">• Credential provisioned on badge issue</text>
+  <text x="150" y="384" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#bfdbfe">• Zone and time restrictions enforced</text>
+  <text x="150" y="398" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#bfdbfe">• Credential revoked on checkout/expiry</text>
+  <text x="150" y="412" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#bfdbfe">• Access events synced to audit record</text>
+
+  <!-- CCTV box -->
+  <rect x="296" y="328" width="228" height="88" rx="8" fill="#0f766e" stroke="#0d5e57" stroke-width="1.5"/>
+  <text x="410" y="352" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#ccfbf1">CCTV / Video System</text>
+  <text x="410" y="370" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#99f6e4">• Entry point recording on access event</text>
+  <text x="410" y="384" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#99f6e4">• Snapshot linked to visitor record</text>
+  <text x="410" y="398" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#99f6e4">• Unauthorized movement alerting</text>
+  <text x="410" y="412" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#99f6e4">• Footage available for investigations</text>
+
+  <!-- VMS box -->
+  <rect x="540" y="328" width="260" height="88" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="670" y="352" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#f1f5f9">Visitor Management System</text>
+  <text x="670" y="370" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#94a3b8">• Central registration and audit log</text>
+  <text x="670" y="384" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#94a3b8">• Pre-registration and approval workflow</text>
+  <text x="670" y="398" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#94a3b8">• Badge printing and credential sync</text>
+  <text x="670" y="412" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#94a3b8">• Searchable records per retention policy</text>
+
+  <!-- Footer note -->
+  <rect x="20" y="432" width="780" height="72" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="410" y="453" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" font-weight="700" fill="#1e293b">Important:</text>
+  <text x="410" y="468" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#475569">Visitor data is personal data. Retention periods, consent requirements and data handling obligations</text>
+  <text x="410" y="482" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#475569">depend on applicable jurisdiction, organizational policy and contractual/regulatory requirements.</text>
+  <text x="410" y="497" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#475569">Integration reliability between visitor management and access control is critical — credential revocation must be timely.</text>
+
+  <defs>
+    <marker id="f1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#3b82f6"/></marker>
+    <marker id="f2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#16a34a"/></marker>
+    <marker id="f3" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#7c3aed"/></marker>
+    <marker id="f4" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#ca8a04"/></marker>
+    <marker id="f5" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#0ea5e9"/></marker>
+    <marker id="f6" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#22c55e"/></marker>
+    <marker id="f7" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#f59e0b"/></marker>
+    <marker id="f8" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#ef4444"/></marker>
+    <marker id="f9" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#db2777"/></marker>
+  </defs>
+</svg>

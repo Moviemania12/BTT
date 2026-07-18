@@ -1,0 +1,101 @@
+<svg viewBox="0 0 820 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mantrap interlock sequence diagram showing outer door authentication leading to vestibule occupancy check then inner door unlock plus emergency life-safety path per approved design">
+  <rect width="820" height="500" fill="#f8fafc"/>
+  <text x="410" y="28" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#1e293b">Mantrap Interlock — Entry Sequence Diagram</text>
+
+  <!-- STEP 1 -->
+  <rect x="20" y="60" width="120" height="66" rx="8" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="80" y="83" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#1e40af">1. Outer Door</text>
+  <text x="80" y="97" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#1e40af">Authentication</text>
+  <text x="80" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#3b82f6">Card / Biometric</text>
+  <text x="80" y="123" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#3b82f6">presented at Reader 1</text>
+
+  <!-- STEP 2 -->
+  <rect x="185" y="60" width="120" height="66" rx="8" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="245" y="83" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#1e40af">2. Outer Door</text>
+  <text x="245" y="97" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#1e40af">Unlocks</text>
+  <text x="245" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#3b82f6">Inner door remains</text>
+  <text x="245" y="123" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#3b82f6">LOCKED</text>
+
+  <!-- STEP 3 -->
+  <rect x="350" y="60" width="120" height="66" rx="8" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="410" y="83" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#0369a1">3. User Enters</text>
+  <text x="410" y="97" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#0369a1">Vestibule</text>
+  <text x="410" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#0284c7">Outer door closes</text>
+  <text x="410" y="123" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#0284c7">and latches</text>
+
+  <!-- STEP 4 -->
+  <rect x="515" y="60" width="135" height="66" rx="8" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <text x="582" y="83" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#92400e">4. Occupancy</text>
+  <text x="582" y="97" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#92400e">Check</text>
+  <text x="582" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a16207">Sensor confirms</text>
+  <text x="582" y="123" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a16207">1 person only</text>
+
+  <!-- STEP 5 -->
+  <rect x="695" y="60" width="105" height="66" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="747" y="83" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#14532d">5. Inner Door</text>
+  <text x="747" y="97" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#14532d">Auth</text>
+  <text x="747" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#166534">Reader 2</text>
+  <text x="747" y="123" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#166534">credential</text>
+
+  <!-- Step arrows (top) -->
+  <line x1="140" y1="93" x2="183" y2="93" stroke="#3b82f6" stroke-width="2" marker-end="url(#d1)"/>
+  <line x1="305" y1="93" x2="348" y2="93" stroke="#3b82f6" stroke-width="2" marker-end="url(#d1)"/>
+  <line x1="470" y1="93" x2="513" y2="93" stroke="#0ea5e9" stroke-width="2" marker-end="url(#d2)"/>
+  <line x1="650" y1="93" x2="693" y2="93" stroke="#ca8a04" stroke-width="2" marker-end="url(#d3)"/>
+
+  <!-- STEP 6 — SUCCESS path -->
+  <rect x="695" y="185" width="105" height="60" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="747" y="208" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#14532d">6. Inner Door</text>
+  <text x="747" y="222" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#14532d">Unlocks</text>
+  <text x="747" y="237" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#166534">Access granted</text>
+
+  <line x1="747" y1="126" x2="747" y2="183" stroke="#16a34a" stroke-width="2" marker-end="url(#d4)"/>
+
+  <!-- STEP 7 — RESULT -->
+  <rect x="695" y="300" width="105" height="60" rx="8" fill="#f0fdf4" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="747" y="323" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#15803d">7. User Enters</text>
+  <text x="747" y="337" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#15803d">Secure Area</text>
+  <text x="747" y="352" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#166534">Event logged</text>
+  <line x1="747" y1="245" x2="747" y2="298" stroke="#16a34a" stroke-width="2" marker-end="url(#d4)"/>
+
+  <!-- FAIL PATH — tailgating detected -->
+  <rect x="515" y="185" width="135" height="60" rx="8" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="582" y="208" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#991b1b">FAIL: Multiple</text>
+  <text x="582" y="222" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#991b1b">Persons Detected</text>
+  <text x="582" y="237" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b91c1c">Alarm · Inner door</text>
+  <text x="582" y="248" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b91c1c">stays locked</text>
+
+  <!-- Arrow from step 4 down to fail -->
+  <line x1="582" y1="126" x2="582" y2="183" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#d5)"/>
+  <text x="606" y="160" font-family="system-ui,sans-serif" font-size="8.5" fill="#ef4444">Tailgating</text>
+  <text x="606" y="171" font-family="system-ui,sans-serif" font-size="8.5" fill="#ef4444">detected</text>
+
+  <!-- EMERGENCY PATH -->
+  <rect x="20" y="185" width="440" height="76" rx="8" fill="#fff7ed" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7,4"/>
+  <text x="240" y="206" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#c2410c">Emergency / Life-Safety Path</text>
+  <text x="240" y="224" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#92400e">Emergency release behavior is defined by the approved system design,</text>
+  <text x="240" y="239" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#92400e">applicable fire / life-safety code, and AHJ requirements.</text>
+  <text x="240" y="254" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#92400e">Egress path must be maintained per approved sequence of operations.</text>
+
+  <!-- INTERLOCK CONTROLLER -->
+  <rect x="200" y="310" width="280" height="46" rx="8" fill="#1e293b"/>
+  <text x="340" y="330" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#f1f5f9">Interlock Controller / PLC</text>
+  <text x="340" y="346" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#94a3b8">Receives: door contacts · occupancy · access control · life-safety signals</text>
+  <line x1="340" y1="261" x2="340" y2="308" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#d6)"/>
+
+  <!-- SUMMARY BAR -->
+  <rect x="20" y="415" width="780" height="72" rx="8" fill="#1e293b"/>
+  <text x="410" y="438" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#f1f5f9">INTERLOCK RULE: Only ONE door open at a time.</text>
+  <text x="410" y="454" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#94a3b8">If outer door is open → inner door is mechanically/electronically locked. If inner is open → outer is locked.</text>
+  <text x="410" y="470" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#94a3b8">Occupancy detection prevents inner from opening when more than one person detected in vestibule.</text>
+  <text x="410" y="483" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#64748b">Actual system design and life-safety behavior must comply with applicable codes, AHJ requirements, and approved sequence of operations.</text>
+
+  <defs>
+    <marker id="d1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#3b82f6"/></marker>
+    <marker id="d2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#0ea5e9"/></marker>
+    <marker id="d3" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#ca8a04"/></marker>
+    <marker id="d4" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#16a34a"/></marker>
+    <marker id="d5" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#ef4444"/></marker>
+    <marker id="d6" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#f59e0b"/></marker>
+  </defs>
+</svg>

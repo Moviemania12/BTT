@@ -1,0 +1,85 @@
+<svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Data center door access control installation showing card reader, electromagnetic lock, door contact sensor, REX and access controller">
+  <rect width="800" height="460" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="400" y="32" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#1e293b">Access Control — Secure Door Installation</text>
+
+  <!-- DOOR FRAME -->
+  <rect x="290" y="60" width="220" height="300" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="300" y="70" width="200" height="280" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- door handle -->
+  <rect x="480" y="195" width="12" height="40" rx="4" fill="#64748b"/>
+
+  <!-- Door label -->
+  <text x="400" y="220" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#475569">Secured Door</text>
+
+  <!-- EM LOCK at top of door -->
+  <rect x="340" y="62" width="120" height="16" rx="3" fill="#1e40af"/>
+  <text x="400" y="74" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#fff" font-weight="600">ELECTROMAGNETIC LOCK</text>
+
+  <!-- CARD READER (left, entry side) -->
+  <rect x="208" y="160" width="64" height="100" rx="8" fill="#1e40af" stroke="#1e3a8a" stroke-width="1.5"/>
+  <rect x="218" y="170" width="44" height="30" rx="3" fill="#3b82f6"/>
+  <circle cx="240" cy="215" r="12" fill="#60a5fa"/>
+  <circle cx="240" cy="215" r="7" fill="#93c5fd"/>
+  <text x="240" y="270" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#1e3a8a" font-weight="600">Card Reader</text>
+  <text x="240" y="282" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#475569">(Entry Side)</text>
+
+  <!-- arrow: reader to door -->
+  <line x1="272" y1="210" x2="290" y2="210" stroke="#3b82f6" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- DOOR CONTACT SENSOR -->
+  <rect x="295" y="340" width="40" height="18" rx="3" fill="#0f766e"/>
+  <rect x="337" y="340" width="20" height="18" rx="3" fill="#14b8a6"/>
+  <text x="330" y="373" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#0f766e" font-weight="600">Door Contact</text>
+
+  <!-- REX (right, exit side) -->
+  <rect x="530" y="170" width="60" height="80" rx="8" fill="#7c3aed" stroke="#6d28d9" stroke-width="1.5"/>
+  <text x="560" y="207" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#fff" font-weight="700">REX</text>
+  <text x="560" y="220" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#ddd6fe">Motion</text>
+  <text x="560" y="231" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#ddd6fe">Sensor</text>
+  <text x="560" y="265" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#6d28d9" font-weight="600">Request-to-Exit</text>
+  <text x="560" y="277" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#475569">(Exit Side)</text>
+  <line x1="530" y1="210" x2="510" y2="210" stroke="#7c3aed" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- ACCESS CONTROLLER (bottom) -->
+  <rect x="310" y="400" width="180" height="46" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <rect x="320" y="408" width="25" height="14" rx="2" fill="#22d3ee"/>
+  <rect x="350" y="408" width="25" height="14" rx="2" fill="#4ade80"/>
+  <rect x="380" y="408" width="25" height="14" rx="2" fill="#f59e0b"/>
+  <text x="400" y="432" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#e2e8f0" font-weight="700">Access Controller</text>
+  <text x="400" y="443" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#94a3b8">Authenticate · Decide · Control</text>
+
+  <!-- Wiring lines: reader → controller -->
+  <line x1="240" y1="285" x2="240" y2="420" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="240" y1="420" x2="310" y2="420" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <!-- door contact → controller -->
+  <line x1="335" y1="358" x2="370" y2="400" stroke="#0f766e" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <!-- REX → controller -->
+  <line x1="560" y1="250" x2="560" y2="420" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="560" y1="420" x2="490" y2="420" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <!-- EM lock → controller -->
+  <line x1="400" y1="78" x2="400" y2="100" stroke="#1e40af" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="400" y1="100" x2="170" y2="100" stroke="#1e40af" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="170" y1="100" x2="170" y2="430" stroke="#1e40af" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="170" y1="430" x2="310" y2="430" stroke="#1e40af" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Legend -->
+  <rect x="30" y="390" width="140" height="58" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="38" y="405" font-family="system-ui,sans-serif" font-size="9.5" font-weight="700" fill="#1e293b">Signal Paths</text>
+  <line x1="38" y1="416" x2="58" y2="416" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="62" y="420" font-family="system-ui,sans-serif" font-size="9" fill="#475569">Reader / Credential</text>
+  <line x1="38" y1="430" x2="58" y2="430" stroke="#0f766e" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="62" y="434" font-family="system-ui,sans-serif" font-size="9" fill="#475569">Door Status</text>
+  <line x1="38" y1="444" x2="58" y2="444" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="62" y="448" font-family="system-ui,sans-serif" font-size="9" fill="#475569">REX / Exit Signal</text>
+
+  <defs>
+    <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#3b82f6"/>
+    </marker>
+    <marker id="arr2" markerWidth="7" markerHeight="7" refX="1" refY="3.5" orient="auto">
+      <polygon points="7 0, 0 3.5, 7 7" fill="#7c3aed"/>
+    </marker>
+  </defs>
+</svg>

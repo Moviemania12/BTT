@@ -1,0 +1,64 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Data center secure entrance with biometric authentication showing fingerprint reader and face recognition terminal at server room door connecting to access controller">
+  <rect width="800" height="450" fill="#f8fafc"/>
+  <text x="400" y="30" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#1e293b">Biometric Authentication at Data Center Entry</text>
+
+  <!-- DOOR -->
+  <rect x="300" y="65" width="200" height="280" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="310" y="75" width="180" height="260" rx="3" fill="#cbd5e1"/>
+  <rect x="468" y="185" width="12" height="40" rx="4" fill="#64748b"/>
+  <text x="400" y="215" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#475569">Secured Door</text>
+  <text x="400" y="230" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#64748b">Server Room Entry</text>
+
+  <!-- FINGERPRINT READER -->
+  <rect x="166" y="100" width="100" height="130" rx="10" fill="#1e40af" stroke="#1e3a8a" stroke-width="2"/>
+  <text x="216" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#bfdbfe" font-weight="600">Fingerprint</text>
+  <text x="216" y="134" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#bfdbfe" font-weight="600">Reader</text>
+  <!-- fingerprint icon -->
+  <ellipse cx="216" cy="165" rx="22" ry="25" fill="none" stroke="#60a5fa" stroke-width="2"/>
+  <path d="M204 155 Q216 142 228 155 Q236 165 228 175 Q216 185 204 175 Q196 165 204 155" fill="none" stroke="#93c5fd" stroke-width="1.5"/>
+  <path d="M208 162 Q216 152 224 162 Q229 170 224 178" fill="none" stroke="#bfdbfe" stroke-width="1.5"/>
+  <!-- LED -->
+  <circle cx="216" cy="200" r="5" fill="#4ade80"/>
+  <text x="216" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#1e3a8a" font-weight="600">Fingerprint</text>
+  <text x="216" y="257" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#475569">+ Card (Optional)</text>
+
+  <!-- FACE RECOGNITION TERMINAL -->
+  <rect x="534" y="100" width="100" height="130" rx="10" fill="#0f766e" stroke="#0d5e57" stroke-width="2"/>
+  <text x="584" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#ccfbf1" font-weight="600">Face</text>
+  <text x="584" y="134" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#ccfbf1" font-weight="600">Recognition</text>
+  <!-- camera icon -->
+  <rect x="566" y="148" width="36" height="28" rx="4" fill="#14b8a6"/>
+  <circle cx="584" cy="162" r="8" fill="#0f766e"/>
+  <circle cx="584" cy="162" r="5" fill="#99f6e4"/>
+  <circle cx="584" cy="162" r="2" fill="#0f766e"/>
+  <!-- face outline dots -->
+  <circle cx="578" cy="188" r="2" fill="#99f6e4"/>
+  <circle cx="584" cy="192" r="2" fill="#99f6e4"/>
+  <circle cx="590" cy="188" r="2" fill="#99f6e4"/>
+  <path d="M576 197 Q584 202 592 197" fill="none" stroke="#99f6e4" stroke-width="1.5"/>
+  <circle cx="584" cy="200" r="5" fill="#4ade80"/>
+  <text x="584" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#0d5e57" font-weight="600">Face Recognition</text>
+  <text x="584" y="257" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#475569">Contactless</text>
+
+  <!-- Multi-factor label -->
+  <rect x="166" y="275" width="468" height="28" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+  <text x="400" y="293" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#92400e">Multi-factor: Card + Biometric — Higher assurance based on risk assessment and security policy</text>
+
+  <!-- ACCESS CONTROLLER -->
+  <rect x="316" y="380" width="168" height="46" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="400" y="399" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#f1f5f9">Access Controller</text>
+  <text x="400" y="413" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#94a3b8">Authentication Decision · Lock Control</text>
+
+  <!-- arrows -->
+  <line x1="266" y1="210" x2="300" y2="210" stroke="#3b82f6" stroke-width="2" marker-end="url(#b1)"/>
+  <line x1="534" y1="210" x2="500" y2="210" stroke="#14b8a6" stroke-width="2" marker-end="url(#b2)"/>
+  <line x1="216" y1="270" x2="216" y2="395" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="216" y1="395" x2="316" y2="395" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#b1)"/>
+  <line x1="584" y1="270" x2="584" y2="395" stroke="#14b8a6" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="584" y1="395" x2="484" y2="395" stroke="#14b8a6" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#b2)"/>
+
+  <defs>
+    <marker id="b1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#3b82f6"/></marker>
+    <marker id="b2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#14b8a6"/></marker>
+  </defs>
+</svg>
