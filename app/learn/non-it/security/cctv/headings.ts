@@ -1,0 +1,25 @@
+import type { ArticleHeading } from "@/components/ArticlePage";
+
+export const HEADINGS: ArticleHeading[] = [
+  { id: "what-is-cctv",              text: "What is CCTV?",                                   level: 1 },
+  { id: "why-cctv-in-dc",            text: "Why CCTV is Required in a Data Center",            level: 1 },
+  { id: "cctv-architecture",         text: "CCTV System Architecture",                         level: 1 },
+  { id: "ip-cameras",                text: "IP Cameras — The Eyes of the System",              level: 1 },
+  { id: "camera-types",              text: "Camera Types: Dome, Bullet, PTZ & More",           level: 1 },
+  { id: "lens-ir-wdr",               text: "Lens, IR Night Vision & WDR",                      level: 1 },
+  { id: "nvr-dvr-vms",               text: "NVR, DVR and VMS",                                 level: 1 },
+  { id: "poe-switch",                text: "PoE Switch & Network Connectivity",                 level: 1 },
+  { id: "storage",                   text: "Storage: Local HDD, NAS & RAID",                   level: 1 },
+  { id: "storage-planning",          text: "Recording Retention & Capacity Planning",           level: 1 },
+  { id: "recording-modes",           text: "Recording Modes & Reliability",                    level: 1 },
+  { id: "camera-placement",          text: "Camera Placement in a Data Center",                level: 1 },
+  { id: "time-sync",                 text: "Time Synchronization & NTP",                       level: 1 },
+  { id: "integration",               text: "Integration with Access Control & Other Systems",  level: 1 },
+  { id: "cybersecurity",             text: "Cybersecurity for IP CCTV",                        level: 1 },
+  { id: "preventive-maintenance",    text: "Preventive Maintenance",                           level: 1 },
+  { id: "troubleshooting",           text: "CCTV Troubleshooting — Engineer Step-by-Step",     level: 1 },
+  { id: "advantages-limitations",    text: "Advantages and Limitations",                       level: 1 },
+  { id: "illustrative-scenario",     text: "Illustrative Scenario",                            level: 1 },
+  { id: "interview-questions",       text: "Interview Questions",                              level: 1 },
+  { id: "key-takeaways",             text: "Key Takeaways",                                    level: 1 },
+];
