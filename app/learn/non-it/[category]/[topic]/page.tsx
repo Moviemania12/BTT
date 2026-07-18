@@ -25,7 +25,7 @@ type PageProps = {
 // forces Next.js to resolve the static page.tsx instead.
 //
 // Add every new article slug here as it is published.
-const STATIC_ARTICLE_SLUGS = new Set(["ups", "battery-bank", "sts", "pdu", "earthing", "lightning-protection", "pac", "crac", "chiller", "cooling-tower", "containment", "airflow-management", "rci", "vesda", "fm200", "novec-1250", "novec", "hydrant", "sprinkler", "cctv"]);
+const STATIC_ARTICLE_SLUGS = new Set(["ups", "battery-bank", "sts", "pdu", "earthing", "lightning-protection", "pac", "crac", "chiller", "cooling-tower", "containment", "airflow-management", "rci", "vesda", "fm200", "novec-1250", "novec", "hydrant", "sprinkler", "cctv", "access-control", "biometrics", "mantrap", "visitor-management"]);
 
 export default async function NonItTopicPage(props: PageProps) {
   const params = await props.params;
@@ -109,3 +109,4 @@ export async function generateMetadata(props: PageProps) {
     description: topic.description,
   };
 }
+
