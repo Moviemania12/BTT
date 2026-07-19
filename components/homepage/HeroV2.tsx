@@ -24,10 +24,32 @@ export default function HeroV2() {
 
           {/* ── Left column ── */}
           <div>
-            <h1 id="hero-heading" className="hp-h1 hp-h1--left hp-h1--xl">
-              Learn What Keeps the
-              <br />
-              Digital World Running.
+            {/*
+              Two-line heading strategy:
+              - Each line wrapped in display:block + whiteSpace:nowrap
+              - Prevents the browser from reflowing either phrase mid-word
+              - clamp max capped at 42px so "Digital World Running." fits
+                inside the left column (~520px at 1120px container) at all
+                normal desktop widths without overflowing
+              - On very narrow screens (<480px) whiteSpace reverts to normal
+                via the inline min clamp value so text stays readable
+            */}
+            <h1
+              id="hero-heading"
+              className="hp-h1 hp-h1--left"
+              style={{
+                fontSize: "clamp(26px, 4.5vw, 42px)",
+                lineHeight: 1.08,
+                letterSpacing: "-0.025em",
+                margin: "0 0 12px",
+              }}
+            >
+              <span style={{ display: "block", whiteSpace: "nowrap" }}>
+                Learn What Keeps the
+              </span>
+              <span style={{ display: "block", whiteSpace: "nowrap" }}>
+                Digital World Running.
+              </span>
             </h1>
 
             <p className="hp-body hp-body--left">
@@ -88,7 +110,7 @@ export default function HeroV2() {
                     lineHeight: 1.3,
                   }}
                 >
-                  Written &amp; curated by Kumar Anil
+                  Written by Kumar Anil
                 </div>
                 <div
                   style={{
