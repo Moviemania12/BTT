@@ -168,7 +168,7 @@ function ArticleHero({ topic, readingTimeMinutes }: { topic: Topic; readingTimeM
             AK
           </span>
           <span style={{ fontFamily: "var(--font-body)", fontSize: 13.5, color: "var(--hp-text-secondary)" }}>
-            Anil Kumar
+            Kumar Anil
           </span>
         </span>
 

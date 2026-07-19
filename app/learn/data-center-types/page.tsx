@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Behind The Tech",
     type: "article",
     publishedTime: "2026-06-21",
-    authors: ["Anil Kumar"],
+    authors: ["Kumar Anil"],
   },
   twitter: {
     card: "summary_large_image",

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Data Center internet ka dil hai. Yahin se YouTube, WhatsApp aur Cloud services chalti hain. Janiye Data Center ke baare mein sab kuch — components, cooling, security aur India ka future.",
   keywords: ["data center kya hai", "data center in hindi", "server room", "cloud computing", "AI infrastructure India"],
-  authors: [{ name: "Anil Kumar" }],
+  authors: [{ name: "Kumar Anil" }],
   openGraph: {
     title: "Data Center Kya Hota Hai? — Behind The Tech",
     description:
@@ -58,7 +58,7 @@ function ArticleMeta() {
         </div>
         <div>
           <div className="text-[11px] tracking-widest text-[var(--color-text-muted)] uppercase" style={{ fontFamily: "var(--font-mono)" }}>Author</div>
-          <div className="text-sm font-semibold text-[var(--color-text-primary)]">Anil Kumar</div>
+          <div className="text-sm font-semibold text-[var(--color-text-primary)]">Kumar Anil</div>
         </div>
       </div>
 
@@ -344,7 +344,7 @@ export default function DataCenterArticlePage() {
             "@type": "Article",
             headline: "Data Center Kya Hota Hai? Ek Aisi Jagah Jahan Internet Kabhi Sota Nahi",
             description: "Data Center internet ka dil hai. Yahin se YouTube, WhatsApp aur Cloud services chalti hain.",
-            author: { "@type": "Person", name: "Anil Kumar" },
+            author: { "@type": "Person", name: "Kumar Anil" },
             publisher: { "@type": "Organization", name: "Behind The Tech", url: "https://behindthetech.in" },
             datePublished: "2026-06-01",
             image: "https://behindthetech.in/images/articles/data-center-hero.jpg",
