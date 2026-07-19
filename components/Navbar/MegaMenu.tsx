@@ -20,6 +20,12 @@
  * position:absolute which climbs up to the nearest positioned ancestor —
  * the <nav> element (position:fixed). top:100% = bottom of <nav> bar.
  * left:50% + translateX(-50%) + width:100vw = full viewport width, centered.
+ *
+ * COMPACT MODE (auto-detected):
+ *   When any column has >7 links the panel auto-switches to compact mode —
+ *   reduced py, tighter link padding, smaller heading margins — so tall menus
+ *   (e.g. Non-IT with 11-item Electrical column) fit without scrolling.
+ *   A max-height + overflow-y:auto fallback covers very short screens.
  */
 
 import Link from "next/link";
@@ -43,15 +49,28 @@ const WIDTH_CLASSES: Record<MegaMenuType["width"], string> = {
   narrow: "max-w-xs",
 };
 
+// ─── Compact threshold ────────────────────────────────────────────────────────
+// If any column has more than this many links, enable compact mode.
+const COMPACT_THRESHOLD = 7;
+
+function isCompactMenu(menu: MegaMenuType): boolean {
+  return menu.columns.some((col) => col.links.length > COMPACT_THRESHOLD);
+}
+
 // ─── Column ───────────────────────────────────────────────────────────────────
 
-function Column({ column }: { column: MegaMenuColumn }) {
+function Column({ column, compact = false }: { column: MegaMenuColumn; compact?: boolean }) {
   return (
     <div className="flex flex-col min-w-0">
+      {/* Heading row — tighten mb/pb when compact */}
       <div
         role="none"
-        className="flex items-center gap-2 mb-4 pb-3"
-        style={{ borderBottom: "1px solid var(--hp-border)" }}
+        className="flex items-center gap-2"
+        style={{
+          borderBottom: "1px solid var(--hp-border)",
+          marginBottom: compact ? 10 : 16,
+          paddingBottom: compact ? 8 : 12,
+        }}
       >
         {column.categoryHref ? (
           <Link
@@ -97,10 +116,11 @@ function Column({ column }: { column: MegaMenuColumn }) {
         )}
       </div>
 
-      <ul role="none" className="flex flex-col gap-1">
+      {/* Link list — tighten gap when compact */}
+      <ul role="none" style={{ display: "flex", flexDirection: "column", gap: compact ? 0 : 4 }}>
         {column.links.map((link) => (
           <li key={link.href} role="none">
-            <NavLinkItem link={link} accentRgb={column.accentRgb} />
+            <NavLinkItem link={link} accentRgb={column.accentRgb} compact={compact} />
           </li>
         ))}
       </ul>
@@ -203,9 +223,21 @@ function NavLinkItem({
 
 // ─── BottomBanner ─────────────────────────────────────────────────────────────
 
-function BottomBanner({ banner }: { banner: NonNullable<MegaMenuType["bottomBanner"]> }) {
+function BottomBanner({
+  banner,
+  compact = false,
+}: {
+  banner: NonNullable<MegaMenuType["bottomBanner"]>;
+  compact?: boolean;
+}) {
   return (
-    <div className="mt-7 pt-6" style={{ borderTop: "1px solid var(--hp-border)" }}>
+    <div
+      style={{
+        marginTop: compact ? 16 : 28,
+        paddingTop: compact ? 12 : 24,
+        borderTop: "1px solid var(--hp-border)",
+      }}
+    >
       <div className="flex items-start gap-6 flex-wrap">
         <span
           style={{
@@ -324,6 +356,39 @@ export default function MegaMenu({
 
   const maxWidthClass = WIDTH_CLASSES[menu.width];
 
+  // Auto-enable compact mode for tall menus (e.g. Non-IT with 11-item Electrical column).
+  // All other menus (≤7 links per column) keep the normal spacious layout.
+  const compact = isCompactMenu(menu);
+
+  // Vertical padding: normal py-9 (36px), compact py-5 (20px)
+  const panelPy = compact ? "20px" : "36px";
+
+  // ── Non-IT 5-column layout ──────────────────────────────────────────────────
+  // When the menu has exactly 4 columns + a bottomBanner + no featuredCard,
+  // promote the bottomBanner into a 5th parallel column and suppress the banner
+  // row. This is currently unique to NON_IT_MENU (4 cols + BMS/DCIM banner).
+  // All other menus (AI has 5 cols + banner; others have no banner) are unaffected.
+  const promotesBannerToColumn =
+    menu.columns.length === 4 &&
+    !!menu.bottomBanner &&
+    !menu.featuredCard;
+
+  const displayColumns: MegaMenuType["columns"] = promotesBannerToColumn
+    ? [
+        ...menu.columns,
+        {
+          heading: menu.bottomBanner!.heading,
+          icon: menu.bottomBanner!.icon,
+          accentRgb: "80,160,255",
+          categoryHref: "/learn/non-it/bms-dcim",
+          links: menu.bottomBanner!.links,
+        },
+      ]
+    : menu.columns;
+
+  // 5-column grid uses tighter column gaps to stay within max-w-7xl comfortably.
+  const columnGap = displayColumns.length >= 5 ? "0 24px" : "0 40px";
+
   return (
     /*
      * POSITIONING STRATEGY — the key change:
@@ -342,6 +407,10 @@ export default function MegaMenu({
      * This keeps the panel IN the DOM tree of NavItem's wrapper div.
      * Cursor movement from trigger → panel never leaves the wrapper.
      * onMouseLeave (scheduleClose) never fires mid-transition. ✅
+     *
+     * max-height + overflow-y:auto:
+     *   Fallback for very short screens — compact mode already fits most viewports,
+     *   but this ensures content never clips off-screen on e.g. 768px-tall laptops.
      */
     <div
       role="menu"
@@ -354,6 +423,9 @@ export default function MegaMenu({
         left: "50%",
         width: "100vw",
         zIndex: 49,
+        // Short-screen fallback: scroll rather than clip
+        maxHeight: "calc(100vh - 68px)",
+        overflowY: "auto",
 
         // Visibility
         //
@@ -399,25 +471,30 @@ export default function MegaMenu({
       }}
     >
       {/* Inner wrapper — centered, max-width controlled by variant */}
-      <div className={`${maxWidthClass} mx-auto px-10 py-9`}>
+      <div
+        className={`${maxWidthClass} mx-auto px-10`}
+        style={{ paddingTop: panelPy, paddingBottom: panelPy }}
+      >
         <div className="flex gap-10">
           <div
             className="flex-1 min-w-0"
             style={{
               display: "grid",
-              gridTemplateColumns: `repeat(${menu.columns.length}, minmax(0, 1fr))`,
-              gap: "0 40px",
+              gridTemplateColumns: `repeat(${displayColumns.length}, minmax(0, 1fr))`,
+              gap: columnGap,
             }}
           >
-            {menu.columns.map((column) => (
-              <Column key={column.heading} column={column} />
+            {displayColumns.map((column) => (
+              <Column key={column.heading} column={column} compact={compact} />
             ))}
           </div>
 
           {menu.featuredCard && <FeaturedCard card={menu.featuredCard} />}
         </div>
 
-        {menu.bottomBanner && <BottomBanner banner={menu.bottomBanner} />}
+        {menu.bottomBanner && !promotesBannerToColumn && (
+          <BottomBanner banner={menu.bottomBanner} compact={compact} />
+        )}
       </div>
 
       {/* Top accent line */}
