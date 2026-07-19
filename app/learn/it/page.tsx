@@ -140,7 +140,9 @@ function CategoryCard({ def }: { def: CategoryDef }) {
   const publishedCount = topics.filter((t) => t.status === "published").length;
 
   return (
+    // id="cat-{key}" is the scroll-target for homepage "View all" links.
     <div
+      id={`cat-${def.key}`}
       className="nit-category-card"
       style={{
         background: "var(--hp-surface)",

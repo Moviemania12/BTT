@@ -131,7 +131,9 @@ function CategoryCard({ def }: { def: CategoryDef }) {
 
   return (
     // CSS class nit-category-card handles hover lift via globals.css.
+    // id="cat-{key}" is the scroll-target for homepage "View all" links.
     <div
+      id={`cat-${def.key}`}
       className="nit-category-card"
       style={{
         background: "var(--hp-surface)",

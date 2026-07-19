@@ -5,23 +5,17 @@ import type { Topic } from "@/lib/topics";
 // ═══════════════════════════════════════════════════════════════════════════
 // components/homepage/PopularTopics.tsx
 //
-// Evolved into a stable, category-based roadmap view (previously a flat
-// grid of published articles, which would have grown unbounded past 200+
-// articles). Component file name and homepage slot are unchanged, per
-// "evolve, do not duplicate" — this is still the same component the rest
-// of the codebase imports as PopularTopics.
+// "Explore by category" section on the homepage.
 //
-// Each category shows up to 4 real topic chips (ALL_TOPICS only, sorted
-// by `order`). A chip is a clickable link if status === "published", or
-// a disabled "Coming soon" chip otherwise. No route or content is ever
-// invented.
+// Each category card shows up to 4 topic chips (from ALL_TOPICS, sorted
+// by `order`). A chip is a clickable link when status === "published",
+// or a disabled "Coming soon" chip otherwise. No route is ever invented.
 //
-// "View All" is intentionally NOT rendered as a link. A bare category-index
-// route (e.g. /learn/non-it/electrical with no topic slug) was checked
-// against the real routing and does not exist — only the dynamic
-// [category]/[topic] route does, which requires a topic slug. Rendering
-// a link to a route that 404s would violate the "no broken links" rule,
-// so View All renders as a disabled label until that route is built.
+// "View all" links to the track landing page + anchor for the category:
+//   non-it categories → /learn/non-it#cat-<category>
+//   it categories     → /learn/it#cat-<category>
+//   ai categories     → /learn/ai#cat-<category>
+// The anchor IDs are set on the CategoryCard divs in each landing page.
 // ═══════════════════════════════════════════════════════════════════════════
 
 interface CategoryDef {
@@ -29,26 +23,22 @@ interface CategoryDef {
   icon: string;
   title: string;
   description: string;
+  /** Track landing page base path — determines the "View all" href. */
+  trackBase: string;
 }
 
 const CATEGORIES: CategoryDef[] = [
-  { category: "electrical", icon: "⚡", title: "Electrical", description: "Power delivery — from grid supply to server rack." },
-  { category: "cooling", icon: "❄️", title: "Cooling", description: "Thermal management systems that keep hardware within spec." },
-  { category: "fire", icon: "🔥", title: "Fire Protection", description: "Detection and suppression systems for life-safety and asset protection." },
-  { category: "security", icon: "🔒", title: "Security", description: "Physical access control and surveillance systems." },
-  { category: "bms-dcim", icon: "📡", title: "Monitoring", description: "Building and infrastructure management platforms." },
-  { category: "servers", icon: "🖥️", title: "Servers", description: "Compute hardware — CPU, RAM, GPU, and server architecture." },
-  { category: "storage", icon: "💾", title: "Storage", description: "Data storage systems — from direct-attached to storage networks." },
-  { category: "networking", icon: "🌐", title: "Networking", description: "Switching, routing, and network infrastructure." },
+  { category: "electrical", icon: "⚡",  title: "Electrical",      description: "Power delivery — from grid supply to server rack.",                               trackBase: "/learn/non-it" },
+  { category: "cooling",    icon: "❄️",  title: "Cooling",         description: "Thermal management systems that keep hardware within spec.",                      trackBase: "/learn/non-it" },
+  { category: "fire",       icon: "🔥",  title: "Fire Protection", description: "Detection and suppression systems for life-safety and asset protection.",          trackBase: "/learn/non-it" },
+  { category: "security",   icon: "🔒",  title: "Security",        description: "Physical access control and surveillance systems.",                                 trackBase: "/learn/non-it" },
+  { category: "bms-dcim",   icon: "📡",  title: "Monitoring",      description: "Building and infrastructure management platforms.",                                 trackBase: "/learn/non-it" },
+  { category: "servers",    icon: "🖥️",  title: "Servers",         description: "Compute hardware — CPU, RAM, GPU, and server architecture.",                       trackBase: "/learn/it"     },
+  { category: "storage",    icon: "💾",  title: "Storage",         description: "Data storage systems — from direct-attached to storage networks.",                  trackBase: "/learn/it"     },
+  { category: "networking", icon: "🌐",  title: "Networking",      description: "Switching, routing, and network infrastructure.",                                   trackBase: "/learn/it"     },
 ];
 
 const MAX_CHIPS = 4;
-
-// Set to true only once a real /learn/non-it/[category] index page exists.
-// Checked against the current routing (only [category]/[topic] exists,
-// which requires a topic slug) — false today, so View All stays disabled
-// rather than link to a route that would 404.
-const CATEGORY_INDEX_ROUTE_EXISTS = false;
 
 export default function PopularTopics() {
   return (
@@ -67,6 +57,9 @@ export default function PopularTopics() {
             if (topics.length === 0) {
               return null;
             }
+
+            // "View all" scrolls to the matching category card on the track landing page.
+            const viewAllHref = `${cat.trackBase}#cat-${cat.category}`;
 
             return (
               <div key={cat.category} className="hp-category-card hp-category-card--v2">
@@ -97,15 +90,9 @@ export default function PopularTopics() {
                 </ul>
 
                 <div className="hp-category-footer">
-                  {CATEGORY_INDEX_ROUTE_EXISTS ? (
-                    <Link href={`/learn/non-it/${cat.category}`} className="hp-link">
-                      View all →
-                    </Link>
-                  ) : (
-                    <span className="hp-link hp-link--disabled" aria-disabled="true">
-                      View all (coming soon)
-                    </span>
-                  )}
+                  <Link href={viewAllHref} className="hp-link">
+                    View all →
+                  </Link>
                 </div>
               </div>
             );
