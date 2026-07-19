@@ -1,0 +1,23 @@
+import type { ArticleHeading } from "@/components/ArticlePage";
+export const HEADINGS: ArticleHeading[] = [
+  { id: "what-are-sensors",      text: "What Are Sensors in a Data Center?",               level: 1 },
+  { id: "signal-types",          text: "Sensor Signal Types",                               level: 1 },
+  { id: "temperature",           text: "Temperature Sensors",                               level: 1 },
+  { id: "humidity",              text: "Humidity Sensors",                                  level: 1 },
+  { id: "differential-pressure", text: "Differential Pressure Sensors",                     level: 1 },
+  { id: "water-leak",            text: "Water Leak Detection Sensors",                      level: 1 },
+  { id: "fuel-level",            text: "Fuel and Tank Level Sensors",                       level: 1 },
+  { id: "airflow",               text: "Airflow Sensors",                                   level: 1 },
+  { id: "current-voltage",       text: "Current and Voltage Measurement",                   level: 1 },
+  { id: "power-energy",          text: "Power and Energy Measurement",                      level: 1 },
+  { id: "door-contact",          text: "Door and Contact Sensors",                          level: 1 },
+  { id: "occupancy",             text: "Occupancy and Presence Sensors",                    level: 1 },
+  { id: "smoke-vibration",       text: "Smoke and Vibration Sensors",                       level: 1 },
+  { id: "sensor-integration",    text: "Sensor Integration with BMS and DCIM",              level: 1 },
+  { id: "calibration",           text: "Calibration and Accuracy",                          level: 1 },
+  { id: "preventive-maintenance", text: "Preventive Maintenance",                           level: 1 },
+  { id: "troubleshooting",       text: "Engineer Troubleshooting — Sensor Issues",          level: 1 },
+  { id: "illustrative-scenario", text: "Illustrative Scenario",                             level: 1 },
+  { id: "interview-questions",   text: "Interview Questions",                               level: 1 },
+  { id: "key-takeaways",         text: "Key Takeaways",                                     level: 1 },
+];

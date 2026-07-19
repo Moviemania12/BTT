@@ -1,0 +1,22 @@
+import type { ArticleHeading } from "@/components/ArticlePage";
+export const HEADINGS: ArticleHeading[] = [
+  { id: "what-is-dcim",         text: "What Is DCIM?",                                          level: 1 },
+  { id: "dcim-vs-bms-ems",      text: "DCIM vs BMS vs EMS vs NMS vs CMMS",                      level: 1 },
+  { id: "dcim-architecture",    text: "DCIM Architecture and Data Flow",                         level: 1 },
+  { id: "asset-management",     text: "Asset and Rack Management",                               level: 1 },
+  { id: "power-chain",          text: "Power Chain and Capacity Visualization",                  level: 1 },
+  { id: "cooling-environment",  text: "Cooling and Environmental Monitoring",                    level: 1 },
+  { id: "space-capacity",       text: "Space, Power and Cooling Capacity Planning",              level: 1 },
+  { id: "cable-management",     text: "Cable and Connectivity Management",                       level: 1 },
+  { id: "mac-workflows",        text: "Moves, Adds, Changes and Work Orders",                    level: 1 },
+  { id: "alarms-analytics",     text: "Alarms, Analytics and Dashboards",                        level: 1 },
+  { id: "dcim-reporting",       text: "DCIM Reporting in Depth",                                 level: 1 },
+  { id: "integration",          text: "DCIM Integration Architecture",                           level: 1 },
+  { id: "ups-pdu-to-dcim",      text: "How UPS and PDU Data Reaches DCIM — Step by Step",       level: 1 },
+  { id: "dcim-software",        text: "DCIM Software Platforms",                                  level: 1 },
+  { id: "preventive-maintenance", text: "Preventive Maintenance",                                level: 1 },
+  { id: "troubleshooting",      text: "Engineer Troubleshooting — DCIM Data Issues",             level: 1 },
+  { id: "illustrative-scenario", text: "Illustrative Scenario",                                  level: 1 },
+  { id: "interview-questions",  text: "Interview Questions",                                     level: 1 },
+  { id: "key-takeaways",        text: "Key Takeaways",                                           level: 1 },
+];
