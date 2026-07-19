@@ -1,0 +1,16 @@
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Blade Servers — Architecture, Chassis, Shared Infrastructure & Deployment | Behind The Tech",
+  description: "Blade server kya hai, chassis architecture, shared failure domain, I/O modules, chassis fabric, oversubscription, redundancy, blade vs rack vs composable — Zero-to-Hero Hinglish guide.",
+  keywords: ["blade server","blade chassis","blade vs rack server","HPE blade","Dell blade","blade server architecture","shared failure domain","composable infrastructure"],
+  openGraph: { title: "Blade Servers — Architecture & Data Center Deployment", description: "Blade chassis, shared failure domain, I/O modules, redundancy aur deployment.", url: "https://behindthetech.in/learn/it/servers/blade-server", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
+  twitter: { card: "summary_large_image", title: "Blade Servers — Behind The Tech", description: "Blade server architecture aur deployment guide." },
+  alternates: { canonical: "https://behindthetech.in/learn/it/servers/blade-server" },
+};
+export const faqs = [
+  { q: "Blade server aur rack server mein key difference kya hai?", a: "Blade server ek shared chassis mein slide-in compute cards hain — power, cooling aur networking chassis se shared milte hain. Rack server self-contained hai — apna PSU, cooling, network. Blade: higher density, less cabling, centralised management, chassis-level shared failure domain. Rack: more flexible, independent, wider vendor choice, lower entry cost." },
+  { q: "Shared failure domain kya hota hai blade servers mein?", a: "Blade chassis mein shared infrastructure hoti hai — power supplies, cooling fans, I/O modules, management module — jo sab blades ek saath share karte hain. Agar chassis-level component fail ho ya chassis ko maintenance ke liye power off karna padhe, toh us chassis ke sab blades affected hote hain. Mission-critical deployments mein workloads multiple chassis ke beech distribute karo taaki ek chassis issue sab kuch affect na kare." },
+  { q: "I/O modules blade chassis mein kya karte hain?", a: "I/O modules chassis ke rear mein network aur storage connectivity provide karte hain sab blades ke liye. Blades internal chassis backplane se I/O modules tak route karte hain — external cables per blade nahi hote. Ethernet switching, pass-through (blades ko directly external switch pe) ya Fibre Channel modules available hote hain. I/O module selection workload requirements pe based karo." },
+  { q: "Composable infrastructure kya hai aur blade se kaise alag hai?", a: "Traditional blade servers fixed compute blades hain — ek blade mein CPU + RAM + storage defined configuration mein. Composable (ya modular) infrastructure resources disaggregate karta hai — compute, memory, storage, networking pools alag hote hain aur software ke through dynamically compose hote hain. HPE Synergy is concept ka example hai. Yeh approach zyada flexibility deta hai lekin complexity aur cost bhi higher hai. Evaluate karo specific requirements ke against." },
+];
+export const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(f => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };

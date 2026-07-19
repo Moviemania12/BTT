@@ -1,0 +1,20 @@
+import type { ArticleHeading } from "@/components/ArticlePage";
+export const HEADINGS: ArticleHeading[] = [
+  { id: "why-virtualisation",  text: "Why Virtualisation?",                         level: 1 },
+  { id: "hypervisor-types",    text: "Hypervisor — Type 1 and Type 2",              level: 1 },
+  { id: "vm-architecture",     text: "VM Architecture",                             level: 1 },
+  { id: "resource-allocation", text: "Resource Allocation and Overcommit",          level: 1 },
+  { id: "vm-lifecycle",        text: "VM Lifecycle",                                level: 1 },
+  { id: "templates-cloning",   text: "Templates, Cloning and Datastores",           level: 1 },
+  { id: "virtual-networking",  text: "Virtual Networking",                          level: 1 },
+  { id: "snapshots-backups",   text: "Snapshots vs Backups",                        level: 1 },
+  { id: "live-migration",      text: "Live Migration",                              level: 1 },
+  { id: "ha-clusters",         text: "HA and Cluster Architecture",                 level: 1 },
+  { id: "management-plane",    text: "Virtualisation Management Plane",             level: 1 },
+  { id: "rpo-rto",             text: "RPO and RTO Concepts",                        level: 1 },
+  { id: "vm-vs-containers",    text: "VM vs Containers",                            level: 1 },
+  { id: "security-isolation",  text: "Virtualisation Security and Isolation",       level: 1 },
+  { id: "troubleshooting",     text: "Troubleshooting Virtualisation",              level: 1 },
+  { id: "interview-questions", text: "Interview Questions",                         level: 1 },
+  { id: "key-takeaways",       text: "Key Takeaways",                               level: 1 },
+];
