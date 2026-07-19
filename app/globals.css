@@ -1513,3 +1513,40 @@ img[loading="lazy"] {
 .nit-topic-row:hover .nit-topic-arrow {
   opacity: 0.8;
 }
+
+/* ── Track landing pages shared — Coming Soon topic row ──────────────── */
+/* Used by /learn/it and /learn/ai pages (and future tracks).            */
+/* .nit-category-card and .nit-topic-row are already defined above and  */
+/* are reused unchanged by all track landing pages.                      */
+
+.nit-topic-row--soon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 12px 9px 14px;
+  border-radius: 8px;
+  color: var(--hp-text-muted);
+  font-size: 14px;
+  line-height: 1.45;
+  border-left: 2px solid transparent;
+  cursor: default;
+  opacity: 0.6;
+}
+
+.nit-soon-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: var(--hp-font-mono);
+  background: var(--hp-bg-subtle);
+  color: var(--hp-text-muted);
+  border: 1px solid var(--hp-border);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
