@@ -1,5 +1,4 @@
 import Footer from "@/components/Footer";
-import LoadingScreen from "@/components/LoadingScreen";
 import HeroV2 from "@/components/homepage/HeroV2";
 import LearningTracks from "@/components/homepage/LearningTracks";
 import PopularTopics from "@/components/homepage/PopularTopics";
@@ -22,7 +21,6 @@ import StatsBar from "@/components/homepage/StatsBar";
 export default function Home() {
   return (
     <>
-      <LoadingScreen />
       <main>
         <HeroV2 />
         <LearningTracks />
