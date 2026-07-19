@@ -1463,3 +1463,53 @@ img[loading="lazy"] {
     font-size: clamp(26px, 7vw, 36px);
   }
 }
+
+/* ── Non-IT track landing page (/learn/non-it) ─────────────────────── */
+/* CSS-only hover effects replacing JS onMouseEnter/onMouseLeave.       */
+/* Per-category accent colours are passed via the --nit-accent and      */
+/* --nit-accent-bg custom properties set inline on each card/row.       */
+
+/* Category card — lift + border highlight on hover */
+.nit-category-card {
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.nit-category-card:hover {
+  box-shadow: 0 4px 16px rgba(16,24,40,0.10);
+  border-color: var(--hp-border-hover);
+}
+
+/* Topic row — background, colour shift, left-border indent on hover */
+.nit-topic-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 12px 9px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--hp-text-secondary);
+  font-size: 14px;
+  line-height: 1.45;
+  border-left: 2px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease,
+              border-color 0.15s ease, padding-left 0.15s ease;
+}
+.nit-topic-row:hover {
+  background: var(--hp-bg-subtle);
+  color: var(--hp-text-primary);
+  border-left-color: var(--nit-accent, var(--hp-accent));
+  padding-left: 18px;
+}
+
+/* Arrow inside topic row — visible on hover */
+.nit-topic-arrow {
+  font-size: 12px;
+  color: var(--nit-accent, var(--hp-accent));
+  opacity: 0.3;
+  flex-shrink: 0;
+  font-family: var(--hp-font-mono);
+  transition: opacity 0.15s ease;
+}
+.nit-topic-row:hover .nit-topic-arrow {
+  opacity: 0.8;
+}
