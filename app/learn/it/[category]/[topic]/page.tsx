@@ -34,6 +34,7 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "virtualization",
   // IT Storage track — static articles
   "das",
+  "nas",
 ]);
 
 export default async function ItTopicPage(props: PageProps) {
