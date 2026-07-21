@@ -1,68 +1,80 @@
 "use client";
-// Diagram 2 — Enterprise Backup Architecture: Source to Repository to Offsite
+// D2 — Enterprise Backup Architecture (mobile-first vertical flow)
 export default function BackupEnterpriseArch() {
+  const layers = [
+    {
+      label: "PRODUCTION WORKLOADS",
+      bg: "#dbeafe", border: "#2563eb", textColor: "#1e40af",
+      items: ["Physical Servers", "VMware VMs", "Databases (SQL/Oracle)", "NAS Shares", "SAN Workloads"],
+    },
+    {
+      label: "AGENT / API / HYPERVISOR INTEGRATION",
+      bg: "#ede9fe", border: "#7c3aed", textColor: "#5b21b6",
+      items: ["Backup Agent (installed on source)", "Hypervisor API — VADP (VMware)", "Application Plugin — VSS / RMAN / DB plugin", "Application-consistent quiescing"],
+    },
+    {
+      label: "BACKUP INFRASTRUCTURE",
+      bg: "#dcfce7", border: "#16a34a", textColor: "#15803d",
+      items: ["Backup Server — scheduling, catalog, management", "Backup Proxies / Media Servers — data movers", "Dedicated Backup Network / VLAN (recommended)", "Compression · Deduplication · Encryption"],
+    },
+    {
+      label: "PRIMARY BACKUP REPOSITORY",
+      bg: "#fef9c3", border: "#ca8a04", textColor: "#92400e",
+      items: ["Disk / Dedup Appliance / Object Storage", "Fast backup · Fast local restore", "⚠ Backup Catalog — must itself be backed up", "Separate credentials from production"],
+    },
+    {
+      label: "SECONDARY / ISOLATED COPIES",
+      bg: "#fee2e2", border: "#dc2626", textColor: "#991b1b",
+      items: [
+        "🔒 Immutable Repository — Object Lock (Compliance mode strongest) / Hardened repo / WORM",
+        "📼 Tape Offsite Vault — physical air gap when vaulted",
+        "☁ Cloud / Object Storage — geographic diversity (verify object lock behavior)",
+        "⚠ Separate admin credentials from production — mandatory",
+      ],
+    },
+  ];
+
+  const itemH = 22;
+  const headerH = 38;
+  const padV = 10;
+  const arrowH = 28;
+  let totalH = 16;
+  const layerHeights = layers.map(l => headerH + l.items.length * itemH + padV * 2);
+  layerHeights.forEach((h, i) => { totalH += h; if (i < layers.length - 1) totalH += arrowH; });
+  totalH += 16;
+
+  let y = 16;
   return (
-    <svg viewBox="0 0 860 390" xmlns="http://www.w3.org/2000/svg" role="img"
-      aria-label="Enterprise backup architecture from production workloads to repository to offsite copies"
-      style={{ width: "100%", height: "auto", fontFamily: "Arial, sans-serif" }}>
-      <rect width="860" height="390" fill="#f8fafc" rx="12"/>
-      <text x="430" y="22" textAnchor="middle" fontSize="13" fontWeight="700" fill="#111827">Enterprise Backup Architecture — Source to Repository to Isolated Copies</text>
+    <svg viewBox={`0 0 480 ${totalH}`} xmlns="http://www.w3.org/2000/svg"
+      role="img" aria-label="Enterprise backup architecture flow"
+      style={{ width: "100%", height: "auto", fontFamily: "Arial, sans-serif", display: "block" }}>
+      <rect width="480" height={totalH} fill="#f8fafc" rx="12"/>
 
-      {/* Layer 1 — Production */}
-      <rect x="20" y="34" width="820" height="44" rx="7" fill="#dbeafe" stroke="#2563eb" strokeWidth="1.5"/>
-      <text x="430" y="52" textAnchor="middle" fontSize="10" fontWeight="700" fill="#1e40af">Production Workloads</text>
-      {["Physical Servers","VMware VMs","Databases (SQL/Oracle)","NAS Shares","SAN Workloads"].map((s,i) => (
-        <g key={i}>
-          <rect x={28+i*162} y="60" width="150" height="12" rx="3" fill="#eff6ff" stroke="#2563eb" strokeWidth="0.5"/>
-          <text x={103+i*162} y="69" textAnchor="middle" fontSize="7.5" fill="#1e40af">{s}</text>
-        </g>
-      ))}
-
-      {/* Layer 2 — Agent/API */}
-      <text x="430" y="92" textAnchor="middle" fontSize="9" fill="#6b7280">↓ Backup Agent / Hypervisor API (VADP) / Application Plugin (VSS / RMAN)</text>
-
-      {/* Layer 3 — Backup Infra */}
-      <rect x="20" y="100" width="820" height="50" rx="7" fill="#dcfce7" stroke="#16a34a" strokeWidth="1.5"/>
-      <text x="430" y="118" textAnchor="middle" fontSize="10" fontWeight="700" fill="#15803d">Backup Infrastructure — Dedicated Backup Network (VLAN recommended)</text>
-      <rect x="40" y="126" width="240" height="18" rx="4" fill="#bbf7d0" stroke="#16a34a" strokeWidth="0.8"/>
-      <text x="160" y="138" textAnchor="middle" fontSize="8.5" fill="#166534" fontWeight="600">Backup Server — management, catalog, scheduling</text>
-      <rect x="330" y="126" width="480" height="18" rx="4" fill="#bbf7d0" stroke="#16a34a" strokeWidth="0.8"/>
-      <text x="570" y="138" textAnchor="middle" fontSize="8.5" fill="#166534" fontWeight="600">Backup Proxies / Media Servers — data movers (compress/dedupe)</text>
-
-      {/* Layer 4 — Primary Repository */}
-      <text x="430" y="164" textAnchor="middle" fontSize="9" fill="#6b7280">↓ Backup Network</text>
-      <rect x="120" y="170" width="620" height="50" rx="7" fill="#fef9c3" stroke="#ca8a04" strokeWidth="1.5"/>
-      <text x="430" y="188" textAnchor="middle" fontSize="10" fontWeight="700" fill="#92400e">Primary Backup Repository — Disk / Dedup Appliance / Object Storage</text>
-      <rect x="140" y="196" width="240" height="18" rx="4" fill="#fde68a" stroke="#d97706" strokeWidth="0.8"/>
-      <text x="260" y="208" textAnchor="middle" fontSize="8.5" fill="#92400e">Fast backup, fast local restore</text>
-      <rect x="430" y="196" width="290" height="18" rx="4" fill="#fef3c7" stroke="#d97706" strokeWidth="1"/>
-      <text x="575" y="208" textAnchor="middle" fontSize="8.5" fill="#92400e" fontWeight="600">Backup Catalog — MUST itself be backed up</text>
-
-      {/* Layer 5 — Secondary copies */}
-      <text x="430" y="234" textAnchor="middle" fontSize="9" fill="#6b7280">↓ Backup Copy Jobs (separate credentials required)</text>
-      <rect x="20" y="240" width="820" height="100" rx="8" fill="#fef2f2" stroke="#dc2626" strokeWidth="2"/>
-      <text x="430" y="258" textAnchor="middle" fontSize="10" fontWeight="700" fill="#dc2626">Secondary / Isolated Copies — Independent Failure Domains</text>
-
-      <rect x="40" y="266" width="240" height="64" rx="6" fill="#fee2e2" stroke="#dc2626" strokeWidth="1.2"/>
-      <text x="160" y="282" textAnchor="middle" fontSize="9" fontWeight="700" fill="#991b1b">Immutable Repository</text>
-      <text x="160" y="296" textAnchor="middle" fontSize="8" fill="#374151">Object Lock / Hardened Linux / WORM</text>
-      <text x="160" y="308" textAnchor="middle" fontSize="7.5" fill="#dc2626">Compliance mode: strongest protection</text>
-      <text x="160" y="320" textAnchor="middle" fontSize="7.5" fill="#9ca3af">Governance mode: privileged override possible</text>
-
-      <rect x="320" y="266" width="220" height="64" rx="6" fill="#fee2e2" stroke="#dc2626" strokeWidth="1.2"/>
-      <text x="430" y="282" textAnchor="middle" fontSize="9" fontWeight="700" fill="#991b1b">Tape Offsite Vault</text>
-      <text x="430" y="296" textAnchor="middle" fontSize="8" fill="#374151">Physical air gap when media offline</text>
-      <text x="430" y="308" textAnchor="middle" fontSize="7.5" fill="#dc2626">True physical isolation when vaulted</text>
-      <text x="430" y="320" textAnchor="middle" fontSize="7.5" fill="#374151">Long-term, cost-effective</text>
-
-      <rect x="580" y="266" width="240" height="64" rx="6" fill="#fee2e2" stroke="#dc2626" strokeWidth="1.2"/>
-      <text x="700" y="282" textAnchor="middle" fontSize="9" fontWeight="700" fill="#991b1b">Cloud / Object Storage</text>
-      <text x="700" y="296" textAnchor="middle" fontSize="8" fill="#374151">Geographic diversity, scalable</text>
-      <text x="700" y="308" textAnchor="middle" fontSize="7.5" fill="#dc2626">Object lock — verify provider behavior</text>
-      <text x="700" y="320" textAnchor="middle" fontSize="7.5" fill="#374151">Separate cloud credentials required</text>
-
-      <text x="430" y="354" textAnchor="middle" fontSize="7.5" fill="#991b1b" fontWeight="600">Separate administrative credentials from production — mandatory for ransomware resilience</text>
-      <text x="430" y="368" textAnchor="middle" fontSize="8" fill="#9ca3af">Future image: backup-enterprise-architecture.png</text>
+      {layers.map((layer, li) => {
+        const h = layerHeights[li];
+        const el = (
+          <g key={li}>
+            <rect x="10" y={y} width="460" height={h} rx="8" fill={layer.bg} stroke={layer.border} strokeWidth="2"/>
+            <rect x="10" y={y} width="460" height={headerH} rx="8" fill={layer.border}/>
+            <rect x="10" y={y + headerH - 8} width="460" height="8" fill={layer.border}/>
+            <text x="240" y={y + 24} textAnchor="middle" fontSize="12" fontWeight="800" fill="#fff">{layer.label}</text>
+            {layer.items.map((item, ii) => (
+              <text key={ii} x="26" y={y + headerH + padV + ii * itemH + 14}
+                fontSize="11.5" fill={layer.textColor} fontWeight="400">
+                {item}
+              </text>
+            ))}
+            {li < layers.length - 1 && (
+              <g>
+                <line x1="240" y1={y + h} x2="240" y2={y + h + arrowH - 6} stroke={layer.border} strokeWidth="2.5"/>
+                <polygon points={`233,${y + h + arrowH - 6} 247,${y + h + arrowH - 6} 240,${y + h + arrowH}`} fill={layer.border}/>
+              </g>
+            )}
+          </g>
+        );
+        y += h + (li < layers.length - 1 ? arrowH : 0);
+        return el;
+      })}
     </svg>
   );
 }

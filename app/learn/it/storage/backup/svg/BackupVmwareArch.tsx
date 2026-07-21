@@ -1,81 +1,102 @@
 "use client";
-// Diagram 6 — VMware Backup Architecture
+// D6 — VMware Backup Architecture (mobile-first vertical flow)
 export default function BackupVmwareArch() {
+  const steps = [
+    {
+      label: "VMs ON ESXI HOST",
+      items: ["VM: Oracle DB  ·  VM: Web Server  ·  VM: App Server",
+              "VMware Tools installed → enables guest quiescing",
+              "SAN / NAS Datastore stores VM disk files (.vmdk)"],
+      bg: "#dbeafe", border: "#2563eb", tc: "#1e40af",
+    },
+    {
+      label: "VCENTER SERVER — VADP",
+      items: ["vSphere API for Data Protection (VADP)",
+              "Backup software calls vCenter API to initiate job",
+              "VM discovery · Snapshot coordination · CBT access",
+              "CBT = Changed Block Tracking — tracking mechanism, NOT backup itself"],
+      bg: "#ede9fe", border: "#7c3aed", tc: "#5b21b6",
+    },
+    {
+      label: "⚠ TEMPORARY VM SNAPSHOT",
+      items: ["ESXi creates snapshot → freezes current disk state",
+              "VM continues running (writes go to delta files)",
+              "Backup proxy reads disk data FROM the snapshot",
+              "⚠ Snapshot must be consolidated after job completes",
+              "Long-running snapshots: datastore space + VM perf impact"],
+      bg: "#fff7ed", border: "#ea580c", tc: "#c2410c",
+    },
+    {
+      label: "BACKUP PROXY / MEDIA SERVER",
+      items: ["Reads VM data from snapshot (LAN or SAN transport)",
+              "Applies compression · deduplication · encryption",
+              "Can be a VM or physical server"],
+      bg: "#dcfce7", border: "#16a34a", tc: "#15803d",
+    },
+    {
+      label: "PRIMARY BACKUP REPOSITORY",
+      items: ["Disk / Dedup Appliance / Object Storage",
+              "Backup catalog — restore point recorded",
+              "Separate credentials from production AD/admin"],
+      bg: "#fef9c3", border: "#ca8a04", tc: "#92400e",
+    },
+    {
+      label: "SECONDARY / IMMUTABLE COPY",
+      items: ["Object lock / Hardened repo / Tape vault",
+              "Automated recovery verification (vendor feature — not universal)",
+              "e.g. Veeam SureBackup: one vendor-specific implementation"],
+      bg: "#fee2e2", border: "#dc2626", tc: "#991b1b",
+    },
+  ];
+
+  const itemH = 20;
+  const headerH = 34;
+  const padV = 8;
+  const arrowH = 26;
+  let totalH = 16;
+  const heights = steps.map(s => headerH + s.items.length * itemH + padV * 2);
+  heights.forEach((h, i) => { totalH += h + (i < steps.length - 1 ? arrowH : 0); });
+  totalH += 56;
+
+  let y = 16;
   return (
-    <svg viewBox="0 0 860 340" xmlns="http://www.w3.org/2000/svg" role="img"
-      aria-label="VMware backup architecture: VADP, proxy, repository, offsite copy"
-      style={{ width: "100%", height: "auto", fontFamily: "Arial, sans-serif" }}>
-      <rect width="860" height="340" fill="#f8fafc" rx="12"/>
-      <text x="430" y="20" textAnchor="middle" fontSize="13" fontWeight="700" fill="#111827">VMware Backup Architecture — VADP-Based</text>
+    <svg viewBox={`0 0 480 ${totalH}`} xmlns="http://www.w3.org/2000/svg"
+      role="img" aria-label="VMware backup architecture VADP flow"
+      style={{ width: "100%", height: "auto", fontFamily: "Arial, sans-serif", display: "block" }}>
+      <rect width="480" height={totalH} fill="#f8fafc" rx="12"/>
 
-      {/* ESXi Host */}
-      <rect x="20" y="30" width="260" height="160" rx="8" fill="#eff6ff" stroke="#2563eb" strokeWidth="1.5"/>
-      <text x="150" y="50" textAnchor="middle" fontSize="10" fontWeight="700" fill="#1e40af">ESXi Host</text>
-      {["VM: Oracle DB","VM: Web Server","VM: App Server"].map((v,i) => (
-        <g key={i}>
-          <rect x="40" y={58+i*36} width="220" height="28" rx="5" fill="#dbeafe" stroke="#2563eb" strokeWidth="0.8"/>
-          <text x="150" y="76" dy={i*36} textAnchor="middle" fontSize="9" fill="#1e40af" fontWeight="600">{v}</text>
-          <text x="150" y="88" dy={i*36} textAnchor="middle" fontSize="7.5" fill="#6b7280">VMware Tools — quiesce if app-consistent</text>
-        </g>
-      ))}
-      <rect x="40" y="168" width="220" height="14" rx="3" fill="#bfdbfe"/>
-      <text x="150" y="178" textAnchor="middle" fontSize="7.5" fill="#1e40af">SAN / NAS Datastore (VM disks)</text>
+      {steps.map((step, si) => {
+        const h = heights[si];
+        const el = (
+          <g key={si}>
+            <rect x="10" y={y} width="460" height={h} rx="8" fill={step.bg} stroke={step.border} strokeWidth="2"/>
+            <rect x="10" y={y} width="460" height={headerH} rx="8" fill={step.border}/>
+            <rect x="10" y={y + headerH - 6} width="460" height="6" fill={step.border}/>
+            <text x="240" y={y + 22} textAnchor="middle" fontSize="12" fontWeight="700" fill="#fff">{step.label}</text>
+            {step.items.map((item, ii) => (
+              <text key={ii} x="22" y={y + headerH + padV + ii * itemH + 13}
+                fontSize="11" fill={step.tc}>{item}</text>
+            ))}
+            {si < steps.length - 1 && (
+              <g>
+                <line x1="240" y1={y + h} x2="240" y2={y + h + arrowH - 6} stroke={step.border} strokeWidth="2.5"/>
+                <polygon points={`234,${y + h + arrowH - 6} 246,${y + h + arrowH - 6} 240,${y + h + arrowH}`} fill={step.border}/>
+              </g>
+            )}
+          </g>
+        );
+        y += h + (si < steps.length - 1 ? arrowH : 0);
+        return el;
+      })}
 
-      {/* vCenter */}
-      <rect x="20" y="200" width="260" height="44" rx="7" fill="#ede9fe" stroke="#7c3aed" strokeWidth="1.5"/>
-      <text x="150" y="218" textAnchor="middle" fontSize="10" fontWeight="700" fill="#5b21b6">vCenter Server</text>
-      <text x="150" y="232" textAnchor="middle" fontSize="8" fill="#374151">VADP — vSphere API for Data Protection</text>
-      <text x="150" y="242" textAnchor="middle" fontSize="7.5" fill="#6b7280">Job initiation, VM discovery, snapshot coord.</text>
-
-      {/* Backup Server */}
-      <rect x="320" y="30" width="200" height="80" rx="7" fill="#dcfce7" stroke="#16a34a" strokeWidth="1.5"/>
-      <text x="420" y="50" textAnchor="middle" fontSize="10" fontWeight="700" fill="#15803d">Backup Server</text>
-      <text x="420" y="64" textAnchor="middle" fontSize="8" fill="#374151">Scheduling, catalog, management</text>
-      <text x="420" y="78" textAnchor="middle" fontSize="7.5" fill="#166534">→ Calls vCenter API</text>
-      <text x="420" y="90" textAnchor="middle" fontSize="7.5" fill="#166534">→ Manages proxy selection</text>
-      <text x="420" y="102" textAnchor="middle" fontSize="7.5" fill="#166534">→ Updates catalog after job</text>
-
-      {/* Backup Proxy */}
-      <rect x="320" y="130" width="200" height="80" rx="7" fill="#fef9c3" stroke="#ca8a04" strokeWidth="1.5"/>
-      <text x="420" y="150" textAnchor="middle" fontSize="10" fontWeight="700" fill="#92400e">Backup Proxy</text>
-      <text x="420" y="164" textAnchor="middle" fontSize="8" fill="#374151">Reads VM data from snapshot</text>
-      <text x="420" y="178" textAnchor="middle" fontSize="7.5" fill="#92400e">CBT: only changed blocks (incremental)</text>
-      <text x="420" y="190" textAnchor="middle" fontSize="7.5" fill="#6b7280">CBT = tracking mechanism, not backup itself</text>
-      <text x="420" y="202" textAnchor="middle" fontSize="7.5" fill="#6b7280">Can be VM or physical server</text>
-
-      {/* Primary Repo */}
-      <rect x="570" y="30" width="260" height="80" rx="7" fill="#fef3c7" stroke="#d97706" strokeWidth="1.5"/>
-      <text x="700" y="50" textAnchor="middle" fontSize="10" fontWeight="700" fill="#92400e">Primary Backup Repository</text>
-      <text x="700" y="64" textAnchor="middle" fontSize="8" fill="#374151">Disk / Dedup Appliance / Object Storage</text>
-      <text x="700" y="78" textAnchor="middle" fontSize="7.5" fill="#92400e">Fast backup, fast local restore</text>
-      <text x="700" y="90" textAnchor="middle" fontSize="7.5" fill="#6b7280">Backup catalog stored here — must be protected</text>
-      <text x="700" y="102" textAnchor="middle" fontSize="7.5" fill="#dc2626">Separate credentials from production AD/admin</text>
-
-      {/* Secondary Repo */}
-      <rect x="570" y="130" width="260" height="80" rx="7" fill="#fee2e2" stroke="#dc2626" strokeWidth="2"/>
-      <text x="700" y="150" textAnchor="middle" fontSize="10" fontWeight="700" fill="#991b1b">Secondary / Immutable Copy</text>
-      <text x="700" y="164" textAnchor="middle" fontSize="8" fill="#374151">Object lock / hardened repo / tape vault</text>
-      <text x="700" y="178" textAnchor="middle" fontSize="7.5" fill="#dc2626">Backup copy job — after primary complete</text>
-      <text x="700" y="192" textAnchor="middle" fontSize="7.5" fill="#6b7280">Automated recovery verification (vendor feature)</text>
-      <text x="700" y="204" textAnchor="middle" fontSize="7.5" fill="#6b7280">not universal — depends on platform/edition</text>
-
-      {/* Arrows */}
-      <line x1="280" y1="160" x2="320" y2="70" stroke="#7c3aed" strokeWidth="1.5" strokeDasharray="4,2"/>
-      <text x="300" y="108" textAnchor="middle" fontSize="7" fill="#7c3aed">vCenter API</text>
-      <line x1="520" y1="70" x2="570" y2="70" stroke="#16a34a" strokeWidth="1.5"/>
-      <text x="545" y="64" textAnchor="middle" fontSize="7" fill="#16a34a">data write</text>
-      <line x1="420" y1="130" x2="420" y2="130" stroke="#ca8a04" strokeWidth="0"/>
-      <line x1="520" y1="170" x2="570" y2="170" stroke="#ca8a04" strokeWidth="1.5"/>
-      <text x="545" y="164" textAnchor="middle" fontSize="7" fill="#ca8a04">reads snapshot</text>
-      <line x1="700" y1="110" x2="700" y2="130" stroke="#dc2626" strokeWidth="1.5"/>
-      <text x="720" y="122" fontSize="7" fill="#dc2626">copy job</text>
-
-      {/* Important warnings */}
-      <rect x="20" y="258" width="820" height="52" rx="6" fill="#fff" stroke="#e5e7eb" strokeWidth="1"/>
-      <text x="30" y="273" fontSize="8.5" fill="#dc2626" fontWeight="600">⚠ VMware snapshot during backup is TEMPORARY — must be consolidated after job. Long-running snapshots cause datastore space consumption and VM performance issues.</text>
-      <text x="30" y="288" fontSize="8.5" fill="#dc2626" fontWeight="600">⚠ VMware VM snapshot ≠ independent backup. VMware snapshot resides on same datastore. Independent backup = separate storage via backup software.</text>
-      <text x="30" y="302" fontSize="8" fill="#374151">Automated recovery verification (starting backup VM in isolated env to test): vendor-specific feature — not universal. Check your backup platform's capabilities.</text>
-      <text x="430" y="322" textAnchor="middle" fontSize="8" fill="#9ca3af">Future image: backup-vmware-architecture.png</text>
+      {/* Critical warning */}
+      <rect x="10" y={y + 8} width="460" height="40" rx="6" fill="#fee2e2" stroke="#dc2626" strokeWidth="1.5"/>
+      <text x="240" y={y + 26} textAnchor="middle" fontSize="12" fontWeight="700" fill="#991b1b">
+        VMware snapshot ≠ long-term backup
+      </text>
+      <text x="240" y={y + 42} textAnchor="middle" fontSize="11" fill="#dc2626">
+        Snapshot same datastore — independent backup = separate storage
+      </text>
     </svg>
   );
 }
