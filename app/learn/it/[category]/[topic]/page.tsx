@@ -36,6 +36,7 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "das",
   "nas",
   "san",
+  "backup",
 ]);
 
 export default async function ItTopicPage(props: PageProps) {
