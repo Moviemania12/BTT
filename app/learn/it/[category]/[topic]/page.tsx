@@ -32,6 +32,8 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "gpu",
   "blade-server",
   "virtualization",
+  // IT Storage track — static articles
+  "das",
 ]);
 
 export default async function ItTopicPage(props: PageProps) {
