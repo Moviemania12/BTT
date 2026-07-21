@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+﻿import { notFound } from "next/navigation";
 import { getTopic, ALL_TOPICS } from "@/lib/topics";
 import type { Topic, ItCategory } from "@/lib/topics";
 import ComingSoonPage from "@/components/ComingSoonPage";
@@ -13,7 +13,7 @@ type PageProps = {
   params: Promise<PageParams>;
 };
 
-// ─── Static article slugs ─────────────────────────────────────────────────────
+// â”€â”€â”€ Static article slugs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Topics that have their own dedicated static page.tsx under
 // app/learn/it/<category>/<slug>/page.tsx must NOT be served by this
 // dynamic catch-all. Adding a slug here causes Next.js to fall through to
@@ -32,11 +32,12 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "gpu",
   "blade-server",
   "virtualization",
-  // IT Storage track — static articles
+  // IT Storage track â€” static articles
   "das",
   "nas",
   "san",
   "backup",
+  "disaster-recovery",
 ]);
 
 export default async function ItTopicPage(props: PageProps) {
@@ -97,7 +98,7 @@ export async function generateStaticParams(): Promise<PageParams[]> {
   const topics: Topic[] = ALL_TOPICS;
   return topics
     .filter((t) => t.track === "it")
-    // Exclude slugs that have their own static page.tsx — they handle their own routing
+    // Exclude slugs that have their own static page.tsx â€” they handle their own routing
     .filter((t) => !STATIC_ARTICLE_SLUGS.has(t.slug))
     .map((t) => ({ category: t.category, topic: t.slug }));
 }
@@ -105,7 +106,7 @@ export async function generateStaticParams(): Promise<PageParams[]> {
 export async function generateMetadata(props: PageProps) {
   const params = await props.params;
 
-  // Static articles export their own metadata — return empty here
+  // Static articles export their own metadata â€” return empty here
   if (STATIC_ARTICLE_SLUGS.has(params.topic)) {
     return {};
   }
@@ -117,7 +118,8 @@ export async function generateMetadata(props: PageProps) {
   }
 
   return {
-    title: `${topic.title} — Behind The Tech`,
+    title: `${topic.title} â€” Behind The Tech`,
     description: topic.description,
   };
 }
+
