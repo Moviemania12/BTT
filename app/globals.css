@@ -1550,3 +1550,184 @@ img[loading="lazy"] {
   flex-shrink: 0;
   white-space: nowrap;
 }
+
+/* ── ServerVsPc comparison table ─────────────────────────────────────────── */
+/* Used in: app/learn/it/servers/server-basics/svg/ServerVsPc.tsx            */
+
+.svpc-wrap {
+  width: 100%;
+  font-family: var(--hp-font-body);
+  background: var(--hp-surface);
+  border: 1px solid var(--hp-border);
+  border-radius: var(--hp-radius-card);
+  box-shadow: 0 1px 3px rgba(16,24,40,0.04), 0 4px 12px rgba(16,24,40,0.04);
+  overflow: hidden;
+}
+
+.svpc-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.svpc-caption {
+  font-family: var(--hp-font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--hp-text-primary);
+  letter-spacing: -0.01em;
+  padding: 16px 20px 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--hp-border);
+  caption-side: top;
+}
+
+/* ── Column widths ── */
+.svpc-col-label  { width: 13%; }
+.svpc-col-server { width: 43.5%; }
+.svpc-col-pc     { width: 43.5%; }
+
+/* ── Header row ── */
+.svpc-th-label {
+  padding: 10px 14px;
+  background: var(--hp-bg-subtle);
+  border-right: 1px solid var(--hp-border);
+  border-bottom: 2px solid var(--hp-border);
+}
+
+.svpc-th-server {
+  padding: 11px 18px;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--hp-accent);
+  background: var(--hp-accent-subtle);
+  border-right: 1px solid var(--hp-border);
+  border-bottom: 2px solid var(--hp-accent);
+}
+
+.svpc-th-pc {
+  padding: 11px 18px;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--hp-text-secondary);
+  background: var(--hp-bg-subtle);
+  border-bottom: 2px solid var(--hp-border);
+}
+
+/* ── Data rows ── */
+.svpc-tr {
+  border-bottom: 1px solid var(--hp-border);
+  transition: background 0.12s ease;
+}
+.svpc-tr:last-child { border-bottom: none; }
+.svpc-tr:nth-child(odd)  { background: var(--hp-bg-subtle); }
+.svpc-tr:nth-child(even) { background: var(--hp-surface); }
+.svpc-tr:hover { background: var(--hp-accent-subtle); }
+
+.svpc-td-label {
+  padding: 11px 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--hp-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  border-right: 1px solid var(--hp-border);
+  vertical-align: middle;
+  font-family: var(--hp-font-mono);
+}
+
+.svpc-td-server {
+  padding: 11px 18px;
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--hp-accent);
+  border-right: 1px solid var(--hp-border);
+  vertical-align: middle;
+  line-height: 1.5;
+}
+
+.svpc-td-pc {
+  padding: 11px 18px;
+  font-size: 0.825rem;
+  font-weight: 400;
+  color: var(--hp-text-secondary);
+  vertical-align: middle;
+  line-height: 1.5;
+}
+
+/* ── Footer ── */
+.svpc-footer td {
+  padding: 9px 20px;
+  font-size: 0.7rem;
+  color: var(--hp-text-muted);
+  text-align: center;
+  font-style: italic;
+  border-top: 1px solid var(--hp-border);
+  background: var(--hp-bg-subtle);
+}
+
+/* ── Mobile: stack rows vertically below 560px ── */
+@media (max-width: 560px) {
+  .svpc-col-label, .svpc-col-server, .svpc-col-pc { width: auto; }
+
+  .svpc-table thead { display: none; }
+
+  .svpc-table tbody,
+  .svpc-tr,
+  .svpc-td-label,
+  .svpc-td-server,
+  .svpc-td-pc { display: block; width: 100%; box-sizing: border-box; }
+
+  .svpc-tr {
+    border-bottom: 2px solid var(--hp-border);
+    padding: 2px 0;
+  }
+  .svpc-tr:last-child { border-bottom: none; }
+
+  .svpc-td-label {
+    border-right: none;
+    border-bottom: none;
+    padding: 10px 14px 4px;
+    white-space: normal;
+    font-size: 0.65rem;
+  }
+
+  .svpc-td-server {
+    border-right: none;
+    padding: 2px 14px 6px;
+    font-size: 0.8rem;
+    position: relative;
+    padding-left: 22px;
+  }
+  .svpc-td-server::before {
+    content: "›";
+    position: absolute;
+    left: 10px;
+    color: var(--hp-accent);
+    font-weight: 700;
+  }
+
+  .svpc-td-pc {
+    padding: 2px 14px 10px;
+    font-size: 0.8rem;
+    color: var(--hp-text-muted);
+    position: relative;
+    padding-left: 22px;
+  }
+  .svpc-td-pc::before {
+    content: "›";
+    position: absolute;
+    left: 10px;
+    color: var(--hp-text-muted);
+    font-weight: 700;
+  }
+
+  .svpc-footer { display: none; }
+}
