@@ -38,6 +38,8 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "san",
   "backup",
   "disaster-recovery",
+  // IT Networking track — static articles
+  "switch",
 ]);
 
 export default async function ItTopicPage(props: PageProps) {
@@ -122,4 +124,5 @@ export async function generateMetadata(props: PageProps) {
     description: topic.description,
   };
 }
+
 
