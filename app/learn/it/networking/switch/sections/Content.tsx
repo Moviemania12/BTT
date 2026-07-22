@@ -858,6 +858,202 @@ Post-Upgrade:
         </div>
       ))}
 
+      {/* ══ GLOSSARY & ABBREVIATIONS ════════════════════════════════════════ */}
+      <h2 style={{ ...S.h2, marginTop: "3rem" }}>Glossary &amp; Abbreviations</h2>
+      <p style={{ ...S.p, marginBottom: "1.5rem" }}>The complete glossary contains comprehensive definitions of the networking protocols, standards, acronyms, hardware components and enterprise terminology used throughout the Enterprise Network Switch article.</p>
+
+      {/* Group A — Networking Fundamentals */}
+      <ComparisonTable
+        title="Networking Fundamentals"
+        headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
+        rows={[
+          ["ARP",      "Address Resolution Protocol",                "L3-to-L2 resolution — maps IP address to MAC address. ARP table on host/router; CAM table on switch. ARP request = broadcast; reply = unicast."],
+          ["BGP",      "Border Gateway Protocol",                    "L3 routing protocol. In DC: used as underlay routing for Spine-Leaf fabrics (eBGP unnumbered) and as control plane for EVPN overlays."],
+          ["BPDU",     "Bridge Protocol Data Unit",                  "STP/RSTP/MSTP control message. Switches exchange BPDUs to elect root bridge, determine port roles, maintain loop-free topology. Sent every 2 seconds (Hello timer) by default."],
+          ["CAM",      "Content Addressable Memory",                 "Hardware used for the switch MAC address table (FDB). Parallel lookup — value in, location out. Enables wire-speed forwarding. Different from TCAM."],
+          ["CoS",      "Class of Service",                           "L2 QoS marking. Uses 3-bit PCP field inside 802.1Q VLAN tag — values 0–7. Scope limited to L2 domain; lost when 802.1Q tag is stripped."],
+          ["CRC",      "Cyclic Redundancy Check",                    "Error-detection field in Ethernet frame. Incrementing CRC errors on an interface = physical layer problem (bad cable, dirty fiber, bad transceiver, EMI)."],
+          ["CSMA/CD",  "Carrier Sense Multiple Access / Collision Detection","Legacy half-duplex Ethernet collision-avoidance mechanism. Irrelevant in full-duplex switched environments — no collisions."],
+          ["DHCP",     "Dynamic Host Configuration Protocol",        "IP address assignment protocol. DHCP Snooping on switch: distinguishes trusted (server-facing) from untrusted (client-facing) ports to block rogue DHCP servers."],
+          ["DSCP",     "Differentiated Services Code Point",        "L3 QoS marking. 6-bit field in IP header DS byte. 64 possible values. Key values: EF (46) = voice, AF41 (34) = video, CS0 (0) = best-effort. End-to-end across IP network."],
+          ["ECMP",     "Equal Cost Multi-Path",                      "Multiple equal-cost paths used simultaneously. In Spine-Leaf: all spine paths active. Traffic distributed via deterministic hashing — not round-robin."],
+          ["EMI",      "Electromagnetic Interference",               "Electrical noise that corrupts signals. Can cause CRC errors on copper links. Mitigation: shielded cable, proper grounding, routing away from power cables."],
+          ["EVPN",     "Ethernet VPN",                              "BGP-based control plane for VXLAN overlays. Used in modern DC fabrics to distribute MAC/IP reachability information across Spine-Leaf fabric."],
+          ["FCS",      "Frame Check Sequence",                       "4-byte CRC at end of Ethernet frame. Switch checks FCS on ingress; recalculates on egress after any header modification (VLAN tag add/strip)."],
+          ["FDB",      "Forwarding Database",                        "Switch MAC address table — same as CAM table. Stores MAC → Port + VLAN mappings. Entries age out (~300 sec default). Unknown MAC = flood same-VLAN ports."],
+        ]}
+        caption=""
+      />
+
+      {/* Group B — Layer 2 Protocols */}
+      <ComparisonTable
+        title="Layer 2 Protocols aur Standards"
+        headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
+        rows={[
+          ["802.1Q",   "IEEE 802.1Q",                               "VLAN tagging standard. Inserts 4-byte tag into Ethernet frame (TPID 0x8100 + TCI). Tagged frame max: 1522 bytes. Defines access ports (untagged) and trunk ports (tagged)."],
+          ["802.1w",   "IEEE 802.1w",                               "Rapid Spanning Tree Protocol (RSTP). Sub-second convergence via Proposal/Agreement mechanism. 3 port states (Discarding/Learning/Forwarding). Backward compatible with 802.1D."],
+          ["802.1s",   "IEEE 802.1s",                               "Multiple Spanning Tree Protocol (MSTP). Maps multiple VLANs to fewer STP instances. Reduces CPU/BPDU overhead vs per-VLAN STP. Requires Region Name + Revision + VLAN map to match."],
+          ["802.1AX",  "IEEE 802.1AX (formerly 802.3ad)",          "Link Aggregation standard — LACP. Defines Link Aggregation Groups (LAG), LACP PDU exchange, Actor/Partner roles. Vendor-neutral. Absorbed from 802.3ad."],
+          ["802.1AB",  "IEEE 802.1AB",                              "Link Layer Discovery Protocol (LLDP) standard. Devices advertise identity, capabilities, management address to directly connected neighbors. TLV-based."],
+          ["802.1D",   "IEEE 802.1D",                               "Original Spanning Tree Protocol (STP) standard. Root bridge election, port roles (Root/Designated/Blocked), 5 port states. Convergence 30–50 seconds. Superseded by RSTP in modern networks."],
+          ["DEI",      "Drop Eligible Indicator",                   "1-bit field in 802.1Q TCI. DEI=1: this frame may be dropped first during congestion. Supersedes the older CFI (Canonical Format Indicator) bit in same position."],
+          ["ISL",      "Inter-Switch Link",                         "In MLAG context: dedicated high-speed peer link connecting the two MLAG switch members. Carries both control plane sync traffic and data plane overflow traffic."],
+          ["LACP",     "Link Aggregation Control Protocol",         "IEEE 802.1AX protocol. Dynamically negotiates LAG between Actor and Partner. Modes: Active (initiates) and Passive (responds). Active+Passive or Active+Active forms LAG. Passive+Passive does not."],
+          ["LAG",      "Link Aggregation Group",                    "Logical bundle of multiple physical links. Created by LACP or static config. Appears as one logical interface. Load-balances via deterministic hashing across member links."],
+          ["LLDP",     "Link Layer Discovery Protocol",             "IEEE 802.1AB standard. Switch advertises hostname, port ID, capabilities, management IP to neighbors. Used for topology discovery, NMS mapping, LLDP-MED power negotiation for IP phones."],
+          ["MLAG",     "Multi-Chassis Link Aggregation",            "Proprietary feature allowing two physical switches to act as one logical LAG partner. Server sees one switch; both switches active. Peer link syncs control plane; keepalive prevents split-brain. Also: vPC (Cisco Nexus), MC-LAG (Juniper), VLT (Dell), VSX (HPE)."],
+          ["MSTP",     "Multiple Spanning Tree Protocol",           "IEEE 802.1s. Groups multiple VLANs into fewer STP instances. MST Region = same Name + Revision + VLAN-to-instance map. Load balancing possible across instances with different root bridges."],
+          ["PCP",      "Priority Code Point",                       "3-bit CoS field inside 802.1Q TCI. Values 0–7. 5 = Voice (IP telephony), 7 = Network Control (highest). Defines 802.1p QoS priority at Layer 2."],
+          ["RSTP",     "Rapid Spanning Tree Protocol",              "IEEE 802.1w. Replaces 802.1D STP. Sub-second convergence via Proposal/Agreement handshake. Adds Alternate Port (pre-identified backup root port) and Backup Port roles. Modern enterprise standard."],
+          ["STP",      "Spanning Tree Protocol",                    "IEEE 802.1D. Prevents Layer 2 loops by creating loop-free logical topology. Elects Root Bridge (lowest Bridge ID). Port roles: Root, Designated, Blocked. Convergence: 30–50 seconds. Superseded by RSTP."],
+          ["TPID",     "Tag Protocol Identifier",                   "2-byte field starting 802.1Q tag. Fixed value 0x8100 — receiver identifies this as a tagged Ethernet frame."],
+          ["TCI",      "Tag Control Information",                   "2-byte field in 802.1Q tag following TPID. Contains PCP (3b), DEI (1b), and VID (12b)."],
+          ["VID",      "VLAN Identifier",                           "12-bit VLAN ID field in 802.1Q TCI. Range 1–4094 usable. 0 and 4095 reserved. Identifies which VLAN a tagged frame belongs to."],
+          ["VLAN",     "Virtual Local Area Network",                "Logical network segment on a physical switch. Each VLAN = separate broadcast domain. Inter-VLAN communication requires L3 routing. Configured per-port as access (one VLAN) or trunk (multiple VLANs, tagged)."],
+          ["VTP",      "VLAN Trunking Protocol",                    "Cisco proprietary protocol for propagating VLAN database between switches. Risk: highest-revision-number switch overwrites domain VLAN database. Best practice: set new switches to Transparent or Client mode before connecting."],
+          ["VXLAN",    "Virtual Extensible LAN",                    "L2-over-L3 overlay encapsulation. Extends VLANs across L3 boundaries in data center fabrics. Used with EVPN control plane. Enables large-scale multi-tenant DC networks."],
+        ]}
+        caption=""
+      />
+
+      {/* Group C — Layer 3 & Routing */}
+      <ComparisonTable
+        title="Layer 3 aur Routing"
+        headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
+        rows={[
+          ["AOS-CX",   "Aruba OS-CX",                               "Aruba (HPE) Network Operating System for enterprise switches. Relevant for CLI syntax differences in troubleshooting cross-platform environments."],
+          ["CoPP",     "Control Plane Policing",                    "Switch feature that rate-limits CPU-bound traffic — STP BPDUs, OSPF hellos, SSH sessions, ICMP, ARP. Prevents CPU exhaustion attacks. Platform-specific configuration."],
+          ["EOS",      "Extensible Operating System",               "Arista Networks NOS. Relevant for CLI syntax differences (e.g., show interfaces vs show interface)."],
+          ["FHRP",     "First Hop Redundancy Protocol",             "Category of protocols providing virtual gateway redundancy: HSRP (Cisco proprietary), VRRP (IETF RFC 3768/5798), GLBP (Cisco proprietary active-active). Switch fail → standby takes virtual IP/MAC transparently."],
+          ["GLBP",     "Gateway Load Balancing Protocol",           "Cisco proprietary FHRP. Unlike HSRP/VRRP (active/standby), GLBP provides active-active gateway load balancing — multiple switches simultaneously serve as default gateway for different hosts."],
+          ["HSRP",     "Hot Standby Router Protocol",               "Cisco proprietary FHRP. Active switch holds virtual IP/MAC; standby monitors. Active failure → standby promotes. Not interoperable with non-Cisco equipment. VRRP is the IETF standard equivalent."],
+          ["IGMP",     "Internet Group Management Protocol",        "Protocol for IPv4 multicast group membership. Host→Router: join/leave group. IGMPv1 (basic), IGMPv2 (explicit leave, querier election), IGMPv3 (source-specific). Switch uses IGMP Snooping to limit multicast flooding."],
+          ["OSPF",     "Open Shortest Path First",                  "Link-state routing protocol. Used in enterprise distribution/core and DC underlay. On L3 switches: runs as control plane process for dynamic route exchange between SVIs and routers."],
+          ["SPOF",     "Single Point of Failure",                   "A component whose failure causes entire system failure. Eliminated by redundancy: dual uplinks, dual switches (MLAG/stacking), dual PSUs, dual PDU feeds."],
+          ["SVI",      "Switch Virtual Interface",                  "Logical L3 interface on L3 switch corresponding to a VLAN. No physical port — virtual. Acts as default gateway for devices in that VLAN. Used for inter-VLAN routing at wire speed via ASIC."],
+          ["TCAM",     "Ternary Content Addressable Memory",        "Specialized hardware memory supporting 3-state matching (0, 1, X=don't-care). Stores ACLs, QoS policies, and platform-dependent routing lookups. Different from CAM/FDB. TCAM is a finite resource — monitor utilization."],
+          ["TTL",      "Time to Live",                              "IP header field decremented by each router hop. Packet dropped when TTL reaches 0 — prevents infinite routing loops. No L2 equivalent — reason why Ethernet loops are catastrophic without STP."],
+          ["VRRP",     "Virtual Router Redundancy Protocol",        "IETF standard FHRP (RFC 3768 v2, RFC 5798 v3). Multiple switches share virtual IP/MAC. Active (Master) switch holds virtual IP; backup monitors. Switch fail → backup promotes. Multi-vendor interoperable."],
+        ]}
+        caption=""
+      />
+
+      {/* Group D — QoS & Security */}
+      <ComparisonTable
+        title="QoS aur Security"
+        headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
+        rows={[
+          ["AAA",      "Authentication, Authorization, Accounting", "Security framework. Authentication: who are you? Authorization: what can you do? Accounting: what did you do? Implemented via RADIUS or TACACS+ integration. Centralized credential management for switch CLI access."],
+          ["ACL",      "Access Control List",                       "Ordered list of permit/deny rules applied to switch ports or SVIs. MAC ACL (L2), Standard ACL (source IP), Extended ACL (src+dst IP+port+protocol). Stored in TCAM. Finite resource — monitor utilization."],
+          ["DAI",      "Dynamic ARP Inspection",                    "Switch security feature. Inspects incoming ARP packets against DHCP Snooping binding table {MAC, IP, Port, VLAN}. Mismatch → ARP dropped. Prevents ARP spoofing / man-in-the-middle attacks. Requires DHCP Snooping enabled."],
+          ["DCB",      "Data Center Bridging",                      "IEEE framework for priority-aware Ethernet. Components: PFC (802.1Qbb), ETS (802.1Qaz), DCBX (802.1AB extension), QCN (802.1Qau). Can enable lossless behavior for selected traffic classes where appropriately designed and supported."],
+          ["MAB",      "MAC Authentication Bypass",                "802.1X fallback for non-802.1X devices (printers, cameras, VoIP phones). Switch uses device MAC address as credential to RADIUS. Less secure than 802.1X certificate/password auth."],
+          ["PFC",      "Priority Flow Control",                    "IEEE 802.1Qbb. Per-priority flow control — PAUSE frames sent only for a specific CoS class, not all traffic. Used in specifically engineered lossless Ethernet designs (RoCE, FCoE). Not universally required."],
+          ["PVST+",    "Per-VLAN Spanning Tree Plus",              "Cisco proprietary STP variant. Runs a separate STP instance per VLAN. Per-VLAN root bridge placement enables load balancing. Higher CPU/BPDU overhead than MSTP at scale."],
+          ["QoS",      "Quality of Service",                       "Traffic management — classification, marking, queuing, scheduling to prioritize critical traffic during congestion. Mechanism: CoS (L2), DSCP (L3). Trust boundary defines where markings are accepted or overridden."],
+          ["RADIUS",   "Remote Authentication Dial-In User Service","IETF standard (RFC 2865) AAA protocol. Switch sends authentication requests to RADIUS server (Cisco ISE, FreeRADIUS, Microsoft NPS). Used for SSH login, 802.1X port authentication, dynamic VLAN/ACL assignment."],
+          ["TACACS+",  "Terminal Access Controller Access-Control System Plus","Cisco-developed AAA protocol. Separates Authentication, Authorization, Accounting — finer-grained per-command authorization. Encrypts entire packet body (vs RADIUS encrypting only password). Preferred for network device management."],
+          ["VTY",      "Virtual Teletype",                         "Virtual terminal lines on switch — logical SSH/Telnet management sessions. VTY ACL restricts access to authorized management station IPs only. SSH v2 required — Telnet is cleartext."],
+        ]}
+        caption=""
+      />
+
+      {/* Group E — Hardware & Physical */}
+      <ComparisonTable
+        title="Hardware aur Physical Layer"
+        headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
+        rows={[
+          ["AOC",      "Active Optical Cable",                      "Fiber cable with active electro-optic conversion at both ends. EMI-immune, longer reach than DAC. Higher power/cost. Used for cross-row or EMI-sensitive runs where DAC is insufficient."],
+          ["ASIC",     "Application Specific Integrated Circuit",   "Custom silicon chip that is the forwarding engine of a switch. Performs MAC lookup, VLAN processing, ACL matching, QoS queuing at wire speed. Enterprise switches use merchant silicon (Broadcom, Marvell) or vendor-designed ASICs — platform specific."],
+          ["BMC",      "Baseboard Management Controller",           "Dedicated out-of-band management controller on servers and other supported infrastructure. In the data center network, BMC/IPMI traffic is typically placed on a separate management/OOB network."],
+          ["CPU",      "Central Processing Unit",                   "Control plane processor on switch. Runs NOS, STP, routing protocols, management sessions. Not involved in normal data forwarding (handled by ASIC). CoPP protects CPU from rate exhaustion."],
+          ["DAC",      "Direct Attach Copper",                      "Copper twinax cable with SFP/QSFP connectors. Passive DAC: no active electronics — lowest cost/power. Active DAC: includes signal conditioning electronics. Distance and performance vendor/platform/cable-type dependent."],
+          ["DDM",      "Digital Diagnostics Monitoring",            "Synonym for DOM. Transceiver reports TX power, RX power, temperature, voltage, laser bias current in real time. Used for optical link health monitoring and fault diagnosis."],
+          ["DOM",      "Digital Optical Monitoring",               "Real-time transceiver health reporting: TX power, RX power, temperature, voltage, laser bias current. Low RX power = dirty connector / bad fiber / distance. Low TX power = failing laser."],
+          ["LC",       "Lucent Connector",                          "Small-form-factor fiber connector. Industry standard for SFP/SFP+/SFP28 transceivers. Duplex LC = two fibers (TX+RX). Single-fiber BiDi transceivers use single LC simplex."],
+          ["LED",      "Light-Emitting Diode",                      "Visual status indicators on switch front/rear panel. Link LED (port status), SYS LED (system health), PSU LED, FAN LED, ALM (alarm). Colors and blink patterns are platform-specific."],
+          ["MMF",      "Multi-Mode Fiber",                          "Fiber with larger core (50μm or 62.5μm). Multiple light modes. OM3/OM4 (aqua) standard in DC — up to ~300–400m at 10G. Uses low-cost VCSEL light source. EMI-immune. Shorter reach than SMF."],
+          ["MPO/MTP",  "Multi-fiber Push On / Mechanical Transfer Push On","High-density fiber connector — 12 or 24 fibers in one connector. Used with QSFP+ (40G) and QSFP28 (100G) transceivers. Required for high-density DC cabling with pre-terminated trunk cables and patch panels."],
+          ["MTBF",     "Mean Time Between Failures",               "Statistical reliability metric — average time a component operates between failures in a population. Not a guarantee of individual device lifespan. Use for comparative evaluation and spare planning — not as predicted operational life."],
+          ["NIC",      "Network Interface Card",                    "Server network adapter. Dual-NIC servers: two physical NICs connected to two different switches (MLAG) for link and switch redundancy. NIC teaming/bonding = server-side LACP."],
+          ["PHY",      "Physical Layer Transceiver",               "Chip that handles signal encoding/decoding between digital MAC layer and physical medium. Auto-negotiation behavior depends on PHY implementation, media type, and IEEE standard."],
+          ["POST",     "Power-On Self Test",                        "Hardware diagnostic routine running at boot. Tests CPU, RAM, Flash, ASIC, fans, PSUs, temperature sensors. POST failure = boot stops, requires hardware intervention."],
+          ["PSU",      "Power Supply Unit",                         "Switch power supply. Enterprise switches have dual redundant PSUs. Redundancy models: 1+1 (active/standby), N+1, load-sharing — platform-dependent. PSU-1 → PDU-A, PSU-2 → PDU-B for full power redundancy."],
+          ["QSFP",     "Quad Small Form-factor Pluggable",          "Transceiver family. QSFP+: 40G (4×10G lanes). QSFP28: 100G (4×25G lanes). QSFP-DD: 200G/400G (8 lanes). Supported speeds depend on platform, hardware architecture, and transceiver type."],
+          ["RJ45",     "Registered Jack 45",                        "8-pin modular connector for copper Ethernet (Cat5e/Cat6/Cat6A) and console management port. Standard for 1G/2.5G/10G copper switch ports."],
+          ["ROMMON",   "ROM Monitor",                               "Low-level boot environment on switch. Accessible by interrupting normal boot. Used for password recovery, TFTP image boot when NOS is missing/corrupt, setting boot variable. Procedures are platform-specific."],
+          ["SFP",      "Small Form-factor Pluggable",               "Transceiver module family. SFP: 1G. SFP+: 10G. SFP28: 25G. Hot-swappable. LC fiber (SR/LR/ER/ZR) or RJ45 copper. Always verify wavelength, fiber type, reach, and vendor compatibility before installing."],
+          ["SMF",      "Single-Mode Fiber",                         "Fiber with 9μm core. Single light mode — no modal dispersion. OS2 (yellow) standard. Supports long distances (10km to 80km+ depending on transceiver). Uses laser diode light source. Higher transceiver cost than MMF."],
+          ["T568B",    "TIA-568B Wiring Standard",                  "Most common RJ45 connector pin-out for copper Ethernet in enterprise environments. Defines wire color-to-pin mapping. Counterpart T568A also valid — consistency across an installation is what matters."],
+          ["VCSEL",    "Vertical-Cavity Surface-Emitting Laser",   "Low-cost laser used in multi-mode SFP/SFP+/SFP28 (SR) transceivers. Drives OM3/OM4 multi-mode fiber. Lower cost and power vs laser diodes in SMF transceivers."],
+        ]}
+        caption=""
+      />
+
+      {/* Group F — Management, Monitoring & Operations */}
+      <ComparisonTable
+        title="Management, Monitoring aur Operations"
+        headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
+        rows={[
+          ["API",      "Application Programming Interface",         "Programmatic interface for switch configuration and monitoring. Modern switches support REST API, NETCONF, RESTCONF, and gNMI for automation and network management systems."],
+          ["CLI",      "Command Line Interface",                    "Primary switch management interface. Accessed via SSH (secure, required) or console port. Syntax varies by NOS: Cisco IOS-XE, NX-OS, Arista EOS, Juniper Junos, Aruba AOS-CX, Dell OS10, SONiC."],
+          ["ERSPAN",   "Encapsulated Remote SPAN",                  "Port mirroring variant. Captured traffic is GRE-encapsulated and forwarded to any IP destination — enables remote analysis across L3 boundaries. Used for cloud-based or geographically distant packet analyzers."],
+          ["IDF",      "Intermediate Distribution Frame",           "Wiring closet / network room at floor or zone level. Access switches reside here. Connected via backbone fiber to MDF. Horizontal cabling from IDF to workstations."],
+
+          ["ISSU",     "In-Service Software Upgrade",               "NOS upgrade without traffic interruption. Requires redundant supervisors, NSF/SSO configured, supported upgrade path, and specific hardware architecture. Availability depends on platform and software version — verify vendor documentation."],
+          ["MDF",      "Main Distribution Frame",                   "Central wiring closet / data center network core. Core and distribution switches reside here. Backbone connects MDF to IDF. Campus backbone: MDF-to-building fiber."],
+          ["NBD",      "Next Business Day",                         "Hardware replacement SLA. Faulty component replaced next business day. Less stringent than 4-hour or same-day replacement. Appropriate for non-critical access layer switches with spare strategy in place."],
+          ["NETCONF",  "Network Configuration Protocol",            "IETF (RFC 6241) protocol for network device configuration management. XML-based. Uses YANG data models. Enables transactional configuration changes with rollback. Used by automation tools (Ansible, Nornir)."],
+          ["NOS",      "Network Operating System",                  "Switch operating system software. Examples: Cisco IOS-XE (enterprise), NX-OS (DC), Arista EOS, Juniper Junos, Aruba AOS-CX, Dell OS10, SONiC. Manages hardware abstraction, forwarding tables, protocols, and management."],
+          ["NSF",      "Non-Stop Forwarding",                       "Feature allowing data plane to continue forwarding during control plane restart or supervisor failover. Required with SSO for ISSU. Prevents traffic loss during planned or unplanned supervisor switchover."],
+          ["NTP",      "Network Time Protocol",                     "Standard protocol for clock synchronization. Mandatory on all network switches. Stratum hierarchy: 0 = atomic/GPS, 1 = directly connected, 2+ = cascaded. Wrong timestamps = forensic timeline impossible during incidents."],
+          ["OOB",      "Out-of-Band",                               "Separate management network isolated from production traffic. Switch management IPs accessible via OOB even if production network is down. Mandatory for production environments. Typically: dedicated management VRF or physical management ports."],
+          ["RSPAN",    "Remote SPAN",                               "Port mirroring across switches. Source port/VLAN on one switch; analyzer on another switch. Transported via special RSPAN VLAN. Predecessor to ERSPAN (which removes L2 boundary restriction)."],
+          ["SCP",      "Secure Copy Protocol",                      "SSH-based file transfer. Used for switch configuration backup/restore and NOS image transfer. Encrypted and authenticated. Preferred over TFTP (unencrypted) for production environments."],
+          ["SNMP",     "Simple Network Management Protocol",        "Industry-standard monitoring protocol. SNMPv3 required in production (authentication + encryption). v1/v2c: community string = cleartext password — avoid. Operations: GET, GETNEXT, GETBULK, SET, TRAP, INFORM."],
+          ["SPAN",     "Switched Port Analyzer",                    "Port mirroring on same switch. Source (port or VLAN) traffic copied to destination port where analyzer (Wireshark, IDS) is connected. Ingress, egress, or both directions. Impact varies by platform."],
+          ["SSO",      "Stateful Switchover",                       "Supervisor redundancy mode where standby supervisor maintains synchronized state. On failover: seamless takeover with minimal or no traffic disruption. Required with NSF for ISSU."],
+          ["TFTP",     "Trivial File Transfer Protocol",            "Simple UDP-based file transfer. No authentication, no encryption. Acceptable for internal lab/management networks. Use SCP for production config backup — TFTP sends config in cleartext."],
+        ]}
+        caption=""
+      />
+
+      {/* Group G — Data Center Architecture */}
+      <ComparisonTable
+        title="Data Center Architecture"
+        headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
+        rows={[
+          ["DC",       "Data Center",                               "Facility housing compute, storage, and networking infrastructure. Switching architecture inside DC typically Spine-Leaf (modern) or Three-Tier (legacy campus-derived)."],
+          ["EoR",      "End-of-Row",                               "Switch deployment model: one or few switches at end of each server row. Longer copper runs (often needs fiber). Larger blast radius on failure vs ToR. Legacy approach in modern DC."],
+          ["MoR",      "Middle-of-Row",                            "Switch deployment model: one switch per row middle serving multiple racks. Intermediate between ToR and EoR. Less common — niche use cases."],
+          ["NAS",      "Network Attached Storage",                  "File-level storage accessed over network (NFS, SMB/CIFS). Connects to standard Ethernet switch. Switch role: dedicated Storage VLAN, jumbo frames (9000 MTU end-to-end), QoS prioritization."],
+          ["PXE",      "Preboot Execution Environment",            "Network boot protocol. Servers boot from network instead of local disk. Requires DHCP + TFTP on network. Switch role: untagged PXE VLAN on server ports during provisioning."],
+          ["ToR",      "Top-of-Rack",                              "Switch mounted at top (or bottom) of server rack. Industry-standard DC deployment. Short copper patch cables (0.5–3m) to servers. Isolated failure domain (one rack). Uplinks via fiber to aggregation/spine layer."],
+        ]}
+        caption=""
+      />
+
+      {/* Group H — Protocols, Standards & RFCs */}
+      <ComparisonTable
+        title="Protocols, Standards aur RFCs"
+        headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
+        rows={[
+          ["802.1Qbb",  "IEEE 802.1Qbb",                            "Priority Flow Control (PFC) standard. Per-priority PAUSE frames. Component of DCB framework. Enables lossless per-class Ethernet in specifically engineered designs."],
+          ["802.3af",   "IEEE 802.3af",                             "First PoE standard. PSE max: 15.4W, PD receives: 12.95W. Class 0–3. Suitable for IP phones and basic cameras."],
+          ["802.3at",   "IEEE 802.3at (PoE+)",                     "Enhanced PoE standard. PSE max: 30W, PD receives: 25.5W. Class 4. Suitable for PTZ cameras, advanced APs, video phones."],
+          ["802.3bt",   "IEEE 802.3bt (PoE++ / 4PPoE)",            "High-power PoE standard. Type 3: PSE 60W / PD 51W (Class 5–6). Type 4: PSE 90–100W / PD 71.3W (Class 7–8). Vendor trade names (UPoE, Hi-PoE, 4PPoE) vary — IEEE terminology is authoritative."],
+          ["802.3bq",   "IEEE 802.3bq",                             "25GBASE-T and 40GBASE-T standard for copper (Cat8). Max reach 30m. Used for short DC copper interconnects."],
+          ["iSCSI",     "Internet Small Computer System Interface", "Block storage protocol — SCSI over TCP/IP. Uses standard Ethernet switches. Switch requirements: dedicated Storage VLAN, jumbo frames (9000 MTU end-to-end), QoS prioritization. Optional: lossless design with PFC."],
+          ["MTU",       "Maximum Transmission Unit",               "Maximum IP payload size per link — standard: 1500 bytes (L3 payload only). ≠ Ethernet frame size (1518/1522 bytes which includes L2 headers + FCS). Jumbo frames: 9000/9216 bytes — implementation-dependent, not IEEE universal standard."],
+          ["NFS",       "Network File System",                      "File-sharing protocol (IETF RFC 7530). File-level access over Ethernet. Switch role: dedicated Storage VLAN, jumbo frames, QoS prioritization for large sequential I/O workloads."],
+          ["OSI",       "Open Systems Interconnection",             "7-layer network reference model. L1=Physical, L2=Data Link (switch), L3=Network (L3 switch/router), L4=Transport, L5-7=Session/Presentation/Application. Troubleshooting starts at L1 and works upward."],
+          ["RFC",       "Request for Comments",                     "IETF standards document series. Defines internet protocols. Examples relevant to this article: RFC 3768 (VRRPv2), RFC 5798 (VRRPv3), RFC 2865 (RADIUS), RFC 6241 (NETCONF)."],
+          ["TCP",       "Transmission Control Protocol",            "Reliable connection-oriented transport protocol. TCP congestion control (CWND) responds to packet drops — relevant for QoS (WRED, tail-drop) and ECN behavior on switches."],
+          ["TIA",       "Telecommunications Industry Association",  "Standards body. TIA-568 = structured cabling standard (horizontal/backbone cabling, connectors, distances). Reference for enterprise copper/fiber cabling infrastructure design."],
+        ]}
+        caption=""
+      />
+
       {/* ══ RELATED TOPICS ══════════════════════════════════════════════════ */}
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Related Topics — Learning Path</h2>
       <ul style={S.ul}>
