@@ -84,6 +84,54 @@ function wrapHindi(text: string, maxChars = 32): string[] {
   return lines.slice(0, 3);
 }
 
+// -----------------------------------------
+// GEMINI RETRY
+// -----------------------------------------
+
+async function generateGeminiContentWithRetry(
+  ai: GoogleGenAI,
+  contents: string,
+  maxAttempts = 4
+) {
+  let lastError: unknown;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents,
+      });
+    } catch (error) {
+      lastError = error;
+
+      console.warn(
+        `[BTT Gemini] Attempt ${attempt}/${maxAttempts} failed`,
+        error
+      );
+
+      if (attempt >= maxAttempts) {
+        break;
+      }
+
+      // Retry delays:
+      // attempt 1 -> wait 2 seconds
+      // attempt 2 -> wait 4 seconds
+      // attempt 3 -> wait 6 seconds
+      const delayMs = attempt * 2000;
+
+      await new Promise((resolve) => {
+        setTimeout(resolve, delayMs);
+      });
+    }
+  }
+
+  if (lastError instanceof Error) {
+    throw lastError;
+  }
+
+  throw new Error("Gemini generation failed after retries.");
+}
+
 export async function GET() {
   try {
     // -----------------------------------------
@@ -118,10 +166,9 @@ export async function GET() {
       apiKey: geminiApiKey,
     });
 
-    const contentResponse = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
-
-      contents: `
+    const contentResponse = await generateGeminiContentWithRetry(
+      ai,
+      `
 Create supporting content for a premium bilingual technology poster
 for Behind The Tech.
 
@@ -182,8 +229,8 @@ NO labels.
 NO captions.
 NO watermarks.
 NO typography.
-`,
-    });
+`
+    );
 
     const rawContent = contentResponse.text?.trim();
 
@@ -220,7 +267,7 @@ NO typography.
         body: JSON.stringify({
           prompt: generated.imagePrompt,
 
-          // Known working dimensions
+          // Known working Cloudflare dimensions
           width: 768,
           height: 960,
 
@@ -272,6 +319,7 @@ NO typography.
     // -----------------------------------------
 
     const series = post.series.toUpperCase();
+
     const englishHeadline = wrapEnglishHeadline(
       post.posterHeadline.toUpperCase()
     );
@@ -281,8 +329,15 @@ NO typography.
       34
     );
 
-    const englishHook = wrapHindi(post.hook, 55);
-    const hindiHook = wrapHindi(generated.hindiHook, 42);
+    const englishHook = wrapHindi(
+      post.hook,
+      55
+    );
+
+    const hindiHook = wrapHindi(
+      generated.hindiHook,
+      42
+    );
 
     const englishHeadlineSvg = englishHeadline
       .map(
@@ -554,6 +609,7 @@ NO typography.
     return NextResponse.json(
       {
         error: "Failed to generate dynamic BTT poster.",
+
         details:
           error instanceof Error
             ? error.message
