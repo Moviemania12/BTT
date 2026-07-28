@@ -42,6 +42,7 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "switch",
   "router",
   "firewall",
+  "load-balancer",
 ]);
 
 export default async function ItTopicPage(props: PageProps) {
