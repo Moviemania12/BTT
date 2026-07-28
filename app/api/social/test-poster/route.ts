@@ -61,7 +61,7 @@ function wrapEnglishHeadline(text: string): string[] {
   return lines.slice(0, 4);
 }
 
-function wrapHindi(text: string, maxChars = 32): string[] {
+function wrapText(text: string, maxChars = 32): string[] {
   const words = text.trim().split(/\s+/);
   const lines: string[] = [];
   let current = "";
@@ -84,9 +84,9 @@ function wrapHindi(text: string, maxChars = 32): string[] {
   return lines.slice(0, 3);
 }
 
-// -----------------------------------------
+// --------------------------------------------------
 // GEMINI RETRY
-// -----------------------------------------
+// --------------------------------------------------
 
 async function generateGeminiContentWithRetry(
   ai: GoogleGenAI,
@@ -113,10 +113,6 @@ async function generateGeminiContentWithRetry(
         break;
       }
 
-      // Retry delays:
-      // attempt 1 -> wait 2 seconds
-      // attempt 2 -> wait 4 seconds
-      // attempt 3 -> wait 6 seconds
       const delayMs = attempt * 2000;
 
       await new Promise((resolve) => {
@@ -134,9 +130,9 @@ async function generateGeminiContentWithRetry(
 
 export async function GET() {
   try {
-    // -----------------------------------------
+    // --------------------------------------------------
     // ENVIRONMENT
-    // -----------------------------------------
+    // --------------------------------------------------
 
     const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
     const apiToken = process.env.CLOUDFLARE_AI_API_TOKEN;
@@ -152,15 +148,15 @@ export async function GET() {
       throw new Error("GEMINI_API_KEY is not configured.");
     }
 
-    // -----------------------------------------
-    // TODAY'S POST
-    // -----------------------------------------
+    // --------------------------------------------------
+    // TODAY'S SOCIAL POST
+    // --------------------------------------------------
 
     const post = getDailyPostForDate();
 
-    // -----------------------------------------
-    // GENERATE HINDI + IMAGE PROMPT
-    // -----------------------------------------
+    // --------------------------------------------------
+    // GENERATE HINDI CONTENT + IMAGE PROMPT
+    // --------------------------------------------------
 
     const ai = new GoogleGenAI({
       apiKey: geminiApiKey,
@@ -195,13 +191,16 @@ Return ONLY valid JSON using exactly:
 RULES
 
 hindiHeadline:
-Create a concise natural Hindi/Hinglish version of the English headline.
+Create a concise, natural Hindi/Hinglish version of the English headline.
+It must be easy to understand for an Indian technology audience.
 Keep it suitable for an Instagram technology poster.
 Avoid overly formal Hindi.
+Do not translate technical words unnaturally.
 
 hindiHook:
 Create a short natural Hindi/Hinglish version of the English hook.
 Maximum approximately 20 words.
+Keep it simple and readable.
 
 imagePrompt:
 Write a detailed English image-generation prompt representing the
@@ -215,11 +214,13 @@ Technically believable.
 Modern enterprise infrastructure.
 Dramatic realistic lighting.
 Deep perspective.
+High visual quality.
 
 Composition:
 Vertical 4:5.
 Keep the upper portion relatively dark and clean for typography.
 Keep important subjects mainly in the middle/lower area.
+Leave sufficient negative space for poster typography.
 
 The generated image must contain:
 NO text.
@@ -250,9 +251,9 @@ NO typography.
       throw new Error("Gemini returned incomplete poster content.");
     }
 
-    // -----------------------------------------
+    // --------------------------------------------------
     // GENERATE CLOUDFLARE BACKGROUND
-    // -----------------------------------------
+    // --------------------------------------------------
 
     const cloudflareResponse = await fetch(
       `https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${CLOUDFLARE_MODEL}`,
@@ -267,7 +268,8 @@ NO typography.
         body: JSON.stringify({
           prompt: generated.imagePrompt,
 
-          // Known working Cloudflare dimensions
+          // Proven working Cloudflare dimensions.
+          // Both values are divisible by 8.
           width: 768,
           height: 960,
 
@@ -295,28 +297,47 @@ NO typography.
 
     const backgroundImage = Buffer.from(base64Image, "base64");
 
-    // -----------------------------------------
-    // LOAD DEVANAGARI FONT
-    // -----------------------------------------
+    // --------------------------------------------------
+    // LOAD BOTH LOCAL FONTS
+    // --------------------------------------------------
 
-    const fontPath = path.join(
+    const englishFontPath = path.join(
+      process.cwd(),
+      "public",
+      "fonts",
+      "NotoSans.ttf"
+    );
+
+    const devanagariFontPath = path.join(
       process.cwd(),
       "public",
       "fonts",
       "NotoSansDevanagari.ttf"
     );
 
-    if (!fs.existsSync(fontPath)) {
+    if (!fs.existsSync(englishFontPath)) {
+      throw new Error(
+        "NotoSans.ttf was not found in public/fonts."
+      );
+    }
+
+    if (!fs.existsSync(devanagariFontPath)) {
       throw new Error(
         "NotoSansDevanagari.ttf was not found in public/fonts."
       );
     }
 
-    const fontBase64 = fs.readFileSync(fontPath).toString("base64");
+    const englishFontBase64 = fs
+      .readFileSync(englishFontPath)
+      .toString("base64");
 
-    // -----------------------------------------
-    // PREPARE DYNAMIC TEXT
-    // -----------------------------------------
+    const devanagariFontBase64 = fs
+      .readFileSync(devanagariFontPath)
+      .toString("base64");
+
+    // --------------------------------------------------
+    // PREPARE TEXT
+    // --------------------------------------------------
 
     const series = post.series.toUpperCase();
 
@@ -324,20 +345,24 @@ NO typography.
       post.posterHeadline.toUpperCase()
     );
 
-    const hindiHeadline = wrapHindi(
+    const hindiHeadline = wrapText(
       generated.hindiHeadline,
       34
     );
 
-    const englishHook = wrapHindi(
+    const englishHook = wrapText(
       post.hook,
       55
     );
 
-    const hindiHook = wrapHindi(
+    const hindiHook = wrapText(
       generated.hindiHook,
       42
     );
+
+    // --------------------------------------------------
+    // BUILD SVG TEXT LINES
+    // --------------------------------------------------
 
     const englishHeadlineSvg = englishHeadline
       .map(
@@ -375,9 +400,9 @@ NO typography.
       )
       .join("");
 
-    // -----------------------------------------
+    // --------------------------------------------------
     // DYNAMIC POSTER SVG
-    // -----------------------------------------
+    // --------------------------------------------------
 
     const overlay = `
 <svg
@@ -391,8 +416,13 @@ NO typography.
 
     <style>
       @font-face {
+        font-family: "BTTLatin";
+        src: url("data:font/ttf;base64,${englishFontBase64}") format("truetype");
+      }
+
+      @font-face {
         font-family: "BTTDevanagari";
-        src: url("data:font/ttf;base64,${fontBase64}");
+        src: url("data:font/ttf;base64,${devanagariFontBase64}") format("truetype");
       }
     </style>
 
@@ -447,6 +477,8 @@ NO typography.
   <!-- TOP SHADE -->
 
   <rect
+    x="0"
+    y="0"
     width="1080"
     height="820"
     fill="url(#topShade)"
@@ -468,7 +500,7 @@ NO typography.
     x="70"
     y="75"
     fill="#66E3FF"
-    font-family="Arial, Helvetica, sans-serif"
+    font-family="BTTLatin"
     font-size="22"
     font-weight="700"
     letter-spacing="4"
@@ -482,7 +514,7 @@ NO typography.
     x="70"
     y="145"
     fill="#FFFFFF"
-    font-family="Arial, Helvetica, sans-serif"
+    font-family="BTTLatin"
     font-size="62"
     font-weight="800"
     letter-spacing="-1"
@@ -503,7 +535,7 @@ NO typography.
     ${hindiHeadlineSvg}
   </text>
 
-  <!-- ACCENT -->
+  <!-- ACCENT LINE -->
 
   <rect
     x="70"
@@ -520,7 +552,7 @@ NO typography.
     x="70"
     y="625"
     fill="#E8EDF2"
-    font-family="Arial, Helvetica, sans-serif"
+    font-family="BTTLatin"
     font-size="27"
     font-weight="400"
   >
@@ -546,7 +578,7 @@ NO typography.
     x="70"
     y="1275"
     fill="#FFFFFF"
-    font-family="Arial, Helvetica, sans-serif"
+    font-family="BTTLatin"
     font-size="29"
     font-weight="700"
     letter-spacing="2"
@@ -561,8 +593,9 @@ NO typography.
     y="1275"
     text-anchor="end"
     fill="#C9D1D9"
-    font-family="Arial, Helvetica, sans-serif"
+    font-family="BTTLatin"
     font-size="23"
+    font-weight="400"
   >
     behindthetech.in
   </text>
@@ -570,9 +603,9 @@ NO typography.
 </svg>
 `;
 
-    // -----------------------------------------
-    // BUILD FINAL INSTAGRAM POSTER
-    // -----------------------------------------
+    // --------------------------------------------------
+    // BUILD FINAL 1080 x 1350 INSTAGRAM POSTER
+    // --------------------------------------------------
 
     const poster = await sharp(backgroundImage)
       .resize(1080, 1350, {
@@ -592,9 +625,9 @@ NO typography.
       })
       .toBuffer();
 
-    // -----------------------------------------
-    // RETURN FINAL POSTER
-    // -----------------------------------------
+    // --------------------------------------------------
+    // RETURN POSTER
+    // --------------------------------------------------
 
     return new NextResponse(poster, {
       headers: {
