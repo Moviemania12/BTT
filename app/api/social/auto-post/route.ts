@@ -1,18 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 
-import { getDailyPostForDate } from "@/content/social/daily-post-engine";
+import { generateDailyPoster } from "@/lib/social/generate-poster";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
-function buildCaption(post: ReturnType<typeof getDailyPostForDate>) {
-  const parts = [
-    post.posterHeadline,
-    "",
-    post.hook,
-  ];
+function buildCaption(
+  post: Awaited<ReturnType<typeof generateDailyPoster>>["post"]
+) {
+  const parts = [post.posterHeadline, "", post.hook];
 
   if (post.hindiHeadline?.trim()) {
     parts.push("", post.hindiHeadline.trim());
@@ -22,9 +20,11 @@ function buildCaption(post: ReturnType<typeof getDailyPostForDate>) {
     parts.push("", post.hindiHook.trim());
   }
 
+  if (post.nextTopic?.trim()) {
+    parts.push("", `Next: ${post.nextTopic}`);
+  }
+
   parts.push(
-    "",
-    `Next: ${post.nextTopic}`,
     "",
     "#BehindTheTech #Technology #DataCenter #Infrastructure #TechEducation"
   );
@@ -34,67 +34,28 @@ function buildCaption(post: ReturnType<typeof getDailyPostForDate>) {
 
 export async function GET(req: NextRequest) {
   try {
-    // --------------------------------------------------
     // SECURITY
-    // --------------------------------------------------
-
     const cronSecret = process.env.CRON_SECRET;
     const authorization = req.headers.get("authorization");
 
-    if (
-      cronSecret &&
-      authorization !== `Bearer ${cronSecret}`
-    ) {
+    if (!cronSecret) {
       return NextResponse.json(
-        {
-          error: "Unauthorized.",
-        },
-        {
-          status: 401,
-        }
+        { error: "CRON_SECRET is not configured." },
+        { status: 500 }
       );
     }
 
-    // --------------------------------------------------
-    // TODAY'S POST
-    // --------------------------------------------------
-
-    const post = getDailyPostForDate();
-
-    if (!post) {
-      throw new Error(
-        "No BTT social post is configured for today."
+    if (authorization !== `Bearer ${cronSecret}`) {
+      return NextResponse.json(
+        { error: "Unauthorized." },
+        { status: 401 }
       );
     }
 
-    // --------------------------------------------------
-    // GENERATE TODAY'S POSTER
-    // --------------------------------------------------
-
-    const posterUrl = new URL(
-      "/api/social/test-poster",
-      req.nextUrl.origin
-    );
-
-    const posterResponse = await fetch(posterUrl, {
-      method: "GET",
-      cache: "no-store",
-    });
-
-    if (!posterResponse.ok) {
-      const details = await posterResponse.text();
-
-      throw new Error(
-        `Poster generation failed (${posterResponse.status}): ${details}`
-      );
-    }
-
-    const posterArrayBuffer =
-      await posterResponse.arrayBuffer();
-
-    const posterBuffer = Buffer.from(
-      posterArrayBuffer
-    );
+    // GENERATE POSTER DIRECTLY
+    // No internal /api/social/test-poster fetch.
+    const { poster: posterBuffer, post } =
+      await generateDailyPoster();
 
     if (posterBuffer.length === 0) {
       throw new Error(
@@ -102,14 +63,35 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    // --------------------------------------------------
-    // UPLOAD POSTER TO VERCEL BLOB
-    // --------------------------------------------------
+    // IST DATE
+    const dateParts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Kolkata",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).formatToParts(new Date());
 
-    const date = new Date()
-      .toISOString()
-      .slice(0, 10);
+    const year = dateParts.find(
+      (part) => part.type === "year"
+    )?.value;
 
+    const month = dateParts.find(
+      (part) => part.type === "month"
+    )?.value;
+
+    const day = dateParts.find(
+      (part) => part.type === "day"
+    )?.value;
+
+    if (!year || !month || !day) {
+      throw new Error(
+        "Unable to calculate IST date."
+      );
+    }
+
+    const date = `${year}-${month}-${day}`;
+
+    // UPLOAD EXACT POSTER TO VERCEL BLOB
     const filename =
       `social/day-${post.day}-${date}.jpg`;
 
@@ -129,16 +111,7 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    // --------------------------------------------------
-    // BUILD INSTAGRAM CAPTION
-    // --------------------------------------------------
-
-    const caption = buildCaption(post);
-
-    // --------------------------------------------------
-    // PUBLISH TO INSTAGRAM
-    // --------------------------------------------------
-
+    // INSTAGRAM PUBLISH
     const publishSecret =
       process.env.INSTAGRAM_PUBLISH_SECRET;
 
@@ -166,7 +139,7 @@ export async function GET(req: NextRequest) {
 
         body: JSON.stringify({
           imageUrl: blob.url,
-          caption,
+          caption: buildCaption(post),
         }),
 
         cache: "no-store",
@@ -184,15 +157,10 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    // --------------------------------------------------
-    // SUCCESS
-    // --------------------------------------------------
-
     return NextResponse.json({
       success: true,
 
       day: post.day,
-
       topic: post.topic,
 
       poster: {
@@ -211,7 +179,6 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-
         error:
           "BTT automatic social post failed.",
 
