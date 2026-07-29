@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server";
 import { getDailyPostForDate } from "@/content/social/daily-post-engine";
-import sharp from "sharp";
 import fs from "fs";
 import path from "path";
+
+const fontConfigPath = path.join(process.cwd(), "fontconfig");
+
+process.env.FONTCONFIG_PATH = fontConfigPath;
+process.env.FONTCONFIG_FILE = "fonts.conf";
 
 export const runtime = "nodejs";
 
@@ -71,6 +75,7 @@ function wrapText(text: string, maxChars = 32): string[] {
 
 export async function GET() {
   try {
+    const { default: sharp } = await import("sharp");
     // --------------------------------------------------
     // ENVIRONMENT
     // --------------------------------------------------
@@ -204,16 +209,7 @@ no watermarks and no typography.
         "NotoSansDevanagari.ttf was not found in public/fonts."
       );
     }
-
-    const englishFontBase64 = fs
-      .readFileSync(englishFontPath)
-      .toString("base64");
-
-    const devanagariFontBase64 = fs
-      .readFileSync(devanagariFontPath)
-      .toString("base64");
-
-    // --------------------------------------------------
+// --------------------------------------------------
     // PREPARE TEXT
     // --------------------------------------------------
 
@@ -290,19 +286,7 @@ no watermarks and no typography.
   xmlns="http://www.w3.org/2000/svg"
 >
   <defs>
-    <style>
-      @font-face {
-        font-family: "BTTLatin";
-        src: url("data:font/ttf;base64,${englishFontBase64}") format("truetype");
-      }
-
-      @font-face {
-        font-family: "BTTDevanagari";
-        src: url("data:font/ttf;base64,${devanagariFontBase64}") format("truetype");
-      }
-    </style>
-
-    <linearGradient
+<linearGradient
       id="topShade"
       x1="0"
       y1="0"
@@ -371,7 +355,7 @@ no watermarks and no typography.
     x="70"
     y="75"
     fill="#66E3FF"
-    font-family="BTTLatin"
+    font-family="Noto Sans"
     font-size="22"
     font-weight="700"
     letter-spacing="4"
@@ -385,7 +369,7 @@ no watermarks and no typography.
     x="70"
     y="145"
     fill="#FFFFFF"
-    font-family="BTTLatin"
+    font-family="Noto Sans"
     font-size="62"
     font-weight="800"
     letter-spacing="-1"
@@ -399,7 +383,7 @@ no watermarks and no typography.
     x="70"
     y="455"
     fill="#FFFFFF"
-    font-family="BTTDevanagari"
+    font-family="Noto Sans Devanagari"
     font-size="35"
     font-weight="700"
   >
@@ -423,7 +407,7 @@ no watermarks and no typography.
     x="70"
     y="625"
     fill="#E8EDF2"
-    font-family="BTTLatin"
+    font-family="Noto Sans"
     font-size="27"
     font-weight="400"
   >
@@ -436,7 +420,7 @@ no watermarks and no typography.
     x="70"
     y="715"
     fill="#D9E0E6"
-    font-family="BTTDevanagari"
+    font-family="Noto Sans Devanagari"
     font-size="25"
     font-weight="400"
   >
@@ -449,7 +433,7 @@ no watermarks and no typography.
     x="70"
     y="1275"
     fill="#FFFFFF"
-    font-family="BTTLatin"
+    font-family="Noto Sans"
     font-size="29"
     font-weight="700"
     letter-spacing="2"
@@ -464,7 +448,7 @@ no watermarks and no typography.
     y="1275"
     text-anchor="end"
     fill="#C9D1D9"
-    font-family="BTTLatin"
+    font-family="Noto Sans"
     font-size="23"
     font-weight="400"
   >
