@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { GoogleGenAI } from "@google/genai";
 import { getDailyPostForDate } from "@/content/social/daily-post-engine";
 import sharp from "sharp";
 import fs from "fs";
@@ -15,12 +14,6 @@ interface CloudflareImageResponse {
   };
 }
 
-interface PosterContent {
-  hindiHeadline: string;
-  hindiHook: string;
-  imagePrompt: string;
-}
-
 function escapeXml(value: string) {
   return value
     .replace(/&/g, "&amp;")
@@ -28,14 +21,6 @@ function escapeXml(value: string) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&apos;");
-}
-
-function cleanJson(text: string) {
-  return text
-    .replace(/^```json\s*/i, "")
-    .replace(/^```\s*/i, "")
-    .replace(/\s*```$/i, "")
-    .trim();
 }
 
 function wrapEnglishHeadline(text: string): string[] {
@@ -84,50 +69,6 @@ function wrapText(text: string, maxChars = 32): string[] {
   return lines.slice(0, 3);
 }
 
-// --------------------------------------------------
-// GEMINI RETRY
-// --------------------------------------------------
-
-async function generateGeminiContentWithRetry(
-  ai: GoogleGenAI,
-  contents: string,
-  maxAttempts = 4
-) {
-  let lastError: unknown;
-
-  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    try {
-      return await ai.models.generateContent({
-        model: "gemini-2.5-flash",
-        contents,
-      });
-    } catch (error) {
-      lastError = error;
-
-      console.warn(
-        `[BTT Gemini] Attempt ${attempt}/${maxAttempts} failed`,
-        error
-      );
-
-      if (attempt >= maxAttempts) {
-        break;
-      }
-
-      const delayMs = attempt * 2000;
-
-      await new Promise((resolve) => {
-        setTimeout(resolve, delayMs);
-      });
-    }
-  }
-
-  if (lastError instanceof Error) {
-    throw lastError;
-  }
-
-  throw new Error("Gemini generation failed after retries.");
-}
-
 export async function GET() {
   try {
     // --------------------------------------------------
@@ -136,16 +77,11 @@ export async function GET() {
 
     const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
     const apiToken = process.env.CLOUDFLARE_AI_API_TOKEN;
-    const geminiApiKey = process.env.GEMINI_API_KEY;
 
     if (!accountId || !apiToken) {
       throw new Error(
         "Cloudflare Workers AI environment variables are not configured."
       );
-    }
-
-    if (!geminiApiKey) {
-      throw new Error("GEMINI_API_KEY is not configured.");
     }
 
     // --------------------------------------------------
@@ -154,102 +90,50 @@ export async function GET() {
 
     const post = getDailyPostForDate();
 
+    if (!post) {
+      throw new Error("No BTT social post is configured for today.");
+    }
+
+    const hindiHeadline =
+      post.hindiHeadline?.trim() || post.posterHeadline;
+
+    const hindiHook =
+      post.hindiHook?.trim() || post.hook;
+
     // --------------------------------------------------
-    // GENERATE HINDI CONTENT + IMAGE PROMPT
+    // CLOUDFLARE IMAGE PROMPT
     // --------------------------------------------------
 
-    const ai = new GoogleGenAI({
-      apiKey: geminiApiKey,
-    });
-
-    const contentResponse = await generateGeminiContentWithRetry(
-      ai,
-      `
-Create supporting content for a premium bilingual technology poster
-for Behind The Tech.
-
-Today's topic:
-${post.topic}
-
-English headline:
-${post.posterHeadline}
-
-English hook:
-${post.hook}
-
-Visual direction:
+    const imagePrompt = `
 ${post.visualDirection}
 
-Return ONLY valid JSON using exactly:
+Create a premium cinematic technology documentary image for:
 
-{
-  "hindiHeadline": "...",
-  "hindiHook": "...",
-  "imagePrompt": "..."
-}
+Topic:
+${post.topic}
 
-RULES
-
-hindiHeadline:
-Create a concise, natural Hindi/Hinglish version of the English headline.
-It must be easy to understand for an Indian technology audience.
-Keep it suitable for an Instagram technology poster.
-Avoid overly formal Hindi.
-Do not translate technical words unnaturally.
-
-hindiHook:
-Create a short natural Hindi/Hinglish version of the English hook.
-Maximum approximately 20 words.
-Keep it simple and readable.
-
-imagePrompt:
-Write a detailed English image-generation prompt representing the
-exact topic and visual direction.
-
-Image style:
+Visual requirements:
 Photorealistic.
-Premium cinematic technology documentary.
 Professional engineering environment.
 Technically believable.
 Modern enterprise infrastructure.
-Dramatic realistic lighting.
+Premium cinematic lighting.
 Deep perspective.
 High visual quality.
+Realistic materials and equipment.
 
 Composition:
-Vertical 4:5.
-Keep the upper portion relatively dark and clean for typography.
-Keep important subjects mainly in the middle/lower area.
-Leave sufficient negative space for poster typography.
+Vertical 4:5 poster composition.
+Keep the upper portion relatively dark and visually clean.
+Keep important subjects mainly in the middle and lower area.
+Leave sufficient negative space in the upper and middle-left area
+for poster typography.
 
-The generated image must contain:
-NO text.
-NO letters.
-NO logos.
-NO labels.
-NO captions.
-NO watermarks.
-NO typography.
-`
-    );
-
-    const rawContent = contentResponse.text?.trim();
-
-    if (!rawContent) {
-      throw new Error("Gemini returned empty poster content.");
-    }
-
-    const generated = JSON.parse(
-      cleanJson(rawContent)
-    ) as PosterContent;
-
-    if (
-      !generated.hindiHeadline ||
-      !generated.hindiHook ||
-      !generated.imagePrompt
-    ) {
-      throw new Error("Gemini returned incomplete poster content.");
-    }
+IMPORTANT:
+The generated image itself must contain absolutely no text,
+no letters, no words, no logos, no labels, no captions,
+no watermarks and no typography.
+`.trim();
 
     // --------------------------------------------------
     // GENERATE CLOUDFLARE BACKGROUND
@@ -259,20 +143,14 @@ NO typography.
       `https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${CLOUDFLARE_MODEL}`,
       {
         method: "POST",
-
         headers: {
           Authorization: `Bearer ${apiToken}`,
           "Content-Type": "application/json",
         },
-
         body: JSON.stringify({
-          prompt: generated.imagePrompt,
-
-          // Proven working Cloudflare dimensions.
-          // Both values are divisible by 8.
+          prompt: imagePrompt,
           width: 768,
           height: 960,
-
           num_steps: 4,
         }),
       }
@@ -298,7 +176,7 @@ NO typography.
     const backgroundImage = Buffer.from(base64Image, "base64");
 
     // --------------------------------------------------
-    // LOAD BOTH LOCAL FONTS
+    // LOAD LOCAL FONTS
     // --------------------------------------------------
 
     const englishFontPath = path.join(
@@ -345,8 +223,8 @@ NO typography.
       post.posterHeadline.toUpperCase()
     );
 
-    const hindiHeadline = wrapText(
-      generated.hindiHeadline,
+    const hindiHeadlineLines = wrapText(
+      hindiHeadline,
       34
     );
 
@@ -355,13 +233,13 @@ NO typography.
       55
     );
 
-    const hindiHook = wrapText(
-      generated.hindiHook,
+    const hindiHookLines = wrapText(
+      hindiHook,
       42
     );
 
     // --------------------------------------------------
-    // BUILD SVG TEXT LINES
+    // BUILD SVG TEXT
     // --------------------------------------------------
 
     const englishHeadlineSvg = englishHeadline
@@ -373,7 +251,7 @@ NO typography.
       )
       .join("");
 
-    const hindiHeadlineSvg = hindiHeadline
+    const hindiHeadlineSvg = hindiHeadlineLines
       .map(
         (line, index) => `
 <tspan x="70" dy="${index === 0 ? 0 : 43}">
@@ -391,7 +269,7 @@ NO typography.
       )
       .join("");
 
-    const hindiHookSvg = hindiHook
+    const hindiHookSvg = hindiHookLines
       .map(
         (line, index) => `
 <tspan x="70" dy="${index === 0 ? 0 : 38}">
@@ -401,7 +279,7 @@ NO typography.
       .join("");
 
     // --------------------------------------------------
-    // DYNAMIC POSTER SVG
+    // POSTER SVG
     // --------------------------------------------------
 
     const overlay = `
@@ -411,9 +289,7 @@ NO typography.
   viewBox="0 0 1080 1350"
   xmlns="http://www.w3.org/2000/svg"
 >
-
   <defs>
-
     <style>
       @font-face {
         font-family: "BTTLatin";
@@ -471,10 +347,7 @@ NO typography.
         stop-opacity="0.88"
       />
     </linearGradient>
-
   </defs>
-
-  <!-- TOP SHADE -->
 
   <rect
     x="0"
@@ -483,8 +356,6 @@ NO typography.
     height="820"
     fill="url(#topShade)"
   />
-
-  <!-- BOTTOM SHADE -->
 
   <rect
     x="0"
@@ -535,7 +406,7 @@ NO typography.
     ${hindiHeadlineSvg}
   </text>
 
-  <!-- ACCENT LINE -->
+  <!-- ACCENT -->
 
   <rect
     x="70"
@@ -599,12 +470,11 @@ NO typography.
   >
     behindthetech.in
   </text>
-
 </svg>
 `;
 
     // --------------------------------------------------
-    // BUILD FINAL 1080 x 1350 INSTAGRAM POSTER
+    // FINAL POSTER
     // --------------------------------------------------
 
     const poster = await sharp(backgroundImage)
@@ -625,10 +495,6 @@ NO typography.
       })
       .toBuffer();
 
-    // --------------------------------------------------
-    // RETURN POSTER
-    // --------------------------------------------------
-
     return new NextResponse(poster, {
       headers: {
         "Content-Type": "image/jpeg",
@@ -642,7 +508,6 @@ NO typography.
     return NextResponse.json(
       {
         error: "Failed to generate dynamic BTT poster.",
-
         details:
           error instanceof Error
             ? error.message

@@ -4,21 +4,25 @@ export interface DailySocialPost {
   topic: string;
   posterHeadline: string;
   hook: string;
+  hindiHeadline?: string;
+  hindiHook?: string;
   visualDirection: string;
   nextTopic?: string;
 }
 
 export const dailyPostPlan: DailySocialPost[] = [
-  {
-    day: 1,
-    series: "The Invisible Technology",
-    topic: "Who Works Behind the Technology We Use Every Day?",
-    posterHeadline: "WHO WORKS BEHIND THE TECHNOLOGY YOU USE EVERY DAY?",
-    hook: "Every tap, search, message and stream depends on infrastructure you rarely see.",
-    visualDirection:
-      "Cinematic smartphone in foreground connected through glowing digital paths to hidden servers, network infrastructure and a massive data center in the background. Premium technology documentary poster, realistic, clean composition.",
-    nextTopic: "What Happens After You Tap Send?",
-  },
+{
+  day: 1,
+  series: "The Invisible Technology",
+  topic: "Who Works Behind the Technology We Use Every Day?",
+  posterHeadline: "WHO WORKS BEHIND THE TECHNOLOGY YOU USE EVERY DAY?",
+  hook: "Every tap, search, message and stream depends on infrastructure you rarely see.",
+  hindiHeadline: "हर दिन इस्तेमाल होने वाली टेक्नोलॉजी के पीछे कौन काम करता है?",
+  hindiHook: "हर टैप, सर्च, मैसेज और स्ट्रीम के पीछे एक ऐसी इंफ्रास्ट्रक्चर है जिसे हम शायद ही देखते हैं।",
+  visualDirection:
+    "Cinematic smartphone in foreground connected through glowing digital paths to hidden servers, network infrastructure and a massive data center in the background. Premium technology documentary poster, realistic, clean composition.",
+  nextTopic: "What Happens After You Tap Send?",
+},
   {
     day: 2,
     series: "The Invisible Technology",
