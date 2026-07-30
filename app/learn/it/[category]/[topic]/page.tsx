@@ -26,23 +26,8 @@ type PageProps = {
 //
 // Add every new article slug here as it is published.
 const STATIC_ARTICLE_SLUGS = new Set([
-  "server-basics",
-  "cpu",
-  "ram",
-  "gpu",
-  "blade-server",
-  "virtualization",
-  // IT Storage track — static articles
-  "das",
-  "nas",
-  "san",
-  "backup",
-  "disaster-recovery",
-  // IT Networking track — static articles
-  "switch",
-  "router",
-  "firewall",
-  "load-balancer",
+  "sd-wan",
+  "aws",
 ]);
 
 export default async function ItTopicPage(props: PageProps) {
