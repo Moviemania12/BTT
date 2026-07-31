@@ -43,6 +43,7 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "load-balancer",
   "sd-wan",
   "aws",
+  "azure",
 ]);
 
 export default async function ItTopicPage(props: PageProps) {
