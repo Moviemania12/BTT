@@ -26,6 +26,21 @@ type PageProps = {
 //
 // Add every new article slug here as it is published.
 const STATIC_ARTICLE_SLUGS = new Set([
+  "server-basics",
+  "cpu",
+  "ram",
+  "gpu",
+  "blade-server",
+  "virtualization",
+  "das",
+  "nas",
+  "san",
+  "backup",
+  "disaster-recovery",
+  "switch",
+  "router",
+  "firewall",
+  "load-balancer",
   "sd-wan",
   "aws",
 ]);
