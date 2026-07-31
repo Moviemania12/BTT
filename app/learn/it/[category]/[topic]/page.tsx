@@ -44,6 +44,7 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "sd-wan",
   "aws",
   "azure",
+  "gcp",
 ]);
 
 export default async function ItTopicPage(props: PageProps) {
