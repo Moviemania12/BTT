@@ -140,6 +140,20 @@ no watermarks and no typography.
 // GENERATE CLOUDFLARE BACKGROUND
 // --------------------------------------------------
 
+const payload = {
+  prompt: imagePrompt,
+  width: 768,
+  height: 960,
+  num_steps: 4,
+};
+
+console.log("========================================");
+console.log("Cloudflare Account ID:", accountId);
+console.log("Cloudflare Model:", CLOUDFLARE_MODEL);
+console.log("Cloudflare Payload:");
+console.log(JSON.stringify(payload, null, 2));
+console.log("========================================");
+
 const cloudflareResponse = await fetch(
   `https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${CLOUDFLARE_MODEL}`,
   {
@@ -148,25 +162,26 @@ const cloudflareResponse = await fetch(
       Authorization: `Bearer ${apiToken}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      prompt: imagePrompt,
-      width: 768,
-      height: 960,
-      num_steps: 4,
-    }),
+    body: JSON.stringify(payload),
   }
 );
 
-if (!cloudflareResponse.ok) {
-  const details = await cloudflareResponse.text();
+const responseText = await cloudflareResponse.text();
 
+console.log("========================================");
+console.log("Cloudflare Status:", cloudflareResponse.status);
+console.log("Cloudflare Raw Response:");
+console.log(responseText);
+console.log("========================================");
+
+if (!cloudflareResponse.ok) {
   throw new Error(
-    `Cloudflare Workers AI failed (${cloudflareResponse.status}): ${details}`
+    `Cloudflare Workers AI failed (${cloudflareResponse.status}): ${responseText}`
   );
 }
 
 const cloudflareData =
-  (await cloudflareResponse.json()) as CloudflareImageResponse;
+  JSON.parse(responseText) as CloudflareImageResponse;
 
 const base64Image = cloudflareData.result?.image;
 
