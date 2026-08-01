@@ -46,6 +46,7 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "azure",
   "gcp",
   "hybrid-cloud",
+  "multi-cloud",
 ]);
 
 export default async function ItTopicPage(props: PageProps) {
