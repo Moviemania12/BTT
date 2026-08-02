@@ -457,10 +457,10 @@ const RESOURCES_MENU: MegaMenu = {
       icon: "📚",
       accentRgb: "0,212,255",
       links: [
-        staticLink("Interview Questions", "/resources/interview-questions", "💼"),
-        staticLink("Troubleshooting Guides", "/resources/troubleshooting-guides", "🔧"),
-        staticLink("Case Studies", "/resources/case-studies", "📊"),
-        staticLink("Checklists", "/resources/checklists", "✅"),
+        staticLink("Interview Questions", "/study/interview", "💼"),
+        staticLink("Troubleshooting Guides", "/study/troubleshooting", "🔧"),
+        staticLink("Case Studies", "/resources/case-studies", "📊"), // abhi rehne do agar page nahi bana
+        staticLink("Checklists", "/study/checklists", "✅"),
       ],
     },
     {
@@ -468,15 +468,14 @@ const RESOURCES_MENU: MegaMenu = {
       icon: "📖",
       accentRgb: "0,255,204",
       links: [
-        staticLink("Glossary", "/resources/glossary", "📖"),
-        staticLink("Standards", "/resources/standards", "📐"),
-        staticLink("Downloads", "/resources/downloads", "⬇️"),
-        staticLink("Newsletter", "/resources/newsletter", "📬"),
+        staticLink("Glossary", "/reference/glossary", "📖"),
+        staticLink("Standards", "/resources/standards", "📐"), // future
+        staticLink("Downloads", "/resources/downloads", "⬇️"), // future
+        staticLink("Newsletter", "/resources/newsletter", "📬"), // future
       ],
     },
   ],
 };
-
 // ─── ABOUT Mega Menu ──────────────────────────────────────────────────────────
 
 const ABOUT_MENU: MegaMenu = {
