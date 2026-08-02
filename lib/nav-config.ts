@@ -459,7 +459,7 @@ const RESOURCES_MENU: MegaMenu = {
       links: [
         staticLink("Interview Questions", "/study/interview", "💼"),
         staticLink("Troubleshooting Guides", "/study/troubleshooting", "🔧"),
-        staticLink("Case Studies", "/resources/case-studies", "📊"), // abhi rehne do agar page nahi bana
+        staticLink("Case Studies", "/study/case-studies", "📊"),
         staticLink("Checklists", "/study/checklists", "✅"),
       ],
     },
@@ -469,13 +469,14 @@ const RESOURCES_MENU: MegaMenu = {
       accentRgb: "0,255,204",
       links: [
         staticLink("Glossary", "/reference/glossary", "📖"),
-        staticLink("Standards", "/resources/standards", "📐"), // future
-        staticLink("Downloads", "/resources/downloads", "⬇️"), // future
-        staticLink("Newsletter", "/resources/newsletter", "📬"), // future
+        staticLink("Standards", "/reference/standards", "📐"),
+        staticLink("Downloads", "/reference/downloads", "⬇️"),
+        staticLink("Newsletter", "/reference/newsletter", "📬"),
       ],
     },
   ],
 };
+
 // ─── ABOUT Mega Menu ──────────────────────────────────────────────────────────
 
 const ABOUT_MENU: MegaMenu = {
@@ -525,7 +526,7 @@ export const NAV_ITEMS: NavItem[] = [
   {
     id: "dc-map",
     label: "DC Map",
-    href: "/data-center-map",
+    href: "/dc-map",
     variant: "badge",      // renders as neon-blue pill, no dropdown
   },
   {
@@ -778,7 +779,7 @@ export const MOBILE_NAV: MobileSection[] = [
     id: "dc-map",
     label: "DC Map",
     icon: "🗺️",
-    href: "/data-center-map",
+    href: "/dc-map",
     variant: "badge",
   },
   {
@@ -803,14 +804,14 @@ export const MOBILE_NAV: MobileSection[] = [
     label: "Resources",
     icon: "📚",
     children: [
-      { id: "interview",        label: "Interview Questions",   icon: "💼", href: "/resources/interview-questions" },
-      { id: "troubleshooting",  label: "Troubleshooting Guides", icon: "🔧", href: "/resources/troubleshooting-guides" },
-      { id: "case-studies",     label: "Case Studies",          icon: "📊", href: "/resources/case-studies" },
-      { id: "checklists",       label: "Checklists",            icon: "✅", href: "/resources/checklists" },
-      { id: "glossary",         label: "Glossary",              icon: "📖", href: "/resources/glossary" },
-      { id: "standards",        label: "Standards",             icon: "📐", href: "/resources/standards" },
-      { id: "downloads",        label: "Downloads",             icon: "⬇️", href: "/resources/downloads" },
-      { id: "newsletter",       label: "Newsletter",            icon: "📬", href: "/resources/newsletter" },
+      { id: "interview",        label: "Interview Questions",   icon: "💼", href: "/study/interview" },
+      { id: "troubleshooting",  label: "Troubleshooting Guides", icon: "🔧", href: "/study/troubleshooting" },
+      { id: "case-studies",     label: "Case Studies",          icon: "📊", href: "/study/case-studies" },
+      { id: "checklists",       label: "Checklists",            icon: "✅", href: "/study/checklists" },
+      { id: "glossary",         label: "Glossary",              icon: "📖", href: "/reference/glossary" },
+      { id: "standards",        label: "Standards",             icon: "📐", href: "/reference/standards" },
+      { id: "downloads",        label: "Downloads",             icon: "⬇️", href: "/reference/downloads" },
+      { id: "newsletter",       label: "Newsletter",            icon: "📬", href: "/reference/newsletter" },
     ],
   },
   {
@@ -828,7 +829,7 @@ export const MOBILE_NAV: MobileSection[] = [
     id: "subscribe",
     label: "Subscribe",
     icon: "📬",
-    href: "/resources/newsletter",
+    href: "/reference/newsletter",
     variant: "cta",
   },
 ];
@@ -848,8 +849,10 @@ export function getActiveNavId(pathname: string): string | null {
     ["/learn/it",     "it-infra"],
     ["/learn/ai",     "ai-infra"],
     ["/learn",        "learn"],
-    ["/data-center-map",       "dc-map"],
+    ["/dc-map",       "dc-map"],
     ["/tools",        "tools"],
+    ["/study",        "resources"],
+    ["/reference",    "resources"],
     ["/resources",    "resources"],
     ["/about",        "about"],
   ];

@@ -1,0 +1,631 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// content/study/case-studies.ts
+// Real-world DC incident case studies. Add new cases here — page auto-renders.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export interface TimelineEvent {
+  time: string;
+  event: string;
+  actor: "System" | "Engineer" | "Customer" | "Management";
+}
+
+export interface CaseStudy {
+  id: string;
+  category: string;
+  categoryColor: string;
+  severity: "P1 — Critical" | "P2 — High" | "P3 — Medium";
+  severityColor: string;
+  title: string;
+  background: string;
+  infrastructure: string[];
+  timeline: TimelineEvent[];
+  symptoms: string[];
+  investigation: string[];
+  rootCause: string;
+  contributingFactors: string[];
+  correctiveActions: string[];
+  preventiveActions: string[];
+  lessonsLearned: string[];
+  impactDuration: string;
+  impactScope: string;
+  relatedArticles: string[];
+}
+
+export const CASE_STUDIES: CaseStudy[] = [
+  // ── POWER ──────────────────────────────────────────────────────────────────
+  {
+    id: "ups-failure-utility-outage",
+    category: "Power",
+    categoryColor: "#f97316",
+    severity: "P1 — Critical",
+    severityColor: "#dc2626",
+    title: "UPS Failure During Utility Grid Outage — 47 Racks Down",
+    background: "A 500kW enterprise colocation DC in Mumbai experienced a complete utility grid failure at 02:17 AM on a Tuesday. The grid outage lasted 38 minutes. The site was rated Tier III (concurrently maintainable) with N+1 UPS configuration and a 1250kVA DG set. During the grid outage, UPS-B failed to transfer to battery due to a latent battery string fault discovered only under actual load, resulting in 47 racks losing power for 22 minutes until the DG set was manually switched to supply UPS-B input directly.",
+    infrastructure: [
+      "UPS: 2× 300kVA Online Double Conversion (N+1 configuration, UPS-A and UPS-B)",
+      "Battery: VRLA 40-cell strings, 4 strings per UPS, installed 2019",
+      "Generator: 1250kVA diesel DG set, Cummins C1250D5",
+      "ATS: Automatic Transfer Switch — utility to DG",
+      "IT load: 47 racks, average 8kW per rack = 376kW total",
+      "Monitoring: Schneider EcoStruxure IT with per-string battery monitoring",
+    ],
+    timeline: [
+      { time: "02:17:03", event: "Utility grid voltage drops to 0V. ATS initiates DG start sequence.", actor: "System" },
+      { time: "02:17:03", event: "UPS-A switches to battery — load maintained. UPS-B initiates battery transfer.", actor: "System" },
+      { time: "02:17:04", event: "UPS-B detects battery string fault (String 3 open circuit). UPS-B switches to static bypass — load now on 0V grid.", actor: "System" },
+      { time: "02:17:04", event: "47 racks on UPS-B lose power. Servers begin uncontrolled shutdown.", actor: "System" },
+      { time: "02:17:18", event: "BMS generates P1 alarm — power outage, multiple racks. On-call engineer paged.", actor: "System" },
+      { time: "02:19:45", event: "On-call engineer responds. Acknowledges alarm. Reviews BMS.", actor: "Engineer" },
+      { time: "02:22:00", event: "DG set reaches stable output (38s after start — within spec). ATS transfers to DG. UPS-A now on DG supply.", actor: "System" },
+      { time: "02:22:00", event: "UPS-B bypass still on dead grid. Recognises only UPS-B affected. Begins manual recovery.", actor: "Engineer" },
+      { time: "02:28:00", event: "Engineer manually transfers UPS-B input to DG via maintenance bypass switchboard.", actor: "Engineer" },
+      { time: "02:29:15", event: "UPS-B input restored from DG. Battery string 3 bypassed. UPS-B returns to inverter on remaining 3 strings.", actor: "System" },
+      { time: "02:29:30", event: "47 racks restored. Server boot sequence begins.", actor: "System" },
+      { time: "02:38:00", event: "Customer notification sent — 22 minutes of unplanned downtime.", actor: "Engineer" },
+      { time: "02:55:00", event: "Grid restored. ATS transfers back. DG cool-down initiated.", actor: "System" },
+      { time: "10:00:00", event: "Emergency battery string 3 replacement scheduled with OEM.", actor: "Management" },
+    ],
+    symptoms: [
+      "47 racks lost power simultaneously at 02:17 AM",
+      "UPS-B front panel: 'Static Bypass — Battery Fault' alarm",
+      "BMS: UPS-B output voltage 0V, battery string 3 open circuit alarm",
+      "UPS-A operating normally on battery throughout",
+    ],
+    investigation: [
+      "UPS-B event log downloaded: battery string 3 showing open circuit fault. Last successful discharge test: 8 months prior.",
+      "String 3 battery inspection: terminal connection on cell 31 (of 40) had fractured internally. Cell had bulged slightly — visible on physical inspection.",
+      "OEM battery report: Cell 31 was from a replacement batch installed 14 months ago — different age from rest of string.",
+      "Maintenance records: Battery capacity test was last performed 8 months ago. Cell 31 showed marginal capacity (72%) at that time — flagged for monitoring but replacement not scheduled.",
+      "DCIM monitoring data: Cell 31 float voltage had been trending 0.02V below nominal for 6 months — data was available but no automated alert configured for per-cell voltage deviation.",
+    ],
+    rootCause: "Battery string 3, cell 31 had a latent internal fracture — likely from manufacturing defect or transport damage. The cell had shown declining capacity (72% at last test) but replacement was deferred. Under actual discharge load during the grid outage, the fractured cell went open circuit, causing the entire string to fault. The UPS correctly detected the fault and transferred to bypass — but with zero grid voltage, bypass delivered no power to the load.",
+    contributingFactors: [
+      "Mixed-age battery string: replacement cell from different batch installed 14 months prior introduced an age mismatch",
+      "Deferred corrective action: 72% capacity result at last test should have triggered immediate replacement, not monitoring",
+      "Missing DCIM alert: per-cell voltage deviation alert not configured despite data being available",
+      "Annual battery test schedule: last test 8 months ago — quarterly testing would have caught further degradation",
+    ],
+    correctiveActions: [
+      "Emergency replacement of battery string 3 — entire string replaced (not just failed cell)",
+      "Full capacity discharge test of all remaining battery strings within 48 hours",
+      "DCIM per-cell voltage deviation alert configured: >0.01V from nominal = warning, >0.03V = critical",
+      "Manual transfer procedure for UPS-B input documented and laminated in electrical room",
+    ],
+    preventiveActions: [
+      "Battery capacity test frequency changed from annual to quarterly",
+      "Policy: any battery cell below 80% capacity at test = replacement within 30 days, not monitoring",
+      "Battery string age tracking: all cells in same string must be from same installation batch",
+      "Annual OEM thermal imaging of all battery terminals: loose/corroded terminals detected before failure",
+      "UPS battery runtime calculation added to monthly dashboard: declining runtime = early replacement trigger",
+    ],
+    lessonsLearned: [
+      "A UPS battery fault during actual discharge is fundamentally different from a normal fault — bypass delivers zero power if grid is simultaneously down. This edge case must be part of every engineer's mental model.",
+      "Deferred maintenance is not deferred risk — it is accepted risk. 72% battery capacity with no replacement date = accepting a known failure mode.",
+      "DCIM data without configured alerts is not monitoring — it is logging. Configure actionable alerts on all critical parameters.",
+      "Mixed-age battery strings are inherently more failure-prone. When replacing cells, always replace the entire string.",
+      "Manual override procedures must be practiced, not just documented. This engineer had never manually transferred UPS input before this incident.",
+    ],
+    impactDuration: "22 minutes unplanned downtime",
+    impactScope: "47 racks, ~376kW IT load, multiple enterprise customers",
+    relatedArticles: ["ups", "battery-bank"],
+  },
+
+  {
+    id: "dg-failed-auto-start",
+    category: "Power",
+    categoryColor: "#f97316",
+    severity: "P1 — Critical",
+    severityColor: "#dc2626",
+    title: "DG Set Failed to Auto-Start — Grid Failure Exposed Hidden Fault",
+    background: "A 200kW enterprise DC in Pune experienced an unplanned grid failure at 11:43 PM caused by an upstream utility substation breaker trip. The site's single 500kVA Cummins generator failed to auto-start, leaving the UPS batteries as the only power source. Battery runtime at the time of failure was 9 minutes (actual, not nameplate — batteries were 4.5 years old). The generator fault was traced to a failed starter motor relay that had not been detected during monthly no-load test runs.",
+    infrastructure: [
+      "UPS: 200kVA Schneider Galaxy VX, single unit (N+0 — no UPS redundancy)",
+      "Battery: VRLA 2V cells, 240 cells, installed 2019",
+      "Generator: 500kVA Cummins C500D5, sound-proof enclosure",
+      "ATS: Lovato Electric ATL series, grid-DG transfer",
+      "IT load: 22 racks, 180kW total",
+    ],
+    timeline: [
+      { time: "23:43:15", event: "Utility grid fails. UPS switches to battery. ATS sends DG start signal.", actor: "System" },
+      { time: "23:43:15", event: "DG crank sequence initiates. Starter motor engages — no engine rotation.", actor: "System" },
+      { time: "23:43:25", event: "Second crank attempt. No rotation. DG control panel: 'Fail to Start' alarm.", actor: "System" },
+      { time: "23:43:35", event: "Third crank attempt. Fail. DG alarm escalated to BMS — P1 alert generated.", actor: "System" },
+      { time: "23:43:40", event: "On-call engineer paged. UPS battery at 97%.", actor: "System" },
+      { time: "23:45:10", event: "Engineer calls back. Informed: grid down, DG fail to start, battery ~8 min remaining.", actor: "Engineer" },
+      { time: "23:45:30", event: "Engineer begins driving to site. ETA: 25 minutes. Cannot resolve remotely.", actor: "Engineer" },
+      { time: "23:46:00", event: "Application owners contacted: controlled shutdown required immediately.", actor: "Management" },
+      { time: "23:47:00", event: "Application teams begin graceful shutdown of non-critical VMs.", actor: "Customer" },
+      { time: "23:51:45", event: "UPS battery at 15% (9 min elapsed). Remaining load: critical DB servers only.", actor: "System" },
+      { time: "23:52:30", event: "UPS battery exhausted. Low battery cutoff triggers. All servers lose power.", actor: "System" },
+      { time: "00:14:00", event: "Engineer arrives on-site. DG physical inspection begins.", actor: "Engineer" },
+      { time: "00:19:00", event: "Starter motor relay found failed — relay contacts fused open. Cannot pass crank current.", actor: "Engineer" },
+      { time: "00:38:00", event: "Grid restored by utility. UPS restores power. Servers boot.", actor: "System" },
+      { time: "01:15:00", event: "All services restored. RCA initiated.", actor: "Management" },
+    ],
+    symptoms: [
+      "DG control panel: 'Fail to Start' after three crank attempts",
+      "BMS: DG fail alarm, UPS on battery, estimated remaining runtime declining",
+      "No engine sound during crank sequence — starter not turning engine",
+      "DG starter battery voltage normal (25.8V) — ruling out battery discharge",
+    ],
+    investigation: [
+      "Physical inspection of DG control panel: starter relay coil circuit showed continuity but contact resistance was 420 ohms (expected <0.1 ohm) — contacts had fused open due to arcing.",
+      "DG event log: last successful auto-start was 6 weeks ago (monthly test). Since then: maintenance team ran DG in manual local mode twice for load testing — but this bypasses the auto-start relay entirely.",
+      "Relay age: starter motor relay was original equipment, 9 years old. OEM recommends replacement every 5 years or 2000 operations.",
+      "Monthly test records: all recorded as 'DG started and ran successfully' — but tests were manual start (local panel pushbutton), not auto-start via ATS signal path. The failing relay was never exercised during tests.",
+      "Root cause confirmed: relay contacts failed from age and arcing. The specific failure mode was only triggered by the ATS 24VDC signal path — not the manual start pushbutton.",
+    ],
+    rootCause: "The DG starter motor relay (aged 9 years, recommended replacement at 5 years) had developed high-resistance fused contacts. The failure was latent because monthly DG tests were conducted via manual local panel pushbutton — which bypasses the relay entirely. The ATS auto-start signal path through the failed relay had not been tested in at least 6 weeks. Under actual grid failure conditions, the relay could not pass sufficient current to engage the starter motor.",
+    contributingFactors: [
+      "Monthly tests conducted via manual start — not testing the actual auto-start signal path",
+      "No component age tracking: relay was 9 years old (4 years past OEM replacement interval) with no replacement scheduled",
+      "Single DG set — no generator redundancy (N+0)",
+      "Aging UPS batteries provided only 9 minutes runtime (nameplate was 15 minutes) — inadequate for engineer to respond and fix",
+    ],
+    correctiveActions: [
+      "Immediate replacement of starter motor relay and full inspection of DG control panel relay board",
+      "Monthly test procedure changed: always initiate via ATS test mode, not local manual start",
+      "Complete DG control panel relay audit and replacement schedule based on age",
+    ],
+    preventiveActions: [
+      "DG component age register: all relays, contactors, solenoids tracked with OEM replacement intervals",
+      "Monthly test SOP updated: auto-start via ATS signal path mandatory. Manual start only for maintenance verification",
+      "Quarterly full-sequence test: grid failure simulation → ATS detects → auto-start → transfer → load carry → return — entire chain verified",
+      "Battery capacity test quarterly: ensure runtime reflects actual capacity, not nameplate",
+      "Rental DG vendor on-call contact added to emergency response card",
+    ],
+    lessonsLearned: [
+      "Testing the component and testing the system are different things. Manual DG starts don't test the auto-start chain. Test what actually runs in an emergency.",
+      "Component age is a risk — not just component health. A relay that 'works' but is 9 years old on a 5-year replacement interval is already a deferred failure.",
+      "Battery runtime at actual current draw matters more than nameplate rating. Old batteries in a warm environment may provide 60% of nameplate runtime. Plan for this.",
+      "When both grid and DG fail, the engineer is racing the battery. On-site response of 25 minutes vs 9 minute battery = no way to win without remote access to DG controls.",
+    ],
+    impactDuration: "46 minutes — from UPS battery exhaustion to grid restoration",
+    impactScope: "22 racks, 180kW, complete DC shutdown",
+    relatedArticles: ["dg-set"],
+  },
+
+  // ── COOLING ──────────────────────────────────────────────────────────────────
+  {
+    id: "crac-high-temperature",
+    category: "Cooling",
+    categoryColor: "#0284c7",
+    severity: "P1 — Critical",
+    severityColor: "#dc2626",
+    title: "CRAC Compressor Failure Cascade — Row Temperatures Reached 38°C",
+    background: "A 300kW enterprise DC in Delhi experienced a thermal event in pod 3 during peak summer (ambient 44°C outdoor). Two of the three CRAC units (N+1 design, N=2) in pod 3 experienced sequential compressor failures within 90 minutes of each other. The third CRAC (N+1 spare) could not carry the full load, and server inlet temperatures in pod 3 rose to 38°C before emergency load shedding began. Root cause: the DX refrigerant circuit high-pressure protection tripped on both units due to condenser fouling — a known maintenance finding that had been deferred for six weeks.",
+    infrastructure: [
+      "Cooling: 3× Stulz CyberAir CRAC units in pod 3 (N+1, each 100kW cooling capacity)",
+      "Condensers: Remote condenser units on rooftop, finned coil, 10 years old",
+      "IT load in pod 3: 18 racks, 210kW total",
+      "BMS: Honeywell EBI with temperature sensor per rack row",
+      "Ambient outdoor temp at time of event: 44°C",
+    ],
+    timeline: [
+      { time: "13:22", event: "CRAC-3A compressor high-pressure protection trips. Unit switches to fan-only mode (no cooling). BMS alarm generated.", actor: "System" },
+      { time: "13:22", event: "CRAC-3B (N+1) automatically increases output. Pod 3 temperature begins rising slowly.", actor: "System" },
+      { time: "13:28", event: "BMS alarm acknowledged by day-shift engineer. Decision: monitor, raise cooling contractor ticket.", actor: "Engineer" },
+      { time: "14:47", event: "CRAC-3B compressor high-pressure protection trips. Fan-only mode. Pod 3 now on CRAC-3C only (33% design capacity).", actor: "System" },
+      { time: "14:47", event: "BMS P1 alarm: multiple rack inlet temperatures rising. Pod 3 temperatures: Row 1: 29°C, Row 2: 31°C, Row 3: 33°C.", actor: "System" },
+      { time: "14:49", event: "Senior engineer called. Begins emergency response.", actor: "Engineer" },
+      { time: "14:55", event: "Pod 3 temperatures: Row 1: 32°C, Row 2: 35°C, Row 3: 38°C. Servers in Row 3 begin thermal throttling (CPU performance reduced).", actor: "System" },
+      { time: "15:00", event: "Decision: controlled load shedding. Non-critical VMs in pod 3 powered down. 60kW shed.", actor: "Management" },
+      { time: "15:05", event: "Portable precision cooling unit (on-site spare) deployed to Row 3 cold aisle.", actor: "Engineer" },
+      { time: "15:15", event: "Pod 3 temperatures stabilising: Row 3: 34°C, Row 2: 31°C, Row 1: 28°C.", actor: "System" },
+      { time: "15:30", event: "Cooling contractor arrives. High-pressure switch diagnosis begins.", actor: "Engineer" },
+      { time: "16:45", event: "Root cause confirmed: condenser coil fouling. Emergency condenser cleaning begins.", actor: "Engineer" },
+      { time: "18:30", event: "Both CRACs restored after condenser cleaning. Pod 3 temperatures normalised.", actor: "System" },
+      { time: "19:00", event: "Shed VMs restored. Full service resumed.", actor: "Engineer" },
+    ],
+    symptoms: [
+      "CRAC high-pressure alarm — compressor protection trip",
+      "Row inlet temperatures rising above 27°C threshold",
+      "Servers reporting thermal throttling via IPMI/iDRAC",
+      "CRAC-3A and CRAC-3B in fan-only mode — blowing ambient air, not cooling",
+    ],
+    investigation: [
+      "Pressure gauge readings at fault time: CRAC-3A head pressure 28 bar (trip point: 25 bar). Outdoor ambient 44°C contributed to high head pressure.",
+      "Condenser coil visual inspection: both units had significant fin fouling — industrial particulate (Delhi NCR, nearby construction). Estimated 30-40% airflow reduction through condenser coils.",
+      "Maintenance records: last condenser cleaning scheduled 6 weeks ago — deferred by operations team due to high workload. OEM recommended quarterly cleaning.",
+      "Historical pressure trend in BMS: CRAC-3A head pressure had been trending upward for 8 weeks — visible in BMS trend data but no alert configured for high-pressure trend.",
+      "CRAC-3C not failing: CRAC-3C condenser was on a different roof section (less construction dust exposure) and had been cleaned 3 weeks earlier.",
+    ],
+    rootCause: "Deferred condenser coil cleaning allowed industrial particulate build-up to reduce condenser airflow by ~35%. With outdoor ambient at 44°C (peak Delhi summer), the reduced condenser efficiency was insufficient to reject the heat load — head pressure rose until the compressor high-pressure protection tripped on both affected units. The N+1 design was defeated because the root cause (fouled condensers) affected multiple units simultaneously.",
+    contributingFactors: [
+      "Deferred maintenance: condenser cleaning 6 weeks overdue",
+      "No BMS alert on head pressure trend: data available but alert not configured",
+      "Single alarm acknowledgement at 13:22 without root cause investigation — allowed 85-minute window for second unit failure",
+      "Peak summer operation: 44°C ambient significantly reduces condenser performance margin",
+    ],
+    correctiveActions: [
+      "Emergency condenser coil cleaning on all units in pod 3",
+      "BMS head pressure trend alert configured: rising >2 bar/week = warning",
+      "Incident review: first CRAC alarm at 13:22 should have triggered cooling contractor dispatch, not monitor-and-wait",
+    ],
+    preventiveActions: [
+      "Condenser cleaning schedule: monthly April–September (summer+dust season), quarterly October–March",
+      "BMS alert on CRAC head pressure absolute threshold (22 bar = warning, 24 bar = critical) and trend",
+      "Summer pre-season inspection: full CRAC service before April each year",
+      "Portable precision cooling units: confirm on-site and deployable before each summer season",
+      "N+1 assumption audit: identify which maintenance items, if deferred, would defeat the N+1 redundancy assumption",
+    ],
+    lessonsLearned: [
+      "N+1 redundancy assumes independent failure modes. When two units fail for the same reason simultaneously, N+1 provides zero protection. Shared maintenance dependencies can defeat redundancy design.",
+      "First alarm response quality matters. Acknowledge-and-monitor for a P2 cooling alarm at 44°C ambient is inadequate. Root cause investigation should begin at first alarm.",
+      "Deferred maintenance risk scales with seasonal factors. Fouled condenser at 20°C ambient = minor efficiency loss. Same fouled condenser at 44°C ambient = compressor protection trip.",
+      "BMS data without configured alerts is passive. Head pressure trending upward for 8 weeks was visible — it just wasn't actionable because no alert existed.",
+    ],
+    impactDuration: "5 hours 8 minutes from first CRAC failure to full service restoration",
+    impactScope: "Pod 3, 18 racks, thermal throttling on critical production servers",
+    relatedArticles: ["crac", "containment"],
+  },
+
+  // ── FACILITY ─────────────────────────────────────────────────────────────────
+  {
+    id: "water-leakage-white-space",
+    category: "Facility",
+    categoryColor: "#6b21a8",
+    severity: "P2 — High",
+    severityColor: "#f97316",
+    title: "Chilled Water Pipe Joint Failure — Water Ingress into Server Hall",
+    background: "A 400kW Tier III colocation DC in Bangalore detected water ingress into the white space (server hall) during a routine early-morning walk. Water was found pooled under Row 7 on the raised floor, with approximately 15 litres already accumulated. The source was a failing compression joint on a 65mm chilled water return pipe running through the underfloor plenum. No servers were damaged due to early detection. The joint had shown signs of seepage for several weeks — visible as efflorescence (white calcium deposits) on adjacent concrete work — but had not been reported.",
+    infrastructure: [
+      "Cooling: Chilled water system — central chiller plant feeding 8 CRAH units",
+      "Pipe system: 65mm carbon steel CHW return pipes running in underfloor plenum",
+      "Leak detection: Spot sensors at CRAC/CRAH drain points — no rope sensor in underfloor plenum",
+      "Floor: 600mm raised floor on pedestals",
+      "Row 7: 14 racks, mix of storage arrays and database servers",
+    ],
+    timeline: [
+      { time: "05:15", event: "Night shift engineer during routine walk notices slight wet patch near Row 7 tile. Lifts tile.", actor: "Engineer" },
+      { time: "05:16", event: "Underfloor inspection: water pooled approximately 15 litres. Source tracing begins.", actor: "Engineer" },
+      { time: "05:22", event: "Pipe joint identified: 65mm CHW return pipe, compression fitting, section R7-J4.", actor: "Engineer" },
+      { time: "05:25", event: "Isolation valve V-R7 closed. Chilled water supply to Row 7 CRAH-7 isolated.", actor: "Engineer" },
+      { time: "05:27", event: "CRAH-7 now running on hot water return only (no cooling). Row 7 temperatures begin rising.", actor: "System" },
+      { time: "05:30", event: "Senior engineer and site manager called. Leak volume and location reported.", actor: "Engineer" },
+      { time: "05:35", event: "Wet vacuum extraction begins. Water removed from underfloor without server impact.", actor: "Engineer" },
+      { time: "05:40", event: "BMS: CRAH-7 supply temperature rising. Temporary portable cooling deployed to Row 7.", actor: "Engineer" },
+      { time: "06:00", event: "Plumber and HVAC contractor called. ETA 7:30 AM.", actor: "Management" },
+      { time: "07:45", event: "Contractor arrives. Compression joint inspection: ferrule deformed, partial seal loss.", actor: "Engineer" },
+      { time: "09:30", event: "Pipe joint replaced with flanged fitting. Pressure test: 8 bar for 30 minutes, zero leakage.", actor: "Engineer" },
+      { time: "10:00", event: "Isolation valve V-R7 reopened. CRAH-7 restored. Temperatures normalised.", actor: "System" },
+      { time: "10:30", event: "Full underfloor inspection of all pipe joints in plenum using endoscope camera.", actor: "Engineer" },
+    ],
+    symptoms: [
+      "Wet patch visible near Row 7 raised floor tile during routine walk",
+      "Underfloor pooling: approximately 15 litres accumulated",
+      "White efflorescence deposits on adjacent concrete — visible for weeks prior",
+      "No BMS alarm generated — leak detection sensors were not positioned in this area",
+    ],
+    investigation: [
+      "Compression joint R7-J4: ferrule had deformed over time — likely from thermal cycling (CHW supply at 7°C, ambient 28°C = significant expansion/contraction cycles annually).",
+      "Joint age: 12 years — original installation. Compression fittings on CHW systems: OEM recommended inspection every 5 years for thermal cycling environments.",
+      "Efflorescence deposits: calcium carbonate leaching through micro-seepage indicated the joint had been seeping (not flowing) for an estimated 4-6 weeks before failure.",
+      "Leak detection gap: the underfloor plenum had spot sensors at CRAH drain pans but no rope sensor along the CHW pipe runs. A rope sensor adjacent to the pipe run would have detected the seepage weeks earlier.",
+      "Reporting gap: the efflorescence deposits were visible to any engineer doing underfloor inspections. The DC had no formal underfloor inspection checklist requiring documentation of pipe joint condition.",
+    ],
+    rootCause: "Aged compression joint (12 years, OEM inspection interval 5 years) on the chilled water return pipe developed progressive ferrule deformation from thermal cycling. Micro-seepage had been occurring for 4-6 weeks but was not detected because: (a) no rope leak detection sensor in the underfloor plenum, (b) no formal underfloor inspection process requiring pipe joint documentation.",
+    contributingFactors: [
+      "Leak detection gap: spot sensors only at drain points, no rope sensor along pipe runs",
+      "No underfloor pipe joint inspection checklist — efflorescence not formally documented",
+      "CHW pipe joint age: 12 years with no proactive inspection (overdue by 7 years per OEM)",
+    ],
+    correctiveActions: [
+      "All compression fittings on CHW pipe runs replaced with flanged fittings during next maintenance window",
+      "Rope leak detection sensor installed along all CHW and condensate pipe runs in underfloor plenum",
+      "Efflorescence reporting added to underfloor inspection checklist: any white deposits = immediate investigation",
+    ],
+    preventiveActions: [
+      "Annual endoscope inspection of all underfloor pipe joints — documented with photo evidence",
+      "Rope leak detection: complete coverage of underfloor plenum per BICSI 002-2019 guidance",
+      "CHW pipe joint register: all fittings documented with installation date, type, and inspection due date",
+      "Water ingress response kit: wet vacuum on each floor, absorbent mats at each row",
+      "Plumbing contractor on emergency retainer with <2 hour response SLA",
+    ],
+    lessonsLearned: [
+      "Leak detection spot sensors at drain points detect leaks that have already reached a drain. Rope sensors along pipe runs detect leaks at source — hours or days earlier.",
+      "Efflorescence is not cosmetic. White calcium deposits on concrete near a water pipe are a seepage indicator. Every engineer who saw this during the past 4-6 weeks missed an early warning sign.",
+      "Compressed fittings in thermal cycling environments have finite life. A CHW pipe at 7°C in a 28°C ambient room cycles through significant temperature delta. Document, inspect, and replace proactively.",
+      "Early detection of this event prevented server damage, extended downtime, and customer SLA breach. The same event 4 hours later (when the seepage would have been a flow) could have caused Rs. 2+ crore in equipment damage.",
+    ],
+    impactDuration: "5 hours from detection to full CRAH-7 restoration — zero server downtime",
+    impactScope: "Row 7 cooling isolated, no IT equipment damage, no data loss",
+    relatedArticles: ["chiller", "cooling-tower"],
+  },
+
+  // ── FIRE ─────────────────────────────────────────────────────────────────────
+  {
+    id: "fm200-false-discharge",
+    category: "Fire",
+    categoryColor: "#dc2626",
+    severity: "P2 — High",
+    severityColor: "#f97316",
+    title: "FM200 Accidental Discharge — UPS Room Evacuated, Systems Recovered",
+    background: "During a planned fire suppression system inspection at a 150kW DC in Hyderabad, an accidental FM200 discharge occurred in the UPS room. The discharge happened when a contractor technician accidentally activated the manual discharge solenoid while reconnecting wiring during sensor replacement. The UPS room was unoccupied at the time of discharge. The FM200 system operated correctly (complete flooding), but the discharge created significant operational disruption: UPS equipment required inspection before return to service, and the agent required 4 hours to dissipate to safe levels. The incident exposed a procedural gap in suppression system inhibit management.",
+    infrastructure: [
+      "Fire suppression: Kidde FM200 system, UPS room zone (separate from server hall zone)",
+      "UPS room: 2× 150kVA UPS units, battery strings",
+      "FM200 cylinder bank: 3× 80kg cylinders",
+      "Suppression zones: 4 zones (server hall, UPS room, electrical room, BMS room)",
+    ],
+    timeline: [
+      { time: "10:00", event: "Fire suppression contractor arrives for annual sensor replacement in UPS room zone.", actor: "Engineer" },
+      { time: "10:15", event: "Operations engineer signs permit to work. Suppression system should be inhibited for UPS zone during work.", actor: "Engineer" },
+      { time: "10:17", event: "Operations engineer inhibits smoke detectors on fire panel for UPS zone — but does NOT inhibit the suppression discharge circuit separately.", actor: "Engineer" },
+      { time: "10:45", event: "Contractor technician replacing wiring on control panel. Accidentally bridges solenoid terminals with screwdriver — 24VDC discharge signal sent.", actor: "Engineer" },
+      { time: "10:45", event: "FM200 discharge valve opens. 80kg cylinder begins discharge. UPS room fills with FM200 agent in 8 seconds.", actor: "System" },
+      { time: "10:45", event: "Fire panel: 'FM200 DISCHARGE — UPS ROOM' alarm. Audio/visual alarms activate throughout building.", actor: "System" },
+      { time: "10:46", event: "UPS room was unoccupied. Building evacuation initiated as precaution.", actor: "Engineer" },
+      { time: "10:55", event: "Fire department arrives. Confirms: no actual fire. Accidental discharge confirmed.", actor: "Engineer" },
+      { time: "11:30", event: "Building re-entry authorised. O2 levels in UPS room checked: 18.5% (below 19.5% safe threshold — room still not safe).", actor: "Engineer" },
+      { time: "13:00", event: "O2 levels in UPS room normalised (20.7%). UPS equipment inspection begins.", actor: "Engineer" },
+      { time: "14:30", event: "UPS equipment inspection complete — no FM200 damage (all sealed equipment). Systems cleared for return to service.", actor: "Engineer" },
+      { time: "14:45", event: "Replacement FM200 cylinder ordered. UPS room zone in manual suppression mode until cylinder replaced.", actor: "Management" },
+    ],
+    symptoms: [
+      "FM200 discharge visible as dense white cloud exiting UPS room",
+      "Fire panel: 'FM200 Discharge — UPS Room' alarm active",
+      "Building evacuation alarm activated",
+      "Accidental discharge — no fire, no smoke, no heat",
+    ],
+    investigation: [
+      "Permit to work review: suppression system inhibit procedure stated 'isolate detection system.' Operations engineer interpreted this as isolating smoke detectors on fire panel. The suppression discharge circuit was not separately isolated.",
+      "Fire panel review: the panel has two separate isolation points: (a) detector isolation (prevents detection → discharge signal) and (b) discharge isolation (physically breaks 24VDC supply to solenoid). Only (a) was applied.",
+      "Wiring diagram review: the solenoid control terminals were labelled but not physically guarded. The screwdriver contact was across terminals separated by 8mm — insufficient protection against accidental contact.",
+      "Contractor training records: technician was competent but had not received site-specific training on the dual-isolation requirement.",
+    ],
+    rootCause: "Procedural gap: the permit-to-work procedure for fire suppression work required 'isolation of detection system' but did not explicitly require isolation of the discharge circuit. The operations engineer applied detector isolation but not discharge circuit isolation. A second procedural gap: the contractor had not been briefed on site-specific dual-isolation requirements before work began.",
+    contributingFactors: [
+      "Ambiguous PTW procedure: 'isolate detection system' did not explicitly require discharge circuit isolation",
+      "No physical guarding on solenoid terminals in control panel",
+      "Inadequate site-specific induction for contractor",
+      "No second-person check on isolation completeness before work commenced",
+    ],
+    correctiveActions: [
+      "PTW procedure rewritten: now requires explicit signature confirmation for both (a) detector isolation and (b) discharge circuit isolation before any suppression zone work begins",
+      "Fire panel discharge circuit isolation: physically padlocked at ICP (Isolation Control Point) during all suppression maintenance",
+      "Solenoid terminal covers: physical barrier installed over discharge solenoid terminals",
+      "Replacement FM200 cylinder procured and installed",
+    ],
+    preventiveActions: [
+      "Suppression maintenance induction: all contractors must complete site-specific fire suppression isolation briefing before any work — documented with signature",
+      "Two-person verification: isolation completeness checked by operations engineer AND contractor supervisor before work begins",
+      "Annual suppression contractor drill: practice isolation procedure, verify dual-point isolation understood",
+      "FM200 spare cylinder on-site at all times: response time to partial cylinder capability = zero (not weeks)",
+    ],
+    lessonsLearned: [
+      "A permit to work is only as good as its procedure. 'Isolate the detection system' means different things to different people. Fire suppression PTW must specify exact panel actions with zone-specific checklist.",
+      "Detector isolation and discharge isolation are separate. Isolating smoke detectors does not prevent accidental solenoid activation. Both must be explicitly isolated and verified.",
+      "Unoccupied room at time of discharge was fortunate, not planned. FM200 at discharge concentrations (~8%) is not immediately dangerous but severely incapacitating. Personnel in an FM200-flooded room cannot self-rescue.",
+      "An accidental discharge without a fire is a near-miss — not a minor incident. The same conditions that caused this discharge could mask a real fire if detection was isolated without discharge isolation.",
+    ],
+    impactDuration: "4 hours from discharge to UPS room safe re-entry and service clearance",
+    impactScope: "UPS room out of service 4 hours, building evacuation, one FM200 cylinder depleted",
+    relatedArticles: ["fm200", "vesda"],
+  },
+
+  // ── NETWORKING ───────────────────────────────────────────────────────────────
+  {
+    id: "core-switch-failure",
+    category: "Networking",
+    categoryColor: "#7c3aed",
+    severity: "P1 — Critical",
+    severityColor: "#dc2626",
+    title: "Core Switch ASIC Failure — DC Network Partitioned for 28 Minutes",
+    background: "A 600kW enterprise DC in Chennai experienced a network outage affecting 60% of its server estate when the primary core switch (Cisco Nexus 9336C-FX2) experienced an ASIC fault. The DC used a Spine-Leaf architecture with 2 spine switches and 24 leaf switches. The ASIC fault caused the spine-1 switch to stop forwarding traffic while remaining electrically powered — a 'black hole' failure mode. ECMP routes via spine-1 were still advertised over BGP, but traffic routed through spine-1 was silently dropped.",
+    infrastructure: [
+      "Network: Spine-Leaf, 2× Cisco Nexus 9336C-FX2 (Spine), 24× Cisco Nexus 93180YC-EX (Leaf)",
+      "Routing: eBGP, ECMP across both spines",
+      "Monitoring: SolarWinds NPM, interface monitoring every 60 seconds",
+      "Cable plant: 25GbE leaf-to-spine, 100GbE spine-to-border",
+    ],
+    timeline: [
+      { time: "14:33:22", event: "Spine-1 ASIC fault occurs. Spine-1 remains powered and BGP sessions remain up. Traffic forwarding stops silently.", actor: "System" },
+      { time: "14:33:22", event: "ECMP: 50% of all server-to-server traffic is hashed to spine-1. That 50% begins silently dropping.", actor: "System" },
+      { time: "14:33:45", event: "Application teams begin seeing connection timeouts. Intermittent failures across multiple applications.", actor: "Customer" },
+      { time: "14:34:00", event: "Monitoring: all switch interfaces still show UP/UP. Zero interface-level alarms. BGP sessions UP.", actor: "System" },
+      { time: "14:36:00", event: "First support ticket: 'Application X is timing out intermittently.' NOC begins investigation.", actor: "Customer" },
+      { time: "14:38:00", event: "Multiple tickets from different customers: all describe 50% packet loss or intermittent timeouts.", actor: "Customer" },
+      { time: "14:40:00", event: "NOC: suspecting network issue. Begins traceroute testing between multiple servers.", actor: "Engineer" },
+      { time: "14:42:00", event: "Pattern identified: traffic via spine-1 is dropping. Traceroute to spine-1 loopback: no response. BGP session still UP.", actor: "Engineer" },
+      { time: "14:43:00", event: "Decision: remove spine-1 from ECMP. BGP weight adjusted on all leaves to de-prefer spine-1.", actor: "Engineer" },
+      { time: "14:45:00", event: "Traffic shifts entirely to spine-2. Packet loss stops. Applications recover.", actor: "System" },
+      { time: "14:45:00", event: "Impact: 28 minutes of 50% packet loss across 60% of server estate (all leaf switches using ECMP via both spines).", actor: "System" },
+      { time: "15:00:00", event: "Cisco TAC engaged. Spine-1 show commands capture. ASIC fault confirmed in hardware logs.", actor: "Engineer" },
+      { time: "16:30:00", event: "Replacement Nexus 9336C-FX2 ordered. Spine-1 powered down.", actor: "Management" },
+    ],
+    symptoms: [
+      "50% packet loss across all server-to-server and server-to-external traffic",
+      "Intermittent application timeouts — not complete failures",
+      "Monitoring showed all interfaces UP — no interface-level alarms",
+      "BGP sessions on spine-1 still showing Established",
+      "Traceroute to spine-1 loopback: no response despite BGP being up",
+    ],
+    investigation: [
+      "Spine-1 'show system internal errors': ASIC forwarding table corruption event at 14:33:19. The control plane (BGP) continued operating normally, but the data plane (packet forwarding) stopped.",
+      "The ASIC fault caused a 'black hole': spine-1 accepted packets from leaf switches (received by NIC) but the forwarding ASIC could not process them — packets were silently discarded.",
+      "ECMP hash distribution: with 2 spines and balanced ECMP, approximately 50% of all flows were hashed to spine-1. That 50% were black-holed.",
+      "Monitoring gap: SolarWinds interface monitoring checked interface UP/DOWN and traffic counters. Spine-1 interfaces showed traffic arriving (ingress counters incrementing) but egress counters near-zero — this should have triggered an alert but no egress counter alert was configured.",
+      "Detection delay: 9 minutes elapsed between ASIC fault and NOC beginning network investigation. Application tickets were the primary detection mechanism — not infrastructure monitoring.",
+    ],
+    rootCause: "Cisco Nexus 9336C-FX2 ASIC (Cisco Cloud Scale ASIC) experienced a rare forwarding table corruption event, causing the data plane to stop forwarding while the control plane (BGP, management) continued operating normally. The 'black hole' failure mode — where a device appears healthy on all monitoring dimensions except actually forwarding traffic — exposed a monitoring gap.",
+    contributingFactors: [
+      "Monitoring gap: no alert on high ingress/near-zero egress asymmetry on spine interfaces",
+      "No BFD (Bidirectional Forwarding Detection) configured: BFD would have detected data plane failure on BGP session and withdrawn routes within seconds",
+      "ECMP without data-plane health checking: ECMP continued routing to spine-1 even though spine-1 was black-holing traffic",
+    ],
+    correctiveActions: [
+      "BFD configured on all BGP sessions between leaves and spines: data plane failure now detected in <1 second",
+      "Egress counter monitoring: alert configured on ingress/egress ratio asymmetry per interface",
+      "ASIC fault syslog alerting: critical hardware fault messages from Nexus platform now forward to monitoring",
+      "Spine-1 replaced with new hardware",
+    ],
+    preventiveActions: [
+      "BFD mandatory on all BGP sessions in DC fabric: ensures data plane failure immediately affects BGP reachability",
+      "Synthetic traffic monitoring: scheduled end-to-end ping sweep between all leaf loopbacks every 30 seconds — detects black holes that BGP cannot",
+      "ASIC health monitoring: Nexus platform ASIC error registers polled every 5 minutes via SNMP",
+      "Half-yearly network failure simulation: deliberately remove one spine, verify 100% traffic moves to surviving spine within 1 second",
+    ],
+    lessonsLearned: [
+      "BGP session UP does not mean traffic is forwarding. Control plane health and data plane health are separate. BFD is specifically designed to solve this gap.",
+      "Monitoring interfaces is not monitoring the network. Interface UP/UP with dropping traffic = black hole = zero monitoring coverage. Synthetic traffic monitoring detects what interface monitoring cannot.",
+      "ECMP is active-active. When one spine fails silently, exactly 50% of traffic goes to a black hole. The failure is instantly felt by 100% of applications but only 50% of the packets.",
+      "The 9-minute detection window was driven by application tickets, not infrastructure monitoring. In a well-monitored DC, synthetic traffic monitoring would detect this in 30 seconds.",
+    ],
+    impactDuration: "28 minutes from ASIC fault to traffic recovery",
+    impactScope: "60% of server estate, 50% packet loss, all customer applications affected",
+    relatedArticles: ["switch", "router", "firewall"],
+  },
+
+  // ── CLOUD ─────────────────────────────────────────────────────────────────────
+  {
+    id: "azure-region-outage",
+    category: "Cloud",
+    categoryColor: "#2563EB",
+    severity: "P1 — Critical",
+    severityColor: "#dc2626",
+    title: "Azure Central India Outage — Hybrid DC Connectivity Loss",
+    background: "An enterprise bank's hybrid cloud deployment experienced a 4-hour service degradation when Azure Central India (Pune region) experienced an availability event affecting Azure Virtual Machines in multiple zones. The bank's digital banking application ran on Azure VMs, with core banking on-premises. The connection between on-premises and Azure used Azure ExpressRoute via a connectivity provider. During the outage, the ExpressRoute circuit continued showing 'Provisioned' status — but Azure VM availability was degraded, creating intermittent application failures that did not match any single clear alert.",
+    infrastructure: [
+      "On-premises DC: Mumbai, core banking on IBM Power systems",
+      "Azure: Central India (Pune), 40× Azure VMs (D-series and E-series), AKS cluster",
+      "Connectivity: Azure ExpressRoute 1Gbps via Tata Communications, plus IPsec VPN backup",
+      "Monitoring: Azure Monitor, on-premises Zabbix, Dynatrace APM",
+      "DR: No secondary Azure region configured — single-region deployment",
+    ],
+    timeline: [
+      { time: "09:17", event: "Azure Central India VM availability begins degrading. Some VMs lose network connectivity intermittently. Azure does not yet show Service Health alert.", actor: "System" },
+      { time: "09:22", event: "Digital banking application: intermittent transaction failures. Users see 'Service unavailable' errors.", actor: "Customer" },
+      { time: "09:25", event: "Bank NOC receives first customer complaints. Azure Monitor: VMs showing healthy. Dynatrace: response time increasing.", actor: "Engineer" },
+      { time: "09:35", event: "Azure Service Health alert published: 'We are investigating an issue in Central India.' Vague initial description.", actor: "System" },
+      { time: "09:40", event: "Bank opens Azure P1 support ticket. Begins internal investigation.", actor: "Engineer" },
+      { time: "09:45", event: "Decision: fail to backup VPN and test if ExpressRoute path is the issue. VPN failover attempted.", actor: "Engineer" },
+      { time: "09:50", event: "VPN failover completes. No improvement — issue is Azure-side VM availability, not connectivity.", actor: "System" },
+      { time: "10:00", event: "Azure Service Health update: 'VM availability affected in Pune (westindia)'. Scope becoming clearer.", actor: "System" },
+      { time: "10:15", event: "Decision: manual failover of AKS workloads to on-premises Kubernetes cluster (emergency capacity). Not planned — improvised.", actor: "Management" },
+      { time: "11:30", event: "On-premises Kubernetes cluster overloaded (under-spec'd for full digital banking load). Response times degrade further.", actor: "System" },
+      { time: "12:00", event: "Azure begins VM recovery. Partial restoration — some VMs healthy.", actor: "System" },
+      { time: "13:20", event: "Azure full VM availability restored. Services gradually recovered.", actor: "System" },
+      { time: "14:00", event: "Full service restoration. RCA and DR review initiated.", actor: "Management" },
+    ],
+    symptoms: [
+      "Intermittent digital banking transaction failures — not complete outage",
+      "Azure Monitor showing VMs healthy despite application failures",
+      "Dynatrace APM: response times from Azure services rising, error rate increasing",
+      "Azure Service Health: delayed publishing of Central India incident",
+    ],
+    investigation: [
+      "Azure incident post-mortem: root cause was a control plane software regression deployed to Central India region that affected storage backend connectivity for a subset of VM sizes. The VMs remained 'powered on' from Azure's perspective but experienced disk I/O stalls.",
+      "Monitoring gap: Azure VM health metrics (CPU, network, disk) showed normal ranges because the VMs were 'alive' — the disk I/O stall was only visible at the application layer (database query timeouts) and Dynatrace.",
+      "No DR plan: the bank had no secondary Azure region configured. All Azure VMs were in Central India (single region). No automated failover capability existed.",
+      "On-premises Kubernetes as improvised failover: the on-premises cluster was sized for 30% of digital banking load (for dev/test purposes). It could not handle 100% of production load.",
+      "ExpressRoute stability: the ExpressRoute circuit itself was stable throughout the incident. The connectivity path was not the problem — Azure-side VM availability was.",
+    ],
+    rootCause: "Azure Central India suffered a control plane software regression causing storage backend connectivity issues for affected VM types. The bank's single-region Azure deployment with no secondary region DR capability meant the Azure platform issue directly translated to customer-facing service degradation with no automated failover path.",
+    contributingFactors: [
+      "Single-region Azure deployment — no secondary region for failover",
+      "On-premises Kubernetes cluster under-sized for production failover",
+      "Monitoring gap: Azure VM health metrics do not surface application-layer I/O stalls",
+      "Improvised DR: 'fail to on-premises' was not a planned, tested procedure — it was created under incident pressure",
+    ],
+    correctiveActions: [
+      "Azure Pilot Light DR configured in South India (Chennai) region: database replica + pre-deployed AKS cluster",
+      "On-premises Kubernetes cluster scaled to 100% production capacity for genuine failover capability",
+      "Azure Monitor custom metrics: application-level health checks added as Azure Availability Set monitors",
+    ],
+    preventiveActions: [
+      "Multi-region Azure deployment: active-passive with automated Traffic Manager failover",
+      "Monthly DR drill: simulate Central India outage, verify South India failover completes within RTO",
+      "Azure Service Health integration: alerts directly to bank's NOC system, not just Azure portal",
+      "Business continuity plan: defines manual workarounds (branch banking, phone banking) for extended cloud outage scenarios where DR failover is also unavailable",
+    ],
+    lessonsLearned: [
+      "Cloud regions fail. A single-region deployment means a regional outage is a complete outage for your application. Multi-region architecture is not overengineering — it is the minimum viable resilience architecture.",
+      "Cloud provider infrastructure metrics are not application health metrics. Azure showing VMs as healthy while your application has I/O stalls means Azure monitors what Azure can see — your application layer is invisible to them.",
+      "Improvised DR under incident pressure fails. The on-premises Kubernetes cluster as improvised failover performed worse than nothing — it added confusion and additional degradation. DR must be designed, sized, and tested before the incident.",
+      "Azure Service Health is informational, not operational. The incident was already causing customer impact for 18 minutes before the first Service Health alert appeared. Build your own monitoring that doesn't depend on the failing provider to tell you it's failing.",
+    ],
+    impactDuration: "4 hours 43 minutes from first application failure to full restoration",
+    impactScope: "Digital banking application, all customers, transaction processing",
+    relatedArticles: ["azure", "hybrid-cloud", "disaster-recovery"],
+  },
+
+  // ── SECURITY ─────────────────────────────────────────────────────────────────
+  {
+    id: "ransomware-recovery",
+    category: "Security",
+    categoryColor: "#475569",
+    severity: "P1 — Critical",
+    severityColor: "#dc2626",
+    title: "Ransomware Incident — 72-Hour Recovery Using Immutable Backups",
+    background: "A 150kW enterprise DC in Delhi supporting a manufacturing company experienced a ransomware attack (LockBit variant) that encrypted 140 servers across production, test, and storage systems. Initial infection vector was a phishing email on a workstation that had VPN access to the DC management network. The attack propagated over 72 hours before triggering ransomware payload deployment at 3:30 AM. Recovery was achieved using immutable offsite backups maintained on a Veeam hardened repository — but took 72 hours. Replication and standard backup data was also encrypted (replication had propagated the ransomware).",
+    infrastructure: [
+      "Server estate: 140 VMs on VMware vSphere 7.0 cluster (8 hosts, 2 clusters)",
+      "Storage: Dell EMC PowerStore 500T (primary), PowerStore 200T (replication target)",
+      "Backup: Veeam Backup & Replication 11, backup to hardened Linux repository (immutable, 30-day retention)",
+      "Network: Flat management network — workstations and server management on same VLAN",
+      "Security: Perimeter firewall, no EDR on servers, no network segmentation between workstations and servers",
+    ],
+    timeline: [
+      { time: "Day -3, 14:20", event: "Phishing email opened by finance employee. Macro executes. Initial C2 beacon established.", actor: "System" },
+      { time: "Day -3 to Day 0", event: "Lateral movement: attacker moves from workstation to DC management network over 72 hours. Domain admin credentials obtained via pass-the-hash.", actor: "System" },
+      { time: "Day 0, 03:31", event: "Ransomware payload deployed. Encryption begins across all accessible storage (vSphere datastores, NAS shares, replication targets).", actor: "System" },
+      { time: "Day 0, 03:31", event: "Replication to secondary PowerStore: encrypted data propagates to replication target within minutes.", actor: "System" },
+      { time: "Day 0, 06:15", event: "Operations team arrives. Multiple VMs not starting. Storage datastores showing encrypted extensions.", actor: "Engineer" },
+      { time: "Day 0, 06:30", event: "Ransomware confirmed. Network isolation: all production network uplinks disabled to stop spread.", actor: "Engineer" },
+      { time: "Day 0, 07:00", event: "Incident response team engaged (external). Forensic imaging of infected systems begins.", actor: "Management" },
+      { time: "Day 0, 08:00", event: "Backup assessment: primary backups on PowerStore = encrypted. Replication target = encrypted. Veeam hardened repository = INTACT (immutable, offline-equivalent).", actor: "Engineer" },
+      { time: "Day 0, 10:00", event: "Recovery strategy defined: restore from Veeam hardened repository. Priority order: (1) AD/DNS, (2) core ERP, (3) manufacturing systems, (4) secondary systems.", actor: "Management" },
+      { time: "Day 0 to Day 3", event: "72-hour restoration process: 140 VMs restored in priority order from immutable backups. Clean infrastructure rebuilt in parallel.", actor: "Engineer" },
+      { time: "Day 3, 15:00", event: "Full production service restored. Compromised accounts disabled. Security remediation underway.", actor: "Management" },
+    ],
+    symptoms: [
+      "VMs failing to start — VMDK files showing .lockbit extension",
+      "Datastores encrypted: all VMFS volumes affected",
+      "Ransom note file appearing in all accessible directories",
+      "Replication target also encrypted — secondary storage not viable",
+      "Only the immutable Veeam hardened repository remained intact",
+    ],
+    investigation: [
+      "Initial vector: phishing email. Finance workstation had RDP and VPN access to DC management network — same VLAN as vCenter and iDRAC management.",
+      "Lateral movement: Mimikatz used to extract domain admin credentials from workstation memory. Domain admin access enabled encryption of all domain-joined systems including backup media connected to domain.",
+      "Replication propagation: storage-level replication (synchronous) propagated encrypted data to secondary PowerStore within 4 minutes of encryption starting. Secondary storage was not viable for recovery.",
+      "Veeam hardened repository survived: configured with Linux hardened repository (immutable backups, no domain join, no Windows credentials accepted). The ransomware could not reach it via the domain admin credentials used for lateral movement.",
+      "Recovery point: last clean backup was 18 hours before attack deployment. 18 hours of data lost (RPO = 18 hours). Manufacturing production records for this period reconstructed from paper records.",
+    ],
+    rootCause: "Workstation with DC management network access (no segmentation) was compromised via phishing. Flat management network allowed lateral movement from workstation to domain controller to vCenter to storage. Domain admin credentials enabled mass encryption of all domain-accessible storage. Replication propagated encryption to secondary. Only immutable backup (not domain-joined) survived.",
+    contributingFactors: [
+      "Flat management network: workstations and DC management systems on same VLAN",
+      "No EDR on servers or workstations: ransomware propagation undetected for 72 hours",
+      "Storage replication to secondary: propagated encrypted data instead of protecting it",
+      "No network segmentation: DC management accessible from workstations without additional authentication",
+    ],
+    correctiveActions: [
+      "Management network segmentation: workstations isolated from DC management VLAN. Jump server required for DC management access.",
+      "EDR deployed on all servers and workstations (CrowdStrike Falcon)",
+      "Privileged access workstations (PAW) for DC management: dedicated hardened machines, no internet, no email",
+      "Veeam backup job frequency increased to every 4 hours for critical VMs",
+    ],
+    preventiveActions: [
+      "Zero trust network: DC management accessible only via PAM solution (CyberArk), all sessions recorded",
+      "Immutable backup policy formalised: hardened repository, not domain-joined, air-gapped backup rotation quarterly",
+      "Tabletop ransomware exercise: annual — simulate ransomware, practice recovery procedure",
+      "Email security: advanced threat protection, macro execution blocked by policy",
+      "DR plan for ransomware scenario: documented recovery order, team assignments, external IR retainer",
+    ],
+    lessonsLearned: [
+      "Replication is not backup. Synchronous replication propagates ransomware to the secondary within minutes. A replicated copy of encrypted data is encrypted data, not a recovery option.",
+      "The only reason this company recovered was an immutable backup that ransomware could not reach. Every DC must have at least one backup copy that cannot be encrypted: air-gapped, immutable, or off-site with separate credentials.",
+      "Flat management networks are ransomware expressways. Once one workstation is compromised, lateral movement to domain admin to vCenter to all storage is a script, not a skill.",
+      "72-hour recovery is a business-continuity failure even if it's technically 'successful'. Recovery time from a ransomware event is determined by backup design decisions made months before the incident.",
+    ],
+    impactDuration: "72 hours from ransomware deployment to full service restoration",
+    impactScope: "140 servers, complete production shutdown, 18 hours data loss",
+    relatedArticles: ["backup", "disaster-recovery"],
+  },
+];
+
+/** Category list derived from data for filter UI */
+export const CASE_STUDY_CATEGORIES = [
+  ...new Set(CASE_STUDIES.map((c) => c.category)),
+].sort();
