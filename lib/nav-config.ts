@@ -372,7 +372,7 @@ const AI_MENU: MegaMenu = {
       accentRgb: "160,100,255",
       categoryHref: "/learn/ai/fundamentals",
       links: topicLinks([
-        "what-is-ai",
+        "what-is-ai-infrastructure",
         "machine-learning",
         "deep-learning",
         "generative-ai",

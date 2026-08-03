@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const aiInfraMetadata: ArticleMetadata = {
+  slug: "what-is-ai-infrastructure",
+  title: "What is AI Infrastructure — The Complete Engineering Guide",
+  seoTitle: "AI Infrastructure Kya Hai? GPU Clusters, AI Data Centers, Networking, Cooling — Complete Hinglish Guide",
+  seoDescription:
+    "AI Infrastructure ka complete engineering guide — GPU clusters, NVLink, InfiniBand, liquid cooling, AI data centers, training vs inference, Blackwell GB200, NVL72, DPU, CXL, power planning aur sustainability. DC engineers, IT engineers aur AI engineers ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/fundamentals/what-is-ai-infrastructure",
+  keywords: [
+    "ai infrastructure kya hai",
+    "ai infrastructure explained",
+    "ai infrastructure for beginners",
+    "ai infrastructure architecture",
+    "ai infrastructure components",
+    "gpu cluster ai",
+    "nvidia h100 blackwell",
+    "ai data center design",
+    "infiniband vs ethernet ai",
+    "liquid cooling ai gpu",
+    "ai training vs inference",
+    "nvlink nvswitch",
+    "ai infrastructure engineer",
+    "ai infrastructure jobs",
+    "what is ai factory",
+    "gb200 nvl72",
+    "cxl memory pooling",
+    "ai infrastructure power cooling",
+    "ai infrastructure companies",
+    "ai infrastructure vs cloud",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2025-08-03",
+  readingTimeMinutes: 55,
+};

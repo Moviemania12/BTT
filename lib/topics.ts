@@ -1151,6 +1151,21 @@ export const TOPICS: Record<string, Topic> = {
   // URL pattern: /learn/ai/fundamentals/[slug]
   // ══════════════════════════════════════════════════════════════════════════
 
+  "what-is-ai-infrastructure": {
+    slug: "what-is-ai-infrastructure",
+    title: "What is AI Infrastructure",
+    description:
+      "AI Infrastructure is a purpose-built technology stack — GPU clusters, high-speed networking, parallel storage, liquid cooling, and supporting software — fundamentally different from traditional IT infrastructure in density, power, networking, and design philosophy.",
+    track: "ai",
+    category: "fundamentals",
+    status: "published",
+    icon: "🏗️",
+    breadcrumb: ["AI Infrastructure", "Fundamentals", "What is AI Infrastructure"],
+    order: 0,
+    related: ["what-is-ai", "ai-gpu", "gpu-cluster", "ai-cooling", "ai-data-center-basics"],
+    eta: "Phase 3",
+  },
+
   "what-is-ai": {
     slug: "what-is-ai",
     title: "What is AI",
