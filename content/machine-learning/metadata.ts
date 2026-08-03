@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const mlMetadata: ArticleMetadata = {
+  slug: "machine-learning",
+  title: "Machine Learning — The Complete Engineering Guide",
+  seoTitle: "Machine Learning Kya Hai? Supervised, Unsupervised, ML Pipeline, Infrastructure — Complete Hinglish Guide",
+  seoDescription:
+    "Machine Learning ka complete engineering guide — supervised learning, unsupervised, reinforcement learning, ML infrastructure, distributed training, MLOps, feature store, model deployment, enterprise ML pipeline aur industry examples. DC engineers, IT engineers aur AI engineers ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/fundamentals/machine-learning",
+  keywords: [
+    "machine learning kya hai",
+    "machine learning explained in hindi",
+    "machine learning for beginners",
+    "supervised unsupervised learning",
+    "ml infrastructure",
+    "mlops pipeline",
+    "distributed training nccl",
+    "feature store ml",
+    "model deployment",
+    "ml vs deep learning",
+    "machine learning in data center",
+    "enterprise ml pipeline",
+    "gpu machine learning",
+    "ml lifecycle",
+    "pytorch tensorflow jax",
+    "model optimization quantization",
+    "ai governance responsible ai",
+    "machine learning engineer jobs",
+    "ml cost analysis",
+    "sagemaker vertex ai azure ml",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2025-08-03",
+  readingTimeMinutes: 65,
+};
