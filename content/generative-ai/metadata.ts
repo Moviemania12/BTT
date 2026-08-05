@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const genAiMetadata: ArticleMetadata = {
+  slug: "generative-ai",
+  title: "Generative AI — The Complete Engineering Guide",
+  seoTitle: "Generative AI Kya Hai? LLMs, Diffusion Models, RAG, AI Agents, Enterprise Infrastructure — Complete Hinglish Guide",
+  seoDescription:
+    "Generative AI ka complete engineering guide — foundation models, LLMs, diffusion models, RAG, AI agents, MCP, function calling, vector databases, enterprise GenAI stack, inference infrastructure, cost optimization, guardrails aur production deployments. DC engineers, AI engineers aur enterprise architects ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/fundamentals/generative-ai",
+  keywords: [
+    "generative ai kya hai",
+    "generative ai explained hindi",
+    "large language models infrastructure",
+    "diffusion models explained",
+    "rag retrieval augmented generation",
+    "ai agents mcp function calling",
+    "enterprise generative ai stack",
+    "llm inference infrastructure",
+    "vector database explained",
+    "prompt engineering guide",
+    "ai guardrails safety",
+    "generative ai cost optimization",
+    "foundation models enterprise",
+    "lora qlora fine tuning",
+    "ai gateway enterprise",
+    "multimodal ai infrastructure",
+    "generative ai data center",
+    "gpu memory llm inference",
+    "ai observability monitoring",
+    "enterprise ai deployment patterns",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2025-08-03",
+  readingTimeMinutes: 75,
+};

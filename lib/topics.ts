@@ -1222,7 +1222,7 @@ export const TOPICS: Record<string, Topic> = {
     icon: "✨",
     breadcrumb: ["AI Infrastructure", "Fundamentals", "Generative AI"],
     order: 4,
-    related: ["llm", "deep-learning", "gpu-cluster"],
+    related: ["deep-learning", "machine-learning", "what-is-ai-infrastructure", "llm", "gpu-cluster"],
     eta: "Phase 3",
   },
 
