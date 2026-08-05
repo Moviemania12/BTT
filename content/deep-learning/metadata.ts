@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const dlMetadata: ArticleMetadata = {
+  slug: "deep-learning",
+  title: "Deep Learning — The Complete Engineering Guide",
+  seoTitle: "Deep Learning Kya Hai? Neural Networks, CNN, Transformer, GPU Training — Complete Hinglish Guide",
+  seoDescription:
+    "Deep Learning ka complete engineering guide — neural networks, CNN, RNN, LSTM, Transformers, attention mechanism, GPU acceleration, distributed training, CUDA stack, inference infrastructure, enterprise deployment aur production operations. DC engineers, IT engineers aur AI engineers ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/fundamentals/deep-learning",
+  keywords: [
+    "deep learning kya hai",
+    "deep learning explained hindi",
+    "neural networks beginners",
+    "transformer architecture explained",
+    "cnn rnn lstm",
+    "gpu deep learning training",
+    "cuda software stack",
+    "distributed training gpu cluster",
+    "deep learning infrastructure",
+    "nvlink infiniband deep learning",
+    "backpropagation explained",
+    "attention mechanism transformer",
+    "deep learning vs machine learning",
+    "foundation models fine tuning",
+    "deep learning enterprise deployment",
+    "mlperf benchmarks",
+    "deep learning inference optimization",
+    "pytorch tensorflow jax",
+    "gpu memory hierarchy",
+    "deep learning data center",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2025-08-03",
+  readingTimeMinutes: 70,
+};

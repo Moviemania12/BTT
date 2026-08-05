@@ -28,6 +28,7 @@ type PageProps = {
 const STATIC_ARTICLE_SLUGS = new Set([
   "what-is-ai-infrastructure",
   "machine-learning",
+  "deep-learning",
 ]);
 
 export default async function AiTopicPage(props: PageProps) {
