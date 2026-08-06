@@ -55,7 +55,7 @@ export default function StatsBar() {
               <p>Start your journey today and</p>
               <p>become a data center expert.</p>
             </div>
-            <Link href="/learn" className="hp-btn hp-btn--primary hp-btn--small hp-btn--inline">
+            <Link href="/learn/non-it" className="hp-btn hp-btn--primary hp-btn--small hp-btn--inline">
               Start Learning →
             </Link>
           </div>
