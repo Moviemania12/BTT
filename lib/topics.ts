@@ -1228,17 +1228,16 @@ export const TOPICS: Record<string, Topic> = {
 
   "llm": {
     slug: "llm",
-    title: "LLMs",
+    title: "Large Language Models (LLMs)",
     description:
-      "Large Language Models (LLMs) are AI models trained on massive text datasets to understand and generate human language. They require specialized GPU infrastructure and significant power and cooling.",
+      "Large Language Models (LLMs) are massive neural networks trained on trillions of tokens to understand and generate human language. They require specialized GPU infrastructure, HBM memory, and significant power and cooling for both training and inference.",
     track: "ai",
     category: "fundamentals",
     status: "published",
     icon: "💬",
-    breadcrumb: ["AI Infrastructure", "Fundamentals", "LLMs"],
+    breadcrumb: ["AI Infrastructure", "Fundamentals", "Large Language Models"],
     order: 5,
-    related: ["generative-ai", "gpu-cluster", "ai-cooling"],
-    eta: "Phase 3",
+    related: ["generative-ai", "deep-learning", "what-is-ai-infrastructure", "ai-gpu", "gpu-cluster"],
   },
 
   // ══════════════════════════════════════════════════════════════════════════

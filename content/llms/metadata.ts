@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const llmMetadata: ArticleMetadata = {
+  slug: "llm",
+  title: "Large Language Models (LLMs) — The Complete Engineering Guide",
+  seoTitle: "Large Language Models Kya Hain? LLM Architecture, Training, Inference, GPU Infrastructure — Complete Hinglish Guide",
+  seoDescription:
+    "Large Language Models ka complete engineering guide — Transformer architecture, parameters, tokens, KV cache, training pipeline, RLHF, DPO, LoRA, QLoRA, MoE, quantization, vLLM, TensorRT-LLM, enterprise deployment, GPU requirements, monitoring aur production operations. DC engineers, AI engineers aur enterprise architects ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/fundamentals/llm",
+  keywords: [
+    "large language models kya hai",
+    "llm explained hindi",
+    "transformer architecture explained",
+    "llm training pipeline",
+    "kv cache inference",
+    "rlhf dpo alignment",
+    "lora qlora fine tuning",
+    "mixture of experts architecture",
+    "quantization llm inference",
+    "vllm tensorrt-llm serving",
+    "llm gpu requirements",
+    "nvidia h100 llm training",
+    "enterprise llm deployment",
+    "llm inference optimization",
+    "speculative decoding",
+    "flash attention explained",
+    "open source llms comparison",
+    "llm monitoring production",
+    "ai factory llm infrastructure",
+    "llm cost optimization",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2025-08-04",
+  readingTimeMinutes: 85,
+};
