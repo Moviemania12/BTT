@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const aiGpuMetadata: ArticleMetadata = {
+  slug: "ai-gpu",
+  title: "AI GPU — The Complete Engineering Guide",
+  seoTitle: "AI GPU Kya Hai? CUDA Cores, Tensor Cores, HBM, NVLink, DGX, H100, B200 — Complete Hinglish Guide",
+  seoDescription:
+    "AI GPU ka complete engineering guide — CPU vs GPU, CUDA Cores, Tensor Cores, HBM memory, NVLink, NVSwitch, MIG, DGX, HGX, GPU Cluster, AI Factory, cooling, power, monitoring, troubleshooting aur enterprise deployment. DC engineers, AI engineers aur infrastructure architects ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/hardware/ai-gpu",
+  keywords: [
+    "ai gpu kya hai",
+    "gpu explained hindi",
+    "cuda cores vs tensor cores",
+    "hbm memory gpu",
+    "nvlink explained",
+    "dgx h100 server",
+    "gpu cluster ai",
+    "nvidia h100 b200",
+    "ai factory gpu",
+    "gpu cooling data center",
+    "mig multi instance gpu",
+    "gpu monitoring dcgm",
+    "gpu power consumption",
+    "rocm amd gpu",
+    "gpu architecture explained",
+    "streaming multiprocessor",
+    "warp thread cuda",
+    "fp8 tensor core",
+    "nvswitch gpu",
+    "enterprise gpu deployment",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2025-08-06",
+  readingTimeMinutes: 90,
+};

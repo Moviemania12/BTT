@@ -31,6 +31,7 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "deep-learning",
   "generative-ai",
   "llm",
+  "ai-gpu",
 ]);
 
 export default async function AiTopicPage(props: PageProps) {

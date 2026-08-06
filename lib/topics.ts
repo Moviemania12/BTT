@@ -1247,17 +1247,16 @@ export const TOPICS: Record<string, Topic> = {
 
   "ai-gpu": {
     slug: "ai-gpu",
-    title: "GPU",
+    title: "AI GPU — The Complete Engineering Guide",
     description:
-      "AI GPUs differ from gaming GPUs — they are optimized for tensor operations, have high-bandwidth memory (HBM), and are designed for continuous 24/7 training workloads in data centers.",
+      "AI GPUs are purpose-built for neural network workloads — Tensor Cores for matrix math, HBM for extreme memory bandwidth, NVLink for fast GPU-to-GPU communication, and MIG for multi-tenant isolation. The hardware foundation of every AI system.",
     track: "ai",
     category: "hardware",
     status: "published",
     icon: "🎮",
-    breadcrumb: ["AI Infrastructure", "Hardware", "GPU"],
+    breadcrumb: ["AI Infrastructure", "Hardware", "AI GPU"],
     order: 1,
-    related: ["tpu", "ai-accelerators", "gpu-cluster"],
-    eta: "Phase 3",
+    related: ["gpu-cluster", "llm", "what-is-ai-infrastructure", "deep-learning", "ai-cooling"],
   },
 
   "tpu": {
