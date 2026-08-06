@@ -5,6 +5,7 @@ import {
   getTopicUrl,
   CATEGORY_LABELS,
 } from "@/lib/topics";
+import TrackExplorer from "@/components/homepage/TrackExplorer";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // app/learn/ai/page.tsx — AI Infrastructure Track Index
@@ -158,6 +159,9 @@ export default function AiTrackPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Continue Exploring ── */}
+      <TrackExplorer currentTrack="ai" />
 
       {/* ── Back link ── */}
       <section className="hp-section">

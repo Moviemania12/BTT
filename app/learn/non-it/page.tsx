@@ -5,6 +5,7 @@ import {
   getTopicUrl,
   CATEGORY_LABELS,
 } from "@/lib/topics";
+import TrackExplorer from "@/components/homepage/TrackExplorer";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // app/learn/non-it/page.tsx — Non-IT Infrastructure Track Index
@@ -143,6 +144,9 @@ export default function NonItTrackPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Continue Exploring ── */}
+      <TrackExplorer currentTrack="non-it" />
 
       {/* ── Back link ── */}
       <section className="hp-section">
