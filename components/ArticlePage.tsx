@@ -168,7 +168,7 @@ function ArticleHero({ topic, readingTimeMinutes }: { topic: Topic; readingTimeM
             AK
           </span>
           <span style={{ fontFamily: "var(--font-body)", fontSize: 13.5, color: "var(--hp-text-secondary)" }}>
-            Kumar Anil
+            Anil Kumar
           </span>
         </span>
 
@@ -501,8 +501,8 @@ export default function ArticlePage({
     <>
       <ReadingProgressBar />
 
-      <div data-homepage-theme="light" style={{ minHeight: "100vh", background: "var(--hp-bg)", paddingTop: 80 }}>
-        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "40px 24px 96px" }}>
+      <div data-homepage-theme="light" style={{ minHeight: "100vh", background: "var(--hp-bg)" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "120px 24px 96px" }}>
           <div
             style={{
               display: "grid",
