@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const aiAcceleratorsMetadata: ArticleMetadata = {
+  slug: "ai-accelerators",
+  title: "AI Accelerators — NPU, DPU, FPGA, ASIC & Custom AI Chips Complete Guide",
+  seoTitle: "AI Accelerators Kya Hain? NPU, DPU, FPGA, ASIC, AWS Trainium, Intel Gaudi, Cerebras — Complete Hinglish Guide",
+  seoDescription:
+    "AI Accelerators ka complete engineering guide — NPU vs GPU vs TPU, DPU (Data Processing Unit), FPGA programming for AI, ASIC design, AWS Trainium & Inferentia, Intel Gaudi, Cerebras WSE, SambaNova, Graphcore IPU, custom silicon strategy, data center deployment, power, cooling, cost analysis aur future roadmap. AI engineers, DC engineers aur architects ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/hardware/ai-accelerators",
+  keywords: [
+    "ai accelerators kya hai",
+    "npu explained hindi",
+    "dpu data processing unit",
+    "fpga for ai explained",
+    "asic chip design",
+    "aws trainium inferentia",
+    "intel gaudi ai chip",
+    "cerebras wse chip",
+    "graphcore ipu",
+    "sambanova ai chip",
+    "custom ai silicon",
+    "ai chip comparison",
+    "edge ai accelerator",
+    "npu vs gpu vs tpu",
+    "ai accelerator data center",
+    "ai chip power consumption",
+    "fpga vs asic ai",
+    "ai inference chip",
+    "custom silicon strategy",
+    "ai hardware landscape 2024",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2025-08-06",
+  readingTimeMinutes: 105,
+};

@@ -33,6 +33,7 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "llm",
   "ai-gpu",
   "tpu",
+  "ai-accelerators",
 ]);
 
 export default async function AiTopicPage(props: PageProps) {

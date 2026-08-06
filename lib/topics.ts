@@ -1275,17 +1275,16 @@ export const TOPICS: Record<string, Topic> = {
 
   "ai-accelerators": {
     slug: "ai-accelerators",
-    title: "AI Accelerators",
+    title: "AI Accelerators — NPU, DPU, FPGA, ASIC & Custom AI Chips Complete Guide",
     description:
-      "AI accelerators are specialized processors designed to perform the matrix multiplication and tensor operations at the heart of modern AI workloads faster and more efficiently than CPUs or GPUs.",
+      "NPU, DPU, FPGA, ASIC, AWS Trainium, AWS Inferentia, Intel Gaudi, Cerebras WSE, Graphcore IPU, SambaNova — every major AI accelerator type explained with data center deployment, power, cooling, and custom silicon strategy.",
     track: "ai",
     category: "hardware",
     status: "published",
     icon: "⚡",
     breadcrumb: ["AI Infrastructure", "Hardware", "AI Accelerators"],
     order: 3,
-    related: ["ai-gpu", "tpu", "nvidia-architecture"],
-    eta: "Phase 3",
+    related: ["ai-gpu", "tpu", "what-is-ai-infrastructure", "deep-learning", "llm"],
   },
 
   "nvidia-architecture": {
