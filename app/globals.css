@@ -1287,9 +1287,9 @@ img[loading="lazy"] {
    (position:fixed z-index:9999). Opaque white background ensures the overlay is hidden. */
 .hp-page-root {
   position: relative;
-  z-index: 10000;
   background: #ffffff;
   min-height: 100vh;
+  padding-top: 64px;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
