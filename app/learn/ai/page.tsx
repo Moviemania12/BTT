@@ -151,15 +151,7 @@ export default function AiTrackPage() {
                     )}
                   </ul>
 
-                  <div className="hp-category-footer">
-                    <span
-                      className="hp-link hp-link--disabled"
-                      aria-disabled="true"
-                      style={{ fontSize: 12 }}
-                    >
-                      View all (coming soon)
-                    </span>
-                  </div>
+
                 </div>
               );
             })}
