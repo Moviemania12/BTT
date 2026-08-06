@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Bebas_Neue, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -48,14 +49,24 @@ export const metadata: Metadata = {
     url: "https://behindthetech.in",
     siteName: "Behind The Tech",
     type: "website",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Behind The Tech" }],
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Behind The Tech",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Behind The Tech",
     description: "Technology that powers the modern world.",
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+  },
   metadataBase: new URL("https://www.behindthetech.in"),
 };
 
@@ -65,11 +76,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${bebasNeue.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="en"
+      className={`${bebasNeue.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5030370713635578"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
+
       <body className="antialiased" data-homepage-theme="light">
         <Navbar />
         {children}
