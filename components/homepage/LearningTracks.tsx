@@ -2,14 +2,13 @@ import Link from "next/link";
 import { ALL_TOPICS } from "@/lib/topics";
 import NonItTrackIllustration from "./NonItTrackIllustration";
 import ItTrackIllustration from "./ItTrackIllustration";
+import AiTrackIllustration from "./AiTrackIllustration";
 
 // ═══════════════════════════════════════════════════════════════════════════
-// components/homepage/LearningTracks.tsx — Homepage V2 (polish pass)
+// components/homepage/LearningTracks.tsx
 //
-// Adds the icon-illustration cluster to each track card, matching the
-// reference image (Non-IT: transformer/fan/extinguisher; IT: server
-// rack/monitor). Everything else — data source, card structure, AI
-// "Coming Soon" card — unchanged from the prior approved pass.
+// Three active learning tracks — Non-IT, IT, AI Infrastructure.
+// Published topic counts are derived dynamically from lib/topics.ts.
 // ═══════════════════════════════════════════════════════════════════════════
 
 const TRACKS = [
@@ -18,7 +17,6 @@ const TRACKS = [
     title: "Non-IT Infrastructure",
     description: "Power, Cooling, Fire Safety, Security and everything that keeps the data center running.",
     href: "/learn/non-it",
-    comingSoon: false,
     cardClass: "hp-track-card--non-it",
     titleClass: "hp-track-title--blue",
     btnClass: "hp-btn--primary",
@@ -29,20 +27,22 @@ const TRACKS = [
     title: "IT Infrastructure",
     description: "Servers, Storage, Networking, Virtualization and the technology inside the data center.",
     href: "/learn/it",
-    comingSoon: false,
     cardClass: "hp-track-card--it",
     titleClass: "hp-track-title--green",
     btnClass: "hp-btn--green",
     Illustration: ItTrackIllustration,
   },
+  {
+    track: "ai" as const,
+    title: "AI Infrastructure",
+    description: "GPU clusters, LLMs, Tensor Cores, HBM, NVLink and the hardware powering the AI revolution.",
+    href: "/learn/ai",
+    cardClass: "hp-track-card--ai",
+    titleClass: "hp-track-title--purple",
+    btnClass: "hp-btn--purple",
+    Illustration: AiTrackIllustration,
+  },
 ];
-
-const AI_TRACK = {
-  track: "ai" as const,
-  title: "AI Infrastructure",
-  description: "GPU clusters, ML platforms, and the infrastructure powering AI workloads.",
-  cardClass: "hp-track-card--ai",
-};
 
 export default function LearningTracks() {
   const counts = ALL_TOPICS.reduce<Record<string, number>>((acc, t) => {
@@ -88,15 +88,6 @@ export default function LearningTracks() {
               </Link>
             );
           })}
-
-          <div className={`hp-track-card ${AI_TRACK.cardClass} hp-card--disabled`} aria-disabled="true">
-            <div className="hp-card-header-row">
-              <h3 className="hp-h3">{AI_TRACK.title}</h3>
-              <span className="hp-badge hp-badge--coming-soon">Coming soon</span>
-            </div>
-            <p className="hp-card-desc">{AI_TRACK.description}</p>
-            <span className="hp-text-sm hp-text-muted">{counts[AI_TRACK.track] ?? 0} topics planned</span>
-          </div>
         </div>
       </div>
     </section>
