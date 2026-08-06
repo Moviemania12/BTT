@@ -15,12 +15,12 @@ import { getAllCalculators } from "@/lib/engineering/registry";
 // ═══════════════════════════════════════════════════════════════════════════
 
 export default function StatsBar() {
-  const publishedArticles = ALL_TOPICS.filter((t) => t.status === "published").length;
+  const totalTopics = ALL_TOPICS.length;
   const learningTracks = new Set(ALL_TOPICS.map((t) => t.track)).size;
   const tools = getAllCalculators().length;
 
   const stats = [
-    { icon: "📄", value: `${publishedArticles}`, label: "Published Articles" },
+    { icon: "📚", value: `${totalTopics}`, label: "Learning Topics" },
     { icon: "🗂️", value: `${learningTracks}`, label: "Learning Tracks" },
     { icon: "🧮", value: `${tools}`, label: "Interactive Tools" },
   ].filter((s) => s.value !== "0");

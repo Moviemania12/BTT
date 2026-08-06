@@ -1283,6 +1283,15 @@ img[loading="lazy"] {
   padding: 22px 24px 20px;
 }
 
+/* Lifts a full-page light-theme root above the global body::before dark-noise overlay
+   (position:fixed z-index:9999). Opaque white background ensures the overlay is hidden. */
+.hp-page-root {
+  position: relative;
+  z-index: 10000;
+  background: #ffffff;
+  min-height: 100vh;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════
    GLOBAL CHROME — White Theme Migration (Phase A: Navbar, MegaMenu, Footer)
 

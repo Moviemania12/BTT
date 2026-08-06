@@ -63,7 +63,7 @@ export default function AiTrackPage() {
   const totalTopics = Object.values(byCategory).flat().length;
 
   return (
-    <div data-homepage-theme="light">
+    <div data-homepage-theme="light" className="hp-page-root">
       {/* ── Hero ── */}
       <section className="hp-section hp-section--hero">
         <div className="hp-container hp-container--medium" style={{ textAlign: "center" }}>
