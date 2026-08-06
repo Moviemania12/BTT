@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const tpuMetadata: ArticleMetadata = {
+  slug: "tpu",
+  title: "TPU (Tensor Processing Unit) — The Complete Engineering Guide",
+  seoTitle: "TPU Kya Hai? Google Tensor Processing Unit Architecture, Systolic Array, TPU Pod, Cloud TPU — Complete Hinglish Guide",
+  seoDescription:
+    "TPU ka complete engineering guide — CPU vs GPU vs TPU, Systolic Array architecture, MXU, HBM, TPU Pod, TPU Interconnect, Cloud TPU, TensorFlow, PyTorch/XLA, training vs inference, cost analysis, Google AI infrastructure, data center deployment aur future roadmap. AI engineers, DC engineers aur architects ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/hardware/tpu",
+  keywords: [
+    "tpu kya hai",
+    "tensor processing unit explained hindi",
+    "google tpu architecture",
+    "systolic array explained",
+    "mxu matrix multiply unit",
+    "tpu vs gpu comparison",
+    "tpu pod architecture",
+    "cloud tpu google",
+    "tpu v4 v5e training",
+    "tpu inference serving",
+    "tensorflow tpu optimization",
+    "pytorch xla tpu",
+    "google ai infrastructure",
+    "tpu data center",
+    "tpu cooling power",
+    "tpu interconnect",
+    "ai accelerator comparison",
+    "google gemini tpu",
+    "tpu bfloat16",
+    "custom ai chip explained",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2025-08-06",
+  readingTimeMinutes: 100,
+};

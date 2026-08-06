@@ -1261,17 +1261,16 @@ export const TOPICS: Record<string, Topic> = {
 
   "tpu": {
     slug: "tpu",
-    title: "TPU",
+    title: "TPU (Tensor Processing Unit) — The Complete Engineering Guide",
     description:
-      "Tensor Processing Units (TPUs) are Google's custom AI accelerators, purpose-built for neural network workloads. They offer superior performance per watt for specific ML training and inference tasks.",
+      "Google's TPU (Tensor Processing Unit) is a custom AI chip built around a Systolic Array for matrix multiplication — the core operation in every neural network. Faster and more power-efficient than GPUs for specific TensorFlow/JAX workloads at Google Cloud scale.",
     track: "ai",
     category: "hardware",
     status: "published",
     icon: "🔮",
     breadcrumb: ["AI Infrastructure", "Hardware", "TPU"],
     order: 2,
-    related: ["ai-gpu", "ai-accelerators"],
-    eta: "Phase 3",
+    related: ["ai-gpu", "ai-accelerators", "what-is-ai-infrastructure", "deep-learning", "llm"],
   },
 
   "ai-accelerators": {
