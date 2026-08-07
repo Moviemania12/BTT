@@ -34,6 +34,7 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "ai-gpu",
   "tpu",
   "ai-accelerators",
+  "nvidia-architecture",
 ]);
 
 export default async function AiTopicPage(props: PageProps) {

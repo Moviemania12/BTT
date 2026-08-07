@@ -1289,17 +1289,16 @@ export const TOPICS: Record<string, Topic> = {
 
   "nvidia-architecture": {
     slug: "nvidia-architecture",
-    title: "NVIDIA Architecture",
+    title: "NVIDIA Architecture — Tesla to Blackwell Complete Engineering Guide",
     description:
-      "NVIDIA's GPU architecture — from Volta to Hopper to Blackwell — defines the performance characteristics of AI training clusters worldwide, with each generation delivering significant AI performance gains.",
+      "NVIDIA GPU architecture complete guide — Tesla to Blackwell evolution, GPC TPC SM internals, CUDA Cores, Tensor Cores, Warp scheduling, memory hierarchy, NVLink NVSwitch, MIG, GPU virtualization, DGX HGX platforms, CUDA ecosystem, TensorRT, NCCL, power cooling and enterprise data center deployment.",
     track: "ai",
     category: "hardware",
     status: "published",
     icon: "🟢",
     breadcrumb: ["AI Infrastructure", "Hardware", "NVIDIA Architecture"],
     order: 4,
-    related: ["ai-gpu", "gpu-cluster"],
-    eta: "Phase 3",
+    related: ["ai-gpu", "tpu", "ai-accelerators", "deep-learning", "llm"],
   },
 
   "amd-ai-platforms": {

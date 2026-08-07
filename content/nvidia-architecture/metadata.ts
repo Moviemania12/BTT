@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const nvidiaArchMetadata: ArticleMetadata = {
+  slug: "nvidia-architecture",
+  title: "NVIDIA Architecture — Tesla to Blackwell Complete Engineering Guide",
+  seoTitle: "NVIDIA GPU Architecture Kya Hai? Tesla se Blackwell tak, SM, Tensor Core, NVLink, MIG, DGX — Complete Hinglish Guide",
+  seoDescription:
+    "NVIDIA GPU Architecture ka complete engineering guide — Tesla se Blackwell evolution, GPC TPC SM internals, CUDA Cores, Tensor Cores, Warp aur Thread model, memory hierarchy, NVLink NVSwitch, MIG virtualization, DGX HGX platforms, CUDA ecosystem, TensorRT, NCCL, data center power cooling aur enterprise deployment. AI engineers, DC engineers aur architects ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/hardware/nvidia-architecture",
+  keywords: [
+    "nvidia gpu architecture explained hindi",
+    "tesla fermi kepler maxwell pascal volta turing ampere hopper blackwell",
+    "streaming multiprocessor sm explained",
+    "cuda core vs tensor core",
+    "warp warp scheduler explained",
+    "nvlink nvswitch explained",
+    "mig multi instance gpu",
+    "dgx hgx nvidia server",
+    "cuda ecosystem",
+    "tensorrt explained",
+    "nccl collective communication",
+    "nvidia blackwell architecture",
+    "hopper transformer engine",
+    "gpu memory hierarchy",
+    "hbm gpu memory",
+    "nvidia data center deployment",
+    "gpu power cooling",
+    "grace blackwell gb200",
+    "gpu virtualization vgpu",
+    "nvidia ai infrastructure",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2025-08-06",
+  readingTimeMinutes: 110,
+};
