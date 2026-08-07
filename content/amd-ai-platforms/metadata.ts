@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const amdAiMetadata: ArticleMetadata = {
+  slug: "amd-ai-platforms",
+  title: "AMD AI Architecture — CDNA, MI300X, ROCm Complete Engineering Guide",
+  seoTitle: "AMD AI Architecture Kya Hai? CDNA, MI300X, ROCm, HIP, Instinct — Complete Hinglish Guide",
+  seoDescription:
+    "AMD AI Architecture ka complete engineering guide — GCN se CDNA 4 tak evolution, Compute Units, Matrix Cores, Infinity Cache, HBM3, Infinity Fabric, Chiplet Design, MI100 MI200 MI300X Instinct series, ROCm ecosystem, HIP programming, RCCL, training aur inference workflows, AMD vs NVIDIA comparison, data center deployment, power cooling aur enterprise best practices. AI engineers, DC engineers aur architects ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/hardware/amd-ai-platforms",
+  keywords: [
+    "amd ai architecture hindi",
+    "cdna architecture explained",
+    "mi300x instinct gpu",
+    "rocm ecosystem explained",
+    "hip programming model",
+    "amd vs nvidia comparison",
+    "compute unit amd gpu",
+    "matrix core amd",
+    "infinity fabric explained",
+    "amd hbm3 memory",
+    "chiplet architecture amd",
+    "mi300x 192gb hbm",
+    "rccl collective communication",
+    "amd instinct mi series",
+    "rocm pytorch training",
+    "amd data center gpu",
+    "amd ai deployment",
+    "cdna 3 mi300x",
+    "amd epyc mi300a",
+    "amd gpu power cooling",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2025-08-07",
+  readingTimeMinutes: 105,
+};

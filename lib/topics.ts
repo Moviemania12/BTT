@@ -1303,17 +1303,16 @@ export const TOPICS: Record<string, Topic> = {
 
   "amd-ai-platforms": {
     slug: "amd-ai-platforms",
-    title: "AMD AI Platforms",
+    title: "AMD AI Architecture — CDNA, MI300X, ROCm Complete Engineering Guide",
     description:
-      "AMD's Instinct GPU series and ROCm software platform provide an alternative to NVIDIA for AI training and inference, with competitive performance at the high end of AI workloads.",
+      "AMD Instinct MI series aur ROCm software platform — GCN se CDNA 4 evolution, Compute Units, Matrix Cores, HBM3 192GB, Infinity Fabric, chiplet architecture, MI300X specs, ROCm vs CUDA, HIP programming, enterprise deployment, power cooling.",
     track: "ai",
     category: "hardware",
     status: "published",
     icon: "🔴",
     breadcrumb: ["AI Infrastructure", "Hardware", "AMD AI Platforms"],
     order: 5,
-    related: ["ai-gpu", "nvidia-architecture"],
-    eta: "Phase 3",
+    related: ["ai-gpu", "nvidia-architecture", "ai-accelerators", "deep-learning", "llm"],
   },
 
   // ══════════════════════════════════════════════════════════════════════════
