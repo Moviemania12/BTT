@@ -94,7 +94,7 @@ const PHILOSOPHY = [
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="hp-page-root">
       <main data-homepage-theme="light">
 
         <div className="hp-breadcrumb-bar">
@@ -259,6 +259,6 @@ export default function AboutPage() {
         </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

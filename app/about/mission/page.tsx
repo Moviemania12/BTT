@@ -112,7 +112,7 @@ const ROADMAP = [
 
 export default function MissionPage() {
   return (
-    <>
+    <div className="hp-page-root">
       <main data-homepage-theme="light">
 
         <div className="hp-breadcrumb-bar">
@@ -312,6 +312,6 @@ export default function MissionPage() {
         </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

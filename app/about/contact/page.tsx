@@ -64,7 +64,7 @@ const CHANNELS = [
 
 export default function ContactPage() {
   return (
-    <>
+    <div className="hp-page-root">
       <main data-homepage-theme="light">
 
         <div className="hp-breadcrumb-bar">
@@ -176,6 +176,6 @@ export default function ContactPage() {
         </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

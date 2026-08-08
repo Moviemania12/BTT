@@ -112,7 +112,7 @@ const JOURNEY = [
 
 export default function KumarAnilPage() {
   return (
-    <>
+    <div className="hp-page-root">
       <main data-homepage-theme="light">
 
         <div className="hp-breadcrumb-bar">
@@ -335,6 +335,6 @@ export default function KumarAnilPage() {
         </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
