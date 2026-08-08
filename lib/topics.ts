@@ -1338,15 +1338,14 @@ export const TOPICS: Record<string, Topic> = {
     slug: "gpu-cluster",
     title: "GPU Cluster",
     description:
-      "GPU clusters are interconnected banks of GPUs — often thousands of units — linked by high-speed fabrics like NVLink and InfiniBand to train large AI models that exceed the memory of a single GPU.",
+      "GPU Cluster ek complete computing infrastructure hai — GPU Compute Nodes, high-speed networking (InfiniBand/RoCE), parallel file system storage, job scheduling (Slurm/Kubernetes), monitoring, power aur cooling — sab milake distributed AI training aur inference enable karte hain.",
     track: "ai",
     category: "data-centers",
     status: "published",
     icon: "🔲",
     breadcrumb: ["AI Infrastructure", "AI Data Centers", "GPU Cluster"],
     order: 2,
-    related: ["ai-gpu", "ai-networking", "ai-cooling"],
-    eta: "Phase 3",
+    related: ["ai-data-center-basics", "ai-gpu", "ai-networking", "ai-cooling", "nvidia-architecture"],
   },
 
   "ai-networking": {

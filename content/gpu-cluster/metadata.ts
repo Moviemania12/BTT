@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const gpuClusterMetadata: ArticleMetadata = {
+  slug: "gpu-cluster",
+  title: "GPU Cluster — Complete Engineering Guide",
+  seoTitle: "GPU Cluster Kya Hai? Architecture, Networking, Storage, Scheduling, Distributed Training — Complete Hinglish Guide",
+  seoDescription:
+    "GPU Cluster ka complete engineering guide — GPU vs CPU comparison, GPU Compute Node internals, HBM vs System RAM, NVLink vs InfiniBand vs RoCE vs PCIe, management vs compute network, East-West traffic, parallel file systems, Slurm job scheduling, multi-tenancy, data parallelism, tensor parallelism, pipeline parallelism, GPU utilization, checkpointing, power cooling, reliability aur monitoring. AI engineers, DC engineers aur architects ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/data-centers/gpu-cluster",
+  keywords: [
+    "gpu cluster kya hai hindi",
+    "gpu cluster architecture explained",
+    "nvlink vs infiniband vs roce vs pcie",
+    "management network vs compute network",
+    "east west traffic gpu cluster",
+    "slurm kubernetes gpu scheduling",
+    "data parallelism tensor parallelism pipeline parallelism",
+    "gpu compute node internals",
+    "hbm vs system ram",
+    "parallel file system lustre gpfs",
+    "gpu cluster power cooling",
+    "gpu cluster distributed training",
+    "allreduce collective communication",
+    "gpu utilization mfu",
+    "gpu cluster monitoring dcgm",
+    "gpu cluster common mistakes",
+    "fat tree topology gpu cluster",
+    "gpu cluster reliability checkpointing",
+    "nccl rccl explained",
+    "gpu cluster enterprise deployment",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2026-08-08",
+  readingTimeMinutes: 120,
+};
