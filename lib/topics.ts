@@ -1367,15 +1367,14 @@ export const TOPICS: Record<string, Topic> = {
     slug: "ai-storage",
     title: "AI Storage",
     description:
-      "AI storage systems must deliver extremely high throughput to feed training data to GPU clusters at the speed GPUs can consume it — often requiring parallel file systems like Lustre or GPFS.",
+      "AI storage systems must deliver extremely high throughput to feed training data to GPU clusters at the speed GPUs can consume it — requiring parallel file systems, local NVMe caching, and tiered object storage architectures.",
     track: "ai",
     category: "data-centers",
     status: "published",
     icon: "💾",
     breadcrumb: ["AI Infrastructure", "AI Data Centers", "AI Storage"],
     order: 4,
-    related: ["gpu-cluster", "ai-networking"],
-    eta: "Phase 3",
+    related: ["gpu-cluster", "ai-networking", "ai-data-center-basics"],
   },
 
   "ai-cooling": {

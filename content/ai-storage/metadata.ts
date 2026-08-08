@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const aiStorageMetadata: ArticleMetadata = {
+  slug: "ai-storage",
+  title: "AI Storage: How Storage Works in AI Data Centers",
+  seoTitle: "AI Storage Kya Hai? Parallel File Systems, Object Storage, NVMe, Checkpointing — Complete Hinglish Guide",
+  seoDescription:
+    "AI Storage ka complete engineering guide — storage hierarchy (HBM se object storage tak), parallel file systems (Lustre, GPFS), object storage, NVMe-oF, checkpoint storage, GPU starvation, small files problem, IOPS vs throughput vs latency, storage networking, bottleneck troubleshooting aur capacity planning. AI infrastructure engineers, DC professionals aur students ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/data-centers/ai-storage",
+  keywords: [
+    "ai storage kya hai hindi",
+    "parallel file system lustre gpfs ai",
+    "object storage ai training",
+    "nvme-of explained",
+    "gpu starvation storage",
+    "ai storage hierarchy",
+    "checkpoint storage ai",
+    "iops vs throughput vs latency",
+    "small files problem ai storage",
+    "dataset sharding ai",
+    "ai training data pipeline storage",
+    "storage networking infiniband rdma",
+    "ai storage bottleneck troubleshooting",
+    "ai storage capacity planning",
+    "inference vs training storage",
+    "ai storage monitoring metrics",
+    "shared storage vs local nvme",
+    "erasure coding replication ai storage",
+    "ai data lifecycle storage",
+    "sequential vs random io ai",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2026-08-08",
+  readingTimeMinutes: 90,
+};
