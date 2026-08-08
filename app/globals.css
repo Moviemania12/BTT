@@ -66,6 +66,29 @@ body[data-homepage-theme="light"] {
   color: #1f2937;
 }
 
+/* External/static pages (e.g. WordPress legal pages) where body has NO
+   data-homepage-theme attribute: suppress the dark noise overlay and reset
+   the dark body defaults so content is readable on white-background pages.
+   The :not() guards ensure dark Next.js app pages are unaffected. */
+body:not([data-homepage-theme])::before {
+  display: none;
+}
+
+body:not([data-homepage-theme]) {
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+/* Prevent the site footer from being inadvertently stretched to full viewport
+   height on short-content pages. On external pages the WordPress/static theme
+   may apply flex-grow or a large min-height to the footer element; reset these
+   so the footer only occupies the space its content actually requires. */
+body:not([data-homepage-theme]) footer {
+  min-height: 0 !important;
+  height: auto !important;
+  flex-grow: 0 !important;
+}
+
 /* Glow utilities */
 .glow-blue { text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.4); }
 .glow-red { text-shadow: 0 0 20px rgba(255, 34, 68, 0.8), 0 0 40px rgba(255, 34, 68, 0.4); }
