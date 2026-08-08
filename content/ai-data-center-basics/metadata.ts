@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const aiDcMetadata: ArticleMetadata = {
+  slug: "ai-data-center-basics",
+  title: "AI Data Center Basics — Complete Engineering Foundation Guide",
+  seoTitle: "AI Data Center Kya Hai? Training vs Inference, GPU Cluster, AI Pod, AI Factory — Complete Hinglish Guide",
+  seoDescription:
+    "AI Data Center ka complete beginner-to-engineer guide — traditional DC se comparison, AI training vs inference infrastructure, GPU compute nodes, AI networking, storage, cooling, power chain, AI Pod aur AI Factory concepts, data flow, software stack, enterprise vs hyperscale, capacity planning, reliability, monitoring aur best practices. DC engineers, AI engineers aur architects ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/data-centers/ai-data-center-basics",
+  keywords: [
+    "ai data center kya hai hindi",
+    "ai data center vs traditional data center",
+    "gpu cluster ai infrastructure",
+    "ai training vs inference infrastructure",
+    "ai pod concept explained",
+    "ai factory concept explained",
+    "ai data center power cooling",
+    "ai data center networking",
+    "gpu compute node",
+    "ai data center storage",
+    "liquid cooling ai data center",
+    "ai data center basics hindi",
+    "hyperscale ai data center",
+    "enterprise ai data center",
+    "ai data flow explained",
+    "slurm kubernetes gpu scheduler",
+    "ai data center monitoring",
+    "pue ai data center",
+    "ai data center capacity planning",
+    "ai data center best practices",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2026-08-08",
+  readingTimeMinutes: 115,
+};

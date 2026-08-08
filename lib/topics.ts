@@ -1322,17 +1322,16 @@ export const TOPICS: Record<string, Topic> = {
 
   "ai-data-center-basics": {
     slug: "ai-data-center-basics",
-    title: "AI Data Center Basics",
+    title: "AI Data Center Basics — Complete Engineering Foundation Guide",
     description:
-      "AI data centers are purpose-built or retrofitted facilities optimized for GPU-dense computing, requiring 10x more power density, specialized cooling, and high-bandwidth networking compared to traditional data centers.",
+      "AI Data Center ka complete beginner-to-engineer guide — traditional DC vs AI DC comparison, training vs inference infrastructure, AI Compute Nodes, GPU clusters, networking, storage, cooling, power chain, AI Pod aur AI Factory concepts, data flow, software stack, enterprise vs hyperscale, capacity planning, reliability, monitoring aur best practices.",
     track: "ai",
     category: "data-centers",
     status: "published",
     icon: "🏢",
     breadcrumb: ["AI Infrastructure", "AI Data Centers", "Basics"],
     order: 1,
-    related: ["gpu-cluster", "ai-cooling", "what-is-a-data-center"],
-    eta: "Phase 3",
+    related: ["gpu-cluster", "ai-networking", "ai-gpu", "nvidia-architecture", "amd-ai-platforms"],
   },
 
   "gpu-cluster": {
