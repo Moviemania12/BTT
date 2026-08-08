@@ -54,6 +54,18 @@ body::before {
   opacity: 0.4;
 }
 
+/* When body itself carries data-homepage-theme="light" (layout.tsx root body),
+   suppress the dark noise overlay and reset the dark body background so that
+   legal/static pages without an explicit light-theme wrapper remain readable. */
+body[data-homepage-theme="light"]::before {
+  display: none;
+}
+
+body[data-homepage-theme="light"] {
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
 /* Glow utilities */
 .glow-blue { text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.4); }
 .glow-red { text-shadow: 0 0 20px rgba(255, 34, 68, 0.8), 0 0 40px rgba(255, 34, 68, 0.4); }
