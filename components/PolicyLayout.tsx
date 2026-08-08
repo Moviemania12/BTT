@@ -19,7 +19,7 @@ export default function PolicyLayout({
   children,
 }: PolicyLayoutProps) {
   return (
-    <>
+    <div className="hp-page-root">
       <main data-homepage-theme="light">
         {/* Page header */}
         <div className="hp-page-hero">
@@ -47,6 +47,6 @@ export default function PolicyLayout({
         </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

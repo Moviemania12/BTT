@@ -77,16 +77,24 @@ body:not([data-homepage-theme])::before {
 body:not([data-homepage-theme]) {
   background-color: #ffffff;
   color: #1f2937;
+  /* Account for the BTT fixed Navbar (h-16 = 64px, position:fixed top-0 z-50)
+     so page content does not slide behind/under the navbar on external pages. */
+  padding-top: 64px;
 }
 
-/* Prevent the site footer from being inadvertently stretched to full viewport
-   height on short-content pages. On external pages the WordPress/static theme
-   may apply flex-grow or a large min-height to the footer element; reset these
-   so the footer only occupies the space its content actually requires. */
+/* On external/static pages: prevent the site footer from being inadvertently
+   stretched to full viewport height, and ensure footer columns align to the
+   top of their grid cells so shorter columns do not leave a gap at the bottom. */
 body:not([data-homepage-theme]) footer {
-  min-height: 0 !important;
-  height: auto !important;
-  flex-grow: 0 !important;
+  min-height: 0;
+  height: auto;
+  flex-grow: 0;
+}
+
+/* Align footer grid/flex column items to the top so the shorter COMPANY column
+   does not appear to float in a tall empty cell next to the longer LEGAL column. */
+body:not([data-homepage-theme]) footer * {
+  align-self: start;
 }
 
 /* Glow utilities */
