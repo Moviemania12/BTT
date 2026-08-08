@@ -13,16 +13,21 @@ type PageProps = {
   params: Promise<PageParams>;
 };
 
+// ─── Route configuration ──────────────────────────────────────────────────────
+// dynamicParams = false: any [category]/[topic] combination NOT returned by
+// generateStaticParams() will 404 from this dynamic route, allowing Next.js
+// to fall through to a matching static page.tsx (e.g. data-centers/ai-storage).
+// Without this, Vercel may serve a pre-rendered dynamic-route page from its
+// CDN cache even for URLs that have a dedicated static page.tsx — the CDN
+// does not re-run route resolution, it just serves the cached HTML file.
+export const dynamicParams = false;
+
 // ─── Static article slugs ─────────────────────────────────────────────────────
 // Topics that have their own dedicated static page.tsx under
 // app/learn/ai/<category>/<slug>/page.tsx must NOT be served by this
-// dynamic catch-all. Adding a slug here causes Next.js to fall through to
-// the static file instead of rendering the placeholder below.
-//
-// Why: Next.js dynamic routes ([category]/[topic]) take precedence over
-// static nested folders at build time via generateStaticParams(). Excluding
-// a slug from generateStaticParams() AND returning notFound() at runtime
-// forces Next.js to resolve the static page.tsx instead.
+// dynamic catch-all. Exclude them from generateStaticParams() so this route
+// never pre-renders an HTML file for their URLs — the static page.tsx handles
+// them exclusively.
 //
 // Add every new AI article slug here as it is published.
 const STATIC_ARTICLE_SLUGS = new Set([
@@ -38,6 +43,7 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "amd-ai-platforms",
   "ai-data-center-basics",
   "gpu-cluster",
+  "ai-storage",
 ]);
 
 export default async function AiTopicPage(props: PageProps) {
