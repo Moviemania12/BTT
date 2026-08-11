@@ -1352,15 +1352,14 @@ export const TOPICS: Record<string, Topic> = {
     slug: "ai-networking",
     title: "AI Networking",
     description:
-      "AI networking requires ultra-low latency, high bandwidth interconnects — InfiniBand, RoCE, and NVLink — to allow GPUs to exchange data during distributed training without becoming a bottleneck.",
+      "AI networking — GPU clusters mein distributed training ke liye RDMA, InfiniBand, RoCE, NCCL, leaf-spine topology, PFC, ECN aur GPU-to-GPU collective communication ka complete engineering guide.",
     track: "ai",
     category: "data-centers",
     status: "published",
     icon: "🌐",
     breadcrumb: ["AI Infrastructure", "AI Data Centers", "AI Networking"],
     order: 3,
-    related: ["gpu-cluster", "ai-storage"],
-    eta: "Phase 3",
+    related: ["gpu-cluster", "ai-storage", "ai-data-center-basics"],
   },
 
   "ai-storage": {

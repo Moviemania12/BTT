@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const aiNetworkingMetadata: ArticleMetadata = {
+  slug: "ai-networking",
+  title: "AI Networking: GPU Clusters, RDMA, InfiniBand, RoCE & Data Center Networks",
+  seoTitle: "AI Networking Kya Hai? RDMA, InfiniBand, RoCE, NCCL, Leaf-Spine — Complete Hinglish Guide",
+  seoDescription:
+    "AI Networking ka complete engineering guide — GPU-to-GPU communication, collective operations (AllReduce, AllGather), NCCL, RDMA, InfiniBand, RoCE (v1/v2), PFC, ECN, leaf-spine topology, ECMP, PCIe bottlenecks, NUMA affinity, optics (DAC/AOC), AI network monitoring, troubleshooting aur capacity planning. AI infrastructure engineers, DC professionals aur students ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/data-centers/ai-networking",
+  keywords: [
+    "ai networking kya hai hindi",
+    "rdma infiniband roce explained",
+    "nccl allreduce distributed training",
+    "roce v2 udp ip routable",
+    "pfc ecn congestion control ai",
+    "leaf-spine ai cluster networking",
+    "gpu to gpu communication",
+    "collective communication allreduce",
+    "nvlink vs infiniband difference",
+    "intra-node inter-node gpu communication",
+    "ai network troubleshooting",
+    "oversubscription bisection bandwidth",
+    "pcie bottleneck numa affinity",
+    "dac aoc optical transceiver dc",
+    "ai networking monitoring metrics",
+    "gpu starvation network bottleneck",
+    "infiniband vs roce vs ethernet comparison",
+    "training vs inference networking",
+    "ai network capacity planning",
+    "ai data center network architecture",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2026-08-09",
+  readingTimeMinutes: 90,
+};
