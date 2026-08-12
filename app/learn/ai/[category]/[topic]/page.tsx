@@ -13,20 +13,20 @@ type PageProps = {
   params: Promise<PageParams>;
 };
 
-// ─── Route configuration ──────────────────────────────────────────────────────
+// â”€â”€â”€ Route configuration â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // dynamicParams = false: any [category]/[topic] combination NOT returned by
 // generateStaticParams() will 404 from this dynamic route, allowing Next.js
 // to fall through to a matching static page.tsx (e.g. data-centers/ai-storage).
 // Without this, Vercel may serve a pre-rendered dynamic-route page from its
-// CDN cache even for URLs that have a dedicated static page.tsx — the CDN
+// CDN cache even for URLs that have a dedicated static page.tsx â€” the CDN
 // does not re-run route resolution, it just serves the cached HTML file.
 export const dynamicParams = false;
 
-// ─── Static article slugs ─────────────────────────────────────────────────────
+// â”€â”€â”€ Static article slugs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Topics that have their own dedicated static page.tsx under
 // app/learn/ai/<category>/<slug>/page.tsx must NOT be served by this
 // dynamic catch-all. Exclude them from generateStaticParams() so this route
-// never pre-renders an HTML file for their URLs — the static page.tsx handles
+// never pre-renders an HTML file for their URLs â€” the static page.tsx handles
 // them exclusively.
 //
 // Add every new AI article slug here as it is published.
@@ -43,6 +43,7 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "amd-ai-platforms",
   "ai-data-center-basics",
   "gpu-cluster",
+  "ai-cooling",
   "ai-networking",
   "ai-storage",
 ]);
@@ -78,7 +79,7 @@ export async function generateStaticParams(): Promise<PageParams[]> {
 
   return topics
     .filter((t) => t.track === "ai")
-    // Exclude slugs that have their own static page.tsx — they handle their own routing
+    // Exclude slugs that have their own static page.tsx â€” they handle their own routing
     .filter((t) => !STATIC_ARTICLE_SLUGS.has(t.slug))
     .map((t) => ({
       category: t.category,
@@ -89,7 +90,7 @@ export async function generateStaticParams(): Promise<PageParams[]> {
 export async function generateMetadata(props: PageProps) {
   const params = await props.params;
 
-  // Static articles export their own metadata — return empty here
+  // Static articles export their own metadata â€” return empty here
   if (STATIC_ARTICLE_SLUGS.has(params.topic)) {
     return {};
   }
@@ -105,7 +106,7 @@ export async function generateMetadata(props: PageProps) {
   }
 
   return {
-    title: `${topic.title} — Behind The Tech`,
+    title: `${topic.title} â€” Behind The Tech`,
     description: topic.description,
   };
 }
