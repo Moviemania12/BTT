@@ -1369,3 +1369,22 @@ img[loading="lazy"] {
   background: linear-gradient(90deg, transparent, var(--hp-accent), transparent);
   opacity: 0.3;
 }
+
+@media (max-width: 768px) {
+  .hp-hero-grid,
+  .hp-hero-grid.hp-hero-grid--v2 {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .hp-hero-illustration-col {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hp-hero-illustration-col .hp-illustration {
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
