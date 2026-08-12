@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const aiCoolingMetadata: ArticleMetadata = {
+  slug: "ai-cooling",
+  title: "AI Cooling: Liquid Cooling, Immersion Cooling aur AI Data Center Heat Management",
+  seoTitle: "AI Cooling Kya Hai? Liquid Cooling, Immersion Cooling, CDU, Rear-Door HX — Complete Hinglish Guide",
+  seoDescription:
+    "AI Cooling ka complete engineering guide — air cooling vs liquid cooling vs immersion cooling, CDU architecture, direct liquid cooling (cold plates), rear-door heat exchangers, PUE aur WUE metrics, AI rack power density challenges, cooling capacity planning, failure scenarios aur troubleshooting. AI infrastructure engineers, DC professionals aur students ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/data-centers/ai-cooling",
+  keywords: [
+    "ai cooling kya hai hindi",
+    "liquid cooling data center ai",
+    "immersion cooling ai servers",
+    "cdu cooling distribution unit",
+    "direct liquid cooling cold plates gpu",
+    "rear-door heat exchanger rdhx",
+    "pue wue ai data center metrics",
+    "ai rack power density kw",
+    "air cooling vs liquid cooling ai",
+    "single phase immersion cooling",
+    "two phase immersion cooling",
+    "ai data center thermal management",
+    "cooling capacity planning ai",
+    "gpu thermal throttling",
+    "ai cooling failure scenarios",
+    "nvidia h100 cooling requirements",
+    "crac crah vs cdhu ai",
+    "hot aisle cold aisle containment ai",
+    "ai cooling troubleshooting",
+    "cooling infrastructure ai data center",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2026-08-12",
+  readingTimeMinutes: 75,
+};
