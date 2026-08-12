@@ -43,6 +43,7 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "amd-ai-platforms",
   "ai-data-center-basics",
   "gpu-cluster",
+  "ai-networking",
   "ai-storage",
 ]);
 
