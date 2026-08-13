@@ -1,0 +1,28 @@
+import type { ArticleHeading } from "@/components/ArticlePage";
+
+export const HEADINGS: ArticleHeading[] = [
+  { id: "quick-summary",          text: "Quick Summary",                                       level: 1 },
+  { id: "who-should-read",        text: "Who Should Read This",                                level: 1 },
+  { id: "what-is-openai",         text: "What Is OpenAI?",                                     level: 1 },
+  { id: "model-ecosystem",        text: "OpenAI Model Ecosystem",                              level: 1 },
+  { id: "chatgpt-vs-api",         text: "ChatGPT vs OpenAI API",                               level: 1 },
+  { id: "azure-partnership",      text: "OpenAI and Microsoft Azure",                          level: 1 },
+  { id: "request-flow",           text: "How an AI Request Flows",                             level: 1 },
+  { id: "training-infra",         text: "Training Infrastructure",                             level: 1 },
+  { id: "inference-infra",        text: "Inference Infrastructure",                            level: 1 },
+  { id: "reasoning-models",       text: "Reasoning Models and Infrastructure Impact",          level: 1 },
+  { id: "tokens-latency",         text: "Tokens, Latency and Throughput",                      level: 1 },
+  { id: "gpu-compute",            text: "GPU and Accelerator Compute",                         level: 1 },
+  { id: "networking-storage",     text: "Networking and Storage at Scale",                     level: 1 },
+  { id: "data-center-cooling",    text: "Data Center and Cooling Requirements",                level: 1 },
+  { id: "model-serving",          text: "Model Serving and Inference Scaling",                 level: 1 },
+  { id: "rate-limits",            text: "Rate Limits, Quotas and Cost",                        level: 1 },
+  { id: "reliability",            text: "Reliability, Availability and SLA",                   level: 1 },
+  { id: "enterprise-ai",          text: "Enterprise AI Infrastructure",                        level: 1 },
+  { id: "data-privacy",           text: "Data Privacy and Security",                           level: 1 },
+  { id: "training-vs-inference",  text: "Training vs Inference — Comparison",                  level: 1 },
+  { id: "embeddings",             text: "Embeddings and Vector Infrastructure",                level: 1 },
+  { id: "dc-perspective",         text: "Practical Data Center Perspective",                   level: 1 },
+  { id: "references",             text: "Technical References",                                level: 1 },
+  { id: "key-takeaways",          text: "Key Takeaways",                                       level: 1 },
+];

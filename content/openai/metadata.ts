@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const openaiMetadata: ArticleMetadata = {
+  slug: "openai",
+  title: "OpenAI: AI Infrastructure, Models, API Platform and Data Center Architecture",
+  seoTitle: "OpenAI Kya Hai? ChatGPT, API, GPU Compute, Training vs Inference Infrastructure — Complete Hinglish Guide",
+  seoDescription:
+    "OpenAI ka complete AI infrastructure guide — GPT-4o, o3, ChatGPT vs API platform, inference scaling, Microsoft Azure partnership, training vs inference GPU requirements, model serving architecture, enterprise deployment, reliability aur data center perspective. AI infrastructure engineers aur DC professionals ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/platforms/openai",
+  keywords: [
+    "openai kya hai hindi",
+    "openai infrastructure ai",
+    "chatgpt api platform difference",
+    "openai gpt-4o o3 models",
+    "openai microsoft azure partnership",
+    "openai training inference infrastructure",
+    "openai gpu compute requirements",
+    "openai model serving scaling",
+    "openai enterprise api",
+    "ai request flow infrastructure",
+    "openai data center cooling",
+    "openai reliability availability",
+    "openai api tokens latency",
+    "openai enterprise tier",
+    "llm inference serving architecture",
+    "openai safety alignment infrastructure",
+    "openai research supercomputer",
+    "ai platforms comparison openai",
+    "openai rate limits quotas",
+    "openai data privacy security",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2026-08-12",
+  readingTimeMinutes: 55,
+};
