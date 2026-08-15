@@ -1380,15 +1380,14 @@ export const TOPICS: Record<string, Topic> = {
     slug: "ai-cooling",
     title: "AI Cooling",
     description:
-      "AI data centers generate heat densities of 30–100+ kW per rack — far beyond what traditional air cooling can handle. Liquid cooling, immersion cooling, and rear-door heat exchangers are essential.",
+      "AI GPU racks 40–100+ kW per rack generate karte hain — liquid cooling (DLC, CDU, cold plates), immersion cooling, aur rear-door heat exchangers ka complete engineering guide. Air cooling limits, thermal throttling, PUE/WUE, leak detection aur capacity planning.",
     track: "ai",
     category: "data-centers",
     status: "published",
     icon: "❄️",
     breadcrumb: ["AI Infrastructure", "AI Data Centers", "AI Cooling"],
     order: 5,
-    related: ["pac", "chiller", "gpu-cluster"],
-    eta: "Phase 3",
+    related: ["pac", "chiller", "gpu-cluster", "ai-storage"],
   },
 
   // ══════════════════════════════════════════════════════════════════════════
@@ -1400,45 +1399,42 @@ export const TOPICS: Record<string, Topic> = {
     slug: "openai",
     title: "OpenAI",
     description:
-      "OpenAI is the creator of GPT-4 and ChatGPT, operating one of the largest AI training infrastructure deployments in the world in partnership with Microsoft Azure.",
+      "OpenAI — ChatGPT, API platform, GPT-4o, o3 reasoning models, Microsoft Azure partnership, training vs inference infrastructure, model serving, enterprise deployment, data privacy aur AI data center requirements ka complete guide.",
     track: "ai",
     category: "platforms",
     status: "published",
     icon: "⬛",
     breadcrumb: ["AI Infrastructure", "AI Platforms", "OpenAI"],
     order: 1,
-    related: ["anthropic", "google-gemini", "llm"],
-    eta: "Phase 3",
+    related: ["anthropic", "google-gemini", "llm", "gpu-cluster"],
   },
 
   "anthropic": {
     slug: "anthropic",
     title: "Anthropic",
     description:
-      "Anthropic is an AI safety company and the creator of the Claude family of AI models, focused on building reliable, interpretable AI systems with a safety-first approach.",
+      "Anthropic — Claude model family (Haiku, Sonnet, Opus), Constitutional AI, AWS partnership, Amazon Bedrock deployment, 200K context window, interpretability research aur enterprise AI infrastructure ka complete guide.",
     track: "ai",
     category: "platforms",
     status: "published",
     icon: "🔶",
     breadcrumb: ["AI Infrastructure", "AI Platforms", "Anthropic"],
     order: 2,
-    related: ["openai", "llm"],
-    eta: "Phase 3",
+    related: ["openai", "llm", "gpu-cluster"],
   },
 
   "google-gemini": {
     slug: "google-gemini",
     title: "Google Gemini",
     description:
-      "Google Gemini is Google DeepMind's flagship AI model family, built on Google's custom TPU infrastructure and integrated across Google's product ecosystem.",
+      "Google Gemini — TPU architecture, Gemini model family, Google AI Studio, Vertex AI, training vs inference, HBM, ICI interconnect, AI data center power/cooling, O&M perspective aur enterprise deployment ka complete infrastructure guide.",
     track: "ai",
     category: "platforms",
     status: "published",
     icon: "🔵",
     breadcrumb: ["AI Infrastructure", "AI Platforms", "Google Gemini"],
     order: 3,
-    related: ["openai", "tpu"],
-    eta: "Phase 3",
+    related: ["openai", "anthropic", "tpu", "gpu-cluster"],
   },
 
   "meta-ai": {

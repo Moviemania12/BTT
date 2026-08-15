@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const googleGeminiMetadata: ArticleMetadata = {
+  slug: "google-gemini",
+  title: "Google Gemini: AI Infrastructure, TPU Architecture, Vertex AI aur Data Center Engineering",
+  seoTitle: "Google Gemini Kya Hai? TPU, Vertex AI, Google AI Infrastructure, Training vs Inference — Complete Hinglish Guide",
+  seoDescription:
+    "Google Gemini ka complete AI infrastructure guide — Gemini model family (Ultra/Pro/Flash/Nano), Google AI Studio, Vertex AI, Google TPU architecture (HBM, interconnect, pods), training vs inference, distributed workloads, AI data center power/cooling, O&M perspective, reliability aur enterprise deployment. AI infrastructure engineers aur DC professionals ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/platforms/google-gemini",
+  keywords: [
+    "google gemini kya hai hindi",
+    "google gemini infrastructure ai",
+    "google tpu architecture hinglish",
+    "vertex ai gemini deployment",
+    "google ai studio gemini api",
+    "gemini ultra pro flash nano models",
+    "google tpu hbm interconnect",
+    "distributed ai training google",
+    "google data center cooling ai",
+    "gemini training vs inference",
+    "google cloud ai infrastructure",
+    "tpu pod scaling architecture",
+    "gemini enterprise deployment",
+    "google ai data center power",
+    "gemini api rate limits tokens",
+    "google deepmind gemini",
+    "ai infrastructure google cloud",
+    "gemini reliability availability",
+    "google tpu vs nvidia gpu",
+    "gemini data privacy security",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2026-08-14",
+  readingTimeMinutes: 60,
+};
