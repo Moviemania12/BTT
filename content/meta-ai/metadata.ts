@@ -1,0 +1,35 @@
+import type { ArticleMetadata } from "@/types/engineering/content";
+
+export const metaAiMetadata: ArticleMetadata = {
+  slug: "meta-ai",
+  title: "Meta AI: Muse Spark, Llama Open-Weight Models, MTIA Custom Silicon, AI Infrastructure aur Data Center Engineering",
+  seoTitle: "Meta AI Kya Hai? Muse Spark, Llama Open-Weight, MTIA 300/400/450/500, 24K/129K GPU Clusters — Complete Hinglish Guide",
+  seoDescription:
+    "Meta AI ka complete infrastructure guide — Meta AI consumer product (Muse Spark 1.1/Muse Image), Llama open-weight models, MTIA custom silicon (MTIA 300 production, 400 deploying, 450/500 roadmap), NVIDIA/AMD heterogeneous GPU strategy, Grand Teton/OpenRack, TWO 24K GPU clusters (RoCEv2 + InfiniBand), Prometheus 1GW/Hyperion 5GW, Tectonic/BLOB storage, AALC cooling, CDU, O&M aur troubleshooting. AI infrastructure engineers aur DC professionals ke liye.",
+  canonicalUrl: "https://behindthetech.in/learn/ai/platforms/meta-ai",
+  keywords: [
+    "meta ai kya hai hindi",
+    "meta ai muse spark model",
+    "llama open weight model infrastructure",
+    "meta mtia custom silicon ai",
+    "mtia 300 400 450 500 roadmap",
+    "meta nvidia amd gpu strategy",
+    "meta grand teton openrack ai",
+    "meta ai cluster 24576 gpu roce infiniband",
+    "meta ai prometheus hyperion 1gw 5gw",
+    "meta ai data center cooling aalc",
+    "llama training inference infrastructure",
+    "meta tectonic blob storage ai",
+    "meta ai open weight deployment",
+    "meta ai enterprise deployment",
+    "meta ai data center power density",
+    "ai cluster networking rdma roce infiniband",
+    "meta ai reliability ras hardware failure",
+    "meta ai privacy security llama",
+    "meta open compute project ai",
+    "meta ai cooling liquid cdu cdl",
+  ],
+  authorName: "Kumar Anil",
+  datePublished: "2026-08-15",
+  readingTimeMinutes: 60,
+};

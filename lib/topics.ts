@@ -1441,15 +1441,14 @@ export const TOPICS: Record<string, Topic> = {
     slug: "meta-ai",
     title: "Meta AI",
     description:
-      "Meta AI develops the Llama family of open-source AI models, running on Meta's own data center infrastructure and released publicly for research and commercial use.",
+      "Meta AI — Llama open-weight models, MTIA custom silicon, NVIDIA/AMD heterogeneous GPU strategy, Grand Teton/OpenRack, 24K GPU cluster, AI data center power/cooling, O&M aur enterprise deployment ka complete infrastructure guide.",
     track: "ai",
     category: "platforms",
     status: "published",
     icon: "🔵",
     breadcrumb: ["AI Infrastructure", "AI Platforms", "Meta AI"],
     order: 4,
-    related: ["openai", "llm"],
-    eta: "Phase 3",
+    related: ["openai", "anthropic", "llm", "gpu-cluster"],
   },
 
   "mistral": {

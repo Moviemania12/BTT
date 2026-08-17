@@ -49,6 +49,7 @@ const STATIC_ARTICLE_SLUGS = new Set([
   "openai",
   "anthropic",
   "google-gemini",
+  "meta-ai",
 ]);
 
 export default async function AiTopicPage(props: PageProps) {
