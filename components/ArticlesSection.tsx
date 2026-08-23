@@ -67,18 +67,6 @@ const ARTICLES: Article[] = [
     readTime: 14,
     publishDate: "2026-01-25",
   },
-  {
-    id: "4",
-    slug: "cyber-security-kya-hai",
-    title: "Cyber Security: Internet Par Apna Data Bachana",
-    excerpt:
-      "Har roz crores ka cyber fraud hota hai. VPN, firewall, encryption — inhe samjho aur apne aap ko online safe rakho. Complete beginner's guide.",
-    image: "/images/articles/cybersecurity-hero.png",
-    thumbnail: "/images/articles/cybersecurity-thumb.png",
-    category: "Cyber Security",
-    readTime: 11,
-    publishDate: "2026-02-01",
-  },
 ];
 
 // ─── Utility ──────────────────────────────────────────────────────────────────
