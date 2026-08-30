@@ -32,6 +32,7 @@ import Link from "next/link";
 import { ChevronDown, Clock } from "lucide-react";
 import { TOPICS, getTopicUrl, type Topic } from "@/lib/topics";
 import TopicLink from "@/components/TopicLink";
+import ArticleTranslator from "@/components/translation/ArticleTranslator";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -527,18 +528,20 @@ export default function ArticlePage({
                 <TableOfContents headings={headings} />
               </div>
 
-              <article
-                className="btt-article-content"
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 17,
-                  lineHeight: 1.85,
-                  color: "#1f2937",
-                  textRendering: "optimizeLegibility",
-                }}
-              >
-                {children}
-              </article>
+              <ArticleTranslator slug={slug}>
+                <article
+                  className="btt-article-content"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 17,
+                    lineHeight: 1.85,
+                    color: "#1f2937",
+                    textRendering: "optimizeLegibility",
+                  }}
+                >
+                  {children}
+                </article>
+              </ArticleTranslator>
 
               <ContinueLearning prevSlug={prevSlug} nextSlug={nextSlug} />
               <RelatedTopics slugs={relatedSlugs} />
