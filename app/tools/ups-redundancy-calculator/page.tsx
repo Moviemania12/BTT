@@ -1,60 +1,32 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { getCalculator } from "@/lib/engineering/registry";
-import { buildPageMetadata } from "@/lib/schemas";
-import UpsRedundancyCalculator from "@/components/calculators/UpsRedundancyCalculator";
+import UpsRedundancyCalculatorClient from "./UpsRedundancyCalculatorClient";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // app/tools/ups-redundancy-calculator/page.tsx
 //
-// Standalone calculator page. SEO metadata is generated from the
-// calculator's own registry entry (lib/engineering/registry/
-// calculatorRegistry.ts) — never hardcoded here, and never duplicated from
-// any article's metadata. The calculator UI itself lives in
-// components/calculators/UpsRedundancyCalculator.tsx (shared, reusable,
-// route-independent) — this file only wires registry data to the page.
+// Server component: exports SEO metadata (from the calculator's registry
+// entry — lib/engineering/registry/calculatorRegistry.ts) and renders the
+// interactive client component, following the same server/client split as
+// app/study/interview/page.tsx.
 // ═══════════════════════════════════════════════════════════════════════════
 
-const REGISTRY_ID = "ups.redundancy-calculator";
-
-export function generateMetadata(): Metadata {
-  const entry = getCalculator(REGISTRY_ID);
-  if (!entry) return {};
-  return buildPageMetadata({
-    slug: entry.id,
-    title: entry.title,
-    seoTitle: entry.seoTitle,
-    seoDescription: entry.seoDescription,
-    canonicalUrl: `https://behindthetech.in${entry.route}`,
-    keywords: entry.keywords,
-    authorName: "Behind The Tech",
-    datePublished: entry.lastReviewed,
-    readingTimeMinutes: 1,
-  });
-}
+export const metadata: Metadata = {
+  title: "UPS Redundancy Calculator — N+1 vs 2N Sizing Tool | Behind The Tech",
+  description:
+    "Calculate UPS module count, spares, and capacity utilization for N, N+1, N+2, and 2N redundancy architectures. Free Data Center engineering calculator.",
+  keywords: ["ups redundancy calculator", "n+1 calculator", "2n architecture calculator", "ups module sizing"],
+  alternates: { canonical: "https://behindthetech.in/tools/ups-redundancy-calculator" },
+};
 
 export default function UpsRedundancyCalculatorPage() {
-  const entry = getCalculator(REGISTRY_ID);
-  if (!entry) notFound();
-
   return (
     <main
       data-homepage-theme="light"
-      style={{
-        background: "#ffffff",
-        minHeight: "100vh",
-        paddingTop: "2.5rem",
-      }}
+      style={{ background: "#ffffff", minHeight: "100vh", paddingTop: "2.5rem" }}
     >
-      <div style={{ maxWidth: "960px", margin: "0 auto", padding: "0 1.5rem 4rem" }}>
-      <h1 style={{ fontSize: "2rem", fontWeight: 800, color: "#111827", marginBottom: "0.6rem", letterSpacing: "-0.01em" }}>
-        {entry.title}
-      </h1>
-      <p style={{ fontSize: "1.05rem", color: "#374151", marginBottom: "2.5rem", maxWidth: "640px" }}>
-        {entry.description}
-      </p>
-      <UpsRedundancyCalculator />
-    </div>
+      <div style={{ maxWidth: "860px", margin: "0 auto", padding: "0 1.5rem 4rem" }}>
+        <UpsRedundancyCalculatorClient />
+      </div>
     </main>
   );
 }

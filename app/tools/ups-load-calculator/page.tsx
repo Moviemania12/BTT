@@ -1,60 +1,33 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { getCalculator } from "@/lib/engineering/registry";
-import { buildPageMetadata } from "@/lib/schemas";
-import UpsLoadCalculator from "@/components/calculators/UpsLoadCalculator";
+import UpsLoadCalculatorClient from "./UpsLoadCalculatorClient";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // app/tools/ups-load-calculator/page.tsx
 //
-// Standalone calculator page. SEO metadata is generated from the
-// calculator's own registry entry (lib/engineering/registry/
-// calculatorRegistry.ts) — never hardcoded here, and never duplicated from
-// any article's metadata. The calculator UI itself lives in
-// components/calculators/UpsLoadCalculator.tsx (shared, reusable,
-// route-independent) — this file only wires registry data to the page.
+// Server component: exports SEO metadata (from the calculator's registry
+// entry — lib/engineering/registry/calculatorRegistry.ts) and renders the
+// interactive client component. Client-side state (useState) cannot live
+// here because `metadata` export requires a Server Component — the split
+// follows the same pattern as app/study/interview/page.tsx.
 // ═══════════════════════════════════════════════════════════════════════════
 
-const REGISTRY_ID = "ups.load-calculator";
-
-export function generateMetadata(): Metadata {
-  const entry = getCalculator(REGISTRY_ID);
-  if (!entry) return {};
-  return buildPageMetadata({
-    slug: entry.id,
-    title: entry.title,
-    seoTitle: entry.seoTitle,
-    seoDescription: entry.seoDescription,
-    canonicalUrl: `https://behindthetech.in${entry.route}`,
-    keywords: entry.keywords,
-    authorName: "Behind The Tech",
-    datePublished: entry.lastReviewed,
-    readingTimeMinutes: 1,
-  });
-}
+export const metadata: Metadata = {
+  title: "UPS Load Calculator — Data Center UPS Sizing Tool | Behind The Tech",
+  description:
+    "Calculate the right UPS size for your Data Center load. Add servers, storage, network, and lighting load — get a final kVA recommendation with demand factor and growth headroom.",
+  keywords: ["ups load calculator", "ups sizing calculator", "data center ups sizing", "ups kva calculator"],
+  alternates: { canonical: "https://behindthetech.in/tools/ups-load-calculator" },
+};
 
 export default function UpsLoadCalculatorPage() {
-  const entry = getCalculator(REGISTRY_ID);
-  if (!entry) notFound();
-
   return (
     <main
       data-homepage-theme="light"
-      style={{
-        background: "#ffffff",
-        minHeight: "100vh",
-        paddingTop: "2.5rem",
-      }}
+      style={{ background: "#ffffff", minHeight: "100vh", paddingTop: "2.5rem" }}
     >
-      <div style={{ maxWidth: "960px", margin: "0 auto", padding: "0 1.5rem 4rem" }}>
-      <h1 style={{ fontSize: "2rem", fontWeight: 800, color: "#111827", marginBottom: "0.6rem", letterSpacing: "-0.01em" }}>
-        {entry.title}
-      </h1>
-      <p style={{ fontSize: "1.05rem", color: "#374151", marginBottom: "2.5rem", maxWidth: "640px" }}>
-        {entry.description}
-      </p>
-      <UpsLoadCalculator />
-    </div>
+      <div style={{ maxWidth: "860px", margin: "0 auto", padding: "0 1.5rem 4rem" }}>
+        <UpsLoadCalculatorClient />
+      </div>
     </main>
   );
 }
