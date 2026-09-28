@@ -8,7 +8,7 @@ import TopicLink from "@/components/TopicLink";
 export const metadata: Metadata = {
   title: "Data Center Types Explained: Enterprise, Cloud, Hyperscale & More — Behind The Tech",
   description:
-    "Not every Data Center is the same. A complete comparison of Enterprise, Colocation, Cloud, Hyperscale, Edge, Managed and Hybrid Data Centers — in simple English.",
+    "Har Data Center ek jaisa nahi hota. Enterprise, Colocation, Cloud, Hyperscale, Edge, Managed aur Hybrid Data Centers ka complete comparison — simple Hinglish mein.",
   keywords: [
     "data center types",
     "data center types in hindi",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     "behind the tech",
   ],
   openGraph: {
-    title: "Data Center Types: Not Every Data Center Is the Same",
+    title: "Data Center Types: Har Data Center Ek Jaisa Nahi Hota",
     description:
-      "Enterprise, Colocation, Cloud, Hyperscale, Edge, Managed and Hybrid Data Centers — all explained in simple English.",
+      "Enterprise, Colocation, Cloud, Hyperscale, Edge, Managed aur Hybrid Data Centers — sab kuch simple Hinglish mein samjho.",
     url: "https://behindthetech.in/learn/data-center-types",
     siteName: "Behind The Tech",
     type: "article",
@@ -34,12 +34,12 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Data Center Types Explained — Behind The Tech",
-    description: "Enterprise, Cloud, Hyperscale and other Data Center types explained in simple English.",
+    description: "Enterprise, Cloud, Hyperscale aur baaki Data Center types simple Hinglish mein.",
   },
   alternates: {
-    canonical: "https://behindthetech.in/learn/data-center-types",
+    canonical: "https://behindthetech.in/hi/learn/data-center-types",
     languages: {
-      "hi": "https://behindthetech.in/hi/learn/data-center-types",
+      "en": "https://behindthetech.in/learn/data-center-types",
     },
   },
 };
@@ -352,7 +352,36 @@ function TypeProfileCard({
         </div>
 
         <div style={{ marginBottom: 18 }}>
-          <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase", color: "#1f2937", marginBottom: 8, }} > Who Uses It? </span> <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}> {whoUses.map((w) => ( <span key={w} style={{ fontFamily: "var(--font-body)", fontSize: 12.5, padding: "5px 11px", borderRadius: 980, background: "rgba(37,99,235,0.06)", border: "1px solid rgba(37,99,235,0.16)", color: "#1f2937", }} > {w} </span> ))}
+          <span
+            style={{
+              display: "block",
+              fontFamily: "var(--font-mono)",
+              fontSize: 9,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "#1f2937",
+              marginBottom: 8,
+            }}
+          >
+            Kaun Use Karta Hai?
+          </span>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+            {whoUses.map((w) => (
+              <span
+                key={w}
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 12.5,
+                  padding: "5px 11px",
+                  borderRadius: 980,
+                  background: "rgba(37,99,235,0.06)",
+                  border: "1px solid rgba(37,99,235,0.16)",
+                  color: "#1f2937",
+                }}
+              >
+                {w}
+              </span>
+            ))}
           </div>
         </div>
 
@@ -506,28 +535,28 @@ function ComparisonTable() {
 
 const FAQS = [
   {
-    q: "How many types of Data Centers are there?",
-    a: "There are generally seven major types considered: Enterprise, Colocation, Cloud, Hyperscale, Edge, Managed and Hybrid. Each type has its own ownership model, cost structure and use case.",
+    q: "Data Center types kitne hote hain?",
+    a: "Generally seven major types maane jaate hain: Enterprise, Colocation, Cloud, Hyperscale, Edge, Managed aur Hybrid. Har type ka apna ownership model, cost structure aur use case hota hai.",
   },
   {
-    q: "Which Data Center type is used the most?",
-    a: "Cloud Data Centers are used the most today, because everyone from startups to large enterprises adopts them — thanks to fast deployment and flexible cost.",
+    q: "Sabse zyada use hone wala Data Center type kaunsa hai?",
+    a: "Cloud Data Center aaj sabse zyada use hota hai, kyunki startups se lekar large enterprises tak sab ise apnate hain — fast deployment aur flexible cost ki wajah se.",
   },
   {
-    q: "What is the difference between Hyperscale and Enterprise Data Centers?",
-    a: "An Enterprise Data Center is under the control of a single organization, whereas a Hyperscale Data Center serves millions or billions of users with lakhs of servers — both the scale and the purpose are different.",
+    q: "Hyperscale aur Enterprise Data Center me kya farak hai?",
+    a: "Enterprise Data Center ek single organization ke control me hota hai, jabki Hyperscale Data Center lakhon servers ke saath millions ya billions users ko service deta hai — scale aur purpose dono alag hote hain.",
   },
   {
-    q: "When is an Edge Data Center needed?",
-    a: "When latency is critical — such as in online gaming, live video streaming, or IoT devices — an Edge Data Center is used, because it is deployed geographically close to users.",
+    q: "Edge Data Center ki zarurat kab hoti hai?",
+    a: "Jab latency critical ho — jaise online gaming, live video streaming, ya IoT devices — tab Edge Data Center use hota hai, kyunki ye users ke geographically close deploy kiya jata hai.",
   },
   {
-    q: "Can a company use multiple Data Center types?",
-    a: "Yes, this approach itself is called a Hybrid Data Center. Most enterprises combine multiple models — Enterprise for sensitive applications, Cloud for website hosting, and Colocation for backup.",
+    q: "Kya ek company multiple Data Center types use kar sakti hai?",
+    a: "Haan, isi approach ko Hybrid Data Center kaha jata hai. Most enterprises sensitive applications ke liye Enterprise, website hosting ke liye Cloud, aur backup ke liye Colocation jaise multiple models combine karti hain.",
   },
   {
-    q: "Which Data Center type is best for a small company?",
-    a: "Cloud or Managed Data Centers are best for small companies and startups, because neither requires a large upfront investment or a dedicated IT team.",
+    q: "Chhoti company ke liye kaunsa Data Center type best hai?",
+    a: "Chhoti companies aur startups ke liye Cloud ya Managed Data Center best rehte hain, kyunki dono me large upfront investment ya dedicated IT team ki zarurat nahi padti.",
   },
 ];
 
@@ -575,30 +604,30 @@ export default function DataCenterTypesPage() {
         <h2 id="why-types-matter" style={S.h2}>Why Types Matter</h2>
 
         <p style={S.p}>
-          <p style={S.p}>If you have read our previous article <strong>"What Is A Data Center?"</strong>, you already know that Data Centers are the backbone of the internet.</p>
+          Agar aapne hamara pichla article <strong>"What Is A Data Center?"</strong> padha hai, to ab aap jaante ho ki Data Center internet ki backbone hote hain.
         </p>
         <div style={S.learnMore}>
           <TopicLink slug="what-is-a-data-center" label="Read: What Is A Data Center?" variant="inline" />
         </div>
-        <p style={S.p}>When you:</p>
+        <p style={S.p}>Jab aap:</p>
         <ul style={S.ul}>
-          <li style={S.li}>Watch a video on YouTube</li>
-          <li style={S.li}>Scroll through Instagram</li>
-          <li style={S.li}>Send a message on WhatsApp</li>
-          <li style={S.li}>Search on Google</li>
-          <li style={S.li}>Ask ChatGPT a question</li>
+          <li style={S.li}>YouTube par video dekhte ho</li>
+          <li style={S.li}>Instagram scroll karte ho</li>
+          <li style={S.li}>WhatsApp par message bhejte ho</li>
+          <li style={S.li}>Google par search karte ho</li>
+          <li style={S.li}>ChatGPT se sawaal poochte ho</li>
         </ul>
-        <p style={S.p}>your request always reaches some Data Center or the other.</p>
-        <p style={S.p}>But here is an interesting point.</p>
-        <p style={S.p}><strong>Not every Data Center is the same.</strong></p>
-        <p style={S.p}>Just like every vehicle has a different purpose.</p>
+        <p style={S.p}>to aapki request kisi na kisi Data Center tak zaroor pahunchti hai.</p>
+        <p style={S.p}>Lekin yahan ek interesting baat hai.</p>
+        <p style={S.p}><strong>Har Data Center ek jaisa nahi hota.</strong></p>
+        <p style={S.p}>Bilkul waise hi jaise har vehicle ka purpose alag hota hai.</p>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 10, margin: "20px 0 24px" }}>
           {[
-            { icon: "🏍️", label: "Bike — for daily travel" },
-            { icon: "🚚", label: "Truck — for heavy goods transport" },
-            { icon: "🚑", label: "Ambulance — for emergencies" },
-            { icon: "✈️", label: "Aeroplane — for long-distance travel" },
+            { icon: "🏍️", label: "Bike — daily travel ke liye" },
+            { icon: "🚚", label: "Truck — heavy goods transport ke liye" },
+            { icon: "🚑", label: "Ambulance — emergency ke liye" },
+            { icon: "✈️", label: "Aeroplane — long-distance travel ke liye" },
           ].map((item, i) => (
             <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 14px", borderRadius: 8, background: "rgba(37,99,235,0.035)", border: "1px solid rgba(37,99,235,0.12)" }}>
               <span style={{ fontSize: 18, lineHeight: 1, flexShrink: 0 }}>{item.icon}</span>
@@ -607,22 +636,22 @@ export default function DataCenterTypesPage() {
           ))}
         </div>
 
-        <p style={S.p}>They are all vehicles, but their jobs are different.</p>
-        <p style={S.p}>It is exactly the same with Data Centers.</p>
-        <p style={S.p}>Some Data Centers are built by companies themselves. Some are rented and used. Some run entirely on the cloud. And some power the biggest internet platforms in the world.</p>
-        <p style={S.p}>This is why Data Centers are divided into different categories. Let us understand which Data Center is used for what.</p>
+        <p style={S.p}>Sab vehicles hain, lekin kaam alag hai.</p>
+        <p style={S.p}>Data Centers ke saath bhi exactly aisa hi hai.</p>
+        <p style={S.p}>Kuch Data Centers companies khud banati hain. Kuch rent par use karti hain. Kuch completely cloud par chalti hain. Aur kuch duniya ke sabse bade internet platforms ko power karte hain.</p>
+        <p style={S.p}>Isi wajah se Data Centers ko alag-alag categories me divide kiya jata hai. Aaiye samajhte hain ki kaun sa Data Center kis kaam aata hai.</p>
 
         <hr style={S.divider} />
 
-        <h2 id="are-all-data-centers-same" style={S.h1}>Are All Data Centers the Same?</h2>
+        <h2 id="are-all-data-centers-same" style={S.h1}>Kya Sabhi Data Centers Same Hote Hain?</h2>
 
         <p style={S.p}>Short answer?</p>
-        <p style={{ ...S.p, color: "#1f2937", fontWeight: 600, fontSize: 16 }}>No.</p>
-        <p style={S.p}>From the outside, all Data Centers might look similar.</p>
-        <p style={S.p}>A building. A lot of servers. Cooling systems. Power backup. Security.</p>
-        <p style={S.p}>But the business model, ownership and purpose inside can be very different.</p>
-        <p style={S.p}>For example: a bank may operate its own Data Center. A startup may use the cloud. An e-commerce company may use hybrid infrastructure. And platforms like YouTube operate on hyperscale infrastructure.</p>
-        <p style={S.p}>This is exactly the difference that defines Data Center Types.</p>
+        <p style={{ ...S.p, color: "#1f2937", fontWeight: 600, fontSize: 16 }}>Nahi.</p>
+        <p style={S.p}>Bahar se dekhne par shayad sab Data Centers similar lagen.</p>
+        <p style={S.p}>Ek building. Bahut saare servers. Cooling systems. Power backup. Security.</p>
+        <p style={S.p}>Lekin andar ka business model, ownership aur purpose bahut alag ho sakta hai.</p>
+        <p style={S.p}>Example ke liye: ek bank apna khud ka Data Center operate kar sakta hai. Ek startup cloud use kar sakta hai. Ek e-commerce company hybrid infrastructure use kar sakti hai. Aur YouTube jaise platforms hyperscale infrastructure par operate karte hain.</p>
+        <p style={S.p}>Yahi difference Data Center Types ko define karta hai.</p>
 
         <hr style={S.divider} />
 
@@ -645,15 +674,15 @@ export default function DataCenterTypesPage() {
 
         <TypeProfileCard
           tag="Type 01"
-          definition={<p style={{ margin: 0 }}>An Enterprise Data Center is a Data Center that is under the ownership and control of a single organization. The infrastructure belongs to the company. The servers belong to the company. The operations belong to the company. The maintenance belongs to the company too.</p>}
+          definition={<p style={{ margin: 0 }}>Enterprise Data Center wo Data Center hota hai jo kisi organization ke khud ke ownership aur control me hota hai. Infrastructure bhi company ka. Servers bhi company ke. Operations bhi company ke. Maintenance bhi company ki.</p>}
           analogyTitle="Real-Life Example"
-          analogy={<p style={{ margin: 0 }}>Imagine you have built your own house. You decide the design. You decide the security. You decide the electricity backup. But you also have to do the maintenance yourself. An Enterprise Data Center works in much the same way.</p>}
+          analogy={<p style={{ margin: 0 }}>Sochiye aapne khud ka ghar banaya hai. Design aap decide karte ho. Security aap decide karte ho. Electricity backup aap decide karte ho. Lekin maintenance bhi aapko hi karni padti hai. Enterprise Data Center bhi kuch aisa hi hota hai.</p>}
           whoUses={["Banks", "Government Organizations", "Telecom Companies", "Large Enterprises", "Defense Organizations"]}
           advantages={["Complete control", "Better customization", "High security", "Regulatory compliance"]}
-          disadvantages={["Very expensive", "Skilled manpower required", "Maintenance responsibility"]}
+          disadvantages={["Bahut expensive", "Skilled manpower required", "Maintenance responsibility"]}
         />
 
-        <p style={S.p}>Even today, many large organizations depend on Enterprise Data Centers.</p>
+        <p style={S.p}>Aaj bhi bahut si large organizations Enterprise Data Centers par depend karti hain.</p>
         <div style={S.learnMore}>
           <TopicLink slug="server-basics" label="Learn More: Server Basics" variant="inline" />
         </div>
@@ -679,15 +708,15 @@ export default function DataCenterTypesPage() {
 
         <TypeProfileCard
           tag="Type 02"
-          definition={<p style={{ margin: 0 }}>In simple terms, Colocation is the "Rent a Data Center" model. Here the building and infrastructure belong to a provider. But the servers are yours. You bring your own servers and install them in the provider's Data Center. The provider gives you: Power, Cooling, Security, Network Connectivity, and Physical Space.</p>}
+          definition={<p style={{ margin: 0 }}>Colocation ko simple language me samjhen to ye "Rent Par Data Center" model hai. Yahan building aur infrastructure kisi provider ka hota hai. Lekin servers aapke hote hain. Aap apne servers lekar provider ke Data Center me install kar dete ho. Provider deta hai: Power, Cooling, Security, Network Connectivity, aur Physical Space.</p>}
           analogyTitle="Real-Life Example"
-          analogy={<p style={{ margin: 0 }}>It is like moving into a rented office with your own furniture. The furniture is yours. The building belongs to someone else. The Colocation Data Center model works in exactly the same way.</p>}
+          analogy={<p style={{ margin: 0 }}>Jaise aap khud ka furniture lekar rented office me shift ho jao. Furniture aapka. Building kisi aur ki. Exactly waise hi Colocation Data Center ka model kaam karta hai.</p>}
           whoUses={["Mid-Size Companies", "E-commerce Businesses", "Growing Enterprises"]}
-          advantages={["No need to build your own Data Center", "Reliable infrastructure", "Lower upfront investment", "Professional environment"]}
+          advantages={["Data Center build karne ki zarurat nahi", "Reliable infrastructure", "Lower upfront investment", "Professional environment"]}
           disadvantages={["Monthly recurring cost", "Limited physical control"]}
         />
 
-        <p style={S.p}>Today, many mid-size companies use the Colocation model.</p>
+        <p style={S.p}>Aaj bahut si mid-size companies Colocation model use karti hain.</p>
 
         <hr style={S.divider} />
 
@@ -710,21 +739,21 @@ export default function DataCenterTypesPage() {
 
         <TypeProfileCard
           tag="Type 03"
-          definition={<p style={{ margin: 0 }}>The most popular model in today's digital world is the Cloud Data Center. Here you don't need to buy physical servers. You use infrastructure as a service. You pay for as much as you use.</p>}
+          definition={<p style={{ margin: 0 }}>Aaj ke digital world me sabse popular model hai: Cloud Data Center. Yahan aapko physical servers kharidne ki zarurat nahi hoti. Aap infrastructure ko service ki tarah use karte ho. Jitna use karo utna pay karo.</p>}
           analogyTitle="Real-Life Example"
           analogy={
             <>
-              <p style={{ margin: "0 0 8px" }}>Imagine you need to travel daily. You have two options:</p>
-              <p style={{ margin: "0 0 8px" }}>Option 1: Buy a car. Option 2: Book a cab.</p>
-              <p style={{ margin: 0 }}>A Cloud Data Center is like booking a cab. The infrastructure isn't yours. But you still get the service.</p>
+              <p style={{ margin: "0 0 8px" }}>Sochiye aapko daily travel karna hai. Aapke paas do options hain:</p>
+              <p style={{ margin: "0 0 8px" }}>Option 1: Car kharido. Option 2: Cab book karo.</p>
+              <p style={{ margin: 0 }}>Cloud Data Center cab booking jaisa hai. Infrastructure aapka nahi hota. Lekin service mil jati hai.</p>
             </>
           }
           whoUses={["Amazon Web Services (AWS)", "Microsoft Azure", "Google Cloud"]}
           advantages={["Fast deployment", "Unlimited scalability", "Global availability", "Lower initial investment"]}
-          disadvantages={["Long-term cost can increase", "Vendor dependency"]}
+          disadvantages={["Long-term cost increase ho sakti hai", "Vendor dependency"]}
         />
 
-        <p style={S.p}>Today, everyone from startups to large enterprises is using the cloud.</p>
+        <p style={S.p}>Aaj startups se lekar large enterprises tak cloud use kar rahe hain.</p>
 
         <hr style={S.divider} />
 
@@ -747,15 +776,15 @@ export default function DataCenterTypesPage() {
 
         <TypeProfileCard
           tag="Type 04"
-          definition={<p style={{ margin: 0 }}>Now let's talk about the giants of the internet. Hyperscale Data Centers are the largest Data Centers in the world. They can host lakhs of servers. And they provide service to millions or billions of users.</p>}
+          definition={<p style={{ margin: 0 }}>Ab baat karte hain internet ke giants ki. Hyperscale Data Centers duniya ke sabse bade Data Centers hote hain. Ye lakhon servers host kar sakte hain. Aur millions ya billions users ko service provide karte hain.</p>}
           analogyTitle="Real-Life Example"
-          analogy={<p style={{ margin: 0 }}>The difference between a local grocery store and a giant national warehouse is the same difference that exists between a normal Data Center and a Hyperscale Data Center.</p>}
+          analogy={<p style={{ margin: 0 }}>Ek local grocery store aur ek giant national warehouse ke beech jo difference hota hai, wahi difference normal aur Hyperscale Data Center ke beech hota hai.</p>}
           whoUses={["Google", "Microsoft", "Meta", "Amazon"]}
           advantages={["Massive capacity", "High automation", "Advanced cooling", "AI-based monitoring", "Extreme redundancy"]}
-          disadvantages={["Very high build cost", "Viable only for large-scale players"]}
+          disadvantages={["Very high build cost", "Sirf large-scale players ke liye viable"]}
         />
 
-        <p style={S.p}>When you watch a video on YouTube, use Instagram or use AI tools, there is a very high chance that your request is reaching a Hyperscale Data Center.</p>
+        <p style={S.p}>Jab aap YouTube par video dekhte ho, Instagram use karte ho ya AI tools use karte ho, bahut high chance hai ki request kisi Hyperscale Data Center tak pahunch rahi ho.</p>
         <div style={S.learnMore}>
           <TopicLink slug="ai-infrastructure-basics" label="Learn More: AI Infrastructure Basics" variant="inline" />
         </div>
@@ -764,11 +793,11 @@ export default function DataCenterTypesPage() {
 
         <h2 id="edge" style={S.h1}>Edge Data Center</h2>
 
-        <p style={S.p}>Have you ever noticed that even milliseconds matter in online gaming? Or that delay feels annoying in live video streaming?</p>
-        <p style={S.p}>This problem is related to latency. Edge Data Centers are used to solve exactly this issue.</p>
+        <p style={S.p}>Kabhi notice kiya hai ki online gaming me milliseconds bhi important hote hain? Ya live video streaming me delay annoying lagta hai?</p>
+        <p style={S.p}>Yeh problem latency se related hoti hai. Isi issue ko solve karne ke liye Edge Data Centers use kiye jate hain.</p>
 
-        <h3 style={S.h3}>What Does an Edge Data Center Do?</h3>
-        <p style={S.p}>It is deployed close to users. The closer the Data Center is to the user, the faster the response.</p>
+        <h3 style={S.h3}>Edge Data Center Kya Karta Hai?</h3>
+        <p style={S.p}>Ye users ke close deploy kiya jata hai. Jitna Data Center user ke paas hoga, utni fast response milegi.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -787,12 +816,12 @@ export default function DataCenterTypesPage() {
 
         <TypeProfileCard
           tag="Type 05"
-          definition={<p style={{ margin: 0 }}>An Edge Data Center is a facility that is deployed geographically close to users, so that data does not have to travel a long distance.</p>}
+          definition={<p style={{ margin: 0 }}>Edge Data Center wo facility hoti hai jo users ke geographically close deploy ki jaati hai, taaki data ko lambi distance travel na karni pade.</p>}
           analogyTitle="Real-Life Example"
-          analogy={<p style={{ margin: 0 }}>Think of ordering an item. If the shop is right next door to your house, the delivery arrives instantly. If the same shop is on the other side of the city, the delivery takes time. An Edge Data Center makes exactly this difference — less distance, faster response.</p>}
+          analogy={<p style={{ margin: 0 }}>Socho aap ek item order karte ho. Agar shop aapke ghar ke bilkul next door hai, to delivery turant aa jayegi. Agar wahi shop city ke doosre kone me hai, to delivery me time lagega. Edge Data Center bhi exactly yahi farak banata hai — distance kam, response fast.</p>}
           whoUses={["Telecom Companies", "Gaming Platforms", "Streaming Services", "IoT Providers"]}
-          advantages={["Very low latency", "Better real-time performance", "Reduces local traffic load"]}
-          disadvantages={["Limited capacity per location", "Managing multiple locations is complex"]}
+          advantages={["Bahut low latency", "Better real-time performance", "Local traffic load kam karta hai"]}
+          disadvantages={["Limited capacity per location", "Multiple locations manage karna complex hai"]}
           useCases={["Video Streaming", "Online Gaming", "IoT Devices", "Smart Cities", "Autonomous Vehicles"]}
         />
 
@@ -815,20 +844,20 @@ export default function DataCenterTypesPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>Not every company has a large IT team. Not every company wants to manage infrastructure either. This is exactly why the Managed Data Center model exists.</p>
-        <p style={S.p}>Here the provider doesn't just give you the infrastructure. They also handle its operation.</p>
+        <p style={S.p}>Har company ke paas large IT team nahi hoti. Har company infrastructure manage bhi nahi karna chahti. Isi liye Managed Data Center model exist karta hai.</p>
+        <p style={S.p}>Yahan provider sirf infrastructure nahi deta. Wo uska operation bhi handle karta hai.</p>
 
         <TypeProfileCard
           tag="Type 06"
-          definition={<p style={{ margin: 0 }}>In a Managed Data Center, the provider manages everything — Servers, Storage, Network, Monitoring, Security and Maintenance.</p>}
+          definition={<p style={{ margin: 0 }}>Managed Data Center me provider Servers, Storage, Network, Monitoring, Security aur Maintenance — sab kuch manage karta hai.</p>}
           analogyTitle="Real-Life Example"
-          analogy={<p style={{ margin: 0 }}>It's like renting an apartment where the society's team handles the building maintenance — you don't have to do any repairs yourself. A Managed Data Center plays exactly the same role for its clients.</p>}
+          analogy={<p style={{ margin: 0 }}>Jaise aap apartment kiraye par lo aur building maintenance ka kaam society ki team karti hai — aapko khud kuch repair nahi karna padta. Managed Data Center bhi wahi role nibhata hai apne clients ke liye.</p>}
           whoUses={["Startups", "Small Businesses", "Growing Companies"]}
-          advantages={["No need for a skilled IT team", "An expert provider handles operations", "Business can focus on its core work"]}
-          disadvantages={["Less operational control", "Dependency on provider reliability"]}
+          advantages={["Skilled IT team ki zarurat nahi", "Operations expert provider sambhalta hai", "Business core kaam par focus kar sakta hai"]}
+          disadvantages={["Operational control kam hota hai", "Provider ki reliability par dependency"]}
         />
 
-        <p style={S.p}>You can focus on your business. The provider takes care of infrastructure management.</p>
+        <p style={S.p}>Aap apne business par focus kar sakte ho. Infrastructure management provider sambhal leta hai.</p>
         <div style={S.learnMore}>
           <TopicLink slug="nas" label="Learn More: NAS" variant="inline" />
         </div>
@@ -837,7 +866,7 @@ export default function DataCenterTypesPage() {
 
         <h2 id="hybrid" style={S.h1}>Hybrid Data Center</h2>
 
-        <p style={S.p}>In the real world, very few companies use only one model. Most enterprises combine multiple models. This approach itself is called the Hybrid Data Center strategy.</p>
+        <p style={S.p}>Real world me bahut kam companies sirf ek model use karti hain. Most enterprises multiple models combine karti hain. Isi approach ko Hybrid Data Center strategy kaha jata hai.</p>
 
         <h3 style={S.h3}>Example</h3>
 
@@ -856,19 +885,19 @@ export default function DataCenterTypesPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>All the systems work together.</p>
+        <p style={S.p}>Sab systems milkar kaam karte hain.</p>
 
         <TypeProfileCard
           tag="Type 07"
-          definition={<p style={{ margin: 0 }}>A Hybrid Data Center is a strategy in which a company combines multiple Data Center models — Enterprise, Cloud, Colocation — based on its needs.</p>}
+          definition={<p style={{ margin: 0 }}>Hybrid Data Center ek strategy hai jisme company multiple Data Center models — Enterprise, Cloud, Colocation — ko apni zarurat ke hisaab se combine karti hai.</p>}
           analogyTitle="Real-Life Example"
-          analogy={<p style={{ margin: 0 }}>It's like a business keeping its important stock in its own warehouse, using rented space for fast-moving items, and storing backup stock at a third-party facility — everything running together. A Hybrid Data Center does exactly the same thing.</p>}
+          analogy={<p style={{ margin: 0 }}>Jaise koi business apna important stock khud ke warehouse me rakhe, fast-moving items ke liye rented space use kare, aur backup stock kisi third-party facility me store kare — sab ek saath chalte hain. Hybrid Data Center bhi exactly yahi karta hai.</p>}
           whoUses={["Large Enterprises", "Banks with Digital Services", "E-commerce Companies"]}
           advantages={["Flexibility", "Better cost optimization", "Better scalability", "Risk reduction"]}
-          disadvantages={["Management complexity increases", "Multiple providers need to be coordinated"]}
+          disadvantages={["Management complexity badh jaati hai", "Multiple providers coordinate karna padta hai"]}
         />
 
-        <p style={S.p}>The Hybrid approach has become very common in today's enterprise world.</p>
+        <p style={S.p}>Aaj ki enterprise world me Hybrid approach bahut common ho chuki hai.</p>
 
         <hr style={S.divider} />
 
@@ -878,22 +907,22 @@ export default function DataCenterTypesPage() {
 
         <hr style={S.divider} />
 
-        <h2 id="which-is-best" style={S.h1}>Which Data Center Is Best?</h2>
+        <h2 id="which-is-best" style={S.h1}>Kaunsa Data Center Best Hai?</h2>
 
-        <p style={S.p}>This is a very common question. But the answer depends on the business requirement.</p>
-        <p style={S.p}>If:</p>
+        <p style={S.p}>Ye sawaal bahut common hai. Lekin iska answer depend karta hai business requirement par.</p>
+        <p style={S.p}>Agar:</p>
         <ul style={S.ul}>
-          <li style={S.li}>You need maximum control → Enterprise</li>
-          <li style={S.li}>You need rented infrastructure → Colocation</li>
-          <li style={S.li}>You need fast deployment → Cloud</li>
-          <li style={S.li}>You need to run a global-scale platform → Hyperscale</li>
-          <li style={S.li}>You need low latency → Edge</li>
-          <li style={S.li}>You need to outsource operations → Managed</li>
-          <li style={S.li}>You need to combine multiple environments → Hybrid</li>
+          <li style={S.li}>Maximum control chahiye → Enterprise</li>
+          <li style={S.li}>Infrastructure rent par chahiye → Colocation</li>
+          <li style={S.li}>Fast deployment chahiye → Cloud</li>
+          <li style={S.li}>Global-scale platform chalana hai → Hyperscale</li>
+          <li style={S.li}>Low latency chahiye → Edge</li>
+          <li style={S.li}>Operations outsource karni hain → Managed</li>
+          <li style={S.li}>Multiple environments combine karne hain → Hybrid</li>
         </ul>
 
         <InsightCard>
-          No single type is universally the best. The best one is whichever matches the business requirement.
+          Koi bhi type universally best nahi hota. Best wahi hota hai jo business requirement ko match kare.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -902,19 +931,19 @@ export default function DataCenterTypesPage() {
 
         <KeyTakeawayCard
           items={[
-            "Not every Data Center is the same.",
-            "Different Data Center models are used for different business requirements.",
-            "Enterprise Data Centers give maximum control.",
-            "Cloud Data Centers give maximum flexibility.",
-            "Hyperscale Data Centers power internet giants.",
-            "Edge Data Centers reduce latency.",
-            "Managed Data Centers simplify operations.",
-            "Hybrid Data Centers are becoming the preferred approach for modern enterprises.",
+            "Har Data Center ek jaisa nahi hota.",
+            "Different business requirements ke liye different Data Center models use hote hain.",
+            "Enterprise Data Centers maximum control dete hain.",
+            "Cloud Data Centers maximum flexibility dete hain.",
+            "Hyperscale Data Centers internet giants ko power karte hain.",
+            "Edge Data Centers latency reduce karte hain.",
+            "Managed Data Centers operations simplify karte hain.",
+            "Hybrid Data Centers modern enterprises ka preferred approach ban rahe hain.",
           ]}
         />
 
-        <p style={S.p}>Now, whenever you hear the names AWS, Azure, Google Cloud, YouTube, Netflix or ChatGPT, you will have an idea of what type of Data Center might be working behind them.</p>
-        <p style={S.p}>And this understanding is the next important step in the learning journey of Data Center Infrastructure.</p>
+        <p style={S.p}>Ab jab bhi aap AWS, Azure, Google Cloud, YouTube, Netflix ya ChatGPT ka naam sunenge, aapko idea hoga ki unke piche kis type ka Data Center kaam kar raha ho sakta hai.</p>
+        <p style={S.p}>Aur yahi understanding Data Center Infrastructure ki learning journey ka next important step hai.</p>
 
         <hr style={S.divider} />
 

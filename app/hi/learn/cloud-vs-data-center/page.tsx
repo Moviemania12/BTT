@@ -6,9 +6,9 @@ import TopicLink from "@/components/TopicLink";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Cloud vs Data Center: They Are Not the Same — Behind The Tech",
+  title: "Cloud vs Data Center: Dono Same Nahi Hain — Behind The Tech",
   description:
-    "People often think Cloud and Data Center are the same thing, but the reality is different. Ownership, cost, security, scalability and hybrid infrastructure — all explained in simple English.",
+    "Cloud aur Data Center ko log ek hi cheez samajhte hain, lekin reality alag hai. Ownership, cost, security, scalability aur hybrid infrastructure — sab kuch simple Hinglish mein.",
   keywords: [
     "cloud vs data center",
     "cloud computing vs data center",
@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     "behind the tech",
   ],
   openGraph: {
-    title: "Cloud vs Data Center: They Are Not the Same, So What Is the Difference?",
+    title: "Cloud vs Data Center: Dono Same Nahi Hain, To Difference Kya Hai?",
     description:
-      "A Data Center is physical infrastructure, Cloud is a service model. Cost, security, scalability and the hybrid approach — explained in simple English.",
+      "Data Center physical infrastructure hai, Cloud ek service model hai. Cost, security, scalability aur hybrid approach — simple Hinglish mein samjho.",
     url: "https://behindthetech.in/learn/cloud-vs-data-center",
     siteName: "Behind The Tech",
     type: "article",
@@ -32,12 +32,12 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Cloud vs Data Center — Behind The Tech",
-    description: "Ownership model vs consumption model — the real difference between the two, explained in simple English.",
+    description: "Ownership model vs consumption model — dono ka real difference simple Hinglish mein.",
   },
   alternates: {
-    canonical: "https://behindthetech.in/learn/cloud-vs-data-center",
+    canonical: "https://behindthetech.in/hi/learn/cloud-vs-data-center",
     languages: {
-      "hi": "https://behindthetech.in/hi/learn/cloud-vs-data-center",
+      "en": "https://behindthetech.in/learn/cloud-vs-data-center",
     },
   },
 };
@@ -378,24 +378,24 @@ function ComparisonCard({
 
 const FAQS = [
   {
-    q: "Are Cloud and Data Center the same thing?",
-    a: "No. A Data Center is physical infrastructure, whereas Cloud is a model of consuming that infrastructure as a service.",
+    q: "Kya Cloud aur Data Center same hote hain?",
+    a: "Nahi. Data Center physical infrastructure hota hai, jabki Cloud us infrastructure ko service ke roop me consume karne ka model hota hai.",
   },
   {
-    q: "Is there a Data Center behind Cloud as well?",
-    a: "Yes. AWS, Azure and Google Cloud all provide their services from their own global Data Centers.",
+    q: "Kya Cloud ke peeche bhi Data Center hota hai?",
+    a: "Haan. AWS, Azure aur Google Cloud sab apne global Data Centers se hi services provide karte hain.",
   },
   {
-    q: "Why do startups prefer Cloud?",
-    a: "Because the initial investment is low and infrastructure can be scaled quickly — without ordering hardware or waiting for installation.",
+    q: "Startups Cloud ko kyun prefer karte hain?",
+    a: "Kyunki initial investment kam hoti hai aur infrastructure ko quickly scale kiya ja sakta hai — bina hardware order kiye, bina installation ka wait kiye.",
   },
   {
-    q: "Is a Data Center more secure?",
-    a: "It depends on the organization's requirements. A Data Center gives more control, while Cloud provides advanced, enterprise-grade security tools.",
+    q: "Kya Data Center zyada secure hota hai?",
+    a: "Ye organization ki requirements par depend karta hai. Data Center zyada control deta hai, jabki Cloud advanced, enterprise-grade security tools provide karta hai.",
   },
   {
-    q: "Will everything move to Cloud in the future?",
-    a: "No. Most experts believe the future is Hybrid Infrastructure, where Cloud and Data Center will work together.",
+    q: "Future me sab kuch Cloud par chala jayega?",
+    a: "Nahi. Most experts maante hain ki future Hybrid Infrastructure ka hai, jahan Cloud aur Data Center dono saath me kaam karenge.",
   },
 ];
 
@@ -441,10 +441,10 @@ export default function CloudVsDataCenterPage() {
       >
 
         <p style={S.p}>
-          Today, whenever any new software, website or application launches, two words come up a lot — <strong>Cloud</strong> and <strong>Data Center</strong>.
+          Aaj jab bhi koi naya software, website ya application launch hota hai, to aksar do shabd bahut sunne ko milte hain — <strong>Cloud</strong> aur <strong>Data Center</strong>.
         </p>
-        <p style={S.p}>A lot of people think the two are the same thing. If someone says "our application runs on Cloud", people assume Cloud itself is the Data Center.</p>
-        <p style={S.p}>But that's not how it actually works.</p>
+        <p style={S.p}>Kayi logon ko lagta hai ki dono ek hi cheez hain. Agar koi bol de ki "hamara application Cloud par chal raha hai", to log maan lete hain ki Cloud hi Data Center hai.</p>
+        <p style={S.p}>Lekin reality me aisa nahi hai.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -457,26 +457,26 @@ export default function CloudVsDataCenterPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Cloud and Data Center — different models, yet tied together in a relationship.
+            Cloud aur Data Center — alag-alag models, lekin ek doosre se juda hua relationship.
           </figcaption>
         </figure>
 
-        <p style={S.p}>The relationship between Cloud and Data Center is a lot like Electricity and the Electrical Grid. We flip a switch at home and the light comes on, but behind it a power plant, transmission lines and an entire electrical infrastructure are at work.</p>
-        <p style={S.p}>In exactly the same way, when you watch a movie on Netflix, upload a file to Google Drive, scroll through Instagram, or ask ChatGPT a question, you only see the service. But behind that service, there's always a Data Center somewhere.</p>
-        <p style={S.p}>Here's the most important thing to understand:</p>
-        <p style={S.p}><strong>Cloud is a service model, whereas Data Center is physical infrastructure.</strong></p>
-        <p style={S.p}>In simple terms:</p>
+        <p style={S.p}>Cloud aur Data Center ka relationship kuch waisa hi hai jaise Electricity aur Electrical Grid ka. Hum ghar me switch on karte hain aur light jal jaati hai, lekin uske peeche power plant, transmission lines aur poora electrical infrastructure kaam kar raha hota hai.</p>
+        <p style={S.p}>Bilkul isi tarah jab aap Netflix par movie dekhte ho, Google Drive me file upload karte ho, Instagram scroll karte ho ya ChatGPT se sawal puchte ho, to aapko sirf service dikhai deti hai. Lekin us service ke peeche kahin na kahin ek Data Center zarur hota hai.</p>
+        <p style={S.p}>Yahan sabse important baat samajhne wali hai:</p>
+        <p style={S.p}><strong>Cloud ek service model hai, jabki Data Center physical infrastructure hai.</strong></p>
+        <p style={S.p}>Simple language me:</p>
         <ul style={S.ul}>
           <li style={S.li}>Data Center = Building + Servers + Network + Power + Cooling</li>
-          <li style={S.li}>Cloud = A way of using those same resources as a service</li>
+          <li style={S.li}>Cloud = Unhi resources ko service ke roop me use karne ka tareeka</li>
         </ul>
 
         <hr style={S.divider} />
 
         <h2 id="what-is-a-data-center" style={S.h1}>What Is A Data Center?</h2>
 
-        <p style={S.p}>A Data Center is a specialized facility where servers, storage systems and networking devices are housed.</p>
-        <p style={S.p}>If you think of the Internet as a city, Data Centers are like that city's industrial zones, where the actual work happens.</p>
+        <p style={S.p}>Data Center ek specialized facility hoti hai jahan servers, storage systems aur networking devices rakhe jaate hain.</p>
+        <p style={S.p}>Agar Internet ko ek city maan liya jaye, to Data Centers us city ke industrial zones ki tarah hote hain jahan actual kaam hota hai.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -493,7 +493,7 @@ export default function CloudVsDataCenterPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>Inside a modern Data Center, you'll find:</p>
+        <p style={S.p}>Ek modern Data Center ke andar aapko milenge:</p>
         <ul style={S.ul}>
           <li style={S.li}>Server Racks</li>
           <li style={S.li}>Storage Systems</li>
@@ -505,17 +505,17 @@ export default function CloudVsDataCenterPage() {
           <li style={S.li}>Fire Protection Systems</li>
           <li style={S.li}>Physical Security Systems</li>
         </ul>
-        <p style={S.p}>When you open a website, its data comes from a server sitting inside some Data Center.</p>
-        <p style={S.p}>For example: the <strong>Behind The Tech</strong> website is also hosted on a server, and that server is installed inside a Data Center.</p>
-        <p style={S.p}>Whether a website is small or a huge platform like Facebook, its base ultimately comes down to a Data Center.</p>
-        <p style={S.p}>The primary objective of a Data Center is:</p>
+        <p style={S.p}>Jab aap kisi website ko open karte ho, to uska data kisi na kisi Data Center ke server se hi aata hai.</p>
+        <p style={S.p}>Example ke liye: <strong>Behind The Tech</strong> website bhi kisi server par host hai aur woh server kisi Data Center ke andar hi installed hai.</p>
+        <p style={S.p}>Chahe website chhoti ho ya Facebook jaisi badi platform, sabka base ultimately Data Center hi hota hai.</p>
+        <p style={S.p}>Data Center ka primary objective hai:</p>
         <ul style={S.ul}>
           <li style={S.li}>High Availability</li>
           <li style={S.li}>Reliability</li>
           <li style={S.li}>Security</li>
           <li style={S.li}>Performance</li>
         </ul>
-        <p style={S.p}>This is why Data Centers are run continuously, 24×7.</p>
+        <p style={S.p}>Isi liye Data Centers ko 24×7 continuously chalaya jata hai.</p>
 
         <div style={S.learnMore}>
           <TopicLink slug="what-is-a-data-center" label="Read: What Is A Data Center?" variant="inline" />
@@ -525,8 +525,8 @@ export default function CloudVsDataCenterPage() {
 
         <h2 id="what-is-cloud-computing" style={S.h1}>What Is Cloud Computing?</h2>
 
-        <p style={S.p}>Cloud Computing means you don't need to buy and maintain servers yourself.</p>
-        <p style={S.p}>You use infrastructure as a service.</p>
+        <p style={S.p}>Cloud Computing ka matlab hai ki aapko khud servers kharidne aur maintain karne ki zarurat nahi padti.</p>
+        <p style={S.p}>Aap infrastructure ko service ke roop me use karte ho.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -543,57 +543,57 @@ export default function CloudVsDataCenterPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>The most famous Cloud providers are:</p>
+        <p style={S.p}>Sabse famous Cloud providers hain:</p>
         <ul style={S.ul}>
           <li style={S.li}>AWS</li>
           <li style={S.li}>Microsoft Azure</li>
           <li style={S.li}>Google Cloud Platform</li>
         </ul>
-        <p style={S.p}>If you want to launch a website, you'd need to:</p>
+        <p style={S.p}>Agar aapko ek website launch karni hai, to aap:</p>
 
         <ComparisonCard
           tag="Launching A Website"
           leftTitle="Traditional Approach"
-          leftItems={["Buy a server", "Install it in a rack", "Configure the network", "Do the maintenance"]}
+          leftItems={["Server kharido", "Rack me install karo", "Network configure karo", "Maintenance karo"]}
           rightTitle="Cloud Approach"
-          rightItems={["Open an AWS or Azure account", "Create a Virtual Server", "Deploy the application"]}
+          rightItems={["AWS ya Azure account kholo", "Virtual Server create karo", "Application deploy karo"]}
         />
 
         <p style={S.p}>Bas.</p>
-        <p style={S.p}>This is Cloud's biggest advantage.</p>
-        <p style={S.p}>Behind Cloud infrastructure there are actual physical Data Centers too, but the responsibility of managing them lies with the Cloud provider.</p>
-        <p style={S.p}>You just have to use the service.</p>
+        <p style={S.p}>Yahi Cloud ka sabse bada advantage hai.</p>
+        <p style={S.p}>Cloud infrastructure ke peeche bhi actual physical Data Centers hote hain, lekin unhe manage karne ki responsibility Cloud provider ki hoti hai.</p>
+        <p style={S.p}>Aapko sirf service use karni hoti hai.</p>
 
         <hr style={S.divider} />
 
         <h2 id="core-difference" style={S.h1}>Cloud vs Data Center: The Core Difference</h2>
 
         <p style={S.p}>Sabse simple definition:</p>
-        <p style={S.p}><strong>Data Center is an ownership model.</strong></p>
-        <p style={S.p}><strong>Cloud is a consumption model.</strong></p>
-        <p style={S.p}>Let's look at a practical example.</p>
-        <p style={S.p}>Suppose you need a place to stay.</p>
+        <p style={S.p}><strong>Data Center ownership model hai.</strong></p>
+        <p style={S.p}><strong>Cloud consumption model hai.</strong></p>
+        <p style={S.p}>Ek practical example dekhte hain.</p>
+        <p style={S.p}>Maan lo aapko rehna hai.</p>
 
         <ComparisonCard
           tag="Where You Live"
           leftTitle="Data Center Model — Buy A House"
           leftItems={["Investment aapka", "Maintenance aapki", "Security aapki", "Repair aapki"]}
           rightTitle="Cloud Model — Book A Hotel Room"
-          rightItems={["Hotel's building", "Hotel's maintenance", "Hotel's security", "You just use it"]}
+          rightItems={["Building hotel ki", "Maintenance hotel ki", "Security hotel ki", "Aap sirf use karte ho"]}
         />
 
-        <p style={S.p}>Both give you accommodation, but ownership and responsibility differ.</p>
-        <p style={S.p}>The difference between Cloud and Data Center is exactly this.</p>
+        <p style={S.p}>Dono me accommodation milta hai, lekin ownership aur responsibility alag hoti hai.</p>
+        <p style={S.p}>Cloud aur Data Center ke beech bhi exactly yahi difference hai.</p>
 
         <hr style={S.divider} />
 
         <h2 id="cost-comparison" style={S.h1}>Cost Comparison</h2>
 
-        <p style={S.p}>When companies choose infrastructure, the first question is always:</p>
-        <p style={S.p}><strong>How much will it cost?</strong></p>
+        <p style={S.p}>Jab companies infrastructure choose karti hain, to sabse pehla question hota hai:</p>
+        <p style={S.p}><strong>Cost kitni aayegi?</strong></p>
 
         <h3 style={S.h3}>Data Center Cost</h3>
-        <p style={S.p}>If a company builds its own Data Center, then:</p>
+        <p style={S.p}>Agar company khud ka Data Center banati hai to:</p>
         <ul style={S.ul}>
           <li style={S.li}>Building Cost</li>
           <li style={S.li}>Electrical Infrastructure</li>
@@ -605,28 +605,28 @@ export default function CloudVsDataCenterPage() {
           <li style={S.li}>Server Hardware</li>
           <li style={S.li}>AMC & Maintenance</li>
         </ul>
-        <p style={S.p}>Everything has to be managed in-house. The initial investment is very high. This is called CAPEX (Capital Expenditure).</p>
+        <p style={S.p}>Sab kuch khud manage karna padta hai. Initial investment bahut high hoti hai. Isse CAPEX (Capital Expenditure) kaha jata hai.</p>
 
         <h3 style={S.h3}>Cloud Cost</h3>
-        <p style={S.p}>With Cloud, the initial investment is close to zero.</p>
-        <p style={S.p}>You:</p>
+        <p style={S.p}>Cloud me initial investment lagbhag zero hoti hai.</p>
+        <p style={S.p}>Aap:</p>
         <ul style={S.ul}>
           <li style={S.li}>Compute</li>
           <li style={S.li}>Storage</li>
           <li style={S.li}>Database</li>
           <li style={S.li}>Networking</li>
         </ul>
-        <p style={S.p}>pay for however much you use. This is called the OPEX (Operational Expenditure) model.</p>
-        <p style={S.p}>This model is quite attractive for small businesses and startups.</p>
+        <p style={S.p}>jitna use karte ho utna pay karte ho. Isse OPEX (Operational Expenditure) model kaha jata hai.</p>
+        <p style={S.p}>Small businesses aur startups ke liye ye model kaafi attractive hota hai.</p>
 
         <hr style={S.divider} />
 
         <h2 id="security-and-control" style={S.h1}>Security and Control</h2>
 
-        <p style={S.p}>In the Cloud vs Data Center comparison, security is the most discussed topic.</p>
-        <p style={S.p}>A lot of people say:</p>
-        <p style={{ ...S.p, fontStyle: "italic", color: "#1f2937" }}>"Cloud isn't secure."</p>
-        <p style={S.p}>But the reality isn't that simple.</p>
+        <p style={S.p}>Cloud aur Data Center ke comparison me security sabse zyada discuss ki jane wali cheez hai.</p>
+        <p style={S.p}>Bahut log kehte hain:</p>
+        <p style={{ ...S.p, fontStyle: "italic", color: "#1f2937" }}>"Cloud secure nahi hota."</p>
+        <p style={S.p}>Lekin reality itni simple nahi hai.</p>
 
         <ComparisonCard
           tag="Security Trade-offs"
@@ -636,19 +636,19 @@ export default function CloudVsDataCenterPage() {
           rightItems={["Enterprise-grade security tools", "Continuous monitoring", "Global security teams", "Built-in redundancy"]}
         />
 
-        <p style={S.p}>Data Center challenges: all the responsibility falls on the organization, a dedicated security team is needed, and the operational effort is higher.</p>
-        <p style={S.p}>Cloud challenges: a shared responsibility model, vendor dependency, and limited hardware-level control.</p>
-        <p style={S.p}>The answer to security isn't "Cloud or Data Center".</p>
+        <p style={S.p}>Data Center ke challenges: sab responsibility organization ki hoti hai, dedicated security team chahiye, aur operational effort zyada hota hai.</p>
+        <p style={S.p}>Cloud ke challenges: shared responsibility model, vendor dependency, aur limited hardware-level control.</p>
+        <p style={S.p}>Security ka answer "Cloud ya Data Center" nahi hota.</p>
 
         <InsightCard>
-          The right answer is: what does the business actually need? Security has no universal winner — it depends on your compliance needs, control requirements, and operational capacity.
+          Sahi answer hota hai: Business requirement kya hai? Security koi universal winner nahi rakhti — ye depend karta hai aapki compliance needs, control requirements, aur operational capacity par.
         </InsightCard>
 
         <hr style={S.divider} />
 
         <h2 id="performance-and-scalability" style={S.h1}>Performance and Scalability</h2>
 
-        <p style={S.p}>Now let's talk about scalability. This is the area where Cloud has completely changed the industry.</p>
+        <p style={S.p}>Ab baat karte hain scalability ki. Yahi wo area hai jahan Cloud ne industry ko completely change kar diya.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -666,35 +666,35 @@ export default function CloudVsDataCenterPage() {
         </figure>
 
         <h3 style={S.h3}>Data Center Scaling</h3>
-        <p style={S.p}>Suppose you have 10 servers and the workload suddenly doubles.</p>
+        <p style={S.p}>Maan lo aapke paas 10 servers hain aur workload suddenly double ho gaya.</p>
         <p style={S.p}>Ab aapko:</p>
         <ul style={S.ul}>
-          <li style={S.li}>You'd have to order a new server</li>
-          <li style={S.li}>Wait for delivery</li>
-          <li style={S.li}>Get it installed</li>
-          <li style={S.li}>Configure it</li>
+          <li style={S.li}>New Server Order karna hoga</li>
+          <li style={S.li}>Delivery ka wait karna hoga</li>
+          <li style={S.li}>Installation karni hogi</li>
+          <li style={S.li}>Configuration karni hogi</li>
         </ul>
-        <p style={S.p}>This process can take days or weeks.</p>
+        <p style={S.p}>Ye process days ya weeks le sakti hai.</p>
 
         <h3 style={S.h3}>Cloud Scaling</h3>
-        <p style={S.p}>With Cloud:</p>
+        <p style={S.p}>Cloud me:</p>
         <ul style={S.ul}>
           <li style={S.li}>CPU increase</li>
           <li style={S.li}>RAM increase</li>
           <li style={S.li}>Storage increase</li>
         </ul>
-        <p style={S.p}>it often happens within minutes.</p>
-        <p style={S.p}>This is exactly why startups and rapidly growing companies prefer Cloud.</p>
+        <p style={S.p}>kai baar minutes me ho jata hai.</p>
+        <p style={S.p}>Isi wajah se startups aur rapidly growing companies Cloud ko prefer karti hain.</p>
 
         <hr style={S.divider} />
 
         <h2 id="real-world-example" style={S.h1}>Real-World Example: Behind The Tech</h2>
 
-        <p style={S.p}>Suppose an article on the Behind The Tech website suddenly goes viral tomorrow and 50,000 visitors show up.</p>
-        <p style={S.p}>If the website is running on a small dedicated server, the server could get overloaded.</p>
-        <p style={S.p}>But if the website is hosted on Cloud Infrastructure with auto-scaling configured, additional resources can be allocated automatically.</p>
+        <p style={S.p}>Maan lo kal Behind The Tech website par ek article viral ho jata hai aur suddenly 50,000 visitors aa jate hain.</p>
+        <p style={S.p}>Agar website ek small dedicated server par chal rahi ho, to server overload ho sakta hai.</p>
+        <p style={S.p}>Lekin agar website Cloud Infrastructure par host ho aur auto-scaling configured ho, to additional resources automatically allocate kiye ja sakte hain.</p>
         <p style={S.p}>User experience smooth rahega.</p>
-        <p style={S.p}>This is exactly why modern websites prefer Cloud.</p>
+        <p style={S.p}>Isi reason se modern websites Cloud ko prefer karti hain.</p>
 
         <div style={S.learnMore}>
           <TopicLink slug="how-the-internet-works" label="Learn More: How The Internet Works" variant="inline" />
@@ -704,8 +704,8 @@ export default function CloudVsDataCenterPage() {
 
         <h2 id="hybrid-infrastructure" style={S.h1}>The Rise of Hybrid Infrastructure</h2>
 
-        <p style={S.p}>These days, most enterprises don't use only Cloud or only a Data Center.</p>
-        <p style={S.p}>They use Hybrid Infrastructure.</p>
+        <p style={S.p}>Aaj ke time me most enterprises sirf Cloud ya sirf Data Center use nahi karte.</p>
+        <p style={S.p}>Wo Hybrid Infrastructure use karte hain.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -722,16 +722,16 @@ export default function CloudVsDataCenterPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>Example: A bank —</p>
+        <p style={S.p}>Example: Ek bank —</p>
         <ul style={S.ul}>
           <li style={S.li}>Core Banking Application → Private Data Center</li>
           <li style={S.li}>Mobile App → Cloud</li>
           <li style={S.li}>Backup Storage → Cloud</li>
           <li style={S.li}>Analytics Platform → Cloud</li>
         </ul>
-        <p style={S.p}>In other words, the best environment is chosen for each workload.</p>
-        <p style={S.p}>This approach optimizes cost, improves security, provides scalability, and strengthens business continuity.</p>
-        <p style={S.p}>This is why Hybrid Architecture has become the standard model of the future.</p>
+        <p style={S.p}>Yani har workload ke liye best environment choose kiya jata hai.</p>
+        <p style={S.p}>Ye approach: cost optimize karti hai, security improve karti hai, scalability provide karti hai, aur business continuity strengthen karti hai.</p>
+        <p style={S.p}>Isi liye Hybrid Architecture future ka standard model ban chuka hai.</p>
 
         <hr style={S.divider} />
 
@@ -752,10 +752,10 @@ export default function CloudVsDataCenterPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>If you're a bank, a government organization, or in a compliance-heavy industry, a Data Center could be the better option.</p>
-        <p style={S.p}>If you're a startup, a SaaS company, or expecting fast growth, Cloud could be the better option.</p>
-        <p style={S.p}>If you're a large enterprise managing mixed workloads, Hybrid Infrastructure is the most practical solution.</p>
-        <p style={S.p}>Today, the majority of enterprises are moving in this very direction.</p>
+        <p style={S.p}>Agar aap bank ho, government organization ho, ya compliance heavy industry me ho — to Data Center better option ho sakta hai.</p>
+        <p style={S.p}>Agar aap startup ho, SaaS company ho, ya fast growth expect kar rahe ho — to Cloud better option ho sakta hai.</p>
+        <p style={S.p}>Agar aap large enterprise ho aur mixed workloads manage karte ho — to Hybrid Infrastructure sabse practical solution hai.</p>
+        <p style={S.p}>Aaj ki date me majority enterprises isi direction me move kar rahe hain.</p>
 
         <div style={S.learnMore}>
           <TopicLink slug="ai-infrastructure-basics" label="Learn More: AI Infrastructure Basics" variant="inline" />
@@ -767,14 +767,14 @@ export default function CloudVsDataCenterPage() {
 
         <KeyTakeawayCard
           items={[
-            "A Data Center is physical infrastructure.",
-            "Cloud is a service model.",
-            "There's a Data Center behind every Cloud.",
-            "Not every Data Center is a Cloud.",
-            "A Data Center gives more control.",
-            "Cloud gives more flexibility.",
-            "Hybrid Infrastructure is the best combination of both.",
-            "The trend in future enterprise architecture is heading toward Hybrid Infrastructure.",
+            "Data Center physical infrastructure hota hai.",
+            "Cloud ek service model hota hai.",
+            "Har Cloud ke peeche Data Center hota hai.",
+            "Har Data Center Cloud nahi hota.",
+            "Data Center zyada control deta hai.",
+            "Cloud zyada flexibility deta hai.",
+            "Hybrid Infrastructure dono ka best combination hai.",
+            "Future enterprise architecture ka trend Hybrid Infrastructure ki taraf ja raha hai.",
           ]}
         />
 

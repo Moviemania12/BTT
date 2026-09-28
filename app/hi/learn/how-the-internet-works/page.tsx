@@ -6,23 +6,23 @@ import TopicLink from "@/components/TopicLink";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "How The Internet Works: How the Internet Actually Works — Behind The Tech",
+  title: "How The Internet Works: Internet Kaise Kaam Karta Hai — Behind The Tech",
   description:
-    "DNS, routers, submarine cables and Data Centers — what happens behind the scenes when you search on Google or watch YouTube. The complete journey in simple English.",
+    "DNS, routers, submarine cables aur Data Centers — jab aap Google search karte ho ya YouTube dekhte ho, background me kya hota hai. Complete journey simple Hinglish mein.",
   keywords: [
     "how the internet works",
-    "how the internet works",
-    "what is dns",
-    "what is isp",
+    "internet kaise kaam karta hai",
+    "dns kya hai",
+    "isp kya hai",
     "submarine cables",
     "data packets",
     "internet backbone",
     "behind the tech",
   ],
   openGraph: {
-    title: "How The Internet Works: How the Internet Actually Works",
+    title: "How The Internet Works: Internet Kaise Kaam Karta Hai",
     description:
-      "DNS, routers, submarine cables and Data Centers — understand every request's journey, in simple English.",
+      "DNS, routers, submarine cables aur Data Centers — har request ka safar samjho, simple Hinglish mein.",
     url: "https://behindthetech.in/learn/how-the-internet-works",
     siteName: "Behind The Tech",
     type: "article",
@@ -32,12 +32,12 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "How The Internet Works — Behind The Tech",
-    description: "How the Internet completes a request — from DNS all the way to the Data Center.",
+    description: "Internet ek request kaise complete karta hai — DNS se lekar Data Center tak.",
   },
   alternates: {
-    canonical: "https://behindthetech.in/learn/how-the-internet-works",
+    canonical: "https://behindthetech.in/hi/learn/how-the-internet-works",
     languages: {
-      "hi": "https://behindthetech.in/hi/learn/how-the-internet-works",
+      "en": "https://behindthetech.in/learn/how-the-internet-works",
     },
   },
 };
@@ -389,28 +389,28 @@ function ContinueLearning() {
 
 const FAQS = [
   {
-    q: "Are the Internet and WiFi the same thing?",
-    a: "No. WiFi is just one medium for accessing the Internet — a wireless connection that links your device to a router. The Internet itself is a separate, much larger global network.",
+    q: "Kya Internet aur WiFi same hote hain?",
+    a: "Nahi. WiFi sirf Internet access karne ka ek medium hai — wireless connection jo aapke device ko router se jodta hai. Internet khud ek alag, bahut bada global network hai.",
   },
   {
-    q: "What does DNS stand for?",
-    a: "Domain Name System. It converts a website's name (like behindthetech.in) into its machine-friendly IP Address.",
+    q: "DNS ka full form kya hai?",
+    a: "Domain Name System. Yeh website ke naam (jaise behindthetech.in) ko uske machine-friendly IP Address me convert karta hai.",
   },
   {
-    q: "Does the Internet run on satellites?",
-    a: "Partially. Satellites are used, but most of the world's Internet traffic travels through underwater submarine fiber cables.",
+    q: "Kya Internet satellites se chalta hai?",
+    a: "Partially. Satellites ka use hota hai, lekin duniya ka major Internet traffic underwater submarine fiber cables ke through travel karta hai.",
   },
   {
-    q: "What's the difference between a server and a normal computer?",
-    a: "A server is also a computer, but it's specially optimized for handling requests and running 24/7 — with more reliability, more uptime, and more processing capacity.",
+    q: "Server aur normal computer me kya difference hai?",
+    a: "Server bhi ek computer hota hai, lekin requests handle karne aur 24/7 chalne ke liye specially optimized hota hai — zyada reliability, zyada uptime, aur zyada processing capacity ke saath.",
   },
   {
-    q: "Why is the Data Center important for the Internet?",
-    a: "Because the actual servers for websites and applications are hosted inside Data Centers. Whenever you send a request, it eventually reaches some Data Center.",
+    q: "Data Center Internet ke liye kyun important hai?",
+    a: "Kyunki websites aur applications ke actual servers Data Centers ke andar host hote hain. Jab aap koi request bhejte ho, wo eventually kisi Data Center tak hi pahunchti hai.",
   },
   {
-    q: "Who owns the Internet?",
-    a: "The Internet has no single owner. It's run collectively by thousands of ISPs, telecom companies, and organizations — which is exactly why it's called a 'network of networks'.",
+    q: "Internet ka malik kaun hai?",
+    a: "Internet ka koi single owner nahi hai. Yeh hazaron ISPs, telecom companies, aur organizations milkar chalate hain — isi wajah se ise 'network of networks' kaha jata hai.",
   },
 ];
 
@@ -458,10 +458,10 @@ export default function HowTheInternetWorksPage() {
         {/* ── What Happens When You Go Online ── */}
         <h2 id="what-happens-when-you-go-online" style={S.h2}>What Happens When You Go Online</h2>
 
-        <p style={S.p}>You wake up in the morning, unlock your phone, and check WhatsApp. As soon as you reach office, you open your mail. Several times a day, you search for something on Google. In the evening you watch YouTube, and at night you ask some AI tool a question.</p>
-        <p style={S.p}>All of this feels so normal that we never stop to think about what's happening behind the scenes.</p>
-        <p style={S.p}>Your phone might be in Jodhpur. The server the data is coming from might be in Mumbai, Singapore, London, or America. Yet the response reaches you within a few seconds.</p>
-        <p style={S.p}><strong>How?</strong></p>
+        <p style={S.p}>Aap subah uthte ho, phone unlock karte ho aur WhatsApp check karte ho. Office pahunchte hi mail kholte ho. Din me kai baar Google par kuch search karte ho. Sham ko YouTube dekhte ho aur raat ko kisi AI tool se sawal puchte ho.</p>
+        <p style={S.p}>Ye sab itna normal lagta hai ki hum kabhi ruk kar nahi sochte ki background me kya ho raha hai.</p>
+        <p style={S.p}>Aapka phone Jodhpur me ho sakta hai. Jis server se data aa raha hai wo Mumbai, Singapore, London ya America me ho sakta hai. Phir bhi response kuch hi seconds me aap tak pahunch jata hai.</p>
+        <p style={S.p}><strong>Kaise?</strong></p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -478,17 +478,17 @@ export default function HowTheInternetWorksPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>The Internet isn't some invisible magic. It's a physical infrastructure built from cables, routers, switches, servers, and Data Centers.</p>
-        <p style={S.p}>The Internet is a global network of connected computer networks around the world. That's why it's often called a <strong>Network of Networks</strong>. Every home's WiFi network, every office's network, every ISP's backbone network, and every Data Center's network together make up the Internet.</p>
+        <p style={S.p}>Internet koi invisible magic nahi hai. Ye ek physical infrastructure hai jo cables, routers, switches, servers aur Data Centers se milkar bana hai.</p>
+        <p style={S.p}>Internet duniya bhar ke connected computer networks ka ek global network hai. Isi liye ise aksar <strong>Network of Networks</strong> kaha jata hai. Har ghar ka WiFi network, har office ka network, har ISP ka backbone network aur har Data Center ka network milkar Internet banate hain.</p>
 
         <h3 style={S.h3}>Road Network Example</h3>
-        <p style={S.p}>Think of India's road network. There are lanes. There are city roads. There are national highways. There are expressways. All these roads together connect the entire country.</p>
-        <p style={S.p}>The Internet works much the same way. The only difference is that instead of vehicles, data travels here — and to reach its destination, it too has to follow a route.</p>
+        <p style={S.p}>Sochiye India ka road network. Galiyan hain. City roads hain. National highways hain. Expressways hain. Ye sab roads milkar poore desh ko connect karti hain.</p>
+        <p style={S.p}>Internet bhi kuch aisa hi hai. Farq sirf itna hai ki yahan gaadiyon ki jagah data travel karta hai — aur destination tak pahunchne ke liye usse bhi ek route follow karna padta hai.</p>
 
-        <h3 style={S.h3}>The Internet And The Web Are Not The Same Thing</h3>
-        <p style={S.p}>This is the most common confusion. Many people think the Internet and the Web are the same thing — in reality, the two are different.</p>
-        <p style={S.p}>The <strong>Internet</strong> is infrastructure: fiber optic cables, routers, switches, ISP networks, servers, and Data Centers. The <strong>Web</strong> is a service that runs on top of the Internet — Google, YouTube, Facebook, Amazon, Behind The Tech, these are all examples.</p>
-        <p style={S.p}>A simple analogy: Internet = Road Network, Websites = Vehicles. A vehicle can't run without a road, and a road has no practical use without a vehicle. When you open Google, you're using the Internet — but Google itself isn't the Internet, it's a service that runs on the Internet.</p>
+        <h3 style={S.h3}>Internet Aur Web Same Nahi Hain</h3>
+        <p style={S.p}>Ye sabse common confusion hai. Bahut log Internet aur Web ko ek hi cheez samajhte hain — reality me dono alag hain.</p>
+        <p style={S.p}><strong>Internet</strong> infrastructure hai: fiber optic cables, routers, switches, ISP networks, servers, aur Data Centers. <strong>Web</strong> ek service hai jo Internet ke upar chalti hai — Google, YouTube, Facebook, Amazon, Behind The Tech, ye sab examples hain.</p>
+        <p style={S.p}>Simple analogy: Internet = Road Network, Websites = Vehicles. Road ke bina vehicle nahi chal sakta, aur vehicle ke bina road ka koi practical use nahi. Jab aap Google open karte ho, to aap Internet use kar rahe hote ho — lekin Google khud Internet nahi hai, ye Internet par chalne wali ek service hai.</p>
 
         <div style={S.learnMore}>
           <TopicLink slug="what-is-a-data-center" label="Read: What Is A Data Center?" variant="inline" />
@@ -497,9 +497,9 @@ export default function HowTheInternetWorksPage() {
         <hr style={S.divider} />
 
         {/* ── DNS — The Internet's Phonebook ── */}
-        <h2 id="dns-the-internets-phonebook" style={S.h1}>What Is DNS?</h2>
+        <h2 id="dns-the-internets-phonebook" style={S.h1}>DNS Kya Hota Hai?</h2>
 
-        <p style={S.p}>DNS stands for <strong>Domain Name System</strong>. DNS is the Internet's phonebook.</p>
+        <p style={S.p}>DNS ka full form hai <strong>Domain Name System</strong>. DNS Internet ki phonebook hai.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -517,12 +517,12 @@ export default function HowTheInternetWorksPage() {
         </figure>
 
         <h3 style={S.h3}>Real-Life Example</h3>
-        <p style={S.p}>You know a friend's name. But to call them, you need a mobile number. You search their name in contacts and get the number. DNS does exactly the same thing.</p>
+        <p style={S.p}>Aapko kisi dost ka naam pata hai. Lekin call karne ke liye mobile number chahiye. Aap contacts me naam search karte ho aur number mil jata hai. DNS bhi exactly yehi kaam karta hai.</p>
 
         <h3 style={S.h3}>Example</h3>
         <p style={S.p}>Human-Friendly Address: <strong>behindthetech.in</strong></p>
         <p style={S.p}>Machine-Friendly Address: <strong>104.xxx.xxx.xxx</strong></p>
-        <p style={S.p}>A computer doesn't understand a website's name. A computer understands an IP Address. So the browser first asks DNS: <em>"What's the IP Address for behindthetech.in?"</em> DNS gives the answer, and only then can the browser send the request to the right destination.</p>
+        <p style={S.p}>Computer website ka naam nahi samajhta. Computer IP Address samajhta hai. Isliye browser pehle DNS se poochta hai: <em>"behindthetech.in ka IP Address kya hai?"</em> DNS jawab deta hai, aur uske baad browser request ko sahi destination tak bhej pata hai.</p>
 
         <RequestFlowDiagram
           caption="DNS Resolution Flow — name becomes address"
@@ -535,23 +535,23 @@ export default function HowTheInternetWorksPage() {
           ]}
         />
 
-        <h3 style={S.h3}>An Interesting Fact</h3>
-        <p style={S.p}>We humans look at names and keywords. But the Internet doesn't understand names — the Internet understands IP Addresses. When you search something on Google, first the IP Address of Google's server is looked up, and only then is the search request sent to Google's Data Center. In other words, for the Internet, the destination's address is what matters most.</p>
+        <h3 style={S.h3}>Ek Interesting Fact</h3>
+        <p style={S.p}>Hum humans naam aur keywords dekhte hain. Lekin Internet naam nahi samajhta — Internet ko IP Address samajh aata hai. Jab aap Google par kuch search karte ho, to pehle Google server ka IP Address dhunda jata hai, uske baad search request Google ke Data Center tak bheji jati hai. Yaani Internet ke liye destination ka address sabse important hota hai.</p>
 
         <hr style={S.divider} />
 
         {/* ── Packets and Routing ── */}
-        <h2 id="packets-and-routing" style={S.h1}>What Is A Data Packet?</h2>
+        <h2 id="packets-and-routing" style={S.h1}>Data Packet Kya Hota Hai?</h2>
 
-        <p style={S.p}>If you send a friend a 1GB video, does the entire video travel across the Internet in one go? No.</p>
-        <p style={S.p}>The Internet breaks data down into small pieces. These pieces are called <strong>Data Packets</strong>. Each packet carries some important information:</p>
+        <p style={S.p}>Agar aap kisi dost ko 1GB ki video bhejte ho, to kya wo poori video ek hi baar me Internet par travel karti hai? Nahi.</p>
+        <p style={S.p}>Internet data ko chhote-chhote tukdon me divide kar deta hai. In tukdon ko <strong>Data Packets</strong> kaha jata hai. Har packet ke paas kuch important information hoti hai:</p>
         <ul style={S.ul}>
           <li style={S.li}>Source Address</li>
           <li style={S.li}>Destination Address</li>
           <li style={S.li}>Packet/Sequence Number</li>
           <li style={S.li}>Actual Data</li>
         </ul>
-        <p style={S.p}>After reaching the destination, these packets are reassembled. Much like a courier company splits one large shipment into multiple boxes before sending it. If one packet is delayed, the rest keep traveling anyway — which is exactly why the Internet is scalable and reliable.</p>
+        <p style={S.p}>Destination par pahunchne ke baad ye packets dobara jod diye jate hain. Bilkul waise hi jaise ek courier company ek bade shipment ko multiple boxes me divide karke bhejti hai. Agar ek packet delay ho jaye to baaki packets phir bhi travel karte rehte hain — isi wajah se Internet scalable aur reliable banta hai.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -568,11 +568,11 @@ export default function HowTheInternetWorksPage() {
           </figcaption>
         </figure>
 
-        <h3 style={S.h3}>What Does A Router Do?</h3>
-        <p style={S.p}>A router is the Internet's traffic manager. Its job is to send data packets down the right route. Think of sending a courier — the courier company decides which city the parcel goes to from which city. A router does exactly the same thing. Every router looks at a packet and decides: <em>"Where's the next stop?"</em> This process is exactly what lets packets travel all around the world.</p>
+        <h3 style={S.h3}>Router Kya Karta Hai?</h3>
+        <p style={S.p}>Router Internet ka traffic manager hota hai. Iska kaam data packets ko sahi route par bhejna hota hai. Sochiye aap ek courier bhejte ho — courier company decide karti hai parcel kis city se kis city jayega. Router bhi exactly yehi karta hai. Har router packet ko dekhta hai aur decide karta hai: <em>"Agla stop kahan hoga?"</em> Isi process ki wajah se packets duniya bhar me travel kar pate hain.</p>
 
-        <h3 style={S.h3}>What Is An ISP?</h3>
-        <p style={S.p}>ISP stands for <strong>Internet Service Provider</strong> — Jio, Airtel, BSNL are examples. An ISP gives you access to the Internet. If the Internet is a highway, the ISP is that highway's entry gate. All your traffic travels through your ISP — which is exactly why, if the ISP goes down, your Internet access goes down too.</p>
+        <h3 style={S.h3}>ISP Kya Hota Hai?</h3>
+        <p style={S.p}>ISP ka full form hai <strong>Internet Service Provider</strong> — Jio, Airtel, BSNL jaise examples. ISP aapko Internet access provide karta hai. Agar Internet ek highway hai to ISP us highway ka entry gate hai. Aapka sara traffic ISP ke through hi travel karta hai — isi liye agar ISP down ho jaye to Internet access bhi band ho jata hai.</p>
 
         <RequestFlowDiagram
           caption="Complete Internet Request Journey — device to destination and back"
@@ -590,9 +590,9 @@ export default function HowTheInternetWorksPage() {
         <hr style={S.divider} />
 
         {/* ── The Physical Internet ── */}
-        <h2 id="the-physical-internet" style={S.h1}>What Is The Internet Backbone?</h2>
+        <h2 id="the-physical-internet" style={S.h1}>Internet Backbone Kya Hota Hai?</h2>
 
-        <p style={S.p}>The Internet Backbone is the Internet's main highways. These are high-capacity fiber networks that connect countries and continents. Your home isn't directly connected to a server in America — in between are telecom providers and backbone networks that provide global connectivity. This is the Internet's core infrastructure.</p>
+        <p style={S.p}>Internet Backbone Internet ki main highways hoti hain. Ye high-capacity fiber networks hote hain jo countries aur continents ko connect karte hain. Aapka ghar directly America ke server se connected nahi hota — beech me telecom providers aur backbone networks hote hain jo global connectivity provide karte hain. Ye hi Internet ka core infrastructure hai.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -609,8 +609,8 @@ export default function HowTheInternetWorksPage() {
           </figcaption>
         </figure>
 
-        <h3 style={S.h3}>Does The Internet Run On Satellites?</h3>
-        <p style={S.p}>Many people think the Internet runs on satellites. The reality is a bit different. Most of the world's Internet traffic travels through underwater fiber optic cables — these are called <strong>Submarine Cables</strong>. These cables connect Asia, Europe, America, Africa, and Australia. Satellites are used too, but most of the Internet's traffic goes through submarine cables.</p>
+        <h3 style={S.h3}>Kya Internet Satellites Se Chalta Hai?</h3>
+        <p style={S.p}>Bahut log sochte hain ki Internet satellites se chalta hai. Reality kuch aur hai. Duniya ka zyada Internet traffic underwater fiber optic cables se travel karta hai — inhe <strong>Submarine Cables</strong> kaha jata hai. Ye cables Asia, Europe, America, Africa, aur Australia ko connect karti hain. Satellites ka use bhi hota hai, lekin Internet ka major traffic submarine cables ke through hi jata hai.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -630,10 +630,10 @@ export default function HowTheInternetWorksPage() {
         <hr style={S.divider} />
 
         {/* ── Data Centers — The Destination ── */}
-        <h2 id="data-centers-the-destination" style={S.h1}>What Is The Role Of Data Centers?</h2>
+        <h2 id="data-centers-the-destination" style={S.h1}>Data Centers Ka Role Kya Hai?</h2>
 
-        <p style={S.p}>Now the question comes up: where is a website's actual data stored? This is where the Data Center's role begins.</p>
-        <p style={S.p}>A Data Center is a specialized facility where servers, storage systems, and network equipment are operated. When you open a website, the request eventually reaches some Data Center — and that's where the response is generated. That's exactly why Data Centers are called the backbone of the digital world.</p>
+        <p style={S.p}>Ab sawal aata hai: website ka actual data rakha kahan hota hai? Yahan Data Center ka role shuru hota hai.</p>
+        <p style={S.p}>Data Center ek specialized facility hoti hai jahan servers, storage systems, aur network equipment operate kiye jate hain. Jab aap website open karte ho to request eventually kisi Data Center tak pahunchti hai — wahin se response generate hota hai. Isi liye Data Centers digital duniya ka backbone kehlate hain.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -650,8 +650,8 @@ export default function HowTheInternetWorksPage() {
           </figcaption>
         </figure>
 
-        <h3 style={S.h3}>What Does A Server Do?</h3>
-        <p style={S.p}>A server is a powerful computer. Its job is to receive requests and send responses. You send a request: <em>"Show me the homepage."</em> The server sends a response: <em>"Here's the homepage."</em> This process happens millions of times every second. Behind every website, one or several servers are working.</p>
+        <h3 style={S.h3}>Server Kya Karta Hai?</h3>
+        <p style={S.p}>Server ek powerful computer hota hai. Iska kaam requests receive karna aur responses bhejna hota hai. Aap request bhejte ho: <em>"Mujhe homepage dikhaiye."</em> Server response bhejta hai: <em>"Ye raha homepage."</em> Ye process har second lakhon baar hoti hai. Har website ke peeche ek ya kai servers kaam kar rahe hote hain.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -677,7 +677,7 @@ export default function HowTheInternetWorksPage() {
         {/* ── Real-World Journeys ── */}
         <h2 id="real-world-journeys" style={S.h1}>Real-World Journeys</h2>
 
-        <p style={S.p}>Understanding the theory is one thing. But the real fun begins when you see how all of this actually works behind the apps you use every day.</p>
+        <p style={S.p}>Theory samajhna ek baat hai. Lekin asli maza tab aata hai jab aap dekhte ho ki rozana use hone wale apps ke peeche ye sab kaise kaam karta hai.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -694,10 +694,10 @@ export default function HowTheInternetWorksPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>Say you type <strong>behindthetech.in</strong> in your browser and press Enter. It feels like the website opened right away — but behind the scenes, several systems are working together at once. The browser first asks DNS for the address, the request travels through the ISP and the backbone, reaches the Data Center, the server prepares the homepage's files, and the response arrives back at your device in the form of packets. This entire process usually completes in less than 1–2 seconds.</p>
+        <p style={S.p}>Maan lijiye aap browser me type karte ho <strong>behindthetech.in</strong> aur Enter press kar dete ho. Aapko lagta hai website seedhi open ho gayi — lekin background me kai systems ek saath kaam kar rahe hote hain. Browser pehle DNS se address poochta hai, request ISP aur backbone ke through travel karti hai, Data Center tak pahunchti hai, server homepage ke files prepare karta hai, aur response packets ke form me wapas aapke device tak aata hai. Ye poora process aam taur par 1–2 seconds se bhi kam samay me complete ho jata hai.</p>
 
-        <h3 style={S.h3}>What Happens When You Play A YouTube Video?</h3>
-        <p style={S.p}>When you play a video on YouTube — the app sends a request, DNS finds YouTube's server address, the request reaches the Data Center, the server locates the video, the video is split into packets, the packets travel across the Internet, and the device receives the packets and plays the video. All of this happens in milliseconds, which is why the video starts almost instantly.</p>
+        <h3 style={S.h3}>YouTube Video Play Karne Par Kya Hota Hai?</h3>
+        <p style={S.p}>Jab aap YouTube par video play karte ho — app request bhejta hai, DNS YouTube server ka address find karta hai, request Data Center tak pahunchti hai, server video locate karta hai, video packets me divide hoti hai, packets Internet ke through travel karte hain, aur device packets ko receive karke video play karta hai. Ye sab milliseconds me hota hai, isi liye video almost instantly start ho jati hai.</p>
 
         <RequestFlowDiagram
           caption="YouTube Request Flow"
@@ -711,8 +711,8 @@ export default function HowTheInternetWorksPage() {
           ]}
         />
 
-        <h3 style={S.h3}>What Happens When You Search On Google?</h3>
-        <p style={S.p}>Say you search for <em>"Best Data Center in India"</em>. The browser connects to Google's server, the search query is sent to Google, Google's servers search their index, relevant results are identified, ranking algorithms are applied, and the search results are returned to you. All of this happens in under a second.</p>
+        <h3 style={S.h3}>Google Search Karne Par Kya Hota Hai?</h3>
+        <p style={S.p}>Maan lijiye aap search karte ho <em>"Best Data Center in India"</em>. Browser Google server se connect karta hai, search query Google ko bheji jati hai, Google ke servers apne index me search karte hain, relevant results identify kiye jate hain, ranking algorithms apply hote hain, aur search results aapko return kiye jate hain. Ye sab ek second se bhi kam samay me ho jata hai.</p>
 
         <RequestFlowDiagram
           caption="Google Search Flow"
@@ -725,8 +725,8 @@ export default function HowTheInternetWorksPage() {
           ]}
         />
 
-        <h3 style={S.h3}>What Happens When You Send A WhatsApp Message?</h3>
-        <p style={S.p}>When you send a message on WhatsApp — the message is encrypted, sent to WhatsApp's server, the recipient is identified, the message is forwarded to the recipient's device, and the delivery status is updated. This process is so fast that it feels like the message reached instantly.</p>
+        <h3 style={S.h3}>WhatsApp Message Send Karne Par Kya Hota Hai?</h3>
+        <p style={S.p}>Jab aap WhatsApp par message bhejte ho — message encrypt hota hai, WhatsApp server tak bheja jata hai, recipient identify kiya jata hai, message recipient device tak forward kiya jata hai, aur delivery status update hoti hai. Ye process itni fast hoti hai ki hume lagta hai message instantly pahunch gaya.</p>
 
         <RequestFlowDiagram
           caption="WhatsApp Message Flow"
@@ -739,8 +739,8 @@ export default function HowTheInternetWorksPage() {
           ]}
         />
 
-        <h3 style={S.h3}>How Does A ChatGPT Response Arrive?</h3>
-        <p style={S.p}>ChatGPT's process is a bit different from a normal website. Here, it's not just data being retrieved — an AI model runs as well. Your prompt reaches the AI servers, the model processes it, and then the generated response comes back to you over the Internet. That's exactly why, for some complex prompts, generating a response can take a little extra time.</p>
+        <h3 style={S.h3}>ChatGPT Response Kaise Aata Hai?</h3>
+        <p style={S.p}>ChatGPT ka process normal website se thoda alag hai. Yahan sirf data retrieve nahi hota — AI model bhi run hota hai. Aapka prompt AI servers tak pahunchta hai, model usse process karta hai, phir generated response Internet ke through wapas aap tak aata hai. Isi liye kuch complex prompts me response generate hone me thoda extra time lag sakta hai.</p>
 
         <RequestFlowDiagram
           caption="ChatGPT Response Flow"
@@ -757,9 +757,9 @@ export default function HowTheInternetWorksPage() {
         <hr style={S.divider} />
 
         {/* ── CDNs — Getting Closer ── */}
-        <h2 id="cdns-getting-closer" style={S.h1}>Why Does The Internet Feel So Fast?</h2>
+        <h2 id="cdns-getting-closer" style={S.h1}>Internet Itna Fast Kaise Lagta Hai?</h2>
 
-        <p style={S.p}>There are several reasons the Internet feels fast.</p>
+        <p style={S.p}>Internet fast lagne ke peeche kai reasons hain.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -777,23 +777,23 @@ export default function HowTheInternetWorksPage() {
         </figure>
 
         <h3 style={S.h3}>Caching</h3>
-        <p style={S.p}>Frequently used content is stored nearby, so that it's available instantly the next time it's requested.</p>
+        <p style={S.p}>Frequently used content nearby store kiya jata hai, taaki dobara request karne par wo turant mil jaye.</p>
 
         <h3 style={S.h3}>CDN</h3>
-        <p style={S.p}>Content Delivery Networks keep data close to users — so a request doesn't need to travel across the entire world.</p>
+        <p style={S.p}>Content Delivery Networks data ko users ke kareeb rakhte hain — taaki request ko poori duniya travel na karni pade.</p>
 
         <h3 style={S.h3}>Edge Infrastructure</h3>
-        <p style={S.p}>Processing happens close to the user's location, which further reduces response time.</p>
+        <p style={S.p}>Processing user ke paas ki location par ki jati hai, jisse response time aur kam ho jata hai.</p>
 
         <h3 style={S.h3}>High-Speed Fiber</h3>
-        <p style={S.p}>Modern fiber optic networks provide enormous bandwidth. Thanks to all these technologies, websites and applications feel very fast.</p>
+        <p style={S.p}>Modern fiber optic networks enormous bandwidth provide karte hain. In sab technologies ki wajah se websites aur applications bahut fast feel hoti hain.</p>
 
         <hr style={S.divider} />
 
         {/* ── AI and the Modern Internet ── */}
-        <h2 id="ai-and-the-modern-internet" style={S.h1}>AI And The Modern Internet</h2>
+        <h2 id="ai-and-the-modern-internet" style={S.h1}>AI Aur Modern Internet</h2>
 
-        <p style={S.p}>AI tools like ChatGPT have added a new layer on top of the Internet. Earlier, the Internet only retrieved stored data — some webpage, some video, some message. Now, some requests are such that the response doesn't already exist — instead, it's generated in real time.</p>
+        <p style={S.p}>ChatGPT jaise AI tools ne ek naya layer add kiya hai Internet ke upar. Pehle Internet sirf stored data retrieve karta tha — koi webpage, koi video, koi message. Ab kuch requests aise hote hain jinme response pehle se exist hi nahi karta, balki real-time generate hota hai.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -810,10 +810,10 @@ export default function HowTheInternetWorksPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>This means AI infrastructure needs even more compute power than a normal Data Center — GPUs, specialized cooling, and massive processing capacity. But the fundamentals stay the same: the request travels across the Internet, reaches some Data Center, and the response comes back over the Internet too.</p>
+        <p style={S.p}>Iska matlab hai ki AI infrastructure ko normal Data Center se bhi zyada compute power chahiye hoti hai — GPUs, specialized cooling, aur massive processing capacity. Lekin fundamentals same rehte hain: request Internet ke through travel karti hai, kisi Data Center tak pahunchti hai, aur response wapas Internet ke through hi aata hai.</p>
 
         <InsightCard>
-          AI has added a new layer on top of the Internet, but the basic structure of the journey — from device to Data Center, and from Data Center back to the device — has remained the same for decades.
+          AI ne Internet ke upar ek naya layer add kiya hai, lekin journey ka basic structure — device se Data Center, aur Data Center se wapas device tak — wahi raha hai jo decades se hai.
         </InsightCard>
 
         <div style={S.learnMore}>
@@ -827,18 +827,18 @@ export default function HowTheInternetWorksPage() {
 
         <KeyTakeawayCard
           items={[
-            "The Internet is a network of networks around the world.",
-            "It travels in the form of data packets.",
-            "DNS converts website names into IP Addresses.",
-            "ISPs provide Internet access and routers direct traffic.",
-            "Submarine cables connect continents.",
-            "Data Centers host websites and applications.",
-            "Servers process requests.",
-            "Google, YouTube, WhatsApp, and ChatGPT all depend on Internet infrastructure.",
+            "Internet duniya bhar ke networks ka network hai.",
+            "Data packets ke form me travel karta hai.",
+            "DNS website names ko IP Address me convert karta hai.",
+            "ISP Internet access provide karta hai aur routers traffic ko direction dete hain.",
+            "Submarine cables continents ko connect karti hain.",
+            "Data Centers websites aur applications ko host karte hain.",
+            "Servers requests ko process karte hain.",
+            "Google, YouTube, WhatsApp aur ChatGPT sab Internet infrastructure par depend karte hain.",
           ]}
         />
 
-        <p style={S.p}>The Internet feels simple to us because thousands of systems are working together behind the scenes. Next time you open a website, you'll know just how long a journey the data took to reach that page.</p>
+        <p style={S.p}>Internet hume simple lagta hai kyunki background me hazaron systems milkar kaam kar rahe hote hain. Agli baar jab aap koi website open karoge, to aap jaante honge ki us page tak pahunchne ke liye data ne kitna lamba safar tay kiya hai.</p>
 
         <hr style={S.divider} />
 

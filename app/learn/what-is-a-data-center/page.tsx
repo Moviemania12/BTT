@@ -608,7 +608,7 @@ export default function WhatIsADataCenterPage() {
         You use Data Centers every day. Yes, every single day.
       </IntroLead>
 
-      <p style={S.p}>Jab aap:</p>
+      <p style={S.p}>When you:</p>
 
       <AppGrid
         items={[
@@ -622,7 +622,7 @@ export default function WhatIsADataCenterPage() {
       />
 
       <p style={S.p}>you are directly or indirectly connected to some Data Center.</p>
-      <p style={S.p}>Simple words me:</p>
+      <p style={S.p}>In simple words:</p>
 
       <DefinitionCard>
         <strong>A Data Center is a specially designed facility where servers, storage, networking, power and cooling systems are installed to run digital services.</strong>
@@ -798,7 +798,7 @@ export default function WhatIsADataCenterPage() {
       </WarningCard>
 
       <p style={S.p}>Answer:</p>
-      <p style={{ ...S.p, color: "#1f2937", fontWeight: 600, fontSize: 16 }}>Nahi.</p>
+      <p style={{ ...S.p, color: "#1f2937", fontWeight: 600, fontSize: 16 }}>No.</p>
       <p style={S.p}>Modern Data Centers use multiple backup layers.</p>
 
       <JourneyTimeline

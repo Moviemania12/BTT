@@ -6,9 +6,9 @@ import TopicLink from "@/components/TopicLink";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "AI Infrastructure Basics: What\'s Actually Behind ChatGPT — Behind The Tech",
+  title: "AI Infrastructure Basics: ChatGPT Ke Peeche Kya Chalta Hai — Behind The Tech",
   description:
-    "GPUs, AI Data Centers, storage, networking, power and cooling — what infrastructure actually powers AI models like ChatGPT, explained in simple English.",
+    "GPUs, AI Data Centers, storage, networking, power aur cooling — ChatGPT jaise AI models ko run karne ke peeche kaunsa infrastructure kaam karta hai, simple Hinglish mein.",
   keywords: [
     "ai infrastructure",
     "ai infrastructure basics",
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     "behind the tech",
   ],
   openGraph: {
-    title: "AI Infrastructure Basics: What Infrastructure Powers ChatGPT And Modern AI?",
+    title: "AI Infrastructure Basics: ChatGPT Aur Modern AI Ke Peeche Kya Infrastructure Kaam Karta Hai?",
     description:
-      "AI is not just software — it\'s a whole ecosystem of GPUs, Data Centers, power and cooling. Explained in simple English.",
+      "AI sirf software nahi hai — GPUs, Data Centers, power aur cooling ka poora ecosystem. Simple Hinglish mein samjho.",
     url: "https://behindthetech.in/learn/ai-infrastructure-basics",
     siteName: "Behind The Tech",
     type: "article",
@@ -33,12 +33,12 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AI Infrastructure Basics — Behind The Tech",
-    description: "From GPUs to cooling — the entire infrastructure behind AI, explained in simple English.",
+    description: "GPUs se lekar cooling tak — AI ke peeche ka poora infrastructure simple Hinglish mein.",
   },
   alternates: {
-    canonical: "https://behindthetech.in/learn/ai-infrastructure-basics",
+    canonical: "https://behindthetech.in/hi/learn/ai-infrastructure-basics",
     languages: {
-      "hi": "https://behindthetech.in/hi/learn/ai-infrastructure-basics",
+      "en": "https://behindthetech.in/learn/ai-infrastructure-basics",
     },
   },
 };
@@ -50,7 +50,7 @@ const HEADINGS: ArticleHeading[] = [
   { id: "why-ai-needs-special-infra", text: "Why AI Needs Special Infrastructure", level: 2 },
   { id: "cpus-vs-gpus",               text: "CPUs vs GPUs",                     level: 2 },
   { id: "ai-data-centers",            text: "AI Data Centers",                  level: 2 },
-  { id: "storage",                    text: "Storage — The Fuel Of AI",             level: 2 },
+  { id: "storage",                    text: "Storage — AI Ka Fuel",             level: 2 },
   { id: "networking",                 text: "Networking",                       level: 2 },
   { id: "power",                      text: "Power",                            level: 2 },
   { id: "cooling",                    text: "Cooling",                          level: 2 },
@@ -460,24 +460,24 @@ function RequestFlowDiagram({ caption, steps }: { caption: string; steps: FlowSt
 
 const FAQS = [
   {
-    q: "What is AI Infrastructure?",
-    a: "The hardware, networking, storage, power and cooling ecosystem required to train and run AI models is called AI Infrastructure.",
+    q: "AI Infrastructure kya hota hai?",
+    a: "AI models ko train aur run karne ke liye required hardware, networking, storage, power aur cooling ecosystem ko AI Infrastructure kaha jata hai.",
   },
   {
-    q: "Why is GPU used in AI?",
-    a: "GPUs can perform thousands of calculations in parallel, which makes them ideal for AI workloads — this parallel processing capability is exactly what sets them apart from CPUs.",
+    q: "AI me GPU ka use kyun hota hai?",
+    a: "GPUs thousands of calculations parallel perform kar sakte hain, jo AI workloads ke liye ideal hota hai — yahi parallel processing capability hi unhe CPUs se alag banati hai.",
   },
   {
-    q: "Can normal servers run AI?",
-    a: "Small AI workloads can run on them, but modern Large Language Models need specialized GPU infrastructure.",
+    q: "Kya normal servers AI run kar sakte hain?",
+    a: "Small AI workloads run ho sakte hain, lekin modern Large Language Models ke liye specialized GPU infrastructure ki zarurat hoti hai.",
   },
   {
-    q: "What is the difference between an AI Data Center and a Traditional Data Center?",
-    a: "AI Data Centers are GPU-centric and use high-performance networking, storage, power and cooling infrastructure — whereas traditional Data Centers mostly focus on virtual machines, storage and enterprise workloads.",
+    q: "AI Data Center aur Traditional Data Center me kya difference hai?",
+    a: "AI Data Centers GPU-centric hote hain aur high-performance networking, storage, power aur cooling infrastructure use karte hain — jabki traditional Data Centers mostly virtual machines, storage aur enterprise workloads par focus karte hain.",
   },
   {
-    q: "Will the importance of AI Infrastructure grow in the future?",
-    a: "Yes. As AI adoption increases, the demand for Data Centers, GPUs, power systems and cooling infrastructure will rise rapidly.",
+    q: "Future me AI Infrastructure ka importance badhega?",
+    a: "Haan. AI adoption badhne ke saath Data Centers, GPUs, power systems aur cooling infrastructure ki demand rapidly increase hogi.",
   },
 ];
 
@@ -522,11 +522,11 @@ export default function AiInfrastructureBasicsPage() {
         readingTimeMinutes={11}
       >
 
-        <p style={S.p}>AI is everywhere today.</p>
-        <p style={S.p}>Ask ChatGPT a question, get Gemini to write content, have Claude generate code, or code with Copilot — it all happens in a matter of seconds.</p>
-        <p style={S.p}>But here\'s an interesting question:</p>
-        <p style={S.p}><strong>How do these AI models actually run?</strong></p>
-        <p style={S.p}>When you send ChatGPT a question, is the answer generated on some normal server? Or does AI need a different kind of infrastructure altogether?</p>
+        <p style={S.p}>Aaj AI har jagah dikh raha hai.</p>
+        <p style={S.p}>ChatGPT se sawal pucho, Gemini se content likhwao, Claude se code generate karwao ya Copilot se programming karo — sab kuch kuch hi seconds me ho jata hai.</p>
+        <p style={S.p}>Lekin ek interesting sawal hai:</p>
+        <p style={S.p}><strong>Ye AI models actually chalte kaise hain?</strong></p>
+        <p style={S.p}>Jab aap ChatGPT ko koi question bhejte ho, to kya kisi normal server par answer generate hota hai? Ya AI ke liye alag infrastructure ki zarurat padti hai?</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -543,9 +543,9 @@ export default function AiInfrastructureBasicsPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>The reality is that running modern Artificial Intelligence requires some of the most powerful Data Centers and computing infrastructure in the world.</p>
-        <p style={S.p}>AI is not just software.</p>
-        <p style={S.p}>AI is a complete ecosystem made up of:</p>
+        <p style={S.p}>Reality ye hai ki modern Artificial Intelligence ko run karne ke liye duniya ke sabse powerful Data Centers aur computing infrastructure ki zarurat hoti hai.</p>
+        <p style={S.p}>AI sirf software nahi hai.</p>
+        <p style={S.p}>AI ek complete ecosystem hai jisme:</p>
         <ul style={S.ul}>
           <li style={S.li}>Data Centers</li>
           <li style={S.li}>GPUs</li>
@@ -554,25 +554,25 @@ export default function AiInfrastructureBasicsPage() {
           <li style={S.li}>Power Infrastructure</li>
           <li style={S.li}>Cooling Systems</li>
         </ul>
-        <p style={S.p}>all working together.</p>
-        <p style={S.p}>We call this ecosystem <strong>AI Infrastructure</strong>.</p>
+        <p style={S.p}>sab milkar kaam karte hain.</p>
+        <p style={S.p}>Isi ecosystem ko hum <strong>AI Infrastructure</strong> kehte hain.</p>
 
         <hr style={S.divider} />
 
-        <h2 id="what-is-ai-infrastructure" style={S.h1}>What Is AI Infrastructure?</h2>
+        <h2 id="what-is-ai-infrastructure" style={S.h1}>AI Infrastructure Kya Hota Hai?</h2>
 
-        <p style={S.p}>In simple terms: AI Infrastructure is the collection of hardware and software resources used to train and run Artificial Intelligence models.</p>
-        <p style={S.p}>There is a huge difference between the infrastructure requirements of traditional applications and AI applications.</p>
-        <p style={S.p}>A normal website might only need a few servers.</p>
-        <p style={S.p}>But training a Large Language Model (LLM) might need:</p>
+        <p style={S.p}>Simple language me: AI Infrastructure un saare hardware aur software resources ka collection hai jo Artificial Intelligence models ko train aur run karne ke liye use hote hain.</p>
+        <p style={S.p}>Traditional applications aur AI applications ke infrastructure requirements me bahut bada difference hota hai.</p>
+        <p style={S.p}>Ek normal website ko ho sakta hai kuch servers hi chahiye.</p>
+        <p style={S.p}>Lekin ek Large Language Model (LLM) ko train karne ke liye:</p>
         <ul style={S.ul}>
           <li style={S.li}>Thousands of GPUs</li>
           <li style={S.li}>Massive Storage</li>
           <li style={S.li}>Ultra-Fast Networking</li>
           <li style={S.li}>Advanced Cooling Systems</li>
         </ul>
-        <p style={S.p}>could be required.</p>
-        <p style={S.p}>That\'s why AI Infrastructure is often called the next evolution of the modern Data Center.</p>
+        <p style={S.p}>ki zarurat pad sakti hai.</p>
+        <p style={S.p}>Isi wajah se AI Infrastructure ko modern Data Center evolution bhi kaha ja sakta hai.</p>
 
         <div style={S.learnMore}>
           <TopicLink slug="what-is-a-data-center" label="Read: What Is A Data Center?" variant="inline" />
@@ -582,23 +582,23 @@ export default function AiInfrastructureBasicsPage() {
 
         <h2 id="why-ai-needs-special-infra" style={S.h1}>Why AI Needs Special Infrastructure</h2>
 
-        <p style={S.p}>Suppose you need to process an Excel file. A normal CPU-based server can handle that easily.</p>
-        <p style={S.p}>Now suppose you need to train an AI model to understand human language by reading billions of words. The scale of computation changes completely.</p>
-        <p style={S.p}>AI models need:</p>
+        <p style={S.p}>Maan lo aapko ek Excel file process karni hai. Ye kaam ek normal CPU-based server aasani se kar lega.</p>
+        <p style={S.p}>Ab maan lo aapko billions of words padhkar ek AI model train karna hai jo human language samajh sake. Ab computation ka scale completely change ho jata hai.</p>
+        <p style={S.p}>AI models ko:</p>
         <ul style={S.ul}>
           <li style={S.li}>Trillions of calculations</li>
           <li style={S.li}>Parallel processing</li>
           <li style={S.li}>Massive memory access</li>
         </ul>
-        <p style={S.p}>is required.</p>
-        <p style={S.p}>That\'s why traditional servers aren\'t sufficient for AI workloads.</p>
-        <p style={S.p}>This is where GPUs come into the picture.</p>
+        <p style={S.p}>ki zarurat hoti hai.</p>
+        <p style={S.p}>Isi liye traditional servers AI workloads ke liye sufficient nahi hote.</p>
+        <p style={S.p}>Yahan GPUs ka role shuru hota hai.</p>
 
         <hr style={S.divider} />
 
         <h2 id="cpus-vs-gpus" style={S.h1}>CPUs vs GPUs</h2>
 
-        <p style={S.p}>To understand AI Infrastructure, it\'s important to understand the difference between a CPU and a GPU.</p>
+        <p style={S.p}>AI Infrastructure samajhne ke liye CPU aur GPU ka difference samajhna zaruri hai.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -623,14 +623,14 @@ export default function AiInfrastructureBasicsPage() {
           rightItems={["Originally built for graphics", "Simultaneously thousands of calculations", "Machine Learning", "Deep Learning", "Generative AI"]}
         />
 
-        <p style={S.p}>GPUs were originally designed for graphics processing. But AI researchers discovered that GPUs can perform thousands of calculations simultaneously. That\'s why GPUs dominate Machine Learning, Deep Learning and Generative AI.</p>
-        <p style={S.p}>In today\'s AI Data Centers, GPU clusters are the most valuable asset.</p>
+        <p style={S.p}>GPU ko originally graphics processing ke liye design kiya gaya tha. Lekin AI researchers ne discover kiya ki GPUs simultaneously hazaron calculations kar sakte hain. Isi wajah se Machine Learning, Deep Learning aur Generative AI me GPUs dominate karte hain.</p>
+        <p style={S.p}>Aaj ke AI Data Centers me GPU clusters sabse valuable asset hote hain.</p>
 
         <hr style={S.divider} />
 
         <h2 id="ai-data-centers" style={S.h1}>AI Data Centers</h2>
 
-        <p style={S.p}>There are significant differences between a Traditional Data Center and an AI Data Center.</p>
+        <p style={S.p}>Traditional Data Center aur AI Data Center me kaafi differences hote hain.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -655,7 +655,7 @@ export default function AiInfrastructureBasicsPage() {
           rightItems={["GPU Clusters", "AI Training", "AI Inference", "High-Speed Networking"]}
         />
 
-        <p style={S.p}>AI Data Centers are often called "GPU Factories." Here, thousands of GPUs are connected together and work on a single AI model.</p>
+        <p style={S.p}>AI Data Centers ko kai baar "GPU Factories" bhi kaha jata hai. Yahan thousands of GPUs ek saath connected hote hain aur ek hi AI model par kaam karte hain.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -678,9 +678,9 @@ export default function AiInfrastructureBasicsPage() {
 
         <hr style={S.divider} />
 
-        <h2 id="storage" style={S.h1}>Storage: The Fuel Of AI</h2>
+        <h2 id="storage" style={S.h1}>Storage: AI Ka Fuel</h2>
 
-        <p style={S.p}>Training AI models requires enormous amounts of data.</p>
+        <p style={S.p}>AI models ko train karne ke liye enormous amounts of data ki zarurat hoti hai.</p>
         <p style={S.p}>Examples:</p>
         <ul style={S.ul}>
           <li style={S.li}>Books</li>
@@ -690,7 +690,7 @@ export default function AiInfrastructureBasicsPage() {
           <li style={S.li}>Images</li>
           <li style={S.li}>Videos</li>
         </ul>
-        <p style={S.p}>All of this data is stored in storage systems.</p>
+        <p style={S.p}>Ye sab data storage systems me store kiya jata hai.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -707,14 +707,14 @@ export default function AiInfrastructureBasicsPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>If storage isn\'t fast enough, GPUs end up sitting idle. That\'s why AI environments rely on NVMe Storage, Distributed Storage, and High-Performance Storage Clusters.</p>
-        <p style={S.p}>Storage is the fuel of AI Infrastructure.</p>
+        <p style={S.p}>Agar storage fast nahi hoga to GPUs idle reh jayenge. Isi liye AI environments me NVMe Storage, Distributed Storage, aur High-Performance Storage Clusters ka use hota hai.</p>
+        <p style={S.p}>Storage AI Infrastructure ka fuel hota hai.</p>
 
         <hr style={S.divider} />
 
-        <h2 id="networking" style={S.h1}>Networking: The Layer That Connects Everything</h2>
+        <h2 id="networking" style={S.h1}>Networking: Sab Kuch Connect Karne Wala Layer</h2>
 
-        <p style={S.p}>When thousands of GPUs are working together, they need to continuously exchange data. This is where networking becomes critical.</p>
+        <p style={S.p}>Agar thousands of GPUs ek saath kaam kar rahe hain, to unhe continuously data exchange karna padta hai. Yahan networking critical ho jati hai.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -731,13 +731,13 @@ export default function AiInfrastructureBasicsPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>AI networks are much faster than traditional enterprise networks. AI environments commonly use:</p>
+        <p style={S.p}>Traditional enterprise networks ke comparison me AI networks bahut faster hote hain. AI environments me commonly use hota hai:</p>
         <ul style={S.ul}>
           <li style={S.li}>High-Speed Ethernet</li>
           <li style={S.li}>InfiniBand</li>
           <li style={S.li}>Low-Latency Fabrics</li>
         </ul>
-        <p style={S.p}>If the network slows down, the entire AI training process can slow down.</p>
+        <p style={S.p}>Network slow hua to poori AI training process slow ho sakti hai.</p>
 
         <div style={S.learnMore}>
           <TopicLink slug="how-the-internet-works" label="Learn More: How The Internet Works" variant="inline" />
@@ -745,9 +745,9 @@ export default function AiInfrastructureBasicsPage() {
 
         <hr style={S.divider} />
 
-        <h2 id="power" style={S.h1}>Power: AI\'s Biggest Challenge</h2>
+        <h2 id="power" style={S.h1}>Power: AI Ka Sabse Bada Challenge</h2>
 
-        <p style={S.p}>The AI revolution has brought a new challenge along with it: Power Consumption.</p>
+        <p style={S.p}>AI revolution ke saath ek naya challenge saamne aaya hai: Power Consumption.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -764,25 +764,25 @@ export default function AiInfrastructureBasicsPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>A modern AI GPU often consumes many times more power than a traditional server. When thousands of GPUs run together, power demand becomes enormous.</p>
-        <p style={S.p}>That\'s why AI Data Centers need:</p>
+        <p style={S.p}>Ek modern AI GPU kai baar traditional servers se multiple times zyada power consume karta hai. Jab thousands of GPUs ek saath run karte hain, to power demand enormous ho jati hai.</p>
+        <p style={S.p}>Isi wajah se AI Data Centers ko:</p>
         <ul style={S.ul}>
           <li style={S.li}>High-Capacity UPS</li>
           <li style={S.li}>Redundant Power Systems</li>
           <li style={S.li}>Large Transformers</li>
           <li style={S.li}>DG Backup Systems</li>
         </ul>
-        <p style={S.p}>is required.</p>
+        <p style={S.p}>ki zarurat hoti hai.</p>
 
         <InsightCard>
-          Many experts consider power availability the biggest bottleneck for future AI growth — GPUs can be manufactured, but making sure there\'s enough electricity to run them is a separate challenge altogether.
+          Future AI growth ka biggest bottleneck kai experts power availability ko maante hain — GPUs ban sakte hain, lekin unhe chalane ke liye enough electricity available hona ek alag challenge hai.
         </InsightCard>
 
         <hr style={S.divider} />
 
-        <h2 id="cooling" style={S.h1}>Cooling: How Is All That Heat Handled?</h2>
+        <h2 id="cooling" style={S.h1}>Cooling: Heat Ko Kaise Handle Kiya Jata Hai?</h2>
 
-        <p style={S.p}>The more power that\'s consumed, the more heat is generated. Traditional cooling methods aren\'t sufficient for every AI workload.</p>
+        <p style={S.p}>Jitni zyada power consume hogi, utni zyada heat generate hogi. Traditional cooling methods har AI workload ke liye sufficient nahi hote.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -799,22 +799,22 @@ export default function AiInfrastructureBasicsPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>That\'s why AI Data Centers are increasingly using:</p>
+        <p style={S.p}>Isi liye AI Data Centers increasingly use kar rahe hain:</p>
         <ul style={S.ul}>
           <li style={S.li}>Liquid Cooling</li>
           <li style={S.li}>Direct-to-Chip Cooling</li>
           <li style={S.li}>Rear Door Heat Exchangers</li>
           <li style={S.li}>Advanced Containment Systems</li>
         </ul>
-        <p style={S.p}>Cooling is an equally important component of AI Infrastructure. GPUs can\'t perform reliably without proper cooling.</p>
+        <p style={S.p}>Cooling AI Infrastructure ka equally important component hai. GPU bina cooling ke stable perform nahi kar sakte.</p>
 
         <hr style={S.divider} />
 
-        <h2 id="chatgpt-request-flow" style={S.h1}>How Does A ChatGPT Request Travel Through The Infrastructure?</h2>
+        <h2 id="chatgpt-request-flow" style={S.h1}>ChatGPT Ka Request Infrastructure Ke Through Kaise Travel Karta Hai?</h2>
 
-        <p style={S.p}>Suppose you ask ChatGPT:</p>
+        <p style={S.p}>Maan lo aap ChatGPT ko puchte ho:</p>
         <p style={{ ...S.p, fontStyle: "italic", color: "#1f2937" }}>"What is a Data Center?"</p>
-        <p style={S.p}>Here\'s roughly how the process works:</p>
+        <p style={S.p}>Process kuch is tarah hoti hai:</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -843,7 +843,7 @@ export default function AiInfrastructureBasicsPage() {
           ]}
         />
 
-        <p style={S.p}>This entire process usually completes within seconds. But behind it, an infrastructure of thousands of servers and GPUs is doing the work.</p>
+        <p style={S.p}>Ye poora process usually seconds ke andar complete ho jata hai. Lekin iske peeche thousands of servers aur GPUs ka infrastructure kaam kar raha hota hai.</p>
 
         <div style={S.learnMore}>
           <TopicLink slug="cloud-vs-data-center" label="Learn More: Cloud vs Data Center" variant="inline" />
@@ -853,17 +853,17 @@ export default function AiInfrastructureBasicsPage() {
 
         <h2 id="the-ai-infrastructure-race" style={S.h1}>Why Companies Are Building AI Infrastructure So Fast</h2>
 
-        <p style={S.p}>Today, Microsoft, Google, OpenAI, Meta, and Amazon are all aggressively building AI Infrastructure.</p>
-        <p style={S.p}>The reason is simple. AI demand is growing at an unprecedented pace.</p>
-        <p style={S.p}>The more AI adoption grows:</p>
+        <p style={S.p}>Aaj Microsoft, Google, OpenAI, Meta, aur Amazon — sab aggressively AI Infrastructure build kar rahe hain.</p>
+        <p style={S.p}>Reason simple hai. AI demand unprecedented speed se grow kar rahi hai.</p>
+        <p style={S.p}>Jitni zyada AI adoption hogi:</p>
         <ul style={S.ul}>
-          <li style={S.li}>the more GPUs</li>
-          <li style={S.li}>the more power</li>
-          <li style={S.li}>the more Data Centers</li>
-          <li style={S.li}>the more cooling capacity</li>
+          <li style={S.li}>Utne zyada GPUs</li>
+          <li style={S.li}>Utni zyada power</li>
+          <li style={S.li}>Utne zyada Data Centers</li>
+          <li style={S.li}>Utni zyada cooling capacity</li>
         </ul>
-        <p style={S.p}>will be needed.</p>
-        <p style={S.p}>The AI Infrastructure race has become one of the most important competitions in today\'s technology industry.</p>
+        <p style={S.p}>ki zarurat padegi.</p>
+        <p style={S.p}>AI Infrastructure race aaj ki technology industry ka sabse important competition ban chuki hai.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -886,14 +886,14 @@ export default function AiInfrastructureBasicsPage() {
 
         <KeyTakeawayCard
           items={[
-            "AI is not just software.",
-            "AI Infrastructure is a combination of hardware and software.",
-            "GPUs are the core component of AI workloads.",
-            "AI Data Centers are different from traditional Data Centers.",
-            "Storage and Networking directly impact AI performance.",
-            "Power and Cooling are the biggest challenges in AI Infrastructure.",
-            "Tools like ChatGPT run on massive GPU-based infrastructure behind the scenes.",
-            "Future technology growth will depend heavily on AI Infrastructure.",
+            "AI sirf software nahi hai.",
+            "AI Infrastructure hardware aur software ka combination hai.",
+            "GPUs AI workloads ka core component hain.",
+            "AI Data Centers traditional Data Centers se alag hote hain.",
+            "Storage aur Networking AI performance ko directly impact karte hain.",
+            "Power aur Cooling AI Infrastructure ke biggest challenges hain.",
+            "ChatGPT jaise tools ke peeche massive GPU-based infrastructure kaam karta hai.",
+            "Future technology growth AI Infrastructure par heavily depend karegi.",
           ]}
         />
 

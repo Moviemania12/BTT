@@ -4,11 +4,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Learning Roadmap — Behind The Tech",
   description:
-    "The complete learning roadmap to becoming a Data Center Engineer — Non-IT, IT and AI Infrastructure, step by step.",
+    "Data Center Engineer banne ka complete learning roadmap — Non-IT, IT aur AI Infrastructure step by step.",
   alternates: {
-    canonical: "https://behindthetech.in/learn/roadmap",
+    canonical: "https://behindthetech.in/hi/learn/roadmap",
     languages: {
-      "hi": "https://behindthetech.in/hi/learn/roadmap",
+      "en": "https://behindthetech.in/learn/roadmap",
     },
   },
 };
@@ -24,8 +24,8 @@ export default function RoadmapPage() {
         Learning Roadmap
       </h1>
       <p style={{ fontSize: "1.05rem", color: "#374151", marginBottom: "2rem" }}>
-        The step-by-step path to becoming a Data Center Engineer — from beginner to professional.
-        Click on each section and start your journey.
+        Data Center Engineer banne ka step-by-step path — beginner se professional tak.
+        Har section pe click karo aur apna journey start karo.
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         {[
