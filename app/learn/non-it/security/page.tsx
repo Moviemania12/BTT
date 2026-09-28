@@ -5,6 +5,7 @@ import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 export const metadata: Metadata = {
   title: "Physical Security — Behind The Tech",
   description: "Access control, CCTV, perimeter security — data center physical security systems.",
+  alternates: { canonical: "https://behindthetech.in/learn/non-it/security" },
 };
 
 export default function CategoryPage() {

@@ -15,29 +15,17 @@ export default function TroubleshootingAndClosing() {
 
       <h3 style={S.h3}>Factory Acceptance Test (FAT) vs Site Acceptance Test (SAT)</h3>
       <p style={S.p}>
-        FAT vendor ke facility pe hota hai before delivery — software configuration, graphics, point
-        list, alarm configuration verify karo simulated inputs ke against. SAT site pe hota hai after
-        installation — actual equipment se integration test karo, sab points live data se verify karo.
-        FAT problems identify karta hai early — cheaper to fix before site delivery. SAT final
-        commissioning evidence provide karta hai.
+        FAT happens at the vendor's facility before delivery — verify software configuration, graphics, point list, alarm configuration against simulated inputs. SAT happens on site after installation — do the integration test with actual equipment, verify all points with live data. FAT identifies problems early — cheaper to fix before site delivery. SAT provides the final commissioning evidence.
       </p>
 
       <h3 style={S.h3}>Points List and Point Schedule</h3>
       <p style={S.p}>
-        Points list ek comprehensive table hai jo sab BMS points document karta hai — tag name, description,
-        equipment ID, protocol, device address, register/object, data type, scaling, engineering unit,
-        alarm limits, trend configuration. Ye document as-built state capture karta hai aur future
-        maintenance ke liye essential hai. Ek undocumented BMS ek liability hai — ek engineer ke
-        leave hone ke baad nobody knows how it works.
+        The points list is a comprehensive table that documents all BMS points — tag name, description, equipment ID, protocol, device address, register/object, data type, scaling, engineering unit, alarm limits, trend configuration. This document captures the as-built state and is essential for future maintenance. An undocumented BMS is a liability — after one engineer leaves, nobody knows how it works.
       </p>
 
       <h3 style={S.h3}>Loop Diagrams and Network Drawings</h3>
       <p style={S.p}>
-        Loop diagrams sensor-to-controller wiring show karte hain — terminal numbers, cable types,
-        conduit routes. Network drawings BMS network topology show karte hain — switches, servers,
-        controllers, VLANs, IP addresses. As-built versions — after installation actual changes
-        reflect karo — field redlines finalize karo. These drawings field team ko future changes aur
-        troubleshooting mein guide karte hain.
+        Loop diagrams show sensor-to-controller wiring — terminal numbers, cable types, conduit routes. Network drawings show the BMS network topology — switches, servers, controllers, VLANs, IP addresses. As-built versions — reflect actual changes after installation — finalize field redlines. These drawings guide the field team in future changes and troubleshooting.
       </p>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -46,40 +34,39 @@ export default function TroubleshootingAndClosing() {
       <h2 id="preventive-maintenance" style={S.h2}>Preventive Maintenance</h2>
 
       <p style={S.p}>
-        Neeche ek example maintenance schedule hai — actual frequency OEM recommendations, site
-        conditions, contract requirements aur criticality ke hisaab se adjust karo.
+        Below is an example maintenance schedule — adjust the actual frequency according to OEM recommendations, site conditions, contract requirements and criticality.
       </p>
 
       <h3 style={S.h3}>Monthly Checks (Example)</h3>
       <ul style={S.ul}>
-        <li>All devices online — koi device offline ya communication failure mein to investigate</li>
-        <li>Alarm log review — unacknowledged alarms, recurring nuisance alarms identify karo</li>
-        <li>Sample point verification — 10–20 points BMS value vs local equipment display/OEM software compare karo</li>
-        <li>Trend data logging — koi gaps nahi, data continuously logging</li>
+        <li>All devices online — investigate if any device is offline or in communication failure</li>
+        <li>Alarm log review — identify unacknowledged alarms, recurring nuisance alarms</li>
+        <li>Sample point verification — compare 10–20 points BMS value vs local equipment display/OEM software</li>
+        <li>Trend data logging — no gaps, data logging continuously</li>
         <li>Server health — disk space, CPU/RAM, application logs for errors</li>
         <li>Network connectivity — ping key devices, network latency check</li>
       </ul>
 
       <h3 style={S.h3}>Quarterly Checks (Example)</h3>
       <ul style={S.ul}>
-        <li>Full alarm test — key alarms simulate karo aur verify generation + notification</li>
+        <li>Full alarm test — simulate key alarms and verify generation + notification</li>
         <li>User access audit — inactive accounts, privilege review</li>
-        <li>Database backup test — backup restore test karo</li>
-        <li>Sensor calibration check — calibrated reference se compare karo where accessible</li>
+        <li>Database backup test — do a backup restore test</li>
+        <li>Sensor calibration check — compare against a calibrated reference where accessible</li>
         <li>BMS software — updates available? Apply per change management process</li>
         <li>Integration test — UPS, CRAC, chiller key points verify</li>
-        <li>Report generation test — standard reports generate karo aur content verify karo</li>
+        <li>Report generation test — generate standard reports and verify content</li>
       </ul>
 
       <h3 style={S.h3}>Annual Checks (Example)</h3>
       <ul style={S.ul}>
-        <li>Full points list walkthrough — sab points live value se verify karo</li>
-        <li>As-built documentation update — agar koi changes hue</li>
-        <li>Controller firmware update review — OEM advisory check karo</li>
+        <li>Full points list walkthrough — verify all points with live values</li>
+        <li>As-built documentation update — if any changes happened</li>
+        <li>Controller firmware update review — check OEM advisories</li>
         <li>Network drawing update</li>
         <li>Security audit — VPN access, firewall rules, open ports review</li>
-        <li>Historian capacity planning — storage aur performance review</li>
-        <li>Alarm rationalization — stale, nuisance alarms review aur tune</li>
+        <li>Historian capacity planning — storage and performance review</li>
+        <li>Alarm rationalization — review and tune stale, nuisance alarms</li>
       </ul>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -88,9 +75,7 @@ export default function TroubleshootingAndClosing() {
       <h2 id="troubleshooting" style={S.h2}>Engineer Troubleshooting — BMS Data Not Updating</h2>
 
       <p style={S.p}>
-        BMS troubleshooting mein sabse important rule hai: <strong>isolate at each layer before
-        moving up</strong>. Random steps se time waste hota hai aur real cause miss hoti hai. Ye
-        10-layer model systematically har possible failure point cover karta hai — field se HMI tak.
+        The most important rule in BMS troubleshooting is: <strong>isolate at each layer before moving up</strong>. Random steps waste time and the real cause gets missed. This 10-layer model systematically covers every possible failure point — from field to HMI.
       </p>
 
       <Figure caption="Fig 6 — 10-layer BMS troubleshooting model. Start at Layer 1 (field equipment) and work upward. Each layer must pass before the next can work correctly.">
@@ -99,109 +84,70 @@ export default function TroubleshootingAndClosing() {
 
       <h3 style={S.h3}>Layer 1 — Field Equipment</h3>
       <p style={S.p}>
-        Pehle verify karo ki equipment actually running hai aur correct value locally show kar raha
-        hai. UPS front panel pe output load % kya hai? CRAC unit local display pe supply air temperature
-        kya hai? Generator AMF panel pe fuel level gauge kya show karta hai? Agar local display bhi
-        wrong value show kar raha hai — ye equipment problem hai, BMS problem nahi. BMS sirf jo
-        equipment report karta hai wahi dikhata hai.
+        First verify that the equipment is actually running and showing the correct value locally. What is the output load % on the UPS front panel? What is the supply air temperature on the CRAC unit local display? What does the fuel level gauge show on the generator AMF panel? If the local display is also showing a wrong value — it is an equipment problem, not a BMS problem. The BMS only shows what the equipment reports.
       </p>
 
       <h3 style={S.h3}>Layer 2 — Sensor and Equipment Controller</h3>
       <p style={S.p}>
-        Equipment controller se communication interface pe value available hai? UPS web interface ya
-        OEM software kholo — same point ka value wahan dikhta hai? Agar OEM software bhi correct value
-        nahi dikhata (ya communication error hai) — equipment controller ka issue hai, BMS ka nahi.
-        OEM support engage karo for equipment-side issues.
+        Is the value available on the communication interface from the equipment controller? Open the UPS web interface or OEM software — does the same point's value show there? If the OEM software also does not show the correct value (or there is a communication error) — it is an equipment controller issue, not a BMS one. Engage OEM support for equipment-side issues.
       </p>
 
       <h3 style={S.h3}>Layer 3 — Physical Communication</h3>
       <p style={S.p}>
-        RS-485 ke liye: cable continuity — multimeter se A aur B wire continuity verify karo.
-        Polarity — A (positive, typically data+) aur B (negative, data−) correctly connected hain?
-        Termination — 120 ohm bus ke dono ends pe? Shielding — properly grounded? Link LED — agar
-        RS-485 converter pe LED hai, activity indicator hai? Ethernet ke liye: RJ45 link LED on hai?
-        Koi physical damage?
+        For RS-485: cable continuity — verify A and B wire continuity with a multimeter. Polarity — are A (positive, typically data+) and B (negative, data−) correctly connected? Termination — 120 ohm at both ends of the bus? Shielding — properly grounded? Link LED — if the RS-485 converter has an LED, is there an activity indicator? For Ethernet: is the RJ45 link LED on? Any physical damage?
       </p>
 
       <h3 style={S.h3}>Layer 4 — Communication Configuration</h3>
       <p style={S.p}>
-        BMS aur equipment ke configuration parameters match karte hain? Modbus RTU ke liye: baud rate
-        same? Parity same? Stop bits same? Slave ID BMS mein same jo equipment pe set hai? Modbus TCP
-        ke liye: IP address correct? Port 502 (ya OEM-specified)? Unit ID correct? BACnet ke liye:
-        Device ID unique? IP aur UDP port correct (default 47808 — configurable; verify per device/system config)? SNMP ke liye: community string correct? SNMP version
-        (v1/v2c/v3 — match device supported version) correct? IP address correct?
+        Do the configuration parameters of the BMS and equipment match? For Modbus RTU: baud rate same? Parity same? Stop bits same? Is the slave ID in the BMS the same as set on the equipment? For Modbus TCP: IP address correct? Port 502 (or OEM-specified)? Unit ID correct? For BACnet: Device ID unique? IP and UDP port correct (default 47808 — configurable; verify per device/system config)? For SNMP: community string correct? SNMP version (v1/v2c/v3 — match device supported version) correct? IP address correct?
       </p>
 
       <h3 style={S.h3}>Layer 5 — Protocol and Register/Object</h3>
       <p style={S.p}>
-        Correct function code use ho raha hai? FC 03 (Holding Registers) ya FC 04 (Input Registers)
-        — wrong FC use karne pe exception response milti hai. Register address OEM documentation se
-        match karta hai? 0-based vs 1-based offset check karo. Data type correct hai — UINT16 vs
-        INT16 vs FLOAT32? Byte order correct hai for 32-bit values? BACnet ke liye: Object type aur
-        instance correct? Property (Present_Value) accessible hai? SNMP ke liye: OID correct?
-        MIB version match?
+        Is the correct function code being used? FC 03 (Holding Registers) or FC 04 (Input Registers) — using the wrong FC gives an exception response. Does the register address match the OEM documentation? Check the 0-based vs 1-based offset. Is the data type correct — UINT16 vs INT16 vs FLOAT32? Is the byte order correct for 32-bit values? For BACnet: object type and instance correct? Is the property (Present_Value) accessible? For SNMP: OID correct? MIB version match?
       </p>
 
       <h3 style={S.h3}>Layer 6 — Gateway</h3>
       <p style={S.p}>
-        Agar protocol gateway use ho raha hai (Modbus RTU to BACnet/IP ya similar): gateway powered on
-        aur online hai? Gateway configuration — source protocol (Modbus) aur target protocol (BACnet)
-        dono correctly configured? Both sides communicate? Gateway ke diagnostic page pe point status
-        check karo. Gateway restart karo agar configuration recently changed.
+        If a protocol gateway is being used (Modbus RTU to BACnet/IP or similar): is the gateway powered on and online? Gateway configuration — are both the source protocol (Modbus) and target protocol (BACnet) correctly configured? Do both sides communicate? Check point status on the gateway's diagnostic page. Restart the gateway if the configuration was recently changed.
       </p>
 
       <h3 style={S.h3}>Layer 7 — BMS Driver and Integration Server</h3>
       <p style={S.p}>
-        BMS mein device ka status kya hai — online/offline/faulted? Driver service running hai?
-        BMS event log mein device ke liye errors hain? Timeout configured correctly — bahut short
-        timeout pe intermittent offline aayi sakti hai. License limit reach ho gayi? Kuch BMS platforms
-        point count pe license limit rakhrte hain — additional points beyond limit nahi aate. Driver
-        update ya restart try karo.
+        What is the device status in the BMS — online/offline/faulted? Is the driver service running? Are there errors for the device in the BMS event log? Is the timeout configured correctly — with a very short timeout intermittent offline can occur. Has the license limit been reached? Some BMS platforms keep a license limit on point count — additional points beyond the limit do not come through. Try a driver update or restart.
       </p>
 
       <h3 style={S.h3}>Layer 8 — Point Mapping and Binding</h3>
       <p style={S.p}>
-        Backend mein point ka live value check karo — BMS diagnostic tool ya point detail view se.
-        Value update ho rahi hai backend mein? Agar yes — mapping correct hai, binding issue hai.
-        Register address correct hai? Data type match karta hai? Scaling formula correct hai?
-        Engineering unit configured? Wrong scaling ka result: value extreme high/low ya zero aa sakti
-        hai. Ek simple test: raw value manually calculate karo expected engineering value se — formula
-        verify karo.
+        Check the point's live value in the backend — from the BMS diagnostic tool or point detail view. Is the value updating in the backend? If yes — mapping is correct, it is a binding issue. Is the register address correct? Does the data type match? Is the scaling formula correct? Engineering unit configured? Result of wrong scaling: the value can come out extremely high/low or zero. A simple test: manually calculate the expected engineering value from the raw value — verify the formula.
       </p>
 
       <h3 style={S.h3}>Layer 9 — HMI and Graphics</h3>
       <p style={S.p}>
-        Backend mein value update ho rahi hai lekin graphic mein nahi — binding issue hai. Graphic
-        element correctly bound hai? Tag name exactly match karta hai? Graphic page cached version show
-        kar raha hai — browser cache clear karo ya page reload karo. HMI animation correct hai —
-        numeric display, color change, indicator state? Publish karo agar BMS mein draft mode pe
-        changes unpublished hain.
+        The value is updating in the backend but not in the graphic — it is a binding issue. Is the graphic element correctly bound? Does the tag name match exactly? Is the graphic page showing a cached version — clear the browser cache or reload the page. Is the HMI animation correct — numeric display, color change, indicator state? Publish if changes are unpublished in draft mode in the BMS.
       </p>
 
       <h3 style={S.h3}>Layer 10 — Alarm, Trend and Historian</h3>
       <p style={S.p}>
-        Live value available hai lekin alarm generate nahi ho rahi: alarm limit correctly configured?
-        Deadband ya delay configured hai? Alarm suppression active? Point engineering unit alarm
-        threshold ke saath consistent? Trend data nahi aa rahi: trend log configured? Log service
-        running? Historian connection? Disk space available? Buffer overflow?
+        The live value is available but the alarm is not generating: is the alarm limit correctly configured? Is a deadband or delay configured? Is alarm suppression active? Is the point engineering unit consistent with the alarm threshold? Trend data not coming: is the trend log configured? Is the log service running? Historian connection? Disk space available? Buffer overflow?
       </p>
 
       {/* Fault-specific troubleshooting */}
       <h3 style={S.h3}>Fault-Specific Troubleshooting</h3>
 
-      <p style={S.p}><strong>Complete Device Offline:</strong> Start L3 (physical comms). Cable issue ya power issue. Then L4 (config mismatch). Then L7 (driver/service). Most common: config change kisi ne kiya aur BMS update nahi hua.</p>
+      <p style={S.p}><strong>Complete Device Offline:</strong> Start L3 (physical comms). Cable issue or power issue. Then L4 (config mismatch). Then L7 (driver/service). Most common: someone made a config change and the BMS was not updated.</p>
 
-      <p style={S.p}><strong>One Point Not Updating (Others OK):</strong> Same device ke dusre points OK hain → L5 (register address, data type, FC). Agar sirf ek point — register wrong hai. OEM doc se re-check karo.</p>
+      <p style={S.p}><strong>One Point Not Updating (Others OK):</strong> Other points of the same device are OK → L5 (register address, data type, FC). If only one point — the register is wrong. Re-check from the OEM doc.</p>
 
-      <p style={S.p}><strong>Wrong Value:</strong> L5 — data type wrong (UINT16 vs INT16 — negative values wrong). L8 — scaling formula wrong. Raw value read karo aur manually calculate karo.</p>
+      <p style={S.p}><strong>Wrong Value:</strong> L5 — data type wrong (UINT16 vs INT16 — negative values wrong). L8 — scaling formula wrong. Read the raw value and calculate manually.</p>
 
-      <p style={S.p}><strong>Frozen/Stale Value:</strong> Value change nahi ho rahi lekin communication OK hai. L2 — equipment sensor freeze? L5 — polling working? L7 — point communication timeout incorrectly shows OK. Test: manually change UPS load aur see if BMS updates.</p>
+      <p style={S.p}><strong>Frozen/Stale Value:</strong> The value is not changing but communication is OK. L2 — equipment sensor freeze? L5 — is polling working? L7 — point communication timeout incorrectly shows OK. Test: manually change the UPS load and see if the BMS updates.</p>
 
       <p style={S.p}><strong>Intermittent Communication:</strong> L3 — RS-485 bus noise, grounding issue, cable damage. L4 — timeout too short. L7 — polling interval too fast for device capability. Systematic cable inspection. RS-485 analyser tool helpful.</p>
 
-      <p style={S.p}><strong>Incorrect Scaling:</strong> L8 — check formula. Multiplier ya divisor wrong. Unit mismatch (register in decivolts but BMS configured for volts). Fix: raw register value read karo, manually calculate, compare with equipment display.</p>
+      <p style={S.p}><strong>Incorrect Scaling:</strong> L8 — check the formula. Multiplier or divisor wrong. Unit mismatch (register in decivolts but BMS configured for volts). Fix: read the raw register value, calculate manually, compare with the equipment display.</p>
 
-      <p style={S.p}><strong>Wrong Engineering Unit:</strong> L8 — unit string wrong configured — value correct hai lekin display "kW" instead of "%" for load. Fix in point configuration.</p>
+      <p style={S.p}><strong>Wrong Engineering Unit:</strong> L8 — unit string configured wrong — the value is correct but displays "kW" instead of "%" for load. Fix in point configuration.</p>
 
       <p style={S.p}><strong>Modbus Timeout:</strong> L3 — RS-485 termination missing. L4 — baud/parity mismatch. L4 — slave ID conflict (two devices same ID). Systematic: connect laptop with Modbus utility directly to RS-485 bus and test device individually.</p>
 
@@ -211,15 +157,15 @@ export default function TroubleshootingAndClosing() {
 
       <p style={S.p}><strong>SNMP Data Not Received:</strong> L3 — UDP port 161 open (firewall). L4 — community string wrong, SNMP version mismatch. L5 — OID wrong, MIB version mismatch. Test with SNMP walk tool (snmpwalk) from BMS server.</p>
 
-      <p style={S.p}><strong>Gateway Offline:</strong> L3 — gateway power, network connectivity. L7 — gateway management interface accessible? Both protocol sides configured? Gateway logs check karo. Restart gateway. Verify both-side connectivity separately.</p>
+      <p style={S.p}><strong>Gateway Offline:</strong> L3 — gateway power, network connectivity. L7 — is the gateway management interface accessible? Both protocol sides configured? Check the gateway logs. Restart the gateway. Verify both-side connectivity separately.</p>
 
-      <p style={S.p}><strong>Graphic Not Updating:</strong> L8 — backend value update ho rahi hai? (Check via BMS point detail view). If yes, L9 — binding wrong or graphic draft unpublished. If backend not updating, go back to L1–L7.</p>
+      <p style={S.p}><strong>Graphic Not Updating:</strong> L8 — is the backend value updating? (Check via BMS point detail view). If yes, L9 — binding wrong or graphic draft unpublished. If backend not updating, go back to L1–L7.</p>
 
       <p style={S.p}><strong>Alarm Not Generated:</strong> L8 — verify live value is actually crossing limit. L10 — alarm limit correctly configured? Deadband too large? Alarm suppression/inhibition active? Engineering unit mismatch — value in wrong unit vs limit?</p>
 
       <p style={S.p}><strong>Trend/History Missing:</strong> L10 — trend log enabled on point? Log service running? Historian connected? Disk space? Review BMS event log for storage errors. Check historian database connection.</p>
 
-      <p style={S.p}><strong>Time Synchronization Issues:</strong> BMS server aur controllers NTP configured hain? NTP server reachable? Timestamp mismatch between BMS aur external system causes alarm correlation issues. Verify time sync status on all components.</p>
+      <p style={S.p}><strong>Time Synchronization Issues:</strong> Are the BMS server and controllers NTP configured? Is the NTP server reachable? A timestamp mismatch between the BMS and an external system causes alarm correlation issues. Verify time sync status on all components.</p>
 
       <ComparisonTable
         title="BMS Troubleshooting Quick Reference"
@@ -247,24 +193,24 @@ export default function TroubleshootingAndClosing() {
 
       <h3 style={S.h3}>Advantages</h3>
       <ul style={S.ul}>
-        <li><strong>Centralized visibility:</strong> Poori facility ka real-time status ek screen se — operator room sa bahar gaye bina.</li>
-        <li><strong>Alarm management:</strong> Structured alarm priorities, escalation aur acknowledgement — critical events miss nahi honge.</li>
-        <li><strong>Historical trending:</strong> Root cause analysis ke liye time-series data — "what happened and when" answerable.</li>
+        <li><strong>Centralized visibility:</strong> Real-time status of the whole facility from one screen — without the operator leaving the room.</li>
+        <li><strong>Alarm management:</strong> Structured alarm priorities, escalation and acknowledgement — critical events will not be missed.</li>
+        <li><strong>Historical trending:</strong> Time-series data for root cause analysis — "what happened and when" becomes answerable.</li>
         <li><strong>Energy reporting:</strong> Consumption trends, PUE tracking, capacity planning support.</li>
-        <li><strong>Compliance evidence:</strong> ISO 27001, Tier certification, client audits ke liye documented operational history.</li>
+        <li><strong>Compliance evidence:</strong> Documented operational history for ISO 27001, Tier certification, client audits.</li>
         <li><strong>Integration:</strong> Multiple systems (UPS, cooling, environment, fire status) correlated view.</li>
-        <li><strong>Remote monitoring:</strong> VPN ke through secure remote access — 24/7 visibility without on-site presence.</li>
+        <li><strong>Remote monitoring:</strong> Secure remote access through VPN — 24/7 visibility without on-site presence.</li>
       </ul>
 
       <h3 style={S.h3}>Limitations</h3>
       <ul style={S.ul}>
-        <li><strong>Complexity:</strong> Proper configuration, integration aur maintenance significant expertise require karta hai.</li>
-        <li><strong>Integration effort:</strong> Protocol integration har equipment ke liye documentation, wiring, configuration aur testing require karta hai.</li>
-        <li><strong>Not a replacement:</strong> BMS equipment failures prevent nahi karta — sirf visibility deta hai. Equipment must be maintained independently.</li>
-        <li><strong>Single point of risk:</strong> BMS server failure matlab koi centralized monitoring nahi — local equipment monitoring still needed.</li>
-        <li><strong>Alarm fatigue risk:</strong> Poorly configured alarms pe operators response slow hoti hai — alarm management discipline required.</li>
-        <li><strong>Cybersecurity surface:</strong> BMS network-connected system hai — vulnerabilities exist aur maintenance required hai.</li>
-        <li><strong>Cost:</strong> Licensing, hardware, integration engineering, commissioning aur ongoing maintenance — significant investment.</li>
+        <li><strong>Complexity:</strong> Proper configuration, integration and maintenance require significant expertise.</li>
+        <li><strong>Integration effort:</strong> Protocol integration requires documentation, wiring, configuration and testing for every piece of equipment.</li>
+        <li><strong>Not a replacement:</strong> The BMS does not prevent equipment failures — it only gives visibility. Equipment must be maintained independently.</li>
+        <li><strong>Single point of risk:</strong> BMS server failure means no centralized monitoring — local equipment monitoring still needed.</li>
+        <li><strong>Alarm fatigue risk:</strong> With poorly configured alarms operator response gets slow — alarm management discipline required.</li>
+        <li><strong>Cybersecurity surface:</strong> The BMS is a network-connected system — vulnerabilities exist and maintenance is required.</li>
+        <li><strong>Cost:</strong> Licensing, hardware, integration engineering, commissioning and ongoing maintenance — a significant investment.</li>
       </ul>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -273,31 +219,19 @@ export default function TroubleshootingAndClosing() {
       <h2 id="illustrative-scenario" style={S.h2}>Illustrative Scenario</h2>
 
       <Callout type="interview" title="Note: This is an illustrative scenario — not a documented real facility event">
-        Neeche diya hua scenario BMS ke practical value ko demonstrate karne ke liye hai. Kisi specific
-        documented incident ya facility ka reference nahi hai.
+        The scenario given below is meant to demonstrate the practical value of BMS. It is not a reference to any specific documented incident or facility.
       </Callout>
 
       <p style={S.p}>
-        Ek mid-size colocation facility mein raat ke 11 baje NOC engineer BMS dashboard pe ek amber
-        alert dekhe — CRAC Unit 4 ka return air temperature trend 30 minutes se 0.3°C per 10 minutes
-        ki rate se badh raha tha. Alarm nahi aaya tha abhi kyunki high alarm limit 27°C pe set tha
-        aur current value 25.8°C tha — lekin trend clearly abnormal tha.
+        In a mid-size colocation facility, at 11 PM the NOC engineer saw an amber alert on the BMS dashboard — CRAC Unit 4's return air temperature trend had been rising for 30 minutes at a rate of 0.3°C per 10 minutes. The alarm had not come yet because the high alarm limit was set at 27°C and the current value was 25.8°C — but the trend was clearly abnormal.
       </p>
 
       <p style={S.p}>
-        Engineer BMS mein CRAC Unit 4 ka detail screen open kiya. Filter differential pressure trend
-        dekha — last 2 days mein gradual increase tha, indicating filter loading. Compressor current
-        normal tha — compressor running hai. Supply air temperature setpoint aur actual difference
-        within normal range tha. Conclusion: likely clogged air filter reducing airflow capacity,
-        causing gradual temperature rise.
+        The engineer opened CRAC Unit 4's detail screen in the BMS. He looked at the filter differential pressure trend — there had been a gradual increase over the last 2 days, indicating filter loading. Compressor current was normal — the compressor is running. The difference between supply air temperature setpoint and actual was within normal range. Conclusion: likely clogged air filter reducing airflow capacity, causing gradual temperature rise.
       </p>
 
       <p style={S.p}>
-        Engineer ne on-call maintenance team ko notify kiya. Team physically CRAC unit check kiya —
-        confirmed blocked primary filter. Filter replaced in 20 minutes. BMS trend mein return air
-        temperature turn immediately reversed. No server thermal event occurred. Without BMS trend
-        visibility, ya to alarm pe react karte (much later, and temperature would have been higher),
-        ya next morning physical walkthrough pe discover karte.
+        The engineer notified the on-call maintenance team. The team physically checked the CRAC unit — confirmed blocked primary filter. Filter replaced in 20 minutes. In the BMS trend the return air temperature turn immediately reversed. No server thermal event occurred. Without BMS trend visibility, they would either have reacted to the alarm (much later, and the temperature would have been higher), or discovered it in the next morning's physical walkthrough.
       </p>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -305,58 +239,29 @@ export default function TroubleshootingAndClosing() {
       ═══════════════════════════════════════════════════════════════ */}
       <h2 id="interview-questions" style={S.h2}>Interview Questions</h2>
 
-      <h3 style={S.h3}>Q1: BMS aur DCIM mein kya fundamental difference hai?</h3>
+      <h3 style={S.h3}>Q1: What is the fundamental difference between BMS and DCIM?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> BMS building infrastructure monitor karta hai — HVAC, electrical,
-        environment. Typically BACnet aur Modbus protocols use karta hai. DCIM IT infrastructure pe
-        focus karta hai — rack-level power, IT assets, capacity planning, PUE calculation. DCIM IT
-        protocols (SNMP, IPMI) se PDU aur servers se data leta hai. Dono data center mein coexist
-        karte hain — BMS floor-level environment deta hai, DCIM rack-level IT data deta hai. Many
-        enterprise data centers dono separately maintain karte hain, ya integration points define
-        karte hain.
+        <strong>Answer:</strong> The BMS monitors building infrastructure — HVAC, electrical, environment. It typically uses BACnet and Modbus protocols. DCIM focuses on IT infrastructure — rack-level power, IT assets, capacity planning, PUE calculation. DCIM takes data from PDUs and servers through IT protocols (SNMP, IPMI). Both coexist in the data center — the BMS gives the floor-level environment, DCIM gives rack-level IT data. Many enterprise data centers maintain both separately, or define integration points.
       </p>
 
-      <h3 style={S.h3}>Q2: Modbus mein 0-based aur 1-based addressing ka kya practical issue hai?</h3>
+      <h3 style={S.h3}>Q2: What is the practical issue with 0-based and 1-based addressing in Modbus?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> Modbus specification internally 0-based hai — first register address
-        0 hai. Lekin OEM register maps typically 1-based publish karte hain — "Holding Register 1"
-        likhte hain. BMS configuration mein "Register 1" enter karo to actually address 0 read hogi
-        (agar BMS bhi 1-based expect karta hai). Ya "Register 1" address 1 read hogi agar BMS 0-based
-        hai — wrong register. Ye mismatch wrong value ya "no response" cause karta hai. Fix: OEM
-        documentation carefully read karo — 1-based ya 0-based likhni chahiye. Test karo aur OEM
-        software se cross-check karo. Typically ek register address up ya down adjust karo.
+        <strong>Answer:</strong> The Modbus specification is 0-based internally — the first register address is 0. But OEM register maps typically publish 1-based — they write "Holding Register 1". If you enter "Register 1" in the BMS configuration, address 0 will actually be read (if the BMS also expects 1-based). Or "Register 1" will read address 1 if the BMS is 0-based — the wrong register. This mismatch causes a wrong value or "no response". Fix: read the OEM documentation carefully — it should state 1-based or 0-based. Test it and cross-check with the OEM software. Typically adjust the register address up or down by one.
       </p>
 
-      <h3 style={S.h3}>Q3: BMS mein COV aur polling mein kab kya prefer karein?</h3>
+      <h3 style={S.h3}>Q3: When should COV vs polling be preferred in the BMS?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> COV (Change of Value) BACnet protocol mein available hai —
-        device BMS ko notify karta hai sirf jab value configured increment se change ho. Bandwidth
-        efficient hai, faster response for rapid changes. Polling mein BMS fixed interval pe read
-        karta hai — predictable, simpler to configure. COV prefer karo jab: BACnet support available
-        hai, network bandwidth concern hai, rapid alarm response chahiye. Polling prefer karo jab:
-        Modbus use ho raha hai (COV nahi hota), simple reliable integration chahiye, ya COV
-        subscription management overhead avoid karna ho.
+        <strong>Answer:</strong> COV (Change of Value) is available in the BACnet protocol — the device notifies the BMS only when the value changes by the configured increment. It is bandwidth efficient, faster response for rapid changes. In polling the BMS reads at a fixed interval — predictable, simpler to configure. Prefer COV when: BACnet support is available, network bandwidth is a concern, rapid alarm response is needed. Prefer polling when: Modbus is being used (there is no COV), a simple reliable integration is needed, or COV subscription management overhead has to be avoided.
       </p>
 
-      <h3 style={S.h3}>Q4: BMS mein life-safety systems kaise integrate karte hain aur boundaries kya hain?</h3>
+      <h3 style={S.h3}>Q4: How are life-safety systems integrated into the BMS and what are the boundaries?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> Fire alarm, VESDA, access control apne dedicated systems pe operate
-        karte hain. BMS selected status/alarm points receive kar sakta hai — monitoring ke liye —
-        typically dry contact ya protocol se. Ye BMS ko visibility deta hai: fire alarm active hai ya
-        nahi, VESDA zone ka alarm level kya hai. Lekin BMS in systems ka replacement nahi hai aur
-        primary life-safety control nahi hona chahiye. Fire suppression release, evacuation sequence,
-        access door control — ye sab dedicated systems handle karte hain. BMS boundary clearly
-        defined honi chahiye — monitor only, no life-safety commands through BMS.
+        <strong>Answer:</strong> Fire alarm, VESDA, access control operate on their own dedicated systems. The BMS can receive selected status/alarm points — for monitoring — typically through dry contact or protocol. This gives the BMS visibility: whether the fire alarm is active or not, what the alarm level of a VESDA zone is. But the BMS is not a replacement for these systems and must not be the primary life-safety control. Fire suppression release, evacuation sequence, access door control — all of these are handled by dedicated systems. The BMS boundary must be clearly defined — monitor only, no life-safety commands through the BMS.
       </p>
 
-      <h3 style={S.h3}>Q5: RS-485 bus pe troubleshoot karte time kya systematic approach hai?</h3>
+      <h3 style={S.h3}>Q5: What is the systematic approach when troubleshooting an RS-485 bus?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> First, verify physical layer: cable continuity, A/B polarity (most
-        common error — swap karo aur test karo), termination resistors (120 ohm at both ends —
-        only ends, not middle). Then configuration: baud rate, parity aur slave IDs sab match karte
-        hain? Duplicate slave IDs? Phir isolation: ek slave pe BMS connect karo — works? Ek ek
-        device add karo bus pe — kab fail hota hai. Faulty device ya cable segment isolate hoti
-        hai. Tools helpful hain: Modbus utility software laptop pe, RS-485 analyzer.
+        <strong>Answer:</strong> First, verify the physical layer: cable continuity, A/B polarity (most common error — swap and test), termination resistors (120 ohm at both ends — only ends, not middle). Then configuration: do baud rate, parity and slave IDs all match? Duplicate slave IDs? Then isolation: connect the BMS to one slave — does it work? Add devices to the bus one by one — see when it fails. The faulty device or cable segment gets isolated. Tools are helpful: Modbus utility software on a laptop, RS-485 analyzer.
       </p>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -365,17 +270,17 @@ export default function TroubleshootingAndClosing() {
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
 
       <ul style={S.ul}>
-        <li><strong>BMS buildings mein broadly use hota hai</strong> — hospitals, hotels, airports, malls, campuses. Data center mein zyada critical use hai — continuous operation, alarm management, compliance.</li>
-        <li><strong>BMS ≠ DCIM ≠ EMS ≠ SCADA</strong> — different focus areas hain. Data center mein dono BMS aur DCIM coexist karte hain, complementary roles mein.</li>
-        <li><strong>Data chain: Equipment → Protocol → BMS → Tag → HMI → Alarm/Trend</strong> — har step configure hona chahiye, har step mein failure possible hai.</li>
-        <li><strong>Modbus addressing offset (0-based vs 1-based)</strong> — ye ek bahut common integration error hai. Hamesha OEM documentation se verify karo.</li>
-        <li><strong>BACnet COV bandwidth efficient hai</strong> — device proactively notify karta hai on change. Modbus sirf polling support karta hai.</li>
-        <li><strong>Scaling aur data type correct hona zaroori hai</strong> — wrong scaling se wrong alarm, wrong trend, wrong operational decision.</li>
-        <li><strong>Monitoring ≠ Control</strong> — majority points read-only hain. Control requires design, authorization, interlocks. Life-safety systems BMS se control nahi hone chahiye.</li>
-        <li><strong>UPS integration: Always get OEM register map</strong> — register addresses, data types aur scaling model se model differ karte hain.</li>
-        <li><strong>Alarm management discipline zaroori hai</strong> — alarm fatigue real risk hai. Rationalize, tune, aur make every alarm actionable.</li>
-        <li><strong>Troubleshooting: Layer-by-layer approach</strong> — field se HMI tak systematically isolate karo. Random steps time waste karte hain.</li>
-        <li><strong>Documentation critical hai</strong> — undocumented BMS liability hai. Points list, as-built drawings, commissioning records maintain karo.</li>
+        <li><strong>BMS is broadly used in buildings</strong> — hospitals, hotels, airports, malls, campuses. In the data center its use is more critical — continuous operation, alarm management, compliance.</li>
+        <li><strong>BMS ≠ DCIM ≠ EMS ≠ SCADA</strong> — they have different focus areas. In the data center both BMS and DCIM coexist, in complementary roles.</li>
+        <li><strong>Data chain: Equipment → Protocol → BMS → Tag → HMI → Alarm/Trend</strong> — every step must be configured, and failure is possible at every step.</li>
+        <li><strong>Modbus addressing offset (0-based vs 1-based)</strong> — this is a very common integration error. Always verify from OEM documentation.</li>
+        <li><strong>BACnet COV is bandwidth efficient</strong> — the device proactively notifies on change. Modbus only supports polling.</li>
+        <li><strong>Correct scaling and data type are essential</strong> — wrong scaling gives a wrong alarm, wrong trend, wrong operational decision.</li>
+        <li><strong>Monitoring ≠ Control</strong> — the majority of points are read-only. Control requires design, authorization, interlocks. Life-safety systems must not be controlled from the BMS.</li>
+        <li><strong>UPS integration: Always get OEM register map</strong> — register addresses, data types and scaling differ from model to model.</li>
+        <li><strong>Alarm management discipline is essential</strong> — alarm fatigue is a real risk. Rationalize, tune, and make every alarm actionable.</li>
+        <li><strong>Troubleshooting: Layer-by-layer approach</strong> — isolate systematically from field to HMI. Random steps waste time.</li>
+        <li><strong>Documentation is critical</strong> — an undocumented BMS is a liability. Maintain the points list, as-built drawings, commissioning records.</li>
       </ul>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -391,13 +296,13 @@ export default function TroubleshootingAndClosing() {
 
       {/* Related Topics */}
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Related Learning Topics</h2>
-      <p style={S.p}>BMS poore data center ecosystem se interact karta hai. Ye topics deepen karo:</p>
+      <p style={S.p}>The BMS interacts with the entire data center ecosystem. Deepen these topics:</p>
       <ul style={S.ul}>
-        <li><TopicLink slug="ups" variant="inline" /> — BMS ka most common integration target. UPS parameters BMS pe monitor karo.</li>
-        <li><TopicLink slug="vesda" variant="inline" /> — Early fire detection — BMS ko status points provide karta hai.</li>
-        <li><TopicLink slug="cctv" variant="inline" /> — Physical security system jo BMS se event-linked alerts share kar sakta hai.</li>
-        <li><TopicLink slug="access-control" variant="inline" /> — Door status aur access events BMS pe monitored ho sakte hain.</li>
-        <li><TopicLink slug="dcim" variant="inline" /> — BMS ke alongside data center infrastructure management.</li>
+        <li><TopicLink slug="ups" variant="inline" /> — the most common integration target of the BMS. Monitor UPS parameters on the BMS.</li>
+        <li><TopicLink slug="vesda" variant="inline" /> — early fire detection — provides status points to the BMS.</li>
+        <li><TopicLink slug="cctv" variant="inline" /> — a physical security system that can share event-linked alerts with the BMS.</li>
+        <li><TopicLink slug="access-control" variant="inline" /> — door status and access events can be monitored on the BMS.</li>
+        <li><TopicLink slug="dcim" variant="inline" /> — data center infrastructure management alongside the BMS.</li>
       </ul>
     </>
   );

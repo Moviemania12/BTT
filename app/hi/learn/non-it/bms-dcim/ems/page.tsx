@@ -1,0 +1,19 @@
+import ArticleLayout from "@/components/ArticleLayout";
+import { HEADINGS } from "@/app/learn/non-it/bms-dcim/ems/headings";
+import { faqSchema } from "./metadata";
+import Basics from "./sections/Basics";
+import MetersAndKPIs from "./sections/MetersAndKPIs";
+import TroubleshootingAndClosing from "./sections/TroubleshootingAndClosing";
+export { metadata } from "./metadata";
+export default function EmsPage() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <ArticleLayout slug="ems" headings={HEADINGS} readingTimeMinutes={20} lang="hi" alternateHref="/learn/non-it/bms-dcim/ems">
+        <Basics />
+        <MetersAndKPIs />
+        <TroubleshootingAndClosing />
+      </ArticleLayout>
+    </>
+  );
+}

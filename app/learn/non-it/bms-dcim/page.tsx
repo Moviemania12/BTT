@@ -5,6 +5,7 @@ import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 export const metadata: Metadata = {
   title: "BMS & DCIM — Behind The Tech",
   description: "Building Management System aur Data Center Infrastructure Management — monitoring aur automation.",
+  alternates: { canonical: "https://behindthetech.in/learn/non-it/bms-dcim" },
 };
 
 export default function CategoryPage() {

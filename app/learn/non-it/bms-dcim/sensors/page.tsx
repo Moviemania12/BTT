@@ -9,7 +9,7 @@ export default function SensorsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="sensors" headings={HEADINGS} readingTimeMinutes={22}>
+      <ArticleLayout slug="sensors" headings={HEADINGS} readingTimeMinutes={22} lang="en" alternateHref="/hi/learn/non-it/bms-dcim/sensors">
         <Basics />
         <SensorTypes />
         <IntegrationAndClosing />

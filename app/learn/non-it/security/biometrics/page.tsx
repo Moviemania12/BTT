@@ -11,7 +11,7 @@ export default function BiometricsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="biometrics" headings={HEADINGS} readingTimeMinutes={18}>
+      <ArticleLayout slug="biometrics" headings={HEADINGS} readingTimeMinutes={18} lang="en" alternateHref="/hi/learn/non-it/security/biometrics">
         <Basics />
         <EnrollmentAndIntegration />
         <TroubleshootingAndClosing />

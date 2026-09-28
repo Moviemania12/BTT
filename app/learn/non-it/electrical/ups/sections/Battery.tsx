@@ -26,9 +26,7 @@ export default function Battery() {
         <h2 id="battery-types" style={S.h2}>Battery Types</h2>
 
         <p style={S.p}>
-          UPS battery selection ek long-term decision hai — wrong choice se either backup time
-          compromise hota hai ya total cost of ownership (TCO) badh jaata hai. 5 major battery
-          technologies hain jo Data Center mein use hoti hain.
+          UPS battery selection is a long-term decision — a wrong choice either compromises backup time or increases the total cost of ownership (TCO). There are 5 major battery technologies used in Data Centers.
         </p>
 
         <Figure caption="Fig 9 — Visual comparison of common UPS battery form factors">
@@ -87,10 +85,7 @@ export default function Battery() {
         />
 
         <Callout type="best-practice" title="Best Practice — Match Battery to Use Case">
-          Agar Data Center 24×7 critical hai aur space premium hai → Lithium-ion consider karo despite
-          higher upfront. Agar budget-constrained, standard commercial DC hai → VRLA industry default
-          rehta hai. Telecom/utility installations with space available → Flooded/Tubular better TCO
-          dete hain long-term.
+          If the Data Center is 24×7 critical and space is at a premium → consider Lithium-ion despite the higher upfront cost. If it is a budget-constrained, standard commercial DC → VRLA remains the industry default. Telecom/utility installations with space available → Flooded/Tubular give better TCO long-term.
         </Callout>
 
         {/* ═══════════════════════════════════════════════════════════════
@@ -99,8 +94,7 @@ export default function Battery() {
         <h2 id="battery-bank-config" style={S.h2}>Battery Bank: Series / Parallel / Series-Parallel</h2>
 
         <p style={S.p}>
-          Individual batteries kaam nahi karti standalone — unhe ek <strong>bank</strong> mein arrange
-          kiya jaata hai. Teen configurations possible hain, har ek ka different purpose hai.
+          Individual batteries do not work standalone — they are arranged in a <strong>bank</strong>. Three configurations are possible, each with a different purpose.
         </p>
 
         <Figure caption="Fig 10 — Series connection: voltage adds up, capacity (Ah) stays same">
@@ -125,13 +119,11 @@ export default function Battery() {
         />
 
         <Callout type="warning" title="Warning — Never Mix Battery Ages in Same String">
-          Ek string mein kabhi old aur new battery mix mat karo. Weaker battery poori string ki
-          performance degrade kar degi aur reverse-charge ho sakti hai backup ke time, jo permanent
-          damage kar sakta hai. Pura string ek saath replace karo, individual batteries nahi.
+          Never mix old and new batteries in one string. The weaker battery will degrade the performance of the whole string and can get reverse-charged during backup, which can cause permanent damage. Replace the whole string together, not individual batteries.
         </Callout>
 
         <p style={S.p}>
-          String aur quantity calculate karne ke liye dedicated calculators use karo:
+          Use the dedicated calculators to calculate strings and quantity:
         </p>
 
         {(() => {
@@ -151,9 +143,7 @@ export default function Battery() {
         <h2 id="battery-calculation" style={S.h2}>Battery & Runtime Calculation</h2>
 
         <p style={S.p}>
-          Battery calculation ke peeche ka core formula simple hai, lekin har variable ka real impact
-          samajhna zaroori hai — voltage, current, Ah, Wh, runtime, efficiency, depth of discharge,
-          temperature, aur battery ageing.
+          The core formula behind battery calculation is simple, but it is essential to understand the real impact of each variable — voltage, current, Ah, Wh, runtime, efficiency, depth of discharge, temperature and battery ageing.
         </p>
 
         <ComparisonTable
@@ -169,16 +159,13 @@ export default function Battery() {
         />
 
         <Callout type="important" title="Important — Temperature Effects on Battery Life">
-          VRLA battery life manufacturer rating hamesha 25°C pe based hota hai. Every 8-10°C rise
-          battery life ko roughly <strong>half</strong> kar deta hai. Yeh ek reason hai ki battery room
-          dedicated cooling critical hai — Section 30 mein hum yeh detail se cover karenge.
+          The manufacturer rating of VRLA battery life is always based on 25°C. Every 8-10°C rise roughly <strong>halves</strong> battery life. This is one reason dedicated cooling for the battery room is critical — we will cover this in detail in Section 30.
         </Callout>
 
         <h3 style={S.h3}>Numerical Examples — Multiple Backup Durations</h3>
 
         <p style={S.p}>
-          Neeche ek consistent 50kW load ke liye different backup durations ka Ah requirement
-          dikhaya gaya hai (192V DC bus, 0.8 DoD, 0.9 efficiency assume karke):
+          Below, the Ah requirement for different backup durations is shown for a consistent 50kW load (assuming a 192V DC bus, 0.8 DoD, 0.9 efficiency):
         </p>
 
         <ComparisonTable
@@ -197,7 +184,7 @@ export default function Battery() {
         </p>
 
         <p style={S.p}>
-          Apna khud ka load aur runtime calculate karna ho, toh in calculators ko use karo:
+          If you want to calculate your own load and runtime, use these calculators:
         </p>
 
         {(() => {
@@ -212,10 +199,7 @@ export default function Battery() {
         })()}
 
         <Callout type="interview" title="Interview Tip">
-          Agar poocha jaaye "Battery sizing mein DoD kyun important hai?" — answer: <em>Battery ko 100%
-          discharge karna permanently capacity damage karta hai. DoD limit (jaise 80% for VRLA) battery
-          life preserve karta hai by avoiding deep discharge cycles — yeh trade-off hai usable capacity
-          vs battery longevity ke beech.</em>
+          If asked "Why is DoD important in battery sizing?" — answer: <em>Discharging a battery 100% permanently damages its capacity. A DoD limit (such as 80% for VRLA) preserves battery life by avoiding deep discharge cycles — this is a trade-off between usable capacity and battery longevity.</em>
         </Callout>
 
         {/* ═══════════════════════════════════════════════════════════════
@@ -224,9 +208,7 @@ export default function Battery() {
         <h2 id="battery-monitoring-system" style={S.h2}>Battery Monitoring System (BMS)</h2>
 
         <p style={S.p}>
-          Battery failure aksar <strong>silent</strong> hoti hai — koi visible warning nahi, jab tak
-          actual outage na aaye aur battery deliver na kar paaye. Battery Monitoring System (BMS) is
-          blind spot ko khatam karta hai by continuously tracking individual cell health.
+          Battery failure is often <strong>silent</strong> — there is no visible warning until an actual outage comes and the battery is unable to deliver. A Battery Monitoring System (BMS) eliminates this blind spot by continuously tracking individual cell health.
         </p>
 
         <Figure caption="Fig 13 — Battery Monitoring System architecture across a string">
@@ -245,15 +227,11 @@ export default function Battery() {
         />
 
         <Callout type="best-practice" title="Best Practice — Predictive vs Reactive Maintenance">
-          BMS predictive maintenance ko enable karta hai — weak battery ko replace karo before failure,
-          not after. Yeh approach unplanned outages ko dramatically reduce karta hai aur battery
-          replacement ko scheduled maintenance window mein plan karne deta hai.
+          BMS enables predictive maintenance — replace a weak battery before failure, not after. This approach dramatically reduces unplanned outages and lets battery replacement be planned in a scheduled maintenance window.
         </Callout>
 
         <p style={S.p}>
-          BMS data typically <TopicLink slug="dcim" variant="inline" /> ya facility{" "}
-          <TopicLink slug="bms" variant="inline" /> system ko feed hota hai centralized monitoring ke
-          liye — hum is integration ko Section 37 (Monitoring Protocols) mein detail se cover karenge.
+          BMS data typically feeds the <TopicLink slug="dcim" variant="inline" /> or facility <TopicLink slug="bms" variant="inline" /> system for centralized monitoring — we will cover this integration in detail in Section 37 (Monitoring Protocols).
         </p>
 
         {/* ═══════════════════════════════════════════════════════════════

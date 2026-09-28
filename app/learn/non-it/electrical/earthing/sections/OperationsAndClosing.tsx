@@ -6,7 +6,7 @@ export default function OperationsAndClosing() {
   return (
     <>
       <h2 id="common-faults" style={S.h2}>Common Faults & Troubleshooting</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Earthing faults zyada tar gradually develop hote hain — corrosion, loosening, moisture loss. Yeh jaldi detect nahi hote jab tak periodic testing na ho.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> Earthing faults mostly develop gradually — corrosion, loosening, moisture loss. They are not detected early unless there is periodic testing.</p>
       <ComparisonTable
         headers={["Fault", "Symptoms", "Root Cause", "Corrective Action"]}
         rows={[
@@ -23,11 +23,11 @@ export default function OperationsAndClosing() {
         ]}
       />
       <Callout type="danger" title="Danger — Multiple Neutral-Earth Bonds">
-        Yeh sabse common aur dangerous mistake hai — agar neutral ko multiple locations pe earth se bond kiya jaaye (source ke alawa kahi aur bhi), normal load current earth conductor ke through bhi flow karne lagti hai. Yeh RCD/ELCB false tripping, equipment body pe voltage, aur fire risk create karta hai. IS 3043 ke according, neutral-earth bond sirf ek jagah (source/transformer) pe honi chahiye.
+        This is the most common and dangerous mistake — if the neutral is bonded to earth at multiple locations (anywhere other than the source), normal load current also starts flowing through the earth conductor. This creates RCD/ELCB false tripping, voltage on equipment bodies and fire risk. According to IS 3043, the neutral-earth bond should be at only one place (source/transformer).
       </Callout>
 
       <h2 id="maintenance-schedule" style={S.h2}>Maintenance Schedule</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Earthing maintenance daily visual check se lekar annual comprehensive testing tak — 6 frequency levels pe defined hai.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> Earthing maintenance is defined at 6 frequency levels — from a daily visual check to annual comprehensive testing.</p>
       <ComparisonTable
         headers={["Frequency", "Tasks"]}
         rows={[
@@ -40,11 +40,11 @@ export default function OperationsAndClosing() {
         ]}
       />
       <Callout type="maintenance" title="Maintenance Tip — Document Every Reading">
-        Har earth resistance reading date, ambient condition (dry/wet season), aur instrument used ke saath document karo. Trending is more valuable than a single reading — gradually increasing resistance over years indicates degrading earth pit before it becomes a compliance failure.
+        Document every earth resistance reading with the date, ambient condition (dry/wet season) and instrument used. Trending is more valuable than a single reading — gradually increasing resistance over years indicates degrading earth pit before it becomes a compliance failure.
       </Callout>
 
       <h2 id="rack-server-earthing" style={S.h2}>Rack & Server Earthing</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Server rack earthing multiple layers mein hoti hai — rack frame, rail, PDU body, aur individual server chassis sab bonded honi chahiye common reference se.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> Server rack earthing happens in multiple layers — the rack frame, rail, PDU body and individual server chassis should all be bonded to a common reference.</p>
       <ComparisonTable
         headers={["Component", "Earthing Requirement", "Common Mistake"]}
         rows={[
@@ -56,18 +56,18 @@ export default function OperationsAndClosing() {
         ]}
       />
       <Callout type="important" title="Real Data Center Example — Server Grounding Issue">
-        Ek Data Center mein intermittent network errors report hue ek specific rack se. Investigation mein pata chala rack rails powder-coated thi aur frame se properly bonded nahi thi — sirf mechanical mounting contact tha, electrical continuity nahi. Static charge accumulate ho raha tha aur occasionally discharge ho raha tha through network cable shields, causing errors. Fix: explicit bonding jumper rail-to-frame, verified with continuity test.
+        In one Data Center, intermittent network errors were reported from a specific rack. The investigation found the rack rails were powder-coated and not properly bonded to the frame — there was only mechanical mounting contact, not electrical continuity. Static charge was accumulating and occasionally discharging through network cable shields, causing errors. Fix: explicit bonding jumper rail-to-frame, verified with a continuity test.
       </Callout>
 
       <h2 id="battery-room-earthing" style={S.h2}>Battery Room Earthing</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> <TopicLink slug="battery-bank" variant="inline" /> room mein earthing especially critical hai — DC systems, high fault current potential, aur explosive gas environment (H₂) sab factor karte hain.</p>
-      <p style={S.p}>Battery rack frame earthed honi chahiye, lekin DC bus itself typically floating (unearthed) rakha jaata hai with an Earth Fault Monitor (EFM) — yeh insulation resistance monitor karta hai bina directly earth se bond kiye.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> Earthing is especially critical in the <TopicLink slug="battery-bank" variant="inline" /> room — DC systems, high fault current potential and an explosive gas environment (H₂) are all factors.</p>
+      <p style={S.p}>The battery rack frame should be earthed, but the DC bus itself is typically kept floating (unearthed) with an Earth Fault Monitor (EFM) — it monitors insulation resistance without being directly bonded to earth.</p>
       <Callout type="important" title="Real Data Center Example — Battery Room Ground Fault">
-        Battery bank mein EFM alarm trigger hua — insulation resistance drop hui expected value se neeche. Investigation mein mila ek battery terminal se accidental contact ho gaya tha rack frame se (loose cable). Yeh ek genuine ground fault tha — agar undetected rehta, doosra fault (dusri jagah) short circuit create kar sakta tha through the chassis. EFM ne exactly yeh design intent achieve kiya — early detection bina automatic disconnect (jo battery bank mein disruptive hota) ke.
+        An EFM alarm triggered in a battery bank — insulation resistance dropped below the expected value. The investigation found that a battery terminal had made accidental contact with the rack frame (loose cable). This was a genuine ground fault — if it had stayed undetected, a second fault (somewhere else) could have created a short circuit through the chassis. The EFM achieved exactly this design intent — early detection without an automatic disconnect (which would be disruptive in a battery bank).
       </Callout>
 
       <h2 id="oem-instruments" style={S.h2}>OEM Instruments</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Earth testing instruments ke established global aur India-relevant brands hain — accuracy aur India service support dono consider karo select karte waqt.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> There are established global and India-relevant brands of earth testing instruments — consider both accuracy and India service support when selecting.</p>
       <ComparisonTable
         headers={["OEM", "Known For", "India Presence"]}
         rows={[
@@ -93,7 +93,7 @@ export default function OperationsAndClosing() {
           ["NEC (India)", "CEA", "National Electrical Code India — general wiring/earthing rules"],
         ]}
       />
-      <p style={S.p}>India mein IS 3043 primary reference hai. TIA-942 Data Center-specific guidance deta hai jo international clients/audits ke liye relevant hota hai. IEEE 80 particularly important hai jab high fault current areas (substation-adjacent, large transformer yards) ka touch/step voltage analysis karna ho.</p>
+      <p style={S.p}>In India, IS 3043 is the primary reference. TIA-942 gives Data Center-specific guidance that is relevant for international clients/audits. IEEE 80 is particularly important when doing touch/step voltage analysis of high fault current areas (substation-adjacent, large transformer yards).</p>
 
       <h2 id="comparison-tables" style={S.h2}>Comparison Tables</h2>
       <ComparisonTable
@@ -135,23 +135,23 @@ export default function OperationsAndClosing() {
           ["Redundant bonding paths", "Recommended for critical systems", "Mandatory — 2N philosophy extends to earthing where practical"],
         ]}
       />
-      <p style={S.p}>Actual implementation hamesha project requirements, utility requirements, OEM design, aur Data Center architecture pe depend karta hai — koi ek universal earthing design nahi hoti sabhi Tier III/IV facilities ke liye.</p>
+      <p style={S.p}>Actual implementation always depends on project requirements, utility requirements, OEM design and Data Center architecture — there is no single universal earthing design for all Tier III/IV facilities.</p>
 
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
       <ul style={S.ul}>
-        <li><strong>Earthing safety-critical system hai, compliance checkbox nahi</strong> — personnel life aur equipment dono directly depend karte hain iski quality pe.</li>
-        <li><strong>Earthing aur Grounding same concept hain</strong> — regional terminology difference hai (India/IEC vs US/NEC).</li>
-        <li><strong>Equipotential bonding core philosophy hai</strong> — sab systems ek common reference point se bonded hone chahiye, potential difference minimize karne ke liye.</li>
-        <li><strong>Chemical/Maintenance-Free Earthing Tier III/IV ke liye recommended hai</strong> — stable resistance, low long-term maintenance.</li>
-        <li><strong>3-pole (Fall of Potential) sabse accurate testing method hai</strong> — annual baseline testing ke liye use karo; clamp method routine monitoring ke liye.</li>
-        <li><strong>Neutral-Earth bond sirf ek jagah honi chahiye</strong> — multiple bonds circulating current aur nuisance trips create karte hain.</li>
-        <li><strong>Clean earth aur dirty earth alag rakho</strong> — sensitive electronics (BMS, communication) ke liye noise-free path zaroori hai.</li>
-        <li><strong>&lt;1Ω target hai Data Center critical systems ke liye</strong> — UPS, Battery Bank, aur server rack earthing.</li>
-        <li><strong>Ground loops communication errors ka silent cause hote hain</strong> — cable shield ko dono end pe earth mat karo.</li>
-        <li><strong>Actual implementation project-specific hoti hai</strong> — soil resistivity, Tier level, aur OEM requirements sab final design shape karte hain.</li>
+        <li><strong>Earthing is a safety-critical system, not a compliance checkbox</strong> — both personnel life and equipment depend directly on its quality.</li>
+        <li><strong>Earthing and Grounding are the same concept</strong> — it is a regional terminology difference (India/IEC vs US/NEC).</li>
+        <li><strong>Equipotential bonding is the core philosophy</strong> — all systems should be bonded to a common reference point to minimize potential difference.</li>
+        <li><strong>Chemical/Maintenance-Free Earthing is recommended for Tier III/IV</strong> — stable resistance, low long-term maintenance.</li>
+        <li><strong>3-pole (Fall of Potential) is the most accurate testing method</strong> — use it for annual baseline testing; the clamp method for routine monitoring.</li>
+        <li><strong>The Neutral-Earth bond should be at only one place</strong> — multiple bonds create circulating current and nuisance trips.</li>
+        <li><strong>Keep clean earth and dirty earth separate</strong> — a noise-free path is essential for sensitive electronics (BMS, communication).</li>
+        <li><strong>&lt;1Ω is the target for Data Center critical systems</strong> — UPS, Battery Bank and server rack earthing.</li>
+        <li><strong>Ground loops are a silent cause of communication errors</strong> — do not earth the cable shield at both ends.</li>
+        <li><strong>Actual implementation is project-specific</strong> — soil resistivity, Tier level and OEM requirements all shape the final design.</li>
       </ul>
-      <p style={S.p}>Earthing ke baad natural next steps: <TopicLink slug="lightning-protection" variant="inline" /> ka complete coverage, ya <TopicLink slug="transformer" variant="inline" /> article mein transformer-side neutral earthing detail.</p>
-      <p style={S.p}>Power chain samajhne ke liye <TopicLink slug="ups" variant="inline" />, <TopicLink slug="battery-bank" variant="inline" />, <TopicLink slug="sts" variant="inline" /> aur <TopicLink slug="pdu" variant="inline" /> articles dekho — earthing in sabko underlying safety layer provide karti hai.</p>
+      <p style={S.p}>Natural next steps after earthing: complete coverage of <TopicLink slug="lightning-protection" variant="inline" />, or transformer-side neutral earthing detail in the <TopicLink slug="transformer" variant="inline" /> article.</p>
+      <p style={S.p}>To understand the power chain, see the <TopicLink slug="ups" variant="inline" />, <TopicLink slug="battery-bank" variant="inline" />, <TopicLink slug="sts" variant="inline" /> and <TopicLink slug="pdu" variant="inline" /> articles — earthing provides the underlying safety layer for all of them.</p>
     </>
   );
 }

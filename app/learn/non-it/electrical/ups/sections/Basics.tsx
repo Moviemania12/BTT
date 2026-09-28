@@ -21,36 +21,23 @@ export default function Basics() {
         <h2 id="what-is-ups" style={S.h2}>What is a UPS?</h2>
 
         <p style={S.p}>
-          Socho tum office mein kaam kar rahe ho, suddenly light chali jaati hai. Tumhara laptop battery
-          pe chal jaata hai — koi farak nahi padta. Lekin server room mein jo bade servers hote hain,
-          unke paas internal battery nahi hoti. Agar power achanak cut ho jaaye, toh server crash ho
-          jaayega, data corrupt ho sakta hai.
+          Imagine you are working in an office and suddenly the power goes out. Your laptop switches to battery — it makes no difference. But the big servers in the server room do not have an internal battery. If power is cut suddenly, the server will crash and data can get corrupted.
         </p>
 
         <p style={S.p}>
-          Yahi pe kaam aata hai <strong>UPS — Uninterruptible Power Supply</strong>. Simple words mein,
-          UPS ek aisi device hai jo grid power fail hone ke <em>exact</em> moment pe (zero gap ke saath,
-          ya kuch milliseconds mein) battery se power supply continue kar deti hai. IT equipment ko
-          kabhi pata hi nahi chalta ki grid gaya tha.
+          This is where the <strong>UPS — Uninterruptible Power Supply</strong> comes in. In simple words, a UPS is a device that continues the power supply from the battery at the <em>exact</em> moment grid power fails (with zero gap, or within a few milliseconds). The IT equipment never even knows that the grid went out.
         </p>
 
         <p style={S.p}>
-          Data Center mein UPS sirf ek "backup battery" nahi hai — yeh poore facility ki{" "}
-          <strong>power quality ka guardian</strong> bhi hai. Grid se aane wala power kabhi perfectly
-          clean nahi hota — voltage spikes, sags, harmonics sab hote rehte hain. UPS yeh sab clean
-          karke server ko ek stable, pure sine wave deta hai.
+          In a Data Center, a UPS is not just a "backup battery" — it is also the <strong>guardian of power quality</strong> for the entire facility. Power coming from the grid is never perfectly clean — voltage spikes, sags and harmonics keep happening. The UPS cleans all of this and gives the server a stable, pure sine wave.
         </p>
 
         <Callout type="important" title="Important — UPS ≠ Battery">
-          Bahut log UPS aur battery ko same samajh lete hain. Battery sirf energy store karti hai. UPS
-          ek complete <em>system</em> hai jisme rectifier, inverter, static switch, aur control logic
-          sab milke kaam karte hain — battery toh ek component hai is system ka.
+          Many people think a UPS and a battery are the same. A battery only stores energy. A UPS is a complete <em>system</em> in which the rectifier, inverter, static switch and control logic all work together — the battery is just one component of this system.
         </Callout>
 
         <p style={S.p}>
-          Technical definition: UPS ek electrical apparatus hai jo load (server, network equipment) ko
-          continuous, regulated AC power deta hai — chahe input supply available ho ya na ho, jab tak
-          battery charge hai.
+          Technical definition: A UPS is an electrical apparatus that gives continuous, regulated AC power to the load (server, network equipment) — whether the input supply is available or not, as long as the battery has charge.
         </p>
 
         {/* ═══════════════════════════════════════════════════════════════
@@ -59,14 +46,11 @@ export default function Basics() {
         <h2 id="why-ups-required" style={S.h2}>Why UPS is Required</h2>
 
         <p style={S.p}>
-          Sawal yeh hai — agar <TopicLink slug="dg-set" variant="inline" /> already backup power deta
-          hai, toh UPS ki zaroorat kyun? Jawab hai — <strong>timing gap</strong>.
+          The question is — if the <TopicLink slug="dg-set" variant="inline" /> already provides backup power, why is a UPS needed? The answer is — the <strong>timing gap</strong>.
         </p>
 
         <p style={S.p}>
-          Jab grid fail hoti hai, DG Set ko start hone mein, voltage build karne mein, aur load transfer
-          hone mein typically <strong>10 se 30 seconds</strong> lagte hain. Is gap mein server ko power
-          chahiye — warna crash. UPS yahi gap battery se cover karta hai.
+          When the grid fails, the DG Set typically takes <strong>10 to 30 seconds</strong> to start, build voltage and transfer the load. During this gap the server needs power — otherwise it crashes. The UPS covers exactly this gap from the battery.
         </p>
 
         <ComparisonTable
@@ -81,16 +65,11 @@ export default function Basics() {
         />
 
         <p style={S.p}>
-          Beyond grid failures, UPS solves five core problems: <strong>voltage fluctuation</strong>{" "}
-          (sag/surge), <strong>frequency variation</strong>, <strong>harmonic distortion</strong>,{" "}
-          <strong>complete blackouts</strong>, aur <strong>transient spikes</strong> (lightning ya
-          switching ki wajah se).
+          Beyond grid failures, UPS solves five core problems: <strong>voltage fluctuation</strong> (sag/surge), <strong>frequency variation</strong>, <strong>harmonic distortion</strong>, <strong>complete blackouts</strong>, and <strong>transient spikes</strong> (caused by lightning or switching).
         </p>
 
         <Callout type="interview" title="Interview Tip">
-          Agar interview mein poocha jaaye "UPS aur DG Set dono backup hain, toh dono kyun chahiye?" —
-          answer: <em>UPS instant transfer ke liye (zero downtime), DG Set extended runtime ke liye
-          (UPS battery sirf 10-15 min chalti hai typically, DG hours chala sakta hai).</em>
+          If you are asked in an interview "UPS and DG Set are both backup, so why are both needed?" — answer: <em>UPS is for instant transfer (zero downtime), DG Set is for extended runtime (UPS battery typically runs only 10-15 min, a DG can run for hours).</em>
         </Callout>
 
         {/* ═══════════════════════════════════════════════════════════════
@@ -99,9 +78,7 @@ export default function Basics() {
         <h2 id="history-of-ups" style={S.h2}>History of UPS Technology</h2>
 
         <p style={S.p}>
-          UPS technology ka concept 1930s mein shuru hua tha, jab telephone exchanges ko continuous
-          power chahiye thi. Lekin modern UPS jo hum aaj jaante hain, woh 1960s-70s mein develop hua
-          jab mainframe computers industries mein aam hone lage.
+          The concept of UPS technology started in the 1930s, when telephone exchanges needed continuous power. But the modern UPS we know today was developed in the 1960s-70s, when mainframe computers became common in industries.
         </p>
 
         <ComparisonTable
@@ -117,9 +94,7 @@ export default function Basics() {
         />
 
         <p style={S.p}>
-          Aaj ka UPS sirf ek backup box nahi — yeh ek <strong>intelligent power management system</strong>{" "}
-          hai jo SNMP, cloud monitoring, predictive battery analytics sab support karta hai. Hum yeh
-          sab aage detail mein cover karenge.
+          Today's UPS is not just a backup box — it is an <strong>intelligent power management system</strong> that supports SNMP, cloud monitoring and predictive battery analytics. We will cover all of this in detail ahead.
         </p>
 
         {/* ═══════════════════════════════════════════════════════════════
@@ -128,8 +103,7 @@ export default function Basics() {
         <h2 id="ups-standards" style={S.h2}>UPS Standards & Codes</h2>
 
         <p style={S.p}>
-          Professional Data Center design kabhi "andaaz" se nahi hota — har decision kisi standard ya
-          code ke against verify hota hai. UPS ke liye yeh standards sabse zaroori hain:
+          Professional Data Center design is never done by "guesswork" — every decision is verified against some standard or code. These standards are the most important for UPS:
         </p>
 
         <ComparisonTable
@@ -147,10 +121,7 @@ export default function Basics() {
         />
 
         <Callout type="important" title="Important — Standards Vary by Region">
-          India mein CEA (Central Electricity Authority) guidelines aur IS codes bhi apply hote hain
-          alongside international standards. Actual implementation depends on project requirements,
-          utility requirements, OEM design aur Data Center architecture — yeh standards ek baseline
-          reference hain, har project ki apni specific compliance zaroorat hoti hai.
+          In India, CEA (Central Electricity Authority) guidelines and IS codes also apply alongside international standards. Actual implementation depends on project requirements, utility requirements, OEM design and Data Center architecture — these standards are a baseline reference; every project has its own specific compliance requirements.
         </Callout>
 
         {/* ═══════════════════════════════════════════════════════════════
@@ -159,23 +130,19 @@ export default function Basics() {
         <h2 id="working-principle" style={S.h2}>Working Principle</h2>
 
         <p style={S.p}>
-          UPS ka core working principle samajhna simple hai agar hum ise ek "relay race" ki tarah
-          dekhein. Teen main players hain: <strong>Rectifier</strong>, <strong>Battery</strong>, aur{" "}
-          <strong>Inverter</strong>.
+          The core working principle of a UPS is simple to understand if we look at it like a "relay race". There are three main players: <strong>Rectifier</strong>, <strong>Battery</strong>, and <strong>Inverter</strong>.
         </p>
 
         <ol style={S.ul}>
-          <li><strong>Step 1:</strong> Grid se AC power aata hai UPS mein.</li>
-          <li><strong>Step 2:</strong> Rectifier is AC ko DC mein convert karta hai.</li>
-          <li><strong>Step 3:</strong> Yeh DC battery ko charge karta hai (aur saath mein inverter ko bhi feed karta hai online topology mein).</li>
-          <li><strong>Step 4:</strong> Inverter DC ko wapas clean AC mein convert karta hai — yeh output load (server) ko jaata hai.</li>
-          <li><strong>Step 5:</strong> Agar grid fail ho jaaye, battery seamlessly DC supply continue karti hai — inverter ko farak nahi padta source kahan se aa raha hai.</li>
+          <li><strong>Step 1:</strong> AC power comes into the UPS from the grid.</li>
+          <li><strong>Step 2:</strong> The rectifier converts this AC into DC.</li>
+          <li><strong>Step 3:</strong> This DC charges the battery (and in the online topology also feeds the inverter at the same time).</li>
+          <li><strong>Step 4:</strong> The inverter converts the DC back into clean AC — this output goes to the load (server).</li>
+          <li><strong>Step 5:</strong> If the grid fails, the battery seamlessly continues the DC supply — the inverter does not care where the source is coming from.</li>
         </ol>
 
         <p style={S.p}>
-          Yahi reason hai ki Online Double Conversion UPS mein <strong>zero transfer time</strong> hota
-          hai — load hamesha inverter se hi power leta hai, chahe grid ho ya battery. Hum is topology ko
-          detail mein Section 16 mein cover karenge.
+          This is the reason an Online Double Conversion UPS has <strong>zero transfer time</strong> — the load always takes power from the inverter, whether from the grid or the battery. We will cover this topology in detail in Section 16.
         </p>
 
         {/* ═══════════════════════════════════════════════════════════════
@@ -184,8 +151,7 @@ export default function Basics() {
         <h2 id="internal-block-diagram" style={S.h2}>Internal Block Diagram</h2>
 
         <p style={S.p}>
-          Neeche diya gaya block diagram UPS ke andar ke har major component aur unka power flow dikhata
-          hai — yeh foundation hai jo aage har section mein reference hoga.
+          The block diagram below shows every major component inside the UPS and their power flow — this is the foundation that will be referenced in every section ahead.
         </p>
 
         <Figure caption="Fig 1 — UPS Internal Block Diagram showing power flow from input to output">
@@ -193,10 +159,7 @@ export default function Basics() {
         </Figure>
 
         <p style={S.p}>
-          Notice karo — <strong>Static Switch</strong> ek critical safety net hai. Agar inverter kabhi
-          fail ho jaaye ya overload ho jaaye, static switch milliseconds mein load ko directly bypass
-          path (raw grid power) pe shift kar deta hai. Hum is component ko Section 11 mein detail se
-          cover karenge.
+          Notice — the <strong>Static Switch</strong> is a critical safety net. If the inverter ever fails or gets overloaded, the static switch shifts the load directly onto the bypass path (raw grid power) within milliseconds. We will cover this component in detail in Section 11.
         </p>
 
         {/* ═══════════════════════════════════════════════════════════════
@@ -205,9 +168,7 @@ export default function Basics() {
         <h2 id="ups-single-line-diagram" style={S.h2}>UPS Single Line Diagram (SLD)</h2>
 
         <p style={S.p}>
-          Single Line Diagram (SLD) ek simplified electrical drawing hai jo poore power distribution
-          path ko single lines mein dikhata hai — yeh design engineers aur site electricians dono ke
-          liye standard reference document hota hai.
+          A Single Line Diagram (SLD) is a simplified electrical drawing that shows the entire power distribution path in single lines — it is the standard reference document for both design engineers and site electricians.
         </p>
 
         <Figure caption="Fig 2 — Typical UPS Single Line Diagram from incoming supply to rack PDU">
@@ -215,9 +176,7 @@ export default function Basics() {
         </Figure>
 
         <Callout type="important" title="Important — SLD is Project-Specific">
-          Yeh ek simplified, single-path SLD hai sirf samajhne ke liye. Real Tier III/IV Data Center mein
-          dual-path (A/B feed) SLD hota hai jisme har component redundant hota hai. Hum yeh
-          Section 31 (Dual Bus & A-B Feed) mein detail se cover karenge.
+          This is a simplified, single-path SLD just for understanding. A real Tier III/IV Data Center has a dual-path (A/B feed) SLD in which every component is redundant. We will cover this in detail in Section 31 (Dual Bus & A-B Feed).
         </Callout>
 
         {/* ═══════════════════════════════════════════════════════════════

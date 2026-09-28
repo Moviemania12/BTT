@@ -6,11 +6,18 @@ import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
   title: "Cooling Tower in Data Centers — Complete Guide | Behind The Tech",
-  description: "Cooling tower kya hai, kaise kaam karta hai, Data Center mein chiller ke saath kaise connect hota hai — evaporative cooling, types, maintenance aur safety guide.",
+  description: "What is a cooling tower, how does it work, how is it connected to the chiller in a Data Center — evaporative cooling, types, maintenance and safety guide.",
   keywords: ["cooling tower data center", "cooling tower chiller", "evaporative cooling data center", "cooling tower maintenance"],
-  openGraph: { title: "Cooling Tower in Data Centers", description: "Cooling tower — chiller plant ka heat rejection component. Complete guide.", url: "https://behindthetech.in/learn/non-it/cooling/cooling-tower", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "Cooling Tower Explained — Behind The Tech", description: "Cooling tower — Data Center chiller ka heat rejection system. Complete guide." },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/cooling/cooling-tower" },
+  openGraph: { title: "Cooling Tower in Data Centers", description: "Cooling tower — the heat rejection component of the chiller plant. Complete guide.", url: "https://behindthetech.in/learn/non-it/cooling/cooling-tower", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
+  twitter: { card: "summary_large_image", title: "Cooling Tower Explained — Behind The Tech", description: "Cooling tower — the heat rejection system of the Data Center chiller. Complete guide." },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/cooling/cooling-tower",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/cooling/cooling-tower",
+      hi: "https://behindthetech.in/hi/learn/non-it/cooling/cooling-tower",
+      "x-default": "https://behindthetech.in/learn/non-it/cooling/cooling-tower",
+    },
+  },
 };
 
 const HEADINGS: ArticleHeading[] = [
@@ -50,12 +57,12 @@ const S = {
 
 function QuickSummary() {
   const pts = [
-    { label: "Ek line mein", text: "Cooling tower ek heat rejection device hai jo chiller ki condenser heat ko atmosphere mein nikalta hai — evaporative cooling use karke." },
-    { label: "Kahan lagta hai", text: "Building ke roof par ya ground level pe (outside). Chiller ke condenser water loop se connected. Data center ke bahar hota hai." },
-    { label: "Kaise kaam karta hai", text: "Hot condenser water (35-40°C) tower mein aata hai. Fill media se trickle karta hai. Fans air draw karte hain. Kuch paani evaporate hota hai — ye evaporation heat absorb karta hai. Thanda water (28-32°C) wapas chiller mein." },
-    { label: "Chiller se connection", text: "Chiller → condenser se hot water → cooling tower (heat reject) → thanda water → chiller condenser. Ye condenser water loop hai. Chilled water loop alag hoti hai — mix nahi hoti." },
-    { label: "Water ki zaroorat", text: "Evaporation se paani loss hota hai — makeup water chahiye. Typical data center cooling tower mein lakhs of litres per month water use hota hai. Water treatment zaroori hai." },
-    { label: "Legionella risk", text: "Warm stagnant water mein Legionella bacteria grow kar sakta hai. Regular biocide treatment, temperature management, proper cleaning — zaroori hai. Ye health hazard hai — seriously lo." },
+    { label: "In one line", text: "A cooling tower is a heat rejection device that releases the chiller's condenser heat into the atmosphere — using evaporative cooling." },
+    { label: "Where it is installed", text: "On the building roof or at ground level (outside). Connected to the chiller's condenser water loop. It is outside the data center." },
+    { label: "How it works", text: "Hot condenser water (35-40°C) comes into the tower. It trickles through the fill media. Fans draw air. Some water evaporates — this evaporation absorbs heat. Cold water (28-32°C) goes back to the chiller." },
+    { label: "Connection to the chiller", text: "Chiller → hot water from the condenser → cooling tower (heat reject) → cold water → chiller condenser. This is the condenser water loop. The chilled water loop is separate — they do not mix." },
+    { label: "Water requirement", text: "Evaporation causes water loss — makeup water is needed. A typical data center cooling tower uses lakhs of litres of water per month. Water treatment is essential." },
+    { label: "Legionella risk", text: "Legionella bacteria can grow in warm stagnant water. Regular biocide treatment, temperature management and proper cleaning are essential. This is a health hazard — take it seriously." },
   ];
   return (
     <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", margin: "8px 0 32px" }}>
@@ -90,10 +97,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
 function EngineerTip({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", margin: "20px 0 24px" }}>
-      <div style={{ height: 2, background: "#ffa500" }} />
-      <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}>
-        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer Ki Tip</span>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
+      <div style={{ height: 2, background: "#ffa500" }} /> <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}> <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer's Tip</span> <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
       </div>
     </div>
   );
@@ -168,12 +172,12 @@ function FlowDiagram({ caption, steps }: { caption: string; steps: { icon: strin
 }
 
 const FAQS = [
-  { q: "Cooling tower sirf chiller ke saath hi use hota hai kya?", a: "Water-cooled chiller ke saath standard hai. Lekin cooling tower standalone bhi use ho sakta hai — direct heat rejection ke liye. Data centers mein typically chiller ke saath use hota hai. Condenser water loop — chiller condenser aur cooling tower ke beech." },
-  { q: "Cooling tower mein kitna paani use hota hai?", a: "Evaporation (typically 1-2% of circulation rate), blowdown (2-3% — concentrated minerals remove karne ke liye), aur drift (< 0.001% modern towers mein). Large data center cooling tower: lakhs of litres per month water use hota hai. Water conservation important hai." },
-  { q: "Approach temperature kya hota hai?", a: "Approach = Cooling tower outlet water temperature - Wet bulb temperature. Smaller approach = better cooling tower performance. Typical design: 3-5°C approach. Wet bulb temperature outdoor humidity se dependent hota hai." },
-  { q: "Legionella kya hai aur cooling tower mein kyon problem hai?", a: "Legionella pneumophila ek bacteria hai jo Legionnaires' disease (serious pneumonia) cause karta hai. Cooling tower ka warm, humid environment perfect breeding ground hai. Prevention: regular biocide dosing, proper temperature management (60°C+ ya 20°C-), regular cleaning." },
-  { q: "Cooling tower fan speed control kaise hota hai?", a: "VFD (Variable Frequency Drive) se fan speed vary kiya jaata hai — load aur ambient conditions ke hisaab se. Thanda weather = slower fans, kum load = slower fans. Energy saving 50%+ possible hai VFD se vs fixed speed." },
-  { q: "Cooling tower capacity kaise size karte hain?", a: "Chiller condenser heat rejection (kW mein) based pe. Rule of thumb: Cooling tower capacity = 1.25 × chiller cooling capacity (approx). Proper sizing meteorological data pe based hoti hai — local wet bulb temperature, ambient conditions." },
+  { q: "Is a cooling tower used only with a chiller?", a: "It is standard with a water-cooled chiller. But a cooling tower can also be used standalone — for direct heat rejection. In data centers it is typically used with a chiller. Condenser water loop — between the chiller condenser and the cooling tower." },
+  { q: "How much water does a cooling tower use?", a: "Evaporation (typically 1-2% of circulation rate), blowdown (2-3% — to remove concentrated minerals), and drift (< 0.001% in modern towers). A large data center cooling tower uses lakhs of litres of water per month. Water conservation is important." },
+  { q: "What is approach temperature?", a: "Approach = Cooling tower outlet water temperature - Wet bulb temperature. Smaller approach = better cooling tower performance. Typical design: 3-5°C approach. Wet bulb temperature depends on outdoor humidity." },
+  { q: "What is Legionella and why is it a problem in a cooling tower?", a: "Legionella pneumophila is a bacteria that causes Legionnaires' disease (serious pneumonia). The warm, humid environment of a cooling tower is a perfect breeding ground. Prevention: regular biocide dosing, proper temperature management (60°C+ or 20°C-), regular cleaning." },
+  { q: "How is cooling tower fan speed controlled?", a: "Fan speed is varied with a VFD (Variable Frequency Drive) — according to load and ambient conditions. Cold weather = slower fans, low load = slower fans. 50%+ energy saving is possible with a VFD vs fixed speed." },
+  { q: "How is cooling tower capacity sized?", a: "Based on the chiller condenser heat rejection (in kW). Rule of thumb: Cooling tower capacity = 1.25 × chiller cooling capacity (approx). Proper sizing is based on meteorological data — local wet bulb temperature, ambient conditions." },
 ];
 
 function FAQSection() {
@@ -199,19 +203,19 @@ export default function CoolingTowerPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="cooling-tower" headings={HEADINGS} readingTimeMinutes={18}>
+      <ArticleLayout slug="cooling-tower" headings={HEADINGS} readingTimeMinutes={18} lang="en" alternateHref="/hi/learn/non-it/cooling/cooling-tower">
 
-        <p style={S.p}>Chiller data center ki heat absorb karta hai. Lekin ye heat kahin jaani chahiye — permanently bahar.</p>
-        <p style={S.p}>Chiller ye heat kaise remove karta hai? Cooling tower ke through.</p>
-        <p style={S.p}><strong>Cooling tower = chiller ka heat dumping station.</strong></p>
-        <p style={S.p}>Ye ek simple device hai — lekin iske bina water-cooled chiller plant nahi chal sakta.</p>
-        <p style={S.p}>Aur cooling tower ke bina, large data center ki cooling fail ho jaayegi.</p>
+        <p style={S.p}>The chiller absorbs the data center's heat. But this heat has to go somewhere — permanently outside.</p>
+        <p style={S.p}>How does the chiller remove this heat? Through the cooling tower.</p>
+        <p style={S.p}><strong>Cooling tower = the chiller's heat dumping station.</strong></p>
+        <p style={S.p}>It is a simple device — but without it a water-cooled chiller plant cannot run.</p>
+        <p style={S.p}>And without a cooling tower, a large data center's cooling will fail.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
             <Image src="/images/articles/cooling-tower/cooling-tower-data-center.png" alt="Cooling towers on roof of data center building" fill sizes="(max-width: 768px) 100vw, 740px" style={{ objectFit: "cover" }} />
           </div>
-          <figcaption style={S.imageCaption}>Cooling towers — typically data center building ke roof pe ya ground pe outside. Ye towers atmosphere mein heat reject karte hain.</figcaption>
+          <figcaption style={S.imageCaption}>Cooling towers — typically on the data center building's roof or on the ground outside. These towers reject heat into the atmosphere.</figcaption>
         </figure>
 
         <QuickSummary />
@@ -220,11 +224,11 @@ export default function CoolingTowerPage() {
 
         <h2 id="what-is-cooling-tower" style={S.h1}>What Is a Cooling Tower?</h2>
 
-        <p style={S.p}><strong>Cooling tower ek heat rejection device hai.</strong></p>
-        <p style={S.p}>Ye hot water ko thanda karta hai — evaporative cooling process se — aur heat atmosphere mein release karta hai.</p>
-        <p style={S.p}><em>Daily life analogy:</em> Garmi mein sweat aata hai. Sweat evaporate hota hai. Aap thanda feel karte ho. Same principle — cooling tower mein paani evaporate hota hai, heat bahar jaati hai.</p>
-        <p style={S.p}>Data center mein cooling tower specifically <strong>chiller plant</strong> ke saath kaam karta hai.</p>
-        <p style={S.p}>Chiller ka condenser side hot ho jaata hai — jab refrigerant heat reject karta hai. Ye heat kahin nikalni chahiye. Cooling tower ye kaam karta hai.</p>
+        <p style={S.p}><strong>A cooling tower is a heat rejection device.</strong></p>
+        <p style={S.p}>It cools hot water — through the evaporative cooling process — and releases the heat into the atmosphere.</p>
+        <p style={S.p}><em>Daily life analogy:</em> In summer you sweat. The sweat evaporates. You feel cool. Same principle — in a cooling tower water evaporates and heat goes out.</p>
+        <p style={S.p}>In a data center the cooling tower works specifically with the <strong>chiller plant</strong>.</p>
+        <p style={S.p}>The chiller's condenser side gets hot — when the refrigerant rejects heat. This heat has to be removed somewhere. The cooling tower does this job.</p>
 
         <DCMapNote components={["Cooling Tower", "Chiller", "Condenser Water Pumps", "Cooling Tower Basin", "Makeup Water"]} />
 
@@ -232,26 +236,26 @@ export default function CoolingTowerPage() {
 
         <h2 id="why-needed" style={S.h1}>Why Is Cooling Tower Needed?</h2>
 
-        <p style={S.p}>Chiller refrigeration cycle mein heat do jagah transfer hoti hai:</p>
+        <p style={S.p}>In the chiller refrigeration cycle, heat is transferred at two places:</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Evaporator side:</strong> Chilled water se heat absorb hoti hai → data center thanda hota hai ✓</li>
-          <li style={S.li}><strong>Condenser side:</strong> Ye heat kahin reject karni hai → COOLING TOWER ✓</li>
+          <li style={S.li}><strong>Evaporator side:</strong> Heat is absorbed from the chilled water → the data center gets cooled ✓</li>
+          <li style={S.li}><strong>Condenser side:</strong> This heat has to be rejected somewhere → COOLING TOWER ✓</li>
         </ul>
-        <p style={S.p}>Agar condenser side heat reject nahi hogi, chiller overload ho jaayega. High pressure trip. Cooling stop.</p>
-        <p style={S.p}><strong>Energy balance: Cooling tower ko jitni heat reject karni hai = Data center ki IT heat + Chiller's own power consumption.</strong></p>
-        <p style={S.p}>Example: 1000 kW data center heat + 200 kW chiller power = 1200 kW cooling tower ko reject karna hai.</p>
+        <p style={S.p}>If the condenser side heat is not rejected, the chiller will be overloaded. High pressure trip. Cooling stops.</p>
+        <p style={S.p}><strong>Energy balance: The heat the cooling tower has to reject = the data center's IT heat + the chiller's own power consumption.</strong></p>
+        <p style={S.p}>Example: 1000 kW data center heat + 200 kW chiller power = 1200 kW the cooling tower has to reject.</p>
 
         <WhyThisMatters>
-          Water-cooled chiller + cooling tower combination data center cooling mein COP 4-7 achieve karta hai. Air-cooled chiller COP 2.5-4 hota hai. Iska matlab: cooling tower use karne se electricity 30-40% kam lagti hai same cooling ke liye. Large data center mein ye lakhs of rupees monthly savings ho sakti hai.
+          The water-cooled chiller + cooling tower combination achieves a COP of 4-7 in data center cooling. An air-cooled chiller's COP is 2.5-4. This means: using a cooling tower takes 30-40% less electricity for the same cooling. In a large data center this can be monthly savings of lakhs of rupees.
         </WhyThisMatters>
 
         <hr style={S.divider} />
 
         <h2 id="working-principle" style={S.h1}>Working Principle</h2>
 
-        <p style={S.p}><strong>Evaporative cooling</strong> — ye cooling tower ka core principle hai.</p>
-        <p style={S.p}>Simple experiment: Kapde pe paani lagao. Paani evaporate hota hai. Kapda thanda ho jaata hai.</p>
-        <p style={S.p}>Why? Evaporation ke liye energy chahiye — ye energy surrounding paani ki heat se aati hai. Result: paani thanda hota hai.</p>
+        <p style={S.p}><strong>Evaporative cooling</strong> — this is the core principle of the cooling tower.</p>
+        <p style={S.p}>Simple experiment: Put water on a cloth. The water evaporates. The cloth becomes cool.</p>
+        <p style={S.p}>Why? Evaporation needs energy — this energy comes from the heat of the surrounding water. Result: the water becomes cool.</p>
 
         <FlowDiagram
           caption="Cooling tower evaporative cooling process"
@@ -265,14 +269,14 @@ export default function CoolingTowerPage() {
         />
 
         <h3 style={S.h3}>Step by Step Process</h3>
-        <p style={S.p}><strong>Step 1 — Hot water in:</strong> Chiller condenser se hot water (35-40°C) cooling tower mein enter karta hai. Distribution header is water ko evenly distribute karta hai.</p>
-        <p style={S.p}><strong>Step 2 — Fill media:</strong> Hot water fill media (packing/fill — plastic ya wood ki structured sheets) ke upar se trickle karta hai. Fill surface area maximize karta hai — more surface = more evaporation.</p>
-        <p style={S.p}><strong>Step 3 — Airflow:</strong> Cooling tower fan atmospheric air draw karta hai. Air fill media se guzarti hai — water ke contact mein aati hai.</p>
-        <p style={S.p}><strong>Step 4 — Evaporation:</strong> Kuch paani (1-2%) evaporate ho jaata hai. Ye evaporation remaining water ki heat absorb karta hai. Result: remaining water thanda ho jaata hai.</p>
-        <p style={S.p}><strong>Step 5 — Thanda water:</strong> Cool water (28-32°C) basin mein collect hota hai. Condenser water pumps ye thanda water chiller ke condenser tak pump karte hain. Cycle repeat.</p>
+        <p style={S.p}><strong>Step 1 — Hot water in:</strong> Hot water (35-40°C) from the chiller condenser enters the cooling tower. The distribution header distributes this water evenly.</p>
+        <p style={S.p}><strong>Step 2 — Fill media:</strong> The hot water trickles over the fill media (packing/fill — structured sheets of plastic or wood). The fill maximizes surface area — more surface = more evaporation.</p>
+        <p style={S.p}><strong>Step 3 — Airflow:</strong> The cooling tower fan draws atmospheric air. The air passes through the fill media — it comes into contact with the water.</p>
+        <p style={S.p}><strong>Step 4 — Evaporation:</strong> Some water (1-2%) evaporates. This evaporation absorbs the heat of the remaining water. Result: the remaining water becomes cool.</p>
+        <p style={S.p}><strong>Step 5 — Cold water:</strong> Cool water (28-32°C) collects in the basin. Condenser water pumps pump this cold water to the chiller's condenser. Cycle repeats.</p>
 
         <InsightCard>
-          Important samjho: Chilled water loop (blue) aur condenser water loop (red/yellow) SEPARATE hote hain. Mixing kabhi nahi hoti. Chiller inke beech heat exchanger ka kaam karta hai. Chilled water sirf CRAH mein jaata hai. Condenser water sirf cooling tower aur chiller condenser mein circulate hota hai.
+          Understand this important point: the chilled water loop (blue) and the condenser water loop (red/yellow) are SEPARATE. They never mix. The chiller works as a heat exchanger between them. Chilled water goes only to the CRAH. Condenser water circulates only in the cooling tower and the chiller condenser.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -280,31 +284,31 @@ export default function CoolingTowerPage() {
         <h2 id="main-components" style={S.h1}>Main Components</h2>
 
         <h3 style={S.h3}>1. Fill Media (Packing)</h3>
-        <p style={S.p}>Water distribute karne ke liye — surface area maximize karta hai. PVC plastic ya treated wood ki structured sheets. Counter-flow fill: water neeche, air upar. Cross-flow fill: water neeche, air horizontal.</p>
+        <p style={S.p}>For distributing water — it maximizes surface area. Structured sheets of PVC plastic or treated wood. Counter-flow fill: water down, air up. Cross-flow fill: water down, air horizontal.</p>
 
         <h3 style={S.h3}>2. Fan</h3>
-        <p style={S.p}>Air draw karta hai tower mein. Axial (propeller type) ya centrifugal. VFD controlled — speed vary karo, energy save karo. Induced draft (fan top pe) ya forced draft (fan bottom pe).</p>
+        <p style={S.p}>It draws air into the tower. Axial (propeller type) or centrifugal. VFD controlled — vary the speed, save energy. Induced draft (fan on top) or forced draft (fan at the bottom).</p>
 
         <h3 style={S.h3}>3. Drift Eliminators</h3>
-        <p style={S.p}>Water droplets ko air ke saath bahar jaane se rokta hai. Drift = treated water jo atmosphere mein jaata hai. Modern towers mein drift rate {'<'} 0.001% — Legionella risk reduce karta hai. Ye important health protection component hai.</p>
+        <p style={S.p}>It stops water droplets from going out with the air. Drift = treated water that goes into the atmosphere. In modern towers the drift rate is {'<'} 0.001% — it reduces Legionella risk. This is an important health protection component.</p>
 
         <h3 style={S.h3}>4. Water Distribution System</h3>
-        <p style={S.p}>Hot water inlet se header tak. Nozzles ya gravity distribution — fill media pe evenly pani distribute karta hai. Proper distribution = even cooling = efficient operation.</p>
+        <p style={S.p}>From the hot water inlet to the header. Nozzles or gravity distribution — distributes water evenly over the fill media. Proper distribution = even cooling = efficient operation.</p>
 
         <h3 style={S.h3}>5. Basin</h3>
-        <p style={S.p}>Tower ka bottom section. Cool water collect hota hai yahan. Float valve — water level control karta hai. Makeup water supply — evaporation se jo paani lose hota hai wo yahan supply hota hai. Blowdown outlet — concentrated minerals remove karne ke liye.</p>
+        <p style={S.p}>The bottom section of the tower. Cool water collects here. Float valve — controls the water level. Makeup water supply — the water lost to evaporation is supplied here. Blowdown outlet — to remove concentrated minerals.</p>
 
         <h3 style={S.h3}>6. Makeup Water System</h3>
-        <p style={S.p}>Evaporation se jo paani lose hota hai use compensate karta hai. Float valve based automatic control. Treated water — minerals control karna zaroori hai.</p>
+        <p style={S.p}>It compensates for the water lost to evaporation. Float valve based automatic control. Treated water — controlling minerals is essential.</p>
 
         <h3 style={S.h3}>7. Chemical Dosing System</h3>
-        <p style={S.p}>Scale inhibitor, corrosion inhibitor, biocide, pH control — regularly dose kiye jaate hain. Ye sabse important maintenance item hai — Legionella prevention ke liye bhi.</p>
+        <p style={S.p}>Scale inhibitor, corrosion inhibitor, biocide, pH control — dosed regularly. This is the most important maintenance item — also for Legionella prevention.</p>
 
         <hr style={S.divider} />
 
         <h2 id="how-it-works-in-dc" style={S.h1}>How Cooling Tower Works in a Data Center</h2>
 
-        <p style={S.p}>Full loop samjho:</p>
+        <p style={S.p}>Understand the full loop:</p>
 
         <FlowDiagram
           caption="Complete data center cooling chain — servers to atmosphere"
@@ -318,10 +322,10 @@ export default function CoolingTowerPage() {
         />
 
         <p style={S.p}>Servers → warm air → CRAH → warm chilled water → chiller evaporator → chiller condenser → hot condenser water → <strong>cooling tower → heat rejected to atmosphere.</strong></p>
-        <p style={S.p}>Cooling tower final heat rejection point hai. Bina cooling tower ke, heat kahan jaayegi? Nowhere — system fail ho jaayega.</p>
+        <p style={S.p}>The cooling tower is the final heat rejection point. Without a cooling tower, where will the heat go? Nowhere — the system will fail.</p>
 
         <EngineerTip>
-          Condenser water temperatures yaad karo: Supply to chiller (CDWS) = 28-32°C, Return from chiller (CDWR) = 35-40°C. Delta T = 5-8°C. Agar CDW temperature zyada ho to chiller efficiency drop hoti hai aur condenser pressure high ho jaata hai. Cooling tower properly kaam karna chahiye — chiller performance directly depend karta hai.
+          Remember the condenser water temperatures: Supply to chiller (CDWS) = 28-32°C, Return from chiller (CDWR) = 35-40°C. Delta T = 5-8°C. If the CDW temperature is higher, chiller efficiency drops and condenser pressure goes high. The cooling tower must work properly — chiller performance depends on it directly.
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -330,31 +334,31 @@ export default function CoolingTowerPage() {
 
         <h3 style={S.h3}>By Airflow Direction</h3>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Counter-Flow:</strong> Air upar flow karta hai, water neeche. Maximum contact — efficient. Compact design. Most common in data centers.</li>
-          <li style={S.li}><strong>Cross-Flow:</strong> Air horizontal flow karta hai. Water neeche. Larger footprint. Easier maintenance — fill access better. Some large installations.</li>
+          <li style={S.li}><strong>Counter-Flow:</strong> Air flows up, water down. Maximum contact — efficient. Compact design. Most common in data centers.</li>
+          <li style={S.li}><strong>Cross-Flow:</strong> Air flows horizontally. Water down. Larger footprint. Easier maintenance — better fill access. Some large installations.</li>
         </ul>
 
         <h3 style={S.h3}>By Fan Type</h3>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Induced Draft:</strong> Fan top pe — air pull karta hai upar. Most common. Better air distribution. Discharge air fan se guzarti hai — zyada splash back kam.</li>
-          <li style={S.li}><strong>Forced Draft:</strong> Fan bottom pe ya side pe — air push karta hai. Icing risk cold climates mein. Less common.</li>
+          <li style={S.li}><strong>Induced Draft:</strong> Fan on top — pulls air upward. Most common. Better air distribution. Discharge air passes through the fan — less splash back.</li>
+          <li style={S.li}><strong>Forced Draft:</strong> Fan at the bottom or side — pushes air. Icing risk in cold climates. Less common.</li>
         </ul>
 
         <h3 style={S.h3}>By Construction</h3>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Factory-Assembled (Package):</strong> Factory mein complete unit banati hai, site pe install karo. Small to medium — up to 1000 TR. Quick installation. Common for data centers.</li>
-          <li style={S.li}><strong>Field-Erected:</strong> Large cooling towers — site pe banaye jaate hain. High capacity. Hyperscale facilities mein.</li>
+          <li style={S.li}><strong>Factory-Assembled (Package):</strong> The complete unit is built in the factory; install it on site. Small to medium — up to 1000 TR. Quick installation. Common for data centers.</li>
+          <li style={S.li}><strong>Field-Erected:</strong> Large cooling towers — built on site. High capacity. In hyperscale facilities.</li>
         </ul>
 
         <hr style={S.divider} />
 
         <h2 id="advantages" style={S.h1}>Advantages</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>High efficiency:</strong> Evaporative cooling — air-cooled se 30-40% more efficient</li>
+          <li style={S.li}><strong>High efficiency:</strong> Evaporative cooling — 30-40% more efficient than air-cooled</li>
           <li style={S.li}><strong>Lower condenser water temperature:</strong> 28-32°C vs air-cooled 35-45°C — chiller better COP</li>
-          <li style={S.li}><strong>Scalable:</strong> Multiple cell towers — load ke hisaab se cells operate karo</li>
+          <li style={S.li}><strong>Scalable:</strong> Multiple cell towers — operate cells according to load</li>
           <li style={S.li}><strong>VFD energy savings:</strong> Variable fan speed = significant energy reduction</li>
-          <li style={S.li}><strong>Wet bulb dependent:</strong> India mein humidity consider karo — but still better than air-cooled</li>
+          <li style={S.li}><strong>Wet bulb dependent:</strong> Consider humidity in India — but still better than air-cooled</li>
         </ul>
 
         <hr style={S.divider} />
@@ -364,10 +368,10 @@ export default function CoolingTowerPage() {
           <li style={S.li}><strong>Water consumption:</strong> Evaporation + blowdown = significant water use</li>
           <li style={S.li}><strong>Legionella risk:</strong> Warm water environment — regular treatment mandatory</li>
           <li style={S.li}><strong>Water treatment cost:</strong> Chemicals, testing, management — ongoing cost</li>
-          <li style={S.li}><strong>Scaling aur fouling:</strong> Minerals concentrate — scale deposits on fill aur heat exchangers</li>
+          <li style={S.li}><strong>Scaling and fouling:</strong> Minerals concentrate — scale deposits on the fill and heat exchangers</li>
           <li style={S.li}><strong>Maintenance complexity:</strong> Regular cleaning, basin, fill, drift eliminators</li>
-          <li style={S.li}><strong>Wet bulb dependency:</strong> High humidity pe effectiveness reduce hoti hai</li>
-          <li style={S.li}><strong>Freeze risk:</strong> Cold climates mein — winter mein special precautions</li>
+          <li style={S.li}><strong>Wet bulb dependency:</strong> Effectiveness reduces at high humidity</li>
+          <li style={S.li}><strong>Freeze risk:</strong> In cold climates — special precautions in winter</li>
         </ul>
 
         <hr style={S.divider} />
@@ -389,7 +393,7 @@ export default function CoolingTowerPage() {
         <p style={S.p}>Cause: Fan failure, dirty fill, high ambient wet bulb, low water flow. Impact: High chiller condenser pressure → efficiency drop → potential trip. Action: Fan status check, fill inspect, flow verify.</p>
 
         <h3 style={S.h3}>Fan Motor Failure</h3>
-        <p style={S.p}>Cause: Motor burnout, bearing failure, overload. Impact: Reduced cooling capacity — adjacent cell load increase. Action: Spare motor replace karo, load redistribute.</p>
+        <p style={S.p}>Cause: Motor burnout, bearing failure, overload. Impact: Reduced cooling capacity — adjacent cell load increases. Action: Replace with a spare motor, redistribute the load.</p>
 
         <h3 style={S.h3}>Basin Low Water Level</h3>
         <p style={S.p}>Cause: Makeup water failure, float valve stuck, excess blowdown. Impact: Pump cavitation, reduced flow. Action: Makeup water supply check, float valve inspect.</p>
@@ -417,14 +421,14 @@ export default function CoolingTowerPage() {
           <li style={S.li}>Full water quality analysis</li>
           <li style={S.li}>Legionella monitoring (culture test)</li>
           <li style={S.li}>Fan vibration check</li>
-          <li style={S.li}>Basin clean karo</li>
-          <li style={S.li}>Distribution system inspect karo — nozzles clog check</li>
+          <li style={S.li}>Clean the basin</li>
+          <li style={S.li}>Inspect the distribution system — check for clogged nozzles</li>
           <li style={S.li}>Drift eliminator condition check</li>
         </ul>
 
         <h3 style={S.h3}>Annual</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Full tower shutdown aur cleaning</li>
+          <li style={S.li}>Full tower shutdown and cleaning</li>
           <li style={S.li}>Fill inspection — replace if fouled</li>
           <li style={S.li}>Basin complete clean</li>
           <li style={S.li}>Fan blade inspection</li>
@@ -441,11 +445,11 @@ export default function CoolingTowerPage() {
           <li style={S.li}>✓ All fan status — running, speed</li>
           <li style={S.li}>✓ Basin water level — adequate</li>
           <li style={S.li}>✓ Makeup water supply — working</li>
-          <li style={S.li}>✓ Unusual noise ya vibration</li>
+          <li style={S.li}>✓ Unusual noise or vibration</li>
           <li style={S.li}>✓ Chemical dosing system — operating</li>
           <li style={S.li}>✓ BMS alarms</li>
           <li style={S.li}>✓ Visual: debris, bird nests, visible damage</li>
-          <li style={S.li}>✓ Log entry karo</li>
+          <li style={S.li}>✓ Make a log entry</li>
         </ul>
 
         <hr style={S.divider} />
@@ -453,13 +457,13 @@ export default function CoolingTowerPage() {
         <h2 id="monthly-checklist" style={S.h1}>Monthly Checklist</h2>
         <ul style={S.ul}>
           <li style={S.li}>✓ Water quality test — pH, TDS, Langelier Saturation Index</li>
-          <li style={S.li}>✓ Legionella culture test — lab se</li>
+          <li style={S.li}>✓ Legionella culture test — from a lab</li>
           <li style={S.li}>✓ Chemical stock check — adequate supply</li>
-          <li style={S.li}>✓ Basin clean karo — sediment, algae</li>
+          <li style={S.li}>✓ Clean the basin — sediment, algae</li>
           <li style={S.li}>✓ Fan vibration measurement</li>
           <li style={S.li}>✓ Distribution nozzles — clog check</li>
           <li style={S.li}>✓ Drift eliminator visual check</li>
-          <li style={S.li}>✓ Blowdown rate verify karo</li>
+          <li style={S.li}>✓ Verify the blowdown rate</li>
           <li style={S.li}>✓ Makeup water meter reading</li>
         </ul>
 
@@ -467,8 +471,8 @@ export default function CoolingTowerPage() {
 
         <h2 id="safety" style={S.h1}>Safety Precautions</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Legionella prevention:</strong> Most critical. Proper biocide treatment, temperature management, regular testing. Deaths ho sakte hain agar neglect karo.</li>
-          <li style={S.li}><strong>Working at height:</strong> Roof pe towers — full fall protection, anchor points, training</li>
+          <li style={S.li}><strong>Legionella prevention:</strong> Most critical. Proper biocide treatment, temperature management, regular testing. Deaths can happen if it is neglected.</li>
+          <li style={S.li}><strong>Working at height:</strong> Towers on the roof — full fall protection, anchor points, training</li>
           <li style={S.li}><strong>Rotating equipment:</strong> Fan blades — LOTO before any access near fans</li>
           <li style={S.li}><strong>Water hazard:</strong> Wet surfaces — slip hazard. Non-slip footwear.</li>
           <li style={S.li}><strong>Chemical handling:</strong> Biocide, acid — PPE mandatory, COSHH assessment</li>
@@ -481,17 +485,17 @@ export default function CoolingTowerPage() {
 
         <h2 id="interview-questions" style={S.h1}>Interview Questions</h2>
 
-        <h3 style={S.h3}>Q1: Cooling tower ka principle kya hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Evaporative cooling. Hot water fill media se trickle karta hai. Fan atmospheric air draw karta hai. Kuch paani evaporate hota hai — ye evaporation remaining water ki heat absorb karta hai. Result: thanda water return hota hai. Heat atmosphere mein chali jaati hai.</p>
+        <h3 style={S.h3}>Q1: What is the principle of a cooling tower?</h3>
+        <p style={S.p}><strong>Answer:</strong> Evaporative cooling. Hot water trickles through the fill media. The fan draws atmospheric air. Some water evaporates — this evaporation absorbs the heat of the remaining water. Result: cold water returns. The heat goes into the atmosphere.</p>
 
-        <h3 style={S.h3}>Q2: Condenser water loop aur chilled water loop alag kyun hote hain?</h3>
-        <p style={S.p}><strong>Answer:</strong> Chilled water loop = clean, treated, closed loop — CRAH mein jaata hai. Condenser water loop = open loop, cooling tower mein expose hota hai, atmosphere se contamination possible. Mixing hone se chilled water contaminated ho jaayega — CRAH coils foul honge, water quality degrade. Chiller dono ke beech heat exchanger ka kaam karta hai — mixing nahi hoti.</p>
+        <h3 style={S.h3}>Q2: Why are the condenser water loop and the chilled water loop separate?</h3>
+        <p style={S.p}><strong>Answer:</strong> Chilled water loop = clean, treated, closed loop — it goes to the CRAH. Condenser water loop = open loop, exposed in the cooling tower, contamination from the atmosphere is possible. If they mix, the chilled water will be contaminated — CRAH coils will foul and water quality will degrade. The chiller works as a heat exchanger between the two — there is no mixing.</p>
 
-        <h3 style={S.h3}>Q3: Legionella kya hai aur cooling tower mein kyon concern hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Legionella pneumophila ek bacteria hai jo Legionnaires' disease cause karta hai — serious respiratory illness. Cooling tower ka warm (25-45°C) standing water perfect breeding environment hai. Drift se infected water droplets atmosphere mein ja sakte hain — inhaling se infection. Prevention: regular biocide treatment, proper temperature control, regular cleaning, monthly Legionella testing.</p>
+        <h3 style={S.h3}>Q3: What is Legionella and why is it a concern in a cooling tower?</h3>
+        <p style={S.p}><strong>Answer:</strong> Legionella pneumophila is a bacteria that causes Legionnaires' disease — a serious respiratory illness. The warm (25-45°C) standing water of a cooling tower is a perfect breeding environment. Infected water droplets can go into the atmosphere through drift — inhaling them causes infection. Prevention: regular biocide treatment, proper temperature control, regular cleaning, monthly Legionella testing.</p>
 
-        <h3 style={S.h3}>Q4: Approach temperature kya hota hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Approach = Cooling tower leaving water temperature - Wet bulb temperature of ambient air. Smaller approach = better tower performance. Typical: 3-5°C. Wet bulb temperature se pehle nahi ja sakta (thermodynamic limit). High humidity = high wet bulb = limited cooling possible — ye cooling tower ki fundamental limitation hai.</p>
+        <h3 style={S.h3}>Q4: What is approach temperature?</h3>
+        <p style={S.p}><strong>Answer:</strong> Approach = Cooling tower leaving water temperature - Wet bulb temperature of ambient air. Smaller approach = better tower performance. Typical: 3-5°C. It cannot go below the wet bulb temperature (thermodynamic limit). High humidity = high wet bulb = limited cooling possible — this is the fundamental limitation of a cooling tower.</p>
 
         <hr style={S.divider} />
 
@@ -499,18 +503,18 @@ export default function CoolingTowerPage() {
 
         <h3 style={S.h3}>High condenser water temperature</h3>
         <ul style={S.ul}>
-          <li style={S.li}>All fans running? Speed check karo</li>
-          <li style={S.li}>Ambient wet bulb temperature high? → Design limit pe approach ho</li>
-          <li style={S.li}>Fill fouled? → Inspect aur clean</li>
-          <li style={S.li}>Water distribution blocked? → Nozzle check karo</li>
-          <li style={S.li}>Additional tower cells start karo agar available</li>
+          <li style={S.li}>All fans running? Check the speed</li>
+          <li style={S.li}>Ambient wet bulb temperature high? → The approach may be at the design limit</li>
+          <li style={S.li}>Fill fouled? → Inspect and clean</li>
+          <li style={S.li}>Water distribution blocked? → Check the nozzles</li>
+          <li style={S.li}>Start additional tower cells if available</li>
         </ul>
 
         <h3 style={S.h3}>Legionella detected in test</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Immediately qualified water treatment company call karo</li>
+          <li style={S.li}>Immediately call a qualified water treatment company</li>
           <li style={S.li}>Shock dose biocide — per treatment plan</li>
-          <li style={S.li}>Tower temporarily isolate karo agar possible — alternative cooling</li>
+          <li style={S.li}>Temporarily isolate the tower if possible — alternative cooling</li>
           <li style={S.li}>Root cause: water temperature, low biocide, stagnant areas</li>
           <li style={S.li}>Retest before returning to service</li>
           <li style={S.li}>Regulatory reporting may be required</li>
@@ -554,13 +558,13 @@ export default function CoolingTowerPage() {
 
         <h2 id="best-practices" style={S.h1}>Best Practices</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Legionella management plan:</strong> Written plan, regular testing, documented treatment — legal requirement bhi hai many regions mein.</li>
+          <li style={S.li}><strong>Legionella management plan:</strong> Written plan, regular testing, documented treatment — it is also a legal requirement in many regions.</li>
           <li style={S.li}><strong>VFD on all fans:</strong> 40-50% fan energy savings. ROI typically 2-3 years.</li>
-          <li style={S.li}><strong>Water treatment partner:</strong> Specialist water treatment company engage karo — in-house se better expertise.</li>
-          <li style={S.li}><strong>N+1 tower cells:</strong> Redundancy ensure karo — single cell failure data center cool rakhna chahiye.</li>
+          <li style={S.li}><strong>Water treatment partner:</strong> Engage a specialist water treatment company — better expertise than in-house.</li>
+          <li style={S.li}><strong>N+1 tower cells:</strong> Ensure redundancy — a single cell failure should still keep the data center cool.</li>
           <li style={S.li}><strong>Cycles of concentration optimization:</strong> Higher cycles = less water waste. But monitor TDS carefully.</li>
           <li style={S.li}><strong>Drift eliminator maintenance:</strong> Regular inspect, replace before failure. Drift = water loss + Legionella risk.</li>
-          <li style={S.li}><strong>Basin sweep aur clean:</strong> Sediment accumulates — breeding ground for bacteria. Regular cleaning essential.</li>
+          <li style={S.li}><strong>Basin sweep and clean:</strong> Sediment accumulates — a breeding ground for bacteria. Regular cleaning is essential.</li>
         </ul>
 
         <hr style={S.divider} />
@@ -568,11 +572,11 @@ export default function CoolingTowerPage() {
         <h2 id="key-takeaways" style={S.h1}>Key Takeaways</h2>
 
         <KeyTakeawayCard items={[
-          "Cooling tower chiller plant ka heat rejection component hai — evaporative cooling se heat atmosphere mein jaati hai.",
-          "Evaporation principle: kuch paani evaporate hota hai → remaining water thanda hota hai → heat bahar.",
-          "Condenser water loop aur chilled water loop SEPARATE hote hain — chiller dono ke beech heat exchanger hai.",
-          "Cooling tower + water-cooled chiller = high efficiency (COP 4-7+). Air-cooled se 30-40% better.",
-          "Legionella risk real hai — regular biocide treatment, testing, cleaning mandatory. Seriously lo.",
+          "The cooling tower is the heat rejection component of the chiller plant — heat goes into the atmosphere through evaporative cooling.",
+          "Evaporation principle: some water evaporates → the remaining water becomes cool → heat goes out.",
+          "The condenser water loop and the chilled water loop are SEPARATE — the chiller is the heat exchanger between them.",
+          "Cooling tower + water-cooled chiller = high efficiency (COP 4-7+). 30-40% better than air-cooled.",
+          "Legionella risk is real — regular biocide treatment, testing and cleaning are mandatory. Take it seriously.",
           "Key temperatures: CDW supply 28-32°C (to chiller), CDW return 35-40°C (from chiller).",
           "Daily: CDW temps, fan status, basin level. Weekly: water quality. Monthly: Legionella testing.",
         ]} />
@@ -585,9 +589,9 @@ export default function CoolingTowerPage() {
         <hr style={S.divider} />
 
         <h2 style={S.h2}>Related Learning Topics</h2>
-        <p style={S.p}>Cooling tower samajh aaya. Aage cooling chain complete karo:</p>
+        <p style={S.p}>You understand the cooling tower. Next, complete the cooling chain:</p>
         <ul style={S.ul}>
-          <li style={S.li}><TopicLink slug="chiller" variant="inline" /> — Cooling tower ka partner — chilled water generation.</li>
+          <li style={S.li}><TopicLink slug="chiller" variant="inline" /> — the cooling tower's partner — chilled water generation.</li>
           <li style={S.li}><TopicLink slug="crac" variant="inline" /> — Alternative to chiller system — smaller data centers.</li>
           <li style={S.li}><TopicLink slug="containment" variant="inline" /> — Hot/cold aisle management — CRAH effectiveness improve.</li>
           <li style={S.li}><TopicLink slug="airflow-management" variant="inline" /> — Cool air delivery strategies.</li>

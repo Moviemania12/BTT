@@ -10,19 +10,11 @@ export default function Basics() {
       <h2 id="what-is-biometrics" style={S.h2}>What Is Biometric Authentication?</h2>
 
       <p style={S.p}>
-        Biometric authentication kisi person ki unique physiological ya behavioral characteristics se
-        identity verify karta hai. "Who you are" — not "what you have" (card) ya "what you know" (PIN).
-        Fingerprint, face, iris, palm vein — ye sab physiological biometrics hain. Gait, voice, typing
-        pattern — behavioral biometrics hain. Data centers mein primarily physiological biometrics use
-        hote hain — fingerprint, face recognition aur iris recognition sabse common hain.
+        Biometric authentication verifies identity through a person's unique physiological or behavioral characteristics. "Who you are" — not "what you have" (card) or "what you know" (PIN). Fingerprint, face, iris, palm vein — these are all physiological biometrics. Gait, voice, typing pattern — these are behavioral biometrics. In data centers mainly physiological biometrics are used — fingerprint, face recognition and iris recognition are the most common.
       </p>
 
       <p style={S.p}>
-        Biometrics ka fundamental advantage hai ki credential physically separate nahi hai — koi card
-        nahi bhoolte, koi PIN share nahi karte. Lekin biometrics bhi perfect nahi hain — false accepts,
-        false rejects, enrollment quality, sensor conditions aur privacy concerns sab real challenges hain.
-        Data centers mein biometrics typically card ya PIN ke saath combine kiya jaata hai — multi-factor
-        authentication jo significantly higher assurance deta hai.
+        The fundamental advantage of biometrics is that the credential is not physically separate — nobody forgets a card, nobody shares a PIN. But biometrics are not perfect either — false accepts, false rejects, enrollment quality, sensor conditions and privacy concerns are all real challenges. In data centers biometrics are typically combined with a card or PIN — multi-factor authentication that gives significantly higher assurance.
       </p>
 
       <figure style={{ margin: "2rem 0" }}>
@@ -37,46 +29,32 @@ export default function Basics() {
           />
         </div>
         <figcaption style={{ fontSize: "0.85rem", color: "#4b5563", marginTop: "0.6rem", textAlign: "center", fontStyle: "italic" }}>
-          Data Center mein biometric readers — fingerprint scanner aur face recognition terminal server room entry pe.
+          Biometric readers in a Data Center — fingerprint scanner and face recognition terminal at the server room entry.
         </figcaption>
       </figure>
 
       <h2 id="why-required" style={S.h2}>Why Biometrics Is Required in a Data Center</h2>
 
       <p style={S.p}>
-        Card-based access control strong hai lekin inherent limitations hain — card share ki ja sakti
-        hai, stolen card se unauthorized access possible hai. PIN share ya observe ki ja sakti hai.
-        Biometric authentication in weaknesses address karta hai — fingerprint ya iris share ya duplicate
-        karna significantly harder hai.
+        Card-based access control is strong but has inherent limitations — a card can be shared, and unauthorized access is possible with a stolen card. A PIN can be shared or observed. Biometric authentication addresses these weaknesses — sharing or duplicating a fingerprint or iris is significantly harder.
       </p>
 
       <p style={S.p}>
-        High-security zones mein — server halls, NOC, colocation cages — multi-factor authentication
-        (card + biometric) higher assurance deta hai. Multi-factor ya higher-assurance authentication risk assessment, client security policy, regulatory requirements aur protected area ki criticality ke hisaab se select kiya jaata hai — biometrics universally mandatory nahi hain lekin high-security zones ke liye strong choice hain.
+        In high-security zones — server halls, NOC, colocation cages — multi-factor authentication (card + biometric) gives higher assurance. Multi-factor or higher-assurance authentication is selected according to the risk assessment, client security policy, regulatory requirements and the criticality of the protected area — biometrics are not universally mandatory but are a strong choice for high-security zones.
       </p>
 
       <h2 id="far-frr" style={S.h2}>FAR and FRR — Understanding Accuracy</h2>
 
       <p style={S.p}>
-        Biometric system ki accuracy do metrics se measure hoti hai. <strong>FAR (False Acceptance Rate)</strong>
-        — unauthorized person ko galti se accept kar lene ka rate. <strong>FRR (False Rejection Rate)</strong>
-        — authorized person ko galti se reject karne ka rate. Dono inversely related hain — ek kam hoti
-        hai to doosri badhti hai, depending on matching threshold setting.
+        The accuracy of a biometric system is measured by two metrics. <strong>FAR (False Acceptance Rate)</strong> — the rate of accepting an unauthorized person by mistake. <strong>FRR (False Rejection Rate)</strong> — the rate of rejecting an authorized person by mistake. The two are inversely related — when one goes down the other goes up, depending on the matching threshold setting.
       </p>
 
       <p style={S.p}>
-        High security chahiye (low FAR) to threshold strict rakho — lekin authorized users ko zyada
-        false rejects milenge. User convenience chahiye (low FRR) to threshold loosen karo — lekin FAR
-        badhta hai. Optimal threshold site conditions, enrollment quality aur security objectives pe
-        depend karta hai — koi universal correct value nahi hai. <strong>EER (Equal Error Rate)</strong>
-        wo point hai jahan FAR = FRR — comparison ke liye useful hai lekin deployment ka target nahi.
+        If you need high security (low FAR), keep the threshold strict — but authorized users will get more false rejects. If you need user convenience (low FRR), loosen the threshold — but FAR increases. The optimal threshold depends on site conditions, enrollment quality and security objectives — there is no universal correct value. <strong>EER (Equal Error Rate)</strong> is the point where FAR = FRR — useful for comparison but not a deployment target.
       </p>
 
-      <Callout type="important" title="FAR/FRR Values — Vendor Claims Carefully Evaluate Karo">
-        Vendors often controlled laboratory conditions mein FAR/FRR quote karte hain — real-world
-        performance environmental conditions, sensor cleanliness, enrollment quality aur population
-        diversity pe depend karta hai. Field testing aur pilot deployment se real-world performance
-        verify karo before large-scale deployment.
+      <Callout type="important" title="FAR/FRR Values — Evaluate Vendor Claims Carefully">
+        Vendors often quote FAR/FRR under controlled laboratory conditions — real-world performance depends on environmental conditions, sensor cleanliness, enrollment quality and population diversity. Verify real-world performance through field testing and a pilot deployment before large-scale deployment.
       </Callout>
 
       <h2 id="technologies" style={S.h2}>Biometric Technologies</h2>
@@ -96,38 +74,23 @@ export default function Basics() {
       <h2 id="fingerprint" style={S.h2}>Fingerprint Recognition</h2>
 
       <p style={S.p}>
-        Fingerprint recognition sabse widely deployed biometric technology hai. Optical sensors image
-        capture karte hain; capacitive sensors electric field se fingerprint map karte hain; ultrasonic
-        sensors subcutaneous detail capture karte hain — wet/dirty fingers mein bhi better performance
-        dete hain. Matching algorithm enrollment template ke saath minutiae points (ridge endings,
-        bifurcations) compare karta hai.
+        Fingerprint recognition is the most widely deployed biometric technology. Optical sensors capture an image; capacitive sensors map the fingerprint through an electric field; ultrasonic sensors capture subcutaneous detail — they give better performance even with wet/dirty fingers. The matching algorithm compares minutiae points (ridge endings, bifurcations) with the enrollment template.
       </p>
 
       <p style={S.p}>
-        Practical challenges: workers whose fingerprints are worn (frequent manual work, aging),
-        wet or dirty hands, cut fingers. High-traffic entry points pe fingerprint sensor quickly
-        dirty ho sakta hai — regular cleaning necessary hai. Agar specific users consistently fail
-        karte hain, alternative biometric ya fallback credential consider karo.
+        Practical challenges: workers whose fingerprints are worn (frequent manual work, aging), wet or dirty hands, cut fingers. At high-traffic entry points the fingerprint sensor can get dirty quickly — regular cleaning is necessary. If specific users consistently fail, consider an alternative biometric or a fallback credential.
       </p>
 
       <h2 id="face-recognition" style={S.h2}>Face Recognition</h2>
 
       <p style={S.p}>
-        Modern face recognition 2D camera se facial geometry extract karta hai ya 3D depth sensor
-        use karta hai — more spoofing-resistant. Contactless nature high-traffic areas ke liye
-        convenient hai. Challenges: lighting changes (backlit entry, dim areas), accessories (masks,
-        glasses, hats), significant appearance changes. Mask detection aur mask-compatible models
-        COVID-era mein common ho gaye the aur abhi bhi used hain.
+        Modern face recognition extracts facial geometry from a 2D camera or uses a 3D depth sensor — more spoofing-resistant. Its contactless nature is convenient for high-traffic areas. Challenges: lighting changes (backlit entry, dim areas), accessories (masks, glasses, hats), significant appearance changes. Mask detection and mask-compatible models became common in the COVID era and are still used.
       </p>
 
       <h2 id="iris-recognition" style={S.h2}>Iris Recognition</h2>
 
       <p style={S.p}>
-        Iris — colored ring around pupil — highly unique pattern hai jo lifelong stable rehta hai.
-        Near-infrared illumination se capture hoti hai. Accuracy fingerprint se typically higher hai.
-        Contact lenses interference cause kar sakte hain — some systems specialized lighting se
-        detect karte hain. Higher cost aur specific reader hardware isko high-security zones ke liye
-        more appropriate banata hai.
+        The iris — the colored ring around the pupil — is a highly unique pattern that stays stable lifelong. It is captured with near-infrared illumination. Accuracy is typically higher than fingerprint. Contact lenses can cause interference — some systems detect them with specialized lighting. Higher cost and specific reader hardware make it more appropriate for high-security zones.
       </p>
     </>
   );

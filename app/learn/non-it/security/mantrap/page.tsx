@@ -11,7 +11,7 @@ export default function MantrapPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="mantrap" headings={HEADINGS} readingTimeMinutes={17}>
+      <ArticleLayout slug="mantrap" headings={HEADINGS} readingTimeMinutes={17} lang="en" alternateHref="/hi/learn/non-it/security/mantrap">
         <Basics />
         <OperationsAndMaintenance />
         <TroubleshootingAndClosing />

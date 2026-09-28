@@ -6,18 +6,26 @@ import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
   title: "CRAC — Computer Room Air Conditioner in Data Centers | Behind The Tech",
-  description: "CRAC kya hota hai, PAC se kaise alag hai, kaise kaam karta hai — refrigeration cycle, components, types, maintenance aur troubleshooting. Simple language mein.",
+  description: "What is a CRAC, how is it different from a PAC, how does it work — refrigeration cycle, components, types, maintenance and troubleshooting. In simple language.",
   keywords: ["crac data center", "computer room air conditioner", "crac vs crah", "crac unit cooling", "data center cooling"],
   openGraph: {
     title: "CRAC — Computer Room Air Conditioner in Data Centers",
-    description: "CRAC unit kaise kaam karta hai aur PAC se kaise alag hai — Data Center cooling ka complete guide.",
+    description: "How a CRAC unit works and how it is different from a PAC — a complete guide to Data Center cooling.",
     url: "https://behindthetech.in/learn/non-it/cooling/crac",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
   },
   twitter: { card: "summary_large_image", title: "CRAC Explained — Behind The Tech", description: "Computer Room Air Conditioner — Data Center cooling unit, complete guide." },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/cooling/crac" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/cooling/crac",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/cooling/crac",
+      hi: "https://behindthetech.in/hi/learn/non-it/cooling/crac",
+      "x-default": "https://behindthetech.in/learn/non-it/cooling/crac",
+    },
+  },
 };
 
 const HEADINGS: ArticleHeading[] = [
@@ -62,12 +70,12 @@ const S = {
 
 function QuickSummary() {
   const pts = [
-    { label: "Ek line mein", text: "CRAC ek self-contained cooling unit hai — apna compressor rakhta hai, warm air andar kheenchta hai, cool air bahar nikalta hai." },
-    { label: "PAC se kya fark", text: "CRAC aur PAC dono self-contained units hain. Technical difference: CRAC typically direct expansion (DX) cooling use karta hai external condenser ke saath. Practically, industry mein dono terms often interchangeably use hote hain." },
-    { label: "CRAH se kya fark", text: "CRAH = Computer Room Air Handler. CRAH mein compressor nahi hota — wo chilled water use karta hai. CRAC apna compressor rakhta hai. Ye basic difference hai." },
-    { label: "Kaha use hota hai", text: "Small to medium data centers, server rooms, telecom rooms. Jahan chiller plant nahi ho aur self-contained cooling chahiye." },
-    { label: "Kaise kaam karta hai", text: "DX (Direct Expansion) refrigeration cycle — refrigerant directly evaporator mein expand hota hai aur air cool karta hai. Compressor, condenser (bahar), evaporator — ye teen main components hain." },
-    { label: "Condenser kahan hota hai", text: "Air-cooled CRAC mein condenser building ke bahar hota hai — wall pe ya roof pe. Water-cooled mein condenser chiller ke chilled water loop se connected hota hai." },
+    { label: "In one line", text: "A CRAC is a self-contained cooling unit — it has its own compressor, pulls warm air in and pushes cool air out." },
+    { label: "Difference from PAC", text: "CRAC and PAC are both self-contained units. Technical difference: a CRAC typically uses direct expansion (DX) cooling with an external condenser. Practically, the two terms are often used interchangeably in the industry." },
+    { label: "Difference from CRAH", text: "CRAH = Computer Room Air Handler. A CRAH has no compressor — it uses chilled water. A CRAC has its own compressor. This is the basic difference." },
+    { label: "Where it is used", text: "Small to medium data centers, server rooms, telecom rooms. Wherever there is no chiller plant and self-contained cooling is needed." },
+    { label: "How it works", text: "DX (Direct Expansion) refrigeration cycle — the refrigerant expands directly in the evaporator and cools the air. Compressor, condenser (outside), evaporator — these are the three main components." },
+    { label: "Where the condenser is", text: "In an air-cooled CRAC the condenser is outside the building — on a wall or on the roof. In a water-cooled one the condenser is connected to the chiller's chilled water loop." },
   ];
   return (
     <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", margin: "8px 0 32px" }}>
@@ -102,10 +110,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
 function EngineerTip({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", margin: "20px 0 24px" }}>
-      <div style={{ height: 2, background: "#ffa500" }} />
-      <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}>
-        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer Ki Tip</span>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
+      <div style={{ height: 2, background: "#ffa500" }} /> <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}> <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer's Tip</span> <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
       </div>
     </div>
   );
@@ -180,12 +185,12 @@ function FlowDiagram({ caption, steps }: { caption: string; steps: { icon: strin
 }
 
 const FAQS = [
-  { q: "CRAC aur CRAH mein kya difference hai?", a: "CRAC = Computer Room Air Conditioner — apna compressor rakhta hai, DX cooling use karta hai. CRAH = Computer Room Air Handler — compressor nahi hota, chilled water use karta hai. CRAC self-contained hai. CRAH ko bahar se chilled water chahiye (chiller se)." },
-  { q: "CRAC aur PAC mein kya difference hai?", a: "Industry mein dono terms often interchangeably use hote hain. Technical distinction: PAC typically more precise control with integrated all-in-one design, CRAC often has separate outdoor condenser unit. Practically, same function — Data Center cooling." },
-  { q: "CRAC unit ki cooling capacity kaise measure hoti hai?", a: "kW ya BTU/hr mein. 1 kW = 3412 BTU/hr. Typical CRAC units: 10 kW se 100+ kW. Proper sizing ke liye IT load plus 20% buffer calculate karo." },
-  { q: "Air-cooled CRAC mein outdoor condenser kahan lagta hai?", a: "Building ke bahar — wall pe ya roof pe. Condenser fans outdoor air se heat reject karte hain. Ambient temperature jyada ho to efficiency kam hoti hai (called 'derating')." },
-  { q: "CRAC mein DX ka matlab kya hai?", a: "DX = Direct Expansion. Refrigerant directly evaporator mein expand hota hai aur air cool karta hai. No intermediate water loop. Direct means refrigerant aur air ke beech direct heat transfer (coil ke through)." },
-  { q: "CRAC unit life expectancy kitni hoti hai?", a: "15-20 saal typical hai — agar proper maintenance ho. Compressor usually weakest component — 10-15 saal. Regular PM se life extend hoti hai." },
+  { q: "What is the difference between CRAC and CRAH?", a: "CRAC = Computer Room Air Conditioner — has its own compressor, uses DX cooling. CRAH = Computer Room Air Handler — has no compressor, uses chilled water. A CRAC is self-contained. A CRAH needs chilled water from outside (from a chiller)." },
+  { q: "What is the difference between CRAC and PAC?", a: "In the industry the two terms are often used interchangeably. Technical distinction: a PAC typically has more precise control with an integrated all-in-one design; a CRAC often has a separate outdoor condenser unit. Practically, the same function — Data Center cooling." },
+  { q: "How is the cooling capacity of a CRAC unit measured?", a: "In kW or BTU/hr. 1 kW = 3412 BTU/hr. Typical CRAC units: 10 kW to 100+ kW. For proper sizing, calculate the IT load plus a 20% buffer." },
+  { q: "Where is the outdoor condenser installed in an air-cooled CRAC?", a: "Outside the building — on a wall or on the roof. Condenser fans reject heat into the outdoor air. If the ambient temperature is high, efficiency drops (called 'derating')." },
+  { q: "What does DX mean in a CRAC?", a: "DX = Direct Expansion. The refrigerant expands directly in the evaporator and cools the air. No intermediate water loop. Direct means direct heat transfer between the refrigerant and the air (through the coil)." },
+  { q: "What is the life expectancy of a CRAC unit?", a: "15-20 years is typical — if there is proper maintenance. The compressor is usually the weakest component — 10-15 years. Regular PM extends the life." },
 ];
 
 function FAQSection() {
@@ -211,19 +216,19 @@ export default function CRACPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="crac" headings={HEADINGS} readingTimeMinutes={16}>
+      <ArticleLayout slug="crac" headings={HEADINGS} readingTimeMinutes={16} lang="en" alternateHref="/hi/learn/non-it/cooling/crac">
 
-        <p style={S.p}>Imagine karo ek 500 sqm server room. Hazaron servers. Round-the-clock operation.</p>
-        <p style={S.p}>Sab servers heat generate kar rahe hain. Is heat ko kahin jaana hai.</p>
-        <p style={S.p}><strong>PAC</strong> ke baare mein humne padha. CRAC bhi same problem solve karta hai — thoda alag approach se.</p>
+        <p style={S.p}>Imagine a 500 sqm server room. Thousands of servers. Round-the-clock operation.</p>
+        <p style={S.p}>All the servers are generating heat. This heat has to go somewhere.</p>
+        <p style={S.p}>We read about the <strong>PAC</strong>. A CRAC also solves the same problem — with a slightly different approach.</p>
         <p style={S.p}>CRAC = <strong>Computer Room Air Conditioner.</strong></p>
-        <p style={S.p}>Ye naam hi sab kuch bata deta hai — specifically computer rooms (data centers) ke liye bana air conditioner.</p>
+        <p style={S.p}>The name itself tells you everything — an air conditioner made specifically for computer rooms (data centers).</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
             <Image src="/images/articles/crac/crac-unit-server-room.png" alt="CRAC unit installed in a data center" fill sizes="(max-width: 768px) 100vw, 740px" style={{ objectFit: "cover" }} />
           </div>
-          <figcaption style={S.imageCaption}>CRAC unit — floor-mounted, typically 0.5m to 1m wide, 1.8m tall. Server room ke andar racks ke saath install hota hai.</figcaption>
+          <figcaption style={S.imageCaption}>CRAC unit — floor-mounted, typically 0.5m to 1m wide, 1.8m tall. It is installed inside the server room alongside the racks.</figcaption>
         </figure>
 
         <QuickSummary />
@@ -233,18 +238,18 @@ export default function CRACPage() {
         <h2 id="what-is-crac" style={S.h1}>What Is a CRAC?</h2>
 
         <p style={S.p}><strong>CRAC = Computer Room Air Conditioner.</strong></p>
-        <p style={S.p}>Ye ek specialized, self-contained cooling unit hai jo Data Center aur Computer Rooms ke liye design kiya gaya hai.</p>
-        <p style={S.p}>"Self-contained" ka matlab hai — iski refrigeration system apne andar hoti hai. Compressor iske andar ya directly connected external unit mein hota hai.</p>
-        <p style={S.p}>CRAC ka kaam simple hai:</p>
+        <p style={S.p}>It is a specialized, self-contained cooling unit designed for Data Centers and Computer Rooms.</p>
+        <p style={S.p}>"Self-contained" means — its refrigeration system is within itself. The compressor is inside it or in a directly connected external unit.</p>
+        <p style={S.p}>The job of a CRAC is simple:</p>
         <ul style={S.ul}>
-          <li style={S.li}>Server racks se warm air kheencho</li>
-          <li style={S.li}>Refrigeration cycle se cool karo</li>
-          <li style={S.li}>Cool air wapas room mein bhejo</li>
+          <li style={S.li}>Pull warm air from the server racks</li>
+          <li style={S.li}>Cool it with the refrigeration cycle</li>
+          <li style={S.li}>Send the cool air back into the room</li>
           <li style={S.li}>Repeat — 24×7</li>
         </ul>
 
         <InsightCard>
-          CRAC aur PAC mein industry mein bahut confusion hai. Technically, dono DX (Direct Expansion) cooling use karte hain. Practically, CRAC ka external condenser usually zyada visible hota hai — wall pe ya roof pe. PAC mein all-in-one ya close-coupled design zyada common hai. Lekin dono basically same technology hain — same goal, similar operation.
+          There is a lot of confusion in the industry about CRAC and PAC. Technically, both use DX (Direct Expansion) cooling. Practically, the external condenser of a CRAC is usually more visible — on a wall or on the roof. In a PAC an all-in-one or close-coupled design is more common. But both are basically the same technology — same goal, similar operation.
         </InsightCard>
 
         <DCMapNote components={["CRAC", "PAC", "CRAH", "Server Racks", "Condenser Unit (Outdoor)"]} />
@@ -253,32 +258,32 @@ export default function CRACPage() {
 
         <h2 id="why-needed" style={S.h1}>Why Is CRAC Needed?</h2>
 
-        <p style={S.p}>Servers electricity waste nahi karte — wo electricity ko computation mein use karte hain.</p>
-        <p style={S.p}>Lekin har watt of electricity jo server consume karta hai, eventually heat mein convert hoti hai.</p>
-        <p style={S.p}>Ye physics ka niyam hai — koi escape nahi.</p>
-        <p style={S.p}><strong>Example:</strong> 1000W ka server = 1000W of heat generate karta hai.</p>
-        <p style={S.p}>20 racks × 10 kW average = 200 kW of heat. Ye ek chhote ghar ko garam karne ke liye kaafi heat hai.</p>
+        <p style={S.p}>Servers do not waste electricity — they use electricity for computation.</p>
+        <p style={S.p}>But every watt of electricity a server consumes is eventually converted into heat.</p>
+        <p style={S.p}>This is a law of physics — there is no escape.</p>
+        <p style={S.p}><strong>Example:</strong> A 1000W server = generates 1000W of heat.</p>
+        <p style={S.p}>20 racks × 10 kW average = 200 kW of heat. That is enough heat to warm a small house.</p>
 
         <WhyThisMatters>
-          ASHRAE thermal guidelines ke according, server inlet temperature 18°C to 27°C honi chahiye (A1 class equipment). Agar ye range exceed ho to servers performance throttle karte hain, errors generate karte hain, aur thermal shutdown ho sakta hai. CRAC is temperature range ko maintain karta hai — no matter what the IT load is, no matter what the time of day.
+          According to ASHRAE thermal guidelines, server inlet temperature should be 18°C to 27°C (A1 class equipment). If this range is exceeded, servers throttle performance, generate errors, and a thermal shutdown can happen. The CRAC maintains this temperature range — no matter what the IT load is, no matter what the time of day.
         </WhyThisMatters>
 
-        <p style={S.p}><strong>CRAC kyon specifically — normal AC kyon nahi?</strong></p>
+        <p style={S.p}><strong>Why specifically a CRAC — why not a normal AC?</strong></p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Continuous operation:</strong> CRAC 24×7×365 run karne ke liye rated hai</li>
-          <li style={S.li}><strong>High sensible heat ratio:</strong> Servers sirf temperature badhate hain (moisture nahi) — CRAC is ke liye optimized hai</li>
-          <li style={S.li}><strong>Precise control:</strong> ±1°C temperature aur ±5% humidity precision</li>
-          <li style={S.li}><strong>High capacity per unit:</strong> 15-100+ kW per unit — normal AC 1-5 kW ka hota hai</li>
-          <li style={S.li}><strong>BMS integration:</strong> Centralized monitoring aur alarm management</li>
+          <li style={S.li}><strong>Continuous operation:</strong> A CRAC is rated to run 24×7×365</li>
+          <li style={S.li}><strong>High sensible heat ratio:</strong> Servers only raise temperature (not moisture) — a CRAC is optimized for this</li>
+          <li style={S.li}><strong>Precise control:</strong> ±1°C temperature and ±5% humidity precision</li>
+          <li style={S.li}><strong>High capacity per unit:</strong> 15-100+ kW per unit — a normal AC is 1-5 kW</li>
+          <li style={S.li}><strong>BMS integration:</strong> Centralized monitoring and alarm management</li>
         </ul>
 
         <hr style={S.divider} />
 
         <h2 id="working-principle" style={S.h1}>Working Principle</h2>
 
-        <p style={S.p}>CRAC <strong>DX (Direct Expansion) refrigeration cycle</strong> use karta hai.</p>
-        <p style={S.p}>"Direct Expansion" ka matlab hai ki refrigerant directly evaporator coil mein expand hota hai.</p>
-        <p style={S.p}>Koi intermediate water loop nahi — refrigerant seedha air ke saath heat transfer karta hai.</p>
+        <p style={S.p}>A CRAC uses the <strong>DX (Direct Expansion) refrigeration cycle</strong>.</p>
+        <p style={S.p}>"Direct Expansion" means the refrigerant expands directly in the evaporator coil.</p>
+        <p style={S.p}>There is no intermediate water loop — the refrigerant transfers heat directly with the air.</p>
 
         <FlowDiagram
           caption="DX refrigeration cycle in CRAC unit"
@@ -292,13 +297,13 @@ export default function CRACPage() {
         />
 
         <h3 style={S.h3}>DX Cycle Step by Step</h3>
-        <p style={S.p}><strong>Step 1 — Evaporator (andar, room mein):</strong> Low pressure liquid refrigerant evaporator coil mein aata hai. Server se warm air is coil ke upar se guzarti hai. Refrigerant heat absorb karke gas ban jaata hai. Air thandi ho jaati hai.</p>
-        <p style={S.p}><strong>Step 2 — Compressor:</strong> Low pressure refrigerant gas compressor mein jaati hai. High pressure mein compress hoti hai. Temperature bhi badh jaata hai.</p>
-        <p style={S.p}><strong>Step 3 — Condenser (bahar, building ke baahar):</strong> Hot high-pressure gas outdoor condenser unit mein jaati hai. Outdoor fans se ambient air se heat reject hoti hai. Gas liquid ban jaati hai. Ye heat effectively bahar chali jaati hai.</p>
-        <p style={S.p}><strong>Step 4 — Expansion Valve:</strong> High pressure liquid expansion valve se guzarti hai. Pressure suddenly drop hoti hai. Refrigerant thanda ho jaata hai. Phir evaporator mein — cycle complete.</p>
+        <p style={S.p}><strong>Step 1 — Evaporator (inside, in the room):</strong> Low pressure liquid refrigerant comes into the evaporator coil. Warm air from the servers passes over this coil. The refrigerant absorbs the heat and turns into gas. The air gets cooled.</p>
+        <p style={S.p}><strong>Step 2 — Compressor:</strong> The low pressure refrigerant gas goes into the compressor. It is compressed to high pressure. Its temperature also rises.</p>
+        <p style={S.p}><strong>Step 3 — Condenser (outside, outside the building):</strong> The hot high-pressure gas goes into the outdoor condenser unit. Outdoor fans reject the heat into the ambient air. The gas turns into liquid. This heat effectively goes outside.</p>
+        <p style={S.p}><strong>Step 4 — Expansion Valve:</strong> The high pressure liquid passes through the expansion valve. The pressure drops suddenly. The refrigerant becomes cold. Then into the evaporator — cycle complete.</p>
 
         <EngineerTip>
-          DX system aur chilled water system mein ye fundamental difference samjho: DX mein refrigerant directly air ko cool karta hai. Chilled water system mein refrigerant pehle water cool karta hai, phir wo cool water CRAH mein air cool karta hai. DX simpler hai but limited capacity. Chilled water system complex hai but centralized cooling ke liye better — isliye large data centers mein chillers use hote hain.
+          Understand this fundamental difference between a DX system and a chilled water system: in DX, the refrigerant cools the air directly. In a chilled water system, the refrigerant first cools water, then that cool water cools the air in the CRAH. DX is simpler but has limited capacity. A chilled water system is complex but better for centralized cooling — that is why large data centers use chillers.
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -307,23 +312,23 @@ export default function CRACPage() {
 
         <h3 style={S.h3}>Indoor Unit</h3>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Evaporator Coil:</strong> Refrigerant se air cool hoti hai yahan. Copper tubes + aluminum fins.</li>
-          <li style={S.li}><strong>Blower / Fan:</strong> Air ko kheenchta aur cirulate karta hai. EC motors modern units mein.</li>
-          <li style={S.li}><strong>Air Filter:</strong> Dust particles rokta hai — coil ko protect karta hai.</li>
-          <li style={S.li}><strong>Humidifier:</strong> Steam ya electrode type — humidity add karta hai jab required.</li>
-          <li style={S.li}><strong>Electric Heater:</strong> Cold weather mein temperature maintain karta hai.</li>
-          <li style={S.li}><strong>Microprocessor Controller:</strong> Temperature, humidity, alarms — sab control karta hai.</li>
-          <li style={S.li}><strong>Condensate Pan + Drain:</strong> Dehumidification se jo paani nikalta hai, wo yahan collect hota hai.</li>
+          <li style={S.li}><strong>Evaporator Coil:</strong> Air is cooled by the refrigerant here. Copper tubes + aluminum fins.</li>
+          <li style={S.li}><strong>Blower / Fan:</strong> Pulls and circulates the air. EC motors in modern units.</li>
+          <li style={S.li}><strong>Air Filter:</strong> Stops dust particles — protects the coil.</li>
+          <li style={S.li}><strong>Humidifier:</strong> Steam or electrode type — adds humidity when required.</li>
+          <li style={S.li}><strong>Electric Heater:</strong> Maintains temperature in cold weather.</li>
+          <li style={S.li}><strong>Microprocessor Controller:</strong> Temperature, humidity, alarms — controls everything.</li>
+          <li style={S.li}><strong>Condensate Pan + Drain:</strong> The water that comes out from dehumidification collects here.</li>
         </ul>
 
         <h3 style={S.h3}>Outdoor Unit (Condenser)</h3>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Compressor:</strong> Refrigeration cycle ka heart — scroll ya reciprocating type.</li>
-          <li style={S.li}><strong>Condenser Coil:</strong> High pressure refrigerant gas se heat reject hoti hai.</li>
-          <li style={S.li}><strong>Condenser Fans:</strong> Outdoor air se heat reject karte hain. Speed-controlled modern units mein.</li>
-          <li style={S.li}><strong>Refrigerant Pipework:</strong> Indoor aur outdoor unit ko connect karta hai — insulated copper pipes.</li>
-          <li style={S.li}><strong>Sight Glass:</strong> Refrigerant level aur quality visual check.</li>
-          <li style={S.li}><strong>Service Valves:</strong> Maintenance ke liye refrigerant isolate karne ke valves.</li>
+          <li style={S.li}><strong>Compressor:</strong> The heart of the refrigeration cycle — scroll or reciprocating type.</li>
+          <li style={S.li}><strong>Condenser Coil:</strong> Heat is rejected from the high pressure refrigerant gas.</li>
+          <li style={S.li}><strong>Condenser Fans:</strong> Reject heat into the outdoor air. Speed-controlled in modern units.</li>
+          <li style={S.li}><strong>Refrigerant Pipework:</strong> Connects the indoor and outdoor units — insulated copper pipes.</li>
+          <li style={S.li}><strong>Sight Glass:</strong> Visual check of refrigerant level and quality.</li>
+          <li style={S.li}><strong>Service Valves:</strong> Valves to isolate the refrigerant for maintenance.</li>
         </ul>
 
         <hr style={S.divider} />
@@ -334,19 +339,19 @@ export default function CRACPage() {
           <div style={S.articleImage}>
             <Image src="/images/articles/crac/crac-airflow-data-center.png" alt="CRAC unit airflow pattern in data center with hot and cold aisles" fill sizes="(max-width: 768px) 100vw, 740px" style={{ objectFit: "cover" }} />
           </div>
-          <figcaption style={S.imageCaption}>CRAC unit airflow — return air top se andar, supply air bottom se (raised floor through perforated tiles) ya direct front se.</figcaption>
+          <figcaption style={S.imageCaption}>CRAC unit airflow — return air in from the top, supply air from the bottom (through the raised floor via perforated tiles) or directly from the front.</figcaption>
         </figure>
 
-        <p style={S.p}>CRAC unit server room mein floor pe lagta hai — typically server racks ke end mein ya room ki wall ke paas.</p>
+        <p style={S.p}>A CRAC unit is installed on the floor in the server room — typically at the end of the server racks or near a wall of the room.</p>
 
         <h3 style={S.h3}>Downflow CRAC (Most Common)</h3>
-        <p style={S.p}>Warm return air unit ke upar se andar aata hai. Evaporator coil se cool hota hai. Cool supply air neeche — raised floor mein — enter karta hai. Perforated floor tiles ke through cold aisle mein aata hai. Servers cool air kheenchte hain. Warm exhaust air hot aisle mein — phir CRAC mein return. Cycle complete.</p>
+        <p style={S.p}>Warm return air comes in from the top of the unit. It is cooled by the evaporator coil. Cool supply air goes down — into the raised floor. It comes into the cold aisle through perforated floor tiles. Servers pull in the cool air. Warm exhaust air goes into the hot aisle — then returns to the CRAC. Cycle complete.</p>
 
         <h3 style={S.h3}>Upflow CRAC (No Raised Floor)</h3>
-        <p style={S.p}>Warm return air bottom se enter karta hai. Cool supply air top se nikalta hai. Ceiling level pe distribute hota hai ya overhead ducts se. Servers tak pahunchne mein mixing zyada hoti hai — thodi less efficient.</p>
+        <p style={S.p}>Warm return air enters from the bottom. Cool supply air comes out from the top. It is distributed at ceiling level or through overhead ducts. There is more mixing before it reaches the servers — slightly less efficient.</p>
 
         <InsightCard>
-          Data Center mein CRAC unit placement critical hai. Rule of thumb: har 5-7 racks pe ek CRAC unit. Units room mein evenly distribute karo — corners ya walls pe mat lagao — cooling uniform rahegi. Hot spots tabhi aate hain jab cooling units maldistributed hon.
+          CRAC unit placement is critical in a Data Center. Rule of thumb: one CRAC unit for every 5-7 racks. Distribute the units evenly in the room — do not put them in corners or on walls — cooling will stay uniform. Hot spots come only when cooling units are maldistributed.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -354,26 +359,26 @@ export default function CRACPage() {
         <h2 id="types" style={S.h1}>Types of CRAC</h2>
 
         <h3 style={S.h3}>1. Air-Cooled CRAC</h3>
-        <p style={S.p}>Condenser heat ko outdoor air se reject karta hai. External condenser unit building ke bahar lagta hai. Most common type. Simpler installation — pani ki supply nahi chahiye. High ambient temperature pe efficiency kam hoti hai.</p>
+        <p style={S.p}>The condenser rejects heat into the outdoor air. The external condenser unit is installed outside the building. The most common type. Simpler installation — no water supply needed. Efficiency drops at high ambient temperature.</p>
 
         <h3 style={S.h3}>2. Water-Cooled CRAC</h3>
-        <p style={S.p}>Condenser heat ko cooling water se reject karta hai. Water chiller ya cooling tower se supply hoti hai. Air-cooled se better efficiency — ambient temperature independent. Water infrastructure zaroori hai.</p>
+        <p style={S.p}>The condenser rejects heat into cooling water. Supply comes from a water chiller or cooling tower. Better efficiency than air-cooled — independent of ambient temperature. Water infrastructure is necessary.</p>
 
         <h3 style={S.h3}>3. Glycol-Cooled CRAC</h3>
-        <p style={S.p}>Water-cooled variant — glycol-water mixture use karta hai. Freeze protection ke liye — cold climates mein. Dry cooler (fluid cooler) bahar lagta hai — no evaporation, no refrigerant in outdoor unit.</p>
+        <p style={S.p}>A water-cooled variant — uses a glycol-water mixture. For freeze protection — in cold climates. A dry cooler (fluid cooler) is installed outside — no evaporation, no refrigerant in the outdoor unit.</p>
 
         <h3 style={S.h3}>4. Chilled Water CRAC (CRAH)</h3>
-        <p style={S.p}>Technically ye CRAH (Air Handler) ban jaata hai jab chilled water use hoti hai. No compressor inside unit. Just fan + water coil. Chiller system provide karta hai chilled water. Large data centers prefer this for scalability.</p>
+        <p style={S.p}>Technically this becomes a CRAH (Air Handler) when chilled water is used. No compressor inside the unit. Just fan + water coil. The chiller system provides the chilled water. Large data centers prefer this for scalability.</p>
 
         <hr style={S.divider} />
 
         <h2 id="advantages" style={S.h1}>Advantages</h2>
         <ul style={S.ul}>
           <li style={S.li}><strong>Self-contained DX system:</strong> No chiller plant needed — simpler infrastructure</li>
-          <li style={S.li}><strong>Quick deployment:</strong> Install karo, refrigerant charge karo, commissioning — ready</li>
-          <li style={S.li}><strong>Precision cooling:</strong> Temperature aur humidity precise control</li>
+          <li style={S.li}><strong>Quick deployment:</strong> Install, charge refrigerant, commissioning — ready</li>
+          <li style={S.li}><strong>Precision cooling:</strong> Precise control of temperature and humidity</li>
           <li style={S.li}><strong>Continuous duty rated:</strong> 24×7×365 operation</li>
-          <li style={S.li}><strong>Modular:</strong> Load badhne pe units add karo</li>
+          <li style={S.li}><strong>Modular:</strong> Add units as load increases</li>
           <li style={S.li}><strong>N+1 redundancy:</strong> Easy to achieve</li>
         </ul>
 
@@ -381,22 +386,22 @@ export default function CRACPage() {
 
         <h2 id="disadvantages" style={S.h1}>Disadvantages</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>External condenser:</strong> Building ke bahar unit chahiye — site constraints</li>
-          <li style={S.li}><strong>Ambient dependency:</strong> High outdoor temperature pe cooling capacity reduce hoti hai</li>
-          <li style={S.li}><strong>Limited scalability:</strong> Very large data centers ke liye chiller plant more efficient hai</li>
+          <li style={S.li}><strong>External condenser:</strong> A unit is needed outside the building — site constraints</li>
+          <li style={S.li}><strong>Ambient dependency:</strong> Cooling capacity reduces at high outdoor temperature</li>
+          <li style={S.li}><strong>Limited scalability:</strong> For very large data centers a chiller plant is more efficient</li>
           <li style={S.li}><strong>Compressor maintenance:</strong> Moving parts — wear and tear, eventually replacement</li>
-          <li style={S.li}><strong>Refrigerant leak risk:</strong> Piping connections pe leak possible</li>
-          <li style={S.li}><strong>Noise:</strong> Compressor aur condenser fans noise generate karte hain</li>
+          <li style={S.li}><strong>Refrigerant leak risk:</strong> Leaks are possible at piping connections</li>
+          <li style={S.li}><strong>Noise:</strong> The compressor and condenser fans generate noise</li>
         </ul>
 
         <hr style={S.divider} />
 
         <h2 id="real-example" style={S.h1}>Real Data Center Example</h2>
 
-        <p style={S.p}><strong>Setup:</strong> Telecom company ka 300 sqm server room. 30 racks, average 8 kW per rack = 240 kW total heat load.</p>
+        <p style={S.p}><strong>Setup:</strong> A telecom company's 300 sqm server room. 30 racks, average 8 kW per rack = 240 kW total heat load.</p>
         <p style={S.p}><strong>Cooling design:</strong> Air-cooled CRAC, 30 kW capacity per unit. 9 units required (270 kW) + 1 standby = 10 units total (N+1).</p>
         <p style={S.p}><strong>Layout:</strong> 5 units each side of the room. Downflow units with raised floor 600mm height.</p>
-        <p style={S.p}><strong>Outdoor:</strong> 10 condenser units roof pe — each paired with indoor CRAC unit.</p>
+        <p style={S.p}><strong>Outdoor:</strong> 10 condenser units on the roof — each paired with an indoor CRAC unit.</p>
         <p style={S.p}><strong>Control:</strong> All units connected to BMS. Master/slave configuration — automatic standby rotation every 30 days.</p>
 
         <hr style={S.divider} />
@@ -404,19 +409,19 @@ export default function CRACPage() {
         <h2 id="common-faults" style={S.h1}>Common Faults</h2>
 
         <h3 style={S.h3}>High Supply Air Temperature</h3>
-        <p style={S.p}>Possible causes: Dirty filter, low refrigerant, high ambient temperature, compressor issue. Action: Filter check, refrigerant pressure check, condenser clean karo.</p>
+        <p style={S.p}>Possible causes: Dirty filter, low refrigerant, high ambient temperature, compressor issue. Action: Check the filter, check refrigerant pressure, clean the condenser.</p>
 
         <h3 style={S.h3}>Compressor Trip</h3>
-        <p style={S.p}>Possible causes: High head pressure, low suction pressure, overload, internal fault. Action: Standby unit confirm running → fault code read karo → qualified technician call karo.</p>
+        <p style={S.p}>Possible causes: High head pressure, low suction pressure, overload, internal fault. Action: Confirm the standby unit is running → read the fault code → call a qualified technician.</p>
 
         <h3 style={S.h3}>Condenser Fan Failure</h3>
-        <p style={S.p}>Possible causes: Motor fault, belt break (older units), blade damage. Effect: High head pressure → compressor trip. Action: Fan replace karo.</p>
+        <p style={S.p}>Possible causes: Motor fault, belt break (older units), blade damage. Effect: High head pressure → compressor trip. Action: Replace the fan.</p>
 
         <h3 style={S.h3}>Refrigerant Leak</h3>
-        <p style={S.p}>Possible causes: Pipe joint wear, valve leak, coil damage. Signs: Low suction pressure, poor cooling, ice on evaporator coil. Action: Leak detect karo → repair → recharge — licensed technician only.</p>
+        <p style={S.p}>Possible causes: Pipe joint wear, valve leak, coil damage. Signs: Low suction pressure, poor cooling, ice on the evaporator coil. Action: Detect the leak → repair → recharge — licensed technician only.</p>
 
         <h3 style={S.h3}>Humidity Out of Range</h3>
-        <p style={S.p}>Possible causes: Humidifier failure, dehumidification issue, water supply. Action: Humidity sensor verify karo, humidifier status check karo.</p>
+        <p style={S.p}>Possible causes: Humidifier failure, dehumidification issue, water supply. Action: Verify the humidity sensor, check humidifier status.</p>
 
         <hr style={S.divider} />
 
@@ -425,22 +430,22 @@ export default function CRACPage() {
         <h3 style={S.h3}>Quarterly PM</h3>
         <ul style={S.ul}>
           <li style={S.li}>Air filter clean / replace</li>
-          <li style={S.li}>Evaporator coil inspect aur clean</li>
-          <li style={S.li}>Condensate drain clear karo</li>
-          <li style={S.li}>Refrigerant pressure check — suction aur discharge</li>
-          <li style={S.li}>Superheat aur subcooling measure karo</li>
-          <li style={S.li}>Electrical connections tighten karo</li>
-          <li style={S.li}>Compressor current draw check karo</li>
-          <li style={S.li}>Controller settings verify karo</li>
+          <li style={S.li}>Inspect and clean the evaporator coil</li>
+          <li style={S.li}>Clear the condensate drain</li>
+          <li style={S.li}>Refrigerant pressure check — suction and discharge</li>
+          <li style={S.li}>Measure superheat and subcooling</li>
+          <li style={S.li}>Tighten electrical connections</li>
+          <li style={S.li}>Check compressor current draw</li>
+          <li style={S.li}>Verify controller settings</li>
         </ul>
 
         <h3 style={S.h3}>Outdoor Condenser PM</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Condenser coil clean karo — fin straightener use karo</li>
-          <li style={S.li}>Fan blades inspect karo</li>
+          <li style={S.li}>Clean the condenser coil — use a fin straightener</li>
+          <li style={S.li}>Inspect the fan blades</li>
           <li style={S.li}>Fan motor current draw</li>
-          <li style={S.li}>Refrigerant pipe insulation check karo</li>
-          <li style={S.li}>Weather proofing check karo</li>
+          <li style={S.li}>Check refrigerant pipe insulation</li>
+          <li style={S.li}>Check weather proofing</li>
         </ul>
 
         <hr style={S.divider} />
@@ -464,7 +469,7 @@ export default function CRACPage() {
         <h2 id="monthly-checklist" style={S.h1}>Monthly Checklist</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}>✓ Filter inspect — clean ya replace</li>
+          <li style={S.li}>✓ Inspect the filter — clean or replace</li>
           <li style={S.li}>✓ Condensate drain flush</li>
           <li style={S.li}>✓ Switchover test — primary to standby transfer</li>
           <li style={S.li}>✓ Temperature/humidity sensor calibration check</li>
@@ -479,12 +484,12 @@ export default function CRACPage() {
         <h2 id="safety" style={S.h1}>Safety Precautions</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>LOTO procedure:</strong> Maintenance se pehle electrical isolation mandatory</li>
+          <li style={S.li}><strong>LOTO procedure:</strong> Electrical isolation is mandatory before maintenance</li>
           <li style={S.li}><strong>Refrigerant handling:</strong> Certified technician only — direct exposure harmful</li>
-          <li style={S.li}><strong>High pressure hazard:</strong> Refrigerant system ko unauthorized mat kholo</li>
-          <li style={S.li}><strong>Outdoor unit safety:</strong> Condenser fan running hote waqt clearance maintain karo</li>
-          <li style={S.li}><strong>Working at height:</strong> Roof pe condenser maintenance — fall protection zaroori</li>
-          <li style={S.li}><strong>Standby confirm:</strong> Maintenance se pehle standby unit running confirm karo</li>
+          <li style={S.li}><strong>High pressure hazard:</strong> Do not open the refrigerant system without authorization</li>
+          <li style={S.li}><strong>Outdoor unit safety:</strong> Maintain clearance while the condenser fan is running</li>
+          <li style={S.li}><strong>Working at height:</strong> Condenser maintenance on the roof — fall protection is essential</li>
+          <li style={S.li}><strong>Standby confirm:</strong> Confirm the standby unit is running before maintenance</li>
           <li style={S.li}><strong>PPE:</strong> Gloves, safety glasses, proper footwear</li>
         </ul>
 
@@ -492,40 +497,40 @@ export default function CRACPage() {
 
         <h2 id="interview-questions" style={S.h1}>Interview Questions</h2>
 
-        <h3 style={S.h3}>Q1: CRAC aur CRAH mein kya difference hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> CRAC apna compressor rakhta hai aur DX cooling use karta hai — self-contained unit. CRAH mein compressor nahi hota — wo bahar se chilled water use karta hai (chiller plant se). CRAC = complete unit. CRAH = just air handler, chiller alag hota hai.</p>
+        <h3 style={S.h3}>Q1: What is the difference between CRAC and CRAH?</h3>
+        <p style={S.p}><strong>Answer:</strong> A CRAC has its own compressor and uses DX cooling — a self-contained unit. A CRAH has no compressor — it uses chilled water from outside (from the chiller plant). CRAC = complete unit. CRAH = just an air handler, the chiller is separate.</p>
 
-        <h3 style={S.h3}>Q2: CRAC unit sizing kaise karte hain?</h3>
-        <p style={S.p}><strong>Answer:</strong> IT load calculate karo (kW mein). N+1 redundancy ke liye: N units full load handle karein, 1 extra standby. Example: 100 kW load, 20 kW per unit → 5 units needed + 1 standby = 6 total. Har unit 80% load pe run karna best practice hai.</p>
+        <h3 style={S.h3}>Q2: How is CRAC unit sizing done?</h3>
+        <p style={S.p}><strong>Answer:</strong> Calculate the IT load (in kW). For N+1 redundancy: N units handle the full load, 1 extra standby. Example: 100 kW load, 20 kW per unit → 5 units needed + 1 standby = 6 total. Running each unit at 80% load is best practice.</p>
 
-        <h3 style={S.h3}>Q3: High head pressure alarm kya indicate karta hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Condenser side problem. Possible causes: dirty condenser coil, condenser fan failure, high ambient temperature, refrigerant overcharge. Compressor trip ho sakta hai. Immediate action: condenser check karo, fan status verify karo.</p>
+        <h3 style={S.h3}>Q3: What does a high head pressure alarm indicate?</h3>
+        <p style={S.p}><strong>Answer:</strong> A condenser side problem. Possible causes: dirty condenser coil, condenser fan failure, high ambient temperature, refrigerant overcharge. The compressor can trip. Immediate action: check the condenser, verify fan status.</p>
 
-        <h3 style={S.h3}>Q4: CRAC mein superheat kya hota hai aur kyun measure karte hain?</h3>
-        <p style={S.p}><strong>Answer:</strong> Superheat = evaporator outlet pe refrigerant gas temperature minus saturation temperature. Target: 6-12°C superheat. Kam superheat → liquid refrigerant compressor mein jaa sakta hai (liquid slugging — dangerous). Zyada superheat → low refrigerant ya expansion valve problem. Refrigerant charge verify karne ka method hai.</p>
+        <h3 style={S.h3}>Q4: What is superheat in a CRAC and why is it measured?</h3>
+        <p style={S.p}><strong>Answer:</strong> Superheat = refrigerant gas temperature at the evaporator outlet minus the saturation temperature. Target: 6-12°C superheat. Low superheat → liquid refrigerant can enter the compressor (liquid slugging — dangerous). High superheat → low refrigerant or an expansion valve problem. It is a method to verify the refrigerant charge.</p>
 
         <hr style={S.divider} />
 
         <h2 id="troubleshooting" style={S.h1}>Troubleshooting Guide</h2>
 
-        <h3 style={S.h3}>Scenario: Room temperature 28°C se upar ja raha hai</h3>
+        <h3 style={S.h3}>Scenario: Room temperature is going above 28°C</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Kitne CRAC units actually running? → Sab active hone chahiye</li>
+          <li style={S.li}>How many CRAC units are actually running? → All should be active</li>
           <li style={S.li}>Filter clog? → Differential pressure check</li>
-          <li style={S.li}>Supply air temperature measure karo → PAC se thandi aa rahi hai?</li>
-          <li style={S.li}>Hot/cold aisle mixing? → Blanking panels check karo</li>
-          <li style={S.li}>New IT equipment add hua? → Heat load recalculate karo</li>
+          <li style={S.li}>Measure the supply air temperature → is cold air coming from the PAC?</li>
+          <li style={S.li}>Hot/cold aisle mixing? → Check the blanking panels</li>
+          <li style={S.li}>Was new IT equipment added? → Recalculate the heat load</li>
           <li style={S.li}>Outdoor ambient temperature → High ambient → derating effect</li>
         </ul>
 
-        <h3 style={S.h3}>Scenario: Compressor trip ho gaya</h3>
+        <h3 style={S.h3}>Scenario: The compressor has tripped</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Standby unit immediately running confirm karo</li>
-          <li style={S.li}>Controller fault code read karo</li>
-          <li style={S.li}>High head pressure alarm? → Condenser fan check karo</li>
+          <li style={S.li}>Immediately confirm the standby unit is running</li>
+          <li style={S.li}>Read the controller fault code</li>
+          <li style={S.li}>High head pressure alarm? → Check the condenser fan</li>
           <li style={S.li}>Low suction pressure? → Refrigerant leak suspect</li>
-          <li style={S.li}>Overload trip? → Electrical check karo</li>
-          <li style={S.li}>Qualified HVAC technician call karo — DIY mat karo</li>
+          <li style={S.li}>Overload trip? → Do an electrical check</li>
+          <li style={S.li}>Call a qualified HVAC technician — do not DIY</li>
         </ul>
 
         <hr style={S.divider} />
@@ -567,14 +572,14 @@ export default function CRACPage() {
         <h2 id="best-practices" style={S.h1}>Best Practices</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>N+1 always:</strong> Minimum ek standby unit — failure hone pe no downtime</li>
-          <li style={S.li}><strong>Standby rotation:</strong> Primary aur standby regularly switch karo — equal wear</li>
-          <li style={S.li}><strong>Hot/cold aisle separation:</strong> CRAC cooling 30-40% zyada efficient ho jaati hai</li>
-          <li style={S.li}><strong>Filter maintenance schedule:</strong> Mark it on calendar — skip mat karo</li>
-          <li style={S.li}><strong>Setpoint consistency:</strong> Sab CRAC units same setpoint pe chalaao</li>
-          <li style={S.li}><strong>Outdoor condenser clearance:</strong> Minimum 1m clearance sab sides pe — airflow block mat karo</li>
-          <li style={S.li}><strong>BMS integration:</strong> Sab units monitor karo — manual rounds kaafi nahi hote</li>
-          <li style={S.li}><strong>Annual refrigerant audit:</strong> Licensed technician se system check karwao</li>
+          <li style={S.li}><strong>N+1 always:</strong> At least one standby unit — no downtime on failure</li>
+          <li style={S.li}><strong>Standby rotation:</strong> Regularly switch the primary and standby — equal wear</li>
+          <li style={S.li}><strong>Hot/cold aisle separation:</strong> CRAC cooling becomes 30-40% more efficient</li>
+          <li style={S.li}><strong>Filter maintenance schedule:</strong> Mark it on the calendar — do not skip it</li>
+          <li style={S.li}><strong>Setpoint consistency:</strong> Run all CRAC units at the same setpoint</li>
+          <li style={S.li}><strong>Outdoor condenser clearance:</strong> Minimum 1m clearance on all sides — do not block the airflow</li>
+          <li style={S.li}><strong>BMS integration:</strong> Monitor all units — manual rounds are not enough</li>
+          <li style={S.li}><strong>Annual refrigerant audit:</strong> Have the system checked by a licensed technician</li>
         </ul>
 
         <hr style={S.divider} />
@@ -582,13 +587,13 @@ export default function CRACPage() {
         <h2 id="key-takeaways" style={S.h1}>Key Takeaways</h2>
 
         <KeyTakeawayCard items={[
-          "CRAC = Computer Room Air Conditioner — Data Center cooling ke liye specifically design kiya gaya self-contained unit.",
-          "DX (Direct Expansion) cooling use karta hai — refrigerant directly air cool karta hai. Compressor outdoor condenser unit mein hota hai.",
-          "PAC aur CRAC industry mein often same thing ke liye use hote hain — dono DX cooling, dono precision cooling units hain.",
-          "CRAH se fundamental difference: CRAH mein compressor nahi hota — chilled water use karta hai. CRAC self-contained hai.",
-          "N+1 redundancy mandatory hai — koi bhi unit fail ho to operations impact nahi hone chahiye.",
+          "CRAC = Computer Room Air Conditioner — a self-contained unit designed specifically for Data Center cooling.",
+          "It uses DX (Direct Expansion) cooling — the refrigerant cools the air directly. The compressor is in the outdoor condenser unit.",
+          "PAC and CRAC are often used for the same thing in the industry — both are DX cooling, both are precision cooling units.",
+          "The fundamental difference from a CRAH: a CRAH has no compressor — it uses chilled water. A CRAC is self-contained.",
+          "N+1 redundancy is mandatory — the failure of any unit should not impact operations.",
           "Daily checks: supply air temp, return air temp, humidity, alarms. Monthly: filter, drain, switchover test.",
-          "Common faults: high head pressure (condenser issue), compressor trip, low refrigerant, filter clog — sabke causes aur actions yaad rakho.",
+          "Common faults: high head pressure (condenser issue), compressor trip, low refrigerant, filter clog — remember the causes and actions for each.",
         ]} />
 
         <hr style={S.divider} />
@@ -599,13 +604,13 @@ export default function CRACPage() {
         <hr style={S.divider} />
 
         <h2 style={S.h2}>Related Learning Topics</h2>
-        <p style={S.p}>CRAC clear ho gaya. Cooling system aage badhao:</p>
+        <p style={S.p}>CRAC is clear. Take the cooling system further:</p>
         <ul style={S.ul}>
-          <li style={S.li}><TopicLink slug="pac" variant="inline" /> — CRAC ka close cousin — precision cooling unit.</li>
-          <li style={S.li}><TopicLink slug="chiller" variant="inline" /> — Large data centers mein centralized chilled water system.</li>
-          <li style={S.li}><TopicLink slug="cooling-tower" variant="inline" /> — Chiller ke saath kaam karta hai — heat rejection to atmosphere.</li>
-          <li style={S.li}><TopicLink slug="containment" variant="inline" /> — Aisle containment — CRAC/PAC efficiency improve karta hai.</li>
-          <li style={S.li}><TopicLink slug="airflow-management" variant="inline" /> — Cool air ko sahi jagah kaise pahunchao.</li>
+          <li style={S.li}><TopicLink slug="pac" variant="inline" /> — the CRAC's close cousin — a precision cooling unit.</li>
+          <li style={S.li}><TopicLink slug="chiller" variant="inline" /> — the centralized chilled water system in large data centers.</li>
+          <li style={S.li}><TopicLink slug="cooling-tower" variant="inline" /> — works with the chiller — heat rejection to the atmosphere.</li>
+          <li style={S.li}><TopicLink slug="containment" variant="inline" /> — aisle containment — improves CRAC/PAC efficiency.</li>
+          <li style={S.li}><TopicLink slug="airflow-management" variant="inline" /> — how to get cool air to the right place.</li>
         </ul>
       </ArticleLayout>
     </>

@@ -16,7 +16,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(batteryBankMetadata);
+const baseMetadata = buildPageMetadata(batteryBankMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: batteryBankMetadata.canonicalUrl,
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/electrical/battery-bank",
+      hi: "https://behindthetech.in/hi/learn/non-it/electrical/battery-bank",
+      "x-default": "https://behindthetech.in/learn/non-it/electrical/battery-bank",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: batteryBankMetadata.title,

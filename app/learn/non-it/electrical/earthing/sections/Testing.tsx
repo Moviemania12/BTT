@@ -6,14 +6,14 @@ export default function Testing() {
   return (
     <>
       <h2 id="earth-resistance-testing" style={S.h2}>Earth Resistance Testing</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Earth resistance testing verify karta hai ki earth electrode ground se kitni achhi tarah connected hai. Low resistance = effective fault current path. Yeh Data Center ka sabse critical periodic test hai.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> Earth resistance testing verifies how well the earth electrode is connected to the ground. Low resistance = an effective fault current path. It is the most critical periodic test in a Data Center.</p>
       <ul style={S.ul}>
-        <li>Earth resistance — electrode se ground tak ka opposition</li>
+        <li>Earth resistance — the opposition from the electrode to the ground</li>
         <li>Lower value = better (typically &lt;1Ω for Data Center)</li>
         <li>Multiple testing methods available — application-specific</li>
-        <li>Seasonal variation hoti hai — moisture pe depend karta hai</li>
+        <li>There is seasonal variation — it depends on moisture</li>
       </ul>
-      <p style={S.p}><strong>Engineer Tip:</strong> Earth resistance sirf earth pit ki quality nahi batata — poore earthing system ki health indicate karta hai. High resistance reading ka matlab ho sakta hai loose connection, corroded strip, ya dry soil — root cause investigate karna zaroori hai, sirf reading record mat karo.</p>
+      <p style={S.p}><strong>Engineer Tip:</strong> Earth resistance does not only tell the quality of the earth pit — it indicates the health of the whole earthing system. A high resistance reading can mean a loose connection, corroded strip or dry soil — investigating the root cause is essential; do not just record the reading.</p>
 
       <h3 id="testing-parameters" style={S.h3}>Testing Parameters & Acceptable Values</h3>
       <ComparisonTable
@@ -30,33 +30,33 @@ export default function Testing() {
         ]}
       />
       <Callout type="important" title="Pass/Fail Criteria">
-        Data Center critical systems (UPS, Battery Bank, Server Rack earthing) ke liye &lt;1Ω target hai. General building earthing ke liye &lt;5Ω acceptable hai IS 3043 ke according. Agar reading threshold se zyada hai, immediate investigation aur corrective action mandatory hai — yeh cosmetic issue nahi hai.
+        The target for Data Center critical systems (UPS, Battery Bank, Server Rack earthing) is &lt;1Ω. For general building earthing, &lt;5Ω is acceptable as per IS 3043. If the reading is above the threshold, immediate investigation and corrective action are mandatory — this is not a cosmetic issue.
       </Callout>
 
       <h3 id="fall-of-potential" style={S.h3}>Fall of Potential — 3 Pole Method</h3>
-      <Figure caption="Fig 3 — Fall of Potential (3 Pole) Test Method: Earth electrode (E), current electrode (C), aur potential electrode (P) specific distances pe placed, resistance measure karne ke liye.">
+      <Figure caption="Fig 3 — Fall of Potential (3 Pole) Test Method: Earth electrode (E), current electrode (C) and potential electrode (P) placed at specific distances to measure resistance.">
         <FallOfPotentialDiagram />
       </Figure>
-      <p style={S.p}>3-pole method sabse accurate aur widely used earth resistance test hai. Current electrode (C) earth electrode se 30-40m door place hota hai; potential electrode (P) beech mein, typically 62% distance pe (61.8% rule).</p>
+      <p style={S.p}>The 3-pole method is the most accurate and widely used earth resistance test. The current electrode (C) is placed 30-40m away from the earth electrode; the potential electrode (P) in between, typically at 62% of the distance (61.8% rule).</p>
       <div style={S.formula}>
         R = V ÷ I<br/>
         Where: V = potential difference measured (Volts), I = test current injected (Amperes)
       </div>
       <p style={S.p}><strong>Procedure:</strong> (1) Disconnect earth electrode from system via test link. (2) Drive C and P auxiliary electrodes at specified distances. (3) Inject known test current between E and C. (4) Measure voltage between E and P. (5) Calculate resistance. (6) Repeat at 52%, 62%, 72% of C-distance to verify a flat curve (confirms valid reading, not influenced by electrode interference).</p>
       <Callout type="common-mistake" title="Common Mistake — Auxiliary Electrodes Too Close">
-        Agar C aur P electrodes earth electrode ke bahut paas place kiye jaayein, unka resistance zone overlap kar jaata hai — result artificially low ya inconsistent aata hai. Standard practice: C electrode kam se kam 5x earth electrode depth ki distance pe hona chahiye, ideally 30-40m ground space available ho toh.
+        If the C and P electrodes are placed very close to the earth electrode, their resistance zones overlap — the result comes out artificially low or inconsistent. Standard practice: the C electrode should be at a distance of at least 5x the earth electrode depth, ideally 30-40m if ground space is available.
       </Callout>
 
       <h3 id="four-pole-method" style={S.h3}>4 Pole Test</h3>
-      <p style={S.p}>4-pole method soil resistivity measure karne ke liye use hoti hai (Wenner method), na ki directly earth resistance. Four probes equal spacing pe ground mein insert kiye jaate hain.</p>
+      <p style={S.p}>The 4-pole method is used to measure soil resistivity (Wenner method), not directly earth resistance. Four probes are inserted into the ground at equal spacing.</p>
       <div style={S.formula}>
         ρ = 2πaR<br/>
         Where: ρ = soil resistivity (Ω-m), a = probe spacing (m), R = measured resistance (Ω)
       </div>
-      <p style={S.p}><strong>Worked Example:</strong> Probe spacing (a) = 5m, measured resistance (R) = 45Ω. ρ = 2 × 3.14159 × 5 × 45 = 1,413.7 Ω-m. Yeh value naye earth pit design ke liye input hoti hai — kitne electrodes chahiye target resistance achieve karne ke liye.</p>
+      <p style={S.p}><strong>Worked Example:</strong> Probe spacing (a) = 5m, measured resistance (R) = 45Ω. ρ = 2 × 3.14159 × 5 × 45 = 1,413.7 Ω-m. This value is the input for a new earth pit design — how many electrodes are needed to achieve the target resistance.</p>
 
       <h3 id="clamp-method" style={S.h3}>Clamp Method</h3>
-      <p style={S.p}>Clamp-on earth tester ek non-invasive method hai — koi auxiliary electrode nahi lagane padte. Clamp meter earth loop ke around clamp hota hai aur induced current measure karta hai. Fast aur convenient — Data Center routine testing mein widely used.</p>
+      <p style={S.p}>The clamp-on earth tester is a non-invasive method — no auxiliary electrodes have to be installed. The clamp meter clamps around the earth loop and measures the induced current. Fast and convenient — widely used in Data Center routine testing.</p>
       <ComparisonTable
         headers={["Aspect", "3-Pole (Fall of Potential)", "Clamp Method"]}
         rows={[
@@ -70,7 +70,7 @@ export default function Testing() {
       />
 
       <h3 id="soil-resistivity" style={S.h3}>Soil Resistivity — Wenner Method</h3>
-      <p style={S.p}>Soil resistivity naye earth pit design se pehle measure ki jaati hai — yeh batata hai kitni electrodes aur kaunsa earthing type (plate/rod/chemical) suitable hoga. Wenner 4-pole method standard technique hai.</p>
+      <p style={S.p}>Soil resistivity is measured before a new earth pit design — it tells how many electrodes and which earthing type (plate/rod/chemical) will be suitable. The Wenner 4-pole method is the standard technique.</p>
       <ComparisonTable
         headers={["Soil Type", "Typical Resistivity (Ω-m)", "Earthing Recommendation"]}
         rows={[
@@ -83,14 +83,14 @@ export default function Testing() {
       />
 
       <h3 id="continuity-bonding-test" style={S.h3}>Continuity & Bonding Test</h3>
-      <p style={S.p}>Continuity test verify karta hai ki bonding conductor (rack frame, cable tray, panel body) actually electrically continuous hai — koi break, loose joint, ya corrosion nahi hai path mein.</p>
-      <p style={S.p}><strong>Method:</strong> Low-resistance ohmmeter (micro-ohmmeter) do points ke beech connect karo — typically equipment body se main earth bar tak. Reading &lt;0.1Ω honi chahiye typically for bonding conductors per IS 3043 guidance. Higher reading = investigate joint/connection.</p>
+      <p style={S.p}>The continuity test verifies that the bonding conductor (rack frame, cable tray, panel body) is actually electrically continuous — there is no break, loose joint or corrosion in the path.</p>
+      <p style={S.p}><strong>Method:</strong> Connect a low-resistance ohmmeter (micro-ohmmeter) between two points — typically from the equipment body to the main earth bar. The reading should typically be &lt;0.1Ω for bonding conductors per IS 3043 guidance. Higher reading = investigate the joint/connection.</p>
       <Callout type="best-practice" title="Best Practice — Test Every Bonding Point Annually">
-        Rack-to-rack bonding, cable tray sections, aur panel body connections — sab annually continuity test karo. Yeh connections physically hidden hote hain aur visual inspection se corrosion ya loosening detect nahi hoti. Micro-ohmmeter test hi definitive answer deta hai.
+        Rack-to-rack bonding, cable tray sections and panel body connections — continuity test all of them annually. These connections are physically hidden and corrosion or loosening is not detected by visual inspection. Only the micro-ohmmeter test gives a definitive answer.
       </Callout>
 
       <h2 id="testing-instruments" style={S.h2}>Testing Instruments</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Har testing instrument specific purpose ke liye designed hai. Galat instrument use karna galat/misleading reading de sakta hai.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> Every testing instrument is designed for a specific purpose. Using the wrong instrument can give a wrong/misleading reading.</p>
       <ComparisonTable
         headers={["Instrument", "Purpose", "Typical Reading", "Data Center Use"]}
         rows={[
@@ -103,19 +103,19 @@ export default function Testing() {
           ["Power Quality Analyzer", "Voltage, current, harmonics, transients", "Multi-parameter logging", "Comprehensive power quality + earthing analysis"],
         ]}
       />
-      <p style={S.p}><strong>For every instrument — connection method aur common mistakes:</strong></p>
+      <p style={S.p}><strong>For every instrument — connection method and common mistakes:</strong></p>
       <ul style={S.ul}>
-        <li><strong>Digital Earth Tester:</strong> Test link disconnect karo pehle, phir C/P electrodes connect karo per manufacturer diagram. Mistake: test link disconnect kiye bina reading lena — system-parallel paths se galat reading aati hai.</li>
-        <li><strong>Clamp Earth Tester:</strong> Clamp ko earth conductor ke around close karo bina koi cable pinch kiye. Mistake: sirf ek hi earth path hone pe clamp method use karna — accuracy compromise hoti hai without parallel return paths.</li>
-        <li><strong>Megger:</strong> Test se pehle equipment completely de-energize aur isolate karo. Mistake: live circuit pe megger use karna — dono instrument aur equipment damage ho sakta hai.</li>
-        <li><strong>Power Quality Analyzer:</strong> CT clamps correct phase orientation mein lagao. Mistake: CT direction reverse lagana — power factor aur harmonics reading galat aati hai.</li>
+        <li><strong>Digital Earth Tester:</strong> Disconnect the test link first, then connect the C/P electrodes per the manufacturer diagram. Mistake: taking a reading without disconnecting the test link — system-parallel paths give a wrong reading.</li>
+        <li><strong>Clamp Earth Tester:</strong> Close the clamp around the earth conductor without pinching any cable. Mistake: using the clamp method when there is only a single earth path — accuracy is compromised without parallel return paths.</li>
+        <li><strong>Megger:</strong> Completely de-energize and isolate the equipment before the test. Mistake: using a megger on a live circuit — both the instrument and the equipment can be damaged.</li>
+        <li><strong>Power Quality Analyzer:</strong> Fit the CT clamps in the correct phase orientation. Mistake: fitting the CT direction reversed — power factor and harmonics readings come out wrong.</li>
       </ul>
       <Callout type="warning" title="Common Mistake — Calibration Expiry">
-        Testing instruments periodic calibration require karte hain (typically annual) — expired calibration certificate wale instrument se liya gaya reading legally aur technically questionable hai. Calibration sticker aur certificate hamesha verify karo before using any test instrument for official records.
+        Testing instruments require periodic calibration (typically annual) — a reading taken with an instrument with an expired calibration certificate is legally and technically questionable. Always verify the calibration sticker and certificate before using any test instrument for official records.
       </Callout>
 
       <h2 id="earthing-formulas" style={S.h2}>Engineering Formulas</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Earthing design aur verification mein 6 core formulas use hote hain — resistance calculation se lekar ground potential rise tak.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> 6 core formulas are used in earthing design and verification — from resistance calculation to ground potential rise.</p>
       <div style={S.formula}>
         1. Earth Resistance: R = V ÷ I<br/><br/>
         2. Soil Resistivity (Wenner): ρ = 2πaR<br/><br/>

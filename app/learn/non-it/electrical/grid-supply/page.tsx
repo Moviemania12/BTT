@@ -7,9 +7,9 @@ import TopicLink from "@/components/TopicLink";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Grid Supply: Data Center Tak Electricity Kaise Pahunchti Hai — Behind The Tech",
+  title: "Grid Supply: How Electricity Reaches a Data Center — Behind The Tech",
   description:
-    "Power plant se server rack tak electricity ka safar — Grid Supply, HT vs LT, Dual Grid Feed aur Grid failure ke time kya hota hai. Simple Hinglish mein samjho.",
+    "The journey of electricity from power plant to server rack — Grid Supply, HT vs LT, Dual Grid Feed and what happens during a grid failure. Explained in simple English.",
   keywords: [
     "grid supply data center",
     "data center electricity",
@@ -17,14 +17,15 @@ export const metadata: Metadata = {
     "dual grid feed",
     "power infrastructure data center",
     "electrical grid data center",
-    "grid supply hindi",
+    "grid supply explained",
     "behind the tech",
   ],
   openGraph: {
-    title: "Grid Supply: Data Center Tak Electricity Kaise Pahunchti Hai",
+    title: "Grid Supply: How Electricity Reaches a Data Center",
     description:
-      "Power plant se server rack tak poori electrical journey — Grid Supply, HT connection, Dual Feed aur Grid failure backup simple Hinglish mein.",
+      "The complete electrical journey from power plant to server rack — Grid Supply, HT connection, Dual Feed and grid failure backup in simple English.",
     url: "https://behindthetech.in/learn/non-it/electrical/grid-supply",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     publishedTime: "2025-01-01",
@@ -33,10 +34,15 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Grid Supply Explained — Behind The Tech",
-    description: "Data Center tak electricity ka safar — Grid se server rack tak, simple Hinglish mein.",
+    description: "The journey of electricity to a Data Center — from the grid to the server rack, in simple English.",
   },
   alternates: {
     canonical: "https://behindthetech.in/learn/non-it/electrical/grid-supply",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/electrical/grid-supply",
+      hi: "https://behindthetech.in/hi/learn/non-it/electrical/grid-supply",
+      "x-default": "https://behindthetech.in/learn/non-it/electrical/grid-supply",
+    },
   },
 };
 
@@ -48,7 +54,7 @@ const HEADINGS: ArticleHeading[] = [
   { id: "power-generation-to-data-center",  text: "Power Generation To Data Center",   level: 2 },
   { id: "ht-vs-lt-supply",                  text: "HT vs LT Supply",                   level: 2 },
   { id: "dual-grid-feed",                   text: "Dual Grid Feed",                    level: 2 },
-  { id: "grid-failure-scenario",            text: "Grid Failure — Kya Hota Hai?",      level: 2 },
+  { id: "grid-failure-scenario",            text: "Grid Failure — What Happens?",      level: 2 },
   { id: "common-challenges",                text: "Common Challenges",                 level: 2 },
   { id: "future-of-grid-supply",            text: "Future Of Grid Supply",             level: 2 },
   { id: "key-takeaways",                    text: "Key Takeaways",                     level: 2 },
@@ -455,24 +461,24 @@ function ComparisonCard({
 
 const FAQS = [
   {
-    q: "Grid Supply kya hoti hai?",
-    a: "Grid Supply woh electrical network hai jo power generation stations se electricity lekar consumers — homes, offices, hospitals aur Data Centers — tak pahunchata hai.",
+    q: "What is Grid Supply?",
+    a: "Grid Supply is the electrical network that takes electricity from power generation stations and delivers it to consumers — homes, offices, hospitals and Data Centers.",
   },
   {
-    q: "Data Centers HT Supply kyu use karte hain?",
-    a: "High-tension supply current demand ko kam karta hai, jisse transmission losses reduce hote hain, cable size chhhota hota hai aur overall efficiency improve hoti hai.",
+    q: "Why do Data Centers use HT Supply?",
+    a: "High-tension supply reduces current demand, which reduces transmission losses, makes cable sizes smaller and improves overall efficiency.",
   },
   {
-    q: "Dual Grid Feed kya hota hai?",
-    a: "Do independent electricity sources se Data Center ko feed karna — agar ek source fail ho jaye to doosra active rehta hai, is tarah reliability ensure ki jati hai.",
+    q: "What is a Dual Grid Feed?",
+    a: "Feeding a Data Center from two independent electricity sources — if one source fails, the other stays active, and this is how reliability is ensured.",
   },
   {
-    q: "Grid failure ke time Data Center ka kya hota hai?",
-    a: "UPS milliseconds me load pick kar leta hai, battery backup temporary energy provide karta hai aur DG Set automatically start hokar load sambhal leta hai — operations uninterrupted rehte hain.",
+    q: "What happens to a Data Center during a grid failure?",
+    a: "The UPS picks up the load within milliseconds, the battery backup provides temporary energy and the DG Set starts automatically and takes over the load — operations continue uninterrupted.",
   },
   {
-    q: "Harmonics kya hote hain aur ye kyu problem hote hain?",
-    a: "Harmonics unwanted electrical frequencies hoti hain jo power waveform ko distort karti hain. Ye transformers, cables aur UPS performance ko negatively impact karte hain.",
+    q: "What are harmonics and why are they a problem?",
+    a: "Harmonics are unwanted electrical frequencies that distort the power waveform. They negatively impact transformers, cables and UPS performance.",
   },
 ];
 
@@ -512,13 +518,15 @@ export default function GridSupplyPage() {
         slug="grid-supply"
         headings={HEADINGS}
         readingTimeMinutes={10}
+        lang="en"
+        alternateHref="/hi/learn/non-it/electrical/grid-supply"
       >
 
-        <p style={S.p}>Jab bhi hum Data Center ki baat karte hain, to aksar focus servers, storage, networking aur cloud infrastructure par chala jata hai.</p>
-        <p style={S.p}>Lekin ek simple sa sawal hai:</p>
-        <p style={S.p}><strong>Agar electricity hi na ho, to kya Data Center ka koi bhi equipment kaam kar payega?</strong></p>
-        <p style={S.p}>Answer hai — nahi.</p>
-        <p style={S.p}>Chahe duniya ka sabse powerful AI Data Center ho, hyperscale cloud facility ho ya ek chhota enterprise Data Center, sabki foundation electricity par tikki hoti hai.</p>
+        <p style={S.p}>Whenever we talk about Data Centers, the focus often goes to servers, storage, networking and cloud infrastructure.</p>
+        <p style={S.p}>But here is a simple question:</p>
+        <p style={S.p}><strong>If there is no electricity at all, will any equipment in the Data Center be able to work?</strong></p>
+        <p style={S.p}>The answer is — no.</p>
+        <p style={S.p}>Whether it is the world's most powerful AI Data Center, a hyperscale cloud facility or a small enterprise Data Center, the foundation of all of them rests on electricity.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -531,12 +539,12 @@ export default function GridSupplyPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Grid Supply — Data Center electrical chain ka starting point.
+            Grid Supply — the starting point of the Data Center electrical chain.
           </figcaption>
         </figure>
 
-        <p style={S.p}>Lekin electricity directly power plant se server rack tak nahi pahunchti. Beech me ek poora electrical ecosystem kaam karta hai.</p>
-        <p style={S.p}>Power generation station se nikalne wali electricity:</p>
+        <p style={S.p}>But electricity doesn't reach the server rack directly from the power plant. A whole electrical ecosystem works in between.</p>
+        <p style={S.p}>Electricity leaving the power generation station passes through:</p>
         <ul style={S.ul}>
           <li style={S.li}>Transmission Network</li>
           <li style={S.li}>Grid Infrastructure</li>
@@ -548,15 +556,15 @@ export default function GridSupplyPage() {
           <li style={S.li}>UPS Systems</li>
           <li style={S.li}>PDUs</li>
         </ul>
-        <p style={S.p}>se hokar finally server rack tak pahunchti hai.</p>
-        <p style={S.p}>Agar is chain ka koi bhi component fail ho jaye, to Data Center operations impact ho sakte hain. Isi wajah se Data Centers power reliability ko lekar normal commercial buildings se kaafi alag approach adopt karte hain.</p>
+        <p style={S.p}>and finally reaches the server rack.</p>
+        <p style={S.p}>If any component in this chain fails, Data Center operations can be impacted. That is why Data Centers adopt a very different approach to power reliability compared to normal commercial buildings.</p>
 
         <hr style={S.divider} />
 
         <h2 id="what-is-grid-supply" style={S.h1}>What Is Grid Supply?</h2>
 
-        <p style={S.p}>Simple language me samjhen to Grid Supply woh electrical network hai jo power generation stations se electricity lekar consumers tak pahunchata hai.</p>
-        <p style={S.p}>Ye consumers ho sakte hain:</p>
+        <p style={S.p}>In simple language, Grid Supply is the electrical network that takes electricity from power generation stations and delivers it to consumers.</p>
+        <p style={S.p}>These consumers can be:</p>
         <ul style={S.ul}>
           <li style={S.li}>Homes</li>
           <li style={S.li}>Offices</li>
@@ -565,20 +573,20 @@ export default function GridSupplyPage() {
           <li style={S.li}>Factories</li>
           <li style={S.li}>Data Centers</li>
         </ul>
-        <p style={S.p}>Jab aap ghar me switch on karte ho aur light jalti hai, to uske peeche poora electrical grid kaam kar raha hota hai.</p>
-        <p style={S.p}>India me electrical grid ek interconnected network hai. Is network me thermal power plants, hydro projects, solar farms aur wind energy stations sab milkar electricity generate karte hain. Ye electricity transmission network ke through poore desh me distribute ki jati hai.</p>
-        <p style={S.p}>Data Center bhi isi grid se power receive karta hai — lekin Data Center ki requirement normal building se kaafi alag hoti hai.</p>
+        <p style={S.p}>When you switch on at home and the light turns on, the entire electrical grid is working behind it.</p>
+        <p style={S.p}>In India, the electrical grid is an interconnected network. In this network, thermal power plants, hydro projects, solar farms and wind energy stations all generate electricity together. This electricity is distributed across the whole country through the transmission network.</p>
+        <p style={S.p}>A Data Center also receives power from this same grid — but a Data Center's requirements are very different from a normal building's.</p>
 
         <InsightCard>
-          Ek office me 5 minute ka power cut sirf inconvenience create karta hai. Lekin Data Center me kuch seconds ka interruption bhi thousands ya millions of users ko affect kar sakta hai. Isi wajah se Grid Supply Data Center design ka starting point hoti hai.
+          In an office, a 5-minute power cut only creates inconvenience. But in a Data Center, even an interruption of a few seconds can affect thousands or millions of users. That is why Grid Supply is the starting point of Data Center design.
         </InsightCard>
 
         <hr style={S.divider} />
 
         <h2 id="where-does-power-come-from" style={S.h1}>Where Does Data Center Power Come From?</h2>
 
-        <p style={S.p}>Bahut log sochte hain ki Data Center ki electricity directly local electricity board se aati hai. Reality thodi zyada interesting hai.</p>
-        <p style={S.p}>Electricity ko Data Center tak pahunchne ke liye ek lambi journey complete karni padti hai.</p>
+        <p style={S.p}>Many people think a Data Center's electricity comes directly from the local electricity board. The reality is a bit more interesting.</p>
+        <p style={S.p}>Electricity has to complete a long journey to reach the Data Center.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -591,7 +599,7 @@ export default function GridSupplyPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Power Plant se Data Center tak — ek lambi journey.
+            From Power Plant to Data Center — a long journey.
           </figcaption>
         </figure>
 
@@ -606,15 +614,15 @@ export default function GridSupplyPage() {
           ]}
         />
 
-        <p style={S.p}>Sabse pehle electricity power plant me generate hoti hai. Uske baad high-voltage transmission lines ke through long distances tak transport ki jati hai. Transmission network se electricity substations tak pahunchti hai, jo voltage ko required level par convert karte hain aur distribution network ko feed karte hain.</p>
-        <p style={S.p}>Phir distribution network Data Center ko supply provide karta hai — yahi point Data Center electrical journey ka actual starting point hota hai.</p>
-        <p style={S.p}>Aage power <TopicLink slug="ht-yard" label="HT Yard" variant="inline" />, <TopicLink slug="rmu" label="RMU" variant="inline" /> aur <TopicLink slug="transformer" label="Transformer" variant="inline" /> jaise systems se hokar guzarti hai.</p>
+        <p style={S.p}>First, electricity is generated at the power plant. After that, it is transported over long distances through high-voltage transmission lines. From the transmission network, electricity reaches substations, which convert the voltage to the required level and feed the distribution network.</p>
+        <p style={S.p}>Then the distribution network provides supply to the Data Center — this point is the actual starting point of the Data Center's electrical journey.</p>
+        <p style={S.p}>Further on, the power passes through systems like <TopicLink slug="ht-yard" label="HT Yard" variant="inline" />, <TopicLink slug="rmu" label="RMU" variant="inline" /> and <TopicLink slug="transformer" label="Transformer" variant="inline" />.</p>
 
         <hr style={S.divider} />
 
-        <h2 id="power-generation-to-data-center" style={S.h1}>Power Generation Se Data Center Tak Ki Journey</h2>
+        <h2 id="power-generation-to-data-center" style={S.h1}>The Journey From Power Generation To Data Center</h2>
 
-        <p style={S.p}>Power flow ko step-by-step samajhte hain.</p>
+        <p style={S.p}>Let's understand the power flow step by step.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -627,18 +635,18 @@ export default function GridSupplyPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Transmission Network — high voltage lines jo electricity ko long distances tak transport karti hain.
+            Transmission Network — high voltage lines that transport electricity over long distances.
           </figcaption>
         </figure>
 
         <h3 style={S.h3}>Step 1: Power Generation</h3>
-        <p style={S.p}>Electricity generate hoti hai: Thermal Power Plants, Hydro Power Plants, Solar Farms, Wind Farms, Gas-Based Power Plants. Yahan electrical energy produce ki jati hai.</p>
+        <p style={S.p}>Electricity is generated at: Thermal Power Plants, Hydro Power Plants, Solar Farms, Wind Farms, Gas-Based Power Plants. This is where electrical energy is produced.</p>
 
         <h3 style={S.h3}>Step 2: Transmission Network</h3>
-        <p style={S.p}>Electricity ko long distance transport karne ke liye voltage increase kiya jata hai. India me commonly 132 kV, 220 kV, 400 kV aur 765 kV transmission systems use hote hain. High voltage ka purpose transmission losses ko reduce karna hota hai.</p>
+        <p style={S.p}>To transport electricity over long distances, the voltage is increased. In India, 132 kV, 220 kV, 400 kV and 765 kV transmission systems are commonly used. The purpose of high voltage is to reduce transmission losses.</p>
 
         <h3 style={S.h3}>Step 3: Grid Substation</h3>
-        <p style={S.p}>Substation power system ka traffic controller hota hai. Yahan voltage transformation, switching aur protection activities perform ki jati hain.</p>
+        <p style={S.p}>A substation is the traffic controller of the power system. Voltage transformation, switching and protection activities are performed here.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -651,22 +659,22 @@ export default function GridSupplyPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Grid Substation — power system ka traffic controller.
+            Grid Substation — the traffic controller of the power system.
           </figcaption>
         </figure>
 
         <h3 style={S.h3}>Step 4: Distribution Network</h3>
-        <p style={S.p}>Substation se electricity industrial consumers aur commercial facilities tak distribute ki jati hai.</p>
+        <p style={S.p}>From the substation, electricity is distributed to industrial consumers and commercial facilities.</p>
 
         <h3 style={S.h3}>Step 5: Data Center Entry Point</h3>
-        <p style={S.p}>Yahan se power Data Center campus me enter karti hai. Ab incoming power ko safely handle karne ka kaam <TopicLink slug="ht-yard" label="HT Yard" variant="inline" /> aur <TopicLink slug="rmu" label="RMU" variant="inline" /> systems karte hain.</p>
+        <p style={S.p}>From here, power enters the Data Center campus. Now the job of safely handling the incoming power is done by <TopicLink slug="ht-yard" label="HT Yard" variant="inline" /> and <TopicLink slug="rmu" label="RMU" variant="inline" /> systems.</p>
 
         <hr style={S.divider} />
 
-        <h2 id="ht-vs-lt-supply" style={S.h1}>HT vs LT Supply: Data Centers High Voltage Kyu Use Karte Hain?</h2>
+        <h2 id="ht-vs-lt-supply" style={S.h1}>HT vs LT Supply: Why Do Data Centers Use High Voltage?</h2>
 
-        <p style={S.p}>Normal buildings generally LT Supply receive karti hain — Low Tension. Common examples hain 230V Single Phase aur 415V Three Phase.</p>
-        <p style={S.p}>Lekin Data Centers ki power requirement bahut zyada hoti hai. Isi wajah se wo generally HT Supply prefer karte hain.</p>
+        <p style={S.p}>Normal buildings generally receive LT Supply — Low Tension. Common examples are 230V Single Phase and 415V Three Phase.</p>
+        <p style={S.p}>But Data Centers' power requirement is very high. That is why they generally prefer HT Supply.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -679,7 +687,7 @@ export default function GridSupplyPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            HT vs LT Supply — Data Centers kyun high voltage prefer karte hain.
+            HT vs LT Supply — why Data Centers prefer high voltage.
           </figcaption>
         </figure>
 
@@ -691,15 +699,15 @@ export default function GridSupplyPage() {
           rightItems={["11 kV", "33 kV", "66 kV", "Direct HT connection"]}
         />
 
-        <p style={S.p}>High voltage use karne ka sabse bada advantage hai lower current requirement. Current kam hone se losses kam hote hain, cable size reduce hota hai, efficiency improve hoti hai aur power transfer easier ho jati hai.</p>
-        <p style={S.p}>Isi liye Data Centers direct HT connection lete hain aur phir <TopicLink slug="transformer" label="Transformer" variant="inline" /> ke through voltage ko required level par convert karte hain.</p>
+        <p style={S.p}>The biggest advantage of using high voltage is a lower current requirement. Lower current means lower losses, reduced cable size, improved efficiency and easier power transfer.</p>
+        <p style={S.p}>That is why Data Centers take a direct HT connection and then, through a <TopicLink slug="transformer" label="Transformer" variant="inline" />, convert the voltage to the required level.</p>
 
         <hr style={S.divider} />
 
         <h2 id="dual-grid-feed" style={S.h1}>Why Data Centers Use Dual Grid Feeds</h2>
 
-        <p style={S.p}>Mission-critical facilities single electrical source par depend nahi karti.</p>
-        <p style={S.p}>Maan lo ek feeder fault ho jaye. Ya transmission line damage ho jaye. Ya substation me fault aa jaye. Agar sirf ek source available ho to poora Data Center impact ho sakta hai.</p>
+        <p style={S.p}>Mission-critical facilities do not depend on a single electrical source.</p>
+        <p style={S.p}>Suppose a feeder develops a fault. Or a transmission line gets damaged. Or a fault occurs in the substation. If only one source is available, the entire Data Center can be impacted.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -712,11 +720,11 @@ export default function GridSupplyPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Dual Grid Feed — ek source fail ho to doosra active rehta hai.
+            Dual Grid Feed — if one source fails, the other stays active.
           </figcaption>
         </figure>
 
-        <p style={S.p}>Isi liye enterprise Data Centers generally Dual Grid Feed architecture use karte hain.</p>
+        <p style={S.p}>That is why enterprise Data Centers generally use a Dual Grid Feed architecture.</p>
 
         <FlowDiagram
           caption="Dual Grid Feed architecture — redundant power at the first layer"
@@ -727,15 +735,15 @@ export default function GridSupplyPage() {
           ]}
         />
 
-        <p style={S.p}>Agar ek source fail ho jaye to doosra source available rehta hai. Ye Data Center redundancy ki first layer hoti hai. Uske baad backup layers me <TopicLink slug="ups" label="UPS System" variant="inline" />, <TopicLink slug="battery-bank" label="Battery Bank" variant="inline" /> aur <TopicLink slug="dg-set" label="DG Set" variant="inline" /> ka role aata hai.</p>
+        <p style={S.p}>If one source fails, the other source remains available. This is the first layer of Data Center redundancy. After that, the backup layers include the <TopicLink slug="ups" label="UPS System" variant="inline" />, <TopicLink slug="battery-bank" label="Battery Bank" variant="inline" /> and <TopicLink slug="dg-set" label="DG Set" variant="inline" />.</p>
 
         <hr style={S.divider} />
 
         <h2 id="grid-failure-scenario" style={S.h1}>What Happens During Grid Failure?</h2>
 
-        <p style={S.p}>Ab ek real-world Data Center scenario dekhte hain. Maan lo Grid Supply suddenly fail ho jati hai. Ab kya hoga?</p>
-        <p style={S.p}>Agar backup infrastructure na ho to servers shutdown ho sakte hain, network services unavailable ho sakti hain, applications crash ho sakti hain.</p>
-        <p style={S.p}>Lekin Data Centers isi situation ke liye design kiye jate hain.</p>
+        <p style={S.p}>Now let's look at a real-world Data Center scenario. Suppose the Grid Supply suddenly fails. What happens now?</p>
+        <p style={S.p}>If there is no backup infrastructure, servers can shut down, network services can become unavailable and applications can crash.</p>
+        <p style={S.p}>But Data Centers are designed precisely for this situation.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -748,7 +756,7 @@ export default function GridSupplyPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Grid failure ke baad backup sequence — milliseconds se seconds tak ka handover.
+            Backup sequence after grid failure — a handover from milliseconds to seconds.
           </figcaption>
         </figure>
 
@@ -764,25 +772,25 @@ export default function GridSupplyPage() {
         />
 
         <h3 style={S.h3}>Step 1: Grid Failure</h3>
-        <p style={S.p}>Primary source unavailable ho jata hai.</p>
+        <p style={S.p}>The primary source becomes unavailable.</p>
 
         <h3 style={S.h3}>Step 2: UPS Takes Over</h3>
-        <p style={S.p}><TopicLink slug="ups" label="UPS System" variant="inline" /> milliseconds me load pick kar leta hai. IT equipment ko interruption feel nahi hoti.</p>
+        <p style={S.p}><TopicLink slug="ups" label="UPS System" variant="inline" /> picks up the load within milliseconds. The IT equipment does not feel any interruption.</p>
 
         <h3 style={S.h3}>Step 3: Battery Support</h3>
-        <p style={S.p}><TopicLink slug="battery-bank" label="Battery Bank" variant="inline" /> UPS ko temporary energy provide karta hai.</p>
+        <p style={S.p}><TopicLink slug="battery-bank" label="Battery Bank" variant="inline" /> provides temporary energy to the UPS.</p>
 
         <h3 style={S.h3}>Step 4: DG Start</h3>
-        <p style={S.p}><TopicLink slug="dg-set" label="DG Set" variant="inline" /> automatically start hota hai.</p>
+        <p style={S.p}><TopicLink slug="dg-set" label="DG Set" variant="inline" /> starts automatically.</p>
 
         <h3 style={S.h3}>Step 5: Normal Operations Continue</h3>
-        <p style={S.p}>Load DG source par shift ho jata hai aur services running rehti hain. Kai baar users ko pata bhi nahi chalta ki Grid Supply fail hui thi.</p>
+        <p style={S.p}>The load shifts to the DG source and services keep running. Often, users don't even realise that the Grid Supply had failed.</p>
 
         <hr style={S.divider} />
 
         <h2 id="common-challenges" style={S.h1}>Common Challenges In Grid Supply</h2>
 
-        <p style={S.p}>Grid Supply reliable hoti hai. Lekin perfect nahi hoti. Data Centers ko kai electrical challenges face karne padte hain.</p>
+        <p style={S.p}>Grid Supply is reliable. But it is not perfect. Data Centers have to face several electrical challenges.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -795,37 +803,37 @@ export default function GridSupplyPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Real Data Center Power Path — Grid se server rack tak poora electrical chain.
+            Real Data Center Power Path — the complete electrical chain from the grid to the server rack.
           </figcaption>
         </figure>
 
         <h3 style={S.h3}>Voltage Fluctuation</h3>
-        <p style={S.p}>Kabhi-kabhi incoming voltage expected range se bahar chali jati hai. Sensitive IT equipment ke liye ye risk create kar sakta hai.</p>
+        <p style={S.p}>Sometimes the incoming voltage goes outside the expected range. This can create a risk for sensitive IT equipment.</p>
 
         <h3 style={S.h3}>Frequency Variation</h3>
-        <p style={S.p}>Grid frequency stable rehna bahut important hai. Frequency disturbance power quality ko impact kar sakti hai.</p>
+        <p style={S.p}>It is very important for grid frequency to remain stable. A frequency disturbance can impact power quality.</p>
 
         <h3 style={S.h3}>Grid Outages</h3>
-        <p style={S.p}>Storms, transmission faults aur maintenance activities outages create kar sakti hain.</p>
+        <p style={S.p}>Storms, transmission faults and maintenance activities can create outages.</p>
 
         <h3 style={S.h3}>Harmonics</h3>
-        <p style={S.p}>Normal condition me electrical power ek smooth sine wave ke form me travel karti hai. Lekin modern electrical systems me UPS, VFDs, Servers aur SMPS based equipment waveform ko distort kar sakte hain. Isi distortion ko Harmonics kaha jata hai.</p>
-        <p style={S.p}>Simple language me harmonics unwanted electrical frequencies hoti hain jo power quality ko affect karti hain.</p>
-        <p style={S.p}>Excessive harmonics:</p>
+        <p style={S.p}>Under normal conditions, electrical power travels in the form of a smooth sine wave. But in modern electrical systems, UPS, VFDs, servers and SMPS-based equipment can distort the waveform. This distortion is called Harmonics.</p>
+        <p style={S.p}>In simple language, harmonics are unwanted electrical frequencies that affect power quality.</p>
+        <p style={S.p}>Excessive harmonics can:</p>
         <ul style={S.ul}>
-          <li style={S.li}>Transformers ko overheat kar sakte hain</li>
-          <li style={S.li}>Cable losses increase kar sakte hain</li>
-          <li style={S.li}>UPS performance affect kar sakte hain</li>
-          <li style={S.li}>Equipment life reduce kar sakte hain</li>
+          <li style={S.li}>Overheat transformers</li>
+          <li style={S.li}>Increase cable losses</li>
+          <li style={S.li}>Affect UPS performance</li>
+          <li style={S.li}>Reduce equipment life</li>
         </ul>
-        <p style={S.p}>Isi wajah se Data Centers me harmonic monitoring aur power quality analysis regularly kiya jata hai.</p>
+        <p style={S.p}>That is why harmonic monitoring and power quality analysis are done regularly in Data Centers.</p>
 
         <hr style={S.divider} />
 
         <h2 id="future-of-grid-supply" style={S.h1}>Future Of Grid Supply In Data Centers</h2>
 
-        <p style={S.p}>AI Infrastructure aur hyperscale facilities ki growth ke saath power demand continuously increase ho rahi hai. Aaj kai modern AI Data Centers hundreds of megawatts tak power consume kar sakte hain.</p>
-        <p style={S.p}>Isi wajah se industry ka focus badh raha hai:</p>
+        <p style={S.p}>With the growth of AI Infrastructure and hyperscale facilities, power demand is continuously increasing. Today, many modern AI Data Centers can consume up to hundreds of megawatts of power.</p>
+        <p style={S.p}>That is why the industry's focus is increasing on:</p>
         <ul style={S.ul}>
           <li style={S.li}>Renewable Energy</li>
           <li style={S.li}>Solar Integration</li>
@@ -833,10 +841,10 @@ export default function GridSupplyPage() {
           <li style={S.li}>Battery Energy Storage Systems</li>
           <li style={S.li}>Green Energy Procurement</li>
         </ul>
-        <p style={S.p}>Future me reliable Grid Supply Data Center industry ka aur bhi important component banne wali hai.</p>
+        <p style={S.p}>In the future, reliable Grid Supply is going to become an even more important component of the Data Center industry.</p>
 
         <InsightCard>
-          Future AI Data Centers power infrastructure par heavily depend karenge. Grid Supply sirf starting point hai — aage ka poora electrical chain isi foundation par khada hota hai.
+          Future AI Data Centers will depend heavily on power infrastructure. Grid Supply is only the starting point — the entire electrical chain ahead stands on this foundation.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -845,13 +853,13 @@ export default function GridSupplyPage() {
 
         <KeyTakeawayCard
           items={[
-            "Grid Supply Data Center electrical chain ka starting point hai.",
-            "Electricity power plant se directly server rack tak nahi pahunchti.",
-            "HT Supply high-power facilities ke liye preferred hoti hai.",
-            "Dual Grid Feed reliability improve karta hai.",
-            "Grid failure ke time UPS aur DG Systems service continuity maintain karte hain.",
-            "Harmonics aur power quality issues electrical systems ko impact kar sakte hain.",
-            "Future AI Data Centers power infrastructure par heavily depend karenge.",
+            "Grid Supply is the starting point of the Data Center electrical chain.",
+            "Electricity doesn't reach the server rack directly from the power plant.",
+            "HT Supply is preferred for high-power facilities.",
+            "Dual Grid Feed improves reliability.",
+            "During a grid failure, UPS and DG Systems maintain service continuity.",
+            "Harmonics and power quality issues can impact electrical systems.",
+            "Future AI Data Centers will depend heavily on power infrastructure.",
           ]}
         />
 
@@ -862,7 +870,7 @@ export default function GridSupplyPage() {
           <div style={S.cardBodyInsight}>
             <span style={{ ...S.cardLabel, color: "#2563EB" }}>WHAT'S NEXT</span>
             <div style={S.cardContent}>
-              Ab jab aap samajh gaye ho ki electricity Grid se Data Center tak kaise pahunchti hai, to agla logical topic hai HT Yard — kyunki incoming high-voltage power ko receive, isolate aur protect karne ka kaam sabse pehle HT Yard hi karta hai.
+              Now that you understand how electricity reaches the Data Center from the grid, the next logical topic is the HT Yard — because the HT Yard is the first to receive, isolate and protect the incoming high-voltage power.
             </div>
             <div style={{ marginTop: 14 }}>
               <TopicLink slug="ht-yard" label="Next: HT Yard →" variant="inline" />

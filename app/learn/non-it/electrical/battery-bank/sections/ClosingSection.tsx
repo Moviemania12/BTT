@@ -31,24 +31,19 @@ export default function ClosingSection() {
       <h2 id="future-trends" style={S.h2}>Future Trends</h2>
 
       <SectionIntro
-        quickAnswer="Battery technology 2024–2030 mein significant transition mein hai. LFP adoption accelerate ho rahi hai, AI-driven health prediction mainstream ho raha hai, aur entirely new chemistries (sodium-ion, solid-state) commercial viability ke kareeb aa rahi hain."
-        engineerTip="Future trends pe invest karne ka best time tab hota hai jab technology 'crossing the chasm' phase mein ho — early majority adoption. LFP wahan hai. Sodium-ion abhi early adopters phase mein hai. Solid-state 2027–2030 tak Data Center relevant nahi hoga. Battery-as-a-Service India mein 2026–2028 mein traction pakadega — financial modeling ready rakho."
-        keyTakeaway="LFP aaj decision hai, sodium-ion 2027+ ka decision hai — abhi ke projects ke liye VRLA vs LFP choice karo; baki technologies ke liye roadmap pe watch karo."
+        quickAnswer="Battery technology is in a significant transition in 2024–2030. LFP adoption is accelerating, AI-driven health prediction is becoming mainstream, and entirely new chemistries (sodium-ion, solid-state) are coming close to commercial viability."
+        engineerTip="The best time to invest in future trends is when a technology is in the 'crossing the chasm' phase — early majority adoption. LFP is there. Sodium-ion is still in the early adopters phase. Solid-state will not be Data Center relevant until 2027–2030. Battery-as-a-Service will gain traction in India in 2026–2028 — keep the financial modeling ready."
+        keyTakeaway="LFP is today's decision, sodium-ion is a 2027+ decision — for current projects choose between VRLA and LFP; watch the roadmap for the other technologies."
       />
 
       <h3 style={S.h3}>LFP Adoption Acceleration</h3>
 
       <p style={S.p}>
-        Lithium Iron Phosphate (LFP) Data Center mainstream mein shift ho raha hai —
-        hyperscalers (Google, Meta, Microsoft) ne apne new builds mein LFP standard as
-        their battery chemistry adopt karna shuru kar diya hai globally.
+        Lithium Iron Phosphate (LFP) is shifting into the Data Center mainstream — hyperscalers (Google, Meta, Microsoft) have started adopting LFP as the standard battery chemistry in their new builds globally.
       </p>
 
       <p style={S.p}>
-        India mein yeh transition 2024–2027 ke beech significant hoga. Driving factors:
-        LFP cost per kWh gir raha hai (CATL scale effect), VRLA replacement cycles ka
-        total cost increasingly LFP se higher ho raha hai at 10-year horizon, aur space
-        constraints in Tier III/IV retrofits LFP ko preferred choice bana rahe hain.
+        In India this transition will be significant between 2024–2027. Driving factors: LFP cost per kWh is falling (CATL scale effect), the total cost of VRLA replacement cycles is increasingly higher than LFP at a 10-year horizon, and space constraints in Tier III/IV retrofits are making LFP the preferred choice.
       </p>
 
       <ComparisonTable
@@ -65,70 +60,47 @@ export default function ClosingSection() {
       <h3 style={S.h3}>AI-Driven Battery Health Prediction</h3>
 
       <p style={S.p}>
-        Traditional battery health monitoring reactive hai — alarm trigger hoti hai jab threshold
-        cross ho. AI/ML-based prediction systems battery degradation patterns analyze karte hain
-        aur replacement need predict karte hain 3–6 months pehle.
+        Traditional battery health monitoring is reactive — an alarm triggers when a threshold is crossed. AI/ML-based prediction systems analyze battery degradation patterns and predict the replacement need 3–6 months in advance.
       </p>
 
       <p style={S.p}>
-        Implementation: BMS data (per-cell impedance trends, temperature patterns, cycle data)
-        machine learning models ko feed hota hai. Output: probability of failure in next 90
-        days per string — maintenance teams ko actionable advance notice milta hai.
+        Implementation: BMS data (per-cell impedance trends, temperature patterns, cycle data) feeds machine learning models. Output: probability of failure in the next 90 days per string — maintenance teams get actionable advance notice.
       </p>
 
       <h3 style={S.h3}>Solid-State Batteries — Timeline</h3>
 
       <p style={S.p}>
-        Solid-state batteries (solid electrolyte instead of liquid) theoretically offer:
-        higher energy density, no liquid electrolyte leak risk, lower thermal runaway probability.
-        Commercial reality: 2024 mein solid-state abhi premium EV market ke liye develop ho raha
-        hai — Data Center stationary use ke liye 2028–2032 estimated timeline.
+        Solid-state batteries (solid electrolyte instead of liquid) theoretically offer: higher energy density, no liquid electrolyte leak risk, lower thermal runaway probability. Commercial reality: in 2024 solid-state is still being developed for the premium EV market — estimated timeline for Data Center stationary use is 2028–2032.
       </p>
 
       <Callout type="important" title="Important — Do Not Delay Projects for Solid-State">
-        Solid-state ki wait mein current projects delay mat karo. Technology timeline always
-        slip karta hai. VRLA ya LFP decide karo based on current economics — solid-state
-        tabhi relevant hoga jab first reliable Data Center installations deploy ho jayein
-        aur 3–5 years ka operational track record mile.
+        Do not delay current projects waiting for solid-state. Technology timelines always slip. Decide between VRLA and LFP based on current economics — solid-state will become relevant only when the first reliable Data Center installations are deployed and there is a 3–5 year operational track record.
       </Callout>
 
       <h3 style={S.h3}>Second-Life EV Batteries</h3>
 
       <p style={S.p}>
-        EV batteries jo vehicle use ke liye retire ho gayi hain (typically at 70–80% SoH)
-        stationary storage ke liye use ho sakti hain. India mein yeh market 2025–2028 mein
-        develop hona shuru hoga as EV volumes reach scale.
+        EV batteries that have been retired from vehicle use (typically at 70–80% SoH) can be used for stationary storage. In India this market will start developing in 2025–2028 as EV volumes reach scale.
       </p>
 
       <p style={S.p}>
-        Practical challenges abhi: SOH verification difficult (each pack has different history),
-        warranty void, mixed cell batches create imbalance, insurance coverage unclear.
-        Watch this space — commercial pilots are happening globally but India deployment
-        is still 3–5 years away at scale.
+        Practical challenges right now: SOH verification difficult (each pack has a different history), warranty void, mixed cell batches create imbalance, insurance coverage unclear. Watch this space — commercial pilots are happening globally but India deployment is still 3–5 years away at scale.
       </p>
 
       <h3 style={S.h3}>Battery-as-a-Service (BaaS)</h3>
 
       <p style={S.p}>
-        BaaS model mein battery bank ka ownership operator ke paas nahi hota — ek service
-        provider battery deploy, monitor, maintain, aur replace karta hai. Customer per-kWh
-        ya per-month fee pay karta hai. Capital expenditure OPEX mein convert ho jaati hai.
+        In the BaaS model, ownership of the battery bank does not stay with the operator — a service provider deploys, monitors, maintains and replaces the batteries. The customer pays a per-kWh or per-month fee. Capital expenditure is converted into OPEX.
       </p>
 
       <p style={S.p}>
-        India mein yeh model hyperscale aur co-location segments mein 2026–2028 mein traction
-        pakad sakta hai. Advantage: battery replacement risk service provider ke paas shift
-        ho jaata hai. Challenge: long-term contracts, service level definitions, aur exit
-        provisions carefully negotiate karne padte hain.
+        In India this model may gain traction in the hyperscale and co-location segments in 2026–2028. Advantage: battery replacement risk shifts to the service provider. Challenge: long-term contracts, service level definitions and exit provisions have to be negotiated carefully.
       </p>
 
       <h3 style={S.h3}>Flow Batteries for Long-Duration Storage</h3>
 
       <p style={S.p}>
-        Vanadium Redox Flow Batteries (VRFB) 4–12 hour storage ke liye economical hote jaate
-        hain as scale increases. India mein renewable energy integration aur grid balancing ke
-        liye yeh relevant ho raha hai — Data Center BESS applications mein 2026+ mein
-        commercial projects expect karo.
+        Vanadium Redox Flow Batteries (VRFB) are becoming economical for 4–12 hour storage as scale increases. In India they are becoming relevant for renewable energy integration and grid balancing — expect commercial projects in Data Center BESS applications from 2026+.
       </p>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -138,70 +110,45 @@ export default function ClosingSection() {
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
 
       <p style={S.p}>
-        Yeh complete battery bank guide padhne ke baad — ek structured summary jo tumhare
-        saath field mein kaam aayegi.
+        After reading this complete battery bank guide — here is a structured summary that will be useful to you in the field.
       </p>
 
       <ul style={S.ul}>
         <li>
-          <strong>Battery bank = Series (voltage) + Parallel (Ah).</strong>{" "}
-          Yeh do operations mila ke complete energy storage system banta hai — dono ko
-          independently design karo.
+          <strong>Battery bank = Series (voltage) + Parallel (Ah).</strong> Combining these two operations creates a complete energy storage system — design both independently.
         </li>
         <li>
-          <strong>VRLA abhi standard hai, LFP future hai.</strong>{" "}
-          Budget-first = VRLA. TCO-first aur space-constrained = LFP. Dono valid choices
-          hain different contexts mein.
+          <strong>VRLA is the standard now, LFP is the future.</strong> Budget-first = VRLA. TCO-first and space-constrained = LFP. Both are valid choices in different contexts.
         </li>
         <li>
-          <strong>Sizing formula: Ah = (Load_W × Runtime_hr) ÷ (V_bus × DoD × η × Temp_f × Age_f).</strong>{" "}
-          Sirf Load, Voltage, DoD nahi — temperature factor aur age factor dono apply karo
-          for production-ready design.
+          <strong>Sizing formula: Ah = (Load_W × Runtime_hr) ÷ (V_bus × DoD × η × Temp_f × Age_f).</strong> Not just Load, Voltage, DoD — apply both the temperature factor and the age factor for a production-ready design.
         </li>
         <li>
-          <strong>Temperature = battery life ka #1 enemy.</strong>{" "}
-          India mein 40°C battery room = VRLA life 1.5–2 years actual vs 5 years rated.
-          Battery room HVAC N+1 mandatory hai, not optional.
+          <strong>Temperature = battery life's #1 enemy.</strong> In India, a 40°C battery room = VRLA life of 1.5–2 years actual vs 5 years rated. Battery room HVAC N+1 is mandatory, not optional.
         </li>
         <li>
-          <strong>Annual capacity test non-negotiable hai.</strong>{" "}
-          Visual inspection aur voltage check battery ki actual SoH detect nahi karte.
-          IEEE 450/1188: SoH &lt;80% = replace immediately.
+          <strong>The annual capacity test is non-negotiable.</strong> Visual inspection and voltage checks do not detect the battery's actual SoH. IEEE 450/1188: SoH &lt;80% = replace immediately.
         </li>
         <li>
-          <strong>Mixed-age strings = accelerated failure.</strong>{" "}
-          Ek string replace karte waqt — pura string replace karo, ek cell nahi. Agar
-          doosri strings close to EOL hain, replace entire bank.
+          <strong>Mixed-age strings = accelerated failure.</strong> When replacing a string — replace the whole string, not one cell. If the other strings are close to EOL, replace the entire bank.
         </li>
         <li>
-          <strong>Per-string fusing mandatory hai.</strong>{" "}
-          Bina individual string fuses ke, ek fault puri bank destroy kar sakti hai.
-          DC-rated fuses use karo, AC fuses kabhi nahi.
+          <strong>Per-string fusing is mandatory.</strong> Without individual string fuses, one fault can destroy the whole bank. Use DC-rated fuses, never AC fuses.
         </li>
         <li>
-          <strong>Float voltage temperature-compensated honi chahiye.</strong>{" "}
-          India summer mein bina temperature compensation ke chronic overcharge hogi —
-          sabse common Indian Data Center VRLA failure cause.
+          <strong>Float voltage must be temperature-compensated.</strong> Without temperature compensation there will be chronic overcharge in the Indian summer — the most common cause of VRLA failure in Indian Data Centers.
         </li>
         <li>
-          <strong>Tier III = N+1 strings, Tier IV = 2N independent banks.</strong>{" "}
-          Tier IV mein physical separation mandatory hai — separate rooms, separate HVAC,
-          separate earthing, separate cable routes.
+          <strong>Tier III = N+1 strings, Tier IV = 2N independent banks.</strong> Physical separation is mandatory in Tier IV — separate rooms, separate HVAC, separate earthing, separate cable routes.
         </li>
         <li>
-          <strong>Documentation = engineering memory.</strong>{" "}
-          Har discharge event, har maintenance visit, har test result document karo. Bina
-          records ke, warranty claims aur replacement decisions anecdotal ho jaate hain.
+          <strong>Documentation = engineering memory.</strong> Document every discharge event, every maintenance visit, every test result. Without records, warranty claims and replacement decisions become anecdotal.
         </li>
         <li>
-          <strong>DC arc flash VRLA battery room mein real risk hai.</strong>{" "}
-          192V DC bank virtually unlimited short circuit current source hai. Insulated tools,
-          face shield, arc-rated PPE mandatory hai for any physical battery work.
+          <strong>DC arc flash is a real risk in a VRLA battery room.</strong> A 192V DC bank is a virtually unlimited short circuit current source. Insulated tools, face shield and arc-rated PPE are mandatory for any physical battery work.
         </li>
         <li>
-          <strong>Actual implementation always depends on project requirements.</strong>{" "}
-          Koi ek universal battery bank design nahi hoti — utility requirements, OEM design,
-          Data Center architecture, aur budget sab mila ke final design decide hota hai.
+          <strong>Actual implementation always depends on project requirements.</strong> There is no single universal battery bank design — utility requirements, OEM design, Data Center architecture and budget together decide the final design.
         </li>
       </ul>
 
@@ -209,8 +156,7 @@ export default function ClosingSection() {
       <h3 style={S.h3}>Live Calculators — Battery Bank Design Toolkit</h3>
 
       <p style={S.p}>
-        Yeh calculators directly is article ke formulas implement karte hain. Apna project
-        size karne ke liye use karo — koi signup required nahi.
+        These calculators directly implement the formulas in this article. Use them to size your own project — no signup required.
       </p>
 
       {ahCalc && <CalculatorLink calculator={ahCalc} />}
@@ -222,37 +168,29 @@ export default function ClosingSection() {
       {designerCalc && <CalculatorLink calculator={designerCalc} />}
 
       {/* ─── Related Articles ─────────────────────────────────────── */}
-      <h3 style={S.h3}>Aage Kya Seekhein</h3>
+      <h3 style={S.h3}>What to Learn Next</h3>
 
       <p style={S.p}>
-        Battery bank ke baad natural next steps:
+        Natural next steps after the battery bank:
       </p>
 
       <ul style={S.ul}>
         <li>
-          <TopicLink slug="ups" variant="inline" /> — Battery bank jis UPS ka hissa hai
-          uski complete architecture samjho
+          <TopicLink slug="ups" variant="inline" /> — understand the complete architecture of the UPS that the battery bank is part of
         </li>
         <li>
-          <TopicLink slug="dg-set" variant="inline" /> — Battery bank ke baad DG Set
-          start hota hai — yeh coordination samjho
+          <TopicLink slug="dg-set" variant="inline" /> — after the battery bank, the DG Set starts — understand this coordination
         </li>
         <li>
-          <TopicLink slug="sts" variant="inline" /> — Dual bus architecture mein STS
-          ka role battery bank ke saath
+          <TopicLink slug="sts" variant="inline" /> — the role of the STS alongside the battery bank in a dual bus architecture
         </li>
         <li>
-          <TopicLink slug="pdu" variant="inline" /> — UPS output se rack tak power
-          distribution chain
+          <TopicLink slug="pdu" variant="inline" /> — the power distribution chain from the UPS output to the rack
         </li>
       </ul>
 
       <Callout type="best-practice" title="Final Thought — Engineering is a Discipline">
-        Battery bank engineering mein shortcut nahi hota — har skipped test, har missed
-        maintenance visit, har ignored alarm ek risk accumulate karta hai. Yeh risk tab
-        realize hota hai jab actual power failure hoti hai. Uss moment pe no remediation
-        is possible. The only winning strategy is consistent, documented, standards-based
-        maintenance — every time, without exception.
+        There are no shortcuts in battery bank engineering — every skipped test, every missed maintenance visit, every ignored alarm accumulates a risk. This risk is realized when an actual power failure happens. At that moment no remediation is possible. The only winning strategy is consistent, documented, standards-based maintenance — every time, without exception.
       </Callout>
     </>
   );

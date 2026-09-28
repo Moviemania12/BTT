@@ -21,23 +21,17 @@ export default function SizingAndLoad() {
         <h2 id="capacity-selection" style={S.h2}>Capacity Selection (VA/kVA/kW/PF)</h2>
 
         <p style={S.p}>
-          UPS sizing samajhne se pehle, teen units ka relationship clear hona chahiye —{" "}
-          <strong>VA (Volt-Ampere)</strong>, <strong>kW (kiloWatt)</strong>, aur{" "}
-          <strong>Power Factor (PF)</strong>.
+          Before understanding UPS sizing, the relationship between three units must be clear — <strong>VA (Volt-Ampere)</strong>, <strong>kW (kiloWatt)</strong>, and <strong>Power Factor (PF)</strong>.
         </p>
 
         <Callout type="important" title="Important — The Core Formula">
-          <strong>kW = kVA × PF</strong>
-          <br />
-          Yaani, kVA apparent power hai (UPS isi pe rated hota hai), kW real/usable power hai jo
-          actually kaam karta hai. PF typically 0.8 to 0.99 ke beech hota hai modern IT equipment ke
-          liye.
+          <strong>kW = kVA × PF</strong> <br /> That is, kVA is apparent power (the UPS is rated on this), and kW is the real/usable power that actually does the work. PF is typically between 0.8 and 0.99 for modern IT equipment.
         </Callout>
 
         <ComparisonTable
           headers={["Term", "Symbol", "Definition", "Typical Range (IT Load)"]}
           rows={[
-            ["Apparent Power", "VA / kVA", "Total power UPS ko deliver karna hai (V × A)", "Used for UPS rating"],
+            ["Apparent Power", "VA / kVA", "Total power the UPS has to deliver (V × A)", "Used for UPS rating"],
             ["Real Power", "W / kW", "Actually consumed/usable power", "kW = kVA × PF"],
             ["Power Factor", "PF", "Ratio of real power to apparent power", "0.8 (legacy) to 0.99 (modern servers)"],
             ["Reactive Power", "VAR / kVAR", "Non-working power (inductive/capacitive)", "Higher in older equipment"],
@@ -45,7 +39,7 @@ export default function SizingAndLoad() {
         />
 
         <p style={S.p}>
-          Example: Agar tumhara load 80 kW hai aur PF 0.8 hai, toh UPS kVA rating chahiye:
+          Example: If your load is 80 kW and the PF is 0.8, the UPS kVA rating needed is:
         </p>
 
         <div style={{ background: "#f1f5f9", borderRadius: "8px", padding: "1rem 1.3rem", margin: "1rem 0", fontFamily: "monospace", fontSize: "1rem" }}>
@@ -53,19 +47,15 @@ export default function SizingAndLoad() {
         </div>
 
         <p style={S.p}>
-          kVA/kW convert karna ho toh hamara dedicated calculator use karo:
+          To convert kVA/kW, use our dedicated calculator:
         </p>
 
         <Callout type="best-practice" title="Best Practice — Always Size in kVA">
-          UPS hamesha kVA mein rated hote hain, kW mein nahi — kyunki UPS ko apparent power handle karna
-          padta hai chahe load ka PF kuch bhi ho. Sizing karte waqt kabhi kW ko directly UPS rating na
-          samjho — hamesha PF se divide karke kVA nikaalo.
+          UPS are always rated in kVA, not kW — because the UPS has to handle apparent power whatever the PF of the load. While sizing, never treat kW directly as the UPS rating — always divide by PF to get kVA.
         </Callout>
 
         <p style={S.p}>
-          Is article ke saath 7 interactive calculators hain — har ek apna dedicated tool page hai.
-          Pehla calculator yahin neeche dekh sakte ho, baaki Section 16 (Battery & Runtime) aur Section
-          18 (Data Center UPS Designer) mein link milega.
+          This article comes with 7 interactive calculators — each has its own dedicated tool page. You can see the first calculator right here below; the rest are linked in Section 16 (Battery & Runtime) and Section 18 (Data Center UPS Designer).
         </p>
 
         {(() => {
@@ -79,8 +69,7 @@ export default function SizingAndLoad() {
         <h3 style={S.h3}>Choosing the Right UPS Type — Quick Decision Guide</h3>
 
         <p style={S.p}>
-          Section 9 mein humne saare 5 types cover kiye. Yahan ek practical decision guide hai jo
-          real-world selection ko simplify karta hai:
+          In Section 9 we covered all 5 types. Here is a practical decision guide that simplifies real-world selection:
         </p>
 
         <ComparisonTable
@@ -96,10 +85,7 @@ export default function SizingAndLoad() {
         />
 
         <Callout type="common-mistake" title="Common Mistake — Mixing UPS Types in Same Bus">
-          Kabhi bhi ek hi DC bus ya parallel bus pe different UPS topologies mix mat karo (jaise ek
-          Online aur ek Delta Conversion parallel mein). Synchronization aur load-sharing logic
-          incompatible ho sakti hai — same OEM, same model series rakhna best practice hai parallel
-          systems ke liye.
+          Never mix different UPS topologies on the same DC bus or parallel bus (for example one Online and one Delta Conversion in parallel). The synchronization and load-sharing logic may be incompatible — keeping the same OEM and same model series is best practice for parallel systems.
         </Callout>
 
         {/* ═══════════════════════════════════════════════════════════════
@@ -108,22 +94,19 @@ export default function SizingAndLoad() {
         <h2 id="ups-sizing" style={S.h2}>UPS Sizing Methodology</h2>
 
         <p style={S.p}>
-          UPS sizing ek structured 5-step process hai. Skip karne se under-sizing ya wasteful
-          over-sizing dono ho sakte hain — dono hi costly mistakes hain.
+          UPS sizing is a structured 5-step process. Skipping steps can cause both under-sizing and wasteful over-sizing — both are costly mistakes.
         </p>
 
         <ol style={S.ul}>
-          <li><strong>Step 1 — Load Inventory:</strong> Har equipment ka nameplate kW/kVA list karo (servers, storage, network, PDU losses).</li>
-          <li><strong>Step 2 — Apply Demand Factor:</strong> Actual load nameplate se kam hota hai — typically 70-85% demand factor apply hota hai.</li>
-          <li><strong>Step 3 — Apply Power Factor:</strong> kW ko kVA mein convert karo (kVA = kW ÷ PF).</li>
-          <li><strong>Step 4 — Add Future Growth:</strong> 20-30% headroom add karo expansion ke liye — UPS replace karna costly hai.</li>
-          <li><strong>Step 5 — Apply Redundancy:</strong> N, N+1, ya 2N architecture ke according final module count decide karo.</li>
+          <li><strong>Step 1 — Load Inventory:</strong> List the nameplate kW/kVA of every piece of equipment (servers, storage, network, PDU losses).</li>
+          <li><strong>Step 2 — Apply Demand Factor:</strong> Actual load is lower than nameplate — typically a 70-85% demand factor is applied.</li>
+          <li><strong>Step 3 — Apply Power Factor:</strong> Convert kW into kVA (kVA = kW ÷ PF).</li>
+          <li><strong>Step 4 — Add Future Growth:</strong> Add 20-30% headroom for expansion — replacing a UPS is costly.</li>
+          <li><strong>Step 5 — Apply Redundancy:</strong> Decide the final module count according to the N, N+1 or 2N architecture.</li>
         </ol>
 
         <Callout type="important" title="Important — Never Size at 100% Capacity">
-          UPS ko kabhi bhi 100% rated capacity pe continuously load mat karo. Industry best practice:
-          UPS ko <strong>80% se zyada load na karo</strong> normal operating condition mein — yeh
-          thermal headroom aur transient spike absorption capacity preserve karta hai.
+          Never load a UPS continuously at 100% rated capacity. Industry best practice: <strong>do not load a UPS above 80%</strong> under normal operating conditions — this preserves thermal headroom and transient spike absorption capacity.
         </Callout>
 
         <h3 style={S.h3}>UPS Sizing Methodology — At a Glance</h3>
@@ -138,8 +121,7 @@ export default function SizingAndLoad() {
         <h2 id="load-calculation" style={S.h2}>Load Calculation</h2>
 
         <p style={S.p}>
-          Load calculation hi UPS sizing ka foundation hai. Neeche 4 real-world worked examples hain —
-          ek 100-rack Data Center, ek office building, ek hospital, aur ek industrial plant.
+          Load calculation is the foundation of UPS sizing. Below are 4 real-world worked examples — a 100-rack Data Center, an office building, a hospital and an industrial plant.
         </p>
 
         <h3 style={S.h3}>Example 1 — 100 Rack Data Center</h3>
@@ -209,10 +191,7 @@ export default function SizingAndLoad() {
         </div>
 
         <Callout type="warning" title="Warning — Hospital UPS is Life-Safety Critical">
-          Hospital critical power design IEC/NFPA life-safety guidelines ke against verify hona chahiye
-          by a qualified consultant — yeh sirf ek illustrative example hai, actual hospital electrical
-          design strict regulatory compliance (NABH, local fire & electrical authority) ke saath hota
-          hai.
+          Hospital critical power design must be verified against IEC/NFPA life-safety guidelines by a qualified consultant — this is only an illustrative example; actual hospital electrical design is done with strict regulatory compliance (NABH, local fire & electrical authority).
         </Callout>
 
         <h3 style={S.h3}>Example 4 — Industrial Plant (Control Systems Only)</h3>
@@ -236,9 +215,7 @@ export default function SizingAndLoad() {
         </div>
 
         <Callout type="interview" title="Interview Tip">
-          Interview mein agar load calculation example diya jaaye, hamesha yeh order follow karo:
-          Connected Load → Demand Factor → kW to kVA (PF) → Future Growth → Redundancy multiplier.
-          Yeh sequence kabhi mat badlo — order matters for correct results.
+          In an interview, if a load calculation example is given, always follow this order: Connected Load → Demand Factor → kW to kVA (PF) → Future Growth → Redundancy multiplier. Never change this sequence — order matters for correct results.
         </Callout>
 
         {/* ═══════════════════════════════════════════════════════════════

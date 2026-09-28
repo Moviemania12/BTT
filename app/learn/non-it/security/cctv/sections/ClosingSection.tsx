@@ -14,24 +14,24 @@ export default function ClosingSection() {
 
       <h3 style={S.h3}>Advantages</h3>
       <ul style={S.ul}>
-        <li><strong>Deterrence:</strong> Visible cameras unauthorized activity ki probability reduce karte hain.</li>
-        <li><strong>Forensic evidence:</strong> Incidents ke baad investigation ke liye recorded footage critical hai.</li>
-        <li><strong>Remote monitoring:</strong> NOC aur security team live feed anywhere se dekh sakti hai.</li>
-        <li><strong>Integration:</strong> Access control, biometrics aur BMS ke saath unified security picture milti hai.</li>
-        <li><strong>Compliance:</strong> ISO 27001, SOC 2, PCI-DSS aur similar frameworks ke liye evidence provide karta hai.</li>
-        <li><strong>Operational visibility:</strong> Maintenance activity, delivery tracking, aur unauthorized access remotely monitor hota hai.</li>
-        <li><strong>Scalability:</strong> IP CCTV system camera count aur storage gradually expand kar sakta hai without full replacement.</li>
+        <li><strong>Deterrence:</strong> Visible cameras reduce the probability of unauthorized activity.</li>
+        <li><strong>Forensic evidence:</strong> Recorded footage is critical for investigation after incidents.</li>
+        <li><strong>Remote monitoring:</strong> The NOC and security team can watch the live feed from anywhere.</li>
+        <li><strong>Integration:</strong> With access control, biometrics and BMS you get a unified security picture.</li>
+        <li><strong>Compliance:</strong> Provides evidence for ISO 27001, SOC 2, PCI-DSS and similar frameworks.</li>
+        <li><strong>Operational visibility:</strong> Maintenance activity, delivery tracking and unauthorized access are monitored remotely.</li>
+        <li><strong>Scalability:</strong> An IP CCTV system can gradually expand camera count and storage without full replacement.</li>
       </ul>
 
       <h3 style={S.h3}>Limitations</h3>
       <ul style={S.ul}>
-        <li><strong>Reactive, not preventive:</strong> CCTV incident hone ke baad evidence deta hai — physical intrusion prevention ke liye <TopicLink slug="access-control" variant="inline" /> aur <TopicLink slug="mantrap" variant="inline" /> zaroori hain.</li>
-        <li><strong>Camera blind spots:</strong> Coverage gaps hamesha possible hain — planning aur regular walk-throughs needed.</li>
-        <li><strong>Storage management overhead:</strong> Retention policies, disk health, RAID management ongoing attention chahti hai.</li>
-        <li><strong>Cybersecurity risk:</strong> IP cameras attack surface hain — unsecured cameras serious risk create karte hain.</li>
-        <li><strong>Privacy considerations:</strong> Employee monitoring policies, local laws, aur data protection regulations compliance required hai.</li>
-        <li><strong>Operator dependence:</strong> 24/7 monitoring ke bina real-time response limited hai — alerts aur analytics operator workload reduce karte hain.</li>
-        <li><strong>Image quality in challenging conditions:</strong> Backlighting, extreme temperatures, aur occlusion image quality affect karte hain.</li>
+        <li><strong>Reactive, not preventive:</strong> CCTV gives evidence after an incident happens — <TopicLink slug="access-control" variant="inline" /> and <TopicLink slug="mantrap" variant="inline" /> are essential for preventing physical intrusion.</li>
+        <li><strong>Camera blind spots:</strong> Coverage gaps are always possible — planning and regular walk-throughs needed.</li>
+        <li><strong>Storage management overhead:</strong> Retention policies, disk health, RAID management need ongoing attention.</li>
+        <li><strong>Cybersecurity risk:</strong> IP cameras are an attack surface — unsecured cameras create serious risk.</li>
+        <li><strong>Privacy considerations:</strong> Compliance with employee monitoring policies, local laws and data protection regulations is required.</li>
+        <li><strong>Operator dependence:</strong> Without 24/7 monitoring, real-time response is limited — alerts and analytics reduce operator workload.</li>
+        <li><strong>Image quality in challenging conditions:</strong> Backlighting, extreme temperatures and occlusion affect image quality.</li>
       </ul>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -39,29 +39,20 @@ export default function ClosingSection() {
       ═══════════════════════════════════════════════════════════════ */}
       <h2 id="illustrative-scenario" style={S.h2}>Illustrative Scenario</h2>
 
-      <Callout type="interview" title="Note: Ye ek illustrative scenario hai — kisi documented real facility ka reference nahi">
-        Neeche diya hua scenario CCTV system ke practical value ko demonstrate karne ke liye hai. Kisi specific
-        facility ka description nahi hai.
+      <Callout type="interview" title="Note: This is an illustrative scenario — not a reference to any documented real facility">
+        The scenario given below is meant to demonstrate the practical value of a CCTV system. It is not a description of any specific facility.
       </Callout>
 
       <p style={S.p}>
-        Ek mid-size colocation data center mein raat ke 2 baje NOC operator ko VMS mein ek alert milta hai —
-        server hall Zone 3 mein motion detection triggered hua. Operator live feed check karta hai — ek
-        technician rack ke paas kaam kar raha hai. Operator access control log check karta hai — us time
-        kisi ke access card ka log nahi milta.
+        In a mid-size colocation data center, at 2 AM the NOC operator gets an alert in the VMS — motion detection triggered in server hall Zone 3. The operator checks the live feed — a technician is working near a rack. The operator checks the access control log — there is no log of anyone's access card at that time.
       </p>
 
       <p style={S.p}>
-        Operator intercom se contact karta hai — technician batata hai ki usne maintenance karne aayi thi
-        lekin check-in nahi karaya. Security supervisor inform hota hai. Footage download kari jaati hai
-        as evidence. Technician ko properly identify kiya jaata hai aur incident documented hota hai.
+        The operator contacts him over the intercom — the technician says he had come to do maintenance but had not checked in. The security supervisor is informed. The footage is downloaded as evidence. The technician is properly identified and the incident is documented.
       </p>
 
       <p style={S.p}>
-        Is scenario mein CCTV ne kya kiya: real-time monitoring se unauthorized presence detect hua, access
-        control log se cross-reference kiya gaya, aur documented response possible hua. Agar sirf access
-        control hota — tailgated entry detect nahi hoti. Agar sirf CCTV hota without monitoring — nobody
-        would have seen the alert in real time. Dono systems ka integration practical value demonstrate karta hai.
+        What CCTV did in this scenario: real-time monitoring detected the unauthorized presence, it was cross-referenced with the access control log, and a documented response became possible. If there had been only access control — the tailgated entry would not have been detected. If there had been only CCTV without monitoring — nobody would have seen the alert in real time. The integration of both systems demonstrates the practical value.
       </p>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -69,58 +60,34 @@ export default function ClosingSection() {
       ═══════════════════════════════════════════════════════════════ */}
       <h2 id="interview-questions" style={S.h2}>Interview Questions</h2>
 
-      <h3 style={S.h3}>Q1: IP CCTV aur analog CCTV mein fundamental difference kya hai?</h3>
+      <h3 style={S.h3}>Q1: What is the fundamental difference between IP CCTV and analog CCTV?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> Analog cameras coaxial cable pe analog video signal bhejte hain aur DVR
-        decode karta hai. IP cameras network pe already compressed digital stream bhejte hain — NVR ya
-        VMS receive karta hai. IP cameras PoE se power lete hain (single Cat6 cable), higher resolution
-        support karte hain, remote access dete hain, aur VMS ke saath deep integration possible hai. Data
-        centers mein IP-based systems standard hain.
+        <strong>Answer:</strong> Analog cameras send an analog video signal over coaxial cable and the DVR decodes it. IP cameras send an already compressed digital stream over the network — the NVR or VMS receives it. IP cameras take power from PoE (single Cat6 cable), support higher resolution, give remote access, and deep integration with a VMS is possible. IP-based systems are standard in data centers.
       </p>
 
-      <h3 style={S.h3}>Q2: NVR aur VMS mein kya choose karein aur kyun?</h3>
+      <h3 style={S.h3}>Q2: What should you choose between an NVR and a VMS, and why?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> NVR ek dedicated hardware appliance hai — easy deployment, fixed channel
-        count, lower cost. VMS software platform hai — standard server pe chalti hai, highly scalable,
-        deep integration with access control/BMS/analytics, multi-site management. Small deployments ke
-        liye NVR adequate ho sakta hai. Architecture selection — dedicated NVR, VMS ya hybrid — scale,
-        integration requirements, redundancy needs aur project specification pe depend karta hai.
+        <strong>Answer:</strong> An NVR is a dedicated hardware appliance — easy deployment, fixed channel count, lower cost. A VMS is a software platform — it runs on a standard server, highly scalable, deep integration with access control/BMS/analytics, multi-site management. For small deployments an NVR can be adequate. Architecture selection — dedicated NVR, VMS or hybrid — depends on scale, integration requirements, redundancy needs and the project specification.
       </p>
 
-      <h3 style={S.h3}>Q3: RAID kya hai aur ye backup kyun nahi hai?</h3>
+      <h3 style={S.h3}>Q3: What is RAID and why is it not a backup?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> RAID multiple HDDs ko combine karke disk hardware failure se protection
-        deta hai — ek ya do disks fail hone pe data available rehta hai. Lekin RAID accidental deletion,
-        ransomware, file corruption ya site disaster se protect nahi karta. Backup ka matlab hai independent
-        copy different location pe — RAID aur backup complementary hain, substitute nahi. CCTV mein RAID
-        availability ensure karta hai, backup strategy separately define karni padti hai.
+        <strong>Answer:</strong> RAID combines multiple HDDs to give protection against disk hardware failure — the data stays available when one or two disks fail. But RAID does not protect against accidental deletion, ransomware, file corruption or a site disaster. A backup means an independent copy at a different location — RAID and backup are complementary, not substitutes. In CCTV, RAID ensures availability; the backup strategy has to be defined separately.
       </p>
 
-      <h3 style={S.h3}>Q4: CCTV cybersecurity ke liye top 3 most critical actions kya hain?</h3>
+      <h3 style={S.h3}>Q4: What are the top 3 most critical actions for CCTV cybersecurity?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> Pehla — default credentials immediately change karo on every camera, NVR
-        aur VMS — default creds = instant compromise. Doosra — CCTV ko dedicated VLAN pe isolate karo —
-        production network se separate. Teesra — cameras ko direct internet access mat do — remote access
-        ke liye VPN use karo. Ye teen actions most common attack vectors cover karte hain.
+        <strong>Answer:</strong> First — change default credentials immediately on every camera, NVR and VMS — default creds = instant compromise. Second — isolate CCTV on a dedicated VLAN — separate from the production network. Third — do not give cameras direct internet access — use a VPN for remote access. These three actions cover the most common attack vectors.
       </p>
 
-      <h3 style={S.h3}>Q5: Camera offline hai — step-by-step troubleshoot karo.</h3>
+      <h3 style={S.h3}>Q5: A camera is offline — troubleshoot it step by step.</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> Step 1: PoE switch pe port status check karo — LED, management interface
-        mein power delivery. Step 2: Camera IP ping karo VMS server se — reachable hai? Step 3: Agar
-        reachable nahi — cable continuity test karo, alternate port try karo. Agar reachable — camera web
-        interface open karo, stream active hai? Step 4: VMS mein camera configuration check karo — IP,
-        port, credentials correct hain? Step 5: Camera ko NVR/VMS mein re-add karo. Agar still fail —
-        factory reset camera ya replacement consider karo.
+        <strong>Answer:</strong> Step 1: Check the port status on the PoE switch — LED, power delivery in the management interface. Step 2: Ping the camera IP from the VMS server — is it reachable? Step 3: If not reachable — do a cable continuity test, try an alternate port. If reachable — open the camera web interface, is the stream active? Step 4: Check the camera configuration in the VMS — are the IP, port, credentials correct? Step 5: Re-add the camera in the NVR/VMS. If it still fails — consider a factory reset of the camera or replacement.
       </p>
 
-      <h3 style={S.h3}>Q6: Storage planning kaise karte hain — kya factors consider karne chahiye?</h3>
+      <h3 style={S.h3}>Q6: How is storage planning done — what factors should be considered?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> Camera count, resolution per camera, frame rate (FPS), codec (H.264 vs
-        H.265 — H.265 comparable quality pe H.264 se significantly less storage use kar sakta hai, actual saving vary karta hai), bitrate per camera, recording hours per day (continuous
-        ya motion-based), aur retention period in days. VMS built-in calculator ya manufacturer tools se
-        estimate karo — manual calculation approximation hai. Add 25-30% overhead for filesystem aur safety
-        margin. RAID overhead bhi consider karo agar NAS use ho raha hai.
+        <strong>Answer:</strong> Camera count, resolution per camera, frame rate (FPS), codec (H.264 vs H.265 — H.265 can use significantly less storage than H.264 at comparable quality, the actual saving varies), bitrate per camera, recording hours per day (continuous or motion-based), and retention period in days. Estimate with the VMS built-in calculator or manufacturer tools — manual calculation is an approximation. Add 25-30% overhead for the filesystem and safety margin. Also consider RAID overhead if a NAS is being used.
       </p>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -130,36 +97,28 @@ export default function ClosingSection() {
 
       <ul style={S.ul}>
         <li>
-          <strong>IP CCTV = network-based system.</strong> Camera → PoE Switch → Network → NVR/VMS →
-          Storage → Monitoring. Har link is chain mein point of failure hai — monitoring aur redundancy zaroori hai.
+          <strong>IP CCTV = network-based system.</strong> Camera → PoE Switch → Network → NVR/VMS → Storage → Monitoring. Every link in this chain is a point of failure — monitoring and redundancy are essential.
         </li>
         <li>
-          <strong>NVR hardware appliance hai, VMS software platform hai.</strong> Enterprise data centers
-          Architecture — NVR, VMS ya hybrid — scale, integration aur project requirements pe depend karta hai.
+          <strong>The NVR is a hardware appliance, the VMS is a software platform.</strong> In enterprise data centers the architecture — NVR, VMS or hybrid — depends on scale, integration and project requirements.
         </li>
         <li>
-          <strong>RAID availability deta hai, backup nahi.</strong> Disk failure se protect karta hai —
-          accidental deletion, ransomware ya site disaster se nahi. Backup strategy alag define karo.
+          <strong>RAID gives availability, not backup.</strong> It protects against disk failure — not against accidental deletion, ransomware or a site disaster. Define the backup strategy separately.
         </li>
         <li>
-          <strong>Cybersecurity controls essential hain.</strong> Default credentials change karo, VLAN isolation karo,
-          direct internet exposure avoid karo. IP cameras attack surface hain.
+          <strong>Cybersecurity controls are essential.</strong> Change default credentials, do VLAN isolation, avoid direct internet exposure. IP cameras are an attack surface.
         </li>
         <li>
-          <strong>Time sync critical hai.</strong> NTP configure karo sab cameras aur NVR/VMS pe — wrong
-          timestamp forensic value destroy karta hai.
+          <strong>Time sync is critical.</strong> Configure NTP on all cameras and the NVR/VMS — a wrong timestamp destroys forensic value.
         </li>
         <li>
-          <strong>CCTV integration physical security multiply karta hai.</strong> Access control, biometrics
-          aur BMS ke saath integrated system standalone se far more effective hai.
+          <strong>CCTV integration multiplies physical security.</strong> An integrated system with access control, biometrics and BMS is far more effective than standalone.
         </li>
         <li>
-          <strong>Systematic troubleshooting zaroori hai.</strong> Isolate karo problem kahaan hai —
-          camera, cable, switch, network, NVR, ya storage — random steps se time waste hota hai.
+          <strong>Systematic troubleshooting is essential.</strong> Isolate where the problem is — camera, cable, switch, network, NVR, or storage — random steps waste time.
         </li>
         <li>
-          <strong>Storage planning VMS calculator se karo.</strong> Camera count, resolution, codec, FPS,
-          recording mode aur retention sab factor karte hain — manual approximation tools se verify karo.
+          <strong>Do storage planning with the VMS calculator.</strong> Camera count, resolution, codec, FPS, recording mode and retention all factor in — verify the manual approximation with tools.
         </li>
       </ul>
 
@@ -181,24 +140,20 @@ export default function ClosingSection() {
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Related Learning Topics</h2>
 
       <p style={S.p}>
-        CCTV physical security ka ek layer hai. Poora physical security system samjhne ke liye:
+        CCTV is one layer of physical security. To understand the complete physical security system:
       </p>
       <ul style={S.ul}>
         <li>
-          <TopicLink slug="access-control" variant="inline" /> — Doors aur zones ka authentication-based
-          access management. CCTV ke saath integrate hota hai for event-linked recording.
+          <TopicLink slug="access-control" variant="inline" /> — authentication-based access management of doors and zones. It integrates with CCTV for event-linked recording.
         </li>
         <li>
-          <TopicLink slug="biometrics" variant="inline" /> — Fingerprint, iris, face recognition —
-          stronger authentication jo CCTV ke saath verified identity evidence deta hai.
+          <TopicLink slug="biometrics" variant="inline" /> — fingerprint, iris, face recognition — stronger authentication that, together with CCTV, gives verified identity evidence.
         </li>
         <li>
-          <TopicLink slug="mantrap" variant="inline" /> — Two-door airlock jo tailgating prevent karta
-          hai. CCTV mantrap mein critical hai — every attempt recorded honi chahiye.
+          <TopicLink slug="mantrap" variant="inline" /> — a two-door airlock that prevents tailgating. CCTV is critical in the mantrap — every attempt must be recorded.
         </li>
         <li>
-          <TopicLink slug="visitor-management" variant="inline" /> — Visitor check-in, badge, escort
-          policy — CCTV visitor accountability ko support karta hai.
+          <TopicLink slug="visitor-management" variant="inline" /> — visitor check-in, badge, escort policy — CCTV supports visitor accountability.
         </li>
       </ul>
     </>

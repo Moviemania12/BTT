@@ -5,7 +5,7 @@ export const pduMetadata: ArticleMetadata = {
   title: "PDU & Intelligent PDU (iPDU) — Complete Data Center Guide",
   seoTitle: "PDU Explained: Power Distribution Unit, iPDU, SNMP, DCIM Integration | Behind The Tech",
   seoDescription:
-    "PDU kya hota hai? Basic se Intelligent PDU (iPDU) tak — types, internal construction, outlet monitoring, SNMP/Modbus/DCIM integration, OEM comparison aur real Data Center example. Complete Hinglish guide.",
+    "What is a PDU? From Basic to Intelligent PDU (iPDU) — types, internal construction, outlet monitoring, SNMP/Modbus/DCIM integration, OEM comparison and a real Data Center example. A complete guide.",
   canonicalUrl: "https://behindthetech.in/learn/non-it/electrical/pdu",
   keywords: [
     "PDU kya hai",

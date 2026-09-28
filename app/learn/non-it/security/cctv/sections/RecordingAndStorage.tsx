@@ -11,25 +11,15 @@ export default function RecordingAndStorage() {
       <h2 id="nvr-dvr-vms" style={S.h2}>NVR, DVR and VMS</h2>
 
       <p style={S.p}>
-        <strong>DVR (Digital Video Recorder)</strong> analog CCTV systems ke saath use hota hai —
-        analog signal receive karke digitize karta hai aur HDDs pe store karta hai. Modern data
-        centers mein DVR outdated hai aur generally IP-based systems use karte hain.
+        The <strong>DVR (Digital Video Recorder)</strong> is used with analog CCTV systems — it receives the analog signal, digitizes it and stores it on HDDs. In modern data centers the DVR is outdated and IP-based systems are generally used.
       </p>
 
       <p style={S.p}>
-        <strong>NVR (Network Video Recorder)</strong> ek dedicated hardware appliance hai. IP cameras
-        se already compressed stream receive karta hai aur internal HDDs pe store karta hai. Ek fixed
-        form factor mein integrated solution hai — easy to deploy, limited scalability. Entry to
-        mid-level data center CCTV deployments ke liye common hai. Typically 4, 8, 16, 32 ya 64
-        channel options available hain.
+        The <strong>NVR (Network Video Recorder)</strong> is a dedicated hardware appliance. It receives the already compressed stream from IP cameras and stores it on internal HDDs. It is an integrated solution in a fixed form factor — easy to deploy, limited scalability. It is common for entry to mid-level data center CCTV deployments. Typically 4, 8, 16, 32 or 64 channel options are available.
       </p>
 
       <p style={S.p}>
-        <strong>VMS (Video Management Software)</strong> ek software platform hai jo standard server pe
-        install hota hai. Highly scalable hai — hundreds ya thousands of cameras manage kar sakta hai.
-        Access control systems ke saath integration, advanced analytics (motion detection, line crossing,
-        loitering, face recognition), multi-site management, aur role-based access sab VMS mein available
-        hain. Architecture selection — dedicated NVR, VMS ya hybrid approach — scale, integration requirements, redundancy needs aur project specification pe depend karta hai.
+        <strong>VMS (Video Management Software)</strong> is a software platform installed on a standard server. It is highly scalable — it can manage hundreds or thousands of cameras. Integration with access control systems, advanced analytics (motion detection, line crossing, loitering, face recognition), multi-site management and role-based access are all available in a VMS. Architecture selection — dedicated NVR, VMS or a hybrid approach — depends on scale, integration requirements, redundancy needs and the project specification.
       </p>
 
       <ComparisonTable
@@ -48,9 +38,7 @@ export default function RecordingAndStorage() {
       />
 
       <p style={S.p}>
-        Popular VMS platforms mein Milestone XProtect, Genetec Security Center, Avigilon Control Center,
-        Hanwha Wisenet WAVE aur Hikvision iVMS/HikCentral include hain. Platform selection project size,
-        integration requirements, client preference aur budget pe depend karta hai.
+        Popular VMS platforms include Milestone XProtect, Genetec Security Center, Avigilon Control Center, Hanwha Wisenet WAVE and Hikvision iVMS/HikCentral. Platform selection depends on project size, integration requirements, client preference and budget.
       </p>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -59,35 +47,24 @@ export default function RecordingAndStorage() {
       <h2 id="poe-switch" style={S.h2}>PoE Switch & Network Connectivity</h2>
 
       <p style={S.p}>
-        PoE — <strong>Power over Ethernet</strong> — ek IEEE standard hai (802.3af, 802.3at, 802.3bt)
-        jo Ethernet cable ke through data ke saath power bhi deliver karta hai. IP cameras ke liye ye
-        critical feature hai — single Cat6 cable se camera ko network connectivity aur power dono milti
-        hai. Separate power supply aur outlet har camera location pe chahiye hi nahi.
+        PoE — <strong>Power over Ethernet</strong> — is an IEEE standard (802.3af, 802.3at, 802.3bt) that delivers power along with data through the Ethernet cable. This is a critical feature for IP cameras — a single Cat6 cable gives the camera both network connectivity and power. A separate power supply and outlet at every camera location is simply not needed.
       </p>
 
       <p style={S.p}>
-        PoE standards power budget mein differ karte hain:
+        PoE standards differ in power budget:
       </p>
       <ul style={S.ul}>
-        <li><strong>802.3af (PoE)</strong> — 15.4W per port, 12.95W at device. Basic IP cameras ke liye sufficient.</li>
-        <li><strong>802.3at (PoE+)</strong> — 30W per port, 25.5W at device. PTZ cameras, cameras with heaters ya blowers ke liye.</li>
-        <li><strong>802.3bt (PoE++)</strong> — 60W (Type 3) ya 100W (Type 4) per port. High-power PTZ, multi-sensor cameras ke liye.</li>
+        <li><strong>802.3af (PoE)</strong> — 15.4W per port, 12.95W at device. Sufficient for basic IP cameras.</li>
+        <li><strong>802.3at (PoE+)</strong> — 30W per port, 25.5W at device. For PTZ cameras, cameras with heaters or blowers.</li>
+        <li><strong>802.3bt (PoE++)</strong> — 60W (Type 3) or 100W (Type 4) per port. For high-power PTZ, multi-sensor cameras.</li>
       </ul>
 
       <p style={S.p}>
-        <strong>Switch selection ke liye key considerations:</strong> Total PoE budget — switch ka total
-        power budget sab cameras ki aggregate power supply se zyada hona chahiye. Port count — future
-        expansion ke liye extra ports plan karo. <strong>Managed switch</strong> data center mein
-        mandatory hai — VLAN configuration, port monitoring, port-level power control, SNMP monitoring
-        sab managed switch se milte hain. Uplink ports — NVR/VMS server tak Gigabit ya 10G uplinks for
-        adequate bandwidth.
+        <strong>Key considerations for switch selection:</strong> Total PoE budget — the switch's total power budget must be more than the aggregate power supply of all cameras. Port count — plan extra ports for future expansion. A <strong>managed switch</strong> is mandatory in a data center — VLAN configuration, port monitoring, port-level power control, SNMP monitoring all come with a managed switch. Uplink ports — Gigabit or 10G uplinks to the NVR/VMS server for adequate bandwidth.
       </p>
 
       <Callout type="important" title="PoE Switch Total Power Budget — Common Oversight">
-        Ek 24-port PoE+ switch mein 30W per port hoti hai — lekin total switch power budget typically
-        total port power se kam hoti hai. Example: 24-port × 30W = 720W theoretical, lekin switch ka
-        actual PoE budget 370W ho sakta hai. Sab ports simultaneously full power pe nahi chalenge —
-        lekin worst-case planning karo aur actual PoE budget verify karo datasheet se.
+        A 24-port PoE+ switch has 30W per port — but the total switch power budget is typically less than the total port power. Example: 24-port × 30W = 720W theoretical, but the switch's actual PoE budget may be 370W. All ports will not run at full power simultaneously — but do worst-case planning and verify the actual PoE budget from the datasheet.
       </Callout>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -96,48 +73,34 @@ export default function RecordingAndStorage() {
       <h2 id="storage" style={S.h2}>Storage: Local HDD, NAS & RAID</h2>
 
       <p style={S.p}>
-        CCTV recordings typically do jagah store hoti hain — <strong>NVR ke internal HDDs</strong> (primary,
-        immediate access) aur <strong>NAS (Network Attached Storage)</strong> (extended retention, backup).
+        CCTV recordings are typically stored in two places — the <strong>NVR's internal HDDs</strong> (primary, immediate access) and <strong>NAS (Network Attached Storage)</strong> (extended retention, backup).
       </p>
 
       <p style={S.p}>
-        <strong>Surveillance-grade HDDs</strong> use karo — Western Digital Purple, Seagate SkyHawk, ya
-        similar. Standard desktop HDDs CCTV ke continuous 24/7 write workload ke liye designed nahi hote
-        — premature failure ka risk hota hai. Surveillance HDDs higher workload ratings, vibration
-        compensation, aur ATA streaming command optimization ke saath aate hain.
+        Use <strong>surveillance-grade HDDs</strong> — Western Digital Purple, Seagate SkyHawk, or similar. Standard desktop HDDs are not designed for the continuous 24/7 write workload of CCTV — there is a risk of premature failure. Surveillance HDDs come with higher workload ratings, vibration compensation and ATA streaming command optimization.
       </p>
 
       <p style={S.p}>
-        <strong>NAS (Network Attached Storage)</strong> ek dedicated network storage device hai jisme
-        multiple HDDs lagti hain. NVR ya VMS network ke through NAS pe footage offload karta hai.
-        Extended retention ke liye, multi-NVR environments mein centralized storage ke liye, aur
-        redundant storage ke liye NAS use hota hai.
+        <strong>NAS (Network Attached Storage)</strong> is a dedicated network storage device with multiple HDDs installed. The NVR or VMS offloads footage to the NAS over the network. NAS is used for extended retention, for centralized storage in multi-NVR environments, and for redundant storage.
       </p>
 
       <p style={S.p}>
-        <strong>RAID (Redundant Array of Independent Disks)</strong> multiple HDDs ko combine karke
-        performance ya redundancy (ya dono) provide karta hai. Common RAID levels:
+        <strong>RAID (Redundant Array of Independent Disks)</strong> combines multiple HDDs to provide performance or redundancy (or both). Common RAID levels:
       </p>
       <ul style={S.ul}>
-        <li><strong>RAID 0 (Striping)</strong> — performance better, lekin zero redundancy. Ek disk fail = sab data gone. CCTV ke liye avoid karo.</li>
-        <li><strong>RAID 1 (Mirroring)</strong> — dono disks identical copies. Ek fail = doosri se continue. 50% capacity overhead. Small NAS/NVR ke liye suitable.</li>
-        <li><strong>RAID 5</strong> — minimum 3 disks, one disk equivalent parity data. Ek disk fail tolerate kar sakta hai. Read performance good. Rebuild time pe data risk hota hai.</li>
-        <li><strong>RAID 6</strong> — minimum 4 disks, two disk equivalent parity. Do disks simultaneously fail tolerate karta hai. Large NAS deployments ke liye recommended.</li>
-        <li><strong>RAID 10 (1+0)</strong> — mirroring + striping. Good performance aur redundancy. 50% capacity overhead. NAS performance environments ke liye.</li>
+        <li><strong>RAID 0 (Striping)</strong> — better performance, but zero redundancy. One disk fails = all data gone. Avoid it for CCTV.</li>
+        <li><strong>RAID 1 (Mirroring)</strong> — both disks are identical copies. One fails = continue from the other. 50% capacity overhead. Suitable for small NAS/NVR.</li>
+        <li><strong>RAID 5</strong> — minimum 3 disks, one disk equivalent of parity data. Can tolerate one disk failure. Good read performance. There is data risk during rebuild time.</li>
+        <li><strong>RAID 6</strong> — minimum 4 disks, two disk equivalent of parity. Tolerates two disks failing simultaneously. Recommended for large NAS deployments.</li>
+        <li><strong>RAID 10 (1+0)</strong> — mirroring + striping. Good performance and redundancy. 50% capacity overhead. For NAS performance environments.</li>
       </ul>
 
-      <Callout type="warning" title="RAID Backup Nahi Hai — Ye Samajhna Critical Hai">
-        RAID disk hardware failure se protect karta hai — sirf. RAID accidental deletion protect nahi
-        karta. RAID ransomware ya malware se protect nahi karta. RAID site disaster se protect nahi
-        karta. RAID silent data corruption always catch nahi karta. Actual backup ka matlab hai data ka
-        separate independent copy — different location pe. CCTV systems mein RAID availability ensure
-        karta hai — backup strategy alag define karo.
+      <Callout type="warning" title="RAID Is Not a Backup — Understanding This Is Critical">
+        RAID protects against disk hardware failure — only that. RAID does not protect against accidental deletion. RAID does not protect against ransomware or malware. RAID does not protect against a site disaster. RAID does not always catch silent data corruption. An actual backup means a separate independent copy of the data — at a different location. In CCTV systems RAID ensures availability — define the backup strategy separately.
       </Callout>
 
       <p style={S.p}>
-        Surveillance-grade NAS OEMs mein Synology, QNAP, Milestone Arcus, aur NetApp entry-level include
-        hain. Enterprise deployments mein EMC, NetApp, Isilon jaisi enterprise storage bhi use hoti hai.
-        Selection project requirements, capacity, redundancy needs aur VMS compatibility pe depend karta hai.
+        Surveillance-grade NAS OEMs include Synology, QNAP, Milestone Arcus and NetApp entry-level. In enterprise deployments enterprise storage like EMC, NetApp, Isilon is also used. Selection depends on project requirements, capacity, redundancy needs and VMS compatibility.
       </p>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -146,10 +109,7 @@ export default function RecordingAndStorage() {
       <h2 id="storage-planning" style={S.h2}>Recording Retention & Capacity Planning</h2>
 
       <p style={S.p}>
-        Storage requirement camera count, resolution, FPS, bitrate, recording hours per day, aur
-        retention period pe depend karti hai. Accurate planning ke liye manufacturer-provided bandwidth
-        calculators ya VMS built-in calculators use karo — ye camera-specific bitrates consider karte
-        hain. Neeche ek approximate calculation framework hai:
+        The storage requirement depends on camera count, resolution, FPS, bitrate, recording hours per day and the retention period. For accurate planning use manufacturer-provided bandwidth calculators or VMS built-in calculators — they consider camera-specific bitrates. Below is an approximate calculation framework:
       </p>
 
       <p style={S.p}>
@@ -175,10 +135,7 @@ export default function RecordingAndStorage() {
       </p>
 
       <Callout type="best-practice" title="Motion-Based Recording — Storage Optimization">
-        Continuous recording maximum storage consume karta hai. Motion detection recording — sirf jab
-        movement ho — storage significantly reduce karta hai, especially areas jo mostly idle rehte hain
-        (storage rooms, non-critical corridors). Critical areas (server halls, entry points, mantrap) pe
-        continuous recording specify karo aur motion recording sirf low-risk areas pe use karo.
+        Continuous recording consumes maximum storage. Motion detection recording — only when there is movement — significantly reduces storage, especially in areas that mostly stay idle (storage rooms, non-critical corridors). Specify continuous recording for critical areas (server halls, entry points, mantrap) and use motion recording only for low-risk areas.
       </Callout>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -187,34 +144,23 @@ export default function RecordingAndStorage() {
       <h2 id="recording-modes" style={S.h2}>Recording Modes & Reliability</h2>
 
       <p style={S.p}>
-        <strong>Continuous Recording</strong> — 24/7 bina rok ke record hota rehta hai. Maximum storage
-        aur bandwidth, lekin koi gap nahi. Critical areas ke liye recommended.
+        <strong>Continuous Recording</strong> — keeps recording 24/7 without stopping. Maximum storage and bandwidth, but no gaps. Recommended for critical areas.
       </p>
 
       <p style={S.p}>
-        <strong>Motion Detection Recording</strong> — camera ya VMS motion detect karne pe recording
-        shuru karta hai, motion band hone ke baad kuch seconds baad stop karta hai. Storage save hoti
-        hai lekin motion detection algorithm missed events ya false triggers cause kar sakta hai.
-        Post-event buffer configure karo — motion end hone ke baad bhi kuch seconds record karo.
+        <strong>Motion Detection Recording</strong> — the camera or VMS starts recording when it detects motion and stops a few seconds after the motion ends. Storage is saved, but the motion detection algorithm can cause missed events or false triggers. Configure a post-event buffer — keep recording for a few seconds even after the motion ends.
       </p>
 
       <p style={S.p}>
-        <strong>Schedule-Based Recording</strong> — specific hours pe record karo. Business hours mein
-        full recording, off-hours mein motion-only — ya reverse. Useful for offices but data centers
-        typically need 24/7 recording.
+        <strong>Schedule-Based Recording</strong> — record during specific hours. Full recording during business hours, motion-only during off-hours — or the reverse. Useful for offices but data centers typically need 24/7 recording.
       </p>
 
       <p style={S.p}>
-        <strong>Edge Recording</strong> — camera ke SD card pe directly record karta hai. NVR/network
-        failure mein backup footage available rehta hai. Important cameras pe edge storage enable karo
-        as a fallback. SD card capacity limited hoti hai — sirf short-term buffer.
+        <strong>Edge Recording</strong> — records directly to the camera's SD card. Backup footage stays available during an NVR/network failure. Enable edge storage on important cameras as a fallback. SD card capacity is limited — only a short-term buffer.
       </p>
 
       <Callout type="important" title="UPS for CCTV — Non-Negotiable">
-        CCTV system ko UPS pe connect karo — power failure mein recording gap create nahi honi chahiye.
-        Power cut hone ka waqt exactly wahi hota hai jab footage most critical hoti hai. NVR/VMS server,
-        PoE switches, aur monitoring workstation sab UPS backup pe hone chahiye. Battery runtime project
-        requirements ke hisaab se design karo.
+        Connect the CCTV system to UPS — a power failure must not create a recording gap. The moment of a power cut is exactly when footage is most critical. The NVR/VMS server, PoE switches and monitoring workstation must all be on UPS backup. Design the battery runtime according to project requirements.
       </Callout>
     </>
   );

@@ -6,6 +6,8 @@ interface ArticleLayoutProps {
   slug: string;
   headings: ArticleHeading[];
   readingTimeMinutes: number;
+  lang?: "en" | "hi";
+  alternateHref?: string;
   children: ReactNode;
 }
 
@@ -13,6 +15,8 @@ export default function ArticleLayout({
   slug,
   headings,
   readingTimeMinutes,
+  lang,
+  alternateHref,
   children,
 }: ArticleLayoutProps) {
   const topic = TOPICS[slug];
@@ -29,6 +33,8 @@ export default function ArticleLayout({
       relatedSlugs={relatedSlugs}
       headings={headings}
       readingTimeMinutes={readingTimeMinutes}
+      lang={lang}
+      alternateHref={alternateHref}
     >
       {children}
     </ArticlePage>

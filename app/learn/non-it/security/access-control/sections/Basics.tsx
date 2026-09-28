@@ -10,19 +10,11 @@ export default function Basics() {
       <h2 id="what-is-access-control" style={S.h2}>What Is Access Control?</h2>
 
       <p style={S.p}>
-        Access control ek physical security system hai jo decide karta hai ki kaunn, kab, aur kahan
-        enter kar sakta hai. Data center context mein ye ek electronic system hai jisme credential
-        (card, PIN, biometric) present karne pe controller authenticate karta hai, policy check karta
-        hai, aur agar authorized hai to door lock release karta hai. Har access attempt log hoti hai —
-        entry, exit, denied attempts, door alarms sab recorded rehte hain.
+        Access control is a physical security system that decides who can enter, when, and where. In the data center context it is an electronic system in which, when a credential (card, PIN, biometric) is presented, the controller authenticates it, checks the policy, and if authorized releases the door lock. Every access attempt is logged — entry, exit, denied attempts, door alarms all stay recorded.
       </p>
 
       <p style={S.p}>
-        Traditional lock-and-key se access control fundamentally alag hai — ek physical key copy ho
-        sakti hai, kisi ko de sakte ho, ya khoni bhi, aur koi audit trail nahi hota. Electronic
-        access control credentials centrally manage hoti hain, immediately revoke ya modify ki ja
-        sakti hain, aur har use logged hoti hai. Is auditability ki wajah se ye compliance frameworks
-        jaise ISO 27001, SOC 2 aur PCI-DSS ke liye essential hai.
+        Access control is fundamentally different from traditional lock-and-key — a physical key can be copied, given to someone, or even lost, and there is no audit trail. Electronic access control credentials are managed centrally, can be revoked or modified immediately, and every use is logged. Because of this auditability it is essential for compliance frameworks like ISO 27001, SOC 2 and PCI-DSS.
       </p>
 
       <figure style={{ margin: "2rem 0" }}>
@@ -37,60 +29,38 @@ export default function Basics() {
           />
         </div>
         <figcaption style={{ fontSize: "0.85rem", color: "#4b5563", marginTop: "0.6rem", textAlign: "center", fontStyle: "italic" }}>
-          Data Center access control — server room door pe card reader, EM lock aur door contact sensor.
+          Data Center access control — card reader, EM lock and door contact sensor on the server room door.
         </figcaption>
       </figure>
 
       <h2 id="why-required" style={S.h2}>Why Access Control Is Required in a Data Center</h2>
 
       <p style={S.p}>
-        Data center mein servers, storage aur network equipment hote hain jo clients ka critical data
-        hold karte hain. Unauthorized physical access — ek rogue USB plug in karna, ek hard drive
-        remove karna, ek cable disconnect karna — software security ko bypass kar sakta hai. Physical
-        access control is risk ki pehli aur most critical line hai.
+        A data center has servers, storage and network equipment that hold clients' critical data. Unauthorized physical access — plugging in a rogue USB, removing a hard drive, disconnecting a cable — can bypass software security. Physical access control is the first and most critical line against this risk.
       </p>
 
       <p style={S.p}>
-        Beyond security, compliance bhi drive karta hai. ISO 27001 Annex A physical security controls
-        mandate karta hai. PCI-DSS Requirement 9 physical access restriction aur monitoring require
-        karta hai. SOC 2 Trust Services Criteria physical access management include karta hai.
-        Practically sab enterprise data center standards mein granular access control with audit logging
-        explicitly required hai — actual requirements applicable framework aur AHJ pe depend karte hain.
+        Beyond security, compliance also drives it. ISO 27001 Annex A mandates physical security controls. PCI-DSS Requirement 9 requires physical access restriction and monitoring. SOC 2 Trust Services Criteria include physical access management. Practically all enterprise data center standards explicitly require granular access control with audit logging — actual requirements depend on the applicable framework and AHJ.
       </p>
 
       <Callout type="important" title="Principle of Least Privilege — Physical Version">
-        Every person ko sirf wahi physical access milni chahiye jo unke role ke liye necessary ho —
-        kuch bhi zyada nahi. Cleaning staff ka server hall mein koi kaam nahi, vendor ka battery room
-        mein unaccompanied access nahi hona chahiye. Access zones aur schedules carefully define karo
-        aur regularly review karo — role changes pe access update karo.
+        Every person should get only the physical access that is necessary for their role — nothing more. Cleaning staff have no work in the server hall, and a vendor must not have unaccompanied access to the battery room. Define access zones and schedules carefully and review them regularly — update access on role changes.
       </Callout>
 
       <h2 id="working-principle" style={S.h2}>Working Principle</h2>
 
       <p style={S.p}>
-        Access control ka basic cycle simple hai: <strong>Present credential → Reader reads → Controller
-        authenticates → Policy check → Lock release or deny → Event logged.</strong> Ye cycle ek second
-        se kam mein complete hoti hai. Har step mein failure possible hai — isliye har component samajhna
-        zaroori hai.
+        The basic cycle of access control is simple: <strong>Present credential → Reader reads → Controller authenticates → Policy check → Lock release or deny → Event logged.</strong> This cycle completes in less than a second. Failure is possible at every step — that is why it is essential to understand every component.
       </p>
 
       <p style={S.p}>
-        Jab koi card reader ke paas laata hai, reader card ka data read karke controller ko bhejta hai.
-        Controller apne local database mein credential check karta hai — valid hai? Is door pe is time
-        pe authorized hai? Access schedule active hai? Agar sab checks pass hote hain, controller lock
-        ko release signal deta hai — typically relay output se — aur event log karta hai. Door contact
-        sensor confirm karta hai ki door actually open hua. Request-to-Exit (REX) sensor exit side pe
-        hota hai — andar se bahar aane ke liye credential ki zaroorat nahi hoti, REX press karne pe
-        lock release hota hai.
+        When someone brings a card near the reader, the reader reads the card data and sends it to the controller. The controller checks the credential in its local database — is it valid? Is it authorized on this door at this time? Is the access schedule active? If all checks pass, the controller gives a release signal to the lock — typically through a relay output — and logs the event. The door contact sensor confirms that the door actually opened. The Request-to-Exit (REX) sensor is on the exit side — no credential is needed to come out from inside; pressing REX releases the lock.
       </p>
 
       <h2 id="system-architecture" style={S.h2}>System Architecture</h2>
 
       <p style={S.p}>
-        Typical enterprise access control architecture mein teen tiers hoti hain:{" "}
-        <strong>Field devices</strong> (readers, locks, sensors, REX) →{" "}
-        <strong>Controllers</strong> (edge intelligence, decision making) →{" "}
-        <strong>Software/Server</strong> (central management, reporting, integrations).
+        A typical enterprise access control architecture has three tiers:{" "} <strong>Field devices</strong> (readers, locks, sensors, REX) →{" "} <strong>Controllers</strong> (edge intelligence, decision making) →{" "} <strong>Software/Server</strong> (central management, reporting, integrations).
       </p>
 
       <figure style={{ margin: "2rem 0" }}>
@@ -109,18 +79,11 @@ export default function Basics() {
       </figure>
 
       <p style={S.p}>
-        Controllers typically RS-485 ya TCP/IP network pe connect hote hain. Modern IP-based controllers
-        directly Ethernet pe connect hote hain. Legacy systems RS-485 bus pe multiple controllers daisy-chain
-        karte hain. Software server central management, credential enrollment, schedule configuration,
-        reporting aur integrations handle karta hai. Readers typically Wiegand ya OSDP protocol pe
-        controller se communicate karte hain — OSDP modern aur more secure hai (encrypted communication).
+        Controllers typically connect over an RS-485 or TCP/IP network. Modern IP-based controllers connect directly to Ethernet. Legacy systems daisy-chain multiple controllers on an RS-485 bus. The software server handles central management, credential enrollment, schedule configuration, reporting and integrations. Readers typically communicate with the controller over the Wiegand or OSDP protocol — OSDP is modern and more secure (encrypted communication).
       </p>
 
-      <Callout type="best-practice" title="OSDP vs Wiegand — Modern Deployments mein OSDP Prefer Karo">
-        Wiegand protocol 1970s ka hai — unencrypted, no authentication, easily interceptable. OSDP
-        (Open Supervised Device Protocol) encrypted communication, tamper detection aur bidirectional
-        communication support karta hai. New deployments aur high-security areas mein OSDP readers
-        specify karo.
+      <Callout type="best-practice" title="OSDP vs Wiegand — Prefer OSDP in Modern Deployments">
+        The Wiegand protocol is from the 1970s — unencrypted, no authentication, easily interceptable. OSDP (Open Supervised Device Protocol) supports encrypted communication, tamper detection and bidirectional communication. Specify OSDP readers in new deployments and high-security areas.
       </Callout>
     </>
   );

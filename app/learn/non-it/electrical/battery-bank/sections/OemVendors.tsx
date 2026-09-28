@@ -21,26 +21,20 @@ export default function OemVendors() {
       <h2 id="oem-vendors" style={S.h2}>OEM & Vendor Landscape</h2>
 
       <SectionIntro
-        quickAnswer="Battery vendor selection ek long-term commitment hai — battery bank ki life 3–15 years hoti hai aur us dauraan OEM ki service network, spare parts availability, aur technical support critical hoti hai. Sabse sasti battery hamesha sabse economical choice nahi hoti."
-        engineerTip="India mein VRLA battery market mein bahut zyada variation hai quality mein. Tier III/IV Data Center projects ke liye hamesha OEM ka BIS certification, test reports (independent third-party), aur India-specific warranty terms verify karo. 'International brand' label ke peeche Chinese generic cells bhi ho sakti hain — factory audit ya certified test report maango."
-        keyTakeaway="OEM selection = battery life, India service support, aur warranty enforceability — teeno ka combination evaluate karo, sirf price nahi."
+        quickAnswer="Battery vendor selection is a long-term commitment — a battery bank's life is 3–15 years, and during that time the OEM's service network, spare parts availability and technical support are critical. The cheapest battery is not always the most economical choice."
+        engineerTip="In India there is a lot of variation in quality in the VRLA battery market. For Tier III/IV Data Center projects, always verify the OEM's BIS certification, test reports (independent third-party) and India-specific warranty terms. Behind an 'international brand' label there can also be Chinese generic cells — ask for a factory audit or a certified test report."
+        keyTakeaway="OEM selection = battery life, India service support and warranty enforceability — evaluate the combination of all three, not just price."
       />
 
       <Callout type="important" title="Important — OEM Disclaimer">
-        Yahan diye gaye OEM descriptions general industry observations hain based on publicly
-        available information. Actual specifications, pricing, product lines, aur India support
-        frequently change karte hain. Koi bhi vendor finalize karne se pehle current datasheets,
-        India sales team, aur independent references verify karo. Yeh article kisi bhi OEM ka
-        endorsement nahi hai.
+        The OEM descriptions given here are general industry observations based on publicly available information. Actual specifications, pricing, product lines and India support change frequently. Before finalizing any vendor, verify current datasheets, the India sales team and independent references. This article is not an endorsement of any OEM.
       </Callout>
 
       {/* ─── Indian OEMs ─────────────────────────────────────────── */}
       <h3 id="indian-oems" style={S.h3}>Indian OEMs — VRLA</h3>
 
       <p style={S.p}>
-        India mein established VRLA manufacturers hain jo decades se telecom, railways, aur power
-        sector serve kar rahe hain. Data Center ke liye inke high-rate discharge capability
-        aur service network dono verify karna chahiye.
+        In India there are established VRLA manufacturers who have been serving telecom, railways and the power sector for decades. For the Data Center, both their high-rate discharge capability and service network should be verified.
       </p>
 
       <ComparisonTable
@@ -55,11 +49,7 @@ export default function OemVendors() {
       />
 
       <Callout type="best-practice" title="Best Practice — India OEM Evaluation">
-        Indian OEM ke liye specifically verify karo: (1) IS 1651 certification for VRLA,
-        (2) independent third-party test report for high-rate discharge at your C-rate,
-        (3) on-site service response time in your city, (4) battery replacement stock
-        availability — agar 3 saal baad ek string replace karni ho toh same batch available
-        hogi kya? Yeh questions vendor RFQ mein explicitly include karo.
+        Specifically verify for an Indian OEM: (1) IS 1651 certification for VRLA, (2) an independent third-party test report for high-rate discharge at your C-rate, (3) on-site service response time in your city, (4) battery replacement stock availability — if a string has to be replaced after 3 years, will the same batch be available? Explicitly include these questions in the vendor RFQ.
       </Callout>
 
       {/* ─── Global OEMs — VRLA ──────────────────────────────────── */}
@@ -78,11 +68,7 @@ export default function OemVendors() {
       />
 
       <Callout type="important" title="Important — Chinese VRLA: Quality Varies Significantly">
-        Chinese VRLA brands quality mein significant variation hoti hai — same brand ke
-        different factories se alag quality aati hai. Narada aur Leoch established brands
-        hain but order pe batch-specific test reports maango. Small unknown Chinese brands
-        Data Center applications ke liye avoid karo — warranty enforcement India mein
-        practically impossible hai.
+        There is significant variation in quality among Chinese VRLA brands — different factories of the same brand produce different quality. Narada and Leoch are established brands, but ask for batch-specific test reports on the order. Avoid small unknown Chinese brands for Data Center applications — warranty enforcement is practically impossible in India.
       </Callout>
 
       {/* ─── Global OEMs — Li-ion ─────────────────────────────────── */}
@@ -102,10 +88,7 @@ export default function OemVendors() {
       />
 
       <p style={S.p}>
-        Li-ion market mein important distinction: kuch OEMs apna integrated solution dete hain
-        (Huawei) jahan UPS aur battery ek package hai; doosre OEMs open battery modules dete
-        hain jo multiple UPS brands ke saath work karte hain (Schneider, Delta). Integrated
-        solution simpler commissioning deta hai lekin vendor lock-in create karta hai.
+        An important distinction in the Li-ion market: some OEMs provide their own integrated solution (Huawei), where the UPS and battery are one package; other OEMs provide open battery modules that work with multiple UPS brands (Schneider, Delta). An integrated solution gives simpler commissioning but creates vendor lock-in.
       </p>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -115,9 +98,9 @@ export default function OemVendors() {
       <h2 id="common-mistakes" style={S.h2}>Common Engineering Mistakes</h2>
 
       <SectionIntro
-        quickAnswer="Battery bank failures ka 80% preventable hai — yeh random failures nahi hain, yeh engineering aur operational mistakes ke consequences hain. Yeh section har common mistake explain karta hai, real impact ke saath, taaki tum yeh galtiyan karte hi mat karo."
-        engineerTip="Field experience se sabse important lesson: battery failure hamesha worst time pe hoti hai — actual grid failure ke dauraan. Tab pata chalta hai ki annual capacity test miss kiya tha, ya float voltage galat set tha, ya mixed age string thi. Prevention is the only strategy — by the time failure happens, it is too late."
-        keyTakeaway="Battery bank ki reliability 90% commissioning aur maintenance quality pe depend karti hai — hardware quality pe sirf 10%."
+        quickAnswer="80% of battery bank failures are preventable — they are not random failures, they are the consequences of engineering and operational mistakes. This section explains every common mistake, with its real impact, so that you never make these mistakes."
+        engineerTip="The most important lesson from field experience: battery failure always happens at the worst time — during an actual grid failure. That is when you find out the annual capacity test was missed, or the float voltage was set wrong, or there was a mixed-age string. Prevention is the only strategy — by the time failure happens, it is too late."
+        keyTakeaway="90% of a battery bank's reliability depends on commissioning and maintenance quality — only 10% on hardware quality."
       />
 
       <ComparisonTable
@@ -142,19 +125,13 @@ export default function OemVendors() {
       />
 
       <Callout type="danger" title="Danger — Top 3 Mistakes That Cause Catastrophic Failure">
-        Teeno mistakes jo catastrophic, unrecoverable failure cause karte hain:
-        (1) <strong>No per-string fusing</strong> — ek fault poore bank ko destroy kar sakta hai.
-        (2) <strong>Skipping annual capacity test</strong> — bank silently degrades, fails during
-        real outage.
-        (3) <strong>Mixed age strings parallel</strong> — compounding degradation, accelerates
-        total bank failure. Yeh teeno non-negotiable hain.
+        The three mistakes that cause catastrophic, unrecoverable failure: (1) <strong>No per-string fusing</strong> — one fault can destroy the whole bank. (2) <strong>Skipping the annual capacity test</strong> — the bank silently degrades and fails during a real outage. (3) <strong>Mixed age strings in parallel</strong> — compounding degradation accelerates total bank failure. All three are non-negotiable.
       </Callout>
 
       <h3 style={S.h3}>Mistake Deep-Dive — Why Mixed Age Is So Dangerous</h3>
 
       <p style={S.p}>
-        Engineers often socha karte hain: &quot;Ek string fail hui — replace karke new string
-        parallel mein lagao. Done.&quot; Yeh wrong approach hai.
+        Engineers often think: &quot;One string failed — replace it and put a new string in parallel. Done.&quot; This is the wrong approach.
       </p>
 
       <p style={S.p}>
@@ -172,10 +149,7 @@ export default function OemVendors() {
       </p>
 
       <Callout type="best-practice" title="Best Practice — Battery Bank Procurement Planning">
-        Project planning mein battery bank replacement budget every 4–5 years (VRLA) ya
-        10–12 years (LFP) include karo. Surprise replacement ek financial emergency ban
-        jaata hai — planned replacement ek routine capital expenditure hai. EOL planning
-        should start 12 months before expected replacement date.
+        In project planning, include a battery bank replacement budget every 4–5 years (VRLA) or 10–12 years (LFP). A surprise replacement becomes a financial emergency — a planned replacement is a routine capital expenditure. EOL planning should start 12 months before expected replacement date.
       </Callout>
     </>
   );

@@ -7,7 +7,7 @@ export default function ScadaPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="scada" headings={HEADINGS} readingTimeMinutes={18}>
+      <ArticleLayout slug="scada" headings={HEADINGS} readingTimeMinutes={18} lang="en" alternateHref="/hi/learn/non-it/bms-dcim/scada">
         <Basics />
       </ArticleLayout>
     </>

@@ -21,24 +21,19 @@ export default function ElectricalFundamentals() {
       <h2 id="electrical-fundamentals" style={S.h2}>Electrical Fundamentals</h2>
 
       <SectionIntro
-        quickAnswer="Battery sizing ke liye 10 concepts zaroor samajhne chahiye: Ah, Wh, C-rate, DoD, SoC, SoH, internal resistance, float voltage, Peukert's Law, aur ripple current. In mein se ek bhi miss karo toh sizing galat ho sakti hai."
-        engineerTip="Sabse common sizing mistake: rated Ah use karna without C-rate correction. Agar battery rated at C10 = 100Ah hai, aur tum C3 rate pe discharge karo (which happens at high loads), actual available Ah sirf 70–80Ah hogi. Hamesha check karo ki OEM datasheet mein C-rate at your discharge rate kya diya hai."
-        keyTakeaway="Ah bataati hai kitni current deliver kar sakti hai; Wh bataata hai energy kitni hai — Data Center sizing mein Ah more directly useful hai kyunki bus voltage fixed hoti hai."
+        quickAnswer="For battery sizing, 10 concepts must be understood: Ah, Wh, C-rate, DoD, SoC, SoH, internal resistance, float voltage, Peukert's Law and ripple current. Miss even one of them and the sizing can go wrong."
+        engineerTip="The most common sizing mistake: using rated Ah without C-rate correction. If a battery is rated at C10 = 100Ah and you discharge it at the C3 rate (which happens at high loads), the actual available Ah will be only 70–80Ah. Always check what the OEM datasheet gives as the C-rate at your discharge rate."
+        keyTakeaway="Ah tells how much current can be delivered; Wh tells how much energy there is — in Data Center sizing Ah is more directly useful because the bus voltage is fixed."
       />
 
       <h3 id="ah-explained" style={S.h3}>Ah (Ampere-Hour) — What It Really Means</h3>
 
       <p style={S.p}>
-        Ah = Amperes × Hours. Ek 100Ah battery 100 Amperes 1 hour tak, ya 50 Amperes 2 hours tak,
-        ya 10 Amperes 10 hours tak deliver kar sakti hai — <em>ideally</em>. Reality mein Peukert
-        effect ki wajah se zyada current draw karo toh less total Ah milti hai.
+        Ah = Amperes × Hours. A 100Ah battery can deliver 100 Amperes for 1 hour, or 50 Amperes for 2 hours, or 10 Amperes for 10 hours — <em>ideally</em>. In reality, because of the Peukert effect, drawing more current gives you less total Ah.
       </p>
 
       <p style={S.p}>
-        Battery capacity usually <strong>C10 or C20 rate</strong> pe rated hoti hai:{" "}
-        <em>C10 matlab complete discharge in 10 hours; C20 in 20 hours</em>. Data Center backup
-        typical 10–15 minutes ka hota hai — yeh C0.17 to C0.25 rate hai. Is high rate pe available
-        Ah, C10 rated Ah se significantly less hogi. Hamesha OEM ka high-rate discharge table check karo.
+        Battery capacity is usually rated at the <strong>C10 or C20 rate</strong>: <em>C10 means complete discharge in 10 hours; C20 in 20 hours</em>. Data Center backup is typically 10–15 minutes — this is the C0.17 to C0.25 rate. The Ah available at this high rate will be significantly less than the C10 rated Ah. Always check the OEM's high-rate discharge table.
       </p>
 
       <ComparisonTable
@@ -64,30 +59,21 @@ export default function ElectricalFundamentals() {
       </p>
 
       <p style={S.p}>
-        Example: 100Ah battery bank at 192V DC = 100 × 192 = 19,200 Wh = 19.2 kWh energy stored.
-        Yeh 500kW load ko 19,200 ÷ 500,000 = 0.0384 hours = 2.3 minutes sustain kar sakta hai
-        (without losses, DoD correction, etc.).
+        Example: A 100Ah battery bank at 192V DC = 100 × 192 = 19,200 Wh = 19.2 kWh of energy stored. It can sustain a 500kW load for 19,200 ÷ 500,000 = 0.0384 hours = 2.3 minutes (without losses, DoD correction, etc.).
       </p>
 
       <Callout type="important" title="Important — kWh vs Ah: Which to Use for Sizing?">
-        Battery sizing mein <strong>Ah</strong> use karo, kWh nahi — kyunki DC bus voltage fixed
-        hoti hai aur charger/inverter Ah handle karta hai directly. kWh useful hai energy cost
-        calculations, TCO comparisons, aur grid-level BESS sizing ke liye. Dono ultimately same
-        information hain, bas unit alag hai.
+        Use <strong>Ah</strong> in battery sizing, not kWh — because the DC bus voltage is fixed and the charger/inverter handles Ah directly. kWh is useful for energy cost calculations, TCO comparisons and grid-level BESS sizing. Both are ultimately the same information, just in a different unit.
       </Callout>
 
       <h3 id="c-rate" style={S.h3}>C-Rate — Charge and Discharge Rate</h3>
 
       <p style={S.p}>
-        C-rate = Current ÷ Rated Ah. C1 rate matlab battery apni full Ah capacity 1 hour mein
-        discharge karega. C0.1 = 10 hours mein. C10 = 6 minutes mein (very fast, very harsh).
+        C-rate = Current ÷ Rated Ah. The C1 rate means the battery will discharge its full Ah capacity in 1 hour. C0.1 = in 10 hours. C10 = in 6 minutes (very fast, very harsh).
       </p>
 
       <p style={S.p}>
-        <strong>Charge C-rate:</strong> VRLA batteries typical maximum charge rate 0.1C to 0.25C hoti
-        hai — zyada fast charge karo toh overcharge risk. After a full discharge, VRLA typically 8–12
-        hours mein fully recharge hoti hai at 0.1C rate. LFP faster charge accept karti hai (0.5C–1C
-        common), isliye recharge time 2–4 hours possible hai.
+        <strong>Charge C-rate:</strong> The typical maximum charge rate of VRLA batteries is 0.1C to 0.25C — charge faster and there is an overcharge risk. After a full discharge, VRLA typically recharges fully in 8–12 hours at the 0.1C rate. LFP accepts faster charge (0.5C–1C common), so a recharge time of 2–4 hours is possible.
       </p>
 
       <h3 id="depth-of-discharge" style={S.h3}>Depth of Discharge (DoD)</h3>
@@ -98,9 +84,7 @@ export default function ElectricalFundamentals() {
       </p>
 
       <p style={S.p}>
-        Higher DoD = more energy used per cycle, but fewer total cycles. Lower DoD = less energy
-        per cycle, but far more cycles. Data Center sizing mein typically <strong>80% DoD for VRLA,
-        90% DoD for LFP</strong> use karte hain as the maximum design limit.
+        Higher DoD = more energy used per cycle, but fewer total cycles. Lower DoD = less energy per cycle, but far more cycles. In Data Center sizing we typically use <strong>80% DoD for VRLA, 90% DoD for LFP</strong> as the maximum design limit.
       </p>
 
       <ComparisonTable
@@ -115,55 +99,37 @@ export default function ElectricalFundamentals() {
       />
 
       <Callout type="best-practice" title="Best Practice — Design DoD vs Actual DoD">
-        Design DoD (jo sizing formula mein use karo) alag hai actual DoD se. Design for 80% DoD
-        matlab: size karo taaki battery 80% of rated capacity use kare to provide required runtime.
-        Remaining 20% buffer hai for unexpected longer outages. Actual discharge events mein toh
-        sirf 10–15 minutes ka load hota hai — battery almost never hits 80% DoD in practice.
+        Design DoD (the one you use in the sizing formula) is different from actual DoD. Designing for 80% DoD means: size it so the battery uses 80% of rated capacity to provide the required runtime. The remaining 20% is a buffer for unexpected longer outages. In actual discharge events the load lasts only 10–15 minutes — the battery almost never hits 80% DoD in practice.
       </Callout>
 
       <h3 id="state-of-charge" style={S.h3}>State of Charge (SoC)</h3>
 
       <p style={S.p}>
-        SoC = battery kitna charged hai, 0–100% mein. SoC = 100% means fully charged; SoC = 0%
-        means completely discharged. Lead acid mein SoC accurately measure karna mushkil hai —
-        open circuit voltage method hai, lekin battery recently charged ya discharged ho toh voltage
-        settle hone mein time lagta hai. BMS sophisticated algorithms use karta hai SoC accurately
-        estimate karne ke liye (Coulomb counting + voltage cross-check).
+        SoC = how charged the battery is, from 0–100%. SoC = 100% means fully charged; SoC = 0% means completely discharged. In lead acid it is difficult to measure SoC accurately — there is the open circuit voltage method, but if the battery was recently charged or discharged, the voltage takes time to settle. The BMS uses sophisticated algorithms to estimate SoC accurately (Coulomb counting + voltage cross-check).
       </p>
 
       <h3 id="state-of-health" style={S.h3}>State of Health (SoH)</h3>
 
       <p style={S.p}>
-        SoH = battery ki actual capacity compared to original rated capacity. SoH = 100% means
-        brand new; SoH = 80% means battery has lost 20% of original capacity — yeh IEEE 450/1188
-        ke according <strong>end-of-life threshold</strong> hai for stationary batteries.
+        SoH = the battery's actual capacity compared to its original rated capacity. SoH = 100% means brand new; SoH = 80% means the battery has lost 20% of its original capacity — according to IEEE 450/1188 this is the <strong>end-of-life threshold</strong> for stationary batteries.
       </p>
 
       <p style={S.p}>
-        SoH measure karne ke liye actual capacity discharge test karna padta hai (against rated Ah).
-        Impedance testing SoH ka surrogate hai — accurate nahi lekin non-intrusive tracking ke liye
-        useful.
+        To measure SoH, an actual capacity discharge test has to be done (against rated Ah). Impedance testing is a surrogate for SoH — not accurate, but useful for non-intrusive tracking.
       </p>
 
-      <Callout type="important" title="Important — SoH = 80% Matlab Replace Karo">
-        IEEE 450 aur IEEE 1188 dono kehte hain: agar measured capacity rated capacity ke 80% se kam
-        ho toh battery end-of-life hai — replace karo. Yeh 80% threshold isliye hai kyunki is point
-        ke baad capacity degradation exponential ho jaati hai. 79% today could mean 60% in 6 months.
+      <Callout type="important" title="Important — SoH = 80% Means Replace">
+        IEEE 450 and IEEE 1188 both say: if the measured capacity is less than 80% of rated capacity, the battery is at end-of-life — replace it. This 80% threshold exists because after this point capacity degradation becomes exponential. 79% today could mean 60% in 6 months.
       </Callout>
 
       <h3 id="internal-resistance" style={S.h3}>Internal Resistance & Impedance</h3>
 
       <p style={S.p}>
-        Battery ke internal resistance se power loss hoti hai (P = I²R) aur terminal voltage drop
-        hoti hai under load. Aging ke saath internal resistance badhti hai — yeh battery health ka
-        key indicator hai.
+        The battery's internal resistance causes power loss (P = I²R) and a terminal voltage drop under load. Internal resistance increases with aging — it is a key indicator of battery health.
       </p>
 
       <p style={S.p}>
-        <strong>Impedance testing</strong> AC signal inject karke internal resistance measure karta
-        hai — baseline se comparison karo. IEEE 1188 guideline: agar impedance {">"}2× baseline hai
-        toh battery replace karo. Yeh non-intrusive test hai — battery float pe rehti hai during
-        test.
+        <strong>Impedance testing</strong> measures internal resistance by injecting an AC signal — compare it with the baseline. IEEE 1188 guideline: if impedance is {">"}2× the baseline, replace the battery. This is a non-intrusive test — the battery stays on float during the test.
       </p>
 
       <ComparisonTable
@@ -179,33 +145,23 @@ export default function ElectricalFundamentals() {
       <h3 id="float-vs-equalisation" style={S.h3}>Float Voltage vs Equalisation Voltage vs Boost Voltage</h3>
 
       <p style={S.p}>
-        Teen different charge voltages hain — har ek different purpose ke liye:
+        There are three different charge voltages — each for a different purpose:
       </p>
 
       <ul style={S.ul}>
         <li>
-          <strong>Float Voltage:</strong> Normal operating voltage jab battery fully charged aur
-          maintenance charge pe hai. VRLA AGM: 2.25–2.27V per cell. LFP: 3.4–3.5V per cell.
-          Hamesha on rehta hai.
+          <strong>Float Voltage:</strong> The normal operating voltage when the battery is fully charged and on maintenance charge. VRLA AGM: 2.25–2.27V per cell. LFP: 3.4–3.5V per cell. It is always on.
         </li>
         <li>
-          <strong>Boost/Equalisation Voltage:</strong> Higher voltage jo periodically apply ki jaati
-          hai to balance cells aur remove early sulphation. VRLA AGM: 2.33–2.40V per cell.
-          Scheduled, not continuous.
+          <strong>Boost/Equalisation Voltage:</strong> A higher voltage applied periodically to balance cells and remove early sulphation. VRLA AGM: 2.33–2.40V per cell. Scheduled, not continuous.
         </li>
         <li>
-          <strong>Temperature Compensation:</strong> Float voltage temperature ke saath adjust honi
-          chahiye. Typical coefficient: −3 to −4 mV per cell per °C above 25°C. Hot ambient mein
-          float voltage reduce karo; cold mein increase karo. Galat compensation = overcharge ya
-          undercharge = premature failure.
+          <strong>Temperature Compensation:</strong> Float voltage should be adjusted with temperature. Typical coefficient: −3 to −4 mV per cell per °C above 25°C. Reduce float voltage in a hot ambient; increase it in cold. Wrong compensation = overcharge or undercharge = premature failure.
         </li>
       </ul>
 
       <Callout type="danger" title="Danger — Overcharge is the #1 Killer of VRLA">
-        Float voltage agar OEM spec se {">"}0.05V per cell high set karo toh: electrolyte gassing
-        badhti hai → AGM mat dries out → capacity permanently reduced → heat increases → positive
-        plate corrosion accelerates → premature death. Charger mein temperature compensation on
-        karo aur float voltage OEM datasheet exactly verify karo before commissioning.
+        If float voltage is set {">"}0.05V per cell higher than the OEM spec: electrolyte gassing increases → the AGM mat dries out → capacity is permanently reduced → heat increases → positive plate corrosion accelerates → premature death. Turn on temperature compensation in the charger and verify the float voltage exactly against the OEM datasheet before commissioning.
       </Callout>
 
       <h3 id="peukerts-law" style={S.h3}>Peukert&apos;s Law — Why Rated Ah Is Not Always Available</h3>
@@ -220,9 +176,7 @@ export default function ElectricalFundamentals() {
       </p>
 
       <p style={S.p}>
-        Simplified: <strong>faster discharge karo, less Ah available hai</strong>. Yeh especially
-        important hai Data Center sizing mein jahan 10-minute backup at high current means you are
-        at a high C-rate. Always use OEM&apos;s high-rate discharge table instead of rated Ah.
+        Simplified: <strong>discharge faster, and less Ah is available</strong>. This is especially important in Data Center sizing, where a 10-minute backup at high current means you are at a high C-rate. Always use the OEM&apos;s high-rate discharge table instead of rated Ah.
       </p>
 
       <ComparisonTable
@@ -238,22 +192,15 @@ export default function ElectricalFundamentals() {
       <h3 id="ripple-current" style={S.h3}>Ripple Current — The Hidden Battery Killer</h3>
 
       <p style={S.p}>
-        Charger ya UPS rectifier se aane wali DC power actually perfectly smooth nahi hoti — ismein
-        AC component hoti hai jise <strong>ripple current</strong> kehte hain. Yeh ripple battery
-        ke through flow karta hai aur I²R heating cause karta hai internally.
+        DC power coming from the charger or UPS rectifier is actually not perfectly smooth — it has an AC component called <strong>ripple current</strong>. This ripple flows through the battery and causes I²R heating internally.
       </p>
 
       <p style={S.p}>
-        IEEE 1187 recommends ripple current &lt; 5% of rated Ah (in amperes) for VRLA batteries.
-        Higher ripple = higher internal heating = accelerated aging = premature failure. Modern
-        IGBT-based chargers much lower ripple produce karte hain compared to older SCR-based
-        chargers — yeh ek reason hai ki modern UPS ki batteries zyada chalni chahiye.
+        IEEE 1187 recommends ripple current &lt; 5% of rated Ah (in amperes) for VRLA batteries. Higher ripple = higher internal heating = accelerated aging = premature failure. Modern IGBT-based chargers produce much lower ripple compared to older SCR-based chargers — this is one reason the batteries of a modern UPS should last longer.
       </p>
 
       <Callout type="important" title="Important — Verify Ripple at Installation">
-        Commissioning ke time charger output pe clamp meter se ripple current measure karo. Agar
-        {">"}5% of rated Ah mil raha hai, charger filter check karo ya OEM se consult karo. Yeh
-        measurement documentation mein record karo aur annual maintenance mein repeat karo.
+        At commissioning, measure ripple current at the charger output with a clamp meter. If you find {">"}5% of rated Ah, check the charger filter or consult the OEM. Record this measurement in the documentation and repeat it in annual maintenance.
       </Callout>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -263,15 +210,13 @@ export default function ElectricalFundamentals() {
       <h2 id="battery-life-inputs" style={S.h2}>Battery Life Calculator Inputs</h2>
 
       <SectionIntro
-        quickAnswer="Battery life sirf OEM ke datasheet mein likhe years nahi hoti — actual life multiple factors ka product hai. Temperature, DoD, float voltage accuracy, ripple current aur cycling sab mila ke actual life decide karte hain."
-        engineerTip="India mein battery life ka sabse common underestimate yeh hai ki OEM ka rated life 25°C assume karta hai. Data Center battery rooms often 30–35°C average run karte hain (especially mein AC failure scenarios). 35°C pe VRLA life half ho jaati hai. Calculate karo actual expected life at your operating temperature aur replacement budget accordingly plan karo."
-        keyTakeaway="Adjusted Life = Rated Life × Temperature Factor × DoD Factor × Float Factor × Ripple Factor — har ek factor independently multiply hota hai."
+        quickAnswer="Battery life is not just the years written in the OEM datasheet — actual life is the product of multiple factors. Temperature, DoD, float voltage accuracy, ripple current and cycling together decide the actual life."
+        engineerTip="In India, the most common underestimate of battery life is that the OEM's rated life assumes 25°C. Data Center battery rooms often run at a 30–35°C average (especially in AC failure scenarios). At 35°C, VRLA life is halved. Calculate the actual expected life at your operating temperature and plan the replacement budget accordingly."
+        keyTakeaway="Adjusted Life = Rated Life × Temperature Factor × DoD Factor × Float Factor × Ripple Factor — each factor multiplies independently."
       />
 
       <p style={S.p}>
-        Battery life estimation ek multi-variable problem hai. OEM ka datasheet rated life 25°C,
-        standard float voltage, aur low C-rate cycling assume karta hai. Real-world conditions
-        har jagah different hote hain. Is section mein har input variable explain karte hain.
+        Battery life estimation is a multi-variable problem. The OEM datasheet's rated life assumes 25°C, standard float voltage and low C-rate cycling. Real-world conditions are different everywhere. This section explains each input variable.
       </p>
 
       <h3 style={S.h3}>Life Estimation Formula</h3>
@@ -296,10 +241,7 @@ export default function ElectricalFundamentals() {
       />
 
       <Callout type="danger" title="Danger — Indian Summer Impact on VRLA Battery Life">
-        India mein many Data Centers, especially Tier I/II, battery room cooling ko critical nahi
-        maante. Agar ambient 40°C regular hota hai, VRLA life 5-year rated se sirf ~1.5–2 years
-        actual reh jaati hai. Yeh surprise replacement cost aur runtime risk dono ka sabab banta
-        hai. Battery room HVAC N+1 redundancy mandatory hai, not optional.
+        In India, many Data Centers, especially Tier I/II, do not treat battery room cooling as critical. If the ambient is regularly 40°C, VRLA life from a 5-year rating stays only ~1.5–2 years actual. This causes both surprise replacement cost and runtime risk. Battery room HVAC N+1 redundancy is mandatory, not optional.
       </Callout>
 
       <h3 style={S.h3}>Input 2 — Depth of Discharge (DoD Factor)</h3>
@@ -319,10 +261,7 @@ export default function ElectricalFundamentals() {
       <h3 style={S.h3}>Input 3 — Charge Cycles</h3>
 
       <p style={S.p}>
-        Data Center batteries mein discharge events rare hote hain — real grid failures. Typical
-        Data Center: 1–4 significant discharge events per year. Cycle life rarely the limiting
-        factor for VRLA; temperature and float accuracy are more critical. For sites with frequent
-        power cuts (DG-dependent sites mein common in India), cycle count matters more.
+        Discharge events are rare for Data Center batteries — real grid failures. Typical Data Center: 1–4 significant discharge events per year. Cycle life is rarely the limiting factor for VRLA; temperature and float accuracy are more critical. For sites with frequent power cuts (common in India at DG-dependent sites), cycle count matters more.
       </p>
 
       <h3 style={S.h3}>Input 4 — Float Voltage Accuracy</h3>
@@ -421,9 +360,7 @@ export default function ElectricalFundamentals() {
       />
 
       <p style={S.p}>
-        Same battery, ideal conditions: 9 years. Difference between 1.4 years and 9 years is
-        purely operational discipline — temperature control aur correct voltage settings. Yeh
-        calculation HVAC investment justify karne ka strongest argument hai.
+        Same battery, ideal conditions: 9 years. The difference between 1.4 years and 9 years is purely operational discipline — temperature control and correct voltage settings. This calculation is the strongest argument for justifying HVAC investment.
       </p>
     </>
   );

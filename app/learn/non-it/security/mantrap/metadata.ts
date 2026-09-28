@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Mantrap (Airlock) in Data Centers — Complete Engineering Guide | Behind The Tech",
   description:
-    "Data Center mantrap kaise kaam karta hai — door interlock, occupancy detection, anti-tailgating, emergency release, fire integration, troubleshooting. Beginner se O&M engineer tak.",
+    "How a Data Center mantrap works — door interlock, occupancy detection, anti-tailgating, emergency release, fire integration, troubleshooting. From beginner to O&M engineer.",
   keywords: [
     "mantrap data center",
     "airlock data center",
@@ -13,8 +13,9 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Mantrap (Airlock) in Data Centers — Complete Engineering Guide",
-    description: "Door interlock se occupancy detection tak — Data Center mantrap ka complete engineering guide.",
+    description: "From door interlock to occupancy detection — the complete engineering guide to the Data Center mantrap.",
     url: "https://behindthetech.in/learn/non-it/security/mantrap",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -22,35 +23,42 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Mantrap in Data Centers — Behind The Tech",
-    description: "Data Center mantrap — interlock logic, anti-tailgating, emergency release aur troubleshooting.",
+    description: "Data Center mantrap — interlock logic, anti-tailgating, emergency release and troubleshooting.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/security/mantrap" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/security/mantrap",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/security/mantrap",
+      hi: "https://behindthetech.in/hi/learn/non-it/security/mantrap",
+      "x-default": "https://behindthetech.in/learn/non-it/security/mantrap",
+    },
+  },
 };
 
 export const faqs = [
   {
-    q: "Mantrap aur normal access control door mein kya fundamental difference hai?",
-    a: "Normal access control door mein sirf ek door hota hai — credential present karo aur andar jaao. Tailgating prevent karne ka koi mechanical mechanism nahi. Mantrap mein do interlocked doors hote hain — sirf ek baar ek hi door open ho sakta hai. Agar Door 1 khuli hai to Door 2 mechanically locked rehti hai — aur vice versa. Ye arrangement ensure karta hai ki har person individually authenticate ho ek controlled space mein.",
+    q: "What is the fundamental difference between a mantrap and a normal access control door?",
+    a: "A normal access control door has only one door — present a credential and go in. There is no mechanical mechanism to prevent tailgating. A mantrap has two interlocked doors — only one door can be open at a time. If Door 1 is open, Door 2 stays mechanically locked — and vice versa. This arrangement ensures that every person is individually authenticated in a controlled space.",
   },
   {
-    q: "Mantrap mein occupancy sensor kyun lagta hai?",
-    a: "Occupancy sensor (PIR ya weight sensor) mantrap ke andar detect karta hai ki kitne log present hain. Ek se zyada log andar aane pe (tailgating attempt) system second door open nahi karta — alarm generate karta hai. Without occupancy detection, ek authorized person door open kare aur doosra unauthorised person saath andar ghus jaaye — mantrap ka security purpose defeat ho jaata hai.",
+    q: "Why is an occupancy sensor installed in a mantrap?",
+    a: "The occupancy sensor (PIR or weight sensor) detects how many people are present inside the mantrap. When more than one person comes in (tailgating attempt), the system does not open the second door — it generates an alarm. Without occupancy detection, an authorized person opens the door and a second unauthorized person slips in with them — the security purpose of the mantrap is defeated.",
   },
   {
-    q: "Fire alarm pe mantrap kaise behave karta hai?",
-    a: "Fire alarm pe sab doors immediately open ho jaani chahiye — evacuation path block nahi honi chahiye. Fail-safe configuration: power cut ya fire alarm signal pe dono doors open ho jaate hain. Ye life safety requirement hai aur fire code compliance ke liye mandatory hai. Controller ya PLC logic fire alarm input pe interlock override karta hai. Ye integration commissioning ke time verify karo aur regularly test karo.",
+    q: "How does a mantrap behave on a fire alarm?",
+    a: "On a fire alarm all doors must open immediately — the evacuation path must not be blocked. Fail-safe configuration: on a power cut or fire alarm signal both doors open. This is a life safety requirement and mandatory for fire code compliance. The controller or PLC logic overrides the interlock on the fire alarm input. Verify this integration at the time of commissioning and test it regularly.",
   },
   {
-    q: "Mantrap mein koi andar phase ja jaaye aur bahar nahi aa sake to kya karna chahiye?",
-    a: "Mantrap mein manual emergency release hona chahiye — typically red break-glass switch ya manual override. Security operator remote release bhi kar sakta hai VMS/access control interface se. Andar phase phansa hua hai to: remotely door release karo, ya security staff manually jaake override karo. Intercom bhi install hona chahiye — andar phansne pe communication possible ho. Emergency release procedure staff training mein include karo.",
+    q: "What should be done if someone gets stuck inside the mantrap and cannot come out?",
+    a: "A mantrap must have a manual emergency release — typically a red break-glass switch or manual override. The security operator can also do a remote release from the VMS/access control interface. If someone is stuck inside: release the door remotely, or security staff should go and override manually. An intercom must also be installed — so communication is possible when someone is stuck inside. Include the emergency release procedure in staff training.",
   },
   {
-    q: "Mantrap CCTV se kyun integrate karna zaroori hai?",
-    a: "Mantrap ek controlled entry point hai — yahaan ki footage forensic evidence ke liye critical hai. CCTV WDR cameras mantrap mein face clearly capture karti hain. Har access event pe automatic camera recording aur snapshot zaroori hai. Tailgating attempt ya security alert pe instant footage review important hai. Bina CCTV ke mantrap entry log audit trail incomplete hoti hai.",
+    q: "Why is it essential to integrate the mantrap with CCTV?",
+    a: "A mantrap is a controlled entry point — its footage is critical for forensic evidence. CCTV WDR cameras capture faces clearly in the mantrap. Automatic camera recording and a snapshot on every access event are essential. Instant footage review is important on a tailgating attempt or security alert. Without CCTV, the mantrap entry log audit trail is incomplete.",
   },
   {
-    q: "Single-door vs double-door mantrap mein kya choose karein?",
-    a: "Single-door mantrap kuch vendors offer karte hain jahan ek door + inner cage/turnstile combination hoti hai — smaller footprint. Traditional double-door mantrap full two separate doors aur enclosed vestibule space deta hai — more space lekin stronger anti-tailgating. Data center high-security entry ke liye traditional double-door mantrap preferred hai. Space constraints mein single-door alternatives evaluate karo — lekin occupancy detection maintain karo.",
+    q: "What should you choose between a single-door and a double-door mantrap?",
+    a: "Some vendors offer a single-door mantrap where there is a door + inner cage/turnstile combination — smaller footprint. The traditional double-door mantrap gives two full separate doors and an enclosed vestibule space — more space but stronger anti-tailgating. For data center high-security entry the traditional double-door mantrap is preferred. Under space constraints evaluate single-door alternatives — but maintain occupancy detection.",
   },
 ];
 

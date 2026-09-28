@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(stsMetadata);
+const baseMetadata = buildPageMetadata(stsMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: stsMetadata.canonicalUrl,
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/electrical/sts",
+      hi: "https://behindthetech.in/hi/learn/non-it/electrical/sts",
+      "x-default": "https://behindthetech.in/learn/non-it/electrical/sts",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: stsMetadata.title,

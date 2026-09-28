@@ -8,16 +8,16 @@ export default function OperationsAndClosing() {
   return (
     <>
       <h2 id="remote-monitoring" style={S.h2}>Remote Monitoring</h2>
-      <p style={S.p}>iPDU ki killer feature hai remote monitoring — kisi bhi jagah se, browser ya management system se, real-time rack power status dekhna.</p>
-      <p style={S.p}>Practical example: NOC engineer raat 2 baje Delhi mein baith ke Mumbai Data Center ke Rack R-21 ka outlet-level power consumption dekh sakta hai. Koi field trip required nahi.</p>
-      <Figure caption="Fig 3 — iPDU Communication Architecture: SNMP se DCIM integration (IT team), Modbus se BMS integration (Facilities team), Environmental sensors, aur Outlet monitoring — sab ek iPDU se.">
+      <p style={S.p}>The iPDU's killer feature is remote monitoring — seeing real-time rack power status from anywhere, via a browser or management system.</p>
+      <p style={S.p}>Practical example: a NOC engineer sitting in Delhi at 2 AM can see the outlet-level power consumption of Rack R-21 in the Mumbai Data Center. No field trip required.</p>
+      <Figure caption="Fig 3 — iPDU Communication Architecture: DCIM integration via SNMP (IT team), BMS integration via Modbus (Facilities team), Environmental sensors and Outlet monitoring — all from one iPDU.">
         <IpduCommunicationDiagram />
       </Figure>
-      <p style={S.p}>Remote monitoring ka data multiple systems ko simultaneously serve karta hai — DCIM, BMS, NMS, ticketing systems, capacity planning tools. iPDU ek source of truth ban jaata hai rack-level power ke liye.</p>
+      <p style={S.p}>Remote monitoring data serves multiple systems simultaneously — DCIM, BMS, NMS, ticketing systems, capacity planning tools. The iPDU becomes a source of truth for rack-level power.</p>
 
       <h2 id="bms-integration" style={S.h2}>BMS Integration</h2>
-      <p style={S.p}>BMS (Building Management System) facility team ka monitoring platform hai. PDU se BMS integration typically Modbus TCP ya BACnet ke through hoti hai.</p>
-      <p style={S.p}>BMS ko kya chahiye PDU se:</p>
+      <p style={S.p}>The BMS (Building Management System) is the facility team's monitoring platform. PDU-to-BMS integration typically happens through Modbus TCP or BACnet.</p>
+      <p style={S.p}>What the BMS needs from the PDU:</p>
       <ul style={S.ul}>
         <li>Total power per PDU (kW)</li>
         <li>Input current per phase (Amperes)</li>
@@ -26,13 +26,13 @@ export default function OperationsAndClosing() {
         <li>Over-current alarm</li>
         <li>PDU online/offline status</li>
       </ul>
-      <p style={S.p}>BMS yeh data aggregate karta hai across all PDUs — total Data Center power consumption calculate karta hai, PUE monitor karta hai, aur facility-level alarms generate karta hai.</p>
+      <p style={S.p}>The BMS aggregates this data across all PDUs — calculates total Data Center power consumption, monitors PUE and generates facility-level alarms.</p>
       <Callout type="best-practice" title="BMS vs DCIM — Different Consumers, Same Data">
-        Facilities team BMS use karti hai: &quot;Is Data Center ka total power kitna hai? Cooling efficiency kaisi hai? Generator load kya hai?&quot; IT/Operations team DCIM use karti hai: &quot;Rack R-21 mein kitna headroom hai? Outlet 14 pe kaunsa server hai? Is rack ki average load trend kya hai?&quot; Dono ke questions alag hain — dono valid hain — isliye dono systems maintain karo.
+        The facilities team uses the BMS: &quot;What is the total power of this Data Center? How is the cooling efficiency? What is the generator load?&quot; The IT/Operations team uses DCIM: &quot;How much headroom is in Rack R-21? Which server is on Outlet 14? What is the average load trend of this rack?&quot; Their questions are different — both are valid — so maintain both systems.
       </Callout>
 
       <h2 id="dcim-integration" style={S.h2}>DCIM Integration</h2>
-      <p style={S.p}>DCIM (Data Center Infrastructure Management) platform iPDU ka primary consumer hai. DCIM mein iPDU data se yeh sab visible hota hai:</p>
+      <p style={S.p}>The DCIM (Data Center Infrastructure Management) platform is the primary consumer of the iPDU. In DCIM, all of this becomes visible from iPDU data:</p>
       <ComparisonTable
         headers={["DCIM Feature", "iPDU Data Used", "Business Value"]}
         rows={[
@@ -46,10 +46,10 @@ export default function OperationsAndClosing() {
           ["PUE calculation", "IT load from PDU data + total facility", "Efficiency reporting"],
         ]}
       />
-      <p style={S.p}>Real example: Engineers Rack R-21 mein naya GPU server deploy karna chahte hain jisme 3kW power hai. DCIM se check karo: PDU-A current load 18A, PDU-B current load 19A, rated 32A each. Available headroom: PDU-A 7.6A (1.75 kW), PDU-B 6.6A (1.52 kW). New GPU server 3kW require karta hai — PDU-A headroom insufficient hai. Action: circuit upgrade ya load redistribution required before deployment.</p>
+      <p style={S.p}>Real example: engineers want to deploy a new GPU server of 3kW in Rack R-21. Check in DCIM: PDU-A current load 18A, PDU-B current load 19A, rated 32A each. Available headroom: PDU-A 7.6A (1.75 kW), PDU-B 6.6A (1.52 kW). The new GPU server requires 3kW — PDU-A headroom is insufficient. Action: circuit upgrade or load redistribution required before deployment.</p>
 
       <h2 id="snmp-modbus-mqtt" style={S.h2}>SNMP, Modbus & MQTT</h2>
-      <p style={S.p}>iPDU teen primary communication protocols support karta hai. Har protocol ka alag use case hai.</p>
+      <p style={S.p}>An iPDU supports three primary communication protocols. Each protocol has a different use case.</p>
       <ComparisonTable
         headers={["Protocol", "Type", "Primary Use", "Data Center Application"]}
         rows={[
@@ -63,28 +63,28 @@ export default function OperationsAndClosing() {
         ]}
       />
       <h3 style={S.h3}>SNMP — Network Management Protocol</h3>
-      <p style={S.p}>SNMP sabse commonly used protocol hai iPDU monitoring ke liye. PDU ek SNMP agent hota hai — MIB (Management Information Base) file define karti hai kaunse OIDs (data points) available hain. NMS ya DCIM in OIDs ko poll karta hai.</p>
-      <p style={S.p}>SNMP v3 use karo — authentication aur encryption ke saath. SNMP v1/v2c plain text mein data send karta hai — security risk hai production environments mein.</p>
+      <p style={S.p}>SNMP is the most commonly used protocol for iPDU monitoring. The PDU is an SNMP agent — the MIB (Management Information Base) file defines which OIDs (data points) are available. The NMS or DCIM polls these OIDs.</p>
+      <p style={S.p}>Use SNMP v3 — with authentication and encryption. SNMP v1/v2c sends data in plain text — a security risk in production environments.</p>
       <h3 style={S.h3}>Modbus — Industrial Protocol</h3>
-      <p style={S.p}>Modbus TCP BMS ke saath integration ke liye standard choice hai. Register map per OEM alag hota hai — integration ke time vendor Modbus register document maango. Modbus polling-based hai — BMS har minute ya 5 minutes pe data read karta hai.</p>
+      <p style={S.p}>Modbus TCP is the standard choice for integration with the BMS. The register map differs per OEM — ask the vendor for the Modbus register document at integration time. Modbus is polling-based — the BMS reads data every minute or every 5 minutes.</p>
       <h3 style={S.h3}>MQTT — Modern Lightweight Protocol</h3>
-      <p style={S.p}>MQTT emerging protocol hai modern infrastructure ke liye. PDU data broker pe publish karta hai — DCIM ya cloud platform subscribe karta hai aur instantly data receive karta hai. SNMP polling se better for high-frequency monitoring — lower bandwidth, lower latency.</p>
+      <p style={S.p}>MQTT is an emerging protocol for modern infrastructure. The PDU publishes data to a broker — the DCIM or cloud platform subscribes and receives data instantly. Better than SNMP polling for high-frequency monitoring — lower bandwidth, lower latency.</p>
 
       <h2 id="asset-identification" style={S.h2}>RFID & Asset Identification</h2>
-      <p style={S.p}>Advanced iPDU mein per-outlet asset tagging capability hoti hai. Physical audit mein har rack check karne ki jagah digital asset map maintain hota hai.</p>
+      <p style={S.p}>Advanced iPDUs have per-outlet asset tagging capability. Instead of checking every rack in a physical audit, a digital asset map is maintained.</p>
       <ComparisonTable
         headers={["Method", "How It Works", "Advantage"]}
         rows={[
-          ["Manual tagging", "DCIM mein manually enter karo outlet → server mapping", "Simple, no extra hardware"],
-          ["USB barcode scanner", "Server asset tag scan karo directly on PDU", "Fast, reduces manual errors"],
+          ["Manual tagging", "Manually enter the outlet → server mapping in DCIM", "Simple, no extra hardware"],
+          ["USB barcode scanner", "Scan the server asset tag directly on the PDU", "Fast, reduces manual errors"],
           ["RFID on cables", "Smart patch cord with RFID chip — PDU auto-detects", "Fully automated, no manual entry"],
-          ["QR code per outlet", "PDU app se QR scan karo", "Mobile-friendly auditing"],
+          ["QR code per outlet", "Scan the QR with the PDU app", "Mobile-friendly auditing"],
         ]}
       />
-      <p style={S.p}>Practical benefit: maintenance team physically jaata hai Rack R-21 ke paas, DCIM app open karta hai — instantly dikhta hai Outlet 14 pe kaunsa server hai, last month ka power consumption kya tha, aur kaunsa ticket last time raise hua tha. Zero guesswork.</p>
+      <p style={S.p}>Practical benefit: the maintenance team physically goes to Rack R-21 and opens the DCIM app — they instantly see which server is on Outlet 14, what its power consumption was last month, and which ticket was raised last time. Zero guesswork.</p>
 
       <h2 id="oem-comparison" style={S.h2}>OEM Comparison</h2>
-      <p style={S.p}>PDU market mein kai established players hain. Har OEM ki apni strength aur typical use case hai.</p>
+      <p style={S.p}>There are many established players in the PDU market. Each OEM has its own strength and typical use case.</p>
       <ComparisonTable
         headers={["OEM", "Key Product Line", "Strengths", "India Presence", "Note"]}
         rows={[
@@ -98,7 +98,7 @@ export default function OperationsAndClosing() {
         ]}
       />
       <Callout type="important" title="OEM Selection Criteria">
-        OEM select karte waqt dekho: (1) Existing DCIM platform compatibility — kya PDU ka MIB aur driver available hai? (2) India service support — replacement parts aur on-site support kitni quickly milti hai? (3) Firmware update track record — security patches kitni regularly aate hain? (4) Warranty terms — advance replacement available hai ya repair-based? Cheapest PDU always best choice nahi hoti.
+        When selecting an OEM, look at: (1) Existing DCIM platform compatibility — is the PDU's MIB and driver available? (2) India service support — how quickly are replacement parts and on-site support available? (3) Firmware update track record — how regularly do security patches come? (4) Warranty terms — is advance replacement available or is it repair-based? The cheapest PDU is not always the best choice.
       </Callout>
 
       <h2 id="failure-modes" style={S.h2}>Failure Modes</h2>
@@ -115,7 +115,7 @@ export default function OperationsAndClosing() {
         ]}
       />
       <Callout type="danger" title="Danger — Partial Power Loss Worst Case">
-        Branch breaker trip ka worst case: ek dual-corded server jo both PSUs ko same PDU ke same branch pe connect kare. Agar branch trip ho toh server ko lagta hai single point of failure toh PSU-A pe jaao — lekin woh bhi same branch pe hai. Server crash. Isliye dual-corded server ke PSU-A aur PSU-B ko different PDUs pe (A path aur B path) connect karo — aur different branches pe.
+        The worst case of a branch breaker trip: a dual-corded server that connects both PSUs to the same branch of the same PDU. If the branch trips, the server thinks there is a single point of failure, so it moves to PSU-A — but that is also on the same branch. Server crash. That is why PSU-A and PSU-B of a dual-corded server should be connected to different PDUs (A path and B path) — and on different branches.
       </Callout>
 
       <h2 id="preventive-maintenance" style={S.h2}>Preventive Maintenance</h2>
@@ -130,7 +130,7 @@ export default function OperationsAndClosing() {
         ]}
       />
       <Callout type="maintenance" title="Maintenance Tip — Never Skip Thermal Imaging">
-        PDU input terminals aur bus bar connections thermal hotspots develop karte hain over time — loose connections, oxidation, aur high-resistance joints se. Yeh hotspots visual inspection se catch nahi hote lekin IR camera se clearly visible hote hain. Annual ya half-yearly thermal imaging PDU fire incidents prevent karta hai.
+        PDU input terminals and bus bar connections develop thermal hotspots over time — from loose connections, oxidation and high-resistance joints. These hotspots are not caught by visual inspection but are clearly visible with an IR camera. Annual or half-yearly thermal imaging prevents PDU fire incidents.
       </Callout>
 
       <h2 id="pdu-vs-ipdu" style={S.h2}>PDU vs iPDU</h2>
@@ -148,10 +148,10 @@ export default function OperationsAndClosing() {
           ["Tier recommendation", "Tier I/II", "Tier III/IV mandatory"],
         ]}
       />
-      <p style={S.p}>Tier III aur IV Data Centers ke liye iPDU essentially mandatory hai — not optional. Remote operations, capacity planning accuracy, aur outlet-level visibility bina iPDU ke possible nahi hai at scale.</p>
+      <p style={S.p}>For Tier III and IV Data Centers an iPDU is essentially mandatory — not optional. Remote operations, capacity planning accuracy and outlet-level visibility are not possible at scale without an iPDU.</p>
 
       <h2 id="pdu-vs-rpp" style={S.h2}>PDU vs RPP</h2>
-      <p style={S.p}>RPP (Remote Power Panel) aur PDU dono distribution devices hain — lekin hierarchy mein alag level pe hain.</p>
+      <p style={S.p}>The RPP (Remote Power Panel) and the PDU are both distribution devices — but they sit at different levels in the hierarchy.</p>
       <ComparisonTable
         headers={["Parameter", "PDU (Rack Power Distribution)", "RPP (Remote Power Panel)"]}
         rows={[
@@ -165,25 +165,25 @@ export default function OperationsAndClosing() {
           ["Replaces", "Nothing — always needed", "Long cable runs from UPS to racks"],
         ]}
       />
-      <Figure caption="Fig 4 — Rack PDU Dual Distribution: PDU-A (A path, blue) aur PDU-B (B path, red) ek hi rack ke left aur right side pe. Dual-corded servers dono se simultaneously powered hain.">
+      <Figure caption="Fig 4 — Rack PDU Dual Distribution: PDU-A (A path, blue) and PDU-B (B path, red) on the left and right side of the same rack. Dual-corded servers are powered from both simultaneously.">
         <RackPduDistributionDiagram />
       </Figure>
 
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
       <ul style={S.ul}>
-        <li><strong>PDU Data Center ka last-mile power distribution device hai</strong> — UPS/STS se individual servers tak organized, protected, aur monitored power delivery.</li>
-        <li><strong>5 types hain</strong> — Basic, Metered, Monitored, Switched, Intelligent. Tier III/IV ke liye minimum Monitored, ideally iPDU.</li>
-        <li><strong>80% derating rule non-negotiable hai</strong> — 32A PDU ko 25.6A se zyada continuous load nahi dena chahiye.</li>
-        <li><strong>Dual-corded servers — PSU-A aur PSU-B alag PDUs pe</strong> — aur alag branches pe. Same branch pe dono connect karna redundancy nullify kar deta hai.</li>
-        <li><strong>iPDU per-outlet current, voltage, kWh, power factor, peak load sab track karta hai</strong> — yeh DCIM capacity planning ka foundation hai.</li>
-        <li><strong>BMS aur DCIM dono iPDU se data lete hain — alag purposes ke liye</strong> — Facilities team total power dekhti hai, IT team rack-level detail dekhti hai.</li>
-        <li><strong>SNMP v3 for IT integration, Modbus TCP for BMS integration</strong> — dono simultaneously configure karo modern iPDU mein.</li>
-        <li><strong>Temperature probe at rack inlet mandatory hai Tier III/IV mein</strong> — ASHRAE 27°C limit real-time monitor honi chahiye per rack.</li>
-        <li><strong>Thermal imaging annually mandatory hai</strong> — PDU input terminals aur bus connections fire hazard ban sakte hain bina visible damage ke.</li>
-        <li><strong>iPDU khareedne se pehle DCIM compatibility verify karo</strong> — MIB file, driver, aur API support jo tumhara existing DCIM platform support kare.</li>
+        <li><strong>The PDU is the Data Center's last-mile power distribution device</strong> — organized, protected and monitored power delivery from the UPS/STS to individual servers.</li>
+        <li><strong>There are 5 types</strong> — Basic, Metered, Monitored, Switched, Intelligent. For Tier III/IV the minimum is Monitored, ideally an iPDU.</li>
+        <li><strong>The 80% derating rule is non-negotiable</strong> — a 32A PDU should not be given more than 25.6A of continuous load.</li>
+        <li><strong>Dual-corded servers — PSU-A and PSU-B on separate PDUs</strong> — and on separate branches. Connecting both on the same branch nullifies redundancy.</li>
+        <li><strong>An iPDU tracks per-outlet current, voltage, kWh, power factor and peak load</strong> — this is the foundation of DCIM capacity planning.</li>
+        <li><strong>BMS and DCIM both take data from the iPDU — for different purposes</strong> — the Facilities team looks at total power, the IT team looks at rack-level detail.</li>
+        <li><strong>SNMP v3 for IT integration, Modbus TCP for BMS integration</strong> — configure both simultaneously in a modern iPDU.</li>
+        <li><strong>A temperature probe at the rack inlet is mandatory in Tier III/IV</strong> — the ASHRAE 27°C limit should be monitored in real time per rack.</li>
+        <li><strong>Thermal imaging annually is mandatory</strong> — PDU input terminals and bus connections can become a fire hazard without visible damage.</li>
+        <li><strong>Verify DCIM compatibility before buying an iPDU</strong> — MIB file, driver and API support that your existing DCIM platform supports.</li>
       </ul>
-      <p style={S.p}>PDU article padhne ke baad natural next step hai <TopicLink slug="ups" variant="inline" /> aur <TopicLink slug="sts" variant="inline" /> ko poori picture mein samajhna — yeh teeno mila ke Data Center ka complete power distribution chain banate hain.</p>
-      <p style={S.p}>Battery backup samajhne ke liye <TopicLink slug="battery-bank" variant="inline" /> article detailed coverage deta hai.</p>
+      <p style={S.p}>After reading the PDU article, the natural next step is to understand the <TopicLink slug="ups" variant="inline" /> and <TopicLink slug="sts" variant="inline" /> in the full picture — together these three form the Data Center's complete power distribution chain.</p>
+      <p style={S.p}>To understand battery backup, the <TopicLink slug="battery-bank" variant="inline" /> article gives detailed coverage.</p>
     </>
   );
 }

@@ -20,16 +20,15 @@ export default function BatteryRoomDesign() {
       <h2 id="battery-room-design" style={S.h2}>Battery Room Design</h2>
 
       <SectionIntro
-        quickAnswer="Battery room sirf ek room nahi hai jisme batteries rakh do — yeh ek engineered space hai specific HVAC, ventilation, safety, access, aur fire protection requirements ke saath. Galat battery room design = shortened battery life, safety hazards, aur compliance issues."
-        engineerTip="Battery room design mein sabse often missed item: H₂ sensor aur exhaust fan ka interlock. Agar H₂ alarm trigger ho toh HVAC exhaust fan automatically maximum speed pe jaana chahiye aur fresh air inlet open hona chahiye — manual response pe depend mat karo. Yeh interlock commissioning checklist mein explicitly verify karo."
-        keyTakeaway="Battery room ka design directly battery life aur safety ko control karta hai — yeh ek passive infrastructure element nahi, yeh ek active life-safety system hai."
+        quickAnswer="A battery room is not just a room where you put batteries — it is an engineered space with specific HVAC, ventilation, safety, access and fire protection requirements. Wrong battery room design = shortened battery life, safety hazards and compliance issues."
+        engineerTip="The most often missed item in battery room design: the interlock between the H₂ sensor and the exhaust fan. If the H₂ alarm triggers, the HVAC exhaust fan should automatically go to maximum speed and the fresh air inlet should open — do not depend on a manual response. Explicitly verify this interlock in the commissioning checklist."
+        keyTakeaway="Battery room design directly controls battery life and safety — it is not a passive infrastructure element, it is an active life-safety system."
       />
 
       <h3 style={S.h3}>Room Location — Where in the Building</h3>
 
       <p style={S.p}>
-        Battery room location select karna UPS room ke relative position, structural loading,
-        aur fire safety dono considerations se governed hota hai.
+        Selecting the battery room location is governed by its position relative to the UPS room, structural loading and fire safety considerations.
       </p>
 
       <ComparisonTable
@@ -43,17 +42,13 @@ export default function BatteryRoomDesign() {
       />
 
       <Callout type="important" title="Important — DC Cable Length Directly Impacts Battery Room Location">
-        Battery room aur UPS ke beech DC cable run jitna lamba hoga, voltage drop utna zyada.
-        Target: 10m se kam. 30m se zyada cable run mein cable cross-section significantly
-        larger karna padta hai (expensive copper) aur losses increase hoti hain. Location
-        decision pe cable run length ek primary constraint hai.
+        The longer the DC cable run between the battery room and the UPS, the greater the voltage drop. Target: less than 10m. With a cable run above 30m, the cable cross-section has to be significantly larger (expensive copper) and losses increase. Cable run length is a primary constraint in the location decision.
       </Callout>
 
       <h3 style={S.h3}>Temperature Control — HVAC Requirements</h3>
 
       <p style={S.p}>
-        Target temperature: <strong>20–25°C year-round</strong>. Isse zyada = reduced battery life.
-        Isse kam (below 10°C) = reduced available capacity. Both are harmful.
+        Target temperature: <strong>20–25°C year-round</strong>. Higher than this = reduced battery life. Lower than this (below 10°C) = reduced available capacity. Both are harmful.
       </p>
 
       <ComparisonTable
@@ -71,9 +66,7 @@ export default function BatteryRoomDesign() {
       <h3 style={S.h3}>Ventilation Design</h3>
 
       <p style={S.p}>
-        Battery room ventilation ke do requirements hain: H₂ dilution (safety) aur heat removal
-        (battery life). Yeh dono sometimes same HVAC system se handle hote hain, sometimes
-        alag systems chahiye.
+        Battery room ventilation has two requirements: H₂ dilution (safety) and heat removal (battery life). Sometimes both are handled by the same HVAC system; sometimes separate systems are needed.
       </p>
 
       <ComparisonTable
@@ -87,10 +80,7 @@ export default function BatteryRoomDesign() {
       />
 
       <Callout type="danger" title="Danger — H₂ Exhaust Must Go Outside, Not to Common Areas">
-        H₂ exhaust duct kisi bhi common area, return air plenum, ya adjacent room mein
-        discharge mat karo. H₂ lighter than air hai — ceiling plenum ya stairwell mein
-        accumulate ho sakta hai. Direct outside discharge mandatory hai, above roof level
-        preferred. Fire Authority requires this verification before NOC issuance.
+        Do not discharge the H₂ exhaust duct into any common area, return air plenum or adjacent room. H₂ is lighter than air — it can accumulate in a ceiling plenum or stairwell. Direct outside discharge is mandatory, above roof level preferred. Fire Authority requires this verification before NOC issuance.
       </Callout>
 
       <h3 style={S.h3}>Gas Detection — H₂ Sensors</h3>
@@ -120,34 +110,26 @@ export default function BatteryRoomDesign() {
       />
 
       <Callout type="important" title="Important — NFPA 855 for Li-ion">
-        Agar Li-ion battery room India mein design kar rahe ho, NFPA 855 compliance increasingly
-        required ho rahi hai — especially for international operators, insurance underwriters,
-        aur export-oriented clients. Local fire authority se pre-approval lo before finalizing
-        Li-ion room design. Requirements vary by Authority Having Jurisdiction (AHJ).
+        If you are designing a Li-ion battery room in India, NFPA 855 compliance is increasingly being required — especially for international operators, insurance underwriters and export-oriented clients. Get pre-approval from the local fire authority before finalizing the Li-ion room design. Requirements vary by Authority Having Jurisdiction (AHJ).
       </Callout>
 
       <h3 style={S.h3}>Earthing System for Battery Room</h3>
 
       <p style={S.p}>
-        Battery room mein do earthing systems maintain hote hain:
+        Two earthing systems are maintained in the battery room:
       </p>
 
       <ul style={S.ul}>
         <li>
-          <strong>Protective Earth (PE):</strong> Battery racks, cabinets, metalwork sab
-          protective earth se connected hote hain — IS 3043 ke according. Yeh shock protection
-          ke liye hai.
+          <strong>Protective Earth (PE):</strong> Battery racks, cabinets and metalwork are all connected to protective earth — as per IS 3043. This is for shock protection.
         </li>
         <li>
-          <strong>DC Functional Earth (floating monitor):</strong> Floating DC bus ke saath Earth
-          Fault Monitor (EFM) connected rehta hai — lekin DC bus itself earth se directly
-          connected nahi hota. EFM insulation resistance monitor karta hai.
+          <strong>DC Functional Earth (floating monitor):</strong> An Earth Fault Monitor (EFM) stays connected with the floating DC bus — but the DC bus itself is not directly connected to earth. The EFM monitors insulation resistance.
         </li>
       </ul>
 
       <p style={S.p}>
-        Earthing ke detailed coverage ke liye <TopicLink slug="earthing" variant="inline" /> article
-        dekho.
+        For detailed coverage of earthing, see the <TopicLink slug="earthing" variant="inline" /> article.
       </p>
 
       <h3 style={S.h3}>Safety Signage and Access Control</h3>
@@ -185,8 +167,7 @@ export default function BatteryRoomDesign() {
       <h3 style={S.h3}>Battery Rack / Shelf Selection</h3>
 
       <p style={S.p}>
-        Battery rack structural integrity critical hai — heavy VRLA cells par aana ek catastrophic
-        failure create karta hai (battery acid spill + electrical fault + structural damage).
+        Battery rack structural integrity is critical — heavy VRLA cells falling creates a catastrophic failure (battery acid spill + electrical fault + structural damage).
       </p>
 
       <ComparisonTable
@@ -201,12 +182,7 @@ export default function BatteryRoomDesign() {
       />
 
       <Callout type="best-practice" title="Best Practice — Seismic Considerations for India">
-        India ke kuch zones (Zone III, IV, V — Maharashtra coast, Northeast, Himalayan belt)
-        mein seismic considerations mandatory hain. Battery racks ko floor se properly anchored
-        hona chahiye aur cells racks pe secured hone chahiye. Seismic bracing ke bina, earthquake
-        pe battery rack topple ho sakta hai — catastrophic acid spill, electrical short, aur
-        fire risk create karta hai. Structural engineer se seismic zone specify karo aur
-        appropriate anchoring design karo.
+        In some zones of India (Zone III, IV, V — Maharashtra coast, Northeast, Himalayan belt), seismic considerations are mandatory. Battery racks must be properly anchored to the floor and cells must be secured on the racks. Without seismic bracing, a battery rack can topple in an earthquake — creating a catastrophic acid spill, electrical short and fire risk. Specify the seismic zone with the structural engineer and design appropriate anchoring.
       </Callout>
     </>
   );

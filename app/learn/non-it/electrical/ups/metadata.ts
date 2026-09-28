@@ -24,7 +24,20 @@ import {
 
 // ─── Next.js Metadata API — generated from content, zero hardcoding ───────────
 
-export const metadata: Metadata = buildPageMetadata(upsMetadata);
+const baseMetadata = buildPageMetadata(upsMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: upsMetadata.canonicalUrl,
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/electrical/ups",
+      hi: "https://behindthetech.in/hi/learn/non-it/electrical/ups",
+      "x-default": "https://behindthetech.in/learn/non-it/electrical/ups",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, locale: "en_US" },
+};
 
 // ─── JSON-LD structured data — generated from content, zero hardcoding ────────
 

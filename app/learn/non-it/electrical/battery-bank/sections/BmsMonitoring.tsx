@@ -19,17 +19,15 @@ export default function BmsMonitoring() {
       <h2 id="bms" style={S.h2}>Battery Management System (BMS)</h2>
 
       <SectionIntro
-        quickAnswer="BMS battery bank ka brain hai — har cell ki voltage, temperature, aur health continuously monitor karta hai, alarms trigger karta hai, aur Li-ion ke case mein emergency cutoff bhi karta hai. VRLA ke liye BMS optional tha — Li-ion ke liye mandatory hai."
-        engineerTip="VRLA installations mein BMS ki sabse common galti: per-string monitoring karna lekin per-cell monitoring skip karna. String voltage normal lag sakti hai jab ek cell internally shorted ho aur doosra cell overcharged ho — dono cancel out ho jaate hain string level pe. Per-cell monitoring mandatory hai production Data Centers mein."
-        keyTakeaway="BMS bina modern battery bank 'flying blind' hai — aap nahi jaante kab failure aane waali hai jab tak catastrophic failure actually ho."
+        quickAnswer="The BMS is the brain of the battery bank — it continuously monitors every cell's voltage, temperature and health, triggers alarms, and in the case of Li-ion also performs an emergency cutoff. For VRLA a BMS was optional — for Li-ion it is mandatory."
+        engineerTip="The most common BMS mistake in VRLA installations: doing per-string monitoring but skipping per-cell monitoring. String voltage can look normal when one cell is internally shorted and another cell is overcharged — the two cancel out at the string level. Per-cell monitoring is mandatory in production Data Centers."
+        keyTakeaway="A modern battery bank without a BMS is 'flying blind' — you do not know when failure is coming until a catastrophic failure actually happens."
       />
 
       <h3 style={S.h3}>BMS — What It Actually Does</h3>
 
       <p style={S.p}>
-        BMS ek dedicated monitoring aur protection system hai. Simple installations mein yeh ek
-        standalone unit hoti hai; complex Li-ion installations mein yeh multi-level hierarchy
-        hoti hai — cell level, module level, pack level.
+        A BMS is a dedicated monitoring and protection system. In simple installations it is a standalone unit; in complex Li-ion installations it is a multi-level hierarchy — cell level, module level, pack level.
       </p>
 
       <ComparisonTable
@@ -73,11 +71,8 @@ export default function BmsMonitoring() {
         ]}
       />
 
-      <Callout type="important" title="Important — BMS Thresholds Update Karo After Replacement">
-        Naya battery bank install karne ke baad, BMS thresholds aur baseline values update karna
-        mandatory hai. Puranay batteries ka baseline naye pe apply karna false alarms ya missed
-        real alarms dono cause karta hai. Commissioning ke time naya impedance baseline set karo
-        aur document karo.
+      <Callout type="important" title="Important — Update BMS Thresholds After Replacement">
+        After installing a new battery bank, updating the BMS thresholds and baseline values is mandatory. Applying the old batteries' baseline to the new ones causes both false alarms and missed real alarms. Set and document a new impedance baseline at commissioning.
       </Callout>
 
       <h3 style={S.h3}>Communication Protocols</h3>
@@ -94,10 +89,7 @@ export default function BmsMonitoring() {
       />
 
       <Callout type="best-practice" title="Best Practice — Open Protocol Priority">
-        BMS select karte waqt open protocol (Modbus ya SNMP) prefer karo over proprietary.
-        Proprietary protocols vendor lock-in create karte hain — future DCIM integration ya
-        BMS replacement expensive ho jaata hai. Modbus TCP + SNMP v3 combination most
-        interoperable approach hai for Indian Data Centers.
+        When selecting a BMS, prefer an open protocol (Modbus or SNMP) over a proprietary one. Proprietary protocols create vendor lock-in — future DCIM integration or BMS replacement becomes expensive. The Modbus TCP + SNMP v3 combination is the most interoperable approach for Indian Data Centers.
       </Callout>
 
       <h3 style={S.h3}>VRLA BMS vs Li-ion BMS — Key Differences</h3>
@@ -118,9 +110,7 @@ export default function BmsMonitoring() {
       <h3 style={S.h3}>BMS Integration with DCIM</h3>
 
       <p style={S.p}>
-        Modern Data Centers mein BMS data DCIM (Data Center Infrastructure Management) platform
-        mein integrate hota hai. DCIM battery bank data aggregates karta hai alongside cooling,
-        power, aur server infrastructure.
+        In modern Data Centers, BMS data is integrated into the DCIM (Data Center Infrastructure Management) platform. DCIM aggregates battery bank data alongside cooling, power and server infrastructure.
       </p>
 
       <ComparisonTable
@@ -135,11 +125,7 @@ export default function BmsMonitoring() {
       />
 
       <Callout type="interview" title="Interview Tip — BMS Question">
-        Common senior engineer interview question: &quot;VRLA battery bank mein BMS mandatory hai ya
-        optional?&quot; — Correct answer: IEEE 1188 per se mandate nahi karta comprehensive BMS for
-        VRLA, lekin Tier III/IV Data Center best practice dictates per-cell monitoring minimum.
-        Li-ion ke liye BMS absolutely mandatory hai — without BMS, Li-ion battery cannot be
-        safely operated. Always distinguish VRLA vs Li-ion when answering.
+        Common senior engineer interview question: &quot;Is a BMS mandatory or optional for a VRLA battery bank?&quot; — Correct answer: IEEE 1188 per se does not mandate a comprehensive BMS for VRLA, but Tier III/IV Data Center best practice dictates per-cell monitoring at minimum. For Li-ion, a BMS is absolutely mandatory — without a BMS, a Li-ion battery cannot be safely operated. Always distinguish VRLA vs Li-ion when answering.
       </Callout>
     </>
   );

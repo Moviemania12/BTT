@@ -11,7 +11,7 @@ export default function VisitorManagementPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="visitor-management" headings={HEADINGS} readingTimeMinutes={16}>
+      <ArticleLayout slug="visitor-management" headings={HEADINGS} readingTimeMinutes={16} lang="en" alternateHref="/hi/learn/non-it/security/visitor-management">
         <Basics />
         <AccessAndIntegration />
         <TroubleshootingAndClosing />

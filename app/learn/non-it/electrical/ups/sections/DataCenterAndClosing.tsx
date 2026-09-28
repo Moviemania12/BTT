@@ -21,10 +21,7 @@ export default function DataCenterAndClosing() {
       <h2 id="data-center-ups-architecture" style={S.h2}>Data Center UPS Architecture</h2>
 
       <p style={S.p}>
-        Data Center mein UPS sirf ek standalone device nahi hai — yeh poore electrical power chain ka
-        ek critical link hai: Grid → <TopicLink slug="transformer" variant="inline" /> → UPS →{" "}
-        <TopicLink slug="pdu" variant="inline" /> → Rack. Tier level decide karta hai kitna redundant
-        yeh chain hoga.
+        In a Data Center, the UPS is not just a standalone device — it is a critical link in the entire electrical power chain: Grid → <TopicLink slug="transformer" variant="inline" /> → UPS → <TopicLink slug="pdu" variant="inline" /> → Rack. The Tier level decides how redundant this chain will be.
       </p>
 
       <ComparisonTable
@@ -46,8 +43,7 @@ export default function DataCenterAndClosing() {
       <h2 id="ups-battery-room-layout" style={S.h2}>UPS Room & Battery Room Layout</h2>
 
       <p style={S.p}>
-        UPS aur battery room design mein safety, accessibility, aur thermal management teeno equally
-        important hain.
+        In UPS and battery room design, safety, accessibility and thermal management are all three equally important.
       </p>
 
       <ComparisonTable
@@ -62,35 +58,27 @@ export default function DataCenterAndClosing() {
       />
 
       <Callout type="best-practice" title="Best Practice — Separate Rooms When Possible">
-        Bade installations mein UPS aur battery ko separate rooms mein rakhna best practice hai —
-        battery room ki specific ventilation/temperature needs UPS room se different hoti hain, aur
-        separation fault containment bhi improve karta hai.
+        In large installations, keeping the UPS and battery in separate rooms is best practice — the battery room's specific ventilation/temperature needs are different from the UPS room, and separation also improves fault containment.
       </Callout>
 
       <h2 id="earthing-cable-sizing" style={S.h2}>Earthing & Cable Sizing</h2>
 
       <p style={S.p}>
-        UPS installation mein proper <TopicLink slug="earthing" variant="inline" /> aur cable sizing
-        dono safety aur performance ke liye critical hain.
+        In a UPS installation, proper <TopicLink slug="earthing" variant="inline" /> and cable sizing are both critical for safety and performance.
       </p>
 
       <p style={S.p}>
-        Cable sizing voltage drop, current carrying capacity, aur derating factors pe depend karta
-        hai — use the <strong>Cable Size Calculator</strong> aur <strong>Voltage Drop Calculator</strong>{" "}
-        (linked in this article&apos;s calculator toolkit) for project-specific sizing.
+        Cable sizing depends on voltage drop, current carrying capacity and derating factors — use the <strong>Cable Size Calculator</strong> and <strong>Voltage Drop Calculator</strong> (linked in this article&apos;s calculator toolkit) for project-specific sizing.
       </p>
 
       <Callout type="warning" title="Warning — Never Skip Earthing Verification">
-        UPS DC bus voltage (192V-410V typical) dangerous hai — proper earthing system fault current
-        ke liye safe path provide karta hai. Earth resistance verification (target &lt;1 Ohm per IS
-        3043) installation ke baad aur periodically dono verify karna chahiye.
+        UPS DC bus voltage (192V-410V typical) is dangerous — a proper earthing system provides a safe path for fault current. Earth resistance verification (target &lt;1 Ohm per IS 3043) should be done both after installation and periodically.
       </Callout>
 
       <h2 id="ups-efficiency-harmonics" style={S.h2}>Efficiency, Power Factor & Harmonics</h2>
 
       <p style={S.p}>
-        Modern UPS efficiency aur power quality dono optimize karte hain — lekin trade-offs samajhna
-        zaroori hai.
+        Modern UPS optimize both efficiency and power quality — but it is essential to understand the trade-offs.
       </p>
 
       <ComparisonTable
@@ -104,14 +92,13 @@ export default function DataCenterAndClosing() {
       />
 
       <Callout type="important" title="Important — Verify Against Datasheet">
-        Efficiency aur harmonic figures OEM aur model ke according vary karte hain — yeh ranges
-        industry-typical hain, actual datasheet verify karna chahiye specific UPS model ke liye.
+        Efficiency and harmonic figures vary by OEM and model — these ranges are industry-typical; the actual datasheet should be verified for the specific UPS model.
       </Callout>
 
       <h2 id="ups-monitoring-protocols" style={S.h2}>Monitoring: SNMP, Modbus, BACnet, DCIM, BMS, EMS</h2>
 
       <p style={S.p}>
-        Modern UPS standalone device nahi hai — yeh facility-wide monitoring ecosystem ka hissa hai.
+        A modern UPS is not a standalone device — it is part of a facility-wide monitoring ecosystem.
       </p>
 
       <ComparisonTable
@@ -127,15 +114,13 @@ export default function DataCenterAndClosing() {
       />
 
       <p style={S.p}>
-        Deeper coverage of <TopicLink slug="bms" variant="inline" /> aur{" "}
-        <TopicLink slug="dcim" variant="inline" /> dedicated articles mein milega.
+        Deeper coverage of <TopicLink slug="bms" variant="inline" /> and <TopicLink slug="dcim" variant="inline" /> is in the dedicated articles.
       </p>
 
       <h2 id="ups-alarms-troubleshooting" style={S.h2}>Alarms & Troubleshooting</h2>
 
       <p style={S.p}>
-        UPS alarms early warning system hain — samajhna ki kaunsa alarm kya indicate karta hai,
-        downtime prevent karne mein critical hai.
+        UPS alarms are an early warning system — understanding which alarm indicates what is critical in preventing downtime.
       </p>
 
       <ComparisonTable
@@ -151,16 +136,13 @@ export default function DataCenterAndClosing() {
       />
 
       <Callout type="danger" title="Danger — Never Bypass Safety Interlocks">
-        Alarm troubleshoot karte waqt kabhi bhi safety interlocks ya protection circuits ko bypass
-        mat karo &quot;temporarily fix karne ke liye.&quot; Qualified technician se hi UPS internals pe kaam
-        karwao, aur OEM troubleshooting guide follow karo.
+        While troubleshooting an alarm, never bypass safety interlocks or protection circuits &quot;to fix it temporarily.&quot; Have only a qualified technician work on UPS internals, and follow the OEM troubleshooting guide.
       </Callout>
 
       <h2 id="maintenance" style={S.h2}>Preventive & Corrective Maintenance</h2>
 
       <p style={S.p}>
-        UPS reliability planned maintenance pe directly depend karti hai — yeh sirf battery replace
-        karne tak limited nahi hai.
+        UPS reliability depends directly on planned maintenance — it is not limited to just replacing batteries.
       </p>
 
       <ComparisonTable
@@ -174,9 +156,7 @@ export default function DataCenterAndClosing() {
       />
 
       <Callout type="maintenance" title="Maintenance Tip — Battery Testing is Non-Negotiable">
-        Battery annual capacity test sabse critical maintenance task hai — visual inspection battery
-        ki internal degradation detect nahi karti. String jo 80% rated capacity se neeche gir jaaye,
-        replace karna chahiye before it becomes a runtime risk during an actual outage.
+        The annual battery capacity test is the most critical maintenance task — visual inspection does not detect a battery's internal degradation. A string that falls below 80% of rated capacity should be replaced before it becomes a runtime risk during an actual outage.
       </Callout>
 
       <h2 id="common-failures" style={S.h2}>Common Failures</h2>
@@ -204,8 +184,7 @@ export default function DataCenterAndClosing() {
       />
 
       <p style={S.p}>
-        Yeh dono complementary hain, competing nahi — deeper coverage{" "}
-        <TopicLink slug="dg-set" variant="inline" /> article mein milega.
+        These two are complementary, not competing — deeper coverage is in the <TopicLink slug="dg-set" variant="inline" /> article.
       </p>
 
       <h2 id="ups-vs-inverter" style={S.h2}>UPS vs Inverter</h2>
@@ -223,8 +202,7 @@ export default function DataCenterAndClosing() {
       <h2 id="ups-critical-applications" style={S.h2}>UPS in Hospitals, Airports, Banks, Data Centers</h2>
 
       <p style={S.p}>
-        UPS applications Data Centers se kahin zyada wide hain — har critical-infrastructure sector
-        mein UPS life-safety ya business-continuity role play karta hai.
+        UPS applications are much wider than Data Centers — in every critical-infrastructure sector, the UPS plays a life-safety or business-continuity role.
       </p>
 
       <ComparisonTable
@@ -238,72 +216,53 @@ export default function DataCenterAndClosing() {
       />
 
       <Callout type="warning" title="Warning — Regulatory Compliance Varies">
-        Hospital aur airport UPS installations life-safety regulations ke against design hote hain
-        (local fire/electrical authority, healthcare accreditation bodies) — yeh sector-specific
-        compliance requirements is article ke general guidance se zyada strict ho sakte hain. Qualified
-        consultant verify karna mandatory hai in sectors mein.
+        Hospital and airport UPS installations are designed against life-safety regulations (local fire/electrical authority, healthcare accreditation bodies) — these sector-specific compliance requirements can be stricter than this article's general guidance. Verification by a qualified consultant is mandatory in these sectors.
       </Callout>
 
       <h2 id="oem-comparison" style={S.h2}>OEM Comparison</h2>
 
       <p style={S.p}>
-        UPS market mein kai established global aur Indian OEMs hain — Schneider Electric, Vertiv,
-        Eaton, Delta, ABB, Socomec, Riello, Huawei, aur others. Har vendor ki apni product line,
-        topology focus, aur India support presence hai.
+        The UPS market has many established global and Indian OEMs — Schneider Electric, Vertiv, Eaton, Delta, ABB, Socomec, Riello, Huawei and others. Each vendor has its own product line, topology focus and India support presence.
       </p>
 
       <Callout type="important" title="Important — Vendor Specs Change Frequently">
-        OEM-specific specifications, pricing, aur model availability frequently update hote rehte
-        hain. Yeh article specific vendor comparisons nahi karta kyunki yeh data verify karna
-        zaroori hai current OEM datasheets aur India sales team se directly — generic guidance hi
-        durable rehta hai is tarah ke fast-changing market mein.
+        OEM-specific specifications, pricing and model availability keep updating frequently. This article does not make specific vendor comparisons, because that data must be verified directly from current OEM datasheets and the India sales team — only generic guidance stays durable in a fast-changing market like this.
       </Callout>
 
       <h2 id="real-project-examples" style={S.h2}>Real Project Examples</h2>
 
       <p style={S.p}>
-        Is article ke <strong>Load Calculation</strong> section mein already 4 worked examples cover
-        kiye gaye hain — 100-Rack Data Center, Office Building, Hospital Critical Power, aur
-        Industrial Plant. Wahan complete step-by-step sizing calculations available hain.
+        The <strong>Load Calculation</strong> section of this article already covers 4 worked examples — 100-Rack Data Center, Office Building, Hospital Critical Power and Industrial Plant. Complete step-by-step sizing calculations are available there.
       </p>
 
       <p style={S.p}>
-        Apna khud ka project size karne ke liye, use the <strong>Data Center UPS Designer</strong>{" "}
-        calculator (linked in this article&apos;s toolkit) — rack count aur Tier level input karo,
-        poora system sizing milega.
+        To size your own project, use the <strong>Data Center UPS Designer</strong> calculator (linked in this article&apos;s toolkit) — input the rack count and Tier level, and you get the whole system sizing.
       </p>
 
       <h2 id="interview-questions" style={S.h2}>Interview Questions</h2>
 
       <p style={S.p}>
-        UPS interview preparation ke liye structured practice chahiye toh hamara{" "}
-        <strong>BTT Assistant</strong> &quot;mock interview karo&quot; mode support karta hai — ek
-        question at a time, evaluated answers, progressively harder. Dedicated 100-question interview
-        bank (50 beginner + 50 advanced) is article ka agla update hoga.
+        If you want structured practice for UPS interview preparation, our <strong>BTT Assistant</strong> supports a &quot;mock interview&quot; mode — one question at a time, evaluated answers, progressively harder. A dedicated 100-question interview bank (50 beginner + 50 advanced) will be the next update of this article.
       </p>
 
       <Callout type="interview" title="Interview Tip — Core Concepts to Master">
-        Most-asked UPS interview topics: Online vs Offline vs Line Interactive difference, DoD aur
-        battery sizing formula, N+1 vs 2N, static bypass vs maintenance bypass, aur kVA/kW/PF
-        relationship. In sab ka strong grasp interview success ke liye sufficient hai.
+        Most-asked UPS interview topics: Online vs Offline vs Line Interactive difference, DoD and the battery sizing formula, N+1 vs 2N, static bypass vs maintenance bypass, and the kVA/kW/PF relationship. A strong grasp of all of these is sufficient for interview success.
       </Callout>
 
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
 
       <ul style={S.ul}>
-        <li>UPS instant transfer ke liye hai, DG Set extended runtime ke liye — dono complementary hain</li>
-        <li>Online Double Conversion Data Center standard hai — zero transfer time, output isolated from input quality</li>
-        <li>Battery sizing formula: Ah = (Load_W × Runtime_hr) ÷ (V × DoD × η) — har variable matter karta hai</li>
-        <li>N+1 ek extra module hai, 2N do completely independent paths hai — inko mix mat karo</li>
-        <li>Static bypass automatic fault response hai, maintenance bypass complete isolation deta hai for servicing</li>
-        <li>Battery annual capacity testing non-negotiable hai — visual inspection internal degradation detect nahi karti</li>
-        <li>Actual implementation hamesha project requirements, utility requirements, OEM design, aur Data Center architecture pe depend karta hai</li>
+        <li>UPS is for instant transfer, DG Set is for extended runtime — the two are complementary</li>
+        <li>Online Double Conversion is the Data Center standard — zero transfer time, output isolated from input quality</li>
+        <li>Battery sizing formula: Ah = (Load_W × Runtime_hr) ÷ (V × DoD × η) — every variable matters</li>
+        <li>N+1 is one extra module, 2N is two completely independent paths — do not mix them up</li>
+        <li>Static bypass is an automatic fault response; maintenance bypass gives complete isolation for servicing</li>
+        <li>Annual battery capacity testing is non-negotiable — visual inspection does not detect internal degradation</li>
+        <li>Actual implementation always depends on project requirements, utility requirements, OEM design and Data Center architecture</li>
       </ul>
 
       <p style={S.p}>
-        Agla step: <TopicLink slug="battery-bank" variant="inline" /> ka deeper dive, ya{" "}
-        <TopicLink slug="sts" variant="inline" /> aur <TopicLink slug="pdu" variant="inline" /> ki
-        dedicated coverage explore karo.
+        Next step: a deeper dive into the <TopicLink slug="battery-bank" variant="inline" />, or explore the dedicated coverage of <TopicLink slug="sts" variant="inline" /> and <TopicLink slug="pdu" variant="inline" />.
       </p>
     </>
   );

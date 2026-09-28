@@ -12,58 +12,31 @@ export default function AlarmsTrends() {
 
       <h3 style={S.h3}>How Alarms Are Generated</h3>
       <p style={S.p}>
-        BMS mein alarm tab generate hota hai jab ek point ki value configured alarm limit cross kare,
-        ya jab ek digital point change kare alarmed state mein, ya jab communication fault hो.
-        Analog alarms ke liye: High-High, High, Low, Low-Low — multiple levels possible. Digital
-        alarms ke liye: specific state pe alarm — jaise "Bypass_Status = Active" ek alarm trigger
-        karta hai. Communication alarms automatically generated hote hain jab device respond nahi karta
-        configured timeout mein.
+        In the BMS an alarm is generated when a point's value crosses the configured alarm limit, or when a digital point changes into the alarmed state, or when a communication fault happens. For analog alarms: High-High, High, Low, Low-Low — multiple levels possible. For digital alarms: an alarm on a specific state — such as "Bypass_Status = Active" triggers an alarm. Communication alarms are automatically generated when a device does not respond within the configured timeout.
       </p>
 
       <h3 style={S.h3}>Alarm Priority and Classification</h3>
       <p style={S.p}>
-        Alarm priority define karta hai kitni urgency se respond karna hai. Typical categories: Critical
-        (immediate response required, potential equipment loss ya data center downtime), Major (response
-        within minutes, service impact possible), Minor (response within hours, no immediate impact),
-        Advisory (informational, no action urgently needed). Priority assignment project-specific hai —
-        no universal standard mandates specific priorities for specific events. Design karo based on
-        operational impact aur response capability.
+        Alarm priority defines how urgently to respond. Typical categories: Critical (immediate response required, potential equipment loss or data center downtime), Major (response within minutes, service impact possible), Minor (response within hours, no immediate impact), Advisory (informational, no action urgently needed). Priority assignment is project-specific — no universal standard mandates specific priorities for specific events. Design based on operational impact and response capability.
       </p>
 
       <h3 style={S.h3}>Acknowledgement and Escalation</h3>
       <p style={S.p}>
-        Alarm acknowledge karna operator ke liye confirmation hai ki alarm received hua aur action
-        liya ja raha hai. Acknowledged alarm typically different state mein dikhta hai — visual
-        distinction important hai. Unacknowledged alarms escalation trigger kar sakte hain — agar N
-        minutes mein acknowledge nahi hua to senior person ko notify karo. Escalation paths configure
-        karo based on alarm category aur time-of-day.
+        Acknowledging an alarm is the operator's confirmation that the alarm was received and action is being taken. An acknowledged alarm typically appears in a different state — visual distinction is important. Unacknowledged alarms can trigger escalation — if not acknowledged in N minutes, notify a senior person. Configure escalation paths based on alarm category and time-of-day.
       </p>
 
       <h3 style={S.h3}>Delay, Debounce and Suppression</h3>
       <p style={S.p}>
-        Alarm delay — value limit cross karne ke baad alarm generate hone se pehle confirmation
-        period. Agar value 2 seconds ke liye limit cross karti hai aur phir normal hoti hai, delay
-        5 seconds pe configured ho to alarm generate nahi hoga — transient spikes filter out hote
-        hain. Debounce similar concept hai digital inputs ke liye — contact bounce se multiple rapid
-        transitions alarm storm create kar sakte hain. Alarm suppression ya inhibition — kuch alarms
-        specific conditions mein intentionally suppress karo, e.g., planned maintenance window.
+        Alarm delay — a confirmation period after the value crosses the limit before the alarm is generated. If the value crosses the limit for 2 seconds and then goes back to normal, with the delay configured at 5 seconds the alarm will not be generated — transient spikes are filtered out. Debounce is a similar concept for digital inputs — contact bounce can create multiple rapid transitions and an alarm storm. Alarm suppression or inhibition — intentionally suppress some alarms under specific conditions, e.g., a planned maintenance window.
       </p>
 
       <Callout type="warning" title="Alarm Fatigue — A Real Operations Risk">
-        Data center control room mein agar alarms bahut zyada aur frequent hain, operators unhe ignore
-        karne lagte hain — ya habitually acknowledge karne lagte hain bina reading ke. Ye dangerous
-        hai. Alarm rationalization karo: stale, nuisance aur low-value alarms review karo. Priority
-        correctly assign karo. Delay aur deadband tune karo. Goal: har alarm actionable aur meaningful
-        hona chahiye.
+        In a data center control room, if alarms are too many and too frequent, operators start ignoring them — or start acknowledging them habitually without reading. This is dangerous. Do alarm rationalization: review stale, nuisance and low-value alarms. Assign priority correctly. Tune delay and deadband. Goal: every alarm must be actionable and meaningful.
       </Callout>
 
       <h3 style={S.h3}>Event Logs vs Alarm Logs</h3>
       <p style={S.p}>
-        Event log sab BMS activity record karta hai — point value changes, user logins, operator
-        commands, configuration changes. Alarm log specifically alarms track karta hai — generated
-        time, acknowledged time, cleared time, operator notes. Dono logs tamper-evident, timestamped
-        aur searchable hone chahiye. Audit ke time ek specific event ka evidence provide karna require
-        ho sakta hai — well-maintained logs ye possible banate hain.
+        The event log records all BMS activity — point value changes, user logins, operator commands, configuration changes. The alarm log specifically tracks alarms — generated time, acknowledged time, cleared time, operator notes. Both logs must be tamper-evident, timestamped and searchable. At audit time, providing evidence of a specific event may be required — well-maintained logs make this possible.
       </p>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -73,48 +46,27 @@ export default function AlarmsTrends() {
 
       <h3 style={S.h3}>Trend Logging Configuration</h3>
       <p style={S.p}>
-        Trend log per point configure hota hai — log interval, buffer size, compression settings. Fast
-        interval (every 1 minute) fast-changing parameters ke liye — cooling efficiency, load spikes.
-        Slow interval (every 15–60 minutes) stable parameters ke liye — ambient temperature, daily
-        energy consumption. COV-based logging efficiency better hoti hai bandwidth wise lekin requires
-        BACnet ya protocol that supports it.
+        The trend log is configured per point — log interval, buffer size, compression settings. A fast interval (every 1 minute) for fast-changing parameters — cooling efficiency, load spikes. A slow interval (every 15–60 minutes) for stable parameters — ambient temperature, daily energy consumption. COV-based logging gives better efficiency bandwidth-wise but requires BACnet or a protocol that supports it.
       </p>
 
       <h3 style={S.h3}>Historical Data and the Historian</h3>
       <p style={S.p}>
-        Historian database long-term data hold karta hai. Query karo ki "last 30 days mein UPS Room A
-        ka average load kya tha" — capacity planning. Ya "kab se cooling unit return temperature badh
-        rahi thi before the alarm" — root cause analysis. Historian performance matter karta hai large
-        deployments mein — thousands of points, minute-level logging — storage aur query optimization
-        professional historian software ka job hai.
+        The historian database holds long-term data. Query "what was the average load of UPS Room A in the last 30 days" — capacity planning. Or "since when had the cooling unit return temperature been rising before the alarm" — root cause analysis. Historian performance matters in large deployments — thousands of points, minute-level logging — storage and query optimization is the job of professional historian software.
       </p>
 
       <h3 style={S.h3}>Using Trends for Root Cause Analysis</h3>
       <p style={S.p}>
-        Ek real example: server room temperature high alarm aa gayi at 3 AM. Alarm investigate karte
-        hue BMS trends dekhe — ek CRAC unit ka return air temperature 2 hours pehle se gradual increase
-        show kar raha tha. Compressor current trend flat tha — compressor running nahi tha isi period
-        mein. Filter differential pressure trend high tha — filter blocked. Root cause: choked filter
-        ne CRAC capacity reduce kar di, temperature dhire dhire badh gaya. Trend data ke bina ye sirf
-        ek "temperature high alarm" hota — root cause invisible.
+        A real example: a server room temperature high alarm came at 3 AM. While investigating the alarm, the BMS trends were checked — a CRAC unit's return air temperature had been showing a gradual increase since 2 hours earlier. The compressor current trend was flat — the compressor was not running during this same period. The filter differential pressure trend was high — the filter was blocked. Root cause: a choked filter reduced the CRAC capacity, the temperature rose slowly. Without trend data this would have been just a "temperature high alarm" — the root cause invisible.
       </p>
 
       <h3 style={S.h3}>Standard BMS Reports for Data Centers</h3>
       <p style={S.p}>
-        Commonly configured reports: Daily temperature summary (min/max/avg per zone), daily energy
-        consumption (kWh per circuit or floor), monthly PUE trend, UPS load profile (peak and average),
-        alarm summary (count, type, response time), maintenance due alerts. Reports scheduled export
-        (PDF, Excel) ya on-demand. Client delivery requirements confirm karo — format, frequency,
-        distribution list.
+        Commonly configured reports: Daily temperature summary (min/max/avg per zone), daily energy consumption (kWh per circuit or floor), monthly PUE trend, UPS load profile (peak and average), alarm summary (count, type, response time), maintenance due alerts. Reports as scheduled export (PDF, Excel) or on-demand. Confirm client delivery requirements — format, frequency, distribution list.
       </p>
 
       <h3 style={S.h3}>Data Retention — Concepts and Policy</h3>
       <p style={S.p}>
-        Retention period — kitne time tak historical data rakhna hai — project requirements, client
-        contracts, regulatory requirements, insurance aur operational needs pe depend karta hai. Koi
-        universal mandatory retention period nahi hai. Define karo: which points retain long-term
-        (energy data, alarm history — typically years), which short-term (high-frequency sensor data
-        — possibly weeks). Storage cost vs retention value balance karo.
+        The retention period — how long to keep historical data — depends on project requirements, client contracts, regulatory requirements, insurance and operational needs. There is no universal mandatory retention period. Define: which points retain long-term (energy data, alarm history — typically years), which short-term (high-frequency sensor data — possibly weeks). Balance storage cost vs retention value.
       </p>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -124,30 +76,17 @@ export default function AlarmsTrends() {
 
       <h3 style={S.h3}>Operator, Supervisor, Engineer and Admin Roles</h3>
       <p style={S.p}>
-        Typical BMS role hierarchy: <strong>Operator</strong> — view live data, acknowledge alarms,
-        read trends. Cannot change configuration or issue commands. <strong>Supervisor</strong> — all
-        operator permissions plus acknowledge + clear alarms, run manual commands where authorized.
-        <strong>Engineer</strong> — configure points, alarms, graphics, trends. Cannot change user
-        management. <strong>Admin</strong> — full access including user management, system
-        configuration, database administration. Actual roles platform-specific hain — this is a
-        representative structure.
+        Typical BMS role hierarchy: <strong>Operator</strong> — view live data, acknowledge alarms, read trends. Cannot change configuration or issue commands. <strong>Supervisor</strong> — all operator permissions plus acknowledge + clear alarms, run manual commands where authorized. <strong>Engineer</strong> — configure points, alarms, graphics, trends. Cannot change user management. <strong>Admin</strong> — full access including user management, system configuration, database administration. Actual roles are platform-specific — this is a representative structure.
       </p>
 
       <h3 style={S.h3}>Role-Based Access and Security Considerations</h3>
       <p style={S.p}>
-        Principle of least privilege apply karo — operator ko engineer access nahi chahiye. Password
-        policy enforce karo. Multi-factor authentication high-privilege accounts ke liye. Shared
-        credentials avoid karo — individual accounts so audit trail is meaningful. BMS system
-        administrator account ke default credentials immediately change karo after installation —
-        default credentials well-known hote hain.
+        Apply the principle of least privilege — an operator does not need engineer access. Enforce a password policy. Multi-factor authentication for high-privilege accounts. Avoid shared credentials — individual accounts so the audit trail is meaningful. Change the default credentials of the BMS system administrator account immediately after installation — default credentials are well-known.
       </p>
 
       <h3 style={S.h3}>Audit Trail and Change Logging</h3>
       <p style={S.p}>
-        Har user action logged hona chahiye — who logged in when, what command issued, what
-        configuration changed, which alarm acknowledged by whom. Audit trail tamper-evident hona
-        chahiye. For SOC 2, ISO 27001 audits — BMS user access logs ek evidence artifact hai. Regular
-        access review karo — terminated employees ka access immediately revoke karo.
+        Every user action must be logged — who logged in when, what command was issued, what configuration changed, which alarm was acknowledged by whom. The audit trail must be tamper-evident. For SOC 2, ISO 27001 audits — BMS user access logs are an evidence artifact. Do regular access reviews — revoke the access of terminated employees immediately.
       </p>
     </>
   );

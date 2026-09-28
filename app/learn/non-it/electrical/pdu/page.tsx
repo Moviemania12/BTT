@@ -34,8 +34,7 @@ export default function PduArticlePage() {
       <ArticleLayout
         slug="pdu"
         headings={HEADINGS}
-        readingTimeMinutes={pduMetadata.readingTimeMinutes}
-      >
+        readingTimeMinutes={pduMetadata.readingTimeMinutes} lang="en" alternateHref="/hi/learn/non-it/electrical/pdu">
         <Foundation />
         <OperationsAndClosing />
       </ArticleLayout>

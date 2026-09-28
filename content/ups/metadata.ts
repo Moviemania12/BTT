@@ -12,7 +12,7 @@ export const upsMetadata: ArticleMetadata = {
   title: "UPS (Uninterruptible Power Supply) — Complete Guide from Beginner to Data Center Design",
   seoTitle: "UPS Explained: Working, Types, Sizing & Data Center Design Guide",
   seoDescription:
-    "UPS kaise kaam karta hai? Online vs Offline vs Line Interactive, battery sizing, N+1 vs 2N redundancy, Tier III/IV design — complete Hinglish guide with 60+ diagrams, 18 calculators aur 100 FAQs.",
+    "How does a UPS work? Online vs Offline vs Line Interactive, battery sizing, N+1 vs 2N redundancy, Tier III/IV design — a complete guide with 60+ diagrams, 18 calculators and 100 FAQs.",
   canonicalUrl: "https://behindthetech.in/learn/non-it/electrical/ups",
   keywords: [
     "UPS kya hai",

@@ -12,61 +12,41 @@ export default function PlacementAndIntegration() {
       <h2 id="camera-placement" style={S.h2}>Camera Placement in a Data Center</h2>
 
       <p style={S.p}>
-        Camera placement data center ka most project-specific design decision hai — koi universal
-        template nahi hai. Floor plan, threat model, compliance requirement, aur client preference
-        sab factor karte hain. Neeche general principles hain jo experienced practitioners follow karte
-        hain, lekin actual placement qualified security consultant ya integrator ke saath finalize karo.
+        Camera placement is the most project-specific design decision in a data center — there is no universal template. Floor plan, threat model, compliance requirement and client preference all factor in. Below are general principles that experienced practitioners follow, but finalize the actual placement with a qualified security consultant or integrator.
       </p>
 
       <h3 style={S.h3}>Perimeter & External</h3>
       <p style={S.p}>
-        Building ke saare entry/exit points cover karo — main gate, secondary gates, emergency exits,
-        loading docks. Parking areas aur building perimeter wall pe cameras lagao. Blind spots avoid
-        karo — har external entry point pe kam se kam do cameras from different angles preferred hai.
-        Outdoor cameras weatherproof (IP66 minimum), vandal-resistant, aur adequate IR range wali honi
-        chahiye.
+        Cover all entry/exit points of the building — main gate, secondary gates, emergency exits, loading docks. Install cameras in parking areas and on the building perimeter wall. Avoid blind spots — at least two cameras from different angles at every external entry point is preferred. Outdoor cameras must be weatherproof (IP66 minimum), vandal-resistant and have adequate IR range.
       </p>
 
       <h3 style={S.h3}>Main Entry / Reception / Lobby</h3>
       <p style={S.p}>
-        Reception desk ko face karne wali camera har aane-jaane wale visitor ka clear face capture kare.
-        WDR important hai — bahar se aane wali bright light aur andar ki controlled light ka contrast
-        hai. Turnstile ya reception counter pe overhead aur face-level cameras combine karo.
+        A camera facing the reception desk should capture a clear face of every visitor coming and going. WDR is important — there is contrast between the bright light coming from outside and the controlled light inside. Combine overhead and face-level cameras at the turnstile or reception counter.
       </p>
 
       <h3 style={S.h3}>Mantrap / Airlock</h3>
       <p style={S.p}>
-        Mantrap ka har door cover karo — entry door aur exit door dono. Person ka face clearly capture
-        hona chahiye — entry pe aur exit pe. WDR critical hai. High resolution (4MP+) specify karo
-        kyunki footage forensic evidence ke roop mein use ho sakti hai. Camera angle aise rakho ki
-        tailgating attempts clearly visible hon.
+        Cover every door of the mantrap — both the entry door and the exit door. The person's face must be clearly captured — at entry and at exit. WDR is critical. Specify high resolution (4MP+) because the footage may be used as forensic evidence. Keep the camera angle such that tailgating attempts are clearly visible.
       </p>
 
       <h3 style={S.h3}>Server Hall / Data Hall</h3>
       <p style={S.p}>
-        Har aisle ka entry point cover karo. Cold aisle/hot aisle containment pe mounted cameras aisles
-        ke end-to-end view deti hain. Server room ke saare doors pe cameras lagao — door face karne
-        wali, door ke andar ki. Ceiling-mounted dome cameras racks pe kaam karne wale personnel monitor
-        karne ke liye. Raised floor access panels pe bhi consider karo — especially high-value areas mein.
+        Cover the entry point of every aisle. Cameras mounted on cold aisle/hot aisle containment give an end-to-end view of the aisles. Install cameras at all doors of the server room — facing the door, and inside the door. Ceiling-mounted dome cameras to monitor personnel working on racks. Consider raised floor access panels too — especially in high-value areas.
       </p>
 
       <h3 style={S.h3}>Electrical & Mechanical Rooms</h3>
       <p style={S.p}>
-        UPS room, battery room, MDB room, generator area — ye sab critical infrastructure areas hain.
-        Entry pe cameras mandatory hain. Internal monitoring bhi valuable hai especially for remote
-        facilities. Vibration aur heat environment me camera specs verify karo.
+        UPS room, battery room, MDB room, generator area — these are all critical infrastructure areas. Cameras at the entry are mandatory. Internal monitoring is also valuable, especially for remote facilities. Verify camera specs for vibration and heat environments.
       </p>
 
       <h3 style={S.h3}>NOC / Security Operations Room</h3>
       <p style={S.p}>
-        Monitoring room ke bahar entry camera. Andar ke cameras operations log ke liye useful hai lekin
-        privacy policy ke hisaab se decide karo — staff monitoring requirements review karo.
+        An entry camera outside the monitoring room. Cameras inside are useful for the operations log, but decide according to the privacy policy — review staff monitoring requirements.
       </p>
 
       <Callout type="best-practice" title="No Blind Spots — Overlap is Better Than Gap">
-        Jab doubt ho, cameras overlap karo rather than leave gaps. Adjacent cameras ka field of view
-        overlap karna ensure karta hai ki camera failure ya vandalism pe bhi coverage bani rahe. Especially
-        critical entry points pe single camera single point of failure hai.
+        When in doubt, overlap cameras rather than leave gaps. Overlapping the field of view of adjacent cameras ensures coverage stays in place even on camera failure or vandalism. Especially at critical entry points, a single camera is a single point of failure.
       </Callout>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -75,24 +55,15 @@ export default function PlacementAndIntegration() {
       <h2 id="time-sync" style={S.h2}>Time Synchronization & NTP</h2>
 
       <p style={S.p}>
-        CCTV footage ka timestamp forensically valid hone ke liye sab cameras, NVR/VMS, aur switches
-        synchronized time pe hone chahiye. Agar camera ka clock 5 minutes off hai, to footage ek
-        incident ke saath correlate karna bahut difficult ho jaata hai — aur legal proceedings mein
-        footage ke admissibility pe question uthta hai.
+        For CCTV footage timestamps to be forensically valid, all cameras, the NVR/VMS and switches must be on synchronized time. If a camera's clock is 5 minutes off, correlating the footage with an incident becomes very difficult — and in legal proceedings the admissibility of the footage gets questioned.
       </p>
 
       <p style={S.p}>
-        <strong>NTP (Network Time Protocol)</strong> use karo — cameras aur NVR/VMS ko authoritative
-        NTP server se sync karo. Data center mein typically NTP server already hota hai jiske saath
-        IT infrastructure sync hoti hai — CCTV system bhi same NTP source use kare. Cameras mein NTP
-        server address configure karo aur sync status periodically verify karo.
+        Use <strong>NTP (Network Time Protocol)</strong> — sync the cameras and NVR/VMS with an authoritative NTP server. A data center typically already has an NTP server that the IT infrastructure syncs with — the CCTV system should use the same NTP source. Configure the NTP server address in the cameras and periodically verify the sync status.
       </p>
 
       <Callout type="important" title="Timezone Configuration — Common Error">
-        Sab cameras aur NVR/VMS same timezone pe configure karo. Multi-country operations mein ya
-        India-specific deployments mein IST (UTC+5:30) correctly set hona chahiye. Daylight saving
-        time India mein applicable nahi hai lekin imported equipment pe DST settings check karo —
-        inadvertently enabled hone pe time off ho jaata hai.
+        Configure all cameras and the NVR/VMS to the same timezone. In multi-country operations or India-specific deployments IST (UTC+5:30) must be set correctly. Daylight saving time is not applicable in India, but check DST settings on imported equipment — if it is inadvertently enabled the time goes off.
       </Callout>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -101,45 +72,31 @@ export default function PlacementAndIntegration() {
       <h2 id="integration" style={S.h2}>Integration with Access Control & Other Systems</h2>
 
       <p style={S.p}>
-        CCTV sirf standalone surveillance nahi hai — data center mein ye broader physical security
-        ecosystem ka part hai. Integration zyada value deta hai.
+        CCTV is not just standalone surveillance — in a data center it is part of the broader physical security ecosystem. Integration gives more value.
       </p>
 
       <h3 style={S.h3}>Access Control Integration</h3>
       <p style={S.p}>
-        Jab access control event trigger ho — door open, badge swipe, failed authentication — CCTV
-        automatically us door ki camera pe recording start kare aur event-linked snapshot save kare.
-        Operator ek unified interface se both systems dekh sake — access log aur corresponding video
-        simultaneously. <TopicLink slug="access-control" variant="inline" /> VMS ke saath SDK ya
-        protocol-level integration se ye possible hota hai.
+        When an access control event triggers — door open, badge swipe, failed authentication — CCTV should automatically start recording on that door's camera and save an event-linked snapshot. The operator should be able to see both systems from one unified interface — the access log and the corresponding video simultaneously. This is possible through SDK or protocol-level integration of <TopicLink slug="access-control" variant="inline" /> with the VMS.
       </p>
 
       <h3 style={S.h3}>Biometric System Integration</h3>
       <p style={S.p}>
-        <TopicLink slug="biometrics" variant="inline" /> reader pe authentication event hone pe camera
-        footage automatically tagged ho — kab, kahan, kiska biometric verify hua. Failed attempts pe
-        alert generate ho aur corresponding video clip security team ko jaaye.
+        When an authentication event happens at a <TopicLink slug="biometrics" variant="inline" /> reader, the camera footage should be automatically tagged — when, where, whose biometric was verified. On failed attempts an alert should be generated and the corresponding video clip should go to the security team.
       </p>
 
       <h3 style={S.h3}>BMS Integration</h3>
       <p style={S.p}>
-        BMS (Building Management System) se alarms — fire alarm, door forced open, equipment fault —
-        CCTV ko trigger kar sakti hain. Relevant area ki cameras automatically pop up ho security
-        operator ke screen pe. Ye manual monitoring ko augment karta hai.
+        Alarms from the BMS (Building Management System) — fire alarm, door forced open, equipment fault — can trigger CCTV. The cameras of the relevant area should automatically pop up on the security operator's screen. This augments manual monitoring.
       </p>
 
       <h3 style={S.h3}>Video Analytics</h3>
       <p style={S.p}>
-        Modern VMS platforms built-in ya third-party video analytics support karte hain — line crossing
-        detection (perimeter breach), loitering detection, crowd detection, abandoned object detection,
-        intrusion detection. Advanced systems mein AI-based face recognition bhi available hai. Analytics
-        false alarms bhi generate kar sakti hain — threshold tuning aur operator training important hai.
+        Modern VMS platforms support built-in or third-party video analytics — line crossing detection (perimeter breach), loitering detection, crowd detection, abandoned object detection, intrusion detection. AI-based face recognition is also available in advanced systems. Analytics can also generate false alarms — threshold tuning and operator training are important.
       </p>
 
-      <Callout type="maintenance" title="Integration Testing — Commission karo, Assume mat karo">
-        Integration ke saath ek common mistake hai ki install ke time test kiya, phir kabhi verify
-        nahi kiya. Access control change hone pe, VMS upgrade hone pe, ya network change hone pe
-        integration break ho sakta hai. Quarterly integration tests schedule karo aur results log karo.
+      <Callout type="maintenance" title="Integration Testing — Commission It, Don't Assume">
+        A common mistake with integration is testing it at install time and then never verifying it again. The integration can break when access control changes, when the VMS is upgraded, or when the network changes. Schedule quarterly integration tests and log the results.
       </Callout>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -148,41 +105,27 @@ export default function PlacementAndIntegration() {
       <h2 id="cybersecurity" style={S.h2}>Cybersecurity for IP CCTV</h2>
 
       <p style={S.p}>
-        IP CCTV cameras network-connected devices hain — iska matlab hai ye attack surface bhi hain.
-        Poorly secured cameras historically botnets (Mirai), unauthorized access, aur corporate network
-        lateral movement ke liye use hue hain. Data center CCTV ke liye cybersecurity controls essential hain.
+        IP CCTV cameras are network-connected devices — which means they are also an attack surface. Poorly secured cameras have historically been used for botnets (Mirai), unauthorized access and lateral movement into corporate networks. Cybersecurity controls are essential for data center CCTV.
       </p>
 
       <h3 style={S.h3}>Credential Management</h3>
       <p style={S.p}>
-        Default credentials — "admin/admin", "admin/12345" — kabhi nahi chhodne chahiye. Installation
-        pe hi strong, unique credentials set karo. Password management system mein store karo. Periodic
-        rotation schedule define karo. CCTV system ke credentials IT infrastructure credentials se alag
-        rakho.
+        Default credentials — "admin/admin", "admin/12345" — must never be left in place. Set strong, unique credentials at installation itself. Store them in a password management system. Define a periodic rotation schedule. Keep the CCTV system credentials separate from IT infrastructure credentials.
       </p>
 
       <h3 style={S.h3}>Network Isolation</h3>
       <p style={S.p}>
-        CCTV cameras aur NVR dedicated VLAN pe isolated karo — production IT network se separate. Cameras
-        ko internet access directly nahi chahiye — agar remote access chahiye to VPN through route karo.
-        Firewall rules define karo ki CCTV VLAN se sirf authorized hosts (VMS server, monitoring
-        workstations) communicate kar sakein.
+        Isolate CCTV cameras and the NVR on a dedicated VLAN — separate from the production IT network. Cameras do not need direct internet access — if remote access is needed, route it through a VPN. Define firewall rules so that only authorized hosts (VMS server, monitoring workstations) can communicate with the CCTV VLAN.
       </p>
 
       <h3 style={S.h3}>Firmware Management</h3>
       <p style={S.p}>
-        Camera aur NVR firmware regularly update karo — CVEs aur security patches address hote hain.
-        Manufacturer security advisories subscribe karo. End-of-life cameras replace karo — firmware
-        updates band hone ke baad security risk significantly badhta hai. Firmware update schedule
-        quarterly maintenance ke part mein rakho.
+        Update camera and NVR firmware regularly — CVEs and security patches get addressed. Subscribe to manufacturer security advisories. Replace end-of-life cameras — once firmware updates stop, the security risk increases significantly. Keep the firmware update schedule as part of quarterly maintenance.
       </p>
 
       <h3 style={S.h3}>Encryption & Protocols</h3>
       <p style={S.p}>
-        HTTPS for camera web interface, encrypted RTSP (RTSPS), aur TLS for VMS communication
-        configure karo. HTTP aur unencrypted RTSP disable karo jahan possible ho. VMS access ke liye
-        role-based access control configure karo — operators sirf assigned cameras dekh sakein, full
-        admin access limited ho.
+        Configure HTTPS for the camera web interface, encrypted RTSP (RTSPS), and TLS for VMS communication. Disable HTTP and unencrypted RTSP wherever possible. Configure role-based access control for VMS access — operators should be able to see only assigned cameras, and full admin access should be limited.
       </p>
 
       <ComparisonTable
@@ -203,10 +146,7 @@ export default function PlacementAndIntegration() {
       />
 
       <Callout type="danger" title="Cameras from Certain Vendors — Government Regulations Apply">
-        Kuch countries aur government-aligned facilities ne specific CCTV manufacturers pe restrictions
-        lagayi hain security concerns ki wajah se. Government facilities, defense-adjacent sites, aur
-        certain compliance frameworks mein approved vendor list mandatory hai. Project specification ke
-        time applicable regulations aur client requirements verify karo.
+        Some countries and government-aligned facilities have placed restrictions on specific CCTV manufacturers due to security concerns. In government facilities, defense-adjacent sites and certain compliance frameworks an approved vendor list is mandatory. Verify applicable regulations and client requirements at the time of project specification.
       </Callout>
     </>
   );

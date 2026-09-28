@@ -3,7 +3,20 @@ import { lightningProtectionMetadata } from "@/content/lightning-protection/meta
 import { lightningProtectionContent } from "@/content/lightning-protection";
 import { buildPageMetadata, buildArticleSchema, buildBreadcrumbSchema, buildFaqSchema } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(lightningProtectionMetadata);
+const baseMetadata = buildPageMetadata(lightningProtectionMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: lightningProtectionMetadata.canonicalUrl,
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/electrical/lightning-protection",
+      hi: "https://behindthetech.in/hi/learn/non-it/electrical/lightning-protection",
+      "x-default": "https://behindthetech.in/learn/non-it/electrical/lightning-protection",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: lightningProtectionMetadata.title,

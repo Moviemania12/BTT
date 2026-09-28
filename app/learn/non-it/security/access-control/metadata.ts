@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Access Control Systems in Data Centers — Complete Engineering Guide | Behind The Tech",
   description:
-    "Data Center mein access control system kaise kaam karta hai — controller, RFID reader, EM lock, door contact, REX, anti-passback, alarms, troubleshooting. Beginner se O&M engineer tak.",
+    "How an access control system works in a Data Center — controller, RFID reader, EM lock, door contact, REX, anti-passback, alarms, troubleshooting. From beginner to O&M engineer.",
   keywords: [
     "access control data center",
     "rfid access control",
@@ -13,8 +13,9 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Access Control Systems in Data Centers — Complete Engineering Guide",
-    description: "Controller se EM lock tak, RFID se anti-passback tak — Data Center access control ka complete engineering guide.",
+    description: "From controller to EM lock, from RFID to anti-passback — the complete engineering guide to Data Center access control.",
     url: "https://behindthetech.in/learn/non-it/security/access-control",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -22,35 +23,42 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Access Control in Data Centers — Behind The Tech",
-    description: "Data Center access control — controller, reader, lock, troubleshooting aur integration.",
+    description: "Data Center access control — controller, reader, lock, troubleshooting and integration.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/security/access-control" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/security/access-control",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/security/access-control",
+      hi: "https://behindthetech.in/hi/learn/non-it/security/access-control",
+      "x-default": "https://behindthetech.in/learn/non-it/security/access-control",
+    },
+  },
 };
 
 export const faqs = [
   {
-    q: "RFID card aur smart card mein kya fark hai?",
-    a: "RFID (Radio Frequency Identification) card sirf ek unique ID number transmit karta hai — koi cryptographic authentication nahi hoti. Smart card (aur modern contactless cards jaise MIFARE DESFire, HID iCLASS SE) onboard microprocessor aur cryptographic keys carry karte hain. Authentication challenge-response pe based hoti hai — cloning significantly harder hoti hai. Data centers mein smart card technology preferred hai higher security ke liye.",
+    q: "What is the difference between an RFID card and a smart card?",
+    a: "An RFID (Radio Frequency Identification) card transmits only a unique ID number — there is no cryptographic authentication. A smart card (and modern contactless cards like MIFARE DESFire, HID iCLASS SE) carries an onboard microprocessor and cryptographic keys. Authentication is based on challenge-response — cloning is significantly harder. In data centers smart card technology is preferred for higher security.",
   },
   {
-    q: "Electromagnetic lock aur electric strike mein kya choose karein?",
-    a: "EM lock door frame pe mount hota hai aur door ko magnetically hold karta hai — fail-safe (power cut pe open). Electric strike door frame mein latch mechanism replace karta hai — fail-secure versions available hain (power cut pe locked rehta hai). Data center server rooms mein typically EM lock ya fail-secure electric strike use hota hai aur fire alarm se release configure hoti hai. Selection fire code, occupancy requirements aur security policy pe depend karta hai.",
+    q: "What should you choose between an electromagnetic lock and an electric strike?",
+    a: "An EM lock is mounted on the door frame and holds the door magnetically — fail-safe (opens on power cut). An electric strike replaces the latch mechanism in the door frame — fail-secure versions are available (stays locked on power cut). In data center server rooms typically an EM lock or a fail-secure electric strike is used, and release from the fire alarm is configured. Selection depends on the fire code, occupancy requirements and security policy.",
   },
   {
-    q: "Anti-passback kya hai aur ye kyun important hai?",
-    a: "Anti-passback ek access control feature hai jo prevent karta hai ki ek credential ek direction mein use hone ke baad same direction mein dobara use ho — entry ke baad exit record kiye bina doosra entry nahi ho sakti. Ye tailgating aur credential sharing discourage karta hai. Soft anti-passback violation pe alarm generate karta hai lekin access allow karta hai; hard anti-passback pe access deny hoti hai. Data centers mein server hall aur high-security zones ke liye important hai.",
+    q: "What is anti-passback and why is it important?",
+    a: "Anti-passback is an access control feature that prevents a credential, after being used in one direction, from being used again in the same direction — another entry cannot happen without recording an exit after the entry. It discourages tailgating and credential sharing. Soft anti-passback generates an alarm on violation but allows access; with hard anti-passback access is denied. In data centers it is important for the server hall and high-security zones.",
   },
   {
-    q: "Controller offline ho jaaye to kya hota hai?",
-    a: "Modern access controllers onboard memory mein credential database aur access rules store karte hain — server connectivity ke bina bhi local decisions le sakte hain. Is mode ko 'degraded mode' ya 'standalone mode' kehte hain. Network wapas aane pe controller server se sync karta hai. Kuch older ya basic controllers fully server-dependent hote hain — unke saath server failure pe door behavior default policy pe depend karta hai (fail-open ya fail-secure).",
+    q: "What happens if the controller goes offline?",
+    a: "Modern access controllers store the credential database and access rules in onboard memory — they can take local decisions even without server connectivity. This mode is called 'degraded mode' or 'standalone mode'. When the network comes back, the controller syncs with the server. Some older or basic controllers are fully server-dependent — with them, door behavior on server failure depends on the default policy (fail-open or fail-secure).",
   },
   {
-    q: "Door forced open alarm pe kya action lena chahiye?",
-    a: "Immediately CCTV footage check karo affected door ka — unauthorized entry hua hai ya door malfunction hai? NOC/security operator ko alert karo. Physical inspection karo — door properly closed aur latched hai? Door contact sensor loose hai ya misaligned? Access log check karo — koi valid access event tha us time? Agar unauthorized entry confirmed ho to security response protocol follow karo. Agar mechanical issue hai to door/lock/sensor inspect karo.",
+    q: "What action should be taken on a door forced open alarm?",
+    a: "Immediately check the CCTV footage of the affected door — has an unauthorized entry happened or is it a door malfunction? Alert the NOC/security operator. Do a physical inspection — is the door properly closed and latched? Is the door contact sensor loose or misaligned? Check the access log — was there a valid access event at that time? If unauthorized entry is confirmed, follow the security response protocol. If it is a mechanical issue, inspect the door/lock/sensor.",
   },
   {
-    q: "Access control system ka audit trail kitne din store karna chahiye?",
-    a: "Retention period project requirements, client policy, applicable compliance framework (ISO 27001, SOC 2, PCI-DSS) aur local regulations pe depend karta hai. Koi universal mandatory period nahi hai — typically 90 days se ek saal tak range common hai. Client contractual requirements aur applicable audit standards check karo. Storage sufficient hona chahiye required retention pe audit log degrade na ho.",
+    q: "For how many days should the access control system audit trail be stored?",
+    a: "The retention period depends on project requirements, client policy, the applicable compliance framework (ISO 27001, SOC 2, PCI-DSS) and local regulations. There is no universal mandatory period — typically a range of 90 days to one year is common. Check client contractual requirements and applicable audit standards. Storage must be sufficient so that the audit log does not degrade at the required retention.",
   },
 ];
 

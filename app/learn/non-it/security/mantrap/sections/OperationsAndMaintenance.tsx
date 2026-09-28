@@ -9,112 +9,83 @@ export default function OperationsAndMaintenance() {
       <h2 id="occupancy-detection" style={S.h2}>Occupancy and Presence Detection</h2>
 
       <p style={S.p}>
-        Occupancy detection mantrap ke anti-tailgating function ka technical backbone hai. Ek se zyada
-        person vestibule mein detect hone pe inner door nahi khulti. Common technologies:
+        Occupancy detection is the technical backbone of the mantrap's anti-tailgating function. When more than one person is detected in the vestibule, the inner door does not open. Common technologies:
       </p>
 
       <ul style={S.ul}>
-        <li><strong>PIR (Passive Infrared) Motion Sensor:</strong> Heat signature detect karta hai. Fast, cost-effective, widely used. Limitation: count nahi karta — sirf presence detect karta hai.</li>
-        <li><strong>Weight-sensing floor:</strong> Floor pressure se actual weight measure karta hai — ek person ka weight range configure karo. More definitive count lekin maintenance intensive aur false positives possible.</li>
-        <li><strong>Overhead camera-based people counting:</strong> Overhead IP camera AI analytics se person count karta hai. Most accurate lekin higher cost aur software dependent.</li>
-        <li><strong>IR beam break sensors:</strong> Door frame pe horizontal beams — person entering/exiting count karte hain. Good accuracy, less affected by clothing/luggage.</li>
+        <li><strong>PIR (Passive Infrared) Motion Sensor:</strong> Detects the heat signature. Fast, cost-effective, widely used. Limitation: it does not count — it only detects presence.</li>
+        <li><strong>Weight-sensing floor:</strong> Measures actual weight from floor pressure — configure the weight range of one person. More definitive count but maintenance intensive and false positives possible.</li>
+        <li><strong>Overhead camera-based people counting:</strong> An overhead IP camera counts persons with AI analytics. Most accurate but higher cost and software dependent.</li>
+        <li><strong>IR beam break sensors:</strong> Horizontal beams on the door frame — count persons entering/exiting. Good accuracy, less affected by clothing/luggage.</li>
       </ul>
 
       <p style={S.p}>
-        Sensor selection site requirements, budget aur acceptable false alarm rate pe depend karta hai.
-        Most data center mantraps multi-sensor approach use karte hain — redundancy aur accuracy ke liye.
-        Sensor regular calibration aur testing zaroori hai — dirty ya misaligned sensor false alarms
-        ya missed detections cause karta hai.
+        Sensor selection depends on site requirements, budget and the acceptable false alarm rate. Most data center mantraps use a multi-sensor approach — for redundancy and accuracy. Regular sensor calibration and testing are essential — a dirty or misaligned sensor causes false alarms or missed detections.
       </p>
 
       <h2 id="anti-tailgating" style={S.h2}>Anti-Tailgating Measures</h2>
 
       <p style={S.p}>
-        Mantrap ka fundamental anti-tailgating mechanism interlock hai — lekin supplementary measures
-        effectiveness badhate hain. CCTV cameras vestibule mein —  har attempt recorded hoti hai.
-        Video analytics tailgating attempts automatically detect kar sakti hai. Mantrap timing configure
-        karo: outer door kuch seconds mein automatically close ho (forced close timer). Manual override
-        ke liye security operator alert.
+        The fundamental anti-tailgating mechanism of the mantrap is the interlock — but supplementary measures increase effectiveness. CCTV cameras in the vestibule — every attempt is recorded. Video analytics can automatically detect tailgating attempts. Configure mantrap timing: the outer door should close automatically in a few seconds (forced close timer). Security operator alert for manual override.
       </p>
 
       <p style={S.p}>
-        Staff training equally important hai — authorized users ko mantrap procedure follow karne ka
-        culture banana padta hai. Tailgating attempt dekhne pe even authorized users ko report karna
-        chahiye. Regular security awareness reinforcement mantrap ke technical measures ko complement
-        karta hai.
+        Staff training is equally important — a culture of authorized users following the mantrap procedure has to be built. Even authorized users should report it when they see a tailgating attempt. Regular security awareness reinforcement complements the technical measures of the mantrap.
       </p>
 
       <h2 id="emergency-release" style={S.h2}>Emergency Release and Fire Integration</h2>
 
       <p style={S.p}>
-        Emergency release mantrap ke most critical design element mein se ek hai. Ek person vestibule
-        mein phase jaaye — both doors locked, power failure, system fault — rapid release mechanism
-        essential hai. Standard approaches:
+        Emergency release is one of the most critical design elements of a mantrap. If a person gets stuck in the vestibule — both doors locked, power failure, system fault — a rapid release mechanism is essential. Standard approaches:
       </p>
 
       <ul style={S.ul}>
-        <li><strong>Manual emergency release:</strong> Vestibule ke andar aur/ya bahar pe emergency release provision — exact type, location aur behavior approved design aur AHJ requirements per hota hai.</li>
-        <li><strong>Remote release:</strong> Security operator NOC se ya VMS interface se doors remotely release kar sake.</li>
-        <li><strong>Intercom:</strong> Vestibule mein intercom — andar phase person security team se communicate kar sake.</li>
-        <li><strong>Fire alarm / life-safety interface:</strong> Approved life-safety sequence of operations per fire alarm/access control interface — exact behavior applicable code, AHJ requirements aur approved design per configured hota hai.</li>
+        <li><strong>Manual emergency release:</strong> Emergency release provision inside and/or outside the vestibule — the exact type, location and behavior are per the approved design and AHJ requirements.</li>
+        <li><strong>Remote release:</strong> The security operator should be able to release doors remotely from the NOC or the VMS interface.</li>
+        <li><strong>Intercom:</strong> Intercom in the vestibule — so a person stuck inside can communicate with the security team.</li>
+        <li><strong>Fire alarm / life-safety interface:</strong> Fire alarm/access control interface per the approved life-safety sequence of operations — the exact behavior is configured per the applicable code, AHJ requirements and approved design.</li>
       </ul>
 
-      <Callout type="danger" title="Emergency Release — Test Karo, Assume Mat Karo">
-        Emergency release mechanisms regular test karo — monthly ya quarterly. Ek real emergency mein
-        discover karna ki break-glass nahi kaam kar raha tha ya intercom dead tha — catastrophic hai.
-        Testing log maintain karo. Fire integration test annually karo with fire team.
+      <Callout type="danger" title="Emergency Release — Test It, Don't Assume">
+        Test emergency release mechanisms regularly — monthly or quarterly. Discovering in a real emergency that the break-glass was not working or the intercom was dead — is catastrophic. Maintain a testing log. Do the fire integration test annually with the fire team.
       </Callout>
 
       <h2 id="integration" style={S.h2}>Integration with Access Control, CCTV and Biometrics</h2>
 
       <p style={S.p}>
-        Mantrap ka full security value integration se milta hai. <TopicLink slug="access-control" variant="inline" /> system
-        credential authentication provide karta hai — outer aur inner door readers access controller se
-        connected hote hain. Access logs mantrap entry/exit record karte hain. Anti-passback mantrap
-        pe bhi configure kiya ja sakta hai.
+        The full security value of the mantrap comes from integration. The <TopicLink slug="access-control" variant="inline" /> system provides credential authentication — the outer and inner door readers are connected to the access controller. Access logs record mantrap entry/exit. Anti-passback can also be configured on the mantrap.
       </p>
 
       <p style={S.p}>
-        <TopicLink slug="cctv" variant="inline" /> mantrap mein essential hai — outer entry, vestibule
-        interior aur inner entry — teeno angles cover karo. WDR cameras backlighting handle karte hain.
-        Access event pe automatic CCTV recording aur snapshot. Tailgating detection pe CCTV instant
-        review security operator ke liye.
+        <TopicLink slug="cctv" variant="inline" /> is essential in the mantrap — cover all three angles: outer entry, vestibule interior and inner entry. WDR cameras handle backlighting. Automatic CCTV recording and snapshot on an access event. Instant CCTV review for the security operator on tailgating detection.
       </p>
 
       <p style={S.p}>
-        <TopicLink slug="biometrics" variant="inline" /> mantrap mein multi-factor authentication ke
-        liye — outer door pe card swipe, inner door pe fingerprint ya face recognition. Ye combination
-        very high assurance deta hai ki authenticated person actually authorized hai.
+        <TopicLink slug="biometrics" variant="inline" /> for multi-factor authentication in the mantrap — card swipe at the outer door, fingerprint or face recognition at the inner door. This combination gives very high assurance that the authenticated person is actually authorized.
       </p>
 
       <h2 id="cybersecurity" style={S.h2}>Cybersecurity Considerations</h2>
 
       <p style={S.p}>
-        Mantrap controller/PLC network-connected hai — cybersecurity controls apply hote hain. Controller
-        dedicated network segment pe rakho. Default credentials change karo. Firmware updates maintain
-        karo. Physical access to controller cabinet restricted hona chahiye — controller tamper karke
-        interlock logic bypass possible hai.
+        The mantrap controller/PLC is network-connected — cybersecurity controls apply. Keep the controller on a dedicated network segment. Change default credentials. Maintain firmware updates. Physical access to the controller cabinet must be restricted — by tampering with the controller, bypassing the interlock logic is possible.
       </p>
 
       <p style={S.p}>
-        Remote management convenient hai lekin encrypted, authenticated access chahiye — open remote
-        access security risk hai. Controller configuration backup rakho — failure pe rapid restore
-        possible ho.
+        Remote management is convenient but needs encrypted, authenticated access — open remote access is a security risk. Keep a controller configuration backup — so a rapid restore is possible on failure.
       </p>
 
       <h2 id="preventive-maintenance" style={S.h2}>Preventive Maintenance</h2>
 
       <p style={S.p}>
-        Neeche example maintenance activities hain — actual schedule OEM recommendations, site policy
-        aur applicable requirements ke hisaab se adjust karo.
+        Below are example maintenance activities — adjust the actual schedule according to OEM recommendations, site policy and applicable requirements.
       </p>
 
       <h3 style={S.h3}>Monthly Checks (Example)</h3>
       <ul style={S.ul}>
-        <li>Full interlock sequence test karo — outer door open karo, verify inner door locked; outer close, inner open; both-open attempt verify rejected</li>
-        <li>Occupancy sensor test — ek person enter karo, inner door should open; tailgating simulate karo (two people), inner door should stay locked aur alarm generate</li>
-        <li>Emergency release test — emergency release mechanism activate karo (per approved test procedure), verify behavior matches approved design aur sequence of operations</li>
-        <li>Intercom test — vestibule se security desk communication verify karo</li>
+        <li>Test the full interlock sequence — open the outer door, verify the inner door is locked; outer closed, inner opens; verify a both-open attempt is rejected</li>
+        <li>Occupancy sensor test — one person enters, the inner door should open; simulate tailgating (two people), the inner door should stay locked and an alarm should generate</li>
+        <li>Emergency release test — activate the emergency release mechanism (per the approved test procedure), verify the behavior matches the approved design and sequence of operations</li>
+        <li>Intercom test — verify communication from the vestibule to the security desk</li>
         <li>CCTV coverage check — cameras clean, properly aimed, recording</li>
         <li>Door closer/hinge — proper operation, auto-close timing</li>
       </ul>

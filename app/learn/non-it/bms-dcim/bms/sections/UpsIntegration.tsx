@@ -13,10 +13,7 @@ export default function UpsIntegration() {
       <h2 id="ups-integration" style={S.h2}>How to Integrate a UPS with BMS — Step by Step</h2>
 
       <p style={S.p}>
-        UPS integration BMS engineers ke liye ek bread-and-butter task hai. Agar ek baar ye process
-        properly samajh lo — Modbus register map kaise read karna hai, BMS mein device kaise add
-        karna hai, point mapping aur scaling kaise configure karna hai — to ye skill almost every
-        equipment integration pe apply hoti hai.
+        UPS integration is a bread-and-butter task for BMS engineers. Once you understand this process properly — how to read a Modbus register map, how to add a device in the BMS, how to configure point mapping and scaling — this skill applies to almost every equipment integration.
       </p>
 
       <Figure caption="Fig 3 — Complete UPS-to-BMS integration workflow from OEM documentation through commissioning.">
@@ -25,118 +22,69 @@ export default function UpsIntegration() {
 
       <h3 style={S.h3}>Step 1 — Identify UPS Make, Model and Communication Interface</h3>
       <p style={S.p}>
-        Pehle UPS ka make, model number aur firmware version note karo. Different models same vendor
-        ke bhi different register maps aur communication capabilities have karte hain — aur kuch UPS
-        mein communication protocol separate optional card (Modbus card, SNMP card, BACnet card) ke
-        through available hota hai jo installed hona chahiye. UPS front panel ya nameplate se model confirm
-        karo. Communication interface identify karo — RS-485 serial port (Modbus RTU), Ethernet port
-        (Modbus TCP ya BACnet/IP), SNMP network card, ya other interface ho sakta hai. Kuch UPS mein
-        multiple interfaces hoti hain — BMS ke liye appropriate one select karo.
+        First note the UPS make, model number and firmware version. Different models even from the same vendor have different register maps and communication capabilities — and in some UPS the communication protocol is available through a separate optional card (Modbus card, SNMP card, BACnet card) that must be installed. Confirm the model from the UPS front panel or nameplate. Identify the communication interface — it can be an RS-485 serial port (Modbus RTU), Ethernet port (Modbus TCP or BACnet/IP), SNMP network card, or another interface. Some UPS have multiple interfaces — select the appropriate one for the BMS.
       </p>
 
       <Callout type="important" title="Three Separate Questions — Data Available, Exposed, and Integrated">
-        BMS integration mein teen alag questions hain. Pehla: equipment kaunsa data measure ya calculate
-        karta hai internally? Doosra: OEM communication interface (register map, BACnet object list, SNMP
-        MIB) mein kaunsa subset expose kiya gaya hai? Teesra: BMS project mein actually kaunsa points
-        configured aur integrated hain? Ye teeno automatically same nahi hote. Ek UPS internally 50+
-        parameters track kar sakta hai — lekin register map mein sirf 20 expose ho — aur BMS project
-        mein actually 10 configure kiye gaye ho. Always verify from OEM documentation what is actually
-        available via the specific communication interface.
+        There are three separate questions in BMS integration. First: what data does the equipment measure or calculate internally? Second: which subset has been exposed in the OEM communication interface (register map, BACnet object list, SNMP MIB)? Third: which points are actually configured and integrated in the BMS project? These three are not automatically the same. A UPS may track 50+ parameters internally — but only 20 may be exposed in the register map — and only 10 may actually be configured in the BMS project. Always verify from OEM documentation what is actually available via the specific communication interface.
       </Callout>
 
       <h3 style={S.h3}>Step 2 — Obtain OEM Documentation</h3>
       <p style={S.p}>
-        Ye sabse important step hai. Bina OEM documentation ke blind guessing hai — wrong register
-        read karne se wrong values ya even equipment command issues ho sakte hain. Required documents:
+        This is the most important step. Without OEM documentation it is blind guessing — reading the wrong register can give wrong values or even equipment command issues. Required documents:
       </p>
       <ul style={S.ul}>
-        <li><strong>Modbus register map</strong> — agar Modbus use ho raha hai. Register address (1-based ya 0-based clearly noted), register type (HR/IR/Coil/DI), data type (UINT16, INT16, FLOAT32), scaling formula, units.</li>
-        <li><strong>BACnet object list</strong> — agar BACnet use ho raha hai. Device ID, all object types and instance numbers, Present_Value units, writable properties.</li>
-        <li><strong>SNMP MIB file</strong> — agar SNMP use ho raha hai. OID tree, data types, accessible OIDs.</li>
+        <li><strong>Modbus register map</strong> — if Modbus is being used. Register address (1-based or 0-based clearly noted), register type (HR/IR/Coil/DI), data type (UINT16, INT16, FLOAT32), scaling formula, units.</li>
+        <li><strong>BACnet object list</strong> — if BACnet is being used. Device ID, all object types and instance numbers, Present_Value units, writable properties.</li>
+        <li><strong>SNMP MIB file</strong> — if SNMP is being used. OID tree, data types, accessible OIDs.</li>
         <li><strong>Communication manual</strong> — physical connection, baud rate, parity, default settings.</li>
         <li><strong>OEM monitoring software</strong> (if available) — for cross-checking values.</li>
       </ul>
 
       <Callout type="important" title="Register Map Version Matters">
-        UPS firmware update pe register map change ho sakta hai. Hamesha documentation ki version
-        confirm karo jo installed firmware ke saath match kare. Purani register map se integration
-        karne pe kuch points correctly map nahi honge. Agar mismatch lagta hai, vendor se latest
-        firmware-specific documentation maango.
+        The register map can change on a UPS firmware update. Always confirm the documentation version that matches the installed firmware. If you integrate with an old register map, some points will not map correctly. If there seems to be a mismatch, ask the vendor for the latest firmware-specific documentation.
       </Callout>
 
       <h3 style={S.h3}>Step 3 — Configure Physical Communication</h3>
       <p style={S.p}>
-        <strong>RS-485 (Modbus RTU):</strong> UPS RS-485 port pe connect karo — A aur B wires polarity
-        verify karo (A = positive, B = negative in most conventions, lekin OEM manual confirm karo).
-        Shield/ground wire ke liye OEM guidance follow karo. Termination resistor (typically 120 ohm)
-        bus ke dono ends pe — agar UPS bus end pe hai to resistor enable karo (internal DIP switch ya
-        jumper). Baud rate, parity, stop bits aur slave ID UPS front panel ya web interface se set
-        karo. BMS controller same settings configure karo.
+        <strong>RS-485 (Modbus RTU):</strong> Connect to the UPS RS-485 port — verify A and B wire polarity (A = positive, B = negative in most conventions, but confirm the OEM manual). Follow OEM guidance for the shield/ground wire. Termination resistor (typically 120 ohm) at both ends of the bus — if the UPS is at the bus end, enable the resistor (internal DIP switch or jumper). Set baud rate, parity, stop bits and slave ID from the UPS front panel or web interface. Configure the same settings on the BMS controller.
       </p>
       <p style={S.p}>
-        <strong>Ethernet (Modbus TCP ya BACnet/IP):</strong> UPS network interface ko IP address assign
-        karo — static IP preferred BMS integration ke liye (DHCP se IP change ho sakta hai). IP address,
-        subnet mask, default gateway set karo. Connectivity ping se verify karo. Firewall/VLAN rules
-        confirm karo — BMS server se UPS IP aur required port reachable hai.
+        <strong>Ethernet (Modbus TCP or BACnet/IP):</strong> Assign an IP address to the UPS network interface — a static IP is preferred for BMS integration (with DHCP the IP can change). Set the IP address, subnet mask, default gateway. Verify connectivity with ping. Confirm firewall/VLAN rules — the UPS IP and required port are reachable from the BMS server.
       </p>
 
       <h3 style={S.h3}>Step 4 — Configure BMS Driver and Device</h3>
       <p style={S.p}>
-        BMS software mein ek new device add karo. Protocol select karo (Modbus RTU, Modbus TCP,
-        BACnet/IP, SNMP). Connection parameters enter karo — IP address aur port (Modbus TCP ke liye),
-        ya COM port aur baud/parity/slave ID (RTU ke liye), ya community string aur OIDs (SNMP ke
-        liye). Device name give karo jo identify karo — e.g., "UPS-ROOM-A-APC-250kVA". Save karo aur
-        device online aa raha hai verify karo — BMS typically green/gray/red indicator show karta hai
-        device communication status ke liye.
+        Add a new device in the BMS software. Select the protocol (Modbus RTU, Modbus TCP, BACnet/IP, SNMP). Enter the connection parameters — IP address and port (for Modbus TCP), or COM port and baud/parity/slave ID (for RTU), or community string and OIDs (for SNMP). Give the device a name that identifies it — e.g., "UPS-ROOM-A-APC-250kVA". Save and verify the device is coming online — the BMS typically shows a green/gray/red indicator for device communication status.
       </p>
 
       <h3 style={S.h3}>Step 5 — Discover or Manually Create Points</h3>
       <p style={S.p}>
-        BACnet devices often auto-discover ho sakte hain — BMS Who-Is broadcast bhejta hai aur BACnet
-        devices respond karte hain with I-Am. Object list automatically imported ho sakta hai. Modbus
-        aur SNMP mein auto-discovery typically nahi hoti — points manually create karne padte hain.
-        OEM register map se each point ke liye: register address, register type, function code, data
-        type, scaling, engineering unit — ye sab enter karo. Ek shortcut: kuch BMS platforms Modbus
-        device configuration file (CSV/XML) import support karte hain — time save hota hai.
+        BACnet devices can often be auto-discovered — the BMS sends a Who-Is broadcast and BACnet devices respond with I-Am. The object list can be imported automatically. In Modbus and SNMP there is typically no auto-discovery — points have to be created manually. From the OEM register map, for each point: register address, register type, function code, data type, scaling, engineering unit — enter all of these. A shortcut: some BMS platforms support importing a Modbus device configuration file (CSV/XML) — it saves time.
       </p>
 
       <h3 style={S.h3}>Step 6 — Map and Bind Points</h3>
       <p style={S.p}>
-        Har BMS point ko physical address se link karo. Modbus mein: device → function code → register
-        address → data type. BACnet mein: device → object type → instance → property (typically
-        Present_Value). SNMP mein: device → OID. Tag name point ko identify karta hai — naming
-        convention follow karo: e.g., "UPS-A1.Output_Load_Pct", "UPS-A1.Battery_Voltage",
-        "UPS-A1.Bypass_Status". Consistent naming future maintenance simplify karta hai.
+        Link every BMS point to a physical address. In Modbus: device → function code → register address → data type. In BACnet: device → object type → instance → property (typically Present_Value). In SNMP: device → OID. The tag name identifies the point — follow a naming convention: e.g., "UPS-A1.Output_Load_Pct", "UPS-A1.Battery_Voltage", "UPS-A1.Bypass_Status". Consistent naming simplifies future maintenance.
       </p>
 
       <h3 style={S.h3}>Step 7 — Configure Scaling, Data Types and Engineering Units</h3>
       <p style={S.p}>
-        OEM documentation se scaling formula read karo. Enter it in BMS point configuration. Data type
-        must match OEM specification — UINT16 for most 0-based values, INT16 for signed (e.g.,
-        temperature can be negative), FLOAT32 for floating point (2 registers, verify byte order).
-        Engineering unit configure karo — %, V, A, Hz, kW, min, °C. Agar unit wrong configure hua
-        to operator confusion aur alarm thresholds wrong honge.
+        Read the scaling formula from the OEM documentation. Enter it in the BMS point configuration. The data type must match the OEM specification — UINT16 for most 0-based values, INT16 for signed (e.g., temperature can be negative), FLOAT32 for floating point (2 registers, verify byte order). Configure the engineering unit — %, V, A, Hz, kW, min, °C. If the unit is configured wrong, there will be operator confusion and the alarm thresholds will be wrong.
       </p>
 
       <Callout type="best-practice" title="Verify Scaling Before Alarming">
-        Alarm limits configure karne se pehle verify karo ki scaled values correct hain — UPS local
-        display se cross-check karo. Agar BMS 72.4% load dikhata hai aur UPS display 72% dikhata hai
-        to scaling approximately correct hai. Agar BMS 7240 show kar raha hai — scaling factor missing
-        hai. Fix first, then configure alarms and trends.
+        Before configuring alarm limits, verify that the scaled values are correct — cross-check with the UPS local display. If the BMS shows 72.4% load and the UPS display shows 72%, the scaling is approximately correct. If the BMS is showing 7240 — the scaling factor is missing. Fix first, then configure alarms and trends.
       </Callout>
 
       <h3 style={S.h3}>Step 8 — Create HMI Graphics</h3>
       <p style={S.p}>
-        UPS ke liye ek dedicated HMI page banana — single line diagram style mein ideal hai. Input →
-        UPS block → Output, battery level indicator, key parameters (load%, output V, battery SOC,
-        mode). Color coding: normal (green), warning (amber), critical (red). Har displayed value ko
-        correct BMS tag se bind karo — binding correct hona verify karo by checking that value changes
-        on screen when UPS condition changes.
+        Build a dedicated HMI page for the UPS — single line diagram style is ideal. Input → UPS block → Output, battery level indicator, key parameters (load%, output V, battery SOC, mode). Color coding: normal (green), warning (amber), critical (red). Bind every displayed value to the correct BMS tag — verify the binding is correct by checking that the value changes on screen when the UPS condition changes.
       </p>
 
       <h3 style={S.h3}>Step 9 — Configure Alarms</h3>
       <p style={S.p}>
-        Per project policy, relevant alarm points configure karo. Common UPS alarms in BMS:
+        Per project policy, configure the relevant alarm points. Common UPS alarms in BMS:
       </p>
       <ul style={S.ul}>
         <li><strong>UPS Common Alarm</strong> — single digital input, priority per project. Acknowledge required.</li>
@@ -144,32 +92,21 @@ export default function UpsIntegration() {
         <li><strong>Output Load % High</strong> — analog alarm, threshold per project (e.g., 80% warning, 95% critical). Add 2-3% deadband.</li>
         <li><strong>Battery SOC Low</strong> — warn when battery below x% SOC. Threshold project-specific.</li>
         <li><strong>Battery Runtime Low</strong> — warn when estimated runtime below threshold.</li>
-        <li><strong>Operating Mode — Bypass</strong> — digital alarm agar UPS bypass mode mein jaaye.</li>
+        <li><strong>Operating Mode — Bypass</strong> — a digital alarm if the UPS goes into bypass mode.</li>
         <li><strong>Communication Failure</strong> — auto-generated when BMS loses comms with UPS.</li>
       </ul>
       <p style={S.p}>
-        Delay/debounce configure karo where appropriate — transient spikes pe alarm na ho. Alarm
-        message meaningful raho — "UPS-A1 Output Load High — 92.3 %" vs generic "Analog High Alarm".
+        Configure delay/debounce where appropriate — so there is no alarm on transient spikes. Keep the alarm message meaningful — "UPS-A1 Output Load High — 92.3 %" vs a generic "Analog High Alarm".
       </p>
 
       <h3 style={S.h3}>Step 10 — Configure Trends</h3>
       <p style={S.p}>
-        Key UPS points trend log karo: output load %, output voltage per phase, battery SOC, battery
-        temperature (agar available). Log interval select karo — every 1–5 minutes for load monitoring,
-        longer intervals for stable parameters like battery voltage at rest. Historian retention period
-        per project policy.
+        Trend-log the key UPS points: output load %, output voltage per phase, battery SOC, battery temperature (if available). Select the log interval — every 1–5 minutes for load monitoring, longer intervals for stable parameters like battery voltage at rest. Historian retention period per project policy.
       </p>
 
       <h3 style={S.h3}>Step 11 — Point-to-Point Testing and Commissioning</h3>
       <p style={S.p}>
-        Har point ko individually test karo. UPS local display se BMS value compare karo. Load % —
-        do values match? Bypass status — agar bypass point test karna ho to ye planned, authorized test
-        hona chahiye per site SOP/MOP/EOP, OEM procedure, risk assessment aur supervision ke saath —
-        casually bypass operate karna safe nahi hai; coordinate karo with site operations team. Alarm —
-        UPS pe test alarm function use karo (agar OEM test mode available hai) ya dry contact simulate
-        karo; actual fault conditions induce karna avoid karo without proper planning. Trend — data logger
-        mein kuch readings verify karo. Document all tests — commissioning sign-off sheet mein each point
-        ka result likho (UPS source value, BMS displayed value, pass/fail).
+        Test every point individually. Compare the BMS value with the UPS local display. Load % — do the values match? Bypass status — if the bypass point has to be tested, it must be a planned, authorized test per site SOP/MOP/EOP, OEM procedure, risk assessment and supervision — operating bypass casually is not safe; coordinate with the site operations team. Alarm — use the test alarm function on the UPS (if an OEM test mode is available) or simulate a dry contact; avoid inducing actual fault conditions without proper planning. Trend — verify some readings in the data logger. Document all tests — write each point's result in the commissioning sign-off sheet (UPS source value, BMS displayed value, pass/fail).
       </p>
 
       <ComparisonTable
@@ -196,9 +133,7 @@ export default function UpsIntegration() {
       />
 
       <Callout type="maintenance" title="UPS Integration — Ongoing Maintenance">
-        UPS firmware update ke baad integration test karo — register map ya BACnet object list change
-        ho sakta hai. Annual preventive maintenance mein BMS-UPS integration verify karo: sab points
-        correct values show kar rahe hain, alarms functional hain, trends logging ho rahi hai.
+        After a UPS firmware update, do an integration test — the register map or BACnet object list can change. In annual preventive maintenance verify the BMS-UPS integration: all points are showing correct values, alarms are functional, trends are logging.
       </Callout>
     </>
   );

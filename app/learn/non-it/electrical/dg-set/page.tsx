@@ -15,7 +15,15 @@ import TopicLink from "@/components/TopicLink";
 export const metadata: Metadata = {
   title: "DG Set in Data Centers — Behind The Tech",
   description:
-    "DG Set kya hai, AMF panel, sync room, PLC automation, fuel system, A/B/C/D maintenance, Tier III/IV — Data Center backup power ka complete engineer guide.",
+    "What is a DG Set, AMF panel, sync room, PLC automation, fuel system, A/B/C/D maintenance, Tier III/IV — the complete engineer guide to Data Center backup power.",
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/electrical/dg-set",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/electrical/dg-set",
+      hi: "https://behindthetech.in/hi/learn/non-it/electrical/dg-set",
+      "x-default": "https://behindthetech.in/learn/non-it/electrical/dg-set",
+    },
+  },
 };
 
 // ─── TOC (QuickSummary + FAQ excluded) ────────────────────────────────────────
@@ -72,12 +80,12 @@ const S = {
 
 function QuickSummary() {
   const pts = [
-    { label: "Kya hai ek line me", text: "DG Set ek backup power machine hai — jab grid fail ho to diesel engine se bijli banata hai taaki Data Center band na ho." },
-    { label: "Data Center me kyun", text: "UPS battery sirf 10–15 minutes chalti hai. Us beech DG start hokar full load le leta hai — grid waapis aane tak Data Center continuously chalta rehta hai." },
-    { label: "Andar kya hota hai", text: "Teen main parts: Diesel Engine (mechanical power), Alternator (electricity generate karta hai), aur AMF/Control Panel (automatic operation, protection, monitoring)." },
-    { label: "Automatic kaise", text: "AMF Panel (Automatic Main Failure) grid failure detect karta hai, engine start karta hai, voltage stable hote hi load transfer karta hai — bina kisi operator ke, 10–30 seconds me." },
-    { label: "Fuel kitna chahiye", text: "Industry best practice: Tier III minimum 12 hours, Tier IV minimum 24–72 hours. Fuel storage plan karo — bina diesel ke DG kuch ghante me band." },
-    { label: "Tier IV me kya alag", text: "Tier IV me 2N — do completely independent DG systems. Koi shared component nahi. Ek fail ho to doosra poora load le — zero IT impact guaranteed." },
+    { label: "What it is, in one line", text: "A DG Set is a backup power machine — when the grid fails, it generates electricity from a diesel engine so that the Data Center does not shut down." },
+    { label: "Why in a Data Center", text: "UPS batteries run for only 10–15 minutes. In that time the DG starts and takes the full load — the Data Center keeps running continuously until the grid comes back." },
+    { label: "What is inside", text: "Three main parts: Diesel Engine (mechanical power), Alternator (generates electricity), and AMF/Control Panel (automatic operation, protection, monitoring)." },
+    { label: "How it is automatic", text: "The AMF Panel (Automatic Main Failure) detects grid failure, starts the engine, and transfers the load as soon as voltage is stable — without any operator, in 10–30 seconds." },
+    { label: "How much fuel is needed", text: "Industry best practice: Tier III minimum 12 hours, Tier IV minimum 24–72 hours. Plan fuel storage — without diesel, the DG stops within a few hours." },
+    { label: "What is different in Tier IV", text: "Tier IV is 2N — two completely independent DG systems. No shared components. If one fails, the other takes the full load — zero IT impact guaranteed." },
   ];
   return (
     <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", margin: "8px 0 32px" }}>
@@ -93,7 +101,7 @@ function QuickSummary() {
           ))}
         </div>
         <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid rgba(37,99,235,0.08)", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937" }}>
-          Bas itna samajh gaye to DG Set ka concept clear hai. Deeper jaana ho to neeche poora article hai.
+          If you have understood this much, the DG Set concept is clear. If you want to go deeper, the full article is below.
         </div>
       </div>
     </div>
@@ -121,7 +129,7 @@ function EngineerTip({ children }: { children: React.ReactNode }) {
     <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", margin: "20px 0 24px" }}>
       <div style={{ height: 2, background: "#ffa500", boxShadow: "0 0 8px rgba(255,165,0,0.4)" }} />
       <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}>
-        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer Ki Tip</span>
+        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer's Tip</span>
         <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
       </div>
     </div>
@@ -247,13 +255,13 @@ function ComparisonCard({ tag, leftTitle, leftItems, rightTitle, rightItems }: {
 // ─── AMFProtectionTable ───────────────────────────────────────────────────────
 
 const AMF_ROWS = [
-  { protection: "Overcurrent",        detects: "Overload ya short circuit on DG output" },
+  { protection: "Overcurrent",        detects: "Overload or short circuit on DG output" },
   { protection: "Earth Fault",        detects: "Ground fault on distribution system" },
   { protection: "Undervoltage",       detects: "Output voltage below set limit" },
-  { protection: "Overvoltage",        detects: "AVR failure ya voltage surge" },
-  { protection: "Underfrequency",     detects: "Engine speed drop — overload ya governor issue" },
+  { protection: "Overvoltage",        detects: "AVR failure or voltage surge" },
+  { protection: "Underfrequency",     detects: "Engine speed drop — overload or governor issue" },
   { protection: "Overfrequency",      detects: "Engine overspeed — governor failure" },
-  { protection: "Reverse Power",      detects: "Generator motor ban raha hai — dangerous" },
+  { protection: "Reverse Power",      detects: "Generator is turning into a motor — dangerous" },
   { protection: "Loss of Excitation", detects: "AVR failure — alternator field loss" },
 ];
 
@@ -264,7 +272,7 @@ function AMFProtectionTable() {
         <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 480 }}>
           <thead>
             <tr style={{ background: "rgba(37,99,235,0.06)" }}>
-              {["Protection", "Kya Detect Karta Hai"].map((h) => (
+              {["Protection", "What It Detects"].map((h) => (
                 <th key={h} style={{ textAlign: "left", padding: "12px 16px", fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "#2563EB", borderBottom: "1px solid rgba(37,99,235,0.14)", whiteSpace: "nowrap" }}>{h}</th>
               ))}
             </tr>
@@ -476,12 +484,12 @@ function PrevNextNav() {
 // ─── FAQ ──────────────────────────────────────────────────────────────────────
 
 const FAQS = [
-  { q: "DG Set aur Generator me kya difference hai?", a: "Generator sirf alternator hota hai — mechanical energy se electricity banata hai. DG Set = Diesel Engine + Generator + Control Panel — complete packaged backup power unit." },
-  { q: "DG Set kitne seconds me start hota hai?", a: "Engine typically 10–20 seconds me rated speed aur voltage tak pahunch jata hai. Load transfer milake 15–30 seconds total. Isi liye UPS battery mandatory hai — is gap ko cover karne ke liye." },
-  { q: "Black smoke kyun aata hai?", a: "Overloading, rich fuel mixture, ya blocked air filter se. Load suddenly badhne par thoda black smoke normal hai. Continuous black smoke = investigate karo — injector ya air filter issue ho sakta hai." },
-  { q: "DG Set ko cooldown kyun chahiye?", a: "Full load par engine parts bahut garam rehte hain. Load suddenly remove karo aur engine band karo — coolant circulation ruk jaati hai lekin metal hot rehta hai — heat soak hota hai, cylinder head damage possible. 5–10 min no-load run se coolant cool karta hai properly." },
-  { q: "Fuel kitne time baad kharab ho jaata hai?", a: "Un-polished diesel typically 6–12 months me degrade hoti hai — bacteria, water contamination, sediment. Fuel polishing system se 2–3 saal tak quality maintain kar sakte hain. Stale fuel DG start failure ka common root cause hai." },
-  { q: "Tier IV me DG Set alag kyun hota hai?", a: "Tier IV me zero shared components hone chahiye — do completely independent DG systems, independent sync panels, independent fuel storage, independent AMF panels. Ek system fail ho to doosra zero impact ke saath full load carry karta hai." },
+  { q: "What is the difference between a DG Set and a Generator?", a: "A generator is only the alternator — it produces electricity from mechanical energy. DG Set = Diesel Engine + Generator + Control Panel — a complete packaged backup power unit." },
+  { q: "How many seconds does a DG Set take to start?", a: "The engine typically reaches rated speed and voltage in 10–20 seconds. Including load transfer, 15–30 seconds total. That is why a UPS battery is mandatory — to cover this gap." },
+  { q: "Why does black smoke come out?", a: "From overloading, a rich fuel mixture, or a blocked air filter. A little black smoke is normal when load suddenly increases. Continuous black smoke = investigate — it could be an injector or air filter issue." },
+  { q: "Why does a DG Set need a cooldown?", a: "At full load, engine parts stay very hot. If you suddenly remove the load and stop the engine — coolant circulation stops but the metal stays hot — heat soak happens, and cylinder head damage is possible. A 5–10 min no-load run lets the coolant cool the engine properly." },
+  { q: "How long does fuel take to go bad?", a: "Un-polished diesel typically degrades in 6–12 months — bacteria, water contamination, sediment. With a fuel polishing system, quality can be maintained for 2–3 years. Stale fuel is a common root cause of DG start failure." },
+  { q: "Why is the DG Set different in Tier IV?", a: "Tier IV must have zero shared components — two completely independent DG systems, independent sync panels, independent fuel storage, independent AMF panels. If one system fails, the other carries the full load with zero impact." },
 ];
 
 function FAQSection() {
@@ -509,18 +517,18 @@ export default function DgSetPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="dg-set" headings={HEADINGS} readingTimeMinutes={22}>
+      <ArticleLayout slug="dg-set" headings={HEADINGS} readingTimeMinutes={22} lang="en" alternateHref="/hi/learn/non-it/electrical/dg-set">
 
         {/* ── Hero ── */}
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
             <Image src="/images/articles/dg-set/dg-set-overview.svg" alt="Complete DG Set unit in Indian Data Center — engine, alternator, acoustic canopy, control panel" fill sizes="(max-width:768px) 100vw,740px" style={{ objectFit: "cover" }} unoptimized />
           </div>
-          <figcaption style={S.imageCaption}>DG Set — Data Center ka backup power backbone. Grid fail hone par 10–30 seconds me full load leta hai.</figcaption>
+          <figcaption style={S.imageCaption}>DG Set — the backup power backbone of the Data Center. When the grid fails, it takes the full load in 10–30 seconds.</figcaption>
         </figure>
 
         <WhatYouAreLooking>
-          Ye ek complete DG Set unit hai — acoustic canopy me enclosed. Bahar se metal box dikhta hai, andar diesel engine aur alternator hote hain. Exhaust silencer upar se nikalti hai. Control panel side me hota hai.
+          This is a complete DG Set unit — enclosed in an acoustic canopy. From outside it looks like a metal box; inside are the diesel engine and alternator. The exhaust silencer comes out from the top. The control panel is on the side.
         </WhatYouAreLooking>
 
         <QuickSummary />
@@ -528,23 +536,23 @@ export default function DgSetPage() {
         <hr style={S.divider} />
 
         {/* ── Intro ── */}
-        <p style={S.p}><TopicLink slug="transformer" label="Transformer" variant="inline" /> ke baad 433V LV power LVMDB tak pahunch gayi. <TopicLink slug="ups" label="UPS" variant="inline" /> ne power store kar li.</p>
-        <p style={S.p}>Ab ek sabse important sawal: <strong>Agar grid fail ho jaye — raat ke 2 baje, bina warning ke — to kya hoga?</strong></p>
-        <p style={S.p}>UPS battery kuch minutes chalti hai. Us beech kuch toh chahiye jo full power de sake.</p>
-        <p style={S.p}>Yahi kaam karta hai — <strong>DG Set (Diesel Generator Set).</strong></p>
+        <p style={S.p}>After the <TopicLink slug="transformer" label="Transformer" variant="inline" />, 433V LV power has reached the LVMDB. The <TopicLink slug="ups" label="UPS" variant="inline" /> has stored the power.</p>
+        <p style={S.p}>Now the most important question: <strong>If the grid fails — at 2 AM, without warning — what happens?</strong></p>
+        <p style={S.p}>The UPS battery runs for a few minutes. In that time, something is needed that can provide full power.</p>
+        <p style={S.p}>That is exactly the job of — <strong>the DG Set (Diesel Generator Set).</strong></p>
 
         <hr style={S.divider} />
 
         {/* ── SECTION 1 ── */}
         <h2 id="what-is-dg-set" style={S.h1}>What Is a DG Set?</h2>
 
-        <p style={S.p}><strong>DG Set = Diesel Generator Set.</strong> Ek complete packaged backup power unit jisme teen main parts hote hain:</p>
+        <p style={S.p}><strong>DG Set = Diesel Generator Set.</strong> A complete packaged backup power unit with three main parts:</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Diesel Engine</strong> — fuel jalata hai, mechanical energy produce karta hai</li>
-          <li style={S.li}><strong>Alternator</strong> — mechanical energy ko 3-phase AC electricity me convert karta hai</li>
-          <li style={S.li}><strong>Control Panel</strong> — AMF, protection, monitoring, PLC — automation sab yahan</li>
+          <li style={S.li}><strong>Diesel Engine</strong> — burns fuel and produces mechanical energy</li>
+          <li style={S.li}><strong>Alternator</strong> — converts mechanical energy into 3-phase AC electricity</li>
+          <li style={S.li}><strong>Control Panel</strong> — AMF, protection, monitoring, PLC — all automation is here</li>
         </ul>
-        <p style={S.p}><strong>Output:</strong> 3-phase AC, 415V/433V, 50 Hz — same as grid supply. IT equipment ko pata bhi nahi chalta ki supply source badal gaya.</p>
+        <p style={S.p}><strong>Output:</strong> 3-phase AC, 415V/433V, 50 Hz — same as grid supply. IT equipment does not even know that the supply source has changed.</p>
         <p style={S.p}><strong>Speed:</strong> 1500 RPM at 50 Hz (4-pole alternator) — f = NP/120 = 1500×4/120 = 50 Hz.</p>
 
         <DCMapNote components={["DG Set", "AMF Panel", "ATS/ATSS", "Fuel Storage", "Sync Panel"]} />
@@ -554,15 +562,15 @@ export default function DgSetPage() {
         {/* ── SECTION 2 ── */}
         <h2 id="why-required" style={S.h1}>Why Is DG Set Required?</h2>
 
-        <p style={S.p}>Grid supply reliable hai — lekin 100% uptime guaranteed nahi. Utility failures, transformer faults, cable cuts, storms, planned maintenance — sab possible hain.</p>
-        <p style={S.p}><strong>UPS battery ka limitation:</strong> Typically 10–15 minutes. Ye sirf DG start hone ka time cover karta hai — isse zyada nahi.</p>
+        <p style={S.p}>Grid supply is reliable — but 100% uptime is not guaranteed. Utility failures, transformer faults, cable cuts, storms, planned maintenance — all are possible.</p>
+        <p style={S.p}><strong>The limitation of UPS batteries:</strong> Typically 10–15 minutes. It only covers the time for the DG to start — not more than that.</p>
 
         <WhyThisMatters>
-          Bina DG Set ke: UPS battery drain → servers shutdown → business impact → SLA breach → financial penalty. DG Set isi catastrophe ko prevent karta hai. Isliye no Data Center — Tier II se Tier IV tak — bina DG Set ke operate karta hai.
+          Without a DG Set: UPS battery drain → servers shutdown → business impact → SLA breach → financial penalty. The DG Set prevents exactly this catastrophe. That is why no Data Center — from Tier II to Tier IV — operates without a DG Set.
         </WhyThisMatters>
 
         <InsightCard>
-          <strong>DG Set aur UPS ek team ki tarah kaam karte hain.</strong> UPS ek bridge hai — grid fail hone par turant power deta hai. DG Set woh bridge cross karta hai aur permanent power leta hai. Dono ek doosre ke bina incomplete hain. UPS bina DG ke 10–15 min me dead. DG bina UPS ke start hone ke beech servers crash.
+          <strong>The DG Set and UPS work like a team.</strong> The UPS is a bridge — it gives power immediately when the grid fails. The DG Set crosses that bridge and takes over as the permanent power. Each is incomplete without the other. A UPS without a DG is dead in 10–15 min. A DG without a UPS — servers crash in the gap while it starts.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -570,7 +578,7 @@ export default function DgSetPage() {
         {/* ── SECTION 3 ── */}
         <h2 id="how-dg-works" style={S.h1}>How DG Set Works — Step by Step</h2>
 
-        <FlowDiagram caption="Complete DG Set automatic start sequence — grid fail se load transfer tak" steps={[
+        <FlowDiagram caption="Complete DG Set automatic start sequence — from grid failure to load transfer" steps={[
           { icon: "⚡", label: "Grid Fails" },
           { icon: "🔍", label: "AMF Detects", sublabel: "2–5 sec delay" },
           { icon: "🔑", label: "Start Signal" },
@@ -583,22 +591,22 @@ export default function DgSetPage() {
         ]} />
 
         <h3 style={S.h3}>Step 1–2: Grid Failure Detection</h3>
-        <p style={S.p}>AMF Panel grid voltage aur frequency continuously monitor karta hai. Failure detect hone par 2–5 seconds ki settling delay hoti hai — momentary dips ko filter karne ke liye.</p>
+        <p style={S.p}>The AMF Panel continuously monitors grid voltage and frequency. When a failure is detected, there is a 2–5 second settling delay — to filter out momentary dips.</p>
 
-        <h3 style={S.h3}>Step 3–5: Engine Start aur Build-up</h3>
-        <p style={S.p}>Battery crank motor engine ko start karta hai. Engine fire hota hai, speed badhti hai. Governor frequency regulate karta hai (50 Hz), AVR voltage regulate karta hai (415/433V). Typically 10–20 seconds me rated parameters stable ho jaate hain.</p>
+        <h3 style={S.h3}>Step 3–5: Engine Start and Build-up</h3>
+        <p style={S.p}>The battery crank motor starts the engine. The engine fires and speed increases. The governor regulates frequency (50 Hz), the AVR regulates voltage (415/433V). Rated parameters typically stabilize in 10–20 seconds.</p>
 
         <h3 style={S.h3}>Step 6–7: Load Transfer</h3>
-        <p style={S.p}>DG "ready" status aate hi ATS mains breaker open karta hai aur DG breaker close karta hai. Load DG par transfer ho jaata hai. UPS ka current source change hota hai — seamlessly.</p>
+        <p style={S.p}>As soon as the DG "ready" status comes, the ATS opens the mains breaker and closes the DG breaker. The load transfers to the DG. The UPS current source changes — seamlessly.</p>
 
         <h3 style={S.h3}>Step 8: Running Mode</h3>
-        <p style={S.p}>DG full load par run karta hai. Monitoring continuous hoti hai. Grid restoration ka wait hota hai. Jab grid waapis aaye — stable confirm karo, phir load wapis transfer karo.</p>
+        <p style={S.p}>The DG runs at full load. Monitoring is continuous. It waits for grid restoration. When the grid comes back — confirm it is stable, then transfer the load back.</p>
 
         <h3 style={S.h3}>Step 9: Cooldown Run</h3>
-        <p style={S.p}>Load hatne ke baad DG 5–10 minutes no-load par run karta hai — ye <strong>cooldown run</strong> critical hai. Hot engine ko abruptly band karne se heat soak hoti hai — cylinder head damage possible. Cooldown me coolant properly circulate karke engine cool karta hai.</p>
+        <p style={S.p}>After the load is removed, the DG runs at no-load for 5–10 minutes — this <strong>cooldown run</strong> is critical. Abruptly stopping a hot engine causes heat soak — cylinder head damage is possible. During cooldown, the coolant circulates properly and cools the engine.</p>
 
         <EngineerTip>
-          Cooldown run kabhi skip mat karo — chahe emergency me bhi. Agar grid waapis aaye aur turant DG band karo to engine damage ka risk hota hai. AMF Panel me cooldown timer set karo — DG khud automatically cooldown ke baad band hoga.
+          Never skip the cooldown run — not even in an emergency. If the grid comes back and you stop the DG immediately, there is a risk of engine damage. Set the cooldown timer in the AMF Panel — the DG will stop automatically by itself after cooldown.
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -610,31 +618,31 @@ export default function DgSetPage() {
           <div style={S.articleImage}>
             <Image src="/images/articles/dg-set/dg-engine-alternator.svg" alt="DG Set engine and alternator — labeled components, coupling, radiator, exhaust manifold" fill sizes="(max-width:768px) 100vw,740px" style={{ objectFit: "cover" }} unoptimized />
           </div>
-          <figcaption style={S.imageCaption}>Diesel Engine aur Alternator — DG Set ke do main functional parts, common baseframe par mounted.</figcaption>
+          <figcaption style={S.imageCaption}>Diesel Engine and Alternator — the two main functional parts of a DG Set, mounted on a common baseframe.</figcaption>
         </figure>
 
         <WhatYouAreLooking>
-          Left side diesel engine hai — turbocharger upar, exhaust manifold side me, radiator fan visible. Right side alternator hai — winding housing, terminal box. Dono ek rigid coupling se connected hain — engine ki rotation directly alternator shaft chalata hai.
+          On the left is the diesel engine — turbocharger on top, exhaust manifold on the side, radiator fan visible. On the right is the alternator — winding housing, terminal box. Both are connected by a rigid coupling — the engine's rotation directly drives the alternator shaft.
         </WhatYouAreLooking>
 
         <h3 style={S.h3}>Diesel Engine</h3>
-        <p style={S.p}>Turbocharged, water-cooled diesel engine fuel jalata hai aur mechanical power produce karta hai. Typically 1500 RPM par run karta hai 50 Hz ke liye.</p>
-        <p style={S.p}><strong>Rating types — yahan galat choice Data Center ko impact kar sakti hai:</strong></p>
+        <p style={S.p}>A turbocharged, water-cooled diesel engine burns fuel and produces mechanical power. It typically runs at 1500 RPM for 50 Hz.</p>
+        <p style={S.p}><strong>Rating types — a wrong choice here can impact the Data Center:</strong></p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>ESP (Emergency Standby Power)</strong> — emergency backup ke liye. Variable load. Limited overload as per OEM specification. Data Centers me hamesha ESP rating use karo.</li>
-          <li style={S.li}><strong>PRP (Prime Rating)</strong> — main power source for variable load applications. Remote sites me.</li>
-          <li style={S.li}><strong>COP (Continuous Power)</strong> — 24/7 continuous, no overload. Baseload applications me.</li>
+          <li style={S.li}><strong>ESP (Emergency Standby Power)</strong> — for emergency backup. Variable load. Limited overload as per OEM specification. Always use the ESP rating in Data Centers.</li>
+          <li style={S.li}><strong>PRP (Prime Rating)</strong> — main power source for variable load applications. Used at remote sites.</li>
+          <li style={S.li}><strong>COP (Continuous Power)</strong> — 24/7 continuous, no overload. Used in baseload applications.</li>
         </ul>
 
         <InsightCard>
-          <strong>Hamesha ESP (Emergency Standby Power) rating par DG Set specify karo Data Centers me.</strong> Prime ya Continuous rating par specified DG ka output ESP se zyada hoga — same physical size me zyada kVA milenge — lekin ye rating emergency backup ke liye intended nahi hai. OEM ke saath rating clearly confirm karo project spec me.
+          <strong>Always specify the DG Set at the ESP (Emergency Standby Power) rating in Data Centers.</strong> A DG specified at Prime or Continuous rating will have a higher output than ESP — you get more kVA in the same physical size — but that rating is not intended for emergency backup. Clearly confirm the rating with the OEM in the project spec.
         </InsightCard>
 
         <h3 style={S.h3}>Alternator (Generator)</h3>
-        <p style={S.p}>Engine ki mechanical rotation ko 3-phase AC electricity me convert karta hai.</p>
+        <p style={S.p}>It converts the engine's mechanical rotation into 3-phase AC electricity.</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>AVR (Automatic Voltage Regulator)</strong> — output voltage stable rakhta hai load changes me</li>
-          <li style={S.li}><strong>PMG (Permanent Magnet Generator)</strong> — AVR ko self-excitation power deta hai</li>
+          <li style={S.li}><strong>AVR (Automatic Voltage Regulator)</strong> — keeps the output voltage stable during load changes</li>
+          <li style={S.li}><strong>PMG (Permanent Magnet Generator)</strong> — gives self-excitation power to the AVR</li>
           <li style={S.li}><strong>IP Rating:</strong> Minimum IP23 indoor, IP44 outdoor</li>
         </ul>
 
@@ -647,20 +655,20 @@ export default function DgSetPage() {
           <div style={S.articleImage}>
             <Image src="/images/articles/dg-set/amf-panel-control.svg" alt="AMF panel interior showing DSE or ComAp controller, protection relays, circuit breakers, indicators" fill sizes="(max-width:768px) 100vw,740px" style={{ objectFit: "cover" }} unoptimized />
           </div>
-          <figcaption style={S.imageCaption}>AMF Panel interior — controller (DSE/ComAp), protection relays, breakers, alarm annunciator. DG Set ka dimaag.</figcaption>
+          <figcaption style={S.imageCaption}>AMF Panel interior — controller (DSE/ComAp), protection relays, breakers, alarm annunciator. The brain of the DG Set.</figcaption>
         </figure>
 
         <WhatYouAreLooking>
-          Ye ek AMF panel ka interior hai. Upar LCD display wala controller (DSE ya ComAp) hota hai — wahi main brain hai. Neeche breakers, protection relays, terminal blocks hote hain. Indicator lights alarm states dikhate hain.
+          This is the interior of an AMF panel. At the top is the controller with an LCD display (DSE or ComAp) — that is the main brain. Below are breakers, protection relays and terminal blocks. Indicator lights show alarm states.
         </WhatYouAreLooking>
 
-        <p style={S.p}>AMF Panel (Automatic Main Failure Panel) DG Set ka dimaag hai. Grid failure detect karta hai, engine start sequence control karta hai, DG parameters monitor karta hai, ATS ko command deta hai.</p>
+        <p style={S.p}>The AMF Panel (Automatic Main Failure Panel) is the brain of the DG Set. It detects grid failure, controls the engine start sequence, monitors DG parameters and gives commands to the ATS.</p>
 
         <h3 style={S.h3}>AMF Protection Functions</h3>
         <AMFProtectionTable />
 
         <WhyThisMatters>
-          Reverse Power protection bahut important hai. Agar DG ka breaker close ho aur engine unexpectedly band ho jaye — alternator grid se ya doosre DG se driven hone lagta hai — "motoring" mode. Ye alternator ko damage kar sakta hai aur dangerous situation create kar sakta hai. Reverse power relay is condition ko turant detect karke DG breaker open kar deta hai.
+          Reverse Power protection is very important. If the DG breaker is closed and the engine unexpectedly stops — the alternator starts being driven by the grid or another DG — "motoring" mode. This can damage the alternator and create a dangerous situation. The reverse power relay detects this condition immediately and opens the DG breaker.
         </WhyThisMatters>
 
         <hr style={S.divider} />
@@ -672,13 +680,13 @@ export default function DgSetPage() {
           <div style={S.articleImage}>
             <Image src="/images/articles/dg-set/sync-room-paralleling.svg" alt="DG synchronizing panel room — multiple DGs connected to common bus, auto synchronizer, load sharing" fill sizes="(max-width:768px) 100vw,740px" style={{ objectFit: "cover" }} unoptimized />
           </div>
-          <figcaption style={S.imageCaption}>DG Sync Room — multiple DGs ek common bus par parallel run karte hain. Load sharing, auto synchronizing, protection sab yahan manage hota hai.</figcaption>
+          <figcaption style={S.imageCaption}>DG Sync Room — multiple DGs run in parallel on a common bus. Load sharing, auto synchronizing and protection are all managed here.</figcaption>
         </figure>
 
-        <p style={S.p}>Multiple DG sets parallel me chalane ke liye dedicated <strong>DG Synchronizing Room</strong> hota hai. Ek bade DG ki jagah multiple chhote DGs reliable hote hain — ek fail ho to baaki chalta rehta hai.</p>
+        <p style={S.p}>To run multiple DG sets in parallel, there is a dedicated <strong>DG Synchronizing Room</strong>. Multiple smaller DGs are more reliable than one big DG — if one fails, the rest keep running.</p>
 
-        <h3 style={S.h3}>Synchronizing — Kyun Zaruri Hai?</h3>
-        <p style={S.p}>Do electricity sources parallel connect karne ke liye parameters bilkul match karne chahiye. Agar match nahi kiya aur breaker close kiya — <strong>circulating current, mechanical shock, equipment damage.</strong></p>
+        <h3 style={S.h3}>Synchronizing — Why Is It Necessary?</h3>
+        <p style={S.p}>To connect two electricity sources in parallel, the parameters must match exactly. If they do not match and the breaker is closed — <strong>circulating current, mechanical shock, equipment damage.</strong></p>
 
         <ComparisonCard
           tag="Synchronizing Parameters — Data Center Standard"
@@ -689,17 +697,17 @@ export default function DgSetPage() {
         />
 
         <h3 style={S.h3}>Auto Synchronizer (PLC Based)</h3>
-        <p style={S.p}>Modern Data Centers me manual synchroscope nahi — PLC-based auto synchronizer hota hai. PLC continuously voltage, frequency, phase angle compare karta hai. Tolerance ke andar aate hi automatically breaker close karta hai.</p>
-        <p style={S.p}>Human operator sirf "arm" karta hai — closing PLC karta hai. Human error eliminate hota hai.</p>
+        <p style={S.p}>Modern Data Centers do not use a manual synchroscope — they have a PLC-based auto synchronizer. The PLC continuously compares voltage, frequency and phase angle. As soon as they are within tolerance, it closes the breaker automatically.</p>
+        <p style={S.p}>The human operator only "arms" it — the PLC does the closing. Human error is eliminated.</p>
 
         <h3 style={S.h3}>Load Sharing — Isochronous vs Droop</h3>
 
         <ComparisonCard
           tag="Load Sharing Methods"
-          leftTitle="Isochronous (Data Centers me preferred)"
-          leftItems={["Exactly 50.00 Hz maintain karte hain", "Master controller load share manage karta hai", "Tight frequency — IT equipment ke liye better", "Modern PLC systems me standard"]}
+          leftTitle="Isochronous (Preferred in Data Centers)"
+          leftItems={["Maintains exactly 50.00 Hz", "Master controller manages load share", "Tight frequency — better for IT equipment", "Standard in modern PLC systems"]}
           rightTitle="Droop Mode (Older systems)"
-          rightItems={["Frequency slightly droops under load", "DGs naturally balance themselves", "Simple, no master controller needed", "Older/simpler parallel systems me"]}
+          rightItems={["Frequency slightly droops under load", "DGs naturally balance themselves", "Simple, no master controller needed", "In older/simpler parallel systems"]}
         />
 
         <hr style={S.divider} />
@@ -707,10 +715,10 @@ export default function DgSetPage() {
         {/* ── SECTION 7 ── */}
         <h2 id="plc-automation" style={S.h1}>PLC Automation</h2>
 
-        <p style={S.p}>Modern Data Center DG Sets fully PLC controlled hote hain — koi bhi manual intervention required nahi hoti normal operation me.</p>
+        <p style={S.p}>Modern Data Center DG Sets are fully PLC controlled — no manual intervention is required in normal operation.</p>
 
         <h3 style={S.h3}>PLC Auto Start Sequence Logic</h3>
-        <FlowDiagram caption="PLC controlled DG start sequence — grid failure se service restore tak" steps={[
+        <FlowDiagram caption="PLC controlled DG start sequence — from grid failure to service restore" steps={[
           { icon: "⚠️", label: "Grid Failure", sublabel: "AMF detects" },
           { icon: "⏱️", label: "Settling Delay", sublabel: "2–5 sec" },
           { icon: "🔄", label: "Crank Attempt 1" },
@@ -720,13 +728,13 @@ export default function DgSetPage() {
           { icon: "📡", label: "SCADA Alert" },
         ]} />
 
-        <p style={S.p}>PLC 3 crank attempts karta hai. Teen attempts ke baad bhi engine na chale — <strong>Start Failure Alarm</strong> generate hota hai aur next available DG ka attempt kiya jata hai.</p>
+        <p style={S.p}>The PLC makes 3 crank attempts. If the engine does not run even after three attempts — a <strong>Start Failure Alarm</strong> is generated and the next available DG is attempted.</p>
 
         <h3 style={S.h3}>Load Management</h3>
-        <p style={S.p}>Real-time kW per DG measure karta hai. Load sharing algorithm run karta hai. Load badhne par additional DG automatically add karta hai, load kam hone par shed karta hai. Efficiency optimize karta hai — full load me zyada DGs, light load me kam.</p>
+        <p style={S.p}>It measures real-time kW per DG. It runs the load sharing algorithm. When load increases it automatically adds an additional DG, and when load decreases it sheds one. It optimizes efficiency — more DGs at full load, fewer at light load.</p>
 
         <h3 style={S.h3}>Event Logging</h3>
-        <p style={S.p}>Start/stop timestamps, fault history, running hours, fuel consumption — sab PLC me store hota hai. SCADA/BMS me Modbus ya BACnet se sync hota hai. Email/SMS alerts configured ho sakte hain.</p>
+        <p style={S.p}>Start/stop timestamps, fault history, running hours, fuel consumption — all are stored in the PLC. It syncs with SCADA/BMS through Modbus or BACnet. Email/SMS alerts can be configured.</p>
 
         <hr style={S.divider} />
 
@@ -734,24 +742,24 @@ export default function DgSetPage() {
         <h2 id="load-calculation" style={S.h1}>Load Calculation</h2>
 
         <h3 style={S.h3}>Basic Sizing</h3>
-        <p style={S.p}>Ye formula follow karo:</p>
+        <p style={S.p}>Follow this formula:</p>
         <ul style={S.ul}>
           <li style={S.li}>Total IT Load + Non-IT Load (cooling, lighting, misc) = Total Facility Load</li>
-          <li style={S.li}>Future growth add karo (typically 20–25%)</li>
+          <li style={S.li}>Add future growth (typically 20–25%)</li>
           <li style={S.li}>Required kVA = Total kW ÷ Power Factor (typically 0.8)</li>
-          <li style={S.li}>Next standard rating select karo</li>
+          <li style={S.li}>Select the next standard rating</li>
         </ul>
 
         <InsightCard>
           <strong>Example:</strong> IT Load 1000 kW + Cooling 400 kW = 1400 kW. Future growth 20% = 280 kW. Design Load = 1680 kW. At 0.8 PF: 1680 ÷ 0.8 = 2100 kVA. Select 2250 kVA DG Set (standard rating).
         </InsightCard>
 
-        <h3 style={S.h3}>Derating Factors — India Me Zaroori</h3>
+        <h3 style={S.h3}>Derating Factors — Essential in India</h3>
         <ul style={S.ul}>
-          <li style={S.li}><strong>High Ambient Temperature:</strong> 45°C+ summers me DG output derate hoti hai. OEM derating chart check karo.</li>
-          <li style={S.li}><strong>Altitude:</strong> High altitude sites me air density kam — engine output kam. 1000m se upar derating apply karo.</li>
-          <li style={S.li}><strong>Harmonics:</strong> UPS loads high harmonics generate karte hain — typically 15–20% derating apply karo. K-rated DG ya harmonic filter use karo.</li>
-          <li style={S.li}><strong>Starting Current:</strong> Large motors (AHUs, chillers) starting me high current lete hain — DG momentarily overload ho sakta hai. Starting sequence stagger karo.</li>
+          <li style={S.li}><strong>High Ambient Temperature:</strong> In 45°C+ summers, DG output is derated. Check the OEM derating chart.</li>
+          <li style={S.li}><strong>Altitude:</strong> At high altitude sites, air density is lower — engine output is lower. Apply derating above 1000m.</li>
+          <li style={S.li}><strong>Harmonics:</strong> UPS loads generate high harmonics — typically apply 15–20% derating. Use a K-rated DG or harmonic filter.</li>
+          <li style={S.li}><strong>Starting Current:</strong> Large motors (AHUs, chillers) draw high current while starting — the DG can be momentarily overloaded. Stagger the starting sequence.</li>
         </ul>
 
         <hr style={S.divider} />
@@ -763,15 +771,15 @@ export default function DgSetPage() {
           <div style={S.articleImage}>
             <Image src="/images/articles/dg-set/fuel-system-day-tank.svg" alt="DG Set day tank with fuel transfer pump, level gauge, bund wall in Indian Data Center" fill sizes="(max-width:768px) 100vw,740px" style={{ objectFit: "cover" }} unoptimized />
           </div>
-          <figcaption style={S.imageCaption}>Day Tank — DG ke paas chhota service tank. Fuel transfer pump automatically main tank se fill karta rehta hai.</figcaption>
+          <figcaption style={S.imageCaption}>Day Tank — a small service tank near the DG. The fuel transfer pump keeps filling it automatically from the main tank.</figcaption>
         </figure>
 
         <WhatYouAreLooking>
-          Ye ek day tank installation hai — typically 500L to 2000L capacity ka steel tank. Fuel level gauge side me, outlet pipe neeche DG ki fuel line me. Concrete bund tank ke around hota hai — spill containment ke liye. Fuel transfer pump pipe ke saath connected.
+          This is a day tank installation — typically a steel tank of 500L to 2000L capacity. Fuel level gauge on the side, outlet pipe at the bottom going into the DG's fuel line. There is a concrete bund around the tank — for spill containment. The fuel transfer pump is connected with the pipe.
         </WhatYouAreLooking>
 
         <h3 style={S.h3}>Day Tank (Service Tank)</h3>
-        <p style={S.p}>DG ke paas chhota tank — DG directly isi se fuel leta hai. Fuel transfer pump automatically main tank se refill karta rehta hai when level drops. Stable, nearby fuel supply ensure karta hai.</p>
+        <p style={S.p}>A small tank near the DG — the DG takes fuel directly from it. The fuel transfer pump automatically keeps refilling it from the main tank when the level drops. It ensures a stable, nearby fuel supply.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -784,25 +792,25 @@ export default function DgSetPage() {
         <p style={S.p}><strong>UST (Underground Storage Tank)</strong> — preferred for fire safety, space saving, temperature stability.</p>
         <p style={S.p}><strong>AST (Above-Ground Storage Tank)</strong> — easier inspection, maintenance, but higher fire risk, needs larger bund.</p>
 
-        <h3 style={S.h3}>Fuel Storage — Kitna Chahiye?</h3>
-        <p style={S.p}><em>Note: Ye industry best practice hai — Uptime Institute Tier definitions me fuel duration specified nahi hai.</em></p>
+        <h3 style={S.h3}>Fuel Storage — How Much Is Needed?</h3>
+        <p style={S.p}><em>Note: This is industry best practice — fuel duration is not specified in the Uptime Institute Tier definitions.</em></p>
 
         <FuelConsumptionTable />
 
         <h3 style={S.h3}>Fuel Polishing System</h3>
-        <p style={S.p}>Diesel long-term storage me degrade hota hai — bacteria, water contamination, sediment, wax formation.</p>
-        <p style={S.p}>Fuel Polisher tank se diesel nikalke fine filters + water separator se pass karta hai aur clean diesel waapis dalta hai — continuously ya periodically.</p>
+        <p style={S.p}>Diesel degrades in long-term storage — bacteria, water contamination, sediment, wax formation.</p>
+        <p style={S.p}>A Fuel Polisher draws diesel from the tank, passes it through fine filters + a water separator, and returns clean diesel — continuously or periodically.</p>
 
         <EngineerTip>
-          Stale fuel DG start failure ka most common root cause hai Data Centers me. Fuel polishing system mandatory hai — quarterly fuel quality test bhi karo (water content, sediment, bacteria). 6 months se zyada stored diesel bina polishing ke risk me hai.
+          Stale fuel is the most common root cause of DG start failure in Data Centers. A fuel polishing system is mandatory — also do a quarterly fuel quality test (water content, sediment, bacteria). Diesel stored for more than 6 months without polishing is at risk.
         </EngineerTip>
 
         <h3 style={S.h3}>PESO License — Diesel Storage</h3>
-        <p style={S.p}>Diesel (HSD — High Speed Diesel) India me <strong>Class C petroleum</strong> hai (flash point above 65°C) — Class A nahi. Class A petrol/gasoline hota hai.</p>
-        <p style={S.p}>Petroleum Act 1934 aur Petroleum Rules 2002 ke under: prescribed limits se zyada storage ke liye <strong>PESO (Petroleum and Explosives Safety Organisation)</strong> se license required hai. Exact thresholds aur requirements local PESO office se confirm karo — state-wise variation ho sakti hai.</p>
+        <p style={S.p}>Diesel (HSD — High Speed Diesel) in India is <strong>Class C petroleum</strong> (flash point above 65°C) — not Class A. Class A is petrol/gasoline.</p>
+        <p style={S.p}>Under the Petroleum Act 1934 and Petroleum Rules 2002: storage above prescribed limits requires a license from <strong>PESO (Petroleum and Explosives Safety Organisation)</strong>. Confirm the exact thresholds and requirements with the local PESO office — there can be state-wise variation.</p>
 
         <h3 style={S.h3}>Spill Containment</h3>
-        <p style={S.p}>Concrete bund around tank (110% of tank capacity), impervious lining, drainage valve (normally closed), spill kit nearby. IS 1115 aur MOEF guidelines follow karo.</p>
+        <p style={S.p}>Concrete bund around the tank (110% of tank capacity), impervious lining, drainage valve (normally closed), spill kit nearby. Follow IS 1115 and MOEF guidelines.</p>
 
         <hr style={S.divider} />
 
@@ -810,13 +818,13 @@ export default function DgSetPage() {
         <h2 id="lubrication-cooling" style={S.h1}>Lubrication & Cooling</h2>
 
         <h3 style={S.h3}>Lubrication Oil System</h3>
-        <p style={S.p}>Engine oil sump me stored rehta hai. Oil pump continuously circulate karta hai. Oil filter particles remove karta hai. Oil cooler temperature control karta hai.</p>
-        <p style={S.p}><strong>Oil Grade:</strong> OEM specification ke anusar — typically 15W-40 CI-4 ya 10W-40 modern engines me.</p>
-        <p style={S.p}><strong>Low Oil Pressure Shutdown:</strong> Critical protection — agar oil pressure below minimum ho, engine automatically shutdown ho jata hai. <strong>Ye protection kabhi bypass nahi karna</strong> — engine seize ho sakta hai.</p>
-        <p style={S.p}><strong>Oil Analysis:</strong> Lab me oil sample bhejo — metal particles, contamination, viscosity degradation identify karta hai. Transformer DGA ki tarah — oil analysis engine wear ko failure se pehle predict karta hai.</p>
+        <p style={S.p}>Engine oil is stored in the sump. The oil pump circulates it continuously. The oil filter removes particles. The oil cooler controls temperature.</p>
+        <p style={S.p}><strong>Oil Grade:</strong> As per OEM specification — typically 15W-40 CI-4 or 10W-40 in modern engines.</p>
+        <p style={S.p}><strong>Low Oil Pressure Shutdown:</strong> Critical protection — if oil pressure falls below minimum, the engine shuts down automatically. <strong>Never bypass this protection</strong> — the engine can seize.</p>
+        <p style={S.p}><strong>Oil Analysis:</strong> Send an oil sample to the lab — it identifies metal particles, contamination and viscosity degradation. Like transformer DGA — oil analysis predicts engine wear before failure.</p>
 
         <h3 style={S.h3}>Cooling System</h3>
-        <p style={S.p}>Engine coolant → radiator → fan cools → back to engine. Ethylene glycol + water (50:50) with corrosion inhibitor. Remote radiator option: roof ya bahar, hoses se connected — acoustic canopy wale DG rooms me preferred.</p>
+        <p style={S.p}>Engine coolant → radiator → fan cools → back to engine. Ethylene glycol + water (50:50) with corrosion inhibitor. Remote radiator option: on the roof or outside, connected with hoses — preferred in DG rooms with acoustic canopies.</p>
         <p style={S.p}><strong>High Coolant Temperature Protection:</strong> Engine overheating → alarm → shutdown. Daily coolant level check mandatory.</p>
 
         <hr style={S.divider} />
@@ -832,29 +840,29 @@ export default function DgSetPage() {
         </figure>
 
         <WhatYouAreLooking>
-          Exhaust manifold se hot gases nikalte hain. Flexible bellows vibration absorb karta hai (engine vibrate karta hai — rigid connection se stack damage hoga). Silencer/muffler sound reduce karta hai. Vertical stack upar se exhaust release karta hai — height CPCB formula se calculate hoti hai.
+          Hot gases come out of the exhaust manifold. Flexible bellows absorb vibration (the engine vibrates — a rigid connection would damage the stack). The silencer/muffler reduces sound. The vertical stack releases exhaust from the top — its height is calculated with the CPCB formula.
         </WhatYouAreLooking>
 
         <h3 style={S.h3}>CPCB Stack Height Formula</h3>
         <p style={S.p}>Central Pollution Control Board mandatory formula:</p>
         <p style={S.p}><strong>H = h + 0.2 × √kVA</strong></p>
-        <p style={S.p}>Jahan H = stack height (meters), h = DG building height (meters).</p>
+        <p style={S.p}>Where H = stack height (meters), h = DG building height (meters).</p>
         <p style={S.p}><strong>Example:</strong> 500 kVA DG, 5 meter building: H = 5 + 0.2 × √500 = 5 + 4.5 = <strong>9.5 meters minimum.</strong></p>
-        <p style={S.p}>CPCB emission norms (current applicable notification), acoustic standards (≤75 dB(A) at 1 meter from canopy), aur CPCB compliance plate on DG set — sab mandatory hain India me.</p>
+        <p style={S.p}>CPCB emission norms (current applicable notification), acoustic standards (≤75 dB(A) at 1 meter from canopy), and a CPCB compliance plate on the DG set — all are mandatory in India.</p>
 
         <hr style={S.divider} />
 
         {/* ── SECTION 12 ── */}
         <h2 id="dg-room-design" style={S.h1}>DG Room Design</h2>
 
-        <p style={S.p}>DG room design me NBC 2016, CPCB guidelines aur fire safety codes follow karna mandatory hai.</p>
+        <p style={S.p}>Following NBC 2016, CPCB guidelines and fire safety codes is mandatory in DG room design.</p>
         <ul style={S.ul}>
           <li style={S.li}><strong>Location:</strong> Ground floor preferred (heavy equipment), away from occupied areas</li>
           <li style={S.li}><strong>Structure:</strong> RCC floor, anti-vibration mounting pads, minimum 600mm clearance all sides, overhead lifting beam</li>
-          <li style={S.li}><strong>Fire Safety:</strong> 2-hour fire-rated walls, self-closing fire-rated doors. FM200 ya Novec 1230 preferred (CO₂ alternator damage kar sakta hai — avoid karo)</li>
+          <li style={S.li}><strong>Fire Safety:</strong> 2-hour fire-rated walls, self-closing fire-rated doors. FM200 or Novec 1230 preferred (CO₂ can damage the alternator — avoid it)</li>
           <li style={S.li}><strong>Ventilation:</strong> 25–30 air changes/hour. Combustion air inlet (lower), radiator heat exhaust (upper). Motorized dampers.</li>
-          <li style={S.li}><strong>Acoustic:</strong> Acoustic doors aur panels, flexible exhaust connections, anti-vibration mounts. Target: &lt;85 dB outside DG room</li>
-          <li style={S.li}><strong>Fuel Room:</strong> Day tank ke liye separate 1-hour fire-rated compartment</li>
+          <li style={S.li}><strong>Acoustic:</strong> Acoustic doors and panels, flexible exhaust connections, anti-vibration mounts. Target: &lt;85 dB outside DG room</li>
+          <li style={S.li}><strong>Fuel Room:</strong> A separate 1-hour fire-rated compartment for the day tank</li>
         </ul>
 
         <hr style={S.divider} />
@@ -862,7 +870,7 @@ export default function DgSetPage() {
         {/* ── SECTION 13 ── */}
         <h2 id="maintenance-abcd" style={S.h1}>Maintenance — A/B/C/D Checks</h2>
 
-        <p style={S.p}>DG Set maintenance ek formal documented process hai. Running hours aur calendar time — whichever comes first par based.</p>
+        <p style={S.p}>DG Set maintenance is a formal documented process. Based on running hours and calendar time — whichever comes first.</p>
 
         <MaintenanceTable />
 
@@ -871,7 +879,7 @@ export default function DgSetPage() {
           <div style={S.articleImage}>
             <Image src="/images/articles/dg-set/dg-maintenance-check.svg" alt="Technician performing DG Set inspection — checking oil level, belt condition, control panel" fill sizes="(max-width:768px) 100vw,740px" style={{ objectFit: "cover" }} unoptimized />
           </div>
-          <figcaption style={S.imageCaption}>A Check — daily/weekly inspection. Oil level, coolant, fuel, belt, alarms sab check hote hain.</figcaption>
+          <figcaption style={S.imageCaption}>A Check — daily/weekly inspection. Oil level, coolant, fuel, belt, alarms — everything is checked.</figcaption>
         </figure>
 
         <h3 style={S.h3}>A Check — Daily / Weekly</h3>
@@ -888,11 +896,11 @@ export default function DgSetPage() {
         <h3 style={S.h3}>B Check — Monthly / 250 Hours</h3>
         <ul style={S.ul}>
           <li style={S.li}>Engine oil change + new oil filter</li>
-          <li style={S.li}>Fuel pre-filter aur main filter replacement (if due)</li>
-          <li style={S.li}>Air filter cleaning ya replacement</li>
+          <li style={S.li}>Fuel pre-filter and main filter replacement (if due)</li>
+          <li style={S.li}>Air filter cleaning or replacement</li>
           <li style={S.li}>Battery capacity test</li>
           <li style={S.li}>Alternator IR test (Megger)</li>
-          <li style={S.li}>AMF panel lamp test, all alarm simulate karo</li>
+          <li style={S.li}>AMF panel lamp test, simulate all alarms</li>
           <li style={S.li}><strong>Full AMF cycle test — monthly mandatory:</strong> Grid failure simulate, DG auto start, load transfer, mains restore, cooldown verify</li>
           <li style={S.li}>Load test: minimum 30 minutes at 50–75% rated load</li>
         </ul>
@@ -900,12 +908,12 @@ export default function DgSetPage() {
         <h3 style={S.h3}>C Check — 6-Monthly / 500–1000 Hours</h3>
         <ul style={S.ul}>
           <li style={S.li}>Complete oil change + all filters replacement</li>
-          <li style={S.li}>Coolant flush aur fresh fill with inhibitor</li>
+          <li style={S.li}>Coolant flush and fresh fill with inhibitor</li>
           <li style={S.li}>V-belt set replacement</li>
           <li style={S.li}>Injector inspection (remove, inspect, clean — calibration at D check)</li>
           <li style={S.li}>Turbocharger inspection — bearing clearance, shaft play, blade condition</li>
-          <li style={S.li}>AVR aur Governor calibration verify</li>
-          <li style={S.li}>Complete protection testing: low oil pressure, high temp, overspeed, underspeed, overcurrent, earth fault, reverse power — sab simulate karo</li>
+          <li style={S.li}>Verify AVR and Governor calibration</li>
+          <li style={S.li}>Complete protection testing: low oil pressure, high temp, overspeed, underspeed, overcurrent, earth fault, reverse power — simulate all of them</li>
           <li style={S.li}>Fuel polishing run + fuel quality test</li>
           <li style={S.li}><strong>Load bank test: 2 hours minimum.</strong> Step loading: 25% → 50% → 75% → 100%</li>
         </ul>
@@ -928,11 +936,11 @@ export default function DgSetPage() {
           <div style={S.articleImage}>
             <Image src="/images/articles/dg-set/load-bank-testing.svg" alt="Portable load bank connected to DG Set for capacity testing — Indian Data Center facility" fill sizes="(max-width:768px) 100vw,740px" style={{ objectFit: "cover" }} unoptimized />
           </div>
-          <figcaption style={S.imageCaption}>Load Bank Testing — resistive load bank DG se connect hota hai. C check me 2 hours, D check me 4+ hours full load test mandatory.</figcaption>
+          <figcaption style={S.imageCaption}>Load Bank Testing — a resistive load bank connects to the DG. A 2-hour full load test at C check and 4+ hours at D check are mandatory.</figcaption>
         </figure>
 
         <EngineerTip>
-          Load bank test sirf kVA verify karne ke liye nahi hota. Engine performance, cooling capacity, governor response, AVR stability, fuel consumption — sab ek saath test hote hain. Quarterly load bank test recommended hai even if only annual is mandatory.
+          A load bank test is not only for verifying kVA. Engine performance, cooling capacity, governor response, AVR stability, fuel consumption — all are tested together. A quarterly load bank test is recommended even if only annual is mandatory.
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -941,7 +949,7 @@ export default function DgSetPage() {
         <h2 id="safety-standards" style={S.h1}>Safety Standards (India)</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>IS 10000</strong> — DG Set testing aur installation</li>
+          <li style={S.li}><strong>IS 10000</strong> — DG Set testing and installation</li>
           <li style={S.li}><strong>IS 4722</strong> — Rotating electrical machines</li>
           <li style={S.li}><strong>IS 1460</strong> — HSD (High Speed Diesel) quality standard</li>
           <li style={S.li}><strong>IS 1115</strong> — Petroleum storage</li>
@@ -951,9 +959,9 @@ export default function DgSetPage() {
           <li style={S.li}><strong>Petroleum Act 1934 + Petroleum Rules 2002</strong> — Fuel storage compliance, PESO license</li>
         </ul>
 
-        <p style={S.p}><strong>Arc Flash:</strong> DG output terminals par kaam karte waqt full arc flash PPE mandatory — HRC suit, face shield, insulated gloves.</p>
-        <p style={S.p}><strong>Before Any Work:</strong> PTW mandatory. DG manually stop karo, AMF manual mode me rakho, battery disconnect karo, LOTO complete karo. Exhaust me toxic gases hoti hain — ventilate karo before entering near exhaust.</p>
-        <p style={S.p}><strong>Fire:</strong> DG room me CO₂ extinguisher mat rakho (alternator damage). Dry powder ya FM200/Novec system use karo.</p>
+        <p style={S.p}><strong>Arc Flash:</strong> Full arc flash PPE is mandatory while working on DG output terminals — HRC suit, face shield, insulated gloves.</p>
+        <p style={S.p}><strong>Before Any Work:</strong> PTW mandatory. Stop the DG manually, keep the AMF in manual mode, disconnect the battery, complete LOTO. The exhaust contains toxic gases — ventilate before going near the exhaust.</p>
+        <p style={S.p}><strong>Fire:</strong> Do not keep a CO₂ extinguisher in the DG room (alternator damage). Use dry powder or an FM200/Novec system.</p>
 
         <hr style={S.divider} />
 
@@ -974,8 +982,8 @@ export default function DgSetPage() {
         {/* ── SECTION 16 ── */}
         <h2 id="common-faults" style={S.h1}>Common Faults</h2>
 
-        <p style={S.p}><strong>DG Fails to Start:</strong> Dead/weak battery (most common). Stale ya contaminated fuel. Air lock in fuel system. Excessive crank time without firing.</p>
-        <p style={S.p}><strong>Starts But Trips Immediately:</strong> Low oil pressure (real ya sensor fault). Overcrank lockout (too many attempts). Control panel wiring fault.</p>
+        <p style={S.p}><strong>DG Fails to Start:</strong> Dead/weak battery (most common). Stale or contaminated fuel. Air lock in fuel system. Excessive crank time without firing.</p>
+        <p style={S.p}><strong>Starts But Trips Immediately:</strong> Low oil pressure (real or sensor fault). Overcrank lockout (too many attempts). Control panel wiring fault.</p>
         <p style={S.p}><strong>High Coolant Temperature:</strong> Low coolant level. Radiator blockage. Fan belt failure. Coolant pump failure. DG overloaded.</p>
         <p style={S.p}><strong>Voltage Unstable:</strong> AVR failure. PMG fault. Loose alternator connections. Governor hunting (frequency oscillating).</p>
         <p style={S.p}><strong>Black Smoke:</strong> Overloading. Poor fuel. Blocked air filter. Injector issue.</p>
@@ -1005,7 +1013,7 @@ export default function DgSetPage() {
         {/* ── SECTION 18 ── */}
         <h2 id="failure-scenario" style={S.h1}>Real Failure Scenario</h2>
 
-        <p style={S.p}>Raat 2 baje — grid outage. DG A start ho gaya. DG B start fail hua.</p>
+        <p style={S.p}>2 AM — grid outage. DG A started. DG B failed to start.</p>
 
         <FlowDiagram caption="3 AM grid failure — DG B start failure + recovery" steps={[
           { icon: "🌙", label: "Grid Fails", sublabel: "2 AM" },
@@ -1017,11 +1025,11 @@ export default function DgSetPage() {
           { icon: "🌅", label: "Grid Restore", sublabel: "4 AM" },
         ]} />
 
-        <p style={S.p}>Investigation me pata chala: DG B ki battery charger 3 months se fault me thi. Alarm acknowledge hua tha — work order create nahi hua tha.</p>
-        <p style={S.p}>UPS battery ne load support kiya jab tak engineer ne DG B ko manually start kiya. Total exposure: 8 minutes on battery — uncomfortable lekin manageable.</p>
+        <p style={S.p}>The investigation found: DG B's battery charger had been faulty for 3 months. The alarm had been acknowledged — no work order had been created.</p>
+        <p style={S.p}>The UPS battery supported the load until an engineer started DG B manually. Total exposure: 8 minutes on battery — uncomfortable but manageable.</p>
 
         <WhyThisMatters>
-          Is failure me battery charger fault root cause tha — DG engine ka koi issue nahi tha. Isliye B check me battery charger test aur battery capacity test mandatory hai. Alarm acknowledge ≠ Alarm resolve — wahi DG Set maintenance ka sabse important lesson hai.
+          In this failure, the battery charger fault was the root cause — there was no issue with the DG engine. That is why the battery charger test and battery capacity test are mandatory in the B check. Alarm acknowledge ≠ Alarm resolve — that is the most important lesson of DG Set maintenance.
         </WhyThisMatters>
 
         <hr style={S.divider} />
@@ -1031,7 +1039,7 @@ export default function DgSetPage() {
 
         <OEMTable />
 
-        <p style={S.noteText}>Data Centers me Cummins aur CAT most common hain — global service network, parts availability, aur Data Center references ki wajah se. KOEL Indian market me strong presence rakhta hai aur many large facilities me use hota hai.</p>
+        <p style={S.noteText}>In Data Centers, Cummins and CAT are the most common — because of their global service network, parts availability and Data Center references. KOEL has a strong presence in the Indian market and is used in many large facilities.</p>
 
         <hr style={S.divider} />
 
@@ -1042,13 +1050,13 @@ export default function DgSetPage() {
           <div style={S.articleImage}>
             <Image src="/images/articles/dg-set/tier3-dg-room.svg" alt="Tier III Data Center DG room — multiple DG sets in row, sync panel, common bus" fill sizes="(max-width:768px) 100vw,740px" style={{ objectFit: "cover" }} unoptimized />
           </div>
-          <figcaption style={S.imageCaption}>Tier III DG Room — N+1 DG sets, common sync panel, load sharing. Ek maintain karo, baaki chalta rehta hai.</figcaption>
+          <figcaption style={S.imageCaption}>Tier III DG Room — N+1 DG sets, common sync panel, load sharing. Maintain one, the rest keep running.</figcaption>
         </figure>
 
-        <p style={S.p}><strong>Objective: Concurrent Maintainability.</strong> Koi bhi DG maintain karo — baki DGs full IT load carry karte hain.</p>
+        <p style={S.p}><strong>Objective: Concurrent Maintainability.</strong> Maintain any DG — the remaining DGs carry the full IT load.</p>
         <p style={S.p}><strong>Architecture:</strong> Typically 3 DGs (N=2 + 1 standby). All parallel on common sync panel. Isochronous load sharing. Any one DG offline — remaining two carry full load.</p>
         <p style={S.p}><strong>Fuel System:</strong> Common main tank acceptable — N+1 fuel transfer pumps. Minimum 12 hours at full load (industry best practice).</p>
-        <p style={S.p}><strong>Important rule:</strong> Har DG ko independently full Data Center load carry karne ki capacity honi chahiye — sirf 50-50 sharing design insufficient hai.</p>
+        <p style={S.p}><strong>Important rule:</strong> Each DG must have the capacity to carry the full Data Center load independently — a design for only 50-50 sharing is insufficient.</p>
 
         <hr style={S.divider} />
 
@@ -1056,7 +1064,7 @@ export default function DgSetPage() {
         <h2 id="tier-4-design" style={S.h1}>Tier IV Design</h2>
 
         <InsightCard>
-          <strong>Tier IV sirf "Tier III ka double" nahi hai — ye ek completely different design philosophy hai.</strong> Tier III me: ek DG maintain karo — baaki chalte hain. ✓ Tier IV me: ek DG unexpectedly FAIL ho jaye — phir bhi zero IT impact guaranteed. ✓✓ Ye concurrent maintainability nahi — ye fault tolerance hai.
+          <strong>Tier IV is not just "double Tier III" — it is a completely different design philosophy.</strong> In Tier III: maintain one DG — the rest keep running. ✓ In Tier IV: even if one DG unexpectedly FAILS — zero IT impact is still guaranteed. ✓✓ This is not concurrent maintainability — this is fault tolerance.
         </InsightCard>
 
         <ComparisonCard
@@ -1068,7 +1076,7 @@ export default function DgSetPage() {
         />
 
         <h3 style={S.h3}>Tier IV Core Principle — Zero Shared Components</h3>
-        <p style={S.p}>Path A aur Path B ke beech koi bhi shared component nahi hona chahiye. Yahan ek checklist hai:</p>
+        <p style={S.p}>There must be no shared component between Path A and Path B. Here is a checklist:</p>
         <ul style={S.ul}>
           <li style={S.li}><strong>DG Sets</strong> — Independent A sets + Independent B sets</li>
           <li style={S.li}><strong>Sync Panel</strong> — Separate Sync Panel A + Sync Panel B</li>
@@ -1079,11 +1087,11 @@ export default function DgSetPage() {
           <li style={S.li}><strong>Fuel Transfer Pumps</strong> — Independent pump sets A + B</li>
           <li style={S.li}><strong>PLC/Controllers</strong> — Independent per system</li>
           <li style={S.li}><strong>DC Control Supply</strong> — Separate UPS-backed batteries per system</li>
-          <li style={S.li}><strong>DG Rooms</strong> — 2 separate fire-rated rooms (ideal) ya 1 room with fire-rated partition</li>
+          <li style={S.li}><strong>DG Rooms</strong> — 2 separate fire-rated rooms (ideal) or 1 room with a fire-rated partition</li>
         </ul>
 
         <InsightCard>
-          <strong>Ek bhi shared component = Single Point of Failure = NOT Tier IV.</strong>
+          <strong>Even one shared component = Single Point of Failure = NOT Tier IV.</strong>
         </InsightCard>
 
         <h3 style={S.h3}>Tier IV Architecture — Complete Picture</h3>
@@ -1108,17 +1116,17 @@ export default function DgSetPage() {
           { icon: "🖥️", label: "Server PSU B" },
         ]} />
 
-        <p style={S.p}><strong>Server dual PSU = first crossover point.</strong> DG A fail ho — Server PSU B se continue. DG B fail ho — Server PSU A se continue. Zero IT impact.</p>
+        <p style={S.p}><strong>Server dual PSU = first crossover point.</strong> If DG A fails — the server continues on PSU B. If DG B fails — the server continues on PSU A. Zero IT impact.</p>
 
         <h3 style={S.h3}>Tier IV DG Room Design</h3>
-        <p style={S.p}><strong>Ideal: Do alag fire-rated DG rooms.</strong></p>
+        <p style={S.p}><strong>Ideal: Two separate fire-rated DG rooms.</strong></p>
         <p style={S.p}>Room A: DG A1, A2, A3 + Sync Panel A + AMF A + Day Tank A + Independent ventilation + Independent fire suppression.</p>
         <p style={S.p}>Room B: DG B1, B2, B3 + Sync Panel B + AMF B + Day Tank B + Independent ventilation + Independent fire suppression.</p>
-        <p style={S.p}><strong>Kyun 2 rooms?</strong> Agar Room A me fire ho — FM200 discharge ho — Room A ke DGs offline ho jaate hain. Room B completely unaffected. Ye Tier IV fault isolation hai.</p>
-        <p style={S.p}><strong>Practical minimum:</strong> Ek room with fire-rated partition between A zone aur B zone. Separate doors, separate ventilation, separate fire suppression. Most Tier IV certifications accept this.</p>
+        <p style={S.p}><strong>Why 2 rooms?</strong> If there is a fire in Room A — FM200 discharges — Room A's DGs go offline. Room B is completely unaffected. This is Tier IV fault isolation.</p>
+        <p style={S.p}><strong>Practical minimum:</strong> One room with a fire-rated partition between zone A and zone B. Separate doors, separate ventilation, separate fire suppression. Most Tier IV certifications accept this.</p>
 
         <h3 style={S.h3}>Tier IV Fuel System — True Independence</h3>
-        <p style={S.p}><strong>Worst case test:</strong> DG A ki fuel line me problem. Kya DG B affected hoga? Common tank ho to potentially yes. Independent tanks ho to — definitely NO.</p>
+        <p style={S.p}><strong>Worst case test:</strong> A problem in DG A's fuel line. Will DG B be affected? With a common tank, potentially yes. With independent tanks — definitely NO.</p>
 
         <ComparisonCard
           tag="Tier IV Fuel Storage Options"
@@ -1137,13 +1145,13 @@ export default function DgSetPage() {
         </ul>
 
         <EngineerTip>
-          Fuel storage numbers ke saath ek refueling contract bhi must hai. "72 hours storage" is useless agar extended grid outage me fuel supplier khud available na ho. Primary + backup fuel supplier SLAs — "X hours me Y kL guaranteed delivery" — ye Tier IV fuel strategy ka hissa hai.
+          A refueling contract is a must along with fuel storage numbers. "72 hours storage" is useless if the fuel supplier itself is not available during an extended grid outage. Primary + backup fuel supplier SLAs — "Y kL guaranteed delivery within X hours" — are part of the Tier IV fuel strategy.
         </EngineerTip>
 
         <h3 style={S.h3}>Tier IV PLC & Control Redundancy</h3>
         <p style={S.p}><strong>System A Controls:</strong> PLC A (dedicated DG A1, A2, A3), AMF A with independent UPS-backed DC supply, independent communication to SCADA, independent alarm outputs.</p>
         <p style={S.p}><strong>System B Controls:</strong> PLC B (dedicated DG B1, B2, B3), AMF B with independent UPS-backed DC supply, independent communication, independent alarms.</p>
-        <p style={S.p}><strong>Critical point:</strong> AMF Panel ki control power supply UPS backed honi chahiye — grid fail ho aur DG start ho raha ho, us beech control power nahi jaani chahiye. Ye overlooked requirement hai jo Tier III me sometimes miss hoti hai but Tier IV me mandatory hai.</p>
+        <p style={S.p}><strong>Critical point:</strong> The AMF Panel's control power supply must be UPS backed — if the grid fails and the DG is starting, control power must not be lost in between. This is an overlooked requirement that is sometimes missed in Tier III but is mandatory in Tier IV.</p>
 
         <h3 style={S.h3}>Tier IV — Real Failure Walkthrough</h3>
 
@@ -1158,22 +1166,22 @@ export default function DgSetPage() {
 
         <p style={S.p}><strong>System A:</strong> DG A1 + A3 running (N+1 minus 1 = N — still adequate for full load).</p>
         <p style={S.p}><strong>System B:</strong> DG B1+B2+B3 running (full N+1 — completely unaffected).</p>
-        <p style={S.p}><strong>IT impact: ZERO.</strong> Engineers repair ya replace DG A2 at next maintenance window.</p>
+        <p style={S.p}><strong>IT impact: ZERO.</strong> Engineers repair or replace DG A2 at the next maintenance window.</p>
 
         <h3 style={S.h3}>Tier IV — DG Room Fire Scenario</h3>
-        <p style={S.p}>DG Room A me fire → FM200 discharge → Room A DGs offline.</p>
+        <p style={S.p}>Fire in DG Room A → FM200 discharge → Room A DGs offline.</p>
         <p style={S.p}>Room B: Completely unaffected — DG B1+B2+B3 running.</p>
         <p style={S.p}>Server PSU B: Full power. Server PSU A drops.</p>
         <p style={S.p}><strong>Servers with dual PSU: Zero IT impact. Continue on PSU B.</strong></p>
-        <p style={S.p}>Fire suppression kaam karta hai. Room A safe entry ke baad inspect karo, restore karo.</p>
-        <p style={S.p}>Yahi Tier IV fault tolerance hai — individual component failure aur even room-level failure survive karta hai.</p>
+        <p style={S.p}>Fire suppression works. Once Room A is safe to enter, inspect it and restore.</p>
+        <p style={S.p}>This is Tier IV fault tolerance — it survives an individual component failure and even a room-level failure.</p>
 
         <h3 style={S.h3}>Tier IV Testing — Concurrent Fault Simulation</h3>
-        <p style={S.p}><strong>Method 1 — Individual System Test:</strong> System A ko test karo, System B carries full IT load. A me grid fail simulate karo, DG A start verify, load transfer verify. Phir reverse. Zero IT impact throughout.</p>
-        <p style={S.p}><strong>Method 2 — Concurrent Fault Simulation (True Tier IV Validation):</strong> System A intentionally offline karo. System B carries 100% load automatically. IT team monitors — zero impact visible. System A restore karo. Ye test Tier IV fault tolerance prove karta hai.</p>
+        <p style={S.p}><strong>Method 1 — Individual System Test:</strong> Test System A while System B carries the full IT load. Simulate a grid failure in A, verify DG A start, verify load transfer. Then the reverse. Zero IT impact throughout.</p>
+        <p style={S.p}><strong>Method 2 — Concurrent Fault Simulation (True Tier IV Validation):</strong> Take System A offline intentionally. System B carries 100% load automatically. The IT team monitors — zero impact visible. Restore System A. This test proves Tier IV fault tolerance.</p>
         <p style={S.p}><strong>Method 3 — Split Load Bank Test:</strong> System A: Full load bank = full rated load → test complete. System B: Full load bank = full rated load → test complete. Both simultaneously → total plant capacity verified.</p>
 
-        <h3 style={S.h3}>Tier IV Common Mistakes — Jo Actually Tier III Bana Dete Hain</h3>
+        <h3 style={S.h3}>Tier IV Common Mistakes — That Actually Make It Tier III</h3>
         <ul style={S.ul}>
           <li style={S.li}><strong>Single sync panel for all DGs:</strong> Sync panel fail = entire DG plant offline. NOT Tier IV.</li>
           <li style={S.li}><strong>Single fuel tank with independent pumps:</strong> Tank fail/contaminate = both systems affected. NOT Tier IV.</li>
@@ -1183,7 +1191,7 @@ export default function DgSetPage() {
         </ul>
 
         <WhyThisMatters>
-          Tier IV = <strong>physical independence</strong> at every layer — not just redundancy, but complete isolation. Redundancy means "backup exists." Independence means "backup cannot be affected by the primary's failure." Ye distinction Tier IV certification aur field reality dono me critical hai.
+          Tier IV = <strong>physical independence</strong> at every layer — not just redundancy, but complete isolation. Redundancy means "backup exists." Independence means "backup cannot be affected by the primary's failure." This distinction is critical both in Tier IV certification and in field reality.
         </WhyThisMatters>
 
         <hr style={S.divider} />
@@ -1191,12 +1199,12 @@ export default function DgSetPage() {
         {/* ── SECTION 22 ── */}
         <h2 id="future-trends" style={S.h1}>Future Trends</h2>
 
-        <p style={S.p}><strong>Gas Generators:</strong> Natural gas ya biogas pe chalne wale generators — emissions less, refueling easier (piped gas). Urban Data Centers me diesel replace ho sakta hai.</p>
-        <p style={S.p}><strong>Hybrid DG + Battery:</strong> DG start hone ke time me battery buffer karta hai — UPS battery smaller ho sakti hai. Frequency stability better.</p>
-        <p style={S.p}><strong>Fuel Cell Backup:</strong> Hydrogen fuel cells — zero emissions, quiet, high reliability. Microsoft ne already kuch Data Centers me test kiya hai. Abhi expensive hai.</p>
-        <p style={S.p}><strong>AI-Based Predictive Maintenance:</strong> Vibration sensors, oil analysis sensors, exhaust temperature analytics — failure predict karo before it happens.</p>
-        <p style={S.p}><strong>Online DGA for Engine Oil:</strong> Real-time oil analysis — metal particle detection. Same concept as transformer DGA — engine wear early detect karo.</p>
-        <p style={S.p}><strong>AI Data Centers:</strong> Extreme power density → larger DG sets, faster response times, tighter frequency control required. GPU clusters ka power factor aur harmonic profile standard IT se alag hai.</p>
+        <p style={S.p}><strong>Gas Generators:</strong> Generators running on natural gas or biogas — lower emissions, easier refueling (piped gas). They may replace diesel in urban Data Centers.</p>
+        <p style={S.p}><strong>Hybrid DG + Battery:</strong> The battery buffers during the time the DG takes to start — the UPS battery can be smaller. Better frequency stability.</p>
+        <p style={S.p}><strong>Fuel Cell Backup:</strong> Hydrogen fuel cells — zero emissions, quiet, high reliability. Microsoft has already tested them in some Data Centers. Currently expensive.</p>
+        <p style={S.p}><strong>AI-Based Predictive Maintenance:</strong> Vibration sensors, oil analysis sensors, exhaust temperature analytics — predict failure before it happens.</p>
+        <p style={S.p}><strong>Online DGA for Engine Oil:</strong> Real-time oil analysis — metal particle detection. Same concept as transformer DGA — detect engine wear early.</p>
+        <p style={S.p}><strong>AI Data Centers:</strong> Extreme power density → larger DG sets, faster response times, tighter frequency control required. The power factor and harmonic profile of GPU clusters differ from standard IT.</p>
 
         <hr style={S.divider} />
 
@@ -1204,16 +1212,16 @@ export default function DgSetPage() {
         <h2 id="key-takeaways" style={S.h1}>Key Takeaways</h2>
 
         <KeyTakeawayCard items={[
-          "DG Set grid failure ke time Data Center ka backup power provide karta hai — 10–30 seconds me automatically.",
-          "Engine + Alternator + AMF/PLC — teen main parts. ESP rating Data Centers me use karo, not PRP/COP.",
-          "Cooldown run kabhi skip mat karo — heat soak se engine damage possible hai.",
-          "Stale fuel DG start failure ka most common root cause hai — fuel polishing mandatory hai.",
-          "Diesel Class C petroleum hai — PESO license required above prescribed limits (Petroleum Act 1934).",
-          "A/B/C/D checks strictly follow karo — hamesha OEM schedule ke saath calendar time bhi track karo.",
+          "The DG Set provides the Data Center's backup power during grid failure — automatically, in 10–30 seconds.",
+          "Engine + Alternator + AMF/PLC — three main parts. Use the ESP rating in Data Centers, not PRP/COP.",
+          "Never skip the cooldown run — heat soak can damage the engine.",
+          "Stale fuel is the most common root cause of DG start failure — fuel polishing is mandatory.",
+          "Diesel is Class C petroleum — a PESO license is required above prescribed limits (Petroleum Act 1934).",
+          "Follow A/B/C/D checks strictly — always track calendar time along with the OEM schedule.",
           "Tier III: N+1 parallel, concurrent maintainability. Tier IV: 2N independent systems, fault tolerance.",
-          "Tier IV me zero shared components between A and B — sync panel, AMF, fuel, DG room sab independent.",
-          "Tier IV fault tolerance = ek system completely fail ho — zero IT impact. Ye Tier III se fundamental difference hai.",
-          "Alarm acknowledge ≠ Alarm resolve — DG maintenance failures ka sabse common root cause yahi hai.",
+          "Tier IV has zero shared components between A and B — sync panel, AMF, fuel, DG room all independent.",
+          "Tier IV fault tolerance = one system fails completely — zero IT impact. This is the fundamental difference from Tier III.",
+          "Alarm acknowledge ≠ Alarm resolve — this is the most common root cause of DG maintenance failures.",
         ]} />
 
         <hr style={S.divider} />
@@ -1223,7 +1231,7 @@ export default function DgSetPage() {
           <div style={{ height: 2, background: "linear-gradient(90deg,#2563EB,#2563EB)" }} />
           <div style={S.cardBodyInsight}>
             <span style={{ ...S.cardLabel, color: "#2563EB" }}>WHAT&apos;S NEXT</span>
-            <div style={S.cardContent}>DG Set grid failure cover karta hai. Lekin DG start hone ke 10–30 seconds — us beech kaun power deta hai? Yahi kaam karta hai UPS aur Battery Bank.</div>
+            <div style={S.cardContent}>The DG Set covers grid failure. But during the 10–30 seconds the DG takes to start — who provides power? That is exactly the job of the UPS and Battery Bank.</div>
             <div style={{ marginTop: 14, display: "flex", gap: 8, flexWrap: "wrap" }}>
               <TopicLink slug="ups" label="Next: UPS System →" variant="inline" />
               <TopicLink slug="battery-bank" label="Also: Battery Bank →" variant="inline" />
@@ -1234,7 +1242,7 @@ export default function DgSetPage() {
         <hr style={S.divider} />
 
         <h2 style={S.h1}>Continue Learning</h2>
-        <p style={S.p}>DG Set ke aage ka electrical learning path — har topic Data Center power chain ka agla logical step hai.</p>
+        <p style={S.p}>The electrical learning path beyond the DG Set — every topic is the next logical step in the Data Center power chain.</p>
         <ContinueLearning />
 
         <hr style={S.divider} />

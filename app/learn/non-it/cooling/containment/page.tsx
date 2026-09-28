@@ -6,11 +6,18 @@ import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
   title: "Containment — Hot Aisle & Cold Aisle Containment in Data Centers | Behind The Tech",
-  description: "Aisle containment kya hai, HAC vs CAC, kaise implement hota hai, kyun zaroori hai — Data Center cooling efficiency improve karne ka sabse effective method.",
+  description: "What is aisle containment, HAC vs CAC, how is it implemented, why is it essential — the most effective method to improve Data Center cooling efficiency.",
   keywords: ["aisle containment data center", "hot aisle containment", "cold aisle containment", "HAC CAC data center", "data center cooling efficiency"],
-  openGraph: { title: "Containment — Aisle Containment in Data Centers", description: "Hot aisle aur cold aisle containment — Data Center cooling efficiency ka sabse practical improvement.", url: "https://behindthetech.in/learn/non-it/cooling/containment", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
+  openGraph: { title: "Containment — Aisle Containment in Data Centers", description: "Hot aisle and cold aisle containment — the most practical improvement in Data Center cooling efficiency.", url: "https://behindthetech.in/learn/non-it/cooling/containment", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
   twitter: { card: "summary_large_image", title: "Containment Explained — Behind The Tech", description: "Hot/Cold Aisle Containment — Data Center cooling improvement guide." },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/cooling/containment" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/cooling/containment",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/cooling/containment",
+      hi: "https://behindthetech.in/hi/learn/non-it/cooling/containment",
+      "x-default": "https://behindthetech.in/learn/non-it/cooling/containment",
+    },
+  },
 };
 
 const HEADINGS: ArticleHeading[] = [
@@ -50,12 +57,12 @@ const S = {
 
 function QuickSummary() {
   const pts = [
-    { label: "Ek line mein", text: "Containment cool air aur hot air ko physically separate karta hai — taaki dono mix na hon. Isse cooling efficiency dramatically improve hoti hai." },
-    { label: "Problem kya hai bina containment", text: "PAC/CRAC cool air deliver karta hai. Hot air wapas aane se pehle cool air se mix ho jaati hai. PAC ko double mehnat karni padti hai — pehle se thanda kiya hua air phir se warm ho gaya." },
-    { label: "Cold aisle containment (CAC)", text: "Cold aisle ke upar aur ends pe enclosure lagaate hain. Cool air wahan capture hoti hai. Sirf server intake cool air kheenchte hain. Hot air alag rehti hai." },
-    { label: "Hot aisle containment (HAC)", text: "Hot aisle ke upar aur ends pe enclosure. Hot air capture hoti hai. Directly PAC/CRAC ya chimney ke through return. Cool air room mein rehti hai." },
-    { label: "Improvement kitni", text: "Containment se cooling efficiency 30-50% improve ho sakti hai. Same cooling load pe kam cooling units ya higher setpoints — energy savings significant." },
-    { label: "Blanking panels", text: "Containment ke saath blanking panels bhi zaroori hain — khali rack spaces block karo. Warm air front se andar na aaye. Small thing, big impact." },
+    { label: "In one line", text: "Containment physically separates cool air and hot air — so that the two do not mix. This dramatically improves cooling efficiency." },
+    { label: "The problem without containment", text: "The PAC/CRAC delivers cool air. Before the hot air comes back, it mixes with the cool air. The PAC has to work twice as hard — air that was already cooled got warm again." },
+    { label: "Cold aisle containment (CAC)", text: "An enclosure is installed over the top and ends of the cold aisle. Cool air is captured there. Only the server intakes pull in the cool air. Hot air stays separate." },
+    { label: "Hot aisle containment (HAC)", text: "An enclosure over the top and ends of the hot aisle. Hot air is captured. It returns directly to the PAC/CRAC or through a chimney. Cool air stays in the room." },
+    { label: "How much improvement", text: "Containment can improve cooling efficiency by 30-50%. Fewer cooling units or higher setpoints for the same cooling load — significant energy savings." },
+    { label: "Blanking panels", text: "Blanking panels are also essential with containment — block the empty rack spaces. So warm air does not come in from the front. Small thing, big impact." },
   ];
   return (
     <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", margin: "8px 0 32px" }}>
@@ -90,10 +97,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
 function EngineerTip({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", margin: "20px 0 24px" }}>
-      <div style={{ height: 2, background: "#ffa500" }} />
-      <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}>
-        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer Ki Tip</span>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
+      <div style={{ height: 2, background: "#ffa500" }} /> <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}> <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer's Tip</span> <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
       </div>
     </div>
   );
@@ -146,12 +150,12 @@ function KeyTakeawayCard({ items }: { items: string[] }) {
 }
 
 const FAQS = [
-  { q: "CAC aur HAC mein kaun better hai?", a: "Dono effective hain. HAC generally better cooling efficiency deta hai — hot air directly captured aur returned, room ka cool air server intake ke liye available rehta hai. CAC implement karna thoda simpler hai. Choose based on existing layout, fire suppression requirements, aur cost. Many modern data centers HAC prefer karte hain." },
-  { q: "Containment ke baad temperature setpoint badha sakte hain?", a: "Haan — ye ek major benefit hai. Bina containment ke, cold aisle 18-20°C chahiye kyunki mixing hoti hai. Containment ke baad, cold aisle 24-26°C ho sakti hai — server inlet still within spec. Higher setpoint = PAC/CRAC less kaam karta hai = energy savings." },
-  { q: "Fire suppression ke saath containment kaise kaam karta hai?", a: "Ye ek real concern hai. HAC mein hot aisle enclosed hai. Fire suppression agent is enclosed space mein sahi tarah distribute hona chahiye. FM200 ya Novec — engineer se design validate karo. Some facilities mein containment doors automatic open ho jaate hain fire signal pe." },
-  { q: "Blanking panels kyon important hain containment ke saath?", a: "Blanking panels khali rack spaces seal karte hain. Bina blanking panels ke, hot exhaust air front se rack ke through wapas aa sakti hai — hot/cold mixing. Containment ke saath bhi, blanking panels zaroori hain — perfect seal ensure karte hain." },
-  { q: "Raised floor pe containment implement kaise hota hai?", a: "Raised floor ke saath downflow PAC/CRAC use hoti hai. Cold aisle mein perforated tiles hoti hain — cool air yahan se aata hai. Cold aisle containment mein: cold aisle ka top aur ends seal karo. Cool air sirf server intake kheechte hain — perfect separation." },
-  { q: "Existing data center mein containment retrofit karna possible hai?", a: "Haan — ye common practice hai. Retrofit containment systems available hain — modular panels jo existing infrastructure pe fit hote hain. Planning zaroori hai: power paths, cable management, fire suppression, emergency access. ROI typically 1-3 years energy savings se." },
+  { q: "Which is better, CAC or HAC?", a: "Both are effective. HAC generally gives better cooling efficiency — hot air is directly captured and returned, and the room's cool air stays available for server intake. CAC is a little simpler to implement. Choose based on the existing layout, fire suppression requirements and cost. Many modern data centers prefer HAC." },
+  { q: "Can the temperature setpoint be raised after containment?", a: "Yes — this is a major benefit. Without containment, the cold aisle needs 18-20°C because mixing happens. After containment, the cold aisle can be 24-26°C — server inlet still within spec. Higher setpoint = the PAC/CRAC works less = energy savings." },
+  { q: "How does containment work with fire suppression?", a: "This is a real concern. In HAC the hot aisle is enclosed. The fire suppression agent must distribute properly in this enclosed space. FM200 or Novec — validate the design with an engineer. In some facilities the containment doors open automatically on a fire signal." },
+  { q: "Why are blanking panels important with containment?", a: "Blanking panels seal the empty rack spaces. Without blanking panels, hot exhaust air can come back through the rack from the front — hot/cold mixing. Even with containment, blanking panels are essential — they ensure a perfect seal." },
+  { q: "How is containment implemented on a raised floor?", a: "Downflow PAC/CRAC is used with a raised floor. The cold aisle has perforated tiles — cool air comes from here. In cold aisle containment: seal the top and ends of the cold aisle. Only the server intakes pull in the cool air — perfect separation." },
+  { q: "Is it possible to retrofit containment in an existing data center?", a: "Yes — this is common practice. Retrofit containment systems are available — modular panels that fit on existing infrastructure. Planning is essential: power paths, cable management, fire suppression, emergency access. ROI is typically 1-3 years from energy savings." },
 ];
 
 function FAQSection() {
@@ -177,19 +181,19 @@ export default function ContainmentPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="containment" headings={HEADINGS} readingTimeMinutes={16}>
+      <ArticleLayout slug="containment" headings={HEADINGS} readingTimeMinutes={16} lang="en" alternateHref="/hi/learn/non-it/cooling/containment">
 
-        <p style={S.p}>PAC thanda air deliver karta hai. CRAC thanda air deliver karta hai.</p>
-        <p style={S.p}>Lekin ye thanda air seedha server mein nahi jaata — pehle room mein jaata hai, wahan warm air se mix hota hai, aur phir mixed (warmer) air server mein jaata hai.</p>
-        <p style={S.p}>Iska matlab: PAC ne 18°C air deliver ki. Room mein mixing ke baad, server ko 24°C air mil rahi hai.</p>
-        <p style={S.p}>PAC extra mehnat kar raha hai — aur phir bhi server ko warm air mil rahi hai.</p>
-        <p style={S.p}><strong>Solution: Containment — cool air aur hot air ko physically separate karo.</strong></p>
+        <p style={S.p}>The PAC delivers cold air. The CRAC delivers cold air.</p>
+        <p style={S.p}>But this cold air does not go straight into the server — it first goes into the room, mixes there with warm air, and then the mixed (warmer) air goes into the server.</p>
+        <p style={S.p}>This means: the PAC delivered 18°C air. After mixing in the room, the server is getting 24°C air.</p>
+        <p style={S.p}>The PAC is working extra hard — and the server is still getting warm air.</p>
+        <p style={S.p}><strong>Solution: Containment — physically separate the cool air and the hot air.</strong></p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
             <Image src="/images/articles/containment/aisle-containment-data-center.png" alt="Cold aisle containment with clear panels above server racks" fill sizes="(max-width: 768px) 100vw, 740px" style={{ objectFit: "cover" }} />
           </div>
-          <figcaption style={S.imageCaption}>Cold Aisle Containment — transparent panels cold aisle ke upar aur ends pe lagate hain. Cool air enclosed rehti hai.</figcaption>
+          <figcaption style={S.imageCaption}>Cold Aisle Containment — transparent panels are installed over the top and ends of the cold aisle. Cool air stays enclosed.</figcaption>
         </figure>
 
         <QuickSummary />
@@ -198,12 +202,12 @@ export default function ContainmentPage() {
 
         <h2 id="what-is-containment" style={S.h1}>What Is Containment?</h2>
 
-        <p style={S.p}><strong>Containment = Physical barrier jo cool air aur hot air ko alag rakhti hai.</strong></p>
-        <p style={S.p}>Data center mein server racks rows mein lagaye jaate hain. Racks ke beech aisles hoti hain.</p>
-        <p style={S.p}><strong>Cold Aisle:</strong> Jahan PAC/CRAC cool air deliver karta hai. Servers ka front face karta hai yahan.</p>
-        <p style={S.p}><strong>Hot Aisle:</strong> Jahan servers warm air exhaust karte hain. Servers ka back face karta hai yahan.</p>
-        <p style={S.p}>Bina containment ke, dono aisles ki air freely mix ho jaati hai — inefficiency.</p>
-        <p style={S.p}>Containment se: cool air aur hot air alag channels mein rehti hain — efficiency dramatically improve hoti hai.</p>
+        <p style={S.p}><strong>Containment = a physical barrier that keeps cool air and hot air separate.</strong></p>
+        <p style={S.p}>In a data center, server racks are installed in rows. There are aisles between the racks.</p>
+        <p style={S.p}><strong>Cold Aisle:</strong> Where the PAC/CRAC delivers cool air. The front of the servers faces here.</p>
+        <p style={S.p}><strong>Hot Aisle:</strong> Where servers exhaust warm air. The back of the servers faces here.</p>
+        <p style={S.p}>Without containment, the air of both aisles mixes freely — inefficiency.</p>
+        <p style={S.p}>With containment: cool air and hot air stay in separate channels — efficiency improves dramatically.</p>
 
         <DCMapNote components={["Cold Aisle Containment", "Hot Aisle Containment", "Blanking Panels", "Cage Doors", "Chimney Containment"]} />
 
@@ -211,48 +215,48 @@ export default function ContainmentPage() {
 
         <h2 id="why-needed" style={S.h1}>Why Is Containment Needed?</h2>
 
-        <p style={S.p}>Mixing problem ko practically samjho:</p>
+        <p style={S.p}>Understand the mixing problem practically:</p>
 
         <InsightCard>
-          Bina containment ke kya hota hai: PAC 15°C air deliver karta hai cold aisle mein. Server hot air (35°C) hot aisle mein exhaust karta hai. Ye hot air return path pe cool air se milti hai. Server intake pe actual temperature: 22-25°C. PAC ko 15°C tak cool karna pada kyunki 7-10°C mixing ki inefficiency thi. Agar containment hota to PAC 22°C pe cool karta — same server inlet temperature. Less cooling work = less energy.
+          What happens without containment: the PAC delivers 15°C air into the cold aisle. The server exhausts hot air (35°C) into the hot aisle. This hot air meets the cool air on the return path. The actual temperature at the server intake: 22-25°C. The PAC had to cool to 15°C because there was 7-10°C of mixing inefficiency. With containment, the PAC would cool to 22°C — the same server inlet temperature. Less cooling work = less energy.
         </InsightCard>
 
         <WhyThisMatters>
-          Gartner research (referenced in ASHRAE guidelines) ke according, data centers globally apni cooling capacity ka 30-40% air mixing pe waste karte hain. Containment implement karne se: cooling capacity effectively 30-50% improve hoti hai bina new cooling units lagaye. Existing PAC/CRAC zyada load handle kar sakte hain. Temperature setpoints raise ho sakte hain — further energy savings.
+          According to Gartner research (referenced in ASHRAE guidelines), data centers globally waste 30-40% of their cooling capacity on air mixing. By implementing containment: cooling capacity effectively improves by 30-50% without installing new cooling units. Existing PAC/CRAC can handle more load. Temperature setpoints can be raised — further energy savings.
         </WhyThisMatters>
 
         <hr style={S.divider} />
 
         <h2 id="working-principle" style={S.h1}>Working Principle</h2>
 
-        <p style={S.p}>Containment ka principle simple hai: <strong>Keep cold air cold. Keep hot air hot. Never let them mix.</strong></p>
-        <p style={S.p}>Ye achieve karte hain physical barriers se:</p>
+        <p style={S.p}>The principle of containment is simple: <strong>Keep cold air cold. Keep hot air hot. Never let them mix.</strong></p>
+        <p style={S.p}>This is achieved with physical barriers:</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Overhead panels:</strong> Aisles ke upar — ceiling tak seal karte hain</li>
-          <li style={S.li}><strong>End-of-row doors:</strong> Aisle ke ends band karte hain</li>
-          <li style={S.li}><strong>Blanking panels:</strong> Rack ke khali spaces seal karte hain</li>
-          <li style={S.li}><strong>Raised floor sealing:</strong> Proper tiles placement — cool air sirf cold aisle mein</li>
+          <li style={S.li}><strong>Overhead panels:</strong> Above the aisles — seal up to the ceiling</li>
+          <li style={S.li}><strong>End-of-row doors:</strong> Close off the ends of the aisle</li>
+          <li style={S.li}><strong>Blanking panels:</strong> Seal the empty spaces in the rack</li>
+          <li style={S.li}><strong>Raised floor sealing:</strong> Proper tile placement — cool air only in the cold aisle</li>
         </ul>
-        <p style={S.p}>Result: Cool air ek closed system mein rakhti hai servers tak pahunchne ke liye. Hot air separately collected aur PAC/CRAC ya chimney ke through return hoti hai.</p>
+        <p style={S.p}>Result: cool air is kept in a closed system to reach the servers. Hot air is collected separately and returns through the PAC/CRAC or a chimney.</p>
 
         <hr style={S.divider} />
 
         <h2 id="main-components" style={S.h1}>Main Components</h2>
 
         <h3 style={S.h3}>1. Overhead Panels (Ceiling Panels)</h3>
-        <p style={S.p}>Aisle ke upar lagaye jaate hain — rack tops se actual ceiling tak gap seal karte hain. Rigid polycarbonate ya metal panels. Some designs mein transparent — visual access maintain hota hai. Fire suppression compatibility consider karo.</p>
+        <p style={S.p}>Installed above the aisle — they seal the gap from the rack tops to the actual ceiling. Rigid polycarbonate or metal panels. Transparent in some designs — visual access is maintained. Consider fire suppression compatibility.</p>
 
         <h3 style={S.h3}>2. End-of-Row Doors</h3>
-        <p style={S.p}>Aisle ke dono ends pe. Cable management ke liye cutouts hote hain. Hinged ya sliding — access ke liye. Emergency exit requirements comply karna chahiye. Some designs automatic — fire signal pe khulte hain.</p>
+        <p style={S.p}>At both ends of the aisle. They have cutouts for cable management. Hinged or sliding — for access. They must comply with emergency exit requirements. Some designs are automatic — they open on a fire signal.</p>
 
         <h3 style={S.h3}>3. Blanking Panels</h3>
-        <p style={S.p}>Rack ke khali 1U, 2U spaces mein fit hote hain. Hot air ko front se rack ke through aane se rokta hai. Cheap but highly effective — ye zaroori hai. Different rack sizes ke liye different blanking panels available.</p>
+        <p style={S.p}>They fit in the empty 1U, 2U spaces of the rack. They stop hot air from coming through the rack from the front. Cheap but highly effective — this is essential. Different blanking panels are available for different rack sizes.</p>
 
         <h3 style={S.h3}>4. Raised Floor Tiles</h3>
-        <p style={S.p}>Cold aisle mein perforated tiles — cool air nikalne ke liye. Hot aisle mein solid tiles — cool air mat nikalne do. Proper tile placement containment ka part hai.</p>
+        <p style={S.p}>Perforated tiles in the cold aisle — for cool air to come out. Solid tiles in the hot aisle — do not let cool air come out. Proper tile placement is part of containment.</p>
 
         <h3 style={S.h3}>5. Cable Management</h3>
-        <p style={S.p}>Containment ke andar cables properly managed honni chahiye. Cable cutouts pe proper brush strips ya foam seals — airtight seal maintain karo.</p>
+        <p style={S.p}>Inside containment, cables should be properly managed. Proper brush strips or foam seals at cable cutouts — maintain an airtight seal.</p>
 
         <hr style={S.divider} />
 
@@ -266,16 +270,16 @@ export default function ContainmentPage() {
         </figure>
 
         <h3 style={S.h3}>Without Containment</h3>
-        <p style={S.p}>Cool air → cold aisle → server intakes → some cool air bypass ho jaata hai → hot aisle → room mein mixing → PAC return → again cool karo. Inefficient loop.</p>
+        <p style={S.p}>Cool air → cold aisle → server intakes → some cool air bypasses → hot aisle → mixing in the room → PAC return → cool again. An inefficient loop.</p>
 
         <h3 style={S.h3}>With Cold Aisle Containment (CAC)</h3>
-        <p style={S.p}>Cool air → enclosed cold aisle → only server intakes kheench sakte hain (side pe ja nahi sakti) → servers ke through → hot aisle (open) → PAC/CRAC return. Zero mixing cold aisle mein.</p>
+        <p style={S.p}>Cool air → enclosed cold aisle → only the server intakes can pull it (it cannot go to the side) → through the servers → hot aisle (open) → PAC/CRAC return. Zero mixing in the cold aisle.</p>
 
         <h3 style={S.h3}>With Hot Aisle Containment (HAC)</h3>
-        <p style={S.p}>Room = cool air everywhere (open space). Servers cool air front se kheechte hain. Warm exhaust → enclosed hot aisle → directly PAC/CRAC ya overhead chimney mein. Zero mixing in hot aisle. Room mein sirf cool air hai — any server failure bhi covered hai.</p>
+        <p style={S.p}>Room = cool air everywhere (open space). Servers pull cool air from the front. Warm exhaust → enclosed hot aisle → directly into the PAC/CRAC or an overhead chimney. Zero mixing in the hot aisle. There is only cool air in the room — even any server failure is covered.</p>
 
         <EngineerTip>
-          HAC preferred hai large data centers mein kyunki: Room mein cool air everywhere rehti hai. If a rack accidentally faces wrong way, ya a blanking panel missing hai, wo server still cool air milti hai (room mein hai). CAC mein missing blanking panel = hot air directly server intake mein — worse failure mode. HAC more forgiving hai operationally.
+          HAC is preferred in large data centers because: there is cool air everywhere in the room. If a rack accidentally faces the wrong way, or a blanking panel is missing, that server still gets cool air (it is in the room). In CAC a missing blanking panel = hot air directly into the server intake — a worse failure mode. HAC is more forgiving operationally.
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -283,40 +287,40 @@ export default function ContainmentPage() {
         <h2 id="types" style={S.h1}>Types of Containment</h2>
 
         <h3 style={S.h3}>1. Cold Aisle Containment (CAC)</h3>
-        <p style={S.p}>Cold aisle enclosed karo. Overhead panels + end doors. Cool air trapped — only server intakes kheench sakte hain. Hot aisle open rehta hai — hot air freely mixes with room and returns to PAC. Simpler to implement. Common in smaller facilities.</p>
+        <p style={S.p}>Enclose the cold aisle. Overhead panels + end doors. Cool air is trapped — only the server intakes can pull it. The hot aisle stays open — hot air freely mixes with the room and returns to the PAC. Simpler to implement. Common in smaller facilities.</p>
 
         <h3 style={S.h3}>2. Hot Aisle Containment (HAC)</h3>
-        <p style={S.p}>Hot aisle enclosed karo. Overhead panels + end doors. Hot air trapped — directly to PAC/CRAC return or overhead chimney. Room completely cool air mein. Preferred in large data centers. Better fire safety (sprinklers in hot aisle enclosed space — get it right).</p>
+        <p style={S.p}>Enclose the hot aisle. Overhead panels + end doors. Hot air is trapped — directly to the PAC/CRAC return or an overhead chimney. The room is completely in cool air. Preferred in large data centers. Better fire safety (sprinklers in the hot aisle enclosed space — get it right).</p>
 
         <h3 style={S.h3}>3. Chimney Containment</h3>
-        <p style={S.p}>Per-rack chimneys. Hot air directly upar se ceiling plenum ya overhead return duct mein jaata hai. No overhead aisle enclosure — flexible. Works with in-row cooling very well. High-density environments ke liye.</p>
+        <p style={S.p}>Per-rack chimneys. Hot air goes directly upward into the ceiling plenum or an overhead return duct. No overhead aisle enclosure — flexible. Works very well with in-row cooling. For high-density environments.</p>
 
         <h3 style={S.h3}>4. Full Room Isolation</h3>
-        <p style={S.p}>Entire room sealed. Separate supply (cold) plenum aur return (hot) plenum. Usually with raised floor + overhead return. Maximum efficiency — minimum mixing. Large hyperscale facilities mein.</p>
+        <p style={S.p}>The entire room is sealed. Separate supply (cold) plenum and return (hot) plenum. Usually with a raised floor + overhead return. Maximum efficiency — minimum mixing. In large hyperscale facilities.</p>
 
         <hr style={S.divider} />
 
         <h2 id="advantages" style={S.h1}>Advantages</h2>
         <ul style={S.ul}>
           <li style={S.li}><strong>Cooling efficiency 30-50% improve:</strong> Same cooling units, more effective cooling</li>
-          <li style={S.li}><strong>Higher temperature setpoints:</strong> PAC/CRAC setpoint raise karo — energy save karo</li>
-          <li style={S.li}><strong>Reduced cooling capacity needed:</strong> Existing units se zyada load handle ho sakta hai</li>
-          <li style={S.li}><strong>Better RCI:</strong> Rack Cooling Index improve hota hai — uniform cooling</li>
-          <li style={S.li}><strong>Hot spots eliminate:</strong> Mixing na hone se specific hot spots create nahi hote</li>
+          <li style={S.li}><strong>Higher temperature setpoints:</strong> Raise the PAC/CRAC setpoint — save energy</li>
+          <li style={S.li}><strong>Reduced cooling capacity needed:</strong> Existing units can handle more load</li>
+          <li style={S.li}><strong>Better RCI:</strong> The Rack Cooling Index improves — uniform cooling</li>
+          <li style={S.li}><strong>Hot spots eliminated:</strong> Without mixing, specific hot spots are not created</li>
           <li style={S.li}><strong>PUE improvement:</strong> Cooling energy reduction = better Power Usage Effectiveness</li>
-          <li style={S.li}><strong>Retrofit possible:</strong> Existing data centers mein implement ho sakta hai</li>
+          <li style={S.li}><strong>Retrofit possible:</strong> Can be implemented in existing data centers</li>
         </ul>
 
         <hr style={S.divider} />
 
         <h2 id="disadvantages" style={S.h1}>Disadvantages</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Fire suppression complexity:</strong> Enclosed aisle mein fire agent distribution — engineering required</li>
-          <li style={S.li}><strong>Cable management:</strong> Containment panels ke through cables manage karna tricky ho sakta hai</li>
-          <li style={S.li}><strong>Upfront cost:</strong> Panels, doors, installation — investment chahiye</li>
-          <li style={S.li}><strong>Flexibility reduce:</strong> Layout changes ke liye containment modify karna padega</li>
-          <li style={S.li}><strong>Cooling failure risk (CAC):</strong> Agar PAC fails aur cold aisle enclosed hai, temperature rapidly rise hogi</li>
-          <li style={S.li}><strong>Maintenance access:</strong> Some containment designs mein work access limited hoti hai</li>
+          <li style={S.li}><strong>Fire suppression complexity:</strong> Fire agent distribution in an enclosed aisle — engineering required</li>
+          <li style={S.li}><strong>Cable management:</strong> Managing cables through containment panels can be tricky</li>
+          <li style={S.li}><strong>Upfront cost:</strong> Panels, doors, installation — investment is needed</li>
+          <li style={S.li}><strong>Reduced flexibility:</strong> Containment will have to be modified for layout changes</li>
+          <li style={S.li}><strong>Cooling failure risk (CAC):</strong> If the PAC fails and the cold aisle is enclosed, the temperature will rise rapidly</li>
+          <li style={S.li}><strong>Maintenance access:</strong> In some containment designs, work access is limited</li>
         </ul>
 
         <hr style={S.divider} />
@@ -332,10 +336,10 @@ export default function ContainmentPage() {
         <h2 id="common-faults" style={S.h1}>Common Issues</h2>
 
         <h3 style={S.h3}>Bypass Air (Air Bypass)</h3>
-        <p style={S.p}>Cool air racks tak pahunche bina room mein ja rahi hai. Cause: Missing blanking panels, gaps in containment, improper floor tiles. Action: Air leakage audit, blanking panels install, gaps seal karo.</p>
+        <p style={S.p}>Cool air is going into the room without reaching the racks. Cause: Missing blanking panels, gaps in containment, improper floor tiles. Action: Air leakage audit, install blanking panels, seal the gaps.</p>
 
         <h3 style={S.h3}>Recirculation</h3>
-        <p style={S.p}>Hot exhaust air wapas server intake mein ja rahi hai. Cause: Containment damage, end door open, missing panels. Action: Inspect containment integrity, temperature mapping karo.</p>
+        <p style={S.p}>Hot exhaust air is going back into the server intake. Cause: Containment damage, end door open, missing panels. Action: Inspect containment integrity, do temperature mapping.</p>
 
         <h3 style={S.h3}>Containment Panel Damage</h3>
         <p style={S.p}>Cause: Physical damage during installation/maintenance, material degradation. Impact: Air mixing at damage points. Action: Visual inspection, replace damaged panels.</p>
@@ -351,9 +355,9 @@ export default function ContainmentPage() {
           <li style={S.li}><strong>Monthly:</strong> Containment panels — cracks, gaps, seal integrity</li>
           <li style={S.li}><strong>Monthly:</strong> End doors — closing properly, seals intact</li>
           <li style={S.li}><strong>Quarterly:</strong> Floor tiles — correct placement (perforated in cold aisle only)</li>
-          <li style={S.li}><strong>Quarterly:</strong> Cable cutout seals — brush strips ya foam intact</li>
+          <li style={S.li}><strong>Quarterly:</strong> Cable cutout seals — brush strips or foam intact</li>
           <li style={S.li}><strong>Semi-annual:</strong> Thermal survey — temperature mapping confirm containment working</li>
-          <li style={S.li}><strong>Annual:</strong> Full containment audit — any new racks se gaps created?</li>
+          <li style={S.li}><strong>Annual:</strong> Full containment audit — have any new racks created gaps?</li>
         </ul>
 
         <hr style={S.divider} />
@@ -372,40 +376,40 @@ export default function ContainmentPage() {
 
         <h2 id="monthly-checklist" style={S.h1}>Monthly Checklist</h2>
         <ul style={S.ul}>
-          <li style={S.li}>✓ Walk every row — blanking panels count karo</li>
-          <li style={S.li}>✓ Panel seal integrity — gaps check karo</li>
-          <li style={S.li}>✓ Floor tiles placement verify karo</li>
+          <li style={S.li}>✓ Walk every row — count the blanking panels</li>
+          <li style={S.li}>✓ Panel seal integrity — check for gaps</li>
+          <li style={S.li}>✓ Verify floor tile placement</li>
           <li style={S.li}>✓ Cable cutout seals intact?</li>
           <li style={S.li}>✓ Temperature uniformity verify — spot check multiple racks</li>
-          <li style={S.li}>✓ Any new racks added — containment accommodate karta hai?</li>
+          <li style={S.li}>✓ Any new racks added — does containment accommodate them?</li>
         </ul>
 
         <hr style={S.divider} />
 
         <h2 id="safety" style={S.h1}>Safety Precautions</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Fire suppression review:</strong> Containment change karne se pehle fire engineer se check karo</li>
-          <li style={S.li}><strong>Emergency egress:</strong> Contained aisles mein clear emergency exit paths — doors panic hardware ke saath</li>
-          <li style={S.li}><strong>Working in contained space:</strong> Hot aisle mein temperature high hoti hai — short duration, water sath rakho, buddy system</li>
-          <li style={S.li}><strong>Cooling failure plan:</strong> Agar cooling fail ho aur aisle enclosed hai — temperature rapidly rise karta hai. Automatic door open systems consider karo</li>
-          <li style={S.li}><strong>Panel installation:</strong> Above-rack work ke liye ladder, safety — heavy panels carefully handle karo</li>
+          <li style={S.li}><strong>Fire suppression review:</strong> Check with a fire engineer before changing containment</li>
+          <li style={S.li}><strong>Emergency egress:</strong> Clear emergency exit paths in contained aisles — doors with panic hardware</li>
+          <li style={S.li}><strong>Working in contained space:</strong> Temperature is high in the hot aisle — short duration, keep water with you, buddy system</li>
+          <li style={S.li}><strong>Cooling failure plan:</strong> If cooling fails and the aisle is enclosed — temperature rises rapidly. Consider automatic door open systems</li>
+          <li style={S.li}><strong>Panel installation:</strong> Ladder and safety for above-rack work — handle heavy panels carefully</li>
         </ul>
 
         <hr style={S.divider} />
 
         <h2 id="interview-questions" style={S.h1}>Interview Questions</h2>
 
-        <h3 style={S.h3}>Q1: Hot aisle containment aur cold aisle containment mein kya difference hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> CAC (Cold Aisle Containment) cold aisle ko enclose karta hai — cool air servers tak seedhi pahunche. Hot aisle open rehta hai. HAC (Hot Aisle Containment) hot aisle enclose karta hai — hot air capture karke directly PAC return mein. Room mein cool air everywhere. HAC operationally safer hai — any rack mein cool air access hoti hai.</p>
+        <h3 style={S.h3}>Q1: What is the difference between hot aisle containment and cold aisle containment?</h3>
+        <p style={S.p}><strong>Answer:</strong> CAC (Cold Aisle Containment) encloses the cold aisle — cool air reaches the servers directly. The hot aisle stays open. HAC (Hot Aisle Containment) encloses the hot aisle — it captures hot air and sends it directly to the PAC return. There is cool air everywhere in the room. HAC is operationally safer — every rack has access to cool air.</p>
 
-        <h3 style={S.h3}>Q2: Containment se RCI kaise improve hota hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> RCI (Rack Cooling Index) measure karta hai ki servers ko recommended temperature range mein cool air mil rahi hai. Bina containment ke, hot/cold mixing se kuch servers warm air kheenchte hain — low RCI. Containment ensure karta hai ki har server cool air hi kheenche. RCI 100% ke karib hoti hai containment ke saath.</p>
+        <h3 style={S.h3}>Q2: How does containment improve RCI?</h3>
+        <p style={S.p}><strong>Answer:</strong> RCI (Rack Cooling Index) measures whether servers are getting cool air within the recommended temperature range. Without containment, hot/cold mixing makes some servers pull in warm air — low RCI. Containment ensures every server pulls in only cool air. RCI gets close to 100% with containment.</p>
 
-        <h3 style={S.h3}>Q3: Blanking panels kyon important hain?</h3>
-        <p style={S.p}><strong>Answer:</strong> Rack ke khali spaces se hot exhaust air wapas front mein recirculate ho sakti hai — server intake par hot air milti hai. Blanking panels ye shortcircuit rokta hai. Simple, cheap, lekin critical. Containment ke bina bhi blanking panels lagana best practice hai.</p>
+        <h3 style={S.h3}>Q3: Why are blanking panels important?</h3>
+        <p style={S.p}><strong>Answer:</strong> Hot exhaust air can recirculate back to the front through the empty spaces of the rack — the server intake gets hot air. Blanking panels stop this short circuit. Simple, cheap, but critical. Installing blanking panels is best practice even without containment.</p>
 
-        <h3 style={S.h3}>Q4: Containment ke saath fire suppression design kaise karte hain?</h3>
-        <p style={S.p}><strong>Answer:</strong> Ye critical question hai. Enclosed aisle mein fire suppression agent (FM200/Novec) properly distribute hona chahiye. FM200 nozzles contained aisle volume ke liye calculate karo. Some designs mein: fire signal pe containment doors automatically open ho jaate hain aur agent poore room mein discharge hota hai. Fire engineer involvement mandatory hai — containment aur suppression design integrated hona chahiye.</p>
+        <h3 style={S.h3}>Q4: How is fire suppression designed with containment?</h3>
+        <p style={S.p}><strong>Answer:</strong> This is a critical question. The fire suppression agent (FM200/Novec) must distribute properly in an enclosed aisle. Calculate the FM200 nozzles for the contained aisle volume. In some designs: on a fire signal, the containment doors open automatically and the agent is discharged into the whole room. Fire engineer involvement is mandatory — the containment and suppression design must be integrated.</p>
 
         <hr style={S.divider} />
 
@@ -413,9 +417,9 @@ export default function ContainmentPage() {
 
         <h3 style={S.h3}>Hot spots developing despite containment</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Missing blanking panels walk karo — visually check every rack</li>
-          <li style={S.li}>Floor tile placement — perforated tiles hot aisle mein hai to nahi?</li>
-          <li style={S.li}>Containment panel gaps — smoke test ya hand test se air leakage detect karo</li>
+          <li style={S.li}>Walk for missing blanking panels — visually check every rack</li>
+          <li style={S.li}>Floor tile placement — are perforated tiles in the hot aisle?</li>
+          <li style={S.li}>Containment panel gaps — detect air leakage with a smoke test or hand test</li>
           <li style={S.li}>End doors — closed properly?</li>
           <li style={S.li}>New rack added recently — containment disturbed?</li>
         </ul>
@@ -423,7 +427,7 @@ export default function ContainmentPage() {
         <h3 style={S.h3}>Cold aisle temperature suddenly increased</h3>
         <ul style={S.ul}>
           <li style={S.li}>PAC/CRAC status — all running?</li>
-          <li style={S.li}>Containment breach check karo</li>
+          <li style={S.li}>Check for containment breach</li>
           <li style={S.li}>IT load increased — more heat generation?</li>
           <li style={S.li}>Floor tile displaced — cold air not entering cold aisle?</li>
         </ul>
@@ -467,13 +471,13 @@ export default function ContainmentPage() {
 
         <h2 id="best-practices" style={S.h1}>Best Practices</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>100% blanking panels first:</strong> Ye free hai aur biggest impact deta hai. Containment se pehle bhi, blanking panels lagao.</li>
-          <li style={S.li}><strong>Floor tiles audit:</strong> Perforated tiles sirf cold aisle mein — hot aisle aur PAC ke saamne solid tiles.</li>
-          <li style={S.li}><strong>HAC prefer karo naye designs mein:</strong> Better operational safety, more uniform cooling.</li>
-          <li style={S.li}><strong>Fire engineer involve karo early:</strong> Containment + fire suppression design saath mein — baad mein modify karna expensive hai.</li>
-          <li style={S.li}><strong>Temperature setpoint raise karo after containment:</strong> Ye energy savings ka actual realization karta hai.</li>
-          <li style={S.li}><strong>Thermal mapping karo before aur after:</strong> Improvement measure karo, document karo.</li>
-          <li style={S.li}><strong>Cable management integrate karo:</strong> Containment panels mein cable cutouts properly sealed hone chahiye.</li>
+          <li style={S.li}><strong>100% blanking panels first:</strong> It is free and gives the biggest impact. Install blanking panels even before containment.</li>
+          <li style={S.li}><strong>Floor tiles audit:</strong> Perforated tiles only in the cold aisle — solid tiles in the hot aisle and in front of the PAC.</li>
+          <li style={S.li}><strong>Prefer HAC in new designs:</strong> Better operational safety, more uniform cooling.</li>
+          <li style={S.li}><strong>Involve the fire engineer early:</strong> Containment + fire suppression design together — modifying later is expensive.</li>
+          <li style={S.li}><strong>Raise the temperature setpoint after containment:</strong> This is what actually realizes the energy savings.</li>
+          <li style={S.li}><strong>Do thermal mapping before and after:</strong> Measure and document the improvement.</li>
+          <li style={S.li}><strong>Integrate cable management:</strong> Cable cutouts in containment panels should be properly sealed.</li>
         </ul>
 
         <hr style={S.divider} />
@@ -481,13 +485,13 @@ export default function ContainmentPage() {
         <h2 id="key-takeaways" style={S.h1}>Key Takeaways</h2>
 
         <KeyTakeawayCard items={[
-          "Containment cool air aur hot air ko physically separate karta hai — mixing eliminate hoti hai.",
-          "HAC = hot aisle enclose karo. CAC = cold aisle enclose karo. Dono effective — HAC operationally safer.",
+          "Containment physically separates cool air and hot air — mixing is eliminated.",
+          "HAC = enclose the hot aisle. CAC = enclose the cold aisle. Both are effective — HAC is operationally safer.",
           "Benefit: 30-50% cooling efficiency improvement, higher temperature setpoints, better RCI.",
-          "Blanking panels essential hain — ye containment ka foundation hai. Pehle ye lagao.",
-          "Fire suppression engineer ko containment ke saath design mein involve karo — critical.",
+          "Blanking panels are essential — they are the foundation of containment. Install them first.",
+          "Involve the fire suppression engineer in the design with containment — critical.",
           "Daily: temperature uniformity, door status. Monthly: blanking panels, panel integrity, tile placement.",
-          "Retrofit possible hai — existing data centers mein implement ho sakta hai. ROI 1-3 years typically.",
+          "Retrofit is possible — it can be implemented in existing data centers. ROI is typically 1-3 years.",
         ]} />
 
         <hr style={S.divider} />
@@ -498,12 +502,12 @@ export default function ContainmentPage() {
         <hr style={S.divider} />
 
         <h2 style={S.h2}>Related Learning Topics</h2>
-        <p style={S.p}>Containment clear hua. Airflow management aur cooling metrics complete karo:</p>
+        <p style={S.p}>Containment is clear. Complete airflow management and cooling metrics:</p>
         <ul style={S.ul}>
-          <li style={S.li}><TopicLink slug="airflow-management" variant="inline" /> — Containment ke saath complete airflow strategy.</li>
-          <li style={S.li}><TopicLink slug="rci" variant="inline" /> — Containment effectiveness measure karna — RCI metric.</li>
-          <li style={S.li}><TopicLink slug="pac" variant="inline" /> — PAC aur CRAC ke saath containment kaise interact karta hai.</li>
-          <li style={S.li}><TopicLink slug="chiller" variant="inline" /> — Centralized cooling system jo CRAH ke saath containment use karta hai.</li>
+          <li style={S.li}><TopicLink slug="airflow-management" variant="inline" /> — the complete airflow strategy along with containment.</li>
+          <li style={S.li}><TopicLink slug="rci" variant="inline" /> — measuring containment effectiveness — the RCI metric.</li>
+          <li style={S.li}><TopicLink slug="pac" variant="inline" /> — how containment interacts with the PAC and CRAC.</li>
+          <li style={S.li}><TopicLink slug="chiller" variant="inline" /> — the centralized cooling system that uses containment with the CRAH.</li>
         </ul>
       </ArticleLayout>
     </>

@@ -37,8 +37,7 @@ export default function StsArticlePage() {
       <ArticleLayout
         slug="sts"
         headings={HEADINGS}
-        readingTimeMinutes={stsMetadata.readingTimeMinutes}
-      >
+        readingTimeMinutes={stsMetadata.readingTimeMinutes} lang="en" alternateHref="/hi/learn/non-it/electrical/sts">
         <Foundation />
         <OperationsAndClosing />
       </ArticleLayout>

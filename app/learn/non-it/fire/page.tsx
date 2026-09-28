@@ -5,6 +5,7 @@ import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 export const metadata: Metadata = {
   title: "Fire Protection — Behind The Tech",
   description: "FM200, NOVEC, Sprinkler, VESDA, Hydrant — data center fire suppression aur detection systems.",
+  alternates: { canonical: "https://behindthetech.in/learn/non-it/fire" },
 };
 
 export default function CategoryPage() {

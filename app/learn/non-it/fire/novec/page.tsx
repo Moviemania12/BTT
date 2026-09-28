@@ -7,12 +7,13 @@ import TopicLink from "@/components/TopicLink";
 export const metadata: Metadata = {
   title: "Novec Fluids in Data Centers — Fire Suppression & Cooling | Behind The Tech",
   description:
-    "Novec fluid family kya hai, Data Center mein kaise use hota hai — Novec 1230, Novec 649, immersion cooling aur fire suppression. 3M PFAS phaseout ka impact. Simple Hinglish mein.",
+    "What is the Novec fluid family, how is it used in a Data Center — Novec 1230, Novec 649, immersion cooling and fire suppression. The impact of the 3M PFAS phaseout. In simple English.",
   keywords: ["novec data center", "novec 1230", "novec 649", "3m novec fluids", "immersion cooling novec"],
   openGraph: {
     title: "Novec Fluids in Data Centers — Fire Suppression & Cooling",
-    description: "3M Novec — fire suppression se immersion cooling tak, Data Center mein Novec fluids ka complete guide.",
+    description: "3M Novec — from fire suppression to immersion cooling, a complete guide to Novec fluids in the Data Center.",
     url: "https://behindthetech.in/learn/non-it/fire/novec",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -20,9 +21,16 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Novec Fluids Explained — Behind The Tech",
-    description: "3M Novec fluid family — suppression aur cooling dono, simple language mein.",
+    description: "The 3M Novec fluid family — both suppression and cooling, in simple language.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/fire/novec" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/fire/novec",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/fire/novec",
+      hi: "https://behindthetech.in/hi/learn/non-it/fire/novec",
+      "x-default": "https://behindthetech.in/learn/non-it/fire/novec",
+    },
+  },
 };
 
 const HEADINGS: ArticleHeading[] = [
@@ -65,12 +73,12 @@ const S = {
 
 function QuickSummary() {
   const pts = [
-    { label: "Novec kya hai", text: "3M ki engineered fluids ki family hai. Data centers mein do kaam karte hain — fire suppression (Novec 1230) aur immersion cooling (Novec 649). Dono alag products hain, alag applications ke liye." },
-    { label: "Novec 1230", text: "Fire suppression agent — Novec 1250 jaisa hi FK-5-1-12 chemical. GWP=1. Kidde aur Fike brand name se bhi jaana jaata hai. Novec 1250 aur Novec 1230 practically same chemical hain." },
-    { label: "Novec 649", text: "Immersion cooling fluid. Servers ko directly is fluid mein duba dete hain. Server se heat directly fluid mein jaati hai — bahut zyada efficient cooling. Traditional air cooling se 1000x better heat transfer." },
-    { label: "Environmental edge", text: "Dono Novec variants ka GWP bahut low hai — 1 se 9 tak. Atmospheric lifetime days mein. ODP zero. Halon aur FM200 ke compared to much better." },
-    { label: "3M PFAS issue", text: "3M ne PFAS chemicals manufacturing phaseout announce kiya. Novec fluids PFAS family mein aate hain. Industry mein alternative agents develop ho rahe hain. Existing installations continue kar sakti hain." },
-    { label: "Data center trend", text: "Immersion cooling mein Novec 649 type fluids ka use tezi se badh raha hai — hyperscale aur AI compute ke liye. High density racks (50+ kW) ke liye traditional cooling insufficient ho raha hai." },
+    { label: "What is Novec", text: "It is a family of engineered fluids from 3M. In data centers they do two jobs — fire suppression (Novec 1230) and immersion cooling (Novec 649). Both are separate products, for separate applications." },
+    { label: "Novec 1230", text: "Fire suppression agent — the same FK-5-1-12 chemical as Novec 1250. GWP=1. It is also known by the Kidde and Fike brand names. Novec 1250 and Novec 1230 are practically the same chemical." },
+    { label: "Novec 649", text: "Immersion cooling fluid. Servers are directly submerged in this fluid. Heat from the server goes directly into the fluid — very efficient cooling. 1000x better heat transfer than traditional air cooling." },
+    { label: "Environmental edge", text: "The GWP of both Novec variants is very low — from 1 to 9. Atmospheric lifetime in days. ODP zero. Much better compared to Halon and FM200." },
+    { label: "3M PFAS issue", text: "3M announced a phaseout of PFAS chemicals manufacturing. Novec fluids come under the PFAS family. Alternative agents are being developed in the industry. Existing installations can continue." },
+    { label: "Data center trend", text: "The use of Novec 649 type fluids in immersion cooling is growing fast — for hyperscale and AI compute. For high density racks (50+ kW) traditional cooling is becoming insufficient." },
   ];
   return (
     <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", margin: "8px 0 32px" }}>
@@ -86,7 +94,7 @@ function QuickSummary() {
           ))}
         </div>
         <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid rgba(124,58,237,0.08)", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937" }}>
-          Novec 1230 aur Novec 649 — dono clear kar lo. Aage poora article hai.
+          Get both Novec 1230 and Novec 649 clear. The full article follows.
         </div>
       </div>
     </div>
@@ -108,10 +116,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
 function EngineerTip({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", margin: "20px 0 24px" }}>
-      <div style={{ height: 2, background: "#ffa500" }} />
-      <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}>
-        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer Ki Tip</span>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
+      <div style={{ height: 2, background: "#ffa500" }} /> <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}> <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer's Tip</span> <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
       </div>
     </div>
   );
@@ -196,7 +201,7 @@ function ComparisonTable() {
     { feature: "Equipment contact",  n1230: "No (gas phase)",             n649: "Yes (direct immersion)",  fm200: "No (gas phase)" },
     { feature: "Cost",               n1230: "High",                       n649: "Very high",               fm200: "Medium" },
     { feature: "Availability India", n1230: "Limited",                    n649: "Very limited",            fm200: "Good" },
-    { feature: "PFAS concern",       n1230: "Yes — 3M se supply uncertain, alternative manufacturers available", n649: "Yes — 3M se supply uncertain", fm200: "No PFAS" },
+    { feature: "PFAS concern",       n1230: "Yes — supply from 3M uncertain, alternative manufacturers available", n649: "Yes — supply from 3M uncertain", fm200: "No PFAS" },
   ];
   return (
     <div style={{ overflowX: "auto" as const, margin: "20px 0 28px" }}>
@@ -225,12 +230,12 @@ function ComparisonTable() {
 }
 
 const FAQS = [
-  { q: "Novec 1230 aur Novec 1250 mein kya fark hai?", a: "Practically koi technical fark nahi hai. Dono FK-5-1-12 chemical hain. Novec 1250 aur Novec 1230 — ye 3M ke alag product names hain same base chemical ke liye. Kuch formulation aur purity differences ho sakte hain. Performance, GWP, atmospheric lifetime — sab same. Fire suppression industry mein dono interchangeable terms hain. Specification mein 'FK-5-1-12 per NFPA 2001' likhna best practice hai." },
-  { q: "Novec 649 immersion cooling mein servers damage nahi hote kya?", a: "Nahi — Novec 649 electrically non-conductive hai. Servers aur unke components fluid mein submerge karne pe short circuit nahi hota. Fluid specifically this use ke liye engineered hai. Companies like Microsoft (Project Natick), Submer, LiquidStack is technology ka use karti hain. Servers ke liye special modifications hoti hain — fans nahi hote, certain components replace hote hain." },
-  { q: "3M phaseout ke baad Novec alternatives kya hain?", a: "Industry actively alternatives develop kar rahi hai. Kuch options: Opteon (Chemours) series clean agents, Vertrel (Chemours) immersion cooling fluids, engineered water-based cooling solutions, CO2-based suppression systems. Existing Novec installations mein certified alternative agents kabhi kabhi backfill ho sakte hain — manufacturer se verify karo. Ye rapidly evolving space hai — 2024-2025 mein kaafi developments aaye hain." },
-  { q: "Immersion cooling mein Novec 649 kitna mahanga hai?", a: "Bahut mahanga — typical air-cooled systems se 3-5x zyada upfront cost hoti hai. Fluid itself expensive hai. Special tanks/baths chahiye. Server modifications needed. Lekin TCO (Total Cost of Ownership) mein better — PUE 1.03-1.05 achieve hoti hai vs standard 1.4-1.6. Aur 50+ kW racks ko air se cool karna practically impossible hai — immersion ke liye cost justified ho jaata hai." },
-  { q: "Kya Novec 1230 FM200 system mein direct refill kar sakte hain?", a: "Generally nahi — same chemical hai lekin system hydraulics alag hain, nozzles alag hain, design concentrations alag hain. Simple swap se kaam nahi chalta. Certified fire engineer se assessment karwao. Kuch manufacturers compatibility kits offer karte hain — lekin standard recommendation hai ki proper re-engineering karo." },
-  { q: "India mein Novec 649 immersion cooling kab tak mainstream hoga?", a: "Abhi niche market hai — limited to hyperscale aur HPC installations. 2024-2025 mein AI infrastructure boom ke saath interest badha hai. Major Indian data center players — Adani, Hiranandani, Nxtra — explore kar rahe hain. 5-7 saal mein high-density deployments mein mainstream ho sakta hai. PFAS regulations clarity aane ke baad direction clearer hoga." },
+  { q: "What is the difference between Novec 1230 and Novec 1250?", a: "Practically there is no technical difference. Both are the FK-5-1-12 chemical. Novec 1250 and Novec 1230 — these are different 3M product names for the same base chemical. There can be some formulation and purity differences. Performance, GWP, atmospheric lifetime — all the same. In the fire suppression industry both are interchangeable terms. Writing 'FK-5-1-12 per NFPA 2001' in the specification is best practice." },
+  { q: "Don't servers get damaged in Novec 649 immersion cooling?", a: "No — Novec 649 is electrically non-conductive. There is no short circuit when servers and their components are submerged in the fluid. The fluid is specifically engineered for this use. Companies like Microsoft (Project Natick), Submer, LiquidStack use this technology. Servers get special modifications — there are no fans, certain components are replaced." },
+  { q: "What are the Novec alternatives after the 3M phaseout?", a: "The industry is actively developing alternatives. Some options: Opteon (Chemours) series clean agents, Vertrel (Chemours) immersion cooling fluids, engineered water-based cooling solutions, CO2-based suppression systems. In existing Novec installations certified alternative agents can sometimes be backfilled — verify with the manufacturer. This is a rapidly evolving space — there have been many developments in 2024-2025." },
+  { q: "How expensive is Novec 649 in immersion cooling?", a: "Very expensive — the upfront cost is 3-5x higher than typical air-cooled systems. The fluid itself is expensive. Special tanks/baths are needed. Server modifications needed. But better in TCO (Total Cost of Ownership) — PUE 1.03-1.05 is achieved vs the standard 1.4-1.6. And cooling 50+ kW racks with air is practically impossible — for immersion the cost gets justified." },
+  { q: "Can Novec 1230 be refilled directly into an FM200 system?", a: "Generally no — the chemical is the same but the system hydraulics are different, the nozzles are different, the design concentrations are different. A simple swap does not work. Get an assessment from a certified fire engineer. Some manufacturers offer compatibility kits — but the standard recommendation is to do proper re-engineering." },
+  { q: "When will Novec 649 immersion cooling become mainstream in India?", a: "Right now it is a niche market — limited to hyperscale and HPC installations. With the AI infrastructure boom in 2024-2025, interest has grown. Major Indian data center players — Adani, Hiranandani, Nxtra — are exploring it. In 5-7 years it may become mainstream in high-density deployments. The direction will become clearer once there is clarity on PFAS regulations." },
 ];
 
 function FAQSection() {
@@ -260,19 +265,19 @@ export default function NovecPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="novec" headings={HEADINGS} readingTimeMinutes={16}>
+      <ArticleLayout slug="novec" headings={HEADINGS} readingTimeMinutes={16} lang="en" alternateHref="/hi/learn/non-it/fire/novec">
 
-        <p style={S.p}>3M ne ek fluid family banai jo Data Centers ke liye do alag kaam karti hai.</p>
+        <p style={S.p}>3M created a fluid family that does two different jobs for Data Centers.</p>
 
         <p style={S.p}>Pehla kaam — fire bujhaana.</p>
 
-        <p style={S.p}>Doosra kaam — servers ko directly fluid mein duba ke thanda karna.</p>
+        <p style={S.p}>The second job — cooling servers by directly submerging them in fluid.</p>
 
-        <p style={S.p}><strong>Yahi hai Novec family — ek naam, do applications.</strong></p>
+        <p style={S.p}><strong>This is the Novec family — one name, two applications.</strong></p>
 
-        <p style={S.p}>FM200 already padh chuke ho. Novec 1250 bhi samajh aaya.</p>
+        <p style={S.p}>You have already read FM200. You have understood Novec 1250 too.</p>
 
-        <p style={S.p}>Ab Novec ka poora ecosystem samjhte hain — aur industry mein kya change aa raha hai.</p>
+        <p style={S.p}>Now let us understand the full Novec ecosystem — and what change is coming in the industry.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -285,7 +290,7 @@ export default function NovecPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Novec fluid family — left: Novec 1230 fire suppression cylinders. Right: Novec 649 immersion cooling tank jisme servers submerged hain.
+            Novec fluid family — left: Novec 1230 fire suppression cylinders. Right: Novec 649 immersion cooling tank in which servers are submerged.
           </figcaption>
         </figure>
 
@@ -295,18 +300,18 @@ export default function NovecPage() {
 
         <h2 id="what-is-novec" style={S.h1}>What Is the Novec Family?</h2>
 
-        <p style={S.p}><strong>Novec = 3M ki engineered fluid family.</strong></p>
+        <p style={S.p}><strong>Novec = 3M's engineered fluid family.</strong></p>
 
-        <p style={S.p}>Ye halon replacement ke baad develop ki gayi — cleaner, safer alternatives.</p>
+        <p style={S.p}>It was developed after halon replacement — cleaner, safer alternatives.</p>
 
-        <p style={S.p}>Data centers mein mainly do Novec products important hain:</p>
+        <p style={S.p}>In data centers mainly two Novec products are important:</p>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Novec 1230 / Novec 1250:</strong> Fire suppression agent — FK-5-1-12 chemical. Gas phase mein discharge hota hai.</li>
-          <li style={S.li}><strong>Novec 649:</strong> Immersion cooling fluid — servers ko directly is fluid mein submerge karte hain.</li>
+          <li style={S.li}><strong>Novec 1230 / Novec 1250:</strong> Fire suppression agent — FK-5-1-12 chemical. It discharges in the gas phase.</li>
+          <li style={S.li}><strong>Novec 649:</strong> Immersion cooling fluid — servers are directly submerged in this fluid.</li>
         </ul>
 
-        <p style={S.p}>Dono alag products hain — alag applications ke liye.</p>
+        <p style={S.p}>Both are separate products — for separate applications.</p>
 
         <p style={S.p}>Common thread: 3M manufacturer, low GWP, excellent environmental profile.</p>
 
@@ -316,31 +321,31 @@ export default function NovecPage() {
 
         <h2 id="why-needed" style={S.h1}>Why Novec Was Developed</h2>
 
-        <p style={S.p}>1994 mein Montreal Protocol ne Halon ban kar diya.</p>
+        <p style={S.p}>In 1994 the Montreal Protocol banned Halon.</p>
 
-        <p style={S.p}>Halon excellent fire suppressant tha — lekin ozone layer destroy karta tha.</p>
+        <p style={S.p}>Halon was an excellent fire suppressant — but it destroyed the ozone layer.</p>
 
-        <p style={S.p}>Industry ko replacement chahiye tha — same effectiveness, zero ODP.</p>
+        <p style={S.p}>The industry needed a replacement — same effectiveness, zero ODP.</p>
 
-        <p style={S.p}>FM200 (HFC-227ea) aaya — halon replacement. Lekin GWP 3,220 problem tha.</p>
+        <p style={S.p}>FM200 (HFC-227ea) came — the halon replacement. But GWP 3,220 was a problem.</p>
 
         <p style={S.p}>3M ne Novec develop kiya — <strong>GWP = 1, ODP = 0, effective suppression.</strong></p>
 
         <WhyThisMatters>
-          Data center industry globally ek major sustainability challenge face kar rahi hai. Cooling aur fire suppression dono energy aur chemicals use karti hain. Novec fluids dono problems address karte hain — low-GWP suppression aur ultra-efficient immersion cooling. Isliye Fortune 500 companies aur hyperscalers Novec ko prefer karte hain jab long-term ESG commitments deni hoti hain.
+          The data center industry is facing a major sustainability challenge globally. Both cooling and fire suppression use energy and chemicals. Novec fluids address both problems — low-GWP suppression and ultra-efficient immersion cooling. That is why Fortune 500 companies and hyperscalers prefer Novec when they have to make long-term ESG commitments.
         </WhyThisMatters>
 
         <hr style={S.divider} />
 
         <h2 id="novec-1230" style={S.h1}>Novec 1230 — Fire Suppression</h2>
 
-        <p style={S.p}>Novec 1230 wahi hai jo humne Novec 1250 article mein padha — FK-5-1-12 chemical.</p>
+        <p style={S.p}>Novec 1230 is the same thing we read about in the Novec 1250 article — the FK-5-1-12 chemical.</p>
 
-        <p style={S.p}>Novec 1230 naam Kidde aur Fike ke products mein zyada use hota hai.</p>
+        <p style={S.p}>The name Novec 1230 is used more in Kidde and Fike products.</p>
 
-        <p style={S.p}>Novec 1250 naam 3M ke direct products mein.</p>
+        <p style={S.p}>The name Novec 1250 in 3M's direct products.</p>
 
-        <p style={S.p}><strong>Technical perspective se — same chemical, same performance.</strong></p>
+        <p style={S.p}><strong>From a technical perspective — same chemical, same performance.</strong></p>
 
         <h3 style={S.h3}>Key Properties</h3>
         <ul style={S.ul}>
@@ -354,32 +359,32 @@ export default function NovecPage() {
         </ul>
 
         <InsightCard>
-          Novec 1230 ka boiling point 49°C hona ek important property hai. Matlab — room temperature (25°C) pe ye liquid hai. Ye liquid storage allow karta hai — FM200 se zyada dense packing. Discharge hone pe immediately vaporize ho jaata hai — room mein concentrate hota hai aur fire bujhata hai. Boiling point FM200 ka -16°C hai — wo room temperature pe already gas hai.
+          The 49°C boiling point of Novec 1230 is an important property. Meaning — at room temperature (25°C) it is a liquid. This allows liquid storage — denser packing than FM200. On discharge it vaporizes immediately — concentrates in the room and extinguishes the fire. The boiling point of FM200 is -16°C — it is already a gas at room temperature.
         </InsightCard>
 
         <hr style={S.divider} />
 
         <h2 id="novec-649" style={S.h1}>Novec 649 — Immersion Cooling</h2>
 
-        <p style={S.p}>Ye Novec ka doosra — aur bahut exciting — application hai.</p>
+        <p style={S.p}>This is Novec's second — and very exciting — application.</p>
 
-        <p style={S.p}><strong>Concept: Server ko directly fluid mein duba do.</strong></p>
+        <p style={S.p}><strong>Concept: Submerge the server directly in fluid.</strong></p>
 
-        <p style={S.p}>Sounds crazy? Logic simple hai.</p>
+        <p style={S.p}>Sounds crazy? The logic is simple.</p>
 
-        <p style={S.p}>Air ka heat transfer coefficient bahut low hota hai. Liquid ka bahut high.</p>
+        <p style={S.p}>The heat transfer coefficient of air is very low. That of liquid is very high.</p>
 
-        <p style={S.p}>Liquid immersion cooling ki heat transfer capability air cooling se kaafi zyada hoti hai — exact ratio conditions aur system design pe depend karta hai. Ye fundamental advantage hai immersion cooling ka.</p>
+        <p style={S.p}>The heat transfer capability of liquid immersion cooling is much higher than air cooling — the exact ratio depends on conditions and system design. This is the fundamental advantage of immersion cooling.</p>
 
-        <p style={S.p}><strong>Ye immersion cooling ka basic physics hai.</strong></p>
+        <p style={S.p}><strong>This is the basic physics of immersion cooling.</strong></p>
 
         <h3 style={S.h3}>Properties of Novec 649</h3>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Electrically non-conductive:</strong> Servers safely submerge ho sakte hain — short circuit nahi</li>
-          <li style={S.li}><strong>Chemically inert:</strong> Metals, plastics, circuit boards ke saath react nahi karta</li>
-          <li style={S.li}><strong>GWP = 9:</strong> FM200 se bahut better, Novec 1230 se thoda zyada</li>
-          <li style={S.li}><strong>Boiling point = 49°C:</strong> Heat absorb karke boil hota hai — two-phase cooling possible</li>
-          <li style={S.li}><strong>Transparent:</strong> Colorless liquid — server components visible rehte hain</li>
+          <li style={S.li}><strong>Electrically non-conductive:</strong> Servers can be safely submerged — no short circuit</li>
+          <li style={S.li}><strong>Chemically inert:</strong> Does not react with metals, plastics, circuit boards</li>
+          <li style={S.li}><strong>GWP = 9:</strong> Much better than FM200, slightly higher than Novec 1230</li>
+          <li style={S.li}><strong>Boiling point = 49°C:</strong> Boils by absorbing heat — two-phase cooling possible</li>
+          <li style={S.li}><strong>Transparent:</strong> Colorless liquid — server components stay visible</li>
         </ul>
 
         <hr style={S.divider} />
@@ -397,36 +402,36 @@ export default function NovecPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Novec 649 immersion cooling — servers puri tarah fluid mein submerged hain. Blue/clear liquid visible hai tanks mein. Ye next-gen Data Center cooling hai.
+            Novec 649 immersion cooling — servers are fully submerged in the fluid. Blue/clear liquid is visible in the tanks. This is next-gen Data Center cooling.
           </figcaption>
         </figure>
 
         <h3 style={S.h3}>Novec 1230 — Fire Suppression Application</h3>
-        <p style={S.p}>FM200 aur Novec 1250 ki tarah bilkul same application.</p>
+        <p style={S.p}>Exactly the same application as FM200 and Novec 1250.</p>
 
         <p style={S.p}>Server hall, UPS room, battery room — zone-wise installation.</p>
 
-        <p style={S.p}>VESDA detect karta hai → FACP signal → solenoid valve → 10 second discharge.</p>
+        <p style={S.p}>VESDA detects → FACP signal → solenoid valve → 10 second discharge.</p>
 
-        <p style={S.p}>Novec 1230 FM200 systems ki jagah le raha hai — European facilities mein especially.</p>
+        <p style={S.p}>Novec 1230 is taking the place of FM200 systems — especially in European facilities.</p>
 
         <h3 style={S.h3}>Novec 649 — Immersion Cooling Application</h3>
-        <p style={S.p}>Servers special tanks (baths) mein rakhe jaate hain.</p>
+        <p style={S.p}>Servers are placed in special tanks (baths).</p>
 
-        <p style={S.p}>Tanks Novec 649 se filled hote hain.</p>
+        <p style={S.p}>The tanks are filled with Novec 649.</p>
 
-        <p style={S.p}>Servers ON hote hain — puri tarah fluid mein submerged.</p>
+        <p style={S.p}>The servers are ON — fully submerged in the fluid.</p>
 
-        <p style={S.p}>Server ki heat directly fluid mein transfer hoti hai.</p>
+        <p style={S.p}>The server's heat transfers directly into the fluid.</p>
 
-        <p style={S.p}>Fluid heat absorb karke boil hoti hai (49°C pe) — vapor rise karta hai.</p>
+        <p style={S.p}>The fluid absorbs heat and boils (at 49°C) — the vapor rises.</p>
 
-        <p style={S.p}>Condenser coil pe vapor condensed hota hai — wapas liquid ban jaata hai.</p>
+        <p style={S.p}>The vapor condenses on the condenser coil — it turns back into liquid.</p>
 
-        <p style={S.p}><strong>Ye two-phase immersion cooling cycle hai.</strong></p>
+        <p style={S.p}><strong>This is the two-phase immersion cooling cycle.</strong></p>
 
         <EngineerTip>
-          Immersion cooling mein Novec 649 use karte waqt servers ke fans remove kar diye jaate hain — fluid cooling itna efficient hai ki fans ki zaroorat hi nahi. Server ke fans fluid mein unnecessary turbulence create karte hain. Special fanless server configurations ya fan bypass kits use hoti hain. Yahi wajah hai ki immersion cooling systems bahut quiet hote hain — koi fan noise nahi.
+          When using Novec 649 in immersion cooling, the server fans are removed — fluid cooling is so efficient that fans are not needed at all. Server fans create unnecessary turbulence in the fluid. Special fanless server configurations or fan bypass kits are used. This is why immersion cooling systems are very quiet — no fan noise.
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -434,11 +439,11 @@ export default function NovecPage() {
         <h2 id="immersion-cooling" style={S.h1}>Immersion Cooling Deep Dive</h2>
 
         <h3 style={S.h3}>Single-Phase vs Two-Phase</h3>
-        <p style={S.p}><strong>Single-phase:</strong> Fluid liquid hi rehti hai — heat absorb karke pump se circulate hoti hai. Simpler system.</p>
+        <p style={S.p}><strong>Single-phase:</strong> The fluid stays liquid — it absorbs heat and is circulated by a pump. Simpler system.</p>
 
-        <p style={S.p}><strong>Two-phase:</strong> Fluid liquid se gas mein boil hoti hai server heat se — vapor condenser pe liquid ban jaata hai. More efficient.</p>
+        <p style={S.p}><strong>Two-phase:</strong> The fluid boils from liquid into gas with the server heat — the vapor becomes liquid on the condenser. More efficient.</p>
 
-        <p style={S.p}>Novec 649 two-phase immersion ke liye ideal hai — boiling point 49°C perfect temperature range mein hai.</p>
+        <p style={S.p}>Novec 649 is ideal for two-phase immersion — the 49°C boiling point is in the perfect temperature range.</p>
 
         <FlowDiagram
           caption="Novec 649 two-phase immersion cooling cycle"
@@ -456,12 +461,12 @@ export default function NovecPage() {
 
         <p style={S.p}>Modern AI servers (GPU clusters) — 20-100 kW per rack.</p>
 
-        <p style={S.p}>Air cooling itni heat handle nahi kar sakti — physically impossible.</p>
+        <p style={S.p}>Air cooling cannot handle this much heat — physically impossible.</p>
 
         <p style={S.p}><strong>Immersion cooling = only practical solution for 50+ kW racks.</strong></p>
 
         <InsightCard>
-          Microsoft ne Project Natick mein underwater data center test kiya — seawater cooling use kiya. Google ke data centers mein liquid cooling GPU clusters mein standard hai. Meta, Amazon bhi immersion cooling pilot kar rahe hain. India mein Yotta, Adani Data Networks high-density deployments mein immersion cooling evaluate kar rahi hain. Ye trend accelerate ho raha hai — AI boom ke saath high-density rack count badh raha hai.
+          Microsoft tested an underwater data center in Project Natick — it used seawater cooling. In Google data centers liquid cooling is standard in GPU clusters. Meta and Amazon are also piloting immersion cooling. In India, Yotta and Adani Data Networks are evaluating immersion cooling in high-density deployments. This trend is accelerating — with the AI boom the high-density rack count is growing.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -488,24 +493,24 @@ export default function NovecPage() {
 
         <h2 id="pfas-phaseout" style={S.h1}>3M PFAS Phaseout — Industry Impact</h2>
 
-        <p style={S.p}><strong>2022 mein 3M ne announce kiya</strong> ki wo PFAS (per- and polyfluoroalkyl substances) manufacturing 2025 tak band karega.</p>
+        <p style={S.p}><strong>In 2022 3M announced</strong> that it will stop PFAS (per- and polyfluoroalkyl substances) manufacturing by 2025.</p>
 
-        <p style={S.p}>Novec fluids PFAS family mein aate hain.</p>
+        <p style={S.p}>Novec fluids come under the PFAS family.</p>
 
-        <p style={S.p}>Iska matlab — 3M ke Novec products ki supply uncertain hai. FK-5-1-12 agent itself banned nahi hua — alternative manufacturers is agent ko produce kar sakte hain. Industry mein alternative fluids bhi develop ho rahe hain.</p>
+        <p style={S.p}>This means — the supply of 3M's Novec products is uncertain. The FK-5-1-12 agent itself has not been banned — alternative manufacturers can produce this agent. Alternative fluids are also being developed in the industry.</p>
 
         <p style={S.p}><strong>Current situation (2024-2025):</strong></p>
         <ul style={S.ul}>
-          <li style={S.li}>Existing stock aur installations continue kar sakti hain</li>
-          <li style={S.li}>Alternative manufacturers (Chemours, Solvay) similar products develop kar rahe hain</li>
-          <li style={S.li}>Industry standards bodies alternative agents certify kar rahe hain</li>
-          <li style={S.li}>New Novec 1230/649 installations ke liye long-term supply uncertainty hai</li>
+          <li style={S.li}>Existing stock and installations can continue</li>
+          <li style={S.li}>Alternative manufacturers (Chemours, Solvay) are developing similar products</li>
+          <li style={S.li}>Industry standards bodies are certifying alternative agents</li>
+          <li style={S.li}>There is long-term supply uncertainty for new Novec 1230/649 installations</li>
         </ul>
 
-        <p style={S.p}><strong>Recommendation:</strong> Naya installation specify karte time long-term supply chain discuss karo supplier se.</p>
+        <p style={S.p}><strong>Recommendation:</strong> When specifying a new installation, discuss the long-term supply chain with the supplier.</p>
 
         <EngineerTip>
-          PFAS phaseout se data center industry immediately panic mat karo. Existing Novec systems reliable rahenge — refill supply available hai. Naye builds ke liye alternatives evaluate karo. Inert gas systems (nitrogen, IG-541) fire suppression ke liye zero GWP aur zero PFAS hain — lekin zyada cylinders chahiye aur pressure higher hoti hai. Immersion cooling ke liye Chemours Vertrel XF aur Opteon SF-10 emerging alternatives hain.
+          The data center industry should not panic immediately over the PFAS phaseout. Existing Novec systems will remain reliable — refill supply is available. Evaluate alternatives for new builds. Inert gas systems (nitrogen, IG-541) are zero GWP and zero PFAS for fire suppression — but more cylinders are needed and the pressure is higher. For immersion cooling, Chemours Vertrel XF and Opteon SF-10 are emerging alternatives.
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -517,9 +522,9 @@ export default function NovecPage() {
           <li style={S.li}><strong>Zero ODP:</strong> Ozone layer safe</li>
           <li style={S.li}><strong>Short atmospheric lifetime:</strong> Days, not years</li>
           <li style={S.li}><strong>Electrically non-conductive:</strong> Safe for direct equipment contact</li>
-          <li style={S.li}><strong>Immersion cooling efficiency:</strong> Very low overhead losses possible — well-designed immersion systems excellent PUE achieve kar sakte hain, exact value design aur facility conditions pe depend karta hai</li>
+          <li style={S.li}><strong>Immersion cooling efficiency:</strong> Very low overhead losses possible — well-designed immersion systems can achieve excellent PUE, the exact value depends on design and facility conditions</li>
           <li style={S.li}><strong>Equipment safe:</strong> No residue, no corrosion</li>
-          <li style={S.li}><strong>ESG compliant:</strong> Future regulations se protected (except PFAS concern)</li>
+          <li style={S.li}><strong>ESG compliant:</strong> Protected from future regulations (except PFAS concern)</li>
         </ul>
 
         <hr style={S.divider} />
@@ -529,9 +534,9 @@ export default function NovecPage() {
         <ul style={S.ul}>
           <li style={S.li}><strong>3M PFAS phaseout:</strong> Long-term supply uncertainty</li>
           <li style={S.li}><strong>High cost:</strong> Both products expensive vs alternatives</li>
-          <li style={S.li}><strong>Limited India availability:</strong> Supply chain nahi hai hर jagah</li>
+          <li style={S.li}><strong>Limited India availability:</strong> The supply chain is not everywhere</li>
           <li style={S.li}><strong>Immersion infrastructure:</strong> Special tanks, modified servers — high upfront investment</li>
-          <li style={S.li}><strong>PFAS environmental concern:</strong> Despite low GWP, PFAS compounds environmental accumulation concern hain</li>
+          <li style={S.li}><strong>PFAS environmental concern:</strong> Despite low GWP, PFAS compounds are an environmental accumulation concern</li>
           <li style={S.li}><strong>Limited field experience:</strong> Especially immersion cooling — fewer engineers trained</li>
         </ul>
 
@@ -540,16 +545,16 @@ export default function NovecPage() {
         <h2 id="maintenance" style={S.h1}>Maintenance</h2>
 
         <h3 style={S.h3}>Novec 1230 (Fire Suppression)</h3>
-        <p style={S.p}>FM200 aur Novec 1250 ki tarah same maintenance — cylinder weight, room integrity, annual test.</p>
+        <p style={S.p}>The same maintenance as FM200 and Novec 1250 — cylinder weight, room integrity, annual test.</p>
 
         <p style={S.p}>Quarterly functional tests, annual door fan test, monthly visual inspection.</p>
 
         <h3 style={S.h3}>Novec 649 (Immersion Cooling)</h3>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Fluid level monitoring:</strong> Evaporation hoti hai — top up karo schedule se</li>
-          <li style={S.li}><strong>Fluid purity testing:</strong> Quarterly — contamination check karo</li>
-          <li style={S.li}><strong>Tank seal inspection:</strong> Fluid leakage check — valuable fluid waste nahi ho</li>
-          <li style={S.li}><strong>Condenser coil cleaning:</strong> Fouling reduce karo — heat exchange maintain karo</li>
+          <li style={S.li}><strong>Fluid level monitoring:</strong> Evaporation happens — top up on schedule</li>
+          <li style={S.li}><strong>Fluid purity testing:</strong> Quarterly — check for contamination</li>
+          <li style={S.li}><strong>Tank seal inspection:</strong> Check for fluid leakage — valuable fluid should not be wasted</li>
+          <li style={S.li}><strong>Condenser coil cleaning:</strong> Reduce fouling — maintain heat exchange</li>
           <li style={S.li}><strong>Server removal/reinstallation:</strong> Fluid drip-off time de — 10-15 min before handling</li>
         </ul>
 
@@ -569,7 +574,7 @@ export default function NovecPage() {
 
         <h2 id="real-example" style={S.h1}>Real Data Center Example</h2>
 
-        <p style={S.p}><strong>Example Scenario 1 — Fire Suppression:</strong> (Illustrative) European colocation — FM200 se FK-5-1-12 (Novec 1230) migration. Same pipe network, new cylinders, nozzle replacement, hydraulic recalculation. Full commissioning test. Result: regulatory compliant, same protection level.</p>
+        <p style={S.p}><strong>Example Scenario 1 — Fire Suppression:</strong> (Illustrative) European colocation — migration from FM200 to FK-5-1-12 (Novec 1230). Same pipe network, new cylinders, nozzle replacement, hydraulic recalculation. Full commissioning test. Result: regulatory compliant, same protection level.</p>
 
         <p style={S.p}><strong>Example Scenario 2 — Immersion Cooling:</strong> (Illustrative) High-density AI training cluster — high kW per rack at which air cooling is impractical. Fluoroketone-based two-phase immersion tanks installed. Result: very low overhead losses, high rack density, low noise.</p>
 
@@ -577,14 +582,14 @@ export default function NovecPage() {
 
         <h2 id="interview-questions" style={S.h1}>Interview Questions</h2>
 
-        <h3 style={S.h3}>Q1: Novec 1230 aur Novec 1250 mein kya fark hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Practically koi fark nahi — dono FK-5-1-12 chemical hain. Alag brand names hain — 3M ne Novec 1250, Kidde/Fike ne Novec 1230 naam diya. Performance, GWP (=1), atmospheric lifetime (5 days) — identical hain. Specification mein 'FK-5-1-12 per NFPA 2001' likhna best practice hai — specific brand se bind nahi hote.</p>
+        <h3 style={S.h3}>Q1: What is the difference between Novec 1230 and Novec 1250?</h3>
+        <p style={S.p}><strong>Answer:</strong> Practically no difference — both are the FK-5-1-12 chemical. They are different brand names — 3M named it Novec 1250, Kidde/Fike named it Novec 1230. Performance, GWP (=1), atmospheric lifetime (5 days) — identical. Writing 'FK-5-1-12 per NFPA 2001' in the specification is best practice — you are not bound to a specific brand.</p>
 
-        <h3 style={S.h3}>Q2: Novec 649 immersion cooling kaise kaam karta hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Servers Novec 649 fluid se bhari tanks mein submerge kiye jaate hain. Server heat directly fluid mein transfer hoti hai. Fluid 49°C pe boil karta hai — vapor rise karta hai, condenser pe condensed hota hai, wapas liquid ban ke fall karta hai. Ye two-phase cooling cycle hai. Electrically non-conductive hai — short circuit nahi hota. Air cooling se 1000x better heat transfer.</p>
+        <h3 style={S.h3}>Q2: How does Novec 649 immersion cooling work?</h3>
+        <p style={S.p}><strong>Answer:</strong> Servers are submerged in tanks filled with Novec 649 fluid. Server heat transfers directly into the fluid. The fluid boils at 49°C — the vapor rises, condenses on the condenser, turns back into liquid and falls. This is the two-phase cooling cycle. It is electrically non-conductive — no short circuit happens. 1000x better heat transfer than air cooling.</p>
 
-        <h3 style={S.h3}>Q3: 3M PFAS phaseout se existing Novec installations pe kya impact hoga?</h3>
-        <p style={S.p}><strong>Answer:</strong> Existing installations continue kar sakti hain — refill supply available hai interim mein. Alternative manufacturers (Chemours, Solvay) similar products offer kar rahe hain. New installations ke liye long-term supply chain discuss karo supplier se. Inert gas systems (IG-541, nitrogen) PFAS-free fire suppression alternative hain. Immersion cooling ke liye Vertrel XF aur Opteon SF-10 alternatives hain.</p>
+        <h3 style={S.h3}>Q3: What will be the impact of the 3M PFAS phaseout on existing Novec installations?</h3>
+        <p style={S.p}><strong>Answer:</strong> Existing installations can continue — refill supply is available in the interim. Alternative manufacturers (Chemours, Solvay) are offering similar products. For new installations, discuss the long-term supply chain with the supplier. Inert gas systems (IG-541, nitrogen) are a PFAS-free fire suppression alternative. For immersion cooling, Vertrel XF and Opteon SF-10 are alternatives.</p>
 
         <hr style={S.divider} />
 
@@ -597,13 +602,13 @@ export default function NovecPage() {
         <h2 id="best-practices" style={S.h1}>Best Practices</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Novec 1230 for suppression:</strong> New builds mein FM200 replace karo — better regulatory future</li>
-          <li style={S.li}><strong>Supplier tie-up:</strong> PFAS phaseout ke baad alternative supplier pehle se identify karo</li>
-          <li style={S.li}><strong>Immersion cooling feasibility:</strong> 20+ kW racks ke liye Novec 649 immersion evaluate karo</li>
-          <li style={S.li}><strong>Fluid purity maintain karo:</strong> Immersion cooling mein contaminated fluid performance degrade karta hai</li>
-          <li style={S.li}><strong>Staff training:</strong> Immersion cooling operations traditional air-cooled se very different hai</li>
-          <li style={S.li}><strong>PFAS regulations monitor karo:</strong> India mein regulations aa sakti hain — prepare karo</li>
-          <li style={S.li}><strong>OCP standards follow karo:</strong> Open Compute Project immersion cooling guidelines best practices hain</li>
+          <li style={S.li}><strong>Novec 1230 for suppression:</strong> Replace FM200 in new builds — better regulatory future</li>
+          <li style={S.li}><strong>Supplier tie-up:</strong> Identify an alternative supplier in advance for after the PFAS phaseout</li>
+          <li style={S.li}><strong>Immersion cooling feasibility:</strong> Evaluate Novec 649 immersion for 20+ kW racks</li>
+          <li style={S.li}><strong>Maintain fluid purity:</strong> In immersion cooling, contaminated fluid degrades performance</li>
+          <li style={S.li}><strong>Staff training:</strong> Immersion cooling operations are very different from traditional air-cooled</li>
+          <li style={S.li}><strong>Monitor PFAS regulations:</strong> Regulations may come in India — be prepared</li>
+          <li style={S.li}><strong>Follow OCP standards:</strong> Open Compute Project immersion cooling guidelines are best practices</li>
         </ul>
 
         <hr style={S.divider} />
@@ -611,12 +616,12 @@ export default function NovecPage() {
         <h2 id="key-takeaways" style={S.h1}>Key Takeaways</h2>
 
         <KeyTakeawayCard items={[
-          "Novec = 3M ki engineered fluid family. Data centers mein do roles — Novec 1230 (fire suppression) aur Novec 649 (immersion cooling).",
-          "Novec 1230 = Novec 1250 = FK-5-1-12. Same chemical, different brand names. GWP=1, FM200 ka perfect replacement.",
-          "Novec 649 = immersion cooling fluid. Servers directly submerge karo. Electrically non-conductive. Overhead losses bahut kam hoti hain — actual PUE design pe depend karta hai.",
+          "Novec = 3M's engineered fluid family. Two roles in data centers — Novec 1230 (fire suppression) and Novec 649 (immersion cooling).",
+          "Novec 1230 = Novec 1250 = FK-5-1-12. Same chemical, different brand names. GWP=1, the perfect replacement for FM200.",
+          "Novec 649 = immersion cooling fluid. Submerge servers directly. Electrically non-conductive. Overhead losses are very low — the actual PUE depends on the design.",
           "Two-phase immersion cooling: liquid boils at 49°C, vapor condenses, cycle repeats. 1000x better heat transfer than air.",
-          "3M PFAS phaseout concern hai — long-term Novec supply uncertain. Alternative agents evaluate karo new builds ke liye.",
-          "AI aur HPC ke liye 50+ kW racks common ho rahe hain — immersion cooling single practical solution ban raha hai.",
+          "The 3M PFAS phaseout is a concern — long-term Novec supply is uncertain. Evaluate alternative agents for new builds.",
+          "For AI and HPC, 50+ kW racks are becoming common — immersion cooling is becoming the single practical solution.",
         ]} />
 
         <hr style={S.divider} />
@@ -627,11 +632,11 @@ export default function NovecPage() {
         <hr style={S.divider} />
 
         <h2 style={S.h2}>Related Learning Topics</h2>
-        <p style={S.p}>Novec family clear hua. Fire protection ka baaki hissa complete karo:</p>
+        <p style={S.p}>The Novec family is clear. Complete the rest of fire protection:</p>
         <ul style={S.ul}>
           <li style={S.li}><TopicLink slug="novec-1250" variant="inline" /> — Novec 1250 specifically — detailed fire suppression guide.</li>
-          <li style={S.li}><TopicLink slug="fm200" variant="inline" /> — FM200 — Novec 1230 se compare karne ke liye zaroori hai.</li>
-          <li style={S.li}><TopicLink slug="vesda" variant="inline" /> — Detection system jo suppression ko trigger karta hai.</li>
+          <li style={S.li}><TopicLink slug="fm200" variant="inline" /> — FM200 — essential for comparing with Novec 1230.</li>
+          <li style={S.li}><TopicLink slug="vesda" variant="inline" /> — the detection system that triggers suppression.</li>
           <li style={S.li}><TopicLink slug="hydrant" variant="inline" /> — External firefighting system — last line of defense.</li>
         </ul>
 

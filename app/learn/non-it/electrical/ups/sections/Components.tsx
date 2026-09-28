@@ -23,8 +23,7 @@ export default function Components() {
         <h2 id="components" style={S.h2}>Core Components Overview</h2>
 
         <p style={S.p}>
-          Ek UPS system mein 8 major components hote hain. Aage ke sub-sections mein hum sabse important
-          chaaron — Rectifier, Inverter, Static Switch, aur Battery Charger — ko deeply explain karenge.
+          A UPS system has 8 major components. In the following sub-sections we will explain the four most important — Rectifier, Inverter, Static Switch and Battery Charger — in depth.
         </p>
 
         <ComparisonTable
@@ -44,9 +43,7 @@ export default function Components() {
         <h3 id="rectifier" style={S.h3}>Rectifier</h3>
 
         <p style={S.p}>
-          Rectifier UPS ka "entry gate" hai. Yeh incoming AC supply ko DC mein convert karta hai using
-          power electronics (typically IGBT-based PWM rectifiers in modern UPS, pehle thyristor-based
-          hote the).
+          The rectifier is the "entry gate" of the UPS. It converts the incoming AC supply into DC using power electronics (typically IGBT-based PWM rectifiers in modern UPS; earlier they were thyristor-based).
         </p>
 
         <Figure caption="Fig 3 — Rectifier converting 3-phase AC input to regulated DC output">
@@ -54,17 +51,13 @@ export default function Components() {
         </Figure>
 
         <p style={S.p}>
-          Purane UPS mein <strong>SCR (Thyristor) based rectifiers</strong> hote the jo bulky transformers
-          use karte the aur input power factor poor hota tha (0.7-0.8). Modern UPS{" "}
-          <strong>IGBT-based PWM rectifiers</strong> use karte hain jo near-unity power factor (0.99)
-          dete hain aur transformerless design allow karte hain — chhota footprint, better efficiency.
+          Older UPS had <strong>SCR (Thyristor) based rectifiers</strong> that used bulky transformers and had a poor input power factor (0.7-0.8). Modern UPS use <strong>IGBT-based PWM rectifiers</strong> that give a near-unity power factor (0.99) and allow a transformerless design — smaller footprint, better efficiency.
         </p>
 
         <h3 id="inverter" style={S.h3}>Inverter</h3>
 
         <p style={S.p}>
-          Inverter rectifier ka opposite kaam karta hai — DC bus se power leke usse clean, regulated,
-          pure sine wave AC mein convert karta hai jo seedha load ko jaata hai.
+          The inverter does the opposite of the rectifier — it takes power from the DC bus and converts it into clean, regulated, pure sine wave AC that goes directly to the load.
         </p>
 
         <Figure caption="Fig 4 — Inverter converting DC bus voltage to clean sine wave AC output">
@@ -74,11 +67,7 @@ export default function Components() {
         <h3 id="static-switch" style={S.h3}>Static Switch</h3>
 
         <p style={S.p}>
-          Static Switch UPS ka "safety valve" hai. Yeh continuously monitor karta hai inverter output
-          aur bypass (raw mains) source dono ko. Agar inverter mein koi fault aaye, overload ho, ya
-          maintenance ki zaroorat ho — static switch <strong>sub-4 millisecond</strong> mein load ko
-          bypass pe shift kar deta hai using thyristors (SCRs) — koi mechanical moving part nahi, isliye
-          itna fast.
+          The Static Switch is the "safety valve" of the UPS. It continuously monitors both the inverter output and the bypass (raw mains) source. If a fault occurs in the inverter, there is an overload, or maintenance is needed — the static switch shifts the load to bypass in <strong>sub-4 milliseconds</strong> using thyristors (SCRs) — there is no mechanical moving part, which is why it is so fast.
         </p>
 
         <Figure caption="Fig 5 — Static Switch logic between inverter output and bypass source">
@@ -86,18 +75,13 @@ export default function Components() {
         </Figure>
 
         <Callout type="danger" title="Danger — Static Switch ≠ Isolation">
-          Static switch fault transfer ke liye hai, electrical isolation ke liye nahi. Maintenance se
-          pehle hamesha <strong>Maintenance Bypass</strong> use karo (Section 28) jo proper mechanical
-          isolation deta hai. Static switch pe kaam karte waqt LOTO (Lock Out Tag Out) procedure follow
-          karna mandatory hai.
+          The static switch is for fault transfer, not for electrical isolation. Before maintenance, always use the <strong>Maintenance Bypass</strong> (Section 28), which gives proper mechanical isolation. Following the LOTO (Lock Out Tag Out) procedure is mandatory while working on the static switch.
         </Callout>
 
         <h3 id="battery-charger" style={S.h3}>Battery Charger</h3>
 
         <p style={S.p}>
-          Battery Charger ek dedicated circuit hai (kabhi rectifier ka hi part, kabhi separate) jo
-          battery ko <strong>float voltage</strong> pe maintain karta hai jab grid available ho. Yeh
-          ensure karta hai ki battery hamesha full charge state mein rahe, ready for next outage.
+          The Battery Charger is a dedicated circuit (sometimes part of the rectifier itself, sometimes separate) that maintains the battery at <strong>float voltage</strong> when the grid is available. It ensures the battery always stays in a fully charged state, ready for the next outage.
         </p>
 
         <ComparisonTable
@@ -111,9 +95,7 @@ export default function Components() {
         />
 
         <Callout type="maintenance" title="Maintenance Tip">
-          Float voltage drift battery life ko seriously affect karta hai. Bahut high float voltage se
-          battery dry-out hoti hai (VRLA mein), bahut low se sulfation. Quarterly float voltage
-          verification ek non-negotiable maintenance task honi chahiye.
+          Float voltage drift seriously affects battery life. Too high a float voltage causes battery dry-out (in VRLA); too low causes sulfation. Quarterly float voltage verification should be a non-negotiable maintenance task.
         </Callout>
 
         {/* ═══════════════════════════════════════════════════════════════
@@ -122,10 +104,7 @@ export default function Components() {
         <h2 id="ups-types" style={S.h2}>UPS Types Overview</h2>
 
         <p style={S.p}>
-          UPS ki 5 major categories hain, har ek apne specific use-case ke liye optimized: Offline,
-          Line Interactive, Online Double Conversion, Delta Conversion, aur Modular. Data Center mein{" "}
-          <strong>Online Double Conversion almost universal standard</strong> hai — baaki types
-          aage detail mein samjhenge.
+          There are 5 major categories of UPS, each optimized for its own specific use-case: Offline, Line Interactive, Online Double Conversion, Delta Conversion and Modular. In the Data Center, <strong>Online Double Conversion is the almost universal standard</strong> — we will understand the other types in detail ahead.
         </p>
 
         <ComparisonTable
@@ -142,9 +121,7 @@ export default function Components() {
         <h3 id="offline-ups" style={S.h3}>Offline (Standby) UPS</h3>
 
         <p style={S.p}>
-          Offline UPS normally load ko <strong>directly mains se</strong> connect rakhta hai — battery
-          aur inverter standby mein rehte hain. Jab grid fail hoti hai, ek transfer switch milliseconds
-          mein load ko inverter pe switch kar deta hai.
+          An Offline UPS normally keeps the load connected <strong>directly to the mains</strong> — the battery and inverter stay in standby. When the grid fails, a transfer switch switches the load to the inverter within milliseconds.
         </p>
 
         <Figure caption="Fig 6 — Offline UPS: load normally on mains, switches to inverter on failure">
@@ -152,18 +129,13 @@ export default function Components() {
         </Figure>
 
         <p style={S.p}>
-          <strong>Advantages:</strong> Sabse cheap, sabse high efficiency (battery/inverter mostly idle).{" "}
-          <strong>Disadvantages:</strong> Transfer gap (2-10ms) sensitive equipment ko affect kar sakta
-          hai; no voltage regulation during normal operation. Data Center mein yeh{" "}
-          <strong>kabhi use nahi hota</strong> — sirf small office/home setups ke liye suitable hai.
+          <strong>Advantages:</strong> The cheapest, the highest efficiency (battery/inverter mostly idle). <strong>Disadvantages:</strong> The transfer gap (2-10ms) can affect sensitive equipment; no voltage regulation during normal operation. In the Data Center it is <strong>never used</strong> — it is suitable only for small office/home setups.
         </p>
 
         <h3 id="line-interactive-ups" style={S.h3}>Line Interactive UPS</h3>
 
         <p style={S.p}>
-          Line Interactive UPS offline ka upgraded version hai — isme ek <strong>AVR (Automatic Voltage
-          Regulator)</strong> hota hai jo minor voltage fluctuations ko inverter activate kiye bina hi
-          correct kar deta hai, battery life better preserve hoti hai.
+          A Line Interactive UPS is an upgraded version of offline — it has an <strong>AVR (Automatic Voltage Regulator)</strong> that corrects minor voltage fluctuations without activating the inverter, so battery life is better preserved.
         </p>
 
         <ComparisonTable
@@ -180,10 +152,7 @@ export default function Components() {
         <h3 id="online-double-conversion" style={S.h3}>Online Double Conversion UPS</h3>
 
         <p style={S.p}>
-          Yeh hai <strong>Data Center ka standard</strong>. Naam khud explain karta hai working — power
-          do baar convert hota hai: AC → DC (rectifier) → AC (inverter). Load <em>hamesha</em> inverter
-          se power leta hai, kabhi direct mains se nahi (normal operation mein) — isliye{" "}
-          <strong>zero transfer time</strong>, grid fail ho ya na ho, load ko farak nahi padta.
+          This is <strong>the Data Center standard</strong>. The name itself explains the working — power is converted twice: AC → DC (rectifier) → AC (inverter). The load <em>always</em> takes power from the inverter, never directly from the mains (in normal operation) — which is why there is <strong>zero transfer time</strong>; whether the grid fails or not, the load does not notice any difference.
         </p>
 
         <Figure caption="Fig 7 — Online Double Conversion: load always powered by inverter, grid only charges battery">
@@ -191,17 +160,13 @@ export default function Components() {
         </Figure>
 
         <Callout type="best-practice" title="Best Practice — Data Center Standard">
-          Online Double Conversion (IEC 62040 classification: <strong>VFI — Voltage and Frequency
-          Independent</strong>) industry standard hai kyunki yeh output ko input se completely isolate
-          karta hai — koi voltage sag, surge, frequency variation, ya harmonics load tak nahi pohonchte.
+          Online Double Conversion (IEC 62040 classification: <strong>VFI — Voltage and Frequency Independent</strong>) is the industry standard because it completely isolates the output from the input — no voltage sag, surge, frequency variation or harmonics reach the load.
         </Callout>
 
         <h3 id="delta-conversion" style={S.h3}>Delta Conversion UPS</h3>
 
         <p style={S.p}>
-          Delta Conversion ek advanced variant hai jo bahut bade UPS (typically &gt;300kVA) mein use
-          hota hai. Isme ek additional "delta converter" hota hai jo rectifier ke parallel kaam karta
-          hai — yeh higher efficiency (up to 97%) deta hai bina output quality compromise kiye.
+          Delta Conversion is an advanced variant used in very large UPS (typically &gt;300kVA). It has an additional "delta converter" that works in parallel with the rectifier — it gives higher efficiency (up to 97%) without compromising output quality.
         </p>
 
         <ComparisonTable
@@ -218,25 +183,21 @@ export default function Components() {
         <h3 id="modular-ups" style={S.h3}>Modular UPS</h3>
 
         <p style={S.p}>
-          Modular UPS ek "building block" design hai — multiple power modules (typically 25-50 kVA each)
-          ek frame mein parallel kaam karte hain. Capacity badhani ho toh sirf naya module add karo,
-          poora system replace nahi karna padta.
+          A Modular UPS is a "building block" design — multiple power modules (typically 25-50 kVA each) work in parallel in one frame. If capacity needs to increase, just add a new module; the whole system does not have to be replaced.
         </p>
 
         <ComparisonTable
           headers={["Benefit", "Why It Matters"]}
           rows={[
-            ["Hot-swappable modules", "Faulty module replace karo bina poora UPS shutdown kiye"],
-            ["Built-in N+1", "Ek extra module automatically redundancy deta hai"],
-            ["Scalability", "Load badhne pe modules add karo, capex phase-wise spread hota hai"],
-            ["Smaller footprint per kVA", "Same room mein zyada capacity fit ho jaati hai"],
+            ["Hot-swappable modules", "Replace a faulty module without shutting down the whole UPS"],
+            ["Built-in N+1", "One extra module automatically provides redundancy"],
+            ["Scalability", "Add modules as load grows; capex is spread in phases"],
+            ["Smaller footprint per kVA", "More capacity fits in the same room"],
           ]}
         />
 
         <Callout type="interview" title="Interview Tip">
-          Agar poocha jaaye "Modular UPS traditional UPS se better kyun hai for Data Centers?" — key
-          points: <em>hot-swappable maintenance without downtime, built-in N+1 redundancy by design,
-          aur incremental capex scaling jo CFOs ko bhi pasand aata hai.</em>
+          If asked "Why is a Modular UPS better than a traditional UPS for Data Centers?" — key points: <em>hot-swappable maintenance without downtime, built-in N+1 redundancy by design, and incremental capex scaling that CFOs also like.</em>
         </Callout>
 
         {/* ═══════════════════════════════════════════════════════════════

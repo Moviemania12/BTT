@@ -28,9 +28,9 @@ export default function BatterySizing() {
       <h2 id="battery-sizing" style={S.h2}>Battery Sizing Methodology</h2>
 
       <SectionIntro
-        quickAnswer="Battery sizing ek 13-step engineering process hai — sirf ek formula apply karna nahi. Load correction, temperature derating, ageing factor, redundancy architecture — sab ek sequence mein apply karne padte hain. Koi ek step miss karo toh final bank undersized ya oversized ho sakta hai."
-        engineerTip="Indian Data Centers mein sabse common sizing mistake: temperature factor ignore karna. Designer assume karta hai 25°C lekin actual battery room 35-40°C average run karta hai. 40°C pe VRLA ka 80% DoD target assume karo lekin actually 65-70% available hoti hai after temp derating. Result: battery bank designed for 15 minutes actual mein 10 minutes deti hai."
-        keyTakeaway="Sizing formula mein sirf Load, Voltage, DoD nahi — Temperature Factor aur Age Factor dono apply karna mandatory hai for production-ready design."
+        quickAnswer="Battery sizing is a 13-step engineering process — not just applying one formula. Load correction, temperature derating, ageing factor, redundancy architecture — all have to be applied in a sequence. Miss any one step and the final bank can be undersized or oversized."
+        engineerTip="The most common sizing mistake in Indian Data Centers: ignoring the temperature factor. The designer assumes 25°C but the actual battery room runs at a 35-40°C average. At 40°C you assume VRLA's 80% DoD target, but actually 65-70% is available after temperature derating. Result: a battery bank designed for 15 minutes actually gives 10 minutes."
+        keyTakeaway="The sizing formula is not just Load, Voltage, DoD — applying both the Temperature Factor and the Age Factor is mandatory for a production-ready design."
       />
 
       <Figure caption="Fig 4 — Battery Sizing Methodology: 13-step flow from load determination to final bank design">
@@ -41,8 +41,7 @@ export default function BatterySizing() {
       <h3 style={S.h3}>Step 1 — Load Determination</h3>
 
       <p style={S.p}>
-        Pehla step hai actual load calculate karna. UPS ko power karna wale sab loads sum karo.
-        Sirf IT load nahi — PDU losses, lighting, security systems sab include karo.
+        The first step is calculating the actual load. Sum all the loads that the UPS powers. Not just the IT load — include PDU losses, lighting, security systems, everything.
       </p>
 
       <ComparisonTable
@@ -59,11 +58,11 @@ export default function BatterySizing() {
       <h3 style={S.h3}>Step 2 — Runtime Requirement</h3>
 
       <p style={S.p}>
-        Runtime requirement project specification se aata hai — typically:
+        The runtime requirement comes from the project specification — typically:
       </p>
 
       <ul style={S.ul}>
-        <li><strong>Standard Data Center:</strong> 10–15 minutes (DG startup ka bridge time)</li>
+        <li><strong>Standard Data Center:</strong> 10–15 minutes (bridge time for DG startup)</li>
         <li><strong>Financial/Banking DC:</strong> 20–30 minutes (regulatory + double DG redundancy)</li>
         <li><strong>Hospital critical power:</strong> 30–60 minutes (life safety + generator startup redundancy)</li>
         <li><strong>Tier IV DC:</strong> 15 minutes minimum + 2N battery bank (each path independently capable)</li>
@@ -84,17 +83,13 @@ export default function BatterySizing() {
       />
 
       <Callout type="important" title="Important — Bus Voltage Fixed by UPS OEM">
-        Bus voltage tumhara choice nahi hai — yeh UPS OEM ne design time pe fix kiya hua hai.
-        Battery bank ki series string design hamesha UPS ke exact DC bus voltage ke liye honi
-        chahiye. Kisi bhi variation se rectifier/charger malfunction ya battery overcharge ho
-        sakta hai. UPS datasheet mein &quot;DC Bus Voltage&quot; parameter confirm karo.
+        The bus voltage is not your choice — it has been fixed by the UPS OEM at design time. The battery bank's series string design must always be for the UPS's exact DC bus voltage. Any variation can cause rectifier/charger malfunction or battery overcharge. Confirm the &quot;DC Bus Voltage&quot; parameter in the UPS datasheet.
       </Callout>
 
       <h3 style={S.h3}>Steps 4–8 — The Core Sizing Formula</h3>
 
       <p style={S.p}>
-        Sabse important formula. Yeh IEEE 485 approach pe based hai lekin India-specific factors
-        add kiye gaye hain:
+        The most important formula. It is based on the IEEE 485 approach, but India-specific factors have been added:
       </p>
 
       <div style={{ background: "#EFF6FF", border: "1px solid #E5E7EB", borderRadius: "12px", padding: "1rem 1.25rem", margin: "1rem 0", fontFamily: "var(--font-mono)", fontSize: "0.95rem" }}>
@@ -115,7 +110,7 @@ export default function BatterySizing() {
       <h3 style={S.h3}>Steps 9–11 — String Design</h3>
 
       <p style={S.p}>
-        Required Ah mil jaaye toh string design karo:
+        Once you have the required Ah, design the string:
       </p>
 
       <ul style={S.ul}>
@@ -148,9 +143,9 @@ export default function BatterySizing() {
       <h2 id="sizing-worked-examples" style={S.h2}>Sizing Worked Examples</h2>
 
       <SectionIntro
-        quickAnswer="Theory samajhna enough nahi hai — actual numbers nikalna aata hona chahiye. Teen examples: standard Data Center, hospital, aur edge DC. Har ek mein step-by-step calculation."
-        engineerTip="Calculation spreadsheet mein rakho aur every input assumption document karo. Project review mein jab koi pooche 'kyun yeh sizing ki?' — documented assumptions se answer milega. Undocumented assumptions = design risk."
-        keyTakeaway="Every sizing calculation ke saath 3 chize document karo: actual input assumptions, correction factors applied, aur final design with redundancy."
+        quickAnswer="Understanding the theory is not enough — you must know how to get the actual numbers. Three examples: a standard Data Center, a hospital and an edge DC. Step-by-step calculation in each."
+        engineerTip="Keep the calculation in a spreadsheet and document every input assumption. In a project review, when someone asks 'why was this sizing done?' — the documented assumptions will give the answer. Undocumented assumptions = design risk."
+        keyTakeaway="With every sizing calculation, document 3 things: the actual input assumptions, the correction factors applied, and the final design with redundancy."
       />
 
       <h3 style={S.h3}>Worked Example 1 — 100-Rack Tier III Data Center</h3>
@@ -252,16 +247,12 @@ export default function BatterySizing() {
       />
 
       <Callout type="danger" title="Danger — 45°C Ambient: Critical Design Consideration">
-        Rajasthan edge site pe 45°C ambient mein VRLA design life 5-year rated se sirf ~1 year
-        actual reh jaata hai. Is case mein seriously evaluate karo: (1) LFP battery — better
-        temp tolerance, longer life. (2) Insulated battery cabinet with dedicated cooling.
-        (3) More frequent replacement budget planning. At 45°C, VRLA is a high-risk choice
-        without dedicated temperature control.
+        At a Rajasthan edge site at 45°C ambient, VRLA design life from a 5-year rating stays only ~1 year actual. In this case seriously evaluate: (1) LFP battery — better temperature tolerance, longer life. (2) An insulated battery cabinet with dedicated cooling. (3) More frequent replacement budget planning. At 45°C, VRLA is a high-risk choice without dedicated temperature control.
       </Callout>
 
       {/* ─── Calculator Links ──────────────────────────────────────────── */}
       <p style={S.p}>
-        In calculations ke liye yeh live calculators use karo:
+        Use these live calculators for these calculations:
       </p>
 
       {ahCalc && <CalculatorLink calculator={ahCalc} />}
@@ -276,9 +267,9 @@ export default function BatterySizing() {
       <h2 id="battery-selection-guide" style={S.h2}>Battery Selection Guide</h2>
 
       <SectionIntro
-        quickAnswer="Sahi battery select karna 6 factors pe depend karta hai: budget, space, temperature, cycle count, TCO horizon, aur regulatory requirements. Ek factor miss karo toh wrong selection ho sakta hai — even if price sahi lag raha ho."
-        engineerTip="Budget-first selection ek trap hai. VRLA cheapest lagti hai Day 1 pe, lekin agar 5 saal mein 2 baar replace karni pade (Indian summer conditions mein common hai) toh total cost LFP se zyada hogi. Procurement team ko 10-year TCO dikhao, not just unit price."
-        keyTakeaway="Battery selection = Application + Environment + Budget + TCO — inme se sirf ek maximize karna wrong design deta hai."
+        quickAnswer="Selecting the right battery depends on 6 factors: budget, space, temperature, cycle count, TCO horizon and regulatory requirements. Miss one factor and the selection can be wrong — even if the price looks right."
+        engineerTip="Budget-first selection is a trap. VRLA looks cheapest on Day 1, but if it has to be replaced twice in 5 years (common in Indian summer conditions), the total cost will be higher than LFP. Show the procurement team the 10-year TCO, not just the unit price."
+        keyTakeaway="Battery selection = Application + Environment + Budget + TCO — maximizing only one of these gives a wrong design."
       />
 
       <ComparisonTable
@@ -300,33 +291,27 @@ export default function BatterySizing() {
       <h3 style={S.h3}>Selection Decision Tree</h3>
 
       <p style={S.p}>
-        Ek systematic approach har project ke liye:
+        A systematic approach for every project:
       </p>
 
       <ol style={S.ol}>
         <li>
-          <strong>Kya budget primary constraint hai?</strong>
-          → Haan: VRLA AGM. Lekin 10-year TCO calculate karo pehle.
+          <strong>Is budget the primary constraint?</strong> → Yes: VRLA AGM. But calculate the 10-year TCO first.
         </li>
         <li>
-          <strong>Kya space seriously constrained hai?</strong>
-          → Haan: LFP (70% weight/space saving).
+          <strong>Is space seriously constrained?</strong> → Yes: LFP (70% weight/space saving).
         </li>
         <li>
-          <strong>Kya ambient temperature regularly 35°C se zyada hai?</strong>
-          → Haan: LFP strongly preferred; VRLA only with dedicated battery room cooling.
+          <strong>Is the ambient temperature regularly above 35°C?</strong> → Yes: LFP strongly preferred; VRLA only with dedicated battery room cooling.
         </li>
         <li>
-          <strong>Kya high cycle count expected hai (daily discharge)?</strong>
-          → Haan: LFP mandatory — VRLA cycle life insufficient.
+          <strong>Is a high cycle count expected (daily discharge)?</strong> → Yes: LFP mandatory — VRLA cycle life is insufficient.
         </li>
         <li>
-          <strong>Kya regulatory approval required hai (hospital, airport)?</strong>
-          → VRLA — established regulatory track record, easier approval.
+          <strong>Is regulatory approval required (hospital, airport)?</strong> → VRLA — established regulatory track record, easier approval.
         </li>
         <li>
-          <strong>Kya 10-year horizon pe TCO optimize karna hai?</strong>
-          → LFP preferred — fewer replacements, lower maintenance.
+          <strong>Do you need to optimize TCO over a 10-year horizon?</strong> → LFP preferred — fewer replacements, lower maintenance.
         </li>
       </ol>
 
@@ -337,9 +322,9 @@ export default function BatterySizing() {
       <h2 id="string-architecture" style={S.h2}>String Architecture</h2>
 
       <SectionIntro
-        quickAnswer="String architecture decide karta hai ki batteries physically kaise connect hongi — series string voltage ke liye, parallel strings Ah capacity ke liye. Yeh ek design decision hai jo safety, redundancy, aur maintainability directly affect karta hai."
-        engineerTip="String architecture galat ho toh ek battery fault puri bank le sakta hai. Common mistake: no per-string fusing. Always fuse each string independently — yeh single rule most catastrophic battery bank failures prevent karta hai."
-        keyTakeaway="Series = voltage; Parallel = Ah capacity; Per-string fusing = mandatory — yeh teen rules string architecture ka core hai."
+        quickAnswer="String architecture decides how the batteries will be physically connected — series strings for voltage, parallel strings for Ah capacity. This is a design decision that directly affects safety, redundancy and maintainability."
+        engineerTip="If the string architecture is wrong, one battery fault can take down the whole bank. Common mistake: no per-string fusing. Always fuse each string independently — this single rule prevents most catastrophic battery bank failures."
+        keyTakeaway="Series = voltage; Parallel = Ah capacity; Per-string fusing = mandatory — these three rules are the core of string architecture."
       />
 
       <h3 id="series-vs-parallel" style={S.h3}>Series vs Parallel — Core Concept</h3>
@@ -367,36 +352,27 @@ export default function BatterySizing() {
       <h3 style={S.h3}>Parallel Strings — Maximum Recommended</h3>
 
       <p style={S.p}>
-        IEEE 1187 ek important guideline hai parallel strings ke baare mein. Theory mein jitni
-        strings chahiye parallel karo — lekin practice mein problems aate hain:
+        IEEE 1187 is an important guideline about parallel strings. In theory, put as many strings in parallel as you need — but in practice, problems come up:
       </p>
 
       <ul style={S.ul}>
         <li>
-          <strong>Current imbalance:</strong> Strings electrically identical nahi hoti — internal
-          resistance differences se current unequally distribute hota hai.
+          <strong>Current imbalance:</strong> Strings are not electrically identical — because of internal resistance differences, current is distributed unequally.
         </li>
         <li>
-          <strong>Fault propagation:</strong> Ek string fault hoti hai toh baaki strings high
-          current supply karti hain — cascade failure risk.
+          <strong>Fault propagation:</strong> When one string faults, the remaining strings supply high current — cascade failure risk.
         </li>
         <li>
-          <strong>Individual fusing complexity:</strong> Zyada strings → more fuses → more
-          maintenance points.
+          <strong>Individual fusing complexity:</strong> More strings → more fuses → more maintenance points.
         </li>
       </ul>
 
       <p style={S.p}>
-        IEEE guidance: generally <strong>3 strings maximum in parallel</strong> per IEEE 1187
-        recommendations. Zyada capacity chahiye toh larger Ah per cell use karo — strings
-        badhana avoid karo.
+        IEEE guidance: generally <strong>3 strings maximum in parallel</strong> per IEEE 1187 recommendations. If you need more capacity, use larger Ah per cell — avoid increasing the number of strings.
       </p>
 
-      <Callout type="important" title="Important — 3 Strings Max Guideline ka Real World Application">
-        IEEE 1187 ki 3-string guidance ek starting point hai, hard rule nahi. Large Tier IV DCs
-        mein 4–6 parallel strings common hain with proper protection coordination. Key requirements
-        if exceeding 3 strings: (1) Individual fusing per string, (2) Per-string current
-        monitoring in BMS, (3) Documented justification in design. Never exceed without these.
+      <Callout type="important" title="Important — Real World Application of the 3 Strings Max Guideline">
+        IEEE 1187's 3-string guidance is a starting point, not a hard rule. In large Tier IV DCs, 4–6 parallel strings are common with proper protection coordination. Key requirements if exceeding 3 strings: (1) Individual fusing per string, (2) Per-string current monitoring in BMS, (3) Documented justification in design. Never exceed without these.
       </Callout>
 
       <h3 id="string-fusing" style={S.h3}>String Fusing & Protection</h3>
@@ -406,8 +382,7 @@ export default function BatterySizing() {
       </Figure>
 
       <p style={S.p}>
-        String fusing battery bank design ki sabse important safety requirement hai — lekin
-        surprisingly zyada installations mein yeh miss hota hai ya improperly done hota hai.
+        String fusing is the most important safety requirement in battery bank design — but surprisingly, in many installations it is missed or done improperly.
       </p>
 
       <ComparisonTable
@@ -420,19 +395,14 @@ export default function BatterySizing() {
         ]}
       />
 
-      <Callout type="danger" title="Danger — AC Fuses DC Circuits Mein KABHI Mat Use Karo">
-        DC fault current non-zero crossing hoti hai — AC fuse mein designed interrupting arc-quench
-        mechanism DC pe kaam nahi karta. AC fuse DC fault current interrupt karne ki koshish mein
-        explode ya melt ho sakta hai — fire risk, injury risk. Hamesha DC-rated fuses use karo
-        with adequate DC breaking capacity rating. Check: voltage rating (must be ≥ bus voltage),
-        current rating, AND DC interrupting capacity.
+      <Callout type="danger" title="Danger — NEVER Use AC Fuses in DC Circuits">
+        DC fault current has no zero crossing — the arc-quench interrupting mechanism designed into an AC fuse does not work on DC. An AC fuse can explode or melt while trying to interrupt DC fault current — fire risk, injury risk. Always use DC-rated fuses with an adequate DC breaking capacity rating. Check: voltage rating (must be ≥ bus voltage), current rating, AND DC interrupting capacity.
       </Callout>
 
       <h3 style={S.h3}>String Balancing — Why Strings Age Differently</h3>
 
       <p style={S.p}>
-        Parallel strings theoretically equal share karte hain — lekin reality mein hamesha kuch
-        imbalance hoti hai. Causes:
+        Parallel strings theoretically share equally — but in reality there is always some imbalance. Causes:
       </p>
 
       <ul style={S.ul}>
@@ -443,15 +413,13 @@ export default function BatterySizing() {
       </ul>
 
       <p style={S.p}>
-        String ki current imbalance monitor karo. 5% se zyada imbalance investigate karo —
-        yeh string problem ya connection issue indicate karta hai.
+        Monitor the current imbalance of the strings. Investigate any imbalance above 5% — it indicates a string problem or a connection issue.
       </p>
 
       <h3 style={S.h3}>Mixed-Age String Problem</h3>
 
       <p style={S.p}>
-        Yeh Data Center mein ek bahut common aur expensive mistake hai. Ek string mein old aur
-        new batteries mix karna sabse avoidable way hai premature bank failure ka.
+        This is a very common and expensive mistake in the Data Center. Mixing old and new batteries in one string is the most avoidable way to cause premature bank failure.
       </p>
 
       <ComparisonTable
@@ -465,11 +433,7 @@ export default function BatterySizing() {
       />
 
       <Callout type="best-practice" title="Best Practice — String Replacement Rule">
-        Rule: Ek string mein <strong>sab batteries same batch, same brand, same age</strong> honi
-        chahiye. Agar ek cell bad ho, pura string replace karo — ek cell replace karna wrong hai.
-        Agar ek string bad ho, ideally pura bank evaluate karo. If other strings are close to
-        EOL, replace entire bank — not just the failed string. Partial replacement creates
-        mixed-age problem immediately.
+        Rule: In one string, <strong>all batteries must be from the same batch, same brand and same age</strong>. If one cell goes bad, replace the whole string — replacing one cell is wrong. If one string goes bad, ideally evaluate the whole bank. If other strings are close to EOL, replace entire bank — not just the failed string. Partial replacement creates mixed-age problem immediately.
       </Callout>
 
       <h3 style={S.h3}>Redundant String Architecture — Tier III vs Tier IV</h3>

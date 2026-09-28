@@ -36,8 +36,7 @@ export default function EarthingArticlePage() {
       <ArticleLayout
         slug="earthing"
         headings={HEADINGS}
-        readingTimeMinutes={earthingMetadata.readingTimeMinutes}
-      >
+        readingTimeMinutes={earthingMetadata.readingTimeMinutes} lang="en" alternateHref="/hi/learn/non-it/electrical/earthing">
         <Fundamentals />
         <Testing />
         <OperationsAndClosing />

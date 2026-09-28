@@ -12,7 +12,7 @@ export default function AccessControlPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="access-control" headings={HEADINGS} readingTimeMinutes={20}>
+      <ArticleLayout slug="access-control" headings={HEADINGS} readingTimeMinutes={20} lang="en" alternateHref="/hi/learn/non-it/security/access-control">
         <Basics />
         <ComponentsAndTypes />
         <IntegrationAndMaintenance />

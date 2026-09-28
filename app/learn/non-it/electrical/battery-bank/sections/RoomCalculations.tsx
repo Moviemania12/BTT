@@ -21,18 +21,16 @@ export default function RoomCalculations() {
       <h2 id="room-engineering-calculations" style={S.h2}>Battery Room Engineering Calculations</h2>
 
       <SectionIntro
-        quickAnswer="Battery room design sirf racks aur batteries arrange karne se nahi hota — 6 engineering calculations mandatory hain: hydrogen ventilation, heat load, cooling load, floor loading, battery weight, aur room sizing. Yeh calculations civil, HVAC, aur structural engineers ke saath coordinate karte waqt provide karni hoti hain."
-        engineerTip="Indian projects mein sabse commonly skipped calculation floor loading hai. Engineers assume karte hain ki standard office floor kafi hai — galat. VRLA 2V cells easily 65-80kg each hote hain; 3 strings × 96 cells = 288 cells × 70kg average = 20,160 kg sirf batteries. Uss room ka floor loading verify kiya? Structural engineer mandatory hai."
-        keyTakeaway="Yeh 6 calculations battery room ka 'civil brief' bana deti hain — inke bina construction drawings issue nahi honi chahiye."
+        quickAnswer="Battery room design is not just arranging racks and batteries — 6 engineering calculations are mandatory: hydrogen ventilation, heat load, cooling load, floor loading, battery weight and room sizing. These calculations have to be provided while coordinating with civil, HVAC and structural engineers."
+        engineerTip="In Indian projects the most commonly skipped calculation is floor loading. Engineers assume a standard office floor is enough — wrong. VRLA 2V cells are easily 65-80kg each; 3 strings × 96 cells = 288 cells × 70kg average = 20,160 kg of batteries alone. Did you verify that room's floor loading? A structural engineer is mandatory."
+        keyTakeaway="These 6 calculations make up the battery room's 'civil brief' — construction drawings should not be issued without them."
       />
 
       {/* ─── 11.1 H₂ Ventilation ─────────────────────────────────── */}
       <h3 id="h2-ventilation-calc" style={S.h3}>11.1 — Hydrogen Ventilation Calculation</h3>
 
       <p style={S.p}>
-        VRLA batteries mein normal float charging pe minimal hydrogen gas banta hai — lekin
-        overcharge ya equalisation pe significant H₂ generation hoti hai. H₂ ka Lower Explosive
-        Limit (LEL) air mein sirf 4% hai — yeh bahut low hai. Ventilation mandatory hai.
+        In VRLA batteries, minimal hydrogen gas is produced on normal float charging — but on overcharge or equalisation, significant H₂ generation happens. The Lower Explosive Limit (LEL) of H₂ in air is only 4% — that is very low. Ventilation is mandatory.
       </p>
 
       <p style={S.p}>
@@ -62,9 +60,7 @@ export default function RoomCalculations() {
       />
 
       <Callout type="danger" title="Danger — Ventilation Fan Must Be Explosion-Proof">
-        Battery room ka exhaust fan H₂ gas through flow karta hai — ordinary fan motors spark
-        kar sakte hain aur H₂ ignite ho sakta hai. ATEX-rated ya explosion-proof (Ex-rated) fans
-        mandatory hain battery room exhaust ke liye. Regular industrial fans kabhi mat lagao.
+        The battery room exhaust fan moves H₂ gas through it — ordinary fan motors can spark and the H₂ can ignite. ATEX-rated or explosion-proof (Ex-rated) fans are mandatory for battery room exhaust. Never install regular industrial fans.
       </Callout>
 
       <ComparisonTable
@@ -78,18 +74,14 @@ export default function RoomCalculations() {
       />
 
       <p style={S.p}>
-        H₂ sensor (electrochemical type) install karo ceiling ke paas — H₂ lighter than air hai
-        isliye ceiling pe collect hota hai. Sensor alarm at 10% LEL (0.4% H₂ in air) aur
-        critical at 20% LEL (0.8% H₂) set karo.
+        Install an H₂ sensor (electrochemical type) near the ceiling — H₂ is lighter than air, so it collects at the ceiling. Set the sensor alarm at 10% LEL (0.4% H₂ in air) and critical at 20% LEL (0.8% H₂).
       </p>
 
       {/* ─── 11.2 Heat Load ─────────────────────────────────────────── */}
       <h3 id="heat-load-calc" style={S.h3}>11.2 — Heat Load Calculation</h3>
 
       <p style={S.p}>
-        Battery bank heat generate karta hai during both charge aur discharge. Yeh heat battery
-        room temperature raise karta hai — jo battery life reduce karta hai. Cooling design
-        ke liye heat load accurately calculate karna zaroori hai.
+        A battery bank generates heat during both charge and discharge. This heat raises the battery room temperature — which reduces battery life. For cooling design it is essential to calculate the heat load accurately.
       </p>
 
       <p style={S.p}>
@@ -110,10 +102,7 @@ export default function RoomCalculations() {
       />
 
       <Callout type="important" title="Important — Worst Case Is Discharge, Not Charge">
-        Heat load calculation ke liye worst case condition consider karo: full discharge at maximum
-        current. Discharge pe internal resistance loss maximum hota hai aur yeh sab heat room
-        mein jaati hai. Charge normal steady-state operation hai; discharge is the
-        emergency — aur temperature spike tabhi hoti hai jab cooling most critical hoti hai.
+        For the heat load calculation, consider the worst case condition: full discharge at maximum current. On discharge, internal resistance loss is at its maximum and all this heat goes into the room. Charge is normal steady-state operation; discharge is the emergency — and the temperature spike happens exactly when cooling is most critical.
       </Callout>
 
       {/* ─── 11.3 Cooling Load ──────────────────────────────────────── */}
@@ -141,10 +130,7 @@ export default function RoomCalculations() {
       />
 
       <Callout type="best-practice" title="Best Practice — N+1 HVAC for Battery Room">
-        Battery room HVAC hamesha N+1 redundant hona chahiye — ek unit fail hone pe second
-        unit full load handle kare. Single HVAC failure + Indian summer = battery room at
-        40–45°C = VRLA life cut in half within weeks. Battery room HVAC is a critical system,
-        not a commodity.
+        Battery room HVAC must always be N+1 redundant — if one unit fails, the second unit should handle the full load. Single HVAC failure + Indian summer = battery room at 40–45°C = VRLA life cut in half within weeks. Battery room HVAC is a critical system, not a commodity.
       </Callout>
 
       {/* ─── 11.4 Floor Loading ─────────────────────────────────────── */}
@@ -200,9 +186,7 @@ export default function RoomCalculations() {
       />
 
       <p style={S.p}>
-        LFP ke saath VRLA replace karna weight mein 3× reduction deta hai same energy ke liye —
-        yeh upper floor installations mein floor loading concern significantly reduce karta hai.
-        Many retrofit projects sirf weight reduction ke liye LFP choose karte hain.
+        Replacing VRLA with LFP gives a 3× reduction in weight for the same energy — this significantly reduces the floor loading concern for upper floor installations. Many retrofit projects choose LFP just for the weight reduction.
       </p>
 
       {/* ─── 11.6 Room Sizing ────────────────────────────────────────── */}
@@ -236,10 +220,7 @@ export default function RoomCalculations() {
       />
 
       <Callout type="best-practice" title="Best Practice — Design for 1.5× Current Capacity">
-        Battery room thoda bada banao — future expansion ke liye 50% extra space design mein
-        include karo. Adding a fourth string to an existing battery room mein jab room full ho
-        ya aisle blocked ho toh yeh impossible ya bahut expensive ho jaata hai. Upfront 50%
-        extra space cost negligible hai vs future retrofit cost.
+        Make the battery room a little bigger — include 50% extra space in the design for future expansion. Adding a fourth string to an existing battery room becomes impossible or very expensive when the room is full or the aisle is blocked. The upfront cost of 50% extra space is negligible vs future retrofit cost.
       </Callout>
     </>
   );

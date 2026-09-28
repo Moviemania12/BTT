@@ -13,26 +13,15 @@ export default function Basics() {
       <h2 id="what-is-cctv" style={S.h2}>What is CCTV?</h2>
 
       <p style={S.p}>
-        CCTV — <strong>Closed Circuit Television</strong> — ek surveillance system hai jisme cameras
-        se video sirf authorized viewers ko jaati hai, public broadcast nahi hoti. "Closed circuit"
-        ka matlab hai ki signal ek controlled, private network pe hota hai — chahe wo coaxial cable
-        ho ya IP network. Aaj ke data centers mein hum primarily IP-based CCTV ki baat karte hain
-        jahan cameras Ethernet network pe digital video stream bhejte hain.
+        CCTV — <strong>Closed Circuit Television</strong> — is a surveillance system in which video from the cameras goes only to authorized viewers and is not broadcast publicly. "Closed circuit" means the signal travels on a controlled, private network — whether that is coaxial cable or an IP network. In today's data centers we primarily talk about IP-based CCTV, where cameras send a digital video stream over an Ethernet network.
       </p>
 
       <p style={S.p}>
-        Traditional analog CCTV mein cameras coaxial cable pe analog signal bhejte the aur DVR
-        (Digital Video Recorder) us signal ko digitize karke record karta tha. Modern IP CCTV mein
-        camera khud digital compression karta hai — H.264 ya H.265 codec use karke — aur network pe
-        compressed stream bhejta hai. NVR (Network Video Recorder) ya VMS (Video Management Software)
-        is stream ko receive karke record aur manage karta hai.
+        In traditional analog CCTV, cameras sent an analog signal over coaxial cable and the DVR (Digital Video Recorder) digitized and recorded that signal. In modern IP CCTV the camera itself does the digital compression — using the H.264 or H.265 codec — and sends a compressed stream over the network. The NVR (Network Video Recorder) or VMS (Video Management Software) receives this stream and records and manages it.
       </p>
 
       <Callout type="important" title="IP Camera ≠ Analog Camera — Architecture Fundamentally Different">
-        IP camera network pe directly connect hoti hai — coaxial cable nahi chahiye. Ek single Cat6
-        cable power (PoE) aur video dono carry karta hai. Is wajah se installation flexible hai, cable
-        routing asan hai, aur distance limitation practically nahi hoti (switches ke through). Data
-        centers mein IP-based systems standard hain.
+        An IP camera connects directly to the network — no coaxial cable is needed. A single Cat6 cable carries both power (PoE) and video. Because of this, installation is flexible, cable routing is easy, and there is practically no distance limitation (through switches). IP-based systems are standard in data centers.
       </Callout>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -41,26 +30,15 @@ export default function Basics() {
       <h2 id="why-cctv-in-dc" style={S.h2}>Why CCTV is Required in a Data Center</h2>
 
       <p style={S.p}>
-        Data center mein physical security ki pehli layer deterrence hai — jab log jaante hain ki
-        cameras hain, unauthorized activity ki probability kam ho jaati hai. Doosri layer evidence hai
-        — koi incident ho jaaye to recorded footage se kya hua, kab hua, aur kaun involved tha ye
-        establish hota hai. Teesri layer real-time monitoring hai — NOC ya security team live feed dekh
-        ke suspicious activity pe immediately respond kar sakti hai.
+        In a data center, the first layer of physical security is deterrence — when people know there are cameras, the probability of unauthorized activity goes down. The second layer is evidence — if an incident happens, the recorded footage establishes what happened, when it happened and who was involved. The third layer is real-time monitoring — the NOC or security team can watch the live feed and respond immediately to suspicious activity.
       </p>
 
       <p style={S.p}>
-        Beyond security, CCTV data centers mein operational visibility bhi deta hai. Server hall mein
-        koi physically unauthorized rack access kar raha hai, maintenance team ka kaam kahan tak pahuncha,
-        loading area mein equipment delivery ho rahi hai — ye sab remotely monitor hota hai. Client
-        audits ke time footage access provide karna ek standard deliverable ban gaya hai.
+        Beyond security, CCTV also gives operational visibility in data centers. Someone physically accessing a rack without authorization in the server hall, how far the maintenance team's work has progressed, equipment delivery happening in the loading area — all of this is monitored remotely. Providing footage access at the time of client audits has become a standard deliverable.
       </p>
 
       <p style={S.p}>
-        Regulatory aur compliance requirements bhi CCTV ko drive karte hain. ISO 27001, SOC 2, PCI-DSS,
-        aur similar frameworks physical security controls mandate karte hain jisme CCTV explicitly ya
-        implicitly included hota hai. Insurance aur SLA agreements bhi CCTV aur retention policies
-        specify kar sakte hain. Actual requirements project, client, jurisdiction aur applicable
-        compliance framework pe depend karte hain.
+        Regulatory and compliance requirements also drive CCTV. ISO 27001, SOC 2, PCI-DSS and similar frameworks mandate physical security controls in which CCTV is explicitly or implicitly included. Insurance and SLA agreements can also specify CCTV and retention policies. Actual requirements depend on the project, client, jurisdiction and applicable compliance framework.
       </p>
 
       <figure style={{ margin: "2rem 0" }}>
@@ -75,7 +53,7 @@ export default function Basics() {
           />
         </div>
         <figcaption style={{ fontSize: "0.85rem", color: "#4b5563", marginTop: "0.6rem", textAlign: "center", fontStyle: "italic" }}>
-          Enterprise Data Center CCTV — dome cameras monitoring server aisles, mantrap entry, aur perimeter areas.
+          Enterprise Data Center CCTV — dome cameras monitoring server aisles, mantrap entry and perimeter areas.
         </figcaption>
       </figure>
 
@@ -85,10 +63,7 @@ export default function Basics() {
       <h2 id="cctv-architecture" style={S.h2}>CCTV System Architecture</h2>
 
       <p style={S.p}>
-        Modern IP CCTV ka flow straightforward hai:{" "}
-        <strong>IP Cameras → PoE Switch → Network → NVR / VMS → Storage (Local HDD / NAS) → Monitoring Workstation</strong>.
-        Har component is chain mein ek specific role play karta hai, aur kisi bhi point pe failure poore
-        system ko affect kar sakta hai — isliye redundancy aur monitoring zaroori hai.
+        The flow of modern IP CCTV is straightforward:{" "} <strong>IP Cameras → PoE Switch → Network → NVR / VMS → Storage (Local HDD / NAS) → Monitoring Workstation</strong>. Every component plays a specific role in this chain, and a failure at any point can affect the whole system — that is why redundancy and monitoring are essential.
       </p>
 
       <figure style={{ margin: "2rem 0" }}>
@@ -107,18 +82,11 @@ export default function Basics() {
       </figure>
 
       <p style={S.p}>
-        <strong>IP Camera</strong> video capture karti hai aur compressed stream network pe bhejti hai.{" "}
-        <strong>PoE Switch</strong> cameras ko power (Power over Ethernet) aur network connectivity deta hai —
-        ek cable se dono. <strong>Network</strong> (typically dedicated VLAN pe) video traffic route karta hai.{" "}
-        <strong>NVR/VMS</strong> streams receive karke record karta hai aur management interface provide karta hai.{" "}
-        <strong>Storage</strong> actual recorded footage hold karta hai — NVR ke internal HDDs, external NAS,
-        ya dono. <strong>Monitoring Workstation</strong> security/NOC team ko live view aur playback access deta hai.
+        The <strong>IP Camera</strong> captures video and sends a compressed stream over the network.{" "} The <strong>PoE Switch</strong> gives the cameras power (Power over Ethernet) and network connectivity — both over one cable. The <strong>Network</strong> (typically on a dedicated VLAN) routes the video traffic.{" "} The <strong>NVR/VMS</strong> receives and records the streams and provides the management interface.{" "} <strong>Storage</strong> holds the actual recorded footage — the NVR's internal HDDs, an external NAS, or both. The <strong>Monitoring Workstation</strong> gives the security/NOC team live view and playback access.
       </p>
 
       <Callout type="best-practice" title="Dedicated VLAN for CCTV Traffic">
-        CCTV traffic ko production IT network se logically separate karo. Dedicated VLAN bandwidth
-        guarantee karta hai, security isolation improve karta hai, aur troubleshooting simplify karta
-        hai. Large deployments mein physical network separation bhi consider karo.
+        Logically separate CCTV traffic from the production IT network. A dedicated VLAN guarantees bandwidth, improves security isolation and simplifies troubleshooting. In large deployments consider physical network separation too.
       </Callout>
     </>
   );

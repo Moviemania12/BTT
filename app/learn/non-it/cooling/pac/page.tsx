@@ -7,12 +7,13 @@ import TopicLink from "@/components/TopicLink";
 export const metadata: Metadata = {
   title: "PAC — Precision Air Conditioner in Data Centers | Behind The Tech",
   description:
-    "PAC kya hota hai, kaise kaam karta hai, Data Center mein kyun use hota hai — working principle, components, types, maintenance aur troubleshooting. Simple Hinglish mein.",
+    "What is a PAC, how does it work, why is it used in a Data Center — working principle, components, types, maintenance and troubleshooting. In simple English.",
   keywords: ["pac data center", "precision air conditioner", "data center cooling", "pac vs crac", "data center hvac"],
   openGraph: {
     title: "PAC — Precision Air Conditioner in Data Centers",
-    description: "Data Center cooling ka pehla step — PAC kaise kaam karta hai, kahan lagta hai, aur kyun normal AC se alag hota hai.",
+    description: "The first step of Data Center cooling — how a PAC works, where it is installed, and why it is different from a normal AC.",
     url: "https://behindthetech.in/learn/non-it/cooling/pac",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -20,9 +21,16 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "PAC Explained — Behind The Tech",
-    description: "Precision Air Conditioner — Data Center cooling ka basic unit, simple language mein.",
+    description: "Precision Air Conditioner — the basic unit of Data Center cooling, in simple language.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/cooling/pac" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/cooling/pac",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/cooling/pac",
+      hi: "https://behindthetech.in/hi/learn/non-it/cooling/pac",
+      "x-default": "https://behindthetech.in/learn/non-it/cooling/pac",
+    },
+  },
 };
 
 const HEADINGS: ArticleHeading[] = [
@@ -68,12 +76,12 @@ const S = {
 
 function QuickSummary() {
   const pts = [
-    { label: "Ek line mein", text: "PAC ek precision cooling unit hai jo Data Center mein server racks ke paas laga hota hai aur unhe 24×7 thanda rakhta hai." },
-    { label: "Normal AC se alag kyun", text: "Ghar ka AC sirf temperature control karta hai. PAC temperature aur humidity dono control karta hai, non-stop chalta hai, aur servers ke liye safe cool air deliver karta hai." },
-    { label: "Andar kya hota hai", text: "Compressor, evaporator coil, condenser, expansion valve — ye sab milkar refrigeration cycle chalate hain. Warm air andar aati hai, cool air bahar jaati hai." },
-    { label: "Data Center mein kahan", text: "Server room ke andar, racks ke side mein ya row ke end mein. Directly floor pe ya raised floor pe mounted hota hai." },
-    { label: "Kitna important hai", text: "Bina cooling ke servers 10-15 minutes mein overheat ho jaate hain. PAC is failure ko rokta hai — ye ek critical infrastructure component hai." },
-    { label: "CRAC se kya fark", text: "PAC self-contained hota hai — apna compressor, condenser sab hota hai. CRAC mein chilled water system ya external condenser hota hai. Dono ka kaam same — approach alag." },
+    { label: "In one line", text: "A PAC is a precision cooling unit installed near the server racks in a Data Center that keeps them cool 24×7." },
+    { label: "Why it is different from a normal AC", text: "A home AC only controls temperature. A PAC controls both temperature and humidity, runs non-stop, and delivers safe cool air for servers." },
+    { label: "What is inside", text: "Compressor, evaporator coil, condenser, expansion valve — together they run the refrigeration cycle. Warm air comes in, cool air goes out." },
+    { label: "Where in a Data Center", text: "Inside the server room, beside the racks or at the end of a row. It is mounted directly on the floor or on a raised floor." },
+    { label: "How important it is", text: "Without cooling, servers overheat in 10-15 minutes. The PAC prevents this failure — it is a critical infrastructure component." },
+    { label: "Difference from CRAC", text: "A PAC is self-contained — it has its own compressor, condenser, everything. A CRAC has a chilled water system or an external condenser. Both do the same job — the approach is different." },
   ];
   return (
     <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", margin: "8px 0 32px" }}>
@@ -89,7 +97,7 @@ function QuickSummary() {
           ))}
         </div>
         <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid rgba(37,99,235,0.08)", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937" }}>
-          Bas itna samajh gaye to PAC ka concept clear hai. Aage poora article hai — working principle se troubleshooting tak.
+          If you have understood this much, the PAC concept is clear. The full article is ahead — from working principle to troubleshooting.
         </div>
       </div>
     </div>
@@ -113,7 +121,7 @@ function EngineerTip({ children }: { children: React.ReactNode }) {
     <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", margin: "20px 0 24px" }}>
       <div style={{ height: 2, background: "#ffa500" }} />
       <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}>
-        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer Ki Tip</span>
+        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer's Tip</span>
         <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
       </div>
     </div>
@@ -214,12 +222,12 @@ function ComparisonTable({ rows }: { rows: { feature: string; pac: string; norma
 }
 
 const FAQS = [
-  { q: "PAC aur normal AC mein kya fark hai?", a: "Normal AC sirf temperature control karta hai aur human comfort ke liye design hota hai. PAC temperature aur humidity dono control karta hai, 24×7 continuous operation ke liye banaya gaya hai, aur servers ke liye precise airflow deliver karta hai. Normal AC mein itni precision nahi hoti." },
-  { q: "PAC kitne kW ka hota hai?", a: "Typically 5 kW se 60 kW tak. Chhote server rooms mein 10-20 kW ke units use hote hain. Bade data centers mein multiple units parallel mein kaam karte hain." },
-  { q: "PAC ko kitni baar service karni chahiye?", a: "Daily inspection, monthly filter cleaning, aur quarterly full preventive maintenance. Agar cooling load zyada hai to more frequent servicing zaroori hai." },
-  { q: "PAC fail ho jaye to kya hoga?", a: "Redundant PAC automatically load le lega (N+1 design mein). IT equipment temperature alarm trigger karega. Agar cooling puri tarah fail ho to server shutdown hoga. Isliye redundancy zaroori hai." },
-  { q: "PAC mein refrigerant kaunsa use hota hai?", a: "Mostly R410A ya R407C modern units mein. Purane units mein R22 tha jo ab phase out ho raha hai. Refrigerant type unit ke nameplate par likha hota hai." },
-  { q: "PAC ka SHR kya hota hai?", a: "SHR = Sensible Heat Ratio. Data Center mein servers sirf sensible heat (temperature badhaate hain) generate karte hain, latent heat (moisture) kam hoti hai. PAC ka SHR 0.90-0.95 hota hai — ye servers ke heat profile ke liye perfect match hai." },
+  { q: "What is the difference between a PAC and a normal AC?", a: "A normal AC only controls temperature and is designed for human comfort. A PAC controls both temperature and humidity, is built for 24×7 continuous operation, and delivers precise airflow for servers. A normal AC does not have this much precision." },
+  { q: "What is the kW rating of a PAC?", a: "Typically from 5 kW to 60 kW. Small server rooms use 10-20 kW units. In large data centers, multiple units work in parallel." },
+  { q: "How often should a PAC be serviced?", a: "Daily inspection, monthly filter cleaning, and quarterly full preventive maintenance. If the cooling load is high, more frequent servicing is necessary." },
+  { q: "What happens if a PAC fails?", a: "The redundant PAC will automatically take the load (in an N+1 design). The IT equipment will trigger a temperature alarm. If cooling fails completely, servers will shut down. That is why redundancy is essential." },
+  { q: "Which refrigerant is used in a PAC?", a: "Mostly R410A or R407C in modern units. Older units had R22, which is now being phased out. The refrigerant type is written on the unit's nameplate." },
+  { q: "What is the SHR of a PAC?", a: "SHR = Sensible Heat Ratio. In a Data Center, servers generate only sensible heat (they raise temperature); latent heat (moisture) is low. The SHR of a PAC is 0.90-0.95 — a perfect match for the heat profile of servers." },
 ];
 
 function FAQSection() {
@@ -249,13 +257,13 @@ export default function PACPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="pac" headings={HEADINGS} readingTimeMinutes={18}>
+      <ArticleLayout slug="pac" headings={HEADINGS} readingTimeMinutes={18} lang="en" alternateHref="/hi/learn/non-it/cooling/pac">
 
-        <p style={S.p}>Socho ek bank ka server room hai. Sirf 20 servers hain. Room chhota hai — 10×10 feet.</p>
-        <p style={S.p}>Woh 20 servers 24 ghante kaam karte hain. Raat ko bhi. Weekend ko bhi. Saal ke 365 din.</p>
-        <p style={S.p}>Ye servers heat generate karte hain. Agar ye heat room mein hi rahi, to temperature 45°C, 50°C, 60°C tak chadh jaayega.</p>
-        <p style={S.p}><strong>Servers 35-40°C se upar jaayen to shutdown ho jaate hain.</strong></p>
-        <p style={S.p}>Isi problem ka solution hai — <strong>PAC (Precision Air Conditioner).</strong></p>
+        <p style={S.p}>Imagine a bank's server room. There are only 20 servers. The room is small — 10×10 feet.</p>
+        <p style={S.p}>Those 20 servers work 24 hours. At night too. On weekends too. 365 days a year.</p>
+        <p style={S.p}>These servers generate heat. If this heat stays in the room, the temperature will climb to 45°C, 50°C, 60°C.</p>
+        <p style={S.p}><strong>If servers go above 35-40°C, they shut down.</strong></p>
+        <p style={S.p}>The solution to exactly this problem is — <strong>the PAC (Precision Air Conditioner).</strong></p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -267,7 +275,7 @@ export default function PACPage() {
               style={{ objectFit: "cover" }}
             />
           </div>
-          <figcaption style={S.imageCaption}>PAC unit — Data Center server room mein installed. Ye white/grey cabinet servers ke paas hoti hai.</figcaption>
+          <figcaption style={S.imageCaption}>PAC unit — installed in a Data Center server room. This white/grey cabinet sits near the servers.</figcaption>
         </figure>
 
         <QuickSummary />
@@ -277,14 +285,14 @@ export default function PACPage() {
         <h2 id="what-is-pac" style={S.h1}>What Is a PAC?</h2>
 
         <p style={S.p}><strong>PAC = Precision Air Conditioner.</strong></p>
-        <p style={S.p}>Ye ek specialized cooling unit hai jo specifically Data Centers aur Server Rooms ke liye design ki gayi hai.</p>
-        <p style={S.p}>Ghar ke AC se compare karo:</p>
+        <p style={S.p}>It is a specialized cooling unit designed specifically for Data Centers and Server Rooms.</p>
+        <p style={S.p}>Compare it with a home AC:</p>
         <ul style={S.ul}>
-          <li style={S.li}>Ghar ka AC → insaan ko comfortable rakhne ke liye. 22°C se 26°C. Raat ko band hota hai.</li>
-          <li style={S.li}>PAC → servers ko safe rakhne ke liye. 18°C se 24°C. Kabhi band nahi hota.</li>
+          <li style={S.li}>Home AC → to keep people comfortable. 22°C to 26°C. Switched off at night.</li>
+          <li style={S.li}>PAC → to keep servers safe. 18°C to 24°C. Never switched off.</li>
         </ul>
-        <p style={S.p}>PAC sirf temperature nahi control karta — <strong>humidity bhi control karta hai.</strong></p>
-        <p style={S.p}>Low humidity → static electricity → components damage ho sakte hain.</p>
+        <p style={S.p}>A PAC does not only control temperature — <strong>it also controls humidity.</strong></p>
+        <p style={S.p}>Low humidity → static electricity → components can get damaged.</p>
         <p style={S.p}>High humidity → moisture → corrosion, short circuit.</p>
         <p style={S.p}><strong>Ideal range: Temperature 18-27°C, Humidity 40-60% RH.</strong></p>
 
@@ -294,32 +302,32 @@ export default function PACPage() {
 
         <h2 id="why-needed" style={S.h1}>Why Is PAC Needed?</h2>
 
-        <p style={S.p}>Servers electricity consume karte hain. Ye electricity heat mein convert hoti hai.</p>
-        <p style={S.p}>Ek typical 1U server 200-400W generate karta hai. Ek rack mein 20-40 servers ho sakte hain.</p>
-        <p style={S.p}>Ek rack ki heat: 20 servers × 300W = <strong>6000W = 6 kW.</strong></p>
-        <p style={S.p}>20 racks ki heat: 20 × 6 kW = <strong>120 kW.</strong></p>
-        <p style={S.p}>Ye heat kahaan jaayegi? Bahar nikalni padegi. Warna room oven ban jaayega.</p>
+        <p style={S.p}>Servers consume electricity. This electricity turns into heat.</p>
+        <p style={S.p}>A typical 1U server generates 200-400W. One rack can have 20-40 servers.</p>
+        <p style={S.p}>Heat of one rack: 20 servers × 300W = <strong>6000W = 6 kW.</strong></p>
+        <p style={S.p}>Heat of 20 racks: 20 × 6 kW = <strong>120 kW.</strong></p>
+        <p style={S.p}>Where will this heat go? It has to be removed. Otherwise the room will become an oven.</p>
 
         <WhyThisMatters>
-          ASHRAE (American Society of Heating, Refrigerating and Air-Conditioning Engineers) ke standards ke according, Data Center mein server inlet temperature 18°C to 27°C honi chahiye. Agar ye range cross ho to server performance degrade hoti hai, components ka life span kam hota hai, aur thermal shutdown ho sakta hai.
+          According to the standards of ASHRAE (American Society of Heating, Refrigerating and Air-Conditioning Engineers), the server inlet temperature in a Data Center should be 18°C to 27°C. If this range is crossed, server performance degrades, component life span reduces, and a thermal shutdown can happen.
         </WhyThisMatters>
 
-        <p style={S.p}>Normal building AC kaam nahi karta kyunki:</p>
+        <p style={S.p}>A normal building AC does not work because:</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Continuous operation:</strong> Normal AC 8-12 hours ke liye design hota hai. PAC 8760 hours/year (365 × 24) kaam karta hai.</li>
-          <li style={S.li}><strong>High heat density:</strong> Servers ek chhoti jagah mein bahut zyada heat generate karte hain. Normal AC iski capacity nahi rakhta.</li>
-          <li style={S.li}><strong>Humidity control:</strong> Normal AC sirf temperature control karta hai. Humidity control nahi.</li>
-          <li style={S.li}><strong>Precision:</strong> Normal AC ±3-5°C variation accept karta hai. PAC ±1°C maintain karta hai.</li>
-          <li style={S.li}><strong>Sensible heat ratio:</strong> Servers sensible heat generate karte hain (temperature badhata hai, moisture nahi). Normal AC mein SHR low hota hai — ye humid air cool karne ke liye bana hai.</li>
+          <li style={S.li}><strong>Continuous operation:</strong> A normal AC is designed for 8-12 hours. A PAC works 8760 hours/year (365 × 24).</li>
+          <li style={S.li}><strong>High heat density:</strong> Servers generate a lot of heat in a small space. A normal AC does not have the capacity for this.</li>
+          <li style={S.li}><strong>Humidity control:</strong> A normal AC only controls temperature. Not humidity.</li>
+          <li style={S.li}><strong>Precision:</strong> A normal AC accepts ±3-5°C variation. A PAC maintains ±1°C.</li>
+          <li style={S.li}><strong>Sensible heat ratio:</strong> Servers generate sensible heat (raises temperature, not moisture). A normal AC has a low SHR — it is built to cool humid air.</li>
         </ul>
 
         <hr style={S.divider} />
 
         <h2 id="working-principle" style={S.h1}>Working Principle</h2>
 
-        <p style={S.p}>PAC ka kaam simple principle pe chalta hai:</p>
-        <p style={S.p}><strong>Warm air andar → cool karo → cool air bahar.</strong></p>
-        <p style={S.p}>Ye cycle refrigerant (ek special gas) use karke achieve hoti hai.</p>
+        <p style={S.p}>A PAC works on a simple principle:</p>
+        <p style={S.p}><strong>Warm air in → cool it → cool air out.</strong></p>
+        <p style={S.p}>This cycle is achieved using a refrigerant (a special gas).</p>
 
         <FlowDiagram
           caption="PAC airflow cycle — warm air in, cool air out"
@@ -333,42 +341,42 @@ export default function PACPage() {
         />
 
         <InsightCard>
-          PAC mein ek fan hota hai jo server rack se warm air kheenchta hai. Ye warm air evaporator coil se guzarti hai jahan refrigerant hota hai. Refrigerant is heat ko absorb kar leta hai. Ab cool air fan ke through bahar aati hai aur servers ko thanda karti hai. Ye cycle continuously repeat hoti hai.
+          A PAC has a fan that pulls warm air from the server racks. This warm air passes through the evaporator coil, where the refrigerant is. The refrigerant absorbs this heat. Now cool air comes out through the fan and cools the servers. This cycle repeats continuously.
         </InsightCard>
 
         <hr style={S.divider} />
 
         <h2 id="refrigeration-cycle" style={S.h1}>Refrigeration Cycle Explained</h2>
 
-        <p style={S.p}>Refrigeration cycle samajhna zaroori hai. Ghabrao mat — simple hai.</p>
-        <p style={S.p}><strong>Refrigerant</strong> ek special fluid hai jo easily liquid se gas aur gas se liquid ban sakta hai.</p>
-        <p style={S.p}>Is property ka use karke cooling hoti hai:</p>
+        <p style={S.p}>Understanding the refrigeration cycle is essential. Don't worry — it is simple.</p>
+        <p style={S.p}><strong>Refrigerant</strong> is a special fluid that can easily turn from liquid to gas and from gas to liquid.</p>
+        <p style={S.p}>Cooling happens by using this property:</p>
 
         <FlowDiagram
-          caption="Refrigeration cycle — 4 steps mein complete cycle"
+          caption="Refrigeration cycle — the complete cycle in 4 steps"
           steps={[
             { icon: "❄️", label: "Evaporator", sublabel: "Liquid → Gas, Heat absorb" },
-            { icon: "⚙️", label: "Compressor", sublabel: "Gas compress hota hai" },
+            { icon: "⚙️", label: "Compressor", sublabel: "Gas gets compressed" },
             { icon: "🌡️", label: "Condenser", sublabel: "Gas → Liquid, Heat release" },
-            { icon: "🔧", label: "Expansion Valve", sublabel: "Pressure kam hota hai" },
+            { icon: "🔧", label: "Expansion Valve", sublabel: "Pressure drops" },
           ]}
         />
 
         <h3 style={S.h3}>Step 1 — Evaporator (Cooling Happens Here)</h3>
-        <p style={S.p}>Refrigerant liquid form mein evaporator coil mein aata hai. Coil ke upar se warm air guzarti hai. Refrigerant is heat ko absorb karke gas ban jaata hai. Air cool ho jaati hai.</p>
-        <p style={S.p}><em>Analogy:</em> Cooler mein paani evaporate hota hai aur thanda feel hota hai — same concept.</p>
+        <p style={S.p}>The refrigerant comes into the evaporator coil in liquid form. Warm air passes over the coil. The refrigerant absorbs this heat and turns into gas. The air gets cooled.</p>
+        <p style={S.p}><em>Analogy:</em> In a cooler, water evaporates and you feel cool — same concept.</p>
 
         <h3 style={S.h3}>Step 2 — Compressor (Pressure Increase)</h3>
-        <p style={S.p}>Gas form refrigerant compressor mein jaata hai. Compressor isko high pressure pe compress karta hai. Compression se temperature bhi badh jaata hai — ye hot compressed gas hai ab.</p>
+        <p style={S.p}>The gas-form refrigerant goes into the compressor. The compressor compresses it to high pressure. Compression also raises its temperature — it is now a hot compressed gas.</p>
 
         <h3 style={S.h3}>Step 3 — Condenser (Heat Release)</h3>
-        <p style={S.p}>Hot compressed gas condenser mein jaati hai. Yahan ye heat release karti hai. Heat kondenser se bahar jati hai — building ke bahar ya cooling tower mein. Gas liquid ban jaati hai.</p>
+        <p style={S.p}>The hot compressed gas goes into the condenser. Here it releases heat. The heat leaves through the condenser — outside the building or into a cooling tower. The gas turns into liquid.</p>
 
         <h3 style={S.h3}>Step 4 — Expansion Valve (Pressure Drop)</h3>
-        <p style={S.p}>Liquid refrigerant expansion valve se guzarta hai. Pressure drop hoti hai. Refrigerant thanda ho jaata hai. Ab ye phir evaporator mein jaata hai — cycle complete.</p>
+        <p style={S.p}>The liquid refrigerant passes through the expansion valve. The pressure drops. The refrigerant becomes cold. Now it goes back into the evaporator — cycle complete.</p>
 
         <EngineerTip>
-          Refrigeration cycle yaad rakhne ka shortcut: <strong>Evaporator = absorb, Compressor = compress, Condenser = reject, Expansion = expand.</strong> ECCE — ye sequence kabhi nahi bhoolna.
+          A shortcut to remember the refrigeration cycle: <strong>Evaporator = absorb, Compressor = compress, Condenser = reject, Expansion = expand.</strong> ECCE — never forget this sequence.
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -376,34 +384,34 @@ export default function PACPage() {
         <h2 id="main-components" style={S.h1}>Main Components</h2>
 
         <h3 style={S.h3}>1. Compressor</h3>
-        <p style={S.p}>PAC ka "heart". Refrigerant gas ko compress karta hai. Ye most power-consuming component hai. Scroll type ya reciprocating type hota hai modern units mein.</p>
+        <p style={S.p}>The "heart" of the PAC. It compresses the refrigerant gas. It is the most power-consuming component. Modern units have a scroll type or reciprocating type.</p>
 
         <h3 style={S.h3}>2. Evaporator Coil (Indoor Coil)</h3>
-        <p style={S.p}>Yahan actual cooling hoti hai. Refrigerant is coil se guzarta hai aur warm air ki heat absorb karta hai. Fins aur tubes ka assembly hota hai — zyada surface area = zyada heat transfer.</p>
+        <p style={S.p}>This is where the actual cooling happens. The refrigerant passes through this coil and absorbs the heat of the warm air. It is an assembly of fins and tubes — more surface area = more heat transfer.</p>
 
         <h3 style={S.h3}>3. Condenser</h3>
-        <p style={S.p}>Heat ko bahar release karta hai. Air-cooled (fan se air) ya water-cooled (chilled water se) ho sakta hai. Self-contained PAC mein air-cooled condenser hota hai.</p>
+        <p style={S.p}>It releases heat outside. It can be air-cooled (air via fan) or water-cooled (via chilled water). A self-contained PAC has an air-cooled condenser.</p>
 
         <h3 style={S.h3}>4. Expansion Valve (TEV / EEV)</h3>
-        <p style={S.p}>Refrigerant ka flow aur pressure control karta hai. TEV = Thermostatic Expansion Valve (mechanical). EEV = Electronic Expansion Valve (electronic control — zyada precise). Modern PAC mein EEV use hota hai.</p>
+        <p style={S.p}>It controls the flow and pressure of the refrigerant. TEV = Thermostatic Expansion Valve (mechanical). EEV = Electronic Expansion Valve (electronic control — more precise). Modern PACs use an EEV.</p>
 
         <h3 style={S.h3}>5. Fan / Blower</h3>
-        <p style={S.p}>Air ko server racks se kheenchta hai aur cool air return karta hai. EC (Electronically Commutated) fans modern PAC mein hote hain — inki speed variable hoti hai aur energy efficient hain.</p>
+        <p style={S.p}>It pulls air from the server racks and returns cool air. Modern PACs have EC (Electronically Commutated) fans — their speed is variable and they are energy efficient.</p>
 
         <h3 style={S.h3}>6. Microprocessor Controller</h3>
-        <p style={S.p}>PAC ka "brain". Temperature aur humidity sensors se readings leta hai. Compressor, fans, aur heater ko control karta hai. Alarms generate karta hai. BMS (Building Management System) se communicate karta hai.</p>
+        <p style={S.p}>The "brain" of the PAC. It takes readings from temperature and humidity sensors. It controls the compressor, fans and heater. It generates alarms. It communicates with the BMS (Building Management System).</p>
 
         <h3 style={S.h3}>7. Humidifier / Dehumidifier</h3>
-        <p style={S.p}>Humidity control ke liye. Agar humidity kam ho to humidifier steam ya water mist add karta hai. Agar humidity zyada ho to dehumidification mode mein condensation se moisture remove hoti hai.</p>
+        <p style={S.p}>For humidity control. If humidity is low, the humidifier adds steam or water mist. If humidity is high, moisture is removed through condensation in dehumidification mode.</p>
 
         <h3 style={S.h3}>8. Electric Heater (Optional)</h3>
-        <p style={S.p}>Cold weather mein jab servers se heat kafi na ho, PAC heating bhi kar sakta hai. Ye ensure karta hai ki temperature minimum se neeche na jaaye.</p>
+        <p style={S.p}>In cold weather, when there is not enough heat from the servers, the PAC can also do heating. This ensures the temperature does not go below the minimum.</p>
 
         <hr style={S.divider} />
 
         <h2 id="how-it-works-in-dc" style={S.h1}>How PAC Works Inside a Data Center</h2>
 
-        <p style={S.p}>Ab real Data Center scenario mein dekho.</p>
+        <p style={S.p}>Now look at it in a real Data Center scenario.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -415,19 +423,19 @@ export default function PACPage() {
               style={{ objectFit: "cover" }}
             />
           </div>
-          <figcaption style={S.imageCaption}>Cold Aisle / Hot Aisle arrangement — PAC se cool air cold aisle mein jata hai, hot air hot aisle mein collect hota hai.</figcaption>
+          <figcaption style={S.imageCaption}>Cold Aisle / Hot Aisle arrangement — cool air from the PAC goes into the cold aisle, hot air collects in the hot aisle.</figcaption>
         </figure>
 
-        <p style={S.p}>Data Center mein server racks rows mein lagaye jaate hain. Racks ke beech do prakar ke aisles (galiyan) hoti hain:</p>
+        <p style={S.p}>In a Data Center, server racks are installed in rows. Between the racks there are two kinds of aisles (corridors):</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Cold Aisle</strong> — jahan PAC se thandi air aati hai. Servers ka front side yahan face karta hai.</li>
-          <li style={S.li}><strong>Hot Aisle</strong> — jahan servers se garam air nikalti hai. Servers ka back side yahan face karta hai.</li>
+          <li style={S.li}><strong>Cold Aisle</strong> — where cold air comes from the PAC. The front side of the servers faces here.</li>
+          <li style={S.li}><strong>Hot Aisle</strong> — where hot air comes out of the servers. The back side of the servers faces here.</li>
         </ul>
-        <p style={S.p}>PAC cold aisle mein ya uske paas lagta hai. Cool air cold aisle mein jata hai → servers ke andar se guzarta hai → hot aisle mein nikalta hai → PAC wapas kheenchta hai → cool karta hai → phir cold aisle mein.</p>
-        <p style={S.p}><strong>Ye ek closed loop hai.</strong></p>
+        <p style={S.p}>The PAC is installed in or near the cold aisle. Cool air goes into the cold aisle → passes through the servers → comes out into the hot aisle → the PAC pulls it back → cools it → then into the cold aisle again.</p>
+        <p style={S.p}><strong>This is a closed loop.</strong></p>
 
         <InsightCard>
-          Ek important baat: PAC mein se cool air neeche se ya upar se aa sakti hai. Raised floor system mein, PAC cool air raised floor ke neeche bhejta hai aur wo perforated tiles se nikalta hai. Yahi cold aisle ko thanda rakhta hai. Without raised floor, PAC directly floor level se ya ceiling se cool air deliver karta hai.
+          One important point: cool air from a PAC can come from below or from above. In a raised floor system, the PAC sends cool air under the raised floor and it comes out through perforated tiles. This is what keeps the cold aisle cool. Without a raised floor, the PAC delivers cool air directly from floor level or from the ceiling.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -435,61 +443,61 @@ export default function PACPage() {
         <h2 id="types" style={S.h1}>Types of PAC</h2>
 
         <h3 style={S.h3}>1. Downflow PAC</h3>
-        <p style={S.p}>Cool air neeche se nikalta hai — raised floor mein. Most common type. Racks se warm air upar se kheenchi jaati hai.</p>
+        <p style={S.p}>Cool air comes out from below — into the raised floor. The most common type. Warm air is pulled from the racks from above.</p>
 
         <h3 style={S.h3}>2. Upflow PAC</h3>
-        <p style={S.p}>Cool air upar se nikalta hai. Jab raised floor nahi ho. Air directly ceiling level se distribute hoti hai ya overhead ducts se.</p>
+        <p style={S.p}>Cool air comes out from above. When there is no raised floor. Air is distributed directly from ceiling level or through overhead ducts.</p>
 
         <h3 style={S.h3}>3. In-Row Cooling</h3>
-        <p style={S.p}>PAC unit directly rack rows ke beech lagti hai. Heat load ke bahut paas cooling. High-density environments ke liye best. Short air paths — efficient.</p>
+        <p style={S.p}>The PAC unit is installed directly between rack rows. Cooling very close to the heat load. Best for high-density environments. Short air paths — efficient.</p>
 
         <h3 style={S.h3}>4. In-Rack Cooling</h3>
-        <p style={S.p}>Cooling unit directly rack ke andar lagti hai. Ultra-high density servers ke liye. Rare — mostly specialized applications mein.</p>
+        <p style={S.p}>The cooling unit is installed directly inside the rack. For ultra-high density servers. Rare — mostly in specialized applications.</p>
 
         <h3 style={S.h3}>5. Air-Cooled PAC</h3>
-        <p style={S.p}>Condenser heat ko bahar air se release karta hai. External condenser building ke bahar wall par ya roof par lagta hai. Simpler installation.</p>
+        <p style={S.p}>The condenser releases heat to the outside air. The external condenser is installed outside the building on a wall or on the roof. Simpler installation.</p>
 
         <h3 style={S.h3}>6. Water-Cooled PAC</h3>
-        <p style={S.p}>Condenser heat ko chilled water loop se release karta hai. Chiller system ke saath kaam karta hai. Better efficiency but requires water infrastructure.</p>
+        <p style={S.p}>The condenser releases heat into a chilled water loop. It works with a chiller system. Better efficiency but requires water infrastructure.</p>
 
         <hr style={S.divider} />
 
         <h2 id="advantages" style={S.h1}>Advantages</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Precision control:</strong> Temperature ±1°C, humidity ±5% RH maintain karta hai</li>
-          <li style={S.li}><strong>24×7 operation:</strong> Continuous duty rated — koi band nahi hota</li>
-          <li style={S.li}><strong>High SHR:</strong> Server heat profile ke liye perfect match</li>
-          <li style={S.li}><strong>Self-contained:</strong> Compressor, condenser — sab ek unit mein (air-cooled type mein)</li>
-          <li style={S.li}><strong>Redundancy possible:</strong> N+1 design — ek fail ho to doosra active</li>
-          <li style={S.li}><strong>BMS integration:</strong> Remote monitoring aur alarms</li>
-          <li style={S.li}><strong>Scalable:</strong> Load badhne pe nayi units add karo</li>
+          <li style={S.li}><strong>Precision control:</strong> Maintains temperature ±1°C, humidity ±5% RH</li>
+          <li style={S.li}><strong>24×7 operation:</strong> Continuous duty rated — never switched off</li>
+          <li style={S.li}><strong>High SHR:</strong> A perfect match for the server heat profile</li>
+          <li style={S.li}><strong>Self-contained:</strong> Compressor, condenser — all in one unit (in the air-cooled type)</li>
+          <li style={S.li}><strong>Redundancy possible:</strong> N+1 design — if one fails, another is active</li>
+          <li style={S.li}><strong>BMS integration:</strong> Remote monitoring and alarms</li>
+          <li style={S.li}><strong>Scalable:</strong> Add new units as load increases</li>
         </ul>
 
         <hr style={S.divider} />
 
         <h2 id="disadvantages" style={S.h1}>Disadvantages</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Higher cost:</strong> Normal AC se 3-5x mahanga</li>
-          <li style={S.li}><strong>Space requirement:</strong> Large units floor space lete hain</li>
-          <li style={S.li}><strong>External condenser:</strong> Air-cooled type mein outdoor unit bhi lagani padti hai</li>
-          <li style={S.li}><strong>Energy consumption:</strong> 24×7 chalta hai — electricity bill zyada</li>
-          <li style={S.li}><strong>Skilled maintenance:</strong> HVAC certified technician chahiye</li>
-          <li style={S.li}><strong>Limited for high density:</strong> Very high density racks (20+ kW/rack) ke liye supplementary cooling chahiye</li>
+          <li style={S.li}><strong>Higher cost:</strong> 3-5x more expensive than a normal AC</li>
+          <li style={S.li}><strong>Space requirement:</strong> Large units take up floor space</li>
+          <li style={S.li}><strong>External condenser:</strong> The air-cooled type also needs an outdoor unit</li>
+          <li style={S.li}><strong>Energy consumption:</strong> Runs 24×7 — higher electricity bill</li>
+          <li style={S.li}><strong>Skilled maintenance:</strong> Needs an HVAC certified technician</li>
+          <li style={S.li}><strong>Limited for high density:</strong> Very high density racks (20+ kW/rack) need supplementary cooling</li>
         </ul>
 
         <hr style={S.divider} />
 
         <h2 id="real-example" style={S.h1}>Real Data Center Example</h2>
 
-        <p style={S.p}><strong>Scenario:</strong> Ek 200 sqm ka colocation data center, 50 racks, average 5 kW per rack.</p>
+        <p style={S.p}><strong>Scenario:</strong> A 200 sqm colocation data center, 50 racks, average 5 kW per rack.</p>
         <p style={S.p}><strong>Total heat load:</strong> 50 × 5 = 250 kW</p>
-        <p style={S.p}><strong>PAC sizing:</strong> 30 kW cooling capacity ke 10 PAC units (total 300 kW) — N+1 mein 9 units kafi hain, 1 standby.</p>
+        <p style={S.p}><strong>PAC sizing:</strong> 10 PAC units of 30 kW cooling capacity (total 300 kW) — in N+1, 9 units are enough, 1 standby.</p>
         <p style={S.p}><strong>Arrangement:</strong> Downflow PAC, raised floor 500mm height. Cold aisle / hot aisle containment.</p>
-        <p style={S.p}><strong>Redundancy:</strong> N+1 — koi bhi ek unit fail ho to baaki 9 poora load sambhal lenge.</p>
-        <p style={S.p}><strong>Monitoring:</strong> Sab PAC BMS se connected. Temperature, humidity, alarms — sab centrally monitor hote hain.</p>
+        <p style={S.p}><strong>Redundancy:</strong> N+1 — if any one unit fails, the remaining 9 will handle the full load.</p>
+        <p style={S.p}><strong>Monitoring:</strong> All PACs are connected to the BMS. Temperature, humidity, alarms — everything is monitored centrally.</p>
 
         <InsightCard>
-          Real data centers mein PAC units 24×7 chechk kiye jaate hain. BMS par ek dedicated cooling overview screen hoti hai jisme har PAC ka status, temperature readings, aur alarms dikhte hain. Agar koi PAC high temperature alarm de, to immediately investigation hoti hai — wait nahi karte.
+          In real data centers, PAC units are checked 24×7. The BMS has a dedicated cooling overview screen showing each PAC's status, temperature readings and alarms. If any PAC gives a high temperature alarm, it is investigated immediately — nobody waits.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -498,7 +506,7 @@ export default function PACPage() {
 
         <h3 style={S.h3}>1. High Supply Air Temperature Alarm</h3>
         <p style={S.p}><strong>Cause:</strong> Dirty filters, low refrigerant, compressor issue, high room heat load.</p>
-        <p style={S.p}><strong>Impact:</strong> Server inlet temperature badh jaata hai. High temperature alarm trigger hota hai.</p>
+        <p style={S.p}><strong>Impact:</strong> Server inlet temperature rises. A high temperature alarm is triggered.</p>
 
         <h3 style={S.h3}>2. High/Low Humidity Alarm</h3>
         <p style={S.p}><strong>Cause:</strong> Humidifier failure, dehumidification circuit issue, water supply problem.</p>
@@ -506,15 +514,15 @@ export default function PACPage() {
 
         <h3 style={S.h3}>3. High Head Pressure</h3>
         <p style={S.p}><strong>Cause:</strong> Dirty condenser coil, condenser fan failure, refrigerant overcharge, high outdoor temperature.</p>
-        <p style={S.p}><strong>Impact:</strong> Compressor trip karta hai, cooling stop ho jaati hai.</p>
+        <p style={S.p}><strong>Impact:</strong> The compressor trips, cooling stops.</p>
 
         <h3 style={S.h3}>4. Low Suction Pressure (Low Refrigerant)</h3>
         <p style={S.p}><strong>Cause:</strong> Refrigerant leak, expansion valve issue.</p>
-        <p style={S.p}><strong>Impact:</strong> Cooling capacity reduce hoti hai, evaporator freeze ho sakta hai.</p>
+        <p style={S.p}><strong>Impact:</strong> Cooling capacity reduces, the evaporator can freeze.</p>
 
         <h3 style={S.h3}>5. Filter Clog Alarm</h3>
-        <p style={S.p}><strong>Cause:</strong> Air filters clog ho gaye — dust, particles.</p>
-        <p style={S.p}><strong>Impact:</strong> Airflow reduce hota hai, cooling efficiency drop hoti hai.</p>
+        <p style={S.p}><strong>Cause:</strong> Air filters have clogged — dust, particles.</p>
+        <p style={S.p}><strong>Impact:</strong> Airflow reduces, cooling efficiency drops.</p>
 
         <h3 style={S.h3}>6. Water Leak / Condensate Drain Block</h3>
         <p style={S.p}><strong>Cause:</strong> Drain pan full, drain pipe blocked.</p>
@@ -526,23 +534,23 @@ export default function PACPage() {
 
         <p style={S.p}><strong>Quarterly (3 months) maintenance:</strong></p>
         <ul style={S.ul}>
-          <li style={S.li}>Air filter clean ya replace karo</li>
-          <li style={S.li}>Evaporator coil inspect karo — fins clean karo</li>
-          <li style={S.li}>Condenser coil clean karo</li>
-          <li style={S.li}>Refrigerant pressure check karo (suction aur discharge)</li>
-          <li style={S.li}>Electrical connections tighten karo</li>
-          <li style={S.li}>Fan belts ya bearings check karo (older units)</li>
-          <li style={S.li}>Condensate drain clean karo</li>
-          <li style={S.li}>Controller settings verify karo</li>
-          <li style={S.li}>Temperature calibration check karo</li>
+          <li style={S.li}>Clean or replace the air filter</li>
+          <li style={S.li}>Inspect the evaporator coil — clean the fins</li>
+          <li style={S.li}>Clean the condenser coil</li>
+          <li style={S.li}>Check refrigerant pressure (suction and discharge)</li>
+          <li style={S.li}>Tighten electrical connections</li>
+          <li style={S.li}>Check fan belts or bearings (older units)</li>
+          <li style={S.li}>Clean the condensate drain</li>
+          <li style={S.li}>Verify controller settings</li>
+          <li style={S.li}>Check temperature calibration</li>
         </ul>
 
         <p style={S.p}><strong>Annual maintenance:</strong></p>
         <ul style={S.ul}>
           <li style={S.li}>Full refrigerant system check — leak test</li>
-          <li style={S.li}>Compressor current draw verify karo</li>
-          <li style={S.li}>All sensors recalibrate karo</li>
-          <li style={S.li}>Humidifier cylinder replace karo (if applicable)</li>
+          <li style={S.li}>Verify compressor current draw</li>
+          <li style={S.li}>Recalibrate all sensors</li>
+          <li style={S.li}>Replace the humidifier cylinder (if applicable)</li>
           <li style={S.li}>Electrical insulation test</li>
         </ul>
 
@@ -551,16 +559,16 @@ export default function PACPage() {
         <h2 id="daily-checklist" style={S.h1}>Daily Inspection Checklist</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}>✓ Supply air temperature reading note karo (target 18-22°C)</li>
+          <li style={S.li}>✓ Note the supply air temperature reading (target 18-22°C)</li>
           <li style={S.li}>✓ Return air temperature reading (target 27-35°C)</li>
           <li style={S.li}>✓ Room humidity reading (target 40-60% RH)</li>
           <li style={S.li}>✓ PAC unit status — running / standby / fault</li>
-          <li style={S.li}>✓ Active alarms check karo — BMS par</li>
-          <li style={S.li}>✓ Unusual noise ya vibration check karo</li>
-          <li style={S.li}>✓ Water leak check karo — drain pan area</li>
+          <li style={S.li}>✓ Check active alarms — on the BMS</li>
+          <li style={S.li}>✓ Check for unusual noise or vibration</li>
+          <li style={S.li}>✓ Check for water leaks — drain pan area</li>
           <li style={S.li}>✓ Filter differential pressure (if monitored)</li>
           <li style={S.li}>✓ Compressor running status</li>
-          <li style={S.li}>✓ Fan status — speed aur airflow</li>
+          <li style={S.li}>✓ Fan status — speed and airflow</li>
         </ul>
 
         <hr style={S.divider} />
@@ -568,14 +576,14 @@ export default function PACPage() {
         <h2 id="monthly-checklist" style={S.h1}>Monthly Checklist</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}>✓ Air filter inspect karo — clean ya replace karni hai kya?</li>
-          <li style={S.li}>✓ Condensate drain flush karo — blockage check</li>
-          <li style={S.li}>✓ Evaporator coil visual inspect karo</li>
-          <li style={S.li}>✓ Temperature/humidity sensor readings verify karo — calibrated hain?</li>
-          <li style={S.li}>✓ PAC switchover test karo — standby unit chalu karo, primary band karo, smoothly transfer hota hai?</li>
-          <li style={S.li}>✓ BMS alarms history review karo — recurring issues identify karo</li>
-          <li style={S.li}>✓ Electrical panel — breakers, switches check karo</li>
-          <li style={S.li}>✓ Log book update karo — readings, maintenance done</li>
+          <li style={S.li}>✓ Inspect the air filter — does it need cleaning or replacing?</li>
+          <li style={S.li}>✓ Flush the condensate drain — check for blockage</li>
+          <li style={S.li}>✓ Visually inspect the evaporator coil</li>
+          <li style={S.li}>✓ Verify temperature/humidity sensor readings — are they calibrated?</li>
+          <li style={S.li}>✓ Do a PAC switchover test — start the standby unit, stop the primary — does it transfer smoothly?</li>
+          <li style={S.li}>✓ Review BMS alarm history — identify recurring issues</li>
+          <li style={S.li}>✓ Electrical panel — check breakers and switches</li>
+          <li style={S.li}>✓ Update the log book — readings, maintenance done</li>
         </ul>
 
         <hr style={S.divider} />
@@ -583,62 +591,62 @@ export default function PACPage() {
         <h2 id="safety" style={S.h1}>Safety Precautions</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Electrical isolation:</strong> Maintenance se pehle MCB/MCCB off karo aur LOTO (Lockout Tagout) lagao</li>
-          <li style={S.li}><strong>Refrigerant handling:</strong> Certified HVAC technician hi refrigerant handle kare — direct skin contact ya inhalation dangerous</li>
-          <li style={S.li}><strong>High pressure:</strong> Refrigerant system high pressure par hota hai — unauthorized opening dangerous</li>
-          <li style={S.li}><strong>Water leak response:</strong> Leak dikhte hi electrical equipment se clear karo — slip hazard bhi hai</li>
-          <li style={S.li}><strong>PPE:</strong> Gloves, safety glasses mandatory — maintenance ke time</li>
-          <li style={S.li}><strong>Permit to Work:</strong> Hot work nahi hai, lekin entry permit aur LOTO mandatory — data center policy follow karo</li>
-          <li style={S.li}><strong>Redundancy ensure karo:</strong> Maintenance se pehle standby unit running hai — confirm karo</li>
+          <li style={S.li}><strong>Electrical isolation:</strong> Before maintenance, switch off the MCB/MCCB and apply LOTO (Lockout Tagout)</li>
+          <li style={S.li}><strong>Refrigerant handling:</strong> Only a certified HVAC technician should handle refrigerant — direct skin contact or inhalation is dangerous</li>
+          <li style={S.li}><strong>High pressure:</strong> The refrigerant system is under high pressure — unauthorized opening is dangerous</li>
+          <li style={S.li}><strong>Water leak response:</strong> As soon as a leak is seen, clear it away from electrical equipment — it is also a slip hazard</li>
+          <li style={S.li}><strong>PPE:</strong> Gloves and safety glasses are mandatory — during maintenance</li>
+          <li style={S.li}><strong>Permit to Work:</strong> It is not hot work, but an entry permit and LOTO are mandatory — follow the data center policy</li>
+          <li style={S.li}><strong>Ensure redundancy:</strong> Before maintenance, confirm that the standby unit is running</li>
         </ul>
 
         <hr style={S.divider} />
 
         <h2 id="interview-questions" style={S.h1}>Interview Questions</h2>
 
-        <h3 style={S.h3}>Q1: PAC aur normal AC mein kya difference hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> PAC precision cooling ke liye hai — continuous duty, humidity control, high SHR. Normal AC human comfort ke liye — intermittent use, sirf temperature control, low SHR. PAC server inlet temperature ±1°C maintain karta hai.</p>
+        <h3 style={S.h3}>Q1: What is the difference between a PAC and a normal AC?</h3>
+        <p style={S.p}><strong>Answer:</strong> A PAC is for precision cooling — continuous duty, humidity control, high SHR. A normal AC is for human comfort — intermittent use, only temperature control, low SHR. A PAC maintains server inlet temperature within ±1°C.</p>
 
-        <h3 style={S.h3}>Q2: SHR kya hota hai aur Data Center mein kyun important hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> SHR = Sensible Heat Ratio = Sensible cooling / Total cooling. Servers sirf sensible heat (temperature) generate karte hain, latent heat (moisture) nahi. PAC ka SHR 0.90-0.95 hona chahiye — ye servers ke load profile se match karta hai. Normal AC ka SHR 0.65-0.75 hota hai — ye humid air ke liye design hai.</p>
+        <h3 style={S.h3}>Q2: What is SHR and why is it important in a Data Center?</h3>
+        <p style={S.p}><strong>Answer:</strong> SHR = Sensible Heat Ratio = Sensible cooling / Total cooling. Servers generate only sensible heat (temperature), not latent heat (moisture). A PAC's SHR should be 0.90-0.95 — this matches the load profile of servers. A normal AC's SHR is 0.65-0.75 — it is designed for humid air.</p>
 
-        <h3 style={S.h3}>Q3: N+1 redundancy kya hota hai PAC ke context mein?</h3>
-        <p style={S.p}><strong>Answer:</strong> N = required units, +1 = ek extra unit. Agar 9 units full load chalane ke liye kafi hain, to 10 install karo. Ek fail ho to baaki 9 load sambhal lein. Koi downtime nahi.</p>
+        <h3 style={S.h3}>Q3: What is N+1 redundancy in the context of a PAC?</h3>
+        <p style={S.p}><strong>Answer:</strong> N = required units, +1 = one extra unit. If 9 units are enough to run the full load, install 10. If one fails, the remaining 9 handle the load. No downtime.</p>
 
-        <h3 style={S.h3}>Q4: PAC mein high head pressure alarm kya indicate karta hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Condenser side mein problem — dirty condenser coil, condenser fan failure, high ambient temperature, ya refrigerant overcharge. Compressor trip kar sakta hai — immediate investigation zaroori hai.</p>
+        <h3 style={S.h3}>Q4: What does a high head pressure alarm in a PAC indicate?</h3>
+        <p style={S.p}><strong>Answer:</strong> A problem on the condenser side — dirty condenser coil, condenser fan failure, high ambient temperature, or refrigerant overcharge. The compressor can trip — immediate investigation is necessary.</p>
 
-        <h3 style={S.h3}>Q5: Cold aisle / hot aisle kya hota hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Server racks alternate direction mein lagaye jaate hain. Cold aisle mein servers ka front face karta hai — yahan PAC se cool air aati hai. Hot aisle mein servers ka back — yahan exhaust air nikalti hai. Mixing reduce hoti hai, cooling efficiency improve hoti hai.</p>
+        <h3 style={S.h3}>Q5: What is a cold aisle / hot aisle?</h3>
+        <p style={S.p}><strong>Answer:</strong> Server racks are installed facing alternate directions. In the cold aisle, the fronts of the servers face — cool air from the PAC comes here. In the hot aisle, the backs of the servers — exhaust air comes out here. Mixing reduces and cooling efficiency improves.</p>
 
         <hr style={S.divider} />
 
         <h2 id="troubleshooting" style={S.h1}>Troubleshooting Guide</h2>
 
-        <h3 style={S.h3}>Problem: Room temperature badhh raha hai</h3>
+        <h3 style={S.h3}>Problem: Room temperature is rising</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Check karo: Kitne PAC units actually running hain?</li>
-          <li style={S.li}>Filter check karo — clog hua?</li>
-          <li style={S.li}>Supply air temperature measure karo — PAC se cool air aa rahi hai?</li>
-          <li style={S.li}>Hot aisle / cold aisle separation check karo — mixing ho rahi hai?</li>
-          <li style={S.li}>IT load suddenly badha to nahi — new servers add hue?</li>
+          <li style={S.li}>Check: How many PAC units are actually running?</li>
+          <li style={S.li}>Check the filter — is it clogged?</li>
+          <li style={S.li}>Measure the supply air temperature — is cool air coming from the PAC?</li>
+          <li style={S.li}>Check hot aisle / cold aisle separation — is mixing happening?</li>
+          <li style={S.li}>Has the IT load suddenly increased — were new servers added?</li>
         </ul>
 
         <h3 style={S.h3}>Problem: Humidity out of range</h3>
         <ul style={S.ul}>
-          <li style={S.li}>PAC controller par humidity reading check karo</li>
-          <li style={S.li}>Humidifier status check karo — fault alarm hai?</li>
-          <li style={S.li}>Water supply to humidifier check karo</li>
-          <li style={S.li}>Multiple PAC readings compare karo — single unit issue ya systemic?</li>
+          <li style={S.li}>Check the humidity reading on the PAC controller</li>
+          <li style={S.li}>Check humidifier status — is there a fault alarm?</li>
+          <li style={S.li}>Check the water supply to the humidifier</li>
+          <li style={S.li}>Compare readings of multiple PACs — single unit issue or systemic?</li>
         </ul>
 
-        <h3 style={S.h3}>Problem: PAC trip ho gaya / fault alarm</h3>
+        <h3 style={S.h3}>Problem: PAC has tripped / fault alarm</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Controller display par fault code read karo</li>
-          <li style={S.li}>Immediately standby unit running confirm karo</li>
-          <li style={S.li}>MCB/circuit breaker trip check karo</li>
-          <li style={S.li}>High head pressure → condenser check karo</li>
-          <li style={S.li}>Low suction pressure → refrigerant leak suspect karo → qualified technician call karo</li>
+          <li style={S.li}>Read the fault code on the controller display</li>
+          <li style={S.li}>Immediately confirm the standby unit is running</li>
+          <li style={S.li}>Check for an MCB/circuit breaker trip</li>
+          <li style={S.li}>High head pressure → check the condenser</li>
+          <li style={S.li}>Low suction pressure → suspect a refrigerant leak → call a qualified technician</li>
         </ul>
 
         <hr style={S.divider} />
@@ -663,14 +671,14 @@ export default function PACPage() {
         <h2 id="best-practices" style={S.h1}>Best Practices</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Always N+1:</strong> Kabhi single point of failure mat rakho. Minimum ek extra PAC hona chahiye.</li>
-          <li style={S.li}><strong>Hot/Cold aisle containment:</strong> PAC ki efficiency 30-40% improve hoti hai containment se.</li>
-          <li style={S.li}><strong>Blanking panels:</strong> Khali rack spaces mein blanking panels lagao — hot/cold air mixing rokta hai.</li>
+          <li style={S.li}><strong>Always N+1:</strong> Never keep a single point of failure. There should be at least one extra PAC.</li>
+          <li style={S.li}><strong>Hot/Cold aisle containment:</strong> PAC efficiency improves by 30-40% with containment.</li>
+          <li style={S.li}><strong>Blanking panels:</strong> Install blanking panels in empty rack spaces — it stops hot/cold air mixing.</li>
           <li style={S.li}><strong>Filter schedule:</strong> Regular filter maintenance = consistent airflow = consistent cooling.</li>
-          <li style={S.li}><strong>Setpoint management:</strong> Room temperature setpoint 21-23°C rakho — zyada thanda waste of energy.</li>
-          <li style={S.li}><strong>BMS integration:</strong> Sab PAC BMS se connect karo — remote monitoring aur automatic alarms.</li>
-          <li style={S.li}><strong>Standby rotation:</strong> Primary aur standby units rotate karo — dono equal wear.</li>
-          <li style={S.li}><strong>Load balancing:</strong> PAC units evenly distribute karo room mein — hot spots avoid karo.</li>
+          <li style={S.li}><strong>Setpoint management:</strong> Keep the room temperature setpoint at 21-23°C — colder is a waste of energy.</li>
+          <li style={S.li}><strong>BMS integration:</strong> Connect all PACs to the BMS — remote monitoring and automatic alarms.</li>
+          <li style={S.li}><strong>Standby rotation:</strong> Rotate the primary and standby units — equal wear on both.</li>
+          <li style={S.li}><strong>Load balancing:</strong> Distribute PAC units evenly in the room — avoid hot spots.</li>
         </ul>
 
         <hr style={S.divider} />
@@ -678,13 +686,13 @@ export default function PACPage() {
         <h2 id="key-takeaways" style={S.h1}>Key Takeaways</h2>
 
         <KeyTakeawayCard items={[
-          "PAC ek Precision Air Conditioner hai — Data Center ke liye specifically design kiya gaya cooling unit.",
-          "Normal AC se alag kyunki: 24×7 continuous, temperature + humidity control, high SHR, precision ±1°C.",
+          "A PAC is a Precision Air Conditioner — a cooling unit designed specifically for Data Centers.",
+          "Different from a normal AC because: 24×7 continuous, temperature + humidity control, high SHR, precision ±1°C.",
           "Refrigeration cycle: Evaporator (heat absorb) → Compressor (compress) → Condenser (heat reject) → Expansion valve → repeat.",
-          "Cold aisle mein cool air deliver hoti hai. Hot aisle mein warm air collect hoti hai. PAC is cycle ko maintain karta hai.",
-          "N+1 redundancy zaroori hai — ek fail ho to doosra load le le. Downtime nahi.",
-          "Daily inspection, monthly maintenance, quarterly full PM — ye routine follow karo. PAC neglect mat karo.",
-          "Common faults: high supply temperature, humidity out of range, high head pressure, low refrigerant. Har ek ke causes aur solutions yaad rakho.",
+          "Cool air is delivered into the cold aisle. Warm air collects in the hot aisle. The PAC maintains this cycle.",
+          "N+1 redundancy is essential — if one fails, another takes the load. No downtime.",
+          "Daily inspection, monthly maintenance, quarterly full PM — follow this routine. Do not neglect the PAC.",
+          "Common faults: high supply temperature, humidity out of range, high head pressure, low refrigerant. Remember the causes and solutions of each.",
         ]} />
 
         <hr style={S.divider} />
@@ -695,13 +703,13 @@ export default function PACPage() {
         <hr style={S.divider} />
 
         <h2 style={S.h2}>Related Learning Topics</h2>
-        <p style={S.p}>Ab PAC clear ho gaya. Aage cooling system ko aur samjho:</p>
+        <p style={S.p}>Now the PAC is clear. Understand the cooling system further:</p>
         <ul style={S.ul}>
-          <li style={S.li}><TopicLink slug="crac" variant="inline" /> — PAC ka cousin. Different compressor approach, same goal.</li>
-          <li style={S.li}><TopicLink slug="chiller" variant="inline" /> — Large data centers mein centralized cooling system.</li>
-          <li style={S.li}><TopicLink slug="containment" variant="inline" /> — Hot aisle / cold aisle containment — PAC efficiency improve karta hai.</li>
-          <li style={S.li}><TopicLink slug="airflow-management" variant="inline" /> — Cool air sahi jagah kaise pahunche — complete guide.</li>
-          <li style={S.li}><TopicLink slug="rci" variant="inline" /> — Cooling effectiveness measure karne ka metric.</li>
+          <li style={S.li}><TopicLink slug="crac" variant="inline" /> — the PAC's cousin. Different compressor approach, same goal.</li>
+          <li style={S.li}><TopicLink slug="chiller" variant="inline" /> — the centralized cooling system in large data centers.</li>
+          <li style={S.li}><TopicLink slug="containment" variant="inline" /> — Hot aisle / cold aisle containment — improves PAC efficiency.</li>
+          <li style={S.li}><TopicLink slug="airflow-management" variant="inline" /> — how cool air reaches the right place — complete guide.</li>
+          <li style={S.li}><TopicLink slug="rci" variant="inline" /> — a metric to measure cooling effectiveness.</li>
         </ul>
       </ArticleLayout>
     </>

@@ -7,12 +7,13 @@ import TopicLink from "@/components/TopicLink";
 export const metadata: Metadata = {
   title: "Sprinkler System in Data Centers — Pre-Action Design | Behind The Tech",
   description:
-    "Data Center mein sprinkler system kaise kaam karta hai — pre-action, double interlock, dry pipe, deluge. Why wet pipe never in server halls. Maintenance aur testing guide. Simple Hinglish mein.",
+    "How does a sprinkler system work in a Data Center — pre-action, double interlock, dry pipe, deluge. Why wet pipe never in server halls. Maintenance and testing guide. In simple English.",
   keywords: ["sprinkler data center", "pre-action sprinkler", "double interlock sprinkler", "fire sprinkler data center", "dry pipe sprinkler"],
   openGraph: {
     title: "Sprinkler System in Data Centers — Pre-Action Design",
-    description: "Data Center mein wet pipe sprinkler kabhi nahi — pre-action system kyun zaroori hai aur kaise kaam karta hai.",
+    description: "Never wet pipe sprinklers in a Data Center — why the pre-action system is essential and how it works.",
     url: "https://behindthetech.in/learn/non-it/fire/sprinkler",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -20,9 +21,16 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Sprinkler System Explained — Behind The Tech",
-    description: "Pre-action sprinkler system — Data Center fire protection ka water-based layer, simple language mein.",
+    description: "Pre-action sprinkler system — the water-based layer of Data Center fire protection, in simple language.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/fire/sprinkler" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/fire/sprinkler",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/fire/sprinkler",
+      hi: "https://behindthetech.in/hi/learn/non-it/fire/sprinkler",
+      "x-default": "https://behindthetech.in/learn/non-it/fire/sprinkler",
+    },
+  },
 };
 
 const HEADINGS: ArticleHeading[] = [
@@ -69,12 +77,12 @@ const S = {
 
 function QuickSummary() {
   const pts = [
-    { label: "Ek line mein", text: "Data Center mein sprinkler system pre-action type ka hota hai — paani tabhi release hota hai jab smoke detection AND heat detection dono simultaneously trigger hon. Ek bhi condition se paani nahi aata." },
-    { label: "Wet pipe kyun nahi", text: "Normal wet pipe sprinkler mein pipes hamesha paani se bhari hoti hain. Ek head fuse hone pe immediately paani nikalta hai — server room mein catastrophic water damage. Data Center mein wet pipe absolutely not acceptable hai." },
-    { label: "Pre-action ka logic", text: "Pre-action = do conditions simultaneously. VESDA smoke detect kare AND heat sensor trigger ho — tabhi pre-action valve khulta hai. Ek bhi condition akele se paani nahi aata. Double safety." },
-    { label: "Double interlock", text: "Double interlock pre-action = most secure. Pipes dry rehti hain. Sirf dono conditions pe paani pipes mein aata hai. Phir sprinkler head fuse hone pe actually nikalta hai. Teen stages ki safety." },
-    { label: "Last resort in DC", text: "Sprinkler system FM200 ke baad last resort hai. FM200 fire bujhata hai — sprinkler ko kaam hi nahi karna chahiye. Agar FM200 fail hua aur fire badhi to sprinkler backup hai." },
-    { label: "Coordination", text: "FM200 discharge aur sprinkler system ka coordination zaroori hai. FM200 active ho to sprinkler suppress rehna chahiye. Dono simultaneously discharge hua to FM200 dilute ho jaata hai — concentration low ho jaati hai." },
+    { label: "In one line", text: "In a Data Center the sprinkler system is of the pre-action type — water is released only when smoke detection AND heat detection both trigger simultaneously. Water does not come on any single condition." },
+    { label: "Why not wet pipe", text: "In a normal wet pipe sprinkler the pipes are always full of water. When one head fuses, water comes out immediately — catastrophic water damage in the server room. Wet pipe is absolutely not acceptable in a Data Center." },
+    { label: "The logic of pre-action", text: "Pre-action = two conditions simultaneously. VESDA detects smoke AND the heat sensor triggers — only then does the pre-action valve open. No single condition on its own brings water. Double safety." },
+    { label: "Double interlock", text: "Double interlock pre-action = most secure. The pipes stay dry. Water enters the pipes only on both conditions. Then it actually comes out when a sprinkler head fuses. Three stages of safety." },
+    { label: "Last resort in DC", text: "The sprinkler system is the last resort after FM200. FM200 extinguishes the fire — the sprinkler should never have to work at all. If FM200 fails and the fire grows, the sprinkler is the backup." },
+    { label: "Coordination", text: "Coordination between the FM200 discharge and the sprinkler system is essential. When FM200 is active the sprinkler must stay suppressed. If both discharge simultaneously, FM200 gets diluted — the concentration drops." },
   ];
   return (
     <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", margin: "8px 0 32px" }}>
@@ -90,7 +98,7 @@ function QuickSummary() {
           ))}
         </div>
         <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid rgba(3,105,161,0.08)", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937" }}>
-          Pre-action = double safety. Galti se paani aana almost impossible hai. Aage poora article mein har system type clear ho jaayega.
+          Pre-action = double safety. Water coming by mistake is almost impossible. In the full article ahead every system type will become clear.
         </div>
       </div>
     </div>
@@ -112,10 +120,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
 function EngineerTip({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", margin: "20px 0 24px" }}>
-      <div style={{ height: 2, background: "#ffa500" }} />
-      <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}>
-        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer Ki Tip</span>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
+      <div style={{ height: 2, background: "#ffa500" }} /> <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}> <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer's Tip</span> <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
       </div>
     </div>
   );
@@ -242,12 +247,12 @@ function ComparisonTable() {
 }
 
 const FAQS = [
-  { q: "Data Center mein wet pipe sprinkler kyun nahi use karte?", a: "Wet pipe mein pipes hamesha paani se bhari hoti hain. Agar koi bhi sprinkler head accidentally fuse ho jaye — mechanical damage, corrosion, someone knocking it — immediately paani release hoga. Server room mein paani aana = servers destroy = data loss. Accidental discharge risk itna high hai ki wet pipe unacceptable hai. Pre-action mein double confirmation chahiye — bahut safer hai." },
-  { q: "Double interlock pre-action mein 'double' ka matlab kya hai?", a: "Double interlock = do independent conditions simultaneously zaroori hain pre-action valve khulne ke liye. Condition 1: smoke/fire detection system trigger ho (VESDA ya smoke detector). Condition 2: sprinkler head ka heat fusible element fuse ho. Sirf ek condition se paani nahi aata. Dono simultaneously hone chahiye. Ye dono independent failures ko prevent karta hai." },
-  { q: "Kya FM200 discharge aur sprinkler simultaneously activate ho sakte hain?", a: "Design mein ye avoid kiya jaata hai. FM200 activate hone pe sprinkler system suppress rakha jaata hai — ya timing delay hota hai. Simultaneous activation problematic hai: FM200 gas dilute ho jaata hai paani se, aur concentration achieve nahi hoti. Typically — FM200 pehle activate hota hai. Agar FM200 fail hua aur fire badhti rahi, tabhi sprinkler activate hota hai. Ye sequencing design phase mein carefully plan kiya jaata hai." },
-  { q: "Sprinkler head kaunse temperature pe fuse hota hai?", a: "Different colored fusible elements different temperatures pe operate karte hain. Orange: 57°C, Red: 68°C, Yellow: 79°C, Green: 93°C, Blue: 141°C. Data Center mein typically red (68°C) ya orange (57°C) heads use hote hain. Server room ASHRAE temperature 18-27°C maintain karta hai — accidental fusing extremely unlikely hai. Par leakage ya corrosion se bhi head fail ho sakta hai — isliye regular inspection zaroori hai." },
-  { q: "Sprinkler system ko annually test kaise karte hain?", a: "Full flow test: inspector test valve se paani nikalo, flow aur pressure verify karo. Sprinkler head inspection: corrosion, paint coating (never paint sprinkler heads!), damage check. Pre-action valve functional test: detection system trigger karo, verify karo ki valve correctly opens/closes. Pressure gauge accuracy check. All isolation valves operate karo. Report generate karo aur fire NOC renewal ke liye submit karo." },
-  { q: "Server room ke raised floor ke neeche bhi sprinkler chahiye kya?", a: "Haan — many design standards aur fire consultants raised floor plenum mein bhi sprinkler heads recommend karte hain. Under-floor mein cables, PDUs, aur other equipment fire risk hain. VESDA already under-floor sampling karta hai. Sprinkler heads under-floor bhi under-floor specific temperature-rated hone chahiye. Ye additional layer of protection hai — especially Tier III aur Tier IV designs mein." },
+  { q: "Why is a wet pipe sprinkler not used in a Data Center?", a: "In a wet pipe the pipes are always full of water. If any sprinkler head fuses accidentally — mechanical damage, corrosion, someone knocking it — water will be released immediately. Water in the server room = servers destroyed = data loss. The accidental discharge risk is so high that wet pipe is unacceptable. Pre-action needs double confirmation — much safer." },
+  { q: "What does 'double' mean in double interlock pre-action?", a: "Double interlock = two independent conditions are required simultaneously for the pre-action valve to open. Condition 1: the smoke/fire detection system triggers (VESDA or smoke detector). Condition 2: the heat fusible element of a sprinkler head fuses. Water does not come on only one condition. Both must happen simultaneously. This prevents both independent failures." },
+  { q: "Can FM200 discharge and the sprinkler activate simultaneously?", a: "This is avoided in the design. When FM200 activates, the sprinkler system is kept suppressed — or there is a timing delay. Simultaneous activation is problematic: FM200 gas gets diluted by water, and the concentration is not achieved. Typically — FM200 activates first. Only if FM200 fails and the fire keeps growing does the sprinkler activate. This sequencing is carefully planned in the design phase." },
+  { q: "At what temperature does a sprinkler head fuse?", a: "Different colored fusible elements operate at different temperatures. Orange: 57°C, Red: 68°C, Yellow: 79°C, Green: 93°C, Blue: 141°C. In a Data Center typically red (68°C) or orange (57°C) heads are used. The server room maintains the ASHRAE temperature of 18-27°C — accidental fusing is extremely unlikely. But a head can also fail from leakage or corrosion — that is why regular inspection is essential." },
+  { q: "How is the sprinkler system tested annually?", a: "Full flow test: let water out from the inspector test valve, verify flow and pressure. Sprinkler head inspection: check for corrosion, paint coating (never paint sprinkler heads!), damage. Pre-action valve functional test: trigger the detection system, verify that the valve correctly opens/closes. Pressure gauge accuracy check. Operate all isolation valves. Generate a report and submit it for fire NOC renewal." },
+  { q: "Is a sprinkler needed under the server room raised floor too?", a: "Yes — many design standards and fire consultants recommend sprinkler heads in the raised floor plenum as well. Under the floor, cables, PDUs and other equipment are fire risks. VESDA already does under-floor sampling. Under-floor sprinkler heads must also be temperature-rated specifically for under-floor use. This is an additional layer of protection — especially in Tier III and Tier IV designs." },
 ];
 
 function FAQSection() {
@@ -277,21 +282,21 @@ export default function SprinklerPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="sprinkler" headings={HEADINGS} readingTimeMinutes={19}>
+      <ArticleLayout slug="sprinkler" headings={HEADINGS} readingTimeMinutes={19} lang="en" alternateHref="/hi/learn/non-it/fire/sprinkler">
 
-        <p style={S.p}>1996 mein Dhiraj Trading Company ka warehouse sprinkler system ne bachaya.</p>
+        <p style={S.p}>In 1996 the sprinkler system saved the warehouse of Dhiraj Trading Company.</p>
 
-        <p style={S.p}>Ek head fuse hua, paani nikla, fire control mein aayi.</p>
+        <p style={S.p}>One head fused, water came out, the fire came under control.</p>
 
-        <p style={S.p}>Lekin 2019 mein ek Mumbai bank ke server room mein wahi system devastating tha.</p>
+        <p style={S.p}>But in 2019 the same system was devastating in the server room of a Mumbai bank.</p>
 
-        <p style={S.p}>Maintenance engineer ne accidentally sprinkler head se tool touch kiya.</p>
+        <p style={S.p}>A maintenance engineer accidentally touched a sprinkler head with a tool.</p>
 
-        <p style={S.p}>Pipe mein paani tha — wet pipe system. Immediately 50 servers pe paani gira.</p>
+        <p style={S.p}>There was water in the pipe — a wet pipe system. Water immediately fell on 50 servers.</p>
 
-        <p style={S.p}><strong>₹8 crore ka nuksaan. Koi fire nahi thi.</strong></p>
+        <p style={S.p}><strong>A loss of ₹8 crore. There was no fire.</strong></p>
 
-        <p style={S.p}>Yahi reason hai ki Data Center mein sprinkler system differently design kiya jaata hai.</p>
+        <p style={S.p}>This is the reason the sprinkler system is designed differently in a Data Center.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -304,7 +309,7 @@ export default function SprinklerPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Pre-action sprinkler system — control valve assembly aur detection panel. Dry pipes hain — paani tabhi aata hai jab dono conditions simultaneously trigger hon.
+            Pre-action sprinkler system — control valve assembly and detection panel. The pipes are dry — water comes only when both conditions trigger simultaneously.
           </figcaption>
         </figure>
 
@@ -314,17 +319,17 @@ export default function SprinklerPage() {
 
         <h2 id="what-is-sprinkler" style={S.h1}>What Is a Sprinkler System?</h2>
 
-        <p style={S.p}><strong>Sprinkler system ek automatic water-based fire suppression system hai.</strong></p>
+        <p style={S.p}><strong>A sprinkler system is an automatic water-based fire suppression system.</strong></p>
 
-        <p style={S.p}>Ceiling pe pipes lagti hain. Pipes mein sprinkler heads hote hain.</p>
+        <p style={S.p}>Pipes are installed on the ceiling. The pipes have sprinkler heads.</p>
 
-        <p style={S.p}>Sprinkler head mein ek fusible element hota hai — ek specific temperature pe melt ho jaata hai.</p>
+        <p style={S.p}>A sprinkler head has a fusible element — it melts at a specific temperature.</p>
 
-        <p style={S.p}>Jab head fuse hota hai — water releases ho jaati hai usi head se.</p>
+        <p style={S.p}>When the head fuses — water is released from that same head.</p>
 
-        <p style={S.p}><strong>Important: sirf wahi heads activate hote hain jahan fire hai — sab nahi.</strong></p>
+        <p style={S.p}><strong>Important: only the heads where there is fire activate — not all of them.</strong></p>
 
-        <p style={S.p}>Ye ek common myth hai ki sab heads ek saath activate hote hain. Nahi hota.</p>
+        <p style={S.p}>It is a common myth that all heads activate together. That does not happen.</p>
 
         <DCMapNote components={["Pre-Action Valve", "Dry Pipe Network", "Sprinkler Heads", "Detection System", "Air Compressor", "Control Panel"]} />
 
@@ -332,58 +337,58 @@ export default function SprinklerPage() {
 
         <h2 id="why-needed" style={S.h1}>Why Is Sprinkler Needed in a DC?</h2>
 
-        <p style={S.p}>FM200 excellent hai — lekin sirf designated enclosed areas mein kaam karta hai.</p>
+        <p style={S.p}>FM200 is excellent — but it works only in designated enclosed areas.</p>
 
-        <p style={S.p}>Agar FM200 fail ho jaaye ya fire protected zone se bahar spread ho?</p>
+        <p style={S.p}>What if FM200 fails or the fire spreads outside the protected zone?</p>
 
-        <p style={S.p}>Building codes aur fire standards mandate karte hain ki backup water-based system hona chahiye.</p>
+        <p style={S.p}>Building codes and fire standards mandate that there must be a backup water-based system.</p>
 
         <p style={S.p}><strong>Sprinkler = safety net. FM200 primary, sprinkler backup.</strong></p>
 
         <WhyThisMatters>
-          NBC India aur local fire authority requirements applicable buildings mein sprinkler system require karte hain. Clean agent system (FM200/Novec) hona does not automatically eliminate sprinkler requirement — specific exemptions project-by-project AHJ se confirm karni padti hain. Dono systems properly coordinate karo — applicable code aur AHJ guidance follow karo.
+          NBC India and local fire authority requirements require a sprinkler system in applicable buildings. Having a clean agent system (FM200/Novec) does not automatically eliminate the sprinkler requirement — specific exemptions have to be confirmed project-by-project with the AHJ. Coordinate both systems properly — follow the applicable code and AHJ guidance.
         </WhyThisMatters>
 
         <hr style={S.divider} />
 
         <h2 id="wet-pipe-never" style={S.h1}>Why Wet Pipe Never in Server Halls</h2>
 
-        <p style={S.p}>Wet pipe system — pipes hamesha paani se bhari hain.</p>
+        <p style={S.p}>Wet pipe system — the pipes are always full of water.</p>
 
-        <p style={S.p}>Single head fuse hone pe — immediate water release.</p>
+        <p style={S.p}>When a single head fuses — immediate water release.</p>
 
-        <p style={S.p}><strong>Server room mein ye acceptable nahi hai kyunki:</strong></p>
+        <p style={S.p}><strong>This is not acceptable in the server room because:</strong></p>
 
         <ul style={S.ul}>
-          <li style={S.li}>Mechanical damage se head accidentally fuse ho sakta hai</li>
-          <li style={S.li}>Corrosion se head prematurely fail ho sakta hai</li>
+          <li style={S.li}>A head can fuse accidentally from mechanical damage</li>
+          <li style={S.li}>A head can fail prematurely from corrosion</li>
           <li style={S.li}>Someone adjusting equipment accidentally head touch kare</li>
-          <li style={S.li}>Temperature sensor malfunction se false activation</li>
+          <li style={S.li}>False activation from a temperature sensor malfunction</li>
         </ul>
 
-        <p style={S.p}>In mein se koi bhi situation — paani directly servers pe aata hai.</p>
+        <p style={S.p}>In any of these situations — water comes directly onto the servers.</p>
 
-        <p style={S.p}><strong>Result: millions of rupees ka nuksaan — fire se bhi zyada.</strong></p>
+        <p style={S.p}><strong>Result: a loss of millions of rupees — even more than from a fire.</strong></p>
 
         <InsightCard>
-          Data center mein worst case scenario often fire nahi hoti — accidental water release hoti hai. FM200 false discharge costly hai (₹10-20 lakh refill). Lekin wet pipe sprinkler accidental discharge = servers + storage + network equipment destroy — ₹crores ka loss. Isliye sprinkler design mein sabse pehla rule hai: "server hall mein wet pipe absolutely not."
+          In a data center the worst case scenario is often not a fire — it is an accidental water release. A false FM200 discharge is costly (₹10-20 lakh refill). But an accidental wet pipe sprinkler discharge = servers + storage + network equipment destroyed — a loss of ₹crores. That is why the very first rule in sprinkler design is: "absolutely no wet pipe in the server hall."
         </InsightCard>
 
         <hr style={S.divider} />
 
         <h2 id="pre-action" style={S.h1}>Pre-Action System — The DC Standard</h2>
 
-        <p style={S.p}><strong>Data Center mein pre-action system commonly used aur widely recommended approach hai.</strong></p>
+        <p style={S.p}><strong>In a Data Center the pre-action system is the commonly used and widely recommended approach.</strong></p>
 
-        <p style={S.p}>Pre-action ka concept simple hai:</p>
+        <p style={S.p}>The concept of pre-action is simple:</p>
 
-        <p style={S.p}>Paani release hone se pehle — ek extra "pre-action" condition confirm honi chahiye.</p>
+        <p style={S.p}>Before water is released — an extra "pre-action" condition must be confirmed.</p>
 
-        <p style={S.p}>Sirf sprinkler head fuse hone se paani nahi aata.</p>
+        <p style={S.p}>Water does not come just from a sprinkler head fusing.</p>
 
-        <p style={S.p}><strong>Detection system bhi trigger hona chahiye — simultaneously.</strong></p>
+        <p style={S.p}><strong>The detection system must also trigger — simultaneously.</strong></p>
 
-        <p style={S.p}>Is dual-requirement ki wajah se accidental water release practically impossible ho jaata hai.</p>
+        <p style={S.p}>Because of this dual requirement, accidental water release becomes practically impossible.</p>
 
         <FlowDiagram
           caption="Pre-action system activation sequence"
@@ -400,50 +405,50 @@ export default function SprinklerPage() {
 
         <h2 id="double-interlock" style={S.h1}>Double Interlock Pre-Action</h2>
 
-        <p style={S.p}>Single interlock: detection OR head fuse — ek bhi condition pe valve open.</p>
+        <p style={S.p}>Single interlock: detection OR head fuse — the valve opens on either condition.</p>
 
-        <p style={S.p}><strong>Double interlock: detection AND head fuse — dono simultaneously zaroori.</strong></p>
+        <p style={S.p}><strong>Double interlock: detection AND head fuse — both required simultaneously.</strong></p>
 
-        <p style={S.p}>Data Centers mein double interlock preferred aur often required hota hai.</p>
+        <p style={S.p}>In Data Centers double interlock is preferred and often required.</p>
 
         <h3 style={S.h3}>How Double Interlock Works</h3>
 
-        <p style={S.p}><strong>Normal condition:</strong> Pipes mein air pressure hoti hai — paani nahi. Valve closed.</p>
+        <p style={S.p}><strong>Normal condition:</strong> There is air pressure in the pipes — no water. Valve closed.</p>
 
-        <p style={S.p}><strong>Step 1 — Detection triggers:</strong> VESDA ya smoke detector fire signal deta hai.</p>
+        <p style={S.p}><strong>Step 1 — Detection triggers:</strong> VESDA or a smoke detector gives the fire signal.</p>
 
-        <p style={S.p}>Pre-action panel alert hota hai. Alarm bajta hai. Lekin abhi paani nahi aaya.</p>
+        <p style={S.p}>The pre-action panel goes into alert. The alarm sounds. But no water has come yet.</p>
 
-        <p style={S.p}><strong>Step 2 — Head fuses:</strong> Fire ki heat se sprinkler head ka fusible element melt hota hai.</p>
+        <p style={S.p}><strong>Step 2 — Head fuses:</strong> The heat of the fire melts the fusible element of the sprinkler head.</p>
 
-        <p style={S.p}>Pipe mein air pressure release hoti hai head se.</p>
+        <p style={S.p}>The air pressure in the pipe is released through the head.</p>
 
-        <p style={S.p}><strong>Step 3 — Both conditions met:</strong> Panel detection AND air pressure drop dono detect karta hai.</p>
+        <p style={S.p}><strong>Step 3 — Both conditions met:</strong> The panel detects both detection AND the air pressure drop.</p>
 
-        <p style={S.p}>Pre-action valve automatically opens — paani pipes mein enter karta hai.</p>
+        <p style={S.p}>The pre-action valve opens automatically — water enters the pipes.</p>
 
-        <p style={S.p}><strong>Step 4 — Water discharges:</strong> Paani sirf fused head se nikalta hai — targeted release.</p>
+        <p style={S.p}><strong>Step 4 — Water discharges:</strong> Water comes out only from the fused head — targeted release.</p>
 
         <EngineerTip>
-          Double interlock mein pipe air pressure maintain karna important hai. Air compressor lagata hai pipes mein pressure. Agar air leak hogi to false signal milega ki head fuse hua hai — system partially activate ho sakta hai. Monthly air pressure check karo. Leaks identify karo aur fix karo. Air compressor ka running status BMS pe monitor karo.
+          In double interlock, maintaining the pipe air pressure is important. An air compressor builds pressure in the pipes. If air leaks, you will get a false signal that a head has fused — the system may partially activate. Check the air pressure monthly. Identify and fix leaks. Monitor the running status of the air compressor on the BMS.
         </EngineerTip>
 
         <hr style={S.divider} />
 
         <h2 id="working-principle" style={S.h1}>Working Principle</h2>
 
-        <p style={S.p}>Sprinkler head mein ek glass bulb ya metal fusible link hoti hai.</p>
+        <p style={S.p}>A sprinkler head has a glass bulb or a metal fusible link.</p>
 
-        <p style={S.p}>Is bulb/link ke andar liquid hoti hai — specific temperature pe expand aur break hoti hai.</p>
+        <p style={S.p}>Inside this bulb/link there is liquid — it expands and breaks at a specific temperature.</p>
 
-        <p style={S.p}>Jab head area mein temperature threshold cross hoti hai — bulb breaks.</p>
+        <p style={S.p}>When the temperature in the head area crosses the threshold — the bulb breaks.</p>
 
-        <p style={S.p}>Deflector plate expose hoti hai — water spray pattern banana shuru karta hai.</p>
+        <p style={S.p}>The deflector plate is exposed — it starts forming the water spray pattern.</p>
 
-        <p style={S.p}><strong>Water ka spray pattern puri fire area ko cover karta hai — targeted suppression.</strong></p>
+        <p style={S.p}><strong>The water spray pattern covers the whole fire area — targeted suppression.</strong></p>
 
         <WarningCard>
-          Sprinkler head ko kabhi bhi paint mat karo — ye ek critical safety violation hai. Paint film fusible element ko coat kar deta hai — temperature response slow ho jaati hai ya kaam hi band ho jaata hai. Site pe painting ka kaam ho raha ho to sprinkler heads ko cover karo aur painting complete hone ke baad cover remove karo. Paint kiya hua head — immediately replace karo.
+          Never paint a sprinkler head — this is a critical safety violation. The paint film coats the fusible element — the temperature response slows down or it stops working entirely. If painting work is going on at the site, cover the sprinkler heads and remove the covers after the painting is complete. A painted head — replace it immediately.
         </WarningCard>
 
         <hr style={S.divider} />
@@ -451,46 +456,46 @@ export default function SprinklerPage() {
         <h2 id="main-components" style={S.h1}>Main Components</h2>
 
         <h3 style={S.h3}>1. Pre-Action Valve (Deluge Valve)</h3>
-        <p style={S.p}>System ka main control point.</p>
+        <p style={S.p}>The main control point of the system.</p>
 
-        <p style={S.p}>Normally closed — paani ko pipe network mein enter nahi karne deta.</p>
+        <p style={S.p}>Normally closed — it does not let water enter the pipe network.</p>
 
-        <p style={S.p}>Detection + air pressure drop — dono pe electrically operate karke opens.</p>
+        <p style={S.p}>It opens by operating electrically on both — detection + air pressure drop.</p>
 
         <h3 style={S.h3}>2. Air Supply System</h3>
-        <p style={S.p}>Compressed air ya nitrogen — pipe network mein maintained rehti hai.</p>
+        <p style={S.p}>Compressed air or nitrogen — is maintained in the pipe network.</p>
 
-        <p style={S.p}>Typically 10-20 PSI pressure — head fuse hone pe pressure drop detect hoti hai.</p>
+        <p style={S.p}>Typically 10-20 PSI pressure — when a head fuses, the pressure drop is detected.</p>
 
-        <p style={S.p}>Air compressor dedicated hota hai — with automatic restart.</p>
+        <p style={S.p}>The air compressor is dedicated — with automatic restart.</p>
 
         <h3 style={S.h3}>3. Detection System Interface</h3>
-        <p style={S.p}>VESDA ya smoke detector se signal receive karta hai.</p>
+        <p style={S.p}>Receives the signal from VESDA or a smoke detector.</p>
 
-        <p style={S.p}>Pre-action panel mein integrate hota hai — dual-input logic.</p>
+        <p style={S.p}>It is integrated into the pre-action panel — dual-input logic.</p>
 
-        <p style={S.p}>Both signals simultaneously arrive karne pe — valve release command.</p>
+        <p style={S.p}>When both signals arrive simultaneously — valve release command.</p>
 
         <h3 style={S.h3}>4. Sprinkler Heads</h3>
         <p style={S.p}>Pendant type (downward facing) — most common in server halls.</p>
 
-        <p style={S.p}>Upright type — raised floor pe ya unusual orientations ke liye.</p>
+        <p style={S.p}>Upright type — for the raised floor or unusual orientations.</p>
 
-        <p style={S.p}>Concealed type — aesthetic ceiling ke liye — cover plate se protected.</p>
+        <p style={S.p}>Concealed type — for aesthetic ceilings — protected by a cover plate.</p>
 
         <h3 style={S.h3}>5. Pipe Network</h3>
-        <p style={S.p}>Schedule 40 black steel pipes typically — galvanized bhi possible.</p>
+        <p style={S.p}>Schedule 40 black steel pipes typically — galvanized also possible.</p>
 
-        <p style={S.p}>Ceiling pe grid pattern — coverage ensure karne ke liye.</p>
+        <p style={S.p}>Grid pattern on the ceiling — to ensure coverage.</p>
 
-        <p style={S.p}>Drain points — system reset aur maintenance ke liye.</p>
+        <p style={S.p}>Drain points — for system reset and maintenance.</p>
 
         <h3 style={S.h3}>6. Control Panel</h3>
-        <p style={S.p}>Pre-action system ka brain.</p>
+        <p style={S.p}>The brain of the pre-action system.</p>
 
-        <p style={S.p}>Detection signals, air pressure, valve status — sab monitor karta hai.</p>
+        <p style={S.p}>Detection signals, air pressure, valve status — it monitors everything.</p>
 
-        <p style={S.p}>BMS aur FACP se integrate hota hai.</p>
+        <p style={S.p}>It integrates with the BMS and FACP.</p>
 
         <hr style={S.divider} />
 
@@ -507,34 +512,34 @@ export default function SprinklerPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Data Center ceiling pe sprinkler head — glass bulb visible hai. Pre-action system mein ye dry pipe se connected hai — pipes mein abhi paani nahi hai.
+            A sprinkler head on a Data Center ceiling — the glass bulb is visible. In a pre-action system it is connected to a dry pipe — there is no water in the pipes right now.
           </figcaption>
         </figure>
 
-        <p style={S.p}>Data Center mein sprinkler zones carefully defined hote hain:</p>
+        <p style={S.p}>In a Data Center sprinkler zones are carefully defined:</p>
 
         <h3 style={S.h3}>Server Hall</h3>
-        <p style={S.p}>Double interlock pre-action — stringent option. Selection depends on applicable code (NFPA 13, NBC), AHJ requirements aur insurer/risk consultant.</p>
+        <p style={S.p}>Double interlock pre-action — the stringent option. Selection depends on the applicable code (NFPA 13, NBC), AHJ requirements and the insurer/risk consultant.</p>
 
-        <p style={S.p}>Typically early detection system ke saath coordinated — exact integration project-specific design aur cause-and-effect logic pe depend karta hai.</p>
+        <p style={S.p}>Typically coordinated with the early detection system — the exact integration depends on the project-specific design and cause-and-effect logic.</p>
 
-        <p style={S.p}>Ceiling pe aur under-floor plenum mein — dono areas covered.</p>
+        <p style={S.p}>On the ceiling and in the under-floor plenum — both areas covered.</p>
 
         <h3 style={S.h3}>UPS Room / Battery Room</h3>
-        <p style={S.p}>Single interlock pre-action — ya dry pipe system.</p>
+        <p style={S.p}>Single interlock pre-action — or a dry pipe system.</p>
 
-        <p style={S.p}>Clean agent aur sprinkler ka role project design aur applicable code pe depend karta hai — typically clean agent pehle activate hota hai.</p>
+        <p style={S.p}>The role of clean agent and sprinkler depends on the project design and applicable code — typically the clean agent activates first.</p>
 
         <h3 style={S.h3}>Common Areas (Lobby, Corridors)</h3>
-        <p style={S.p}>Wet pipe — acceptable here. Servers nahi hain yahan.</p>
+        <p style={S.p}>Wet pipe — acceptable here. There are no servers here.</p>
 
         <p style={S.p}>Standard commercial wet pipe system.</p>
 
         <h3 style={S.h3}>Generator Area</h3>
-        <p style={S.p}>Deluge system sometimes — diesel fire risk ke liye.</p>
+        <p style={S.p}>Deluge system sometimes — for diesel fire risk.</p>
 
         <InsightCard>
-          FM200 aur sprinkler ka coordination ek design challenge hai. FM200 discharge pe — HVAC band hota hai, doors close hote hain. Sprinkler system suppressed rehna chahiye is time. Agar sprinkler bhi activate ho to — FM200 gas dilute ho jaati hai, concentration achieve nahi hoti. Ye "cross-system interlock" carefully engineer karna padta hai. Typically — FM200 pehle. Agar FM200 fail aur temperature badhta rahe — phir sprinkler activate hota hai.
+          Coordinating FM200 and the sprinkler is a design challenge. On FM200 discharge — HVAC shuts down, doors close. The sprinkler system must stay suppressed at this time. If the sprinkler also activates — the FM200 gas gets diluted, the concentration is not achieved. This "cross-system interlock" has to be carefully engineered. Typically — FM200 first. If FM200 fails and the temperature keeps rising — then the sprinkler activates.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -542,31 +547,31 @@ export default function SprinklerPage() {
         <h2 id="types" style={S.h1}>Types of Sprinkler Systems</h2>
 
         <h3 style={S.h3}>1. Wet Pipe</h3>
-        <p style={S.p}>Pipes hamesha water se filled. Head fuse pe immediate water. Simplest aur cheapest.</p>
+        <p style={S.p}>Pipes always filled with water. Immediate water on head fuse. Simplest and cheapest.</p>
 
-        <p style={S.p}><strong>Data center IT spaces mein wet pipe strongly not recommended hai — accidental discharge risk unacceptable hota hai. Pre-action preferred hai.</strong></p>
+        <p style={S.p}><strong>Wet pipe is strongly not recommended in data center IT spaces — the accidental discharge risk is unacceptable. Pre-action is preferred.</strong></p>
 
         <h3 style={S.h3}>2. Dry Pipe</h3>
-        <p style={S.p}>Pipes mein compressed air — head fuse hone pe air release, phir paani enter karta hai.</p>
+        <p style={S.p}>Compressed air in the pipes — on head fuse the air is released, then water enters.</p>
 
-        <p style={S.p}>30-60 second delay before water. Cold climate mein used (freeze protection).</p>
+        <p style={S.p}>30-60 second delay before water. Used in cold climates (freeze protection).</p>
 
-        <p style={S.p}>Server hall ke liye better than wet — but not ideal.</p>
+        <p style={S.p}>Better than wet for the server hall — but not ideal.</p>
 
         <h3 style={S.h3}>3. Single Interlock Pre-Action</h3>
-        <p style={S.p}>Detection trigger karo — paani pipes mein enter karta hai. Tabhi head fuse hone pe water releases.</p>
+        <p style={S.p}>Trigger detection — water enters the pipes. Only then, on a head fuse, water releases.</p>
 
         <p style={S.p}>One condition: detection. Dry pipes normally.</p>
 
         <h3 style={S.h3}>4. Double Interlock Pre-Action</h3>
-        <p style={S.p}>Detection AND head fuse — dono simultaneously. Pipes dry normally.</p>
+        <p style={S.p}>Detection AND head fuse — both simultaneously. Pipes normally dry.</p>
 
         <p style={S.p}><strong>Data center server hall standard: Double interlock pre-action.</strong></p>
 
         <h3 style={S.h3}>5. Deluge System</h3>
-        <p style={S.p}>All heads open (no fusible element). Detection signal pe sab simultaneously discharge karte hain.</p>
+        <p style={S.p}>All heads open (no fusible element). On the detection signal they all discharge simultaneously.</p>
 
-        <p style={S.p}>High-hazard areas jaise generator fuel storage, large transformer rooms.</p>
+        <p style={S.p}>High-hazard areas like generator fuel storage, large transformer rooms.</p>
 
         <hr style={S.divider} />
 
@@ -575,32 +580,32 @@ export default function SprinklerPage() {
         <h3 style={S.h3}>By Orientation</h3>
         <ul style={S.ul}>
           <li style={S.li}><strong>Pendant (downward):</strong> Most common — deflector neeche, water cone pattern</li>
-          <li style={S.li}><strong>Upright:</strong> Pipe se upar — used in special orientations</li>
-          <li style={S.li}><strong>Sidewall:</strong> Wall-mounted — corridors ke liye</li>
-          <li style={S.li}><strong>Concealed:</strong> Decorative cover plate — office areas mein aesthetic</li>
+          <li style={S.li}><strong>Upright:</strong> Above the pipe — used in special orientations</li>
+          <li style={S.li}><strong>Sidewall:</strong> Wall-mounted — for corridors</li>
+          <li style={S.li}><strong>Concealed:</strong> Decorative cover plate — aesthetic in office areas</li>
         </ul>
 
         <h3 style={S.h3}>By Temperature Rating (Bulb Color)</h3>
         <ul style={S.ul}>
           <li style={S.li}><strong>Orange bulb — 57°C:</strong> Extra sensitive — normal temperature environments</li>
-          <li style={S.li}><strong>Red bulb — 68°C:</strong> Standard — Data Center server halls mein common</li>
+          <li style={S.li}><strong>Red bulb — 68°C:</strong> Standard — common in Data Center server halls</li>
           <li style={S.li}><strong>Yellow/Green — 79-93°C:</strong> Higher temperature environments</li>
           <li style={S.li}><strong>Blue — 141°C:</strong> Very high temperature areas</li>
         </ul>
 
-        <p style={S.p}>Server hall mein red (68°C) common hai — ASHRAE max 27°C inlet se far enough.</p>
+        <p style={S.p}>Red (68°C) is common in the server hall — far enough from the ASHRAE max 27°C inlet.</p>
 
         <hr style={S.divider} />
 
         <h2 id="advantages" style={S.h1}>Advantages</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Automatic backup:</strong> FM200 fail hone pe automatic backup protection</li>
-          <li style={S.li}><strong>NBC compliance:</strong> Fire NOC ke liye mandatory — legal protection</li>
+          <li style={S.li}><strong>Automatic backup:</strong> Automatic backup protection if FM200 fails</li>
+          <li style={S.li}><strong>NBC compliance:</strong> Mandatory for the fire NOC — legal protection</li>
           <li style={S.li}><strong>Accidental discharge protection:</strong> Double interlock = very low false alarm risk</li>
-          <li style={S.li}><strong>Large area coverage:</strong> Entire floor covered — FM200 se zyada coverage area</li>
-          <li style={S.li}><strong>Cost effective suppression:</strong> Water cheap hai — repeat use bina refill ke</li>
-          <li style={S.li}><strong>Targeted:</strong> Sirf fused heads activate hote hain — not entire zone flooding</li>
+          <li style={S.li}><strong>Large area coverage:</strong> Entire floor covered — more coverage area than FM200</li>
+          <li style={S.li}><strong>Cost effective suppression:</strong> Water is cheap — repeat use without refill</li>
+          <li style={S.li}><strong>Targeted:</strong> Only fused heads activate — not entire zone flooding</li>
           <li style={S.li}><strong>Proven technology:</strong> 150+ years old technology — very reliable</li>
         </ul>
 
@@ -609,12 +614,12 @@ export default function SprinklerPage() {
         <h2 id="disadvantages" style={S.h1}>Disadvantages</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Water damage:</strong> Discharge hone pe equipment damage — FM200 se unlike</li>
-          <li style={S.li}><strong>Complex design:</strong> Double interlock system complex hai — maintenance intensive</li>
-          <li style={S.li}><strong>FM200 conflict risk:</strong> Agar coordination galat ho to dono simultaneously discharge</li>
-          <li style={S.li}><strong>Air system maintenance:</strong> Compressed air system maintain karna padta hai</li>
+          <li style={S.li}><strong>Water damage:</strong> Equipment damage on discharge — unlike FM200</li>
+          <li style={S.li}><strong>Complex design:</strong> The double interlock system is complex — maintenance intensive</li>
+          <li style={S.li}><strong>FM200 conflict risk:</strong> If coordination is wrong, both discharge simultaneously</li>
+          <li style={S.li}><strong>Air system maintenance:</strong> The compressed air system has to be maintained</li>
           <li style={S.li}><strong>Head inspection:</strong> Corrosion, paint, physical damage — regular checks needed</li>
-          <li style={S.li}><strong>System reset:</strong> Once activated, draining aur resetting time-consuming hai</li>
+          <li style={S.li}><strong>System reset:</strong> Once activated, draining and resetting is time-consuming</li>
         </ul>
 
         <hr style={S.divider} />
@@ -637,7 +642,7 @@ export default function SprinklerPage() {
           <li style={S.li}>Inspector test valve — flow test</li>
           <li style={S.li}>Air compressor performance verify</li>
           <li style={S.li}>Detection interface test — end-to-end</li>
-          <li style={S.li}>Pipe corrosion inspection — internal ya ultrasonic</li>
+          <li style={S.li}>Pipe corrosion inspection — internal or ultrasonic</li>
         </ul>
 
         <hr style={S.divider} />
@@ -645,20 +650,20 @@ export default function SprinklerPage() {
         <h2 id="testing" style={S.h1}>Testing</h2>
 
         <h3 style={S.h3}>Inspector Test (Annual)</h3>
-        <p style={S.p}>Inspector test valve — pipe end pe ek small valve hoti hai.</p>
+        <p style={S.p}>Inspector test valve — there is a small valve at the pipe end.</p>
 
-        <p style={S.p}>Ye open karne pe — ek head fuse hone jaisa pressure drop simulate hota hai.</p>
+        <p style={S.p}>Opening it simulates a pressure drop just like a head fusing.</p>
 
-        <p style={S.p}>Pre-action panel detect karta hai, alarm bajta hai — without actual discharge.</p>
+        <p style={S.p}>The pre-action panel detects it, the alarm sounds — without an actual discharge.</p>
 
         <h3 style={S.h3}>Full System Functional Test (with Water — Rare)</h3>
-        <p style={S.p}>New installation commissioning pe ya major renovation ke baad.</p>
+        <p style={S.p}>At new installation commissioning or after a major renovation.</p>
 
-        <p style={S.p}>Detection trigger karo, verify karo ki valve opens, water enters pipes.</p>
+        <p style={S.p}>Trigger detection, verify that the valve opens and water enters the pipes.</p>
 
-        <p style={S.p}><strong>Server hall mein — equipment remove ya protect karo pehle.</strong></p>
+        <p style={S.p}><strong>In the server hall — remove or protect the equipment first.</strong></p>
 
-        <p style={S.p}>Post-test — system fully drain karo aur air recharge karo.</p>
+        <p style={S.p}>Post-test — fully drain the system and recharge the air.</p>
 
         <hr style={S.divider} />
 
@@ -677,21 +682,21 @@ export default function SprinklerPage() {
 
         <h2 id="real-example" style={S.h1}>Example Scenario</h2>
 
-        <p style={S.p}><strong>Note:</strong> Ye ek illustrative example scenario hai — documented real facility ka reference nahi hai.</p>
+        <p style={S.p}><strong>Note:</strong> This is an illustrative example scenario — it is not a reference to a documented real facility.</p>
 
         <p style={S.p}><strong>Scenario:</strong> Mid-size data center, server hall.</p>
 
         <p style={S.p}><strong>Sprinkler design:</strong></p>
         <ul style={S.ul}>
-          <li style={S.li}>Server hall: Double interlock pre-action — 180 sprinkler heads, ceiling aur under-floor</li>
+          <li style={S.li}>Server hall: Double interlock pre-action — 180 sprinkler heads, ceiling and under-floor</li>
           <li style={S.li}>UPS room: Single interlock pre-action — 24 heads</li>
           <li style={S.li}>Lobby + corridors: Wet pipe — 40 heads</li>
           <li style={S.li}>Generator yard: Deluge — 12 open heads</li>
         </ul>
 
-        <p style={S.p}><strong>FM200-Sprinkler coordination:</strong> FM200 discharge pe 5 minute suppression delay on sprinkler — FM200 ko kaam karne ka time milta hai. Agar 5 minutes ke baad temperature still rising — sprinkler activate hoti hai.</p>
+        <p style={S.p}><strong>FM200-Sprinkler coordination:</strong> On FM200 discharge, a 5 minute suppression delay on the sprinkler — FM200 gets time to work. If the temperature is still rising after 5 minutes — the sprinkler activates.</p>
 
-        <p style={S.p}><strong>Lesson:</strong> Proper system selection aur coordination — clean agent ke saath pre-action — IT spaces ko protect karta hai bina unnecessary water damage risk ke.</p>
+        <p style={S.p}><strong>Lesson:</strong> Proper system selection and coordination — pre-action with clean agent — protects IT spaces without unnecessary water damage risk.</p>
 
         <hr style={S.divider} />
 
@@ -700,43 +705,43 @@ export default function SprinklerPage() {
         <h3 style={S.h3}>Mistake 1 — Wet Pipe in Server Room</h3>
         <p style={S.p}>Still seen in older or budget-constrained data centers.</p>
 
-        <p style={S.p}>Non-negotiable: upgrade to pre-action immediately. Risk unacceptable hai.</p>
+        <p style={S.p}>Non-negotiable: upgrade to pre-action immediately. The risk is unacceptable.</p>
 
         <h3 style={S.h3}>Mistake 2 — Sprinkler Heads Painted</h3>
-        <p style={S.p}>Painting crew ne paint kar diya — "looks better".</p>
+        <p style={S.p}>The painting crew painted them — "looks better".</p>
 
-        <p style={S.p}>Painted heads fail ho sakte hain — replace all painted heads immediately.</p>
+        <p style={S.p}>Painted heads can fail — replace all painted heads immediately.</p>
 
         <h3 style={S.h3}>Mistake 3 — FM200 and Sprinkler Not Coordinated</h3>
-        <p style={S.p}>Dono simultaneously discharge ho sakte hain agar interlock galat ho.</p>
+        <p style={S.p}>Both can discharge simultaneously if the interlock is wrong.</p>
 
-        <p style={S.p}>Design review karo — proper sequencing ensure karo.</p>
+        <p style={S.p}>Do a design review — ensure proper sequencing.</p>
 
         <h3 style={S.h3}>Mistake 4 — Air Pressure Not Monitored</h3>
-        <p style={S.p}>Air leaks gradually pressure drop karti hain — false signal milta hai.</p>
+        <p style={S.p}>Air leaks gradually drop the pressure — you get a false signal.</p>
 
-        <p style={S.p}>Monthly air pressure log karo — drift detect karo.</p>
+        <p style={S.p}>Log the air pressure monthly — detect drift.</p>
 
         <h3 style={S.h3}>Mistake 5 — Annual Test Skipped</h3>
-        <p style={S.p}>Cost aur downtime risk se annually test avoid karte hain.</p>
+        <p style={S.p}>Annual testing is avoided because of cost and downtime risk.</p>
 
-        <p style={S.p}>NBC compliance aur Fire NOC renewal ke liye mandatory hai. Skip mat karo.</p>
+        <p style={S.p}>It is mandatory for NBC compliance and Fire NOC renewal. Do not skip it.</p>
 
         <hr style={S.divider} />
 
         <h2 id="interview-questions" style={S.h1}>Interview Questions</h2>
 
-        <h3 style={S.h3}>Q1: Data Center mein wet pipe sprinkler kyun nahi use karte?</h3>
-        <p style={S.p}><strong>Answer:</strong> Wet pipe mein pipes hamesha paani se bhari hain — single head ka accidental fuse = immediate water on servers. Server room mein accidental water release = millions ka equipment loss. Pre-action double interlock use karte hain — dono detection AND head fuse simultaneously — accidental discharge practically impossible hai.</p>
+        <h3 style={S.h3}>Q1: Why is a wet pipe sprinkler not used in a Data Center?</h3>
+        <p style={S.p}><strong>Answer:</strong> In a wet pipe the pipes are always full of water — accidental fusing of a single head = immediate water on the servers. Accidental water release in the server room = millions in equipment loss. Pre-action double interlock is used — both detection AND head fuse simultaneously — accidental discharge is practically impossible.</p>
 
-        <h3 style={S.h3}>Q2: Double interlock pre-action system mein kya hota hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Pipes mein normally compressed air hoti hai. Two conditions simultaneously meet honi chahiye: 1) Smoke/fire detection system trigger ho, 2) Sprinkler head ka fusible element fuse ho. Sirf ek condition se valve nahi khulti. Dono simultaneously hone pe pre-action valve opens — paani pipes mein enter karta hai — phir fused head se release hota hai.</p>
+        <h3 style={S.h3}>Q2: What happens in a double interlock pre-action system?</h3>
+        <p style={S.p}><strong>Answer:</strong> The pipes normally contain compressed air. Two conditions must be met simultaneously: 1) the smoke/fire detection system triggers, 2) the fusible element of a sprinkler head fuses. The valve does not open on only one condition. When both happen simultaneously the pre-action valve opens — water enters the pipes — then it is released from the fused head.</p>
 
-        <h3 style={S.h3}>Q3: FM200 aur sprinkler dono simultaneously activate ho sakti hain kya?</h3>
-        <p style={S.p}><strong>Answer:</strong> Design mein ye avoid kiya jaata hai kyunki FM200 dilute ho jaata hai agar paani bhi ho. Typical design: FM200 pehle activate hota hai, sprinkler suppressed rehti hai. Agar FM200 fail ho aur temperature badh rahi ho — tabhi sprinkler activate hoti hai. Ye cross-system interlock carefully engineered kiya jaata hai commissioning ke time.</p>
+        <h3 style={S.h3}>Q3: Can FM200 and the sprinkler both activate simultaneously?</h3>
+        <p style={S.p}><strong>Answer:</strong> This is avoided in the design because FM200 gets diluted if there is water too. Typical design: FM200 activates first, the sprinkler stays suppressed. Only if FM200 fails and the temperature is rising does the sprinkler activate. This cross-system interlock is carefully engineered at the time of commissioning.</p>
 
-        <h3 style={S.h3}>Q4: Sprinkler head temperature rating kaise decide karte hain?</h3>
-        <p style={S.p}><strong>Answer:</strong> Normal ambient temperature se 30°C upar rating select karo typically. Server hall mein ambient 18-27°C — red bulb (68°C) appropriate hai — enough buffer above ambient, responds correctly to fire temperature. High temperature areas (near generators, boiler rooms) mein higher rated heads lagao.</p>
+        <h3 style={S.h3}>Q4: How is the sprinkler head temperature rating decided?</h3>
+        <p style={S.p}><strong>Answer:</strong> Typically select a rating 30°C above the normal ambient temperature. In the server hall ambient is 18-27°C — a red bulb (68°C) is appropriate — enough buffer above ambient, responds correctly to fire temperature. In high temperature areas (near generators, boiler rooms) install higher rated heads.</p>
 
         <hr style={S.divider} />
 
@@ -749,12 +754,12 @@ export default function SprinklerPage() {
         <h2 id="best-practices" style={S.h1}>Best Practices</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Double interlock everywhere in server hall:</strong> No compromise on this — single interlock nahi</li>
-          <li style={S.li}><strong>FM200-Sprinkler coordination:</strong> Sequencing clearly define karo — design phase mein</li>
-          <li style={S.li}><strong>Never paint sprinkler heads:</strong> Training karo, signage lagao, site rules enforce karo</li>
-          <li style={S.li}><strong>Under-floor coverage:</strong> Raised floor plenum mein bhi heads lagao</li>
-          <li style={S.li}><strong>Monthly air pressure log:</strong> Trend track karo — slow leaks early detect ho</li>
-          <li style={S.li}><strong>Annual full inspection:</strong> Every head physically inspect karo — ya quarterly sample</li>
+          <li style={S.li}><strong>Double interlock everywhere in server hall:</strong> No compromise on this — no single interlock</li>
+          <li style={S.li}><strong>FM200-Sprinkler coordination:</strong> Define the sequencing clearly — in the design phase</li>
+          <li style={S.li}><strong>Never paint sprinkler heads:</strong> Train people, put up signage, enforce site rules</li>
+          <li style={S.li}><strong>Under-floor coverage:</strong> Install heads in the raised floor plenum too</li>
+          <li style={S.li}><strong>Monthly air pressure log:</strong> Track the trend — detect slow leaks early</li>
+          <li style={S.li}><strong>Annual full inspection:</strong> Physically inspect every head — or a quarterly sample</li>
           <li style={S.li}><strong>BMS integration:</strong> Valve status, air pressure, panel faults — centrally monitor</li>
           <li style={S.li}><strong>Post-incident reset protocol:</strong> Drain, inspect, air recharge, test — documented procedure</li>
         </ul>
@@ -764,14 +769,14 @@ export default function SprinklerPage() {
         <h2 id="key-takeaways" style={S.h1}>Key Takeaways</h2>
 
         <KeyTakeawayCard items={[
-          "Data Center IT spaces mein wet pipe strongly not recommended — accidental discharge = equipment damage. Pre-action preferred.",
+          "Wet pipe strongly not recommended in Data Center IT spaces — accidental discharge = equipment damage. Pre-action preferred.",
 
-          "Pre-action double interlock standard hai: Detection AND head fuse simultaneously required — tabhi water release.",
-          "Pipes normally dry (compressed air) — paani sirf dono conditions simultaneously pe enter karta hai.",
-          "FM200 primary, sprinkler backup. Coordination design — ek ke baad doosra, simultaneously nahi.",
-          "Sprinkler heads kabhi paint mat karo — performance degrade hoti hai — replace painted heads immediately.",
-          "Monthly air pressure check, annual full inspection — maintenance schedule strictly follow karo.",
-          "NBC compliance aur Fire NOC ke liye sprinkler mandatory hai — design mein skip nahi kar sakte.",
+          "Pre-action double interlock is the standard: Detection AND head fuse required simultaneously — only then water release.",
+          "Pipes normally dry (compressed air) — water enters only when both conditions happen simultaneously.",
+          "FM200 primary, sprinkler backup. Coordination design — one after the other, not simultaneously.",
+          "Never paint sprinkler heads — performance degrades — replace painted heads immediately.",
+          "Monthly air pressure check, annual full inspection — follow the maintenance schedule strictly.",
+          "The sprinkler is mandatory for NBC compliance and the Fire NOC — it cannot be skipped in the design.",
         ]} />
 
         <hr style={S.divider} />
@@ -782,11 +787,11 @@ export default function SprinklerPage() {
         <hr style={S.divider} />
 
         <h2 style={S.h2}>Related Learning Topics</h2>
-        <p style={S.p}>Fire Protection module complete hua. Poori series revisit karo:</p>
+        <p style={S.p}>The Fire Protection module is complete. Revisit the whole series:</p>
         <ul style={S.ul}>
-          <li style={S.li}><TopicLink slug="vesda" variant="inline" /> — Fire detection ka pehla layer — sabse pehle ye jaano.</li>
-          <li style={S.li}><TopicLink slug="fm200" variant="inline" /> — Primary suppression — sprinkler ke aane se pehle kaam karta hai.</li>
-          <li style={S.li}><TopicLink slug="novec-1250" variant="inline" /> — FM200 ka modern alternative — better environmental profile.</li>
+          <li style={S.li}><TopicLink slug="vesda" variant="inline" /> — the first layer of fire detection — learn this first.</li>
+          <li style={S.li}><TopicLink slug="fm200" variant="inline" /> — primary suppression — works before the sprinkler comes in.</li>
+          <li style={S.li}><TopicLink slug="novec-1250" variant="inline" /> — the modern alternative to FM200 — better environmental profile.</li>
           <li style={S.li}><TopicLink slug="hydrant" variant="inline" /> — External firefighting system — building-level protection.</li>
         </ul>
 

@@ -11,93 +11,66 @@ export default function TroubleshootingAndClosing() {
 
       <h3 style={S.h3}>Fault 1: Card Presented — No Response / Door Does Not Open</h3>
       <p style={S.p}>
-        <strong>First check:</strong> Reader LED/beep response dekho — card read hua? LED change hoti
-        hai ya silent? Agar no response at all, reader power check karo.
+        <strong>First check:</strong> Look at the reader LED/beep response — was the card read? Does the LED change or is it silent? If there is no response at all, check the reader power.
       </p>
       <p style={S.p}>
-        <strong>Next check:</strong> Reader power — Wiegand readers typically controller se powered
-        hote hain (12V DC). Controller PE LED status check karo. Agar reader powered hai lekin no read —
-        card type compatible hai reader ke saath? 125 kHz card 13.56 MHz reader pe work nahi karega.
+        <strong>Next check:</strong> Reader power — Wiegand readers are typically powered from the controller (12V DC). Check the controller PE LED status. If the reader is powered but there is no read — is the card type compatible with the reader? A 125 kHz card will not work on a 13.56 MHz reader.
       </p>
       <p style={S.p}>
-        <strong>Isolate:</strong> Test card (known good) use karo. Agar test card kaam karta hai —
-        original card issue hai (damaged, demagnetized, wrong format). Agar test card bhi fail —
-        reader ya wiring issue.
+        <strong>Isolate:</strong> Use a test card (known good). If the test card works — it is an issue with the original card (damaged, demagnetized, wrong format). If the test card also fails — reader or wiring issue.
       </p>
       <p style={S.p}>
-        <strong>Corrective action:</strong> Reader replace karo. Cable continuity check karo (Wiegand
-        D0/D1 lines). Controller port damaged hai to controller replace ya alternate port use karo.
-        Card issue hai to re-encode ya replace karo.
+        <strong>Corrective action:</strong> Replace the reader. Check cable continuity (Wiegand D0/D1 lines). If the controller port is damaged, replace the controller or use an alternate port. If it is a card issue, re-encode or replace it.
       </p>
 
       <h3 style={S.h3}>Fault 2: Card Read (Green LED) But Door Does Not Unlock</h3>
       <p style={S.p}>
-        <strong>First check:</strong> Access software mein event log dekho — access granted hai ya
-        denied? Agar "Access Denied" — reason note karo: invalid credential, schedule restriction,
-        APB violation, door not configured for this card.
+        <strong>First check:</strong> Look at the event log in the access software — is access granted or denied? If "Access Denied" — note the reason: invalid credential, schedule restriction, APB violation, door not configured for this card.
       </p>
       <p style={S.p}>
-        <strong>Next check:</strong> Agar "Access Granted" log mein hai lekin door nahi khuli —
-        lock wiring check karo. Controller relay output properly connected hai lock ko?
+        <strong>Next check:</strong> If "Access Granted" is in the log but the door did not open — check the lock wiring. Is the controller relay output properly connected to the lock?
       </p>
       <p style={S.p}>
-        <strong>Isolate:</strong> Controller relay manually trigger karo (software ya test mode se) —
-        lock release hoti hai? Agar yes, controller relay-to-lock wiring ok hai. Agar no — lock power
-        supply check karo, lock itself check karo.
+        <strong>Isolate:</strong> Trigger the controller relay manually (from software or test mode) — does the lock release? If yes, the controller relay-to-lock wiring is OK. If no — check the lock power supply, check the lock itself.
       </p>
       <p style={S.p}>
-        <strong>Corrective action:</strong> Denied case mein — credential schedule fix karo, APB reset
-        karo, door assignment fix karo. Granted-but-locked case mein — lock terminal wiring tighten
-        karo, lock replace karo agar faulty, PSU voltage verify karo.
+        <strong>Corrective action:</strong> In the denied case — fix the credential schedule, reset APB, fix the door assignment. In the granted-but-locked case — tighten the lock terminal wiring, replace the lock if faulty, verify the PSU voltage.
       </p>
 
       <h3 style={S.h3}>Fault 3: Door Forced Open Alarm — Frequent/Recurring</h3>
       <p style={S.p}>
-        <strong>First check:</strong> Door contact sensor alignment check karo — door fully closed
-        hone pe magnet aur sensor properly aligned hain?
+        <strong>First check:</strong> Check the door contact sensor alignment — when the door is fully closed, are the magnet and sensor properly aligned?
       </p>
       <p style={S.p}>
-        <strong>Next check:</strong> Door hinge aur closer check karo — door properly closing aur
-        latching hai? Auto-closer adjusted hai? Door frame warp ya settled hai?
+        <strong>Next check:</strong> Check the door hinge and closer — is the door closing and latching properly? Is the auto-closer adjusted? Is the door frame warped or settled?
       </p>
       <p style={S.p}>
-        <strong>Corrective action:</strong> Sensor realign karo. Door closer adjust/replace karo.
-        Agar recurring at specific times — CCTV check karo, potential actual unauthorized access investigate karo.
+        <strong>Corrective action:</strong> Realign the sensor. Adjust/replace the door closer. If it recurs at specific times — check CCTV, investigate potential actual unauthorized access.
       </p>
 
       <h3 style={S.h3}>Fault 4: Controller Offline / Not Communicating with Server</h3>
       <p style={S.p}>
-        <strong>First check:</strong> Network connectivity — controller IP ping karo server se.
-        Reachable hai? Switch port status?
+        <strong>First check:</strong> Network connectivity — ping the controller IP from the server. Is it reachable? Switch port status?
       </p>
       <p style={S.p}>
-        <strong>Next check:</strong> Controller power check karo — LEDs normal hain? Controller web
-        interface ya display accessible hai?
+        <strong>Next check:</strong> Check the controller power — are the LEDs normal? Is the controller web interface or display accessible?
       </p>
       <p style={S.p}>
-        <strong>Isolate:</strong> Controller ping karo locally — responds? Agar yes, software/server
-        side issue. Agar no — network cable, switch port, ya controller network interface.
+        <strong>Isolate:</strong> Ping the controller locally — does it respond? If yes, it is a software/server side issue. If no — network cable, switch port, or controller network interface.
       </p>
       <p style={S.p}>
-        <strong>Corrective action:</strong> Network cable replace karo. Switch port cycle karo.
-        Controller IP settings verify karo — DHCP lease expired? Static IP conflict? Server firewall
-        block kar raha hai? Controller reboot karo. Note: modern controllers standalone mode mein
-        local decisions lete rahte hain — doors functional rahti hain typically.
+        <strong>Corrective action:</strong> Replace the network cable. Cycle the switch port. Verify the controller IP settings — DHCP lease expired? Static IP conflict? Is the server firewall blocking it? Reboot the controller. Note: modern controllers keep taking local decisions in standalone mode — the doors typically stay functional.
       </p>
 
       <h3 style={S.h3}>Fault 5: Access Granted But Door Physically Cannot Open</h3>
       <p style={S.p}>
-        <strong>First check:</strong> EM lock — armature plate properly aligned hai? Armature plate
-        dirty ya rusty hai?
+        <strong>First check:</strong> EM lock — is the armature plate properly aligned? Is the armature plate dirty or rusty?
       </p>
       <p style={S.p}>
-        <strong>Next check:</strong> Lock power — multimeter se voltage measure karo lock pe lock
-        release hone pe.
+        <strong>Next check:</strong> Lock power — measure the voltage at the lock with a multimeter when the lock is released.
       </p>
       <p style={S.p}>
-        <strong>Corrective action:</strong> Armature plate clean karo aur alignment adjust karo. EM
-        lock insufficient release current mil raha hai — PSU voltage drop check karo (long cable runs
-        mein voltage drop issue ho sakta hai). Lock replace karo agar mechanically stuck.
+        <strong>Corrective action:</strong> Clean the armature plate and adjust the alignment. If the EM lock is getting insufficient release current — check for PSU voltage drop (voltage drop can be an issue on long cable runs). Replace the lock if it is mechanically stuck.
       </p>
 
       <h3 style={S.h3}>Fault 6: Controller PSU / Battery Failure</h3>
@@ -105,25 +78,18 @@ export default function TroubleshootingAndClosing() {
         <strong>First check:</strong> Controller PSU LED status — fault indicator? Battery LED status?
       </p>
       <p style={S.p}>
-        <strong>Next check:</strong> Mains disconnect karo aur battery on-load voltage measure karo —
-        adequate hai? Battery nominal voltage hold kar rahi hai under load?
+        <strong>Next check:</strong> Disconnect mains and measure the battery on-load voltage — is it adequate? Is the battery holding nominal voltage under load?
       </p>
       <p style={S.p}>
-        <strong>Corrective action:</strong> Battery replace karo — per OEM specification aur observed
-        health data, calendar-based replacement nahi. PSU output voltage check karo — regulated output
-        within spec hai? PSU faulty hai to replace karo. New battery commission karo aur full charge
-        verify karo.
+        <strong>Corrective action:</strong> Replace the battery — per OEM specification and observed health data, not calendar-based replacement. Check the PSU output voltage — is the regulated output within spec? If the PSU is faulty, replace it. Commission the new battery and verify full charge.
       </p>
 
       <h3 style={S.h3}>Fault 7: Anti-Passback Violation — Person Locked Out</h3>
       <p style={S.p}>
-        <strong>First check:</strong> Software mein person ka access log dekho — APB state kya hai?
-        Last entry/exit records kya hain?
+        <strong>First check:</strong> Look at the person's access log in the software — what is the APB state? What are the last entry/exit records?
       </p>
       <p style={S.p}>
-        <strong>Corrective action:</strong> Software mein APB reset karo for this person — allow next
-        access. Root cause investigate karo: exit reader bypassed kiya? Tailgated exit? REX use karke
-        exit kiya bina card swipe ke? APB configuration correct hai? Exit reader working hai?
+        <strong>Corrective action:</strong> Reset APB for this person in the software — allow the next access. Investigate the root cause: was the exit reader bypassed? Tailgated exit? Exited using REX without a card swipe? Is the APB configuration correct? Is the exit reader working?
       </p>
 
       <h3 style={S.h3}>Fault 8: All Doors on a Controller Not Working</h3>
@@ -131,12 +97,10 @@ export default function TroubleshootingAndClosing() {
         <strong>First check:</strong> Controller power — completely dead? LEDs off?
       </p>
       <p style={S.p}>
-        <strong>Next check:</strong> PSU mains input aur output check karo. Fuse blown?
+        <strong>Next check:</strong> Check the PSU mains input and output. Fuse blown?
       </p>
       <p style={S.p}>
-        <strong>Corrective action:</strong> PSU fuse replace karo (correct rating se). PSU itself
-        replace karo. Controller hardware failure hai to replace karo. Note: controller replacement
-        ke baad credential database restore karo backup se — ya server se re-sync karo.
+        <strong>Corrective action:</strong> Replace the PSU fuse (with the correct rating). Replace the PSU itself. If it is a controller hardware failure, replace it. Note: after controller replacement, restore the credential database from backup — or re-sync from the server.
       </p>
 
       <ComparisonTable
@@ -162,79 +126,61 @@ export default function TroubleshootingAndClosing() {
         <li>Complete audit trail — who accessed where, when, denied attempts</li>
         <li>Granular control — zone, schedule, multi-factor, anti-passback</li>
         <li>Integration capability — CCTV, biometrics, BMS, visitor management</li>
-        <li>Scalability — small facility se enterprise multi-site tak</li>
+        <li>Scalability — from a small facility to enterprise multi-site</li>
         <li>Compliance evidence — ISO 27001, SOC 2, PCI-DSS audit support</li>
       </ul>
 
       <h3 style={S.h3}>Limitations</h3>
       <ul style={S.ul}>
-        <li>Single-factor card alone — tailgating aur card sharing prevent nahi karta</li>
-        <li>Power dependency — PSU/battery backup without which fail-safe locks open ho sakte hain</li>
-        <li>Software/server single point of failure — proper redundancy plan karo</li>
-        <li>Credential hygiene — stale accounts, unchanged schedules over time security degrade karte hain</li>
-        <li>Cybersecurity risk — IP-based systems network attack surface hain</li>
+        <li>A single-factor card alone — does not prevent tailgating and card sharing</li>
+        <li>Power dependency — without PSU/battery backup, fail-safe locks can open</li>
+        <li>Software/server single point of failure — plan proper redundancy</li>
+        <li>Credential hygiene — stale accounts, unchanged schedules degrade security over time</li>
+        <li>Cybersecurity risk — IP-based systems are a network attack surface</li>
         <li>Cost — multi-door, multi-site deployments significant upfront investment</li>
       </ul>
 
       <h2 id="illustrative-scenario" style={S.h2}>Illustrative Scenario</h2>
 
-      <Callout type="interview" title="Note: Ye ek illustrative scenario hai — kisi documented real facility ka reference nahi">
-        Neeche diya hua scenario access control ke practical value ko demonstrate karne ke liye hai.
+      <Callout type="interview" title="Note: This is an illustrative scenario — not a reference to any documented real facility">
+        The scenario given below is meant to demonstrate the practical value of access control.
       </Callout>
 
       <p style={S.p}>
-        Ek data center mein NOC operator ko access management software mein alert milta hai — server
-        hall mein ek technician ke badge ne raat 2 baje access liya, jo unke approved schedule se
-        bahar hai (approved: 8 AM – 8 PM weekdays only). Operator immediately CCTV footage check
-        karta hai — confirmed, same person hai. Security supervisor contact karta hai. Technician se
-        clarification li jaati hai — unka kaam urgent tha aur unhone supervisor ko inform kiya tha
-        lekin schedule update nahi hua tha.
+        In a data center the NOC operator gets an alert in the access management software — a technician's badge took access in the server hall at 2 AM, which is outside their approved schedule (approved: 8 AM – 8 PM weekdays only). The operator immediately checks the CCTV footage — confirmed, it is the same person. The security supervisor is contacted. Clarification is taken from the technician — their work was urgent and they had informed their supervisor, but the schedule had not been updated.
       </p>
       <p style={S.p}>
-        Is scenario mein access control ne kya kiya: after-hours access alert generate kiya, CCTV
-        se cross-reference possible hua, aur documented response possible hua. Root cause — schedule
-        not updated for approved overtime — process gap identify hua aur fix kiya gaya.
+        What access control did in this scenario: it generated an after-hours access alert, cross-referencing with CCTV became possible, and a documented response became possible. Root cause — schedule not updated for approved overtime — a process gap was identified and fixed.
       </p>
 
       <h2 id="interview-questions" style={S.h2}>Interview Questions</h2>
 
-      <h3 style={S.h3}>Q1: Access controller aur access server mein kya fark hai?</h3>
+      <h3 style={S.h3}>Q1: What is the difference between an access controller and an access server?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> Controller edge device hai — readers, locks aur sensors directly
-        connect karte hain. Controller local decisions leta hai, credentials aur rules onboard memory
-        mein store karta hai. Server central management platform hai — credential enrollment, policy
-        configuration, reporting aur integrations. Controller server se sync karta hai lekin server
-        offline hone pe bhi local decisions le sakta hai (modern controllers mein).
+        <strong>Answer:</strong> The controller is an edge device — readers, locks and sensors connect to it directly. The controller takes local decisions and stores credentials and rules in onboard memory. The server is the central management platform — credential enrollment, policy configuration, reporting and integrations. The controller syncs with the server but can take local decisions even when the server is offline (in modern controllers).
       </p>
 
-      <h3 style={S.h3}>Q2: Fail-safe aur fail-secure mein kya fark hai aur kab kya use karein?</h3>
+      <h3 style={S.h3}>Q2: What is the difference between fail-safe and fail-secure, and when should each be used?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> Fail-safe lock power failure mein open ho jaata hai — evacuation path
-        clear rehti hai. Fail-secure power failure mein locked rehta hai — higher security lekin fire
-        code compliance check karna zaroori hai. EM locks always fail-safe hote hain. Electric strikes
-        dono options mein available hain. Required egress doors aur electrically locked arrangements ko approved fire alarm/access control sequence of operations, applicable fire/life-safety code aur AHJ requirements ke hisaab se respond karna chahiye. High-security areas pe lock selection aur behavior project-specific approved design se determine hota hai — fire code requirements aur AHJ se verify karo.
+        <strong>Answer:</strong> A fail-safe lock opens on power failure — the evacuation path stays clear. Fail-secure stays locked on power failure — higher security, but checking fire code compliance is essential. EM locks are always fail-safe. Electric strikes are available in both options. Required egress doors and electrically locked arrangements must respond according to the approved fire alarm/access control sequence of operations, applicable fire/life-safety code and AHJ requirements. In high-security areas lock selection and behavior are determined by the project-specific approved design — verify with fire code requirements and the AHJ.
       </p>
 
-      <h3 style={S.h3}>Q3: Anti-passback kya hai aur ye kaise configure karte hain?</h3>
+      <h3 style={S.h3}>Q3: What is anti-passback and how is it configured?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> APB prevent karta hai ki same credential consecutively same direction
-        mein use ho. Entry ke baad exit record hone se pehle doosri entry denied ya alarmed hoti hai.
-        Soft APB — violation pe alarm, access allow. Hard APB — access denied. Configure ke liye: entry
-        aur exit dono doors pe readers chahiye, zones define karo, APB rules per zone per access level
-        apply karo. Data center server halls pe hard APB appropriate hai.
+        <strong>Answer:</strong> APB prevents the same credential from being used consecutively in the same direction. After an entry, a second entry before an exit is recorded is denied or alarmed. Soft APB — alarm on violation, access allowed. Hard APB — access denied. To configure: readers are needed on both entry and exit doors, define zones, apply APB rules per zone per access level. Hard APB is appropriate for data center server halls.
       </p>
 
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
 
       <ul style={S.ul}>
-        <li>Access control = credential authenticate + policy check + lock control + audit log. Har step matter karta hai.</li>
-        <li>125 kHz proximity cards legacy aur low-security hain — smart cards ya mobile credentials prefer karo.</li>
-        <li>OSDP protocol Wiegand se significantly more secure hai — new deployments mein specify karo.</li>
-        <li>Controller standalone mode mein local decisions leta hai — server offline pe doors functional rehti hain typically.</li>
-        <li>Anti-passback tailgating aur credential sharing discourage karta hai — hard APB high-security zones ke liye.</li>
-        <li>DFO aur DOTL alarms response process ke saath meaningful hain — alarm fatigue se bacho.</li>
-        <li>Cybersecurity controls essential hain — network segmentation, encrypted comms, firmware updates.</li>
-        <li>Regular access audit karo — stale accounts remove karo, schedules verify karo.</li>
+        <li>Access control = credential authentication + policy check + lock control + audit log. Every step matters.</li>
+        <li>125 kHz proximity cards are legacy and low-security — prefer smart cards or mobile credentials.</li>
+        <li>The OSDP protocol is significantly more secure than Wiegand — specify it in new deployments.</li>
+        <li>The controller takes local decisions in standalone mode — doors typically stay functional when the server is offline.</li>
+        <li>Anti-passback discourages tailgating and credential sharing — hard APB for high-security zones.</li>
+        <li>DFO and DOTL alarms are meaningful with a response process — avoid alarm fatigue.</li>
+        <li>Cybersecurity controls are essential — network segmentation, encrypted comms, firmware updates.</li>
+        <li>Do regular access audits — remove stale accounts, verify schedules.</li>
       </ul>
 
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Frequently Asked Questions</h2>
@@ -247,9 +193,9 @@ export default function TroubleshootingAndClosing() {
 
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Related Learning Topics</h2>
       <ul style={S.ul}>
-        <li><TopicLink slug="cctv" variant="inline" /> — Visual surveillance jo access control ke saath integrate hoti hai.</li>
+        <li><TopicLink slug="cctv" variant="inline" /> — visual surveillance that integrates with access control.</li>
         <li><TopicLink slug="biometrics" variant="inline" /> — Higher-assurance authentication for critical zones.</li>
-        <li><TopicLink slug="mantrap" variant="inline" /> — Two-door airlock jo tailgating prevent karta hai.</li>
+        <li><TopicLink slug="mantrap" variant="inline" /> — a two-door airlock that prevents tailgating.</li>
         <li><TopicLink slug="visitor-management" variant="inline" /> — Temporary access provisioning workflow.</li>
       </ul>
     </>

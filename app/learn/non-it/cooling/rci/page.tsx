@@ -7,7 +7,7 @@ import TopicLink from "@/components/TopicLink";
 export const metadata: Metadata = {
   title: "RCI — Rack Cooling Index in Data Centers | Behind The Tech",
   description:
-    "RCI kya hai, kaise calculate karte hain, good RCI kya hota hai — Rack Cooling Index Data Center cooling effectiveness ka metric hai. Simple Hinglish mein complete guide.",
+    "What is RCI, how is it calculated, what is a good RCI — the Rack Cooling Index is the metric of Data Center cooling effectiveness. A complete guide in simple English.",
   keywords: [
     "rci rack cooling index",
     "rack cooling index data center",
@@ -18,8 +18,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "RCI — Rack Cooling Index in Data Centers",
     description:
-      "RCI aur RHI — Data Center cooling ka report card. Kaise calculate hota hai, kya achha score hai, aur kaise improve karo.",
+      "RCI and RHI — the report card of Data Center cooling. How it is calculated, what a good score is, and how to improve it.",
     url: "https://behindthetech.in/learn/non-it/cooling/rci",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -28,9 +29,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "RCI Explained — Behind The Tech",
     description:
-      "Rack Cooling Index — Data Center cooling effectiveness ka metric. Complete guide.",
+      "Rack Cooling Index — the metric of Data Center cooling effectiveness. Complete guide.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/cooling/rci" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/cooling/rci",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/cooling/rci",
+      hi: "https://behindthetech.in/hi/learn/non-it/cooling/rci",
+      "x-default": "https://behindthetech.in/learn/non-it/cooling/rci",
+    },
+  },
 };
 
 const HEADINGS: ArticleHeading[] = [
@@ -80,28 +88,28 @@ const S = {
 function QuickSummary() {
   const pts = [
     {
-      label: "Ek line mein",
-      text: "RCI ek number hai — 0% se 100% — jo batata hai ki Data Center mein servers ko kitna sahi temperature range mein cool air mil rahi hai.",
+      label: "In one line",
+      text: "RCI is a number — from 0% to 100% — that tells how much of the cool air servers in a Data Center are getting is within the right temperature range.",
     },
     {
-      label: "100% ka matlab",
-      text: "Har server ka inlet temperature ASHRAE recommended range ke andar hai. Koi bhi rack overheating nahi hai. Perfect cooling delivery.",
+      label: "What 100% means",
+      text: "Every server's inlet temperature is within the ASHRAE recommended range. No rack is overheating. Perfect cooling delivery.",
     },
     {
-      label: "0% ka matlab",
-      text: "Sab servers recommended range se bahar hain — ya to bahut garam, ya to bahut thanda (over-cooling). Cooling system kaam nahi kar raha properly.",
+      label: "What 0% means",
+      text: "All servers are outside the recommended range — either too hot or too cold (over-cooling). The cooling system is not working properly.",
     },
     {
-      label: "Target kya hona chahiye",
-      text: "RCI > 91% = Excellent. 81–90% = Good. 71–80% = Fair. < 70% = Poor — immediate action chahiye.",
+      label: "What the target should be",
+      text: "RCI > 91% = Excellent. 81–90% = Good. 71–80% = Fair. < 70% = Poor — immediate action needed.",
     },
     {
-      label: "Kaise use hota hai",
-      text: "Temperature sensors se har rack ka inlet temperature measure karo. Formula se RCI calculate karo. Low RCI = cooling problem hai — dhundo aur fix karo.",
+      label: "How it is used",
+      text: "Measure every rack's inlet temperature with temperature sensors. Calculate RCI with the formula. Low RCI = there is a cooling problem — find it and fix it.",
     },
     {
-      label: "RHI kya hota hai",
-      text: "RHI = Return Heat Index — measure karta hai ki PAC/CRAC ko kitna hot air wapas mil raha hai. High RHI = achha (sab heat captured). Low RHI = bypass air ho raha hai.",
+      label: "What RHI is",
+      text: "RHI = Return Heat Index — measures how much hot air the PAC/CRAC is getting back. High RHI = good (all heat captured). Low RHI = bypass air is happening.",
     },
   ];
   return (
@@ -165,7 +173,7 @@ function QuickSummary() {
             color: "#1f2937",
           }}
         >
-          Bas itna samajh gaye to RCI ka concept clear hai. Aage poora article mein calculation, examples aur troubleshooting hai.
+          If you have understood this much, the RCI concept is clear. The full article ahead has the calculation, examples and troubleshooting.
         </div>
       </div>
     </div>
@@ -191,31 +199,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
 function EngineerTip({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", margin: "20px 0 24px" }}>
-      <div style={{ height: 2, background: "#ffa500" }} />
-      <div
-        style={{
-          background: "rgba(255,165,0,0.04)",
-          border: "1px solid rgba(255,165,0,0.16)",
-          borderTop: "none",
-          padding: "16px 20px 18px",
-        }}
-      >
-        <span
-          style={{
-            display: "block",
-            fontFamily: "var(--font-mono)",
-            fontSize: 9,
-            letterSpacing: "0.2em",
-            textTransform: "uppercase" as const,
-            color: "#ffa500",
-            fontWeight: 600,
-            marginBottom: 9,
-          }}
-        >
-          Engineer Ki Tip
-        </span>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>
-          {children}
+      <div style={{ height: 2, background: "#ffa500" }} /> <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px", }} > <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9, }} > Engineer's Tip </span> <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}> {children}
         </div>
       </div>
     </div>
@@ -525,28 +509,28 @@ function ComparisonTable({ rows }: { rows: { feature: string; rci: string; other
 
 const FAQS = [
   {
-    q: "RCI aur PUE mein kya fark hai?",
-    a: "PUE (Power Usage Effectiveness) measure karta hai ki Data Center total power mein se kitna IT equipment ko jaata hai — energy efficiency metric hai. RCI measure karta hai ki cooling delivery kitni effective hai — cooling quality metric hai. Ek data center ka PUE 1.3 ho sakta hai (good) lekin RCI 75% ho (poor) — energy efficient hai lekin cooling sahi nahi pahunch rahi. Dono metrics zaroori hain.",
+    q: "What is the difference between RCI and PUE?",
+    a: "PUE (Power Usage Effectiveness) measures how much of the Data Center's total power goes to IT equipment — it is an energy efficiency metric. RCI measures how effective the cooling delivery is — it is a cooling quality metric. A data center can have a PUE of 1.3 (good) but an RCI of 75% (poor) — it is energy efficient but the cooling is not reaching the right places. Both metrics are essential.",
   },
   {
-    q: "ASHRAE recommended inlet temperature range kya hai?",
-    a: "ASHRAE TC 9.9 ke thermal guidelines mein Classes hain. Class A1 (most servers): 15°C to 32°C inlet. Class A2: 10°C to 35°C. Recommended (ideal) range: 18°C to 27°C. RCI calculation mein typically recommended range use hoti hai. Allowable range se bahar jaana bhi equipment life ko affect karta hai.",
+    q: "What is the ASHRAE recommended inlet temperature range?",
+    a: "ASHRAE TC 9.9 thermal guidelines have Classes. Class A1 (most servers): 15°C to 32°C inlet. Class A2: 10°C to 35°C. Recommended (ideal) range: 18°C to 27°C. RCI calculation typically uses the recommended range. Going outside the allowable range also affects equipment life.",
   },
   {
-    q: "RCI manually calculate karein ya software se?",
-    a: "Small data centers mein manual calculation possible hai — temperature measurements, spreadsheet, formula apply karo. Large data centers mein DCIM software automatically calculate karta hai — hundreds of sensors se real-time data. Industry mein EkkoSense, Nlyte, Sunbird jaise DCIM tools RCI automatically report karte hain. Manual baseline ke baad software pe shift karo.",
+    q: "Should RCI be calculated manually or with software?",
+    a: "In small data centers manual calculation is possible — temperature measurements, a spreadsheet, apply the formula. In large data centers DCIM software calculates it automatically — real-time data from hundreds of sensors. In the industry, DCIM tools like EkkoSense, Nlyte and Sunbird report RCI automatically. Shift to software after a manual baseline.",
   },
   {
-    q: "RCI 100% achieve karna kya realistic hai?",
-    a: "Theoretically possible hai — agar sab servers recommended range mein hain. Practically, 95%+ excellent hai. 91-95% bhi very good hai. 100% pe rahna hard hai kyunki load constantly change hota hai, maintenance windows hoti hain, equipment changes hote hain. Target: consistently 91%+ maintain karo. Below 80% pe alert karo.",
+    q: "Is achieving 100% RCI realistic?",
+    a: "It is theoretically possible — if all servers are in the recommended range. Practically, 95%+ is excellent. 91-95% is also very good. Staying at 100% is hard because load constantly changes, there are maintenance windows, and equipment changes happen. Target: consistently maintain 91%+. Alert below 80%.",
   },
   {
-    q: "RHI (Return Heat Index) ka target kya hona chahiye?",
-    a: "RHI target: > 91% excellent. ASHRAE recommendation: RHI > 91% means ki PAC/CRAC ko proper hot return air mil raha hai — bypass air kam hai. Low RHI (< 80%) indicates ki zyada cool air bypass ho raha hai PAC ke paas wapas — cooling units short-cycling hote hain aur actually server cooling mein contribute nahi kar rahe.",
+    q: "What should the RHI (Return Heat Index) target be?",
+    a: "RHI target: > 91% excellent. ASHRAE recommendation: RHI > 91% means the PAC/CRAC is getting proper hot return air — bypass air is low. Low RHI (< 80%) indicates that a lot of cool air is bypassing back to the PAC — cooling units are short-cycling and are not actually contributing to server cooling.",
   },
   {
-    q: "Kya RCI ek standard mandatory metric hai?",
-    a: "RCI aur RHI ASHRAE TC 9.9 ne define kiye hain — industry standard hai. Mandatory nahi hai lekin best practice hai. Uptime Institute Tier certification mein cooling effectiveness important factor hai. Green Star certifications mein bhi cooling metrics consider hote hain. Serious data centers ye regularly track karte hain.",
+    q: "Is RCI a standard mandatory metric?",
+    a: "RCI and RHI have been defined by ASHRAE TC 9.9 — it is an industry standard. It is not mandatory but it is best practice. In Uptime Institute Tier certification, cooling effectiveness is an important factor. Cooling metrics are also considered in Green Star certifications. Serious data centers track these regularly.",
   },
 ];
 
@@ -602,26 +586,26 @@ export default function RCIPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <ArticleLayout slug="rci" headings={HEADINGS} readingTimeMinutes={18}>
+      <ArticleLayout slug="rci" headings={HEADINGS} readingTimeMinutes={18} lang="en" alternateHref="/hi/learn/non-it/cooling/rci">
 
         {/* ── Intro ── */}
         <p style={S.p}>
-          Socho ek Data Center hai jisme 200 racks hain. PAC units chal rahi hain. Cooling system running hai.
+          Imagine a Data Center with 200 racks. The PAC units are running. The cooling system is running.
         </p>
         <p style={S.p}>
-          Lekin kuch servers ka CPU temperature 75°C se upar ja raha hai — alarm aa raha hai. Kuch servers throttling kar rahe hain — performance drop ho raha hai.
+          But the CPU temperature of some servers is going above 75°C — alarms are coming. Some servers are throttling — performance is dropping.
         </p>
         <p style={S.p}>
-          <strong>Problem kya hai? Cooling system chal to raha hai.</strong>
+          <strong>What is the problem? The cooling system is running.</strong>
         </p>
         <p style={S.p}>
-          Ye zaroori nahi ki cooling system chale — important ye hai ki <strong>cooling sahi jagah, sahi temperature pe deliver ho rahi hai ya nahi.</strong>
+          It does not matter just that the cooling system runs — what matters is <strong>whether the cooling is being delivered to the right place, at the right temperature.</strong>
         </p>
         <p style={S.p}>
-          Is sawaal ka jawab deta hai — <strong>RCI (Rack Cooling Index).</strong>
+          The answer to this question comes from — <strong>RCI (Rack Cooling Index).</strong>
         </p>
         <p style={S.p}>
-          RCI ek metric hai — ek number — jo batata hai ki cooling delivery kitni effective hai.
+          RCI is a metric — a number — that tells how effective the cooling delivery is.
         </p>
 
         <figure style={S.imageFigure}>
@@ -635,7 +619,7 @@ export default function RCIPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            RCI measurement — har rack ke inlet temperature sensor se data collect karo. Ye numbers RCI calculate karne ke liye use hote hain.
+            RCI measurement — collect data from every rack's inlet temperature sensor. These numbers are used to calculate RCI.
           </figcaption>
         </figure>
 
@@ -650,19 +634,19 @@ export default function RCIPage() {
           <strong>RCI = Rack Cooling Index.</strong>
         </p>
         <p style={S.p}>
-          Ye ek percentage metric hai — 0% se 100% — jo measure karta hai ki Data Center mein <strong>kitne servers ko recommended temperature range mein cool air mil rahi hai.</strong>
+          It is a percentage metric — from 0% to 100% — that measures <strong>how many servers in the Data Center are getting cool air within the recommended temperature range.</strong>
         </p>
         <p style={S.p}>
-          ASHRAE (American Society of Heating, Refrigerating and Air-Conditioning Engineers) ne ye metric define kiya hai. ASHRAE TC 9.9 committee Data Center thermal management standards maintain karti hai.
+          ASHRAE (American Society of Heating, Refrigerating and Air-Conditioning Engineers) defined this metric. The ASHRAE TC 9.9 committee maintains the Data Center thermal management standards.
         </p>
-        <p style={S.p}><strong>RCI 100% = Perfect.</strong> Har server ka inlet temperature ASHRAE recommended range mein hai.</p>
-        <p style={S.p}><strong>RCI 0% = Catastrophic.</strong> Koi bhi server recommended range mein nahi hai.</p>
+        <p style={S.p}><strong>RCI 100% = Perfect.</strong> Every server's inlet temperature is within the ASHRAE recommended range.</p>
+        <p style={S.p}><strong>RCI 0% = Catastrophic.</strong> No server is within the recommended range.</p>
         <p style={S.p}>
-          Real data centers mein target hota hai <strong>RCI &gt; 91%.</strong>
+          In real data centers the target is <strong>RCI &gt; 91%.</strong>
         </p>
 
         <InsightCard>
-          RCI sirf over-heating track nahi karta — over-cooling bhi detect karta hai. Agar servers bahut zyada thande hain (18°C se neeche), ye bhi energy waste hai — cooling kaam se zyada chal rahi hai. RCI dono extremes ko penalise karta hai — perfect range ke bahar jaana cost karta hai score mein.
+          RCI does not only track over-heating — it also detects over-cooling. If servers are much too cold (below 18°C), that is also energy waste — the cooling is running more than needed. RCI penalises both extremes — going outside the perfect range costs points in the score.
         </InsightCard>
 
         <DCMapNote components={["Temperature Sensors", "DCIM Software", "Rack Inlets", "Cold Aisle", "PAC/CRAC Units"]} />
@@ -673,24 +657,24 @@ export default function RCIPage() {
         <h2 id="why-needed" style={S.h1}>Why Is RCI Needed?</h2>
 
         <p style={S.p}>
-          Data Center mein PAC unit chal rahi hai — ye confirm karna kaafi nahi hai.
+          Confirming that a PAC unit is running in the Data Center is not enough.
         </p>
         <p style={S.p}>
-          Ye confirm karna zaroori hai ki:
+          It is essential to confirm that:
         </p>
         <ul style={S.ul}>
-          <li style={S.li}>Har rack ko adequate cool air mil rahi hai</li>
-          <li style={S.li}>Koi bhi rack overheating zone mein nahi hai</li>
-          <li style={S.li}>Cool air waste nahi ho rahi (over-cooling)</li>
-          <li style={S.li}>Cooling improvement actions ka actual effect ho raha hai</li>
+          <li style={S.li}>Every rack is getting adequate cool air</li>
+          <li style={S.li}>No rack is in an overheating zone</li>
+          <li style={S.li}>Cool air is not being wasted (over-cooling)</li>
+          <li style={S.li}>Cooling improvement actions are having an actual effect</li>
         </ul>
 
         <WhyThisMatters>
-          Bina RCI ke, data center operators "feel" se cooling manage karte hain — jab server alarm aata hai tab pata chalta hai ki problem hai. RCI proactive hai — before servers alarm karo, pata chal jaata hai ki cooling deteriorate ho rahi hai. Ek RCI survey ke baad blanking panels, floor tiles, containment gaps — sab fix karo. Result: server reliability improve, energy cost reduce.
+          Without RCI, data center operators manage cooling by "feel" — they find out there is a problem when a server alarm comes. RCI is proactive — you find out that cooling is deteriorating before servers alarm. After an RCI survey, fix the blanking panels, floor tiles, containment gaps — everything. Result: server reliability improves, energy cost reduces.
         </WhyThisMatters>
 
         <p style={S.p}>
-          <strong>Practical example:</strong> Naya rack install kiya. Koi alarm nahi aaya. Lekin RCI 88% se 79% pe aa gaya. Kuch purane racks ab warm air le rahe hain. Ye RCI ke bina invisible tha.
+          <strong>Practical example:</strong> A new rack was installed. No alarm came. But RCI dropped from 88% to 79%. Some older racks are now taking in warm air. Without RCI this was invisible.
         </p>
 
         <hr style={S.divider} />
@@ -699,26 +683,26 @@ export default function RCIPage() {
         <h2 id="working-principle" style={S.h1}>How RCI Is Calculated</h2>
 
         <p style={S.p}>
-          RCI calculate karne ke liye sirf ek cheez chahiye: <strong>har rack ka inlet temperature.</strong>
+          To calculate RCI you need just one thing: <strong>the inlet temperature of every rack.</strong>
         </p>
         <p style={S.p}>
-          Inlet temperature = server ke front face pe, rack ke bottom mein (ya multiple points pe) — yahan cool air enter karti hai.
+          Inlet temperature = at the front face of the server, at the bottom of the rack (or at multiple points) — this is where cool air enters.
         </p>
         <p style={S.p}>
-          ASHRAE ne temperature ranges define ki hain:
+          ASHRAE has defined temperature ranges:
         </p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Recommended range:</strong> 18°C – 27°C (most servers ke liye ideal)</li>
-          <li style={S.li}><strong>Allowable range (upper):</strong> 27°C – 35°C (equipment specs ke hisaab se vary karta hai)</li>
+          <li style={S.li}><strong>Recommended range:</strong> 18°C – 27°C (ideal for most servers)</li>
+          <li style={S.li}><strong>Allowable range (upper):</strong> 27°C – 35°C (varies according to equipment specs)</li>
           <li style={S.li}><strong>Below recommended:</strong> &lt; 18°C (over-cooling — energy waste)</li>
           <li style={S.li}><strong>Above allowable:</strong> &gt; 35°C (equipment damage zone)</li>
         </ul>
         <p style={S.p}>
-          RCI formula in deviations ko measure karta hai aur ek single percentage mein express karta hai.
+          The RCI formula measures these deviations and expresses them as a single percentage.
         </p>
 
         <FlowDiagram
-          caption="RCI measurement aur calculation process"
+          caption="RCI measurement and calculation process"
           steps={[
             { icon: "🌡️", label: "Measure", sublabel: "Rack inlet temps" },
             { icon: "📋", label: "Compare", sublabel: "vs ASHRAE range" },
@@ -734,28 +718,28 @@ export default function RCIPage() {
         <h2 id="rci-formula" style={S.h1}>RCI Formula Step by Step</h2>
 
         <p style={S.p}>
-          RCI do parts mein hota hai:
+          RCI has two parts:
         </p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>RCI(HI)</strong> — High side: racks jo recommended se zyada garam hain</li>
-          <li style={S.li}><strong>RCI(LO)</strong> — Low side: racks jo recommended se zyada thande hain</li>
+          <li style={S.li}><strong>RCI(HI)</strong> — High side: racks that are hotter than recommended</li>
+          <li style={S.li}><strong>RCI(LO)</strong> — Low side: racks that are colder than recommended</li>
         </ul>
         <p style={S.p}>
-          Dono separately calculate hote hain, phir combined score milta hai.
+          Both are calculated separately, then a combined score is obtained.
         </p>
 
         <h3 style={S.h3}>RCI(HI) — Over-Temperature Penalty</h3>
         <p style={S.p}>
-          Har rack ke liye check karo: kya inlet temperature 27°C se upar hai?
+          For every rack, check: is the inlet temperature above 27°C?
         </p>
         <p style={S.p}>
-          Agar haan, <strong>deviation calculate karo:</strong>
+          If yes, <strong>calculate the deviation:</strong>
         </p>
         <p style={S.p}>
           <strong>Deviation = Actual temperature − T_recommended_max (27°C)</strong>
         </p>
         <p style={S.p}>
-          Ye deviation sum karo sab racks ke liye.
+          Sum this deviation for all racks.
         </p>
         <p style={S.p}>
           <strong>Formula:</strong>
@@ -776,15 +760,15 @@ export default function RCIPage() {
           RCI(HI) = 1 − [Σ(T_measured − T_rec_max) / Σ(T_allowable_max − T_rec_max)] × 100%
         </div>
         <p style={S.p}>
-          Jab koi rack recommended range mein ho — uska deviation = 0 (no penalty).
+          When a rack is within the recommended range — its deviation = 0 (no penalty).
         </p>
         <p style={S.p}>
-          Jab sab racks recommended range mein hon — total deviation = 0, RCI(HI) = 100%.
+          When all racks are within the recommended range — total deviation = 0, RCI(HI) = 100%.
         </p>
 
         <h3 style={S.h3}>RCI(LO) — Under-Temperature Penalty</h3>
         <p style={S.p}>
-          Same concept — lekin neeche ki taraf. Kya inlet temperature 18°C se neeche hai?
+          Same concept — but on the lower side. Is the inlet temperature below 18°C?
         </p>
         <p style={S.p}>
           <strong>Deviation = T_recommended_min (18°C) − Actual temperature</strong>
@@ -809,7 +793,7 @@ export default function RCIPage() {
         </div>
 
         <EngineerTip>
-          Field mein simplified approach common hai: measure all rack inlets, count karo kitne 18–27°C mein hain. Rough RCI ≈ (in-range racks / total racks) × 100. Ye exact ASHRAE formula nahi hai — lekin quick assessment ke liye useful hai. Proper RCI ke liye DCIM software ya detailed spreadsheet use karo.
+          In the field a simplified approach is common: measure all rack inlets, count how many are within 18–27°C. Rough RCI ≈ (in-range racks / total racks) × 100. This is not the exact ASHRAE formula — but it is useful for a quick assessment. For a proper RCI, use DCIM software or a detailed spreadsheet.
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -818,34 +802,34 @@ export default function RCIPage() {
         <h2 id="rhi" style={S.h1}>RHI — Return Heat Index</h2>
 
         <p style={S.p}>
-          RCI ke saath usually <strong>RHI (Return Heat Index)</strong> bhi measure hota hai.
+          Along with RCI, <strong>RHI (Return Heat Index)</strong> is usually also measured.
         </p>
         <p style={S.p}>
-          RHI measure karta hai ki <strong>PAC/CRAC unit ko kitna hot return air wapas mil raha hai</strong> — relative to what it should be getting.
+          RHI measures <strong>how much hot return air the PAC/CRAC unit is getting back</strong> — relative to what it should be getting.
         </p>
         <p style={S.p}>
           Simple explanation:
         </p>
         <ul style={S.ul}>
           <li style={S.li}>
-            <strong>High RHI (&gt; 91%)</strong> = PAC ko actual hot air return ho raha hai — servers ki heat effectively capture ho rahi hai. Good.
+            <strong>High RHI (&gt; 91%)</strong> = actual hot air is returning to the PAC — the servers' heat is being captured effectively. Good.
           </li>
           <li style={S.li}>
-            <strong>Low RHI (&lt; 80%)</strong> = Cool air bypass ho raha hai — servers tak pahunche bina wapas PAC mein ja rahi hai. Cooling wasted.
+            <strong>Low RHI (&lt; 80%)</strong> = cool air is bypassing — it is going back into the PAC without reaching the servers. Cooling wasted.
           </li>
         </ul>
         <p style={S.p}>
-          RCI aur RHI dono milkar poori picture dete hain:
+          RCI and RHI together give the full picture:
         </p>
         <ul style={S.ul}>
           <li style={S.li}>RCI high + RHI high = Perfect cooling delivery</li>
-          <li style={S.li}>RCI low + RHI high = Servers hot hain but heat captured — cooling insufficient</li>
-          <li style={S.li}>RCI high + RHI low = Cool air wasted, bypass ho rahi hai</li>
+          <li style={S.li}>RCI low + RHI high = Servers are hot but heat is captured — cooling is insufficient</li>
+          <li style={S.li}>RCI high + RHI low = Cool air is wasted, it is bypassing</li>
           <li style={S.li}>RCI low + RHI low = Multiple problems — immediate action</li>
         </ul>
 
         <InsightCard>
-          RHI ka practical use: Agar RHI 70% hai, matlab 30% cool air bypass ho rahi hai — servers tak pahunche bina PAC wapas aa rahi hai. Is 30% energy waste ki wajah: wrong floor tile placement, gaps under racks, PAC ke directly saamne perforated tiles. Fix karo ye — RHI improve hogi, energy save hogi, aur wo cool air actually servers tak pahunchegi.
+          Practical use of RHI: if RHI is 70%, it means 30% of the cool air is bypassing — it is coming back to the PAC without reaching the servers. The reasons for this 30% energy waste: wrong floor tile placement, gaps under racks, perforated tiles directly in front of the PAC. Fix these — RHI will improve, energy will be saved, and that cool air will actually reach the servers.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -855,28 +839,28 @@ export default function RCIPage() {
 
         <h3 style={S.h3}>1. Temperature Sensors</h3>
         <p style={S.p}>
-          Har rack ke inlet pe temperature sensor lagao. Minimum: 1U height pe ek sensor (bottom of rack). Better: 3 points — bottom (1U), middle, top. Different heights pe temperature vary kar sakti hai.
+          Install a temperature sensor at every rack's inlet. Minimum: one sensor at 1U height (bottom of the rack). Better: 3 points — bottom (1U), middle, top. Temperature can vary at different heights.
         </p>
         <p style={S.p}>
-          Sensor types: Wired thermocouple ya RTD sensors DCIM system se connected. Wireless sensors available hain — retrofit ke liye easier. Built-in sensors kuch intelligent PDUs mein bhi hote hain.
+          Sensor types: wired thermocouple or RTD sensors connected to the DCIM system. Wireless sensors are available — easier for retrofit. Some intelligent PDUs also have built-in sensors.
         </p>
 
         <h3 style={S.h3}>2. DCIM Software (Recommended)</h3>
         <p style={S.p}>
-          Data Center Infrastructure Management software — automatically collect karta hai sensor data, RCI/RHI calculate karta hai, historical trending maintain karta hai, alerts generate karta hai.
+          Data Center Infrastructure Management software — automatically collects sensor data, calculates RCI/RHI, maintains historical trending and generates alerts.
         </p>
         <p style={S.p}>
-          Popular DCIM tools: EkkoSense, Nlyte, Sunbird, Vertiv Avocent. Large data centers ke liye essential.
+          Popular DCIM tools: EkkoSense, Nlyte, Sunbird, Vertiv Avocent. Essential for large data centers.
         </p>
 
         <h3 style={S.h3}>3. Spreadsheet (Manual Approach)</h3>
         <p style={S.p}>
-          Chhote data centers mein: manually temperature measure karo har rack pe. Spreadsheet mein enter karo. Formula apply karo. Quarterly ya semi-annually useful hai baseline establish karne ke liye.
+          In small data centers: measure the temperature manually at every rack. Enter it in a spreadsheet. Apply the formula. Quarterly or semi-annually is useful for establishing a baseline.
         </p>
 
         <h3 style={S.h3}>4. IR Thermometer / Thermal Camera</h3>
         <p style={S.p}>
-          Quick spot checks ke liye. IR thermometer se rack inlet pe instantaneous reading. Thermal camera se entire aisle ka temperature map visually dekh sakte ho. Hot spots immediately visible hote hain.
+          For quick spot checks. An instantaneous reading at the rack inlet with an IR thermometer. With a thermal camera you can visually see a temperature map of the entire aisle. Hot spots are immediately visible.
         </p>
 
         <hr style={S.divider} />
@@ -895,31 +879,31 @@ export default function RCIPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            RCI heat map — DCIM software se generate hota hai. Blue = cold (over-cooling), green = ideal, yellow/red = hot spots.
+            RCI heat map — generated by DCIM software. Blue = cold (over-cooling), green = ideal, yellow/red = hot spots.
           </figcaption>
         </figure>
 
         <p style={S.p}>
-          Daily operations mein RCI kaise kaam karta hai:
+          How RCI works in daily operations:
         </p>
         <p style={S.p}>
-          <strong>Step 1:</strong> DCIM software har sensor se har 5 minutes mein temperature collect karta hai.
+          <strong>Step 1:</strong> DCIM software collects the temperature from every sensor every 5 minutes.
         </p>
         <p style={S.p}>
-          <strong>Step 2:</strong> Software automatically RCI aur RHI calculate karta hai — per row, per zone, aur overall facility level pe.
+          <strong>Step 2:</strong> The software automatically calculates RCI and RHI — per row, per zone and at the overall facility level.
         </p>
         <p style={S.p}>
-          <strong>Step 3:</strong> Dashboard pe color-coded heatmap dikhti hai — kaunse racks ideal range mein hain, kaunse borderline, kaunse problematic.
+          <strong>Step 3:</strong> The dashboard shows a color-coded heatmap — which racks are in the ideal range, which are borderline, which are problematic.
         </p>
         <p style={S.p}>
-          <strong>Step 4:</strong> Agar koi zone 80% se neeche jaaye — automatic alert generate hota hai. Operations team investigate karta hai.
+          <strong>Step 4:</strong> If any zone goes below 80% — an automatic alert is generated. The operations team investigates.
         </p>
         <p style={S.p}>
-          <strong>Step 5:</strong> Fix implement karo (blanking panels, tile replacement, PAC adjustment). RCI trend improve hota hai — verify ho jaata hai ki fix kaam kiya.
+          <strong>Step 5:</strong> Implement the fix (blanking panels, tile replacement, PAC adjustment). The RCI trend improves — it is verified that the fix worked.
         </p>
 
         <EngineerTip>
-          Field tip: Jab bhi koi naya rack install karo, immediately uske aas-paas ka RCI check karo. Naya rack = new heat load = existing cooling distribution affect ho sakta hai. Before installation: RCI baseline note karo. After installation: dobara check karo. Agar dip aayi — address karo before it becomes a problem.
+          Field tip: Whenever you install a new rack, immediately check the RCI around it. New rack = new heat load = existing cooling distribution can be affected. Before installation: note the RCI baseline. After installation: check again. If there is a dip — address it before it becomes a problem.
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -928,7 +912,7 @@ export default function RCIPage() {
         <h2 id="types" style={S.h1}>RCI Score Ranges</h2>
 
         <p style={S.p}>
-          ASHRAE TC 9.9 ne RCI ke liye ye rating tiers define kiye hain:
+          ASHRAE TC 9.9 has defined these rating tiers for RCI:
         </p>
 
         <ScoreCard
@@ -945,7 +929,7 @@ export default function RCIPage() {
           <strong>Industry target: RCI consistently &gt; 91%.</strong>
         </p>
         <p style={S.p}>
-          Tier III aur Tier IV certified facilities mein 91%+ maintain karna expected hai.
+          Maintaining 91%+ is expected in Tier III and Tier IV certified facilities.
         </p>
 
         <hr style={S.divider} />
@@ -954,14 +938,14 @@ export default function RCIPage() {
         <h2 id="advantages" style={S.h1}>Why RCI Is Useful</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Objective measurement:</strong> "Cooling theek lag raha hai" se better — RCI = actual number</li>
-          <li style={S.li}><strong>Proactive:</strong> Server alarm se pehle cooling problem detect karo</li>
-          <li style={S.li}><strong>Baseline comparison:</strong> Before/after changes compare karo — improvement prove karo</li>
-          <li style={S.li}><strong>Hotspot identification:</strong> Exactly kaunsa rack, kaunsa row — pinpoint karo</li>
-          <li style={S.li}><strong>Over-cooling catch karo:</strong> Energy waste identify karo — PAC setpoints optimize karo</li>
-          <li style={S.li}><strong>Capacity planning:</strong> Load badhaane se pehle — current RCI check karo. Buffer hai?</li>
-          <li style={S.li}><strong>SLA compliance:</strong> Clients ko prove karo ki cooling adequate hai</li>
-          <li style={S.li}><strong>Cooling investment justify karo:</strong> Low RCI → concrete reason for cooling upgrades</li>
+          <li style={S.li}><strong>Objective measurement:</strong> Better than "cooling seems fine" — RCI = an actual number</li>
+          <li style={S.li}><strong>Proactive:</strong> Detect a cooling problem before a server alarm</li>
+          <li style={S.li}><strong>Baseline comparison:</strong> Compare before/after changes — prove the improvement</li>
+          <li style={S.li}><strong>Hotspot identification:</strong> Exactly which rack, which row — pinpoint it</li>
+          <li style={S.li}><strong>Catch over-cooling:</strong> Identify energy waste — optimize PAC setpoints</li>
+          <li style={S.li}><strong>Capacity planning:</strong> Before increasing load — check the current RCI. Is there a buffer?</li>
+          <li style={S.li}><strong>SLA compliance:</strong> Prove to clients that cooling is adequate</li>
+          <li style={S.li}><strong>Justify cooling investment:</strong> Low RCI → a concrete reason for cooling upgrades</li>
         </ul>
 
         <hr style={S.divider} />
@@ -970,11 +954,11 @@ export default function RCIPage() {
         <h2 id="disadvantages" style={S.h1}>Limitations of RCI</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Sensors chahiye:</strong> Bina temperature sensors ke RCI calculate nahi ho sakta. Infrastructure invest karna padta hai.</li>
-          <li style={S.li}><strong>Snapshot metric:</strong> RCI ek point-in-time measurement hai. Load constantly change hota hai — single measurement poori picture nahi deta.</li>
-          <li style={S.li}><strong>Inlet only:</strong> RCI server inlet temperature measure karta hai — server andar ka temperature nahi. Airflow within server bhi important hai.</li>
-          <li style={S.li}><strong>ASHRAE Class assumptions:</strong> Different equipment classes ke liye different acceptable ranges hain. Single RCI calculation sab equipment ke differences capture nahi karta always.</li>
-          <li style={S.li}><strong>Not a standalone metric:</strong> RCI high ho sakta hai lekin PUE poor ho — dono milkar dekho.</li>
+          <li style={S.li}><strong>Sensors needed:</strong> RCI cannot be calculated without temperature sensors. You have to invest in infrastructure.</li>
+          <li style={S.li}><strong>Snapshot metric:</strong> RCI is a point-in-time measurement. Load constantly changes — a single measurement does not give the full picture.</li>
+          <li style={S.li}><strong>Inlet only:</strong> RCI measures server inlet temperature — not the temperature inside the server. Airflow within the server is also important.</li>
+          <li style={S.li}><strong>ASHRAE Class assumptions:</strong> There are different acceptable ranges for different equipment classes. A single RCI calculation does not always capture the differences of all equipment.</li>
+          <li style={S.li}><strong>Not a standalone metric:</strong> RCI can be high while PUE is poor — look at both together.</li>
         </ul>
 
         <hr style={S.divider} />
@@ -1039,61 +1023,61 @@ export default function RCIPage() {
 
         <h3 style={S.h3}>Missing Blanking Panels</h3>
         <p style={S.p}>
-          Sabse common cause. Khali rack space se hot exhaust air wapas server intake mein jaati hai — recirculation. Specific rack ka RCI drop hota hai.
+          The most common cause. Hot exhaust air goes back into the server intake through an empty rack space — recirculation. The specific rack's RCI drops.
         </p>
         <p style={S.p}><strong>Fix:</strong> Walk every rack, install blanking panels in every empty 1U/2U space. Immediate improvement milegi.</p>
 
         <h3 style={S.h3}>Wrong Floor Tile Placement</h3>
         <p style={S.p}>
-          Perforated tiles hot aisle mein ya PAC ke saamne lagaye hain — cool air bypass ho rahi hai. Cold aisle mein tiles nahi hain — cool air nahi pahunch rahi.
+          Perforated tiles are installed in the hot aisle or in front of the PAC — cool air is bypassing. There are no tiles in the cold aisle — cool air is not reaching.
         </p>
-        <p style={S.p}><strong>Fix:</strong> Floor tile audit. Perforated tiles sirf cold aisle mein, directly rack ke saamne.</p>
+        <p style={S.p}><strong>Fix:</strong> Floor tile audit. Perforated tiles only in the cold aisle, directly in front of the rack.</p>
 
         <h3 style={S.h3}>No Containment or Containment Breach</h3>
         <p style={S.p}>
-          Containment nahi hai ya damaged hai — hot/cold mixing. Entire zone ka RCI affected hota hai.
+          Containment is missing or damaged — hot/cold mixing. The RCI of the entire zone is affected.
         </p>
-        <p style={S.p}><strong>Fix:</strong> Containment implement karo ya repair karo. Even partial containment improvement significant hoti hai.</p>
+        <p style={S.p}><strong>Fix:</strong> Implement or repair containment. Even a partial containment improvement is significant.</p>
 
         <h3 style={S.h3}>Insufficient Cooling Capacity</h3>
         <p style={S.p}>
-          IT load badh gaya — cooling units kafi nahi hain. Entire data center ka RCI drop hota hai.
+          The IT load has increased — the cooling units are not enough. The RCI of the entire data center drops.
         </p>
-        <p style={S.p}><strong>Fix:</strong> Capacity planning. Additional PAC/CRAC units ya chiller capacity.</p>
+        <p style={S.p}><strong>Fix:</strong> Capacity planning. Additional PAC/CRAC units or chiller capacity.</p>
 
         <h3 style={S.h3}>PAC/CRAC Placement Issues</h3>
         <p style={S.p}>
-          Cooling units duur hain un racks se jahan cooling needed hai. Cold air reach nahi kar rahi — far racks ka RCI low hota hai.
+          The cooling units are far from the racks where cooling is needed. Cold air is not reaching — the far racks' RCI is low.
         </p>
-        <p style={S.p}><strong>Fix:</strong> In-row cooling units add karo high-density areas mein. PAC placement optimize karo.</p>
+        <p style={S.p}><strong>Fix:</strong> Add in-row cooling units in high-density areas. Optimize PAC placement.</p>
 
         <h3 style={S.h3}>High Density Racks Without Supplementary Cooling</h3>
         <p style={S.p}>
-          10+ kW racks ke liye standard PAC cooling insufficient ho sakti hai.
+          For 10+ kW racks, standard PAC cooling can be insufficient.
         </p>
-        <p style={S.p}><strong>Fix:</strong> In-row cooling, rear-door heat exchangers ya targeted supplementary cooling.</p>
+        <p style={S.p}><strong>Fix:</strong> In-row cooling, rear-door heat exchangers or targeted supplementary cooling.</p>
 
         <hr style={S.divider} />
 
         {/* ── Section 13 ── */}
         <h2 id="preventive-maintenance" style={S.h1}>How to Maintain Good RCI</h2>
 
-        <p style={S.p}>RCI maintain karna ek ongoing discipline hai — one-time fix nahi.</p>
+        <p style={S.p}>Maintaining RCI is an ongoing discipline — not a one-time fix.</p>
 
         <h3 style={S.h3}>Physical Actions</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Har rack installation ke baad blanking panels verify karo — always</li>
-          <li style={S.li}>Floor tiles quarterly audit karo — correct placement confirm karo</li>
-          <li style={S.li}>Containment integrity monthly check karo</li>
-          <li style={S.li}>PAC/CRAC filter maintenance regular rakho — dirty filters = reduced airflow = RCI drop</li>
-          <li style={S.li}>Cable management — airflow block karne wali cable bundles manage karo</li>
+          <li style={S.li}>Verify blanking panels after every rack installation — always</li>
+          <li style={S.li}>Audit floor tiles quarterly — confirm correct placement</li>
+          <li style={S.li}>Check containment integrity monthly</li>
+          <li style={S.li}>Keep PAC/CRAC filter maintenance regular — dirty filters = reduced airflow = RCI drop</li>
+          <li style={S.li}>Cable management — manage cable bundles that block airflow</li>
         </ul>
 
         <h3 style={S.h3}>Monitoring Actions</h3>
         <ul style={S.ul}>
-          <li style={S.li}>DCIM alerts configure karo — RCI 85% se neeche jaaye to immediate alert</li>
-          <li style={S.li}>Temperature trends track karo — gradual deterioration early catch ho</li>
-          <li style={S.li}>Seasonal changes note karo — summer mein outdoor temperature badhti hai, chiller load badhta hai, RCI impact possible</li>
+          <li style={S.li}>Configure DCIM alerts — immediate alert if RCI goes below 85%</li>
+          <li style={S.li}>Track temperature trends — so gradual deterioration is caught early</li>
+          <li style={S.li}>Note seasonal changes — in summer outdoor temperature rises, chiller load rises, RCI impact is possible</li>
           <li style={S.li}>Quarterly full temperature mapping — all racks</li>
         </ul>
 
@@ -1103,13 +1087,13 @@ export default function RCIPage() {
         <h2 id="daily-checklist" style={S.h1}>Daily Checklist</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}>✓ DCIM dashboard check karo — current RCI score</li>
-          <li style={S.li}>✓ Any RCI alert active hai? Investigate karo</li>
-          <li style={S.li}>✓ Hot spot alarms — BMS ya DCIM mein</li>
-          <li style={S.li}>✓ Cold aisle temperature — uniform hai?</li>
+          <li style={S.li}>✓ Check the DCIM dashboard — current RCI score</li>
+          <li style={S.li}>✓ Is any RCI alert active? Investigate it</li>
+          <li style={S.li}>✓ Hot spot alarms — in the BMS or DCIM</li>
+          <li style={S.li}>✓ Cold aisle temperature — is it uniform?</li>
           <li style={S.li}>✓ PAC/CRAC units all running? Any fault?</li>
-          <li style={S.li}>✓ New rack installed aaj? — Blanking panels aur tiles verify karo</li>
-          <li style={S.li}>✓ RCI trend — improving, stable, ya deteriorating?</li>
+          <li style={S.li}>✓ New rack installed today? — Verify blanking panels and tiles</li>
+          <li style={S.li}>✓ RCI trend — improving, stable or deteriorating?</li>
         </ul>
 
         <hr style={S.divider} />
@@ -1118,15 +1102,15 @@ export default function RCIPage() {
         <h2 id="monthly-checklist" style={S.h1}>Monthly Checklist</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}>✓ Full temperature mapping — all rack inlets measure karo</li>
-          <li style={S.li}>✓ RCI aur RHI calculate karo (ya DCIM report generate karo)</li>
-          <li style={S.li}>✓ Previous month se comparison — trend identify karo</li>
+          <li style={S.li}>✓ Full temperature mapping — measure all rack inlets</li>
+          <li style={S.li}>✓ Calculate RCI and RHI (or generate the DCIM report)</li>
+          <li style={S.li}>✓ Comparison with the previous month — identify the trend</li>
           <li style={S.li}>✓ Blanking panels walk — every rack row</li>
           <li style={S.li}>✓ Floor tile placement audit</li>
           <li style={S.li}>✓ Containment integrity check</li>
-          <li style={S.li}>✓ PAC/CRAC filter status — PM schedule current hai?</li>
+          <li style={S.li}>✓ PAC/CRAC filter status — is the PM schedule current?</li>
           <li style={S.li}>✓ Hot spots resolved? — Previous actions ne RCI improve kiya?</li>
-          <li style={S.li}>✓ Capacity vs IT load review — buffer adequate hai?</li>
+          <li style={S.li}>✓ Capacity vs IT load review — is the buffer adequate?</li>
         </ul>
 
         <hr style={S.divider} />
@@ -1135,10 +1119,10 @@ export default function RCIPage() {
         <h2 id="safety" style={S.h1}>Safety Notes</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Hot aisle temperature measurement:</strong> Hot aisle 35–45°C tak ho sakti hai. IR thermometer bahar se use karo — prolonged exposure avoid karo.</li>
-          <li style={S.li}><strong>Raised floor access:</strong> Temperature sensors raised floor mein lagane ke liye floor tiles carefully handle karo. Heavy tiles — proper lifting technique.</li>
-          <li style={S.li}><strong>Working near live racks:</strong> Temperature measurement ke time hands tools se rack equipment se clear rakho — accidental contact avoid karo.</li>
-          <li style={S.li}><strong>Thermal camera:</strong> Eye safety — direct IR flash avoid karo. Camera mein generally no risk, lekin standard PPE follow karo.</li>
+          <li style={S.li}><strong>Hot aisle temperature measurement:</strong> The hot aisle can reach 35–45°C. Use an IR thermometer from outside — avoid prolonged exposure.</li>
+          <li style={S.li}><strong>Raised floor access:</strong> Handle floor tiles carefully when installing temperature sensors in the raised floor. Heavy tiles — proper lifting technique.</li>
+          <li style={S.li}><strong>Working near live racks:</strong> During temperature measurement, keep hands and tools clear of rack equipment — avoid accidental contact.</li>
+          <li style={S.li}><strong>Thermal camera:</strong> Eye safety — avoid a direct IR flash. There is generally no risk with the camera, but follow standard PPE.</li>
         </ul>
 
         <hr style={S.divider} />
@@ -1146,29 +1130,29 @@ export default function RCIPage() {
         {/* ── Section 17 ── */}
         <h2 id="interview-questions" style={S.h1}>Interview Questions</h2>
 
-        <h3 style={S.h3}>Q1: RCI kya hota hai aur iska target kya hona chahiye?</h3>
+        <h3 style={S.h3}>Q1: What is RCI and what should its target be?</h3>
         <p style={S.p}>
-          <strong>Answer:</strong> RCI = Rack Cooling Index — percentage metric jo measure karta hai ki kitne server racks ko ASHRAE recommended temperature range (18–27°C) mein cool air mil rahi hai. Target: &gt; 91% = Excellent. 81–90% = Good. Below 70% = Immediate action needed. 100% = har rack in range = perfect cooling delivery.
+          <strong>Answer:</strong> RCI = Rack Cooling Index — a percentage metric that measures how many server racks are getting cool air within the ASHRAE recommended temperature range (18–27°C). Target: &gt; 91% = Excellent. 81–90% = Good. Below 70% = Immediate action needed. 100% = every rack in range = perfect cooling delivery.
         </p>
 
-        <h3 style={S.h3}>Q2: RCI low hai — pehle kya check karoge?</h3>
+        <h3 style={S.h3}>Q2: RCI is low — what will you check first?</h3>
         <p style={S.p}>
-          <strong>Answer:</strong> Step 1: Temperature heatmap dekho — which racks/zones affected. Step 2: Affected racks mein blanking panels check karo. Step 3: Cold aisle ke floor tiles verify karo — perforated hai? Step 4: Containment intact hai? Step 5: PAC/CRAC units all running, setpoints correct? Step 6: Recent changes — new racks added?
+          <strong>Answer:</strong> Step 1: Look at the temperature heatmap — which racks/zones are affected. Step 2: Check blanking panels in the affected racks. Step 3: Verify the cold aisle floor tiles — are they perforated? Step 4: Is containment intact? Step 5: Are all PAC/CRAC units running, setpoints correct? Step 6: Recent changes — were new racks added?
         </p>
 
-        <h3 style={S.h3}>Q3: RHI kya hota hai aur low RHI ka kya matlab hai?</h3>
+        <h3 style={S.h3}>Q3: What is RHI and what does a low RHI mean?</h3>
         <p style={S.p}>
-          <strong>Answer:</strong> RHI = Return Heat Index — measure karta hai PAC/CRAC ko actual hot return air kitna mil raha hai. Low RHI (&lt;80%) = bypass air problem — cool air servers ko avoid karke PAC mein return ho rahi hai. Causes: wrong floor tiles (PAC ke saamne perforated), gaps in raised floor, no containment. Fix: tile placement correct karo, gaps seal karo.
+          <strong>Answer:</strong> RHI = Return Heat Index — measures how much actual hot return air the PAC/CRAC is getting. Low RHI (&lt;80%) = a bypass air problem — cool air is avoiding the servers and returning to the PAC. Causes: wrong floor tiles (perforated in front of the PAC), gaps in the raised floor, no containment. Fix: correct the tile placement, seal the gaps.
         </p>
 
-        <h3 style={S.h3}>Q4: RCI aur PUE mein kya relationship hai?</h3>
+        <h3 style={S.h3}>Q4: What is the relationship between RCI and PUE?</h3>
         <p style={S.p}>
-          <strong>Answer:</strong> PUE = energy efficiency metric (total power / IT power). RCI = cooling quality metric (cooling delivery effectiveness). Ye dono different things measure karte hain — dono zaroori hain. Good PUE lekin poor RCI possible hai — energy efficient cooling hai lekin sahi jagah deliver nahi ho rahi. Target: PUE &lt;1.4 AND RCI &gt;91%.
+          <strong>Answer:</strong> PUE = energy efficiency metric (total power / IT power). RCI = cooling quality metric (cooling delivery effectiveness). These two measure different things — both are essential. A good PUE with a poor RCI is possible — the cooling is energy efficient but is not being delivered to the right place. Target: PUE &lt;1.4 AND RCI &gt;91%.
         </p>
 
-        <h3 style={S.h3}>Q5: Bina DCIM ke RCI kaise measure karein?</h3>
+        <h3 style={S.h3}>Q5: How can RCI be measured without DCIM?</h3>
         <p style={S.p}>
-          <strong>Answer:</strong> Manual approach: IR thermometer se har rack inlet pe temperature measure karo (1U height). Spreadsheet mein enter karo. ASHRAE range (18–27°C) se compare karo. Count karo kitne in range hain. Simplified RCI % = (in-range racks / total racks) × 100. Quarterly survey ke liye kaafi hai. Large facilities ke liye DCIM invest karo — manual infeasible hai hundreds of racks ke saath.
+          <strong>Answer:</strong> Manual approach: measure the temperature at every rack inlet with an IR thermometer (1U height). Enter it in a spreadsheet. Compare with the ASHRAE range (18–27°C). Count how many are in range. Simplified RCI % = (in-range racks / total racks) × 100. It is enough for a quarterly survey. Invest in DCIM for large facilities — manual is infeasible with hundreds of racks.
         </p>
 
         <hr style={S.divider} />
@@ -1176,31 +1160,31 @@ export default function RCIPage() {
         {/* ── Section 18 ── */}
         <h2 id="troubleshooting" style={S.h1}>Troubleshooting Guide</h2>
 
-        <h3 style={S.h3}>Scenario: Overall RCI suddenly drop gaya — 90% se 72% pe</h3>
+        <h3 style={S.h3}>Scenario: Overall RCI suddenly dropped — from 90% to 72%</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Heatmap dekho — specific zone affected hai ya full DC?</li>
-          <li style={S.li}>Kuch naya hua? — New racks installed, PAC unit down, layout change?</li>
-          <li style={S.li}>PAC/CRAC status check karo — koi unit fault mein?</li>
+          <li style={S.li}>Look at the heatmap — is a specific zone affected or the full DC?</li>
+          <li style={S.li}>Did something new happen? — New racks installed, a PAC unit down, a layout change?</li>
+          <li style={S.li}>Check PAC/CRAC status — is any unit in fault?</li>
           <li style={S.li}>Outdoor temperature spike? — Seasonal load? Chiller capacity impacted?</li>
-          <li style={S.li}>Blanking panels check karo — new installations ke saath panels miss hue?</li>
+          <li style={S.li}>Check the blanking panels — were panels missed with new installations?</li>
         </ul>
 
-        <h3 style={S.h3}>Scenario: Specific row mein har baar low RCI</h3>
+        <h3 style={S.h3}>Scenario: A specific row has low RCI every time</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Affected row ka cold aisle temperature measure karo — adequate cool air aa rahi hai?</li>
-          <li style={S.li}>Floor tiles us row mein check karo</li>
-          <li style={S.li}>Nearest PAC unit distance — too far? In-row cooling consider karo</li>
-          <li style={S.li}>Row ke racks mein density high hai kya? — 8+ kW racks ko supplementary cooling chahiye</li>
-          <li style={S.li}>Containment us row mein proper hai?</li>
+          <li style={S.li}>Measure the cold aisle temperature of the affected row — is adequate cool air coming?</li>
+          <li style={S.li}>Check the floor tiles in that row</li>
+          <li style={S.li}>Distance to the nearest PAC unit — too far? Consider in-row cooling</li>
+          <li style={S.li}>Is the rack density high in the row? — 8+ kW racks need supplementary cooling</li>
+          <li style={S.li}>Is containment proper in that row?</li>
         </ul>
 
         <h3 style={S.h3}>Scenario: RHI consistently low (bypass air problem)</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Floor tile placement audit — PAC ke directly saamne perforated tiles?</li>
+          <li style={S.li}>Floor tile placement audit — perforated tiles directly in front of the PAC?</li>
           <li style={S.li}>Raised floor gaps — cable openings sealed?</li>
-          <li style={S.li}>Under-rack gaps — sealing strips lagao</li>
-          <li style={S.li}>Containment end doors closed hain?</li>
-          <li style={S.li}>PAC supply setpoints — too low? Raise karo, bypass reduce hoga</li>
+          <li style={S.li}>Under-rack gaps — install sealing strips</li>
+          <li style={S.li}>Are the containment end doors closed?</li>
+          <li style={S.li}>PAC supply setpoints — too low? Raise them, bypass will reduce</li>
         </ul>
 
         <hr style={S.divider} />
@@ -1227,14 +1211,14 @@ export default function RCIPage() {
         <h2 id="best-practices" style={S.h1}>Best Practices</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Measure first:</strong> Bina measurement ke improvement prove nahi ho sakti. Baseline RCI establish karo before any changes.</li>
-          <li style={S.li}><strong>Blanking panels 100% always:</strong> Ye RCI ka sabse direct lever hai. Every rack, every empty space. No exceptions.</li>
+          <li style={S.li}><strong>Measure first:</strong> An improvement cannot be proven without measurement. Establish a baseline RCI before any changes.</li>
+          <li style={S.li}><strong>Blanking panels 100% always:</strong> This is the most direct lever for RCI. Every rack, every empty space. No exceptions.</li>
           <li style={S.li}><strong>Temperature sensors every rack:</strong> Bare minimum — bottom (1U) sensor. Better — 3-point measurement. Best — DCIM integration with real-time monitoring.</li>
-          <li style={S.li}><strong>Alert thresholds set karo:</strong> DCIM mein 85% alert set karo — before things get critical. React before server alarms come.</li>
-          <li style={S.li}><strong>Change management mein RCI include karo:</strong> New rack install hone ke baad RCI check mandatory. Document it.</li>
-          <li style={S.li}><strong>Monthly trend karo:</strong> Single data point se zyada useful hai trend. Improving hai ya deteriorating — ye pata ho.</li>
-          <li style={S.li}><strong>RCI + RHI together dekho:</strong> Dono milkar poori cooling health picture dete hain. Ek metric sirf half story hai.</li>
-          <li style={S.li}><strong>Seasonal baseline maintain karo:</strong> Summer mein RCI naturally slightly low ho sakta hai — normal range kya hai ye samjho.</li>
+          <li style={S.li}><strong>Set alert thresholds:</strong> Set an 85% alert in DCIM — before things get critical. React before server alarms come.</li>
+          <li style={S.li}><strong>Include RCI in change management:</strong> An RCI check is mandatory after a new rack is installed. Document it.</li>
+          <li style={S.li}><strong>Trend monthly:</strong> A trend is more useful than a single data point. Know whether it is improving or deteriorating.</li>
+          <li style={S.li}><strong>Look at RCI + RHI together:</strong> Together they give the full cooling health picture. One metric is only half the story.</li>
+          <li style={S.li}><strong>Maintain a seasonal baseline:</strong> In summer RCI can naturally be slightly lower — understand what the normal range is.</li>
         </ul>
 
         <hr style={S.divider} />
@@ -1243,13 +1227,13 @@ export default function RCIPage() {
 
         <KeyTakeawayCard
           items={[
-            "RCI (Rack Cooling Index) ek percentage metric hai — kitne server racks ko ASHRAE recommended range (18–27°C) mein cool air mil rahi hai.",
-            "Target: > 91% = Excellent. 81–90% = Good. Below 70% = Poor — immediate action chahiye.",
-            "RHI (Return Heat Index) PAC/CRAC ko kitna hot return air mil raha hai measure karta hai. High RHI = less bypass air = good.",
-            "RCI low hone ke common causes: missing blanking panels, wrong floor tiles, no containment, insufficient cooling capacity.",
+            "RCI (Rack Cooling Index) is a percentage metric — how many server racks are getting cool air within the ASHRAE recommended range (18–27°C).",
+            "Target: > 91% = Excellent. 81–90% = Good. Below 70% = Poor — immediate action needed.",
+            "RHI (Return Heat Index) measures how much hot return air the PAC/CRAC is getting. High RHI = less bypass air = good.",
+            "Common causes of low RCI: missing blanking panels, wrong floor tiles, no containment, insufficient cooling capacity.",
             "Fix sequence: Blanking panels first → floor tile audit → containment check → capacity assessment.",
-            "DCIM software real-time RCI track karta hai. Bina DCIM ke quarterly manual mapping karo.",
-            "RCI aur PUE dono zaroori hain — cooling quality aur energy efficiency, dono monitor karo.",
+            "DCIM software tracks RCI in real time. Without DCIM, do quarterly manual mapping.",
+            "RCI and PUE are both essential — monitor both cooling quality and energy efficiency.",
           ]}
         />
 
@@ -1262,14 +1246,14 @@ export default function RCIPage() {
 
         <h2 style={S.h2}>Related Learning Topics</h2>
         <p style={S.p}>
-          RCI samajh aaya — cooling module complete hua. Ye sab topics ne milkar poora cooling picture diya:
+          You understand RCI — the cooling module is complete. All these topics together have given the full cooling picture:
         </p>
         <ul style={S.ul}>
-          <li style={S.li}><TopicLink slug="airflow-management" variant="inline" /> — RCI improve karne ka primary method — airflow optimize karo.</li>
-          <li style={S.li}><TopicLink slug="containment" variant="inline" /> — Hot/cold aisle containment — RCI ka sabse effective lever.</li>
-          <li style={S.li}><TopicLink slug="pac" variant="inline" /> — PAC aur CRAC — jo cool air deliver karte hain jisko RCI measure karta hai.</li>
-          <li style={S.li}><TopicLink slug="chiller" variant="inline" /> — Large data center cooling system — CRAH ke through RCI measure hota hai.</li>
-          <li style={S.li}><TopicLink slug="cooling-tower" variant="inline" /> — Chiller cooling chain ka heat rejection component.</li>
+          <li style={S.li}><TopicLink slug="airflow-management" variant="inline" /> — the primary method to improve RCI — optimize airflow.</li>
+          <li style={S.li}><TopicLink slug="containment" variant="inline" /> — hot/cold aisle containment — the most effective lever for RCI.</li>
+          <li style={S.li}><TopicLink slug="pac" variant="inline" /> — PAC and CRAC — which deliver the cool air that RCI measures.</li>
+          <li style={S.li}><TopicLink slug="chiller" variant="inline" /> — the large data center cooling system — RCI is measured through the CRAH.</li>
+          <li style={S.li}><TopicLink slug="cooling-tower" variant="inline" /> — the heat rejection component of the chiller cooling chain.</li>
         </ul>
       </ArticleLayout>
     </>

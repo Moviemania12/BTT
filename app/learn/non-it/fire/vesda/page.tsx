@@ -9,7 +9,7 @@ import TopicLink from "@/components/TopicLink";
 export const metadata: Metadata = {
   title: "VESDA — Very Early Smoke Detection in Data Centers | Behind The Tech",
   description:
-    "VESDA kya hota hai, kaise kaam karta hai, Data Center mein kyun zaroori hai — aspirating smoke detection, working principle, components, maintenance aur troubleshooting. Simple Hinglish mein.",
+    "What is VESDA, how does it work, why is it essential in a Data Center — aspirating smoke detection, working principle, components, maintenance and troubleshooting. In simple English.",
   keywords: [
     "vesda data center",
     "very early smoke detection",
@@ -20,8 +20,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "VESDA — Very Early Smoke Detection in Data Centers",
     description:
-      "Data Center fire protection ka pehla step — VESDA kaise kaam karta hai, normal smoke detector se kyun alag hai, aur ye kyun life-saving hai.",
+      "The first step of Data Center fire protection — how VESDA works, why it is different from a normal smoke detector, and why it is life-saving.",
     url: "https://behindthetech.in/learn/non-it/fire/vesda",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -30,9 +31,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VESDA Explained — Behind The Tech",
     description:
-      "Very Early Smoke Detection Apparatus — Data Center fire protection ka sabse important sensor system, simple language mein.",
+      "Very Early Smoke Detection Apparatus — the most important sensor system of Data Center fire protection, in simple language.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/fire/vesda" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/fire/vesda",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/fire/vesda",
+      hi: "https://behindthetech.in/hi/learn/non-it/fire/vesda",
+      "x-default": "https://behindthetech.in/learn/non-it/fire/vesda",
+    },
+  },
 };
 
 // ─── TOC headings ─────────────────────────────────────────────────────────────
@@ -86,28 +94,28 @@ const S = {
 function QuickSummary() {
   const pts = [
     {
-      label: "Ek line mein",
-      text: "VESDA ek aspirating smoke detection system hai jo pipe network ke through air actively sample karta hai aur fire se bahut pehle — mere ek cigarette ke dhuen se bhi pehle — smoke detect kar leta hai.",
+      label: "In one line",
+      text: "VESDA is an aspirating smoke detection system that actively samples air through a pipe network and detects smoke long before a fire — even before the smoke of a single cigarette.",
     },
     {
-      label: "Normal detector se alag kyun",
-      text: "Normal smoke detector wait karta hai jab tak smoke uske paas tak nahi pahunch jaata. VESDA khud air kheenchta hai aur test karta hai — kahin bhi smoke ho, chahiye wo kaafi chhota kyun na ho.",
+      label: "Why it is different from a normal detector",
+      text: "A normal smoke detector waits until the smoke reaches it. VESDA pulls in the air itself and tests it — wherever there is smoke, however small it may be.",
     },
     {
-      label: "Kaise kaam karta hai",
-      text: "Ceiling pe pipe network hota hai — chhote holes ke saath. Vacuum pump in holes se air sample kheenchta hai. Ye air laser chamber mein jaati hai jahan smoke particles detect hote hain.",
+      label: "How it works",
+      text: "There is a pipe network on the ceiling — with small holes. A vacuum pump pulls air samples through these holes. This air goes into a laser chamber where smoke particles are detected.",
     },
     {
-      label: "Data Center mein kahan",
-      text: "Server hall ki ceiling mein, raised floor ke neeche, UPS room mein, cable trays ke paas — har woh jagah jahan fire shuru ho sakti hai.",
+      label: "Where in a Data Center",
+      text: "In the server hall ceiling, under the raised floor, in the UPS room, near cable trays — every place where a fire can start.",
     },
     {
-      label: "Alarm kab bajta hai",
-      text: "VESDA ke 4 alarm levels hain — Alert, Action, Fire 1, Fire 2. Normal detector pe sirf ek alarm hota hai. Ye four-level system operations team ko early warning deta hai.",
+      label: "When the alarm sounds",
+      text: "VESDA has 4 alarm levels — Alert, Action, Fire 1, Fire 2. A normal detector has only one alarm. This four-level system gives the operations team early warning.",
     },
     {
-      label: "FM200 se connection",
-      text: "VESDA detect karta hai, FM200 ya Novec bujhaata hai. Dono milkar kaam karte hain. VESDA ki early detection se suppression system properly activate ho pata hai.",
+      label: "Connection with FM200",
+      text: "VESDA detects, FM200 or Novec extinguishes. The two work together. Because of VESDA's early detection, the suppression system is able to activate properly.",
     },
   ];
   return (
@@ -124,7 +132,7 @@ function QuickSummary() {
           ))}
         </div>
         <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid rgba(220,38,38,0.08)", fontFamily: "var(--font-body)", fontSize: 13, color: "#1f2937" }}>
-          Bas itna samajh gaye to VESDA ka concept clear hai. Aage poora article hai — working principle se testing tak.
+          If you have understood this much, the VESDA concept is clear. The full article is ahead — from working principle to testing.
         </div>
       </div>
     </div>
@@ -150,10 +158,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
 function EngineerTip({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", margin: "20px 0 24px" }}>
-      <div style={{ height: 2, background: "#ffa500" }} />
-      <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}>
-        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer Ki Tip</span>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
+      <div style={{ height: 2, background: "#ffa500" }} /> <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}> <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer's Tip</span> <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
       </div>
     </div>
   );
@@ -253,9 +258,9 @@ function FlowDiagram({ caption, steps }: { caption: string; steps: { icon: strin
 
 function AlarmLevelTable() {
   const rows = [
-    { level: "Alert",  threshold: "~0.005% obs/m",  meaning: "Mere shuruat — kuch toh hai", action: "Investigation karo. Koi urgency nahi abhi.", color: "#f59e0b" },
-    { level: "Action", threshold: "~0.02% obs/m",   meaning: "Smoke concentration badh rahi hai", action: "HVAC band karo. Investigation urgent.", color: "#f97316" },
-    { level: "Fire 1", threshold: "~0.05% obs/m",   meaning: "Fire probable hai", action: "Fire brigade call karo. Evacuation prepare.", color: "#dc2626" },
+    { level: "Alert",  threshold: "~0.005% obs/m",  meaning: "Just a beginning — something is there", action: "Investigate. No urgency yet.", color: "#f59e0b" },
+    { level: "Action", threshold: "~0.02% obs/m",   meaning: "Smoke concentration is rising", action: "Shut down HVAC. Investigation urgent.", color: "#f97316" },
+    { level: "Fire 1", threshold: "~0.05% obs/m",   meaning: "Fire is probable", action: "Call the fire brigade. Prepare evacuation.", color: "#dc2626" },
     { level: "Fire 2", threshold: "~0.2%+ obs/m",   meaning: "Fire confirmed", action: "Suppression activate. Full evacuation.", color: "#7f1d1d" },
   ];
   return (
@@ -327,28 +332,28 @@ function ComparisonTable() {
 
 const FAQS = [
   {
-    q: "VESDA ka full form kya hai?",
-    a: "VESDA = Very Early Smoke Detection Apparatus. Ye naam Xtralis company ka registered trademark hai jo is technology ki pioneer thi. Ab isko generic term ke roop mein bhi use karte hain aspirating smoke detection systems ke liye.",
+    q: "What is the full form of VESDA?",
+    a: "VESDA = Very Early Smoke Detection Apparatus. This name is a registered trademark of the Xtralis company, which was the pioneer of this technology. It is now also used as a generic term for aspirating smoke detection systems.",
   },
   {
-    q: "VESDA aur normal smoke detector mein sabse bada fark kya hai?",
-    a: "Normal detector passive hai — smoke aakar detector tak pahunche tab alarm bajta hai. VESDA active hai — pipe network ke zariye khud air sample karta hai aur bahut chhoti concentration mein bhi smoke detect karta hai. VESDA bahut pehle alert de sakta hai — actual lead time application, environment, aur fire type pe depend karta hai.",
+    q: "What is the biggest difference between VESDA and a normal smoke detector?",
+    a: "A normal detector is passive — the alarm sounds when smoke comes and reaches the detector. VESDA is active — it samples air itself through the pipe network and detects smoke even at a very small concentration. VESDA can give an alert much earlier — the actual lead time depends on the application, environment and fire type.",
   },
   {
-    q: "Data Center mein VESDA kitne zones mein lagaya jaata hai?",
-    a: "Typically alag zones mein — server hall, UPS room, battery room, raised floor plenum, cable vault, aur MDB room. Har zone ka apna detection coverage hota hai. Ek zone mein problem ho to doosre zones unaffected rehte hain.",
+    q: "In how many zones is VESDA installed in a Data Center?",
+    a: "Typically in separate zones — server hall, UPS room, battery room, raised floor plenum, cable vault and MDB room. Each zone has its own detection coverage. If there is a problem in one zone, the other zones remain unaffected.",
   },
   {
-    q: "VESDA false alarm kitna common hai?",
-    a: "Normal detectors se kaafi kam. VESDA intelligent filtering use karta hai — dust, humidity changes aur non-fire particles ko filter karta hai. Lekin pipe mein cracks, maintenance ke time contamination, ya AC duct se smoke entry — ye false alarm cause kar sakte hain.",
+    q: "How common are VESDA false alarms?",
+    a: "Much less than normal detectors. VESDA uses intelligent filtering — it filters out dust, humidity changes and non-fire particles. But cracks in the pipe, contamination during maintenance, or smoke entry from an AC duct — these can cause false alarms.",
   },
   {
-    q: "VESDA ko test karne ka sahi tarika kya hai?",
-    a: "Certified aerosol spray (smoke equivalent) pipe ke sample points mein inject karke. Real smoke ya cigarette use nahi karte — contamination aur calibration issues ho sakte hain. Test 6 monthly ya annually hota hai — fire consultant ke saath.",
+    q: "What is the right way to test VESDA?",
+    a: "By injecting a certified aerosol spray (smoke equivalent) into the sample points of the pipe. Real smoke or cigarettes are not used — they can cause contamination and calibration issues. The test is done 6-monthly or annually — with a fire consultant.",
   },
   {
-    q: "Agar VESDA fail ho jaye to kya karna chahiye?",
-    a: "Immediately backup smoke detectors active hain ya nahi verify karo. VESDA fault alarm BMS pe aayega — acknowledge karo aur technician call karo. VESDA offline rehne tak extra vigilance — physical rounds increase karo. Suppression system manually armed hai ya nahi check karo.",
+    q: "What should be done if VESDA fails?",
+    a: "Immediately verify whether the backup smoke detectors are active. A VESDA fault alarm will come on the BMS — acknowledge it and call a technician. Extra vigilance while VESDA is offline — increase physical rounds. Check whether the suppression system is manually armed.",
   },
 ];
 
@@ -381,24 +386,24 @@ export default function VESDAPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="vesda" headings={HEADINGS} readingTimeMinutes={20}>
+      <ArticleLayout slug="vesda" headings={HEADINGS} readingTimeMinutes={20} lang="en" alternateHref="/hi/learn/non-it/fire/vesda">
 
         {/* ── Intro ── */}
-        <p style={S.p}>Raat ke 2 baj rahe hain.</p>
+        <p style={S.p}>It is 2 AM.</p>
 
-        <p style={S.p}>Data Center mein koi nahi hai — sirf servers chal rahe hain.</p>
+        <p style={S.p}>There is nobody in the Data Center — only the servers are running.</p>
 
-        <p style={S.p}>Server room ke ek corner mein ek UPS unit ke andar ek capacitor slowly overheating ho raha hai.</p>
+        <p style={S.p}>In one corner of the server room, a capacitor inside a UPS unit is slowly overheating.</p>
 
-        <p style={S.p}>Abhi tak koi smoke nahi. Abhi tak koi flame nahi. Sirf ek bahut halki si smell — jo insaan feel bhi nahi kar sakta.</p>
+        <p style={S.p}>No smoke yet. No flame yet. Just a very faint smell — which a person cannot even sense.</p>
 
-        <p style={S.p}><strong>Lekin VESDA ne detect kar liya.</strong></p>
+        <p style={S.p}><strong>But VESDA detected it.</strong></p>
 
-        <p style={S.p}>Alert level 1 trigger hua. BMS pe notification aaya. On-call engineer ka phone baja.</p>
+        <p style={S.p}>Alert level 1 triggered. A notification came on the BMS. The on-call engineer's phone rang.</p>
 
-        <p style={S.p}>Engineer 20 minute mein site par tha. UPS room mein overheating capacitor mili. Problem fix ho gayi. Koi fire nahi huyi. Koi downtime nahi.</p>
+        <p style={S.p}>The engineer was on site in 20 minutes. An overheating capacitor was found in the UPS room. The problem was fixed. No fire happened. No downtime.</p>
 
-        <p style={S.p}><strong>Yahi hai VESDA ka kaam.</strong></p>
+        <p style={S.p}><strong>This is VESDA's job.</strong></p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -411,7 +416,7 @@ export default function VESDAPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            VESDA system — Data Center ceiling pe pipe network. Chhote sampling holes se air kheenchi jaati hai aur detector unit mein analyze hoti hai.
+            VESDA system — a pipe network on the Data Center ceiling. Air is pulled in through small sampling holes and analyzed in the detector unit.
           </figcaption>
         </figure>
 
@@ -424,17 +429,17 @@ export default function VESDAPage() {
 
         <p style={S.p}><strong>VESDA = Very Early Smoke Detection Apparatus.</strong></p>
 
-        <p style={S.p}>Ye ek aspirating smoke detection system hai.</p>
+        <p style={S.p}>It is an aspirating smoke detection system.</p>
 
-        <p style={S.p}>"Aspirating" ka matlab hai — air ko actively kheenchna (inhale karna).</p>
+        <p style={S.p}>"Aspirating" means — actively pulling in (inhaling) air.</p>
 
-        <p style={S.p}>Normal smoke detector baitta rehta hai aur wait karta hai ki smoke khud aakar usse touch kare.</p>
+        <p style={S.p}>A normal smoke detector just sits and waits for smoke to come and touch it on its own.</p>
 
-        <p style={S.p}>VESDA khud jaata hai — pipe network ke through puri jagah se air sample karta hai aur lab mein analyze karta hai.</p>
+        <p style={S.p}>VESDA goes itself — it samples air from the whole space through the pipe network and analyzes it in a lab.</p>
 
-        <p style={S.p}>Itna sensitive hai ki bahut low smoke concentration pe bhi — jo insaan feel nahi kar sakta — detect ho sakta hai.</p>
+        <p style={S.p}>It is so sensitive that it can detect even a very low smoke concentration — one that a person cannot sense.</p>
 
-        <p style={S.p}><strong>Data Centers mein ye life-saving technology hai.</strong></p>
+        <p style={S.p}><strong>In Data Centers this is life-saving technology.</strong></p>
 
         <DCMapNote components={["VESDA", "Fire Alarm Panel", "Suppression System", "BMS", "FM200 / Novec"]} />
 
@@ -443,23 +448,23 @@ export default function VESDAPage() {
         {/* ── Why Needed ── */}
         <h2 id="why-needed" style={S.h1}>Why Is VESDA Needed?</h2>
 
-        <p style={S.p}>Data Center mein fire bahut badi problem hai — sirf equipment loss ki wajah se nahi.</p>
+        <p style={S.p}>Fire is a very big problem in a Data Center — not only because of equipment loss.</p>
 
-        <p style={S.p}>Sochte hain kya hoga agar ek Tier III data center mein fire lag jaaye:</p>
+        <p style={S.p}>Let's think about what would happen if a fire started in a Tier III data center:</p>
 
         <ul style={S.ul}>
-          <li style={S.li}>Hazaron servers ek saath down — lakhs ya crores ka nuksaan</li>
+          <li style={S.li}>Thousands of servers down at once — a loss of lakhs or crores</li>
           <li style={S.li}>Client data inaccessible — SLA breach — legal consequences</li>
           <li style={S.li}>Recovery time — days to weeks</li>
           <li style={S.li}>Reputation damage — permanent</li>
         </ul>
 
-        <p style={S.p}>Isliye Data Center ka golden rule hai:</p>
+        <p style={S.p}>That is why the Data Center's golden rule is:</p>
 
-        <p style={S.p}><strong>Fire ko start hone se pehle hi detect karo.</strong></p>
+        <p style={S.p}><strong>Detect the fire before it even starts.</strong></p>
 
         <WhyThisMatters>
-          Data Center mein fire zyada dangerous isliye bhi hoti hai kyunki yahan kaafi combustible material hota hai — cables, PCBs, capacitors, plastic enclosures. Ye materials slow-burning hote hain aur bahut pehle se chemical smoke generate karte hain. Normal detector tab tak alarm nahi deta jab tak smoke visible na ho. VESDA is "pre-fire" stage mein hi detect kar leta hai.
+          Fire in a Data Center is also more dangerous because there is a lot of combustible material here — cables, PCBs, capacitors, plastic enclosures. These materials are slow-burning and generate chemical smoke well in advance. A normal detector does not alarm until the smoke is visible. VESDA detects it in this "pre-fire" stage itself.
         </WhyThisMatters>
 
         <hr style={S.divider} />
@@ -467,43 +472,43 @@ export default function VESDAPage() {
         {/* ── Problem Statement ── */}
         <h2 id="problem-statement" style={S.h1}>The Problem With Normal Smoke Detectors</h2>
 
-        <p style={S.p}>Ghar mein normal smoke detector kyun kaam nahi karta Data Center ke liye?</p>
+        <p style={S.p}>Why does a normal home smoke detector not work for a Data Center?</p>
 
-        <p style={S.p}>Samjhao ek simple example se:</p>
+        <p style={S.p}>Let me explain with a simple example:</p>
 
-        <p style={S.p}>Ghar mein roti jal jaaye to detector bajta hai — tabhi jab kaafi zyada smoke ho jaata hai.</p>
+        <p style={S.p}>At home, if a roti burns, the detector sounds — only when there is a lot of smoke.</p>
 
-        <p style={S.p}>Data Center mein humein isse kaafi pehle pata chahiye.</p>
+        <p style={S.p}>In a Data Center we need to know much earlier than that.</p>
 
         <InsightCard>
-          Normal point smoke detector ka sensitivity level typically 2-4% obscuration per meter hota hai. Matlab — smoke itna thick ho ki us se guzarne wali light ka 2-4% block ho jaye. High-sensitivity VESDA units 0.005% obscuration per meter pe detect kar sakte hain — point detectors ke typical thresholds (jo 2-4% ke aas paas ho sakte hain) se kaafi zyada sensitive. Exact ratio model, settings aur application pe depend karta hai. Key takeaway: VESDA bahut chhoti smoke concentration pe bhi detect kar sakta hai.
+          The sensitivity level of a normal point smoke detector is typically 2-4% obscuration per meter. That means — the smoke is so thick that 2-4% of the light passing through it is blocked. High-sensitivity VESDA units can detect at 0.005% obscuration per meter — much more sensitive than the typical thresholds of point detectors (which can be around 2-4%). The exact ratio depends on the model, settings and application. Key takeaway: VESDA can detect even a very small smoke concentration.
         </InsightCard>
 
-        <p style={S.p}>Normal detector ke problems:</p>
+        <p style={S.p}>Problems of a normal detector:</p>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Passive detection:</strong> Wait karta hai — probe nahi karta</li>
-          <li style={S.li}><strong>Low sensitivity:</strong> Tab detect karta hai jab smoke already kaafi zyada ho</li>
-          <li style={S.li}><strong>Point detection:</strong> Sirf ek jagah se detect karta hai — baaki jagah ka kya?</li>
-          <li style={S.li}><strong>Single alarm:</strong> Sirf ek level — fire. Koi warning nahi.</li>
-          <li style={S.li}><strong>Air flow problem:</strong> Data Center mein HVAC air circulation itna strong hota hai ki smoke detector tak pahunchne se pehle diluted ho jaata hai</li>
+          <li style={S.li}><strong>Passive detection:</strong> It waits — it does not probe</li>
+          <li style={S.li}><strong>Low sensitivity:</strong> It detects when there is already a lot of smoke</li>
+          <li style={S.li}><strong>Point detection:</strong> It detects from only one place — what about the rest?</li>
+          <li style={S.li}><strong>Single alarm:</strong> Only one level — fire. No warning.</li>
+          <li style={S.li}><strong>Air flow problem:</strong> In a Data Center the HVAC air circulation is so strong that smoke gets diluted before reaching the detector</li>
         </ul>
 
-        <p style={S.p}><strong>In sab problems ka solution = VESDA.</strong></p>
+        <p style={S.p}><strong>The solution to all these problems = VESDA.</strong></p>
 
         <hr style={S.divider} />
 
         {/* ── Working Principle ── */}
         <h2 id="working-principle" style={S.h1}>Working Principle</h2>
 
-        <p style={S.p}>VESDA ka kaam samajhna bahut aasaan hai.</p>
+        <p style={S.p}>Understanding how VESDA works is very easy.</p>
 
-        <p style={S.p}>Think of it as a very sensitive nose — jo puri building ki air constantly sungti rehti hai.</p>
+        <p style={S.p}>Think of it as a very sensitive nose — one that constantly keeps smelling the air of the whole building.</p>
 
         <FlowDiagram
-          caption="VESDA aspirating cycle — air sampling se alarm tak"
+          caption="VESDA aspirating cycle — from air sampling to alarm"
           steps={[
-            { icon: "🌬️", label: "Air Sample", sublabel: "Pipe holes se" },
+            { icon: "🌬️", label: "Air Sample", sublabel: "Through pipe holes" },
             { icon: "🔧", label: "Aspirator", sublabel: "Vacuum pump" },
             { icon: "🧹", label: "Filter", sublabel: "Dust hata do" },
             { icon: "🔴", label: "Laser Chamber", sublabel: "Smoke detect" },
@@ -512,42 +517,42 @@ export default function VESDAPage() {
         />
 
         <h3 style={S.h3}>Step 1 — Air Sampling</h3>
-        <p style={S.p}>Ceiling pe plastic pipes lagayi hoti hain. Har pipe mein chhote-chhote holes hote hain — sampling points.</p>
+        <p style={S.p}>Plastic pipes are installed on the ceiling. Every pipe has small holes — sampling points.</p>
 
-        <p style={S.p}>Ye holes carefully calculate ki gayi jagahon pe hote hain taaki poore room ki air evenly sampled ho.</p>
+        <p style={S.p}>These holes are at carefully calculated places so that the air of the whole room is evenly sampled.</p>
 
         <h3 style={S.h3}>Step 2 — Vacuum Pump (Aspirator)</h3>
-        <p style={S.p}>VESDA unit ke andar ek aspirator (vacuum pump) hota hai.</p>
+        <p style={S.p}>Inside the VESDA unit there is an aspirator (vacuum pump).</p>
 
-        <p style={S.p}>Ye pump continuously air kheenchta rehta hai — har sampling hole se thodi-thodi air.</p>
+        <p style={S.p}>This pump keeps pulling air continuously — a little air from every sampling hole.</p>
 
-        <p style={S.p}>Ye air pipe network ke through VESDA unit tak aati hai.</p>
+        <p style={S.p}>This air comes to the VESDA unit through the pipe network.</p>
 
         <h3 style={S.h3}>Step 3 — Filtration</h3>
-        <p style={S.p}>Air pehle filter se guzarti hai.</p>
+        <p style={S.p}>The air first passes through a filter.</p>
 
-        <p style={S.p}>Normal dust, insects, ya other particles yahan rok liye jaate hain.</p>
+        <p style={S.p}>Normal dust, insects or other particles are stopped here.</p>
 
-        <p style={S.p}>Sirf pure air (with any smoke particles) aage jaati hai.</p>
+        <p style={S.p}>Only pure air (with any smoke particles) goes ahead.</p>
 
         <h3 style={S.h3}>Step 4 — Laser Detection Chamber</h3>
-        <p style={S.p}>Yahan actual magic hoti hai.</p>
+        <p style={S.p}>This is where the actual magic happens.</p>
 
-        <p style={S.p}>Air ek high-sensitivity laser chamber mein se guzarti hai.</p>
+        <p style={S.p}>The air passes through a high-sensitivity laser chamber.</p>
 
-        <p style={S.p}>Laser beam continuously fire hoti rehti hai.</p>
+        <p style={S.p}>The laser beam keeps firing continuously.</p>
 
-        <p style={S.p}>Agar air mein koi smoke particle hai — even ek chhota sa — to laser ka scatter pattern change ho jaata hai.</p>
+        <p style={S.p}>If there is any smoke particle in the air — even a tiny one — the laser's scatter pattern changes.</p>
 
-        <p style={S.p}>Detector ye change pakad leta hai aur calculate karta hai obscuration level.</p>
+        <p style={S.p}>The detector catches this change and calculates the obscuration level.</p>
 
         <h3 style={S.h3}>Step 5 — Alarm Classification</h3>
-        <p style={S.p}>Obscuration level pre-set thresholds se compare hota hai.</p>
+        <p style={S.p}>The obscuration level is compared with pre-set thresholds.</p>
 
-        <p style={S.p}>Depending on level — Alert, Action, Fire 1, ya Fire 2 alarm trigger hota hai.</p>
+        <p style={S.p}>Depending on the level — an Alert, Action, Fire 1 or Fire 2 alarm is triggered.</p>
 
         <EngineerTip>
-          Laser chamber ko clean rakhna bahut important hai. Agar chamber ke andar dust accumulate ho jaye, to false alarms aa sakte hain ya system ki sensitivity drop ho sakti hai. Quarterly ya semi-annually laser chamber cleaning VESDA maintenance ka critical part hai.
+          Keeping the laser chamber clean is very important. If dust accumulates inside the chamber, false alarms can come or the system's sensitivity can drop. Quarterly or semi-annual laser chamber cleaning is a critical part of VESDA maintenance.
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -556,40 +561,40 @@ export default function VESDAPage() {
         <h2 id="main-components" style={S.h1}>Main Components</h2>
 
         <h3 style={S.h3}>1. Detector Unit (Main Unit)</h3>
-        <p style={S.p}>VESDA ka brain. Isme laser chamber, aspirator pump, filter, aur electronics sab hote hain.</p>
+        <p style={S.p}>The brain of VESDA. It contains the laser chamber, aspirator pump, filter and electronics.</p>
 
-        <p style={S.p}>Wall pe ya rack pe mount hoti hai — typically dedicated fire detection room mein ya server hall ke bahar.</p>
+        <p style={S.p}>It is mounted on a wall or a rack — typically in a dedicated fire detection room or outside the server hall.</p>
 
         <h3 style={S.h3}>2. Sampling Pipe Network</h3>
-        <p style={S.p}>Red colored plastic pipes — CPVC ya ABS material.</p>
+        <p style={S.p}>Red colored plastic pipes — CPVC or ABS material.</p>
 
-        <p style={S.p}>Ceiling pe ya raised floor ke neeche grid pattern mein lagayi jaati hain.</p>
+        <p style={S.p}>They are installed in a grid pattern on the ceiling or under the raised floor.</p>
 
-        <p style={S.p}>Har pipe mein sampling holes hote hain — typically 3mm diameter.</p>
+        <p style={S.p}>Every pipe has sampling holes — typically 3mm diameter.</p>
 
         <h3 style={S.h3}>3. Sampling Points / Capillaries</h3>
-        <p style={S.p}>Pipe ke holes hi sampling points hain.</p>
+        <p style={S.p}>The pipe's holes are the sampling points.</p>
 
-        <p style={S.p}>Coverage area ke hisaab se hole size aur spacing calculate ki jaati hai.</p>
+        <p style={S.p}>Hole size and spacing are calculated according to the coverage area.</p>
 
-        <p style={S.p}>Holes blocked nahi hone chahiye — cobwebs, dust, ya paint se.</p>
+        <p style={S.p}>Holes must not be blocked — by cobwebs, dust or paint.</p>
 
         <h3 style={S.h3}>4. Air Filter (Particulate Filter)</h3>
-        <p style={S.p}>Main unit ke andar hota hai.</p>
+        <p style={S.p}>It is inside the main unit.</p>
 
-        <p style={S.p}>Non-smoke particles filter karta hai — false alarms reduce karta hai.</p>
+        <p style={S.p}>It filters non-smoke particles — reduces false alarms.</p>
 
-        <p style={S.p}>Regular replacement zaroori hai — typically 6-12 months pe.</p>
+        <p style={S.p}>Regular replacement is essential — typically every 6-12 months.</p>
 
         <h3 style={S.h3}>5. Display Unit / Remote Display</h3>
-        <p style={S.p}>VESDA system ka status show karta hai — current alarm level, zone status, fault alerts.</p>
+        <p style={S.p}>It shows the VESDA system status — current alarm level, zone status, fault alerts.</p>
 
-        <p style={S.p}>Security desk pe ya NOC (Network Operations Center) mein lagta hai.</p>
+        <p style={S.p}>It is installed at the security desk or in the NOC (Network Operations Center).</p>
 
         <h3 style={S.h3}>6. Fire Alarm Panel Interface</h3>
-        <p style={S.p}>VESDA directly fire alarm panel se connect hota hai.</p>
+        <p style={S.p}>VESDA connects directly to the fire alarm panel.</p>
 
-        <p style={S.p}>Fire 1 ya Fire 2 pe — automatic suppression system trigger ho sakta hai.</p>
+        <p style={S.p}>On Fire 1 or Fire 2 — the automatic suppression system can be triggered.</p>
 
         <hr style={S.divider} />
 
@@ -607,38 +612,38 @@ export default function VESDAPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            VESDA red pipe network — server hall ki ceiling pe. Grid pattern mein pipes, har pipe pe regular intervals pe sampling holes.
+            VESDA red pipe network — on the server hall ceiling. Pipes in a grid pattern, sampling holes at regular intervals on every pipe.
           </figcaption>
         </figure>
 
-        <p style={S.p}>Data Center mein VESDA multiple zones mein lagaya jaata hai:</p>
+        <p style={S.p}>In a Data Center, VESDA is installed in multiple zones:</p>
 
         <h3 style={S.h3}>Zone 1 — Server Hall (Ceiling Level)</h3>
-        <p style={S.p}>Pipe network puri ceiling cover karta hai.</p>
+        <p style={S.p}>The pipe network covers the whole ceiling.</p>
 
-        <p style={S.p}>Sampling points typically har 6-9 square meters pe ek hota hai.</p>
+        <p style={S.p}>There is typically one sampling point every 6-9 square meters.</p>
 
-        <p style={S.p}>Strong HVAC airflow consider karke calculate kiya jaata hai.</p>
+        <p style={S.p}>It is calculated considering the strong HVAC airflow.</p>
 
         <h3 style={S.h3}>Zone 2 — Raised Floor Plenum</h3>
-        <p style={S.p}>Raised floor ke neeche bhi pipes hoti hain.</p>
+        <p style={S.p}>There are pipes under the raised floor too.</p>
 
-        <p style={S.p}>Cables, PDUs, aur floor-mounted equipment yahan hoti hai — fire risk area.</p>
+        <p style={S.p}>Cables, PDUs and floor-mounted equipment are here — a fire risk area.</p>
 
-        <p style={S.p}>Neeche smoke detect karna bahut important hai — normal detector yahan nahi pahunch sakta.</p>
+        <p style={S.p}>Detecting smoke down here is very important — a normal detector cannot reach here.</p>
 
         <h3 style={S.h3}>Zone 3 — UPS Room</h3>
-        <p style={S.p}>UPS equipment mein capacitors aur batteries hote hain — major fire risk.</p>
+        <p style={S.p}>UPS equipment has capacitors and batteries — a major fire risk.</p>
 
-        <p style={S.p}>Separate VESDA zone — server hall se independent.</p>
+        <p style={S.p}>A separate VESDA zone — independent of the server hall.</p>
 
         <h3 style={S.h3}>Zone 4 — Battery Room</h3>
-        <p style={S.p}>Lead-acid ya VRLA batteries hydrogen gas release kar sakti hain — explosive risk.</p>
+        <p style={S.p}>Lead-acid or VRLA batteries can release hydrogen gas — an explosive risk.</p>
 
-        <p style={S.p}>VESDA yahan bhi dedicated coverage deta hai.</p>
+        <p style={S.p}>VESDA gives dedicated coverage here too.</p>
 
         <InsightCard>
-          HVAC ka airflow VESDA ke liye ek challenge bhi hai aur advantage bhi. Challenge: smoke dilute ho jaata hai agar airflow strong ho. Advantage: air circulation help karta hai smoke particles ko sampling pipes tak pahunchane mein. Isliye VESDA pipe network HVAC airflow pattern ke hisaab se design kiya jaata hai — wind-tunnel effect ka use karte hain.
+          HVAC airflow is both a challenge and an advantage for VESDA. Challenge: smoke gets diluted if the airflow is strong. Advantage: air circulation helps carry smoke particles to the sampling pipes. That is why the VESDA pipe network is designed according to the HVAC airflow pattern — the wind-tunnel effect is used.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -646,16 +651,16 @@ export default function VESDAPage() {
         {/* ── Alarm Levels ── */}
         <h2 id="alarm-levels" style={S.h1}>Alarm Levels</h2>
 
-        <p style={S.p}>VESDA ki sabse important feature hai — <strong>four-level alarm system.</strong></p>
+        <p style={S.p}>The most important feature of VESDA is — <strong>the four-level alarm system.</strong></p>
 
-        <p style={S.p}>Normal detector: Ek level — Fire. Matlab jab detect hua tab tak bahut late ho chuka.</p>
+        <p style={S.p}>Normal detector: One level — Fire. Meaning, by the time it detects, it is already very late.</p>
 
-        <p style={S.p}>VESDA: Chaar levels — gradual warning jis se response time milta hai.</p>
+        <p style={S.p}>VESDA: Four levels — a gradual warning that gives response time.</p>
 
         <AlarmLevelTable />
 
         <EngineerTip>
-          Alert aur Action levels pe typically VESDA suppression trigger nahi karta — ye operations team ko investigate karne ka time deta hai. Higher alarm levels pe suppression release depend karta hai approved cause-and-effect logic, releasing panel design, aur detection arrangement pe. Ye site-specific design decision hai — always as-built drawings aur cause-and-effect chart dekho. Alert pe: "investigate first, suppress only when confirmed."
+          At the Alert and Action levels, VESDA typically does not trigger suppression — it gives the operations team time to investigate. At higher alarm levels, suppression release depends on the approved cause-and-effect logic, releasing panel design and detection arrangement. This is a site-specific design decision — always look at the as-built drawings and the cause-and-effect chart. At Alert: "investigate first, suppress only when confirmed."
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -664,54 +669,54 @@ export default function VESDAPage() {
         <h2 id="types" style={S.h1}>Types of VESDA Systems</h2>
 
         <h3 style={S.h3}>1. VESDA-E VEA (Economy Range)</h3>
-        <p style={S.p}>Basic aspirating detection. Small facilities ke liye.</p>
+        <p style={S.p}>Basic aspirating detection. For small facilities.</p>
 
-        <p style={S.p}>Ek pipe aur limited sampling points. Cost-effective.</p>
+        <p style={S.p}>One pipe and limited sampling points. Cost-effective.</p>
 
         <h3 style={S.h3}>2. VESDA LaserPLUS / VESDA-E VLP</h3>
         <p style={S.p}>Widely used model — high sensitivity, multiple pipe support, wide area coverage.</p>
 
-        <p style={S.p}>Note: Honeywell ke under product range evolve hoti rehti hai — current available models ke liye distributor se verify karo.</p>
+        <p style={S.p}>Note: The product range under Honeywell keeps evolving — verify currently available models with a distributor.</p>
 
         <h3 style={S.h3}>3. VESDA LaserSCANNER / Ultra-High Sensitivity Models</h3>
-        <p style={S.p}>Ultra-high sensitivity applications ke liye — clean rooms, museums, critical infrastructure.</p>
+        <p style={S.p}>For ultra-high sensitivity applications — clean rooms, museums, critical infrastructure.</p>
 
-        <p style={S.p}>High-criticality data center applications mein bhi use hota hai jahan maximum early warning zaroori ho.</p>
+        <p style={S.p}>It is also used in high-criticality data center applications where maximum early warning is essential.</p>
 
         <h3 style={S.h3}>4. Other Brands (VESDA-equivalent)</h3>
-        <p style={S.p}>VESDA originally Xtralis ka product hai ab Honeywell ke under hai.</p>
+        <p style={S.p}>VESDA was originally a Xtralis product and is now under Honeywell.</p>
 
         <p style={S.p}>Other brands: Siemens ASD, Fike FAAST, Kidde Argus, Hochiki ASD.</p>
 
-        <p style={S.p}>Same principle — aspirating smoke detection. VESDA sirf brand name hai.</p>
+        <p style={S.p}>Same principle — aspirating smoke detection. VESDA is just a brand name.</p>
 
         <hr style={S.divider} />
 
         {/* ── Installation ── */}
         <h2 id="installation" style={S.h1}>Installation</h2>
 
-        <p style={S.p}>VESDA installation ek specialized job hai.</p>
+        <p style={S.p}>VESDA installation is a specialized job.</p>
 
-        <p style={S.p}>Random jagah pipes lagaane se kaam nahi chalta — proper design zaroori hai.</p>
+        <p style={S.p}>Installing pipes at random places does not work — proper design is essential.</p>
 
         <h3 style={S.h3}>Design Considerations</h3>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Room dimensions:</strong> Length, width, height — sab matter karta hai pipe layout ke liye</li>
-          <li style={S.li}><strong>HVAC airflow:</strong> Air supply aur return points — smoke kahan drift karega</li>
-          <li style={S.li}><strong>Hot/cold aisles:</strong> Cold aisle mein smoke dilute hoga — pipe placement adjust karo</li>
-          <li style={S.li}><strong>Obstruction:</strong> Cable trays, ducting — pipe routing affect hoti hai</li>
-          <li style={S.li}><strong>Sampling transport time:</strong> Sampling hole se detector unit tak air ka travel time — typically 60-120 seconds range design mein target kiya jaata hai, but actual limit applicable standard aur manufacturer specification pe depend karta hai</li>
+          <li style={S.li}><strong>Room dimensions:</strong> Length, width, height — all matter for the pipe layout</li>
+          <li style={S.li}><strong>HVAC airflow:</strong> Air supply and return points — where the smoke will drift</li>
+          <li style={S.li}><strong>Hot/cold aisles:</strong> Smoke will be diluted in the cold aisle — adjust pipe placement</li>
+          <li style={S.li}><strong>Obstruction:</strong> Cable trays, ducting — pipe routing is affected</li>
+          <li style={S.li}><strong>Sampling transport time:</strong> The travel time of air from the sampling hole to the detector unit — a range of typically 60-120 seconds is targeted in design, but the actual limit depends on the applicable standard and manufacturer specification</li>
         </ul>
 
         <h3 style={S.h3}>Pipe Sizing Rules</h3>
-        <p style={S.p}>Pipes design software se calculate hoti hain — ASPIRE ya similar tools.</p>
+        <p style={S.p}>Pipes are calculated with design software — ASPIRE or similar tools.</p>
 
-        <p style={S.p}>Har sampling hole ka flow balanced hona chahiye — warna kuch areas zyada sensitive aur kuch less sensitive ho jaayenge.</p>
+        <p style={S.p}>The flow of every sampling hole must be balanced — otherwise some areas will become more sensitive and some less sensitive.</p>
 
-        <p style={S.p}>Pipe mein end cap lagani zaroori hai — transport time calculate karne ke liye.</p>
+        <p style={S.p}>An end cap must be installed on the pipe — to calculate transport time.</p>
 
         <WarningCard>
-          VESDA pipes kabhi bhi field mein randomly drill mat karo. Hole size, spacing aur pipe length — sab manufacturer ke software se calculate hone chahiye. Galat design mein kuch zones ka detection fail ho sakta hai — aur aapko pata bhi nahi chalega. Installation ke baad mandatory commissioning test hota hai — tabhi ye confirm hota hai ki system properly kaam kar raha hai.
+          Never drill VESDA pipes randomly in the field. Hole size, spacing and pipe length — all must be calculated with the manufacturer's software. In a wrong design, detection in some zones can fail — and you will not even know. A mandatory commissioning test is done after installation — only then is it confirmed that the system is working properly.
         </WarningCard>
 
         <hr style={S.divider} />
@@ -719,28 +724,28 @@ export default function VESDAPage() {
         {/* ── Monitoring ── */}
         <h2 id="monitoring" style={S.h1}>Monitoring</h2>
 
-        <p style={S.p}>VESDA 24×7 monitoring demand karta hai — ye critical life-safety system hai.</p>
+        <p style={S.p}>VESDA demands 24×7 monitoring — it is a critical life-safety system.</p>
 
         <h3 style={S.h3}>BMS Integration</h3>
-        <p style={S.p}>VESDA output directly BMS (Building Management System) se connect hota hai.</p>
+        <p style={S.p}>The VESDA output connects directly to the BMS (Building Management System).</p>
 
-        <p style={S.p}>Alarm levels real-time mein BMS dashboard pe show hote hain.</p>
+        <p style={S.p}>Alarm levels are shown in real time on the BMS dashboard.</p>
 
-        <p style={S.p}>On-call engineer ko SMS ya email alert jaata hai.</p>
+        <p style={S.p}>An SMS or email alert goes to the on-call engineer.</p>
 
         <h3 style={S.h3}>Fire Alarm Control Panel (FACP)</h3>
-        <p style={S.p}>Fire 1 aur Fire 2 signals FACP tak jaate hain.</p>
+        <p style={S.p}>Fire 1 and Fire 2 signals go to the FACP.</p>
 
-        <p style={S.p}>FACP approved cause-and-effect logic ke through suppression release signal de sakta hai — actual triggering arrangement system design aur AHJ approval pe depend karta hai.</p>
+        <p style={S.p}>The FACP can give the suppression release signal through approved cause-and-effect logic — the actual triggering arrangement depends on the system design and AHJ approval.</p>
 
-        <p style={S.p}>FACP se building evacuation alarm bhi bajta hai.</p>
+        <p style={S.p}>The building evacuation alarm also sounds from the FACP.</p>
 
         <h3 style={S.h3}>24×7 NOC Monitoring</h3>
-        <p style={S.p}>Serious data centers mein dedicated NOC hota hai.</p>
+        <p style={S.p}>Serious data centers have a dedicated NOC.</p>
 
-        <p style={S.p}>NOC screen pe VESDA status hamesha visible rehta hai.</p>
+        <p style={S.p}>The VESDA status is always visible on the NOC screen.</p>
 
-        <p style={S.p}>Koi bhi Alert level pe bhi NOC operator investigate karta hai — wait nahi karta.</p>
+        <p style={S.p}>Even at the Alert level, the NOC operator investigates — they do not wait.</p>
 
         <hr style={S.divider} />
 
@@ -748,15 +753,15 @@ export default function VESDAPage() {
         <h2 id="advantages" style={S.h1}>Advantages</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Very early detection:</strong> Early warning milti hai — actual lead time environment aur application pe depend karta hai</li>
-          <li style={S.li}><strong>High sensitivity:</strong> Point detectors se significantly zyada sensitive — exact ratio model aur settings pe depend karta hai</li>
-          <li style={S.li}><strong>Four alarm levels:</strong> Gradual warning — false suppression discharge se bachao</li>
-          <li style={S.li}><strong>Large area coverage:</strong> Ek unit se pura floor cover ho sakta hai</li>
-          <li style={S.li}><strong>Works in high airflow:</strong> HVAC ke strong airflow mein bhi effective</li>
-          <li style={S.li}><strong>Raised floor coverage:</strong> Normal detector jo area miss karta hai, VESDA wahan bhi deta hai</li>
+          <li style={S.li}><strong>Very early detection:</strong> Early warning is obtained — the actual lead time depends on the environment and application</li>
+          <li style={S.li}><strong>High sensitivity:</strong> Significantly more sensitive than point detectors — the exact ratio depends on the model and settings</li>
+          <li style={S.li}><strong>Four alarm levels:</strong> Gradual warning — avoids false suppression discharge</li>
+          <li style={S.li}><strong>Large area coverage:</strong> One unit can cover a whole floor</li>
+          <li style={S.li}><strong>Works in high airflow:</strong> Effective even in strong HVAC airflow</li>
+          <li style={S.li}><strong>Raised floor coverage:</strong> VESDA covers even the areas a normal detector misses</li>
           <li style={S.li}><strong>Remote monitoring:</strong> BMS integration — real-time visibility</li>
           <li style={S.li}><strong>Less false alarms:</strong> Intelligent filtering from point detectors</li>
-          <li style={S.li}><strong>Industry best practice:</strong> Tier III aur Tier IV level facilities mein widely used — specific requirement project, local code, AHJ aur design pe depend karta hai</li>
+          <li style={S.li}><strong>Industry best practice:</strong> Widely used in Tier III and Tier IV level facilities — the specific requirement depends on the project, local code, AHJ and design</li>
         </ul>
 
         <hr style={S.divider} />
@@ -765,13 +770,13 @@ export default function VESDAPage() {
         <h2 id="disadvantages" style={S.h1}>Disadvantages</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>High cost:</strong> Normal detectors se significantly mahanga — equipment + installation + commissioning</li>
-          <li style={S.li}><strong>Complex installation:</strong> Proper design zaroori — qualified installer hi kare</li>
-          <li style={S.li}><strong>Pipe maintenance:</strong> Pipes clean rakhni padti hain — blockage ya leakage detection fail karta hai</li>
-          <li style={S.li}><strong>Filter replacement:</strong> Regular filter change — maintenance cost ongoing hai</li>
-          <li style={S.li}><strong>Power dependent:</strong> VESDA ko continuous power chahiye — battery backup required</li>
-          <li style={S.li}><strong>Transport time delay:</strong> Remote sampling points se air aaने mein time lagta hai — instantaneous nahi hai</li>
-          <li style={S.li}><strong>Specialized technician:</strong> Maintenance ke liye trained specialist chahiye</li>
+          <li style={S.li}><strong>High cost:</strong> Significantly more expensive than normal detectors — equipment + installation + commissioning</li>
+          <li style={S.li}><strong>Complex installation:</strong> Proper design is essential — only a qualified installer should do it</li>
+          <li style={S.li}><strong>Pipe maintenance:</strong> Pipes have to be kept clean — blockage or leakage makes detection fail</li>
+          <li style={S.li}><strong>Filter replacement:</strong> Regular filter change — the maintenance cost is ongoing</li>
+          <li style={S.li}><strong>Power dependent:</strong> VESDA needs continuous power — battery backup required</li>
+          <li style={S.li}><strong>Transport time delay:</strong> Air takes time to come from remote sampling points — it is not instantaneous</li>
+          <li style={S.li}><strong>Specialized technician:</strong> A trained specialist is needed for maintenance</li>
         </ul>
 
         <hr style={S.divider} />
@@ -779,32 +784,32 @@ export default function VESDAPage() {
         {/* ── Maintenance ── */}
         <h2 id="maintenance" style={S.h1}>Maintenance</h2>
 
-        <p style={S.p}>VESDA ek fire safety system hai — iska maintenance life-critical hai.</p>
+        <p style={S.p}>VESDA is a fire safety system — its maintenance is life-critical.</p>
 
         <p style={S.p}><strong>Monthly checks:</strong></p>
         <ul style={S.ul}>
-          <li style={S.li}>VESDA unit ka display check karo — koi fault indicator hai?</li>
-          <li style={S.li}>Aspirator fan running hai ya nahi — sound check</li>
-          <li style={S.li}>Filter status indicator check karo</li>
-          <li style={S.li}>BMS pe VESDA points active hain?</li>
-          <li style={S.li}>Pipe sampling holes visually inspect karo — blocked toh nahi</li>
+          <li style={S.li}>Check the VESDA unit display — is there any fault indicator?</li>
+          <li style={S.li}>Is the aspirator fan running — sound check</li>
+          <li style={S.li}>Check the filter status indicator</li>
+          <li style={S.li}>Are the VESDA points active on the BMS?</li>
+          <li style={S.li}>Visually inspect the pipe sampling holes — are they blocked?</li>
         </ul>
 
         <p style={S.p}><strong>Quarterly checks:</strong></p>
         <ul style={S.ul}>
-          <li style={S.li}>Particulate filter inspect karo — replace if needed</li>
+          <li style={S.li}>Inspect the particulate filter — replace if needed</li>
           <li style={S.li}>Sampling pipes visual inspection — cracks, disconnections</li>
-          <li style={S.li}>All alarm levels verify karo — test aerosol use karke</li>
-          <li style={S.li}>BMS interface test karo — alarm received properly?</li>
-          <li style={S.li}>Suppression system interface test karo (with suppression isolated)</li>
+          <li style={S.li}>Verify all alarm levels — using test aerosol</li>
+          <li style={S.li}>Test the BMS interface — was the alarm received properly?</li>
+          <li style={S.li}>Test the suppression system interface (with suppression isolated)</li>
         </ul>
 
         <p style={S.p}><strong>Annual checks (by specialist):</strong></p>
         <ul style={S.ul}>
           <li style={S.li}>Full system commissioning re-test</li>
-          <li style={S.li}>Laser chamber cleaning aur calibration check</li>
-          <li style={S.li}>All pipe joints check karo — air leakage test</li>
-          <li style={S.li}>Transport time verification — har pipe ka</li>
+          <li style={S.li}>Laser chamber cleaning and calibration check</li>
+          <li style={S.li}>Check all pipe joints — air leakage test</li>
+          <li style={S.li}>Transport time verification — of every pipe</li>
           <li style={S.li}>Battery backup test</li>
           <li style={S.li}>Documentation update — maintenance log, as-built drawings</li>
         </ul>
@@ -814,31 +819,31 @@ export default function VESDAPage() {
         {/* ── Testing ── */}
         <h2 id="testing" style={S.h1}>Testing</h2>
 
-        <p style={S.p}>VESDA ka test karna mandatory hai — passive system nahi, active hai, toh prove karo ki kaam karta hai.</p>
+        <p style={S.p}>Testing VESDA is mandatory — it is not a passive system, it is active, so prove that it works.</p>
 
         <h3 style={S.h3}>Functional Test — Aerosol Method</h3>
-        <p style={S.p}>Certified smoke aerosol spray sampling pipe ke holes ke paas spray karo.</p>
+        <p style={S.p}>Spray certified smoke aerosol near the holes of the sampling pipe.</p>
 
-        <p style={S.p}>Check karo ki VESDA unit proper alarm level trigger karta hai.</p>
+        <p style={S.p}>Check that the VESDA unit triggers the proper alarm level.</p>
 
-        <p style={S.p}>BMS aur FACP tak signal pahuncha ya nahi — verify karo.</p>
+        <p style={S.p}>Verify whether the signal reached the BMS and FACP.</p>
 
         <h3 style={S.h3}>Transport Time Test</h3>
-        <p style={S.p}>Farthest sampling point pe aerosol spray karo.</p>
+        <p style={S.p}>Spray aerosol at the farthest sampling point.</p>
 
-        <p style={S.p}>Time measure karo — alarm trigger hone mein kitna waqt laga.</p>
+        <p style={S.p}>Measure the time — how long it took for the alarm to trigger.</p>
 
-        <p style={S.p}>Transport time applicable standard (e.g. AS 1851, BS EN 54-20) aur manufacturer spec ke according limit mein honi chahiye — typically 60-120 seconds range. Zyada ho to design review karo.</p>
+        <p style={S.p}>The transport time must be within the limit of the applicable standard (e.g. AS 1851, BS EN 54-20) and manufacturer spec — typically the 60-120 seconds range. If it is higher, review the design.</p>
 
         <h3 style={S.h3}>End-to-End Test (with Suppression Isolated)</h3>
-        <p style={S.p}>Suppression system ko isolated rakh ke full test karo.</p>
+        <p style={S.p}>Do the full test with the suppression system kept isolated.</p>
 
-        <p style={S.p}>VESDA → FACP → Suppression panel — signal flow verify karo.</p>
+        <p style={S.p}>VESDA → FACP → Suppression panel — verify the signal flow.</p>
 
-        <p style={S.p}>Ye test annual hona chahiye — certified fire contractor ke saath.</p>
+        <p style={S.p}>This test should be annual — with a certified fire contractor.</p>
 
         <WarningCard>
-          VESDA test ke time FM200 ya Novec suppression system ko ISOLATE karo — ya accidentally discharge ho jaayega. Ek FM200 cylinder discharge = lakhs ka loss + downtime. Test se pehle Operations team ko inform karo. Test log mein entry karo. Test ke baad suppression system RE-ARM karo aur confirm karo.
+          During a VESDA test, ISOLATE the FM200 or Novec suppression system — otherwise it will discharge accidentally. One FM200 cylinder discharge = a loss of lakhs + downtime. Inform the Operations team before the test. Make an entry in the test log. After the test, RE-ARM the suppression system and confirm it.
         </WarningCard>
 
         <hr style={S.divider} />
@@ -846,19 +851,19 @@ export default function VESDAPage() {
         {/* ── Standards ── */}
         <h2 id="standards" style={S.h1}>Standards</h2>
 
-        <p style={S.p}>VESDA installation aur maintenance globally accepted standards follow karta hai:</p>
+        <p style={S.p}>VESDA installation and maintenance follow globally accepted standards:</p>
 
         <ul style={S.ul}>
           <li style={S.li}><strong>BS EN 54-20:</strong> European standard for aspirating smoke detection systems</li>
           <li style={S.li}><strong>AS 1670.1:</strong> Australian standard — widely referenced in Asia-Pacific</li>
           <li style={S.li}><strong>NFPA 72:</strong> US standard — National Fire Alarm and Signaling Code</li>
           <li style={S.li}><strong>NBC (National Building Code) India:</strong> Fire protection requirements for commercial facilities</li>
-          <li style={S.li}><strong>Uptime Institute Tier Standards:</strong> Fire alarm aur early smoke detection zaroori — specific system type project requirements aur AHJ pe depend karta hai</li>
+          <li style={S.li}><strong>Uptime Institute Tier Standards:</strong> Fire alarm and early smoke detection are essential — the specific system type depends on project requirements and the AHJ</li>
           <li style={S.li}><strong>TIA-942:</strong> Data Center infrastructure standard — fire detection requirements</li>
         </ul>
 
         <InsightCard>
-          India mein NBC aur local fire NOC requirements follow karna mandatory hai. Kuch states mein aspirating smoke detection explicitly required hai for data centers above a certain capacity. Always local Fire Officer se guidelines verify karo before design — requirements state-to-state vary kar sakti hain.
+          In India, following the NBC and local fire NOC requirements is mandatory. In some states, aspirating smoke detection is explicitly required for data centers above a certain capacity. Always verify the guidelines with the local Fire Officer before design — requirements can vary from state to state.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -871,7 +876,7 @@ export default function VESDAPage() {
         <p style={S.p}><strong>VESDA design:</strong></p>
         <ul style={S.ul}>
           <li style={S.li}>Server hall ceiling: 4 VESDA units, 8 pipes each — full coverage</li>
-          <li style={S.li}>Raised floor plenum: 2 VESDA units — neeche ki coverage</li>
+          <li style={S.li}>Raised floor plenum: 2 VESDA units — coverage underneath</li>
           <li style={S.li}>UPS room: 1 VESDA unit — dedicated</li>
           <li style={S.li}>Battery room: 1 VESDA unit — dedicated</li>
           <li style={S.li}>MDB room: 1 VESDA unit — high electrical fire risk</li>
@@ -884,7 +889,7 @@ export default function VESDAPage() {
           <li style={S.li}>Fire 2 — Suppression release signal + evacuation alarm (as per approved C&E logic)</li>
         </ul>
 
-        <p style={S.p}><strong>Result:</strong> Is facility mein 3 saalon mein 4 early warnings aaye — teeno mein se ek bhi fire nahi bani. Engineers ne pehle hi problem fix kar li.</p>
+        <p style={S.p}><strong>Result:</strong> This facility had 4 early warnings in 3 years — not a single one became a fire. The engineers fixed the problem in advance.</p>
 
         <hr style={S.divider} />
 
@@ -899,47 +904,47 @@ export default function VESDAPage() {
         <h3 style={S.h3}>Mistake 2 — Filter Not Changed</h3>
         <p style={S.p}>Clogged filter → airflow drop → transport time increase → detection delay.</p>
 
-        <p style={S.p}>Filter change schedule BMS maintenance calendar mein daal do.</p>
+        <p style={S.p}>Put the filter change schedule into the BMS maintenance calendar.</p>
 
         <h3 style={S.h3}>Mistake 3 — Sampling Holes Blocked</h3>
-        <p style={S.p}>Paint, dust buildup, or physical obstruction holes band kar deta hai.</p>
+        <p style={S.p}>Paint, dust buildup or physical obstruction closes the holes.</p>
 
-        <p style={S.p}>Visual inspection quarterly — sampling holes open hain ya nahi.</p>
+        <p style={S.p}>Visual inspection quarterly — are the sampling holes open?</p>
 
         <h3 style={S.h3}>Mistake 4 — Test Not Done After Changes</h3>
-        <p style={S.p}>New rack add kiya, ceiling tile badla, cable tray moved — pipe disturb ho sakti hai.</p>
+        <p style={S.p}>A new rack was added, a ceiling tile was changed, a cable tray was moved — the pipe can be disturbed.</p>
 
-        <p style={S.p}>Har major change ke baad VESDA test mandatory karo.</p>
+        <p style={S.p}>Make a VESDA test mandatory after every major change.</p>
 
         <h3 style={S.h3}>Mistake 5 — Alarm Levels Not Set Correctly</h3>
-        <p style={S.p}>Default settings har facility ke liye suitable nahi hote.</p>
+        <p style={S.p}>Default settings are not suitable for every facility.</p>
 
-        <p style={S.p}>Commissioning engineer se site-specific threshold settings verify karo.</p>
+        <p style={S.p}>Verify site-specific threshold settings with the commissioning engineer.</p>
 
         <h3 style={S.h3}>Mistake 6 — Suppression Not Isolated During Test</h3>
         <p style={S.p}>Sabse costly mistake. Accidentally FM200 discharge → massive loss.</p>
 
-        <p style={S.p}>Har test se pehle suppression isolation procedure strictly follow karo.</p>
+        <p style={S.p}>Strictly follow the suppression isolation procedure before every test.</p>
 
         <hr style={S.divider} />
 
         {/* ── Interview Questions ── */}
         <h2 id="interview-questions" style={S.h1}>Interview Questions</h2>
 
-        <h3 style={S.h3}>Q1: VESDA ka full form kya hai aur ye kaise kaam karta hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> VESDA = Very Early Smoke Detection Apparatus. Ye aspirating smoke detection system hai. Pipe network ke through air actively sample karta hai, laser chamber mein analyze karta hai, aur point detectors se kaafi pehle smoke detect karta hai. Four alarm levels deta hai — Alert, Action, Fire 1, Fire 2.</p>
+        <h3 style={S.h3}>Q1: What is the full form of VESDA and how does it work?</h3>
+        <p style={S.p}><strong>Answer:</strong> VESDA = Very Early Smoke Detection Apparatus. It is an aspirating smoke detection system. It actively samples air through a pipe network, analyzes it in a laser chamber, and detects smoke much earlier than point detectors. It gives four alarm levels — Alert, Action, Fire 1, Fire 2.</p>
 
-        <h3 style={S.h3}>Q2: VESDA aur normal point smoke detector mein main difference kya hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Normal detector passive hai — wait karta hai smoke ke aane ka. VESDA active hai — khud air sample karta hai. Normal detector sirf ek point cover karta hai. VESDA pipe network se puri space cover karta hai. Sensitivity mein significant fark hota hai — exact ratio model aur application pe depend karta hai. Normal mein ek alarm level, VESDA mein four levels.</p>
+        <h3 style={S.h3}>Q2: What is the main difference between VESDA and a normal point smoke detector?</h3>
+        <p style={S.p}><strong>Answer:</strong> A normal detector is passive — it waits for the smoke to come. VESDA is active — it samples the air itself. A normal detector covers only one point. VESDA covers the whole space through the pipe network. There is a significant difference in sensitivity — the exact ratio depends on the model and application. A normal one has one alarm level, VESDA has four levels.</p>
 
-        <h3 style={S.h3}>Q3: Data Center mein VESDA kaun kaun si jagah lagaya jaata hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Server hall ceiling, raised floor plenum, UPS room, battery room, MDB room, cable vault — basically har jagah jahan fire risk hai aur normal detector effective nahi hoga.</p>
+        <h3 style={S.h3}>Q3: At which places is VESDA installed in a Data Center?</h3>
+        <p style={S.p}><strong>Answer:</strong> Server hall ceiling, raised floor plenum, UPS room, battery room, MDB room, cable vault — basically every place where there is fire risk and a normal detector will not be effective.</p>
 
-        <h3 style={S.h3}>Q4: VESDA Alert alarm pe kya action lena chahiye?</h3>
-        <p style={S.p}><strong>Answer:</strong> Alert level pe suppression activate nahi karte. Immediately investigate karo — affected zone mein jaake physical check karo. HVAC band karo zone-wise. If nothing found, monitor karte raho. Agar level badh ke Action tak jaaye to fire brigade alert karo.</p>
+        <h3 style={S.h3}>Q4: What action should be taken on a VESDA Alert alarm?</h3>
+        <p style={S.p}><strong>Answer:</strong> Suppression is not activated at the Alert level. Investigate immediately — go to the affected zone and do a physical check. Shut down HVAC zone-wise. If nothing is found, keep monitoring. If the level rises to Action, alert the fire brigade.</p>
 
-        <h3 style={S.h3}>Q5: VESDA test kaise karte hain?</h3>
-        <p style={S.p}><strong>Answer:</strong> Pehle FM200 / Novec suppression isolate karo. Certified smoke aerosol spray use karo sampling holes ke paas. Verify karo ki alarm properly trigger hua — VESDA unit, BMS, aur FACP pe. Transport time check karo. Test ke baad suppression system re-arm karo. Sab kuch log mein document karo.</p>
+        <h3 style={S.h3}>Q5: How is VESDA tested?</h3>
+        <p style={S.p}><strong>Answer:</strong> First isolate the FM200 / Novec suppression. Use certified smoke aerosol spray near the sampling holes. Verify that the alarm triggered properly — on the VESDA unit, BMS and FACP. Check the transport time. Re-arm the suppression system after the test. Document everything in the log.</p>
 
         <hr style={S.divider} />
 
@@ -954,14 +959,14 @@ export default function VESDAPage() {
         <h2 id="best-practices" style={S.h1}>Best Practices</h2>
 
         <ul style={S.ul}>
-          <li style={S.li}><strong>Zone-wise design karo:</strong> Ek bada zone mat banao — server hall, UPS, battery alag-alag zones mein hone chahiye</li>
-          <li style={S.li}><strong>BMS integration mandatory:</strong> VESDA sirf standalone nahi chalana chahiye — BMS pe real-time visibility zaroori hai</li>
-          <li style={S.li}><strong>Alert level pe investigate karo:</strong> Alert ko ignore mat karo — ye fire ka pehla signal hai</li>
-          <li style={S.li}><strong>Maintenance log maintain karo:</strong> Har test, filter change, cleaning — sab document karo</li>
-          <li style={S.li}><strong>Annual commissioning test karo:</strong> Certified contractor se — ye mandatory hai</li>
-          <li style={S.li}><strong>Pipe inspection quarterly:</strong> Blocked holes aur leaky joints detect karo</li>
-          <li style={S.li}><strong>Normal detectors bhi rakho:</strong> VESDA ke saath point detectors bhi — backup protection</li>
-          <li style={S.li}><strong>Alarm thresholds site-specific set karo:</strong> Default settings accept mat karo — commissioning engineer se verify karo</li>
+          <li style={S.li}><strong>Design zone-wise:</strong> Do not make one big zone — server hall, UPS and battery should be in separate zones</li>
+          <li style={S.li}><strong>BMS integration mandatory:</strong> VESDA should not run only standalone — real-time visibility on the BMS is essential</li>
+          <li style={S.li}><strong>Investigate at the Alert level:</strong> Do not ignore an Alert — it is the first signal of a fire</li>
+          <li style={S.li}><strong>Maintain a maintenance log:</strong> Every test, filter change, cleaning — document everything</li>
+          <li style={S.li}><strong>Do an annual commissioning test:</strong> With a certified contractor — this is mandatory</li>
+          <li style={S.li}><strong>Pipe inspection quarterly:</strong> Detect blocked holes and leaky joints</li>
+          <li style={S.li}><strong>Keep normal detectors too:</strong> Point detectors along with VESDA — backup protection</li>
+          <li style={S.li}><strong>Set alarm thresholds site-specifically:</strong> Do not accept default settings — verify with the commissioning engineer</li>
         </ul>
 
         <hr style={S.divider} />
@@ -970,13 +975,13 @@ export default function VESDAPage() {
         <h2 id="key-takeaways" style={S.h1}>Key Takeaways</h2>
 
         <KeyTakeawayCard items={[
-          "VESDA = Very Early Smoke Detection Apparatus — pipe network se air sample karke laser chamber mein analyze karta hai.",
-          "Point detectors se significantly zyada sensitive — bahut chhoti smoke concentration pe detect kar sakta hai. Lead time application aur environment pe depend karta hai.",
-          "Chaar alarm levels: Alert → Action → Fire 1 → Fire 2. Gradual warning operations team ko response time deti hai.",
-          "Data Center mein multiple zones: server hall ceiling, raised floor, UPS room, battery room — har jagah coverage.",
-          "Maintenance critical hai — pipes, filter, laser chamber sab clean rehne chahiye warna detection fail ho sakti hai.",
-          "Test se pehle suppression isolate karo — ye rule kabhi break mat karo.",
-          "VESDA detect karta hai, FM200 ya Novec bujhaata hai — dono milkar complete fire protection system banate hain.",
+          "VESDA = Very Early Smoke Detection Apparatus — it samples air through a pipe network and analyzes it in a laser chamber.",
+          "Significantly more sensitive than point detectors — it can detect a very small smoke concentration. Lead time depends on the application and environment.",
+          "Four alarm levels: Alert → Action → Fire 1 → Fire 2. The gradual warning gives the operations team response time.",
+          "Multiple zones in a Data Center: server hall ceiling, raised floor, UPS room, battery room — coverage everywhere.",
+          "Maintenance is critical — pipes, filter and laser chamber must all stay clean, otherwise detection can fail.",
+          "Isolate suppression before a test — never break this rule.",
+          "VESDA detects, FM200 or Novec extinguishes — together they make a complete fire protection system.",
         ]} />
 
         <hr style={S.divider} />
@@ -989,12 +994,12 @@ export default function VESDAPage() {
 
         {/* ── Related Topics ── */}
         <h2 style={S.h2}>Related Learning Topics</h2>
-        <p style={S.p}>VESDA ne smoke detect kar liya. Ab aage jaante hain kaise fire bujhaaya jaata hai:</p>
+        <p style={S.p}>VESDA has detected the smoke. Now let's learn how the fire is extinguished:</p>
         <ul style={S.ul}>
-          <li style={S.li}><TopicLink slug="fm200" variant="inline" /> — VESDA ke baad trigger hone wala suppression system. Data Centers mein sabse common clean agent.</li>
-          <li style={S.li}><TopicLink slug="novec-1250" variant="inline" /> — FM200 ka environmental-friendly alternative. Next-gen suppression.</li>
-          <li style={S.li}><TopicLink slug="sprinkler" variant="inline" /> — Water-based fire suppression — Data Center mein kaise use hota hai special design se.</li>
-          <li style={S.li}><TopicLink slug="hydrant" variant="inline" /> — Building-level fire fighting system — external fire brigade ke liye.</li>
+          <li style={S.li}><TopicLink slug="fm200" variant="inline" /> — the suppression system triggered after VESDA. The most common clean agent in Data Centers.</li>
+          <li style={S.li}><TopicLink slug="novec-1250" variant="inline" /> — an environment-friendly alternative to FM200. Next-gen suppression.</li>
+          <li style={S.li}><TopicLink slug="sprinkler" variant="inline" /> — water-based fire suppression — how it is used in a Data Center with a special design.</li>
+          <li style={S.li}><TopicLink slug="hydrant" variant="inline" /> — the building-level fire fighting system — for the external fire brigade.</li>
         </ul>
 
       </ArticleLayout>

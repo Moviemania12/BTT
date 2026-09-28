@@ -10,18 +10,11 @@ export default function Basics() {
       <h2 id="what-is-vms" style={S.h2}>What Is Visitor Management?</h2>
 
       <p style={S.p}>
-        Visitor Management System (referred to here as "visitor management system" or the system, to distinguish from Video Management System/VMS used elsewhere on this platform) wo process aur technology hai jo data center mein aane wale
-        non-employees — vendors, contractors, client representatives, auditors, delivery personnel —
-        ko systematically register, verify, authorize, monitor aur track karta hai. Ek structured visitor management system
-        ensure karta hai ki koi bhi visitor facility mein enter kare to pehle identity verified ho,
-        host approved ho, temporary access provisioned ho aur sab kuch auditable record mein ho.
+        A Visitor Management System (referred to here as "visitor management system" or the system, to distinguish from Video Management System/VMS used elsewhere on this platform) is the process and technology that systematically registers, verifies, authorizes, monitors and tracks non-employees coming into the data center — vendors, contractors, client representatives, auditors, delivery personnel. A structured visitor management system ensures that before any visitor enters the facility, their identity is verified, the host has approved, temporary access is provisioned and everything is in an auditable record.
       </p>
 
       <p style={S.p}>
-        Paper-based sign-in registers se digital visitor management system fundamentally different hai ki ye <TopicLink slug="access-control" variant="inline" /> ke
-        saath integrate hota hai — visitor ko actual temporary credential milti hai jisse specific
-        doors pe specific time window mein access milta hai. Visit complete hone pe ya time expire
-        hone pe credential automatically revoke ho jaata hai.
+        A digital visitor management system is fundamentally different from paper-based sign-in registers in that it integrates with <TopicLink slug="access-control" variant="inline" /> — the visitor gets an actual temporary credential that gives access to specific doors in a specific time window. When the visit is complete or the time expires, the credential is automatically revoked.
       </p>
 
       <figure style={{ margin: "2rem 0" }}>
@@ -36,41 +29,28 @@ export default function Basics() {
           />
         </div>
         <figcaption style={{ fontSize: "0.85rem", color: "#4b5563", marginTop: "0.6rem", textAlign: "center", fontStyle: "italic" }}>
-          Data Center visitor management — reception kiosk, ID verification aur badge printing station.
+          Data Center visitor management — reception kiosk, ID verification and badge printing station.
         </figcaption>
       </figure>
 
       <h2 id="why-required" style={S.h2}>Why Visitor Management Is Required in a Data Center</h2>
 
       <p style={S.p}>
-        Employees relatively stable population hain — permanent credentials, trained, background
-        checked. Visitors different category hain — unfamiliar with facility, varied purposes, potentially
-        unknown risk level. Without structured visitor management, a facility cannot account for who is
-        inside at any given time, cannot demonstrate controlled access to auditors, aur cannot revoke
-        access precisely when a visit ends.
+        Employees are a relatively stable population — permanent credentials, trained, background checked. Visitors are a different category — unfamiliar with the facility, varied purposes, potentially unknown risk level. Without structured visitor management, a facility cannot account for who is inside at any given time, cannot demonstrate controlled access to auditors, and cannot revoke access precisely when a visit ends.
       </p>
 
       <p style={S.p}>
-        Compliance requirements specifically visitor controls address karte hain. ISO 27001 physical
-        security controls mein visitor access management included hai. PCI-DSS Requirement 9 visitor
-        identification aur escort requirements specify karta hai. Client contracts often specific visitor
-        process requirements define karte hain. Actual requirements applicable framework aur client
-        pe depend karte hain — verify karo.
+        Compliance requirements specifically address visitor controls. Visitor access management is included in ISO 27001 physical security controls. PCI-DSS Requirement 9 specifies visitor identification and escort requirements. Client contracts often define specific visitor process requirements. Actual requirements depend on the applicable framework and client — verify them.
       </p>
 
-      <Callout type="important" title="Visitor Accountability — Har Moment Mein">
-        Compliance audit mein ek common question: "Right now, who is in your data center?" Ek robust visitor management system
-        real-time dashboard pe active visitors show karta hai — name, host, areas, arrival time. Without
-        VMS, ye question paper log se answer karna difficult aur unreliable hota hai.
+      <Callout type="important" title="Visitor Accountability — At Every Moment">
+        A common question in a compliance audit: "Right now, who is in your data center?" A robust visitor management system shows active visitors on a real-time dashboard — name, host, areas, arrival time. Without a VMS, answering this question from a paper log is difficult and unreliable.
       </Callout>
 
       <h2 id="visitor-lifecycle" style={S.h2}>Visitor Lifecycle — End-to-End</h2>
 
       <p style={S.p}>
-        Visitor lifecycle ka flow: <strong>Pre-registration → Approval → On-site arrival → Identity
-        verification → Badge/credential issue → Escort → Supervised access → Check-out → Credential
-        expiry → Audit record retention.</strong> Har step mein gap security risk ya compliance gap
-        create karta hai.
+        The flow of the visitor lifecycle: <strong>Pre-registration → Approval → On-site arrival → Identity verification → Badge/credential issue → Escort → Supervised access → Check-out → Credential expiry → Audit record retention.</strong> A gap at any step creates a security risk or compliance gap.
       </p>
 
       <ComparisonTable
@@ -90,34 +70,21 @@ export default function Basics() {
       <h2 id="pre-registration" style={S.h2}>Pre-Registration and Approval Workflow</h2>
 
       <p style={S.p}>
-        Pre-registration advance notice deta hai — security team ready hoti hai, host available hoti
-        hai, aur credential pre-provisioned hoti hai. Host employee system portal mein visitor details
-        submit karta hai: visitor name, company, government ID type, purpose, expected time, areas to
-        be visited. Approval workflow — manager ya security team — visit approve ya reject karta hai.
-        Pre-approved visitors faster on-site registration process se guzarte hain.
+        Pre-registration gives advance notice — the security team is ready, the host is available, and the credential is pre-provisioned. The host employee submits visitor details in the system portal: visitor name, company, government ID type, purpose, expected time, areas to be visited. The approval workflow — manager or security team — approves or rejects the visit. Pre-approved visitors go through a faster on-site registration process.
       </p>
 
       <p style={S.p}>
-        Walk-in visitors — bina prior registration ke — longer process require karte hain: host contact
-        karo, confirm karo, approval get karo, phir registration. Walk-ins security risk higher hote
-        hain — advance verification possible nahi thi. Data center policy mein walk-in visitors ke
-        liye stricter controls define karo.
+        Walk-in visitors — without prior registration — require a longer process: contact the host, confirm, get approval, then registration. Walk-ins carry a higher security risk — advance verification was not possible. Define stricter controls for walk-in visitors in the data center policy.
       </p>
 
       <h2 id="on-site-registration" style={S.h2}>On-Site Registration and Identity Verification</h2>
 
       <p style={S.p}>
-        Arrival pe reception desk ya self-service kiosk pe registration hoti hai. Government ID —
-        Aadhaar, passport, driving license — scan ya manual entry. Photo capture — visitor ka. Vehicle
-        details agar applicable. NDA ya safety briefing acknowledgment if required. Host notification
-        — automatic alert jata hai host ko.
+        On arrival, registration happens at the reception desk or a self-service kiosk. Government ID — Aadhaar, passport, driving license — scan or manual entry. Photo capture — of the visitor. Vehicle details if applicable. NDA or safety briefing acknowledgment if required. Host notification — an automatic alert goes to the host.
       </p>
 
       <p style={S.p}>
-        Identity verification level site policy pe depend karta hai — basic ID check from manual
-        inspection to automated ID document verification software. Biometric capture (photo comparison)
-        advanced deployments mein. Visitor data system database mein store hota hai — retention
-        policy ke hisaab se.
+        The identity verification level depends on site policy — from a basic ID check by manual inspection to automated ID document verification software. Biometric capture (photo comparison) in advanced deployments. Visitor data is stored in the system database — according to the retention policy.
       </p>
 
       <figure style={{ margin: "2rem 0" }}>

@@ -9,7 +9,7 @@ export default function EmsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="ems" headings={HEADINGS} readingTimeMinutes={20}>
+      <ArticleLayout slug="ems" headings={HEADINGS} readingTimeMinutes={20} lang="en" alternateHref="/hi/learn/non-it/bms-dcim/ems">
         <Basics />
         <MetersAndKPIs />
         <TroubleshootingAndClosing />

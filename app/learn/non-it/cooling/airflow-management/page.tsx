@@ -6,11 +6,18 @@ import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
   title: "Airflow Management in Data Centers — Complete Guide | Behind The Tech",
-  description: "Data Center mein airflow management kaise karte hain — hot/cold aisle, blanking panels, raised floor, perforated tiles, bypass air, recirculation — complete practical guide.",
+  description: "How airflow management is done in a Data Center — hot/cold aisle, blanking panels, raised floor, perforated tiles, bypass air, recirculation — complete practical guide.",
   keywords: ["airflow management data center", "data center airflow", "cold aisle hot aisle", "bypass air data center", "perforated tiles raised floor"],
-  openGraph: { title: "Airflow Management in Data Centers", description: "Cool air sahi jagah kaise pahunche — complete airflow management guide.", url: "https://behindthetech.in/learn/non-it/cooling/airflow-management", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
+  openGraph: { title: "Airflow Management in Data Centers", description: "How cool air reaches the right place — complete airflow management guide.", url: "https://behindthetech.in/learn/non-it/cooling/airflow-management", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
   twitter: { card: "summary_large_image", title: "Airflow Management — Behind The Tech", description: "Data Center airflow management — practical guide." },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/cooling/airflow-management" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/cooling/airflow-management",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/cooling/airflow-management",
+      hi: "https://behindthetech.in/hi/learn/non-it/cooling/airflow-management",
+      "x-default": "https://behindthetech.in/learn/non-it/cooling/airflow-management",
+    },
+  },
 };
 
 const HEADINGS: ArticleHeading[] = [
@@ -51,12 +58,12 @@ const S = {
 
 function QuickSummary() {
   const pts = [
-    { label: "Ek line mein", text: "Airflow management ensure karta hai ki cool air efficiently servers tak pahunche aur hot air PAC/CRAC tak wapas aaye — bina mixing ke." },
-    { label: "Three enemies", text: "Bypass air (cool air servers tak pahunche bina return), recirculation (hot air wapas server intake pe), aur hot spots (specific areas mein excessive heat) — ye teeno airflow problems hain." },
-    { label: "Primary tools", text: "Blanking panels (rack gaps seal karo), perforated floor tiles (cool air delivery), solid floor tiles (hot areas block karo), containment (aisle separation), cable management (airflow mat rokne do)." },
-    { label: "Pressure concept", text: "Raised floor plenum mein positive pressure hoti hai — cool air tiles se upar push hoti hai. Server ke andar front-to-back pressure differential hai — server fan ye create karta hai." },
-    { label: "Hot spot kya hai", text: "Ek specific rack ya location jahan temperature recommended range se upar jaati hai. Cause: poor airflow, bypass air, recirculation, high density. Ye ek red flag hai." },
-    { label: "Measurement", text: "Temperature mapping karo — cold aisle, hot aisle, per rack inlet temperatures measure karo. CFD (Computational Fluid Dynamics) modeling bhi use hota hai — airflow visualize karne ke liye." },
+    { label: "In one line", text: "Airflow management ensures that cool air reaches the servers efficiently and hot air comes back to the PAC/CRAC — without mixing." },
+    { label: "Three enemies", text: "Bypass air (cool air returns without reaching the servers), recirculation (hot air comes back to the server intake), and hot spots (excessive heat in specific areas) — these three are airflow problems." },
+    { label: "Primary tools", text: "Blanking panels (seal rack gaps), perforated floor tiles (cool air delivery), solid floor tiles (block hot areas), containment (aisle separation), cable management (do not let it block airflow)." },
+    { label: "Pressure concept", text: "There is positive pressure in the raised floor plenum — cool air is pushed up through the tiles. Inside the server there is a front-to-back pressure differential — the server fan creates it." },
+    { label: "What a hot spot is", text: "A specific rack or location where the temperature goes above the recommended range. Cause: poor airflow, bypass air, recirculation, high density. It is a red flag." },
+    { label: "Measurement", text: "Do temperature mapping — measure cold aisle, hot aisle and per rack inlet temperatures. CFD (Computational Fluid Dynamics) modeling is also used — to visualize airflow." },
   ];
   return (
     <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", margin: "8px 0 32px" }}>
@@ -91,10 +98,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
 function EngineerTip({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", margin: "20px 0 24px" }}>
-      <div style={{ height: 2, background: "#ffa500" }} />
-      <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}>
-        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer Ki Tip</span>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
+      <div style={{ height: 2, background: "#ffa500" }} /> <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}> <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer's Tip</span> <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
       </div>
     </div>
   );
@@ -169,12 +173,12 @@ function FlowDiagram({ caption, steps }: { caption: string; steps: { icon: strin
 }
 
 const FAQS = [
-  { q: "Bypass air kya hai aur kaise rokein?", a: "Bypass air = cool air jo servers tak pahunche bina PAC/CRAC return mein chali jaati hai. Waste of cooling energy. Causes: excess floor tiles in wrong places, gaps under racks, cable openings unsealed. Fix: Proper tile placement, seal all gaps, blanking panels, raised floor grommets." },
-  { q: "Recirculation kya hai aur kyo dangerous hai?", a: "Recirculation = hot exhaust air jo server intake pe wapas aata hai. Causes: missing blanking panels, wrong rack orientation, no containment. Impact: Server inlet temperature badhti hai — thermal throttling ya shutdown. Fix: Blanking panels, containment, correct rack orientation." },
-  { q: "Hot spot kaise identify karte hain?", a: "Temperature mapping se — cold aisle front pe har rack ke inlet temperature measure karo. ASHRAE guidelines: 18-27°C range. Agar koi rack 28°C+ show kare, hot spot hai. Tools: DCIM temperature sensors, IR thermometer, CFD modeling. Regular thermal survey zaroori hai." },
-  { q: "Perforated floor tile kahan lagaate hain?", a: "Sirf cold aisle mein — directly server rack ke saamne. Hot aisle mein solid tiles. PAC/CRAC ke saamne solid tiles (warna cool air bypass hoga return ke bina). Racks ke under — grommet seal karo. Openness factor: 25% ya 56% perforated tiles available — high density ke liye higher openness." },
-  { q: "CFD modeling kya hoti hai?", a: "CFD = Computational Fluid Dynamics. Computer simulation jo data center mein airflow visualize karta hai. 3D model banao — racks, PAC units, floor tiles sab include karo. Software calculate karta hai air velocity, temperature, pressure everywhere. Hot spots predict karo before physical changes. Large data centers mein commonly used." },
-  { q: "Cable management airflow ko kaise affect karta hai?", a: "Poor cable management rack ke andar airflow block karta hai. Cable bundles evaporator coil jaisi hoti hain — air ruk jaati hai. Horizontal cable management vertical se better hota hai airflow ke liye. Cable ties se cables organize karo, excessive slack eliminate karo. Airflow-optimized cable management available hai." },
+  { q: "What is bypass air and how can it be stopped?", a: "Bypass air = cool air that goes into the PAC/CRAC return without reaching the servers. A waste of cooling energy. Causes: excess floor tiles in wrong places, gaps under racks, cable openings unsealed. Fix: Proper tile placement, seal all gaps, blanking panels, raised floor grommets." },
+  { q: "What is recirculation and why is it dangerous?", a: "Recirculation = hot exhaust air that comes back to the server intake. Causes: missing blanking panels, wrong rack orientation, no containment. Impact: Server inlet temperature rises — thermal throttling or shutdown. Fix: Blanking panels, containment, correct rack orientation." },
+  { q: "How is a hot spot identified?", a: "Through temperature mapping — measure the inlet temperature of every rack at the cold aisle front. ASHRAE guidelines: 18-27°C range. If any rack shows 28°C+, it is a hot spot. Tools: DCIM temperature sensors, IR thermometer, CFD modeling. A regular thermal survey is essential." },
+  { q: "Where are perforated floor tiles installed?", a: "Only in the cold aisle — directly in front of the server rack. Solid tiles in the hot aisle. Solid tiles in front of the PAC/CRAC (otherwise cool air will bypass back to the return). Under racks — seal with grommets. Openness factor: 25% or 56% perforated tiles are available — higher openness for high density." },
+  { q: "What is CFD modeling?", a: "CFD = Computational Fluid Dynamics. A computer simulation that visualizes airflow in the data center. Build a 3D model — include racks, PAC units, floor tiles, everything. The software calculates air velocity, temperature and pressure everywhere. Predict hot spots before physical changes. Commonly used in large data centers." },
+  { q: "How does cable management affect airflow?", a: "Poor cable management blocks airflow inside the rack. Cable bundles act like an evaporator coil — the air gets stopped. Horizontal cable management is better than vertical for airflow. Organize cables with cable ties, eliminate excessive slack. Airflow-optimized cable management is available." },
 ];
 
 function FAQSection() {
@@ -200,19 +204,19 @@ export default function AirflowManagementPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="airflow-management" headings={HEADINGS} readingTimeMinutes={17}>
+      <ArticleLayout slug="airflow-management" headings={HEADINGS} readingTimeMinutes={17} lang="en" alternateHref="/hi/learn/non-it/cooling/airflow-management">
 
-        <p style={S.p}>PAC cool air deliver karta hai. Good.</p>
-        <p style={S.p}>Lekin kya ye cool air actually servers tak pahunch rahi hai — sahi direction mein, sahi quantity mein?</p>
-        <p style={S.p}>Ya kya ye cool air room mein hi chakkar laga rahi hai — servers ko bypass karke?</p>
-        <p style={S.p}>Ya kya kuch servers hot air exhaust inhale kar rahe hain — recirculation ki wajah se?</p>
-        <p style={S.p}><strong>Airflow management in sab problems solve karta hai — cool air ko sahi jagah, sahi waqt, sahi quantity mein deliver karta hai.</strong></p>
+        <p style={S.p}>The PAC delivers cool air. Good.</p>
+        <p style={S.p}>But is this cool air actually reaching the servers — in the right direction, in the right quantity?</p>
+        <p style={S.p}>Or is this cool air just circling around the room — bypassing the servers?</p>
+        <p style={S.p}>Or are some servers inhaling hot exhaust air — because of recirculation?</p>
+        <p style={S.p}><strong>Airflow management solves all these problems — it delivers cool air to the right place, at the right time, in the right quantity.</strong></p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
             <Image src="/images/articles/airflow-management/data-center-airflow-diagram.png" alt="Data center airflow management diagram showing cold and hot air paths" fill sizes="(max-width: 768px) 100vw, 740px" style={{ objectFit: "cover" }} />
           </div>
-          <figcaption style={S.imageCaption}>Proper airflow management — cool air (blue) servers ke through, hot air (red) clearly separated aur PAC return mein.</figcaption>
+          <figcaption style={S.imageCaption}>Proper airflow management — cool air (blue) through the servers, hot air (red) clearly separated and into the PAC return.</figcaption>
         </figure>
 
         <QuickSummary />
@@ -221,19 +225,19 @@ export default function AirflowManagementPage() {
 
         <h2 id="what-is-airflow-mgmt" style={S.h1}>What Is Airflow Management?</h2>
 
-        <p style={S.p}><strong>Airflow management = Data Center mein air ka controlled movement.</strong></p>
-        <p style={S.p}>Goal: Cool air efficiently servers tak pahunche. Hot air PAC/CRAC tak efficiently return ho. Dono mix na hon.</p>
-        <p style={S.p}>Ye sirf physical layout ka kaam nahi hai — ye engineering discipline hai.</p>
-        <p style={S.p}>Airflow management mein aata hai:</p>
+        <p style={S.p}><strong>Airflow management = the controlled movement of air in a Data Center.</strong></p>
+        <p style={S.p}>Goal: Cool air reaches the servers efficiently. Hot air returns to the PAC/CRAC efficiently. The two do not mix.</p>
+        <p style={S.p}>It is not just a physical layout job — it is an engineering discipline.</p>
+        <p style={S.p}>Airflow management includes:</p>
         <ul style={S.ul}>
-          <li style={S.li}>Rack placement aur orientation</li>
+          <li style={S.li}>Rack placement and orientation</li>
           <li style={S.li}>Hot aisle / cold aisle design</li>
           <li style={S.li}>Blanking panels</li>
           <li style={S.li}>Raised floor tile management</li>
           <li style={S.li}>Containment systems</li>
           <li style={S.li}>Cable management</li>
           <li style={S.li}>PAC/CRAC placement</li>
-          <li style={S.li}>Temperature monitoring aur mapping</li>
+          <li style={S.li}>Temperature monitoring and mapping</li>
         </ul>
 
         <DCMapNote components={["Blanking Panels", "Perforated Floor Tiles", "Cold Aisle", "Hot Aisle", "PAC/CRAC", "Cable Management"]} />
@@ -242,18 +246,18 @@ export default function AirflowManagementPage() {
 
         <h2 id="why-needed" style={S.h1}>Why Is It Needed?</h2>
 
-        <p style={S.p}>Bina airflow management ke kya hota hai:</p>
+        <p style={S.p}>What happens without airflow management:</p>
         <ul style={S.ul}>
-          <li style={S.li}>Cool air servers tak pahunche bina PAC return mein jaati hai (bypass) — wasted cooling</li>
-          <li style={S.li}>Hot exhaust air server intake pe wapas aata hai (recirculation) — servers warm air breathe karte hain</li>
-          <li style={S.li}>Hot spots develop hote hain — specific racks overheating</li>
-          <li style={S.li}>PAC extra capacity pe run karta hai — energy waste</li>
+          <li style={S.li}>Cool air goes into the PAC return without reaching the servers (bypass) — wasted cooling</li>
+          <li style={S.li}>Hot exhaust air comes back to the server intake (recirculation) — servers breathe warm air</li>
+          <li style={S.li}>Hot spots develop — specific racks overheating</li>
+          <li style={S.li}>The PAC runs at extra capacity — energy waste</li>
           <li style={S.li}>Server thermal throttling — performance degrade</li>
-          <li style={S.li}>Unexpected failures — equipment protect karne ke liye thermal shutdown</li>
+          <li style={S.li}>Unexpected failures — thermal shutdown to protect equipment</li>
         </ul>
 
         <WhyThisMatters>
-          ASHRAE ke studies ke according, poor airflow management ke karan data centers apni 30-40% cooling capacity waste karte hain. Airflow management improvements implement karne se — bina new cooling units lagaye — effective cooling capacity 30-50% improve ho sakti hai. Ye essentially free improvement hai agar existing physical infrastructure use karo.
+          According to ASHRAE studies, data centers waste 30-40% of their cooling capacity because of poor airflow management. By implementing airflow management improvements — without installing new cooling units — effective cooling capacity can improve by 30-50%. It is essentially a free improvement if you use the existing physical infrastructure.
         </WhyThisMatters>
 
         <hr style={S.divider} />
@@ -261,21 +265,21 @@ export default function AirflowManagementPage() {
         <h2 id="working-principle" style={S.h1}>Airflow Principles</h2>
 
         <h3 style={S.h3}>Principle 1: Air Follows Path of Least Resistance</h3>
-        <p style={S.p}>Air hamesha easiest path choose karti hai. Agar ek gap hai — kisi bhi gap mein — air wahan se jaayegi. Rack mein blanking panel nahi hai? Air wahan se shortcut le legi — server bypass ho jaayega.</p>
-        <p style={S.p}><em>Analogy:</em> Paani bhi path of least resistance follow karta hai — ye physics ka basic rule hai.</p>
+        <p style={S.p}>Air always chooses the easiest path. If there is a gap — any gap — the air will go through it. No blanking panel in the rack? The air will take a shortcut there — the server will be bypassed.</p>
+        <p style={S.p}><em>Analogy:</em> Water also follows the path of least resistance — this is a basic rule of physics.</p>
 
         <h3 style={S.h3}>Principle 2: Pressure Differential Drives Airflow</h3>
-        <p style={S.p}>Server ke andar fan pressure differential create karta hai — front pe lower pressure, back pe higher pressure. Ye differential cool air front se kheechta hai aur hot air back se push karta hai.</p>
-        <p style={S.p}>Raised floor mein: plenum positive pressure pe hota hai — cool air tiles se upar push hoti hai. Zyada perforated tiles = zyada air = zyada cooling capacity.</p>
+        <p style={S.p}>The fan inside the server creates a pressure differential — lower pressure at the front, higher pressure at the back. This differential pulls cool air in from the front and pushes hot air out the back.</p>
+        <p style={S.p}>In a raised floor: the plenum is at positive pressure — cool air is pushed up through the tiles. More perforated tiles = more air = more cooling capacity.</p>
 
         <h3 style={S.h3}>Principle 3: Hot Air Rises</h3>
-        <p style={S.p}>Hot air natural convection se upar jaati hai. Data center ceiling pe hot air collect hoti hai. Ye reason hai ki PAC return typically rack top ya ceiling level pe hoti hai. Ye physics use karo — advantage mein.</p>
+        <p style={S.p}>Hot air rises through natural convection. Hot air collects at the data center ceiling. This is the reason the PAC return is typically at rack top or ceiling level. Use this physics — to your advantage.</p>
 
         <h3 style={S.h3}>Principle 4: Air Mixing Reduces Effectiveness</h3>
-        <p style={S.p}>Jab cool aur hot air mix hoti hai, dono ki temperature change hoti hai. Server ko warm air milti hai. PAC ko warm return air milti hai — less effective cooling. Mixing = inefficiency. Separation = efficiency.</p>
+        <p style={S.p}>When cool and hot air mix, the temperature of both changes. The server gets warm air. The PAC gets warm return air — less effective cooling. Mixing = inefficiency. Separation = efficiency.</p>
 
         <InsightCard>
-          Front-to-back airflow servers mein kyon hota hai? Ye standard industry practice hai. Servers ka front panel cool — intake side. Servers ka back — hot exhaust side. Iska matlab: racks jo same direction face kare — cold aisle pe front, hot aisle pe back — ye natural airflow se match karta hai. Opposite-facing racks would create hot spots.
+          Why is there front-to-back airflow in servers? It is standard industry practice. The server's front panel is cool — the intake side. The server's back — the hot exhaust side. This means: racks that face the same direction — front at the cold aisle, back at the hot aisle — match this natural airflow. Opposite-facing racks would create hot spots.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -283,25 +287,25 @@ export default function AirflowManagementPage() {
         <h2 id="main-components" style={S.h1}>Airflow Management Components</h2>
 
         <h3 style={S.h3}>1. Blanking Panels</h3>
-        <p style={S.p}>Khali rack spaces (1U, 2U, 4U, etc.) mein lagaye jaane wale solid panels. Ye hot exhaust air ko front se rack mein wapas aane se rokta hai. <strong>Most important, cheapest, easiest improvement.</strong> Agar data center mein kuch bhi nahi hai — pehle blanking panels lagao.</p>
+        <p style={S.p}>Solid panels installed in empty rack spaces (1U, 2U, 4U, etc.). They stop hot exhaust air from coming back into the rack from the front. <strong>Most important, cheapest, easiest improvement.</strong> If the data center has nothing else — install blanking panels first.</p>
 
         <h3 style={S.h3}>2. Perforated Floor Tiles</h3>
-        <p style={S.p}>Raised floor mein use hote hain. Different openness percentages available: 25%, 56%. More open = more airflow. Cold aisle mein use karo — directly racks ke saamne. High density racks ke saamne higher openness tiles use karo.</p>
+        <p style={S.p}>Used in a raised floor. Different openness percentages are available: 25%, 56%. More open = more airflow. Use them in the cold aisle — directly in front of the racks. Use higher openness tiles in front of high density racks.</p>
 
         <h3 style={S.h3}>3. Solid Floor Tiles</h3>
-        <p style={S.p}>Hot aisle mein aur unwanted areas mein cool air ko block karo. PAC/CRAC ke direct saamne solid tiles — cool air bypass prevent karo. Proper sealing ensure karo — gaps se air leakage.</p>
+        <p style={S.p}>Block cool air in the hot aisle and in unwanted areas. Solid tiles directly in front of the PAC/CRAC — prevent cool air bypass. Ensure proper sealing — air leakage through gaps.</p>
 
         <h3 style={S.h3}>4. Cable Grommets / Brush Strips</h3>
-        <p style={S.p}>Raised floor ke openings mein — cables ke liye. Prevent air leakage from plenum. Without grommets, large openings se significant bypass air leakage hoti hai. Brush strips easy installation — flexible for different cable sizes.</p>
+        <p style={S.p}>In the raised floor openings — for cables. Prevent air leakage from the plenum. Without grommets, significant bypass air leaks through large openings. Brush strips are easy to install — flexible for different cable sizes.</p>
 
         <h3 style={S.h3}>5. Containment Systems</h3>
-        <p style={S.p}>Aisle containment — hot/cold separation. PAC/CRAC se efficient heat management. (Covered in detail in <TopicLink slug="containment" variant="inline" /> article.)</p>
+        <p style={S.p}>Aisle containment — hot/cold separation. Efficient heat management with the PAC/CRAC. (Covered in detail in the <TopicLink slug="containment" variant="inline" /> article.)</p>
 
         <h3 style={S.h3}>6. In-Row Cooling Units</h3>
-        <p style={S.p}>PAC/CRAC units racks ke beech mein. Very short air paths — minimal mixing. High density environments ke liye ideal.</p>
+        <p style={S.p}>PAC/CRAC units between the racks. Very short air paths — minimal mixing. Ideal for high density environments.</p>
 
         <h3 style={S.h3}>7. Chimney Units</h3>
-        <p style={S.p}>Per-rack ya per-row chimneys. Hot air directly ceiling plenum ya overhead return mein. Floor-level cool air se complete separation.</p>
+        <p style={S.p}>Per-rack or per-row chimneys. Hot air directly into the ceiling plenum or overhead return. Complete separation from floor-level cool air.</p>
 
         <hr style={S.divider} />
 
@@ -321,10 +325,10 @@ export default function AirflowManagementPage() {
 
         <p style={S.p}><strong>Ideal flow path:</strong></p>
         <p style={S.p}>PAC cool air supply → raised floor plenum (positive pressure) → perforated tiles in cold aisle → server front intake → through server (heat absorbed) → server back exhaust → hot aisle → PAC return (top or bottom) → PAC cools it → repeat.</p>
-        <p style={S.p}><strong>Har step pe potential problem ho sakti hai:</strong></p>
+        <p style={S.p}><strong>There can be a potential problem at every step:</strong></p>
         <ul style={S.ul}>
-          <li style={S.li}>Plenum mein gaps → air leakage → less pressure → less cooling delivery</li>
-          <li style={S.li}>Wrong floor tiles → cool air wrong place pe</li>
+          <li style={S.li}>Gaps in the plenum → air leakage → less pressure → less cooling delivery</li>
+          <li style={S.li}>Wrong floor tiles → cool air in the wrong place</li>
           <li style={S.li}>Missing blanking panels → hot air shortcuts</li>
           <li style={S.li}>Cable bundles blocking → reduced airflow through server</li>
           <li style={S.li}>Containment breach → mixing begins</li>
@@ -335,30 +339,30 @@ export default function AirflowManagementPage() {
         <h2 id="bypass-recirculation" style={S.h1}>Bypass Air & Recirculation</h2>
 
         <h3 style={S.h3}>Bypass Air</h3>
-        <p style={S.p}><strong>Definition:</strong> Cool air jo servers ko cool kiye bina PAC/CRAC return mein ja raha hai.</p>
+        <p style={S.p}><strong>Definition:</strong> Cool air that goes into the PAC/CRAC return without cooling the servers.</p>
         <p style={S.p}><strong>Causes:</strong></p>
         <ul style={S.ul}>
-          <li style={S.li}>Perforated tiles hot aisle ya PAC ke saamne lagaye hain</li>
-          <li style={S.li}>Raised floor ke gaps — unsealed cable openings</li>
-          <li style={S.li}>Under-rack openings — rack ke neeche gaps</li>
-          <li style={S.li}>Excess floor tiles — zyada supply air, servers absorb nahi kar sakte</li>
+          <li style={S.li}>Perforated tiles installed in the hot aisle or in front of the PAC</li>
+          <li style={S.li}>Raised floor gaps — unsealed cable openings</li>
+          <li style={S.li}>Under-rack openings — gaps under the rack</li>
+          <li style={S.li}>Excess floor tiles — too much supply air that the servers cannot absorb</li>
         </ul>
         <p style={S.p}><strong>Impact:</strong> Wasted cooling energy. Plenum pressure drop. Less effective cooling where needed.</p>
-        <p style={S.p}><strong>Fix:</strong> Tile audit — sirf cold aisle mein perforated tiles. Cable openings seal karo. Proper raised floor sealing.</p>
+        <p style={S.p}><strong>Fix:</strong> Tile audit — perforated tiles only in the cold aisle. Seal cable openings. Proper raised floor sealing.</p>
 
         <h3 style={S.h3}>Recirculation</h3>
-        <p style={S.p}><strong>Definition:</strong> Hot exhaust air jo server intake pe wapas aa raha hai.</p>
+        <p style={S.p}><strong>Definition:</strong> Hot exhaust air that is coming back to the server intake.</p>
         <p style={S.p}><strong>Causes:</strong></p>
         <ul style={S.ul}>
-          <li style={S.li}>Missing blanking panels — hot air rack ke through shortcircuit karta hai</li>
-          <li style={S.li}>No containment — hot air room mein free</li>
-          <li style={S.li}>Racks facing wrong direction — exhaust cold aisle ki taraf</li>
+          <li style={S.li}>Missing blanking panels — hot air short-circuits through the rack</li>
+          <li style={S.li}>No containment — hot air is free in the room</li>
+          <li style={S.li}>Racks facing the wrong direction — exhaust towards the cold aisle</li>
           <li style={S.li}>PAC/CRAC unit poorly placed — short cycling</li>
         </ul>
-        <p style={S.p}><strong>Impact:</strong> Server inlet temperature badh jaata hai. Thermal throttling. Hot spots.</p>
+        <p style={S.p}><strong>Impact:</strong> Server inlet temperature rises. Thermal throttling. Hot spots.</p>
 
         <EngineerTip>
-          Quick test for recirculation: Ek temperature sensor server intake pe lagao. Fir hot aisle mein ek similar height pe lagao. Agar server intake pe temperature hot aisle ke karib hai — recirculation ho raha hai. Cold aisle temperature (true supply) se server intake temperature mein gap — ye recirculation ya bypass indicate karta hai.
+          Quick test for recirculation: Put a temperature sensor at the server intake. Then put one at a similar height in the hot aisle. If the temperature at the server intake is close to the hot aisle — recirculation is happening. A gap between the cold aisle temperature (true supply) and the server intake temperature indicates recirculation or bypass.
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -366,22 +370,22 @@ export default function AirflowManagementPage() {
         <h2 id="types" style={S.h1}>Airflow Management Strategies</h2>
 
         <h3 style={S.h3}>1. Hot Aisle / Cold Aisle (Basic)</h3>
-        <p style={S.p}>Server racks alternate face kare — front-to-front (cold aisle), back-to-back (hot aisle). PAC cool air deliver kare cold aisle mein. Simple, effective, most common.</p>
+        <p style={S.p}>Server racks face alternately — front-to-front (cold aisle), back-to-back (hot aisle). The PAC delivers cool air into the cold aisle. Simple, effective, most common.</p>
 
         <h3 style={S.h3}>2. Cold Aisle Containment (CAC)</h3>
-        <p style={S.p}>Cold aisle enclosed karo — mixing eliminate karo. 25-40% efficiency improvement. (See <TopicLink slug="containment" variant="inline" />)</p>
+        <p style={S.p}>Enclose the cold aisle — eliminate mixing. 25-40% efficiency improvement. (See <TopicLink slug="containment" variant="inline" />)</p>
 
         <h3 style={S.h3}>3. Hot Aisle Containment (HAC)</h3>
-        <p style={S.p}>Hot aisle enclosed karo — hot air directly captured. Room mein cool air everywhere. Better operational safety. (See <TopicLink slug="containment" variant="inline" />)</p>
+        <p style={S.p}>Enclose the hot aisle — hot air directly captured. Cool air everywhere in the room. Better operational safety. (See <TopicLink slug="containment" variant="inline" />)</p>
 
         <h3 style={S.h3}>4. Raised Floor Optimization</h3>
-        <p style={S.p}>Floor tile placement optimize karo. Tile openness percentage select karo per rack density. Seal all floor openings. Plenum pressure monitoring.</p>
+        <p style={S.p}>Optimize floor tile placement. Select tile openness percentage per rack density. Seal all floor openings. Plenum pressure monitoring.</p>
 
         <h3 style={S.h3}>5. In-Row Cooling</h3>
-        <p style={S.p}>PAC/CRAC units racks ke beech mein. Very short air paths. High density suitable. Minimal bypass aur recirculation.</p>
+        <p style={S.p}>PAC/CRAC units between the racks. Very short air paths. Suitable for high density. Minimal bypass and recirculation.</p>
 
         <h3 style={S.h3}>6. Overhead Cooling</h3>
-        <p style={S.p}>Cool air ceiling se deliver karo. Hot air floor se return karo. No raised floor needed. High rooms mein effective.</p>
+        <p style={S.p}>Deliver cool air from the ceiling. Return hot air from the floor. No raised floor needed. Effective in high rooms.</p>
 
         <hr style={S.divider} />
 
@@ -400,11 +404,11 @@ export default function AirflowManagementPage() {
 
         <h2 id="disadvantages" style={S.h1}>Common Challenges</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Ongoing discipline required:</strong> New rack install karo, blanking panels check karo — hamesha</li>
-          <li style={S.li}><strong>Cable management:</strong> Poor cable management airflow block karta hai — constant battle</li>
-          <li style={S.li}><strong>Fire suppression:</strong> Containment + fire suppression integration complex ho sakti hai</li>
+          <li style={S.li}><strong>Ongoing discipline required:</strong> Install a new rack, check the blanking panels — always</li>
+          <li style={S.li}><strong>Cable management:</strong> Poor cable management blocks airflow — a constant battle</li>
+          <li style={S.li}><strong>Fire suppression:</strong> Containment + fire suppression integration can be complex</li>
           <li style={S.li}><strong>Mixed equipment:</strong> Different vendors, different airflow requirements — uniform design challenging</li>
-          <li style={S.li}><strong>Legacy layouts:</strong> Old data centers mein random rack placement — retrofit challenging</li>
+          <li style={S.li}><strong>Legacy layouts:</strong> Random rack placement in old data centers — retrofit is challenging</li>
         </ul>
 
         <hr style={S.divider} />
@@ -416,10 +420,10 @@ export default function AirflowManagementPage() {
         <p style={S.p}><strong>Actions taken:</strong></p>
         <ul style={S.ul}>
           <li style={S.li}>Step 1: 100% blanking panels in all racks (2 days)</li>
-          <li style={S.li}>Step 2: Floor tile audit aur correction (1 day)</li>
-          <li style={S.li}>Step 3: Cable openings mein grommets install karo</li>
-          <li style={S.li}>Step 4: Cold aisle containment install karo</li>
-          <li style={S.li}>Step 5: PAC setpoint 15°C se 21°C raise karo</li>
+          <li style={S.li}>Step 2: Floor tile audit and correction (1 day)</li>
+          <li style={S.li}>Step 3: Install grommets in the cable openings</li>
+          <li style={S.li}>Step 4: Install cold aisle containment</li>
+          <li style={S.li}>Step 5: Raise the PAC setpoint from 15°C to 21°C</li>
         </ul>
         <p style={S.p}><strong>Result:</strong> Server inlet 20-24°C — uniform. Hot spots zero. 3 PAC units standby. Estimated energy savings: 20%.</p>
 
@@ -428,13 +432,13 @@ export default function AirflowManagementPage() {
         <h2 id="common-faults" style={S.h1}>Common Airflow Issues</h2>
 
         <h3 style={S.h3}>Hot Spots</h3>
-        <p style={S.p}>Specific racks ya locations high temperature. Cause: Recirculation, insufficient cooling delivery, high heat load. Action: Temperature mapping, identify source, fix (blanking panels, tile placement, add cooling).</p>
+        <p style={S.p}>High temperature at specific racks or locations. Cause: Recirculation, insufficient cooling delivery, high heat load. Action: Temperature mapping, identify the source, fix (blanking panels, tile placement, add cooling).</p>
 
         <h3 style={S.h3}>Uneven Cold Aisle Temperature</h3>
-        <p style={S.p}>Some racks pe 18°C, kuch pe 28°C. Cause: Uneven floor tile distribution, variable rack density, PAC placement. Action: Floor tile redistribution, balanced cooling delivery.</p>
+        <p style={S.p}>18°C on some racks, 28°C on others. Cause: Uneven floor tile distribution, variable rack density, PAC placement. Action: Floor tile redistribution, balanced cooling delivery.</p>
 
         <h3 style={S.h3}>PAC Short Cycling</h3>
-        <p style={S.p}>PAC units zyada frequently on/off ho rahe hain. Cause: Bypass air — return temperature cool hai (cool air bypass), unit thinks it's done, shuts off — cycle repeats. Action: Bypass eliminate karo, return air path fix karo.</p>
+        <p style={S.p}>PAC units are switching on/off too frequently. Cause: Bypass air — the return temperature is cool (cool air bypass), the unit thinks it's done, shuts off — the cycle repeats. Action: Eliminate bypass, fix the return air path.</p>
 
         <h3 style={S.h3}>Plenum Pressure Low</h3>
         <p style={S.p}>Cool air delivery insufficient. Cause: Too many perforated tiles, large gaps in raised floor, PAC supply duct leaks. Action: Tile audit, seal gaps, check PAC supply.</p>
@@ -450,17 +454,17 @@ export default function AirflowManagementPage() {
           <li style={S.li}><strong>Quarterly:</strong> Cable management check — bundles blocking airflow?</li>
           <li style={S.li}><strong>Quarterly:</strong> Containment integrity — gaps, door seals</li>
           <li style={S.li}><strong>Semi-annual:</strong> Raised floor plenum inspection — debris, grommets</li>
-          <li style={S.li}><strong>Annual:</strong> Full airflow audit — CFD model update agar changes hue</li>
+          <li style={S.li}><strong>Annual:</strong> Full airflow audit — update the CFD model if there were changes</li>
         </ul>
 
         <hr style={S.divider} />
 
         <h2 id="daily-checklist" style={S.h1}>Daily Checklist</h2>
         <ul style={S.ul}>
-          <li style={S.li}>✓ BMS mein hot spot alarms — any alerts?</li>
+          <li style={S.li}>✓ Hot spot alarms in the BMS — any alerts?</li>
           <li style={S.li}>✓ Cold aisle temperature — within normal range?</li>
           <li style={S.li}>✓ Hot aisle temperature — normal?</li>
-          <li style={S.li}>✓ New equipment installed? — Blanking panels check karo</li>
+          <li style={S.li}>✓ New equipment installed? — Check the blanking panels</li>
           <li style={S.li}>✓ Containment doors closed (except maintenance)?</li>
           <li style={S.li}>✓ Anything visually unusual — displaced tiles, open rack gaps?</li>
         </ul>
@@ -470,12 +474,12 @@ export default function AirflowManagementPage() {
         <h2 id="monthly-checklist" style={S.h1}>Monthly Checklist</h2>
         <ul style={S.ul}>
           <li style={S.li}>✓ Walk all rack rows — blanking panels complete?</li>
-          <li style={S.li}>✓ Floor tiles — perforated sirf cold aisle mein?</li>
+          <li style={S.li}>✓ Floor tiles — perforated only in the cold aisle?</li>
           <li style={S.li}>✓ Cable openings sealed?</li>
           <li style={S.li}>✓ Temperature spot check — at least 5 racks sampled</li>
           <li style={S.li}>✓ Any hot spots developing?</li>
           <li style={S.li}>✓ PAC/CRAC setpoints correct?</li>
-          <li style={S.li}>✓ Changes this month? Layout changes → airflow impact assess karo</li>
+          <li style={S.li}>✓ Changes this month? Layout changes → assess the airflow impact</li>
         </ul>
 
         <hr style={S.divider} />
@@ -484,7 +488,7 @@ export default function AirflowManagementPage() {
         <ul style={S.ul}>
           <li style={S.li}><strong>Raised floor work:</strong> Floor panels heavy — proper lifting. Two persons for large tiles. Footwear — raised floor edges sharp.</li>
           <li style={S.li}><strong>Hot aisle work:</strong> Temperature 35-45°C — limit time, water, buddy system</li>
-          <li style={S.li}><strong>Containment work:</strong> Enclosed space — cool aisle cool hai, hot aisle hot</li>
+          <li style={S.li}><strong>Containment work:</strong> Enclosed space — the cool aisle is cool, the hot aisle is hot</li>
           <li style={S.li}><strong>Working above racks:</strong> Ceiling-level work — ladder safety</li>
         </ul>
 
@@ -492,17 +496,17 @@ export default function AirflowManagementPage() {
 
         <h2 id="interview-questions" style={S.h1}>Interview Questions</h2>
 
-        <h3 style={S.h3}>Q1: Bypass air aur recirculation mein kya difference hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Bypass air = cool air jo servers ko avoid karke PAC return mein directly jaati hai — wasted cooling. Recirculation = hot exhaust air jo server intake pe wapas aata hai — server ko warm air milti hai. Bypass = cooling waste. Recirculation = server heating. Dono problematic but different issues.</p>
+        <h3 style={S.h3}>Q1: What is the difference between bypass air and recirculation?</h3>
+        <p style={S.p}><strong>Answer:</strong> Bypass air = cool air that avoids the servers and goes directly into the PAC return — wasted cooling. Recirculation = hot exhaust air that comes back to the server intake — the server gets warm air. Bypass = cooling waste. Recirculation = server heating. Both are problematic but different issues.</p>
 
-        <h3 style={S.h3}>Q2: Blanking panels aur perforated floor tiles ka correct use kya hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Blanking panels: Rack ke khali spaces seal karo — recirculation rokta hai. Without blanking panels, hot air rack ke through front mein shortcircuit hoti hai. Perforated floor tiles: Sirf cold aisle mein — directly server rack ke saamne. Hot aisle aur non-rack areas mein solid tiles — warna cool air bypass hogi.</p>
+        <h3 style={S.h3}>Q2: What is the correct use of blanking panels and perforated floor tiles?</h3>
+        <p style={S.p}><strong>Answer:</strong> Blanking panels: seal the empty spaces of the rack — they stop recirculation. Without blanking panels, hot air short-circuits through the rack to the front. Perforated floor tiles: only in the cold aisle — directly in front of the server rack. Solid tiles in the hot aisle and non-rack areas — otherwise cool air will bypass.</p>
 
-        <h3 style={S.h3}>Q3: Hot spot kaise identify aur resolve karte hain?</h3>
-        <p style={S.p}><strong>Answer:</strong> Identify: Temperature mapping — har rack ke cold aisle inlet temperature measure karo. 28°C+ mein hot spot. DCIM temperature sensors real-time alerts dete hain. Resolve: 1) Blanking panels check karo, 2) Floor tile placement verify, 3) Containment gaps check, 4) Recirculation sources identify, 5) Cooling capacity add karo agar needed.</p>
+        <h3 style={S.h3}>Q3: How is a hot spot identified and resolved?</h3>
+        <p style={S.p}><strong>Answer:</strong> Identify: Temperature mapping — measure the cold aisle inlet temperature of every rack. 28°C+ is a hot spot. DCIM temperature sensors give real-time alerts. Resolve: 1) Check the blanking panels, 2) Verify floor tile placement, 3) Check for containment gaps, 4) Identify recirculation sources, 5) Add cooling capacity if needed.</p>
 
-        <h3 style={S.h3}>Q4: CFD modeling kya hai aur kab use karte hain?</h3>
-        <p style={S.p}><strong>Answer:</strong> CFD = Computational Fluid Dynamics simulation jo data center mein air flow visualize karta hai — bina physical changes kiye. Use karte hain: New data center design, major changes se pehle, hot spot diagnosis, cooling capacity planning. Software 3D model mein temperatures, airflow velocities, pressure distribution show karta hai. Hot spots physical testing se pehle predict karte hain.</p>
+        <h3 style={S.h3}>Q4: What is CFD modeling and when is it used?</h3>
+        <p style={S.p}><strong>Answer:</strong> CFD = a Computational Fluid Dynamics simulation that visualizes air flow in the data center — without making physical changes. It is used for: new data center design, before major changes, hot spot diagnosis, cooling capacity planning. The software shows temperatures, airflow velocities and pressure distribution in a 3D model. It predicts hot spots before physical testing.</p>
 
         <hr style={S.divider} />
 
@@ -510,20 +514,20 @@ export default function AirflowManagementPage() {
 
         <h3 style={S.h3}>Scenario: Server high temperature alert</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Cold aisle temperature check — normal hai?</li>
-          <li style={S.li}>Server ke rack mein blanking panels — complete?</li>
-          <li style={S.li}>Adjacent racks — hot air exhaust direction check karo</li>
-          <li style={S.li}>Floor tile — cold aisle mein perforated tile hai server ke saamne?</li>
+          <li style={S.li}>Cold aisle temperature check — is it normal?</li>
+          <li style={S.li}>Blanking panels in the server's rack — complete?</li>
+          <li style={S.li}>Adjacent racks — check the hot air exhaust direction</li>
+          <li style={S.li}>Floor tile — is there a perforated tile in the cold aisle in front of the server?</li>
           <li style={S.li}>PAC unit running? Setpoint correct?</li>
-          <li style={S.li}>IT load increase hua? New servers added?</li>
+          <li style={S.li}>Has the IT load increased? New servers added?</li>
         </ul>
 
         <h3 style={S.h3}>Scenario: Cold aisle temperature uneven — one end hot</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Floor tile distribution check karo — PAC ke paas zyada tiles?</li>
-          <li style={S.li}>PAC placement — far end tak cooling reach karna</li>
-          <li style={S.li}>Far end mein bypass path hai? — Hot air coming around?</li>
-          <li style={S.li}>Additional perforated tiles on far end consider karo</li>
+          <li style={S.li}>Check floor tile distribution — too many tiles near the PAC?</li>
+          <li style={S.li}>PAC placement — cooling reaching the far end</li>
+          <li style={S.li}>Is there a bypass path at the far end? — Hot air coming around?</li>
+          <li style={S.li}>Consider additional perforated tiles at the far end</li>
         </ul>
 
         <hr style={S.divider} />
@@ -564,13 +568,13 @@ export default function AirflowManagementPage() {
 
         <h2 id="best-practices" style={S.h1}>Best Practices</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Blanking panels 100%:</strong> Ye non-negotiable. Every rack, every empty space. Always.</li>
+          <li style={S.li}><strong>Blanking panels 100%:</strong> This is non-negotiable. Every rack, every empty space. Always.</li>
           <li style={S.li}><strong>Floor tile discipline:</strong> Mark tiles clearly — perforated in cold aisle, solid elsewhere. Enforce policy.</li>
           <li style={S.li}><strong>No equipment changes without airflow review:</strong> New rack in, blanking panels installed, tile placement checked. Every time.</li>
-          <li style={S.li}><strong>Temperature mapping quarterly:</strong> Trend karo — deteriorating areas early identify karo.</li>
+          <li style={S.li}><strong>Temperature mapping quarterly:</strong> Trend it — identify deteriorating areas early.</li>
           <li style={S.li}><strong>DCIM integration:</strong> Real-time temperature monitoring. Automatic alerts for deviations.</li>
-          <li style={S.li}><strong>Cable management ko seriously lo:</strong> Cable bundles airflow ko sabotage karte hain. Proper trays, ties, routing.</li>
-          <li style={S.li}><strong>Train operations team:</strong> Blanking panels kyon important hain — everyone should know. A missing panel discovered by a new person is a win.</li>
+          <li style={S.li}><strong>Take cable management seriously:</strong> Cable bundles sabotage airflow. Proper trays, ties, routing.</li>
+          <li style={S.li}><strong>Train the operations team:</strong> Why blanking panels are important — everyone should know. A missing panel discovered by a new person is a win.</li>
         </ul>
 
         <hr style={S.divider} />
@@ -578,12 +582,12 @@ export default function AirflowManagementPage() {
         <h2 id="key-takeaways" style={S.h1}>Key Takeaways</h2>
 
         <KeyTakeawayCard items={[
-          "Airflow management = cool air ko servers tak efficiently pahunchana, hot air ko wapas laana, mixing rokna.",
+          "Airflow management = getting cool air to the servers efficiently, bringing hot air back, stopping mixing.",
           "Three enemies: bypass air (cooling waste), recirculation (server heating), hot spots (local overheating).",
-          "Blanking panels sabse important, sabse cheap, sabse easy fix. Pehle ye lagao — always 100%.",
-          "Perforated floor tiles sirf cold aisle mein — hot aisle aur other areas solid tiles.",
+          "Blanking panels are the most important, cheapest, easiest fix. Install them first — always 100%.",
+          "Perforated floor tiles only in the cold aisle — solid tiles in the hot aisle and other areas.",
           "Containment + blanking panels + proper tile placement = 30-50% cooling efficiency improvement.",
-          "Hot spots = temperature mapping se identify karo, root cause fix karo — PAC add mat karo blindly.",
+          "Hot spots = identify them with temperature mapping, fix the root cause — do not add a PAC blindly.",
           "Monthly: blanking panels audit, tile check. Quarterly: full temperature mapping. Annual: airflow audit.",
         ]} />
 
@@ -595,12 +599,12 @@ export default function AirflowManagementPage() {
         <hr style={S.divider} />
 
         <h2 style={S.h2}>Related Learning Topics</h2>
-        <p style={S.p}>Airflow management complete hua. Aage measurement aur metrics samjho:</p>
+        <p style={S.p}>Airflow management is complete. Next, understand measurement and metrics:</p>
         <ul style={S.ul}>
-          <li style={S.li}><TopicLink slug="rci" variant="inline" /> — Airflow management effectiveness measure karne ka metric.</li>
-          <li style={S.li}><TopicLink slug="containment" variant="inline" /> — Airflow management ka advanced step — physical air separation.</li>
-          <li style={S.li}><TopicLink slug="pac" variant="inline" /> — PAC aur CRAC — jo air deliver karte hain.</li>
-          <li style={S.li}><TopicLink slug="chiller" variant="inline" /> — CRAH ke through airflow management in chiller-based systems.</li>
+          <li style={S.li}><TopicLink slug="rci" variant="inline" /> — the metric to measure airflow management effectiveness.</li>
+          <li style={S.li}><TopicLink slug="containment" variant="inline" /> — the advanced step of airflow management — physical air separation.</li>
+          <li style={S.li}><TopicLink slug="pac" variant="inline" /> — PAC and CRAC — the ones that deliver the air.</li>
+          <li style={S.li}><TopicLink slug="chiller" variant="inline" /> — airflow management through the CRAH in chiller-based systems.</li>
         </ul>
       </ArticleLayout>
     </>

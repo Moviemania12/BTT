@@ -8,21 +8,21 @@ export default function Fundamentals() {
   return (
     <>
       <h2 id="what-is-lps" style={S.h2}>What is Lightning Protection System (LPS)?</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> LPS ek engineered system hai jo lightning current ko safely building ke bahar se ground tak divert karta hai, bina structure ya equipment ko damage kiye. Teen core components: Air Termination, Down Conductor, aur Earth Termination.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> An LPS is an engineered system that safely diverts lightning current from outside the building to the ground, without damaging the structure or equipment. Three core components: Air Termination, Down Conductor and Earth Termination.</p>
       <ul style={S.ul}>
-        <li>LPS lightning current ko controlled, low-impedance path deta hai</li>
-        <li>External LPS (structure protection) + Internal LPS (equipment protection) dono chahiye</li>
-        <li>Standalone system nahi — building earthing se bonded hota hai</li>
-        <li>Data Center mein LPS + SPD dono mila ke complete protection dete hain</li>
+        <li>An LPS gives lightning current a controlled, low-impedance path</li>
+        <li>Both External LPS (structure protection) + Internal LPS (equipment protection) are needed</li>
+        <li>It is not a standalone system — it is bonded to the building earthing</li>
+        <li>In a Data Center, LPS + SPD together give complete protection</li>
       </ul>
-      <p style={S.p}><strong>Engineer Tip:</strong> LPS "lightning ko rokta hai" — yeh misconception hai. LPS lightning ko rok nahi sakta, sirf controlled path provide karta hai taaki current uncontrolled tarike se building/equipment ke through na jaaye. Yeh risk management hai, elimination nahi.</p>
-      <p style={S.p}>Technically LPS teen main parts mein divide hota hai — Air Termination (strike ko intercept karta hai), Down Conductor (current ko ground tak le jaata hai), aur Earth Termination (current ko soil mein dissipate karta hai). In teeno ka combination External LPS banata hai. Internal LPS mein SPD aur bonding hoti hai jo equipment ko surge se bachati hai.</p>
+      <p style={S.p}><strong>Engineer Tip:</strong> "An LPS stops lightning" — this is a misconception. An LPS cannot stop lightning; it only provides a controlled path so that the current does not go through the building/equipment in an uncontrolled way. It is risk management, not elimination.</p>
+      <p style={S.p}>Technically an LPS is divided into three main parts — Air Termination (intercepts the strike), Down Conductor (carries the current to the ground) and Earth Termination (dissipates the current into the soil). The combination of these three makes the External LPS. The Internal LPS has SPDs and bonding that protect equipment from surges.</p>
       <Callout type="important" title="LPS Alone is Not Enough">
-        LPS sirf direct strike current handle karta hai. Nearby lightning se induced surge — jo Data Centers mein zyada common hai — LPS akela handle nahi karta. SPD (Surge Protection Device) yeh gap fill karta hai. Complete protection ke liye dono chahiye.
+        An LPS only handles direct strike current. Induced surges from nearby lightning — which are more common in Data Centers — are not handled by the LPS alone. The SPD (Surge Protection Device) fills this gap. Both are needed for complete protection.
       </Callout>
 
       <h2 id="why-dc-needs-lps" style={S.h2}>Why Data Centers Need Lightning Protection</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Data Center mein equipment cost aur downtime cost dono itne high hain ki even ek single lightning event catastrophic financial impact create kar sakta hai. LPS investment iske against insurance hai.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> In a Data Center, both equipment cost and downtime cost are so high that even a single lightning event can create a catastrophic financial impact. LPS investment is insurance against this.</p>
       <ComparisonTable
         headers={["Risk Without LPS", "Consequence"]}
         rows={[
@@ -33,11 +33,11 @@ export default function Fundamentals() {
           ["No coordinated protection", "Single point of failure — one surge event takes down entire facility"],
         ]}
       />
-      <p style={S.p}><strong>Real Data Center Example:</strong> Ek Data Center bina proper SPD coordination ke — nearby lightning strike hui building se 200m door. Induced surge power line ke through aayi, Type 1 SPD nahi tha main incoming pe, aur surge directly UPS rectifier tak pahunchi. Result: UPS rectifier module damage, aur downstream connected 3 PDUs bhi affected huyi. Estimated loss: equipment replacement + almost 6 hours downtime.</p>
-      <p style={S.p}><strong>Key Takeaway:</strong> Data Center risk profile normal commercial building se alag hai — equipment sensitivity aur downtime cost dono LPS investment ko easily justify karte hain.</p>
+      <p style={S.p}><strong>Real Data Center Example:</strong> A Data Center without proper SPD coordination — a nearby lightning strike hit 200m away from the building. The induced surge came in through the power line; there was no Type 1 SPD at the main incoming, and the surge reached the UPS rectifier directly. Result: UPS rectifier module damage, and 3 downstream connected PDUs were also affected. Estimated loss: equipment replacement + almost 6 hours of downtime.</p>
+      <p style={S.p}><strong>Key Takeaway:</strong> A Data Center's risk profile is different from a normal commercial building — both equipment sensitivity and downtime cost easily justify LPS investment.</p>
 
       <h2 id="direct-vs-induced" style={S.h2}>Direct Strike vs Induced Surge</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Direct strike building pe actually girti hai — rare lekin catastrophic. Induced surge nearby strike se electromagnetic coupling ke through hoti hai — common aur underestimated.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> A direct strike actually hits the building — rare but catastrophic. An induced surge comes from a nearby strike through electromagnetic coupling — common and underestimated.</p>
       <ComparisonTable
         headers={["Parameter", "Direct Strike", "Induced Surge"]}
         rows={[
@@ -49,18 +49,18 @@ export default function Fundamentals() {
         ]}
       />
       <Callout type="warning" title="Common Mistake — Underestimating Induced Surge">
-        Engineers often LPS design pe focus karte hain (visible, structural) lekin SPD coordination ko secondary treat karte hain. Reality mein Data Center equipment damage zyada induced surge se hoti hai, direct strike se nahi. SPD design equally, agar zyada nahi, priority deserve karta hai.
+        Engineers often focus on LPS design (visible, structural) but treat SPD coordination as secondary. In reality, more Data Center equipment damage comes from induced surges, not direct strikes. SPD design deserves equal, if not more, priority.
       </Callout>
 
       <h2 id="risk-assessment" style={S.h2}>Lightning Risk Assessment</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> IEC 62305-2 formal risk assessment methodology deta hai — building location, height, lightning flash density, aur consequence of failure sab factor karke required protection level determine karte hain.</p>
-      <p style={S.p}>Risk assessment factors: (1) Ground flash density (strikes/km²/year — location-specific data), (2) Structure dimensions aur height, (3) Type of construction, (4) Value of contents aur consequence of loss, (5) Presence of existing protection measures.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> IEC 62305-2 gives a formal risk assessment methodology — it determines the required protection level by factoring in building location, height, lightning flash density and the consequence of failure.</p>
+      <p style={S.p}>Risk assessment factors: (1) Ground flash density (strikes/km²/year — location-specific data), (2) Structure dimensions and height, (3) Type of construction, (4) Value of contents and consequence of loss, (5) Presence of existing protection measures.</p>
       <Callout type="best-practice" title="Best Practice — Formal Risk Assessment Document">
-        Har Data Center project mein formal IEC 62305-2 risk assessment document banao — yeh sirf technical exercise nahi, insurance aur compliance documentation ke liye bhi zaroori hai. Assessment output directly LPL (Protection Level) determine karta hai jo baaki poora LPS design drive karta hai.
+        Create a formal IEC 62305-2 risk assessment document for every Data Center project — it is not just a technical exercise; it is also necessary for insurance and compliance documentation. The assessment output directly determines the LPL (Protection Level), which drives the rest of the whole LPS design.
       </Callout>
 
       <h2 id="protection-levels" style={S.h2}>IEC 62305 Protection Levels (LPL I–IV)</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> 4 protection levels — LPL I sabse comprehensive (highest risk/consequence), LPL IV sabse basic. Level design parameters (mesh size, down conductor spacing) directly affect karta hai.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> 4 protection levels — LPL I is the most comprehensive (highest risk/consequence), LPL IV the most basic. The level directly affects design parameters (mesh size, down conductor spacing).</p>
       <ComparisonTable
         headers={["LPL", "Interception Efficiency", "Down Conductor Spacing", "Mesh Size", "Typical Application"]}
         rows={[
@@ -70,10 +70,10 @@ export default function Fundamentals() {
           ["LPL IV", "84%", "25 m", "20m × 20m", "Low-risk structures"],
         ]}
       />
-      <p style={S.p}>Data Centers typically LPL I ya LPL II design karte hain — consequence of failure (data loss, extended downtime, reputational damage) itna high hota hai ki lower protection levels ka risk acceptable nahi hota.</p>
+      <p style={S.p}>Data Centers typically design for LPL I or LPL II — the consequence of failure (data loss, extended downtime, reputational damage) is so high that the risk of lower protection levels is not acceptable.</p>
 
       <h2 id="air-termination" style={S.h2}>Air Termination</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Air termination lightning ko intercept karta hai before it reaches the structure. Teen main types — Franklin Rod, Mesh, aur Early Streamer Emission — har ek different coverage philosophy follow karta hai.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> Air termination intercepts lightning before it reaches the structure. Three main types — Franklin Rod, Mesh and Early Streamer Emission — each follows a different coverage philosophy.</p>
       <ComparisonTable
         headers={["Type", "Description", "Coverage", "Data Center Use"]}
         rows={[
@@ -83,38 +83,38 @@ export default function Fundamentals() {
         ]}
       />
       <Callout type="important" title="Important — Mesh + Franklin Rod Combination">
-        Data Center roofs typically Mesh system use karte hain overall coverage ke liye, plus Franklin rods strategic high points pe (rooftop equipment, parapets, corners). Yeh combination IEC 62305 rolling sphere method ke according comprehensive coverage deta hai. ESE rods India/IEC context mein generally avoid kiye jaate hain unless specific local approval ho.
+        Data Center roofs typically use a Mesh system for overall coverage, plus Franklin rods at strategic high points (rooftop equipment, parapets, corners). This combination gives comprehensive coverage as per the IEC 62305 rolling sphere method. ESE rods are generally avoided in the India/IEC context unless there is specific local approval.
       </Callout>
 
       <h2 id="down-conductors" style={S.h2}>Down Conductors</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Down conductor air termination se intercepted current ko earth termination tak safely conduct karta hai. Minimum 2 conductors mandatory hain — redundancy ke liye.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> The down conductor safely conducts the current intercepted by the air termination to the earth termination. A minimum of 2 conductors is mandatory — for redundancy.</p>
       <ComparisonTable
         headers={["Parameter", "Requirement", "Note"]}
         rows={[
-          ["Minimum count", "2 per structure", "Single point of failure avoid karne ke liye"],
-          ["Spacing (LPL I)", "10m along perimeter", "Building perimeter ke around evenly distributed"],
-          ["Material", "Copper or aluminum tape/rod, typically 25×3mm or 50mm² equivalent", "Corrosion resistance zaroori hai"],
-          ["Routing", "Shortest, straightest path possible", "Sharp bends inductance badhate hain, effectiveness kam"],
-          ["Test joint", "Accessible test joint at each down conductor base", "Earth resistance testing ke liye disconnection point"],
+          ["Minimum count", "2 per structure", "To avoid a single point of failure"],
+          ["Spacing (LPL I)", "10m along perimeter", "Evenly distributed around the building perimeter"],
+          ["Material", "Copper or aluminum tape/rod, typically 25×3mm or 50mm² equivalent", "Corrosion resistance is essential"],
+          ["Routing", "Shortest, straightest path possible", "Sharp bends increase inductance and reduce effectiveness"],
+          ["Test joint", "Accessible test joint at each down conductor base", "Disconnection point for earth resistance testing"],
         ]}
       />
       <Callout type="common-mistake" title="Common Mistake — Sharp Bends in Down Conductor">
-        Down conductor routing mein sharp 90° bends avoid karo — lightning current ke liye yeh high impedance point create karte hain jo side flash risk badhata hai. Bend radius kam se kam 20cm hona chahiye, aur bend angle 90° se zyada open hona chahiye jahan possible ho.
+        Avoid sharp 90° bends in down conductor routing — they create a high impedance point for lightning current, which increases side flash risk. The bend radius should be at least 20cm, and the bend angle should be more open than 90° wherever possible.
       </Callout>
 
       <h2 id="earth-termination" style={S.h2}>Earth Termination</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Earth termination lightning current ko soil mein safely dissipate karta hai. LPS-specific earth termination hoti hai — lekin ultimately building ki common earthing se bonded hoti hai equipotential bonding ke through.</p>
-      <p style={S.p}>Earth termination design considerations same principles follow karte hain jo <TopicLink slug="earthing" variant="inline" /> article mein detail se cover kiye gaye hain — low resistance, soil resistivity consideration, aur proper electrode selection. Difference sirf yeh hai ki LPS earth termination ko bahut zyada current (kA range) handle karna padta hai, bahut short duration mein.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> Earth termination safely dissipates lightning current into the soil. It is an LPS-specific earth termination — but it is ultimately bonded to the building's common earthing through equipotential bonding.</p>
+      <p style={S.p}>Earth termination design considerations follow the same principles covered in detail in the <TopicLink slug="earthing" variant="inline" /> article — low resistance, soil resistivity consideration and proper electrode selection. The only difference is that the LPS earth termination has to handle much more current (kA range) in a much shorter duration.</p>
       <Callout type="best-practice" title="Best Practice — Ring Earth Electrode">
-        Data Center LPS ke liye ring earth electrode (building perimeter ke around continuous conductor, multiple electrodes se connected) preferred approach hai. Yeh multiple down conductors ke earth resistance ko effectively parallel kar deta hai, resulting mein lower overall resistance aur better current distribution.
+        For a Data Center LPS, a ring earth electrode (a continuous conductor around the building perimeter, connected to multiple electrodes) is the preferred approach. It effectively parallels the earth resistance of multiple down conductors, resulting in lower overall resistance and better current distribution.
       </Callout>
 
       <h2 id="bonding" style={S.h2}>Bonding</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Bonding LPS ke different components aur building ke metallic systems ko electrically connect karta hai — side flash risk aur dangerous potential difference dono prevent karta hai.</p>
-      <p style={S.p}>Lightning event ke time, agar LPS aur building steel/piping alag potential pe hain, dangerous side flash (arcing) ho sakta hai unke beech. Bonding conductor yeh risk eliminate karta hai by ensuring sab systems same potential pe rahein during the event.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> Bonding electrically connects the different LPS components and the building's metallic systems — it prevents both side flash risk and dangerous potential differences.</p>
+      <p style={S.p}>During a lightning event, if the LPS and the building steel/piping are at different potentials, a dangerous side flash (arcing) can happen between them. The bonding conductor eliminates this risk by ensuring all systems stay at the same potential during the event.</p>
 
       <h2 id="spd" style={S.h2}>Surge Protection Devices (SPD)</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> SPD electrical circuits ko transient overvoltage se protect karta hai — chahe surge direct strike se ho ya induced ho. Teen types cascade mein install hoti hain — progressive protection deta hai.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> An SPD protects electrical circuits from transient overvoltage — whether the surge comes from a direct strike or is induced. Three types are installed in cascade — giving progressive protection.</p>
       <Figure caption="Fig 2 — SPD Installation: Type 1 at main incoming (grid/transformer side), Type 2 at UPS/distribution, Type 3 at rack level — cascaded protection.">
         <SpdInstallationDiagram />
       </Figure>
@@ -127,12 +127,12 @@ export default function Fundamentals() {
         ]}
       />
       <Callout type="important" title="Important — SPD Coordination is Mandatory">
-        Individual SPD types akele complete protection nahi dete — Type 1, 2, 3 ko coordinated cascade mein design karna zaroori hai. Agar Type 1 miss kar diya aur directly Type 2 laga diya main incoming pe, high-energy direct strike current Type 2 ko destroy kar sakta hai without adequately protecting downstream.
+        Individual SPD types alone do not give complete protection — Type 1, 2 and 3 must be designed in a coordinated cascade. If Type 1 is missed and Type 2 is installed directly at the main incoming, high-energy direct strike current can destroy the Type 2 without adequately protecting downstream.
       </Callout>
 
       <h2 id="dc-lightning-path" style={S.h2}>Typical Data Center Lightning Path</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Grid se Rack tak poora power chain — har stage pe appropriate SPD type install hoti hai coordinated protection ke liye.</p>
-      <p style={S.p}>Power chain: Grid → Transformer → RMU (Ring Main Unit) → <TopicLink slug="ups" variant="inline" /> → <TopicLink slug="pdu" variant="inline" /> → Rack. SPD placement: Type 1 at transformer secondary/RMU incoming, Type 2 at UPS input aur major PDU input, Type 3 at rack PDU output near servers.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> The whole power chain from the Grid to the Rack — the appropriate SPD type is installed at every stage for coordinated protection.</p>
+      <p style={S.p}>Power chain: Grid → Transformer → RMU (Ring Main Unit) → <TopicLink slug="ups" variant="inline" /> → <TopicLink slug="pdu" variant="inline" /> → Rack. SPD placement: Type 1 at the transformer secondary/RMU incoming, Type 2 at the UPS input and major PDU inputs, Type 3 at the rack PDU output near servers.</p>
       <ComparisonTable
         headers={["Power Chain Stage", "SPD Type", "Reasoning"]}
         rows={[

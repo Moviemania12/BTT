@@ -5,6 +5,7 @@ import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 export const metadata: Metadata = {
   title: "Cooling Systems — Behind The Tech",
   description: "CRAC, CRAH, chillers, cooling towers, liquid cooling — data center thermal management.",
+  alternates: { canonical: "https://behindthetech.in/learn/non-it/cooling" },
 };
 
 export default function CategoryPage() {

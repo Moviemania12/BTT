@@ -5,6 +5,7 @@ import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 export const metadata: Metadata = {
   title: "Electrical Systems — Behind The Tech",
   description: "UPS, DG, transformers, switchgear, PDUs — data center power infrastructure.",
+  alternates: { canonical: "https://behindthetech.in/learn/non-it/electrical" },
 };
 
 export default function CategoryPage() {

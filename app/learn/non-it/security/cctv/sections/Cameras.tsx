@@ -11,30 +11,19 @@ export default function Cameras() {
       <h2 id="ip-cameras" style={S.h2}>IP Cameras — The Eyes of the System</h2>
 
       <p style={S.p}>
-        IP camera ek network device hai jisme image sensor, lens, ISP (Image Signal Processor), aur
-        network interface sab integrated hote hain. Camera khud video compress karta hai — typically
-        H.264 ya H.265 codec mein — aur RTSP (Real Time Streaming Protocol) ya proprietary stream ke
-        zariye NVR/VMS ko bhejta hai. Har camera ek independent IP address pe hoti hai — switch pe
-        plug karo, NVR pe add karo, aur video aa jaati hai.
+        An IP camera is a network device in which the image sensor, lens, ISP (Image Signal Processor) and network interface are all integrated. The camera compresses the video itself — typically in the H.264 or H.265 codec — and sends it to the NVR/VMS via RTSP (Real Time Streaming Protocol) or a proprietary stream. Every camera has an independent IP address — plug it into the switch, add it to the NVR, and the video comes through.
       </p>
 
       <p style={S.p}>
-        Resolution MP (Megapixel) mein measure hoti hai. 2MP (1080p Full HD), 4MP, 5MP, 8MP (4K/Ultra HD)
-        common options hain. Higher resolution matlab zyada detail — aur zyada storage aur bandwidth.
-        Resolution selection identification requirement, field of view, pixel density per target, motion characteristics aur forensic objective pe depend karta hai — koi universal data center standard nahi hai. Higher resolution better detail deta hai lekin storage aur bandwidth badhta hai; tradeoff project specification aur camera placement ke hisaab se decide karo.
+        Resolution is measured in MP (Megapixel). 2MP (1080p Full HD), 4MP, 5MP, 8MP (4K/Ultra HD) are common options. Higher resolution means more detail — and more storage and bandwidth. Resolution selection depends on the identification requirement, field of view, pixel density per target, motion characteristics and forensic objective — there is no universal data center standard. Higher resolution gives better detail but increases storage and bandwidth; decide the tradeoff according to the project specification and camera placement.
       </p>
 
       <p style={S.p}>
-        <strong>Frame Rate (FPS)</strong> — frames per second — motion fluidity determine karta hai.
-        Higher FPS smoother motion capture deta hai — fast movement wale areas (entry/exit, turnstiles) ke liye important hai. Lower FPS storage aur bandwidth bachata hai — slow-activity areas ke liye adequate ho sakta hai. Actual FPS requirement scene activity, motion characteristics, forensic objectives aur project specification pe depend karta hai; koi universal CCTV FPS standard nahi hai.
+        <strong>Frame Rate (FPS)</strong> — frames per second — determines motion fluidity. Higher FPS gives smoother motion capture — important for areas with fast movement (entry/exit, turnstiles). Lower FPS saves storage and bandwidth — it can be adequate for slow-activity areas. The actual FPS requirement depends on scene activity, motion characteristics, forensic objectives and the project specification; there is no universal CCTV FPS standard.
       </p>
 
       <Callout type="important" title="H.265 vs H.264 — Compression Efficiency Matters">
-        H.265 (HEVC) comparable quality pe H.264 se significantly better compression de sakta hai —
-        actual savings scene complexity, GOP structure, camera implementation aur encoder settings pe
-        depend karti hai. Real-world bitrate reduction vary karta hai; koi fixed guaranteed percentage
-        nahi hai. New deployments mein H.265 support verify karo — NVR, VMS aur network bhi compatible
-        hone chahiye. Older cameras sirf H.264 support karte hain.
+        H.265 (HEVC) can give significantly better compression than H.264 at comparable quality — the actual savings depend on scene complexity, GOP structure, camera implementation and encoder settings. Real-world bitrate reduction varies; there is no fixed guaranteed percentage. In new deployments verify H.265 support — the NVR, VMS and network must also be compatible. Older cameras support only H.264.
       </Callout>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -43,36 +32,23 @@ export default function Cameras() {
       <h2 id="camera-types" style={S.h2}>Camera Types: Dome, Bullet, PTZ & More</h2>
 
       <p style={S.p}>
-        Camera type use case pe depend karta hai — koi ek type har jagah perfect nahi hota. Data center
-        mein typically multiple types ka combination use hota hai.
+        The camera type depends on the use case — no single type is perfect everywhere. In a data center typically a combination of multiple types is used.
       </p>
 
       <p style={S.p}>
-        <strong>Dome Camera</strong> — ceiling-mounted, low-profile housing. Vandal-resistant versions
-        available hain. Direction indicate nahi hoti — attacker ko nahi pata ki camera kahan dekh rahi
-        hai. Server hall, corridors aur general indoor areas ke liye most common choice. Fixed lens ya
-        varifocal lens options milte hain.
+        <strong>Dome Camera</strong> — ceiling-mounted, low-profile housing. Vandal-resistant versions are available. The direction is not indicated — an attacker does not know where the camera is looking. The most common choice for the server hall, corridors and general indoor areas. Fixed lens or varifocal lens options are available.
       </p>
 
       <p style={S.p}>
-        <strong>Bullet Camera</strong> — cylindrical housing, typically wall ya ceiling arm pe mount.
-        Longer range ke liye better — outdoor perimeter, parking areas, loading docks ke liye suitable.
-        Direction clearly visible hoti hai — deterrence effect strong hota hai lekin vandal-prone areas
-        mein dome prefer karo.
+        <strong>Bullet Camera</strong> — cylindrical housing, typically mounted on a wall or ceiling arm. Better for longer range — suitable for the outdoor perimeter, parking areas, loading docks. The direction is clearly visible — the deterrence effect is strong, but in vandal-prone areas prefer a dome.
       </p>
 
       <p style={S.p}>
-        <strong>PTZ Camera (Pan-Tilt-Zoom)</strong> — motorized pan (left/right), tilt (up/down) aur
-        optical zoom. Operator remotely control kar sakta hai ya automatic presets program kar sakta hai.
-        Large open areas, perimeters aur reception areas ke liye useful. Data centers mein PTZ typically
-        large server halls ya outdoor areas mein use hota hai jahan operator ko specific area zoom in
-        karna ho. PTZ expensive hoti hai — fixed cameras se zyada attention chahiye.
+        <strong>PTZ Camera (Pan-Tilt-Zoom)</strong> — motorized pan (left/right), tilt (up/down) and optical zoom. The operator can control it remotely or program automatic presets. Useful for large open areas, perimeters and reception areas. In data centers PTZ is typically used in large server halls or outdoor areas where the operator needs to zoom into a specific area. PTZ is expensive — it needs more attention than fixed cameras.
       </p>
 
       <p style={S.p}>
-        <strong>Fisheye/360° Camera</strong> — single camera pura room cover kar sakti hai. Dewarping
-        software VMS mein required hai human-viewable view ke liye. Small rooms ya intersections ke liye
-        useful. Resolution effective hoti hai kyunki 360° image split hoti hai.
+        <strong>Fisheye/360° Camera</strong> — a single camera can cover the whole room. Dewarping software is required in the VMS for a human-viewable view. Useful for small rooms or intersections. Effective resolution is lower because the 360° image is split.
       </p>
 
       <ComparisonTable
@@ -93,34 +69,19 @@ export default function Cameras() {
       <h2 id="lens-ir-wdr" style={S.h2}>Lens, IR Night Vision & WDR</h2>
 
       <p style={S.p}>
-        <strong>Fixed Lens</strong> ek fixed focal length pe set hoti hai — angle of view install ke time
-        decide hoti hai. Simpler, cheaper, aur no moving parts. <strong>Varifocal Lens</strong> focal
-        length adjust kar sakte hain — manually at install, ya motorized (remote) versions bhi hain.
-        Data center mein server hall ke liye fixed lens typically adequate hai; entry points aur
-        perimeters pe varifocal flexibility deta hai.
+        A <strong>Fixed Lens</strong> is set at a fixed focal length — the angle of view is decided at install time. Simpler, cheaper, and no moving parts. A <strong>Varifocal Lens</strong> can adjust the focal length — manually at install, or there are motorized (remote) versions too. In a data center a fixed lens is typically adequate for the server hall; at entry points and perimeters a varifocal gives flexibility.
       </p>
 
       <p style={S.p}>
-        <strong>IR (Infrared) Night Vision</strong> — camera ke around IR LEDs hote hain jo infrared
-        light emit karte hain, human eye ke liye invisible lekin camera sensor ke liye visible. Dark
-        mein bhi usable black-and-white footage milti hai. IR range meters mein specify hoti hai —
-        20m, 30m, 50m, 100m+ options available hain. Data center server hall mein lighting hamesha on
-        hoti hai, lekin perimeter, parking aur low-light storage areas ke liye IR important hai.
+        <strong>IR (Infrared) Night Vision</strong> — there are IR LEDs around the camera that emit infrared light, invisible to the human eye but visible to the camera sensor. You get usable black-and-white footage even in the dark. IR range is specified in meters — 20m, 30m, 50m, 100m+ options are available. In a data center server hall the lighting is always on, but IR is important for the perimeter, parking and low-light storage areas.
       </p>
 
       <p style={S.p}>
-        <strong>WDR (Wide Dynamic Range)</strong> — ek scene mein jab bright aur dark areas simultaneously
-        hon to normal camera ya to bright area washout karta hai ya dark area black ho jaata hai. WDR
-        camera multiple exposures combine karke dono areas usable detail mein capture karta hai. Data
-        center entry/exit points pe — jahan bahar ka bright light aur andar dark — WDR important hai.
-        Mantrap cameras pe WDR specially useful hai.
+        <strong>WDR (Wide Dynamic Range)</strong> — when a scene has bright and dark areas simultaneously, a normal camera either washes out the bright area or the dark area goes black. A WDR camera combines multiple exposures to capture both areas with usable detail. At data center entry/exit points — where there is bright light outside and dark inside — WDR is important. WDR is especially useful for mantrap cameras.
       </p>
 
       <Callout type="best-practice" title="Low-Light Cameras — Starlight/ColorVu Type">
-        Some cameras large aperture lenses aur advanced sensors se very low light mein color video
-        provide karte hain — IR black-and-white se better forensic identification deta hai. These are
-        marketed as "Starlight," "ColorVu," "Colour Night Vision," etc. by different OEMs. Generator
-        yards, perimeter aur areas with minimal lighting ke liye specify karo.
+        Some cameras provide color video in very low light with large aperture lenses and advanced sensors — this gives better forensic identification than IR black-and-white. These are marketed as "Starlight," "ColorVu," "Colour Night Vision," etc. by different OEMs. Specify them for generator yards, the perimeter and areas with minimal lighting.
       </Callout>
     </>
   );

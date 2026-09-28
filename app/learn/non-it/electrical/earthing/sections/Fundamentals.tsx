@@ -8,23 +8,23 @@ export default function Fundamentals() {
   return (
     <>
       <h2 id="what-is-earthing" style={S.h2}>What is Earthing?</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Earthing ek low-resistance path banati hai fault current ko safely ground mein bhejne ke liye. Bina earthing ke fault current equipment ke through ya insaan ke through path dhundh sakta hai — dono dangerous hain.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> Earthing creates a low-resistance path to send fault current safely into the ground. Without earthing, fault current can find a path through equipment or through a person — both are dangerous.</p>
       <ul style={S.ul}>
         <li>Earthing = intentional electrical connection to ground</li>
-        <li>Purpose: fault current ko safe path dena</li>
-        <li>Personnel safety aur equipment protection dono ke liye zaroori</li>
-        <li>Data Center mein multiple earthing systems parallel chalte hain</li>
+        <li>Purpose: to give fault current a safe path</li>
+        <li>Essential for both personnel safety and equipment protection</li>
+        <li>In a Data Center, multiple earthing systems run in parallel</li>
       </ul>
-      <p style={S.p}><strong>Engineer Tip:</strong> Earthing ko "backup safety system" mat samjho — yeh primary protection ka hissa hai. Protective relay, breaker, aur earthing teeno mila ke ek complete protection scheme banate hain.</p>
-      <p style={S.p}><strong>Real Data Center Example:</strong> Server PSU internally short ho jaaye aur chassis live ho jaaye — agar proper earthing hai, fault current turant earth path se flow karegi, breaker trip karega, aur chassis touch karne pe koi shock nahi lagega. Bina earthing ke, chassis touch karne wale insaan ke through current flow karegi.</p>
-      <p style={S.p}>Technically, earthing metallic parts (jo normally current-carrying nahi hote) ko ek low-impedance conductor se ground mein connect karta hai. Fault condition mein yeh path current ko safely divert karta hai — insaan ke through nahi, equipment ke through nahi.</p>
+      <p style={S.p}><strong>Engineer Tip:</strong> Do not think of earthing as a "backup safety system" — it is part of primary protection. The protective relay, breaker and earthing together make one complete protection scheme.</p>
+      <p style={S.p}><strong>Real Data Center Example:</strong> If a server PSU shorts internally and the chassis becomes live — with proper earthing, fault current will immediately flow through the earth path, the breaker will trip, and touching the chassis will give no shock. Without earthing, current will flow through the person touching the chassis.</p>
+      <p style={S.p}>Technically, earthing connects metallic parts (which normally do not carry current) to ground through a low-impedance conductor. In a fault condition this path safely diverts the current — not through a person, not through equipment.</p>
       <Callout type="important" title="Common Mistake">
-        Kai engineers earthing ko sirf "compliance requirement" samajhte hain — ek checkbox jo IS 3043 ke liye tick karna hai. Reality mein earthing failure directly personnel death aur equipment destruction dono cause kar sakti hai. Yeh safety-critical system hai, paperwork nahi.
+        Many engineers see earthing only as a "compliance requirement" — a checkbox to tick for IS 3043. In reality, earthing failure can directly cause both personnel death and equipment destruction. It is a safety-critical system, not paperwork.
       </Callout>
-      <p style={S.p}><strong>Key Takeaway:</strong> Earthing = fault current ke liye designed safe path — bina isske Data Center operate karna extremely dangerous hai, IEC ya IS compliance se pehle bhi.</p>
+      <p style={S.p}><strong>Key Takeaway:</strong> Earthing = a safe path designed for fault current — operating a Data Center without it is extremely dangerous, even before IEC or IS compliance.</p>
 
       <h2 id="why-earthing-required" style={S.h2}>Why Earthing is Required</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Earthing 4 core reasons se required hai — personnel safety, equipment protection, fault clearance enable karna, aur electrical noise reduce karna. Data Center mein yeh sab equally critical hain.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> Earthing is required for 4 core reasons — personnel safety, equipment protection, enabling fault clearance and reducing electrical noise. In a Data Center all of these are equally critical.</p>
       <ComparisonTable
         headers={["Reason", "What It Prevents", "Data Center Impact"]}
         rows={[
@@ -36,11 +36,11 @@ export default function Fundamentals() {
           ["Static discharge", "ESD damage to sensitive electronics", "Component-level protection"],
         ]}
       />
-      <p style={S.p}><strong>Engineer Tip:</strong> Agar Data Center mein "noisy" network connections ya intermittent data errors ho rahe hain jinka koi clear IT cause nahi mil raha, earthing check karo. Poor earthing/bonding often manifest hota hai as unexplained IT issues, not obvious electrical faults.</p>
-      <p style={S.p}><strong>Key Takeaway:</strong> Earthing sirf safety ke liye nahi — signal integrity aur equipment longevity dono directly earthing quality pe depend karte hain.</p>
+      <p style={S.p}><strong>Engineer Tip:</strong> If a Data Center has "noisy" network connections or intermittent data errors with no clear IT cause, check the earthing. Poor earthing/bonding often manifests as unexplained IT issues, not obvious electrical faults.</p>
+      <p style={S.p}><strong>Key Takeaway:</strong> Earthing is not only for safety — both signal integrity and equipment longevity depend directly on earthing quality.</p>
 
       <h2 id="earthing-vs-grounding" style={S.h2}>Earthing vs Grounding</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> India/UK terminology mein "Earthing" use hota hai, US terminology mein "Grounding" — dono technically same concept hain. Kuch subtle usage differences hain jo samajhna chahiye.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> India/UK terminology uses "Earthing", US terminology uses "Grounding" — both are technically the same concept. There are some subtle usage differences worth understanding.</p>
       <ComparisonTable
         headers={["Aspect", "Earthing (IS/IEC terminology)", "Grounding (US/NEC terminology)"]}
         rows={[
@@ -51,21 +51,21 @@ export default function Fundamentals() {
           ["Data Center India", "Uses IS 3043 primarily", "May reference IEEE/NEC if US-based OEM"],
         ]}
       />
-      <p style={S.p}>India mein Data Centers primarily IS 3043 follow karte hain — lekin imported equipment (US OEMs) ki documentation mein "grounding" terminology milegi. Engineer ko dono terms same concept samajhna chahiye.</p>
-      <p style={S.p}><strong>Key Takeaway:</strong> Earthing aur Grounding same engineering concept hain, alag regional terminology — confuse mat ho jaana jab OEM manual "grounding" bole.</p>
+      <p style={S.p}>In India, Data Centers primarily follow IS 3043 — but the documentation of imported equipment (US OEMs) will use "grounding" terminology. An engineer should understand both terms as the same concept.</p>
+      <p style={S.p}><strong>Key Takeaway:</strong> Earthing and Grounding are the same engineering concept with different regional terminology — do not get confused when an OEM manual says "grounding".</p>
 
       <h2 id="dc-earthing-philosophy" style={S.h2}>Data Center Earthing Philosophy</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Data Center earthing design ek single earth pit pe depend nahi karta — poora facility ek interconnected earthing grid banata hai jisme har major equipment bonded hota hai common reference point se.</p>
-      <p style={S.p}><strong>Engineer Tip:</strong> "Single point earthing" vs "Grid earthing" ka decision facility size pe depend karta hai. Small server rooms single point earthing use kar sakte hain — lekin Tier III/IV Data Centers hamesha grid/mesh earthing use karte hain kyunki single point of failure risk unacceptable hai.</p>
-      <p style={S.p}>Core philosophy: <strong>Equipotential Bonding</strong> — sab metallic parts same electrical potential pe hone chahiye. Agar do points ke beech potential difference hai, touch voltage risk create hota hai during fault conditions.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> Data Center earthing design does not depend on a single earth pit — the whole facility forms an interconnected earthing grid in which every major piece of equipment is bonded to a common reference point.</p>
+      <p style={S.p}><strong>Engineer Tip:</strong> The "Single point earthing" vs "Grid earthing" decision depends on facility size. Small server rooms can use single point earthing — but Tier III/IV Data Centers always use grid/mesh earthing because the single point of failure risk is unacceptable.</p>
+      <p style={S.p}>Core philosophy: <strong>Equipotential Bonding</strong> — all metallic parts should be at the same electrical potential. If there is a potential difference between two points, a touch voltage risk is created during fault conditions.</p>
       <Callout type="best-practice" title="Best Practice — Common Bonding Network (CBN)">
-        Modern Data Center design mein ek Common Bonding Network (CBN) approach use hoti hai — sab earthing systems (equipment, lightning, functional) ek common reference point se interconnected hote hain, phir bhi function-specific paths maintain karte hain. Yeh IEC 61000-5-2 recommended approach hai.
+        Modern Data Center design uses a Common Bonding Network (CBN) approach — all earthing systems (equipment, lightning, functional) are interconnected at a common reference point, while still maintaining function-specific paths. This is the IEC 61000-5-2 recommended approach.
       </Callout>
-      <p style={S.p}><strong>Key Takeaway:</strong> Individual earth pit design se zyada important hai — poora facility ek unified, equipotential earthing grid ke roop mein design karna.</p>
+      <p style={S.p}><strong>Key Takeaway:</strong> More important than individual earth pit design is designing the whole facility as a unified, equipotential earthing grid.</p>
 
       <h2 id="complete-earthing-network" style={S.h2}>Complete Data Center Earthing Network</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Har major Data Center system — Transformer se lekar DCIM tak — earthing network se connected hota hai. Yeh section poora network map karta hai.</p>
-      <Figure caption="Fig 1 — Complete Data Center Earthing Network: Transformer, DG, UPS, Battery Bank, STS, PDU, Panels, Cable Trays, Server Rack, Cooling systems, Fire systems, Building Steel, aur Lightning Protection sab common earth grid se bonded.">
+      <p style={S.p}><strong>Quick Summary:</strong> Every major Data Center system — from the Transformer to DCIM — is connected to the earthing network. This section maps the whole network.</p>
+      <Figure caption="Fig 1 — Complete Data Center Earthing Network: Transformer, DG, UPS, Battery Bank, STS, PDU, Panels, Cable Trays, Server Rack, Cooling systems, Fire systems, Building Steel, and Lightning Protection — all bonded to the common earth grid.">
         <EarthingNetworkDiagram />
       </Figure>
       <ComparisonTable
@@ -89,19 +89,19 @@ export default function Fundamentals() {
         ]}
       />
       <Callout type="important" title="Important — Separate but Bonded">
-        Different systems ke earthing paths physically separate rakhe jaate hain (especially clean vs dirty earth) lekin ultimately ek common reference point pe bond hote hain. Yeh isliye kyunki agar completely isolated rakho, potential difference develop ho sakti hai between systems during fault — jo dangerous hai.
+        The earthing paths of different systems are kept physically separate (especially clean vs dirty earth), but are ultimately bonded at a common reference point. This is because if they are kept completely isolated, a potential difference can develop between systems during a fault — which is dangerous.
       </Callout>
-      <p style={S.p}><strong>Key Takeaway:</strong> Data Center earthing ek single system nahi — 15+ subsystems ka interconnected network hai, sab equipotential bonding principle follow karte hue.</p>
+      <p style={S.p}><strong>Key Takeaway:</strong> Data Center earthing is not a single system — it is an interconnected network of 15+ subsystems, all following the equipotential bonding principle.</p>
 
       <h2 id="types-of-earthing" style={S.h2}>Types of Earthing</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Earthing ko function ke basis pe categorize karte hain — equipment vs system, clean vs dirty, functional, lightning, aur static. Har type ka specific purpose hai Data Center mein.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> Earthing is categorized by function — equipment vs system, clean vs dirty, functional, lightning and static. Each type has a specific purpose in the Data Center.</p>
 
       <h3 id="equipment-earthing" style={S.h3}>Equipment Earthing</h3>
-      <p style={S.p}>Equipment earthing (body earthing) — non-current-carrying metallic parts (equipment body/chassis) ko earth se connect karta hai. Purpose: fault ke case mein chassis dangerous voltage pe na aaye.</p>
-      <p style={S.p}><strong>Real Example:</strong> UPS cabinet ka metal body — normal operation mein current carry nahi karta, lekin internal insulation fail hone pe body live ho sakti hai. Equipment earthing yeh scenario prevent karta hai.</p>
+      <p style={S.p}>Equipment earthing (body earthing) — connects non-current-carrying metallic parts (equipment body/chassis) to earth. Purpose: so that the chassis does not come to a dangerous voltage in case of a fault.</p>
+      <p style={S.p}><strong>Real Example:</strong> The metal body of a UPS cabinet — it does not carry current in normal operation, but if internal insulation fails, the body can become live. Equipment earthing prevents this scenario.</p>
 
       <h3 id="system-earthing" style={S.h3}>System Earthing</h3>
-      <p style={S.p}>System earthing — power system ke current-carrying conductor (typically neutral) ko intentionally earth se connect karta hai. Yeh voltage reference establish karta hai aur fault current ko controlled path deta hai.</p>
+      <p style={S.p}>System earthing — intentionally connects a current-carrying conductor of the power system (typically the neutral) to earth. It establishes a voltage reference and gives fault current a controlled path.</p>
       <ComparisonTable
         headers={["System Earthing Type", "Description", "Common Use"]}
         rows={[
@@ -123,25 +123,25 @@ export default function Fundamentals() {
         ]}
       />
       <Callout type="warning" title="Warning — Never Mix Clean and Dirty Earth Casually">
-        Clean earth ko dirty earth se randomly connect karna EMI/noise introduce karta hai sensitive electronics mein — BMS false alarms, communication errors, data corruption tak ho sakta hai. Dono ek hi ultimate reference point pe bond hone chahiye, lekin controlled, single-point manner mein — not multiple random connections.
+        Randomly connecting clean earth to dirty earth introduces EMI/noise into sensitive electronics — it can cause BMS false alarms, communication errors, even data corruption. Both should be bonded at the same ultimate reference point, but in a controlled, single-point manner — not through multiple random connections.
       </Callout>
 
       <h3 id="functional-earth" style={S.h3}>Functional Earth</h3>
-      <p style={S.p}>Functional earth safety ke liye nahi — equipment ke correct operation ke liye required hoti hai. Example: BMS controllers, PLCs, communication equipment jinko stable reference voltage chahiye signal processing ke liye.</p>
+      <p style={S.p}>Functional earth is not for safety — it is required for the correct operation of equipment. Example: BMS controllers, PLCs and communication equipment that need a stable reference voltage for signal processing.</p>
 
       <h3 id="lightning-earth" style={S.h3}>Lightning Earth</h3>
-      <p style={S.p}>Lightning earth dedicated system hai — very high current (tens of kA), very short duration (microseconds) discharge handle karne ke liye designed. Yeh normal equipment earthing se separate rakhi jaati hai lekin ultimately bonded hoti hai.</p>
-      <p style={S.p}><TopicLink slug="lightning-protection" variant="inline" /> article mein complete lightning protection system coverage milega.</p>
+      <p style={S.p}>Lightning earth is a dedicated system — designed to handle very high current (tens of kA), very short duration (microseconds) discharges. It is kept separate from normal equipment earthing but is ultimately bonded.</p>
+      <p style={S.p}>Complete coverage of the lightning protection system is in the <TopicLink slug="lightning-protection" variant="inline" /> article.</p>
 
       <h3 id="static-earth" style={S.h3}>Static Earth</h3>
-      <p style={S.p}>Static earth electrostatic discharge (ESD) control ke liye hai — raised floor tiles, chairs, wrist straps sab static earth se connected hote hain. Server components handle karte waqt static earth critical hai — ESD se sensitive chips damage ho sakte hain.</p>
+      <p style={S.p}>Static earth is for electrostatic discharge (ESD) control — raised floor tiles, chairs and wrist straps are all connected to static earth. Static earth is critical while handling server components — ESD can damage sensitive chips.</p>
 
       <h2 id="earthing-components" style={S.h2}>Earthing Components</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Complete earthing system multiple physical components se bana hota hai — earth pit se lekar test link tak. Har component ka specific role hai.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> A complete earthing system is made of multiple physical components — from the earth pit to the test link. Each component has a specific role.</p>
       <ComparisonTable
         headers={["Component", "Function", "Material Typical"]}
         rows={[
-          ["Earth Pit", "Ground mein earth electrode housing", "Concrete/GI chamber"],
+          ["Earth Pit", "Earth electrode housing in the ground", "Concrete/GI chamber"],
           ["Earth Chamber", "Access point for testing/maintenance", "Concrete with cover"],
           ["Earth Electrode", "Actual ground contact — plate/rod", "Copper, GI, copper-bonded"],
           ["Earth Strip", "Connects electrode to building system", "Copper or GI, 25x3mm to 50x6mm"],
@@ -152,24 +152,24 @@ export default function Fundamentals() {
           ["Inspection Chamber", "Access for periodic inspection", "Concrete/plastic chamber with lid"],
         ]}
       />
-      <Callout type="common-mistake" title="Common Mistake — Test Link Skip Karna">
-        Kai installations mein test link install nahi hoti — earth strip directly welded/bolted permanent connection ban jaati hai. Iska matlab: earth resistance test karne ke liye system ko physically disconnect karna padta hai, jo risky aur time-consuming hai. Test link hamesha install karo — yeh proper isolation ke liye designed hai.
+      <Callout type="common-mistake" title="Common Mistake — Skipping the Test Link">
+        In many installations the test link is not installed — the earth strip becomes a directly welded/bolted permanent connection. This means: to do an earth resistance test, the system has to be physically disconnected, which is risky and time-consuming. Always install a test link — it is designed for proper isolation.
       </Callout>
 
       <h2 id="earth-pit-types" style={S.h2}>Earth Pit Types</h2>
-      <p style={S.p}><strong>Quick Summary:</strong> Earth pit construction ke 5 main types hain — Plate, Rod, Chemical, Grid, aur Ring. Har type ka application aur cost different hai.</p>
+      <p style={S.p}><strong>Quick Summary:</strong> There are 5 main types of earth pit construction — Plate, Rod, Chemical, Grid and Ring. Each type's application and cost is different.</p>
 
       <h3 id="plate-earthing" style={S.h3}>Plate Earthing</h3>
-      <p style={S.p}>GI ya copper plate (typically 600mm x 600mm) ground mein vertically bury ki jaati hai, charcoal/salt layer ke saath surrounding soil resistivity improve karne ke liye. Traditional method — proven, lekin periodic watering required.</p>
+      <p style={S.p}>A GI or copper plate (typically 600mm x 600mm) is buried vertically in the ground, with a charcoal/salt layer to improve the surrounding soil resistivity. Traditional method — proven, but periodic watering required.</p>
 
       <h3 id="rod-earthing" style={S.h3}>Rod / Pipe Earthing</h3>
-      <p style={S.p}>GI pipe ya copper-bonded rod ground mein vertically drive ki jaati hai — typically 3m length, deeper installations multiple rods coupled. Compact footprint, deeper moisture access — good for space-constrained sites.</p>
+      <p style={S.p}>A GI pipe or copper-bonded rod is driven vertically into the ground — typically 3m length; deeper installations couple multiple rods. Compact footprint, deeper moisture access — good for space-constrained sites.</p>
 
       <h3 id="chemical-earthing" style={S.h3}>Chemical / Maintenance Free Earthing</h3>
       <Figure caption="Fig 2 — Maintenance Free Earthing (MFE) Cross Section: Electrode surrounded by conductive chemical compound backfill, reducing dependency on soil moisture.">
         <EarthPitDiagram />
       </Figure>
-      <p style={S.p}>Chemical earthing electrode ko conductive compound (bentonite + chemical backfill) se surround karta hai — yeh moisture retain karta hai aur soil resistivity ko naturally reduce karta hai, without regular watering. Modern Data Centers mein preferred choice hai — genuinely lower maintenance.</p>
+      <p style={S.p}>Chemical earthing surrounds the electrode with a conductive compound (bentonite + chemical backfill) — it retains moisture and naturally reduces soil resistivity, without regular watering. It is the preferred choice in modern Data Centers — genuinely lower maintenance.</p>
       <ComparisonTable
         headers={["Parameter", "Conventional (Plate/Rod)", "Chemical/MFE"]}
         rows={[
@@ -182,13 +182,13 @@ export default function Fundamentals() {
       />
 
       <h3 id="grid-earthing" style={S.h3}>Grid / Mesh Earthing</h3>
-      <p style={S.p}>Multiple electrodes interconnected in a grid pattern underground — provides very low, stable resistance aur excellent fault current distribution. Standard for large Data Centers aur substations.</p>
+      <p style={S.p}>Multiple electrodes interconnected in a grid pattern underground — provides very low, stable resistance and excellent fault current distribution. Standard for large Data Centers and substations.</p>
 
       <h3 id="ring-earthing" style={S.h3}>Ring Earthing</h3>
-      <p style={S.p}>Building perimeter ke around ek continuous earth conductor ring bury ki jaati hai, multiple electrodes se connected. Building steel aur equipment easily is ring se tap ho sakte hain — good for large facility uniform earthing.</p>
+      <p style={S.p}>A continuous earth conductor ring is buried around the building perimeter, connected to multiple electrodes. Building steel and equipment can easily tap off this ring — good for uniform earthing of a large facility.</p>
 
       <h3 id="earth-enhancement-compound" style={S.h3}>Earth Enhancement Compound</h3>
-      <p style={S.p}>High-resistivity soil areas (rocky, sandy) mein earth enhancement compound use hota hai electrode ke around backfill ke roop mein — conductivity artificially improve karta hai jahan natural soil insufficient hai.</p>
+      <p style={S.p}>In high-resistivity soil areas (rocky, sandy), earth enhancement compound is used as backfill around the electrode — it artificially improves conductivity where the natural soil is insufficient.</p>
     </>
   );
 }

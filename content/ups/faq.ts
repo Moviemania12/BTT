@@ -17,28 +17,28 @@ export interface FaqEntry {
 
 export const upsFaq: FaqEntry[] = [
   {
-    question: "UPS aur DG Set dono backup hain, toh dono kyun chahiye?",
+    question: "UPS and DG Set are both backup, so why are both needed?",
     answer:
-      "UPS instant transfer ke liye hai (zero downtime, battery se immediate switch). DG Set extended runtime ke liye hai — UPS battery typically sirf 10-15 minutes chalti hai, jabki DG Set ghanton chala sakta hai. UPS DG ke start hone tak ka gap cover karta hai.",
+      "UPS is for instant transfer (zero downtime, immediate switch to battery). DG Set is for extended runtime — a UPS battery typically runs only 10-15 minutes, whereas a DG Set can run for hours. The UPS covers the gap until the DG starts.",
   },
   {
-    question: "Online Double Conversion UPS Data Center mein standard kyun hai?",
+    question: "Why is the Online Double Conversion UPS the standard in Data Centers?",
     answer:
-      "Online Double Conversion (IEC 62040 classification: VFI) output ko input se completely isolate karta hai — koi voltage sag, surge, frequency variation, ya harmonics load tak nahi pohonchte. Zero transfer time hota hai kyunki load hamesha inverter se power leta hai.",
+      "Online Double Conversion (IEC 62040 classification: VFI) completely isolates the output from the input — no voltage sag, surge, frequency variation or harmonics reach the load. Transfer time is zero because the load always takes power from the inverter.",
   },
   {
-    question: "DoD (Depth of Discharge) battery sizing mein kyun important hai?",
+    question: "Why is DoD (Depth of Discharge) important in battery sizing?",
     answer:
-      "Battery ko 100% discharge karna permanently capacity damage karta hai. DoD limit (jaise 80% for VRLA) battery life preserve karta hai by avoiding deep discharge cycles — yeh trade-off hai usable capacity vs battery longevity ke beech.",
+      "Discharging a battery 100% permanently damages its capacity. A DoD limit (such as 80% for VRLA) preserves battery life by avoiding deep discharge cycles — this is a trade-off between usable capacity and battery longevity.",
   },
   {
-    question: "VRLA aur Lithium-ion battery mein kya difference hai?",
+    question: "What is the difference between VRLA and Lithium-ion batteries?",
     answer:
-      "VRLA sasti hai upfront lekin 3-5 saal life deti hai aur bhaari/bulky hoti hai. Lithium-ion 2-3x zyada costly hai upfront lekin 10-15 saal life deti hai, 70% tak chhota footprint, aur often lower total cost of ownership over 10 years despite higher upfront cost.",
+      "VRLA is cheaper upfront but gives a 3-5 year life and is heavy/bulky. Lithium-ion is 2-3x more costly upfront but gives a 10-15 year life, up to 70% smaller footprint, and often a lower total cost of ownership over 10 years despite the higher upfront cost.",
   },
   {
-    question: "N+1 aur 2N redundancy mein kya farak hai?",
+    question: "What is the difference between N+1 and 2N redundancy?",
     answer:
-      "N+1 matlab ek extra module hai backup ke liye — single module failure survive karta hai. 2N matlab poora dusra independent path hai — yeh complete path failure (not just one module) survive kar sakta hai. 2N zyada costly hai lekin Tier IV ke liye mandatory hai.",
+      "N+1 means there is one extra module for backup — it survives a single module failure. 2N means there is a whole second independent path — it can survive a complete path failure (not just one module). 2N is more costly but is mandatory for Tier IV.",
   },
 ];

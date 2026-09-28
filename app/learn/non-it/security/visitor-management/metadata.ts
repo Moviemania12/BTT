@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Visitor Management in Data Centers — Complete Engineering Guide | Behind The Tech",
   description:
-    "Data Center mein visitor management system kaise kaam karta hai — pre-registration, identity verification, temporary badge, access provisioning, audit trail, integration aur troubleshooting.",
+    "How a visitor management system works in a Data Center — pre-registration, identity verification, temporary badge, access provisioning, audit trail, integration and troubleshooting.",
   keywords: [
     "visitor management data center",
     "visitor management system",
@@ -13,8 +13,9 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Visitor Management in Data Centers — Complete Engineering Guide",
-    description: "Pre-registration se checkout tak — Data Center visitor management ka complete engineering guide.",
+    description: "From pre-registration to checkout — the complete engineering guide to Data Center visitor management.",
     url: "https://behindthetech.in/learn/non-it/security/visitor-management",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -22,35 +23,42 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Visitor Management in Data Centers — Behind The Tech",
-    description: "Data Center visitor management — registration, access, badge, audit trail aur troubleshooting.",
+    description: "Data Center visitor management — registration, access, badge, audit trail and troubleshooting.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/security/visitor-management" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/security/visitor-management",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/security/visitor-management",
+      hi: "https://behindthetech.in/hi/learn/non-it/security/visitor-management",
+      "x-default": "https://behindthetech.in/learn/non-it/security/visitor-management",
+    },
+  },
 };
 
 export const faqs = [
   {
-    q: "Visitor management system aur sign-in register mein kya difference hai?",
-    a: "Paper sign-in register sirf name aur time record karta hai — koi identity verification nahi, koi access control integration nahi, koi real-time visibility nahi. Visitor management system government ID scan/verify karta hai, host notification automatic bhejta hai, temporary access credential provision karta hai, escort rules enforce karta hai, aur audit trail searchable format mein store karta hai. Digital visitor management systems manual/paper-based processes se measurably better accountability, auditability aur integration capability provide karte hain.",
+    q: "What is the difference between a visitor management system and a sign-in register?",
+    a: "A paper sign-in register only records name and time — no identity verification, no access control integration, no real-time visibility. A visitor management system scans/verifies government ID, sends host notification automatically, provisions a temporary access credential, enforces escort rules, and stores the audit trail in a searchable format. Digital visitor management systems provide measurably better accountability, auditability and integration capability than manual/paper-based processes.",
   },
   {
-    q: "Visitor badge aur permanent employee badge mein kya difference hona chahiye?",
-    a: "Visitor badge visually distinct honi chahiye — different color, 'VISITOR' text clearly visible, escort required indication. Temporary badge limited access zones pe valid honi chahiye — sirf approved areas, approved time window. Physical appearance se immediately identifiable hona chahiye ki ye visitor hai employee nahi. Data centers mein typically visitor badge permanent employee badge se hardware bhi different hoti hai — limited cloning risk.",
+    q: "What should be the difference between a visitor badge and a permanent employee badge?",
+    a: "A visitor badge must be visually distinct — different color, 'VISITOR' text clearly visible, escort required indication. A temporary badge must be valid on limited access zones — only approved areas, approved time window. It must be immediately identifiable from physical appearance that this is a visitor and not an employee. In data centers the visitor badge typically also differs in hardware from the permanent employee badge — limited cloning risk.",
   },
   {
-    q: "Visitor credential kab expire karni chahiye?",
-    a: "Credential visit duration ke liye provision honi chahiye — agar visit 2 hour hai to credential 2 hour ke baad automatically expire ho. End-of-day expiry at latest (same day midnight) safe practice hai. Longer visits ke liye each day re-approve karo. Visitor check-out pe immediately revoke karo — manual check-out possible hona chahiye agar visitor bahar nahi gaya properly. Automatic expiry fail-safe hai agar check-out missed ho.",
+    q: "When should a visitor credential expire?",
+    a: "The credential must be provisioned for the visit duration — if the visit is 2 hours, the credential should automatically expire after 2 hours. End-of-day expiry at the latest (same day midnight) is safe practice. For longer visits re-approve each day. Revoke immediately on visitor check-out — manual check-out must be possible if the visitor did not leave properly. Automatic expiry is the fail-safe if check-out is missed.",
   },
   {
-    q: "Visitor data kitne din store karna chahiye?",
-    a: "Retention period compliance requirements, client policy aur applicable regulations pe depend karta hai. Koi universal mandatory period nahi hai. Common practice 90 days se ek saal tak hoti hai — client contractual requirements aur applicable audit frameworks check karo. GDPR aur similar privacy regulations data minimization aur defined retention limits mandate karte hain — legal counsel se verify karo jurisdiction-specific requirements.",
+    q: "For how many days should visitor data be stored?",
+    a: "The retention period depends on compliance requirements, client policy and applicable regulations. There is no universal mandatory period. Common practice is 90 days to one year — check client contractual requirements and applicable audit frameworks. GDPR and similar privacy regulations mandate data minimization and defined retention limits — verify jurisdiction-specific requirements with legal counsel.",
   },
   {
-    q: "Pre-registration kyun important hai aur kya include karna chahiye?",
-    a: "Pre-registration advance notice deta hai — security team visitor ko expect kar raha hota hai, host ready hota hai, aur access provisioned hota hai before arrival. Walk-in visitors slower process require karte hain aur surprise element security risk ho sakta hai. Pre-registration mein include karo: visitor full name, government ID type, purpose of visit, host name, expected arrival/departure time, areas to be visited. Approval workflow ensure karta hai ki unauthorized visit book na ho sake.",
+    q: "Why is pre-registration important and what should it include?",
+    a: "Pre-registration gives advance notice — the security team is expecting the visitor, the host is ready, and access is provisioned before arrival. Walk-in visitors require a slower process and the surprise element can be a security risk. Include in pre-registration: visitor full name, government ID type, purpose of visit, host name, expected arrival/departure time, areas to be visited. The approval workflow ensures an unauthorized visit cannot be booked.",
   },
   {
-    q: "Visitor management system mein cybersecurity concerns kya hain?",
-    a: "Visitor data — names, ID numbers, photos — sensitive personal data hai. System ka breach visitor privacy compromise karta hai aur regulatory implications hain. Key controls: encrypted database, access control on VMS server, visitor data retention limits, audit logs. Visitor-facing kiosks secure hone chahiye — koi data leakage between visitors. Network segmentation — VMS ko production IT se alag rakho. Regular software updates.",
+    q: "What are the cybersecurity concerns in a visitor management system?",
+    a: "Visitor data — names, ID numbers, photos — is sensitive personal data. A breach of the system compromises visitor privacy and has regulatory implications. Key controls: encrypted database, access control on the VMS server, visitor data retention limits, audit logs. Visitor-facing kiosks must be secure — no data leakage between visitors. Network segmentation — keep the VMS separate from production IT. Regular software updates.",
   },
 ];
 

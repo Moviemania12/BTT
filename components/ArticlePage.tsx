@@ -49,6 +49,8 @@ interface ArticlePageProps {
   headings: ArticleHeading[];
   readingTimeMinutes: number;
   lang?: "en" | "hi";
+  /** Optional path of the same article in the other language (renders a switch link). */
+  alternateHref?: string;
   children: React.ReactNode;
 }
 
@@ -494,6 +496,7 @@ export default function ArticlePage({
   headings,
   readingTimeMinutes,
   lang = "en",
+  alternateHref,
   children,
 }: ArticlePageProps) {
   const topic = TOPICS[slug];
@@ -523,6 +526,29 @@ export default function ArticlePage({
             <main id="article-content" style={{ minWidth: 0 }}>
               <Breadcrumbs topic={topic} />
 
+              {alternateHref && (
+                <div style={{ margin: "8px 0 4px" }}>
+                  <Link
+                    href={alternateHref}
+                    hrefLang={lang === "en" ? "hi" : "en"}
+                    lang={lang === "en" ? "hi" : "en"}
+                    style={{
+                      display: "inline-block",
+                      fontFamily: "var(--font-body)",
+                      fontSize: 13,
+                      fontWeight: 600,
+                      color: "#2563EB",
+                      border: "1px solid rgba(37,99,235,0.25)",
+                      borderRadius: 999,
+                      padding: "5px 14px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    {lang === "en" ? "हिंदी में पढ़ें" : "Read in English"}
+                  </Link>
+                </div>
+              )}
+
               <ArticleHero topic={topic} readingTimeMinutes={readingTimeMinutes} />
 
               <div className="lg:hidden">
@@ -531,6 +557,7 @@ export default function ArticlePage({
 
               
                 <article
+                  lang={lang}
                   className="btt-article-content"
                   style={{
                     fontFamily: "var(--font-body)",

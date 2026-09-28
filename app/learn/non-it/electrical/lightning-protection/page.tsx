@@ -34,8 +34,7 @@ export default function LightningProtectionArticlePage() {
       <ArticleLayout
         slug="lightning-protection"
         headings={HEADINGS}
-        readingTimeMinutes={lightningProtectionMetadata.readingTimeMinutes}
-      >
+        readingTimeMinutes={lightningProtectionMetadata.readingTimeMinutes} lang="en" alternateHref="/hi/learn/non-it/electrical/lightning-protection">
         <Fundamentals />
         <OperationsAndClosing />
       </ArticleLayout>

@@ -20,9 +20,9 @@ export default function FaultsSafety() {
       <h2 id="common-faults" style={S.h2}>Common Faults & Troubleshooting</h2>
 
       <SectionIntro
-        quickAnswer="Battery bank faults do categories mein aate hain: gradual degradation faults (months mein develop hote hain) aur sudden acute faults (real outage ke dauraan discover hote hain). Gradual faults testing se catch hote hain — acute faults failure se."
-        engineerTip="Jab bhi battery fault investigate karo, pehle string level pe isolate karo — UPS se disconnect karo woh string. Tab cell-by-cell check karo. Kabhi bhi live string pe kaam mat karo. Even VRLA 192V DC bank se DC arc flash lethal ho sakti hai."
-        keyTakeaway="Troubleshooting ka golden rule: problem ko isolate karo → diagnose karo → root cause fix karo → tab replace karo. Sirf replace karna bina root cause fix kiye same failure fir se hogi."
+        quickAnswer="Battery bank faults fall into two categories: gradual degradation faults (develop over months) and sudden acute faults (discovered during a real outage). Gradual faults are caught by testing — acute faults by failure."
+        engineerTip="Whenever you investigate a battery fault, first isolate at the string level — disconnect that string from the UPS. Then check cell-by-cell. Never work on a live string. Even a DC arc flash from a VRLA 192V DC bank can be lethal."
+        keyTakeaway="The golden rule of troubleshooting: isolate the problem → diagnose → fix the root cause → then replace. Just replacing without fixing the root cause means the same failure will happen again."
       />
 
       <ComparisonTable
@@ -88,11 +88,7 @@ export default function FaultsSafety() {
       />
 
       <Callout type="danger" title="Danger — Thermal Runaway Response Protocol">
-        Thermal runaway signs: rapid temperature rise, hissing gas sound, burning smell, swelling.
-        Protocol: (1) Evacuate everyone immediately. (2) Activate Emergency Battery Disconnect if
-        safe to reach. (3) Call fire department — do NOT attempt to fight battery fire yourself.
-        (4) Do NOT re-enter until fire department clears. (5) Preserve evidence for post-incident
-        analysis — insurance aur OEM warranty investigation ke liye.
+        Thermal runaway signs: rapid temperature rise, hissing gas sound, burning smell, swelling. Protocol: (1) Evacuate everyone immediately. (2) Activate Emergency Battery Disconnect if safe to reach. (3) Call fire department — do NOT attempt to fight battery fire yourself. (4) Do NOT re-enter until fire department clears. (5) Preserve evidence for post-incident analysis — for insurance and OEM warranty investigation.
       </Callout>
 
       <h3 style={S.h3}>BMS Fault Code Quick Reference</h3>
@@ -118,18 +114,15 @@ export default function FaultsSafety() {
       <h2 id="safety" style={S.h2}>Safety</h2>
 
       <SectionIntro
-        quickAnswer="Battery room safety teen hazard categories cover karta hai: electrical (DC high voltage, arc flash), chemical (sulfuric acid, hydrogen gas), aur thermal (thermal runaway, fire). Teenon ke liye alag PPE, alag response, aur alag training chahiye."
-        engineerTip="Battery room safety ka sabse commonly ignored element: DC arc flash. Engineers AC arc flash se familiar hote hain lekin DC arc flash ke baare mein sochte nahi. DC 192V bank se arc flash AC 230V se more dangerous ho sakta hai — DC current zero crossing pe naturally quench nahi hota. Before any battery room work, always do a DC arc flash hazard assessment."
-        keyTakeaway="Battery room mein enter karne se pehle: PPE on, H₂ sensor status check, no open flames/sparks — yeh three steps non-negotiable hain."
+        quickAnswer="Battery room safety covers three hazard categories: electrical (DC high voltage, arc flash), chemical (sulfuric acid, hydrogen gas) and thermal (thermal runaway, fire). All three need separate PPE, a separate response and separate training."
+        engineerTip="The most commonly ignored element of battery room safety: DC arc flash. Engineers are familiar with AC arc flash but do not think about DC arc flash. An arc flash from a DC 192V bank can be more dangerous than AC 230V — DC current does not naturally quench at a zero crossing. Before any battery room work, always do a DC arc flash hazard assessment."
+        keyTakeaway="Before entering the battery room: PPE on, check H₂ sensor status, no open flames/sparks — these three steps are non-negotiable."
       />
 
       <h3 style={S.h3}>Electrical Hazards — DC Battery Systems</h3>
 
       <p style={S.p}>
-        192V DC bus — yeh direct contact se lethal hai. AC ke unlike, DC current continuously
-        flow karta hai — muscle lock-up AC se zyada likely hai. Additionally, DC arc flash
-        at battery terminals extremely energetic hoti hai kyunki battery bank virtually
-        unlimited current source hai for a short circuit.
+        192V DC bus — this is lethal on direct contact. Unlike AC, DC current flows continuously — muscle lock-up is more likely than with AC. Additionally, a DC arc flash at battery terminals is extremely energetic, because a battery bank is a virtually unlimited current source for a short circuit.
       </p>
 
       <ComparisonTable
@@ -155,29 +148,23 @@ export default function FaultsSafety() {
       />
 
       <Callout type="danger" title="Danger — Hydrogen Explosion Risk Is Real">
-        H₂ gas invisible aur odorless hai. Agar H₂ sensor alarm kare: (1) Immediately stop all
-        work, (2) No electrical switching — sparks prohibited, (3) Evacuate room, (4) Increase
-        ventilation from outside control panel, (5) Do not re-enter until sensor reads normal.
-        H₂ explosion from battery room fire incidents globally recorded hain — yeh theoretical
-        risk nahi hai.
+        H₂ gas is invisible and odorless. If the H₂ sensor alarms: (1) Immediately stop all work, (2) No electrical switching — sparks prohibited, (3) Evacuate room, (4) Increase ventilation from outside control panel, (5) Do not re-enter until sensor reads normal. H₂ explosions from battery room fire incidents have been recorded globally — this is not a theoretical risk.
       </Callout>
 
       <h3 style={S.h3}>LOTO for Battery Systems</h3>
 
       <p style={S.p}>
-        Battery LOTO AC LOTO se different hai — aur zyada complex. Battery continuously energized
-        rehti hai (koi ON/OFF switch nahi jaise AC circuit breaker). Proper isolation sequence
-        mandatory hai.
+        Battery LOTO is different from AC LOTO — and more complex. The battery stays continuously energized (there is no ON/OFF switch like an AC circuit breaker). A proper isolation sequence is mandatory.
       </p>
 
       <ComparisonTable
         headers={["LOTO Step", "Action", "Verify"]}
         rows={[
-          ["1 — Notify", "NOC aur shift supervisor ko inform karo — battery maintenance planned", "Written permit issued"],
-          ["2 — UPS to bypass", "UPS maintenance bypass activate karo — load bypass pe shift karo", "Bypass confirmed on UPS display"],
-          ["3 — String isolation", "String fuse(s) remove karo ya string MCCB open karo", "Voltmeter confirm — fuse-out side zero current"],
-          ["4 — Battery disconnect", "Main battery disconnect switch open karo", "Voltmeter confirm — DC bus side isolated"],
-          ["5 — Lockout", "Lock on each isolation point — each technician apna lock lagaao", "All locks physically present"],
+          ["1 — Notify", "Inform the NOC and shift supervisor — battery maintenance planned", "Written permit issued"],
+          ["2 — UPS to bypass", "Activate the UPS maintenance bypass — shift the load to bypass", "Bypass confirmed on UPS display"],
+          ["3 — String isolation", "Remove the string fuse(s) or open the string MCCB", "Voltmeter confirm — fuse-out side zero current"],
+          ["4 — Battery disconnect", "Open the main battery disconnect switch", "Voltmeter confirm — DC bus side isolated"],
+          ["5 — Lockout", "Lock on each isolation point — each technician applies their own lock", "All locks physically present"],
           ["6 — Tagout", "Danger tag on each isolation point — name, date, contact", "Tags readable and secure"],
           ["7 — Verify zero energy", "Voltmeter verify: battery terminals at zero relative to each other", "Documented measurement"],
           ["8 — Work proceeds", "Work done under LOTO", "Continuous awareness of adjacent live sections"],
@@ -204,16 +191,12 @@ export default function FaultsSafety() {
         <li>Evacuate all personnel from battery room and adjacent areas</li>
         <li>If safe, activate Emergency Battery Disconnect (EBD) from outside the room</li>
         <li>Call fire department — brief them: battery chemistry (VRLA or Li-ion), room location, approximate bank size</li>
-        <li>Do not re-enter — battery room mein toxic gases accumulate hote hain during fire</li>
+        <li>Do not re-enter — toxic gases accumulate in the battery room during a fire</li>
         <li>Post-incident: preserve all evidence, notify insurance, initiate OEM investigation</li>
       </ol>
 
       <Callout type="important" title="Important — First Aid: Acid Burns">
-        VRLA battery acid contact pe: immediate action = flush with large amounts of water
-        minimum 15 minutes — do not waste time removing clothing first, flush over clothing.
-        Remove affected clothing during flushing. Eye contact: immediate eyewash station —
-        15 minutes continuous flush. Always seek medical attention after any acid exposure —
-        symptoms can be delayed.
+        On VRLA battery acid contact: immediate action = flush with large amounts of water for a minimum of 15 minutes — do not waste time removing clothing first, flush over clothing. Remove affected clothing during flushing. Eye contact: immediate eyewash station — 15 minutes continuous flush. Always seek medical attention after any acid exposure — symptoms can be delayed.
       </Callout>
     </>
   );

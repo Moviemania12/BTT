@@ -14,38 +14,22 @@ export default function NetworkAndSoftware() {
 
       <h3 style={S.h3}>Dedicated BMS Network vs Shared IT Network</h3>
       <p style={S.p}>
-        BMS network ko IT production network se logically aur preferably physically separate karo.
-        Reasons: security (BMS network compromise se IT network attack surface protect karo aur vice
-        versa), reliability (IT network congestion ya maintenance BMS ko affect na kare), bandwidth
-        predictability (BMS polling traffic guaranteed bandwidth mile). VLAN separation minimum
-        requirement hai — physical separation higher security environments mein.
+        Separate the BMS network from the IT production network logically and preferably physically. Reasons: security (protect the IT network attack surface from a BMS network compromise and vice versa), reliability (IT network congestion or maintenance should not affect the BMS), bandwidth predictability (BMS polling traffic gets guaranteed bandwidth). VLAN separation is the minimum requirement — physical separation in higher security environments.
       </p>
 
       <h3 style={S.h3}>Segmentation, VLANs and Security</h3>
       <p style={S.p}>
-        BMS VLAN mein typically: BMS server, controllers, integration modules, operator workstations.
-        Equipment (UPS, PDU, CRAC) dedicated BMS VLAN ya separate equipment VLAN pe. Firewall rules
-        define karo ki kaunsa traffic allowed hai BMS VLAN aur IT VLAN ke beech — typically minimal
-        (specific reporting API only). Internet-facing access avoid karo directly — remote access ke
-        liye VPN. Intrusion detection where applicable.
+        The BMS VLAN typically has: BMS server, controllers, integration modules, operator workstations. Equipment (UPS, PDU, CRAC) on the dedicated BMS VLAN or a separate equipment VLAN. Define firewall rules for which traffic is allowed between the BMS VLAN and the IT VLAN — typically minimal (specific reporting API only). Avoid direct internet-facing access — VPN for remote access. Intrusion detection where applicable.
       </p>
 
       <h3 style={S.h3}>Redundancy in BMS Network and Servers</h3>
       <p style={S.p}>
-        Critical data centers mein BMS server redundancy implement karo — primary aur standby server,
-        failover configured. Network switch redundancy — dual uplinks, spanning tree. Controller ke
-        liye dual power supplies where available. BMS downtime matlab koi monitoring nahi — redundancy
-        level project criticality pe depend karta hai. Full N+1 BMS infrastructure major facilities
-        mein standard hai.
+        In critical data centers implement BMS server redundancy — primary and standby server, failover configured. Network switch redundancy — dual uplinks, spanning tree. Dual power supplies for controllers where available. BMS downtime means no monitoring — the redundancy level depends on project criticality. Full N+1 BMS infrastructure is standard in major facilities.
       </p>
 
       <h3 style={S.h3}>Remote Access and Cybersecurity</h3>
       <p style={S.p}>
-        Remote access typically VPN through secure jump host — direct internet exposure of BMS server
-        avoid karo. SSL/TLS for all web-based interfaces. Firmware aur software patches regularly
-        apply karo — BMS components bhi CVEs have karte hain. Network monitoring — anomalous traffic
-        to BMS VLAN flag karo. Physical security — BMS server room locked hona chahiye, controller
-        cabinets physically secured.
+        Remote access typically through a secure jump host over VPN — avoid direct internet exposure of the BMS server. SSL/TLS for all web-based interfaces. Apply firmware and software patches regularly — BMS components also have CVEs. Network monitoring — flag anomalous traffic to the BMS VLAN. Physical security — the BMS server room must be locked, controller cabinets physically secured.
       </p>
 
       <Figure caption="Fig 8 — BACnet Object Model vs Modbus Data Model — how the same UPS point appears in each protocol framework.">
@@ -58,60 +42,31 @@ export default function NetworkAndSoftware() {
       <h2 id="software-platforms" style={S.h2}>BMS Software Platforms — OEM Overview</h2>
 
       <p style={S.p}>
-        BMS market mein kuch major players hain. Ye overview engineering context ke liye hai —
-        actual capabilities, licensing, protocol support aur integration ki details software version,
-        controller hardware, installed drivers, purchased licenses aur project configuration pe depend
-        karti hain. Hamesha specific project requirements ke liye vendor se verify karo.
+        There are some major players in the BMS market. This overview is for engineering context — actual capabilities, licensing, protocol support and integration details depend on software version, controller hardware, installed drivers, purchased licenses and project configuration. Always verify with the vendor for specific project requirements.
       </p>
 
       <h3 style={S.h3}>Schneider Electric EcoStruxure Building Operation</h3>
       <p style={S.p}>
-        Schneider Electric ka building automation platform hai — previously known as StruxureWare
-        Building Operation aur before that Andover Continuum aur TAC Vista. EcoStruxure Building
-        Operation mein SmartX servers, field controllers, WorkStation software aur Web Station
-        client include hain. BACnet aur Modbus natively supported hain. Schneider EcoStruxure
-        platform broader ecosystem ka part hai jo power management (EcoStruxure Power) aur IT
-        infrastructure (EcoStruxure IT) se bhi integrate hota hai — relevant for data center
-        convergence. Data center mein Schneider BMS often alongside their APC UPS aur Cooling
-        products integrated hote hain — OEM-to-OEM integration typically smoother hoti hai.
+        Schneider Electric's building automation platform — previously known as StruxureWare Building Operation and before that Andover Continuum and TAC Vista. EcoStruxure Building Operation includes SmartX servers, field controllers, WorkStation software and the Web Station client. BACnet and Modbus are natively supported. The Schneider EcoStruxure platform is part of a broader ecosystem that also integrates with power management (EcoStruxure Power) and IT infrastructure (EcoStruxure IT) — relevant for data center convergence. In data centers Schneider BMS is often integrated alongside their APC UPS and Cooling products — OEM-to-OEM integration is typically smoother.
       </p>
 
       <h3 style={S.h3}>Siemens Desigo CC</h3>
       <p style={S.p}>
-        Siemens ka Desigo CC (Collaborative Command and Control) ek integrated building management
-        platform hai — HVAC, fire safety, security, lighting sab ek platform pe. Desigo CC MR/RX
-        controller range BACnet aur Modbus support karta hai. Data center environments mein Desigo CC
-        large facilities mein — airports, hospitals, campuses — commonly deployed hai. Open
-        integration capability hai via BACnet, Modbus aur OPC server. Siemens Gamma aur S7 PLCs Desigo
-        CC se OPC ke through integrate ho sakte hain — relevant for chiller plant control.
+        Siemens' Desigo CC (Collaborative Command and Control) is an integrated building management platform — HVAC, fire safety, security, lighting all on one platform. The Desigo CC MR/RX controller range supports BACnet and Modbus. In data center environments Desigo CC is commonly deployed in large facilities — airports, hospitals, campuses. There is open integration capability via BACnet, Modbus and OPC server. Siemens Gamma and S7 PLCs can integrate with Desigo CC through OPC — relevant for chiller plant control.
       </p>
 
       <h3 style={S.h3}>Honeywell Enterprise Buildings Integrator and Other Platforms</h3>
       <p style={S.p}>
-        Honeywell multiple BMS platforms have karta hai — Enterprise Buildings Integrator (EBI) large
-        campuses ke liye, Niagara Framework (originally Tridium, acquired by Honeywell) jo open
-        platform hai multiple protocols support karta hai. Niagara (Niagara 4) data center integration
-        mein particularly relevant hai kyunki ye virtually any protocol integrate kar sakta hai via
-        drivers — BACnet, Modbus, SNMP, LonWorks, OPC, MQTT sab available hain. Ye "integration
-        middleware" approach customization flexibility deti hai.
+        Honeywell has multiple BMS platforms — Enterprise Buildings Integrator (EBI) for large campuses, and the Niagara Framework (originally Tridium, acquired by Honeywell), which is an open platform supporting multiple protocols. Niagara (Niagara 4) is particularly relevant in data center integration because it can integrate virtually any protocol via drivers — BACnet, Modbus, SNMP, LonWorks, OPC, MQTT are all available. This "integration middleware" approach gives customization flexibility.
       </p>
 
       <h3 style={S.h3}>Johnson Controls Metasys</h3>
       <p style={S.p}>
-        Johnson Controls Metasys ek mature, widely deployed BMS platform hai. Network Automation
-        Engines (NAE), System Configuration Tool (SCT) aur site controllers BACnet aur Modbus
-        support karte hain. Metasys data center mein large colocation aur enterprise deployments mein
-        common hai. Open Application Server (OAS) extended integration aur OPC connectivity deta
-        hai. Johnson Controls Metasys pe UPS integration typically Modbus TCP ya SNMP se hoti hai.
+        Johnson Controls Metasys is a mature, widely deployed BMS platform. Network Automation Engines (NAE), the System Configuration Tool (SCT) and site controllers support BACnet and Modbus. Metasys is common in large colocation and enterprise data center deployments. The Open Application Server (OAS) gives extended integration and OPC connectivity. UPS integration on Johnson Controls Metasys typically happens through Modbus TCP or SNMP.
       </p>
 
       <Callout type="interview" title="Platform Selection Criteria">
-        BMS platform selection mein consider karo: existing installed base (extending same platform
-        simpler hai), required protocol support (kya platform required drivers ya gateways include
-        karta hai), IT integration requirements (REST API, MQTT, cloud connectivity), scalability
-        (point count, sites), support aur training availability, lifecycle (vendor support timeline),
-        aur total cost of ownership. No single platform is universally best — project context matter
-        karta hai.
+        Consider in BMS platform selection: existing installed base (extending the same platform is simpler), required protocol support (does the platform include the required drivers or gateways), IT integration requirements (REST API, MQTT, cloud connectivity), scalability (point count, sites), support and training availability, lifecycle (vendor support timeline), and total cost of ownership. No single platform is universally best — project context matters.
       </Callout>
 
       <ComparisonTable

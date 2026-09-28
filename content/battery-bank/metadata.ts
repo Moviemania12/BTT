@@ -12,7 +12,7 @@ export const batteryBankMetadata: ArticleMetadata = {
   title: "Battery Bank in Data Centers — Complete Guide from Beginner to Engineer",
   seoTitle: "Battery Bank Explained: VRLA vs LFP, Sizing, Room Design & Tier IV Guide",
   seoDescription:
-    "Battery bank kya hota hai? VRLA vs Lithium-ion, battery sizing formula, string design, Tier III/IV architecture, room engineering calculations — complete Hinglish guide with 40 tables, 26 SVGs, 7 live calculators aur 50 interview questions.",
+    "What is a battery bank? VRLA vs Lithium-ion, battery sizing formula, string design, Tier III/IV architecture, room engineering calculations — a complete guide with 40 tables, 26 SVGs, 7 live calculators and 50 interview questions.",
   canonicalUrl: "https://behindthetech.in/learn/non-it/electrical/battery-bank",
   keywords: [
     "battery bank kya hai",

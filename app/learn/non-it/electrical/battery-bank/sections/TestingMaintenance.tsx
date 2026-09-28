@@ -20,23 +20,19 @@ export default function TestingMaintenance() {
       <h2 id="testing-maintenance" style={S.h2}>Testing & Maintenance</h2>
 
       <SectionIntro
-        quickAnswer="Battery maintenance ka ek simple rule hai: jo test nahi kiya woh kaam karna band ho sakta hai. Visual inspection aur voltage check battery ki actual health tell nahi karte — sirf impedance test aur capacity test karte hain. Dono mandatory hain, dono different things detect karte hain."
-        engineerTip="Annual capacity test schedule karo October-November mein — October mein India ka summer khatam ho chuka hota hai (battery mein temperature stress reduced), aur winter ka grid-failure peak season start hota hai. Worst time for a capacity test: July-August (battery already thermally stressed). Best time: October-November (battery recovered, winter protection window before next summer)."
-        keyTakeaway="IEEE 450/1188 clear hain: SoH ≥ 80% = serviceable. Below 80% = replace immediately — no exceptions, no 'monitor for another 6 months'."
+        quickAnswer="Battery maintenance has one simple rule: whatever has not been tested can stop working. Visual inspection and voltage checks do not tell the battery's actual health — only the impedance test and capacity test do. Both are mandatory; both detect different things."
+        engineerTip="Schedule the annual capacity test in October-November — by October the Indian summer is over (temperature stress on the battery is reduced), and the winter grid-failure peak season starts. Worst time for a capacity test: July-August (battery already thermally stressed). Best time: October-November (battery recovered, winter protection window before next summer)."
+        keyTakeaway="IEEE 450/1188 are clear: SoH ≥ 80% = serviceable. Below 80% = replace immediately — no exceptions, no 'monitor for another 6 months'."
       />
 
       <h3 style={S.h3}>Why Testing Is Non-Negotiable</h3>
 
       <p style={S.p}>
-        Ek common misconception: &quot;Battery string voltage normal hai — battery theek hai.&quot;
-        Yeh wrong hai. String voltage normal ho sakti hai jab ek cell internally short circuit
-        ho aur adjacent cell overcharged ho — dono offset ho jaate hain string level pe.
+        A common misconception: &quot;The battery string voltage is normal — the battery is fine.&quot; This is wrong. String voltage can be normal when one cell is internally short-circuited and the adjacent cell is overcharged — the two offset each other at the string level.
       </p>
 
       <p style={S.p}>
-        Single cell failure detect karne ke liye per-cell voltage measurement, impedance
-        testing, aur ultimately capacity discharge test required hain. String voltage monitoring
-        alone is insufficient for Tier III/IV Data Centers.
+        To detect a single cell failure, per-cell voltage measurement, impedance testing and ultimately a capacity discharge test are required. String voltage monitoring alone is insufficient for Tier III/IV Data Centers.
       </p>
 
       <h3 style={S.h3}>Maintenance Schedule</h3>
@@ -70,11 +66,7 @@ export default function TestingMaintenance() {
       />
 
       <Callout type="important" title="Important — Capacity Test Requires Load Bank">
-        Full capacity discharge test ke liye dedicated load bank chahiye — yeh UPS output pe
-        connect hota hai aur controlled discharge provide karta hai. Load bank renting expensive
-        hai (~₹50,000–2,00,000 per day depending on size) — budget mein include karo. Some
-        large Data Centers apna permanent load bank rakhte hain. Test ke time UPS maintenance
-        mode mein rehti hai — ops team coordinate karna padta hai.
+        A full capacity discharge test needs a dedicated load bank — it connects at the UPS output and provides a controlled discharge. Renting a load bank is expensive (~₹50,000–2,00,000 per day depending on size) — include it in the budget. Some large Data Centers keep their own permanent load bank. During the test, the UPS stays in maintenance mode — the ops team has to coordinate.
       </Callout>
 
       <h3 style={S.h3}>Impedance Test vs Capacity Test — Which Is Better?</h3>
@@ -117,9 +109,9 @@ export default function TestingMaintenance() {
       <h2 id="maintenance-documentation" style={S.h2}>Real Maintenance Documentation</h2>
 
       <SectionIntro
-        quickAnswer="Documentation sirf compliance ke liye nahi hai — yeh engineering memory hai. Without documentation, battery bank ki history kisi ke personal memory mein hoti hai — aur log change hote rehte hain. Documentation ke saath, har replacement decision data-driven hoti hai."
-        engineerTip="Sabse important documentation practice: har discharge event record karo — date, duration, depth of discharge, reason. Yeh data se pattern emerge hota hai. Ek site jo 2 months mein 5 discharge events experience karti hai vs ek site jo saal mein 2 experience karti hai — battery replacement timeline bilkul different hogi. Without records, yeh distinction invisible hai."
-        keyTakeaway="Battery documentation = warranty evidence + maintenance trending + replacement planning + audit compliance — yeh sab ek hi systematic record-keeping habit se milta hai."
+        quickAnswer="Documentation is not just for compliance — it is engineering memory. Without documentation, the battery bank's history lives in someone's personal memory — and people keep changing. With documentation, every replacement decision is data-driven."
+        engineerTip="The most important documentation practice: record every discharge event — date, duration, depth of discharge, reason. Patterns emerge from this data. A site that experiences 5 discharge events in 2 months vs a site that experiences 2 in a year — the battery replacement timeline will be completely different. Without records, this distinction is invisible."
+        keyTakeaway="Battery documentation = warranty evidence + maintenance trending + replacement planning + audit compliance — all of this comes from one systematic record-keeping habit."
       />
 
       <h3 style={S.h3}>Daily Battery Log Sheet — Key Fields</h3>
@@ -190,11 +182,7 @@ export default function TestingMaintenance() {
       />
 
       <Callout type="best-practice" title="Best Practice — Digital Records + Physical Records">
-        Dono maintain karo: digital records (Excel/CSV ya DCIM system) aur physical signed
-        copies. Digital ke liye: cloud backup mandatory — local PC pe sirf ek copy ka risk
-        mat lo. Physical signed copies: original signatures required for warranty claims aur
-        legal disputes. Most OEM warranty claims require physical maintenance records with
-        authorized signatures.
+        Maintain both: digital records (Excel/CSV or a DCIM system) and physical signed copies. For digital: cloud backup is mandatory — do not risk having only one copy on a local PC. Physical signed copies: original signatures required for warranty claims and legal disputes. Most OEM warranty claims require physical maintenance records with authorized signatures.
       </Callout>
     </>
   );

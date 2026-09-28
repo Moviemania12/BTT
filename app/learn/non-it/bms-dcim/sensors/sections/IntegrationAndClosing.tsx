@@ -8,47 +8,47 @@ export default function IntegrationAndClosing() {
   return (
     <>
       <h2 id="sensor-integration" style={S.h2}>Sensor Integration with BMS and DCIM</h2>
-      <p style={S.p}>Sensor data BMS ya DCIM mein aane ke liye do paths hain. <strong>Direct hardwired:</strong> Sensor directly BMS/DCIM controller ke input pe wire hota hai — 4-20 mA AI, 0-10V AI, ya dry contact DI. Simple, reliable, no protocol needed. Limitation: ek sensor per wiring pair, distances limited (4-20 mA ke liye longer distances better tolerated). <strong>Protocol-based (Modbus/BACnet):</strong> Smart meter, network sensor ya equipment controller Modbus RTU/TCP ya BACnet pe multiple parameters expose karta hai — BMS driver poll karta hai. One cable/connection se multiple values. Requires protocol configuration aur driver.</p>
-      <p style={S.p}>BMS mein sensor integrate karne ke steps: (1) Controller I/O type confirm karo — analog input 4-20 mA ya voltage? DI contact type? (2) Sensor ko correct controller terminal pe wire karo — polarity verify karo. (3) BMS point create karo — input type, range configure karo. (4) Scaling: raw input (0-100% ya raw mA) ko engineering unit mein convert karo — temperature transmitter 4-20 mA = 0-50°C means formula: T°C = (mA - 4) × 50 / 16. (5) Engineering unit configure karo. (6) Alarm limits add karo. (7) Verify — live value vs physical measurement compare karo.</p>
+      <p style={S.p}>There are two paths for sensor data to come into the BMS or DCIM. <strong>Direct hardwired:</strong> The sensor is wired directly to an input of the BMS/DCIM controller — 4-20 mA AI, 0-10V AI, or dry contact DI. Simple, reliable, no protocol needed. Limitation: one sensor per wiring pair, distances limited (longer distances are better tolerated for 4-20 mA). <strong>Protocol-based (Modbus/BACnet):</strong> A smart meter, network sensor or equipment controller exposes multiple parameters over Modbus RTU/TCP or BACnet — the BMS driver polls it. Multiple values from one cable/connection. Requires protocol configuration and a driver.</p>
+      <p style={S.p}>Steps to integrate a sensor into the BMS: (1) Confirm the controller I/O type — analog input 4-20 mA or voltage? DI contact type? (2) Wire the sensor to the correct controller terminal — verify polarity. (3) Create the BMS point — configure input type, range. (4) Scaling: convert the raw input (0-100% or raw mA) to the engineering unit — a temperature transmitter 4-20 mA = 0-50°C means the formula: T°C = (mA - 4) × 50 / 16. (5) Configure the engineering unit. (6) Add alarm limits. (7) Verify — compare the live value vs a physical measurement.</p>
       <Callout type="best-practice" title="Loop Power — Who Provides It?">
-        4-20 mA sensors typically external loop power require karte hain — 24V DC. 2-wire sensors loop current se khud power ho sakte hain (controller 24V provide karta hai loop mein). 3-wire sensors separate power supply chahiye. 4-wire sensors alag power supply aur alag signal pair. Sensor datasheet se wire configuration verify karo aur controller ka loop power availability check karo before wiring.
+        4-20 mA sensors typically require external loop power — 24V DC. 2-wire sensors can power themselves from the loop current (the controller provides 24V in the loop). 3-wire sensors need a separate power supply. 4-wire sensors have a separate power supply and a separate signal pair. Verify the wire configuration from the sensor datasheet and check the controller's loop power availability before wiring.
       </Callout>
 
       <h2 id="calibration" style={S.h2}>Calibration and Accuracy</h2>
-      <p style={S.p}>Sensor accuracy calibration se maintain hoti hai — calibration ek known reference ke against sensor reading verify aur adjust karna hai. Different sensors differently drift karte hain. Temperature sensors (RTD) relatively stable hain — drift slow hota hai. Humidity sensors faster drift karte hain — contaminants accelerate drift. Pressure sensors mechanical stress se shift ho sakte hain. Energy/CT-based measurements CT condition, installation aur ratio accuracy pe depend karte hain.</p>
-      <p style={S.p}>Calibration process: As-found reading record karo (sensor current output vs reference measurement). Agar within tolerance hai to no adjustment needed — still record karo. Agar out of tolerance — adjust (agar field adjustable) ya replace karo. As-left reading record karo. As-found/as-left records maintain karo — drift history visible hota hai. Calibration certificate reference instrument ke liye maintain karo (NIST-traceable).</p>
+      <p style={S.p}>Sensor accuracy is maintained through calibration — calibration means verifying and adjusting the sensor reading against a known reference. Different sensors drift differently. Temperature sensors (RTD) are relatively stable — drift is slow. Humidity sensors drift faster — contaminants accelerate drift. Pressure sensors can shift from mechanical stress. Energy/CT-based measurements depend on CT condition, installation and ratio accuracy.</p>
+      <p style={S.p}>Calibration process: record the as-found reading (sensor current output vs reference measurement). If it is within tolerance no adjustment is needed — still record it. If it is out of tolerance — adjust (if field adjustable) or replace. Record the as-left reading. Maintain as-found/as-left records — the drift history becomes visible. Maintain the calibration certificate for the reference instrument (NIST-traceable).</p>
       <Callout type="important" title="Calibration Frequency — No Universal Schedule">
-        Calibration frequency sensor type, criticality, accuracy class, OEM recommendation, applicable standards (ISO 9001, ISO 17025, ISO 50001) aur application pe depend karta hai — koi universal mandatory schedule nahi hai. Start with OEM recommendation. High-criticality measurements (billing meters, safety limits) more frequent. Track as-found readings — frequent out-of-tolerance indicates recalibrate more often or replace sensor.
+        Calibration frequency depends on sensor type, criticality, accuracy class, OEM recommendation, applicable standards (ISO 9001, ISO 17025, ISO 50001) and application — there is no universal mandatory schedule. Start with OEM recommendation. High-criticality measurements (billing meters, safety limits) more frequent. Track as-found readings — frequent out-of-tolerance indicates recalibrate more often or replace sensor.
       </Callout>
 
       <h2 id="preventive-maintenance" style={S.h2}>Preventive Maintenance</h2>
       <p style={S.p}><strong>Monthly (example):</strong> All sensors online in BMS — any offline or fault? Sample 10-15 sensors physical vs BMS value compare. Water leak sensors — visual inspection, no debris covering probe. Door contacts — spot check alignment. Alarm log — sensor-related alarms review.</p>
-      <p style={S.p}><strong>Quarterly (example):</strong> Temperature/humidity sensors clean karo (compressed air, soft cloth per OEM). Sensor wiring terminals inspect — loose connections retighten. CT connections inspect — no loose secondary, no corrosion. Fuel level sensor verify — cross-check with dip stick or sight glass. Calibration check — spot check critical sensors against reference.</p>
-      <p style={S.p}><strong>Annual (example):</strong> Full calibration cycle per project schedule. Replace sensors pe calibration history showing consistent drift. RTD resistance verify (reference ohmmeter). Energy meters — accuracy class verification. As-built sensor locations update agar moved. Sensor datasheet archive maintain karo.</p>
+      <p style={S.p}><strong>Quarterly (example):</strong> Clean temperature/humidity sensors (compressed air, soft cloth per OEM). Inspect sensor wiring terminals — retighten loose connections. Inspect CT connections — no loose secondary, no corrosion. Verify the fuel level sensor — cross-check with dip stick or sight glass. Calibration check — spot check critical sensors against reference.</p>
+      <p style={S.p}><strong>Annual (example):</strong> Full calibration cycle per project schedule. Replace sensors whose calibration history shows consistent drift. Verify RTD resistance (reference ohmmeter). Energy meters — accuracy class verification. Update as-built sensor locations if moved. Maintain a sensor datasheet archive.</p>
 
       <h2 id="troubleshooting" style={S.h2}>Engineer Troubleshooting — Sensor Issues</h2>
       <Figure caption="Fig 2 — Sensor troubleshooting systematic approach: start with physical, check signal/wiring, verify controller input, confirm scaling and BMS config."><SensorTroubleshootingFlow/></Figure>
 
       <h3 style={S.h3}>Fault 1: Sensor Reading Zero or Minimum</h3>
-      <p style={S.p}><strong>First:</strong> 4-20 mA — multimeter ammeter mode mein series mein loop mein measure karo. 4 mA aur above hai? 0 mA = wire break ya sensor power failed. <strong>Next:</strong> Sensor power check karo (24V DC). Cable continuity check karo. <strong>Fix:</strong> Power restore. Cable repair. Sensor replace karo agar defective.</p>
+      <p style={S.p}><strong>First:</strong> 4-20 mA — measure in series in the loop with a multimeter in ammeter mode. Is it 4 mA and above? 0 mA = wire break or sensor power failed. <strong>Next:</strong> Check sensor power (24V DC). Check cable continuity. <strong>Fix:</strong> Restore power. Repair the cable. Replace the sensor if defective.</p>
 
       <h3 style={S.h3}>Fault 2: Wrong / Stuck Value</h3>
-      <p style={S.p}><strong>First:</strong> BMS raw input value dekho — signal correct range mein hai? mA reading expected hai physical condition ke hisaab se? <strong>Next:</strong> Scaling formula correct hai? Min/max engineering value correct hai? Physical measurement karo calibrated instrument se — BMS se compare. <strong>Fix:</strong> Scaling formula correct karo per OEM spec. Sensor calibrate karo. Agar extreme drift — replace karo.</p>
+      <p style={S.p}><strong>First:</strong> Look at the BMS raw input value — is the signal in the correct range? Is the mA reading as expected for the physical condition? <strong>Next:</strong> Is the scaling formula correct? Are min/max engineering values correct? Take a physical measurement with a calibrated instrument — compare with the BMS. <strong>Fix:</strong> Correct the scaling formula per OEM spec. Calibrate the sensor. If extreme drift — replace it.</p>
 
       <h3 style={S.h3}>Fault 3: Excessive Noise / Fluctuating Value</h3>
-      <p style={S.p}><strong>First:</strong> Cable shielding check karo — shielded cable use ho raha hai? Shield properly grounded hai (one end only)? <strong>Next:</strong> Ground loops — multiple ground points? Cable routing near power cables? <strong>Fix:</strong> Cable re-route separate from power cables. Shield single-point ground karo. Filter/averaging in BMS configure karo.</p>
+      <p style={S.p}><strong>First:</strong> Check the cable shielding — is shielded cable being used? Is the shield properly grounded (one end only)? <strong>Next:</strong> Ground loops — multiple ground points? Cable routing near power cables? <strong>Fix:</strong> Re-route the cable separate from power cables. Ground the shield at a single point. Configure filter/averaging in the BMS.</p>
 
       <h3 style={S.h3}>Fault 4: Temperature Reading Too High or Low (Offset)</h3>
-      <p style={S.p}><strong>First:</strong> Calibrated reference thermometer se actual temperature measure karo same location pe. BMS value compare karo. <strong>Next:</strong> Consistent offset? Calibration shift indicate karta hai. Scaling aur zero offset check karo. <strong>Fix:</strong> Agar consistent offset — calibration adjustment karo (agar field adjustable). Otherwise replace sensor.</p>
+      <p style={S.p}><strong>First:</strong> Measure the actual temperature at the same location with a calibrated reference thermometer. Compare the BMS value. <strong>Next:</strong> Consistent offset? That indicates a calibration shift. Check scaling and zero offset. <strong>Fix:</strong> If consistent offset — do a calibration adjustment (if field adjustable). Otherwise replace the sensor.</p>
 
       <h3 style={S.h3}>Fault 5: Door Contact False Alarm</h3>
-      <p style={S.p}><strong>First:</strong> Physical — door fully closed aur latched? Magnet aur switch aligned? Gap too large? <strong>Next:</strong> Sensor mounting shifted? Door hinge wear causing misalignment? <strong>Fix:</strong> Realign magnet aur switch. Adjust mounting. Check door closer.</p>
+      <p style={S.p}><strong>First:</strong> Physical — is the door fully closed and latched? Are the magnet and switch aligned? Gap too large? <strong>Next:</strong> Has the sensor mounting shifted? Is door hinge wear causing misalignment? <strong>Fix:</strong> Realign the magnet and switch. Adjust mounting. Check the door closer.</p>
 
       <h3 style={S.h3}>Fault 6: Water Leak Alarm — Verify Before Reset</h3>
-      <p style={S.p}><strong>Always:</strong> Physical inspection — area dekho. Agar wet — source identify karo before reset. Dry karo area. Source fix karo. Sensor reset karo. Agar no water found — condensation? High humidity? Sensor fault? Investigate root cause before dismissing alarm.</p>
+      <p style={S.p}><strong>Always:</strong> Physical inspection — look at the area. If wet — identify the source before reset. Dry the area. Fix the source. Reset the sensor. If no water found — condensation? High humidity? Sensor fault? Investigate the root cause before dismissing the alarm.</p>
 
       <h3 style={S.h3}>Fault 7: CT / Energy Meter Wrong Reading</h3>
-      <p style={S.p}><strong>First:</strong> CT ratio correct in meter AND in BMS/EMS scaling? (Both must match.) <strong>Next:</strong> CT polarity correct? Secondary connection tight? <strong>Fix:</strong> CT ratio enter karo. Polarity correct karo. Secondary retighten. Calibrated clamp meter se field current verify karo — compare with meter reading.</p>
+      <p style={S.p}><strong>First:</strong> Is the CT ratio correct in the meter AND in the BMS/EMS scaling? (Both must match.) <strong>Next:</strong> Is CT polarity correct? Secondary connection tight? <strong>Fix:</strong> Enter the CT ratio. Correct the polarity. Retighten the secondary. Verify field current with a calibrated clamp meter — compare with the meter reading.</p>
 
       <ComparisonTable
         title="Sensor Troubleshooting Quick Reference"
@@ -67,27 +67,27 @@ export default function IntegrationAndClosing() {
 
       <h2 id="illustrative-scenario" style={S.h2}>Illustrative Scenario</h2>
       <Callout type="interview" title="Note: Illustrative scenario — not a documented real facility event">
-        Ek data center mein BMS pe "Row C, Cold Aisle Temperature High" alarm aa gayi — 28°C showing tha jabki 25°C expected tha. On-site check mein actual temperature 25.2°C tha (handheld thermometer se measured). Investigation: BMS temperature transmitter ke wiring mein loose terminal tha — slight contact resistance causing 4-20 mA signal ka minor drop, which BMS interpreted as higher temperature (wrong scaling assumption). Terminal retighten karne pe BMS reading 25.1°C pe settle ho gayi. Lesson: Physical measurement always do — BMS value automatically believe mat karo without verification.
+        In a data center a "Row C, Cold Aisle Temperature High" alarm came on the BMS — it was showing 28°C while 25°C was expected. In the on-site check the actual temperature was 25.2°C (measured with a handheld thermometer). Investigation: there was a loose terminal in the wiring of the BMS temperature transmitter — slight contact resistance causing a minor drop in the 4-20 mA signal, which the BMS interpreted as a higher temperature (wrong scaling assumption). After retightening the terminal, the BMS reading settled at 25.1°C. Lesson: Always do a physical measurement — do not automatically believe the BMS value without verification.
       </Callout>
 
       <h2 id="interview-questions" style={S.h2}>Interview Questions</h2>
-      <h3 style={S.h3}>Q1: 4-20 mA signal ka live zero concept explain karo.</h3>
-      <p style={S.p}><strong>Answer:</strong> 4-20 mA mein 4 mA = 0% of measurement range (minimum), 20 mA = 100% (maximum). "Live zero" ka matlab hai minimum signal 0 mA nahi 4 mA hai. Agar circuit mein koi wire break ya power failure ho to current zero ho jaati hai — controller detect karta hai ki 4 mA nahi aa rahi, fault condition flag karta hai. Agar 0-20 mA use karo to zero current ambiguous hai (range minimum ya fault?) — 4-20 mA is problem solve karta hai. Data centers mein 4-20 mA analog signals standard hai field sensors ke liye.</p>
-      <h3 style={S.h3}>Q2: CT secondary open circuit kyun hazardous hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> CT primary mein high AC current flow hoti hai — secondary winding ek step-down transformer ki tarah kaam karta hai jo safely 5A ya 1A pe reduce karta hai jab secondary pe load (meter) connected ho. Agar secondary circuit open circuit ho (meter disconnect) — primary current magnetizing flux saturate karta hai aur secondary mein extremely high voltage induce ho sakti hai — insulation damage, equipment damage aur personnel injury ka risk. Rule: CT secondary circuit ko hamesha closed rakho (meter connected). Meter disconnect karna ho to pehle CT secondary short circuit karo (shorting switch se), phir meter disconnect karo.</p>
-      <h3 style={S.h3}>Q3: Sensor calibration mein as-found aur as-left record kyun important hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> As-found = sensor reading before any calibration adjustment. As-left = reading after adjustment. Dono records maintenance history build karte hain. As-found data drift rate dikhata hai over time — agar sensor consistently fast drift kare to replacement consider karo ya calibration frequency increase karo. Quality management systems (ISO 9001) aur metrological traceability as-found/as-left records require karte hain. Compliance audits mein calibration records important evidence hain. Data ke bina "was this sensor accurate during the last month?" answerable nahi hai.</p>
+      <h3 style={S.h3}>Q1: Explain the live zero concept of the 4-20 mA signal.</h3>
+      <p style={S.p}><strong>Answer:</strong> In 4-20 mA, 4 mA = 0% of measurement range (minimum), 20 mA = 100% (maximum). "Live zero" means the minimum signal is 4 mA, not 0 mA. If there is a wire break or power failure in the circuit, the current goes to zero — the controller detects that 4 mA is not coming and flags a fault condition. If you use 0-20 mA, zero current is ambiguous (range minimum or fault?) — 4-20 mA solves this problem. 4-20 mA analog signals are the standard for field sensors in data centers.</p>
+      <h3 style={S.h3}>Q2: Why is a CT secondary open circuit hazardous?</h3>
+      <p style={S.p}><strong>Answer:</strong> High AC current flows in the CT primary — the secondary winding works like a step-down transformer that safely reduces it to 5A or 1A when a load (meter) is connected on the secondary. If the secondary circuit is open (meter disconnected) — the primary current saturates the magnetizing flux and an extremely high voltage can be induced in the secondary — risk of insulation damage, equipment damage and personnel injury. Rule: always keep the CT secondary circuit closed (meter connected). If the meter has to be disconnected, first short-circuit the CT secondary (with a shorting switch), then disconnect the meter.</p>
+      <h3 style={S.h3}>Q3: Why are as-found and as-left records important in sensor calibration?</h3>
+      <p style={S.p}><strong>Answer:</strong> As-found = sensor reading before any calibration adjustment. As-left = reading after adjustment. Both records build the maintenance history. As-found data shows the drift rate over time — if a sensor consistently drifts fast, consider replacement or increase the calibration frequency. Quality management systems (ISO 9001) and metrological traceability require as-found/as-left records. Calibration records are important evidence in compliance audits. Without the data, "was this sensor accurate during the last month?" is not answerable.</p>
 
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
       <ul style={S.ul}>
-        <li>Sensors physical world ko BMS/DCIM ke liye electrical signals mein convert karte hain — sensor accuracy = monitoring system accuracy.</li>
-        <li>4-20 mA standard analog signal hai — live zero (4 mA = 0%) wire break detect karta hai. Long cable runs ke liye preferred.</li>
-        <li>Temperature sensor placement location critical hai — wrong location "all normal" show karti hai even if hot spots exist.</li>
-        <li>CT secondary never open circuit karo — hazardous high voltage. Shorting switch use karo before meter disconnect.</li>
-        <li>CT ratio and meter scaling both correct hone chahiye — mismatch proportionally wrong energy readings deta hai.</li>
-        <li>Calibration drift normal hai — as-found/as-left records rakhna is drift ko track karna allow karta hai.</li>
+        <li>Sensors convert the physical world into electrical signals for the BMS/DCIM — sensor accuracy = monitoring system accuracy.</li>
+        <li>4-20 mA is the standard analog signal — the live zero (4 mA = 0%) detects a wire break. Preferred for long cable runs.</li>
+        <li>Temperature sensor placement location is critical — a wrong location shows "all normal" even if hot spots exist.</li>
+        <li>Never open-circuit a CT secondary — hazardous high voltage. Use a shorting switch before meter disconnect.</li>
+        <li>The CT ratio and meter scaling must both be correct — a mismatch gives proportionally wrong energy readings.</li>
+        <li>Calibration drift is normal — keeping as-found/as-left records allows this drift to be tracked.</li>
         <li>Troubleshoot layer by layer: physical → signal/wiring → controller input → scaling/BMS config.</li>
-        <li>Water leak alarm serious lo — physical investigation before reset, root cause verify karo.</li>
+        <li>Take water leak alarms seriously — physical investigation before reset, verify the root cause.</li>
       </ul>
 
       <h2 style={{...S.h2,marginTop:"3rem"}}>Frequently Asked Questions</h2>
@@ -100,11 +100,11 @@ export default function IntegrationAndClosing() {
 
       <h2 style={{...S.h2,marginTop:"3rem"}}>Related Topics</h2>
       <ul style={S.ul}>
-        <li><TopicLink slug="bms" variant="inline"/> — BMS mein sensors ka data integrate hota hai — alarms aur trends.</li>
-        <li><TopicLink slug="ems" variant="inline"/> — Energy sensors (CT, meters) EMS ki foundation hain.</li>
-        <li><TopicLink slug="dcim" variant="inline"/> — DCIM environmental sensors se data receive karta hai.</li>
+        <li><TopicLink slug="bms" variant="inline"/> — sensor data is integrated in the BMS — alarms and trends.</li>
+        <li><TopicLink slug="ems" variant="inline"/> — energy sensors (CT, meters) are the foundation of EMS.</li>
+        <li><TopicLink slug="dcim" variant="inline"/> — DCIM receives data from environmental sensors.</li>
         <li><TopicLink slug="vesda" variant="inline"/> — Specialized smoke detection sensors — early warning.</li>
-        <li><TopicLink slug="access-control" variant="inline"/> — Door contact sensors access control mein bhi use hote hain.</li>
+        <li><TopicLink slug="access-control" variant="inline"/> — door contact sensors are also used in access control.</li>
       </ul>
     </>
   );

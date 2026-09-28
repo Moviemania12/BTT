@@ -23,31 +23,21 @@ export default function Foundation() {
       <h2 id="what-is-battery-bank" style={S.h2}>What Is a Battery Bank?</h2>
 
       <SectionIntro
-        quickAnswer="Battery bank ek organized collection of batteries hai jo series aur parallel mein connect hoti hain — ek specific DC voltage aur capacity deliver karne ke liye. Data Center mein yeh UPS ka energy reservoir hai."
-        engineerTip="Akeli battery bank nahi banti. 'Battery bank' tabhi kehte hain jab multiple batteries ek intentional architecture mein hoti hain — specific voltage (series) aur specific runtime capacity (parallel) ke saath. Ek 12V monobloc ek battery hai; 16 of them in series at 192V DC is a string; 3 such strings in parallel is a battery bank."
-        keyTakeaway="Battery bank = Series (voltage) + Parallel (capacity) — yeh do operations mila ke ek complete energy storage system banta hai."
+        quickAnswer="A battery bank is an organized collection of batteries connected in series and parallel — to deliver a specific DC voltage and capacity. In a Data Center it is the energy reservoir of the UPS."
+        engineerTip="A single battery does not make a bank. We call it a 'battery bank' only when multiple batteries are in an intentional architecture — with a specific voltage (series) and a specific runtime capacity (parallel). A 12V monobloc is a battery; 16 of them in series at 192V DC is a string; 3 such strings in parallel is a battery bank."
+        keyTakeaway="Battery bank = Series (voltage) + Parallel (capacity) — combining these two operations creates a complete energy storage system."
       />
 
       <p style={S.p}>
-        Imagine ek Data Center mein 500 servers chal rahe hain. Grid power suddenly cut hoti hai.
-        DG Set start hone mein 15–20 seconds lagte hain. In 15–20 seconds mein servers ko power
-        chahiye — warna crash, data loss, SLA breach. Yeh exact gap{" "}
-        <strong>battery bank</strong> cover karta hai.
+        Imagine 500 servers are running in a Data Center. Grid power is suddenly cut. The DG Set takes 15–20 seconds to start. In those 15–20 seconds the servers need power — otherwise crash, data loss, SLA breach. This exact gap is covered by the <strong>battery bank</strong>.
       </p>
 
       <p style={S.p}>
-        Battery bank simply ek collection nahi hai batteries ka — yeh ek engineered system hai.
-        Har battery ki position, orientation, connection torque, fusing, aur monitoring sab
-        deliberately designed hota hai. Galat design mein ek weak cell poori bank fail kara sakti
-        hai exactly jab zaroorat ho.
+        A battery bank is not simply a collection of batteries — it is an engineered system. Every battery's position, orientation, connection torque, fusing and monitoring is deliberately designed. In a wrong design, one weak cell can make the whole bank fail exactly when it is needed.
       </p>
 
       <Callout type="important" title="Important — Battery Bank ≠ UPS Battery">
-        Kai log socha hai ki UPS ke andar jo battery hoti hai woh aur battery bank alag cheez hain.
-        Actually UPS ke andar jo hota hai woh bhi ek battery bank hi hai — sirf terminology aur scale
-        alag hoti hai. Small UPS mein internal battery bank hoti hai. Large Data Center UPS mein{" "}
-        <strong>external battery bank</strong> hoti hai — separate room mein, engineered aur monitored.
-        Yeh article us external battery bank ke baare mein hai.
+        Many people think the battery inside a UPS and a battery bank are different things. Actually, what is inside the UPS is also a battery bank — only the terminology and scale differ. A small UPS has an internal battery bank. A large Data Center UPS has an <strong>external battery bank</strong> — in a separate room, engineered and monitored. This article is about that external battery bank.
       </Callout>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -56,14 +46,11 @@ export default function Foundation() {
       <h2 id="why-battery-bank-exists" style={S.h2}>Why Battery Bank Exists in a Data Center</h2>
 
       <p style={S.p}>
-        Ek simple question — agar <TopicLink slug="dg-set" variant="inline" /> already backup power
-        deta hai, toh battery bank kyun chahiye?
+        A simple question — if the <TopicLink slug="dg-set" variant="inline" /> already provides backup power, why is a battery bank needed?
       </p>
 
       <p style={S.p}>
-        Answer: <strong>timing</strong>. DG Set ko start hone mein 10–30 seconds lagte hain.
-        Stabilize hone mein aur bhi time. Is window mein <TopicLink slug="ups" variant="inline" />{" "}
-        battery se power deta hai. Battery bank woh energy reservoir hai jo yeh window cover karta hai.
+        Answer: <strong>timing</strong>. The DG Set takes 10–30 seconds to start. Even more time to stabilize. In this window the <TopicLink slug="ups" variant="inline" /> provides power from the battery. The battery bank is the energy reservoir that covers this window.
       </p>
 
       <ComparisonTable
@@ -78,9 +65,7 @@ export default function Foundation() {
       />
 
       <Callout type="best-practice" title="Best Practice — Size for DG Startup + Buffer">
-        Battery bank runtime typically 10–15 minutes ke liye size kiya jaata hai — DG startup time
-        (30 sec) se zyada. Buffer isliye ki DG fail ho toh manual intervention time mile, ya second
-        DG start kiya ja sake. Hospitals aur critical facilities mein 30–60 minute runtime standard hai.
+        Battery bank runtime is typically sized for 10–15 minutes — more than the DG startup time (30 sec). The buffer is so that if the DG fails, there is time for manual intervention, or a second DG can be started. In hospitals and critical facilities, 30–60 minute runtime is standard.
       </Callout>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -93,17 +78,11 @@ export default function Foundation() {
       </Figure>
 
       <p style={S.p}>
-        Battery bank UPS ke andar ke DC Bus se connected hoti hai. Jab grid available hoti hai,{" "}
-        <strong>rectifier</strong> AC ko DC mein convert karta hai — yeh DC bus ko power karta hai
-        aur battery ko float charge karta hai simultaneously. Jab grid fail hoti hai, battery bank
-        instantly DC bus ko power karta hai — inverter isko AC mein convert karta hai aur load
-        continue karta hai. Transition so fast hoti hai ki servers ko pata hi nahi chalta.
+        The battery bank is connected to the DC Bus inside the UPS. When the grid is available, the <strong>rectifier</strong> converts AC into DC — this powers the DC bus and float-charges the battery simultaneously. When the grid fails, the battery bank instantly powers the DC bus — the inverter converts it into AC and the load continues. The transition is so fast that the servers do not even notice.
       </p>
 
       <p style={S.p}>
-        Power chain order: <strong>Grid → Transformer → UPS Rectifier → DC Bus (← Battery Bank) →
-        UPS Inverter → PDU → Rack → Servers</strong>. Battery bank is always connected to the DC Bus
-        — yeh "parked" nahi hoti. Float charge pe rehti hai, ready to supply the moment grid drops.
+        Power chain order: <strong>Grid → Transformer → UPS Rectifier → DC Bus (← Battery Bank) → UPS Inverter → PDU → Rack → Servers</strong>. The battery bank is always connected to the DC Bus — it is not "parked". It stays on float charge, ready to supply the moment the grid drops.
       </p>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -112,8 +91,7 @@ export default function Foundation() {
       <h2 id="battery-bank-vs-ups-battery" style={S.h2}>Battery Bank vs UPS Battery — Same or Different?</h2>
 
       <p style={S.p}>
-        Short answer: same concept, different scale aur location. Dono mein batteries hain, dono
-        DC power store karti hain, dono UPS DC bus se connected hoti hain.
+        Short answer: same concept, different scale and location. Both have batteries, both store DC power, both are connected to the UPS DC bus.
       </p>
 
       <ComparisonTable
@@ -135,8 +113,7 @@ export default function Foundation() {
       <h2 id="history-evolution" style={S.h2}>History & Evolution of Data Center Batteries</h2>
 
       <p style={S.p}>
-        Data Center battery technology ki evolution direct relationship hai IT load growth ke saath.
-        Jaise Data Centers bade hue, battery requirements bhi evolve huin.
+        The evolution of Data Center battery technology has a direct relationship with IT load growth. As Data Centers grew larger, battery requirements also evolved.
       </p>
 
       <ComparisonTable
@@ -152,11 +129,7 @@ export default function Foundation() {
       />
 
       <Callout type="interview" title="Interview Tip — Why VRLA Replaced VLA">
-        Common question: &quot;VRLA aur VLA mein main difference?&quot; Answer: VRLA sealed hai — valve
-        regulated, electrolyte absorbed in glass mat (AGM) ya gel. No free electrolyte. No water
-        topping. No dedicated acid-resistant floor. Less H₂ in normal operation. Maintenance-free
-        = lower OPEX. VLA abhi bhi use hoti hai jahan very long life ya high temperature tolerance
-        chahiye (telecom, railways) but Data Center mein VRLA standard hai.
+        Common question: &quot;Main difference between VRLA and VLA?&quot; Answer: VRLA is sealed — valve regulated, electrolyte absorbed in glass mat (AGM) or gel. No free electrolyte. No water topping. No dedicated acid-resistant floor. Less H₂ in normal operation. Maintenance-free = lower OPEX. VLA is still used where very long life or high temperature tolerance is needed (telecom, railways), but in the Data Center VRLA is the standard.
       </Callout>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -166,17 +139,15 @@ export default function Foundation() {
       <h2 id="battery-technology-overview" style={S.h2}>Battery Technology Landscape</h2>
 
       <SectionIntro
-        quickAnswer="Data Center mein sirf VRLA aur LFP hi relevant hain abhi — baaki technologies ya niche use cases hain ya still emerging hain. Dono ki chemistry, strengths, aur tradeoffs samajhna selection decision ke liye foundation hai."
-        engineerTip="Technology selection always total cost of ownership (TCO) se drive honi chahiye, not just upfront cost. VRLA cheap lagti hai upfront, lekin 3–5 saal mein replace karni padti hai. LFP expensive hai upfront lekin 10–15 saal chalni chahiye. 10 years mein TCO often LFP ke favour mein hoti hai — yeh calculation project proposal mein dikhao."
+        quickAnswer="In the Data Center only VRLA and LFP are relevant right now — the other technologies are either niche use cases or still emerging. Understanding the chemistry, strengths and tradeoffs of both is the foundation for the selection decision."
+        engineerTip="Technology selection should always be driven by total cost of ownership (TCO), not just upfront cost. VRLA looks cheap upfront, but has to be replaced in 3–5 years. LFP is expensive upfront but should last 10–15 years. Over 10 years, TCO is often in favour of LFP — show this calculation in the project proposal."
         keyTakeaway="For Data Centers today: VRLA for budget-constrained or regulated applications; LFP for TCO-optimised, space-constrained, or high-cycle applications."
       />
 
       <h3 id="lead-acid-chemistry" style={S.h3}>Lead Acid Chemistry — How It Works</h3>
 
       <p style={S.p}>
-        Lead acid battery ka basic electrochemistry 1859 se chal raha hai — Gaston Planté ka
-        invention. Principle simple hai: lead (Pb) aur lead dioxide (PbO₂) plates sulfuric acid
-        electrolyte (H₂SO₄) mein immersed hain.
+        The basic electrochemistry of the lead acid battery has been in use since 1859 — the invention of Gaston Planté. The principle is simple: lead (Pb) and lead dioxide (PbO₂) plates are immersed in sulfuric acid electrolyte (H₂SO₄).
       </p>
 
       <p style={S.p}>
@@ -190,10 +161,7 @@ export default function Foundation() {
       </p>
 
       <Callout type="warning" title="Warning — Sulphation: What Happens When Lead Acid Is Mistreated">
-        Agar battery deeply discharged rehti hai ya PSOC (Partial State of Charge) mein operate
-        hoti hai, PbSO₄ crystals large aur hard ho jaate hain — yeh recharge pe dissolve nahi hoti.
-        Yeh sulphation hai — VRLA ka most common premature failure mode. Prevention: never leave
-        battery deeply discharged; always recharge promptly after any discharge event.
+        If a battery stays deeply discharged or operates in PSOC (Partial State of Charge), PbSO₄ crystals become large and hard — they do not dissolve on recharge. This is sulphation — the most common premature failure mode of VRLA. Prevention: never leave a battery deeply discharged; always recharge promptly after any discharge event.
       </Callout>
 
       <h3 id="vrla-agm" style={S.h3}>VRLA AGM — Absorbed Glass Mat</h3>
@@ -203,15 +171,11 @@ export default function Foundation() {
       </Figure>
 
       <p style={S.p}>
-        AGM = Absorbed Glass Mat. Fine glass fibre mat electrolyte absorb karta hai — koi free
-        liquid nahi. Yahi reason hai ki VRLA sealed aur spillproof hoti hai.
+        AGM = Absorbed Glass Mat. A fine glass fibre mat absorbs the electrolyte — there is no free liquid. This is the reason VRLA is sealed and spillproof.
       </p>
 
       <p style={S.p}>
-        AGM ki key innovation hai <strong>oxygen recombination cycle</strong>: charging ke time
-        positive plate pe O₂ gas generate hoti hai → glass mat ke through negative plate tak
-        diffuse hoti hai → negative plate pe recombine ho jaati hai → water back. Yeh cycle
-        ~95–99% efficient hai normal conditions mein — isliye water topping ki zaroorat nahi.
+        The key innovation of AGM is the <strong>oxygen recombination cycle</strong>: during charging, O₂ gas is generated at the positive plate → diffuses through the glass mat to the negative plate → recombines at the negative plate → back to water. This cycle is ~95–99% efficient in normal conditions — which is why water topping is not needed.
       </p>
 
       <ComparisonTable
@@ -232,9 +196,7 @@ export default function Foundation() {
       <h3 id="vrla-gel" style={S.h3}>VRLA Gel</h3>
 
       <p style={S.p}>
-        Gel battery mein silica (SiO₂) electrolyte mein mix ki jaati hai — thick gel ban jaata hai
-        jo leak nahi karta. AGM se zyada robust hai high-temperature environments mein aur deep
-        cycling ke liye better hai.
+        In a gel battery, silica (SiO₂) is mixed into the electrolyte — it becomes a thick gel that does not leak. It is more robust than AGM in high-temperature environments and better for deep cycling.
       </p>
 
       <ComparisonTable
@@ -251,17 +213,13 @@ export default function Foundation() {
       />
 
       <Callout type="danger" title="Danger — Never Use AGM Float Voltage on Gel Battery">
-        AGM aur Gel ke float voltages different hain. Gel battery ko AGM voltage pe charge karna
-        overcharge karta hai — irreversible damage. Always verify OEM datasheet for exact float
-        voltage before connecting to existing charger. Mixed string (AGM + Gel) never allowed.
+        The float voltages of AGM and Gel are different. Charging a Gel battery at AGM voltage overcharges it — irreversible damage. Always verify the OEM datasheet for the exact float voltage before connecting to an existing charger. A mixed string (AGM + Gel) is never allowed.
       </Callout>
 
       <h3 id="vla-flooded" style={S.h3}>VLA — Vented / Flooded Lead Acid</h3>
 
       <p style={S.p}>
-        VLA (Vented Lead Acid) — oldest technology. Free liquid electrolyte hoti hai, vent caps
-        se H₂ aur O₂ gas bahar nikal sakti hai. Yeh deliberate hai — overcharge control aur plate
-        longevity ke liye.
+        VLA (Vented Lead Acid) — the oldest technology. It has free liquid electrolyte, and H₂ and O₂ gas can escape through the vent caps. This is deliberate — for overcharge control and plate longevity.
       </p>
 
       <ComparisonTable
@@ -279,32 +237,23 @@ export default function Foundation() {
       />
 
       <p style={S.p}>
-        VLA Data Center mein relatively rare hai kyunki dedicated acid management, ventilation,
-        aur maintenance overhead OPEX increase karta hai. Lekin jahan very long life (15+ years)
-        chahiye aur maintenance resources available hain, VLA still viable hai.
+        VLA is relatively rare in the Data Center because dedicated acid management, ventilation and maintenance overhead increase OPEX. But where very long life (15+ years) is needed and maintenance resources are available, VLA is still viable.
       </p>
 
       <h3 id="lithium-chemistry" style={S.h3}>Lithium Chemistry — How It Works</h3>
 
       <p style={S.p}>
-        Lithium-ion batteries mein lithium ions cathode aur anode ke beech move karte hain during
-        charge/discharge. Lead acid ke unlike, koi electrolyte consumption nahi, koi gassing nahi
-        normal operation mein, aur energy density significantly higher hai.
+        In Lithium-ion batteries, lithium ions move between the cathode and anode during charge/discharge. Unlike lead acid, there is no electrolyte consumption, no gassing in normal operation, and energy density is significantly higher.
       </p>
 
       <p style={S.p}>
-        Data Center mein do main lithium chemistries relevant hain:{" "}
-        <strong>LFP (Lithium Iron Phosphate)</strong> aur{" "}
-        <strong>NMC (Nickel Manganese Cobalt)</strong>. In dono ki characteristics significantly
-        different hain — selection matter karta hai.
+        Two main lithium chemistries are relevant in the Data Center: <strong>LFP (Lithium Iron Phosphate)</strong> and <strong>NMC (Nickel Manganese Cobalt)</strong>. Their characteristics are significantly different — the selection matters.
       </p>
 
       <h3 id="lfp-battery" style={S.h3}>LFP — Lithium Iron Phosphate</h3>
 
       <p style={S.p}>
-        LFP chemistry data centers ke liye sabse suitable lithium option hai — excellent safety
-        profile (no thermal runaway propagation in most scenarios), long cycle life, wide
-        temperature range, aur growing commercial availability.
+        LFP chemistry is the most suitable lithium option for data centers — excellent safety profile (no thermal runaway propagation in most scenarios), long cycle life, wide temperature range and growing commercial availability.
       </p>
 
       <ComparisonTable
@@ -345,46 +294,31 @@ export default function Foundation() {
       <h3 id="sodium-ion" style={S.h3}>Sodium-Ion Batteries</h3>
 
       <p style={S.p}>
-        Sodium-ion technology lithium ki jagah sodium ions use karta hai. Potential advantages:
-        sodium abundant aur cheap hai (unlike lithium), no cobalt, potentially lower cost at scale.
-        Commercial examples exist (CATL started commercial production in 2023), lekin energy
-        density abhi LFP se kam hai.
+        Sodium-ion technology uses sodium ions in place of lithium. Potential advantages: sodium is abundant and cheap (unlike lithium), no cobalt, potentially lower cost at scale. Commercial examples exist (CATL started commercial production in 2023), but energy density is currently lower than LFP.
       </p>
 
       <Callout type="important" title="Important — Sodium-Ion: Watch List, Not Buy List Yet">
-        2025–2026 mein sodium-ion Data Center backup power ke liye ready nahi hai — insufficient
-        track record, limited Data Center-specific products, uncertain 10-year warranties. Yeh
-        technology 2028–2032 mein relevant ho sakti hai. Abhi ke liye: monitor karein, VRLA ya
-        LFP use karein.
+        In 2025–2026, sodium-ion is not ready for Data Center backup power — insufficient track record, limited Data Center-specific products, uncertain 10-year warranties. This technology may become relevant in 2028–2032. For now: monitor it, use VRLA or LFP.
       </Callout>
 
       <h3 id="flow-batteries" style={S.h3}>Flow Batteries — Vanadium Redox & Zinc-Bromine</h3>
 
       <p style={S.p}>
-        Flow batteries mein energy liquid electrolyte mein stored hoti hai (separate tanks se pump
-        ki jaati hai through an electrochemical cell). Power aur energy completely decoupled hain —
-        zyada runtime chahiye? Bigger tanks add karo. Zyada power? Bigger electrochemical stack.
+        In flow batteries, energy is stored in liquid electrolyte (pumped from separate tanks through an electrochemical cell). Power and energy are completely decoupled — need more runtime? Add bigger tanks. More power? A bigger electrochemical stack.
       </p>
 
       <p style={S.p}>
-        Vanadium Redox Flow Battery (VRFB) most mature technology hai. Advantages: theoretically
-        unlimited cycles, long duration (4–12 hours) economical, no capacity degradation. Disadvantages:
-        large footprint, complex plumbing, high upfront cost, low energy density.
+        The Vanadium Redox Flow Battery (VRFB) is the most mature technology. Advantages: theoretically unlimited cycles, economical for long duration (4–12 hours), no capacity degradation. Disadvantages: large footprint, complex plumbing, high upfront cost, low energy density.
       </p>
 
       <Callout type="best-practice" title="Best Practice — Flow Battery: Only for Long-Duration BESS">
-        Flow battery UPS bridging ke liye nahi hai — response time milliseconds mein chahiye wahan.
-        Flow battery ka application hai long-duration energy storage (BESS) — peak shaving, renewable
-        integration, grid services. Agar Data Center mein 4+ hour backup chahiye (generator-free
-        operation), tab flow battery relevant hoti hai. Short-duration UPS: VRLA ya LFP.
+        A flow battery is not for UPS bridging — a response time in milliseconds is needed there. The application of flow batteries is long-duration energy storage (BESS) — peak shaving, renewable integration, grid services. If a Data Center needs 4+ hours of backup (generator-free operation), then a flow battery becomes relevant. Short-duration UPS: VRLA or LFP.
       </Callout>
 
       <h3 id="supercapacitors" style={S.h3}>Supercapacitors (Ultracapacitors)</h3>
 
       <p style={S.p}>
-        Supercapacitors batteries ki tarah energy store nahi karte — woh electrostatic charge store
-        karte hain. Yeh extremely fast charge aur discharge karte hain (milliseconds), near-infinite
-        cycle life dete hain, lekin energy density bahut kam hai — seconds, not minutes of backup.
+        Supercapacitors do not store energy like batteries — they store electrostatic charge. They charge and discharge extremely fast (milliseconds) and give near-infinite cycle life, but energy density is very low — seconds, not minutes, of backup.
       </p>
 
       <ComparisonTable
@@ -400,18 +334,13 @@ export default function Foundation() {
       />
 
       <p style={S.p}>
-        Supercapacitors Data Center mein typically battery ke supplement ke roop mein use hote hain —
-        very fast transients handle karte hain jabki battery voltage stabilize hoti hai. Standalone
-        UPS backup ke liye sufficient nahi hain.
+        In the Data Center, supercapacitors are typically used as a supplement to the battery — they handle very fast transients while the battery voltage stabilizes. They are not sufficient for standalone UPS backup.
       </p>
 
       <h3 id="flywheel-vs-battery" style={S.h3}>Flywheel Energy Storage vs Battery</h3>
 
       <p style={S.p}>
-        Flywheel ek mechanical energy storage device hai — motor/generator assembly ek heavy rotating
-        mass (flywheel) ko high speed pe rotate karta hai. Energy kinetic energy ke roop mein stored
-        hoti hai. Power failure pe flywheel generator mode mein switch hoti hai, electrical power
-        deliver karta hai.
+        A flywheel is a mechanical energy storage device — a motor/generator assembly rotates a heavy rotating mass (flywheel) at high speed. Energy is stored as kinetic energy. On power failure, the flywheel switches to generator mode and delivers electrical power.
       </p>
 
       <ComparisonTable
@@ -430,11 +359,7 @@ export default function Foundation() {
       />
 
       <Callout type="interview" title="Interview Tip — Flywheel vs Battery">
-        &quot;Flywheel UPS battery UPS se better hai?&quot; — Answer: depends on requirement.
-        Flywheel excellent hai short-duration (sub-1 minute) bridging ke liye — no batteries to
-        replace, very long life, no temperature issues. Lekin 10+ minutes of runtime chahiye toh
-        battery bank hi solution hai. Kai large Data Centers dono use karte hain: flywheel for
-        immediate response, battery bank for extended runtime.
+        &quot;Is a flywheel UPS better than a battery UPS?&quot; — Answer: it depends on the requirement. A flywheel is excellent for short-duration (sub-1 minute) bridging — no batteries to replace, very long life, no temperature issues. But if 10+ minutes of runtime is needed, the battery bank is the solution. Many large Data Centers use both: flywheel for immediate response, battery bank for extended runtime.
       </Callout>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -443,8 +368,7 @@ export default function Foundation() {
       <h2 id="technology-comparison" style={S.h2}>Technology Comparison Master Table</h2>
 
       <p style={S.p}>
-        Sab technologies ek jagah compare karna implementation decision ke liye essential hai.
-        Yeh table Blueprint v3.0 Table #1 hai — 15 parameters across all major technologies.
+        Comparing all technologies in one place is essential for the implementation decision. This table is Blueprint v3.0 Table #1 — 15 parameters across all major technologies.
       </p>
 
       <ComparisonTable

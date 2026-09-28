@@ -20,38 +20,31 @@ export default function DcBusIntegration() {
       <h2 id="dc-bus-integration" style={S.h2}>DC Bus &amp; System Integration</h2>
 
       <SectionIntro
-        quickAnswer="Battery bank akele kaam nahi karti — yeh UPS ke internal DC bus se connected hoti hai. DC bus woh backbone hai jis pe rectifier (grid power in), inverter (load power out), aur battery bank (storage) sab ek saath connected hote hain."
-        engineerTip="DC bus voltage precisely maintained honi chahiye. Agar bus voltage kisi bhi wajah se battery float voltage se significantly alag ho, ya toh battery over-discharge hogi ya charger overheat karega. UPS commissioning ke time DC bus voltage OEM spec se match karo — ek voltmeter aur UPS display dono se verify karo."
-        keyTakeaway="DC bus = UPS ka internal highway jis pe rectifier, inverter aur battery bank sab connected hain — iska voltage precisely controlled hona zaroori hai."
+        quickAnswer="A battery bank does not work alone — it is connected to the UPS's internal DC bus. The DC bus is the backbone on which the rectifier (grid power in), inverter (load power out) and battery bank (storage) are all connected together."
+        engineerTip="DC bus voltage must be precisely maintained. If for any reason the bus voltage is significantly different from the battery float voltage, either the battery will over-discharge or the charger will overheat. At UPS commissioning, match the DC bus voltage to the OEM spec — verify with both a voltmeter and the UPS display."
+        keyTakeaway="DC bus = the UPS's internal highway on which the rectifier, inverter and battery bank are all connected — its voltage must be precisely controlled."
       />
 
       <h3 style={S.h3}>DC Bus — What It Is</h3>
 
       <p style={S.p}>
-        UPS ke andar teen main functional blocks hain:
+        Inside a UPS there are three main functional blocks:
       </p>
 
       <ul style={S.ul}>
         <li>
-          <strong>Rectifier:</strong> AC input (grid ya DG) ko DC mein convert karta hai →
-          DC bus ko power karta hai.
+          <strong>Rectifier:</strong> Converts AC input (grid or DG) into DC → powers the DC bus.
         </li>
         <li>
-          <strong>Inverter:</strong> DC bus se power leta hai → clean regulated AC output
-          banata hai → load ko deta hai.
+          <strong>Inverter:</strong> Takes power from the DC bus → produces a clean regulated AC output → gives it to the load.
         </li>
         <li>
-          <strong>Battery bank:</strong> DC bus se connected hai — jab rectifier available hai
-          toh float charge pe rehti hai; jab rectifier fail hoti hai toh instantly DC bus ko
-          power karti hai.
+          <strong>Battery bank:</strong> Connected to the DC bus — when the rectifier is available it stays on float charge; when the rectifier fails it instantly powers the DC bus.
         </li>
       </ul>
 
       <p style={S.p}>
-        Is architecture ki beauty yeh hai ki load ke liye <strong>zero transfer time</strong>
-        hoti hai — inverter hamesha DC bus se power le raha hai, chahe woh rectifier se aa
-        raha ho ya battery se. Battery aur rectifier seamlessly switch hota hai on DC bus
-        — load ko pata bhi nahi chalta.
+        The beauty of this architecture is that there is <strong>zero transfer time</strong> for the load — the inverter is always taking power from the DC bus, whether it comes from the rectifier or the battery. Battery and rectifier switch seamlessly on the DC bus — the load does not even notice.
       </p>
 
       <h3 style={S.h3}>DC Bus Voltage Standards</h3>
@@ -69,12 +62,8 @@ export default function DcBusIntegration() {
         ]}
       />
 
-      <Callout type="important" title="Important — Bus Voltage UPS OEM Ke Saath Match Karna Mandatory">
-        Battery bank ka series string voltage exactly UPS OEM specification ke anusaar hona
-        chahiye. ±2V deviation bhi unacceptable hai for production systems. Deviation cause
-        karta hai: charger overcurrent, rectifier regulation issues, ya battery being driven
-        below minimum cut-off voltage during discharge. UPS commissioning report mein actual
-        measured DC bus voltage document karo.
+      <Callout type="important" title="Important — Matching Bus Voltage with the UPS OEM Is Mandatory">
+        The battery bank's series string voltage must be exactly as per the UPS OEM specification. Even a ±2V deviation is unacceptable for production systems. Deviation causes: charger overcurrent, rectifier regulation issues, or the battery being driven below the minimum cut-off voltage during discharge. Document the actual measured DC bus voltage in the UPS commissioning report.
       </Callout>
 
       <h3 style={S.h3}>Battery Room vs Battery Cabinet vs Battery Rack</h3>
@@ -92,9 +81,7 @@ export default function DcBusIntegration() {
       <h3 style={S.h3}>DC Battery Cable Sizing</h3>
 
       <p style={S.p}>
-        DC cables battery bank aur UPS ke beech current carry karte hain. Incorrect sizing
-        causes excessive voltage drop (reducing available runtime) aur fire risk (from excessive
-        heating).
+        DC cables carry current between the battery bank and the UPS. Incorrect sizing causes excessive voltage drop (reducing available runtime) and fire risk (from excessive heating).
       </p>
 
       <p style={S.p}>
@@ -104,8 +91,7 @@ export default function DcBusIntegration() {
       </p>
 
       <p style={S.p}>
-        Factor of 2 isliye kyunki current both positive aur negative conductors se flow karta
-        hai (total cable length = 2× one-way length).
+        The factor of 2 is because current flows through both the positive and negative conductors (total cable length = 2× one-way length).
       </p>
 
       <ComparisonTable
@@ -119,11 +105,8 @@ export default function DcBusIntegration() {
         ]}
       />
 
-      <Callout type="best-practice" title="Best Practice — DC Cable Length Minimize Karo">
-        Battery room UPS se jitna closer ho utna achha — har extra meter of cable voltage drop
-        aur energy loss add karta hai. Ideal: battery room adjacent to UPS room, cable runs
-        less than 10m. 30m+ runs: cable sizing significantly larger karna padta hai. Project
-        planning mein battery room location decide karte waqt yeh factor consider karo.
+      <Callout type="best-practice" title="Best Practice — Minimize DC Cable Length">
+        The closer the battery room is to the UPS, the better — every extra meter of cable adds voltage drop and energy loss. Ideal: battery room adjacent to the UPS room, cable runs less than 10m. 30m+ runs: cable sizing has to be significantly larger. Consider this factor when deciding the battery room location in project planning.
       </Callout>
 
       <h3 style={S.h3}>DC Breakers vs DC Fuses</h3>
@@ -142,37 +125,28 @@ export default function DcBusIntegration() {
       />
 
       <Callout type="danger" title="Danger — DC Rating vs AC Rating: Different Specifications">
-        Ek 240VAC rated fuse or breaker 192V DC system mein use karna <strong>not acceptable</strong>.
-        AC rating ka DC equivalent alag hota hai — typically DC breaking capacity much lower hai.
-        Hamesha component ka specific <em>DC voltage rating</em> aur <em>DC interrupting
-        capacity</em> verify karo. Manufacturer datasheets mein AC aur DC ratings alag-alag
-        listed hoti hain.
+        Using a 240VAC rated fuse or breaker in a 192V DC system is <strong>not acceptable</strong>. The DC equivalent of an AC rating is different — typically the DC breaking capacity is much lower. Always verify the component's specific <em>DC voltage rating</em> and <em>DC interrupting capacity</em>. Manufacturer datasheets list AC and DC ratings separately.
       </Callout>
 
       <h3 style={S.h3}>Battery Disconnect Switch</h3>
 
       <p style={S.p}>
-        Battery room mein do types ke isolation switches hone chahiye:
+        The battery room should have two types of isolation switches:
       </p>
 
       <ul style={S.ul}>
         <li>
-          <strong>Manual Battery Disconnect:</strong> Lockable DC isolator switch jo battery bank
-          ko UPS se completely disconnect karta hai maintenance ke liye. LOTO ke saath use hota
-          hai. Must be rated for full DC bus voltage aur maximum battery current.
+          <strong>Manual Battery Disconnect:</strong> A lockable DC isolator switch that completely disconnects the battery bank from the UPS for maintenance. Used with LOTO. Must be rated for the full DC bus voltage and maximum battery current.
         </li>
         <li>
-          <strong>Emergency Battery Disconnect (EBD):</strong> Fire suppression system se
-          interlock hota hai — agar battery room fire alarm trigger hoti hai, EBD automatically
-          battery bank disconnect karta hai to prevent electrical feed to a battery fire.
-          Required per NFPA 855 for Li-ion, recommended for all types.
+          <strong>Emergency Battery Disconnect (EBD):</strong> Interlocked with the fire suppression system — if the battery room fire alarm triggers, the EBD automatically disconnects the battery bank to prevent electrical feed to a battery fire. Required per NFPA 855 for Li-ion, recommended for all types.
         </li>
       </ul>
 
       <h3 style={S.h3}>DC Earthing &amp; Touch Voltage Safety</h3>
 
       <p style={S.p}>
-        DC battery system earthing AC earthing se alag hoti hai — aur often misunderstood.
+        DC battery system earthing is different from AC earthing — and often misunderstood.
       </p>
 
       <ComparisonTable
@@ -186,22 +160,15 @@ export default function DcBusIntegration() {
       />
 
       <p style={S.p}>
-        Most Data Center UPS battery systems operate with a <strong>floating DC bus</strong>
-        — neither positive nor negative rail directly earthed. This is standard practice.
-        UPS chassis and battery racks are earthed separately (protective earth, PE).
+        Most Data Center UPS battery systems operate with a <strong>floating DC bus</strong> — neither the positive nor the negative rail is directly earthed. This is standard practice. The UPS chassis and battery racks are earthed separately (protective earth, PE).
       </p>
 
       <Callout type="important" title="Important — DC Earth Fault Monitoring">
-        Floating DC bus mein first earth fault koi immediate trip nahi karta — yeh floating
-        system ka advantage hai (high availability). Lekin second earth fault = short circuit.
-        Isliye floating DC system mein <strong>Earth Fault Monitor (EFM) mandatory hai</strong>.
-        EFM continuously monitor karta hai insulation resistance — agar koi earth fault develop
-        ho toh alarm raise karta hai before second fault can cause damage.
+        In a floating DC bus, the first earth fault does not cause any immediate trip — this is the advantage of a floating system (high availability). But a second earth fault = short circuit. That is why in a floating DC system an <strong>Earth Fault Monitor (EFM) is mandatory</strong>. The EFM continuously monitors insulation resistance — if any earth fault develops, it raises an alarm before a second fault can cause damage.
       </Callout>
 
       <p style={S.p}>
-        Earthing aur safety ke detailed coverage ke liye <TopicLink slug="earthing" variant="inline" />{" "}
-        article dekho.
+        For detailed coverage of earthing and safety, see the <TopicLink slug="earthing" variant="inline" /> article.
       </p>
     </>
   );

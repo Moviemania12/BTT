@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   title: "Non-IT Infrastructure — Behind The Tech",
   description:
     "Learn Non-IT Data Center Infrastructure — Power systems, UPS, cooling, fire protection, physical security, and BMS/DCIM — from beginner to engineer level.",
+  alternates: { canonical: "https://behindthetech.in/learn/non-it" },
 };
 
 const CATEGORY_ICONS: Record<string, string> = {

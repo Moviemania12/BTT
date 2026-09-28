@@ -21,9 +21,7 @@ export default function DcBusAndDesigner() {
         <h2 id="dc-bus" style={S.h2}>DC Bus</h2>
 
         <p style={S.p}>
-          DC Bus woh internal electrical backbone hai jo rectifier output, battery bank, aur inverter
-          input — teeno ko connect karta hai. Yeh UPS ka "heart" hai, jahan AC se DC mein convert hua
-          power store aur distribute hota hai.
+          The DC Bus is the internal electrical backbone that connects the rectifier output, battery bank and inverter input — all three. It is the "heart" of the UPS, where power converted from AC to DC is stored and distributed.
         </p>
 
         <Figure caption="Fig 14 — DC Bus connecting rectifier, battery, and inverter">
@@ -41,10 +39,7 @@ export default function DcBusAndDesigner() {
         />
 
         <Callout type="danger" title="Danger — DC Bus is Lethal Voltage">
-          DC Bus voltage (192V-410V) AC mains se bhi zyada dangerous hota hai kyunki DC current body se
-          continuously flow karta hai without natural interruption jo AC ke sine wave zero-crossing
-          deta hai. DC bus pe kabhi kaam mat karo bina proper LOTO, insulated tools, aur qualified
-          electrician supervision ke.
+          DC Bus voltage (192V-410V) is even more dangerous than AC mains, because DC current flows through the body continuously without the natural interruption that AC's sine wave zero-crossing gives. Never work on the DC bus without proper LOTO, insulated tools and qualified electrician supervision.
         </Callout>
 
         {/* ═══════════════════════════════════════════════════════════════
@@ -53,8 +48,7 @@ export default function DcBusAndDesigner() {
         <h2 id="input-output-supply" style={S.h2}>Input & Output Supply</h2>
 
         <p style={S.p}>
-          UPS input aur output specifications samajhna installation aur troubleshooting dono ke liye
-          zaroori hai.
+          Understanding UPS input and output specifications is essential for both installation and troubleshooting.
         </p>
 
         <ComparisonTable
@@ -69,9 +63,7 @@ export default function DcBusAndDesigner() {
         />
 
         <Callout type="important" title="Important — Wide Input Window Matters in India">
-          Indian grid voltage fluctuations ±20% se zyada common hain especially rural/semi-urban
-          industrial areas mein. UPS select karte waqt wide input voltage window confirm karo —
-          isse rectifier ko unnecessary battery-mode transfers nahi karne padte minor sags pe.
+          Indian grid voltage fluctuations of more than ±20% are common, especially in rural/semi-urban industrial areas. While selecting a UPS, confirm a wide input voltage window — so the rectifier does not have to make unnecessary battery-mode transfers on minor sags.
         </Callout>
 
         {/* ═══════════════════════════════════════════════════════════════
@@ -80,11 +72,7 @@ export default function DcBusAndDesigner() {
         <h2 style={S.h2}>UPS Calculators — Complete Toolkit</h2>
 
         <p style={S.p}>
-          Ab tak humne har individual calculation (load, battery, runtime, string, redundancy) explain
-          kiya hai. Neeche poora calculator toolkit hai — har ek apna dedicated tool page hai, jahan
-          tum apna data daal ke real numbers nikaal sakte ho. Sabse comprehensive hai{" "}
-          <strong>Data Center UPS Designer</strong> — racks aur Tier level input karo, poora system
-          sizing ek saath milega.
+          So far we have explained every individual calculation (load, battery, runtime, string, redundancy). Below is the full calculator toolkit — each has its own dedicated tool page, where you can enter your data and get real numbers. The most comprehensive is the <strong>Data Center UPS Designer</strong> — input racks and Tier level, and you get the whole system sizing at once.
         </p>
 
         <CalculatorLinkList calculators={getCalculatorsForTopic("ups")} />

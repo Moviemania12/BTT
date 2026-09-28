@@ -20,7 +20,7 @@ export default function BmsArticlePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <ArticleLayout slug="bms" headings={HEADINGS} readingTimeMinutes={30}>
+      <ArticleLayout slug="bms" headings={HEADINGS} readingTimeMinutes={30} lang="en" alternateHref="/hi/learn/non-it/bms-dcim/bms">
         <Basics />
         <Architecture />
         <Integration />

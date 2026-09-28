@@ -32,7 +32,15 @@ import TopicLink from "@/components/TopicLink";
 export const metadata: Metadata = {
   title: "RMU (Ring Main Unit) in Data Centers — Behind The Tech",
   description:
-    "RMU ki complete engineer guide: ring topology, components, fuse protection, SCADA monitoring, Tier III/IV design aur safety — Data Center context mein.",
+    "A complete engineer guide to the RMU: ring topology, components, fuse protection, SCADA monitoring, Tier III/IV design and safety — in a Data Center context.",
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/electrical/rmu",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/electrical/rmu",
+      hi: "https://behindthetech.in/hi/learn/non-it/electrical/rmu",
+      "x-default": "https://behindthetech.in/learn/non-it/electrical/rmu",
+    },
+  },
 };
 
 // ─── TOC headings (QuickSummary + FAQ excluded per gold-standard pattern) ─────
@@ -262,24 +270,24 @@ const S = {
 function QuickSummary() {
   const points: { label: string; text: string }[] = [
     {
-      label: "Kya hai ek line me",
-      text: "RMU ek compact switchgear box hai jo HT Yard aur Transformer ke beech install hoti hai — electricity ko safely route, switch aur protect karti hai.",
+      label: "What it is, in one line",
+      text: "An RMU is a compact switchgear box installed between the HT Yard and the Transformer — it safely routes, switches and protects electricity.",
     },
     {
-      label: "Ring kyun kehte hain",
-      text: "Bijli do sources se aa sakti hai — ek source fail ho to doosri side se supply automatically restore ho sakti hai. Ye loop/ring topology hai.",
+      label: "Why it is called a Ring",
+      text: "Power can come from two sources — if one source fails, supply can be automatically restored from the other side. This is a loop/ring topology.",
     },
     {
-      label: "Andar kya hota hai",
-      text: "Teen main parts — do ring feeder switches (incoming/outgoing) aur ek transformer feeder unit (HV fuses ya circuit breaker). Modern units me solid insulation use hoti hai, SF6 nahi.",
+      label: "What is inside",
+      text: "Three main parts — two ring feeder switches (incoming/outgoing) and one transformer feeder unit (HV fuses or circuit breaker). Modern units use solid insulation, not SF6.",
     },
     {
-      label: "Data Center me kyun zaroori hai",
-      text: "Bina poore HT Yard ko shut kiye ek transformer isolate kar sakte ho. Tier III me do alag RMUs, Tier IV me completely duplicate paths — yehi redundancy ka backbone hai.",
+      label: "Why it is essential in a Data Center",
+      text: "You can isolate one transformer without shutting down the entire HT Yard. Two separate RMUs in Tier III, completely duplicate paths in Tier IV — this is the backbone of redundancy.",
     },
     {
-      label: "Ek important baat",
-      text: "RMU ke ring switches protection devices nahi hain — ye sirf switching ke liye hain. Protection upstream HT Yard VCB aur relay dete hain.",
+      label: "One important point",
+      text: "The RMU's ring switches are not protection devices — they are only for switching. Protection is provided by the upstream HT Yard VCB and relay.",
     },
   ];
 
@@ -374,7 +382,7 @@ function QuickSummary() {
             color: "#1f2937",
           }}
         >
-          Bas itna samajh gaye to RMU ka concept clear hai. Agar deeper jaana ho — neeche poora article hai.
+          If you have understood this much, the RMU concept is clear. If you want to go deeper — the full article is below.
         </div>
       </div>
     </div>
@@ -970,24 +978,24 @@ function PrevNextNav() {
 
 const FAQS = [
   {
-    q: "RMU aur simple fused switch me kya difference hai?",
-    a: "Simple fused switch sirf local protection deta hai. RMU ring topology support karta hai — dual-feed capability, automatic back-feed, aur better isolation flexibility provide karta hai.",
+    q: "What is the difference between an RMU and a simple fused switch?",
+    a: "A simple fused switch only provides local protection. An RMU supports ring topology — it provides dual-feed capability, automatic back-feed, and better isolation flexibility.",
   },
   {
-    q: "RMU ke ring switches me protection relay kyun nahi hoti?",
-    a: "Ring feeder switches load break devices hain — unka kaam switching hai, protection nahi. Protection upstream HT Yard VCB provide karta hai. Transformer feeder me HV fuses local transformer protection dete hain.",
+    q: "Why is there no protection relay in the RMU's ring switches?",
+    a: "Ring feeder switches are load break devices — their job is switching, not protection. Protection is provided by the upstream HT Yard VCB. In the transformer feeder, HV fuses provide local transformer protection.",
   },
   {
-    q: "SF6 aur Solid Insulated RMU me choose karna ho to?",
-    a: "Naye projects ke liye solid insulated prefer karo — SF6 ka GWP 23,900 hai aur regulatory pressure badh rahi hai. Legacy SF6 units ongoing support ke liye maintain ho sakte hain.",
+    q: "What if I have to choose between an SF6 and a Solid Insulated RMU?",
+    a: "For new projects, prefer solid insulated — the GWP of SF6 is 23,900 and regulatory pressure is increasing. Legacy SF6 units can be maintained for ongoing support.",
   },
   {
-    q: "RMU ring restoration manually hoti hai ya automatically?",
-    a: "Basic RMU me manually — operator NOP (Normally Open Point) close karta hai. Smart motorized RMUs me automatic ring restoration hoti hai via SCADA ya local automation.",
+    q: "Is RMU ring restoration manual or automatic?",
+    a: "In a basic RMU it is manual — the operator closes the NOP (Normally Open Point). Smart motorized RMUs have automatic ring restoration via SCADA or local automation.",
   },
   {
-    q: "Data Center me kitne RMUs chahiye?",
-    a: "Minimum Tier III ke liye: 2 RMUs — ek per busbar section. Tier IV ke liye: Complete path duplication — RMU-A on Path A, RMU-B on Path B, no crossover.",
+    q: "How many RMUs does a Data Center need?",
+    a: "Minimum for Tier III: 2 RMUs — one per busbar section. For Tier IV: Complete path duplication — RMU-A on Path A, RMU-B on Path B, no crossover.",
   },
 ];
 
@@ -1053,7 +1061,7 @@ export default function RmuPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <ArticleLayout slug="rmu" headings={HEADINGS} readingTimeMinutes={16}>
+      <ArticleLayout slug="rmu" headings={HEADINGS} readingTimeMinutes={16} lang="en" alternateHref="/hi/learn/non-it/electrical/rmu">
 
         {/* ── Hero Image ── */}
         <figure style={S.imageFigure}>
@@ -1072,7 +1080,7 @@ export default function RmuPage() {
         </figure>
 
         <WhatYouAreLooking>
-          Ye ek compact metal-enclosed switchgear unit hai. Iske andar ring feeder switches aur transformer feeder unit hoti hai. Bahar se ye ek simple box lagti hai — andar complete switching, isolation aur protection mechanism hota hai.
+          This is a compact metal-enclosed switchgear unit. Inside it are the ring feeder switches and the transformer feeder unit. From outside it looks like a simple box — inside there is a complete switching, isolation and protection mechanism.
         </WhatYouAreLooking>
 
         {/* ── Quick Summary (NOT in TOC) ── */}
@@ -1082,13 +1090,13 @@ export default function RmuPage() {
 
         {/* ── Intro body ── */}
         <p style={S.p}>
-          HT Yard se electricity campus me enter karti hai. Lekin directly transformer tak nahi jaati. Beech me ek aur critical system hota hai — <strong>RMU (Ring Main Unit)</strong>.
+          Electricity enters the campus from the HT Yard. But it does not go directly to the transformer. There is one more critical system in between — <strong>the RMU (Ring Main Unit)</strong>.
         </p>
         <p style={S.p}>
-          RMU ek compact, factory-assembled medium voltage switchgear unit hoti hai jo HT Yard aur Transformer ke beech ka intermediate switching, protection aur isolation point provide karti hai.
+          An RMU is a compact, factory-assembled medium voltage switchgear unit that provides the intermediate switching, protection and isolation point between the HT Yard and the Transformer.
         </p>
         <p style={S.p}>
-          Ye "Ring" topology ke liye design ki gayi hai — matlab agar ek source fail ho to doosri side se supply automatically restore ho sakti hai.
+          It is designed for a "Ring" topology — meaning that if one source fails, supply can be automatically restored from the other side.
         </p>
         <div style={S.learnMore}>
           <TopicLink slug="ht-yard" label="Read First: HT Yard" variant="inline" />
@@ -1099,16 +1107,16 @@ export default function RmuPage() {
         {/* ── SECTION 1: What Is RMU ── */}
         <h2 id="what-is-rmu" style={S.h1}>What Is RMU?</h2>
 
-        <p style={S.p}>RMU ka full form hai <strong>Ring Main Unit</strong>. Ye ek compact metal-enclosed switchgear unit hoti hai jo medium voltage (11 kV ya 33 kV) distribution networks me use hoti hai.</p>
-        <p style={S.p}>Ek standard RMU me typically teen functional units hote hain:</p>
+        <p style={S.p}>The full form of RMU is <strong>Ring Main Unit</strong>. It is a compact metal-enclosed switchgear unit used in medium voltage (11 kV or 33 kV) distribution networks.</p>
+        <p style={S.p}>A standard RMU typically has three functional units:</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>2 Ring Feeder Switches</strong> — incoming aur outgoing ring feeders ke liye</li>
-          <li style={S.li}><strong>1 Transformer Feeder Unit</strong> — transformer ko supply dene ke liye (fuse-switch ya circuit breaker)</li>
+          <li style={S.li}><strong>2 Ring Feeder Switches</strong> — for the incoming and outgoing ring feeders</li>
+          <li style={S.li}><strong>1 Transformer Feeder Unit</strong> — to supply the transformer (fuse-switch or circuit breaker)</li>
         </ul>
-        <p style={S.p}>RMU ki sabse badi characteristic hai uska <strong>sealed, compact design</strong> — modern units "sealed for life" hoti hain.</p>
+        <p style={S.p}>The biggest characteristic of an RMU is its <strong>sealed, compact design</strong> — modern units are "sealed for life".</p>
 
         <WhyThisMatters>
-          Data Centers me specifically — RMU allow karta hai transformer-level maintenance without shutting down the HT Yard. Ye concurrent maintainability ka ek critical piece hai jo Tier III aur Tier IV ratings ke liye zaroori hai.
+          Specifically in Data Centers — the RMU allows transformer-level maintenance without shutting down the HT Yard. It is a critical piece of concurrent maintainability, which is essential for Tier III and Tier IV ratings.
         </WhyThisMatters>
 
         <DCMapNote components={["RMU", "HT Switchgear", "Transformer Feeder"]} />
@@ -1118,17 +1126,17 @@ export default function RmuPage() {
         {/* ── SECTION 2: Why Required ── */}
         <h2 id="why-required" style={S.h1}>Why Is RMU Required?</h2>
 
-        <p style={S.p}>Directly HT Yard se transformer ko connect karna possible hai, lekin practical nahi.</p>
-        <p style={S.p}>RMU ye advantages provide karta hai:</p>
+        <p style={S.p}>Connecting the transformer directly from the HT Yard is possible, but not practical.</p>
+        <p style={S.p}>The RMU provides these advantages:</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Intermediate Isolation</strong> — ek transformer maintain karte waqt doosre transformers continue karte rehte hain</li>
-          <li style={S.li}><strong>Ring Topology Support</strong> — agar ek feeder fail ho to ring ka doosra end power restore kar sakta hai</li>
-          <li style={S.li}><strong>Additional Protection Layer</strong> — transformer feeder unit me HV fuses ya circuit breaker transformer ko internal faults se bachate hain</li>
-          <li style={S.li}><strong>Compact Footprint</strong> — ek chhoti si unit me complete switching aur protection functionality</li>
+          <li style={S.li}><strong>Intermediate Isolation</strong> — while one transformer is being maintained, the other transformers keep running</li>
+          <li style={S.li}><strong>Ring Topology Support</strong> — if one feeder fails, the other end of the ring can restore power</li>
+          <li style={S.li}><strong>Additional Protection Layer</strong> — HV fuses or a circuit breaker in the transformer feeder unit protect the transformer from internal faults</li>
+          <li style={S.li}><strong>Compact Footprint</strong> — complete switching and protection functionality in one small unit</li>
         </ul>
 
         <WhyThisMatters>
-          Ek office me agar ek feeder fail ho to kuch ghante ka downtime hota hai. Data Center me wahi fault SLAs breach kar sakta hai. RMU ki ring restoration capability isi impact ko seconds me resolve kar deti hai — yehi 99.99%+ uptime ka hissa hai.
+          If a feeder fails in an office, it causes a few hours of downtime. In a Data Center, the same fault can breach SLAs. The RMU's ring restoration capability resolves this impact in seconds — this is part of 99.99%+ uptime.
         </WhyThisMatters>
 
         <hr style={S.divider} />
@@ -1136,12 +1144,12 @@ export default function RmuPage() {
         {/* ── SECTION 3: Where Located ── */}
         <h2 id="where-located" style={S.h1}>Where Is RMU Located?</h2>
 
-        <p style={S.p}>RMU typically HT Yard ke baad, Transformer ke pehle install hoti hai.</p>
-        <p style={S.p}>Location: Electrical room ya substation building ke andar, ya HT Yard ke paas dedicated enclosure me.</p>
-        <p style={S.p}>Modern RMUs weatherproof hoti hain aur outdoor installation bhi possible hai, lekin Data Centers me generally indoor install ki jati hai.</p>
+        <p style={S.p}>An RMU is typically installed after the HT Yard and before the Transformer.</p>
+        <p style={S.p}>Location: Inside the electrical room or substation building, or in a dedicated enclosure near the HT Yard.</p>
+        <p style={S.p}>Modern RMUs are weatherproof and outdoor installation is also possible, but in Data Centers they are generally installed indoors.</p>
 
         <FlowDiagram
-          caption="RMU ki position — HT Yard aur Transformer ke beech"
+          caption="Position of the RMU — between the HT Yard and the Transformer"
           steps={[
             { icon: "⚡", label: "Grid Supply" },
             { icon: "🔐", label: "HT Yard", sublabel: "VCB + Relay" },
@@ -1157,48 +1165,48 @@ export default function RmuPage() {
         <h2 id="types-of-rmu" style={S.h1}>Types of RMU</h2>
 
         <h3 style={S.h3}>1. SF6 Gas Insulated RMU (Traditional)</h3>
-        <p style={S.p}>Andar SF6 gas sealed hoti hai. "Sealed for life" design — normal use me gas nahi nikalta.</p>
+        <p style={S.p}>SF6 gas is sealed inside. "Sealed for life" design — the gas does not escape in normal use.</p>
         <p style={S.p}>Examples: Schneider RM6, ABB SafePlus.</p>
 
         <h3 style={S.h3}>2. Solid Insulated RMU (Modern — Preferred)</h3>
-        <p style={S.p}>SF6 ki jagah epoxy resin insulation use hoti hai. Environment-friendly — SF6 ka Global Warming Potential 23,900 hota hai, isliye industry shift ho rahi hai.</p>
+        <p style={S.p}>Epoxy resin insulation is used instead of SF6. Environment-friendly — the Global Warming Potential of SF6 is 23,900, which is why the industry is shifting.</p>
         <p style={S.p}>Examples: Schneider SM6 AIS, ABB SafeLink, Siemens NXPLUS C (new generation).</p>
 
         <h3 style={S.h3}>3. Air Insulated RMU (Legacy)</h3>
-        <p style={S.p}>Older technology, larger size. Aaj ke Data Centers me nahi use hoti.</p>
+        <p style={S.p}>Older technology, larger size. Not used in today's Data Centers.</p>
 
         <InsightCard>
-          <strong>SF6 ek powerful greenhouse gas hai — GWP 23,900.</strong> Matlab ek kilogram SF6 ka climate impact 23,900 kilogram CO₂ ke barabar hai. Isi wajah se naye Data Center projects me solid insulated RMUs preferred choice ban rahi hain. European Union ne 2026 se new SF6 switchgear par restrictions shuru ki hain.
+          <strong>SF6 is a powerful greenhouse gas — GWP 23,900.</strong> This means the climate impact of one kilogram of SF6 equals 23,900 kilograms of CO₂. That is why solid insulated RMUs are becoming the preferred choice in new Data Center projects. The European Union has started restrictions on new SF6 switchgear from 2026.
         </InsightCard>
 
-        <p style={S.noteText}>Actual RMU selection project requirements, utility specifications, available space aur OEM design par depend karti hai.</p>
+        <p style={S.noteText}>Actual RMU selection depends on project requirements, utility specifications, available space and OEM design.</p>
 
         <hr style={S.divider} />
 
         {/* ── SECTION 5: Key Components ── */}
         <h2 id="key-components" style={S.h1}>Key Components</h2>
 
-        <p style={S.p}>RMU ke har component ka ek specific role hota hai.</p>
+        <p style={S.p}>Every component of the RMU has a specific role.</p>
 
         <h3 style={S.h3}>Ring Feeder Switch (×2)</h3>
-        <p style={S.p}>Load break switch hota hai — load ke saath open/close kar sakta hai.</p>
-        <p style={S.p}><strong>Important:</strong> Inme protection relay nahi hoti — ye sirf switching devices hain. Protection upstream VCB (HT Yard me) provide karta hai.</p>
+        <p style={S.p}>It is a load break switch — it can open/close with load.</p>
+        <p style={S.p}><strong>Important:</strong> These have no protection relay — they are only switching devices. Protection is provided by the upstream VCB (in the HT Yard).</p>
 
         <h3 style={S.h3}>Transformer Feeder Unit</h3>
-        <p style={S.p}>Ye unit transformer ko directly feed karti hai. Do variants hain:</p>
+        <p style={S.p}>This unit feeds the transformer directly. There are two variants:</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Fuse-Switch Combination</strong> — HV fuses transformer ko internal faults se bachate hain (most common)</li>
-          <li style={S.li}><strong>Circuit Breaker with Relay</strong> — larger transformers ke liye, overcurrent + earth fault protection</li>
+          <li style={S.li}><strong>Fuse-Switch Combination</strong> — HV fuses protect the transformer from internal faults (most common)</li>
+          <li style={S.li}><strong>Circuit Breaker with Relay</strong> — for larger transformers, overcurrent + earth fault protection</li>
         </ul>
 
         <h3 style={S.h3}>Earthing Switch</h3>
-        <p style={S.p}>Maintenance ke waqt cable ko earth karne ke liye. Mechanical interlock hota hai — live section par earth switch close nahi ho sakta.</p>
+        <p style={S.p}>For earthing the cable during maintenance. There is a mechanical interlock — the earth switch cannot close on a live section.</p>
 
         <h3 style={S.h3}>Cable Connection Compartment</h3>
-        <p style={S.p}>Bottom-entry cable boxes hote hain. HV XLPE cable yahan terminate hoti hai — stress cone aur termination kit use hoti hai.</p>
+        <p style={S.p}>These are bottom-entry cable boxes. The HV XLPE cable terminates here — a stress cone and termination kit are used.</p>
 
-        <h3 style={S.h3}>SF6 Gas Compartment (SF6 type me)</h3>
-        <p style={S.p}>Sealed pressure gauge se gas level monitor hota hai. Normal pressure approximately 1.3 bar hoti hai (OEM specs vary karte hain).</p>
+        <h3 style={S.h3}>SF6 Gas Compartment (in the SF6 type)</h3>
+        <p style={S.p}>The gas level is monitored with a sealed pressure gauge. Normal pressure is approximately 1.3 bar (OEM specs vary).</p>
 
         <DCMapNote components={["Ring Feeder Switch", "Transformer Feeder", "HV Fuse", "Earthing Switch"]} />
 
@@ -1208,8 +1216,8 @@ export default function RmuPage() {
         <h2 id="working-principle" style={S.h1}>Working Principle</h2>
 
         <h3 style={S.h3}>Normal Ring Operation</h3>
-        <p style={S.p}>Power do directions se aa sakti hai — yahi "ring" ka matlab hai. Normally ek point ring me <strong>open</strong> rakha jata hai — ise Normally Open Point (NOP) kehte hain.</p>
-        <p style={S.p}>Dono sources available hain, lekin current sirf ek direction se flow karta hai.</p>
+        <p style={S.p}>Power can come from two directions — that is what "ring" means. Normally one point in the ring is kept <strong>open</strong> — this is called the Normally Open Point (NOP).</p>
+        <p style={S.p}>Both sources are available, but current flows from only one direction.</p>
 
         <FlowDiagram
           caption="Ring topology — dual source, one normally open point"
@@ -1223,14 +1231,14 @@ export default function RmuPage() {
         />
 
         <h3 style={S.h3}>Fault on One Ring Section</h3>
-        <p style={S.p}>Agar Source A side me fault aa jaye — Source A side ka Ring Switch 1 open ho jata hai. Normally Open Point (doosri RMU par) close ho jata hai. Supply Source B side se restore ho jati hai.</p>
-        <p style={S.p}>Ye "back-feed" ya "ring restoration" kehlata hai — isi wajah se Ring Main Unit naam pada.</p>
+        <p style={S.p}>If a fault occurs on the Source A side — Ring Switch 1 on the Source A side opens. The Normally Open Point (on the other RMU) closes. Supply is restored from the Source B side.</p>
+        <p style={S.p}>This is called "back-feed" or "ring restoration" — this is why it got the name Ring Main Unit.</p>
 
         <h3 style={S.h3}>Transformer Feeder Operation</h3>
-        <p style={S.p}>Agar transformer me internal fault aaye — HV fuses blow ho jate hain milliseconds me. Transformer isolate ho jata hai, ring unaffected rehti hai.</p>
+        <p style={S.p}>If an internal fault occurs in the transformer — the HV fuses blow within milliseconds. The transformer gets isolated, and the ring remains unaffected.</p>
 
         <InsightCard>
-          <strong>Ring switches protection devices nahi hain — ye switching devices hain.</strong> RMU ke ring feeder switches ka kaam sirf route select karna hai. Protection ka kaam HT Yard ka VCB aur protection relay karte hain. Transformer feeder me HV fuses transformer ko local protection dete hain — lekin inka relay se koi lena-dena nahi. Ye distinction field me bahut important hai.
+          <strong>Ring switches are not protection devices — they are switching devices.</strong> The job of the RMU's ring feeder switches is only to select the route. Protection is done by the HT Yard's VCB and protection relay. In the transformer feeder, HV fuses give local protection to the transformer — but they have nothing to do with the relay. This distinction is very important in the field.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -1238,25 +1246,25 @@ export default function RmuPage() {
         {/* ── SECTION 7: RMU vs HT Yard VCB ── */}
         <h2 id="rmu-vs-ht-yard-vcb" style={S.h1}>RMU vs HT Yard VCB</h2>
 
-        <p style={S.p}>Ye ek common confusion hai — clear karna zaruri hai.</p>
+        <p style={S.p}>This is a common confusion — it is essential to clear it up.</p>
 
         <ComparisonCard
           tag="Key Differences"
           leftTitle="HT Yard VCB"
           leftItems={[
-            "Incoming utility supply receive karta hai",
+            "Receives the incoming utility supply",
             "Full protection relay (CT + PT + numerical relay)",
             "High interrupting capacity",
             "Utility-grade protection settings",
-            "Fault current interrupt karta hai",
+            "Interrupts fault current",
           ]}
           rightTitle="RMU Ring Switch"
                     rightItems={[
-            "Distribution switching ke liye",
+            "For distribution switching",
             "Load break capability only",
-            "Protection relay nahi hoti (generally)",
-            "Sirf load switch on/off karta hai",
-            "Fault current interrupt nahi kar sakta",
+            "No protection relay (generally)",
+            "Only switches the load on/off",
+            "Cannot interrupt fault current",
           ]}
         />
 
@@ -1269,17 +1277,17 @@ export default function RmuPage() {
         <p style={S.p}>Concrete plinth with cable entry holes (bottom entry). Earthing provision in foundation. Adequate space for cable bending radius.</p>
 
         <h3 style={S.h3}>Step 2: RMU Positioning</h3>
-        <p style={S.p}>Lifting point par handle karo — RMU heavy hoti hai (200–500 kg typically). Level mounting mandatory — tilt allowed nahi hota, especially SF6 units me.</p>
+        <p style={S.p}>Handle it at the lifting points — an RMU is heavy (200–500 kg typically). Level mounting is mandatory — tilt is not allowed, especially in SF6 units.</p>
 
         <h3 style={S.h3}>Step 3: HV Cable Termination</h3>
-        <p style={S.p}>HV XLPE cable termination — stress cone application zaruri hai. Heat-shrink ya cold-shrink kits use hote hain.</p>
-        <p style={S.p}>Same process as HT Yard cable termination — koi shortcut nahi.</p>
+        <p style={S.p}>HV XLPE cable termination — applying a stress cone is essential. Heat-shrink or cold-shrink kits are used.</p>
+        <p style={S.p}>Same process as HT Yard cable termination — no shortcuts.</p>
 
         <h3 style={S.h3}>Step 4: Gas Pressure Check (SF6 type)</h3>
-        <p style={S.p}>Factory fill hoti hai, site par verify karo. Pressure gauge green zone me honi chahiye before energizing.</p>
+        <p style={S.p}>It is factory filled; verify it on site. The pressure gauge must be in the green zone before energizing.</p>
 
         <h3 style={S.h3}>Step 5: Earthing Connection</h3>
-        <p style={S.p}>Body earth aur cable screen earth alag-alag points hote hain. Dono connections mandatory hain.</p>
+        <p style={S.p}>Body earth and cable screen earth are separate points. Both connections are mandatory.</p>
         <div style={S.learnMore}>
           <TopicLink slug="earthing" label="Learn More: Earthing" variant="inline" />
         </div>
@@ -1289,38 +1297,38 @@ export default function RmuPage() {
         {/* ── SECTION 9: Testing ── */}
         <h2 id="testing-commissioning" style={S.h1}>Testing & Commissioning</h2>
 
-        <p style={S.p}>Pre-energization checks mandatory hain — bina complete testing ke RMU energize nahi hoti.</p>
+        <p style={S.p}>Pre-energization checks are mandatory — an RMU is not energized without complete testing.</p>
         <ul style={S.ul}>
           <li style={S.li}><strong>Insulation Resistance (Megger) Test</strong> — all cables, all phases</li>
           <li style={S.li}><strong>Switch Mechanical Operation Test</strong> — manual open/close verify</li>
-          <li style={S.li}><strong>Earthing Switch Interlock Verification</strong> — live section par earth switch close nahi hona chahiye</li>
-          <li style={S.li}><strong>Gas Pressure Verification</strong> — SF6 type ke liye</li>
+          <li style={S.li}><strong>Earthing Switch Interlock Verification</strong> — the earth switch must not close on a live section</li>
+          <li style={S.li}><strong>Gas Pressure Verification</strong> — for the SF6 type</li>
           <li style={S.li}><strong>Earth Continuity Test</strong> — body earth resistance</li>
-          <li style={S.li}><strong>Fuse Rating Verification</strong> — coordination study ke against check</li>
+          <li style={S.li}><strong>Fuse Rating Verification</strong> — check against the coordination study</li>
         </ul>
-        <p style={S.p}>HV Withstand Test optional lekin recommended hai — 2 × rated voltage for 1 minute.</p>
-        <p style={S.p}>Commissioning records me gas pressure, switch operations aur cable termination photos document hone chahiye.</p>
+        <p style={S.p}>The HV Withstand Test is optional but recommended — 2 × rated voltage for 1 minute.</p>
+        <p style={S.p}>Gas pressure, switch operations and cable termination photos should be documented in the commissioning records.</p>
 
         <hr style={S.divider} />
 
         {/* ── SECTION 10: Operation ── */}
         <h2 id="operation" style={S.h1}>Operation</h2>
 
-        <p style={S.p}>RMU operation simple hoti hai lekin SOPs follow karna mandatory hai — yahan koi shortcut nahi chalta.</p>
+        <p style={S.p}>RMU operation is simple, but following SOPs is mandatory — no shortcuts work here.</p>
 
         <h3 style={S.h3}>Normal Switching Sequence</h3>
         <p style={S.p}><strong>Opening:</strong> Transformer Feeder Switch → Ring Switch 2 → Ring Switch 1</p>
         <p style={S.p}><strong>Closing:</strong> Reverse order — Ring Switch 1 → Ring Switch 2 → Transformer Feeder Switch</p>
 
         <h3 style={S.h3}>Ring Restoration Procedure</h3>
-        <p style={S.p}>Source A fault → Ring Switch 1 open confirm karo → Normally Open Point close karo → Supply restored from B.</p>
+        <p style={S.p}>Source A fault → confirm Ring Switch 1 is open → close the Normally Open Point → Supply restored from B.</p>
 
         <h3 style={S.h3}>Key Operational Rules</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Kabhi bhi energized cable ke saath earth switch close mat karo — mechanical interlock prevent karta hai, lekin procedure me bhi clearly mention hona chahiye</li>
-          <li style={S.li}>Fuse replacement: Pehle transformer feeder switch open karo, phir earth karo, phir fuse change karo</li>
-          <li style={S.li}>Ring switch operation load ke saath ho sakta hai (load break), lekin fault current ke saath nahi</li>
-          <li style={S.li}>Har switching operation PTW (Permit to Work) ke under honi chahiye</li>
+          <li style={S.li}>Never close the earth switch with an energized cable — the mechanical interlock prevents it, but it should also be clearly mentioned in the procedure</li>
+          <li style={S.li}>Fuse replacement: First open the transformer feeder switch, then earth it, then change the fuse</li>
+          <li style={S.li}>Ring switch operation can be done with load (load break), but not with fault current</li>
+          <li style={S.li}>Every switching operation must be done under a PTW (Permit to Work)</li>
         </ul>
 
         <hr style={S.divider} />
@@ -1335,17 +1343,17 @@ export default function RmuPage() {
         <ul style={S.ul}>
           <li style={S.li}>Remote switch position status (open/closed)</li>
           <li style={S.li}>Gas pressure alarm — low SF6 pressure alert</li>
-          <li style={S.li}>Trip indication (agar circuit breaker type hai)</li>
-          <li style={S.li}>Load current monitoring (agar CT fitted hai)</li>
-          <li style={S.li}>Remote operation capability (motorized switches wali units me)</li>
+          <li style={S.li}>Trip indication (if it is a circuit breaker type)</li>
+          <li style={S.li}>Load current monitoring (if a CT is fitted)</li>
+          <li style={S.li}>Remote operation capability (in units with motorized switches)</li>
         </ul>
 
         <h3 style={S.h3}>Data Center Integration</h3>
-        <p style={S.p}>Modbus RTU ya IEC 61850 interface se SCADA/BMS me integrate hoti hai.</p>
-        <p style={S.p}>Alarms: Fuse blown, gas low, switch status change — sab real-time control room me visible hote hain.</p>
+        <p style={S.p}>It is integrated into SCADA/BMS through a Modbus RTU or IEC 61850 interface.</p>
+        <p style={S.p}>Alarms: Fuse blown, gas low, switch status change — all are visible in real time in the control room.</p>
 
         <WhyThisMatters>
-          Data Center operations team ko 24/7 pata hona chahiye ki kaunsi RMU switch open hai, kaunsi closed hai. Bina SCADA monitoring ke, field me jaake check karna padega — jisse response time badhta hai aur availability risk hota hai.
+          The Data Center operations team must know 24/7 which RMU switch is open and which is closed. Without SCADA monitoring, someone has to go to the field to check — which increases response time and creates availability risk.
         </WhyThisMatters>
 
         <hr style={S.divider} />
@@ -1353,29 +1361,29 @@ export default function RmuPage() {
         {/* ── SECTION 12: Maintenance ── */}
         <h2 id="maintenance" style={S.h1}>Maintenance</h2>
 
-        <p style={S.p}>SF6 "Sealed for Life" RMU ka sabse bada advantage: <strong>Minimal maintenance required.</strong></p>
+        <p style={S.p}>The biggest advantage of an SF6 "Sealed for Life" RMU: <strong>Minimal maintenance required.</strong></p>
 
         <h3 style={S.h3}>Annual Checks</h3>
         <ul style={S.ul}>
           <li style={S.li}>Visual inspection — body, cable boxes, cable entries</li>
-          <li style={S.li}>SF6 pressure gauge check (green zone me hona chahiye)</li>
+          <li style={S.li}>SF6 pressure gauge check (should be in the green zone)</li>
           <li style={S.li}>Cable termination IR scan — thermography</li>
           <li style={S.li}>Switch position indicator check</li>
           <li style={S.li}>Mechanical operation test — manual</li>
         </ul>
 
-        <h3 style={S.h3}>Every 5 Years (ya OEM Recommendation ke Anusar)</h3>
+        <h3 style={S.h3}>Every 5 Years (or as per OEM Recommendation)</h3>
         <ul style={S.ul}>
           <li style={S.li}>Contact resistance measurement</li>
           <li style={S.li}>Insulation resistance test</li>
-          <li style={S.li}>Functional test of all switches aur interlocks</li>
+          <li style={S.li}>Functional test of all switches and interlocks</li>
           <li style={S.li}>Cable termination re-inspection</li>
         </ul>
 
         <h3 style={S.h3}>After Any Fault Event</h3>
-        <p style={S.p}>Visual inspection for signs of arcing ya burning. Gas pressure re-check. Cable termination inspection before re-energizing.</p>
+        <p style={S.p}>Visual inspection for signs of arcing or burning. Gas pressure re-check. Cable termination inspection before re-energizing.</p>
 
-        <p style={S.noteText}>Maintenance frequency project requirements, OEM recommendations aur site conditions par depend karti hai.</p>
+        <p style={S.noteText}>Maintenance frequency depends on project requirements, OEM recommendations and site conditions.</p>
 
         <hr style={S.divider} />
 
@@ -1383,55 +1391,55 @@ export default function RmuPage() {
         <h2 id="common-faults" style={S.h1}>Common Faults</h2>
 
         <h3 style={S.h3}>HV Fuse Operation (Most Common)</h3>
-        <p style={S.p}>Transformer internal fault ya severe overload par fuse blow hota hai milliseconds me.</p>
-        <p style={S.p}>Indication: Trip indicator on transformer feeder unit. Recovery: Transformer fault investigate karo, clear karo, fuse replace karo, HV test karo.</p>
+        <p style={S.p}>The fuse blows within milliseconds on a transformer internal fault or severe overload.</p>
+        <p style={S.p}>Indication: Trip indicator on the transformer feeder unit. Recovery: Investigate the transformer fault, clear it, replace the fuse, do an HV test.</p>
 
         <h3 style={S.h3}>Cable Termination Failure</h3>
-        <p style={S.p}>Partial discharge se eventually flashover develop hota hai. Common causes: Poor installation, moisture ingress, mechanical damage.</p>
-        <p style={S.p}>Indication: Earth fault alarm upstream (HT Yard relay se).</p>
+        <p style={S.p}>Partial discharge eventually develops into a flashover. Common causes: Poor installation, moisture ingress, mechanical damage.</p>
+        <p style={S.p}>Indication: Earth fault alarm upstream (from the HT Yard relay).</p>
 
         <h3 style={S.h3}>SF6 Gas Leakage (SF6 type)</h3>
-        <p style={S.p}>Older units me seals degrade ho sakti hain. Pressure gauge minimum se neeche drop karti hai.</p>
-        <p style={S.p}>Action: Unit use band karo, OEM service call karo immediately.</p>
+        <p style={S.p}>In older units, seals can degrade. The pressure gauge drops below minimum.</p>
+        <p style={S.p}>Action: Stop using the unit, call OEM service immediately.</p>
 
         <h3 style={S.h3}>Fuse Wrong Rating</h3>
-        <p style={S.p}>Incorrect fuse selection ya coordination mismatch ke wajah se upstream VCB trip hone se pehle fuse blow ho jata hai.</p>
-        <p style={S.p}>Prevention: Coordination study follow karna mandatory hai — arbitrary fuse ratings nahi.</p>
+        <p style={S.p}>Due to incorrect fuse selection or a coordination mismatch, the fuse blows before the upstream VCB trips.</p>
+        <p style={S.p}>Prevention: Following the coordination study is mandatory — no arbitrary fuse ratings.</p>
 
         <h3 style={S.h3}>Earthing Switch Malfunction</h3>
-        <p style={S.p}>Interlock mechanism jam ho sakti hai — dangerous situation. Regular mechanical test important hai.</p>
-        <p style={S.p}>Never force or bypass — OEM se service lao.</p>
+        <p style={S.p}>The interlock mechanism can jam — a dangerous situation. Regular mechanical testing is important.</p>
+        <p style={S.p}>Never force or bypass — get service from the OEM.</p>
 
         <hr style={S.divider} />
 
         {/* ── SECTION 14: Troubleshooting ── */}
         <h2 id="troubleshooting" style={S.h1}>Troubleshooting</h2>
 
-        <p style={S.p}>Basic approach: <strong>Alarm receive karo → source identify karo → isolate karo → investigate karo → restore karo.</strong></p>
+        <p style={S.p}>Basic approach: <strong>Receive the alarm → identify the source → isolate → investigate → restore.</strong></p>
 
         <h3 style={S.h3}>Fuse Blown Alarm</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Transformer feeder switch open confirm karo</li>
-          <li style={S.li}>Earth switch apply karo</li>
+          <li style={S.li}>Confirm the transformer feeder switch is open</li>
+          <li style={S.li}>Apply the earth switch</li>
           <li style={S.li}>Visual inspection for damage</li>
-          <li style={S.li}>Fuse replace karo — correct rating verify karo against coordination study</li>
-          <li style={S.li}>Transformer HV test karo before re-energizing</li>
-          <li style={S.li}>Agar fuse immediately dobara blow ho — transformer fault assumed, DO NOT re-energize</li>
+          <li style={S.li}>Replace the fuse — verify the correct rating against the coordination study</li>
+          <li style={S.li}>Do a transformer HV test before re-energizing</li>
+          <li style={S.li}>If the fuse blows again immediately — transformer fault assumed, DO NOT re-energize</li>
         </ul>
 
         <h3 style={S.h3}>Gas Low Alarm (SF6 type)</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Koi cover mat kholo</li>
-          <li style={S.li}>External damage ya loose connections check karo</li>
-          <li style={S.li}>OEM se gas refill / leak repair ke liye contact karo</li>
-          <li style={S.li}>Gas critically low — treat as out of service, isolate karo</li>
+          <li style={S.li}>Do not open any cover</li>
+          <li style={S.li}>Check for external damage or loose connections</li>
+          <li style={S.li}>Contact the OEM for gas refill / leak repair</li>
+          <li style={S.li}>Gas critically low — treat as out of service, isolate it</li>
         </ul>
 
         <h3 style={S.h3}>Loss of Supply on Transformer Feeder</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Upstream ring switches — dono closed hain?</li>
-          <li style={S.li}>Fuse continuity check karo (non-contact voltage tester first)</li>
-          <li style={S.li}>Transformer HV terminals par voltage check karo</li>
+          <li style={S.li}>Upstream ring switches — are both closed?</li>
+          <li style={S.li}>Check fuse continuity (non-contact voltage tester first)</li>
+          <li style={S.li}>Check voltage at the transformer HV terminals</li>
         </ul>
 
         <hr style={S.divider} />
@@ -1439,7 +1447,7 @@ export default function RmuPage() {
         {/* ── SECTION 15: Failure Scenario ── */}
         <h2 id="failure-scenario" style={S.h1}>Real Failure Scenario</h2>
 
-        <p style={S.p}>Raat ke 2 baje — Data Center transformer feeder RMU fuse blows.</p>
+        <p style={S.p}>2 AM — a Data Center transformer feeder RMU fuse blows.</p>
 
         <FlowDiagram
           caption="2 AM transformer fault — automatic isolation sequence"
@@ -1453,14 +1461,14 @@ export default function RmuPage() {
           ]}
         />
 
-        <p style={S.p}>Transformer A me winding fault develop hota hai. Fault current HV fuse blow kar deta hai — approximately 50 milliseconds ke andar.</p>
-        <p style={S.p}>Transformer A de-energized ho jata hai. HT Yard relay ko fault nahi dikhta — kyunki fuse already clear kar chuka hai.</p>
-        <p style={S.p}><TopicLink slug="ups" label="UPS System" variant="inline" /> load pick kar leta hai. <TopicLink slug="dg-set" label="DG Set" variant="inline" /> automatically start hota hai.</p>
-        <p style={S.p}>Engineers mobilize hote hain — RMU transformer feeder unit open confirm karte hain, earth switch apply karte hain, transformer inspect karte hain.</p>
-        <p style={S.p}>Transformer B load le leta hai (N+1 design ki wajah se). Service continuity maintained throughout.</p>
+        <p style={S.p}>A winding fault develops in Transformer A. The fault current blows the HV fuse — within approximately 50 milliseconds.</p>
+        <p style={S.p}>Transformer A gets de-energized. The HT Yard relay does not see the fault — because the fuse has already cleared it.</p>
+        <p style={S.p}>The <TopicLink slug="ups" label="UPS System" variant="inline" /> picks up the load. The <TopicLink slug="dg-set" label="DG Set" variant="inline" /> starts automatically.</p>
+        <p style={S.p}>Engineers mobilize — they confirm the RMU transformer feeder unit is open, apply the earth switch and inspect the transformer.</p>
+        <p style={S.p}>Transformer B takes the load (because of the N+1 design). Service continuity is maintained throughout.</p>
 
         <WhyThisMatters>
-          Yahi woh moment hai jiske liye poora N+1 transformer design investment kiya jata hai. Tier III me ye concurrently maintainable scenario hai — Tier IV me fault tolerance, yaani ek transformer fail ho to bhi poori service bina blink ke chalti rehti hai.
+          This is the very moment for which the entire N+1 transformer design investment is made. In Tier III this is a concurrently maintainable scenario — in Tier IV it is fault tolerance, meaning that even if a transformer fails, the entire service keeps running without a blink.
         </WhyThisMatters>
 
         <hr style={S.divider} />
@@ -1469,26 +1477,26 @@ export default function RmuPage() {
         <h2 id="safety-practices" style={S.h1}>Safety Practices</h2>
 
         <h3 style={S.h3}>SF6 Gas Handling</h3>
-        <p style={S.p}>SF6 ek powerful greenhouse gas hai (GWP 23,900). Kabhi bhi deliberately atmosphere me release mat karo. Damaged unit se gas leak ho rahi ho to self-contained breathing apparatus use karo (enclosed spaces me).</p>
+        <p style={S.p}>SF6 is a powerful greenhouse gas (GWP 23,900). Never release it into the atmosphere deliberately. If gas is leaking from a damaged unit, use a self-contained breathing apparatus (in enclosed spaces).</p>
 
         <h3 style={S.h3}>Before Any Work on RMU</h3>
         <ul style={S.ul}>
           <li style={S.li}>PTW (Permit to Work) mandatory</li>
-          <li style={S.li}>Dono ring sides pe voltage indicator se verify dead karo</li>
-          <li style={S.li}>Earth switch apply karo</li>
-          <li style={S.li}>Lockout/Tagout (LOTO) complete karo</li>
+          <li style={S.li}>Verify dead on both ring sides with a voltage indicator</li>
+          <li style={S.li}>Apply the earth switch</li>
+          <li style={S.li}>Complete Lockout/Tagout (LOTO)</li>
         </ul>
 
         <h3 style={S.h3}>HV Fuse Replacement</h3>
         <p style={S.p}>Full arc flash PPE mandatory: HRC suit, face shield, insulated gloves.</p>
-        <p style={S.p}>Fuse rating coordination study se verify karo before installation — old fuse rating assume mat karo.</p>
+        <p style={S.p}>Verify the fuse rating from the coordination study before installation — do not assume the old fuse rating.</p>
 
         <h3 style={S.h3}>Cable Box Work</h3>
-        <p style={S.p}>Isolation ke baad bhi cable capacitance par residual charge possible hai.</p>
-        <p style={S.p}>Touch karne se pehle short circuit aur earth karo.</p>
+        <p style={S.p}>Even after isolation, residual charge is possible due to cable capacitance.</p>
+        <p style={S.p}>Short circuit and earth it before touching.</p>
 
         <h3 style={S.h3}>Mechanical Interlocks</h3>
-        <p style={S.p}>Kabhi bhi interlocks force ya bypass mat karo — ye last line of defense hai. Jam ho jaye to OEM service lao, DIY repair mat karo.</p>
+        <p style={S.p}>Never force or bypass interlocks — they are the last line of defense. If one jams, get OEM service; do not attempt a DIY repair.</p>
         <div style={S.learnMore}>
           <TopicLink slug="lightning-protection" label="Learn More: Lightning Protection" variant="inline" />
         </div>
@@ -1498,24 +1506,24 @@ export default function RmuPage() {
         {/* ── SECTION 17: OEMs ── */}
         <h2 id="oems-vendors" style={S.h1}>OEMs & Vendors</h2>
 
-        <p style={S.p}>RMU equipment globally established OEMs se aata hai. Reliability, spares availability aur local service support critical factors hote hain Data Center projects me.</p>
+        <p style={S.p}>RMU equipment comes from globally established OEMs. Reliability, spares availability and local service support are critical factors in Data Center projects.</p>
 
         <OEMTable />
 
-        <p style={S.noteText}>OEM selection project requirements, utility approvals, budget aur regional availability par depend karti hai.</p>
+        <p style={S.noteText}>OEM selection depends on project requirements, utility approvals, budget and regional availability.</p>
 
         <hr style={S.divider} />
 
         {/* ── SECTION 18: Tier III ── */}
         <h2 id="tier-3-design" style={S.h1}>Tier III Design</h2>
 
-        <p style={S.p}>Tier III me concurrent maintainability chahiye — koi bhi component maintain karte waqt IT load impact nahi hona chahiye.</p>
-        <p style={S.p}>RMU level par ye achieve hoti hai do independent units se:</p>
+        <p style={S.p}>Tier III requires concurrent maintainability — maintaining any component should not impact the IT load.</p>
+        <p style={S.p}>At the RMU level, this is achieved through two independent units:</p>
         <ul style={S.ul}>
           <li style={S.li}><strong>RMU-A</strong> feeds Transformer Bank A — connected to HT Busbar Section A</li>
           <li style={S.li}><strong>RMU-B</strong> feeds Transformer Bank B — connected to HT Busbar Section B</li>
         </ul>
-        <p style={S.p}>Agar RMU-A under maintenance ho — RMU-B continues, Transformer Bank B carries load. Dono RMUs ka ek doosre se koi physical connection nahi hona chahiye.</p>
+        <p style={S.p}>If RMU-A is under maintenance — RMU-B continues, and Transformer Bank B carries the load. The two RMUs should have no physical connection with each other.</p>
         <div style={S.learnMore}>
           <TopicLink slug="transformer" label="Learn More: Transformer" variant="inline" />
         </div>
@@ -1525,7 +1533,7 @@ export default function RmuPage() {
         {/* ── SECTION 19: Tier IV ── */}
         <h2 id="tier-4-design" style={S.h1}>Tier IV Design</h2>
 
-        <p style={S.p}>Tier IV me complete path independence — RMU bhi duplicate hoti hai.</p>
+        <p style={S.p}>Tier IV has complete path independence — the RMU is also duplicated.</p>
 
         <ComparisonCard
           tag="Tier III vs Tier IV — RMU Level"
@@ -1547,10 +1555,10 @@ export default function RmuPage() {
 
         <p style={S.p}>Path A: HT Yard A → RMU-A → Transformer A → LV Panel A → <TopicLink slug="ups" label="UPS A" variant="inline" /> → Server</p>
         <p style={S.p}>Path B: HT Yard B → RMU-B → Transformer B → LV Panel B → UPS B → Server</p>
-        <p style={S.p}>RMU-A ki failure Path B ko kisi bhi tarah affect nahi karti.</p>
+        <p style={S.p}>A failure of RMU-A does not affect Path B in any way.</p>
 
         <InsightCard>
-          <strong>Tier IV ka matlab automatically dual utility nahi hai.</strong> Tier IV fault tolerance aur concurrent maintainability hai — ye dual independent paths se achieve hoti hai. Single utility par bhi robust UPS, <TopicLink slug="battery-bank" label="Battery Bank" variant="inline" /> aur <TopicLink slug="dg-set" label="DG Set" variant="inline" /> redundancy se Tier IV design ki ja sakti hai. RMU-level redundancy is architecture ka ek piece hai, sab kuch nahi.
+          <strong>Tier IV does not automatically mean dual utility.</strong> Tier IV is fault tolerance and concurrent maintainability — this is achieved through dual independent paths. Even on a single utility, Tier IV can be designed through robust UPS, <TopicLink slug="battery-bank" label="Battery Bank" variant="inline" /> and <TopicLink slug="dg-set" label="DG Set" variant="inline" /> redundancy. RMU-level redundancy is one piece of this architecture, not everything.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -1558,12 +1566,12 @@ export default function RmuPage() {
         {/* ── SECTION 20: Future Trends ── */}
         <h2 id="future-trends" style={S.h1}>Future Trends</h2>
 
-        <p style={S.p}>RMU technology rapidly evolve ho rahi hai — Data Center power demands ke saath:</p>
+        <p style={S.p}>RMU technology is evolving rapidly — along with Data Center power demands:</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>SF6 Phase-Out</strong> — Environmental regulations ki wajah se solid insulated RMUs mainstream ban rahi hain. EU 2026 se new SF6 equipment restrict kar raha hai.</li>
+          <li style={S.li}><strong>SF6 Phase-Out</strong> — Because of environmental regulations, solid insulated RMUs are becoming mainstream. The EU is restricting new SF6 equipment from 2026.</li>
           <li style={S.li}><strong>Smart RMU / IoT Enabled</strong> — Remote monitoring, motorized switching, fault detection, automatic ring restoration without human intervention.</li>
           <li style={S.li}><strong>Self-Healing Grid Concepts</strong> — SCADA-controlled automatic reconfiguration of ring topology on fault detection.</li>
-          <li style={S.li}><strong>Compact Indoor GIS-Based RMUs</strong> — Space-constrained urban Data Centers ke liye ultra-compact designs.</li>
+          <li style={S.li}><strong>Compact Indoor GIS-Based RMUs</strong> — Ultra-compact designs for space-constrained urban Data Centers.</li>
           <li style={S.li}><strong>IEC 61850 Integration</strong> — Digital substation communication replacing hardwired controls.</li>
         </ul>
 
@@ -1574,14 +1582,14 @@ export default function RmuPage() {
 
         <KeyTakeawayCard
           items={[
-            "RMU HT Yard aur Transformer ke beech ka intermediate switching aur protection point hai.",
-            "Ring topology fault se quick recovery allow karti hai — ek source fail ho to doosri side restore karti hai.",
-            "Transformer feeder unit (fuses ya breaker) transformer ko protect karti hai — ring switches protection devices nahi hain.",
-            "Modern SF6-free solid insulated RMUs preferred hain — environment aur regulatory compliance.",
-            "Tier III me: Dual independent RMUs on separate HT Busbar sections.",
-            "Tier IV me: Complete path duplication — RMU-A aur RMU-B fully independent.",
-            "SF6 gas GWP 23,900 hai — proper handling aur disposal mandatory.",
-            "Sealed for life design ne RMU maintenance requirements dramatically reduce kar di hain.",
+            "The RMU is the intermediate switching and protection point between the HT Yard and the Transformer.",
+            "Ring topology allows quick recovery from a fault — if one source fails, the other side restores supply.",
+            "The transformer feeder unit (fuses or breaker) protects the transformer — ring switches are not protection devices.",
+            "Modern SF6-free solid insulated RMUs are preferred — for the environment and regulatory compliance.",
+            "In Tier III: Dual independent RMUs on separate HT Busbar sections.",
+            "In Tier IV: Complete path duplication — RMU-A and RMU-B fully independent.",
+            "SF6 gas has a GWP of 23,900 — proper handling and disposal are mandatory.",
+            "The sealed for life design has dramatically reduced RMU maintenance requirements.",
           ]}
         />
 
@@ -1601,7 +1609,7 @@ export default function RmuPage() {
               WHAT&apos;S NEXT
             </span>
             <div style={S.cardContent}>
-              RMU ke baad supply Transformer tak jaati hai — wahan 11 kV ya 33 kV voltage step-down hokar 433 V ban jata hai jo building ka LV distribution feed karta hai.
+              After the RMU, the supply goes to the Transformer — there, the 11 kV or 33 kV voltage is stepped down to 433 V, which feeds the building's LV distribution.
             </div>
             <div style={{ marginTop: 14, display: "flex", flexWrap: "wrap", gap: 6 }}>
               <TopicLink slug="transformer" label="Next: Transformer →" variant="inline" />
@@ -1613,7 +1621,7 @@ export default function RmuPage() {
 
         {/* ── Continue Learning ── */}
         <h2 style={S.h1}>Continue Learning</h2>
-        <p style={S.p}>RMU ke aage ka electrical learning path — har topic Data Center power chain ka agla logical step hai.</p>
+        <p style={S.p}>The electrical learning path beyond the RMU — every topic is the next logical step in the Data Center power chain.</p>
         <ContinueLearning />
 
         <hr style={S.divider} />

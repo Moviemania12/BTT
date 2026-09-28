@@ -3,7 +3,20 @@ import { pduMetadata } from "@/content/pdu/metadata";
 import { pduContent } from "@/content/pdu";
 import { buildPageMetadata, buildArticleSchema, buildBreadcrumbSchema, buildFaqSchema } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(pduMetadata);
+const baseMetadata = buildPageMetadata(pduMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: pduMetadata.canonicalUrl,
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/electrical/pdu",
+      hi: "https://behindthetech.in/hi/learn/non-it/electrical/pdu",
+      "x-default": "https://behindthetech.in/learn/non-it/electrical/pdu",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: pduMetadata.title,

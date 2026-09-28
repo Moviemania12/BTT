@@ -12,153 +12,153 @@ export interface FaqEntry {
 
 export const batteryBankFaq: FaqEntry[] = [
   {
-    question: "Battery bank aur UPS battery mein kya fark hai?",
+    question: "What is the difference between a battery bank and a UPS battery?",
     answer:
-      "Battery bank ek complete energy storage system hai jisme multiple batteries series-parallel mein connected hoti hain. UPS battery bhi battery bank ka hi ek hissa hai — fark sirf terminology ka hai. Data Center engineers 'battery bank' isliye kehte hain kyunki wahan akeli battery nahi, balki ek poora organized bank of batteries hota hai jo ek specific voltage aur capacity deliver karta hai.",
+      "A battery bank is a complete energy storage system in which multiple batteries are connected in series-parallel. A UPS battery is also part of a battery bank — the difference is only terminology. Data Center engineers say 'battery bank' because there is not a single battery there, but a whole organized bank of batteries that delivers a specific voltage and capacity.",
   },
   {
-    question: "VRLA ka matlab kya hai aur yeh sealed kyun hota hai?",
+    question: "What does VRLA mean and why is it sealed?",
     answer:
-      "VRLA ka matlab hai Valve Regulated Lead Acid. Yeh sealed hota hai kyunki iske andar ek pressure relief valve hota hai jo sirf overpressure pe khulta hai — normal operation mein electrolyte bahar nahi aata. AGM type mein electrolyte glass mat mein absorbed hoti hai, Gel type mein silica gel mein — dono cases mein electrolyte free-flowing nahi hoti isliye yeh spillproof aur maintenance-free hoti hai.",
+      "VRLA means Valve Regulated Lead Acid. It is sealed because it has a pressure relief valve inside that opens only on overpressure — in normal operation the electrolyte does not come out. In the AGM type the electrolyte is absorbed in a glass mat, in the Gel type in silica gel — in both cases the electrolyte is not free-flowing, which is why it is spillproof and maintenance-free.",
   },
   {
-    question: "12V battery 192V kaise banta hai?",
+    question: "How do 12V batteries make 192V?",
     answer:
-      "Series connection se. Jab batteries series mein connect karte hain toh voltages add hoti hain, capacity (Ah) same rehti hai. 192 ÷ 12 = 16 batteries series mein chahiye. Formula: Batteries per string = Bus Voltage ÷ Per-Battery Voltage = 192 ÷ 12 = 16 batteries. Yeh 16 batteries ek 'string' banati hain jo 192V DC deliver karti hai.",
+      "Through series connection. When batteries are connected in series, the voltages add up and the capacity (Ah) stays the same. 192 ÷ 12 = 16 batteries are needed in series. Formula: Batteries per string = Bus Voltage ÷ Per-Battery Voltage = 192 ÷ 12 = 16 batteries. These 16 batteries make one 'string' that delivers 192V DC.",
   },
   {
-    question: "Ah aur kWh mein kya difference hai?",
+    question: "What is the difference between Ah and kWh?",
     answer:
-      "Ah (Ampere-Hour) capacity measure karta hai — kitna current kitni der deliver kar sakta hai. kWh (kilowatt-hour) energy measure karta hai — voltage aur Ah dono ka product. Formula: kWh = (Ah × Voltage) ÷ 1000. Example: 100Ah battery at 192V = 19.2 kWh energy. Data Center sizing mein Ah use hoti hai kyunki DC bus voltage fixed hoti hai.",
+      "Ah (Ampere-Hour) measures capacity — how much current can be delivered for how long. kWh (kilowatt-hour) measures energy — the product of voltage and Ah. Formula: kWh = (Ah × Voltage) ÷ 1000. Example: a 100Ah battery at 192V = 19.2 kWh of energy. Ah is used in Data Center sizing because the DC bus voltage is fixed.",
   },
   {
-    question: "C-rate kya hota hai aur sizing mein kyun matter karta hai?",
+    question: "What is C-rate and why does it matter in sizing?",
     answer:
-      "C-rate discharge rate hai. C10 matlab battery apni full capacity 10 hours mein discharge karegi. C20 matlab 20 hours mein. Problem yeh hai ki jitni fast discharge karo, available capacity utni kam milti hai (Peukert's Law). Data Center mein typically C10 ya C8 rate use hoti hai — isliye rated Ah always C20 se kam milega. Sizing mein hamesha actual C-rate pe available Ah use karo, not rated Ah.",
+      "C-rate is the discharge rate. C10 means the battery will discharge its full capacity in 10 hours. C20 means in 20 hours. The problem is that the faster you discharge, the less capacity is available (Peukert's Law). In the Data Center the C10 or C8 rate is typically used — so you will always get less than the C20 rated Ah. In sizing, always use the Ah available at the actual C-rate, not the rated Ah.",
   },
   {
-    question: "10-minute runtime ke liye kitni battery chahiye?",
+    question: "How much battery is needed for a 10-minute runtime?",
     answer:
-      "Formula: Ah = (Load_W × Runtime_hr) ÷ (V_bus × DoD × η). Example: 500kW load, 10 min runtime (0.167 hr), 192V bus, 80% DoD, 95% efficiency = (500,000 × 0.167) ÷ (192 × 0.80 × 0.95) = 83,500 ÷ 145.9 = 572 Ah. Phir temperature aur ageing correction apply karo. Use karein Battery Ah Calculator at /tools/battery-ah-calculator.",
+      "Formula: Ah = (Load_W × Runtime_hr) ÷ (V_bus × DoD × η). Example: 500kW load, 10 min runtime (0.167 hr), 192V bus, 80% DoD, 95% efficiency = (500,000 × 0.167) ÷ (192 × 0.80 × 0.95) = 83,500 ÷ 145.9 = 572 Ah. Then apply temperature and ageing correction. Use the Battery Ah Calculator at /tools/battery-ah-calculator.",
   },
   {
-    question: "DoD 80% kyun rakha jaata hai, 100% kyun nahi?",
+    question: "Why is DoD kept at 80% and not 100%?",
     answer:
-      "100% discharge VRLA battery ko permanently damage karta hai — plates sulfate ho jaati hain, capacity permanently reduce ho jaati hai. 80% DoD ek safe limit hai jahan battery zyada cycle life deti hai. VRLA ke liye 80% DoD pe ~300 cycles milte hain, 50% DoD pe ~600 cycles. LFP ke liye yeh limit 90% tak ja sakti hai kyunki chemistry zyada robust hai.",
+      "A 100% discharge permanently damages a VRLA battery — the plates get sulfated and capacity is permanently reduced. 80% DoD is a safe limit at which the battery gives more cycle life. For VRLA you get ~300 cycles at 80% DoD and ~600 cycles at 50% DoD. For LFP this limit can go up to 90% because the chemistry is more robust.",
   },
   {
-    question: "Temperature correction factor kab apply karna chahiye?",
+    question: "When should the temperature correction factor be applied?",
     answer:
-      "Hamesha. Battery ki available capacity temperature pe depend karti hai — 25°C reference hai. 35°C pe VRLA ka capacity ~15% reduce hota hai; 40°C pe ~25% reduce. Indian summer mein jab ambient 40-45°C ho, toh sizing mein temperature correction factor zaroor apply karo. Formula: Corrected Ah = Rated Ah × Temp_factor. Temp_factor at 40°C ≈ 0.75–0.80 depending on OEM datasheet.",
+      "Always. A battery's available capacity depends on temperature — 25°C is the reference. At 35°C VRLA capacity reduces by ~15%; at 40°C by ~25%. In the Indian summer, when the ambient is 40-45°C, definitely apply the temperature correction factor in sizing. Formula: Corrected Ah = Rated Ah × Temp_factor. Temp_factor at 40°C ≈ 0.75–0.80 depending on OEM datasheet.",
   },
   {
-    question: "Ageing factor kya hota hai aur calculation mein kaise add karna chahiye?",
+    question: "What is the ageing factor and how should it be added to the calculation?",
     answer:
-      "IEEE 485 ke according, battery end-of-life pe 80% of rated capacity tak girjati hai. Agar tum chahte ho ki battery poore design life mein minimum runtime de, toh initial sizing mein ageing factor 1/0.8 = 1.25 multiply karo. Matlab: required Ah ko 25% zyada banana hai to account for future capacity degradation. Yeh ek conservative design approach hai.",
+      "According to IEEE 485, at end-of-life a battery falls to 80% of rated capacity. If you want the battery to give the minimum runtime over its entire design life, multiply by an ageing factor of 1/0.8 = 1.25 in the initial sizing. That means: make the required Ah 25% higher to account for future capacity degradation. This is a conservative design approach.",
   },
   {
-    question: "Parallel strings kitne tak rakh sakte hain — IEEE kya kehta hai?",
+    question: "How many parallel strings can be used — what does IEEE say?",
     answer:
-      "IEEE 1187 guidance hai ki generally 3 se zyada parallel strings avoid karo. Reason: zyada parallel strings mein current imbalance zyada hoti hai, ek string ki failure doosri strings ko overload karta hai, aur individual string fusing mandatory ho jaata hai. Agar zyada capacity chahiye, larger Ah per cell use karo — parallel strings badhane ki jagah.",
+      "IEEE 1187 guidance is to generally avoid more than 3 parallel strings. Reason: with more parallel strings there is more current imbalance, the failure of one string overloads the other strings, and individual string fusing becomes mandatory. If more capacity is needed, use larger Ah per cell — instead of increasing parallel strings.",
   },
   {
-    question: "Battery installation ke time konsi galtiyan sabse common hain?",
+    question: "Which mistakes are most common during battery installation?",
     answer:
-      "Top 5 mistakes: (1) Mixed age batteries same string mein — new battery prematurely discharges. (2) Wrong terminal torque — loose connection = hotspot; too tight = cracked terminal. (3) Formation charge skip karna — battery never reaches full rated capacity. (4) No per-string fusing — single string fault puri bank ko damage karta hai. (5) BMS thresholds set karna galat — false alarms ya missed real alarms.",
+      "Top 5 mistakes: (1) Mixed age batteries in the same string — the new battery prematurely discharges. (2) Wrong terminal torque — loose connection = hotspot; too tight = cracked terminal. (3) Skipping the formation charge — the battery never reaches full rated capacity. (4) No per-string fusing — a single string fault damages the whole bank. (5) Setting BMS thresholds wrong — false alarms or missed real alarms.",
   },
   {
-    question: "Float voltage aur equalisation voltage mein kya difference hai?",
+    question: "What is the difference between float voltage and equalisation voltage?",
     answer:
-      "Float voltage normal operating voltage hai jo battery ko fully charged maintain karta hai — VRLA AGM ke liye typically 2.25–2.27V per cell. Equalisation (boost) voltage zyada hota hai, typically 2.33–2.40V per cell, jo occasionally apply kiya jaata hai to balance cells and remove sulphation. Float hamesha on rehta hai; equalisation periodic/scheduled hota hai aur VRLA ke liye cautiously use karna chahiye.",
+      "Float voltage is the normal operating voltage that keeps the battery fully charged — typically 2.25–2.27V per cell for VRLA AGM. Equalisation (boost) voltage is higher, typically 2.33–2.40V per cell, and is applied occasionally to balance cells and remove sulphation. Float is always on; equalisation is periodic/scheduled and should be used cautiously for VRLA.",
   },
   {
-    question: "Overcharge se kya hota hai?",
+    question: "What happens with overcharge?",
     answer:
-      "VRLA mein overcharge dry-out ka sabse common cause hai — zyada voltage pe electrolyte gas ban ke escape karta hai (recombination 100% efficient nahi hoti), battery permanently capacity lose kar deti hai. Li-ion mein overcharge thermal runaway trigger kar sakta hai — yeh bahut zyada dangerous hai. Isliye temperature-compensated charger mandatory hai — ambient ke sath float voltage automatically adjust hona chahiye.",
+      "In VRLA, overcharge is the most common cause of dry-out — at higher voltage the electrolyte turns into gas and escapes (recombination is not 100% efficient), and the battery permanently loses capacity. In Li-ion, overcharge can trigger thermal runaway — this is much more dangerous. That is why a temperature-compensated charger is mandatory — float voltage should automatically adjust with the ambient.",
   },
   {
-    question: "Battery room ka temperature 25°C se zyada ho toh kya karein?",
+    question: "What should be done if the battery room temperature is above 25°C?",
     answer:
-      "Three actions: (1) HVAC repair priority — battery room cooling N+1 redundant hona chahiye. (2) Charger mein temperature compensation on hai toh float voltage automatically reduce hoga — verify karo. (3) Increased monitoring — high temp mein monthly impedance test quarterly se advance karo. Long term mein: battery life calculation redo karo nayi temperature pe, aur replacement timeline forward karo accordingly.",
+      "Three actions: (1) HVAC repair priority — battery room cooling should be N+1 redundant. (2) If temperature compensation is on in the charger, the float voltage will reduce automatically — verify it. (3) Increased monitoring — at high temperature, advance the impedance test from quarterly to monthly. In the long term: redo the battery life calculation at the new temperature, and bring the replacement timeline forward accordingly.",
   },
   {
-    question: "Hydrogen gas kitna dangerous hai aur ventilation ka formula kya hai?",
+    question: "How dangerous is hydrogen gas and what is the ventilation formula?",
     answer:
-      "Hydrogen ka Lower Explosive Limit (LEL) 4% in air hai — isse upar koi bhi spark explosion cause kar sakta hai. Formula: H₂ generation rate (L/hr) = 0.00042 × I_charge (A) × N_cells. Ventilation: Q (m³/hr) = (H₂_rate × 5) ÷ 0.01 — 5× safety factor, 1% LFL limit. Example: 200 cells, 50A charge current = 0.00042 × 50 × 200 = 4.2 L/hr H₂. Q = (4.2 × 5) ÷ 0.01 = 2,100 m³/hr minimum ventilation.",
+      "The Lower Explosive Limit (LEL) of hydrogen is 4% in air — above this, any spark can cause an explosion. Formula: H₂ generation rate (L/hr) = 0.00042 × I_charge (A) × N_cells. Ventilation: Q (m³/hr) = (H₂_rate × 5) ÷ 0.01 — 5× safety factor, 1% LFL limit. Example: 200 cells, 50A charge current = 0.00042 × 50 × 200 = 4.2 L/hr H₂. Q = (4.2 × 5) ÷ 0.01 = 2,100 m³/hr minimum ventilation.",
   },
   {
-    question: "Annual capacity test kab fail hoti hai?",
+    question: "When does the annual capacity test fail?",
     answer:
-      "IEEE 450/1188 ke according, agar measured capacity < 80% of rated capacity hai toh battery bank fail consider hoti hai aur replacement recommend ki jaati hai. Common causes: undetected capacity degradation over years, missed maintenance, high ambient temperature, chronic overcharge, PSOC operation (never fully recharged after discharge). Test fail hona matlab hai ki next real outage mein expected runtime nahi milega.",
+      "According to IEEE 450/1188, if the measured capacity is < 80% of rated capacity, the battery bank is considered failed and replacement is recommended. Common causes: undetected capacity degradation over years, missed maintenance, high ambient temperature, chronic overcharge, PSOC operation (never fully recharged after discharge). A failed test means that the expected runtime will not be available in the next real outage.",
   },
   {
-    question: "Impedance test capacity test se better kyun hai kuch cases mein?",
+    question: "Why is the impedance test better than the capacity test in some cases?",
     answer:
-      "Capacity test ke liye actual load bank chahiye, UPS ko maintenance mode mein rakhna padta hai — yeh risky aur expensive hai. Impedance test non-intrusive hai — battery on-float rehti hai, small AC signal inject karte hain, impedance measure karte hain. Weak cells (high impedance) identify ho jaate hain bina discharge kiye. Limitation: impedance test capacity ka surrogate hai, direct measurement nahi — both tests together best results dete hain.",
+      "The capacity test needs an actual load bank, and the UPS has to be kept in maintenance mode — this is risky and expensive. The impedance test is non-intrusive — the battery stays on float, a small AC signal is injected and impedance is measured. Weak cells (high impedance) are identified without discharging. Limitation: the impedance test is a surrogate for capacity, not a direct measurement — both tests together give the best results.",
   },
   {
-    question: "Visual inspection se kya detect hota hai aur kya nahi?",
+    question: "What does visual inspection detect and what does it not?",
     answer:
-      "Detects: swelling/bulging (overcharge/overtemperature), case cracks, electrolyte leaks, terminal corrosion, loose connections. Does NOT detect: internal capacity degradation, early sulphation, internal short circuit, impedance rise, actual available Ah. Yahi reason hai ki visual inspection kafi nahi hai — voltage measurement, impedance test, aur annual capacity test sabhi mandatory hain.",
+      "Detects: swelling/bulging (overcharge/overtemperature), case cracks, electrolyte leaks, terminal corrosion, loose connections. Does NOT detect: internal capacity degradation, early sulphation, internal short circuit, impedance rise, actual available Ah. This is the reason visual inspection is not enough — voltage measurement, impedance test and the annual capacity test are all mandatory.",
   },
   {
-    question: "Mixed-age string problem kya hai?",
+    question: "What is the mixed-age string problem?",
     answer:
-      "Agar ek string mein kuch old (high impedance) aur kuch new batteries hain, toh discharge mein old batteries pehle exhaust hoti hain — new batteries phir over-discharge hoti hain in parallel. Charge mein old batteries pehle full hoti hain aur overcharge hoti hain jabki new batteries charge ho rahi hain. Net result: dono prematurely fail hoti hain. Rule: ek string mein sab batteries same batch, same age, same brand honi chahiye.",
+      "If a string has some old (high impedance) and some new batteries, during discharge the old batteries get exhausted first — the new batteries then over-discharge in parallel. During charge the old batteries become full first and get overcharged while the new batteries are still charging. Net result: both fail prematurely. Rule: all batteries in a string must be the same batch, same age and same brand.",
   },
   {
-    question: "Thermal imaging battery maintenance mein kyun use hoti hai?",
+    question: "Why is thermal imaging used in battery maintenance?",
     answer:
-      "Thermal camera (IR camera) loose connections aur high-resistance joints detect karta hai jo naked eye se nahi dikhte. Ek 0.1 Ohm extra resistance at 100A = 1,000W heat = hotspot. Yeh hotspot terminal melt karne se pehle IR image mein clearly visible hota hai. Half-yearly thermal imaging of all battery terminals, intercell connectors, aur fuse panels ek standard preventive maintenance practice hai Tier III+ Data Centers mein.",
+      "A thermal camera (IR camera) detects loose connections and high-resistance joints that are not visible to the naked eye. 0.1 Ohm of extra resistance at 100A = 1,000W of heat = a hotspot. This hotspot is clearly visible in an IR image before it melts the terminal. Half-yearly thermal imaging of all battery terminals, intercell connectors and fuse panels is a standard preventive maintenance practice in Tier III+ Data Centers.",
   },
   {
-    question: "Thermal runaway kya hai aur kaise rokein?",
+    question: "What is thermal runaway and how can it be prevented?",
     answer:
-      "Thermal runaway ek self-reinforcing loop hai: heat → accelerated chemical reaction → more heat → more reaction → fire/explosion. VRLA mein trigger hota hai overcharge se. Li-ion mein zyada dangerous hai — NMC chemistry mein ek cell ka thermal runaway adjacent cells ko trigger kar sakta hai (propagation). Prevention: proper charge voltage, temperature monitoring with BMS cutoff, adequate ventilation, fire suppression (clean agent for VRLA, specialized system for Li-ion per NFPA 855).",
+      "Thermal runaway is a self-reinforcing loop: heat → accelerated chemical reaction → more heat → more reaction → fire/explosion. In VRLA it is triggered by overcharge. In Li-ion it is more dangerous — in NMC chemistry, the thermal runaway of one cell can trigger adjacent cells (propagation). Prevention: proper charge voltage, temperature monitoring with BMS cutoff, adequate ventilation, fire suppression (clean agent for VRLA, specialized system for Li-ion per NFPA 855).",
   },
   {
-    question: "Sulphation kya hai aur kya yeh reversible hai?",
+    question: "What is sulphation and is it reversible?",
     answer:
-      "Lead-acid battery mein discharge ke time lead sulfate crystals plates pe form hoti hain — yeh normal hai. Recharge pe yeh dissolve honi chahiye. Problem tab hoti hai jab battery deep-discharged rehti hai ya PSOC mein operate hoti hai — crystals large aur hard ho jaate hain, recharge pe nahi dissolve hoti. Early-stage sulphation partially reversible hai equalisation charge se. Advanced sulphation irreversible hai — battery replace karna padta hai.",
+      "In a lead-acid battery, lead sulfate crystals form on the plates during discharge — this is normal. On recharge they should dissolve. The problem arises when the battery stays deep-discharged or operates in PSOC — the crystals become large and hard and do not dissolve on recharge. Early-stage sulphation is partially reversible with an equalisation charge. Advanced sulphation is irreversible — the battery has to be replaced.",
   },
   {
-    question: "Battery fire mein pani kyun nahi daalna chahiye?",
+    question: "Why should water not be used on a battery fire?",
     answer:
-      "VRLA battery mein sulfuric acid electrolyte hoti hai — pani se exothermic reaction hota hai. Li-ion battery mein pani se hydrogen gas aur heat generate hoti hai — fire worse ho sakta hai. Battery fires ke liye CO₂ ya clean agent (FM-200, Novec 1230) ya dry chemical powder use karte hain. Best approach: early detection → suppress using appropriate agent → evacuate → let fire department handle with specialized training.",
+      "A VRLA battery contains sulfuric acid electrolyte — water causes an exothermic reaction. In a Li-ion battery, water generates hydrogen gas and heat — the fire can get worse. For battery fires, CO₂ or a clean agent (FM-200, Novec 1230) or dry chemical powder is used. Best approach: early detection → suppress using appropriate agent → evacuate → let fire department handle with specialized training.",
   },
   {
-    question: "DC short circuit itna dangerous kyun hai?",
+    question: "Why is a DC short circuit so dangerous?",
     answer:
-      "AC short circuit mein current zero crossing pe naturally extinguish hota hai — circuit breaker trip easily karta hai. DC mein zero crossing nahi hoti — arc continuously burn karta hai. Battery bank ka short circuit current bahut high hota hai (V_bus ÷ R_cable, typically thousands of amperes), arc flash energy massive hoti hai. Isliye DC-rated fuses (not AC fuses) aur proper PPE mandatory hain DC battery work mein.",
+      "In an AC short circuit, current naturally extinguishes at the zero crossing — the circuit breaker trips easily. In DC there is no zero crossing — the arc burns continuously. The short circuit current of a battery bank is very high (V_bus ÷ R_cable, typically thousands of amperes), and the arc flash energy is massive. That is why DC-rated fuses (not AC fuses) and proper PPE are mandatory in DC battery work.",
   },
   {
-    question: "Battery swollen/bulged ho toh kya karna chahiye?",
+    question: "What should be done if a battery is swollen/bulged?",
     answer:
       "Immediately: (1) Do NOT attempt to charge or discharge — risk of rupture/explosion. (2) Identify if active thermal runaway is ongoing (heat, gas smell) — if yes, evacuate and call fire department. (3) If stable, isolate the string — open string fuse. (4) Wear PPE — acid-resistant gloves, eye protection, face shield. (5) Contact OEM for safe disposal instructions. (6) Investigate root cause — usually overcharge or overtemperature — fix before replacing.",
   },
   {
-    question: "VRLA se Li-ion switch kyun kar rahe hain Data Centers?",
+    question: "Why are Data Centers switching from VRLA to Li-ion?",
     answer:
-      "Teen main reasons: (1) TCO — LFP 10-15 year life vs VRLA 3-5 year life; over 10 years LFP replacement cost much lower despite higher upfront. (2) Space — same kWh energy mein LFP 70% lighter aur 50% smaller — critical for space-constrained retrofits. (3) Performance — LFP 90% DoD usable vs VRLA 80%, faster recharge, better high-temp performance. Barrier: higher upfront cost, fire suppression system changes per NFPA 855, insurance approval.",
+      "Three main reasons: (1) TCO — LFP 10-15 year life vs VRLA 3-5 year life; over 10 years the LFP replacement cost is much lower despite the higher upfront cost. (2) Space — for the same kWh of energy, LFP is 70% lighter and 50% smaller — critical for space-constrained retrofits. (3) Performance — LFP 90% DoD usable vs VRLA 80%, faster recharge, better high-temp performance. Barrier: higher upfront cost, fire suppression system changes per NFPA 855, insurance approval.",
   },
   {
-    question: "Li-ion battery room ke liye alag fire suppression kyun chahiye?",
+    question: "Why does a Li-ion battery room need separate fire suppression?",
     answer:
-      "VRLA fire mein CO₂ ya clean agent sufficient hai. Li-ion fire (especially NMC) mein thermal runaway internally generated heat + oxygen release hoti hai — external oxygen deprivation se fire ruk nahi sakti. NFPA 855 require karta hai specialized detection (early warning), system-level thermal runaway prevention (BMS), aur cooling/suppression specifically for Li-ion. Some AHJs require room-level gas suppression plus cooling water system. Always verify with local fire authority.",
+      "In a VRLA fire, CO₂ or a clean agent is sufficient. In a Li-ion fire (especially NMC), thermal runaway involves internally generated heat + oxygen release — the fire cannot be stopped by external oxygen deprivation. NFPA 855 requires specialized detection (early warning), system-level thermal runaway prevention (BMS), and cooling/suppression specifically for Li-ion. Some AHJs require room-level gas suppression plus cooling water system. Always verify with local fire authority.",
   },
   {
-    question: "Second-life EV battery Data Center mein use ho sakti hai?",
+    question: "Can a second-life EV battery be used in a Data Center?",
     answer:
-      "Theoretically possible — EV battery jo 80% SoH pe retire hui (EV ke liye kafi nahi) abhi bhi stationary storage ke liye use ho sakti hai. Practical challenges: unknown remaining cycle life, SOH verification difficult, warranty void, insurance concerns, mixed cell batches. Some hyperscalers pilot programs kar rahe hain. India mein yeh abhi nascent stage mein hai — commercial viability aur regulatory clarity dono ki zaroorat hai.",
+      "Theoretically possible — an EV battery retired at 80% SoH (not enough for an EV) can still be used for stationary storage. Practical challenges: unknown remaining cycle life, SOH verification difficult, warranty void, insurance concerns, mixed cell batches. Some hyperscalers are running pilot programs. In India this is still at a nascent stage — both commercial viability and regulatory clarity are needed.",
   },
   {
-    question: "Flow battery kya hai aur Data Center mein kab sense karta hai?",
+    question: "What is a flow battery and when does it make sense in a Data Center?",
     answer:
-      "Flow battery mein energy liquid electrolyte mein stored hoti hai (separate tanks), power conversion aur energy storage alag hote hain. Vanadium Redox Flow Battery (VRFB) sabse commercial hai. Advantages: unlimited cycles (electrolyte degrade nahi hoti), long duration (4-12 hours) economical, no thermal runaway. Disadvantages: high upfront cost, large footprint, complex BMS. Data Center mein sense karta hai sirf long-duration BESS ke liye — short-duration UPS bridging ke liye nahi.",
+      "In a flow battery, energy is stored in liquid electrolyte (separate tanks); power conversion and energy storage are separate. The Vanadium Redox Flow Battery (VRFB) is the most commercial. Advantages: unlimited cycles (the electrolyte does not degrade), economical for long duration (4-12 hours), no thermal runaway. Disadvantages: high upfront cost, large footprint, complex BMS. In a Data Center it makes sense only for long-duration BESS — not for short-duration UPS bridging.",
   },
   {
-    question: "BMS ke bina battery bank chalana kyun risky hai?",
+    question: "Why is running a battery bank without a BMS risky?",
     answer:
-      "BMS ke bina: individual cell voltage monitor nahi hoti — weak cell over-discharge ya overcharge hogi undetected. Temperature monitoring nahi — thermal runaway early warning nahi milegi. State of Health track nahi hoga — actual available capacity unknown rahegi. Emergency cutoff nahi — fault condition mein automatic isolation nahi hoga. Modern Data Center mein BMS not optional — it is a required safety and reliability component, especially for Li-ion.",
+      "Without a BMS: individual cell voltage is not monitored — a weak cell will over-discharge or overcharge undetected. No temperature monitoring — no early warning of thermal runaway. State of Health is not tracked — the actual available capacity remains unknown. No emergency cutoff — there is no automatic isolation in a fault condition. In a modern Data Center a BMS is not optional — it is a required safety and reliability component, especially for Li-ion.",
   },
 ];

@@ -3,7 +3,20 @@ import { earthingMetadata } from "@/content/earthing/metadata";
 import { earthingContent } from "@/content/earthing";
 import { buildPageMetadata, buildArticleSchema, buildBreadcrumbSchema, buildFaqSchema } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(earthingMetadata);
+const baseMetadata = buildPageMetadata(earthingMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: earthingMetadata.canonicalUrl,
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/electrical/earthing",
+      hi: "https://behindthetech.in/hi/learn/non-it/electrical/earthing",
+      "x-default": "https://behindthetech.in/learn/non-it/electrical/earthing",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: earthingMetadata.title,

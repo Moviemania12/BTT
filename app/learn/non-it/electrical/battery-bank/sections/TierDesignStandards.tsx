@@ -21,8 +21,8 @@ export default function TierDesignStandards() {
       <h2 id="tier-iii-iv-design" style={S.h2}>Tier III & Tier IV Design</h2>
 
       <SectionIntro
-        quickAnswer="Tier classification directly battery bank architecture ko define karta hai. Tier III mein N+1 strings ek room mein chahiye — concurrent maintainability. Tier IV mein 2N architecture mandatory hai — do completely independent battery banks, physically separated rooms mein."
-        engineerTip="Tier IV ka sabse misunderstood requirement: physical separation. 2N matlab sirf do battery banks nahi — do completely independent paths. Ek shared wall bhi acceptable nahi hai per strict interpretation. Separate rooms, separate HVAC, separate cable routes, separate earthing systems. Ek room mein fire se doosre room ka bank survive karna chahiye."
+        quickAnswer="Tier classification directly defines the battery bank architecture. Tier III requires N+1 strings in one room — concurrent maintainability. Tier IV makes a 2N architecture mandatory — two completely independent battery banks in physically separated rooms."
+        engineerTip="The most misunderstood requirement of Tier IV: physical separation. 2N does not just mean two battery banks — it means two completely independent paths. Even a shared wall is not acceptable per a strict interpretation. Separate rooms, separate HVAC, separate cable routes, separate earthing systems. The bank in one room must survive a fire in the other room."
         keyTakeaway="Tier III = N+1 strings in one room. Tier IV = 2N in two separate rooms — physical independence is the differentiator, not just electrical redundancy."
       />
 
@@ -41,10 +41,7 @@ export default function TierDesignStandards() {
       <h3 style={S.h3}>Tier III — Battery Bank Design</h3>
 
       <p style={S.p}>
-        Tier III ke liye key requirement hai <strong>concurrent maintainability</strong> — koi bhi
-        single component maintain ya replace kiya ja sake bina IT load interrupt kiye.
-        Battery bank ke context mein: ek string kabhi bhi replace kiya ja sake while remaining
-        strings continue providing backup.
+        The key requirement for Tier III is <strong>concurrent maintainability</strong> — any single component can be maintained or replaced without interrupting the IT load. In the context of the battery bank: one string can be replaced at any time while the remaining strings continue providing backup.
       </p>
 
       <ComparisonTable
@@ -61,19 +58,13 @@ export default function TierDesignStandards() {
       />
 
       <Callout type="important" title="Important — Concurrent Maintainability Must Be Proven">
-        Tier III certification require karta hai ki concurrent maintainability operations pe
-        demonstrate kiya jaye — not just designed on paper. Battery room mein ek string
-        physically replace karne ka SOW (Scope of Work) document karo aur prove karo ki
-        remaining strings full load support karte hain during this operation.
+        Tier III certification requires that concurrent maintainability be demonstrated in operations — not just designed on paper. Document the SOW (Scope of Work) for physically replacing one string in the battery room and prove that the remaining strings support the full load during this operation.
       </Callout>
 
       <h3 style={S.h3}>Tier IV — Battery Bank Design</h3>
 
       <p style={S.p}>
-        Tier IV ka fundamental requirement hai <strong>fault tolerance</strong> — koi bhi
-        single failure (equipment, distribution path, ya human error) IT load ko affect
-        nahi kar sakta. Battery bank ke liye yeh translates to 2N architecture with physical
-        separation.
+        The fundamental requirement of Tier IV is <strong>fault tolerance</strong> — no single failure (equipment, distribution path or human error) can affect the IT load. For the battery bank this translates to a 2N architecture with physical separation.
       </p>
 
       <ComparisonTable
@@ -93,9 +84,7 @@ export default function TierDesignStandards() {
       <h3 style={S.h3}>Tier IV — Battery Bank Switchover Testing</h3>
 
       <p style={S.p}>
-        Tier IV design ka ek underappreciated operational requirement hai: regular switchover
-        testing. Design pe guarantee nahi hoti ki 2N actually works jab zaroorat ho — testing
-        se prove hota hai.
+        One underappreciated operational requirement of Tier IV design is regular switchover testing. The design does not guarantee that 2N actually works when needed — testing proves it.
       </p>
 
       <ComparisonTable
@@ -110,9 +99,7 @@ export default function TierDesignStandards() {
       />
 
       <p style={S.p}>
-        Tier III aur Tier IV ke complete context ke liye{" "}
-        <TopicLink slug="ups" variant="inline" /> article mein UPS redundancy architecture
-        section dekho — battery bank redundancy UPS redundancy ke saath coordinated hoti hai.
+        For the complete context of Tier III and Tier IV, see the UPS redundancy architecture section in the <TopicLink slug="ups" variant="inline" /> article — battery bank redundancy is coordinated with UPS redundancy.
       </p>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -122,9 +109,9 @@ export default function TierDesignStandards() {
       <h2 id="standards-mapping" style={S.h2}>Standards Mapping Table</h2>
 
       <SectionIntro
-        quickAnswer="Battery bank design aur operation multiple standards se governed hoti hai — IEEE for testing aur sizing, IEC for technical specifications, NFPA for fire safety, IS/BIS for India-specific requirements. Kaunsa standard kab apply hota hai — yeh table clearly map karta hai."
-        engineerTip="India mein yeh standards mandatory vs recommended ki distinction hamesha clear nahi hoti. IS standards BIS ke through mandatory hain for domestic products. IEC standards Indian market mein typically voluntary hain unless a client contract specifically mandates them. NFPA standards voluntary in India but increasingly required by international clients and insurance underwriters — especially NFPA 855 for Li-ion."
-        keyTakeaway="Multiple standards overlap karte hain — jab conflict ho, more stringent requirement follow karo aur project specification pe explicitly document karo which standards govern."
+        quickAnswer="Battery bank design and operation are governed by multiple standards — IEEE for testing and sizing, IEC for technical specifications, NFPA for fire safety, IS/BIS for India-specific requirements. This table clearly maps which standard applies when."
+        engineerTip="In India the distinction between mandatory and recommended standards is not always clear. IS standards are mandatory through BIS for domestic products. IEC standards are typically voluntary in the Indian market unless a client contract specifically mandates them. NFPA standards voluntary in India but increasingly required by international clients and insurance underwriters — especially NFPA 855 for Li-ion."
+        keyTakeaway="Multiple standards overlap — when there is a conflict, follow the more stringent requirement and explicitly document in the project specification which standards govern."
       />
 
       <ComparisonTable
@@ -160,12 +147,7 @@ export default function TierDesignStandards() {
       />
 
       <Callout type="important" title="Important — Priority When Standards Conflict">
-        Jab do standards ek topic pe different requirements dete hain, follow karo:
-        (1) Project specification mein explicitly listed standard — first priority.
-        (2) Client/operator contract requirements — second priority.
-        (3) Local statutory requirements (IS/BIS, Indian Electricity Rules) — mandatory.
-        (4) More stringent requirement — conservative engineering practice.
-        Always document which standards govern your project in the design basis.
+        When two standards give different requirements on one topic, follow: (1) The standard explicitly listed in the project specification — first priority. (2) Client/operator contract requirements — second priority. (3) Local statutory requirements (IS/BIS, Indian Electricity Rules) — mandatory. (4) The more stringent requirement — conservative engineering practice. Always document which standards govern your project in the design basis.
       </Callout>
     </>
   );

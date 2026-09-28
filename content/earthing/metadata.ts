@@ -5,7 +5,7 @@ export const earthingMetadata: ArticleMetadata = {
   title: "Earthing & Grounding in Data Centers — Complete Engineer's Guide",
   seoTitle: "Data Center Earthing Explained: Earth Resistance Testing, Types, Standards | Behind The Tech",
   seoDescription:
-    "Data Center earthing kya hota hai? Earth pit se earth grid tak, IS 3043 standards, earth resistance testing (3-pole, clamp method), common faults aur complete O&M guide. Practical Hinglish guide for Data Center engineers.",
+    "What is Data Center earthing? From the earth pit to the earth grid, IS 3043 standards, earth resistance testing (3-pole, clamp method), common faults and a complete O&M guide. A practical guide for Data Center engineers.",
   canonicalUrl: "https://behindthetech.in/learn/non-it/electrical/earthing",
   keywords: [
     "earthing grounding Data Center",

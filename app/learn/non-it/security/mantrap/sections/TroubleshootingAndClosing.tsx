@@ -10,98 +10,73 @@ export default function TroubleshootingAndClosing() {
       <h2 id="troubleshooting" style={S.h2}>Engineer Troubleshooting — Step-by-Step</h2>
 
       <Callout type="warning" title="Mantrap Troubleshooting — Safety First">
-        Kisi bhi mantrap troubleshooting se pehle verify karo ki koi person vestibule mein phase nahi
-        hai. Interlock logic disable karne se pehle alternate security measure in place ho — single
-        door monitor karo ya security staff physically present rakho.
+        Before any mantrap troubleshooting, verify that no person is stuck in the vestibule. Before disabling the interlock logic, an alternate security measure must be in place — monitor the single door or keep security staff physically present.
       </Callout>
 
       <h3 style={S.h3}>Fault 1: Inner Door Does Not Open After Outer Door Closes</h3>
       <p style={S.p}>
-        <strong>First check:</strong> Outer door completely closed aur latched hai? Door contact sensor
-        outer door pe "closed" status report kar raha hai? Controller status dekho.
+        <strong>First check:</strong> Is the outer door completely closed and latched? Is the door contact sensor on the outer door reporting "closed" status? Look at the controller status.
       </p>
       <p style={S.p}>
-        <strong>Next check:</strong> Occupancy sensor status — ek se zyada person detect ho raha hai?
-        Occupancy sensor false positive de raha hai?
+        <strong>Next check:</strong> Occupancy sensor status — is more than one person being detected? Is the occupancy sensor giving a false positive?
       </p>
       <p style={S.p}>
-        <strong>Isolate:</strong> Controller logic manually override karo (maintenance mode) — inner
-        door manually trigger karo. Door releases? Agar yes, controller logic ya sensor input issue.
-        Agar no, inner door lock/wiring issue.
+        <strong>Isolate:</strong> Manually override the controller logic (maintenance mode) — trigger the inner door manually. Does the door release? If yes, it is a controller logic or sensor input issue. If no, it is an inner door lock/wiring issue.
       </p>
       <p style={S.p}>
-        <strong>Corrective action:</strong> Outer door contact sensor realign karo. Occupancy sensor
-        calibrate ya clean karo. Inner door lock wiring inspect karo. Controller logic/firmware check karo.
+        <strong>Corrective action:</strong> Realign the outer door contact sensor. Calibrate or clean the occupancy sensor. Inspect the inner door lock wiring. Check the controller logic/firmware.
       </p>
 
       <h3 style={S.h3}>Fault 2: Outer Door Does Not Release on Card Presentation</h3>
       <p style={S.p}>
-        <strong>First check:</strong> Access control system mein event log — credential accepted? Inner
-        door ka status kya hai? (Agar inner door open hai to outer door will be locked by design.)
+        <strong>First check:</strong> Event log in the access control system — was the credential accepted? What is the status of the inner door? (If the inner door is open, the outer door will be locked by design.)
       </p>
       <p style={S.p}>
-        <strong>Next check:</strong> Reader power aur communication — same as access control reader troubleshooting.</p>
-      <p style={S.p}>
-        <strong>Corrective action:</strong> Agar inner door open hai — wait karo ya inner door close karo
-        (inner side se exit trigger karo). Agar inner door closed lekin outer won't open — access control
-        configuration check karo, door schedule verify karo, lock wiring inspect karo.
+        <strong>Next check:</strong> Reader power and communication — same as access control reader troubleshooting.</p> <p style={S.p}> <strong>Corrective action:</strong> If the inner door is open — wait or close the inner door (trigger an exit from the inner side). If the inner door is closed but the outer won't open — check the access control configuration, verify the door schedule, inspect the lock wiring.
       </p>
 
       <h3 style={S.h3}>Fault 3: Both Doors Open Simultaneously — Interlock Failure</h3>
       <p style={S.p}>
-        <strong>First check:</strong> Ye serious fault hai — immediately security alert generate karo
-        aur area monitor karo. Controller/PLC log check karo — what triggered both releases?
+        <strong>First check:</strong> This is a serious fault — immediately generate a security alert and monitor the area. Check the controller/PLC log — what triggered both releases?
       </p>
       <p style={S.p}>
-        <strong>Next check:</strong> Power supply issue tha? Emergency release accidentally triggered?
-        Controller software/firmware fault? Wiring fault (both relays incorrectly wired)?
+        <strong>Next check:</strong> Was there a power supply issue? Was the emergency release accidentally triggered? Controller software/firmware fault? Wiring fault (both relays incorrectly wired)?
       </p>
       <p style={S.p}>
-        <strong>Corrective action:</strong> Do NOT continue operating until root cause identified aur
-        fixed. Manual security oversight place karo. Engage certified integrator for interlock controller
-        inspection. Firmware update ya replacement per OEM guidance.
+        <strong>Corrective action:</strong> Do NOT continue operating until root cause identified and fixed. Put manual security oversight in place. Engage certified integrator for interlock controller inspection. Firmware update or replacement per OEM guidance.
       </p>
 
       <h3 style={S.h3}>Fault 4: Tailgating Alarm — Person Stuck in Vestibule</h3>
       <p style={S.p}>
-        <strong>First check:</strong> CCTV footage — kitne log hain vestibule mein? Authorized person
-        hai ya security threat?
+        <strong>First check:</strong> CCTV footage — how many people are in the vestibule? Is it an authorized person or a security threat?
       </p>
       <p style={S.p}>
-        <strong>Next check:</strong> Intercom se contact karo — communication possible hai?
+        <strong>Next check:</strong> Contact them through the intercom — is communication possible?
       </p>
       <p style={S.p}>
-        <strong>Corrective action:</strong> Agar extra person unauthorized hai — security protocol
-        follow karo, do not remotely open. Agar misunderstanding hai (authorized person tha dono) —
-        security supervisor decision pe remote release karo aur incident log karo. Agar emergency —
-        remote release karo aur respond karo.
+        <strong>Corrective action:</strong> If the extra person is unauthorized — follow the security protocol, do not remotely open. If it is a misunderstanding (both were authorized persons) — do a remote release on the security supervisor's decision and log the incident. If it is an emergency — do a remote release and respond.
       </p>
 
       <h3 style={S.h3}>Fault 5: Mantrap Not Releasing on Fire Alarm</h3>
       <p style={S.p}>
-        <strong>First check:</strong> Fire alarm signal — controller receiving hai? Fire alarm panel
-        output contact check karo.
+        <strong>First check:</strong> Fire alarm signal — is the controller receiving it? Check the fire alarm panel output contact.
       </p>
       <p style={S.p}>
-        <strong>Next check:</strong> Wiring between fire alarm panel aur mantrap controller — continuity
-        check karo. Controller input terminal status.
+        <strong>Next check:</strong> Wiring between the fire alarm panel and the mantrap controller — check continuity. Controller input terminal status.
       </p>
       <p style={S.p}>
-        <strong>Corrective action:</strong> Ye life-safety relevant fault hai — immediate investigation zaroori hai. Interim mein: emergency release mechanism operational hai verify karo per approved design. Fire alarm interface wiring aur controller input configuration inspect karo. Rectification ke baad full integration test karo with fire/life-safety engineer aur AHJ requirements ke hisaab se — close out before returning to normal operation.
+        <strong>Corrective action:</strong> This is a life-safety relevant fault — immediate investigation is essential. In the interim: verify the emergency release mechanism is operational per the approved design. Inspect the fire alarm interface wiring and controller input configuration. After rectification, do a full integration test with the fire/life-safety engineer and per AHJ requirements — close out before returning to normal operation.
       </p>
 
       <h3 style={S.h3}>Fault 6: Occupancy Sensor False Positives — Inner Door Not Opening</h3>
       <p style={S.p}>
-        <strong>First check:</strong> Vestibule mein sensor field of view check karo — koi object
-        inadvertently triggering? Air movement? Reflections?
+        <strong>First check:</strong> Check the sensor field of view in the vestibule — is some object inadvertently triggering it? Air movement? Reflections?
       </p>
       <p style={S.p}>
-        <strong>Next check:</strong> Sensor sensitivity setting — too sensitive? Sensor dirty ya misaligned?
+        <strong>Next check:</strong> Sensor sensitivity setting — too sensitive? Is the sensor dirty or misaligned?
       </p>
       <p style={S.p}>
-        <strong>Corrective action:</strong> Sensor sensitivity carefully adjust karo — balance between
-        false positives aur actual tailgating detection. Sensor clean karo. Reposition sensor to reduce
-        interference. Agar weight-based — floor mat condition check karo, sensor recalibrate karo.
+        <strong>Corrective action:</strong> Adjust sensor sensitivity carefully — balance between false positives and actual tailgating detection. Clean the sensor. Reposition the sensor to reduce interference. If weight-based — check the floor mat condition, recalibrate the sensor.
       </p>
 
       <ComparisonTable
@@ -140,56 +115,43 @@ export default function TroubleshootingAndClosing() {
 
       <h2 id="illustrative-scenario" style={S.h2}>Illustrative Scenario</h2>
 
-      <Callout type="interview" title="Note: Ye ek illustrative scenario hai — kisi documented real facility ka reference nahi">
-        Neeche scenario mantrap ke practical value aur maintenance importance demonstrate karta hai.
+      <Callout type="interview" title="Note: This is an illustrative scenario — not a reference to any documented real facility">
+        The scenario below demonstrates the practical value of the mantrap and the importance of maintenance.
       </Callout>
 
       <p style={S.p}>
-        Ek security audit ke time auditor ne mantrap entry ka test kiya — outer door se andar gaye,
-        phir maintenance person ne baad mein outer door hold ki aur doosre person ke saath andar aane
-        ki koshish ki. Mantrap occupancy sensor triggered — inner door locked, alarm generated, security
-        operator alert hua. Audit result: mantrap technical function pass, lekin occupancy sensor
-        sensitivity review recommended tha kyunki test mein sensor thoda late triggered hua tha.
+        During a security audit the auditor tested the mantrap entry — went in through the outer door, then later a maintenance person held the outer door and tried to come in along with another person. The mantrap occupancy sensor triggered — inner door locked, alarm generated, the security operator was alerted. Audit result: the mantrap technical function passed, but an occupancy sensor sensitivity review was recommended because in the test the sensor had triggered slightly late.
       </p>
       <p style={S.p}>
-        Lesson: Mantrap mechanical interlock effective tha, lekin sensor calibration aur regular testing
-        ensure karta hai ki wo edge cases mein bhi reliable ho.
+        Lesson: The mantrap mechanical interlock was effective, but sensor calibration and regular testing ensure it is reliable even in edge cases.
       </p>
 
       <h2 id="interview-questions" style={S.h2}>Interview Questions</h2>
 
-      <h3 style={S.h3}>Q1: Mantrap interlock logic explain karo.</h3>
+      <h3 style={S.h3}>Q1: Explain the mantrap interlock logic.</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> Do doors hain — outer aur inner. Sirf ek baar ek door open ho sakti
-        hai. Outer door open hai to inner mechanically/electrically locked hai. Inner door open hai to
-        outer locked hai. Entry sequence: outer door credential → outer opens → outer closes aur latches
-        → occupancy check (ek person?) → inner door credential → inner opens. Kisi bhi step mein
-        condition fail ho to sequence rok jaati hai.
+        <strong>Answer:</strong> There are two doors — outer and inner. Only one door can be open at a time. If the outer door is open, the inner is mechanically/electrically locked. If the inner door is open, the outer is locked. Entry sequence: outer door credential → outer opens → outer closes and latches → occupancy check (one person?) → inner door credential → inner opens. If the condition fails at any step, the sequence stops.
       </p>
 
-      <h3 style={S.h3}>Q2: Fire alarm pe mantrap kaise behave karna chahiye?</h3>
+      <h3 style={S.h3}>Q2: How should a mantrap behave on a fire alarm?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> Life-safety egress applicable fire/life-safety code, approved design aur AHJ requirements ke hisaab se maintain honi chahiye. Required egress doors aur locked arrangements fire alarm/access control approved sequence of operations ke hisaab se respond karte hain — exact behavior project-specific approved design se determine hota hai. Fire/life-safety engineer se verify karo aur commissioning ke time test karo.
+        <strong>Answer:</strong> Life-safety egress must be maintained according to the applicable fire/life-safety code, approved design and AHJ requirements. Required egress doors and locked arrangements respond according to the fire alarm/access control approved sequence of operations — the exact behavior is determined by the project-specific approved design. Verify with the fire/life-safety engineer and test at the time of commissioning.
       </p>
 
-      <h3 style={S.h3}>Q3: Occupancy sensor kyun zaroori hai aur kaunse type prefer karte hain?</h3>
+      <h3 style={S.h3}>Q3: Why is an occupancy sensor essential and which types are preferred?</h3>
       <p style={S.p}>
-        <strong>Answer:</strong> Occupancy sensor tailgating detect karta hai — ek se zyada person
-        vestibule mein pe inner door lock rehti hai. Without it, interlock physical door interlock
-        deta hai lekin koi verify nahi karta ki sirf ek person andar hai. IR beam-break sensors aur
-        overhead camera-based counting most accurate hain. PIR sirf presence detect karta hai (count
-        nahi) — tailgating miss ho sakta hai agar dono log closely timed enter karein.
+        <strong>Answer:</strong> The occupancy sensor detects tailgating — with more than one person in the vestibule, the inner door stays locked. Without it, the interlock gives a physical door interlock but nothing verifies that only one person is inside. IR beam-break sensors and overhead camera-based counting are the most accurate. PIR only detects presence (not count) — tailgating can be missed if both people enter closely timed.
       </p>
 
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
       <ul style={S.ul}>
-        <li>Mantrap = two interlocked doors — sirf ek baar ek open ho sakti hai. Strongest anti-tailgating physical measure.</li>
-        <li>Occupancy detection without which tailgating detection impossible hai.</li>
-        <li>Life-safety egress applicable code, AHJ requirements aur approved design ke hisaab se maintain honi chahiye — fire alarm/access control interface aur lock behavior project-specific approved sequence of operations pe depend karta hai.</li>
-        <li>Emergency release provisions (per approved design) aur emergency communication vestibule mein important safety elements hain — exact requirements applicable code aur AHJ determine karta hai.</li>
-        <li>CCTV + biometrics + access control ke saath integrate karo — maximum security value.</li>
-        <li>Regular testing zaroori hai — interlock, occupancy, emergency release, fire integration sab monthly ya quarterly test karo.</li>
-        <li>Both-door simultaneous open = serious fault — immediately secure aur investigate karo.</li>
+        <li>Mantrap = two interlocked doors — only one can be open at a time. The strongest anti-tailgating physical measure.</li>
+        <li>Without occupancy detection, tailgating detection is impossible.</li>
+        <li>Life-safety egress must be maintained according to the applicable code, AHJ requirements and approved design — the fire alarm/access control interface and lock behavior depend on the project-specific approved sequence of operations.</li>
+        <li>Emergency release provisions (per approved design) and emergency communication in the vestibule are important safety elements — the exact requirements are determined by the applicable code and AHJ.</li>
+        <li>Integrate with CCTV + biometrics + access control — maximum security value.</li>
+        <li>Regular testing is essential — test interlock, occupancy, emergency release, fire integration all monthly or quarterly.</li>
+        <li>Both-door simultaneous open = serious fault — immediately secure and investigate.</li>
       </ul>
 
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Frequently Asked Questions</h2>
@@ -202,8 +164,8 @@ export default function TroubleshootingAndClosing() {
 
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Related Learning Topics</h2>
       <ul style={S.ul}>
-        <li><TopicLink slug="access-control" variant="inline" /> — Mantrap ka credential authentication backbone.</li>
-        <li><TopicLink slug="biometrics" variant="inline" /> — Multi-factor authentication mantrap mein.</li>
+        <li><TopicLink slug="access-control" variant="inline" /> — the credential authentication backbone of the mantrap.</li>
+        <li><TopicLink slug="biometrics" variant="inline" /> — multi-factor authentication in the mantrap.</li>
         <li><TopicLink slug="cctv" variant="inline" /> — Mantrap surveillance — entry documentation.</li>
         <li><TopicLink slug="visitor-management" variant="inline" /> — Visitor mantrap entry process.</li>
       </ul>

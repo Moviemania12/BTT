@@ -9,7 +9,7 @@ export default function DcimPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="dcim" headings={HEADINGS} readingTimeMinutes={25}>
+      <ArticleLayout slug="dcim" headings={HEADINGS} readingTimeMinutes={25} lang="en" alternateHref="/hi/learn/non-it/bms-dcim/dcim">
         <Basics />
         <CoreFunctions />
         <SoftwareAndClosing />

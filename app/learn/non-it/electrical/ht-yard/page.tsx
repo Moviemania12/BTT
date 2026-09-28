@@ -32,7 +32,7 @@ import TopicLink from "@/components/TopicLink";
 export const metadata: Metadata = {
   title: "HT Yard in Data Centers — Behind The Tech",
   description:
-    "HT Yard ki complete engineer guide: CT, PT, VCB, protection relays, SCADA, Tier III/IV design aur safety — Data Center context mein.",
+    "A complete engineer guide to the HT Yard: CT, PT, VCB, protection relays, SCADA, Tier III/IV design and safety — in a Data Center context.",
   keywords: [
     "ht yard",
     "high tension yard data center",
@@ -41,14 +41,15 @@ export const metadata: Metadata = {
     "ht yard tier 3 tier 4",
     "data center electrical protection",
     "ht switchgear oem",
-    "ht yard hindi",
+    "ht yard explained",
     "behind the tech",
   ],
   openGraph: {
-    title: "HT Yard: Data Center Ka High Tension Switching & Protection Station",
+    title: "HT Yard: The Data Center's High Tension Switching & Protection Station",
     description:
-      "CT, PT, VCB, protection relays, SCADA monitoring, Tier III/IV design aur safety — HT Yard ka complete engineer handbook simple Hinglish mein.",
+      "CT, PT, VCB, protection relays, SCADA monitoring, Tier III/IV design and safety — the complete HT Yard engineer handbook in simple English.",
     url: "https://behindthetech.in/learn/non-it/electrical/ht-yard",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     publishedTime: "2025-01-05",
@@ -57,10 +58,15 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "HT Yard Explained — Behind The Tech",
-    description: "Data Center ka high tension switching aur protection station — complete engineer guide.",
+    description: "The Data Center's high tension switching and protection station — complete engineer guide.",
   },
   alternates: {
     canonical: "https://behindthetech.in/learn/non-it/electrical/ht-yard",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/electrical/ht-yard",
+      hi: "https://behindthetech.in/hi/learn/non-it/electrical/ht-yard",
+      "x-default": "https://behindthetech.in/learn/non-it/electrical/ht-yard",
+    },
   },
 };
 
@@ -743,24 +749,24 @@ function OEMTable() {
 
 const FAQS = [
   {
-    q: "HT Yard aur Substation me kya difference hai?",
-    a: "Substation ek broader term hai jisme voltage transformation bhi shamil hoti hai. HT Yard typically incoming high-voltage supply ko receive, switch aur protect karne ka point hota hai — voltage transformation alag transformer unit me hoti hai.",
+    q: "What is the difference between an HT Yard and a Substation?",
+    a: "Substation is a broader term that also includes voltage transformation. An HT Yard is typically the point where the incoming high-voltage supply is received, switched and protected — voltage transformation happens in a separate transformer unit.",
   },
   {
-    q: "Protection relay trip karti hai ya breaker khud trip hota hai?",
-    a: "Relay trip karne ka decision leti hai. CT/PT se inputs analyze karke relay trip signal generate karti hai. VCB us signal par execute karta hai — breaker khud kuch decide nahi karta.",
+    q: "Does the protection relay trip, or does the breaker trip by itself?",
+    a: "The relay takes the decision to trip. By analyzing inputs from the CT/PT, the relay generates the trip signal. The VCB executes on that signal — the breaker does not decide anything by itself.",
   },
   {
-    q: "Kya Data Center direct LT par chal sakta hai?",
-    a: "Bahut chhote setups ke liye theoretically possible hai, lekin practically nahi. Large Data Centers ki power requirement par LT supply current bahut zyada ho jata hai — cable size aur losses impractical ho jate hain.",
+    q: "Can a Data Center run directly on LT?",
+    a: "For very small setups it is theoretically possible, but not practically. At the power requirement of large Data Centers, the LT supply current becomes very high — cable size and losses become impractical.",
   },
   {
-    q: "VCB aur ACB me kya difference hai?",
-    a: "VCB (Vacuum Circuit Breaker) high-tension medium-voltage applications ke liye hota hai aur arc ko vacuum me quench karta hai. ACB (Air Circuit Breaker) low-tension applications ke liye hota hai aur air me arc quench karta hai. HT Yard me VCB use hota hai.",
+    q: "What is the difference between a VCB and an ACB?",
+    a: "A VCB (Vacuum Circuit Breaker) is used for high-tension medium-voltage applications and quenches the arc in a vacuum. An ACB (Air Circuit Breaker) is used for low-tension applications and quenches the arc in air. The HT Yard uses a VCB.",
   },
   {
-    q: "Kya Tier IV ka matlab automatically dual utility connection hota hai?",
-    a: "Nahi. Tier IV ka matlab fault tolerance aur concurrent maintainability hai — ye dual independent paths se achieve hoti hai. Dual utility helpful hai, lekin mandatory nahi. Single utility ke saath bhi UPS aur DG redundancy se fault tolerance design kiya ja sakta hai.",
+    q: "Does Tier IV automatically mean a dual utility connection?",
+    a: "No. Tier IV means fault tolerance and concurrent maintainability — this is achieved through dual independent paths. Dual utility is helpful, but not mandatory. Even with a single utility, fault tolerance can be designed through UPS and DG redundancy.",
   },
 ];
 
@@ -796,11 +802,11 @@ export default function HtYardPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <ArticleLayout slug="ht-yard" headings={HEADINGS} readingTimeMinutes={18}>
+      <ArticleLayout slug="ht-yard" headings={HEADINGS} readingTimeMinutes={18} lang="en" alternateHref="/hi/learn/non-it/electrical/ht-yard">
 
-        <p style={S.p}>Jab Grid Supply Data Center campus me enter karti hai, to sabse pehla system jo usse receive karta hai woh hai — <strong>HT Yard</strong>.</p>
-        <p style={S.p}>Ye sirf ek wire connection nahi hai. Ye ek complete switching, protection aur metering station hota hai.</p>
-        <p style={S.p}>Bina HT Yard ke, incoming high-voltage electricity directly building ya transformer tak nahi ja sakti.</p>
+        <p style={S.p}>When Grid Supply enters the Data Center campus, the very first system that receives it is — <strong>the HT Yard</strong>.</p>
+        <p style={S.p}>It is not just a wire connection. It is a complete switching, protection and metering station.</p>
+        <p style={S.p}>Without an HT Yard, incoming high-voltage electricity cannot go directly to the building or the transformer.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -813,16 +819,16 @@ export default function HtYardPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            HT Yard — Data Center electrical chain ka pehla active protection aur switching layer.
+            HT Yard — the first active protection and switching layer of the Data Center electrical chain.
           </figcaption>
         </figure>
 
         <WhatYouAreLooking>
-          Ye ek outdoor high-tension switchyard hai. Jo tall structures dikh rahe hain unpar circuit breakers, current transformers aur lightning arresters lage hote hain. Yahin se grid ki electricity Data Center me controlled tarike se enter karti hai.
+          This is an outdoor high-tension switchyard. The tall structures you see carry circuit breakers, current transformers and lightning arresters. This is where electricity from the grid enters the Data Center in a controlled way.
         </WhatYouAreLooking>
 
-        <p style={S.p}>Is article me hum HT Yard ko ek engineer handbook ki tarah samjhenge — components, working, installation, testing, protection, safety, Tier III/IV design aur real-world failure scenarios tak.</p>
-        <p style={S.p}>Iska foundation samajhne ke liye pehle dekho electricity Data Center tak pahunchti kaise hai.</p>
+        <p style={S.p}>In this article, we will understand the HT Yard like an engineer handbook — from components, working, installation, testing, protection and safety to Tier III/IV design and real-world failure scenarios.</p>
+        <p style={S.p}>To understand its foundation, first see how electricity reaches the Data Center.</p>
         <div style={S.learnMore}>
           <TopicLink slug="grid-supply" label="Read: Grid Supply" variant="inline" />
         </div>
@@ -832,8 +838,8 @@ export default function HtYardPage() {
         {/* ── What Is HT Yard ── */}
         <h2 id="what-is-ht-yard" style={S.h1}>What Is HT Yard?</h2>
 
-        <p style={S.p}>HT Yard ka full form hai <strong>High Tension Yard</strong>. Ye woh facility hai jo utility grid se incoming high-voltage supply receive karti hai.</p>
-        <p style={S.p}>Incoming voltage ho sakta hai 11 kV, 33 kV ya 66 kV — Data Center size aur utility availability ke hisaab se.</p>
+        <p style={S.p}>The full form of HT Yard is <strong>High Tension Yard</strong>. It is the facility that receives the incoming high-voltage supply from the utility grid.</p>
+        <p style={S.p}>The incoming voltage can be 11 kV, 33 kV or 66 kV — depending on the Data Center size and utility availability.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -846,22 +852,22 @@ export default function HtYardPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            HT Yard single-line diagram — har component ka position aur connection.
+            HT Yard single-line diagram — the position and connection of every component.
           </figcaption>
         </figure>
 
         <WhatYouAreLooking>
-          Ye ek "single-line diagram" hai — engineers electrical system ko aise hi simplified lines me draw karte hain. Har symbol ek real component hai: incoming feeder, isolator, breaker, CT, PT aur busbar. Power upar se neeche flow karti hai.
+          This is a "single-line diagram" — engineers draw electrical systems in simplified lines like this. Every symbol is a real component: incoming feeder, isolator, breaker, CT, PT and busbar. Power flows from top to bottom.
         </WhatYouAreLooking>
 
-        <p style={S.p}>HT Yard Grid Supply aur Data Center ke beech ka first interface hota hai. Yahan se incoming power ko receive, isolate, protect aur meter kiya jata hai.</p>
+        <p style={S.p}>The HT Yard is the first interface between Grid Supply and the Data Center. This is where incoming power is received, isolated, protected and metered.</p>
 
         <InsightCard>
-          <strong>HT Yard is not a substation.</strong> Substation me voltage transformation bhi hoti hai. HT Yard ka primary kaam incoming HV supply ko receive, switch aur protect karna hai — actual voltage step-down transformer unit me hota hai, jo iske baad aata hai.
+          <strong>HT Yard is not a substation.</strong> A substation also performs voltage transformation. The primary job of the HT Yard is to receive, switch and protect the incoming HV supply — the actual voltage step-down happens in the transformer unit, which comes after it.
         </InsightCard>
 
         <WhyThisMatters>
-          Data Center ki poori uptime promise yahin se shuru hoti hai. Agar HT Yard ka design weak ho, to ek utility-side disturbance bhi pure facility ko gira sakta hai. Isi liye Tier III aur Tier IV Data Centers HT Yard ko hi redundancy ki pehli layer maante hain.
+          The entire uptime promise of a Data Center starts right here. If the HT Yard design is weak, even a single utility-side disturbance can bring down the whole facility. That is why Tier III and Tier IV Data Centers treat the HT Yard as the first layer of redundancy.
         </WhyThisMatters>
 
         <DCMapNote components={["Incoming Utility", "HT Switchgear", "RMU"]} />
@@ -871,18 +877,18 @@ export default function HtYardPage() {
         {/* ── Why Required ── */}
         <h2 id="why-required" style={S.h1}>Why Is HT Yard Required?</h2>
 
-        <p style={S.p}>Direct high-voltage supply seedhe building ke andar nahi ja sakti. Beech me ek controlled, protected interface chahiye hota hai.</p>
-        <p style={S.p}>HT Yard ye 4 critical functions provide karta hai:</p>
+        <p style={S.p}>A direct high-voltage supply cannot go straight into the building. A controlled, protected interface is needed in between.</p>
+        <p style={S.p}>The HT Yard provides these 4 critical functions:</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Protection</strong> — fault ke time downstream equipment ko bachana</li>
-          <li style={S.li}><strong>Switching</strong> — planned maintenance ya fault isolation ke liye</li>
-          <li style={S.li}><strong>Metering</strong> — utility billing aur consumption tracking</li>
-          <li style={S.li}><strong>Redundancy Management</strong> — Dual Grid Feed yahin manage hoti hai</li>
+          <li style={S.li}><strong>Protection</strong> — protecting downstream equipment during a fault</li>
+          <li style={S.li}><strong>Switching</strong> — for planned maintenance or fault isolation</li>
+          <li style={S.li}><strong>Metering</strong> — utility billing and consumption tracking</li>
+          <li style={S.li}><strong>Redundancy Management</strong> — Dual Grid Feed is managed right here</li>
         </ul>
-        <p style={S.p}>Agar HT Yard na ho, to ek choti si grid disturbance bhi poore Data Center ko damage kar sakti hai.</p>
+        <p style={S.p}>Without an HT Yard, even a small grid disturbance could damage the entire Data Center.</p>
 
         <WhyThisMatters>
-          Ek office me protection fail ho to kuch ghante ka downtime hota hai. Ek Data Center me wahi fault thousands of users ki services, SLAs aur availability targets ko break kar deta hai. Protection isi liye reliability ka foundation hai.
+          If protection fails in an office, it causes a few hours of downtime. In a Data Center, the same fault breaks the services, SLAs and availability targets of thousands of users. That is why protection is the foundation of reliability.
         </WhyThisMatters>
 
         <hr style={S.divider} />
@@ -890,26 +896,26 @@ export default function HtYardPage() {
         {/* ── Where Located ── */}
         <h2 id="where-located" style={S.h1}>Where Is HT Yard Located?</h2>
 
-        <p style={S.p}>HT Yard generally Data Center campus ki boundary ke paas, utility entry point par hota hai.</p>
-        <p style={S.p}>Ye ek dedicated, fenced compound hota hai jisme proper electrical safety clearances maintain ki jati hain.</p>
-        <p style={S.p}>Aaj kal space-constrained sites par outdoor switchyard ki jagah <strong>GIS (Gas Insulated Switchgear)</strong> use hota hai — ye compact, indoor aur weather-independent hota hai.</p>
-        <p style={S.noteText}>Actual location aur configuration project requirements, utility requirements, OEM design aur Data Center architecture par depend karti hai.</p>
+        <p style={S.p}>The HT Yard is generally located near the boundary of the Data Center campus, at the utility entry point.</p>
+        <p style={S.p}>It is a dedicated, fenced compound in which proper electrical safety clearances are maintained.</p>
+        <p style={S.p}>Nowadays, on space-constrained sites, <strong>GIS (Gas Insulated Switchgear)</strong> is used instead of an outdoor switchyard — it is compact, indoor and weather-independent.</p>
+        <p style={S.noteText}>The actual location and configuration depend on project requirements, utility requirements, OEM design and Data Center architecture.</p>
 
         <hr style={S.divider} />
 
         {/* ── Key Components ── */}
         <h2 id="key-components" style={S.h1}>Key Components</h2>
 
-        <p style={S.p}>HT Yard ke har component ka ek specific role hota hai. Koi bhi component sirf decorative nahi hota.</p>
+        <p style={S.p}>Every component of the HT Yard has a specific role. No component is merely decorative.</p>
 
         <h3 style={S.h3}>CT — Current Transformer</h3>
-        <p style={S.p}>CT primary line current ko proportional secondary current me convert karta hai — jaise 200A ko 5A me.</p>
-        <p style={S.p}>Protection relay aur metering panels CT se hi current information lete hain.</p>
-        <p style={S.p}><strong>CT secondary kabhi bhi open circuit nahi hona chahiye</strong> — load ke time ye dangerous high voltage create kar sakta hai.</p>
+        <p style={S.p}>A CT converts the primary line current into a proportional secondary current — for example, 200A into 5A.</p>
+        <p style={S.p}>Protection relays and metering panels take their current information from the CT.</p>
+        <p style={S.p}><strong>A CT secondary must never be open-circuited</strong> — under load it can create a dangerous high voltage.</p>
 
         <h3 style={S.h3}>PT / VT — Potential Transformer</h3>
-        <p style={S.p}>PT line voltage ko measurable level par convert karta hai — jaise 11000V ko 110V me.</p>
-        <p style={S.p}>Protection relay aur meters PT se actual voltage information lete hain.</p>
+        <p style={S.p}>A PT converts the line voltage to a measurable level — for example, 11000V into 110V.</p>
+        <p style={S.p}>Protection relays and meters take the actual voltage information from the PT.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -922,17 +928,17 @@ export default function HtYardPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            CT aur PT — protection relay aur metering ke liye current aur voltage sensing.
+            CT and PT — current and voltage sensing for protection relays and metering.
           </figcaption>
         </figure>
 
         <h3 style={S.h3}>Protection Relay — The Brain</h3>
-        <p style={S.p}>Protection relay HT Yard ka dimaag hota hai. Ye CT/PT inputs continuously analyze karta hai.</p>
-        <p style={S.p}>Modern numerical relays — Siemens SIPROTEC, ABB REF, Schneider SEPAM — multiple protection functions ek hi device me handle karte hain.</p>
+        <p style={S.p}>The protection relay is the brain of the HT Yard. It continuously analyzes CT/PT inputs.</p>
+        <p style={S.p}>Modern numerical relays — Siemens SIPROTEC, ABB REF, Schneider SEPAM — handle multiple protection functions in a single device.</p>
 
         <h3 style={S.h3}>VCB — Vacuum Circuit Breaker</h3>
-        <p style={S.p}>VCB main switching device hota hai. Arc quenching vacuum medium me hoti hai.</p>
-        <p style={S.p}>Trip coil relay ka signal receive karta hai aur breaker open ho jata hai.</p>
+        <p style={S.p}>The VCB is the main switching device. Arc quenching happens in a vacuum medium.</p>
+        <p style={S.p}>The trip coil receives the relay's signal and the breaker opens.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -945,12 +951,12 @@ export default function HtYardPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Vacuum Circuit Breaker — relay command par execute karta hai, khud decide nahi karta.
+            Vacuum Circuit Breaker — executes on the relay's command; it does not decide by itself.
           </figcaption>
         </figure>
 
         <h3 style={S.h3}>LA — Lightning Arrester</h3>
-        <p style={S.p}>Lightning Arrester atmospheric overvoltage transients se protection deta hai. Surge energy ground me dissipate kar deta hai.</p>
+        <p style={S.p}>The Lightning Arrester provides protection against atmospheric overvoltage transients. It dissipates surge energy into the ground.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -963,12 +969,12 @@ export default function HtYardPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            Lightning Arrester — surge transients ko ground me safely dissipate karta hai.
+            Lightning Arrester — safely dissipates surge transients into the ground.
           </figcaption>
         </figure>
 
-        <p style={S.p}>Iske alawa HT Yard me hote hain: <strong>Isolator</strong> (no-load isolation aur visible break), <strong>Busbar</strong> (multiple feeders ko connect karne wala conductor), <strong>Earth Switch</strong> (maintenance ke time equipment earthing), aur <strong>Metering Panel</strong> (billing aur SCADA integration).</p>
-        <p style={S.p}>Surge protection aur earthing dono closely related hain — inhe deeper samajhne ke liye:</p>
+        <p style={S.p}>Apart from these, the HT Yard also has: <strong>Isolator</strong> (no-load isolation and a visible break), <strong>Busbar</strong> (the conductor that connects multiple feeders), <strong>Earth Switch</strong> (equipment earthing during maintenance), and <strong>Metering Panel</strong> (billing and SCADA integration).</p>
+        <p style={S.p}>Surge protection and earthing are closely related — to understand them more deeply:</p>
         <div style={S.learnMore}>
           <TopicLink slug="lightning-protection" label="Learn More: Lightning Protection" variant="inline" />
           <TopicLink slug="earthing" label="Learn More: Earthing" variant="inline" />
@@ -979,7 +985,7 @@ export default function HtYardPage() {
         {/* ── Working Principle ── */}
         <h2 id="working-principle" style={S.h1}>Working Principle</h2>
 
-        <p style={S.p}>HT Yard ka kaam ek continuous monitoring aur instant response system ki tarah chalta hai.</p>
+        <p style={S.p}>The HT Yard works like a continuous monitoring and instant response system.</p>
 
         <FlowDiagram
           caption="HT Yard working principle — measure, analyze, execute"
@@ -992,14 +998,14 @@ export default function HtYardPage() {
           ]}
         />
 
-        <p style={S.p}>Normal condition me breaker closed rehta hai aur power smoothly flow karti hai. CT aur PT continuously current aur voltage measure karte rehte hain.</p>
-        <p style={S.p}>Fault condition me relay trip signal generate karta hai, VCB open hota hai, aur faulted section isolate ho jata hai.</p>
+        <p style={S.p}>Under normal conditions, the breaker stays closed and power flows smoothly. The CT and PT keep continuously measuring current and voltage.</p>
+        <p style={S.p}>Under a fault condition, the relay generates a trip signal, the VCB opens, and the faulted section gets isolated.</p>
 
         <InsightCard>
-          <strong>Relay decides. Breaker executes.</strong> Breaker khud trip nahi karta. Protection relay CT/PT inputs analyze karta hai. Jab configured limits cross hoti hain, relay breaker ko open karne ka command deta hai. Isi se faulted section isolate hokar downstream infrastructure protect ho jata hai.
+          <strong>Relay decides. Breaker executes.</strong> The breaker does not trip by itself. The protection relay analyzes CT/PT inputs. When configured limits are crossed, the relay commands the breaker to open. This isolates the faulted section and protects the downstream infrastructure.
         </InsightCard>
 
-        <p style={S.p}>Aage power <TopicLink slug="rmu" label="RMU" variant="inline" /> aur <TopicLink slug="transformer" label="Transformer" variant="inline" /> ke through guzarti hai.</p>
+        <p style={S.p}>Further on, power passes through the <TopicLink slug="rmu" label="RMU" variant="inline" /> and the <TopicLink slug="transformer" label="Transformer" variant="inline" />.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -1017,7 +1023,7 @@ export default function HtYardPage() {
         </figure>
 
         <WhatYouAreLooking>
-          Ye sequence batati hai ki fault ke time kya hota hai. CT current "feel" karta hai, relay decide karta hai ki ye fault hai, aur phir breaker ko khol kar faulted hissa baaki system se alag kar deta hai — sab kuch ek second ke chhote se hisse me.
+          This sequence shows what happens during a fault. The CT "feels" the current, the relay decides that it is a fault, and then it opens the breaker to separate the faulted part from the rest of the system — all within a small fraction of a second.
         </WhatYouAreLooking>
 
         <DCMapNote components={["CT/PT", "Protection Relay", "HT Switchgear"]} />
@@ -1027,32 +1033,32 @@ export default function HtYardPage() {
         {/* ── Protection Philosophy ── */}
         <h2 id="protection-philosophy" style={S.h1}>Protection Philosophy</h2>
 
-        <p style={S.p}>Protection HT Yard ka sabse critical aspect hai. Har protection function ka apna specific purpose hota hai.</p>
+        <p style={S.p}>Protection is the most critical aspect of the HT Yard. Every protection function has its own specific purpose.</p>
 
         <h3 style={S.h3}>Over Current Protection</h3>
-        <p style={S.p}>Jab current set limit se zyada flow karne lagti hai — jaise short circuit ya overload me — relay overcurrent detect karta hai.</p>
-        <p style={S.p}>Set time delay ke baad relay VCB ko trip command deta hai, taaki cables aur equipment overheat na ho.</p>
+        <p style={S.p}>When current starts flowing above the set limit — such as in a short circuit or overload — the relay detects the overcurrent.</p>
+        <p style={S.p}>After a set time delay, the relay gives a trip command to the VCB, so that cables and equipment do not overheat.</p>
 
         <h3 style={S.h3}>Earth Fault Protection</h3>
-        <p style={S.p}>Jab koi live conductor accidentally earth ke contact me aata hai, to earth fault current flow karti hai.</p>
-        <p style={S.p}>Relay ye unbalanced current detect karta hai aur quickly breaker ko trip karwa deta hai — ye sabse common HT fault hai.</p>
+        <p style={S.p}>When a live conductor accidentally comes into contact with earth, earth fault current flows.</p>
+        <p style={S.p}>The relay detects this unbalanced current and quickly trips the breaker — this is the most common HT fault.</p>
 
         <h3 style={S.h3}>Under Voltage Protection</h3>
-        <p style={S.p}>Agar incoming voltage dangerously low ho jaye, to connected equipment damage ho sakta hai.</p>
-        <p style={S.p}>Under voltage relay is condition ko detect karke load ko safely disconnect ya alarm raise karta hai.</p>
+        <p style={S.p}>If the incoming voltage becomes dangerously low, connected equipment can get damaged.</p>
+        <p style={S.p}>The under voltage relay detects this condition and safely disconnects the load or raises an alarm.</p>
 
         <h3 style={S.h3}>Over Voltage Protection</h3>
-        <p style={S.p}>Switching surges ya grid disturbances voltage ko dangerous level tak badha sakte hain.</p>
-        <p style={S.p}>Over voltage relay sensitive equipment ko bachane ke liye protective action leta hai.</p>
+        <p style={S.p}>Switching surges or grid disturbances can raise the voltage to a dangerous level.</p>
+        <p style={S.p}>The over voltage relay takes protective action to protect sensitive equipment.</p>
 
         <h3 style={S.h3}>Differential Protection</h3>
-        <p style={S.p}>Differential protection sabse precise hoti hai — ye protected zone ke "incoming" aur "outgoing" current ko compare karti hai.</p>
-        <p style={S.p}>Agar dono me difference aata hai, matlab fault zone ke andar hai — relay instantly trip karwata hai. Busbar aur transformer protection me ye critical hoti hai.</p>
+        <p style={S.p}>Differential protection is the most precise — it compares the "incoming" and "outgoing" current of the protected zone.</p>
+        <p style={S.p}>If there is a difference between the two, it means the fault is inside the zone — the relay trips instantly. It is critical in busbar and transformer protection.</p>
 
-        <p style={S.noteText}>Actual protection settings coordination study se aati hain — arbitrary nahi hoti. Ye project requirements aur OEM relay design par depend karti hain.</p>
+        <p style={S.noteText}>Actual protection settings come from a coordination study — they are not arbitrary. They depend on project requirements and OEM relay design.</p>
 
         <WhyThisMatters>
-          Data Center me protection ka selective hona zaroori hai — sirf faulted feeder trip ho, poora yard nahi. Agar coordination galat ho to ek small fault pure facility ko gira sakta hai. Isi "selectivity" se availability aur redundancy maintain hoti hai.
+          In a Data Center, protection must be selective — only the faulted feeder should trip, not the whole yard. If coordination is wrong, a small fault can bring down the whole facility. This "selectivity" is how availability and redundancy are maintained.
         </WhyThisMatters>
 
         <hr style={S.divider} />
@@ -1060,31 +1066,31 @@ export default function HtYardPage() {
         {/* ── Power Quality ── */}
         <h2 id="power-quality" style={S.h1}>Power Quality</h2>
 
-        <p style={S.p}>Grid Supply reliable hoti hai, lekin perfect nahi. Sensitive IT load ke liye power quality monitor karna zaruri hai.</p>
+        <p style={S.p}>Grid Supply is reliable, but not perfect. Monitoring power quality is essential for sensitive IT load.</p>
 
         <h3 style={S.h3}>Harmonics</h3>
-        <p style={S.p}>Normal power ek smooth sine wave hoti hai. Lekin UPS, VFDs aur SMPS based equipment is waveform ko distort kar dete hain — isi distortion ko harmonics kehte hain.</p>
-        <p style={S.p}>Excessive harmonics transformers ko overheat aur equipment life reduce kar sakte hain.</p>
+        <p style={S.p}>Normal power is a smooth sine wave. But UPS, VFDs and SMPS-based equipment distort this waveform — this distortion is called harmonics.</p>
+        <p style={S.p}>Excessive harmonics can overheat transformers and reduce equipment life.</p>
 
         <h3 style={S.h3}>Voltage Sag</h3>
-        <p style={S.p}>Voltage sag ek short-duration voltage drop hota hai — aksar large load start hone par. IT equipment ke liye ye disruptive ho sakta hai.</p>
+        <p style={S.p}>A voltage sag is a short-duration voltage drop — often when a large load starts. It can be disruptive for IT equipment.</p>
 
         <h3 style={S.h3}>Voltage Swell</h3>
-        <p style={S.p}>Voltage swell sag ka opposite hai — short-duration voltage rise. Ye bhi sensitive equipment ko stress de sakta hai.</p>
+        <p style={S.p}>A voltage swell is the opposite of a sag — a short-duration voltage rise. It can also stress sensitive equipment.</p>
 
         <h3 style={S.h3}>Power Quality Monitoring</h3>
-        <p style={S.p}>Data Centers me dedicated power quality analyzers install kiye jate hain jo harmonics, sag, swell aur power factor continuously monitor karte hain.</p>
-        <p style={S.p}>Ye data SCADA/BMS me feed hota hai taaki issues early detect ho sakein.</p>
+        <p style={S.p}>In Data Centers, dedicated power quality analyzers are installed that continuously monitor harmonics, sag, swell and power factor.</p>
+        <p style={S.p}>This data is fed into SCADA/BMS so that issues can be detected early.</p>
 
         <hr style={S.divider} />
 
         {/* ── Installation ── */}
         <h2 id="installation" style={S.h1}>Installation Process</h2>
 
-        <p style={S.p}>HT Yard installation ek structured, safety-critical process hota hai.</p>
-        <p style={S.p}>Sabse pehle <strong>civil work</strong> — foundation, cable trench aur earthing grid prepare ki jati hai.</p>
-        <p style={S.p}>Phir <strong>equipment mounting</strong> — Lightning Arrester, Isolator, VCB, CT/PT aur Busbar sequence me install kiye jate hain.</p>
-        <p style={S.p}>HV cable termination me <strong>stress cone</strong> aur heat-shrink/cold-shrink kits use hote hain — ye electrical stress ko safely manage karte hain.</p>
+        <p style={S.p}>HT Yard installation is a structured, safety-critical process.</p>
+        <p style={S.p}>First comes the <strong>civil work</strong> — the foundation, cable trench and earthing grid are prepared.</p>
+        <p style={S.p}>Then <strong>equipment mounting</strong> — the Lightning Arrester, Isolator, VCB, CT/PT and Busbar are installed in sequence.</p>
+        <p style={S.p}>HV cable termination uses a <strong>stress cone</strong> and heat-shrink/cold-shrink kits — these manage electrical stress safely.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -1097,94 +1103,94 @@ export default function HtYardPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            HV cable termination — stress cone electrical stress ko safely distribute karta hai.
+            HV cable termination — the stress cone distributes electrical stress safely.
           </figcaption>
         </figure>
 
-        <p style={S.p}>Earthing me teen alag systems hote hain: equipment body earth, neutral earth, aur lightning protection earth. Inhe samajhne ke liye:</p>
+        <p style={S.p}>Earthing has three separate systems: equipment body earth, neutral earth, and lightning protection earth. To understand them:</p>
         <div style={S.learnMore}>
           <TopicLink slug="earthing" label="Learn More: Earthing" variant="inline" />
         </div>
-        <p style={S.p}>Isolator aur breaker ke beech mechanical aur electrical interlocks lagae jate hain taaki unsafe switching na ho sake.</p>
+        <p style={S.p}>Mechanical and electrical interlocks are fitted between the isolator and the breaker so that unsafe switching cannot happen.</p>
 
         <hr style={S.divider} />
 
         {/* ── Testing ── */}
         <h2 id="testing-commissioning" style={S.h1}>Testing & Commissioning</h2>
 
-        <p style={S.p}>Energize karne se pehle har component thoroughly test hota hai.</p>
+        <p style={S.p}>Before energizing, every component is tested thoroughly.</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Insulation Resistance (Megger) Test</strong> — cables aur equipment insulation check</li>
-          <li style={S.li}><strong>CT Ratio & Polarity Test</strong> — correct ratio aur direction</li>
+          <li style={S.li}><strong>Insulation Resistance (Megger) Test</strong> — checks cable and equipment insulation</li>
+          <li style={S.li}><strong>CT Ratio & Polarity Test</strong> — correct ratio and direction</li>
           <li style={S.li}><strong>PT Ratio & Burden Test</strong> — voltage accuracy</li>
           <li style={S.li}><strong>Relay Secondary Injection Test</strong> — relay settings verify</li>
           <li style={S.li}><strong>VCB Timing & Contact Resistance Test</strong> — breaker performance</li>
           <li style={S.li}><strong>Earthing Resistance Test</strong> — earth electrode quality</li>
         </ul>
-        <p style={S.p}>Final functional test me ek fault simulate kiya jata hai — relay ko correctly trip karna chahiye. Ye test utility engineer aur client commissioning team ki presence me hota hai.</p>
+        <p style={S.p}>In the final functional test, a fault is simulated — the relay must trip correctly. This test is done in the presence of the utility engineer and the client commissioning team.</p>
 
         <hr style={S.divider} />
 
         {/* ── Operation ── */}
         <h2 id="operation" style={S.h1}>Operation</h2>
 
-        <p style={S.p}>HT Yard operation strict procedures ke under hoti hai — yahan koi shortcut nahi chalta.</p>
-        <p style={S.p}>Har switching operation <strong>Standard Operating Procedures (SOPs)</strong> aur <strong>Permit to Work (PTW)</strong> system ke through hoti hai.</p>
-        <p style={S.p}>Switching sequence strictly follow ki jati hai: closing me Isolator pehle, phir Breaker. Opening me reverse — Breaker pehle, phir Isolator.</p>
-        <p style={S.p}>Operation remote (SCADA se) ya local (panel se) ho sakti hai, depending on facility design.</p>
+        <p style={S.p}>HT Yard operation is carried out under strict procedures — no shortcuts work here.</p>
+        <p style={S.p}>Every switching operation is done through <strong>Standard Operating Procedures (SOPs)</strong> and the <strong>Permit to Work (PTW)</strong> system.</p>
+        <p style={S.p}>The switching sequence is strictly followed: when closing, the Isolator first, then the Breaker. When opening, the reverse — the Breaker first, then the Isolator.</p>
+        <p style={S.p}>Operation can be remote (from SCADA) or local (from the panel), depending on the facility design.</p>
 
         <hr style={S.divider} />
 
         {/* ── SCADA & BMS Monitoring ── */}
         <h2 id="scada-bms-monitoring" style={S.h1}>SCADA & BMS Monitoring</h2>
 
-        <p style={S.p}>Modern Data Centers me HT Yard ko continuously SCADA aur BMS ke through monitor kiya jata hai.</p>
+        <p style={S.p}>In modern Data Centers, the HT Yard is continuously monitored through SCADA and BMS.</p>
 
         <h3 style={S.h3}>Alarm Monitoring</h3>
-        <p style={S.p}>Overcurrent, earth fault, PT fuse blown, breaker fail — ye sab alarms real-time control room me display hote hain.</p>
+        <p style={S.p}>Overcurrent, earth fault, PT fuse blown, breaker fail — all these alarms are displayed in real time in the control room.</p>
 
         <h3 style={S.h3}>Breaker Status</h3>
-        <p style={S.p}>Har VCB ka open/closed status live monitor hota hai. Operators ko hamesha pata rehta hai ki kaunsa feeder energized hai.</p>
+        <p style={S.p}>The open/closed status of every VCB is monitored live. Operators always know which feeder is energized.</p>
 
         <h3 style={S.h3}>Event Logs</h3>
-        <p style={S.p}>Protection relays time-stamped event logs maintain karte hain. Fault ke baad ye logs root cause analysis ke liye critical hote hain.</p>
+        <p style={S.p}>Protection relays maintain time-stamped event logs. After a fault, these logs are critical for root cause analysis.</p>
 
         <h3 style={S.h3}>Remote Operations</h3>
-        <p style={S.p}>Authorized operators control room se hi breaker operations kar sakte hain — physical exposure kam hota hai.</p>
+        <p style={S.p}>Authorized operators can perform breaker operations from the control room itself — physical exposure is reduced.</p>
 
         <h3 style={S.h3}>Trend Analysis</h3>
-        <p style={S.p}>Historical data — load profile, harmonics, power factor — trend analysis ke liye use hota hai, jisse predictive decisions liye ja sakein.</p>
-        <p style={S.p}>Modern SCADA systems IEC 61850 protocol par communicate karte hain, jo digital substations ka standard hai.</p>
+        <p style={S.p}>Historical data — load profile, harmonics, power factor — is used for trend analysis, so that predictive decisions can be taken.</p>
+        <p style={S.p}>Modern SCADA systems communicate on the IEC 61850 protocol, which is the standard for digital substations.</p>
 
         <hr style={S.divider} />
 
         {/* ── Maintenance ── */}
         <h2 id="maintenance" style={S.h1}>Maintenance</h2>
 
-        <p style={S.p}>HT Yard ki reliability uski maintenance par depend karti hai. Common maintenance activities:</p>
+        <p style={S.p}>The reliability of the HT Yard depends on its maintenance. Common maintenance activities:</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Thermographic (IR) Survey</strong> — loose connections aur hotspots detect karna (quarterly)</li>
+          <li style={S.li}><strong>Thermographic (IR) Survey</strong> — detecting loose connections and hotspots (quarterly)</li>
           <li style={S.li}><strong>VCB Contact Resistance Test</strong> — breaker health (annually)</li>
           <li style={S.li}><strong>Relay Secondary Injection Test</strong> — protection accuracy (annually)</li>
           <li style={S.li}><strong>CT/PT Testing</strong> — measurement accuracy (biannually)</li>
           <li style={S.li}><strong>Earthing Resistance Test</strong> — earth integrity (biannually)</li>
-          <li style={S.li}><strong>Insulator Cleaning</strong> — dust aur pollution removal (seasonal)</li>
+          <li style={S.li}><strong>Insulator Cleaning</strong> — dust and pollution removal (seasonal)</li>
         </ul>
-        <p style={S.noteText}>Maintenance frequency project requirements, OEM recommendations aur site conditions par depend karti hai.</p>
+        <p style={S.noteText}>Maintenance frequency depends on project requirements, OEM recommendations and site conditions.</p>
 
         <hr style={S.divider} />
 
         {/* ── Common Faults ── */}
         <h2 id="common-faults" style={S.h1}>Common Faults</h2>
 
-        <p style={S.p}>HT Yard me kuch faults baar-baar dekhe jate hain:</p>
+        <p style={S.p}>Some faults are seen again and again in the HT Yard:</p>
         <ul style={S.ul}>
           <li style={S.li}><strong>CT Secondary Open Circuit</strong> — extremely dangerous, high voltage build-up</li>
-          <li style={S.li}><strong>PT Fuse Blown</strong> — relay ko galat voltage milti hai, maloperation risk</li>
-          <li style={S.li}><strong>Breaker Failure</strong> — backup protection operate hona chahiye</li>
-          <li style={S.li}><strong>Earth Fault on Feeder</strong> — relay set time me clear karti hai</li>
-          <li style={S.li}><strong>Busbar Fault</strong> — sabse severe, differential protection clear karti hai</li>
-          <li style={S.li}><strong>Cable Termination Failure</strong> — partial discharge se eventual flashover</li>
+          <li style={S.li}><strong>PT Fuse Blown</strong> — the relay gets the wrong voltage, risk of maloperation</li>
+          <li style={S.li}><strong>Breaker Failure</strong> — backup protection should operate</li>
+          <li style={S.li}><strong>Earth Fault on Feeder</strong> — the relay clears it within the set time</li>
+          <li style={S.li}><strong>Busbar Fault</strong> — the most severe, cleared by differential protection</li>
+          <li style={S.li}><strong>Cable Termination Failure</strong> — partial discharge leading to eventual flashover</li>
         </ul>
 
         <hr style={S.divider} />
@@ -1192,17 +1198,17 @@ export default function HtYardPage() {
         {/* ── Troubleshooting ── */}
         <h2 id="troubleshooting" style={S.h1}>Troubleshooting</h2>
 
-        <p style={S.p}>Troubleshooting ka basic approach: <strong>Alarm receive karo → source identify karo → isolate karo → investigate karo → restore karo.</strong></p>
-        <p style={S.p}>PT fuse blown alarm aaye to pehle fuse check karo — relay ko blame karne se pehle.</p>
-        <p style={S.p}>Agar breaker trip nahi ho raha, to trip coil, DC control supply aur relay output contacts check karo.</p>
-        <p style={S.p}>Genuine fault aur instrument failure me farak karna sabse important skill hai — har alarm real fault nahi hota.</p>
+        <p style={S.p}>The basic approach to troubleshooting: <strong>Receive the alarm → identify the source → isolate → investigate → restore.</strong></p>
+        <p style={S.p}>If a PT fuse blown alarm comes, check the fuse first — before blaming the relay.</p>
+        <p style={S.p}>If the breaker is not tripping, check the trip coil, the DC control supply and the relay output contacts.</p>
+        <p style={S.p}>Telling the difference between a genuine fault and an instrument failure is the most important skill — not every alarm is a real fault.</p>
 
         <hr style={S.divider} />
 
         {/* ── Failure Scenario ── */}
         <h2 id="failure-scenario" style={S.h1}>Real Failure Scenario</h2>
 
-        <p style={S.p}>Ek real-world scenario samajhte hain — raat ke 3 baje incoming utility cable termination fail ho jaati hai.</p>
+        <p style={S.p}>Let's understand a real-world scenario — at 3 AM, the incoming utility cable termination fails.</p>
 
         <FlowDiagram
           caption="3 AM cable termination failure — automatic response sequence"
@@ -1216,17 +1222,17 @@ export default function HtYardPage() {
           ]}
         />
 
-        <p style={S.p}>Termination par phase-to-earth fault hota hai. Protection relay isse ~80 milliseconds me detect karke VCB ko trip command deta hai.</p>
-        <p style={S.p}>VCB open hote hi faulted section isolate ho jata hai. Isi instant <TopicLink slug="ups" label="UPS" variant="inline" /> load pick kar leta hai aur <TopicLink slug="battery-bank" label="Battery Bank" variant="inline" /> temporary energy provide karta hai.</p>
-        <p style={S.p}>Kuch hi seconds me <TopicLink slug="dg-set" label="DG Set" variant="inline" /> start hokar load sambhal leta hai. Agar Dual Grid Feed available hai, to secondary path bhi switch in ho jata hai.</p>
-        <p style={S.p}>IT equipment ko total interruption: 500 milliseconds se bhi kam. Users ko pata bhi nahi chalta ki kuch hua tha.</p>
+        <p style={S.p}>A phase-to-earth fault occurs at the termination. The protection relay detects it in ~80 milliseconds and gives a trip command to the VCB.</p>
+        <p style={S.p}>As soon as the VCB opens, the faulted section gets isolated. At that same instant, the <TopicLink slug="ups" label="UPS" variant="inline" /> picks up the load and the <TopicLink slug="battery-bank" label="Battery Bank" variant="inline" /> provides temporary energy.</p>
+        <p style={S.p}>Within a few seconds, the <TopicLink slug="dg-set" label="DG Set" variant="inline" /> starts and takes over the load. If a Dual Grid Feed is available, the secondary path also switches in.</p>
+        <p style={S.p}>Total interruption to IT equipment: less than 500 milliseconds. Users don't even realise that anything happened.</p>
 
         <WhyThisMatters>
-          Yahi woh moment hai jiske liye poora redundancy investment kiya jata hai. Tier III me ye recovery concurrent maintainability deti hai; Tier IV me fault tolerance — yaani ek fault ke baad bhi service bina interruption ke chalti rehti hai. 99.99%+ availability isi tarah achieve hoti hai.
+          This is the very moment for which the entire redundancy investment is made. In Tier III, this recovery is provided by concurrent maintainability; in Tier IV, by fault tolerance — meaning the service keeps running without interruption even after a fault. This is how 99.99%+ availability is achieved.
         </WhyThisMatters>
 
         <InsightCard>
-          <strong>Tier IV does not automatically mean dual utility.</strong> Tier IV ka asli matlab fault tolerance aur concurrent maintainability hai. Ye dual independent paths se achieve hoti hai — dual utility helpful hai lekin mandatory nahi. Single utility par bhi robust UPS aur DG redundancy se fault tolerance design ki ja sakti hai.
+          <strong>Tier IV does not automatically mean dual utility.</strong> The real meaning of Tier IV is fault tolerance and concurrent maintainability. This is achieved through dual independent paths — dual utility is helpful but not mandatory. Even on a single utility, fault tolerance can be designed through robust UPS and DG redundancy.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -1234,31 +1240,31 @@ export default function HtYardPage() {
         {/* ── Safety ── */}
         <h2 id="safety-practices" style={S.h1}>Safety Practices</h2>
 
-        <p style={S.p}>HT Yard high-voltage environment hai — safety negotiable nahi hoti.</p>
+        <p style={S.p}>The HT Yard is a high-voltage environment — safety is not negotiable.</p>
 
         <h3 style={S.h3}>Arc Flash Hazard</h3>
-        <p style={S.p}>Arc flash ek explosive electrical discharge hota hai jo extreme heat aur pressure release karta hai. Ye fatal ho sakta hai.</p>
-        <p style={S.p}>Isi liye HT Yard me kaam karte waqt rated Arc Flash PPE (suit, face shield, insulated gloves) pehnna mandatory hai.</p>
+        <p style={S.p}>An arc flash is an explosive electrical discharge that releases extreme heat and pressure. It can be fatal.</p>
+        <p style={S.p}>That is why wearing rated Arc Flash PPE (suit, face shield, insulated gloves) is mandatory while working in the HT Yard.</p>
 
         <h3 style={S.h3}>Arc Flash Boundary</h3>
-        <p style={S.p}>Arc flash boundary woh distance hai jiske andar arc flash exposure dangerous ho sakta hai. Is boundary ke andar bina proper PPE ke koi nahi ja sakta.</p>
+        <p style={S.p}>The arc flash boundary is the distance within which arc flash exposure can be dangerous. No one can go inside this boundary without proper PPE.</p>
 
         <h3 style={S.h3}>PTW Workflow</h3>
-        <p style={S.p}>Permit to Work system me kaam start karne se pehle formal authorization leni padti hai — kaun, kya, kab aur kaise, sab documented hota hai.</p>
+        <p style={S.p}>In the Permit to Work system, formal authorization must be taken before starting work — who, what, when and how, everything is documented.</p>
 
         <h3 style={S.h3}>LOTO Workflow</h3>
-        <p style={S.p}>Lockout/Tagout me equipment ko de-energize karke physically lock aur tag kiya jata hai, taaki koi accidentally energize na kar sake.</p>
-        <p style={S.p}>Golden rule: <strong>Earth before touch</strong> — kaam se pehle hamesha earth switch apply karo.</p>
+        <p style={S.p}>In Lockout/Tagout, the equipment is de-energized and physically locked and tagged, so that no one can accidentally energize it.</p>
+        <p style={S.p}>Golden rule: <strong>Earth before touch</strong> — always apply the earth switch before work.</p>
 
         <h3 style={S.h3}>Switching Safety</h3>
-        <p style={S.p}>HV switching me two-person rule follow hota hai — ek operate karta hai, doosra verify karta hai. CT secondary kabhi load ke under open nahi ki jaati. Single line diagram hamesha available rehna chahiye.</p>
+        <p style={S.p}>HV switching follows the two-person rule — one person operates, the other verifies. A CT secondary is never opened under load. The single line diagram must always be available.</p>
 
         <hr style={S.divider} />
 
         {/* ── OEMs ── */}
         <h2 id="oems-vendors" style={S.h1}>OEMs & Vendors</h2>
 
-        <p style={S.p}>HT Yard equipment globally established OEMs se aata hai. Reliability aur after-sales support critical factors hote hain.</p>
+        <p style={S.p}>HT Yard equipment comes from globally established OEMs. Reliability and after-sales support are critical factors.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -1271,21 +1277,21 @@ export default function HtYardPage() {
             />
           </div>
           <figcaption style={S.imageCaption}>
-            HT switchgear — major OEMs ka modular metal-enclosed panel design.
+            HT switchgear — the modular metal-enclosed panel design of major OEMs.
           </figcaption>
         </figure>
 
         <OEMTable />
 
-        <p style={S.noteText}>OEM selection project requirements, utility approvals, budget aur regional availability par depend karti hai.</p>
+        <p style={S.noteText}>OEM selection depends on project requirements, utility approvals, budget and regional availability.</p>
 
         <hr style={S.divider} />
 
         {/* ── Tier III ── */}
         <h2 id="tier-3-design" style={S.h1}>Tier III Design</h2>
 
-        <p style={S.p}>Tier III me focus concurrent maintainability par hota hai — koi bhi component maintain karte waqt IT load impact nahi hona chahiye.</p>
-        <p style={S.p}>HT Yard level par ye achieve hoti hai dual incoming feeders aur independent busbar sections se.</p>
+        <p style={S.p}>In Tier III, the focus is on concurrent maintainability — maintaining any component should not impact the IT load.</p>
+        <p style={S.p}>At the HT Yard level, this is achieved through dual incoming feeders and independent busbar sections.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -1302,15 +1308,15 @@ export default function HtYardPage() {
           </figcaption>
         </figure>
 
-        <p style={S.p}>Automatic bus transfer (ATS ya motorized isolator) ke through ek section maintenance ke time doosra load sambhal leta hai. Har section independent <TopicLink slug="transformer" label="Transformer" variant="inline" /> banks ko feed karta hai.</p>
+        <p style={S.p}>Through automatic bus transfer (ATS or motorized isolator), while one section is under maintenance, the other takes over the load. Each section feeds independent <TopicLink slug="transformer" label="Transformer" variant="inline" /> banks.</p>
 
         <hr style={S.divider} />
 
         {/* ── Tier IV ── */}
         <h2 id="tier-4-design" style={S.h1}>Tier IV Design</h2>
 
-        <p style={S.p}>Tier IV me fault tolerance add hoti hai — ek fault bhi service interrupt nahi karta.</p>
-        <p style={S.p}>Yahan do completely independent electrical paths hote hain, grid entry se lekar server rack tak, bina kisi crossover ke.</p>
+        <p style={S.p}>Tier IV adds fault tolerance — even a single fault does not interrupt service.</p>
+        <p style={S.p}>Here there are two completely independent electrical paths, from grid entry all the way to the server rack, without any crossover.</p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
@@ -1335,22 +1341,22 @@ export default function HtYardPage() {
           rightItems={["Fully independent paths", "Redundant protection systems", "Fault tolerance", "No single point of failure"]}
         />
 
-        <p style={S.p}>Tier IV me protection systems khud bhi redundant hote hain — dual protection relays aur dual control power supplies (UPS-backed DC).</p>
+        <p style={S.p}>In Tier IV, the protection systems themselves are also redundant — dual protection relays and dual control power supplies (UPS-backed DC).</p>
 
         <hr style={S.divider} />
 
         {/* ── Future Trends ── */}
         <h2 id="future-trends" style={S.h1}>Future Trends</h2>
 
-        <p style={S.p}>HT Yard technology rapidly evolve ho rahi hai:</p>
+        <p style={S.p}>HT Yard technology is evolving rapidly:</p>
         <ul style={S.ul}>
-          <li style={S.li}><strong>GIS Adoption</strong> — compact, weather-independent switchgear outdoor yards ko replace kar raha hai</li>
-          <li style={S.li}><strong>IEC 61850 Digital Substations</strong> — hardwired control ki jagah digital communication</li>
-          <li style={S.li}><strong>SF6-Free Switchgear</strong> — clean air aur CO2-based environmentally friendly alternatives</li>
-          <li style={S.li}><strong>AI Predictive Maintenance</strong> — partial discharge monitoring aur failure prediction</li>
+          <li style={S.li}><strong>GIS Adoption</strong> — compact, weather-independent switchgear is replacing outdoor yards</li>
+          <li style={S.li}><strong>IEC 61850 Digital Substations</strong> — digital communication in place of hardwired control</li>
+          <li style={S.li}><strong>SF6-Free Switchgear</strong> — clean air and CO2-based environmentally friendly alternatives</li>
+          <li style={S.li}><strong>AI Predictive Maintenance</strong> — partial discharge monitoring and failure prediction</li>
           <li style={S.li}><strong>BMS Integration</strong> — unified facility monitoring</li>
         </ul>
-        <p style={S.p}>AI Data Centers ki power demand badhne ke saath HT Yard ka role aur bhi critical hota ja raha hai.</p>
+        <p style={S.p}>As the power demand of AI Data Centers grows, the role of the HT Yard is becoming even more critical.</p>
 
         <hr style={S.divider} />
 
@@ -1359,18 +1365,18 @@ export default function HtYardPage() {
 
         <KeyTakeawayCard
           items={[
-            "HT Yard sirf connection point nahi — pehla protection aur switching layer hai.",
+            "The HT Yard is not just a connection point — it is the first protection and switching layer.",
             "Protection philosophy: Relay decides, breaker executes.",
-            "CT secondary kabhi bhi open circuit nahi karni chahiye — life-threatening risk.",
-            "HT Yard ek substation nahi hai — yahan voltage transformation nahi hoti.",
-            "Dual Grid Feed reliability HT Yard level se start hoti hai.",
-            "Tier IV ka matlab fault tolerance hai, automatically dual utility nahi.",
-            "Safety non-negotiable hai — PTW, LOTO aur Arc Flash PPE mandatory hain.",
-            "Future AI Data Centers GIS aur digital protection par shift kar rahe hain.",
+            "A CT secondary must never be open-circuited — life-threatening risk.",
+            "The HT Yard is not a substation — no voltage transformation happens here.",
+            "Dual Grid Feed reliability starts at the HT Yard level.",
+            "Tier IV means fault tolerance, not automatically dual utility.",
+            "Safety is non-negotiable — PTW, LOTO and Arc Flash PPE are mandatory.",
+            "Future AI Data Centers are shifting to GIS and digital protection.",
           ]}
         />
 
-        <p style={S.p}>Ab jab aap HT Yard samajh gaye ho, to agla logical step hai dekhna ki incoming power ko aage kaise distribute aur step-down kiya jata hai.</p>
+        <p style={S.p}>Now that you understand the HT Yard, the next logical step is to see how the incoming power is distributed and stepped down further.</p>
 
         <hr style={S.divider} />
 
@@ -1380,7 +1386,7 @@ export default function HtYardPage() {
           <div style={S.cardBodyInsight}>
             <span style={{ ...S.cardLabel, color: "#2563EB" }}>WHAT&apos;S NEXT</span>
             <div style={S.cardContent}>
-              HT Yard ke baad incoming power RMU aur Transformer se hokar guzarti hai — wahan voltage step-down aur distribution hoti hai.
+              After the HT Yard, the incoming power passes through the RMU and the Transformer — that is where voltage step-down and distribution happen.
             </div>
             <div style={{ marginTop: 14, display: "flex", flexWrap: "wrap", gap: 6 }}>
               <TopicLink slug="rmu" label="Next: RMU →" variant="inline" />
@@ -1393,7 +1399,7 @@ export default function HtYardPage() {
 
         {/* ── Continue Learning ── */}
         <h2 style={S.h1}>Continue Learning</h2>
-        <p style={S.p}>HT Yard ke aage ka electrical learning path — har topic Data Center power chain ka agla logical step hai.</p>
+        <p style={S.p}>The electrical learning path beyond the HT Yard — every topic is the next logical step in the Data Center power chain.</p>
         <ContinueLearning />
 
         <hr style={S.divider} />

@@ -2,103 +2,103 @@ export interface FaqEntry { question: string; answer: string; }
 
 export const pduFaq: FaqEntry[] = [
   {
-    question: "PDU aur Power Strip mein kya fark hai?",
+    question: "What is the difference between a PDU and a Power Strip?",
     answer:
-      "Power strip ek simple consumer-grade device hai jisme basic outlets hote hain — koi metering, monitoring, ya protection nahi. Data Center PDU ek engineered device hai jisme proper circuit breakers, phase balancing, high-quality connectors (IEC C13/C19), aur optional metering/monitoring hota hai. PDU Data Center mein certified hoti hai aur thousands of hours continuous operation ke liye designed hoti hai.",
+      "A power strip is a simple consumer-grade device with basic outlets — no metering, monitoring or protection. A Data Center PDU is an engineered device with proper circuit breakers, phase balancing, high-quality connectors (IEC C13/C19) and optional metering/monitoring. A PDU is certified for the Data Center and designed for thousands of hours of continuous operation.",
   },
   {
-    question: "Intelligent PDU (iPDU) aur Simple Metered PDU mein kya difference hai?",
+    question: "What is the difference between an Intelligent PDU (iPDU) and a Simple Metered PDU?",
     answer:
-      "Metered PDU sirf current aur voltage measure karti hai — display ya basic SNMP. Intelligent PDU (iPDU) mein per-outlet metering, remote outlet switching (on/off), environmental sensors (temperature/humidity), DCIM/BMS integration, SNMP v3, Modbus TCP, SSH access, role-based access control, aur event logging sab hote hain. iPDU essentially ek network device hai jisme power distribution bhi hoti hai.",
+      "A metered PDU only measures current and voltage — display or basic SNMP. An Intelligent PDU (iPDU) has per-outlet metering, remote outlet switching (on/off), environmental sensors (temperature/humidity), DCIM/BMS integration, SNMP v3, Modbus TCP, SSH access, role-based access control and event logging. An iPDU is essentially a network device that also does power distribution.",
   },
   {
-    question: "Single Phase vs Three Phase PDU — kab kaunsa use karein?",
+    question: "Single Phase vs Three Phase PDU — which to use when?",
     answer:
-      "Single phase PDU ek UPS output se feed hoti hai — simpler wiring, direct 230V outlets. Three phase PDU three phase UPS output se feed hoti hai — per-phase load balancing require karta hai, higher current capacity, typically used for high-density racks (10kW+). India mein standard 415V 3-phase supply available hai — three phase PDU zyada capacity deti hai same cable size mein.",
+      "A single phase PDU is fed from one UPS output — simpler wiring, direct 230V outlets. A three phase PDU is fed from a three phase UPS output — requires per-phase load balancing, has higher current capacity, and is typically used for high-density racks (10kW+). In India a standard 415V 3-phase supply is available — a three phase PDU gives more capacity in the same cable size.",
   },
   {
-    question: "PDU aur RPP mein kya difference hai?",
+    question: "What is the difference between a PDU and an RPP?",
     answer:
-      "RPP (Remote Power Panel) ek floor-mounted distribution panel hai jo UPS output receive karta hai aur multiple rack PDUs ko feed karta hai — essentially ek intermediate distribution point. PDU directly rack mein hoti hai aur individual servers/equipment ko feed karti hai. RPP building-level distribution hai; PDU rack-level distribution hai. Ek RPP typically 10-20 rack PDUs feed karta hai.",
+      "An RPP (Remote Power Panel) is a floor-mounted distribution panel that receives the UPS output and feeds multiple rack PDUs — essentially an intermediate distribution point. A PDU sits directly in the rack and feeds individual servers/equipment. The RPP is building-level distribution; the PDU is rack-level distribution. One RPP typically feeds 10-20 rack PDUs.",
   },
   {
-    question: "Outlet switching kya hoti hai aur kab kaam aati hai?",
+    question: "What is outlet switching and when is it useful?",
     answer:
-      "Switched PDU mein har outlet ko remotely on/off kiya ja sakta hai — network connection se. Kaam aata hai: (1) Remote server reboot jab server hung ho aur network respond na kare, (2) Scheduled load shedding during high load events, (3) New server installation ke time phased power-on, (4) Unauthorised devices ko remotely power off karna. IT teams ke liye time-saving aur downtime-reducing feature hai.",
+      "In a switched PDU every outlet can be switched on/off remotely — over a network connection. It is useful for: (1) Remote server reboot when a server is hung and the network does not respond, (2) Scheduled load shedding during high load events, (3) Phased power-on during new server installation, (4) Remotely powering off unauthorised devices. It is a time-saving and downtime-reducing feature for IT teams.",
   },
   {
-    question: "PDU kaunse outlet types use karti hai?",
+    question: "Which outlet types does a PDU use?",
     answer:
-      "Data Center PDU standard IEC 60320 connectors use karti hai: C13 socket (standard 10A server connection), C19 socket (high-power 16A/20A devices jaise high-end servers, storage arrays), C7 (small devices — uncommon in DC). India mein additionally Type B ya Type D outlets bhi kuch PDUs mein milte hain. IEC standardization isliye important hai kyunki server PSU cables worldwide same IEC C14/C20 plugs use karti hain.",
+      "Data Center PDUs use standard IEC 60320 connectors: C13 socket (standard 10A server connection), C19 socket (high-power 16A/20A devices like high-end servers, storage arrays), C7 (small devices — uncommon in DC). In India, Type B or Type D outlets are additionally found in some PDUs. IEC standardization is important because server PSU cables worldwide use the same IEC C14/C20 plugs.",
   },
   {
-    question: "SNMP aur Modbus mein kya difference hai PDU ke liye?",
+    question: "What is the difference between SNMP and Modbus for a PDU?",
     answer:
-      "SNMP (Simple Network Management Protocol) IT network management ke liye hai — PDU ko network device ki tarah treat karta hai, NMS (Network Management System) ya DCIM se integrate hota hai. Modbus TCP/RTU industrial protocol hai — BMS (Building Management System) aur SCADA se integration ke liye use hota hai. Modern iPDU typically dono support karta hai — IT team SNMP use karta hai, facilities team Modbus use karta hai.",
+      "SNMP (Simple Network Management Protocol) is for IT network management — it treats the PDU like a network device and integrates with an NMS (Network Management System) or DCIM. Modbus TCP/RTU is an industrial protocol — used for integration with a BMS (Building Management System) and SCADA. A modern iPDU typically supports both — the IT team uses SNMP, the facilities team uses Modbus.",
   },
   {
-    question: "PDU load balancing kyun zaroori hai?",
+    question: "Why is PDU load balancing necessary?",
     answer:
-      "Three phase PDU mein agar ek phase pe zyada load ho aur doosri phases light hoon, toh unbalanced neutral current generate hota hai — cable heating, neutral conductor overload, aur power quality issues hote hain. Target: teeno phases ±10% ke andar balanced honi chahiye. iPDU per-phase metering se real-time monitoring hota hai aur engineer accordingly server placement ya PDU assignment adjust kar sakta hai.",
+      "In a three phase PDU, if one phase has more load and the other phases are light, an unbalanced neutral current is generated — causing cable heating, neutral conductor overload and power quality issues. Target: all three phases should be balanced within ±10%. iPDU per-phase metering gives real-time monitoring, and the engineer can adjust server placement or PDU assignment accordingly.",
   },
   {
-    question: "PDU peak load capacity aur rated capacity mein kya fark hai?",
+    question: "What is the difference between a PDU's peak load capacity and rated capacity?",
     answer:
-      "Rated capacity woh continuous load hai jo PDU indefinitely handle kar sakti hai — typically 80% derate rule apply hota hai (160A rated PDU ko 128A se zyada load nahi dena chahiye continuously). Peak capacity momentary surge hai — server boot-up pe startup current rated se 2-3x zyada ho sakti hai briefly. iPDU peak current logging karta hai — capacity planning mein yeh historical peaks important hain.",
+      "Rated capacity is the continuous load a PDU can handle indefinitely — typically the 80% derate rule applies (a 160A rated PDU should not be given more than 128A continuously). Peak capacity is a momentary surge — at server boot-up, startup current can briefly be 2-3x the rated value. An iPDU logs peak current — these historical peaks are important in capacity planning.",
   },
   {
-    question: "Environmental sensors PDU mein kyun hote hain?",
+    question: "Why does a PDU have environmental sensors?",
     answer:
-      "Rack mein air temperature aur humidity directly server reliability affect karta hai. iPDU ke environmental sensors (typically T/H probe at rack intake) server inlet temperature monitor karte hain — ASHRAE A2 standard ke according 80.6°F (27°C) se neeche rehna chahiye. Yeh data DCIM dashboard mein rack-level thermal map banata hai — hot spots identify karna aur cooling adjustment karna real-time mein possible hota hai.",
+      "Air temperature and humidity in the rack directly affect server reliability. An iPDU's environmental sensors (typically a T/H probe at the rack intake) monitor server inlet temperature — according to the ASHRAE A2 standard it should stay below 80.6°F (27°C). This data builds a rack-level thermal map in the DCIM dashboard — identifying hot spots and adjusting cooling becomes possible in real time.",
   },
   {
-    question: "PDU failure ke time kya hota hai?",
+    question: "What happens when a PDU fails?",
     answer:
-      "PDU failure ke time sab connected servers lose power karte hain simultaneously — ek PDU failure ek poore rack ya rack group ko affect kar sakti hai. Isliye Tier III/IV mein dual-corded servers use hote hain — Server PSU1 PDU-A se aur PSU2 PDU-B se connected hoti hai. PDU-A fail hone pe server PSU2 se chalta rehta hai. Single-corded servers ke liye PDU replacement tabhi kiya ja sakta hai jab load shift karein ya scheduled downtime mein.",
+      "When a PDU fails, all connected servers lose power simultaneously — one PDU failure can affect a whole rack or rack group. That is why dual-corded servers are used in Tier III/IV — server PSU1 is connected to PDU-A and PSU2 to PDU-B. When PDU-A fails, the server keeps running on PSU2. For single-corded servers, a PDU replacement can only be done by shifting the load or during scheduled downtime.",
   },
   {
-    question: "Metered PDU mein kaunse readings available hote hain?",
+    question: "Which readings are available in a metered PDU?",
     answer:
-      "Metered PDU typically provide karta hai: input current per phase (Amperes), input voltage per phase, total power (kW), energy consumption (kWh), power factor, load percentage. Advanced metered PDUs additionally per-outlet current bhi dete hain. Yeh data display pe dikhta hai aur SNMP/Modbus se remotely readable hota hai — manual rounds ki jagah centralized monitoring enable karta hai.",
+      "A metered PDU typically provides: input current per phase (Amperes), input voltage per phase, total power (kW), energy consumption (kWh), power factor, load percentage. Advanced metered PDUs additionally give per-outlet current. This data shows on the display and is readable remotely via SNMP/Modbus — enabling centralized monitoring instead of manual rounds.",
   },
   {
-    question: "PDU ko rack mein kaise install karte hain?",
+    question: "How is a PDU installed in a rack?",
     answer:
-      "Vertical rack PDU ek U-slot side mein lagti hai — 'zero U' design hai, rack space nahi leta. Horizontal PDU 1U ya 2U rack space occupy karta hai, typically top ya bottom mein. Installation: mounting brackets secure karo, input cable route karo ke door close ho sake, outlet side accessible ho for cable management, cable ties se dress karo. Heavy three-phase PDU requires 2-person installation — weight 15-25 kg ho sakta hai.",
+      "A vertical rack PDU fits in a U-slot at the side — it is a 'zero U' design and takes no rack space. A horizontal PDU occupies 1U or 2U of rack space, typically at the top or bottom. Installation: secure the mounting brackets, route the input cable so the door can close, keep the outlet side accessible for cable management, dress with cable ties. A heavy three-phase PDU requires 2-person installation — weight can be 15-25 kg.",
   },
   {
-    question: "DCIM aur BMS mein se PDU data kaun use karta hai?",
+    question: "Which of DCIM and BMS uses PDU data?",
     answer:
-      "BMS (Building Management System) primarily total power, current, aur alarm status monitor karta hai — facility-level view ke liye. DCIM rack-level aur outlet-level detail use karta hai — server asset mapping, per-rack capacity planning, outlet utilization, historical trends. Facilities team BMS use karta hai daily operations ke liye; IT/DC operations team DCIM use karta hai capacity management ke liye. Dono integration complementary hain, competing nahi.",
+      "The BMS (Building Management System) primarily monitors total power, current and alarm status — for a facility-level view. DCIM uses rack-level and outlet-level detail — server asset mapping, per-rack capacity planning, outlet utilization, historical trends. The facilities team uses the BMS for daily operations; the IT/DC operations team uses DCIM for capacity management. Both integrations are complementary, not competing.",
   },
   {
-    question: "PDU kab replace karni chahiye?",
+    question: "When should a PDU be replaced?",
     answer:
-      "PDU replacement ke clear indicators: (1) Recurring circuit breaker trips — internal fault ya overload, (2) Outlet physical damage — bent pins, burnt marks, (3) Metering readings inconsistent ya drifting — calibration lost, (4) Communication module failure — SNMP/Modbus stopped working, (5) Age > 10-12 years with heavy load history, (6) OEM end-of-life — no firmware updates, security patches. PDU replacement planned maintenance window mein karo — unplanned replacement always means downtime.",
+      "Clear indicators for PDU replacement: (1) Recurring circuit breaker trips — internal fault or overload, (2) Outlet physical damage — bent pins, burnt marks, (3) Metering readings inconsistent or drifting — calibration lost, (4) Communication module failure — SNMP/Modbus stopped working, (5) Age > 10-12 years with heavy load history, (6) OEM end-of-life — no firmware updates, security patches. Do the PDU replacement in a planned maintenance window — unplanned replacement always means downtime.",
   },
   {
-    question: "iPDU ka asset management kaise kaam karta hai?",
+    question: "How does iPDU asset management work?",
     answer:
-      "Advanced iPDU mein per-outlet asset tagging hoti hai — RFID ya barcode scanner se server asset tag scan karo, outlet number se associate karo. DCIM mein yeh visible hota hai: 'Rack R-21, PDU-A, Outlet 12 → Server PROD-DB-07'. Physical audit mein manually har rack check karne ki jagah DCIM se real-time asset location visible hoti hai. Some PDUs USB barcode scanner directly support karte hain on-board.",
+      "Advanced iPDUs have per-outlet asset tagging — scan the server asset tag with an RFID or barcode scanner and associate it with the outlet number. In DCIM it becomes visible: 'Rack R-21, PDU-A, Outlet 12 → Server PROD-DB-07'. Instead of manually checking every rack in a physical audit, the real-time asset location is visible from DCIM. Some PDUs support a USB barcode scanner directly on-board.",
   },
   {
-    question: "Three phase PDU mein neutral current kyun measure karte hain?",
+    question: "Why is neutral current measured in a three phase PDU?",
     answer:
-      "Perfectly balanced three phase system mein neutral current zero hota hai — teeno phases cancel out hoti hain. Unbalanced loading se neutral current increase hoti hai — 10-15A neutral current on 32A circuit normal hai, lekin 25A+ neutral current cable rating ke against check karna chahiye. Modern switching power supplies (servers) non-linear loads hain — yeh harmonics generate karte hain jo neutral mein add hote hain. iPDU neutral current measurement isliye important parameter hai.",
+      "In a perfectly balanced three phase system the neutral current is zero — the three phases cancel out. Unbalanced loading increases neutral current — 10-15A of neutral current on a 32A circuit is normal, but 25A+ neutral current should be checked against the cable rating. Modern switching power supplies (servers) are non-linear loads — they generate harmonics that add up in the neutral. That is why iPDU neutral current measurement is an important parameter.",
   },
   {
-    question: "PDU input breaker aur outlet breaker mein kya fark hai?",
+    question: "What is the difference between a PDU input breaker and an outlet breaker?",
     answer:
-      "Input (main) breaker poori PDU protect karta hai — input feeder ya PDU internal fault pe trip karta hai. Outlet/branch circuit breaker individual circuit protect karta hai — typically 10A, 16A ya 20A per branch. Outlet breaker trip hone pe sirf woh branch lose power karta hai — baaki outlets continue karte hain. Input breaker trip hone pe poori PDU lose power karti hai. Branch circuit breakers easily hand-reset kiye ja sakte hain — input breaker larger handle hota hai.",
+      "The input (main) breaker protects the whole PDU — it trips on an input feeder or PDU internal fault. The outlet/branch circuit breaker protects an individual circuit — typically 10A, 16A or 20A per branch. When an outlet breaker trips, only that branch loses power — the other outlets continue. When the input breaker trips, the whole PDU loses power. Branch circuit breakers can easily be hand-reset — the input breaker has a larger handle.",
   },
   {
-    question: "PDU outlet coloring ka kya matlab hota hai?",
+    question: "What does PDU outlet coloring mean?",
     answer:
-      "PDU outlets typically color-coded hote hain for phase identification in 3-phase PDUs. Common convention: Phase A outlets grey/white, Phase B outlets black, Phase C outlets red — lekin yeh OEM-specific vary karta hai. Color coding isliye important hai kyunki dual-corded server connect karte waqt PSU1 aur PSU2 ko alag phases pe connect karna chahiye — same phase pe dono connect karna phase redundancy nahi deta. iPDU software mein phase assignment clearly label hoti hai.",
+      "PDU outlets are typically color-coded for phase identification in 3-phase PDUs. Common convention: Phase A outlets grey/white, Phase B outlets black, Phase C outlets red — but this varies by OEM. Color coding is important because when connecting a dual-corded server, PSU1 and PSU2 should be connected to separate phases — connecting both on the same phase does not give phase redundancy. In iPDU software the phase assignment is clearly labelled.",
   },
   {
-    question: "MQTT PDU monitoring mein kyun use hota hai?",
+    question: "Why is MQTT used in PDU monitoring?",
     answer:
-      "MQTT (Message Queuing Telemetry Transport) ek lightweight publish-subscribe protocol hai — low bandwidth, high frequency data streaming ke liye ideal hai. Traditional SNMP polling-based hai (query-response) — high frequency polling network load badhata hai. MQTT PDU real-time data push karta hai as events occur — outlet current change, temperature threshold, alarm trigger sab instantly published hote hain. Modern DCIM platforms aur cloud-based monitoring increasingly MQTT adopt kar rahe hain for edge infrastructure.",
+      "MQTT (Message Queuing Telemetry Transport) is a lightweight publish-subscribe protocol — ideal for low bandwidth, high frequency data streaming. Traditional SNMP is polling-based (query-response) — high frequency polling increases network load. With MQTT the PDU pushes real-time data as events occur — outlet current change, temperature threshold, alarm trigger are all published instantly. Modern DCIM platforms and cloud-based monitoring are increasingly adopting MQTT for edge infrastructure.",
   },
 ];

@@ -21,9 +21,9 @@ export default function InstallationOperation() {
       <h2 id="failure-gallery" style={S.h2}>Battery Failure Gallery</h2>
 
       <SectionIntro
-        quickAnswer="Battery failures hamesha sudden nahi hoti — physical signs hote hain jo weeks aur months pehle warn karte hain. Yeh section har common failure mode explain karta hai — kaise dikhti hai, kya cause karta hai, aur kya karna chahiye."
-        engineerTip="Monthly visual inspection routine mein ek flashlight use karo aur har cell pe deliberately 3 seconds spend karo. Swollen case, corrosion, aur leakage initially very subtle hote hain — rushing through inspection means missing early warning signs. Take photos for comparison over time."
-        keyTakeaway="Visual inspection free hai aur 30 minutes leta hai — ek missed early warning sign ka consequence 200,000+ rupee emergency replacement ho sakti hai."
+        quickAnswer="Battery failures are not always sudden — there are physical signs that warn weeks and months in advance. This section explains every common failure mode — what it looks like, what causes it, and what should be done."
+        engineerTip="In the monthly visual inspection routine, use a flashlight and deliberately spend 3 seconds on each cell. A swollen case, corrosion and leakage are initially very subtle — rushing through the inspection means missing early warning signs. Take photos for comparison over time."
+        keyTakeaway="Visual inspection is free and takes 30 minutes — the consequence of one missed early warning sign can be a 200,000+ rupee emergency replacement."
       />
 
       <ComparisonTable
@@ -45,10 +45,7 @@ export default function InstallationOperation() {
       />
 
       <Callout type="danger" title="Danger — Never Use Water on Lithium Battery Fire">
-        VRLA fire mein CO₂ ya clean agent use karo — pani electrolyte ke saath react karta hai.
-        Li-ion fire mein pani kuch cases mein hydrogen gas produce kar sakta hai — specialized
-        Li-ion suppression ya controlled cooling approach use karo per NFPA 855 aur fire
-        department guidance. Battery fire mein khud mat laro — evacuate, call fire department.
+        In a VRLA fire, use CO₂ or a clean agent — water reacts with the electrolyte. In a Li-ion fire, water can produce hydrogen gas in some cases — use specialized Li-ion suppression or a controlled cooling approach per NFPA 855 and fire department guidance. Do not fight a battery fire yourself — evacuate, call the fire department.
       </Callout>
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -58,17 +55,15 @@ export default function InstallationOperation() {
       <h2 id="installation-commissioning" style={S.h2}>Installation & Commissioning</h2>
 
       <SectionIntro
-        quickAnswer="Battery bank installation sirf batteries rack pe rakhna nahi hai — ek structured 8-step process hai jisme receiving inspection se commissioning capacity test tak sab kuch documented hona chahiye. Yeh documentation future warranty claims aur maintenance ke liye essential hai."
-        engineerTip="Sabse important commissioning step jo mostly skip hota hai: formation charge (initial charge). New VRLA batteries factory mein partial charge pe ship hoti hain. Agar tum direct UPS se connect karo bina proper initial charge ke, battery rated capacity kabhi achieve nahi karegi. Always follow OEM's initial charge procedure before connecting to UPS."
-        keyTakeaway="Commissioning documentation = warranty evidence + maintenance baseline + future replacement planning — bina documentation ke, yeh sab anecdotal ho jaata hai."
+        quickAnswer="Battery bank installation is not just placing batteries on a rack — it is a structured 8-step process in which everything from receiving inspection to the commissioning capacity test must be documented. This documentation is essential for future warranty claims and maintenance."
+        engineerTip="The most important commissioning step that mostly gets skipped: formation charge (initial charge). New VRLA batteries ship from the factory at partial charge. If you connect them directly to the UPS without a proper initial charge, the battery will never achieve its rated capacity. Always follow OEM's initial charge procedure before connecting to UPS."
+        keyTakeaway="Commissioning documentation = warranty evidence + maintenance baseline + future replacement planning — without documentation, all of this becomes anecdotal."
       />
 
       <h3 style={S.h3}>Step 1 — Battery Receiving & Inspection</h3>
 
       <p style={S.p}>
-        Batteries arrive karne pe pehle visual inspection karo before accepting delivery.
-        Shipping damage common hai — heavy VRLA cells mein internal damage possible hai even
-        agar external visible damage na ho.
+        When batteries arrive, do a visual inspection first, before accepting delivery. Shipping damage is common — internal damage is possible in heavy VRLA cells even if there is no visible external damage.
       </p>
 
       <ComparisonTable
@@ -86,26 +81,22 @@ export default function InstallationOperation() {
       <h3 style={S.h3}>Step 2 — Battery Room Readiness</h3>
 
       <p style={S.p}>
-        Batteries room mein jaane se pehle room ready hona chahiye — yeh common sense lagta hai
-        lekin field mein frequently violated hota hai.
+        The room must be ready before the batteries go into it — this seems like common sense, but it is frequently violated in the field.
       </p>
 
       <ul style={S.ul}>
-        <li>HVAC commissioned aur temperature target pe — batteries ka first week temperature sensitive hai</li>
-        <li>Ventilation working aur H₂ sensor commissioned</li>
+        <li>HVAC commissioned and at the target temperature — the batteries' first week is temperature sensitive</li>
+        <li>Ventilation working and H₂ sensor commissioned</li>
         <li>Rack anchoring verified by structural/civil team</li>
-        <li>Earthing system verified — earth resistance measured aur documented</li>
-        <li>DC cabling routed aur terminated (but battery side disconnected)</li>
+        <li>Earthing system verified — earth resistance measured and documented</li>
+        <li>DC cabling routed and terminated (but battery side disconnected)</li>
         <li>PPE available at room entry — gloves, face shield, insulated tools</li>
       </ul>
 
       <h3 style={S.h3}>Step 3 — Installation Sequence — Safe Energisation Order</h3>
 
       <Callout type="danger" title="Danger — Always Start from Negative Terminal">
-        Battery installation sequence: negative terminal pehle connect karo, positive terminal
-        baad mein. Removal mein opposite — positive pehle disconnect karo, negative baad mein.
-        Yeh AC work se different hai. DC systems mein positive terminal se earth tak accidental
-        path se severe arcing hoti hai — negative-first sequence yeh risk minimize karta hai.
+        Battery installation sequence: connect the negative terminal first, the positive terminal after. For removal, the opposite — disconnect positive first, negative after. This is different from AC work. In DC systems, an accidental path from the positive terminal to earth causes severe arcing — the negative-first sequence minimizes this risk.
       </Callout>
 
       <ComparisonTable
@@ -125,8 +116,7 @@ export default function InstallationOperation() {
       <h3 style={S.h3}>Step 4 — Formation Charge (VRLA)</h3>
 
       <p style={S.p}>
-        VRLA batteries factory se partially discharged ship hoti hain. Formation charge (initial
-        charge) rated capacity achieve karti hai aur battery ko active state mein laati hai.
+        VRLA batteries ship from the factory partially discharged. The formation charge (initial charge) achieves rated capacity and brings the battery into an active state.
       </p>
 
       <ComparisonTable
@@ -140,10 +130,7 @@ export default function InstallationOperation() {
       />
 
       <Callout type="important" title="Important — Li-ion Formation Is Different">
-        Li-ion batteries typically ship fully charged aur do not require formation charging.
-        Follow OEM procedure exactly — some Li-ion systems require a specific commissioning
-        sequence through the BMS before connecting to UPS. Never assume lead-acid procedure
-        applies to Li-ion.
+        Li-ion batteries typically ship fully charged and do not require formation charging. Follow OEM procedure exactly — some Li-ion systems require a specific commissioning sequence through the BMS before connecting to UPS. Never assume lead-acid procedure applies to Li-ion.
       </Callout>
 
       <h3 style={S.h3}>Step 5 — Commissioning Tests</h3>
@@ -169,32 +156,25 @@ export default function InstallationOperation() {
       <h2 id="operation" style={S.h2}>Operation</h2>
 
       <SectionIntro
-        quickAnswer="Battery bank ka normal operation deceptively simple lagta hai — batteries float pe rehti hain, koi action required nahi. Yeh sach nahi hai. Normal operation mein bhi monitoring, charging parameter verification, temperature management, aur periodic equalisation required hoti hai."
-        engineerTip="Operator ko ek simple habit banana chahiye: battery room mein weekly 15-minute walk-through karo. Look, smell, listen. Overcharging battery se slight acid smell aati hai. Swollen cell visible hogi. Cooling fan unusual noise karega. Yeh 15-minute walk-through ek annual capacity test se zyada early-warning value de sakta hai."
-        keyTakeaway="Battery operation = float voltage maintain + temperature control + monthly monitoring + prompt response to abnormal events — baaki sab secondary hai."
+        quickAnswer="Normal operation of a battery bank looks deceptively simple — batteries stay on float, no action required. This is not true. Even in normal operation, monitoring, charging parameter verification, temperature management and periodic equalisation are required."
+        engineerTip="The operator should build one simple habit: a weekly 15-minute walk-through of the battery room. Look, smell, listen. An overcharging battery gives off a slight acid smell. A swollen cell will be visible. A cooling fan will make an unusual noise. This 15-minute walk-through can give more early-warning value than an annual capacity test."
+        keyTakeaway="Battery operation = maintaining float voltage + temperature control + monthly monitoring + prompt response to abnormal events — everything else is secondary."
       />
 
       <h3 style={S.h3}>Normal Float Operation</h3>
 
       <p style={S.p}>
-        Grid available hone pe rectifier continuously DC bus ko power karta hai aur battery ko
-        float charge maintain karta hai. Battery fully charged hai lekin small float current
-        (typically &lt;0.5% of Ah rating) flow karta rehta hai — yeh normal hai.
+        When the grid is available, the rectifier continuously powers the DC bus and maintains the battery's float charge. The battery is fully charged, but a small float current (typically &lt;0.5% of Ah rating) keeps flowing — this is normal.
       </p>
 
       <p style={S.p}>
-        Float current ka kaam hai: self-discharge compensate karna, aur
-        oxygen recombination cycle (VRLA mein) ko sustain karna. Yeh current zero nahi
-        hota — agar zero ho toh charger fault check karo.
+        The job of the float current is: to compensate for self-discharge, and to sustain the oxygen recombination cycle (in VRLA). This current is not zero — if it is zero, check for a charger fault.
       </p>
 
       <h3 style={S.h3}>Discharge Event — What Actually Happens</h3>
 
       <p style={S.p}>
-        Grid failure pe rectifier output zero ho jaata hai instantly. DC bus voltage slightly
-        drop hoti hai — battery bank automatically yeh voltage support karna shuru karti hai.
-        Koi switch karne ki zaroorat nahi — online double conversion UPS mein yeh transition
-        completely seamless hai.
+        On grid failure, the rectifier output instantly goes to zero. DC bus voltage drops slightly — the battery bank automatically starts supporting this voltage. No switching is needed — in an online double conversion UPS this transition is completely seamless.
       </p>
 
       <ComparisonTable
@@ -211,38 +191,27 @@ export default function InstallationOperation() {
       <h3 style={S.h3}>Recharge After Discharge</h3>
 
       <p style={S.p}>
-        Discharge event ke baad recharge time important hai. VRLA 10-minute discharge ke
-        baad fully recharge hone mein 8–12 hours lagti hai at standard 0.1C charge rate.
-        In 8–12 hours mein agar doosra grid failure hoti hai, battery full capacity nahi degi.
+        The recharge time after a discharge event is important. After a 10-minute discharge, VRLA takes 8–12 hours to fully recharge at the standard 0.1C charge rate. If another grid failure happens in these 8–12 hours, the battery will not give full capacity.
       </p>
 
       <Callout type="important" title="Important — Second Outage Risk Window">
-        Discharge event ke baad 8–12 hours tak battery only partially charged hai. Is window
-        mein: (1) DG Set must be kept running even if grid restores, (2) Notify NOC that
-        battery is in recharge — reduced backup time available, (3) Consider load reduction if
-        possible during recharge. Many sites have SOPs for &quot;battery recharge watch period&quot;.
+        For 8–12 hours after a discharge event, the battery is only partially charged. In this window: (1) DG Set must be kept running even if grid restores, (2) Notify NOC that battery is in recharge — reduced backup time available, (3) Consider load reduction if possible during recharge. Many sites have SOPs for &quot;battery recharge watch period&quot;.
       </Callout>
 
       <h3 style={S.h3}>Equalisation Charging — When and How</h3>
 
       <p style={S.p}>
-        Equalisation charge float se higher voltage pe periodically apply ki jaati hai to balance
-        cells. VRLA AGM ke liye: 2.33–2.40V/cell for 1–4 hours maximum, as per OEM schedule
-        (typically monthly or quarterly).
+        An equalisation charge is applied periodically at a voltage higher than float to balance cells. For VRLA AGM: 2.33–2.40V/cell for 1–4 hours maximum, as per OEM schedule (typically monthly or quarterly).
       </p>
 
       <Callout type="warning" title="Warning — Over-Equalisation Damages VRLA">
-        Equalisation kabhi bhi unmonitored mat chodo. Duration OEM specification se exceed
-        mat karo — AGM mat mein electrolyte dry-out ka risk hai agar equalisation too long
-        continue kare. Gel batteries ke liye equalisation procedure different hoti hai —
-        Gel OEM datasheet specifically follow karo. LFP ko equalisation ki zaroorat nahi.
+        Never leave equalisation unmonitored. Do not exceed the duration in the OEM specification — there is a risk of electrolyte dry-out in the AGM mat if equalisation continues too long. The equalisation procedure is different for Gel batteries — specifically follow the Gel OEM datasheet. LFP does not need equalisation.
       </Callout>
 
       <h3 style={S.h3}>Temperature Compensation of Charge Voltage</h3>
 
       <p style={S.p}>
-        Charger float voltage temperature ke saath adjust hona chahiye. Typical coefficient
-        for VRLA: <strong>−3 to −4 mV per cell per °C above 25°C</strong>.
+        Charger float voltage should adjust with temperature. Typical coefficient for VRLA: <strong>−3 to −4 mV per cell per °C above 25°C</strong>.
       </p>
 
       <ComparisonTable
@@ -256,9 +225,7 @@ export default function InstallationOperation() {
       />
 
       <p style={S.p}>
-        Agar charger mein temperature compensation module nahi hai ya disabled hai, toh
-        India summer (40–45°C battery room) mein chronic overcharge hogi — sabse common
-        premature failure cause for Indian Data Centers.
+        If the charger has no temperature compensation module, or it is disabled, there will be chronic overcharge in the Indian summer (40–45°C battery room) — the most common premature failure cause for Indian Data Centers.
       </p>
     </>
   );

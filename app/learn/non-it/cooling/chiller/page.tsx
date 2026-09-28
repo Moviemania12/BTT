@@ -6,11 +6,18 @@ import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
   title: "Chiller in Data Centers — Complete Guide | Behind The Tech",
-  description: "Chiller kya hai, kaise kaam karta hai, Data Center mein kyun use hota hai — chilled water system, types, components, maintenance aur troubleshooting complete guide.",
+  description: "What is a chiller, how does it work, why is it used in a Data Center — chilled water system, types, components, maintenance and troubleshooting complete guide.",
   keywords: ["chiller data center", "chilled water system", "data center cooling chiller", "screw chiller", "centrifugal chiller"],
-  openGraph: { title: "Chiller in Data Centers — Complete Guide", description: "Chilled water system ka heart — chiller kaise kaam karta hai aur large data centers mein kyun zaroori hai.", url: "https://behindthetech.in/learn/non-it/cooling/chiller", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "Chiller Explained — Behind The Tech", description: "Chiller — large Data Center cooling ka central system. Complete guide." },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/cooling/chiller" },
+  openGraph: { title: "Chiller in Data Centers — Complete Guide", description: "The heart of the chilled water system — how a chiller works and why it is essential in large data centers.", url: "https://behindthetech.in/learn/non-it/cooling/chiller", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
+  twitter: { card: "summary_large_image", title: "Chiller Explained — Behind The Tech", description: "Chiller — the central system of large Data Center cooling. Complete guide." },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/cooling/chiller",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/cooling/chiller",
+      hi: "https://behindthetech.in/hi/learn/non-it/cooling/chiller",
+      "x-default": "https://behindthetech.in/learn/non-it/cooling/chiller",
+    },
+  },
 };
 
 const HEADINGS: ArticleHeading[] = [
@@ -51,12 +58,12 @@ const S = {
 
 function QuickSummary() {
   const pts = [
-    { label: "Ek line mein", text: "Chiller ek machine hai jo paani ko thanda karta hai (chilled water). Ye thanda paani phir CRAH units mein jaata hai jo Data Center air cool karte hain." },
-    { label: "DX se kya fark", text: "CRAC/PAC directly air cool karte hain (DX). Chiller pehle water cool karta hai, phir wo water air cool karta hai. Chiller = centralized, DX = distributed." },
-    { label: "Kab use hota hai", text: "Large data centers mein — jahan 500 kW+ cooling chahiye. Chhote centers mein CRAC/PAC theek hai. Large centers mein chiller zyada efficient aur scalable hai." },
-    { label: "Chilled water temp", text: "Chiller pani ko typically 6-7°C tak thanda karta hai (chilled water supply). Return water 12-13°C pe wapas aata hai. 5-6°C ka temperature difference — yahi heat carry karta hai." },
-    { label: "Cooling tower kahan aata hai", text: "Water-cooled chiller mein condenser side pe cooling tower lagta hai. Chiller ki heat cooling tower mein reject hoti hai. Air-cooled chiller mein outdoor air se heat reject hoti hai." },
-    { label: "N+1 ya 2N", text: "Tier III data centers mein N+1 chiller redundancy. Tier IV mein 2N — two completely independent chiller plants. Ek fail ho to doosra immediately poora load le." },
+    { label: "In one line", text: "A chiller is a machine that cools water (chilled water). This cold water then goes to CRAH units, which cool the Data Center air." },
+    { label: "Difference from DX", text: "CRAC/PAC cool air directly (DX). A chiller first cools water, then that water cools the air. Chiller = centralized, DX = distributed." },
+    { label: "When it is used", text: "In large data centers — where 500 kW+ of cooling is needed. In small centers CRAC/PAC is fine. In large centers a chiller is more efficient and scalable." },
+    { label: "Chilled water temp", text: "A chiller typically cools water to 6-7°C (chilled water supply). Return water comes back at 12-13°C. The 5-6°C temperature difference — this is what carries the heat." },
+    { label: "Where the cooling tower comes in", text: "In a water-cooled chiller, a cooling tower is installed on the condenser side. The chiller's heat is rejected in the cooling tower. In an air-cooled chiller, heat is rejected into the outdoor air." },
+    { label: "N+1 or 2N", text: "N+1 chiller redundancy in Tier III data centers. 2N in Tier IV — two completely independent chiller plants. If one fails, the other immediately takes the whole load." },
   ];
   return (
     <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", margin: "8px 0 32px" }}>
@@ -91,10 +98,7 @@ function InsightCard({ children }: { children: React.ReactNode }) {
 function EngineerTip({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", margin: "20px 0 24px" }}>
-      <div style={{ height: 2, background: "#ffa500" }} />
-      <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}>
-        <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer Ki Tip</span>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
+      <div style={{ height: 2, background: "#ffa500" }} /> <div style={{ background: "rgba(255,165,0,0.04)", border: "1px solid rgba(255,165,0,0.16)", borderTop: "none", padding: "16px 20px 18px" }}> <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#ffa500", fontWeight: 600, marginBottom: 9 }}>Engineer's Tip</span> <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "#1f2937" }}>{children}</div>
       </div>
     </div>
   );
@@ -169,12 +173,12 @@ function FlowDiagram({ caption, steps }: { caption: string; steps: { icon: strin
 }
 
 const FAQS = [
-  { q: "Chiller aur CRAC mein kya basic difference hai?", a: "CRAC directly air cool karta hai (DX). Chiller pehle water cool karta hai, wo chilled water CRAH units mein jaata hai jo air cool karte hain. Chiller = centralized water cooling. CRAC = decentralized air cooling. Large data centers mein chiller zyada efficient hai." },
-  { q: "Chilled water supply aur return temperature kya hoti hai?", a: "Typical values: CHW supply (CHWS) = 6-7°C (chiller se nikalta hai), CHW return (CHWR) = 12-13°C (CRAH se wapas aata hai). 5-6°C temperature differential. Higher delta T = better chiller efficiency." },
-  { q: "COP kya hota hai aur chiller ke liye kya value honi chahiye?", a: "COP = Coefficient of Performance = cooling capacity / power input. Higher COP = more efficient. Typical: Air-cooled chiller COP 2.5-4.5, Water-cooled chiller COP 4.0-7.0+. Higher COP = kam electricity, kam cost." },
-  { q: "Chiller plant mein redundancy kaise design hoti hai?", a: "Tier III: N+1 — ek extra chiller. Tier IV: 2N — two completely separate chiller plants, independent piping, independent cooling towers. Ek complete plant fail ho to doosra instantly pora load handle kare." },
-  { q: "Free cooling kya hota hai?", a: "Jab outdoor temperature chilled water temperature se kam ho, chiller bypass karke outdoor air se directly cooling ho sakti hai. Energy saving — chiller compressor run nahi hota. India mein winters mein possible (December-February). 'Economizer mode' bhi kehte hain." },
-  { q: "Chiller room mein kya kya hota hai?", a: "Chillers (typically 2 ya zyada), Chilled Water Pumps (primary + secondary loop), Condenser Water Pumps (water-cooled ke liye), cooling headers, expansion tanks, chemical dosing units, flow meters, pressure gauges, BMS panels. Ek complete chiller plant." },
+  { q: "What is the basic difference between a Chiller and a CRAC?", a: "A CRAC cools air directly (DX). A chiller first cools water; that chilled water goes to CRAH units, which cool the air. Chiller = centralized water cooling. CRAC = decentralized air cooling. In large data centers a chiller is more efficient." },
+  { q: "What are the chilled water supply and return temperatures?", a: "Typical values: CHW supply (CHWS) = 6-7°C (comes out of the chiller), CHW return (CHWR) = 12-13°C (comes back from the CRAH). 5-6°C temperature differential. Higher delta T = better chiller efficiency." },
+  { q: "What is COP and what value should a chiller have?", a: "COP = Coefficient of Performance = cooling capacity / power input. Higher COP = more efficient. Typical: Air-cooled chiller COP 2.5-4.5, Water-cooled chiller COP 4.0-7.0+. Higher COP = less electricity, less cost." },
+  { q: "How is redundancy designed in a chiller plant?", a: "Tier III: N+1 — one extra chiller. Tier IV: 2N — two completely separate chiller plants, independent piping, independent cooling towers. If one complete plant fails, the other instantly handles the whole load." },
+  { q: "What is free cooling?", a: "When the outdoor temperature is lower than the chilled water temperature, cooling can be done directly from outdoor air by bypassing the chiller. Energy saving — the chiller compressor does not run. Possible in India in winters (December-February). Also called 'economizer mode'." },
+  { q: "What is in a chiller room?", a: "Chillers (typically 2 or more), Chilled Water Pumps (primary + secondary loop), Condenser Water Pumps (for water-cooled), cooling headers, expansion tanks, chemical dosing units, flow meters, pressure gauges, BMS panels. A complete chiller plant." },
 ];
 
 function FAQSection() {
@@ -200,20 +204,20 @@ export default function ChillerPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="chiller" headings={HEADINGS} readingTimeMinutes={20}>
+      <ArticleLayout slug="chiller" headings={HEADINGS} readingTimeMinutes={20} lang="en" alternateHref="/hi/learn/non-it/cooling/chiller">
 
-        <p style={S.p}>Imagine karo ek 10 MW hyperscale data center — Facebook, Google, Amazon jaise.</p>
-        <p style={S.p}>Is data center mein 50,000+ servers hain. Heat generation hogi: <strong>10,000+ kW.</strong></p>
-        <p style={S.p}>Kya tum yahan 500 CRAC units lagaaoge? Technically possible hai — practically it's a nightmare.</p>
-        <p style={S.p}>Large data centers ke liye ek <strong>centralized cooling system</strong> chahiye hota hai.</p>
-        <p style={S.p}>Ye centralized system hai — <strong>Chiller Plant.</strong></p>
-        <p style={S.p}>Chiller ka kaam hai: <strong>Paani thanda karo. Ye thanda paani data center tak bhejo. Data center thanda ho jaayega.</strong></p>
+        <p style={S.p}>Imagine a 10 MW hyperscale data center — like Facebook, Google, Amazon.</p>
+        <p style={S.p}>This data center has 50,000+ servers. Heat generation will be: <strong>10,000+ kW.</strong></p>
+        <p style={S.p}>Will you install 500 CRAC units here? It is technically possible — practically it's a nightmare.</p>
+        <p style={S.p}>Large data centers need a <strong>centralized cooling system</strong>.</p>
+        <p style={S.p}>This centralized system is — <strong>the Chiller Plant.</strong></p>
+        <p style={S.p}>The chiller's job is: <strong>Cool the water. Send this cold water to the data center. The data center will be cooled.</strong></p>
 
         <figure style={S.imageFigure}>
           <div style={S.articleImage}>
             <Image src="/images/articles/chiller/chiller-plant-data-center.png" alt="Chiller plant with multiple chiller units in a large data center" fill sizes="(max-width: 768px) 100vw, 740px" style={{ objectFit: "cover" }} />
           </div>
-          <figcaption style={S.imageCaption}>Chiller plant — multiple chiller units parallel mein. Ye large data center cooling ka heart hai.</figcaption>
+          <figcaption style={S.imageCaption}>Chiller plant — multiple chiller units in parallel. This is the heart of large data center cooling.</figcaption>
         </figure>
 
         <QuickSummary />
@@ -222,14 +226,14 @@ export default function ChillerPage() {
 
         <h2 id="what-is-chiller" style={S.h1}>What Is a Chiller?</h2>
 
-        <p style={S.p}><strong>Chiller ek refrigeration machine hai jo water ko thanda karta hai.</strong></p>
-        <p style={S.p}>Simple language mein: Chiller ek bahut bada air conditioner hai — lekin ye room cool nahi karta, <strong>paani cool karta hai.</strong></p>
-        <p style={S.p}>Ye thanda paani (Chilled Water — CHW) phir CRAH (Computer Room Air Handler) units mein piping ke through jaata hai.</p>
-        <p style={S.p}>CRAH mein ye thanda paani coils mein se guzarta hai. Server racks se warm air in coils ke upar se jaati hai. Air thandi ho jaati hai. Warm water wapas chiller mein return hota hai.</p>
+        <p style={S.p}><strong>A chiller is a refrigeration machine that cools water.</strong></p>
+        <p style={S.p}>In simple language: a chiller is a very big air conditioner — but it does not cool a room, <strong>it cools water.</strong></p>
+        <p style={S.p}>This cold water (Chilled Water — CHW) then goes through piping to CRAH (Computer Room Air Handler) units.</p>
+        <p style={S.p}>In the CRAH, this cold water passes through coils. Warm air from the server racks goes over these coils. The air gets cooled. The warm water returns to the chiller.</p>
         <p style={S.p}><strong>Chiller → cool water → CRAH → cool air → servers.</strong></p>
 
         <InsightCard>
-          Refrigerator analogya: Ghar ka refrigerator andar ki cheezein thandi rakhta hai, bahar heat nikalta hai. Chiller bhi same kaam karta hai — lekin "andar" = chilled water loop, "bahar" = cooling tower ya outdoor air. Refrigerator se 1000 guna bada samjho.
+          Refrigerator analogy: a home refrigerator keeps the things inside cold and throws heat outside. A chiller does the same job — but "inside" = the chilled water loop, "outside" = the cooling tower or outdoor air. Think of it as 1000 times bigger than a refrigerator.
         </InsightCard>
 
         <DCMapNote components={["Chiller", "CRAH", "Cooling Tower", "Chilled Water Pumps", "Condenser Water Pumps", "Expansion Tank"]} />
@@ -238,8 +242,8 @@ export default function ChillerPage() {
 
         <h2 id="why-needed" style={S.h1}>Why Is Chiller Needed?</h2>
 
-        <p style={S.p}>Chhote data center ({'<'} 200 kW) ke liye CRAC/PAC units theek kaam karte hain.</p>
-        <p style={S.p}>Lekin jab data center bada hone lagta hai:</p>
+        <p style={S.p}>For a small data center ({'<'} 200 kW), CRAC/PAC units work fine.</p>
+        <p style={S.p}>But when the data center starts getting big:</p>
         <ul style={S.ul}>
           <li style={S.li}>500 kW cooling need → 20+ CRAC units</li>
           <li style={S.li}>1 MW cooling → 40+ CRAC units</li>
@@ -248,56 +252,56 @@ export default function ChillerPage() {
         <p style={S.p}>200 CRAC units = 200 compressors, 200 outdoor condensers, 200 refrigerant systems = maintenance nightmare + high energy cost.</p>
 
         <WhyThisMatters>
-          Chiller plant mein 3-4 chillers se 5 MW cooling achieve ho sakti hai. Ek centralized system = less maintenance, better efficiency, easier control. Data centers mein PUE (Power Usage Effectiveness) improve karna goal hota hai — chiller plant isme significantly contribute karta hai. Modern data centers ka PUE 1.2-1.4 achieve karna possible ho jaata hai efficient chiller plants se.
+          In a chiller plant, 5 MW of cooling can be achieved with 3-4 chillers. One centralized system = less maintenance, better efficiency, easier control. In data centers the goal is to improve PUE (Power Usage Effectiveness) — the chiller plant contributes significantly to this. Achieving a PUE of 1.2-1.4 in modern data centers becomes possible with efficient chiller plants.
         </WhyThisMatters>
 
         <hr style={S.divider} />
 
         <h2 id="working-principle" style={S.h1}>Working Principle</h2>
 
-        <p style={S.p}>Chiller same refrigeration cycle use karta hai jo CRAC mein hoti hai — but with one key difference: <strong>refrigerant water cool karta hai, air nahi.</strong></p>
+        <p style={S.p}>A chiller uses the same refrigeration cycle as a CRAC — but with one key difference: <strong>the refrigerant cools water, not air.</strong></p>
         <p style={S.p}><strong>Chiller = Refrigeration machine + Heat exchanger (refrigerant ↔ water)</strong></p>
 
         <FlowDiagram
           caption="Chiller refrigeration cycle — same 4 steps, but cooling water not air"
           steps={[
-            { icon: "💧", label: "Evaporator", sublabel: "Water cool hota hai" },
+            { icon: "💧", label: "Evaporator", sublabel: "Water gets cooled" },
             { icon: "⚙️", label: "Compressor", sublabel: "Refrigerant compress" },
             { icon: "🌡️", label: "Condenser", sublabel: "Heat reject (tower/air)" },
             { icon: "🔧", label: "Expansion Valve", sublabel: "Pressure drop" },
           ]}
         />
 
-        <h3 style={S.h3}>Evaporator (Chiller Ke Andar)</h3>
-        <p style={S.p}>Low pressure refrigerant evaporator mein hai. Chilled water return (12-13°C) evaporator se guzarta hai. Refrigerant water ki heat absorb karke gas ban jaata hai. Water thanda ho jaata hai — 6-7°C. Ye thanda water CRAH ke paas jaata hai.</p>
+        <h3 style={S.h3}>Evaporator (Inside the Chiller)</h3>
+        <p style={S.p}>Low pressure refrigerant is in the evaporator. Chilled water return (12-13°C) passes through the evaporator. The refrigerant absorbs the water's heat and turns into gas. The water gets cooled — to 6-7°C. This cold water goes to the CRAH.</p>
 
         <h3 style={S.h3}>Condenser (Heat Rejection Side)</h3>
-        <p style={S.p}>Hot high-pressure refrigerant gas condenser mein jaata hai. Water-cooled chiller mein: condenser water (cooling tower se) heat absorb karta hai. Air-cooled chiller mein: outdoor air se heat reject hoti hai. Refrigerant liquid ban jaata hai.</p>
+        <p style={S.p}>The hot high-pressure refrigerant gas goes into the condenser. In a water-cooled chiller: condenser water (from the cooling tower) absorbs the heat. In an air-cooled chiller: heat is rejected into the outdoor air. The refrigerant turns into liquid.</p>
 
         <hr style={S.divider} />
 
         <h2 id="chilled-water-loop" style={S.h1}>Chilled Water Loop Explained</h2>
 
-        <p style={S.p}>Chiller sirf ek component hai. Poora system — Chilled Water System — samajhna zaroori hai.</p>
+        <p style={S.p}>The chiller is just one component. It is essential to understand the whole system — the Chilled Water System.</p>
 
         <FlowDiagram
-          caption="Complete chilled water loop — chiller se CRAH tak aur wapas"
+          caption="Complete chilled water loop — from the chiller to the CRAH and back"
           steps={[
-            { icon: "🧊", label: "Chiller", sublabel: "Water cool karta hai (6-7°C)" },
-            { icon: "⚡", label: "CHW Pump", sublabel: "Water pump karta hai" },
-            { icon: "🌬️", label: "CRAH Unit", sublabel: "Air cool karta hai" },
-            { icon: "🔄", label: "Return", sublabel: "12-13°C wapas chiller" },
+            { icon: "🧊", label: "Chiller", sublabel: "Cools water (6-7°C)" },
+            { icon: "⚡", label: "CHW Pump", sublabel: "Pumps water" },
+            { icon: "🌬️", label: "CRAH Unit", sublabel: "Cools air" },
+            { icon: "🔄", label: "Return", sublabel: "12-13°C back to chiller" },
           ]}
         />
 
         <h3 style={S.h3}>Primary Loop</h3>
-        <p style={S.p}>Chiller se directly CRAH tak chilled water jaata hai. Primary CHW pumps chiller ke saath closely coupled hote hain. Constant flow maintain karta hai chiller ke through.</p>
+        <p style={S.p}>Chilled water goes directly from the chiller to the CRAH. Primary CHW pumps are closely coupled with the chiller. They maintain constant flow through the chiller.</p>
 
         <h3 style={S.h3}>Secondary Loop (Variable Flow)</h3>
-        <p style={S.p}>Primary loop se decoupled. Variable speed pumps — load ke hisaab se flow adjust hota hai. Energy efficient — full speed sirf full load pe. Decoupling header primary aur secondary ko separate karta hai.</p>
+        <p style={S.p}>Decoupled from the primary loop. Variable speed pumps — flow adjusts according to load. Energy efficient — full speed only at full load. The decoupling header separates the primary and secondary.</p>
 
         <EngineerTip>
-          Delta T samjho — yahi chiller efficiency ka indicator hai. Delta T = return temperature - supply temperature. Target: 5-6°C. Agar delta T 3°C hai to pumps zyada water circulate kar rahe hain — energy waste. Agar delta T 8°C hai to CRAH coils fouled hain ya flow problem hai. Delta T monitor karo, optimize karo.
+          Understand delta T — it is the indicator of chiller efficiency. Delta T = return temperature - supply temperature. Target: 5-6°C. If delta T is 3°C, the pumps are circulating more water — energy waste. If delta T is 8°C, the CRAH coils are fouled or there is a flow problem. Monitor delta T, optimize it.
         </EngineerTip>
 
         <hr style={S.divider} />
@@ -305,22 +309,22 @@ export default function ChillerPage() {
         <h2 id="main-components" style={S.h1}>Main Components</h2>
 
         <h3 style={S.h3}>1. Chiller Unit</h3>
-        <p style={S.p}>Compressor (screw, centrifugal, reciprocating), evaporator, condenser, expansion device, controls — sab ek package mein. Typically 200 kW to 2000+ kW per unit.</p>
+        <p style={S.p}>Compressor (screw, centrifugal, reciprocating), evaporator, condenser, expansion device, controls — all in one package. Typically 200 kW to 2000+ kW per unit.</p>
 
         <h3 style={S.h3}>2. Chilled Water Pumps (CHWP)</h3>
-        <p style={S.p}>Chilled water ko chiller se CRAH tak pump karte hain. Primary pumps: chiller ke saath, constant flow. Secondary pumps: distribution, variable flow (VFD se controlled).</p>
+        <p style={S.p}>They pump chilled water from the chiller to the CRAH. Primary pumps: with the chiller, constant flow. Secondary pumps: distribution, variable flow (controlled by VFD).</p>
 
-        <h3 style={S.h3}>3. Cooling Tower (Water-Cooled Chiller Mein)</h3>
-        <p style={S.p}>Chiller condenser heat ko reject karta hai — cooling tower mein. Cooling tower evaporative cooling se heat atmosphere mein bhejta hai. Condenser water pumps cooling tower se condenser tak water circulate karte hain.</p>
+        <h3 style={S.h3}>3. Cooling Tower (In a Water-Cooled Chiller)</h3>
+        <p style={S.p}>The chiller condenser rejects heat — into the cooling tower. The cooling tower sends heat into the atmosphere through evaporative cooling. Condenser water pumps circulate water from the cooling tower to the condenser.</p>
 
         <h3 style={S.h3}>4. Expansion Tank</h3>
-        <p style={S.p}>Water temperature change hone se volume change hota hai. Expansion tank ye volume change absorb karta hai. Pressure stable rakhta hai system mein.</p>
+        <p style={S.p}>When water temperature changes, its volume changes. The expansion tank absorbs this volume change. It keeps the pressure in the system stable.</p>
 
         <h3 style={S.h3}>5. Chemical Dosing System</h3>
-        <p style={S.p}>Water treatment chemicals dose karta hai — scale, corrosion, biological growth rokta hai. Closed CHW loop mein less treatment needed. Open cooling tower loop mein regular treatment zaroori.</p>
+        <p style={S.p}>It doses water treatment chemicals — stops scale, corrosion and biological growth. Less treatment is needed in the closed CHW loop. Regular treatment is essential in the open cooling tower loop.</p>
 
         <h3 style={S.h3}>6. BMS (Building Management System) Integration</h3>
-        <p style={S.p}>Chiller plant sab BMS se connected. Temperature, flow, pressure, alarms — centrally monitored. Automatic chiller sequencing — load badhne pe next chiller start.</p>
+        <p style={S.p}>The chiller plant is all connected to the BMS. Temperature, flow, pressure, alarms — centrally monitored. Automatic chiller sequencing — when load increases, the next chiller starts.</p>
 
         <hr style={S.divider} />
 
@@ -330,18 +334,18 @@ export default function ChillerPage() {
           <div style={S.articleImage}>
             <Image src="/images/articles/chiller/chiller-crah-data-center-layout.png" alt="Chiller plant connected to CRAH units in data center" fill sizes="(max-width: 768px) 100vw, 740px" style={{ objectFit: "cover" }} />
           </div>
-          <figcaption style={S.imageCaption}>Chiller se CRAH tak chilled water flow. Chiller plant bahar/basement mein hota hai. CRAH server hall mein.</figcaption>
+          <figcaption style={S.imageCaption}>Chilled water flow from the chiller to the CRAH. The chiller plant is outside/in the basement. The CRAH is in the server hall.</figcaption>
         </figure>
 
-        <p style={S.p}><strong>Step 1:</strong> Server racks heat generate karte hain. CRAH units warm return air kheechte hain.</p>
-        <p style={S.p}><strong>Step 2:</strong> CRAH mein chilled water coil se warm air guzarti hai. Water heat absorb karta hai. Air thandi ho jaati hai.</p>
-        <p style={S.p}><strong>Step 3:</strong> Cool air server racks ko supply hoti hai (cold aisle mein).</p>
-        <p style={S.p}><strong>Step 4:</strong> Warm return water (12-13°C) chiller ke evaporator mein wapas aata hai.</p>
-        <p style={S.p}><strong>Step 5:</strong> Chiller ye water thanda karta hai (6-7°C). Cycle repeat.</p>
-        <p style={S.p}><strong>Step 6:</strong> Chiller ki condenser heat cooling tower mein reject hoti hai → cooling tower atmosphere mein heat bhejta hai.</p>
+        <p style={S.p}><strong>Step 1:</strong> Server racks generate heat. CRAH units pull in the warm return air.</p>
+        <p style={S.p}><strong>Step 2:</strong> In the CRAH, warm air passes over the chilled water coil. The water absorbs the heat. The air gets cooled.</p>
+        <p style={S.p}><strong>Step 3:</strong> Cool air is supplied to the server racks (into the cold aisle).</p>
+        <p style={S.p}><strong>Step 4:</strong> Warm return water (12-13°C) comes back into the chiller's evaporator.</p>
+        <p style={S.p}><strong>Step 5:</strong> The chiller cools this water (6-7°C). Cycle repeats.</p>
+        <p style={S.p}><strong>Step 6:</strong> The chiller's condenser heat is rejected in the cooling tower → the cooling tower sends the heat into the atmosphere.</p>
 
         <InsightCard>
-          Chiller plant typically data center building ke bahar ya basement mein hota hai. CRAH units server hall ke andar hote hain. Dono ke beech chilled water piping — insulated agar outdoor ho. Ye separation isliye hai ki heavy machinery (chiller, cooling tower) ka vibration aur noise server hall mein na aaye.
+          The chiller plant is typically outside the data center building or in the basement. CRAH units are inside the server hall. Between the two is chilled water piping — insulated if outdoor. This separation exists so that the vibration and noise of heavy machinery (chiller, cooling tower) do not come into the server hall.
         </InsightCard>
 
         <hr style={S.divider} />
@@ -352,14 +356,14 @@ export default function ChillerPage() {
         <ul style={S.ul}>
           <li style={S.li}><strong>Screw Chiller:</strong> Twin screw compressor. Most common in data centers 200-2000 kW range. Reliable, part-load efficient. Industry standard choice.</li>
           <li style={S.li}><strong>Centrifugal Chiller:</strong> Large capacity (1000-5000+ kW). Highest efficiency at full load. Common in hyperscale data centers. Magnetic bearing variants — oil-free, very low maintenance.</li>
-          <li style={S.li}><strong>Reciprocating Chiller:</strong> Older technology, smaller capacities. Less common now — scroll ya screw ne replace kiya.</li>
-          <li style={S.li}><strong>Absorption Chiller:</strong> Heat driven — no electric compressor. Uses steam/hot water. Rare in data centers — specific applications mein.</li>
+          <li style={S.li}><strong>Reciprocating Chiller:</strong> Older technology, smaller capacities. Less common now — replaced by scroll or screw.</li>
+          <li style={S.li}><strong>Absorption Chiller:</strong> Heat driven — no electric compressor. Uses steam/hot water. Rare in data centers — used in specific applications.</li>
         </ul>
 
         <h3 style={S.h3}>By Condenser Cooling</h3>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Air-Cooled Chiller:</strong> Outdoor air se heat reject. No cooling tower needed. Less efficient. Smaller installations.</li>
-          <li style={S.li}><strong>Water-Cooled Chiller:</strong> Cooling tower se heat reject. More efficient (COP 4-7+). Requires cooling tower + condenser water pump. Standard for large data centers.</li>
+          <li style={S.li}><strong>Air-Cooled Chiller:</strong> Rejects heat into outdoor air. No cooling tower needed. Less efficient. Smaller installations.</li>
+          <li style={S.li}><strong>Water-Cooled Chiller:</strong> Rejects heat through a cooling tower. More efficient (COP 4-7+). Requires a cooling tower + condenser water pump. Standard for large data centers.</li>
         </ul>
 
         <hr style={S.divider} />
@@ -368,8 +372,8 @@ export default function ChillerPage() {
         <ul style={S.ul}>
           <li style={S.li}><strong>Centralized cooling:</strong> One plant, full facility cool — easier to manage</li>
           <li style={S.li}><strong>High efficiency:</strong> Water-cooled chiller COP 4-7 — better than DX (COP 2.5-4)</li>
-          <li style={S.li}><strong>Scalable:</strong> Load badhne pe chiller add karo</li>
-          <li style={S.li}><strong>Free cooling potential:</strong> Cold weather mein economizer mode — compressor bypass</li>
+          <li style={S.li}><strong>Scalable:</strong> Add chillers as load increases</li>
+          <li style={S.li}><strong>Free cooling potential:</strong> Economizer mode in cold weather — compressor bypass</li>
           <li style={S.li}><strong>Better humidity control:</strong> Centralized dehumidification possible</li>
           <li style={S.li}><strong>Lower PUE:</strong> Energy efficient → better Power Usage Effectiveness</li>
         </ul>
@@ -378,12 +382,12 @@ export default function ChillerPage() {
 
         <h2 id="disadvantages" style={S.h1}>Disadvantages</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>High initial cost:</strong> Chiller plant infrastructure expensive hai</li>
-          <li style={S.li}><strong>Complex system:</strong> Chillers, pumps, cooling towers, piping — sab manage karo</li>
-          <li style={S.li}><strong>Water requirements:</strong> Cooling tower mein water evaporation — makeup water chahiye</li>
-          <li style={S.li}><strong>Water treatment:</strong> Regular chemical treatment — Legionella prevention bhi</li>
+          <li style={S.li}><strong>High initial cost:</strong> Chiller plant infrastructure is expensive</li>
+          <li style={S.li}><strong>Complex system:</strong> Chillers, pumps, cooling towers, piping — all have to be managed</li>
+          <li style={S.li}><strong>Water requirements:</strong> Water evaporates in the cooling tower — makeup water is needed</li>
+          <li style={S.li}><strong>Water treatment:</strong> Regular chemical treatment — also Legionella prevention</li>
           <li style={S.li}><strong>Piping failure risk:</strong> Leaks can cause serious water damage to IT equipment</li>
-          <li style={S.li}><strong>Not suitable for small DC:</strong> Over-engineering small sites ke liye</li>
+          <li style={S.li}><strong>Not suitable for small DC:</strong> Over-engineering for small sites</li>
         </ul>
 
         <hr style={S.divider} />
@@ -402,19 +406,19 @@ export default function ChillerPage() {
         <h2 id="common-faults" style={S.h1}>Common Faults</h2>
 
         <h3 style={S.h3}>High Chilled Water Supply Temperature</h3>
-        <p style={S.p}>Cause: Chiller fault, low refrigerant, high load, fouled evaporator. Impact: CRAH inlet temperature badhta hai, server cooling affected. Action: Chiller status check, refrigerant check, load balance karo.</p>
+        <p style={S.p}>Cause: Chiller fault, low refrigerant, high load, fouled evaporator. Impact: CRAH inlet temperature rises, server cooling is affected. Action: Check chiller status, check refrigerant, balance the load.</p>
 
         <h3 style={S.h3}>Chiller Trip / Fault</h3>
-        <p style={S.p}>Cause: High condenser pressure, compressor fault, electrical trip, safety limit. Action: Standby chiller start confirm karo, fault code read karo, qualified technician call karo.</p>
+        <p style={S.p}>Cause: High condenser pressure, compressor fault, electrical trip, safety limit. Action: Confirm the standby chiller has started, read the fault code, call a qualified technician.</p>
 
         <h3 style={S.h3}>Low Chilled Water Flow</h3>
-        <p style={S.p}>Cause: Pump failure, valve closed, filter clogged. Impact: Chiller capacity reduce, high CHWS temperature. Action: Pump status, valve positions, strainer clean karo.</p>
+        <p style={S.p}>Cause: Pump failure, valve closed, filter clogged. Impact: Chiller capacity reduces, high CHWS temperature. Action: Pump status, valve positions, clean the strainer.</p>
 
         <h3 style={S.h3}>Cooling Tower Fault</h3>
-        <p style={S.p}>Cause: Fan failure, low water level, drift eliminator block. Impact: Condenser water temperature rise → high condenser pressure → chiller trip possible. Action: CT fan check, water makeup, condenser pressure monitor karo.</p>
+        <p style={S.p}>Cause: Fan failure, low water level, drift eliminator block. Impact: Condenser water temperature rise → high condenser pressure → chiller trip possible. Action: Check the CT fan, water makeup, monitor condenser pressure.</p>
 
         <h3 style={S.h3}>High Delta T</h3>
-        <p style={S.p}>Cause: CRAH coil fouled, flow imbalance, air side problem. Impact: Chiller working harder, higher energy. Action: CRAH coil clean karo, flow balancing valve check karo.</p>
+        <p style={S.p}>Cause: CRAH coil fouled, flow imbalance, air side problem. Impact: Chiller working harder, higher energy. Action: Clean the CRAH coil, check the flow balancing valve.</p>
 
         <hr style={S.divider} />
 
@@ -422,26 +426,26 @@ export default function ChillerPage() {
 
         <h3 style={S.h3}>Monthly</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Chiller operating parameters log karo (temperatures, pressures, currents)</li>
-          <li style={S.li}>Chilled water quality test karo — pH, TDS, inhibitor levels</li>
+          <li style={S.li}>Log chiller operating parameters (temperatures, pressures, currents)</li>
+          <li style={S.li}>Test chilled water quality — pH, TDS, inhibitor levels</li>
           <li style={S.li}>Cooling tower water quality — biocide treatment</li>
-          <li style={S.li}>Pump vibration aur noise check karo</li>
-          <li style={S.li}>Strainer baskets clean karo</li>
+          <li style={S.li}>Check pump vibration and noise</li>
+          <li style={S.li}>Clean the strainer baskets</li>
         </ul>
 
         <h3 style={S.h3}>Quarterly</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Chiller tube inspection — evaporator aur condenser</li>
+          <li style={S.li}>Chiller tube inspection — evaporator and condenser</li>
           <li style={S.li}>Refrigerant leak test</li>
-          <li style={S.li}>Electrical connections tighten karo</li>
+          <li style={S.li}>Tighten electrical connections</li>
           <li style={S.li}>Safety valve test</li>
-          <li style={S.li}>Cooling tower fill inspect karo</li>
+          <li style={S.li}>Inspect the cooling tower fill</li>
           <li style={S.li}>Pump mechanical seal check</li>
         </ul>
 
         <h3 style={S.h3}>Annual</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Eddy current test — chiller tubes ka comprehensive inspection</li>
+          <li style={S.li}>Eddy current test — a comprehensive inspection of the chiller tubes</li>
           <li style={S.li}>Refrigerant analysis</li>
           <li style={S.li}>Oil analysis (screw chillers)</li>
           <li style={S.li}>Compressor vibration analysis</li>
@@ -470,7 +474,7 @@ export default function ChillerPage() {
 
         <h2 id="monthly-checklist" style={S.h1}>Monthly Checklist</h2>
         <ul style={S.ul}>
-          <li style={S.li}>✓ Water quality test — chilled water aur condenser water</li>
+          <li style={S.li}>✓ Water quality test — chilled water and condenser water</li>
           <li style={S.li}>✓ Chemical dosing check — inhibitor levels</li>
           <li style={S.li}>✓ Strainer baskets clean</li>
           <li style={S.li}>✓ Standby chiller run test — 30 minutes chalaao</li>
@@ -484,51 +488,51 @@ export default function ChillerPage() {
 
         <h2 id="safety" style={S.h1}>Safety Precautions</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>LOTO mandatory:</strong> Chiller maintenance se pehle full electrical isolation</li>
+          <li style={S.li}><strong>LOTO mandatory:</strong> Full electrical isolation before chiller maintenance</li>
           <li style={S.li}><strong>Refrigerant safety:</strong> High pressure system — trained technician only, PPE mandatory</li>
-          <li style={S.li}><strong>Water pressure:</strong> Chilled water system pressure hoti hai — isolation valves close karo pehle</li>
+          <li style={S.li}><strong>Water pressure:</strong> The chilled water system is under pressure — close the isolation valves first</li>
           <li style={S.li}><strong>Legionella risk:</strong> Cooling tower — Legionella bacteria growth possible. Regular treatment, trained personnel</li>
-          <li style={S.li}><strong>Working at height:</strong> Cooling tower maintenance — fall protection zaroori</li>
-          <li style={S.li}><strong>Hot surfaces:</strong> Compressor housing hot hota hai — burn hazard</li>
-          <li style={S.li}><strong>Water leak response:</strong> Immediately notify, isolate, IT equipment protect karo</li>
-          <li style={S.li}><strong>Standby confirm:</strong> Koi bhi maintenance se pehle standby chiller ready confirm karo</li>
+          <li style={S.li}><strong>Working at height:</strong> Cooling tower maintenance — fall protection is essential</li>
+          <li style={S.li}><strong>Hot surfaces:</strong> The compressor housing is hot — burn hazard</li>
+          <li style={S.li}><strong>Water leak response:</strong> Immediately notify, isolate, protect IT equipment</li>
+          <li style={S.li}><strong>Standby confirm:</strong> Confirm the standby chiller is ready before any maintenance</li>
         </ul>
 
         <hr style={S.divider} />
 
         <h2 id="interview-questions" style={S.h1}>Interview Questions</h2>
 
-        <h3 style={S.h3}>Q1: Chiller aur CRAC mein fundamental difference kya hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> CRAC DX system hai — refrigerant directly air cool karta hai. Chiller indirect system hai — refrigerant pehle water cool karta hai, phir wo water CRAH ke through air cool karta hai. Chiller centralized hai, large scale ke liye. CRAC distributed hai, smaller applications ke liye.</p>
+        <h3 style={S.h3}>Q1: What is the fundamental difference between a Chiller and a CRAC?</h3>
+        <p style={S.p}><strong>Answer:</strong> A CRAC is a DX system — the refrigerant cools the air directly. A chiller is an indirect system — the refrigerant first cools water, then that water cools the air through the CRAH. A chiller is centralized, for large scale. A CRAC is distributed, for smaller applications.</p>
 
-        <h3 style={S.h3}>Q2: COP kya hota hai? Good COP kya hota hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> COP = Coefficient of Performance = Cooling output (kW) / Power input (kW). Higher = more efficient. Air-cooled chiller: COP 2.5-4. Water-cooled chiller: COP 4-7+. Data center mein high COP target karo — electricity savings direct cost savings hain.</p>
+        <h3 style={S.h3}>Q2: What is COP? What is a good COP?</h3>
+        <p style={S.p}><strong>Answer:</strong> COP = Coefficient of Performance = Cooling output (kW) / Power input (kW). Higher = more efficient. Air-cooled chiller: COP 2.5-4. Water-cooled chiller: COP 4-7+. Target a high COP in the data center — electricity savings are direct cost savings.</p>
 
-        <h3 style={S.h3}>Q3: Chilled water delta T kya hota hai aur kyun important hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Delta T = CHWR temp - CHWS temp. Target: 5-7°C. High delta T = efficient heat transfer (less flow needed for same cooling). Low delta T = inefficient — pumps zyada energy use kar rahe hain. Delta T optimize karna = energy savings.</p>
+        <h3 style={S.h3}>Q3: What is chilled water delta T and why is it important?</h3>
+        <p style={S.p}><strong>Answer:</strong> Delta T = CHWR temp - CHWS temp. Target: 5-7°C. High delta T = efficient heat transfer (less flow needed for the same cooling). Low delta T = inefficient — the pumps are using more energy. Optimizing delta T = energy savings.</p>
 
-        <h3 style={S.h3}>Q4: Free cooling (economizer mode) kya hota hai?</h3>
-        <p style={S.p}><strong>Answer:</strong> Jab outdoor temperature kaafi thandi ho, chiller compressor bypass karke outdoor air se directly chilled water cool hoti hai. "Free" because compressor nahi chalta — sirf pumps aur cooling tower fans. Winter mein significant energy savings — data center cooling cost 30-50% reduce ho sakti hai.</p>
+        <h3 style={S.h3}>Q4: What is free cooling (economizer mode)?</h3>
+        <p style={S.p}><strong>Answer:</strong> When the outdoor temperature is cold enough, the chilled water is cooled directly by outdoor air by bypassing the chiller compressor. "Free" because the compressor does not run — only the pumps and cooling tower fans. Significant energy savings in winter — data center cooling cost can reduce by 30-50%.</p>
 
         <hr style={S.divider} />
 
         <h2 id="troubleshooting" style={S.h1}>Troubleshooting Guide</h2>
 
-        <h3 style={S.h3}>Scenario: CHWS temperature target se upar ja rahi hai</h3>
+        <h3 style={S.h3}>Scenario: CHWS temperature is going above target</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Chiller running? Status check karo</li>
+          <li style={S.li}>Is the chiller running? Check the status</li>
           <li style={S.li}>Chiller capacity: load vs capacity match?</li>
-          <li style={S.li}>Condenser pressure high? → Cooling tower check karo</li>
+          <li style={S.li}>Condenser pressure high? → Check the cooling tower</li>
           <li style={S.li}>Evaporator fouled? → Tube cleaning needed</li>
-          <li style={S.li}>Standby chiller start karo yadi available</li>
+          <li style={S.li}>Start the standby chiller if available</li>
         </ul>
 
-        <h3 style={S.h3}>Scenario: Chiller trip ho gaya</h3>
+        <h3 style={S.h3}>Scenario: The chiller has tripped</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Immediately: Standby chiller start (auto ya manual)</li>
-          <li style={S.li}>BMS ya chiller controller fault code read karo</li>
+          <li style={S.li}>Immediately: start the standby chiller (auto or manual)</li>
+          <li style={S.li}>Read the fault code on the BMS or chiller controller</li>
           <li style={S.li}>High condenser pressure? → Cooling tower check</li>
-          <li style={S.li}>Electrical trip? → MCC panel check karo</li>
+          <li style={S.li}>Electrical trip? → Check the MCC panel</li>
           <li style={S.li}>OEM technical support — do not attempt to restart without investigation</li>
         </ul>
 
@@ -571,13 +575,13 @@ export default function ChillerPage() {
 
         <h2 id="best-practices" style={S.h1}>Best Practices</h2>
         <ul style={S.ul}>
-          <li style={S.li}><strong>N+1 minimum:</strong> Tier III ke liye. Tier IV ke liye 2N — separate chiller plants.</li>
-          <li style={S.li}><strong>Delta T optimization:</strong> 5-7°C target. Regularly monitor — inefficiency indicator hai.</li>
+          <li style={S.li}><strong>N+1 minimum:</strong> For Tier III. For Tier IV 2N — separate chiller plants.</li>
+          <li style={S.li}><strong>Delta T optimization:</strong> 5-7°C target. Monitor regularly — it is an inefficiency indicator.</li>
           <li style={S.li}><strong>VFD pumps:</strong> Variable flow saves 30-40% pump energy vs constant flow.</li>
-          <li style={S.li}><strong>Water treatment:</strong> Regular chemical treatment — scale aur corrosion prevent karo.</li>
-          <li style={S.li}><strong>Free cooling evaluate karo:</strong> India mein winter months mein 2-3 months economizer possible.</li>
-          <li style={S.li}><strong>Chiller sequencing:</strong> Part load pe fewer chillers — more efficient than all at low load.</li>
-          <li style={S.li}><strong>Regular performance analysis:</strong> COP trend karo — degradation early detect karo.</li>
+          <li style={S.li}><strong>Water treatment:</strong> Regular chemical treatment — prevent scale and corrosion.</li>
+          <li style={S.li}><strong>Evaluate free cooling:</strong> In India, 2-3 months of economizer operation is possible in the winter months.</li>
+          <li style={S.li}><strong>Chiller sequencing:</strong> Fewer chillers at part load — more efficient than all at low load.</li>
+          <li style={S.li}><strong>Regular performance analysis:</strong> Trend the COP — detect degradation early.</li>
         </ul>
 
         <hr style={S.divider} />
@@ -585,12 +589,12 @@ export default function ChillerPage() {
         <h2 id="key-takeaways" style={S.h1}>Key Takeaways</h2>
 
         <KeyTakeawayCard items={[
-          "Chiller ek refrigeration machine hai jo water thanda karta hai (6-7°C). Ye thanda water CRAH units se air cool karta hai.",
-          "DX (CRAC/PAC) se fundamental difference: Chiller water cool karta hai, DX directly air. Chiller = centralized, DX = distributed.",
-          "Chilled water system: Chiller → CHW Pumps → CRAH → return water → Chiller. Ye closed loop 24×7 continuous hai.",
-          "Water-cooled chiller + cooling tower combination most efficient hai — COP 4-7+.",
-          "Delta T (return - supply temperature) efficiency indicator hai. Target 5-7°C. Monitor karo.",
-          "Large data centers (500 kW+) ke liye chiller plant economically aur operationally better than multiple CRAC units.",
+          "A chiller is a refrigeration machine that cools water (6-7°C). This cold water cools the air through CRAH units.",
+          "The fundamental difference from DX (CRAC/PAC): a chiller cools water, DX cools air directly. Chiller = centralized, DX = distributed.",
+          "Chilled water system: Chiller → CHW Pumps → CRAH → return water → Chiller. This closed loop runs continuously 24×7.",
+          "The water-cooled chiller + cooling tower combination is the most efficient — COP 4-7+.",
+          "Delta T (return - supply temperature) is the efficiency indicator. Target 5-7°C. Monitor it.",
+          "For large data centers (500 kW+), a chiller plant is economically and operationally better than multiple CRAC units.",
           "Daily: CHWS/CHWR temp, delta T, chiller status, CT status. Monthly: water quality, standby test, strainers.",
         ]} />
 
@@ -602,13 +606,13 @@ export default function ChillerPage() {
         <hr style={S.divider} />
 
         <h2 style={S.h2}>Related Learning Topics</h2>
-        <p style={S.p}>Chiller system complete hua. Aage cooling plant samjho:</p>
+        <p style={S.p}>The chiller system is complete. Next, understand the cooling plant:</p>
         <ul style={S.ul}>
-          <li style={S.li}><TopicLink slug="cooling-tower" variant="inline" /> — Chiller ki heat bahar kaise jaati hai — cooling tower complete guide.</li>
-          <li style={S.li}><TopicLink slug="crac" variant="inline" /> — Chhote data centers mein chiller alternative — DX cooling.</li>
+          <li style={S.li}><TopicLink slug="cooling-tower" variant="inline" /> — how the chiller's heat goes outside — complete cooling tower guide.</li>
+          <li style={S.li}><TopicLink slug="crac" variant="inline" /> — the chiller alternative in small data centers — DX cooling.</li>
           <li style={S.li}><TopicLink slug="pac" variant="inline" /> — Another DX cooling option — PAC detailed guide.</li>
-          <li style={S.li}><TopicLink slug="containment" variant="inline" /> — CRAH se cool air efficiently deliver karna — containment strategies.</li>
-          <li style={S.li}><TopicLink slug="rci" variant="inline" /> — Cooling effectiveness measure karna.</li>
+          <li style={S.li}><TopicLink slug="containment" variant="inline" /> — delivering cool air from the CRAH efficiently — containment strategies.</li>
+          <li style={S.li}><TopicLink slug="rci" variant="inline" /> — measuring cooling effectiveness.</li>
         </ul>
       </ArticleLayout>
     </>

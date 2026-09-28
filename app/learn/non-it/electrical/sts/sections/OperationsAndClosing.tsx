@@ -14,14 +14,11 @@ export default function OperationsAndClosing() {
       </Figure>
 
       <p style={S.p}>
-        STS ke andar SCR modules, control board, aur power electronics fail ho sakte hain
-        ya replace karne pad sakte hain. Without maintenance bypass, STS service karna
-        load ko power off kiye bina impossible hai.
+        The SCR modules, control board and power electronics inside an STS can fail or need replacement. Without a maintenance bypass, servicing the STS is impossible without powering off the load.
       </p>
 
       <p style={S.p}>
-        Maintenance bypass ek separate switch hai jo load ko directly preferred source se
-        connect karta hai, completely STS ko bypassing karte hue. Bypass mode mein:
+        The maintenance bypass is a separate switch that connects the load directly to the preferred source, completely bypassing the STS. In bypass mode:
       </p>
 
       <ul style={S.ul}>
@@ -32,10 +29,7 @@ export default function OperationsAndClosing() {
       </ul>
 
       <Callout type="danger" title="Bypass Mode is Not Normal Operation">
-        Maintenance bypass mode mein STS ka protective function completely disabled hota hai.
-        Kabhi bhi bypass mode mein unnecessary time spend mat karo. Transfer operations
-        tabhi karo jab absolutely required ho, aur NOC ko notify karo ki site is in
-        elevated risk state during bypass.
+        In maintenance bypass mode, the STS's protective function is completely disabled. Never spend unnecessary time in bypass mode. Do transfer operations only when absolutely required, and notify the NOC that the site is in an elevated risk state during bypass.
       </Callout>
 
       <h2 id="failure-modes" style={S.h2}>Failure Modes</h2>
@@ -53,10 +47,7 @@ export default function OperationsAndClosing() {
       />
 
       <Callout type="important" title="Most Dangerous: SCR Fails Closed">
-        SCR failure mein sabse dangerous scenario hai &quot;stuck closed&quot; — SCR permanently
-        conduct karta rehta hai. Is case mein STS transfer nahi kar sakta — Source A
-        fail hone par load bhi fail ho jaayega. Thermal imaging aur regular impedance
-        testing se early degradation detect kar sakte hain before catastrophic failure.
+        The most dangerous SCR failure scenario is &quot;stuck closed&quot; — the SCR keeps conducting permanently. In this case the STS cannot transfer — when Source A fails, the load will also fail. Early degradation can be detected with thermal imaging and regular impedance testing before a catastrophic failure.
       </Callout>
 
       <h2 id="common-alarms" style={S.h2}>Common Alarms</h2>
@@ -78,8 +69,7 @@ export default function OperationsAndClosing() {
       <h2 id="testing-procedure" style={S.h2}>Testing Procedure</h2>
 
       <p style={S.p}>
-        STS commissioning aur periodic testing ensure karta hai ki device actual fault pe
-        expected behavior show kare. Testing schedule:
+        STS commissioning and periodic testing ensure that the device shows the expected behavior on an actual fault. Testing schedule:
       </p>
 
       <ComparisonTable
@@ -96,11 +86,7 @@ export default function OperationsAndClosing() {
       />
 
       <Callout type="best-practice" title="Transfer Test Without Load Interruption">
-        Actual load pe transfer test karte waqt: agar sources synchronized hain toh
-        make-before-break mode mein transfer completely invisible hoga. Servers continue
-        running — no reboot, no interruption. Verify karo ki STS log mein transfer event
-        recorded hua aur NMS ne alarm receive kiya. Successful transfer + no load impact
-        = STS healthy aur operational.
+        While doing a transfer test on actual load: if the sources are synchronized, the transfer will be completely invisible in make-before-break mode. Servers continue running — no reboot, no interruption. Verify that the transfer event was recorded in the STS log and that the NMS received the alarm. Successful transfer + no load impact = STS healthy and operational.
       </Callout>
 
       <h2 id="preventive-maintenance" style={S.h2}>Preventive Maintenance</h2>
@@ -118,9 +104,7 @@ export default function OperationsAndClosing() {
       <h2 id="oem-comparison" style={S.h2}>OEM Comparison</h2>
 
       <p style={S.p}>
-        STS market mein limited OEMs hain jo specialized, high-reliability products offer
-        karte hain. Yeh general industry observations hain — always verify current OEM
-        datasheets aur India availability before selection.
+        The STS market has limited OEMs offering specialized, high-reliability products. These are general industry observations — always verify current OEM datasheets and India availability before selection.
       </p>
 
       <ComparisonTable
@@ -136,11 +120,7 @@ export default function OperationsAndClosing() {
       />
 
       <Callout type="important" title="OEM Selection Criteria">
-        STS select karte waqt verify karo: (1) Transfer time specification (must be ≤ 4 ms),
-        (2) SCR type aur interrupt rating for your fault current level, (3) Current rating
-        with derating at your ambient temperature, (4) SNMP/Modbus support for your DCIM,
-        (5) Maintenance bypass built-in or available, (6) India spare parts aur service
-        availability. Cheapest STS for mission-critical load is false economy.
+        When selecting an STS, verify: (1) Transfer time specification (must be ≤ 4 ms), (2) SCR type and interrupt rating for your fault current level, (3) Current rating with derating at your ambient temperature, (4) SNMP/Modbus support for your DCIM, (5) Maintenance bypass built-in or available, (6) India spare parts and service availability. Cheapest STS for mission-critical load is false economy.
       </Callout>
 
       <h2 id="sts-vs-ats" style={S.h2}>STS vs ATS</h2>
@@ -162,8 +142,7 @@ export default function OperationsAndClosing() {
       />
 
       <p style={S.p}>
-        Rule of thumb: IT equipment ke liye hamesha STS. Generator ya mains changeover
-        ke liye jahan brief interruption acceptable ho, ATS cost-effective choice hai.
+        Rule of thumb: always an STS for IT equipment. For generator or mains changeover, where a brief interruption is acceptable, an ATS is the cost-effective choice.
       </p>
 
       <h2 id="sts-vs-ups" style={S.h2}>STS vs UPS</h2>
@@ -183,10 +162,7 @@ export default function OperationsAndClosing() {
       />
 
       <p style={S.p}>
-        STS aur <TopicLink slug="ups" variant="inline" /> complementary technologies hain.
-        UPS grid failure se protect karta hai (with battery). STS single-corded equipment
-        ko dual-path protection deta hai. Dono mila ke complete protection architecture
-        banata hai.
+        The STS and the <TopicLink slug="ups" variant="inline" /> are complementary technologies. The UPS protects against grid failure (with battery). The STS gives single-corded equipment dual-path protection. Together they form a complete protection architecture.
       </p>
 
       <h2 id="standards" style={S.h2}>Standards & Codes</h2>
@@ -207,30 +183,21 @@ export default function OperationsAndClosing() {
       />
 
       <Callout type="important" title="IEC 62310 for STS Specification">
-        STS specify karte waqt IEC 62310-3 ke according performance specification maango —
-        transfer time, voltage window, frequency window, synchronization requirements sab
-        defined hone chahiye. Generic &quot;4ms transfer&quot; claim kaafi nahi — exact conditions
-        under which 4ms is guaranteed specify karo (synchronized sources, load range, temperature).
+        When specifying an STS, ask for a performance specification as per IEC 62310-3 — transfer time, voltage window, frequency window and synchronization requirements should all be defined. A generic &quot;4ms transfer&quot; claim is not enough — specify the exact conditions under which 4ms is guaranteed (synchronized sources, load range, temperature).
       </Callout>
 
       <h2 id="real-dc-example" style={S.h2}>Real Data Center Example</h2>
 
       <p style={S.p}>
-        <strong>Scenario:</strong> 500-rack Tier IV Data Center, dual UPS architecture.
-        450 racks dual-corded servers. 50 racks mein legacy single-corded network switches.
+        <strong>Scenario:</strong> 500-rack Tier IV Data Center, dual UPS architecture. 450 racks with dual-corded servers. Legacy single-corded network switches in 50 racks.
       </p>
 
       <p style={S.p}>
-        <strong>Problem:</strong> 50 racks ke switches sirf single power input support karte hain.
-        Dual-bus architecture hai lekin yeh switches sirf Path A se connected hain.
-        UPS-A failure pe 50 racks complete network connectivity lose kar denge — potential
-        for entire data center connectivity outage even though servers are fine.
+        <strong>Problem:</strong> The switches in 50 racks support only a single power input. There is a dual-bus architecture, but these switches are connected only to Path A. On a UPS-A failure, the 50 racks would lose complete network connectivity — potential for entire data center connectivity outage even though servers are fine.
       </p>
 
       <p style={S.p}>
-        <strong>Solution:</strong> 50 rack-mount STS units install kiye — ek per rack,
-        each STS serving the single-corded switch in that rack. STS Input A from PDU-A
-        (UPS-A path), STS Input B from PDU-B (UPS-B path). Output to network switch.
+        <strong>Solution:</strong> 50 rack-mount STS units were installed — one per rack, each STS serving the single-corded switch in that rack. STS Input A from PDU-A (UPS-A path), STS Input B from PDU-B (UPS-B path). Output to network switch.
       </p>
 
       <p style={S.p}>
@@ -257,14 +224,14 @@ export default function OperationsAndClosing() {
       <ComparisonTable
         headers={["Question", "Key Points in Answer"]}
         rows={[
-          ["STS aur ATS mein kya difference hai?", "SCR vs mechanical; 2–4ms vs 100–500ms; make-before-break possible vs not; IT load suitability"],
-          ["STS 4ms mein transfer kyun karta hai?", "Detection time + zero crossing wait + SCR commutation — pure SCR switching microseconds mein hota hai"],
-          ["Phase synchronization STS ke liye kyun important hai?", "Make-before-break ke liye required; out-of-phase connection = circulating currents = equipment damage"],
-          ["Single-corded server ke liye alternatives kya hain?", "STS (external switching), dual PSU upgrade, or accept single-path risk"],
-          ["STS failure modes kya hain?", "SCR open/closed failure, control logic failure, both sources simultaneous failure"],
-          ["Tier IV mein STS ka role kya hai?", "Single-corded loads ko 2N path redundancy deta hai; dual-corded loads ko STS ki zaroorat nahi"],
-          ["STS overload pe kya hoga?", "Alarm + possible manual bypass; upstream breaker trips on short circuit; STS khud circuit breaker nahi"],
-          ["Make-before-break aur break-before-make mein farak?", "Synchronized sources: seamless MBB. Out-of-sync: brief BBM interruption. Both transfer in 2–4ms total"],
+          ["What is the difference between an STS and an ATS?", "SCR vs mechanical; 2–4ms vs 100–500ms; make-before-break possible vs not; IT load suitability"],
+          ["Why does an STS transfer in 4ms?", "Detection time + zero crossing wait + SCR commutation — pure SCR switching happens in microseconds"],
+          ["Why is phase synchronization important for an STS?", "Required for make-before-break; out-of-phase connection = circulating currents = equipment damage"],
+          ["What are the alternatives for a single-corded server?", "STS (external switching), dual PSU upgrade, or accept single-path risk"],
+          ["What are the STS failure modes?", "SCR open/closed failure, control logic failure, both sources simultaneous failure"],
+          ["What is the role of the STS in Tier IV?", "Gives single-corded loads 2N path redundancy; dual-corded loads do not need an STS"],
+          ["What happens on STS overload?", "Alarm + possible manual bypass; upstream breaker trips on short circuit; the STS itself is not a circuit breaker"],
+          ["Difference between make-before-break and break-before-make?", "Synchronized sources: seamless MBB. Out-of-sync: brief BBM interruption. Both transfer in 2–4ms total"],
         ]}
       />
 
@@ -272,8 +239,7 @@ export default function OperationsAndClosing() {
 
       <ul style={S.ul}>
         <li>
-          <strong>STS = solid-state source switching in 2–4 ms</strong> — single-corded
-          loads ko dual-path protection deta hai without IT equipment awareness.
+          <strong>STS = solid-state source switching in 2–4 ms</strong> — gives single-corded loads dual-path protection without IT equipment awareness.
         </li>
         <li>
           <strong>SCR (thyristor) technology</strong> enables fast, no-arc, no-wear
@@ -301,8 +267,7 @@ export default function OperationsAndClosing() {
           STS units to distribute load evenly between UPS-A and UPS-B.
         </li>
         <li>
-          Annual transfer testing mandatory — commissioning pe sahi tha ka matlab operations
-          mein bhi sahi hai guarantee nahi karta. Verify annually.
+          Annual transfer testing is mandatory — being right at commissioning does not guarantee being right in operations. Verify annually.
         </li>
         <li>
           <strong>Actual STS implementation always depends on project requirements,
@@ -311,10 +276,7 @@ export default function OperationsAndClosing() {
       </ul>
 
       <p style={S.p}>
-        Aage padhne ke liye:{" "}
-        <TopicLink slug="ups" variant="inline" /> (power source that feeds STS),{" "}
-        <TopicLink slug="battery-bank" variant="inline" /> (energy storage behind the UPS),{" "}
-        <TopicLink slug="pdu" variant="inline" /> (distribution downstream of UPS/STS).
+        For further reading: <TopicLink slug="ups" variant="inline" /> (power source that feeds STS), <TopicLink slug="battery-bank" variant="inline" /> (energy storage behind the UPS), <TopicLink slug="pdu" variant="inline" /> (distribution downstream of UPS/STS).
       </p>
     </>
   );

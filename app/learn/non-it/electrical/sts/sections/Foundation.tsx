@@ -12,42 +12,29 @@ export default function Foundation() {
       <h2 id="what-is-sts" style={S.h2}>What is a Static Transfer Switch?</h2>
 
       <p style={S.p}>
-        Socho ek office mein ek printer hai — sirf ek power plug hai. Dual-corded nahi hai.
-        Agar UPS-A fail ho jaaye, toh printer band ho jaayega. Koi bhi mechanical switch
-        itni fast nahi switch karega ki printer ko pata na chale.
+        Imagine there is a printer in an office — it has only one power plug. It is not dual-corded. If UPS-A fails, the printer will shut down. No mechanical switch will switch fast enough for the printer not to notice.
       </p>
 
       <p style={S.p}>
-        Yahi problem <strong>Static Transfer Switch (STS)</strong> solve karta hai. STS ek
-        solid-state switching device hai jo ek single-corded load ko do independent power
-        sources ke beech <strong>2–4 milliseconds</strong> mein transfer kar deta hai —
-        load ko pata hi nahi chalta ki source change hua.
+        This is exactly the problem the <strong>Static Transfer Switch (STS)</strong> solves. An STS is a solid-state switching device that transfers a single-corded load between two independent power sources in <strong>2–4 milliseconds</strong> — the load does not even notice that the source changed.
       </p>
 
       <p style={S.p}>
-        &quot;Static&quot; ka matlab hai koi moving parts nahi. Andar <strong>SCR (Silicon Controlled
-        Rectifier) / Thyristors</strong> hote hain — pure semiconductor switching. Mechanical
-        contactors ki tarah wears nahi hota, sparks nahi hote, bounce nahi hota.
+        &quot;Static&quot; means there are no moving parts. Inside there are <strong>SCRs (Silicon Controlled Rectifiers) / Thyristors</strong> — pure semiconductor switching. Unlike mechanical contactors, there is no wear, no sparks, no bounce.
       </p>
 
       <Callout type="important" title="STS ≠ ATS">
-        Automatic Transfer Switch (ATS) mein mechanical contactors hote hain — transfer time
-        100–500 milliseconds. IT equipment ke liye yeh bahut slow hai. STS mein SCR thyristors
-        hote hain — transfer time 2–4 ms, IT load ke liye completely invisible.
+        An Automatic Transfer Switch (ATS) has mechanical contactors — transfer time 100–500 milliseconds. For IT equipment this is very slow. An STS has SCR thyristors — transfer time 2–4 ms, completely invisible to the IT load.
       </Callout>
 
       <h2 id="why-sts-required" style={S.h2}>Why STS is Required</h2>
 
       <p style={S.p}>
-        Modern Data Center mein dual-bus architecture use hoti hai —{" "}
-        <TopicLink slug="ups" variant="inline" /> A aur UPS B dono independent paths dete hain.
-        Dual-corded servers directly dono se connect hote hain — redundancy automatic hai.
+        Modern Data Centers use a dual-bus architecture — <TopicLink slug="ups" variant="inline" /> A and UPS B both provide independent paths. Dual-corded servers connect directly to both — redundancy is automatic.
       </p>
 
       <p style={S.p}>
-        Problem tab aati hai jab equipment single-corded ho — sirf ek power input.
-        Kuch legacy servers, specialized network gear, aur industrial equipment dual-corded
-        PSU support nahi karte. Inke liye STS ek external dual-path protection provide karta hai.
+        The problem comes when the equipment is single-corded — only one power input. Some legacy servers, specialized network gear and industrial equipment do not support a dual-corded PSU. For these, the STS provides external dual-path protection.
       </p>
 
       <ComparisonTable
@@ -60,16 +47,13 @@ export default function Foundation() {
       />
 
       <p style={S.p}>
-        STS ka doosra use: kuch organizations mein ek high-power single-fed load hota hai
-        (industrial chillers, large UPS bypass panels) jahan STS ek cost-effective redundancy
-        solution hai compared to completely duplicating the equipment.
+        The second use of the STS: some organizations have a high-power single-fed load (industrial chillers, large UPS bypass panels) where an STS is a cost-effective redundancy solution compared to completely duplicating the equipment.
       </p>
 
       <h2 id="where-sts-installed" style={S.h2}>Where STS is Installed</h2>
 
       <p style={S.p}>
-        STS power chain mein <TopicLink slug="ups" variant="inline" /> output ke baad aur
-        load ke beech install hota hai. Typically:
+        In the power chain, the STS is installed after the <TopicLink slug="ups" variant="inline" /> output and before the load. Typically:
       </p>
 
       <ul style={S.ul}>
@@ -80,8 +64,7 @@ export default function Foundation() {
       </ul>
 
       <p style={S.p}>
-        Inputs: Source A (from <TopicLink slug="ups" variant="inline" />-A or PDU-A) aur
-        Source B (from UPS-B ya PDU-B). Output: Single feed to load.
+        Inputs: Source A (from <TopicLink slug="ups" variant="inline" />-A or PDU-A) and Source B (from UPS-B or PDU-B). Output: Single feed to load.
       </p>
 
       <h2 id="power-flow-architecture" style={S.h2}>Power Flow Architecture</h2>
@@ -91,20 +74,15 @@ export default function Foundation() {
       </Figure>
 
       <p style={S.p}>
-        Power chain normal operation mein: UPS-A → PDU-A → STS Input A. UPS-B → PDU-B →
-        STS Input B. STS preferred source (typically A) pe load serve karta hai.
+        In normal operation of the power chain: UPS-A → PDU-A → STS Input A. UPS-B → PDU-B → STS Input B. The STS serves the load on the preferred source (typically A).
       </p>
 
       <p style={S.p}>
-        UPS-A fail hone par: STS detects Input A out-of-spec → verifies Input B ready →
-        transfers load to Input B in 2–4 ms → load continues uninterrupted.
+        When UPS-A fails: STS detects Input A out-of-spec → verifies Input B ready → transfers load to Input B in 2–4 ms → load continues uninterrupted.
       </p>
 
       <Callout type="best-practice" title="Best Practice — STS Inputs Must Be Independent">
-        STS ke dono inputs truly independent hone chahiye — alag UPS ya alag PDU se.
-        Agar dono inputs same UPS se aayein toh STS redundancy meaningless ho jaati hai.
-        Common-mode failure (single UPS failure) se dono inputs simultaneously fail ho
-        jaayenge — STS help nahi kar payega.
+        Both inputs of the STS must be truly independent — from separate UPS or separate PDUs. If both inputs come from the same UPS, STS redundancy becomes meaningless. With a common-mode failure (single UPS failure), both inputs will fail simultaneously — the STS will not be able to help.
       </Callout>
 
       <h2 id="internal-construction" style={S.h2}>Internal Construction</h2>
@@ -114,18 +92,18 @@ export default function Foundation() {
       </Figure>
 
       <p style={S.p}>
-        STS ke andar main components hain:
+        The main components inside an STS are:
       </p>
 
       <ComparisonTable
         headers={["Component", "Function"]}
         rows={[
-          ["SCR Set A (anti-parallel thyristors)", "Source A ka current carry karta hai jab A preferred hai"],
-          ["SCR Set B (anti-parallel thyristors)", "Source B ka current carry karta hai jab B active hai"],
-          ["Voltage/Frequency Sensors", "Both sources continuously monitor karte hain — threshold violations detect karte hain"],
-          ["Control Logic Board", "Transfer decision leti hai, gate firing signals generate karti hai"],
-          ["Gate Drive Circuits", "SCR gates ko appropriate firing pulses dete hain"],
-          ["Heat Sinks / Cooling", "SCR power dissipation manage karta hai"],
+          ["SCR Set A (anti-parallel thyristors)", "Carries Source A current when A is preferred"],
+          ["SCR Set B (anti-parallel thyristors)", "Carries Source B current when B is active"],
+          ["Voltage/Frequency Sensors", "Continuously monitor both sources — detect threshold violations"],
+          ["Control Logic Board", "Takes the transfer decision, generates gate firing signals"],
+          ["Gate Drive Circuits", "Give appropriate firing pulses to the SCR gates"],
+          ["Heat Sinks / Cooling", "Manage SCR power dissipation"],
           ["Communication Module", "SNMP/Modbus for monitoring and alarm reporting"],
           ["Maintenance Bypass Switch", "Manual isolation for STS servicing"],
         ]}
@@ -134,16 +112,11 @@ export default function Foundation() {
       <h2 id="scr-thyristor-technology" style={S.h2}>SCR / Thyristor Technology</h2>
 
       <p style={S.p}>
-        SCR (Silicon Controlled Rectifier) ek 4-layer semiconductor device hai — PNPN
-        structure. Ek baar gate pulse mile aur anode-cathode voltage positive ho, SCR
-        conduct karna shuru kar deta hai. Conduct karna band karna natural commutation
-        se hota hai — AC cycle mein current zero cross karte waqt.
+        An SCR (Silicon Controlled Rectifier) is a 4-layer semiconductor device — PNPN structure. Once it gets a gate pulse and the anode-cathode voltage is positive, the SCR starts conducting. It stops conducting through natural commutation — when the current crosses zero in the AC cycle.
       </p>
 
       <p style={S.p}>
-        STS mein anti-parallel SCR pairs use hote hain — do SCRs opposite directions mein
-        connected, taki both positive aur negative AC half-cycles handle ho sakein.
-        3-phase STS mein teen such pairs hote hain (one per phase).
+        An STS uses anti-parallel SCR pairs — two SCRs connected in opposite directions, so that both the positive and negative AC half-cycles can be handled. A 3-phase STS has three such pairs (one per phase).
       </p>
 
       <ComparisonTable
@@ -160,25 +133,17 @@ export default function Foundation() {
       />
 
       <Callout type="important" title="Anti-Parallel Configuration">
-        Ek single SCR sirf ek direction mein conduct karta hai. AC load ke liye dono
-        half-cycles carry karne hote hain. Isliye anti-parallel pair (back-to-back SCRs)
-        use hoti hai — ek positive half ke liye, ek negative half ke liye. Yeh combined
-        unit bidirectional AC switch banata hai.
+        A single SCR conducts in only one direction. For an AC load, both half-cycles have to be carried. That is why an anti-parallel pair (back-to-back SCRs) is used — one for the positive half, one for the negative half. This combined unit forms a bidirectional AC switch.
       </Callout>
 
       <h2 id="static-switching-principle" style={S.h2}>Static Switching Principle</h2>
 
       <p style={S.p}>
-        Normal operation mein SCR Set A gate pulses receive karta hai — continuously conduct
-        karta hai, Source A ka current load tak deliver hota hai. SCR Set B ko gate pulses
-        nahi milte — it blocks, Source B isolated rehta hai.
+        In normal operation, SCR Set A receives gate pulses — it conducts continuously and Source A's current is delivered to the load. SCR Set B does not get gate pulses — it blocks, and Source B stays isolated.
       </p>
 
       <p style={S.p}>
-        Transfer ke time: Control logic SCR Set A ke gate pulses hatati hai. SCR A next
-        current zero crossing pe naturally turn off ho jaata hai. Simultaneously (ya thodi
-        der baad), SCR Set B ko gate pulses milne lagti hain. SCR B conduct karna shuru
-        karta hai. Load current Source B se flow karne lagta hai.
+        During transfer: the control logic removes the gate pulses of SCR Set A. SCR A turns off naturally at the next current zero crossing. Simultaneously (or a little later), SCR Set B starts getting gate pulses. SCR B starts conducting. Load current starts flowing from Source B.
       </p>
 
       <p style={S.p}>
@@ -187,10 +152,7 @@ export default function Foundation() {
       </p>
 
       <Callout type="interview" title="Interview Tip">
-        Interview mein poochhte hain: &quot;STS 4ms mein transfer kyun karta hai, SCR toh
-        microseconds mein switch hota hai?&quot; — Answer: Fault detection time + zero crossing
-        wait (AC natural commutation) + control processing milake 2–4ms ban jaata hai.
-        Pure SCR switching time negligible hai; detection aur commutation wait dominate karta hai.
+        In interviews they ask: &quot;Why does an STS transfer in 4ms when an SCR switches in microseconds?&quot; — Answer: Fault detection time + zero crossing wait (AC natural commutation) + control processing together add up to 2–4ms. Pure SCR switching time is negligible; detection and the commutation wait dominate.
       </Callout>
 
       <h2 id="transfer-logic" style={S.h2}>Transfer Logic</h2>
@@ -200,7 +162,7 @@ export default function Foundation() {
       </Figure>
 
       <p style={S.p}>
-        STS ki transfer logic ek decision tree follow karti hai:
+        The STS transfer logic follows a decision tree:
       </p>
 
       <ol style={S.ol}>
@@ -227,47 +189,33 @@ export default function Foundation() {
       <h2 id="source-priority" style={S.h2}>Source Priority</h2>
 
       <p style={S.p}>
-        STS mein ek preferred source aur ek alternate source hoti hai — yeh factory setting
-        ya commissioning pe configure hoti hai. Typically Source A preferred hoti hai.
+        An STS has one preferred source and one alternate source — this is configured as a factory setting or at commissioning. Typically Source A is preferred.
       </p>
 
       <p style={S.p}>
-        STS hamesha preferred source pe rehta hai jab woh available aur in-spec hoti hai.
-        Alternate source pe transfer sirf fault condition mein hoti hai.
+        The STS always stays on the preferred source when it is available and in-spec. Transfer to the alternate source happens only in a fault condition.
       </p>
 
       <p style={S.p}>
-        <strong>Auto-retransfer</strong> configurable hai: preferred source restore hone pe
-        STS automatically wapas aata hai ya nahi — yeh operator prefer karta hai. Auto-retransfer
-        ON rakhne se operations simplified hoti hain; OFF rakhne se unexpected retransfer
-        avoid hoti hai (retransfer bhi ek switching event hai).
+        <strong>Auto-retransfer</strong> is configurable: whether the STS automatically comes back when the preferred source is restored — this is the operator's preference. Keeping auto-retransfer ON simplifies operations; keeping it OFF avoids an unexpected retransfer (a retransfer is also a switching event).
       </p>
 
       <Callout type="best-practice" title="Best Practice — Source Priority Load Balancing">
-        Agar ek data center mein kai STS hain, toh alternate sources mix karo — kuch STS pe
-        A preferred, kuch pe B preferred. Yeh load balancing UPS-A aur UPS-B dono pe
-        even distribution deta hai. Sab STS pe A preferred = UPS-A overloaded, UPS-B
-        underutilized.
+        If a data center has many STS units, mix the alternate sources — A preferred on some STS, B preferred on others. This load balancing gives an even distribution on both UPS-A and UPS-B. A preferred on all STS = UPS-A overloaded, UPS-B underutilized.
       </Callout>
 
       <h2 id="synchronization-requirements" style={S.h2}>Synchronization Requirements</h2>
 
       <p style={S.p}>
-        Make-before-break seamless transfer ke liye dono sources synchronized honi chahiye.
-        &quot;Synchronized&quot; ka matlab: same frequency aur phase angle difference minimal (typically
-        ±20° se kam).
+        For a make-before-break seamless transfer, both sources must be synchronized. &quot;Synchronized&quot; means: same frequency and minimal phase angle difference (typically less than ±20°).
       </p>
 
       <p style={S.p}>
-        Normal dual-UPS setup mein: dono UPS ek hi grid se supply lete hain → output
-        frequency aur phase automatically aligned hoti hai. Yeh synchronization guarantee
-        karti hai seamless transfer.
+        In a normal dual-UPS setup: both UPS take supply from the same grid → output frequency and phase are automatically aligned. This synchronization guarantees a seamless transfer.
       </p>
 
       <p style={S.p}>
-        Problem tab hoti hai jab UPS-A aur UPS-B alag independent grids ya generators se
-        feed hote hain — phase alignment possible nahi. Is case mein STS break-before-make
-        use karta hai — brief power interruption hoti hai (typically &lt; 1 AC cycle, ~16ms at 60Hz).
+        The problem comes when UPS-A and UPS-B are fed from separate independent grids or generators — phase alignment is not possible. In this case the STS uses break-before-make — there is a brief power interruption (typically &lt; 1 AC cycle, ~16ms at 60Hz).
       </p>
 
       <ComparisonTable
@@ -283,7 +231,7 @@ export default function Foundation() {
       <h2 id="transfer-time" style={S.h2}>Transfer Time — 2 to 4 ms</h2>
 
       <p style={S.p}>
-        Transfer time ka breakdown:
+        Breakdown of transfer time:
       </p>
 
       <ComparisonTable
@@ -299,36 +247,25 @@ export default function Foundation() {
       />
 
       <p style={S.p}>
-        2–4 ms kyun acceptable hai IT equipment ke liye? Modern server PSUs mein
-        capacitors hote hain jo 10–20 ms ki interruption easily absorb kar lete hain
-        bina output ripple ke. Server kabhi &quot;knows&quot; nahi karta ki source change hua.
+        Why is 2–4 ms acceptable for IT equipment? Modern server PSUs have capacitors that easily absorb a 10–20 ms interruption without output ripple. The server never &quot;knows&quot; that the source changed.
       </p>
 
       <Callout type="common-mistake" title="Common Mistake — Transfer Time Misunderstanding">
-        Kuch log socha karte hain STS 4ms mein switch karta hai isliye koi bhi
-        4ms se zyada load nahi khoega. Yeh sahi hai for seamless transfer (synchronized
-        sources). Lekin break-before-make mein brief interruption hoti hai — this is still
-        invisible to servers but technically not &quot;zero&quot; transfer time. Always clarify
-        which mode applies to your installation.
+        Some people think that because an STS switches in 4ms, no load will ever lose more than 4ms. This is right for a seamless transfer (synchronized sources). But in break-before-make there is a brief interruption — this is still invisible to servers but technically not &quot;zero&quot; transfer time. Always clarify which mode applies to your installation.
       </Callout>
 
       <h2 id="break-free-transfer" style={S.h2}>Break-Free Transfer</h2>
 
       <p style={S.p}>
-        Break-free (make-before-break) transfer STS ka signature capability hai. Is mode
-        mein Source B ke SCRs conduct karna shuru karte hain ek instant pehle jab Source A
-        ke SCRs turn-off hote hain.
+        Break-free (make-before-break) transfer is the STS's signature capability. In this mode, Source B's SCRs start conducting an instant before Source A's SCRs turn off.
       </p>
 
       <p style={S.p}>
-        Is brief overlap mein dono sources simultaneously load pe connected hoti hain.
-        Yeh tabhi safe hai jab dono sources synchronized hain — phase difference near-zero
-        hone se circulating currents minimal hote hain.
+        During this brief overlap, both sources are connected to the load simultaneously. This is safe only when both sources are synchronized — with a near-zero phase difference, circulating currents are minimal.
       </p>
 
       <p style={S.p}>
-        Result: load ko continuous, uninterrupted power milta hai. Voltage waveform mein
-        practically koi dip nahi, koi glitch nahi. IT equipment completely unaware.
+        Result: the load gets continuous, uninterrupted power. Practically no dip in the voltage waveform, no glitch. IT equipment is completely unaware.
       </p>
 
       <h2 id="single-bus-vs-dual-bus" style={S.h2}>Single Bus vs Dual Bus</h2>
@@ -344,22 +281,17 @@ export default function Foundation() {
       />
 
       <p style={S.p}>
-        Full dual-bus architecture mein: <strong>dual-corded equipment</strong> ko STS ki
-        zaroorat nahi — PSU directly both paths se connected hai. <strong>Single-corded
-        equipment</strong> ke liye STS mandatory hai to achieve same redundancy level.
+        In a full dual-bus architecture: <strong>dual-corded equipment</strong> does not need an STS — the PSU is connected directly to both paths. For <strong>single-corded equipment</strong> an STS is mandatory to achieve the same redundancy level.
       </p>
 
       <h2 id="dual-ups-architecture" style={S.h2}>Dual UPS Architecture</h2>
 
       <p style={S.p}>
-        Dual UPS architecture mein do completely independent{" "}
-        <TopicLink slug="ups" variant="inline" /> systems operate karte hain — apne alag
-        rectifiers, inverters, batteries, aur input feeds ke saath. Yeh Tier IV ka foundation hai.
+        In a dual UPS architecture, two completely independent <TopicLink slug="ups" variant="inline" /> systems operate — each with its own rectifiers, inverters, batteries and input feeds. This is the foundation of Tier IV.
       </p>
 
       <p style={S.p}>
-        STS is architecture mein &quot;bridge&quot; ka kaam karta hai single-corded loads ke liye —
-        unhe dono UPS outputs se protection deta hai even though woh sirf ek input support karte hain.
+        In this architecture the STS works as a &quot;bridge&quot; for single-corded loads — it gives them protection from both UPS outputs even though they support only one input.
       </p>
 
       <ComparisonTable
@@ -377,22 +309,15 @@ export default function Foundation() {
       <h2 id="ab-power-distribution" style={S.h2}>A & B Power Distribution</h2>
 
       <p style={S.p}>
-        A & B power distribution mein floor ke har rack pe dono PDU-A aur PDU-B outlets
-        available hote hain. Dual-corded servers directly dono se connect hote hain.
-        Single-corded servers ke liye STS rack mein install hoti hai.
+        In A & B power distribution, both PDU-A and PDU-B outlets are available on every rack on the floor. Dual-corded servers connect directly to both. For single-corded servers, an STS is installed in the rack.
       </p>
 
       <p style={S.p}>
-        Load balancing ensure karo: agar sab STS pe Source A preferred hai aur UPS-B
-        sirf standby pe hai, toh UPS-B underutilized aur UPS-A overloaded ho sakta hai.
-        Alternate source priority assign karo different racks mein for balanced loading.
+        Ensure load balancing: if Source A is preferred on all STS and UPS-B is only on standby, UPS-B can be underutilized and UPS-A overloaded. Assign alternate source priority in different racks for balanced loading.
       </p>
 
       <Callout type="important" title="A/B Path Capacity Planning">
-        Each UPS (A and B) ko full site load handle karne capable hona chahiye — sirf
-        apne half ka nahi. Kyunki ek UPS failure pe doosra UPS poora load lega. STS
-        wala load bhi include karo is calculation mein — STS failure ya transfer event
-        pe ek UPS momentarily extra load carry karega.
+        Each UPS (A and B) must be capable of handling the full site load — not just its own half. Because on one UPS failure, the other UPS will take the whole load. Include the STS load too in this calculation — on an STS failure or transfer event, one UPS will momentarily carry extra load.
       </Callout>
     </>
   );

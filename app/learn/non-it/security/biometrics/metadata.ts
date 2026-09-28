@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Biometric Authentication in Data Centers — Complete Engineering Guide | Behind The Tech",
   description:
-    "Data Center mein biometric systems kaise kaam karte hain — fingerprint, face recognition, iris, FAR/FRR, enrollment, liveness, access control integration, troubleshooting aur privacy. Engineer guide.",
+    "How biometric systems work in a Data Center — fingerprint, face recognition, iris, FAR/FRR, enrollment, liveness, access control integration, troubleshooting and privacy. Engineer guide.",
   keywords: [
     "biometrics data center",
     "fingerprint access control",
@@ -13,8 +13,9 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Biometric Authentication in Data Centers — Complete Engineering Guide",
-    description: "Fingerprint se iris tak — Data Center biometric systems ka complete engineering guide.",
+    description: "From fingerprint to iris — the complete engineering guide to Data Center biometric systems.",
     url: "https://behindthetech.in/learn/non-it/security/biometrics",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -22,35 +23,42 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Biometrics in Data Centers — Behind The Tech",
-    description: "Data Center biometric authentication — FAR/FRR, enrollment, troubleshooting aur privacy.",
+    description: "Data Center biometric authentication — FAR/FRR, enrollment, troubleshooting and privacy.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/security/biometrics" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/non-it/security/biometrics",
+    languages: {
+      en: "https://behindthetech.in/learn/non-it/security/biometrics",
+      hi: "https://behindthetech.in/hi/learn/non-it/security/biometrics",
+      "x-default": "https://behindthetech.in/learn/non-it/security/biometrics",
+    },
+  },
 };
 
 export const faqs = [
   {
-    q: "FAR aur FRR mein kya fark hai aur dono kaise balance karte hain?",
-    a: "FAR (False Acceptance Rate) — unauthorized person galti se accept ho jaata hai. FRR (False Rejection Rate) — authorized person galti se reject ho jaata hai. Dono inversely related hain — FAR kam karo to FRR badhta hai (stricter matching threshold). Balance threshold setting se hoti hai jo site conditions, enrollment quality aur security requirements pe depend karta hai. Koi universally correct FAR/FRR value nahi hai — project aur application pe depend karta hai.",
+    q: "What is the difference between FAR and FRR and how are the two balanced?",
+    a: "FAR (False Acceptance Rate) — an unauthorized person gets accepted by mistake. FRR (False Rejection Rate) — an authorized person gets rejected by mistake. The two are inversely related — reduce FAR and FRR increases (stricter matching threshold). The balance comes from the threshold setting, which depends on site conditions, enrollment quality and security requirements. There is no universally correct FAR/FRR value — it depends on the project and application.",
   },
   {
-    q: "Biometric data store kaise hota hai — raw image save hoti hai kya?",
-    a: "Modern biometric systems raw fingerprint image ya face photo typically store nahi karte. Instead, enrollment ke time se mathematical template (feature vector) extract hoti hai aur wahi store hoti hai. Template se original biometric reverse-engineer nahi ki ja sakti — ye privacy ke liye important hai. Template typically encrypted format mein store hoti hai. Some systems on-card template storage support karte hain — template server pe nahi, user ke card pe rehti hai.",
+    q: "How is biometric data stored — is the raw image saved?",
+    a: "Modern biometric systems typically do not store the raw fingerprint image or face photo. Instead, at enrollment a mathematical template (feature vector) is extracted and that is what gets stored. The original biometric cannot be reverse-engineered from the template — this is important for privacy. The template is typically stored in encrypted format. Some systems support on-card template storage — the template stays on the user's card, not on the server.",
   },
   {
-    q: "Biometric reader ko access control system ke saath kaise integrate karte hain?",
-    a: "Integration typically do ways mein hoti hai: (1) Reader controller ke saath directly connect hota hai — Wiegand ya OSDP pe 'match result' signal bhejta hai (match = valid credential signal). (2) Biometric system apna controller/server use karta hai jo access control system ke saath API ya direct integration se communicate karta hai. Approach OEM, system size aur project requirements pe depend karta hai.",
+    q: "How is a biometric reader integrated with the access control system?",
+    a: "Integration typically happens in two ways: (1) The reader connects directly to the controller — it sends a 'match result' signal over Wiegand or OSDP (match = valid credential signal). (2) The biometric system uses its own controller/server that communicates with the access control system through an API or direct integration. The approach depends on the OEM, system size and project requirements.",
   },
   {
-    q: "Kya biometric system bypass ho sakta hai?",
-    a: "Koi bhi security system 100% bypass-proof nahi hota. Biometric systems ke against known attacks mein spoofing (fake fingerprint, printed face photo) aur template theft include hain. Liveness detection in attacks ke against effective countermeasure hai. Multi-factor authentication (biometric + card/PIN) bypass attempt significantly harder banata hai. Regular system updates aur vendor security advisories follow karna important hai.",
+    q: "Can a biometric system be bypassed?",
+    a: "No security system is 100% bypass-proof. Known attacks against biometric systems include spoofing (fake fingerprint, printed face photo) and template theft. Liveness detection is an effective countermeasure against these attacks. Multi-factor authentication (biometric + card/PIN) makes a bypass attempt significantly harder. Following regular system updates and vendor security advisories is important.",
   },
   {
-    q: "Poor enrollment ki wajah se FRR high hai — kya karna chahiye?",
-    a: "Re-enrollment karo properly — controlled environment mein, clean sensor pe, multiple attempts se best quality sample le. Enrollment operator ko train karo — proper finger placement, pressure, angle. Sensor clean karo pehle enrollment se. Agar specific users consistently fail karte hain (due to fingerprint quality — age, work-related wear) — alternative biometric (face/iris) ya fallback credential (card) consider karo.",
+    q: "FRR is high because of poor enrollment — what should be done?",
+    a: "Re-enroll properly — in a controlled environment, on a clean sensor, taking the best quality sample from multiple attempts. Train the enrollment operator — proper finger placement, pressure, angle. Clean the sensor before enrollment. If specific users consistently fail (due to fingerprint quality — age, work-related wear) — consider an alternative biometric (face/iris) or a fallback credential (card).",
   },
   {
-    q: "Privacy regulations biometrics pe kaise apply hoti hain?",
-    a: "Biometric data 'sensitive personal data' category mein aata hai most privacy regulations mein — GDPR (Europe), India's DPDP Act, aur similar frameworks. Collection ke liye typically explicit consent required hoti hai. Data minimization, purpose limitation aur retention limits apply hote hain. Local legal counsel se project-specific requirements verify karo — regulations jurisdiction aur sector pe vary karte hain.",
+    q: "How do privacy regulations apply to biometrics?",
+    a: "Biometric data falls in the 'sensitive personal data' category in most privacy regulations — GDPR (Europe), India's DPDP Act, and similar frameworks. Explicit consent is typically required for collection. Data minimization, purpose limitation and retention limits apply. Verify project-specific requirements with local legal counsel — regulations vary by jurisdiction and sector.",
   },
 ];
 

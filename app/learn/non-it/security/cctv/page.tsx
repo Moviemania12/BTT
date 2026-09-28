@@ -17,7 +17,7 @@ export default function CCTVArticlePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <ArticleLayout slug="cctv" headings={HEADINGS} readingTimeMinutes={22}>
+      <ArticleLayout slug="cctv" headings={HEADINGS} readingTimeMinutes={22} lang="en" alternateHref="/hi/learn/non-it/security/cctv">
         <Basics />
         <Cameras />
         <RecordingAndStorage />

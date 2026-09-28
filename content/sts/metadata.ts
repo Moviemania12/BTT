@@ -5,7 +5,7 @@ export const stsMetadata: ArticleMetadata = {
   title: "Static Transfer Switch (STS) — Complete Guide for Data Center Engineers",
   seoTitle: "STS Explained: Static Transfer Switch Working, Dual Bus, Transfer Time & Data Center Design",
   seoDescription:
-    "Static Transfer Switch (STS) kya hai? SCR switching, 4ms transfer time, dual UPS architecture, A/B power path, maintenance bypass — complete Hinglish guide for Data Center engineers.",
+    "What is a Static Transfer Switch (STS)? SCR switching, 4ms transfer time, dual UPS architecture, A/B power path, maintenance bypass — a complete guide for Data Center engineers.",
   canonicalUrl: "https://behindthetech.in/learn/non-it/electrical/sts",
   keywords: [
     "static transfer switch kya hai",

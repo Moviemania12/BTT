@@ -9,44 +9,44 @@ export default function Foundation() {
   return (
     <>
       <h2 id="what-is-pdu" style={S.h2}>What is a PDU?</h2>
-      <p style={S.p}>PDU matlab Power Distribution Unit. Simple words mein — yeh woh device hai jo UPS ya STS se aane wala power leti hai aur individual servers, switches, aur storage devices tak distribute karti hai.</p>
-      <p style={S.p}>Socho ek building mein main electrical panel hota hai jahan se har room ko power milta hai. Data Center mein woh kaam PDU karta hai — lekin sirf servers ke liye, aur bahut zyada precision ke saath.</p>
-      <p style={S.p}>Simple PDU sirf outlets ka board hoti hai. <strong>Intelligent PDU (iPDU)</strong> ek complete network device hoti hai jisme har outlet ka current, voltage, power, temperature, aur humidity sab real-time monitor hota hai — aur remotely control bhi kiya ja sakta hai.</p>
+      <p style={S.p}>PDU means Power Distribution Unit. In simple words — it is the device that takes the power coming from the UPS or STS and distributes it to individual servers, switches and storage devices.</p>
+      <p style={S.p}>Imagine a building has a main electrical panel from which every room gets power. In a Data Center, the PDU does that job — but only for servers, and with much more precision.</p>
+      <p style={S.p}>A simple PDU is just a board of outlets. An <strong>Intelligent PDU (iPDU)</strong> is a complete network device in which every outlet's current, voltage, power, temperature and humidity are all monitored in real time — and it can also be controlled remotely.</p>
       <Callout type="important" title="PDU ≠ Power Strip">
-        Ghar ya office ka power strip aur Data Center PDU bilkul alag hain. PDU ke paas certified circuit breakers, industrial-grade connectors (IEC C13/C19), phase balancing, optional metering, aur 24/7 continuous operation ki guarantee hoti hai. Power strip kabhi Data Center mein use mat karo.
+        A home or office power strip and a Data Center PDU are completely different. A PDU has certified circuit breakers, industrial-grade connectors (IEC C13/C19), phase balancing, optional metering, and a guarantee of 24/7 continuous operation. Never use a power strip in a Data Center.
       </Callout>
 
       <h2 id="why-pdu-required" style={S.h2}>Why PDU is Required</h2>
-      <p style={S.p}>UPS ek large AC output deta hai — typically 3-phase 415V ya single-phase 230V. Lekin individual servers ko 230V single-phase chahiye hoti hai, aur ek time pe ek server sirf 1-3 Amperes consume karta hai.</p>
-      <p style={S.p}>Directly UPS se sab servers connect karna possible nahi — cable management nightmare, no protection, no visibility. PDU yeh problem solve karta hai: ek input leti hai, aur 20-40 individual outlets provide karti hai with proper circuit protection.</p>
+      <p style={S.p}>A UPS gives a large AC output — typically 3-phase 415V or single-phase 230V. But individual servers need 230V single-phase, and one server consumes only 1-3 Amperes at a time.</p>
+      <p style={S.p}>Connecting all servers directly to the UPS is not possible — cable management nightmare, no protection, no visibility. The PDU solves this problem: it takes one input and provides 20-40 individual outlets with proper circuit protection.</p>
       <ComparisonTable
-        headers={["PDU Ke Bina", "PDU Ke Saath"]}
+        headers={["Without a PDU", "With a PDU"]}
         rows={[
-          ["UPS se directly cables run karo — sab ek circuit pe", "Organized per-rack distribution — independent circuits"],
-          ["Ek fault = sabka power gaya", "Branch circuit breaker sirf affected circuit trip karta hai"],
-          ["Koi visibility nahi ki kitna load hai", "Per-outlet ya per-phase metering available"],
-          ["Cable management impossible", "Rack mein vertical ya horizontal clean installation"],
-          ["No remote management", "SNMP/Modbus se centralized monitoring"],
+          ["Run cables directly from the UPS — everything on one circuit", "Organized per-rack distribution — independent circuits"],
+          ["One fault = everyone loses power", "Branch circuit breaker trips only the affected circuit"],
+          ["No visibility of how much load there is", "Per-outlet or per-phase metering available"],
+          ["Cable management impossible", "Clean vertical or horizontal installation in the rack"],
+          ["No remote management", "Centralized monitoring via SNMP/Modbus"],
         ]}
       />
 
       <h2 id="power-flow-architecture" style={S.h2}>Complete Data Center Power Flow</h2>
-      <p style={S.p}>PDU samajhne ke liye pehle poora power flow samajhna zaroori hai. Grid se server tak yeh sequence hoti hai:</p>
-      <Figure caption="Fig 1 — Complete Data Center Power Flow: Grid → Transformer → UPS → STS → PDU → Rack PDU → Server. PDU aur Rack PDU highlighted hain — yeh article inhi ke baare mein hai.">
+      <p style={S.p}>To understand the PDU, first it is essential to understand the whole power flow. From the grid to the server, this is the sequence:</p>
+      <Figure caption="Fig 1 — Complete Data Center Power Flow: Grid → Transformer → UPS → STS → PDU → Rack PDU → Server. PDU and Rack PDU are highlighted — this article is about them.">
         <DcPowerFlowDiagram />
       </Figure>
-      <p style={S.p}><TopicLink slug="ups" variant="inline" /> ka output <TopicLink slug="sts" variant="inline" /> se hota hua Floor-level PDU (ya Main PDU) pe aata hai. Floor PDU se multiple Rack PDUs feed hoti hain. Rack PDU directly servers ke PSU cables se connected hoti hai.</p>
+      <p style={S.p}>The output of the <TopicLink slug="ups" variant="inline" /> passes through the <TopicLink slug="sts" variant="inline" /> and reaches the Floor-level PDU (or Main PDU). Multiple Rack PDUs are fed from the Floor PDU. The Rack PDU is connected directly to the servers' PSU cables.</p>
       <Callout type="best-practice" title="Floor PDU vs Rack PDU">
-        Bade Data Centers mein do levels hote hain: (1) <strong>Floor PDU / RPP</strong> — UPS/STS output receive karta hai, multiple rack PDUs feed karta hai, typically 3-phase 63A-250A. (2) <strong>Rack PDU</strong> — ek rack ke andar, individual equipment feed karta hai, typically single-phase 16A-32A. Chote setups mein floor PDU skip hoti hai aur UPS directly rack PDU feed karta hai.
+        Large Data Centers have two levels: (1) <strong>Floor PDU / RPP</strong> — receives the UPS/STS output, feeds multiple rack PDUs, typically 3-phase 63A-250A. (2) <strong>Rack PDU</strong> — inside a rack, feeds individual equipment, typically single-phase 16A-32A. In small setups the floor PDU is skipped and the UPS feeds the rack PDU directly.
       </Callout>
 
       <h2 id="pdu-types-overview" style={S.h2}>Types of PDU</h2>
-      <p style={S.p}>PDU market mein 5 levels hain — basic se intelligent tak. Har level zyada features add karta hai, aur cost bhi badhti hai. Right choice project requirements pe depend karti hai.</p>
+      <p style={S.p}>The PDU market has 5 levels — from basic to intelligent. Each level adds more features, and the cost also increases. The right choice depends on project requirements.</p>
       <ComparisonTable
         headers={["Type", "What It Does", "Monitoring", "Remote Control", "Best For"]}
         rows={[
-          ["Basic PDU", "Power distribute karta hai, kuch nahi", "None", "None", "Small setups, low budget"],
-          ["Metered PDU", "Input current/voltage measure karta hai", "Input level only", "None", "Load visibility chahiye"],
+          ["Basic PDU", "Distributes power, nothing else", "None", "None", "Small setups, low budget"],
+          ["Metered PDU", "Measures input current/voltage", "Input level only", "None", "When load visibility is needed"],
           ["Monitored PDU", "Per-outlet current monitoring", "Per-outlet", "None", "Detailed load tracking"],
           ["Switched PDU", "Remote outlet on/off", "Basic", "Per-outlet switching", "Remote reboot needed"],
           ["Intelligent PDU (iPDU)", "Full monitoring + switching + sensors + protocols", "Complete", "Full", "Enterprise Data Center"],
@@ -54,26 +54,26 @@ export default function Foundation() {
       />
 
       <h3 id="basic-pdu" style={S.h3}>Basic PDU</h3>
-      <p style={S.p}>Yeh simplest form hai — ek input (typically IEC C20 ya hardwire) aur multiple outlets (IEC C13/C19). Koi display nahi, koi metering nahi, koi network port nahi.</p>
-      <p style={S.p}>Use kab karein: small server rooms jahan budget tight ho aur load monitoring ki zaroorat nahi. Tier I/II installations mein acceptable hai. Tier III/IV mein minimum metered PDU recommended hai.</p>
+      <p style={S.p}>This is the simplest form — one input (typically IEC C20 or hardwire) and multiple outlets (IEC C13/C19). No display, no metering, no network port.</p>
+      <p style={S.p}>When to use: small server rooms where the budget is tight and load monitoring is not needed. Acceptable in Tier I/II installations. In Tier III/IV, a metered PDU is the recommended minimum.</p>
 
       <h3 id="metered-pdu" style={S.h3}>Metered PDU</h3>
-      <p style={S.p}>Metered PDU mein input current, voltage, power (kW), energy (kWh), aur power factor ka display hota hai — usually LED display ya small LCD. Some models SNMP bhi support karte hain.</p>
-      <p style={S.p}>Advantage: operator manually walk kare toh turant load check kar sakta hai. Disadvantage: sirf input level metering hoti hai — individual outlet load nahi pata chalta.</p>
+      <p style={S.p}>A metered PDU has a display of input current, voltage, power (kW), energy (kWh) and power factor — usually an LED display or a small LCD. Some models also support SNMP.</p>
+      <p style={S.p}>Advantage: if an operator walks by manually, they can check the load immediately. Disadvantage: metering is only at the input level — individual outlet load is not known.</p>
 
       <h3 id="monitored-pdu" style={S.h3}>Monitored PDU</h3>
-      <p style={S.p}>Monitored PDU per-outlet current measurement provide karta hai — har C13/C19 outlet ka individual current sensor hota hai. Yeh data network se remotely readable hota hai.</p>
-      <p style={S.p}>Iska matlab: DCIM ya NMS se dekh sakte ho ki exactly kaunse outlet pe kitna load hai. Server hardware changes aur capacity planning mein bahut useful hota hai.</p>
+      <p style={S.p}>A monitored PDU provides per-outlet current measurement — every C13/C19 outlet has an individual current sensor. This data is readable remotely over the network.</p>
+      <p style={S.p}>This means: from DCIM or the NMS you can see exactly how much load is on which outlet. It is very useful for server hardware changes and capacity planning.</p>
 
       <h3 id="switched-pdu" style={S.h3}>Switched PDU</h3>
-      <p style={S.p}>Switched PDU mein har outlet remotely on/off kiya ja sakta hai — web interface, SNMP, ya CLI se. Server hung ho gaya aur network respond nahi kar raha? Remote power cycle possible hai bina physically rack ke paas jaaye.</p>
-      <p style={S.p}>Switched PDU ka real Data Center use case: NOC se remote server reboot at 3 AM, bina field engineer dispatch kiye. Time aur cost dono bachta hai.</p>
+      <p style={S.p}>In a switched PDU every outlet can be switched on/off remotely — via the web interface, SNMP or CLI. A server is hung and the network is not responding? A remote power cycle is possible without physically going to the rack.</p>
+      <p style={S.p}>A real Data Center use case of a switched PDU: a remote server reboot from the NOC at 3 AM, without dispatching a field engineer. It saves both time and cost.</p>
       <Callout type="warning" title="Warning — Outlet Switching Caution">
-        Switched PDU mein accidental outlet-off ek production server down kar sakta hai. Always role-based access control configure karo — only authorized personnel ko outlet switching permission honi chahiye. Audit log mandatory hai jisse track ho sake ki kisne kab kaunsa outlet off kiya.
+        In a switched PDU, an accidental outlet-off can take a production server down. Always configure role-based access control — only authorized personnel should have outlet switching permission. An audit log is mandatory so it can be tracked who turned off which outlet and when.
       </Callout>
 
       <h3 id="intelligent-pdu" style={S.h3}>Intelligent PDU (iPDU)</h3>
-      <p style={S.p}>iPDU PDU ka most advanced form hai. Yeh essentially ek network device hai jisme power distribution bhi built-in hoti hai. Features:</p>
+      <p style={S.p}>The iPDU is the most advanced form of PDU. It is essentially a network device with power distribution built in. Features:</p>
       <ul style={S.ul}>
         <li>Per-outlet metering: current, voltage, power, energy, power factor</li>
         <li>Per-outlet remote switching (on/off/reboot sequence)</li>
@@ -88,14 +88,14 @@ export default function Foundation() {
       <p style={S.p}>Example: Vertiv Geist iPDU, Rack R-21. Every outlet individually monitored. Temperature probe at front door. Connected to management LAN. DCIM dashboard shows real-time kW per outlet, total rack power, inlet temperature, and historical load trend.</p>
 
       <h2 id="internal-construction" style={S.h2}>Internal Construction</h2>
-      <p style={S.p}>PDU ke andar kya hota hai yeh jaanna important hai — fault diagnosis aur maintenance ke liye. Structural breakdown:</p>
-      <Figure caption="Fig 2 — PDU Internal Block Diagram: Input section, Bus Bar + Circuit Breakers, Controller (iPDU only), and Outlet section. Basic PDU mein Controller absent hota hai.">
+      <p style={S.p}>Knowing what is inside a PDU is important — for fault diagnosis and maintenance. Structural breakdown:</p>
+      <Figure caption="Fig 2 — PDU Internal Block Diagram: Input section, Bus Bar + Circuit Breakers, Controller (iPDU only), and Outlet section. The Controller is absent in a Basic PDU.">
         <PduInternalDiagram />
       </Figure>
       <ComparisonTable
         headers={["Component", "Function", "Basic PDU", "iPDU"]}
         rows={[
-          ["Input connector", "IEC C20 ya hardwire terminal", "✓", "✓"],
+          ["Input connector", "IEC C20 or hardwire terminal", "✓", "✓"],
           ["Main input breaker", "Complete PDU protection", "✓", "✓"],
           ["Input CT/PT sensors", "V, A, W, kWh measurement", "Optional", "✓"],
           ["SPD (Surge Protection)", "Transient voltage protection", "Optional", "✓"],
@@ -111,7 +111,7 @@ export default function Foundation() {
       />
 
       <h2 id="connectors-standards" style={S.h2}>Input & Output Connectors — IEC Standards</h2>
-      <p style={S.p}>Data Center PDU IEC 60320 standard connectors use karti hai. Yeh worldwide standardized hain — isliye kisi bhi country ka server same cable se connect ho jaata hai.</p>
+      <p style={S.p}>Data Center PDUs use IEC 60320 standard connectors. These are standardized worldwide — which is why a server from any country connects with the same cable.</p>
       <ComparisonTable
         headers={["Connector", "Type", "Rating", "Common Use"]}
         rows={[
@@ -124,25 +124,25 @@ export default function Foundation() {
         ]}
       />
       <Callout type="important" title="C13 vs C19 — Load Planning Impact">
-        C13 outlets typically limit 10A per outlet. C19 outlets allow 16-20A. High-density servers (GPU servers, storage arrays, blade chassis) require C19 — agar C13 laga do toh breaker trip hoga ya cable overheat hoga. PDU order karte waqt per-rack expected devices ka review karo aur C13/C19 ratio accordingly select karo.
+        C13 outlets are typically limited to 10A per outlet. C19 outlets allow 16-20A. High-density servers (GPU servers, storage arrays, blade chassis) require C19 — if you use C13, the breaker will trip or the cable will overheat. When ordering a PDU, review the expected devices per rack and select the C13/C19 ratio accordingly.
       </Callout>
 
       <h2 id="single-phase-three-phase" style={S.h2}>Single Phase vs Three Phase</h2>
-      <p style={S.p}>PDU dono configurations mein aate hain. Right choice rack density aur available supply pe depend karti hai.</p>
+      <p style={S.p}>PDUs come in both configurations. The right choice depends on rack density and available supply.</p>
       <ComparisonTable
         headers={["Parameter", "Single Phase PDU", "Three Phase PDU"]}
         rows={[
           ["Input supply", "230V single phase + N + PE", "415V 3-phase + N + PE (India)"],
           ["Typical input current", "16A, 32A", "16A, 32A, 63A per phase"],
           ["Max power per PDU", "~7.4 kW (32A × 230V)", "~27 kW (63A × 415V × 1.73 × 0.8 PF)"],
-          ["Phase balancing needed?", "No — single phase", "Yes — L1/L2/L3 balanced karo"],
+          ["Phase balancing needed?", "No — single phase", "Yes — balance L1/L2/L3"],
           ["Typical rack power", "Up to 10 kW", "10–30+ kW (high density)"],
           ["Complexity", "Simple", "Requires phase planning"],
           ["Best for", "Standard racks, small DC", "High-density racks, large DC"],
         ]}
       />
       <Callout type="best-practice" title="Three Phase — 80% Rule">
-        Three phase PDU mein per-phase load 80% rated current se zyada nahi honi chahiye continuous operation ke liye. 32A rated phase = max 25.6A continuous. Phase imbalance monitor karo — 10% se zyada imbalance neutral current badhaata hai aur cable heating ka risk create karta hai.
+        In a three phase PDU, the per-phase load should not exceed 80% of rated current for continuous operation. 32A rated phase = max 25.6A continuous. Monitor phase imbalance — more than 10% imbalance increases neutral current and creates a risk of cable heating.
       </Callout>
 
       <h2 id="rack-pdu-vs-floor-pdu" style={S.h2}>Rack PDU vs Floor PDU</h2>
@@ -160,11 +160,11 @@ export default function Foundation() {
       />
 
       <h2 id="horizontal-vs-vertical" style={S.h2}>Horizontal vs Vertical Rack PDU</h2>
-      <p style={S.p}>Rack PDU ka physical form factor matter karta hai — especially space aur cable management ke liye.</p>
+      <p style={S.p}>The physical form factor of a rack PDU matters — especially for space and cable management.</p>
       <ComparisonTable
         headers={["Aspect", "Horizontal PDU (1U/2U)", "Vertical PDU (0U)"]}
         rows={[
-          ["Rack space used", "1U ya 2U rack space", "Zero rack units — side mount"],
+          ["Rack space used", "1U or 2U rack space", "Zero rack units — side mount"],
           ["Outlet count", "Typically 8-16 outlets", "Typically 16-42 outlets"],
           ["Cable management", "Front-to-back cable management", "Vertical — cables drop naturally"],
           ["Preferred for", "Short racks, low density", "Standard 42U racks, high density"],
@@ -172,10 +172,10 @@ export default function Foundation() {
           ["Most common in DC?", "Older installs, small setups", "Yes — standard choice today"],
         ]}
       />
-      <p style={S.p}>Modern Data Centers mein vertical 0U PDU standard choice hai — zero rack space waste, better cable management, aur more outlets in same footprint.</p>
+      <p style={S.p}>In modern Data Centers the vertical 0U PDU is the standard choice — zero rack space wasted, better cable management and more outlets in the same footprint.</p>
 
       <h2 id="power-capacity" style={S.h2}>Power Capacity & Load Planning</h2>
-      <p style={S.p}>PDU capacity planning mein ek important rule hai: <strong>design ke liye 80% derating apply karo</strong>. 32A input PDU ko 25.6A se zyada continuous load mat do.</p>
+      <p style={S.p}>There is one important rule in PDU capacity planning: <strong>apply 80% derating for design</strong>. Do not give a 32A input PDU more than 25.6A of continuous load.</p>
       <ComparisonTable
         headers={["PDU Rating", "Max Continuous Load (80%)", "Approx kW (230V, PF 0.9)"]}
         rows={[
@@ -186,15 +186,15 @@ export default function Foundation() {
           ["63A × 3-phase", "50.4A per phase", "~31.3 kW total"],
         ]}
       />
-      <Callout type="important" title="80% Rule — Yeh Kyun?">
-        NEC (National Electrical Code) aur good engineering practice: continuous loads (24/7 operation) circuit capacity ke 80% se zyada nahi honi chahiye. Reason: cable heating at sustained high current — insulation degradation, potential fire risk, nuisance breaker trips at peaks. Data Center sab continuous load hai — 80% rule non-negotiable hai.
+      <Callout type="important" title="80% Rule — Why?">
+        NEC (National Electrical Code) and good engineering practice: continuous loads (24/7 operation) should not exceed 80% of circuit capacity. Reason: cable heating at sustained high current — insulation degradation, potential fire risk, nuisance breaker trips at peaks. Everything in a Data Center is continuous load — the 80% rule is non-negotiable.
       </Callout>
 
       <h2 id="circuit-breakers" style={S.h2}>Circuit Breakers in PDU</h2>
-      <p style={S.p}>PDU mein circuit breakers do levels pe hote hain:</p>
+      <p style={S.p}>Circuit breakers in a PDU are at two levels:</p>
       <ul style={S.ul}>
-        <li><strong>Main input breaker:</strong> Poori PDU protect karta hai — input feeder fault ya PDU internal fault pe trip karta hai. Trip = poori PDU power lose karti hai.</li>
-        <li><strong>Branch circuit breakers:</strong> Har circuit/branch protect karta hai — typically 10A ya 16A per branch. Trip = sirf woh branch lose power karta hai, baaki outlets continue karte hain.</li>
+        <li><strong>Main input breaker:</strong> Protects the whole PDU — trips on an input feeder fault or a PDU internal fault. Trip = the whole PDU loses power.</li>
+        <li><strong>Branch circuit breakers:</strong> Protect each circuit/branch — typically 10A or 16A per branch. Trip = only that branch loses power; the other outlets continue.</li>
       </ul>
       <ComparisonTable
         headers={["Breaker Type", "Rating", "Protects", "Trip Impact"]}
@@ -205,11 +205,11 @@ export default function Foundation() {
         ]}
       />
       <Callout type="best-practice" title="Branch Breaker Reset — On-Site Only">
-        Branch circuit breakers physically reset karne padte hain — remotely nahi kiya ja sakta (except switched PDU mein jisme electronic circuit protection hoti hai). Isliye field engineer dispatch karna padta hai breaker trip ke case mein. Breaker reset se pehle trip cause investigate karo — simply reset mat karo overcurrent condition fix kiye bina.
+        Branch circuit breakers have to be reset physically — it cannot be done remotely (except in a switched PDU that has electronic circuit protection). That is why a field engineer has to be dispatched in case of a breaker trip. Investigate the trip cause before resetting the breaker — do not simply reset it without fixing the overcurrent condition.
       </Callout>
 
       <h2 id="metering" style={S.h2}>Metering — What Gets Measured</h2>
-      <p style={S.p}>PDU metering kya measure karta hai aur kyun — yeh samajhna capacity planning ke liye essential hai.</p>
+      <p style={S.p}>Understanding what PDU metering measures and why — this is essential for capacity planning.</p>
       <ComparisonTable
         headers={["Parameter", "Unit", "What It Tells You", "Available In"]}
         rows={[
@@ -226,7 +226,7 @@ export default function Foundation() {
       />
 
       <h2 id="sensors" style={S.h2}>Sensors</h2>
-      <p style={S.p}>iPDU mein external sensors connect ki ja sakti hain — rack ke physical environment monitor karne ke liye.</p>
+      <p style={S.p}>External sensors can be connected to an iPDU — to monitor the rack's physical environment.</p>
       <ComparisonTable
         headers={["Sensor Type", "Measures", "Typical Placement", "Alert Threshold"]}
         rows={[
@@ -240,10 +240,10 @@ export default function Foundation() {
       />
 
       <h2 id="environmental-monitoring" style={S.h2}>Environmental Monitoring</h2>
-      <p style={S.p}>ASHRAE standard ke according server inlet temperature 80.6°F (27°C) se neeche rehni chahiye for IT equipment reliability. iPDU ka temperature probe yeh directly measure karta hai — rack level pe, real time mein.</p>
-      <p style={S.p}>Practical benefit: cooling system failure se pehle hi iPDU temperature alarm trigger karta hai. Operations team cooling fix kar sakti hai server hardware damage se pehle.</p>
+      <p style={S.p}>According to the ASHRAE standard, server inlet temperature should stay below 80.6°F (27°C) for IT equipment reliability. The iPDU's temperature probe measures this directly — at the rack level, in real time.</p>
+      <p style={S.p}>Practical benefit: the iPDU triggers a temperature alarm even before a cooling system failure. The operations team can fix the cooling before server hardware is damaged.</p>
       <Callout type="important" title="Rack Inlet vs Rack Outlet Temperature">
-        Temperature probe ideally rack ke front door pe — yeh inlet air temperature hai. Outlet temperature (hot exhaust) always higher hogi. DCIM mein inlet temperature se thermal map banta hai — hotspots identify hote hain. Outlet temperature sirf rack-level delta (ΔT) calculate karne ke kaam aati hai, not for compliance monitoring.
+        Ideally the temperature probe goes on the front door of the rack — this is the inlet air temperature. The outlet temperature (hot exhaust) will always be higher. In DCIM, the thermal map is built from the inlet temperature — hotspots are identified. The outlet temperature is only useful for calculating the rack-level delta (ΔT), not for compliance monitoring.
       </Callout>
     </>
   );
