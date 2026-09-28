@@ -3,3 +3,5 @@ node_modules/
 .env.local
 .vercel/
 *.tsbuildinfo
+# BTT Employee Manager installer/APK — too big for git, hosted on GitHub Releases
+public/downloads/

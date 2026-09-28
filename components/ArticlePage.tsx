@@ -32,7 +32,6 @@ import Link from "next/link";
 import { ChevronDown, Clock } from "lucide-react";
 import { TOPICS, getTopicUrl, type Topic } from "@/lib/topics";
 import TopicLink from "@/components/TopicLink";
-import ArticleTranslator from "@/components/translation/ArticleTranslator";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -49,6 +48,7 @@ interface ArticlePageProps {
   relatedSlugs: string[];
   headings: ArticleHeading[];
   readingTimeMinutes: number;
+  lang?: "en" | "hi";
   children: React.ReactNode;
 }
 
@@ -493,6 +493,7 @@ export default function ArticlePage({
   relatedSlugs,
   headings,
   readingTimeMinutes,
+  lang = "en",
   children,
 }: ArticlePageProps) {
   const topic = TOPICS[slug];
@@ -528,7 +529,7 @@ export default function ArticlePage({
                 <TableOfContents headings={headings} />
               </div>
 
-              <ArticleTranslator slug={slug}>
+              
                 <article
                   className="btt-article-content"
                   style={{
@@ -541,7 +542,7 @@ export default function ArticlePage({
                 >
                   {children}
                 </article>
-              </ArticleTranslator>
+              
 
               <ContinueLearning prevSlug={prevSlug} nextSlug={nextSlug} />
               <RelatedTopics slugs={relatedSlugs} />
@@ -711,3 +712,7 @@ export default function ArticlePage({
     </>
   );
 }
+
+
+
+

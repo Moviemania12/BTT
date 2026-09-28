@@ -8,6 +8,7 @@ import WhyBehindTheTech from "@/components/homepage/WhyBehindTheTech";
 import HowItWorks from "@/components/homepage/HowItWorks";
 import LearningRoadmapSimple from "@/components/homepage/LearningRoadmapSimple";
 import StatsBar from "@/components/homepage/StatsBar";
+import FeaturedProduct from "@/components/btt-employee-manager/FeaturedProduct";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // app/page.tsx — Homepage V2
@@ -23,6 +24,8 @@ export default function Home() {
     <>
       <main>
         <HeroV2 />
+        {/* Featured product: BTT Employee Manager (components/btt-employee-manager/FeaturedProduct) */}
+        <FeaturedProduct />
         <LearningTracks />
         <PopularTopics />
         <ContinueLearning />

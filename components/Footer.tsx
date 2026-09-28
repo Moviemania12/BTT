@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Zap, Youtube, Instagram, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Zap, Youtube, Instagram, Linkedin, ArrowUpRight } from "lucide-react";
 
 // White theme migration (Phase A): all neon-glow colors replaced with
 // flat hp-* tokens. Footer links updated with real hrefs (Phase 2).
@@ -11,6 +11,7 @@ const footerLinks: Record<string, Array<{ label: string; href: string }>> = {
     { label: "AI Infrastructure",     href: "/learn/ai" },
     { label: "DC Map",                href: "/data-center-map" },
     { label: "Engineering Tools",     href: "/tools" },
+    { label: "BTT Employee Manager",  href: "/products/btt-employee-manager" },
   ],
   "Company": [
     { label: "About BTT",     href: "/about" },
@@ -52,13 +53,6 @@ const socialLinks = [
     icon: Linkedin,
     href: "https://linkedin.com/company/behindthetech",
     label: "LinkedIn",
-    bgClass: "bg-[var(--hp-accent-subtle)]",
-    hoverBorderClass: "hover:border-[var(--hp-accent)]",
-  },
-  {
-    icon: Mail,
-    href: "mailto:hello@behindthetech.in",
-    label: "Email",
     bgClass: "bg-[var(--hp-accent-subtle)]",
     hoverBorderClass: "hover:border-[var(--hp-accent)]",
   },
@@ -170,12 +164,6 @@ export default function Footer() {
             </span>
           </div>
 
-          <p
-            className="text-xs text-[var(--hp-text-muted)]"
-            style={{ fontFamily: "var(--font-mono)" }}
-          >
-            hello@behindthetech.in
-          </p>
         </div>
       </div>
     </footer>

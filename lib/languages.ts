@@ -6,6 +6,9 @@ export interface Language {
 }
 
 export const SUPPORTED_LANGUAGES: Language[] = [
+  // English — real translation target (Hinglish → natural professional English)
+  { code: "en", name: "English",               native: "English" },
+  // South Asian
   { code: "hi",    name: "Hindi",                 native: "हिन्दी" },
   { code: "bn",    name: "Bengali",               native: "বাংলা" },
   { code: "te",    name: "Telugu",                native: "తెలుగు" },

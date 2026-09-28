@@ -1,0 +1,281 @@
+warning: in the working copy of 'app/api/translate/route.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'components/translation/ArticleTranslator.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'components/translation/LanguageSelector.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/languages.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/app/api/translate/route.ts b/app/api/translate/route.ts[m
+[1mindex fdce128..e447f5d 100644[m
+[1m--- a/app/api/translate/route.ts[m
+[1m+++ b/app/api/translate/route.ts[m
+[36m@@ -1,11 +1,16 @@[m
+ // ─── /api/translate ───────────────────────────────────────────────────────────[m
+ // POST: generate or return cached translation[m
+[31m-// GET:  cache-only check (no Gemini call)[m
+[32m+[m[32m// GET:  cache check only (no Gemini call)[m
+ //[m
+[31m-// Hash mismatch fix: server always computes the authoritative SHA-256 hash[m
+[31m-// from the received sourceHtml. No client hash is accepted or validated —[m
+[31m-// the client-sent hash was removed because client (FNV-1a) and server[m
+[31m-// (SHA-256) used different algorithms, causing an always-failing mismatch.[m
+[32m+[m[32m// Architecture:[m
+[32m+[m[32m//  • Text-node extraction: only visible text strings sent to Gemini[m
+[32m+[m[32m//    → HTML structure, all attributes (class/style/data-*/aria-*/href) intact[m
+[32m+[m[32m//  • code/pre/SVG blocks extracted before send — never translated[m
+[32m+[m[32m//  • SDK-native abortSignal in config.abortSignal (verified in @google/genai v2.19.0)[m
+[32m+[m[32m//  • Chunks = slices of the text list, not HTML — always safe boundaries[m
+[32m+[m[32m//  • SHA-256 Vercel Blob cache shared across all users[m
+[32m+[m[32m//  • In-process lock prevents duplicate Gemini calls for same slug+lang+hash[m
+[32m+[m[32m//  • English = real translation target (Hinglish → natural professional English)[m
+ // ─────────────────────────────────────────────────────────────────────────────[m
+ [m
+ import { NextRequest, NextResponse } from "next/server";[m
+[36m@@ -17,8 +22,18 @@[m [mimport {[m
+   getOrGenerateTranslation,[m
+   type TranslationRecord,[m
+ } from "@/lib/translation-store";[m
+[32m+[m[32mimport {[m
+[32m+[m[32m  extractTexts,[m
+[32m+[m[32m  restoreTexts,[m
+[32m+[m[32m  chunkTexts,[m
+[32m+[m[32m  estimateTokens,[m
+[32m+[m[32m} from "@/lib/html-stripper";[m
+ [m
+ const MODEL = "gemini-2.5-flash";[m
+[32m+[m[32m// Per-chunk Gemini timeout — passed via SDK-native abortSignal in config[m
+[32m+[m[32mconst GEMINI_CHUNK_TIMEOUT_MS = 90_000;[m
+[32m+[m[32m// Max parallel Gemini chunk calls[m
+[32m+[m[32mconst MAX_CONCURRENCY = 3;[m
+ [m
+ // ── Gemini client (lazy, server-only) ─────────────────────────────────────────[m
+ let _ai: GoogleGenAI | null = null;[m
+[36m@@ -30,7 +45,7 @@[m [mfunction getAI(): GoogleGenAI {[m
+   return _ai;[m
+ }[m
+ [m
+[31m-// ── Per-IP rate limit (in-memory, 5 new translations/min/IP) ──────────────────[m
+[32m+[m[32m// ── Per-IP rate limit (in-memory, 5 new translations/min) ─────────────────────[m
+ const _rate = new Map<string, { count: number; resetAt: number }>();[m
+ function checkRate(ip: string): boolean {[m
+   const now = Date.now();[m
+[36m@@ -44,112 +59,228 @@[m [mfunction checkRate(ip: string): boolean {[m
+   return true;[m
+ }[m
+ [m
+[31m-// ── Gemini translation ─────────────────────────────────────────────────────────[m
+[31m-async function translateWithGemini([m
+[32m+[m[32m// ── Translate one chunk of text strings via Gemini ────────────────────────────[m
+[32m+[m[32m// Input:  array of text strings (visible text nodes from the article)[m
+[32m+[m[32m// Output: array of translated strings, same length and order[m
+[32m+[m[32masync function translateTextChunk([m
+[32m+[m[32m  textChunk: string[],[m
+[32m+[m[32m  targetLang: string,[m
+[32m+[m[32m  targetLangName: string,[m
+[32m+[m[32m  chunkIdx: number,[m
+[32m+[m[32m  totalChunks: number[m
+[32m+[m[32m): Promise<string[]> {[m
+[32m+[m[32m  const ai = getAI();[m
+[32m+[m
+[32m+[m[32m  // SDK-native timeout via AbortSignal (verified in @google/genai v2.19.0 types)[m
+[32m+[m[32m  const controller = new AbortController();[m
+[32m+[m[32m  const timer = setTimeout(() => controller.abort(), GEMINI_CHUNK_TIMEOUT_MS);[m
+[32m+[m
+[32m+[m[32m  const isEnglish = targetLang === "en";[m
+[32m+[m[32m  const chunkNote = totalChunks > 1[m
+[32m+[m[32m    ? `\n(Chunk ${chunkIdx + 1}/${totalChunks} — translate all items in this chunk)`[m
+[32m+[m[32m    : "";[m
+[32m+[m
+[32m+[m[32m  // Numbered list format: easy for Gemini to return in matching order[m
+[32m+[m[32m  const numbered = textChunk.map((t, i) => `${i + 1}. ${t}`).join("\n");[m
+[32m+[m
+[32m+[m[32m  const prompt = isEnglish[m
+[32m+[m[32m    ? `You are a professional technical writer converting Hinglish (Hindi+English mixed) to natural professional English.[m
+[32m+[m
+[32m+[m[32mSource text items are numbered. Each is a visible text node from an educational data center engineering article.[m
+[32m+[m
+[32m+[m[32mRULES:[m
+[32m+[m[32m1. Return EXACTLY the same number of items in the same order[m
+[32m+[m[32m2. Format output as: "1. <translated text>", "2. <translated text>", etc.[m
+[32m+[m[32m3. Convert Hinglish naturally to clear professional English — not word-for-word[m
+[32m+[m[32m4. Keep the educational, direct, conversational tone[m
+[32m+[m[32m5. Never translate: product names (NVIDIA, AMD, AWS, Google, Meta, OpenAI, Llama, MTIA), technical acronyms (GPU, TPU, UPS, CDU, CRAC, CRAH, PDU, HBM, ICI, RoCE, NVLink, PCIe), numbers with units, URLs, code snippets[m
+[32m+[m[32m6. Do NOT add or remove items[m
+[32m+[m[32m7. Do NOT add explanations or notes outside the numbered list${chunkNote}[m
+[32m+[m
+[32m+[m[32mText items to convert to English:[m
+[32m+[m[32m${numbered}`[m
+[32m+[m[32m    : `You are a professional technical translator converting Hinglish (Hindi+English mixed) article text to ${targetLangName} (${targetLang}).[m
+[32m+[m
+[32m+[m[32mSource text items are numbered. Each is a visible text node from an educational data center engineering article.[m
+[32m+[m
+[32m+[m[32mRULES:[m
+[32m+[m[32m1. Return EXACTLY the same number of items in the same order[m
+[32m+[m[32m2. Format output as: "1. <translated text>", "2. <translated text>", etc.[m
+[32m+[m[32m3. Translate naturally as a native ${targetLangName} technical writer — not word-for-word[m
+[32m+[m[32m4. Preserve the educational, conversational tone[m
+[32m+[m[32m5. Never translate: product names (NVIDIA, AMD, AWS, Google, Meta, OpenAI, Llama, MTIA), technical acronyms (GPU, TPU, UPS, CDU, CRAC, CRAH, PDU, HBM, ICI, RoCE, NVLink, PCIe), numbers with units, URLs[m
+[32m+[m[32m6. No standard ${targetLangName} term? Keep English + brief ${targetLangName} explanation in parentheses (first use only)[m
+[32m+[m[32m7. Do NOT add or remove items[m
+[32m+[m[32m8. Do NOT add explanations outside the numbered list${chunkNote}[m
+[32m+[m
+[32m+[m[32mText items to translate to ${targetLangName}:[m
+[32m+[m[32m${numbered}`;[m
+[32m+[m
+[32m+[m[32m  try {[m
+[32m+[m[32m    const response = await ai.models.generateContent({[m
+[32m+[m[32m      model: MODEL,[m
+[32m+[m[32m      contents: [{ role: "user", parts: [{ text: prompt }] }],[m
+[32m+[m[32m      config: {[m
+[32m+[m[32m        maxOutputTokens: 32768,[m
+[32m+[m[32m        temperature: 0.1,[m
+[32m+[m[32m        abortSignal: controller.signal, // SDK-native — verified in v2.19.0 types[m
+[32m+[m[32m      },[m
+[32m+[m[32m    });[m
+[32m+[m
+[32m+[m[32m    const raw = response.candidates?.[0]?.content?.parts?.[0]?.text ?? "";[m
+[32m+[m[32m    if (!raw) throw new Error(`Empty Gemini response for chunk ${chunkIdx + 1}`);[m
+[32m+[m
+[32m+[m[32m    return parseNumberedList(raw, textChunk);[m
+[32m+[m[32m  } finally {[m
+[32m+[m[32m    clearTimeout(timer);[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Parse Gemini's numbered list response.[m
+[32m+[m[32m * Falls back to original text for any missing/malformed items.[m
+[32m+[m[32m */[m
+[32m+[m[32mfunction parseNumberedList(raw: string, originals: string[]): string[] {[m
+[32m+[m[32m  const result: string[] = new Array(originals.length);[m
+[32m+[m[32m  const lines = raw.split("\n");[m
+[32m+[m
+[32m+[m[32m  for (const line of lines) {[m
+[32m+[m[32m    const match = /^(\d+)\.\s+(.+)$/.exec(line.trim());[m
+[32m+[m[32m    if (match) {[m
+[32m+[m[32m      const idx = parseInt(match[1], 10) - 1;[m
+[32m+[m[32m      if (idx >= 0 && idx < originals.length) {[m
+[32m+[m[32m        result[idx] = match[2].trim();[m
+[32m+[m[32m      }[m
+[32m+[m[32m    }[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  // Fill any gaps with originals (safety net)[m
+[32m+[m[32m  for (let i = 0; i < originals.length; i++) {[m
+[32m+[m[32m    if (!result[i]) result[i] = originals[i];[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  return result;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m// ── Full article translation pipeline ─────────────────────────────────────────[m
+[32m+[m[32masync function translateArticle([m
+   sourceHtml: string,[m
+   targetLang: string,[m
+[31m-  targetLangName: string[m
+[32m+[m[32m  targetLangName: string,[m
+[32m+[m[32m  slug: string[m
+ ): Promise<string> {[m
+[31m-  const ai = getAI();[m
+[32m+[m[32m  const t0 = Date.now();[m
+ [m
+[31m-  const prompt = `You are a professional technical translator for "Behind The Tech" (BTT), an educational platform about data center engineering.[m
+[32m+[m[32m  // 1. Extract text nodes → tokenized HTML + text list[m
+[32m+[m[32m  const er = extractTexts(sourceHtml);[m
+[32m+[m[32m  const totalTexts = er.texts.length;[m
+[32m+[m[32m  const textPayloadChars = er.texts.join("\n").length;[m
+ [m
+[31m-The source article is written in a mixed Hindi-English ("Hinglish") conversational style — it uses Hindi grammar and sentence structure with English technical terms woven in naturally. The content is educational, technically accurate, and aimed at engineers and students learning about data centers and AI infrastructure.[m
+[32m+[m[32m  // 2. Chunk the text list[m
+[32m+[m[32m  const textChunks = chunkTexts(er.texts);[m
+[32m+[m[32m  const numChunks = textChunks.length;[m
+ [m
+[31m-Your task: Translate the COMPLETE article HTML into ${targetLangName} (language code: ${targetLang}).[m
+[32m+[m[32m  console.log([m
+[32m+[m[32m    `[translate] START slug=${slug} lang=${targetLang}` +[m
+[32m+[m[32m    ` srcHtml=${sourceHtml.length}c texts=${totalTexts}` +[m
+[32m+[m[32m    ` payload=${textPayloadChars}c tokens≈${estimateTokens(er.texts)}` +[m
+[32m+[m[32m    ` chunks=${numChunks}`[m
+[32m+[m[32m  );[m
+ [m
+[31m-TRANSLATION APPROACH:[m
+[31m-- Understand the full meaning and intent of each sentence before translating[m
+[31m-- Write naturally in ${targetLangName} as a native technical writer would — not word-for-word from Hindi or English[m
+[31m-- Preserve the conversational, educational tone: clear, direct, friendly but technically precise[m
+[31m-- Where the source uses Hindi idioms or explanations, convey the same intent naturally in ${targetLangName}[m
+[32m+[m[32m  if (totalTexts === 0) {[m
+[32m+[m[32m    console.log(`[translate] No translatable text found — returning original`);[m
+[32m+[m[32m    return sourceHtml;[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  // 3. Translate chunks with concurrency cap[m
+[32m+[m[32m  const translatedTexts: string[] = new Array(er.texts.length);[m
+ [m
+[31m-STRICT RULES — DO NOT violate these:[m
+[31m-1. Translate ALL visible text content completely — do NOT summarize, skip, add or remove anything[m
+[31m-2. Preserve ALL HTML structure exactly as-is: every tag, attribute, class name, id, data-*, aria-*, href, src — copy them verbatim[m
+[31m-3. Never translate or alter: HTML tags, HTML attributes, CSS class names, URLs, href/src values[m
+[31m-4. Never translate content inside <code> or <pre> tags — copy those blocks verbatim[m
+[31m-5. Never translate: product names (NVIDIA, AMD, Google, Meta, AWS, Anthropic, OpenAI, Llama, MTIA, etc.), company names, technical acronyms (GPU, TPU, UPS, CDU, CRAC, CRAH, PDU, DG, HBM, ICI, RoCE, etc.), numbers with units, slug identifiers[m
+[31m-6. For technical terms with no standard ${targetLangName} equivalent: keep the English term and add a brief ${targetLangName} explanation in parentheses on first use[m
+[31m-7. Return ONLY the translated HTML — no preamble, no explanation, no markdown code fences, no extra content[m
+[32m+[m[32m  for (let i = 0; i < textChunks.length; i += MAX_CONCURRENCY) {[m
+[32m+[m[32m    const batch = textChunks.slice(i, i + MAX_CONCURRENCY);[m
+[32m+[m[32m    const batchT = Date.now();[m
+ [m
+[31m-Target: ${targetLangName} (${targetLang})[m
+[31m-Source: Mixed Hindi-English technical article HTML[m
+[32m+[m[32m    const batchResults = await Promise.all([m
+[32m+[m[32m      batch.map(async (chunk, bi) => {[m
+[32m+[m[32m        const globalIdx = i + bi;[m
+[32m+[m[32m        const ct = Date.now();[m
+[32m+[m[32m        const out = await translateTextChunk([m
+[32m+[m[32m          chunk, targetLang, targetLangName, globalIdx, numChunks[m
+[32m+[m[32m        );[m
+[32m+[m[32m        const elapsed = Date.now() - ct;[m
+[32m+[m[32m        console.log([m
+[32m+[m[32m          `[translate]  chunk ${globalIdx + 1}/${numChunks}` +[m
+[32m+[m[32m          ` texts=${chunk.length} ${elapsed}ms`[m
+[32m+[m[32m        );[m
+[32m+[m[32m        return { out, globalIdx };[m
+[32m+[m[32m      })[m
+[32m+[m[32m    );[m
+ [m
+[31m-HTML to translate:[m
+[31m-${sourceHtml}`;[m
+[32m+[m[32m    // Place results at correct positions[m
+[32m+[m[32m    let textOffset = 0;[m
+[32m+[m[32m    for (let b = 0; b < i; b++) textOffset += textChunks[b].length;[m
+[32m+[m[32m    for (let bi = 0; bi < batchResults.length; bi++) {[m
+[32m+[m[32m      const chunkOffset = textOffset + textChunks.slice(i, i + bi).reduce((s, c) => s + c.length, 0);[m
+[32m+[m[32m      const { out } = batchResults[bi];[m
+[32m+[m[32m      out.forEach((t, j) => { translatedTexts[chunkOffset + j] = t; });[m
+[32m+[m[32m    }[m
+ [m
+[31m-  const response = await ai.models.generateContent({[m
+[31m-    model: MODEL,[m
+[31m-    contents: [{ role: "user", parts: [{ text: prompt }] }],[m
+[31m-    config: { maxOutputTokens: 65536, temperature: 0.1 },[m
+[31m-  });[m
+[32m+[m[32m    if (numChunks > 1) {[m
+[32m+[m[32m      console.log([m
+[32m+[m[32m        `[translate]  batch ${Math.floor(i / MAX_CONCURRENCY) + 1}` +[m
+[32m+[m[32m        ` done in ${Date.now() - batchT}ms`[m
+[32m+[m[32m      );[m
+[32m+[m[32m    }[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  // 4. Restore: translated texts → tokenized HTML → final HTML with code/SVG[m
+[32m+[m[32m  const finalHtml = restoreTexts(er.tokenizedHtml, translatedTexts, er);[m
+[32m+[m
+[32m+[m[32m  console.log([m
+[32m+[m[32m    `[translate] DONE slug=${slug} lang=${targetLang}` +[m
+[32m+[m[32m    ` out=${finalHtml.length}c total=${Date.now() - t0}ms`[m
+[32m+[m[32m  );[m
+ [m
+[31m-  const text = response.candidates?.[0]?.content?.parts?.[0]?.text ?? "";[m
+[31m-  if (!text) throw new Error("Gemini returned empty response");[m
+[31m-  // Strip accidental markdown fences if model adds them despite instructions[m
+[31m-  return text.replace(/^```html\n?/i, "").replace(/\n?```$/i, "").trim();[m
+[32m+[m[32m  return finalHtml;[m
+ }[m
+ [m
+ // ── POST ─────────────

@@ -27,5 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://behindthetech.in/advertising-disclosure', lastModified: new Date() },
     { url: 'https://behindthetech.in/accessibility', lastModified: new Date() },
     { url: 'https://behindthetech.in/data-center-map', lastModified: new Date() },
+    { url: 'https://behindthetech.in/products/btt-employee-manager', lastModified: new Date(), priority: 0.9 },
+    { url: 'https://behindthetech.in/products/btt-employee-manager/demo', lastModified: new Date() },
+    { url: 'https://behindthetech.in/products/btt-employee-manager/download', lastModified: new Date() },
   ]
 }

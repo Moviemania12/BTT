@@ -579,7 +579,6 @@ function AppGrid({ items }: { items: { icon: string; label: string }[] }) {
 export default function WhatIsADataCenterPage() {
   return (
     <ArticlePage
-      lang="en"
       slug="what-is-a-data-center"
       prevSlug={undefined}
       nextSlug="data-center-types"
@@ -892,6 +891,3 @@ export default function WhatIsADataCenterPage() {
     </ArticlePage>
   );
 }
-
-
-

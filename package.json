@@ -8,26 +8,31 @@
     "start": "next start",
     "lint": "next lint",
     "build:index": "tsx scripts/build-article-index.ts",
-    "prebuild": "npm run build:index"
+    "prebuild": "npm run build:index",
+    "test:demo": "node --import tsx --test scripts/tests/demo-request.test.mjs"
   },
   "dependencies": {
-    "@google/genai": "^2.10.0",
-    "@vercel/blob": "^2.6.1",
+    "@google/genai": "^2.19.0",
+    "@vercel/blob": "^2.8.0",
     "lucide-react": "^0.511.0",
     "next": "^15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sharp": "^0.35.3",
-    "tsx": "^4.22.4"
+    "sharp": "^0.35.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
+    "@types/dompurify": "^3.0.5",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dompurify": "^3.4.15",
+    "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "^15.3.3",
+    "isomorphic-dompurify": "^4.2.0",
     "tailwindcss": "^4.0.0",
+    "tsx": "^4.23.13",
     "typescript": "^5"
   }
 }

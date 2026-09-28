@@ -8,11 +8,11 @@ import RequestJourneyDiagram from "@/components/diagrams/RequestJourneyDiagram";
 export const metadata: Metadata = {
   title: "What is a Data Center? — Behind The Tech",
   description:
-    "What is a Data Center? The digital powerhouse behind every click. Servers, power, cooling and networking — all explained in simple English.",
+    "Data Center kya hota hai? Har click ke peeche chhupa digital powerhouse. Servers, power, cooling aur networking — sab kuch simple Hinglish mein samjho.",
   keywords: [
+    "data center kya hota hai",
     "what is a data center",
-    "what is a data center",
-    "data center guide",
+    "data center in hindi",
     "data center explained",
     "data center basics",
     "server room",
@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     "behind the tech",
   ],
   openGraph: {
-    title: "What is a Data Center? The Digital Powerhouse Behind Every Click",
+    title: "What is a Data Center? Har Click Ke Peeche Chhupa Digital Powerhouse",
     description:
-      "What is a Data Center? Servers, UPS, cooling and networking — all explained in simple English.",
+      "Data Center kya hota hai? Servers, UPS, cooling aur networking — sab kuch simple Hinglish mein samjho.",
     url: "https://behindthetech.in/learn/what-is-a-data-center",
     siteName: "Behind The Tech",
     type: "article",
@@ -32,12 +32,12 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "What is a Data Center? — Behind The Tech",
-    description: "What is a Data Center? Explained in simple English.",
+    description: "Data Center kya hota hai? Simple Hinglish mein samjho.",
   },
   alternates: {
-    canonical: "https://behindthetech.in/learn/what-is-a-data-center",
+    canonical: "https://behindthetech.in/hi/learn/what-is-a-data-center",
     languages: {
-      "hi": "https://behindthetech.in/hi/learn/what-is-a-data-center",
+      "en": "https://behindthetech.in/learn/what-is-a-data-center",
     },
   },
 };
@@ -48,17 +48,17 @@ export const metadata: Metadata = {
 
 const HEADINGS: ArticleHeading[] = [
   { id: "quick-overview",        text: "Quick Overview",                    level: 2 },
-  { id: "real-life-example",     text: "A Real-Life Example",              level: 2 },
+  { id: "real-life-example",     text: "Ek Real-Life Example",             level: 2 },
   { id: "request-journey",       text: "Request Journey",                  level: 3 },
   { id: "response-journey",      text: "Response Journey",                 level: 3 },
-  { id: "dc-kya-hota-hai",       text: "What is a Data Center?",           level: 2 },
-  { id: "zarurat-kyu",           text: "Why Do We Need a Data Center?",    level: 2 },
-  { id: "main-components",       text: "Main Components of a Data Center", level: 2 },
+  { id: "dc-kya-hota-hai",       text: "Data Center Kya Hota Hai?",        level: 2 },
+  { id: "zarurat-kyu",           text: "Data Center Ki Zarurat Kyu?",      level: 2 },
+  { id: "main-components",       text: "Data Center Ke Main Components",   level: 2 },
   { id: "it-infrastructure",     text: "IT Infrastructure",                level: 3 },
   { id: "non-it-infrastructure", text: "Non-IT Infrastructure",            level: 2 },
-  { id: "power-chali-jaye",      text: "What Happens if Power Goes Out?",  level: 2 },
-  { id: "cooling-important",     text: "Why is Cooling So Important?",     level: 2 },
-  { id: "ai-zamane-mein",        text: "Data Centers in the Age of AI",    level: 2 },
+  { id: "power-chali-jaye",      text: "Agar Power Chali Jaye To?",        level: 2 },
+  { id: "cooling-important",     text: "Cooling Itni Important Kyu Hai?",  level: 2 },
+  { id: "ai-zamane-mein",        text: "AI Ke Zamane Me Data Centers",     level: 2 },
   { id: "did-you-know",          text: "Did You Know?",                    level: 2 },
   { id: "key-takeaways",         text: "Key Takeaways",                    level: 2 },
 ];
@@ -579,7 +579,6 @@ function AppGrid({ items }: { items: { icon: string; label: string }[] }) {
 export default function WhatIsADataCenterPage() {
   return (
     <ArticlePage
-      lang="en"
       slug="what-is-a-data-center"
       prevSlug={undefined}
       nextSlug="data-center-types"
@@ -605,39 +604,39 @@ export default function WhatIsADataCenterPage() {
       <h2 id="quick-overview" style={S.h2}>Quick Overview</h2>
 
       <IntroLead>
-        You use Data Centers every day. Yes, every single day.
+        Aap roz Data Centers use karte ho. Haan, roz.
       </IntroLead>
 
       <p style={S.p}>Jab aap:</p>
 
       <AppGrid
         items={[
-          { icon: "📺", label: "Watch a video on YouTube" },
-          { icon: "🔍", label: "Search something on Google" },
-          { icon: "📷", label: "Scroll through Instagram" },
-          { icon: "💬", label: "Send a WhatsApp message" },
-          { icon: "💳", label: "Make a UPI payment" },
-          { icon: "🤖", label: "Use ChatGPT" },
+          { icon: "📺", label: "YouTube par video dekhte ho" },
+          { icon: "🔍", label: "Google par search karte ho" },
+          { icon: "📷", label: "Instagram scroll karte ho" },
+          { icon: "💬", label: "WhatsApp par message bhejte ho" },
+          { icon: "💳", label: "UPI payment karte ho" },
+          { icon: "🤖", label: "ChatGPT use karte ho" },
         ]}
       />
 
-      <p style={S.p}>you are directly or indirectly connected to some Data Center.</p>
+      <p style={S.p}>tab aap directly ya indirectly kisi na kisi Data Center se connect hote ho.</p>
       <p style={S.p}>Simple words me:</p>
 
       <DefinitionCard>
-        <strong>A Data Center is a specially designed facility where servers, storage, networking, power and cooling systems are installed to run digital services.</strong>
+        <strong>Data Center ek specially designed facility hoti hai jahan digital services ko run karne ke liye servers, storage, networking, power aur cooling systems install kiye jaate hain.</strong>
       </DefinitionCard>
 
-      <p style={S.p}>Without Data Centers, the Internet as we know it today simply would not exist.</p>
+      <p style={S.p}>Agar Data Centers na hote to Internet jaisa hum aaj use karte hain, waise exist hi nahi karta.</p>
 
       <hr style={S.divider} />
 
       {/* ── Real-Life Example ── */}
-      <h2 id="real-life-example" style={S.h1}>A Real-Life Example</h2>
+      <h2 id="real-life-example" style={S.h1}>Ek Real-Life Example</h2>
 
-      <p style={S.p}>Imagine you open YouTube and search for "How Data Centers Work".</p>
-      <p style={S.p}>It seems like the video just came from YouTube.</p>
-      <p style={S.p}>But in reality, an entire digital journey happens in the background.</p>
+      <p style={S.p}>Maan lo aap YouTube open karke "How Data Centers Work" search karte ho.</p>
+      <p style={S.p}>Aapko lagta hai ki video bas YouTube se aa gaya.</p>
+      <p style={S.p}>Reality me background me poori digital journey chal rahi hoti hai.</p>
 
       <h2 id="request-journey" style={S.h2}>Request Journey</h2>
 
@@ -646,14 +645,14 @@ export default function WhatIsADataCenterPage() {
       <JourneyTimeline
         steps={[
           { emoji: "📱", text: "You Open YouTube" },
-          { emoji: "📡", text: "Request Goes to Your ISP (Jio, Airtel, BSNL, etc.)" },
-          { emoji: "🌐", text: "Travels Through the Internet" },
-          { emoji: "🏢", text: "Reaches the YouTube Data Center" },
-          { emoji: "🛡️", text: "Security Systems Verify the Request" },
-          { emoji: "⚖️", text: "Load Balancer Selects the Best Available Server" },
-          { emoji: "🖥️", text: "Server Processes the Request" },
-          { emoji: "💾", text: "Storage System Locates the Video File" },
-          { emoji: "📦", text: "Video Data is Prepared" },
+          { emoji: "📡", text: "Request Aapke ISP Tak Jaati Hai (Jio, Airtel, BSNL, etc.)" },
+          { emoji: "🌐", text: "Internet Ke Through Travel Karti Hai" },
+          { emoji: "🏢", text: "YouTube Data Center Tak Pahunchti Hai" },
+          { emoji: "🛡️", text: "Security Systems Request Verify Karte Hain" },
+          { emoji: "⚖️", text: "Load Balancer Best Available Server Select Karta Hai" },
+          { emoji: "🖥️", text: "Server Request Process Karta Hai" },
+          { emoji: "💾", text: "Storage System Video File Locate Karta Hai" },
+          { emoji: "📦", text: "Video Data Prepare Hota Hai" },
         ]}
       />
 
@@ -668,43 +667,43 @@ export default function WhatIsADataCenterPage() {
           { emoji: "⚖️", text: "Load Balancer" },
           { emoji: "🌐", text: "Internet" },
           { emoji: "📡", text: "ISP Network" },
-          { emoji: "📱", text: "Your Mobile" },
-          { emoji: "▶️", text: "Video Starts Playing" },
+          { emoji: "📱", text: "Aapka Mobile" },
+          { emoji: "▶️", text: "Video Start Ho Jaati Hai" },
         ]}
       />
 
-      <p style={S.p}>This entire process completes in milliseconds.</p>
-      <p style={S.p}>By the time you blink, thousands of hardware components and software systems have already worked together.</p>
+      <p style={S.p}>Ye poora process milliseconds me complete ho jata hai.</p>
+      <p style={S.p}>Jab tak aap blink karte ho, tab tak hazaron hardware components aur software systems milkar kaam kar chuke hote hain.</p>
 
       <hr style={S.divider} />
 
       {/* ── Data Center Kya Hota Hai ── */}
-      <h2 id="dc-kya-hota-hai" style={S.h1}>What is a Data Center?</h2>
+      <h2 id="dc-kya-hota-hai" style={S.h1}>Data Center Kya Hota Hai?</h2>
 
-      <p style={S.p}>The simplest way to understand a Data Center is:</p>
-      <p style={S.p}>Think of it as a giant digital factory.</p>
-      <p style={S.p}>Just like a manufacturing factory produces goods, a Data Center delivers digital services.</p>
-      <p style={S.p}>Inside, thousands of devices are continuously running.</p>
-      <p style={S.p}>Some are storing data.</p>
-      <p style={S.p}>Some are processing requests.</p>
-      <p style={S.p}>Some are handling network traffic.</p>
-      <p style={S.p}>And some are making sure the system never goes down.</p>
-      <p style={S.p}>That is why Data Centers are often called:</p>
+      <p style={S.p}>Data Center ko samajhne ka sabse simple tareeka hai:</p>
+      <p style={S.p}>Socho ek giant digital factory.</p>
+      <p style={S.p}>Jaise manufacturing factory products banati hai, waise hi Data Center digital services deliver karta hai.</p>
+      <p style={S.p}>Andar thousands of devices continuously kaam kar rahe hote hain.</p>
+      <p style={S.p}>Kuch data store kar rahe hote hain.</p>
+      <p style={S.p}>Kuch requests process kar rahe hote hain.</p>
+      <p style={S.p}>Kuch network traffic handle kar rahe hote hain.</p>
+      <p style={S.p}>Aur kuch ensure kar rahe hote hain ki system kabhi band na ho.</p>
+      <p style={S.p}>Isi wajah se Data Centers ko aksar:</p>
 
       <InsightCard>
         <strong>"Backbone of the Internet"</strong>
       </InsightCard>
 
-      <p style={S.p}></p>
+      <p style={S.p}>bhi kaha jata hai.</p>
 
       <hr style={S.divider} />
 
       {/* ── Zarurat ── */}
-      <h2 id="zarurat-kyu" style={S.h1}>Why Do We Need a Data Center?</h2>
+      <h2 id="zarurat-kyu" style={S.h1}>Data Center Ki Zarurat Kyu Padti Hai?</h2>
 
-      <p style={S.p}>Let's ask a simple question.</p>
-      <p style={S.p}>What if Google kept its servers in a regular office room?</p>
-      <p style={S.p}>There would be a lot of problems:</p>
+      <p style={S.p}>Chalo ek simple sawal puchte hain.</p>
+      <p style={S.p}>Agar Google apne servers kisi normal office room me rakh de to kya hoga?</p>
+      <p style={S.p}>Bahut problems aayengi:</p>
 
       <ul style={S.ul}>
         <li style={S.li}><span style={S.cross}>❌</span> Power Cut</li>
@@ -714,34 +713,34 @@ export default function WhatIsADataCenterPage() {
         <li style={S.li}><span style={S.cross}>❌</span> Service Downtime</li>
       </ul>
 
-      <p style={S.p}>That is why dedicated Data Centers are built.</p>
-      <p style={S.p}>These facilities are specially designed so that services run 24×7.</p>
+      <p style={S.p}>Isi liye dedicated Data Centers banaye jaate hain.</p>
+      <p style={S.p}>Ye facilities specially design ki jaati hain taaki services 24×7 chalti rahein.</p>
 
       <hr style={S.divider} />
 
       {/* ── Main Components ── */}
-      <h2 id="main-components" style={S.h1}>Main Components of a Data Center</h2>
+      <h2 id="main-components" style={S.h1}>Data Center Ke Main Components</h2>
 
-      <p style={S.p}>A modern Data Center has two major categories:</p>
+      <p style={S.p}>Ek modern Data Center me do major categories hoti hain:</p>
 
       <h2 id="it-infrastructure" style={S.h2}>IT Infrastructure</h2>
 
-      <p style={S.p}>These are the systems that actually process data.</p>
+      <p style={S.p}>Ye wo systems hain jo actual data ko process karte hain.</p>
 
       <div style={S.featureGrid3} className="btt-feature-grid">
         <FeatureCard icon="🖥️" title="Servers" learnMoreSlug="server-basics" learnMoreLabel="Learn More: Server Basics">
-          <p style={{ margin: 0, marginBottom: 8 }}>Servers are the brain of a Data Center.</p>
-          <p style={{ margin: 0 }}>They run applications and process user requests.</p>
+          <p style={{ margin: 0, marginBottom: 8 }}>Servers Data Center ka brain hote hain.</p>
+          <p style={{ margin: 0 }}>Ye applications run karte hain aur user requests process karte hain.</p>
         </FeatureCard>
 
         <FeatureCard icon="💾" title="Storage Systems" learnMoreSlug="nas" learnMoreLabel="Learn More: Storage Systems">
-          <p style={{ margin: 0, marginBottom: 8 }}>Storage systems save data.</p>
-          <p style={{ margin: 0 }}>Videos, images, documents, databases — everything is stored here.</p>
+          <p style={{ margin: 0, marginBottom: 8 }}>Storage systems data ko save karte hain.</p>
+          <p style={{ margin: 0 }}>Videos, images, documents, databases sab yahan stored hote hain.</p>
         </FeatureCard>
 
         <FeatureCard icon="🌐" title="Networking Equipment" learnMoreSlug="switch" learnMoreLabel="Learn More: Networking Basics">
-          <p style={{ margin: 0, marginBottom: 8 }}>Switches, Routers and Firewalls connect all devices together.</p>
-          <p style={{ margin: 0 }}>They ensure that data reaches the right destination.</p>
+          <p style={{ margin: 0, marginBottom: 8 }}>Switches, Routers aur Firewalls devices ko connect karte hain.</p>
+          <p style={{ margin: 0 }}>Ye ensure karte hain ki data sahi destination tak pahunch sake.</p>
         </FeatureCard>
       </div>
 
@@ -750,56 +749,56 @@ export default function WhatIsADataCenterPage() {
       {/* ── Non-IT Infrastructure ── */}
       <h2 id="non-it-infrastructure" style={S.h1}>Non-IT Infrastructure</h2>
 
-      <p style={S.p}>Beginners often think that a Data Center is just servers.</p>
-      <p style={S.p}>In reality, there is an entire support ecosystem behind the servers.</p>
+      <p style={S.p}>Aksar beginners sirf servers ko hi Data Center samajhte hain.</p>
+      <p style={S.p}>Reality me servers ke peeche poora support ecosystem hota hai.</p>
 
       <div style={S.featureGrid2} className="btt-feature-grid">
         <FeatureCard icon="⚡" title="UPS System" learnMoreSlug="ups" learnMoreLabel="Learn More: UPS Systems">
-          <p style={{ margin: 0, marginBottom: 8 }}>If power goes out, the UPS instantly provides backup power.</p>
-          <p style={{ margin: 0 }}>It prevents servers from shutting down.</p>
+          <p style={{ margin: 0, marginBottom: 8 }}>Agar power chali jaye to UPS instantly backup provide karta hai.</p>
+          <p style={{ margin: 0 }}>Ye servers ko shutdown hone se bachata hai.</p>
         </FeatureCard>
 
         <FeatureCard icon="🔋" title="Battery Bank" learnMoreSlug="battery-bank" learnMoreLabel="Learn More: Battery Bank">
-          <p style={{ margin: 0, marginBottom: 8 }}>Batteries are used to support the UPS.</p>
-          <p style={{ margin: 0 }}>They provide power until the generators start up.</p>
+          <p style={{ margin: 0, marginBottom: 8 }}>UPS ko support karne ke liye batteries use hoti hain.</p>
+          <p style={{ margin: 0 }}>Ye generators start hone tak power provide karti hain.</p>
         </FeatureCard>
 
         <FeatureCard icon="⚡" title="Diesel Generator" learnMoreSlug="dg-set" learnMoreLabel="Learn More: Diesel Generator">
-          <p style={{ margin: 0 }}>During long power outages, generators handle the full load.</p>
+          <p style={{ margin: 0 }}>Long-duration power outage me generators load handle karte hain.</p>
         </FeatureCard>
 
         <FeatureCard icon="❄️" title="PAC Unit" learnMoreSlug="pac" learnMoreLabel="Learn More: PAC Units">
-          <p style={{ margin: 0, marginBottom: 8 }}>Servers generate a lot of heat.</p>
-          <p style={{ margin: 0 }}>PAC (Precision Air Conditioning) units control the temperature.</p>
+          <p style={{ margin: 0, marginBottom: 8 }}>Servers heat generate karte hain.</p>
+          <p style={{ margin: 0 }}>PAC (Precision Air Conditioning) units temperature control karti hain.</p>
         </FeatureCard>
 
         <FeatureCard icon="🔥" title="Fire Protection System" learnMoreSlug="vesda" learnMoreLabel="Learn More: Fire Protection Systems">
-          <p style={{ margin: 0 }}>Data Centers have advanced fire detection and suppression systems.</p>
+          <p style={{ margin: 0 }}>Data Centers me advanced fire detection aur suppression systems hote hain.</p>
         </FeatureCard>
 
         <FeatureCard icon="📊" title="BMS" learnMoreSlug="bms" learnMoreLabel="Learn More: BMS">
-          <p style={{ margin: 0 }}>The Building Management System monitors all major systems in the facility.</p>
+          <p style={{ margin: 0 }}>Building Management System facility ke major systems monitor karta hai.</p>
         </FeatureCard>
 
         <FeatureCard icon="📊" title="DCIM" learnMoreSlug="dcim" learnMoreLabel="Learn More: DCIM">
-          <p style={{ margin: 0 }}>DCIM tools provide operational visibility across the entire Data Center.</p>
+          <p style={{ margin: 0 }}>Data Center Infrastructure Management tools poore Data Center ka operational visibility provide karte hain.</p>
         </FeatureCard>
       </div>
 
       <hr style={S.divider} />
 
       {/* ── Power ── */}
-      <h2 id="power-chali-jaye" style={S.h1}>What Happens if Power Goes Out?</h2>
+      <h2 id="power-chali-jaye" style={S.h1}>Agar Power Chali Jaye To?</h2>
 
-      <p style={S.p}>Many people wonder:</p>
+      <p style={S.p}>Bahut log sochte hain:</p>
 
       <WarningCard>
-        "If the city's electricity goes out, will Google go down too?"
+        "Agar city ki electricity chali gayi to Google bhi band ho jayega?"
       </WarningCard>
 
       <p style={S.p}>Answer:</p>
       <p style={{ ...S.p, color: "#1f2937", fontWeight: 600, fontSize: 16 }}>Nahi.</p>
-      <p style={S.p}>Modern Data Centers use multiple backup layers.</p>
+      <p style={S.p}>Modern Data Centers multiple backup layers use karte hain.</p>
 
       <JourneyTimeline
         steps={[
@@ -811,33 +810,33 @@ export default function WhatIsADataCenterPage() {
         ]}
       />
 
-      <p style={S.p}>Most users do not even notice a power outage.</p>
-      <p style={S.p}><strong>This is what reliability means.</strong></p>
+      <p style={S.p}>Most users ko power outage ka pata bhi nahi chalta.</p>
+      <p style={S.p}><strong>Isi ko reliability kehte hain.</strong></p>
 
       <hr style={S.divider} />
 
       {/* ── Cooling ── */}
-      <h2 id="cooling-important" style={S.h1}>Why is Cooling So Important?</h2>
+      <h2 id="cooling-important" style={S.h1}>Cooling Itni Important Kyu Hai?</h2>
 
-      <p style={S.p}>Servers continuously generate heat.</p>
-      <p style={S.p}>Without cooling:</p>
+      <p style={S.p}>Servers continuously heat generate karte hain.</p>
+      <p style={S.p}>Agar cooling na ho to:</p>
 
       <ul style={S.ul}>
-        <li style={S.li}><span style={S.cross}>❌</span> Temperature will rise</li>
-        <li style={S.li}><span style={S.cross}>❌</span> Performance will drop</li>
-        <li style={S.li}><span style={S.cross}>❌</span> Hardware can fail</li>
-        <li style={S.li}><span style={S.cross}>❌</span> Services can go down</li>
+        <li style={S.li}><span style={S.cross}>❌</span> Temperature increase hoga</li>
+        <li style={S.li}><span style={S.cross}>❌</span> Performance reduce hogi</li>
+        <li style={S.li}><span style={S.cross}>❌</span> Hardware fail ho sakta hai</li>
+        <li style={S.li}><span style={S.cross}>❌</span> Services down ho sakti hain</li>
       </ul>
 
-      <p style={S.p}><strong>That is why cooling systems are one of the most important systems in a Data Center.</strong></p>
+      <p style={S.p}><strong>Isi liye cooling systems Data Center ke sabse important systems me se ek hote hain.</strong></p>
 
       <hr style={S.divider} />
 
       {/* ── AI ── */}
-      <h2 id="ai-zamane-mein" style={S.h1}>Data Centers in the Age of AI</h2>
+      <h2 id="ai-zamane-mein" style={S.h1}>AI Ke Zamane Me Data Centers</h2>
 
-      <p style={S.p}>Artificial Intelligence has completely transformed the Data Center industry.</p>
-      <p style={S.p}>Today's AI workloads require:</p>
+      <p style={S.p}>Artificial Intelligence ne Data Center industry ko completely transform kar diya hai.</p>
+      <p style={S.p}>Aaj ke AI workloads ko chahiye:</p>
 
       <ul style={S.ul}>
         <li style={S.li}>High Performance GPUs</li>
@@ -847,7 +846,7 @@ export default function WhatIsADataCenterPage() {
         <li style={S.li}>Large Power Capacity</li>
       </ul>
 
-      <p style={S.p}>That is why AI-focused Data Centers are being rapidly built around the world.</p>
+      <p style={S.p}>Isi wajah se AI-focused Data Centers duniya bhar me rapidly build ho rahe hain.</p>
       <div style={S.learnMore}>
         <TopicLink slug="ai-infrastructure-basics" label="Learn More: AI Infrastructure Basics" variant="inline" />
       </div>
@@ -859,10 +858,10 @@ export default function WhatIsADataCenterPage() {
 
       <InsightCard>
         <p style={{ margin: 0, marginBottom: 12 }}>
-          When you ask ChatGPT a question, thousands of GPUs inside Data Centers may work together to generate your response.
+          Aap jab ChatGPT se ek question puchte ho, uska response generate karne ke liye Data Centers ke andar thousands of GPUs milkar kaam kar sakte hain.
         </p>
         <p style={{ margin: 0 }}>
-          That is why the relationship between AI and Data Centers will only grow stronger in the future.
+          Isliye AI aur Data Centers ka relationship future me aur bhi strong hone wala hai.
         </p>
       </InsightCard>
 
@@ -873,11 +872,11 @@ export default function WhatIsADataCenterPage() {
 
       <KeyTakeawayCard
         items={[
-          "Data Centers are the backbone of the digital world.",
-          "Every website and app depends on some Data Center.",
-          "A Data Center is not just a room full of servers.",
-          "Power and Cooling are just as important as Servers.",
-          "AI is driving the future growth of Data Centers.",
+          "Data Center digital world ka backbone hai.",
+          "Har website aur app kisi na kisi Data Center par depend karti hai.",
+          "Data Center sirf servers ka room nahi hota.",
+          "Power aur Cooling utne hi important hain jitne Servers.",
+          "AI future Data Center growth ko drive kar raha hai.",
         ]}
       />
 
@@ -892,6 +891,3 @@ export default function WhatIsADataCenterPage() {
     </ArticlePage>
   );
 }
-
-
-
