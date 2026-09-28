@@ -41,9 +41,9 @@ export default function Content() {
 
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
-        <p style={S.p}>Load Balancer ek network device ya software hai jo incoming service traffic ko multiple backend servers ke beech distribute karta hai. Iska basic kaam simple hai — ek single address pe aane wale requests ko pool mein se eligible servers pe forward karna.</p>
-        <p style={S.p}>Without a load balancer, ek user request directly ek server ko jaati hai. Woh server fail ho toh service fail. Server overloaded ho toh sabke liye slow.</p>
-        <Callout type="important" title="Is Article Mein Kya Sikhoge">
+        <p style={S.p}>A Load Balancer is a network device or software that distributes incoming service traffic across multiple backend servers. Its basic job is simple — forward requests arriving at a single address to eligible servers in a pool.</p>
+        <p style={S.p}>Without a load balancer, a user request goes directly to one server. If that server fails, the service fails. If the server is overloaded, it is slow for everyone.</p>
+        <Callout type="important" title="What You Will Learn in This Article">
           <ul style={S.ul}>
             <li>Phase 1: VIP, backend pools, health checks, algorithms, L4 vs L7, placement, HA basics</li>
             <li>Phase 2: Traffic processing, full proxy, SNAT, DSR, connection tables, return path</li>
@@ -56,9 +56,9 @@ export default function Content() {
 
       <section id="lb-core-idea">
         <h2 style={S.h2}>Load Balancer — The Core Idea</h2>
-        <p style={S.p}>Ek real example: e-commerce application sirf ek server pe chal raha hai. Sale ke din traffic 10x ho gayi. Server crash. Sab users ko error.</p>
-        <p style={S.p}>Load Balancer solution hai. Users ek single address (VIP) se connect karte hain. LB traffic ko multiple backend servers pe distribute karta hai. Ek server fail ho toh traffic automatically doosre servers pe redirect hoti hai.</p>
-        <p style={S.p}>Yeh sirf traffic distribution nahi hai. Load Balancer continuously monitor karta hai ki kaun se servers healthy hain, selection algorithm apply karta hai, aur application ke liye ek highly available single point of entry create karta hai.</p>
+        <p style={S.p}>A real example: an e-commerce application is running on just one server. On sale day, traffic goes up 10x. The server crashes. Every user gets an error.</p>
+        <p style={S.p}>A Load Balancer is the solution. Users connect to a single address (VIP). The LB distributes the traffic across multiple backend servers. If one server fails, traffic is automatically redirected to the other servers.</p>
+        <p style={S.p}>This is not just traffic distribution. The Load Balancer continuously monitors which servers are healthy, applies a selection algorithm, and creates a highly available single point of entry for the application.</p>
       </section>
 
       <section id="what-lb-does">
@@ -77,10 +77,10 @@ export default function Content() {
 
       <section id="traffic-journey">
         <h2 style={S.h2}>Basic Traffic Journey</h2>
-        <p style={S.p}>Typical HTTPS request ka journey: client DNS query karta hai → DNS VIP address return karta hai → client VIP pe TCP/TLS connect karta hai → LB traffic receive karta hai → eligible backend select karta hai → traffic forward karta hai → response wapas aati hai.</p>
-        <Figure caption="Load Balancer ka basic traffic journey — DNS se VIP tak, VIP se eligible backend tak"><LbTrafficJourney /></Figure>
+        <p style={S.p}>The journey of a typical HTTPS request: the client makes a DNS query → DNS returns the VIP address → the client makes a TCP/TLS connection to the VIP → the LB receives the traffic → selects an eligible backend → forwards the traffic → the response comes back.</p>
+        <Figure caption="The basic traffic journey of a Load Balancer — from DNS to the VIP, from the VIP to an eligible backend"><LbTrafficJourney /></Figure>
         <Callout type="important" title="Return Path">
-          LB ke baad response ka path architecture pe depend karta hai. Full proxy mein LB return path mein hota hai. DSR mein backend directly client ko respond karta hai. Return path design mandatory hai — assume mat karo.
+          After the LB, the response path depends on the architecture. In full proxy, the LB is in the return path. In DSR, the backend responds directly to the client. Return path design is mandatory — do not assume it.
         </Callout>
       </section>
 
@@ -101,28 +101,28 @@ export default function Content() {
 
       <section id="vip-virtual-service">
         <h2 style={S.h2}>VIP — Virtual IP / Virtual Service</h2>
-        <p style={S.p}>VIP woh address hai jis pe clients connect karte hain. Yeh kisi ek backend server ka address nahi hota — LB pe configured virtual service address hai.</p>
-        <p style={S.p}>DNS domain ko VIP pe point karta hai. Client <code>app.example.com</code> resolve karta hai → DNS VIP address return karta hai → client VIP pe connect karta hai — backend servers ka existence client ko pata nahi hota.</p>
-        <Figure caption="VIP → Virtual Service → Backend Pool mapping — DNS se pool members tak"><VipPoolMapping /></Figure>
+        <p style={S.p}>The VIP is the address that clients connect to. It is not the address of any single backend server — it is a virtual service address configured on the LB.</p>
+        <p style={S.p}>DNS points the domain to the VIP. The client resolves <code>app.example.com</code> → DNS returns the VIP address → the client connects to the VIP — the client does not know the backend servers exist.</p>
+        <Figure caption="VIP → Virtual Service → Backend Pool mapping — from DNS to pool members"><VipPoolMapping /></Figure>
         <Callout type="warning" title="VIP Implementation">
-          VIP ka implementation platform aur deployment architecture pe depend karta hai — interface address, software construct, cloud provider managed frontend, anycast address, ya other. Universal implementation nahi hai.
+          VIP implementation depends on the platform and deployment architecture — interface address, software construct, cloud provider managed frontend, anycast address, or other. There is no universal implementation.
         </Callout>
       </section>
 
       <section id="backend-pool">
         <h2 style={S.h2}>Backend Pool</h2>
-        <p style={S.p}>Backend pool un servers ka collection hai jo ek virtual service ke liye eligible hain. Har member ka IP address aur port configured hota hai.</p>
-        <p style={S.p}>LB pool members ko continuously monitor karta hai. Health check pass karne wale eligible hain. Fail karne wale temporarily bypass kiye jaate hain jab tak recovery nahi hoti.</p>
-        <p style={S.p}>Ek VIP pe ek ya zyada pools configured ho sakti hain — L7 routing pe based alag pools alag requests serve kar sakti hain.</p>
+        <p style={S.p}>A backend pool is the collection of servers that are eligible for a virtual service. Each member has an IP address and port configured.</p>
+        <p style={S.p}>The LB continuously monitors pool members. Those that pass the health check are eligible. Those that fail are temporarily bypassed until they recover.</p>
+        <p style={S.p}>One or more pools can be configured on a VIP — based on L7 routing, different pools can serve different requests.</p>
       </section>
 
       <section id="health-check-foundation">
         <h2 style={S.h2}>Health Check Foundation</h2>
-        <p style={S.p}>Health check LB ka woh mechanism hai jo verify karta hai ki backend servers actually traffic serve kar sakte hain ya nahi. Without it, failed backend pe traffic jaati rahegi.</p>
+        <p style={S.p}>A health check is the LB mechanism that verifies whether backend servers can actually serve traffic. Without it, traffic will keep going to a failed backend.</p>
         <Figure caption="Health check decision flow — teen levels of probe depth"><HealthCheckFlow /></Figure>
-        <p style={S.p}>Ek single probe failure se backend immediately ineligible nahi hota. Fall threshold (consecutive failures ki required count) reach hone ke baad hi backend ineligible mark hota hai.</p>
+        <p style={S.p}>A single probe failure does not make a backend immediately ineligible. The backend is marked ineligible only after the fall threshold (the required count of consecutive failures) is reached.</p>
         <Callout type="warning" title="Health Check ≠ Health">
-          Health check passing ka matlab backend healthy nahi hai. Shallow probe (TCP-only ya stub HTTP endpoint) sirf port open hona verify karta hai. Probe depth service requirements se match karna chahiye.
+          A passing health check does not mean the backend is healthy. A shallow probe (TCP-only or a stub HTTP endpoint) only verifies that the port is open. Probe depth should match service requirements.
         </Callout>
       </section>
 
@@ -139,22 +139,22 @@ export default function Content() {
           ]}
         />
         <Callout type="important" title="Algorithm Selection">
-          Algorithm sirf ek factor hai — health eligibility, persistence, L7 policy sab bhi selection affect karte hain. Koi universally best algorithm nahi hai.
+          The algorithm is only one factor — health eligibility, persistence and L7 policy all affect selection too. There is no universally best algorithm.
         </Callout>
       </section>
 
       <section id="l4-vs-l7">
         <h2 style={S.h2}>L4 vs L7 — Foundation</h2>
-        <Figure caption="L4 vs L7 load balancing — decision basis aur capabilities"><L4VsL7Lb /></Figure>
-        <Callout type="important" title="TLS aur L7 Visibility">
-          HTTPS traffic ke liye HTTP-layer routing karne ke liye TLS LB pe terminate karna zaroori hai. TLS SNI (Server Name Indication) alag hai — yeh TLS metadata hai, HTTP content nahi, aur decryption ke bina bhi routing ke liye use ho sakta hai.
+        <Figure caption="L4 vs L7 load balancing — decision basis and capabilities"><L4VsL7Lb /></Figure>
+        <Callout type="important" title="TLS and L7 Visibility">
+          To do HTTP-layer routing for HTTPS traffic, TLS must be terminated on the LB. TLS SNI (Server Name Indication) is different — it is TLS metadata, not HTTP content, and can be used for routing even without decryption.
         </Callout>
       </section>
 
       <section id="lb-vs-router">
         <h2 style={S.h2}>Load Balancer vs Router</h2>
-        <p style={S.p}><TopicLink slug="router" variant="inline" /> packets ko best path pe forward karta hai between networks. Router destination IP preserve karta hai aur routing table se next hop decide karta hai.</p>
-        <p style={S.p}>Load Balancer destination IP translate karta hai — VIP → backend IP. Backend health track karta hai. Selection algorithm apply karta hai.</p>
+        <p style={S.p}>A <TopicLink slug="router" variant="inline" /> forwards packets on the best path between networks. The router preserves the destination IP and decides the next hop from the routing table.</p>
+        <p style={S.p}>A Load Balancer translates the destination IP — VIP → backend IP. It tracks backend health. It applies a selection algorithm.</p>
         <ComparisonTable
           headers={["Dimension", "Router", "Load Balancer"]}
           rows={[
@@ -168,70 +168,70 @@ export default function Content() {
 
       <section id="lb-vs-firewall">
         <h2 style={S.h2}>Load Balancer vs Firewall</h2>
-        <p style={S.p}><TopicLink slug="firewall" variant="inline" /> security policy enforce karta hai — kaun sa traffic permitted hai aur kaun sa nahi.</p>
-        <p style={S.p}>Load Balancer traffic distribute karta hai — permitted traffic ko backend pool mein. Yeh dono complementary functions hain. Typical: Internet → Firewall (security) → Load Balancer (distribution) → Application Servers.</p>
+        <p style={S.p}>A <TopicLink slug="firewall" variant="inline" /> enforces security policy — which traffic is permitted and which is not.</p>
+        <p style={S.p}>A Load Balancer distributes traffic — permitted traffic into the backend pool. These two are complementary functions. Typical: Internet → Firewall (security) → Load Balancer (distribution) → Application Servers.</p>
       </section>
 
       <section id="lb-vs-reverse-proxy">
         <h2 style={S.h2}>Load Balancer vs Reverse Proxy</h2>
-        <p style={S.p}>Reverse proxy client-facing connection terminate karta hai aur backend ki taraf naya request create karta hai. Full-proxy Load Balancers bhi yehi karte hain — architecture overlap karta hai.</p>
-        <p style={S.p}>Difference primary purpose mein hai: reverse proxy caching/SSL/content modification pe focus karta hai; LB traffic distribution across backend pool pe. Modern tools dono combine karte hain.</p>
+        <p style={S.p}>A reverse proxy terminates the client-facing connection and creates a new request towards the backend. Full-proxy Load Balancers do the same — the architecture overlaps.</p>
+        <p style={S.p}>The difference is in primary purpose: a reverse proxy focuses on caching/SSL/content modification; an LB on traffic distribution across a backend pool. Modern tools combine both.</p>
       </section>
 
       <section id="lb-vs-dns">
         <h2 style={S.h2}>Load Balancer vs DNS Load Balancing</h2>
-        <p style={S.p}>Standard DNS multiple A records return kar sakta hai — lekin backend health nahi jaanta. Failed server ka record bhi return hota hai. Client TTL expire hone tak cached address use karta hai.</p>
-        <p style={S.p}>Inline LB actively backends monitor karta hai. Failed backend detection window ke baad bypass hota hai. Per-connection/per-request selection hota hai.</p>
-        <p style={S.p}>GSLB (Global Server Load Balancing) DNS-based distribution ke saath health monitoring combine karta hai. DNS failover timing sirf TTL pe nahi — resolver caching, client caching, connection reuse sab affect karte hain.</p>
+        <p style={S.p}>Standard DNS can return multiple A records — but it does not know backend health. A failed server's record is also returned. The client uses the cached address until the TTL expires.</p>
+        <p style={S.p}>An inline LB actively monitors backends. A failed backend is bypassed after the detection window. Selection happens per connection/per request.</p>
+        <p style={S.p}>GSLB (Global Server Load Balancing) combines DNS-based distribution with health monitoring. DNS failover timing does not depend only on TTL — resolver caching, client caching and connection reuse all have an effect.</p>
       </section>
 
       <section id="one-arm-two-arm">
         <h2 style={S.h2}>One-Arm vs Two-Arm — Introduction</h2>
-        <Figure caption="One-arm aur two-arm LB placement models — return path engineering zaroori hai dono mein"><LbPlacementModels /></Figure>
+        <Figure caption="One-arm and two-arm LB placement models — return path engineering is required in both"><LbPlacementModels /></Figure>
         <Callout type="warning" title="Return Path">
-          Placement alone return path guarantee nahi karta. Return path explicitly design karna aur packet capture se validate karna mandatory hai.
+          Placement alone does not guarantee the return path. Explicitly designing the return path and validating it with packet capture is mandatory.
         </Callout>
       </section>
 
       <section id="ha-foundation">
         <h2 style={S.h2}>High Availability Foundation</h2>
-        <p style={S.p}>Agar LB single point of failure ban jaaye toh saari service down ho jaayegi. Isliye LB bhi HA pair mein deploy kiye jaate hain — ek active, ek standby.</p>
+        <p style={S.p}>If the LB becomes a single point of failure, the whole service will go down. That is why LBs are also deployed in an HA pair — one active, one standby.</p>
         <Figure caption="LB HA pair — active/standby architecture"><LbHaPair /></Figure>
         <Callout type="important" title="Config Sync vs Session Sync">
-          Configuration synchronization aur runtime session state synchronization alag mechanisms hain. Dono ki support platform pe depend karti hai.
+          Configuration synchronization and runtime session state synchronization are separate mechanisms. Support for both depends on the platform.
         </Callout>
       </section>
 
       <section id="dc-placement">
         <h2 style={S.h2}>Data Center Placement</h2>
-        <p style={S.p}>Enterprise data center mein LB typically firewall tier aur application tier ke beech placed hota hai.</p>
-        <Figure caption="Data center tier architecture — LB ka position firewall aur application servers ke beech"><DcLbPlacement /></Figure>
+        <p style={S.p}>In an enterprise data center, the LB is typically placed between the firewall tier and the application tier.</p>
+        <Figure caption="Data center tier architecture — LB position between the firewall and application servers"><DcLbPlacement /></Figure>
       </section>
 
       <section id="practical-example-p1">
         <h2 style={S.h2}>Practical Example</h2>
-        <p style={S.p}><code>portal.example.com</code> → DNS → VIP <code>203.0.113.50:443</code>. LB pe: virtual service (HTTPS:443), pool with APP01/APP02/APP03 (port 8443), Least Connections algorithm, HTTP health monitor (<code>GET /health</code> → 200).</p>
-        <p style={S.p}>User request → LB VIP pe → health check eligible members (APP03 failing) → Least Connections → APP02 selected → traffic forward → response to user.</p>
+        <p style={S.p}><code>portal.example.com</code> → DNS → VIP <code>203.0.113.50:443</code>. On the LB: virtual service (HTTPS:443), pool with APP01/APP02/APP03 (port 8443), Least Connections algorithm, HTTP health monitor (<code>GET /health</code> → 200).</p>
+        <p style={S.p}>User request → to the LB VIP → health-check-eligible members (APP03 failing) → Least Connections → APP02 selected → traffic forwarded → response to user.</p>
       </section>
 
       <section id="beginner-misconceptions">
         <h2 style={S.h2}>Common Beginner Misunderstandings</h2>
-        <p style={S.p}><strong>"LB automatically bandwidth increase karta hai."</strong> Nahi. LB traffic distribute karta hai — total capacity backends se aati hai.</p>
-        <p style={S.p}><strong>"Round Robin = equal load."</strong> Nahi. Request processing time vary kare toh load unequal hoga.</p>
-        <p style={S.p}><strong>"LB automatically return traffic handle karta hai."</strong> Nahi. Return path explicitly design karna padta hai.</p>
-        <p style={S.p}><strong>"Health check passing = backend healthy."</strong> Nahi. Shallow probe sirf port open prove karta hai.</p>
+        <p style={S.p}><strong>"The LB automatically increases bandwidth."</strong> No. The LB distributes traffic — total capacity comes from the backends.</p>
+        <p style={S.p}><strong>"Round Robin = equal load."</strong> No. If request processing time varies, the load will be unequal.</p>
+        <p style={S.p}><strong>"The LB automatically handles return traffic."</strong> No. The return path has to be explicitly designed.</p>
+        <p style={S.p}><strong>"Health check passing = backend healthy."</strong> No. A shallow probe only proves the port is open.</p>
       </section>
 
       <section id="p1-takeaways">
         <h2 style={S.h2}>Phase 1 Key Takeaways</h2>
         <ul style={S.ul}>
-          <li>LB ek VIP pe traffic ko backend pool ke eligible members pe distribute karta hai</li>
-          <li>VIP implementation platform/deployment dependent — universal pattern nahi</li>
-          <li>Fall threshold required hai single-failure flip se bachne ke liye</li>
-          <li>Algorithm selection use case pe depend karta hai — koi universally superior nahi</li>
-          <li>L7 routing ke liye TLS termination required; SNI routing alag hai</li>
-          <li>Return path must be designed — placement alone guarantee nahi karta</li>
-          <li>HA pair LB ko single point of failure banne se bachata hai</li>
+          <li>The LB distributes traffic arriving at a VIP to eligible members of the backend pool</li>
+          <li>VIP implementation is platform/deployment dependent — not a universal pattern</li>
+          <li>A fall threshold is required to avoid flipping on a single failure</li>
+          <li>Algorithm selection depends on the use case — none is universally superior</li>
+          <li>TLS termination is required for L7 routing; SNI routing is different</li>
+          <li>The return path must be designed — placement alone does not guarantee it</li>
+          <li>An HA pair prevents the LB from becoming a single point of failure</li>
         </ul>
       </section>
 
@@ -239,96 +239,96 @@ export default function Content() {
 
       <section id="p2-orientation">
         <h2 style={S.h2}>Phase 2 Orientation</h2>
-        <p style={S.p}>Phase 2 mein hum traffic processing ka internal mechanics dekhenge — packets address level pe kaise transform hote hain, SNAT kab apply hoti hai, direct server return kab use hota hai, aur connection state kaisi manage hoti hai.</p>
+        <p style={S.p}>In Phase 2 we will look at the internal mechanics of traffic processing — how packets are transformed at the address level, when SNAT is applied, when direct server return is used, and how connection state is managed.</p>
       </section>
 
       <section id="connection-flow">
         <h2 style={S.h2}>Connection Flow Foundation</h2>
-        <p style={S.p}>Client LB VIP pe connect karta hai — TCP handshake complete hota hai. LB backend select karta hai aur backend ko traffic forward karta hai. Return path explicitly route hona chahiye. Failures gracefully handle honi chahiye.</p>
+        <p style={S.p}>The client connects to the LB VIP — the TCP handshake completes. The LB selects a backend and forwards the traffic to it. The return path must be explicitly routed. Failures must be handled gracefully.</p>
       </section>
 
       <section id="full-proxy">
         <h2 style={S.h2}>Full Proxy Architecture</h2>
-        <p style={S.p}>Full proxy mode mein LB do independent TCP connections maintain karta hai: ek client ke saath, ek backend ke saath. Client directly backend se nahi baat karta.</p>
+        <p style={S.p}>In full proxy mode, the LB maintains two independent TCP connections: one with the client, one with the backend. The client does not talk to the backend directly.</p>
         <Figure caption="Full proxy model — two independent connection contexts"><FullProxyModel /></Figure>
         <Callout type="important" title="Full Proxy ≠ All LBs">
-          Sab load balancers full proxy nahi hote. L4 forwarding architectures bhi exist karti hain. Capabilities (TLS termination, header modification, connection reuse) platform aur configuration pe depend karti hain.
+          Not all load balancers are full proxies. L4 forwarding architectures also exist. Capabilities (TLS termination, header modification, connection reuse) depend on the platform and configuration.
         </Callout>
       </section>
 
       <section id="forwarding-models">
         <h2 style={S.h2}>Forwarding / Non-Full-Proxy Models</h2>
-        <p style={S.p}>L4 forwarding architectures mein LB destination translation ke saath traffic forward karta hai — full proxy connection context nahi hota. Lower overhead lekin L7 visibility limited ya absent hoti hai.</p>
+        <p style={S.p}>In L4 forwarding architectures, the LB forwards traffic with destination translation — there is no full-proxy connection context. Lower overhead, but L7 visibility is limited or absent.</p>
       </section>
 
       <section id="packet-address-journey">
         <h2 style={S.h2}>Packet Address Journey</h2>
-        <Figure caption="Packet address journey — SNAT aur non-SNAT architectures mein address changes"><PacketAddressJourney /></Figure>
+        <Figure caption="Packet address journey — address changes in SNAT and non-SNAT architectures"><PacketAddressJourney /></Figure>
         <Callout type="warning" title="Client IP Preservation">
-          Full-proxy mein client IP preservation at network layer ke liye transparent proxy mode ya platform-specific capability required — default nahi hai. Forwarding architectures mein client IP network layer pe preserve hoti hai lekin return routing explicitly design karna padta hai.
+          In full proxy, preserving the client IP at the network layer requires transparent proxy mode or a platform-specific capability — it is not the default. In forwarding architectures, the client IP is preserved at the network layer, but return routing has to be explicitly designed.
         </Callout>
       </section>
 
       <section id="destination-translation">
         <h2 style={S.h2}>Destination Translation Foundation</h2>
-        <p style={S.p}>Client VIP:443 → LB destination translates → backend:8443. Return path mein reverse translation — backend:8443 → VIP:443 taaki client ko valid response milti hai.</p>
+        <p style={S.p}>Client VIP:443 → LB translates the destination → backend:8443. On the return path, reverse translation — backend:8443 → VIP:443 so that the client receives a valid response.</p>
       </section>
 
       <section id="snat">
         <h2 style={S.h2}>Source NAT — SNAT</h2>
-        <p style={S.p}>SNAT source IP translate karta hai — backend request mein source IP LB-controlled address ban jaati hai. Backend us address pe respond karta hai → response LB ko jaati hai.</p>
+        <p style={S.p}>SNAT translates the source IP — in the backend request, the source IP becomes an LB-controlled address. The backend responds to that address → the response goes to the LB.</p>
         <Figure caption="SNAT return path — without vs with SNAT"><SnatReturnPath /></Figure>
         <Callout type="important" title="SNAT + Routing Together">
-          SNAT aur correct routing dono milke return path solve karte hain. SNAT akela incorrect routes override nahi kar sakta.
+          SNAT and correct routing together solve the return path. SNAT alone cannot override incorrect routes.
         </Callout>
       </section>
 
       <section id="without-snat">
         <h2 style={S.h2}>Without SNAT</h2>
-        <p style={S.p}>SNAT nahi hai toh backend original client IP dekhta hai aur response directly client ko bhej sakta hai — LB bypass ho sakta hai.</p>
-        <p style={S.p}>Prevention ke liye routing design required: backend default gateway = LB, ya client subnets ke liye static routes via LB. Internet-facing applications ke liye per-subnet static routes impractical hain — SNAT ya default gateway approach use hoti hai.</p>
+        <p style={S.p}>Without SNAT, the backend sees the original client IP and may send the response directly to the client — the LB can be bypassed.</p>
+        <p style={S.p}>Prevention requires routing design: backend default gateway = LB, or static routes via the LB for client subnets. For Internet-facing applications, per-subnet static routes are impractical — the SNAT or default gateway approach is used.</p>
       </section>
 
       <section id="symmetric-asymmetric">
         <h2 style={S.h2}>Symmetric vs Asymmetric Traffic</h2>
-        <p style={S.p}>Symmetric: request aur response dono LB se. DSR intentionally asymmetric hai — request via LB, response direct to client. Stateful inspection return path pe possible nahi hoti DSR mein.</p>
+        <p style={S.p}>Symmetric: both request and response go through the LB. DSR is intentionally asymmetric — request via the LB, response direct to the client. Stateful inspection on the return path is not possible with DSR.</p>
       </section>
 
       <section id="dsr">
         <h2 style={S.h2}>Direct Server Return — DSR</h2>
         <Figure caption="Direct Server Return — inbound via LB, return direct to client"><DirectServerReturn /></Figure>
-        <p style={S.p}>DSR useful hai jab response size request se bahut zyada ho. LB limitations: VIP backend pe configure karni padti hai (OS-specific), ARP/ND suppression required, L7 return-path inspection impossible, TLS backend pe. DSR persistence inbound traffic pe maintain kar sakta hai.</p>
+        <p style={S.p}>DSR is useful when the response size is much larger than the request. LB limitations: the VIP has to be configured on the backend (OS-specific), ARP/ND suppression is required, L7 return-path inspection is impossible, TLS on the backend. DSR can maintain persistence on inbound traffic.</p>
       </section>
 
       <section id="one-arm-deep">
         <h2 style={S.h2}>One-Arm Traffic Flow — Deeper View</h2>
-        <p style={S.p}>One-arm mein SNAT typically preferred hai — routing configuration backends pe minimal. Tradeoff: client IP visibility at backend.</p>
+        <p style={S.p}>In one-arm, SNAT is typically preferred — minimal routing configuration on the backends. Tradeoff: client IP visibility at the backend.</p>
       </section>
 
       <section id="two-arm-deep">
         <h2 style={S.h2}>Inline / Two-Arm Traffic Flow — Deeper View</h2>
-        <p style={S.p}>Two-arm mein return path explicitly route hona chahiye. Backends ka default gateway LB hona chahiye ya client subnets ke liye static routes. Packet capture se verify karo — assume mat karo.</p>
+        <p style={S.p}>In two-arm, the return path must be explicitly routed. The backends' default gateway should be the LB, or there should be static routes for client subnets. Verify with packet capture — do not assume.</p>
       </section>
 
       <section id="connection-table">
         <h2 style={S.h2}>Connection Table / Flow State</h2>
-        <p style={S.p}>LB active connections ka state maintain karta hai. Finite capacity — resource limits platform pe dependent. Table exhaustion → new connections rejected.</p>
+        <p style={S.p}>The LB maintains the state of active connections. Finite capacity — resource limits are platform dependent. Table exhaustion → new connections rejected.</p>
         <Figure caption="LB connection/flow state table — conceptual representation"><ConnectionStateTable /></Figure>
       </section>
 
       <section id="tcp-handshake">
         <h2 style={S.h2}>TCP Connection Establishment</h2>
-        <p style={S.p}>Full proxy mein do TCP handshakes: client ↔ LB, phir LB ↔ backend. Yeh serial hona zaroori nahi — platforms preconnect ya pool karte hain. L4 forwarding mein single logical connection.</p>
+        <p style={S.p}>In full proxy, there are two TCP handshakes: client ↔ LB, then LB ↔ backend. These do not have to be serial — platforms preconnect or pool. In L4 forwarding, a single logical connection.</p>
       </section>
 
       <section id="connection-reuse">
         <h2 style={S.h2}>Connection Reuse / Multiplexing Foundation</h2>
-        <p style={S.p}>Full proxy mein LB backend connections pool kar sakta hai. HTTP/1.1 keep-alive: ek connection pe sequential requests. HTTP/2 multiplexing: ek connection pe concurrent streams. Different mechanisms — platform, protocol, configuration matter karte hain.</p>
+        <p style={S.p}>In full proxy, the LB can pool backend connections. HTTP/1.1 keep-alive: sequential requests on one connection. HTTP/2 multiplexing: concurrent streams on one connection. Different mechanisms — platform, protocol and configuration matter.</p>
       </section>
 
       <section id="http-keepalive">
         <h2 style={S.h2}>HTTP Keep-Alive and Load Distribution</h2>
-        <p style={S.p}>Per-connection-selection mein ek connection ke sab requests same backend — algorithm only new connection pe. Per-request selection (L7 full proxy) mein har request independent ho sakti hai.</p>
+        <p style={S.p}>In per-connection selection, all requests of one connection go to the same backend — the algorithm runs only on a new connection. In per-request selection (L7 full proxy), each request can be independent.</p>
       </section>
 
       <section id="timeouts">
@@ -338,53 +338,53 @@ export default function Content() {
 
       <section id="backend-failure-active">
         <h2 style={S.h2}>Backend Failure During Active Connection</h2>
-        <p style={S.p}>Active connection ke dauran backend fail ho toh detection: TCP RST, response timeout, health probe failure. Failure ke baad behavior: retry (idempotent requests, platform dependent), RST to client, ya graceful error. Non-idempotent operations pe automatic retry risky.</p>
+        <p style={S.p}>If a backend fails during an active connection, detection: TCP RST, response timeout, health probe failure. Behavior after failure: retry (idempotent requests, platform dependent), RST to the client, or a graceful error. Automatic retry on non-idempotent operations is risky.</p>
       </section>
 
       <section id="rst-foundation">
         <h2 style={S.h2}>Connection Reset — RST Foundation</h2>
-        <p style={S.p}>TCP RST connection abruptly terminate karta hai. RST source attribution troubleshooting mein important — packet capture at multiple points se exactly kahan RST originate hua pata chalta hai.</p>
+        <p style={S.p}>A TCP RST terminates the connection abruptly. RST source attribution is important in troubleshooting — packet capture at multiple points shows exactly where the RST originated.</p>
       </section>
 
       <section id="client-ip-preservation">
         <h2 style={S.h2}>Client IP Preservation</h2>
-        <p style={S.p}>SNAT ke saath network layer pe client IP hidden hoti hai. Solutions: X-Forwarded-For header (trust sirf trusted LB infrastructure se), PROXY Protocol (TCP level), transparent proxy mode (platform-specific).</p>
+        <p style={S.p}>With SNAT, the client IP is hidden at the network layer. Solutions: X-Forwarded-For header (trust only from trusted LB infrastructure), PROXY Protocol (TCP level), transparent proxy mode (platform-specific).</p>
         <Callout type="important" title="Header Trust">
-          RFC 7239 Forwarded header define karta hai. Format aur order platform-specific — blind trust mat karo. Backends sirf trusted LB infrastructure se headers accept karein.
+          RFC 7239 defines the Forwarded header. Format and order are platform-specific — do not trust blindly. Backends should accept headers only from trusted LB infrastructure.
         </Callout>
       </section>
 
       <section id="port-translation">
         <h2 style={S.h2}>Port Translation</h2>
-        <p style={S.p}>VIP aur backend port different ho sakte hain. Client VIP:443 → LB → backend:8443. Return path mein reverse. Full proxy mein LB-assigned source port bhi use hota hai backend connection mein.</p>
+        <p style={S.p}>The VIP and backend port can be different. Client VIP:443 → LB → backend:8443. Reverse on the return path. In full proxy, an LB-assigned source port is also used in the backend connection.</p>
       </section>
 
       <section id="return-path-ts">
         <h2 style={S.h2}>Return Path Troubleshooting Foundation</h2>
-        <p style={S.p}>Return path failure most common deployment-day issue. Symptoms: request LB pe, backend selected, traffic forward, lekin client ko response nahi. Root cause: backend response LB se nahi guzar raha. Multi-point packet capture definitively locate karta hai.</p>
+        <p style={S.p}>Return path failure is the most common deployment-day issue. Symptoms: request reaches the LB, backend selected, traffic forwarded, but the client gets no response. Root cause: the backend response is not passing through the LB. Multi-point packet capture locates it definitively.</p>
       </section>
 
       <section id="broken-return-path">
         <h2 style={S.h2}>Practical Scenario — Broken Return Path</h2>
-        <p style={S.p}>Inline LB, SNAT nahi, backend default gateway = core router (not LB). Problem: backend reply → core router → user directly — LB bypass. Fix: SNAT apply, ya backend default gateway = LB, ya static routes for client subnets via LB.</p>
+        <p style={S.p}>Inline LB, no SNAT, backend default gateway = core router (not the LB). Problem: backend reply → core router → user directly — the LB is bypassed. Fix: apply SNAT, or backend default gateway = LB, or static routes for client subnets via the LB.</p>
       </section>
 
       <section id="p2-mistakes">
         <h2 style={S.h2}>Common Engineering Mistakes</h2>
-        <p style={S.p}><strong>"Two-arm placement = return automatically through LB."</strong> Nahi. Routing explicitly ensure karna padta hai.</p>
-        <p style={S.p}><strong>"SNAT apply kiya, kaam ho gaya."</strong> SNAT + correct routing together work karta hai.</p>
-        <p style={S.p}><strong>"Client IP dekhna hai, SNAT hatao."</strong> X-Forwarded-For ya PROXY Protocol consider karo instead.</p>
+        <p style={S.p}><strong>"Two-arm placement = return automatically through LB."</strong> No. Routing has to be explicitly ensured.</p>
+        <p style={S.p}><strong>"SNAT applied, job done."</strong> SNAT + correct routing work together.</p>
+        <p style={S.p}><strong>"Need to see the client IP, so remove SNAT."</strong> Consider X-Forwarded-For or PROXY Protocol instead.</p>
       </section>
 
       <section id="p2-takeaways">
         <h2 style={S.h2}>Phase 2 Key Takeaways</h2>
         <ul style={S.ul}>
-          <li>Full proxy do independent TCP connections maintain karta hai</li>
-          <li>SNAT return path problem solve karta hai — client IP hidden hoti hai network layer pe</li>
+          <li>Full proxy maintains two independent TCP connections</li>
+          <li>SNAT solves the return path problem — the client IP gets hidden at the network layer</li>
           <li>DSR intentionally asymmetric — return path inspection impossible, backend VIP owns</li>
-          <li>Connection state table finite capacity hai — platform-specific limits</li>
+          <li>The connection state table has finite capacity — platform-specific limits</li>
           <li>Return path must be validated with packet capture</li>
-          <li>Client IP preservation ke multiple mechanisms — trust model carefully design karo</li>
+          <li>Multiple mechanisms exist for client IP preservation — design the trust model carefully</li>
         </ul>
       </section>
 
@@ -392,48 +392,48 @@ export default function Content() {
 
       <section id="p3-orientation">
         <h2 style={S.h2}>Phase 3 Orientation</h2>
-        <p style={S.p}>Phase 3 mein deeper jaayenge: health monitoring ki depth, algorithms ka real behavior, persistence ka complete model, L7 content routing, aur backend lifecycle management.</p>
+        <p style={S.p}>In Phase 3 we will go deeper: the depth of health monitoring, the real behavior of algorithms, the complete persistence model, L7 content routing, and backend lifecycle management.</p>
       </section>
 
       <section id="health-why">
         <h2 style={S.h2}>Health Monitoring — Why It Exists</h2>
-        <p style={S.p}>Backend server failure inevitable hai. Active monitoring ensures degraded infrastructure silently users ko affect nahi karta. Bina monitoring ke, LB failed backends pe traffic bhejta rahega.</p>
+        <p style={S.p}>Backend server failure is inevitable. Active monitoring ensures that degraded infrastructure does not silently affect users. Without monitoring, the LB will keep sending traffic to failed backends.</p>
       </section>
 
       <section id="monitor-types">
         <h2 style={S.h2}>Health Monitor Types</h2>
-        <Figure caption="Health depth model — monitoring depth service requirements se match karna chahiye"><HealthDepthModel /></Figure>
+        <Figure caption="Health depth model — monitoring depth should match service requirements"><HealthDepthModel /></Figure>
       </section>
 
       <section id="tcp-monitor">
         <h2 style={S.h2}>TCP Health Monitor</h2>
-        <p style={S.p}>TCP monitor port pe connection attempt karta hai. Port open → pass. Refuse/timeout → fail. Sirf proves karta hai ki port listening hai — application health nahi.</p>
+        <p style={S.p}>A TCP monitor attempts a connection on the port. Port open → pass. Refuse/timeout → fail. It only proves that the port is listening — not application health.</p>
       </section>
 
       <section id="http-monitor">
         <h2 style={S.h2}>HTTP / HTTPS Health Monitor</h2>
-        <p style={S.p}>HTTP monitor configured path pe GET karta hai, response status check karta hai. Success criteria configured — typical 200/2xx, platform/config dependent.</p>
-        <p style={S.p}>HTTPS monitor TLS connection establish karta hai phir HTTP request. TLS certificate validation behavior platform aur config specific hai. Health probe may pass even with invalid user-facing certificate — strict validation may not be default.</p>
+        <p style={S.p}>An HTTP monitor sends a GET to a configured path and checks the response status. Success criteria are configured — typically 200/2xx, platform/config dependent.</p>
+        <p style={S.p}>An HTTPS monitor establishes a TLS connection, then sends the HTTP request. TLS certificate validation behavior is platform and config specific. A health probe may pass even with an invalid user-facing certificate — strict validation may not be the default.</p>
         <Callout type="warning" title="HTTP 200 ≠ Application Healthy">
-          Backend 200 return kar sakta hai while application completely broken hai — agar endpoint sirf hardcoded "ok" return karta hai.
+          A backend can return 200 while the application is completely broken — if the endpoint just returns a hardcoded "ok".
         </Callout>
       </section>
 
       <section id="app-aware-health">
         <h2 style={S.h2}>Application-Aware Health Check</h2>
-        <p style={S.p}>Application-aware probe response body ya specific content check karta hai. Most reliable — lekin health endpoint implementation quality pe depend karta hai. L7 content inspection ke liye HTTP monitor TLS terminate karne ke baad hi HTTP body dekh sakta hai.</p>
+        <p style={S.p}>An application-aware probe checks the response body or specific content. Most reliable — but it depends on the quality of the health endpoint implementation. For L7 content inspection, an HTTP monitor can see the HTTP body only after terminating TLS.</p>
       </section>
 
       <section id="active-passive-health">
         <h2 style={S.h2}>Active vs Passive Health Signals</h2>
-        <p style={S.p}>Active: LB periodically probe send karta hai — explicit, scheduled. Passive: LB observe karta hai actual user traffic behavior. Passive signals typically formal state change trigger nahi karte — platform-specific. Dono complementary hain.</p>
+        <p style={S.p}>Active: the LB sends probes periodically — explicit, scheduled. Passive: the LB observes actual user traffic behavior. Passive signals typically do not trigger a formal state change — platform-specific. Both are complementary.</p>
       </section>
 
       <section id="health-thresholds">
         <h2 style={S.h2}>Health Check Interval, Timeout and Thresholds</h2>
-        <p style={S.p}>Interval: probes ke beech time. Timeout: probe response ka maximum wait. Fall threshold: consecutive failures before ineligible. Rise threshold: consecutive successes before eligible wapas.</p>
+        <p style={S.p}>Interval: time between probes. Timeout: maximum wait for a probe response. Fall threshold: consecutive failures before ineligible. Rise threshold: consecutive successes before eligible again.</p>
         <Callout type="warning" title="No Universal Formula">
-          Optimal values service characteristics pe depend karte hain. Platform-specific documentation se guidance lo.
+          Optimal values depend on service characteristics. Take guidance from platform-specific documentation.
         </Callout>
       </section>
 
@@ -444,43 +444,43 @@ export default function Content() {
 
       <section id="health-flapping">
         <h2 style={S.h2}>Health Check Flapping</h2>
-        <p style={S.p}>Flapping: backend repeatedly eligible/ineligible toggle. Rise/fall thresholds reduce karte hain flapping. Agar ho raha hai — root cause investigate karo, sirf thresholds increase mat karo.</p>
+        <p style={S.p}>Flapping: a backend repeatedly toggles between eligible and ineligible. Rise/fall thresholds reduce flapping. If it is happening — investigate the root cause, do not just increase the thresholds.</p>
       </section>
 
       <section id="algorithm-decision">
         <h2 style={S.h2}>Load Balancing Algorithm — Decision Model</h2>
-        <p style={S.p}>Algorithm ek factor hai — health eligibility, persistence, L7 policy sab bhi selection affect karte hain. Exact interaction platform-specific hai.</p>
+        <p style={S.p}>The algorithm is one factor — health eligibility, persistence and L7 policy all affect selection too. The exact interaction is platform-specific.</p>
         <Figure caption="Persistence vs algorithm — conceptual interaction (not internal processing order)"><PersistenceVsAlgorithm /></Figure>
       </section>
 
       <section id="round-robin-deep">
         <h2 style={S.h2}>Round Robin — Deeper View</h2>
-        <p style={S.p}>Scheduling unit — per-connection ya per-request — proxy mode aur protocol pe depend karta hai. Per-connection mein long-lived connection same backend pe. Per-request (L7 full proxy) mein har request independent.</p>
+        <p style={S.p}>The scheduling unit — per connection or per request — depends on the proxy mode and protocol. With per-connection, a long-lived connection stays on the same backend. With per-request (L7 full proxy), each request is independent.</p>
         <Callout type="warning" title="Equal Load ≠ Round Robin">
-          Request duration variance ke saath load unequal hoga. Variable durations ke liye Least Connections better hai.
+          With variance in request duration, the load will be unequal. For variable durations, Least Connections is better.
         </Callout>
       </section>
 
       <section id="weighted-round-robin">
         <h2 style={S.h2}>Weighted Round Robin</h2>
-        <p style={S.p}>Higher weight = more traffic (proportional, ratio illustrative — actual algorithm implementation varies). Different capacity servers ke liye useful.</p>
+        <p style={S.p}>Higher weight = more traffic (proportional, ratio illustrative — actual algorithm implementation varies). Useful for servers with different capacities.</p>
       </section>
 
       <section id="least-connections">
         <h2 style={S.h2}>Least Connections</h2>
-        <p style={S.p}>Fewest active connections wale eligible backend ko select karta hai. Variable duration requests ke liye better than Round Robin. Health check connections typically count nahi hote (implementation varies). Resource utilization (CPU/memory) nahi jaanta.</p>
+        <p style={S.p}>Selects the eligible backend with the fewest active connections. Better than Round Robin for variable-duration requests. Health check connections are typically not counted (implementation varies). It does not know resource utilization (CPU/memory).</p>
       </section>
 
       <section id="weighted-least-conn">
         <h2 style={S.h2}>Weighted Least Connections</h2>
-        <p style={S.p}>Least Connections + weight. Mixed capacity servers ke liye — powerful servers proportionally more load receive karte hain.</p>
+        <p style={S.p}>Least Connections + weight. For mixed-capacity servers — powerful servers receive proportionally more load.</p>
       </section>
 
       <section id="hash-selection">
         <h2 style={S.h2}>Hash-Based Selection</h2>
-        <p style={S.p}>Configured key ka hash → backend select. Hash ≠ persistence. Pool change hash distribution disrupt karta hai. Consistent hashing disruption reduce karta hai lekin eliminate nahi.</p>
-        <Callout type="warning" title="Source IP Hash aur NAT">
-          Corporate NAT mein thousands users ek source IP share karte hain. Source IP hash → heavy concentration on one backend. NAT-heavy environments mein carefully evaluate karo.
+        <p style={S.p}>Hash of a configured key → backend selected. Hash ≠ persistence. A pool change disrupts the hash distribution. Consistent hashing reduces the disruption but does not eliminate it.</p>
+        <Callout type="warning" title="Source IP Hash and NAT">
+          In corporate NAT, thousands of users share one source IP. Source IP hash → heavy concentration on one backend. Evaluate carefully in NAT-heavy environments.
         </Callout>
       </section>
 
@@ -499,114 +499,114 @@ export default function Content() {
 
       <section id="algo-limits">
         <h2 style={S.h2}>What Algorithms Do Not Know</h2>
-        <p style={S.p}>Basic algorithms nahi jaante: backend CPU, memory pressure, request complexity, application queue depth, actual response time (unless platform-specific algorithm considers it).</p>
+        <p style={S.p}>Basic algorithms do not know: backend CPU, memory pressure, request complexity, application queue depth, actual response time (unless a platform-specific algorithm considers it).</p>
       </section>
 
       <section id="persistence-why">
         <h2 style={S.h2}>Persistence / Stickiness — Why It Exists</h2>
-        <p style={S.p}>Kuch applications user session state local server pe store karti hain. Agar subsequent requests different backend ko jaayein, session state missing hogi. Persistence ensure karta hai same client ke requests same backend ko jaayein — jab woh backend eligible ho.</p>
+        <p style={S.p}>Some applications store user session state on the local server. If subsequent requests go to a different backend, the session state will be missing. Persistence ensures that the same client's requests go to the same backend — while that backend is eligible.</p>
       </section>
 
       <section id="persistence-vs-algo">
         <h2 style={S.h2}>Persistence ≠ Load Balancing Algorithm</h2>
-        <p style={S.p}>Persistence algorithm selection ko influence ya bypass kar sakta hai — exact behavior platform-specific. Sirf "preferred backend" suggest karta hai when eligible. Heavy persistence use distribution imbalance create kar sakta hai.</p>
+        <p style={S.p}>Persistence can influence or bypass algorithm selection — exact behavior is platform-specific. It only suggests a "preferred backend" when eligible. Heavy use of persistence can create distribution imbalance.</p>
       </section>
 
       <section id="source-ip-persistence">
         <h2 style={S.h2}>Source IP Persistence</h2>
-        <p style={S.p}>Source IP affinity key ke roop mein. NAT environments mein: thousands users ek IP share karte hain — few affinity entries = very heavy traffic concentration. Entry count traffic volume reflect nahi karta. IPv6 privacy extensions bhi affect karte hain.</p>
+        <p style={S.p}>Source IP as the affinity key. In NAT environments: thousands of users share one IP — few affinity entries = very heavy traffic concentration. Entry count does not reflect traffic volume. IPv6 privacy extensions also have an effect.</p>
       </section>
 
       <section id="cookie-persistence">
         <h2 style={S.h2}>Cookie-Based Persistence</h2>
-        <p style={S.p}>LB ya application cookie set karta hai jo backend affinity encode karta hai. LB-generated cookie: value backend identity obscure form mein. Evaluate: Secure, HttpOnly, SameSite attributes application requirements ke basis pe.</p>
+        <p style={S.p}>The LB or the application sets a cookie that encodes backend affinity. LB-generated cookie: the value holds the backend identity in obscured form. Evaluate the Secure, HttpOnly and SameSite attributes based on application requirements.</p>
       </section>
 
       <section id="cookie-flow">
         <h2 style={S.h2}>Cookie Persistence Traffic Flow</h2>
         <Figure caption="Cookie persistence flow — first request cookie set, subsequent requests affinity"><CookiePersistenceFlow /></Figure>
         <Callout type="important" title="Cookie Implementation (FA-C1 applied)">
-          Persistence implementation varies: server-side table entries (table-based) ya client-side cookie encoding (cookie-based, no server-side table). Mechanism persistence type aur platform pe depend karta hai.
+          Persistence implementation varies: server-side table entries (table-based) or client-side cookie encoding (cookie-based, no server-side table). The mechanism depends on the persistence type and platform.
         </Callout>
       </section>
 
       <section id="persisted-backend-fails">
         <h2 style={S.h2}>What If Persisted Backend Fails?</h2>
-        <p style={S.p}>Persisted backend fail hone pe fallback: new backend select via algorithm, error return, ya pool-down behavior — platform aur configuration dependent. Session state jo failed backend pe stored thi permanently lost hai regardless of LB behavior.</p>
+        <p style={S.p}>Fallback when the persisted backend fails: select a new backend via the algorithm, return an error, or pool-down behavior — platform and configuration dependent. Session state that was stored on the failed backend is permanently lost regardless of LB behavior.</p>
       </section>
 
       <section id="persistence-timeout">
         <h2 style={S.h2}>Persistence Timeout</h2>
-        <p style={S.p}>Entry expire hoti hai inactivity ke baad. Too short → affinity lost mid-session. Too long → stale entries, distribution imbalance. Server-side table mein entries table space consume karte hain; cookie-based client-side encoding mein different resource implications.</p>
+        <p style={S.p}>An entry expires after inactivity. Too short → affinity lost mid-session. Too long → stale entries, distribution imbalance. In a server-side table, entries consume table space; client-side cookie encoding has different resource implications.</p>
       </section>
 
       <section id="persistence-app-design">
         <h2 style={S.h2}>Persistence and Application Design</h2>
-        <p style={S.p}>Better approach: stateless application design — session state shared external store mein (Redis, database). Any backend any request serve kar sakta hai. WebSocket connections persistence require karte hain connection lifetime ke liye — different from generic HTTP persistence.</p>
+        <p style={S.p}>Better approach: stateless application design — session state in a shared external store (Redis, database). Any backend can serve any request. WebSocket connections require persistence for the connection lifetime — different from generic HTTP persistence.</p>
       </section>
 
       <section id="l7-content-switching">
         <h2 style={S.h2}>L7 Content Switching</h2>
-        <p style={S.p}>L7 LB HTTP content ke basis pe alag pools pe route kar sakta hai — single VIP pe multiple services.</p>
-        <Figure caption="L7 content routing — host aur path based routing to different pools"><L7ContentRouting /></Figure>
+        <p style={S.p}>An L7 LB can route to different pools based on HTTP content — multiple services on a single VIP.</p>
+        <Figure caption="L7 content routing — host and path based routing to different pools"><L7ContentRouting /></Figure>
         <Callout type="warning" title="TLS Termination Required">
-          HTTP Host header aur path visibility ke liye TLS terminate hona zaroori hai. TLS passthrough mein HTTP content invisible. SNI routing alag hai — decryption ke bina possible.
+          TLS must be terminated for Host header and path visibility. In TLS passthrough, HTTP content is invisible. SNI routing is different — possible without decryption.
         </Callout>
       </section>
 
       <section id="host-routing">
         <h2 style={S.h2}>Host-Based Routing</h2>
-        <p style={S.p}>HTTP Host header (ya HTTP/2 <code>:authority</code> pseudo-header) ke basis pe routing. Same VIP:443 pe alag backends — <code>api.example.com</code> aur <code>portal.example.com</code> alag pools. H2 primarily <code>:authority</code> use karta hai.</p>
+        <p style={S.p}>Routing based on the HTTP Host header (or the HTTP/2 <code>:authority</code> pseudo-header). Different backends on the same VIP:443 — <code>api.example.com</code> and <code>portal.example.com</code> in separate pools. H2 primarily uses <code>:authority</code>.</p>
       </section>
 
       <section id="path-routing">
         <h2 style={S.h2}>Path-Based Routing</h2>
-        <p style={S.p}>URL path ke basis pe routing — <code>/api/*</code> → API pool, <code>/images/*</code> → static pool. Matching order matters — platform-specific evaluation order verify karo.</p>
+        <p style={S.p}>Routing based on URL path — <code>/api/*</code> → API pool, <code>/images/*</code> → static pool. Matching order matters — verify the platform-specific evaluation order.</p>
       </section>
 
       <section id="header-routing">
         <h2 style={S.h2}>Header-Based Routing</h2>
-        <p style={S.p}>Specific HTTP headers pe routing.</p>
+        <p style={S.p}>Routing on specific HTTP headers.</p>
         <Callout type="warning" title="Header Trust">
-          Client-controlled headers arbitrary values contain kar sakte hain. Routing decisions ke liye sirf validated/trusted headers use karo.
+          Client-controlled headers can contain arbitrary values. Use only validated/trusted headers for routing decisions.
         </Callout>
       </section>
 
       <section id="l7-policy-eval">
         <h2 style={S.h2}>L7 Policy Evaluation</h2>
-        <p style={S.p}>L7 policies typically ordered rules — first match wins ya most-specific match (platform-specific). Default/catch-all rule configure karo — bina catch-all ke unmatched requests error ya drop ho sakti hain.</p>
+        <p style={S.p}>L7 policies are typically ordered rules — first match wins or most-specific match (platform-specific). Configure a default/catch-all rule — without a catch-all, unmatched requests can error or be dropped.</p>
       </section>
 
       <section id="backend-draining">
         <h2 style={S.h2}>Backend Draining / Graceful Maintenance</h2>
-        <Figure caption="Backend drain aur ramp-up lifecycle — planned maintenance phases"><DrainRampLifecycle /></Figure>
-        <p style={S.p}>Drain mode: new work admitted nahi hota per drain semantics (semantics: protocol/platform specific). Existing work complete hone diya jaata hai ya drain timeout pe terminate hota hai.</p>
+        <Figure caption="Backend drain and ramp-up lifecycle — planned maintenance phases"><DrainRampLifecycle /></Figure>
+        <p style={S.p}>Drain mode: new work is not admitted per drain semantics (semantics: protocol/platform specific). Existing work is allowed to complete or is terminated at the drain timeout.</p>
       </section>
 
       <section id="drain-vs-down">
         <h2 style={S.h2}>Draining vs Marking Down</h2>
         <p style={S.p}><strong>Drain:</strong> Planned, graceful — new work stops per drain semantics, existing completes. Operator-initiated.</p>
-        <p style={S.p}><strong>Force Down:</strong> Immediate — all traffic stops. Health failure ya emergency removal.</p>
+        <p style={S.p}><strong>Force Down:</strong> Immediate — all traffic stops. Health failure or emergency removal.</p>
       </section>
 
       <section id="slow-start">
         <h2 style={S.h2}>Slow Start / Ramp-Up</h2>
-        <p style={S.p}>Naye backend pe traffic gradually increase karta hai — cold cache, JIT, connections warm hone deta hai. Platform support aur initiation mechanism vary karte hain — universally supported nahi.</p>
+        <p style={S.p}>Gradually increases traffic to a new backend — lets the cold cache, JIT and connections warm up. Platform support and initiation mechanism vary — not universally supported.</p>
       </section>
 
       <section id="connection-limits">
         <h2 style={S.h2}>Connection Limits</h2>
-        <p style={S.p}>Per-backend connection limits configure kiye ja sakte hain. Limit reach hone pe behavior (queue, reject, route elsewhere) platform pe depend karta hai. Per-member rate limiting distinct hai.</p>
+        <p style={S.p}>Per-backend connection limits can be configured. Behavior when the limit is reached (queue, reject, route elsewhere) depends on the platform. Per-member rate limiting is distinct.</p>
       </section>
 
       <section id="priority-pools">
         <h2 style={S.h2}>Priority / Failover Pools</h2>
-        <p style={S.p}>Primary pool empty → fallback pool use hoti hai. Local failover mechanism hai — GSLB ya full DR se different. Same LB infrastructure pe. Pool-down fallback explicitly configured hona chahiye.</p>
+        <p style={S.p}>Primary pool empty → the fallback pool is used. It is a local failover mechanism — different from GSLB or full DR. On the same LB infrastructure. Pool-down fallback must be explicitly configured.</p>
       </section>
 
       <section id="practical-p3">
         <h2 style={S.h2}>Practical Application Example</h2>
-        <p style={S.p}>3 app servers, Least Connections, cookie persistence. APP02 health fails — users with APP02 affinity get fallback backend. APP02 recovers → rise threshold met → slow-start (if configured) → gradual re-admission. Illustrative — actual behavior configuration pe dependent.</p>
+        <p style={S.p}>3 app servers, Least Connections, cookie persistence. APP02 health fails — users with APP02 affinity get a fallback backend. APP02 recovers → rise threshold met → slow-start (if configured) → gradual re-admission. Illustrative — actual behavior depends on configuration.</p>
       </section>
 
       <section id="ts-health-selection">
@@ -617,21 +617,21 @@ export default function Content() {
       <section id="p3-mistakes">
         <h2 style={S.h2}>Common Engineering Mistakes</h2>
         <p style={S.p}><strong>"Persistence = automatic session continuity."</strong> Backend fail → affinity disrupted, session state lost.</p>
-        <p style={S.p}><strong>"Source IP persistence = solved."</strong> NAT mein thousands users → one entry → one backend overloaded.</p>
-        <p style={S.p}><strong>"Health check passing = all fine."</strong> Shallow endpoint application bugs catch nahi karta.</p>
-        <p style={S.p}><strong>"L7 routing without TLS terminate."</strong> HTTPS content visibility ke liye TLS termination required. SNI ≠ HTTP Host.</p>
+        <p style={S.p}><strong>"Source IP persistence = solved."</strong> In NAT, thousands of users → one entry → one backend overloaded.</p>
+        <p style={S.p}><strong>"Health check passing = all fine."</strong> A shallow endpoint does not catch application bugs.</p>
+        <p style={S.p}><strong>"L7 routing without TLS terminate."</strong> TLS termination is required for HTTPS content visibility. SNI ≠ HTTP Host.</p>
       </section>
 
       <section id="p3-takeaways">
         <h2 style={S.h2}>Phase 3 Key Takeaways</h2>
         <ul style={S.ul}>
-          <li>Health monitor depth service requirements match karna chahiye</li>
-          <li>Fall/rise thresholds flapping prevent karte hain</li>
-          <li>Algorithms load distribute karte hain — equal load guarantee nahi</li>
-          <li>Persistence preferred backend suggest karta hai — failure par session lost</li>
-          <li>Cookie persistence NAT environments mein better than source IP</li>
-          <li>L7 routing ke liye TLS termination required; SNI different hai</li>
-          <li>Drain graceful maintenance; force-down emergency ke liye</li>
+          <li>Health monitor depth should match service requirements</li>
+          <li>Fall/rise thresholds prevent flapping</li>
+          <li>Algorithms distribute load — they do not guarantee equal load</li>
+          <li>Persistence suggests a preferred backend — on failure, the session is lost</li>
+          <li>Cookie persistence is better than source IP in NAT environments</li>
+          <li>TLS termination is required for L7 routing; SNI is different</li>
+          <li>Drain for graceful maintenance; force-down for emergencies</li>
         </ul>
       </section>
 
@@ -639,7 +639,7 @@ export default function Content() {
 
       <section id="p4-orientation">
         <h2 style={S.h2}>Phase 4 Orientation</h2>
-        <p style={S.p}>Phase 4 covers advanced LB topics: TLS handling modes, HTTP/2 aur HTTP/3 behavior, GSLB, aur observability stack.</p>
+        <p style={S.p}>Phase 4 covers advanced LB topics: TLS handling modes, HTTP/2 and HTTP/3 behavior, GSLB, and the observability stack.</p>
       </section>
 
       <section id="tls-problem">
@@ -649,49 +649,49 @@ export default function Content() {
 
       <section id="tls-modes">
         <h2 style={S.h2}>TLS Offload vs Re-Encryption vs Passthrough</h2>
-        <Figure caption="TLS handling modes — offload, re-encryption, aur passthrough"><TlsHandlingModes /></Figure>
+        <Figure caption="TLS handling modes — offload, re-encryption, and passthrough"><TlsHandlingModes /></Figure>
         <ul style={S.ul}>
           <li><strong>TLS Offload:</strong> LB terminate → backend HTTP (plaintext). L7 visible, cert at LB.</li>
           <li><strong>TLS Re-encryption:</strong> LB terminate → naya TLS to backend. L7 visible, E2E encryption.</li>
           <li><strong>TLS Passthrough:</strong> No decrypt. L7 HTTP invisible. Backend TLS owns.</li>
         </ul>
-        <p style={S.p}>Upstream TLS termination: kuch architectures mein CDN, WAF, ya upstream proxy pe TLS terminate hoti hai LB se pehle. LB plaintext receive karta hai aur L7 inspection bina TLS terminate kiye possible hai — return path encryption design karo explicitly.</p>
+        <p style={S.p}>Upstream TLS termination: in some architectures, TLS is terminated at a CDN, WAF, or upstream proxy before the LB. The LB receives plaintext, and L7 inspection is possible without terminating TLS — design return path encryption explicitly.</p>
       </section>
 
       <section id="cert-management">
         <h2 style={S.h2}>Certificate Management at the LB</h2>
-        <p style={S.p}>SNI-based cert selection, expiry monitoring, chain completeness, HA pair sync — sab LB operations responsibility jab TLS LB pe terminate hoti hai. Key security: private keys sensitive — HSM high-security environments mein.</p>
+        <p style={S.p}>SNI-based cert selection, expiry monitoring, chain completeness, HA pair sync — all of these are LB operations responsibilities when TLS terminates on the LB. Key security: private keys are sensitive — HSM in high-security environments.</p>
       </section>
 
       <section id="mtls">
         <h2 style={S.h2}>Client Certificate Authentication (mTLS)</h2>
-        <p style={S.p}>mTLS mein client certificate bhi validate hota hai. LB identity backend ko header mein forward kar sakta hai.</p>
+        <p style={S.p}>In mTLS, the client certificate is also validated. The LB can forward the identity to the backend in a header.</p>
         <Callout type="warning" title="mTLS Header Trust">
-          Identity headers sirf trusted, controlled LB infrastructure se accept karein — arbitrary client header injection authentication bypass kar sakta hai.
+          Accept identity headers only from trusted, controlled LB infrastructure — arbitrary client header injection can bypass authentication.
         </Callout>
       </section>
 
       <section id="http2-lb">
         <h2 style={S.h2}>HTTP/2 — What Changes for Load Balancing</h2>
-        <Figure caption="HTTP/2 per-connection vs per-stream, aur HTTP/3 QUIC behavior"><Http2Http3LbBehavior /></Figure>
-        <p style={S.p}>Per-connection selection (common): single client TCP connection ke sab streams same backend. Per-stream (H2 proxy-aware): har stream independently route — platform support required.</p>
+        <Figure caption="HTTP/2 per-connection vs per-stream, and HTTP/3 QUIC behavior"><Http2Http3LbBehavior /></Figure>
+        <p style={S.p}>Per-connection selection (common): all streams of a single client TCP connection go to the same backend. Per-stream (H2 proxy-aware): each stream is routed independently — platform support required.</p>
       </section>
 
       <section id="http3-quic">
         <h2 style={S.h2}>HTTP/3 and QUIC — Load Balancing Implications</h2>
-        <p style={S.p}>HTTP/3 TCP use nahi karta — QUIC over UDP. Integrated TLS 1.3, stream multiplexing, connection migration. 0-RTT replay risk — security design decision. LB QUIC support varies — many block QUIC (HTTP/2 fallback force).</p>
+        <p style={S.p}>HTTP/3 does not use TCP — QUIC over UDP. Integrated TLS 1.3, stream multiplexing, connection migration. 0-RTT replay risk — a security design decision. LB QUIC support varies — many block QUIC (forcing HTTP/2 fallback).</p>
       </section>
 
       <section id="gslb-foundation">
         <h2 style={S.h2}>GSLB — Global Server Load Balancing Foundation</h2>
         <Figure caption="GSLB architecture — health-aware DNS-based datacenter selection"><GslbArchitecture /></Figure>
-        <p style={S.p}>GSLB ≠ local LB. GSLB routes to datacenter; local LB distributes within. DNS failover: TTL, resolver caching, client caching, connection reuse sab affect karte hain — never as fast as local health-check failover.</p>
+        <p style={S.p}>GSLB ≠ local LB. GSLB routes to a datacenter; the local LB distributes within it. DNS failover: TTL, resolver caching, client caching and connection reuse all have an effect — never as fast as local health-check failover.</p>
       </section>
 
       <section id="gslb-policies">
         <h2 style={S.h2}>GSLB Routing Policies</h2>
         <ul style={S.ul}>
-          <li><strong>Geographic:</strong> Client location. EDNS Client Subnet accuracy improve karta hai — accuracy varies.</li>
+          <li><strong>Geographic:</strong> Client location. EDNS Client Subnet improves accuracy — accuracy varies.</li>
           <li><strong>Performance:</strong> Lowest measured latency (measurement method varies).</li>
           <li><strong>Health-based failover:</strong> Site health fail → traffic elsewhere.</li>
           <li><strong>Weighted:</strong> Proportional distribution across sites.</li>
@@ -700,7 +700,7 @@ export default function Content() {
 
       <section id="gslb-ttl">
         <h2 style={S.h2}>GSLB and TTL Management</h2>
-        <p style={S.p}>Low TTL = faster failover potential, higher DNS query rate. Ultra-low TTL some resolvers ignore karte hain. Tradeoff: lower TTL = faster failover, less caching; higher TTL = slower failover, more caching.</p>
+        <p style={S.p}>Low TTL = faster failover potential, higher DNS query rate. Some resolvers ignore ultra-low TTLs. Tradeoff: lower TTL = faster failover, less caching; higher TTL = slower failover, more caching.</p>
       </section>
 
       <section id="lb-metrics">
@@ -711,44 +711,44 @@ export default function Content() {
 
       <section id="lb-access-logs">
         <h2 style={S.h2}>Load Balancer Observability — Access Logs</h2>
-        <p style={S.p}>Per-request detail: client IP (config-dependent — may be SNAT address), VIP, backend, status, bytes, duration, persistence, TLS info. SNAT ke saath original client IP ke liye X-Forwarded-For integration required.</p>
+        <p style={S.p}>Per-request detail: client IP (config-dependent — may be the SNAT address), VIP, backend, status, bytes, duration, persistence, TLS info. With SNAT, X-Forwarded-For integration is required for the original client IP.</p>
       </section>
 
       <section id="lb-health-logs">
         <h2 style={S.h2}>Load Balancer Observability — Health Check Logs</h2>
-        <p style={S.p}>State change events: probe results, eligible/ineligible transitions, drain/admin events, timestamps. Root cause analysis ke liye critical — exactly kaun sa backend fail hua aur kab.</p>
+        <p style={S.p}>State change events: probe results, eligible/ineligible transitions, drain/admin events, timestamps. Critical for root cause analysis — exactly which backend failed and when.</p>
       </section>
 
       <section id="lb-alerting">
         <h2 style={S.h2}>Load Balancer Observability — Alerting</h2>
-        <p style={S.p}>Alert on: backend state change, pool with fewer than N eligible members, error rate threshold, connection table utilization high, certificate expiry approaching. Unconfigured alert condition invisible — regular coverage review karo.</p>
+        <p style={S.p}>Alert on: backend state change, pool with fewer than N eligible members, error rate threshold, connection table utilization high, certificate expiry approaching. An unconfigured alert condition is invisible — review coverage regularly.</p>
       </section>
 
       <section id="distributed-tracing">
         <h2 style={S.h2}>Distributed Tracing at the LB</h2>
-        <p style={S.p}>LB trace headers (e.g., <code>traceparent</code>, <code>X-B3-TraceId</code>) receive, preserve, forward kar sakta hai. Formats examples hain — specific format deployment aur observability stack pe depend karta hai.</p>
+        <p style={S.p}>The LB can receive, preserve and forward trace headers (e.g., <code>traceparent</code>, <code>X-B3-TraceId</code>). The formats are examples — the specific format depends on the deployment and observability stack.</p>
       </section>
 
       <section id="observability-example">
         <h2 style={S.h2}>Practical Observability Example</h2>
-        <p style={S.p}>Error rate metric spike. Access logs → APP03 5xx. Health logs → APP03 HTTPS probe failing (timeout). Root cause: application crash — TCP port alive lekin application not responding. Three-layer approach precisely locates failure without manual server-by-server investigation.</p>
+        <p style={S.p}>Error rate metric spike. Access logs → APP03 5xx. Health logs → APP03 HTTPS probe failing (timeout). Root cause: application crash — TCP port alive but application not responding. The three-layer approach precisely locates the failure without manual server-by-server investigation.</p>
       </section>
 
       <section id="p4-mistakes">
         <h2 style={S.h2}>Common Engineering Mistakes</h2>
-        <p style={S.p}><strong>"TLS offload = plaintext always."</strong> Re-encryption bhi option hai.</p>
-        <p style={S.p}><strong>"HTTP/2 = better distribution automatically."</strong> Per-connection mein same client ke streams same backend.</p>
-        <p style={S.p}><strong>"GSLB = fast failover."</strong> DNS-based failover TTL/caching se bounded.</p>
-        <p style={S.p}><strong>"Metrics enough."</strong> Per-backend issues access logs mein hote hain. State changes health logs mein.</p>
+        <p style={S.p}><strong>"TLS offload = plaintext always."</strong> Re-encryption is also an option.</p>
+        <p style={S.p}><strong>"HTTP/2 = better distribution automatically."</strong> With per-connection, the same client's streams go to the same backend.</p>
+        <p style={S.p}><strong>"GSLB = fast failover."</strong> DNS-based failover is bounded by TTL/caching.</p>
+        <p style={S.p}><strong>"Metrics enough."</strong> Per-backend issues show up in access logs. State changes in health logs.</p>
       </section>
 
       <section id="p4-takeaways">
         <h2 style={S.h2}>Phase 4 Key Takeaways</h2>
         <ul style={S.ul}>
-          <li>TLS teen modes: offload, re-encrypt, passthrough — architecture decision</li>
-          <li>Certificate lifecycle LB operations responsibility jab TLS terminates at LB</li>
+          <li>Three TLS modes: offload, re-encrypt, passthrough — an architecture decision</li>
+          <li>Certificate lifecycle is an LB operations responsibility when TLS terminates at the LB</li>
           <li>HTTP/2 per-connection LB ≠ per-request — architecture determines</li>
-          <li>HTTP/3 is QUIC/UDP — TCP terminology apply nahi hoti</li>
+          <li>HTTP/3 is QUIC/UDP — TCP terminology does not apply</li>
           <li>GSLB ≠ local LB — DNS-based, site-level failover</li>
           <li>Three observability layers: metrics + access logs + health logs</li>
         </ul>
@@ -758,7 +758,7 @@ export default function Content() {
 
       <section id="p5-orientation">
         <h2 style={S.h2}>Phase 5 Orientation</h2>
-        <p style={S.p}>Phase 5 covers production operations, troubleshooting framework, aur data center integration alongside firewalls, switches, routers, aur application tiers.</p>
+        <p style={S.p}>Phase 5 covers production operations, a troubleshooting framework, and data center integration alongside firewalls, switches, routers, and application tiers.</p>
       </section>
 
       <section id="ops-lifecycle">
@@ -766,40 +766,40 @@ export default function Content() {
         <ComparisonTable
           headers={["Domain", "What it involves"]}
           rows={[
-            ["Configuration management", "VIP, pool, health, algorithm, persistence, certificate config accurate rakhna"],
-            ["Health visibility", "Backend state monitor, degradation detect before users"],
+            ["Configuration management", "VIP, pool, health, algorithm, persistence, certificate config kept accurate"],
+            ["Health visibility", "Monitoring backend state, detecting degradation before users do"],
             ["Change control", "Safe addition/removal of backends, VIP changes, algorithm changes"],
-            ["Incident response", "Traffic failures diagnose aur resolve karna"],
-            ["Capacity management", "LB aur backend resources saturation se pehle ensure karna"],
+            ["Incident response", "Diagnosing and resolving traffic failures"],
+            ["Capacity management", "Ensuring LB and backend resources before saturation"],
           ]}
         />
-        <p style={S.p}>Chalta hua LB bina operational process ke sirf ignore ho raha hai jab tak kuch break nahi karta.</p>
+        <p style={S.p}>A running LB without an operational process is simply being ignored until something breaks.</p>
       </section>
 
       <section id="config-management">
         <h2 style={S.h2}>Configuration Management</h2>
-        <p style={S.p}>Configuration mein accurate rehna chahiye: virtual services, pools, health monitors, algorithms, persistence, certificates (aur expiry), HA config, administrative state.</p>
-        <p style={S.p}>Configuration drift risk: changes jo dono HA peers tak nahi pahunchte — manual one-sided changes, sync failures, ya platform sync limitations. Automatic configuration sync platforms pe bhi sync success verify karo. Standby node failover pe different policy enforce karta hai — silent until disaster.</p>
-        <p style={S.p}>Har change ke saath: change record, pre-change backup, post-change validation, rollback procedure documented pehle.</p>
+        <p style={S.p}>The configuration must stay accurate: virtual services, pools, health monitors, algorithms, persistence, certificates (and expiry), HA config, administrative state.</p>
+        <p style={S.p}>Configuration drift risk: changes that do not reach both HA peers — manual one-sided changes, sync failures, or platform sync limitations. Verify sync success even on platforms with automatic configuration sync. The standby node enforces a different policy on failover — silent until disaster.</p>
+        <p style={S.p}>With every change: change record, pre-change backup, post-change validation, rollback procedure documented beforehand.</p>
       </section>
 
       <section id="backend-addition">
         <h2 style={S.h2}>Backend Addition</h2>
-        <CodeBlock lang="text">{`1. Backend ready verify karo:
-   - Application deployed aur started, port listening
+        <CodeBlock lang="text">{`1. Verify backend is ready:
+   - Application deployed and started, port listening
    - Health endpoint responding correctly
-   - For HTTPS backends: TLS config verify karo (cert validity, chain,
+   - For HTTPS backends: verify TLS config (cert validity, chain,
      cipher) — health probe may pass even with invalid user-facing cert
    - Dependencies initialized
 
-2. Administratively inactive state mein add karo (where platform supports):
-   - Traffic before readiness confirmation rokta hai
-   - State name aur pre-disabled support: platform-specific
+2. Add in administratively inactive state (where platform supports):
+   - Prevents traffic before readiness confirmation
+   - State name and pre-disabled support: platform-specific
 
-3. Health monitor validate karo:
-   - Eligibility: first probe pe ya multiple successes: platform-specific
+3. Validate health monitor:
+   - Eligibility: on first probe or multiple successes: platform-specific
 
-4. Member enable karo (slow-start where platform supports)
+4. Enable member (slow-start where platform supports)
 
 5. Monitor: traffic arriving, error rate normal, unexpected health failures`}</CodeBlock>
       </section>
@@ -807,60 +807,60 @@ export default function Content() {
       <section id="backend-removal">
         <h2 style={S.h2}>Backend Removal — Planned Maintenance</h2>
         <CodeBlock lang="text">{`1. Drain state (where platform supports):
-   - New work per drain semantics stop (protocol/platform dependent)
-   - Existing connections complete hone diya jaata hai
+   - New work stops per drain semantics (protocol/platform dependent)
+   - Existing connections are allowed to complete
 
 2. Monitor drain: active connection count
 
-3. Wait ya drain timeout pe platform terminates remaining
+3. Wait, or at drain timeout platform terminates remaining
 
-4. Administratively disable ya remove
+4. Administratively disable or remove
 
-5. Maintenance perform karo
+5. Perform maintenance
 
-6. Re-enable se pehle readiness validate karo (same as addition steps)
+6. Validate readiness before re-enabling (same as addition steps)
 
 7. Re-enable with monitoring`}</CodeBlock>
       </section>
 
       <section id="emergency-removal">
         <h2 style={S.h2}>Emergency Backend Removal</h2>
-        <CodeBlock lang="text">{`1. Scope assess: kaun sa backend? Health monitoring detect kar raha hai?
+        <CodeBlock lang="text">{`1. Assess scope: which backend? Is health monitoring detecting it?
 
 2. Health monitoring NOT detecting:
    → Immediately administratively disable/force-down
 
 3. Health monitoring detecting but threshold not reached:
-   → Admin disable se threshold timing override karo
+   → Override threshold timing with admin disable
 
-4. Verify: backend pool se removed, traffic no longer going there
+4. Verify: removed from backend pool, traffic no longer going there
 5. Monitor remaining pool capacity
 6. Investigate failed backend while offline`}</CodeBlock>
         <Callout type="warning" title="Detection Window">
-          Health check detection window: failing backend probe failures accumulate karne tak traffic receive karta rahega. Actual time: probe timing, failure type, platform scheduling pe dependent. Manual override is window bypass karta hai aur faster hota hai confirmed failures pe.
+          Health check detection window: a failing backend will keep receiving traffic until probe failures accumulate. Actual time depends on probe timing, failure type, platform scheduling. A manual override bypasses this window and is faster on confirmed failures.
         </Callout>
       </section>
 
       <section id="cert-operations">
         <h2 style={S.h2}>Certificate Operations</h2>
-        <p style={S.p}>Jab TLS LB pe terminate hoti hai, certificate lifecycle LB operations responsibility hai.</p>
-        <p style={S.p}><strong>Expiry tracking:</strong> Alert configure karo well in advance. Appropriate lead time organizational process complexity pe dependent — automated ACME renewal (shorter), enterprise PKI with approval processes (longer). Organization apna lead time define kare.</p>
-        <p style={S.p}><strong>Update procedure:</strong> New cert + chain obtain → Subject/SAN/chain/expiry/CA validate → staging slot test (where supported; otherwise external TLS tool) → production apply maintenance window mein → post-change TLS verify → errors monitor.</p>
-        <p style={S.p}><strong>HA pair sync:</strong> Dono nodes consistent state — inconsistency failover pe outage.</p>
+        <p style={S.p}>When TLS terminates on the LB, certificate lifecycle is an LB operations responsibility.</p>
+        <p style={S.p}><strong>Expiry tracking:</strong> Configure alerts well in advance. Appropriate lead time depends on organizational process complexity — automated ACME renewal (shorter), enterprise PKI with approval processes (longer). The organization should define its own lead time.</p>
+        <p style={S.p}><strong>Update procedure:</strong> Obtain new cert + chain → validate Subject/SAN/chain/expiry/CA → staging slot test (where supported; otherwise external TLS tool) → apply to production in a maintenance window → post-change TLS verify → monitor errors.</p>
+        <p style={S.p}><strong>HA pair sync:</strong> Both nodes in a consistent state — inconsistency means an outage on failover.</p>
       </section>
 
       <section id="algo-persistence-ops">
         <h2 style={S.h2}>Algorithm and Persistence Changes</h2>
-        <p style={S.p}>Algorithm changes new connection/request selection affect karte hain — existing sessions current backends pe rahte hain, redistribute nahi hote. Existing imbalance natural session close hone tak persist karega regardless of new algorithm.</p>
-        <p style={S.p}>Persistence changes: adding persistence creates new affinity — server-side table entries (table-based) ya client-side cookie encoding (cookie-based, no server-side table). Mechanism persistence type aur platform pe depend karta hai. Removing persistence: no new affinity, existing entries age out. Type change: old entries abandoned, new type begins.</p>
-        <p style={S.p}>Changes safest hain low-traffic periods mein.</p>
+        <p style={S.p}>Algorithm changes affect new connection/request selection — existing sessions stay on their current backends and are not redistributed. Existing imbalance will persist until sessions close naturally, regardless of the new algorithm.</p>
+        <p style={S.p}>Persistence changes: adding persistence creates new affinity — server-side table entries (table-based) or client-side cookie encoding (cookie-based, no server-side table). The mechanism depends on the persistence type and platform. Removing persistence: no new affinity, existing entries age out. Type change: old entries abandoned, new type begins.</p>
+        <p style={S.p}>Changes are safest during low-traffic periods.</p>
       </section>
 
       <section id="ts-framework">
         <h2 style={S.h2}>Troubleshooting Framework</h2>
         <Figure caption="LB troubleshooting framework — three diagnostic zones (diagnostic sequence, not processing order)"><TsFramework /></Figure>
-        <p style={S.p}><strong>Step 1 — Scope:</strong> Sab traffic VIP? → VIP-level. Specific backend? → Member. Specific clients? → Client/network. Specific requests? → L7/app. Intermittent under load? → Capacity.</p>
-        <p style={S.p}><strong>Step 2 — Confirm LB view:</strong> Logs mein traffic? Virtual service active? Members eligible? Connection table entry?</p>
+        <p style={S.p}><strong>Step 1 — Scope:</strong> All traffic to the VIP? → VIP-level. Specific backend? → Member. Specific clients? → Client/network. Specific requests? → L7/app. Intermittent under load? → Capacity.</p>
+        <p style={S.p}><strong>Step 2 — Confirm LB view:</strong> Traffic in the logs? Virtual service active? Members eligible? Connection table entry?</p>
         <p style={S.p}><strong>Step 3 — Trace selected path.</strong></p>
         <p style={S.p}><strong>Step 4 — Locate failure layer:</strong> LB issue vs application vs network vs return path bypass.</p>
       </section>
@@ -868,8 +868,8 @@ export default function Content() {
       <section id="ts-vip-unreachable">
         <h2 style={S.h2}>Diagnosing No-Traffic / VIP Unreachable</h2>
         <CodeBlock lang="text">{`1. Network path to VIP functional?
-2. Virtual service configured aur active? Correct port/protocol?
-3. Pool ineligible kyon? Health failures? Admin disabled?
+2. Virtual service configured and active? Correct port/protocol?
+3. Why is the pool ineligible? Health failures? Admin disabled?
    Zero members? Each has different fix.
 4. Upstream firewall blocking VIP?
 5. HA state — expected node active?
@@ -878,20 +878,20 @@ export default function Content() {
 
       <section id="ts-partial-failures">
         <h2 style={S.h2}>Diagnosing Partial Backend Failures</h2>
-        <CodeBlock lang="text">{`1. Specific backend causing failures? Per-backend error rates check karo
+        <CodeBlock lang="text">{`1. Specific backend causing failures? Check per-backend error rates
 2. Health monitoring detecting? Endpoint too shallow?
-3. Load-related? Failure rate traffic se increase hota hai?
+3. Load-related? Does the failure rate increase with traffic?
 4. Persistence imbalance?
-   NAT: few entries = many users (entry count volume reflect nahi karta)
+   NAT: few entries = many users (entry count does not reflect volume)
 5. LB-to-specific-backend network issue?
 6. Backend's own error logs?`}</CodeBlock>
       </section>
 
       <section id="ts-slow-response">
         <h2 style={S.h2}>Diagnosing Slow Response / Timeouts</h2>
-        <CodeBlock lang="text">{`1. LB-side measurements: total aur backend response time
-2. One backend ya all slow?
-3. Slowness kahan se? Backend processing? LB-backend network latency?
+        <CodeBlock lang="text">{`1. LB-side measurements: total and backend response time
+2. One backend or all slow?
+3. Where is the slowness? Backend processing? LB-backend network latency?
    LB-internal processing (full proxy TLS/L7/header manipulation)?
    Isolate each segment.
 4. LB resource-constrained? CPU, connection table?
@@ -925,24 +925,24 @@ export default function Content() {
         <h2 style={S.h2}>VLAN Design for Load Balancing</h2>
         <p style={S.p}>Typical VLAN structure (illustrative — actual VLANs project-specific): VLAN 100 client-facing/DMZ, VLAN 200 server-facing/application, VLAN 300 management, VLAN 400 HA sync.</p>
         <Callout type="warning" title="VLAN Security">
-          VLAN segmentation akela security isolation enforce nahi karta. Inter-VLAN traffic L3 routing pe depend karta hai. Firewall ya router VLAN boundaries pe enforce kare bina segmentation effective nahi. VLANs network segmentation mechanism hain — security enforcement nahi.
+          VLAN segmentation alone does not enforce security isolation. Inter-VLAN traffic depends on L3 routing. Segmentation is not effective unless a firewall or router enforces at VLAN boundaries. VLANs are a network segmentation mechanism — not security enforcement.
         </Callout>
       </section>
 
       <section id="routing-design">
         <h2 style={S.h2}>Routing Design Around the Load Balancer</h2>
         <p style={S.p}><strong>Model 1 — LB as default gateway:</strong> Simple, ensures return path via LB. All backend traffic goes through LB.</p>
-        <p style={S.p}><strong>Model 2 — Static routes for client subnets:</strong> Client IP preserved at network layer — applies to forwarding/non-proxy architectures. In full-proxy, transparent proxy mode ya platform capability required. Internet-facing ke liye impractical (entire internet addresses). Controlled environments ke liye applicable.</p>
+        <p style={S.p}><strong>Model 2 — Static routes for client subnets:</strong> Client IP preserved at network layer — applies to forwarding/non-proxy architectures. In full-proxy, transparent proxy mode or platform capability required. Impractical for Internet-facing (entire internet addresses). Applicable for controlled environments.</p>
         <p style={S.p}><strong>Model 3 — SNAT:</strong> No backend routing config needed. Client IP not visible at network layer.</p>
         <Callout type="important" title="Validate with Capture">
-          Route design go-live se pehle packet capture se validate karo — return traffic LB se guzar raha hai yeh prove karo.
+          Validate the route design with packet capture before go-live — prove that return traffic is passing through the LB.
         </Callout>
       </section>
 
       <section id="firewall-interaction">
         <h2 style={S.h2}>Interaction with Firewalls</h2>
         <p style={S.p}>Firewall: security enforcement. LB: service distribution. Internet → Firewall → LB → Backends.</p>
-        <p style={S.p}>Firewall permit karo: client traffic to VIP, LB probe traffic to backends (probe source = LB address), LB-to-backend traffic, return traffic (stateless: explicit rules; stateful: established session return typically auto-permitted — verify), HA traffic, management access.</p>
+        <p style={S.p}>Firewall permits: client traffic to the VIP, LB probe traffic to backends (probe source = LB address), LB-to-backend traffic, return traffic (stateless: explicit rules; stateful: established session return typically auto-permitted — verify), HA traffic, management access.</p>
         <ComparisonTable
           headers={["Problem", "Symptom", "Cause"]}
           rows={[
@@ -952,24 +952,24 @@ export default function Content() {
             ["HA sync blocked", "HA pair out of sync", "Firewall blocking HA control/state traffic"],
           ]}
         />
-        <p style={S.p}>Upstream TLS termination case (FA-C3): kuch architectures mein CDN, WAF, ya upstream proxy pe TLS terminate hoti hai LB se pehle. LB plaintext receive karta hai — L7 inspection possible bina TLS terminate kiye. Return path encryption design explicitly plan karo.</p>
+        <p style={S.p}>Upstream TLS termination case (FA-C3): in some architectures, TLS is terminated at a CDN, WAF, or upstream proxy before the LB. The LB receives plaintext — L7 inspection is possible without terminating TLS. Plan return path encryption design explicitly.</p>
       </section>
 
       <section id="switch-interaction">
         <h2 style={S.h2}>Interaction with Switches</h2>
         <Figure caption="LB switching environment — STP, PortFast, LAG, HA failover MAC behavior"><LbSwitchingEnvironment /></Figure>
-        <p style={S.p}><strong>PortFast/Edge Port:</strong> LB-facing ports pe configure karo — STP transition delays avoid. Terminology vendor-specific.</p>
-        <p style={S.p}><strong>LAG/LACP:</strong> Link redundancy. LB aur switch compatibility verify karo — LACP mode platform-specific.</p>
-        <p style={S.p}><strong>HA failover MAC:</strong> Kuch LB implementations Gratuitous ARP (IPv4) ya Unsolicited NA (IPv6) send karte hain — adjacent switches MAC table update karte hain. Whether gARP/NA sent aur how quickly switches update: both LB aur switch behavior pe dependent. Specific environment mein verify karo.</p>
+        <p style={S.p}><strong>PortFast/Edge Port:</strong> Configure on LB-facing ports — avoids STP transition delays. Terminology is vendor-specific.</p>
+        <p style={S.p}><strong>LAG/LACP:</strong> Link redundancy. Verify LB and switch compatibility — LACP mode is platform-specific.</p>
+        <p style={S.p}><strong>HA failover MAC:</strong> Some LB implementations send Gratuitous ARP (IPv4) or Unsolicited NA (IPv6) — adjacent switches update their MAC tables. Whether gARP/NA is sent and how quickly switches update: dependent on both LB and switch behavior. Verify in your specific environment.</p>
         <Callout type="warning" title="Switch Security Features">
-          Static ARP entries HA failover updates prevent karte hain. Dynamic ARP Inspection (DAI) aur similar features gARP processing restrict kar sakte hain. Switch security policies verify karo — LB HA failover interference nahi hona chahiye.
+          Static ARP entries prevent HA failover updates. Dynamic ARP Inspection (DAI) and similar features can restrict gARP processing. Verify switch security policies — they must not interfere with LB HA failover.
         </Callout>
       </section>
 
       <section id="virtual-cloud-lb">
         <h2 style={S.h2}>Load Balancer in Virtualized / Cloud Environments</h2>
         <p style={S.p}><strong>Virtual LB:</strong> Resource sharing, hypervisor scheduling latency, virtual NIC limits, live migration brief interruption. High-performance deployments: CPU pinning, NUMA topology, dedicated vCPUs for TLS — platform/hypervisor specific.</p>
-        <p style={S.p}><strong>Cloud-native LB:</strong> No appliance to operate, auto-scale (where supported), HA provider-managed, options limited to provider's exposure. On-premises aur cloud environments ke beech consistent operational processes deliberately plan karo.</p>
+        <p style={S.p}><strong>Cloud-native LB:</strong> No appliance to operate, auto-scale (where supported), HA provider-managed, options limited to provider's exposure. Deliberately plan consistent operational processes across on-premises and cloud environments.</p>
       </section>
 
       <section id="capacity-planning">
@@ -985,51 +985,51 @@ export default function Content() {
             ["Persistence table", "Platform-specific limit", "N/A"],
           ]}
         />
-        <p style={S.p}>Per dimension: current peak utilization samjho, growth estimate, headroom determine karo failure scenario ke liye. Assessment judgement-based hai — koi universal formula nahi. Platform-specific documentation se validate karo.</p>
+        <p style={S.p}>Per dimension: understand current peak utilization, estimate growth, determine headroom for the failure scenario. The assessment is judgement-based — there is no universal formula. Validate with platform-specific documentation.</p>
       </section>
 
       <section id="e2e-tracing">
         <h2 style={S.h2}>End-to-End Request Tracing</h2>
-        <p style={S.p}>Multi-point packet capture definitive tool hai jab logs aur metrics nahi batate.</p>
+        <p style={S.p}>Multi-point packet capture is the definitive tool when logs and metrics do not tell you.</p>
         <Figure caption="8-point end-to-end traffic verification method"><E2eTrafficVerification /></Figure>
-        <p style={S.p}>Always filter by VIP + client IP combination — unfiltered captures unusable volume. Most LBs ka built-in capture LB-perspective tak limited — backend ya client pe external capture needed for complete picture.</p>
+        <p style={S.p}>Always filter by VIP + client IP combination — unfiltered captures produce an unusable volume. Most LBs' built-in capture is limited to the LB perspective — external capture on the backend or client is needed for the complete picture.</p>
       </section>
 
       <section id="dc-integration-example">
         <h2 style={S.h2}>Data Center Integration — Practical Example</h2>
-        <Figure caption="Complete DC LB integration — internet se database tak, realistic HTTPS request path"><DcIntegrationFull /></Figure>
+        <Figure caption="Complete DC LB integration — from the internet to the database, realistic HTTPS request path"><DcIntegrationFull /></Figure>
         <p style={S.p}><strong>Traffic flow:</strong> Client → DNS → VIP 203.0.113.50:443 → Perimeter FW → VLAN 100 → LB (TLS handling per mode, L7 policy, Least Connections → APP02) → APP02:8443 via VLAN 200 (SNAT or routing — design dependent) → response via LB → Client.</p>
         <p style={S.p}><strong>Health monitoring:</strong> LB → probe → APP01/02/03:8443/health via VLAN 200. Firewall VLAN 200 policy must permit probe traffic from LB probe source address. Return probe responses must be permitted back.</p>
         <Callout type="important" title="Return Path Validation">
-          Return path (SNAT or routing) explicitly validate karo via packet capture — placement se assume mat karo. Yeh ek common architecture pattern hai, not a universal mandatory design.
+          Explicitly validate the return path (SNAT or routing) via packet capture — do not assume it from placement. This is a common architecture pattern, not a universal mandatory design.
         </Callout>
       </section>
 
       <section id="p5-mistakes">
         <h2 style={S.h2}>Common Operations Engineering Mistakes</h2>
-        <p style={S.p}><strong>"Health check passing = backend healthy."</strong> Shallow probe port proves, not application. Probe depth service ke actual needs se match karo.</p>
-        <p style={S.p}><strong>"Health check failing = backend broken."</strong> Probe path, firewall, timeout, certificate bhi causes hain. Distinguish before acting.</p>
-        <p style={S.p}><strong>"LB healthy → service healthy."</strong> Application, database, CDN, DNS — sab LB ke baad independent hain. End-to-end validation separate hai.</p>
-        <p style={S.p}><strong>"No alerts = no problems."</strong> Unconfigured conditions invisible. Regular alert coverage review karo.</p>
-        <p style={S.p}><strong>"Two backends = sufficient HA."</strong> Shared failure domain analysis karo — shared dependency simultaneously fail kar sakta hai.</p>
-        <p style={S.p}><strong>"Emergency change, no record."</strong> Post-emergency documentation mandatory — kya, kyun, kab.</p>
+        <p style={S.p}><strong>"Health check passing = backend healthy."</strong> A shallow probe proves the port, not the application. Match probe depth to the actual needs of the service.</p>
+        <p style={S.p}><strong>"Health check failing = backend broken."</strong> Probe path, firewall, timeout and certificate are also causes. Distinguish before acting.</p>
+        <p style={S.p}><strong>"LB healthy → service healthy."</strong> Application, database, CDN, DNS — all are independent of the LB. End-to-end validation is separate.</p>
+        <p style={S.p}><strong>"No alerts = no problems."</strong> Unconfigured conditions are invisible. Review alert coverage regularly.</p>
+        <p style={S.p}><strong>"Two backends = sufficient HA."</strong> Do a shared failure domain analysis — a shared dependency can fail both simultaneously.</p>
+        <p style={S.p}><strong>"Emergency change, no record."</strong> Post-emergency documentation is mandatory — what, why, when.</p>
         <p style={S.p}><strong>"Persistence = session continuity guaranteed."</strong> Failed backend = affinity disrupted, session state lost regardless of LB behavior.</p>
-        <p style={S.p}><strong>"Certificate renewal can wait."</strong> Renewal process delays ho sakti hain. Lead time organizational process pe based define karo.</p>
+        <p style={S.p}><strong>"Certificate renewal can wait."</strong> The renewal process can have delays. Define lead time based on organizational process.</p>
       </section>
 
       <section id="p5-takeaways">
         <h2 style={S.h2}>Phase 5 Key Takeaways</h2>
         <ul style={S.ul}>
-          <li>Operations deployment ke baad bhi continuous hain</li>
-          <li>Backend addition/removal defined sequence follow karo</li>
-          <li>Health check failures verify karo — probe path, firewall, timeout bhi causes hain</li>
-          <li>Return path validate karo with packet capture — placement se assume mat karo</li>
-          <li>Firewall aur LB policy together plan karo — probe, HA, management sab permit</li>
-          <li>Switch configuration HA failover affect karta hai — test aur verify karo</li>
+          <li>Operations continue even after deployment</li>
+          <li>Follow a defined sequence for backend addition/removal</li>
+          <li>Verify health check failures — probe path, firewall and timeout are also causes</li>
+          <li>Validate the return path with packet capture — do not assume it from placement</li>
+          <li>Plan firewall and LB policy together — permit probe, HA and management traffic</li>
+          <li>Switch configuration affects HA failover — test and verify</li>
           <li>Capacity planning per-dimension — no formula</li>
           <li>Multi-point capture definitive troubleshooting tool</li>
-          <li>Application design aur LB configuration consistent hone chahiye</li>
-          <li>Certificate lifecycle LB operations responsibility jab TLS terminates at LB</li>
+          <li>Application design and LB configuration must be consistent</li>
+          <li>Certificate lifecycle is an LB operations responsibility when TLS terminates at the LB</li>
         </ul>
       </section>
 
@@ -1040,21 +1040,21 @@ export default function Content() {
         <ComparisonTable
           headers={["Term", "Definition"]}
           rows={[
-            ["VIP (Virtual IP)", "Address jis pe clients connect karte hain — backend ka direct address nahi. Implementation platform/deployment dependent."],
-            ["Backend Pool", "Eligible servers ka collection jo ek virtual service serve karte hain"],
+            ["VIP (Virtual IP)", "The address clients connect to — not a backend's direct address. Implementation is platform/deployment dependent."],
+            ["Backend Pool", "The collection of eligible servers that serve a virtual service"],
             ["Fall Threshold", "Consecutive probe failures before backend marked ineligible"],
             ["Rise Threshold", "Consecutive successes before ineligible backend returns to eligible"],
-            ["SNAT", "Source NAT — backend requests mein source IP translate to LB-controlled address"],
+            ["SNAT", "Source NAT — translates the source IP in backend requests to an LB-controlled address"],
             ["DSR", "Direct Server Return — inbound via LB, response direct to client"],
-            ["Full Proxy", "LB do independent connections maintain karta hai — client aur backend ke saath"],
-            ["L4 LB", "Transport layer pe balancing — IP, port, protocol basis pe"],
-            ["L7 LB", "Application layer pe balancing — HTTP headers, URL, cookies basis pe"],
-            ["HA Pair", "Two LB nodes — active + standby — single point of failure avoid karne ke liye"],
+            ["Full Proxy", "The LB maintains two independent connections — with the client and with the backend"],
+            ["L4 LB", "Balancing at the transport layer — based on IP, port, protocol"],
+            ["L7 LB", "Balancing at the application layer — based on HTTP headers, URL, cookies"],
+            ["HA Pair", "Two LB nodes — active + standby — to avoid a single point of failure"],
             ["GSLB", "Global Server Load Balancing — DNS-based multi-datacenter routing with health"],
-            ["TLS Offload", "LB pe TLS terminate, backend plaintext receive karta hai"],
-            ["Drain State", "No new work per drain semantics; existing work complete hone diya jaata hai"],
-            ["Config Drift", "HA pair mein divergent config — one node changes reach nahi hua"],
-            ["Multi-point Capture", "Multiple network points pe simultaneous capture — break locate karne ke liye"],
+            ["TLS Offload", "TLS terminated on the LB, the backend receives plaintext"],
+            ["Drain State", "No new work per drain semantics; existing work is allowed to complete"],
+            ["Config Drift", "Divergent config in an HA pair — a change did not reach one node"],
+            ["Multi-point Capture", "Simultaneous capture at multiple network points — to locate the break"],
           ]}
         />
       </section>

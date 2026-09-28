@@ -30,39 +30,31 @@ export default function Content() {
 
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
-        <p style={S.p}>Enterprise Firewall ek security enforcement point hai jo network traffic ko security policy ke basis pe permit ya deny karta hai. Yeh sirf ek router nahi hai — router packets forward karta hai, firewall security decide karta hai.</p>
-        <Callout type="important" title="Is Article Mein Kya Sikhoge">
-          <ul style={S.ul}>
-            <li>Stateful inspection — sessions, 5-tuple, TCP/UDP/ICMP handling</li>
-            <li>Security zones, policy evaluation, NAT (SNAT/DNAT/PAT)</li>
-            <li>NGFW: application identification, IPS, URL filtering, TLS inspection</li>
-            <li>VPN: IPsec, IKEv2, NAT-T, site-to-site aur remote access</li>
-            <li>High Availability: active/passive, session sync, failover, split-brain</li>
-            <li>Troubleshooting: logs, session table, packet capture, four-point method</li>
-            <li>Design, sizing, selection aur commissioning</li>
-          </ul>
+        <p style={S.p}>An enterprise firewall is a security enforcement point that permits or denies network traffic based on security policy. It is not just a router — a router forwards packets, while a firewall makes security decisions.</p>
+        <Callout type="important" title="What You Will Learn in This Article">
+          <ul style={S.ul}> <li>Stateful inspection — sessions, 5-tuple, TCP/UDP/ICMP handling</li> <li>Security zones, policy evaluation, NAT (SNAT/DNAT/PAT)</li> <li>NGFW: application identification, IPS, URL filtering, TLS inspection</li> <li>VPN: IPsec, IKEv2, NAT-T, site-to-site and remote access</li> <li>High Availability: active/passive, session sync, failover, split-brain</li> <li>Troubleshooting: logs, session table, packet capture, four-point method</li> <li>Design, sizing, selection and commissioning</li> </ul>
         </Callout>
       </section>
 
       <section id="fw-what">
-        <h2 style={S.h2}>Firewall Kya Hota Hai?</h2>
-        <p style={S.p}>Firewall ek network security device hai — physical appliance ya software — jo incoming aur outgoing network traffic ko security rules ke basis pe inspect karke decide karta hai: permit karo ya block karo.</p>
-        <p style={S.p}>Simple definition: <strong>Firewall network ke do ya zyada segments ke beech ek controlled checkpoint hai</strong> jahan policy decide karti hai kaun sa traffic cross kar sakta hai.</p>
-        <p style={S.p}>Modern enterprise firewalls sirf packet filter nahi hote. Yeh stateful connection tracking, application-level inspection, threat prevention, VPN termination, aur logging bhi provide karte hain.</p>
+        <h2 style={S.h2}>What Is a Firewall?</h2>
+        <p style={S.p}>A firewall is a network security device — a physical appliance or software — that inspects incoming and outgoing network traffic against security rules and decides whether to permit or block it.</p>
+        <p style={S.p}>Simple definition: <strong>A firewall is a controlled checkpoint between two or more network segments</strong> where policy decides which traffic is allowed to cross.</p>
+        <p style={S.p}>Modern enterprise firewalls are not just packet filters. They also provide stateful connection tracking, application-level inspection, threat prevention, VPN termination and logging.</p>
       </section>
 
       <section id="fw-need">
-        <h2 style={S.h2}>Firewall Ki Need — Router Se Kya Different Hai?</h2>
-        <p style={S.p}><TopicLink slug="router" variant="inline" /> ka primary job hai IP packets ko best path pe forward karna. Security uska primary concern nahi hai. Router pe ACL laga sakte hain, lekin ACL stateless hota hai — har packet independently evaluate hota hai, connection tracking nahi hota.</p>
-        <p style={S.p}>Firewall ka primary job hai security policy enforce karna. Yeh connection state track karta hai — return traffic automatically permitted hoti hai established sessions ke liye bina separate reverse rule ke.</p>
+        <h2 style={S.h2}>Why Do We Need a Firewall — How Is It Different from a Router?</h2>
+        <p style={S.p}>The primary job of a <TopicLink slug="router" variant="inline" /> is to forward IP packets along the best path. Security is not its primary concern. You can apply ACLs on a router, but ACLs are stateless — every packet is evaluated independently and there is no connection tracking.</p>
+        <p style={S.p}>A firewall's primary job is to enforce security policy. It tracks connection state — return traffic for established sessions is permitted automatically, without a separate reverse rule.</p>
         <Callout type="warning" title="ACL vs Stateful Firewall">
-          Router ACL pe DENY inbound → internet se traffic block. Lekin agar engineer return traffic ka bhi DENY laga de, toh internally initiated HTTPS bhi fail ho jaata hai. Stateful firewall yeh automatically handle karta hai — outbound permit → return automatically allowed for established session.
+          DENY inbound on a router ACL → traffic from the internet is blocked. But if the engineer also applies a DENY on the return traffic, internally initiated HTTPS fails as well. A stateful firewall handles this automatically — outbound permit → return automatically allowed for established session.
         </Callout>
       </section>
 
       <section id="fw-vs-router">
         <h2 style={S.h2}>Firewall vs Router vs L3 Switch</h2>
-        <Figure caption="Firewall, Router aur L2 Switch ke primary capabilities ka comparison — boundaries overlap in modern platforms"><FwVsRouterVsL3Switch /></Figure>
+        <Figure caption="Comparison of the primary capabilities of a firewall, router and L2 switch — boundaries overlap in modern platforms"><FwVsRouterVsL3Switch /></Figure>
       </section>
 
       <section id="stateless-stateful">
@@ -80,24 +72,24 @@ export default function Content() {
 
       <section id="stateful-inspection">
         <h2 style={S.h2}>How Stateful Inspection Actually Works</h2>
-        <p style={S.p}>Stateful inspection sirf connections yaad rakhna nahi hai — yeh protocol-level state validation hai.</p>
+        <p style={S.p}>Stateful inspection is not just remembering connections — it is protocol-level state validation.</p>
         <ul style={S.ul}>
           <li><strong>TCP:</strong> Full state machine — SYN, SYN-ACK, ESTABLISHED, FIN, RST. Depth of validation varies by platform and configuration.</li>
           <li><strong>UDP:</strong> No inherent connection state — firewall creates a pseudo-session with idle timer based on the tuple. Additional tracking may occur depending on platform/protocol.</li>
           <li><strong>ICMP:</strong> Protocol-specific keys — type, code, identifier. No transport ports involved.</li>
         </ul>
         <Callout type="warning" title="Stateful ≠ Simply Remembering Connections">
-          TCP flag validation, sequence number checking, protocol anomaly detection — yeh sab platform aur configuration dependent hain. Actual depth of inspection varies significantly by platform and enabled features.
+          TCP flag validation, sequence number checking and protocol anomaly detection all depend on the platform and configuration. Actual depth of inspection varies significantly by platform and enabled features.
         </Callout>
         <Figure caption="Stateful firewall packet processing — new flow vs existing session. Exact pipeline is platform-dependent."><StatefulPacketJourney /></Figure>
       </section>
 
       <section id="five-tuple">
         <h2 style={S.h2}>5-Tuple and Session Table</h2>
-        <p style={S.p}>TCP/UDP flows ke liye firewall typically 5 fields se flow identify karta hai: Source IP, Source Port, Destination IP, Destination Port, Protocol. ICMP aur other non-port protocols protocol-specific keys use karte hain.</p>
+        <p style={S.p}>For TCP/UDP flows, a firewall typically identifies a flow using 5 fields: Source IP, Source Port, Destination IP, Destination Port and Protocol. ICMP and other non-port protocols use protocol-specific keys.</p>
         <Figure caption="Session/flow table — 5-tuple based flow identification with state, NAT, and counters"><SessionTableFiveTuple /></Figure>
         <Callout type="important" title="Session Table Exhaustion">
-          Har platform ka maximum concurrent session limit hota hai. Table full → new connections rejected even if policy permits. Session table capacity is a critical sizing metric.
+          Every platform has a maximum concurrent session limit. Table full → new connections rejected even if policy permits. Session table capacity is a critical sizing metric.
         </Callout>
       </section>
 
@@ -115,13 +107,13 @@ export default function Content() {
 
       <section id="packet-processing">
         <h2 style={S.h2}>Firewall Packet Processing Journey</h2>
-        <p style={S.p}>Jab ek packet firewall pe arrive karta hai (exact order is platform-dependent):</p>
-        <CodeBlock lang="text">{"1. Ingress interface pe packet receive\n2. Flow/session state lookup (5-tuple match)\n   MATCH → existing session — validate + process per platform logic\n   NO MATCH → new flow — full evaluation begins\n3. NAT evaluation (order relative to policy: platform-specific)\n4. Security policy evaluation → DENY: drop/reject | PERMIT: proceed\n5. Security profile inspection (where configured — IPS, URL, file)\n6. Session state entry created (new flow, permit)\n7. Forward on egress interface\n\nNote: Exact processing order is platform-dependent."}</CodeBlock>
+        <p style={S.p}>When a packet arrives at the firewall (exact order is platform-dependent):</p>
+        <CodeBlock lang="text">{"1. Packet received on ingress interface\n2. Flow/session state lookup (5-tuple match)\n   MATCH → existing session — validate + process per platform logic\n   NO MATCH → new flow — full evaluation begins\n3. NAT evaluation (order relative to policy: platform-specific)\n4. Security policy evaluation → DENY: drop/reject | PERMIT: proceed\n5. Security profile inspection (where configured — IPS, URL, file)\n6. Session state entry created (new flow, permit)\n7. Forward on egress interface\n\nNote: Exact processing order is platform-dependent."}</CodeBlock>
       </section>
 
       <section id="security-zones">
         <h2 style={S.h2}>Security Zones</h2>
-        <p style={S.p}>Zone-based policy models mein, firewall interfaces ko logical zones mein assign kiya jaata hai jo trust levels represent karte hain. Policy zone-pairs ke beech define hoti hai.</p>
+        <p style={S.p}>In zone-based policy models, firewall interfaces are assigned to logical zones that represent trust levels. Policy is defined between zone pairs.</p>
         <Figure caption="Security zone architecture — conceptual zone model. Names are examples, not universal mandatory terminology."><SecurityZonesArch /></Figure>
       </section>
 
@@ -130,8 +122,8 @@ export default function Content() {
         <ComparisonTable
           headers={["Element","Description","Example"]}
           rows={[
-            ["Source zone/interface","Traffic kahan se aa raha hai","Trust zone"],
-            ["Destination zone/interface","Traffic kahan ja raha hai","Untrust zone"],
+            ["Source zone/interface","Where the traffic is coming from","Trust zone"],
+            ["Destination zone/interface","Where the traffic is going","Untrust zone"],
             ["Source address","Source IP / object / group","10.10.10.0/24"],
             ["Destination address","Destination IP / object / group","any"],
             ["Service","Protocol + port","TCP/443 (HTTPS)"],
@@ -152,34 +144,34 @@ export default function Content() {
       </section>
 
       <section id="return-traffic">
-        <h2 style={S.h2}>Return Traffic Kaise Handle Hota Hai?</h2>
+        <h2 style={S.h2}>How Is Return Traffic Handled?</h2>
         <p style={S.p}>Return traffic in stateful firewalls is matched to the existing permitted session/flow state and processed according to the platform&apos;s stateful forwarding behavior. Normally not treated as an unrelated new flow requiring fresh policy evaluation — exact handling is platform-dependent.</p>
         <CodeBlock lang="text">{"User 10.10.10.25:54321 → 1.2.3.4:443 TCP\n\n1. No existing session → security policy: Trust→Untrust HTTPS → PERMIT\n2. Session entry created\n3. Return: 1.2.3.4:443 → 10.10.10.25:54321\n4. Lookup → MATCH existing session\n5. Processed per stateful session handling → forwarded to client\n\nNo separate reverse rule needed in stateful firewall."}</CodeBlock>
       </section>
 
       <section id="nat-relationship">
-        <h2 style={S.h2}>NAT Ka Firewall Processing Se Basic Relationship</h2>
-        <p style={S.p}>NAT aur firewall policy are separate functions. NAT addresses translate karta hai. Policy permit/deny decide karti hai. <strong>NAT karna automatically traffic permit nahi karta.</strong> Processing order — NAT pehle ya policy pehle — platform-specific hai.</p>
+        <h2 style={S.h2}>The Basic Relationship Between NAT and Firewall Processing</h2>
+        <p style={S.p}>NAT and firewall policy are separate functions. NAT translates addresses. Policy decides permit/deny. <strong>Performing NAT does not automatically permit traffic.</strong> The processing order — NAT first or policy first — is platform-specific.</p>
       </section>
 
       <section id="ns-ew-intro">
         <h2 style={S.h2}>North-South vs East-West Firewalling</h2>
-        <p style={S.p}><strong>North-South:</strong> Traffic crossing the perimeter — internet se internal, external user to application.</p>
-        <p style={S.p}><strong>East-West:</strong> Traffic within the DC or internal network — server to server, app to database, VM to VM. Traditional perimeter firewalls north-south traffic control karte hain. East-west control ke liye separate architecture required hai.</p>
+        <p style={S.p}><strong>North-South:</strong> Traffic crossing the perimeter — internet to internal, external user to application.</p>
+        <p style={S.p}><strong>East-West:</strong> Traffic within the DC or internal network — server to server, app to database, VM to VM. Traditional perimeter firewalls control north-south traffic. East-west control requires a separate architecture.</p>
       </section>
 
       <section id="fw-placement-dc">
-        <h2 style={S.h2}>Data Center Mein Firewall Kahan Lagta Hai?</h2>
+        <h2 style={S.h2}>Where Is the Firewall Placed in a Data Center?</h2>
         <Figure caption="Data center firewall placement — common patterns. Actual topology varies by architecture."><DcFirewallPlacement /></Figure>
         <Callout type="danger" title="Firewall Cannot Enforce Bypass Traffic">
-          Firewall sirf wahi traffic enforce kar sakta hai jo usse traverse kare. Routing must be explicitly designed to ensure intended traffic traverses the firewall.
+          A firewall can only enforce the traffic that traverses it. Routing must be explicitly designed to ensure intended traffic traverses the firewall.
         </Callout>
       </section>
 
       <section id="basic-ha">
         <h2 style={S.h2}>Basic Firewall HA Concept</h2>
         <Figure caption="HA firewall pair — Active/Passive. Failover sequence is platform-dependent."><HaFirewallPair /></Figure>
-        <p style={S.p}>HA removes the firewall node as a single point of failure. It does NOT eliminate all surrounding SPOFs. Phase 6 mein complete HA architecture cover hota hai.</p>
+        <p style={S.p}>HA removes the firewall node as a single point of failure. It does NOT eliminate all surrounding SPOFs. The complete HA architecture is covered in Phase 6.</p>
       </section>
 
       <section id="practical-p1">
@@ -217,13 +209,13 @@ export default function Content() {
       {/* Phase 2 — NAT, Objects & Advanced Policy */}
       <section id="network-objects">
         <h2 style={S.h2}>Network Objects and Address Objects</h2>
-        <p style={S.p}>Policy rules mein har jagah raw IP addresses likhna operational nightmare hai. Address objects ek naam se multiple IPs ya subnets reference karte hain — ek jagah update karo, sab rules update ho jaate hain.</p>
+        <p style={S.p}>Writing raw IP addresses everywhere in policy rules is an operational nightmare. Address objects reference multiple IPs or subnets under one name — update them in one place and every rule is updated.</p>
         <CodeBlock lang="text">{"Address Object:\n  Name: DC-App-Servers\n  Value: 10.20.20.0/24\n\nPolicy Rule:\n  Src: Trust-Users → Dst: DC-App-Servers → HTTPS → PERMIT\n\n(If subnet changes: update DC-App-Servers once → all rules updated)"}</CodeBlock>
       </section>
 
       <section id="service-objects">
         <h2 style={S.h2}>Service Objects</h2>
-        <p style={S.p}>Service objects protocol + port combinations define karte hain. Common services pre-defined hote hain; custom services create kar sakte hain.</p>
+        <p style={S.p}>Service objects define protocol + port combinations. Common services are pre-defined; you can also create custom services.</p>
         <CodeBlock lang="text">{"Built-in: HTTPS = TCP/443, SSH = TCP/22, DNS = UDP+TCP/53\n\nCustom Service Object:\n  Name: App-Backend-API\n  Protocol: TCP\n  Destination Port: 8443"}</CodeBlock>
       </section>
 
@@ -236,12 +228,12 @@ export default function Content() {
 
       <section id="pat">
         <h2 style={S.h2}>PAT / Port Address Translation</h2>
-        <p style={S.p}>PAT (NAPT) ek form of SNAT hai jahan multiple internal hosts ek single public IP share karte hain via unique port assignments. The usable translated-port pool per public address is implementation- and configuration-dependent. PAT port exhaustion can occur when available translation tuples for a public address/pool are consumed.</p>
+        <p style={S.p}>PAT (NAPT) is a form of SNAT in which multiple internal hosts share a single public IP via unique port assignments. The usable translated-port pool per public address is implementation- and configuration-dependent. PAT port exhaustion can occur when available translation tuples for a public address/pool are consumed.</p>
       </section>
 
       <section id="dnat">
         <h2 style={S.h2}>Destination NAT (DNAT)</h2>
-        <p style={S.p}>DNAT publicly accessible IP pe incoming traffic ko internal server pe redirect karta hai.</p>
+        <p style={S.p}>DNAT redirects incoming traffic on a publicly accessible IP to an internal server.</p>
         <Figure caption="DNAT server publishing — packet transformation. DNAT ≠ traffic permitted. Security policy required separately."><DnatServerPublish /></Figure>
       </section>
 
@@ -271,12 +263,12 @@ export default function Content() {
 
       <section id="hairpin-nat">
         <h2 style={S.h2}>Hairpin / U-Turn NAT</h2>
-        <p style={S.p}>Internal host jo public IP pe published server access karna chahta hai — same firewall se both traffic enter aur exit karte hain — U-shaped path. Depending on the topology and routing, the translated server may have a return path directly toward the client instead of through the firewall, preventing the required reverse translation. Other hairpin failures are also possible depending on platform NAT, routing, and same-interface forwarding behavior.</p>
+        <p style={S.p}>An internal host wants to access a server published on a public IP — the traffic both enters and exits through the same firewall — a U-shaped path. Depending on the topology and routing, the translated server may have a return path directly toward the client instead of through the firewall, preventing the required reverse translation. Other hairpin failures are also possible depending on platform NAT, routing, and same-interface forwarding behavior.</p>
       </section>
 
       <section id="no-nat">
         <h2 style={S.h2}>No-NAT / NAT Exemption</h2>
-        <p style={S.p}>Traffic jo naturally SNAT rule match karta hai lekin translate nahi hona chahiye — VPN traffic, inter-site routed traffic — ke liye explicit NAT exemption / no-NAT rule required hota hai. Verify whether the VPN design requires traffic to remain untranslated. The exact no-NAT mechanism is platform and design dependent.</p>
+        <p style={S.p}>Traffic that naturally matches an SNAT rule but should not be translated — VPN traffic, inter-site routed traffic — requires an explicit NAT exemption / no-NAT rule. Verify whether the VPN design requires traffic to remain untranslated. The exact no-NAT mechanism is platform and design dependent.</p>
       </section>
 
       <section id="practical-nat-example">
@@ -355,8 +347,8 @@ export default function Content() {
 
       {/* Phase 3 — NGFW, Threat Inspection & Encrypted Traffic */}
       <section id="ngfw-adds">
-        <h2 style={S.h2}>NGFW Kya Add Karta Hai?</h2>
-        <p style={S.p}>Traditional stateful firewall ka core job tha: connection state track karo, policy pe match karo, permit ya deny karo. NGFW commonly adds: application awareness, deeper traffic inspection, IPS/threat prevention, URL/category controls, malware/file inspection, identity integration, encrypted-traffic inspection capabilities.</p>
+        <h2 style={S.h2}>What Does an NGFW Add?</h2>
+        <p style={S.p}>The core job of a traditional stateful firewall was: track connection state, match against policy, permit or deny. An NGFW commonly adds: application awareness, deeper traffic inspection, IPS/threat prevention, URL/category controls, malware/file inspection, identity integration and encrypted-traffic inspection capabilities.</p>
         <Callout type="warning" title="NGFW is a Product Category, Not a Protocol Standard">
           "NGFW" is an industry and marketing product category — not a formal protocol standard or universally fixed definition. Feature sets, implementation depth, and capabilities differ significantly by vendor and platform.
         </Callout>
@@ -510,22 +502,18 @@ export default function Content() {
 
       {/* Phase 5 — VPN, IPsec */}
       <section id="vpn-what">
-        <h2 style={S.h2}>VPN Kya Hota Hai?</h2>
-        <p style={S.p}>VPN (Virtual Private Network) ek protected connectivity mechanism hai jo untrusted ya shared network (typically internet) ke across communicating endpoints ke beech security properties provide karta hai.</p>
+        <h2 style={S.h2}>What Is a VPN?</h2>
+        <p style={S.p}>A VPN (Virtual Private Network) is a protected connectivity mechanism that provides security properties between communicating endpoints across an untrusted or shared network (typically the internet).</p>
         <ComparisonTable
           headers={["Property","What it provides"]}
           rows={[
-            ["Confidentiality","Traffic content unauthorized parties ke liye unreadable — through encryption"],
-            ["Integrity/Authenticity","Traffic in transit tampered nahi kiya gaya — through cryptographic integrity checks"],
-            ["Peer/User Authentication","Communication ka dusra end actually wahi hai jo claim kar raha hai"],
+            ["Confidentiality","Traffic content is unreadable to unauthorized parties — through encryption"],
+            ["Integrity/Authenticity","Traffic has not been tampered with in transit — through cryptographic integrity checks"],
+            ["Peer/User Authentication","The other end of the communication really is who it claims to be"],
           ]}
         />
         <Callout type="warning" title="VPN ≠ Automatic Trust">
-          <ul style={S.ul}>
-            <li>VPN ≠ anonymous internet access — VPN gateway ko source pata hota hai</li>
-            <li>VPN ≠ completely trusted traffic — VPN-delivered traffic bhi inspect hona chahiye</li>
-            <li>VPN ≠ malware-free traffic — encrypted malware bhi VPN se travel kar sakta hai</li>
-          </ul>
+          <ul style={S.ul}> <li>VPN ≠ anonymous internet access — the VPN gateway knows the source</li> <li>VPN ≠ completely trusted traffic — VPN-delivered traffic should also be inspected</li> <li>VPN ≠ malware-free traffic — encrypted malware can also travel through a VPN</li> </ul>
         </Callout>
       </section>
 
@@ -537,7 +525,7 @@ export default function Content() {
 
       <section id="remote-access">
         <h2 style={S.h2}>Remote-Access VPN Architecture</h2>
-        <p style={S.p}>Remote employees ya mobile users enterprise resources securely access karte hain via VPN. Remote-access VPN may use IPsec, TLS-based tunnel mechanisms, or vendor-specific technologies. Do not equate remote-access VPN universally with "SSL VPN" — that is one implementation approach, not the category definition.</p>
+        <p style={S.p}>Remote employees or mobile users access enterprise resources securely via VPN. Remote-access VPN may use IPsec, TLS-based tunnel mechanisms, or vendor-specific technologies. Do not equate remote-access VPN universally with "SSL VPN" — that is one implementation approach, not the category definition.</p>
       </section>
 
       <section id="ipsec-arch">
@@ -572,8 +560,8 @@ export default function Content() {
       </section>
 
       <section id="ike">
-        <h2 style={S.h2}>IKE Kya Karta Hai?</h2>
-        <p style={S.p}>IKE (Internet Key Exchange) peer authentication aur cryptographic negotiation handle karta hai. IKE ke bina, dono VPN gateways ko manually keys aur parameters share karne padte — which doesn&apos;t scale and carries operational risk.</p>
+        <h2 style={S.h2}>What Does IKE Do?</h2>
+        <p style={S.p}>IKE (Internet Key Exchange) handles peer authentication and cryptographic negotiation. Without IKE, both VPN gateways would have to share keys and parameters manually — which doesn&apos;t scale and carries operational risk.</p>
         <ComparisonTable
           headers={["","IKE SA","CHILD SA / IPsec SA"]}
           rows={[
@@ -692,9 +680,9 @@ export default function Content() {
 
       {/* Phase 4 — HA Architecture Deep Dive */}
       <section id="fw-ha-why">
-        <h2 style={S.h2}>Firewall HA Kyu Chahiye?</h2>
-        <p style={S.p}>Single firewall = single point of failure for everything it protects. Hardware failure, software crash, power event, or forced maintenance window — aur us firewall pe dependent har cheez impact ho jaati hai: internet egress/ingress, inter-zone traffic, inbound published services, VPN tunnels.</p>
-        <p style={S.p}><strong>HA ka objective:</strong> Firewall node ko topology mein single point of failure hone se bachao. Ek peer fail ho — dusra peer required forwarding responsibility assume kare — service continuity maximum ho.</p>
+        <h2 style={S.h2}>Why Is Firewall HA Needed?</h2>
+        <p style={S.p}>Single firewall = single point of failure for everything it protects. Hardware failure, software crash, power event, or forced maintenance window — and everything dependent on that firewall is impacted: internet egress/ingress, inter-zone traffic, inbound published services, VPN tunnels.</p>
+        <p style={S.p}><strong>The objective of HA:</strong> Prevent the firewall node from being a single point of failure in the topology. If one peer fails, the other peer assumes the required forwarding responsibility — maximizing service continuity.</p>
         <Callout type="danger" title="HA eliminates firewall SPOF — not all surrounding SPOFs">
           Two healthy firewall appliances still do not guarantee service availability if both share: the same upstream switch, the same downstream switch, the same UPS/power feed, the same ISP handoff, or the same configuration error. Design HA end-to-end — not just the firewall pair.
         </Callout>
@@ -708,7 +696,7 @@ export default function Content() {
       </section>
 
       <section id="ha-heartbeat">
-        <h2 style={S.h2}>HA Control Link aur Heartbeat</h2>
+        <h2 style={S.h2}>HA Control Link and Heartbeat</h2>
         <p style={S.p}>Peers need a mechanism to determine each other&apos;s health, coordinate roles, and detect failure. This is typically called a heartbeat, control link, or HA control channel. Information it needs to convey: &quot;I am alive and healthy,&quot; current role (Active/Standby), health of monitored interfaces/paths, synchronization status, and failure/degradation events.</p>
         <Callout type="warning" title="No Universal HA Protocol or Timer">
           The protocol used, packet format, timers, detection intervals, and failure-detection logic are platform-specific. Timer tuning affects how quickly failover occurs (fast detection vs. false-positive risk) and is a deliberate design choice. A single HA link is itself a potential SPOF — many platforms support redundant HA control paths.
@@ -802,7 +790,7 @@ export default function Content() {
 
       {/* Phase 6 — HA */}
       <section id="fw-ha-what">
-        <h2 style={S.h2}>Firewall High Availability Kya Hai?</h2>
+        <h2 style={S.h2}>What Is Firewall High Availability?</h2>
         <p style={S.p}>High Availability (HA) uses multiple firewall nodes so failure of one node does not necessarily remove the security gateway service. HA reduces the duration and frequency of outages — it does not eliminate them. Failover involves detection delay, role-transition processing, neighbor/routing convergence, and potential session disruption.</p>
       </section>
 
@@ -938,11 +926,11 @@ export default function Content() {
 
       {/* Phase 7 — Ops, Troubleshooting */}
       <section id="fw-ops-meaning">
-        <h2 style={S.h2}>Firewall Operations Ka Real Meaning</h2>
+        <h2 style={S.h2}>The Real Meaning of Firewall Operations</h2>
         <ComparisonTable
           headers={["Responsibility","What it involves"]}
           rows={[
-            ["Availability","Firewall aur HA health, failover readiness"],
+            ["Availability","Firewall and HA health, failover readiness"],
             ["Traffic visibility","Logs, sessions, captures — understanding what is flowing and what is not"],
             ["Performance monitoring","CPU, sessions, throughput, connection rate — are we within capacity?"],
             ["Incident troubleshooting","Systematic diagnosis when something is broken"],
@@ -956,7 +944,7 @@ export default function Content() {
       </section>
 
       <section id="fw-logs-what">
-        <h2 style={S.h2}>Firewall Logs Kya Batate Hain?</h2>
+        <h2 style={S.h2}>What Do Firewall Logs Tell Us?</h2>
         <ComparisonTable
           headers={["Log category","What evidence it provides"]}
           rows={[
@@ -971,7 +959,7 @@ export default function Content() {
       </section>
 
       <section id="reading-traffic-log">
-        <h2 style={S.h2}>Traffic Log Ko Kaise Padhein?</h2>
+        <h2 style={S.h2}>How to Read a Traffic Log?</h2>
         <CodeBlock lang="text">{"Conceptual traffic log entry (field names: platform-specific, illustrative only):\n\nTimestamp:    2024-03-15 14:23:45\nSource:       10.10.10.25:54321\nDestination:  10.20.20.50:443\nRule matched: Allow-Internal-HTTPS\nAction:       ALLOW\nNAT applied:  src → 198.51.100.50:60001\nBytes TX/RX:  1,240 / 48,320\n\nInterpretation:\n  Action=ALLOW: firewall recorded a permit decision.\n  Bytes RX=48,320: return traffic observed — positive evidence of server response.\n  Session end reason: exact labels and interpretation are platform-specific."}</CodeBlock>
       </section>
 
@@ -1128,8 +1116,8 @@ export default function Content() {
 
       {/* Phase 8 — Design, Sizing, Selection, Commissioning */}
       <section id="design-requirements">
-        <h2 style={S.h2}>Firewall Design Requirement Se Start Hota Hai</h2>
-        <p style={S.p}>Common engineering mistake: pehle firewall model select karo, phir design karo. Yeh backwards hai. <strong>Correct sequence:</strong> Requirements → Architecture → Sizing → Selection → Deployment.</p>
+        <h2 style={S.h2}>Firewall Design Starts with Requirements</h2>
+        <p style={S.p}>A common engineering mistake: select the firewall model first, then design. That is backwards. <strong>Correct sequence:</strong> Requirements → Architecture → Sizing → Selection → Deployment.</p>
         <Callout type="danger" title="Architecture First — Product Later">
           A firewall selected before requirements are defined will either be undersized, oversized, or functionally wrong. The mismatch will be discovered in production.
         </Callout>
@@ -1413,12 +1401,7 @@ export default function Content() {
         </div>
 
         <div style={{ marginTop: "3rem", padding: "1.5rem", background: "#f0f9ff", borderRadius: "8px", border: "1px solid #0ea5e9" }}>
-          <h3 style={S.h3}>Aage Kya Padhein?</h3>
-          <ul style={S.ul}>
-            <li><TopicLink slug="load-balancer" variant="inline" /> — Load distribution aur application delivery</li>
-            <li><TopicLink slug="router" variant="inline" /> — Routing fundamentals aur WAN connectivity</li>
-            <li><TopicLink slug="switch" variant="inline" /> — L2 switching aur VLAN design</li>
-          </ul>
+          <h3 style={S.h3}>What to Read Next?</h3> <ul style={S.ul}> <li><TopicLink slug="load-balancer" variant="inline" /> — Load distribution and application delivery</li> <li><TopicLink slug="router" variant="inline" /> — Routing fundamentals and WAN connectivity</li> <li><TopicLink slug="switch" variant="inline" /> — L2 switching and VLAN design</li> </ul>
         </div>
       </section>
 

@@ -11,7 +11,7 @@ export default function SanPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <ArticleLayout slug="san" headings={HEADINGS} readingTimeMinutes={55}>
+      <ArticleLayout slug="san" headings={HEADINGS} readingTimeMinutes={55} lang="en" alternateHref="/hi/learn/it/storage/san">
         <Content />
       </ArticleLayout>
     </>

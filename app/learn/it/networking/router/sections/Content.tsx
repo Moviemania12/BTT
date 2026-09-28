@@ -33,26 +33,14 @@ export default function Content() {
     <>
       {/* QUICK SUMMARY */}
       <div id="quick-summary" style={{ background:"#f0fdf4", border:"1px solid #bbf7d0", borderRadius:10, padding:"1.2rem 1.4rem", marginBottom:"2rem" }}>
-        <p style={{ fontWeight:700, color:"#15803d", marginBottom:"0.6rem", fontSize:"1rem" }}>Router in 2 Minutes</p>
-        <ul style={{ ...S.ul, marginBottom:0 }}>
-          <li><strong>Router kya karta hai:</strong> IP packets ko different networks ke beech forward karta hai. Destination IP &rarr; FIB (LPM) &rarr; next-hop &rarr; L2 rewrite &rarr; transmit. Har hop pe L2 header badal ta hai; IP packet end-to-end unchanged (sirf TTL/Hop Limit decrement).</li>
-          <li><strong>RIB vs FIB:</strong> RIB = control plane routing database (all sources, full detail). FIB = data plane forwarding table (selected routes, optimized, platform-dependent). Packets FIB use karte hain.</li>
-          <li><strong>Routing protocols:</strong> OSPF (link-state IGP, RFC 2328/5340) &middot; BGP (path-vector EGP, RFC 4271) &middot; IS-IS (link-state IGP). Dynamic routing = automatic convergence on topology change.</li>
-          <li><strong>BGP:</strong> Internet routing protocol. iBGP vs eBGP. Best-path = policy-driven, implementation-variant. NEXT_HOP reachability prerequisite. Route Reflectors eliminate iBGP full-mesh.</li>
-          <li><strong>OSPF:</strong> LSDB &rarr; SPF &rarr; routes &rarr; RIB &rarr; FIB. LSDB &ne; routing table. DR/BDR on multi-access segments. Hello/Dead timers must match. Router ID explicitly configure karo.</li>
-          <li><strong>VRF:</strong> Layer 3 routing isolation &mdash; separate RIB/FIB per VRF. VRF &ne; VLAN.</li>
-          <li><strong>MPLS:</strong> Label-based forwarding architecture &mdash; supports L2 and L3 services. Not simply Layer 2. MPLS &ne; encryption.</li>
-          <li><strong>HA:</strong> VRRP (IETF standard) for gateway redundancy. NSF = local data-plane continuity. GR = protocol-level neighbor cooperation. SSO = supervisor state synchronization. All platform/NOS/version dependent.</li>
-          <li><strong>RPKI ROV:</strong> Origin AS validation only. Valid/Invalid/NotFound &mdash; operator defines routing policy per state.</li>
-          <li><strong>Production rule:</strong> Save configuration after every change. NTP Day-1. OOB management always maintained. Troubleshoot systematically: Physical &rarr; L2 &rarr; L3 &rarr; Routing &rarr; FIB &rarr; Policy &rarr; NAT &rarr; MTU.</li>
-        </ul>
+        <p style={{ fontWeight:700, color:"#15803d", marginBottom:"0.6rem", fontSize:"1rem" }}>Router in 2 Minutes</p> <ul style={{ ...S.ul, marginBottom:0 }}> <li><strong>What a router does:</strong> It forwards IP packets between different networks. Destination IP &rarr; FIB (LPM) &rarr; next-hop &rarr; L2 rewrite &rarr; transmit. The L2 header changes at every hop; the IP packet stays unchanged end-to-end (only TTL/Hop Limit is decremented).</li> <li><strong>RIB vs FIB:</strong> RIB = control plane routing database (all sources, full detail). FIB = data plane forwarding table (selected routes, optimized, platform-dependent). Packets use the FIB.</li> <li><strong>Routing protocols:</strong> OSPF (link-state IGP, RFC 2328/5340) &middot; BGP (path-vector EGP, RFC 4271) &middot; IS-IS (link-state IGP). Dynamic routing = automatic convergence on topology change.</li> <li><strong>BGP:</strong> Internet routing protocol. iBGP vs eBGP. Best-path = policy-driven, implementation-variant. NEXT_HOP reachability prerequisite. Route Reflectors eliminate iBGP full-mesh.</li> <li><strong>OSPF:</strong> LSDB &rarr; SPF &rarr; routes &rarr; RIB &rarr; FIB. LSDB &ne; routing table. DR/BDR on multi-access segments. Hello/Dead timers must match. Configure the Router ID explicitly.</li> <li><strong>VRF:</strong> Layer 3 routing isolation &mdash; separate RIB/FIB per VRF. VRF &ne; VLAN.</li> <li><strong>MPLS:</strong> Label-based forwarding architecture &mdash; supports L2 and L3 services. Not simply Layer 2. MPLS &ne; encryption.</li> <li><strong>HA:</strong> VRRP (IETF standard) for gateway redundancy. NSF = local data-plane continuity. GR = protocol-level neighbor cooperation. SSO = supervisor state synchronization. All platform/NOS/version dependent.</li> <li><strong>RPKI ROV:</strong> Origin AS validation only. Valid/Invalid/NotFound &mdash; operator defines routing policy per state.</li> <li><strong>Production rule:</strong> Save configuration after every change. NTP Day-1. OOB management always maintained. Troubleshoot systematically: Physical &rarr; L2 &rarr; L3 &rarr; Routing &rarr; FIB &rarr; Policy &rarr; NAT &rarr; MTU.</li> </ul>
       </div>
 
       {/* SECTION 2 - ROUTER KYA HAI */}
-      <h2 id="router-kya-hai" style={S.h2}>Enterprise Router Kya Hai</h2>
-      <p style={S.p}><strong>Router ek Layer 3 networking device hai jo IP packets ko different IP networks ke beech forward karta hai.</strong> Switch same L2 segment ke devices connect karta hai &mdash; router alag networks ko.</p>
-      <p style={S.p}>Simple analogy: Post office. Parcel aata hai &mdash; destination address check hota hai, right van mein daal dete hain. Destination tak multiple hops lagte hain. Har hop pe sirf destination IP check hota hai.</p>
-      <p style={S.p}><strong>Router solves:</strong> Alag IP networks connect karna, broadcast isolation, multiple paths mein se best path select karna, different technologies interconnect karna, security boundary (ACLs, NAT, VRF).</p>
+      <h2 id="router-kya-hai" style={S.h2}>What Is an Enterprise Router</h2>
+      <p style={S.p}><strong>A router is a Layer 3 networking device that forwards IP packets between different IP networks.</strong> A switch connects devices on the same L2 segment &mdash; a router connects separate networks.</p>
+      <p style={S.p}>Simple analogy: a post office. A parcel arrives &mdash; the destination address is checked and it is loaded into the right van. Reaching the destination takes multiple hops. At every hop, only the destination IP is checked.</p>
+      <p style={S.p}><strong>Router solves:</strong> Connecting separate IP networks, broadcast isolation, selecting the best path among multiple paths, interconnecting different technologies, security boundary (ACLs, NAT, VRF).</p>
       <ComparisonTable title="Enterprise Router Use Cases"
         headers={["Location","Role"]}
         rows={[
@@ -68,21 +56,21 @@ export default function Content() {
       <Figure caption="Fig D1 &mdash; Router vs L2 Switch vs L3 Switch: forwarding basis, capability comparison.">
         <RouterVsSwitchVsL3Switch />
       </Figure>
-      <p style={S.p}>L3 switch aur router dono IP route karte hain &mdash; distinction purpose-built capability hai. L3 Switch preferred: high-density Ethernet, wire-speed inter-VLAN, DC fabric. Router preferred: WAN interface variety, complex BGP policy, VPN/MPLS primary function.</p>
+      <p style={S.p}>An L3 switch and a router both route IP &mdash; the distinction is purpose-built capability. L3 Switch preferred: high-density Ethernet, wire-speed inter-VLAN, DC fabric. Router preferred: WAN interface variety, complex BGP policy, VPN/MPLS primary function.</p>
       <Callout type="important" title="Platform Dependency">
         Capabilities shown are typical positioning &mdash; not universal rules. Every specific platform must be evaluated against datasheet, NOS version, and licensing.
       </Callout>
 
       {/* SECTION 4 - OSI LAYER 3 */}
-      <h2 id="osi-packet-forwarding" style={S.h2}>OSI Layer 3 aur Packet Forwarding</h2>
-      <p style={S.p}><strong>Frame (L2):</strong> Ek link pe ek hop ka container. Source MAC &rarr; Destination MAC. Sirf ek link pe valid &mdash; next router pe strip ho jaata hai.</p>
-      <p style={S.p}><strong>Packet (L3):</strong> End-to-end container. Source IP &rarr; Destination IP. Poore path mein same rehta hai (barring NAT). Router L2 header strip karta hai, IP forwarding decision leta hai, new L2 header likhta hai.</p>
+      <h2 id="osi-packet-forwarding" style={S.h2}>OSI Layer 3 and Packet Forwarding</h2>
+      <p style={S.p}><strong>Frame (L2):</strong> The container for one hop on one link. Source MAC &rarr; Destination MAC. Valid on only one link &mdash; it is stripped at the next router.</p>
+      <p style={S.p}><strong>Packet (L3):</strong> End-to-end container. Source IP &rarr; Destination IP. It stays the same along the entire path (barring NAT). The router strips the L2 header, makes the IP forwarding decision and writes a new L2 header.</p>
       <CodeBlock lang="text">{`Host-A -> Router-1 -> Router-2 -> Host-B
 
 Hop 1: Frame: Src=HostA_MAC, Dst=Router1_MAC | Packet: Src=HostA_IP, Dst=HostB_IP TTL=64
 Hop 2: Frame: Src=Router1_MAC, Dst=Router2_MAC (NEW) | Packet: same, TTL=63
 Hop 3: Frame: Src=Router2_MAC, Dst=HostB_MAC (NEW) | Packet: same, TTL=62`}</CodeBlock>
-      <p style={S.p}><strong>IPv4:</strong> Router header checksum recalculate karta hai after TTL decrement. <strong>IPv6:</strong> Base header mein checksum field nahi &mdash; sirf Hop Limit decrement, no checksum needed.</p>
+      <p style={S.p}><strong>IPv4:</strong> The router recalculates the header checksum after TTL decrement. <strong>IPv6:</strong> There is no checksum field in the base header &mdash; only Hop Limit decrement, no checksum needed.</p>
 
       {/* SECTION 5 - PACKET JOURNEY */}
       <h2 id="packet-journey" style={S.h2}>Packet Journey Through a Router</h2>
@@ -102,17 +90,17 @@ Hop 3: Frame: Src=Router2_MAC, Dst=HostB_MAC (NEW) | Packet: same, TTL=62`}</Cod
       </Callout>
 
       {/* SECTION 6 - THREE PLANES */}
-      <h2 id="three-planes" style={S.h2}>Control Plane, Data Plane aur Management Plane</h2>
+      <h2 id="three-planes" style={S.h2}>Control Plane, Data Plane and Management Plane</h2>
       <Figure caption="Fig D3 &mdash; Three-plane functional model: not separate physical packet paths.">
         <ControlDataManagementPlanes />
       </Figure>
-      <p style={S.p}><strong>Control Plane:</strong> Routing intelligence &mdash; OSPF, BGP, IS-IS, ARP/NDP adjacency handling. RIB maintain karta hai. Selected routes FIB mein program karta hai. Typically CPU pe. Relatively slow but routing decisions infrequently change.</p>
-      <p style={S.p}><strong>Data Plane (Forwarding Plane):</strong> Actual packet forwarding &mdash; FIB lookup, LPM, TTL decrement, L2 rewrite, QoS, ACL, NAT. Hardware platforms pe NPU/ASIC &mdash; line-rate, CPU-independent. Software/virtual routers: CPU threads.</p>
+      <p style={S.p}><strong>Control Plane:</strong> Routing intelligence &mdash; OSPF, BGP, IS-IS, ARP/NDP adjacency handling. It maintains the RIB and programs selected routes into the FIB. Typically runs on the CPU. Relatively slow, but routing decisions change infrequently.</p>
+      <p style={S.p}><strong>Data Plane (Forwarding Plane):</strong> Actual packet forwarding &mdash; FIB lookup, LPM, TTL decrement, L2 rewrite, QoS, ACL, NAT. On hardware platforms, NPU/ASIC &mdash; line-rate, CPU-independent. Software/virtual routers: CPU threads.</p>
       <p style={S.p}><strong>Management Plane:</strong> SSH, NETCONF, SNMP, syslog, NTP, AAA. CPU-bound &mdash; arrives on physical interfaces, processed by CPU. &ldquo;Management plane&rdquo; is a functional description &mdash; not a guaranteed separate physical packet path.</p>
       <p style={S.p}><strong>FIB implementation note:</strong> &ldquo;CEF&rdquo; (Cisco Express Forwarding) is one specific Cisco implementation &mdash; not a universal standard. Other vendors use different mechanisms.</p>
 
       {/* SECTION 7 - RIB AND FIB */}
-      <h2 id="rib-fib" style={S.h2}>Routing Table &mdash; RIB aur FIB</h2>
+      <h2 id="rib-fib" style={S.h2}>Routing Table &mdash; RIB and FIB</h2>
       <Figure caption="Fig D4 &mdash; Protocol-specific state &rarr; RIB &rarr; FIB forwarding model (vendor-neutral).">
         <RibFibForwarding />
       </Figure>
@@ -122,7 +110,7 @@ Hop 3: Frame: Src=Router2_MAC, Dst=HostB_MAC (NEW) | Packet: same, TTL=62`}</Cod
         <li><strong>OSPF:</strong> LSDB (all LSAs) &rarr; SPF &rarr; computed routes offered to system RIB. LSDB &ne; routing table.</li>
         <li><strong>IS-IS:</strong> Similarly maintains topology database, computes routes for RIB.</li>
       </ul>
-      <p style={S.p}><strong>Connected + Local routes:</strong> Interface pe IP configured + interface up &rarr; connected route automatically (e.g., 192.168.1.0/24 via Gi0/0) + local /32 route for interface&apos;s own IP. No routing protocol needed.</p>
+      <p style={S.p}><strong>Connected + Local routes:</strong> IP configured on an interface + interface up &rarr; connected route automatically (e.g., 192.168.1.0/24 via Gi0/0) + local /32 route for the interface&apos;s own IP. No routing protocol needed.</p>
       <p style={S.p}><strong>AD / Route Preference:</strong> Route-source preference mechanism &mdash; lower AD = more trusted source. Used when competing routes from different sources exist for same prefix. Values are vendor/platform specific &mdash; not a universal standard. AD &ne; routing metric.</p>
       <p style={S.p}><strong>FIB:</strong> Forwarding-optimized representation derived from selected RIB routes. May contain ECMP next-hops per prefix. Implementation: hardware TCAM, software table, or hybrid &mdash; platform dependent.</p>
       <p style={S.p}><strong>Recursive next-hop:</strong> BGP NEXT_HOP must be resolvable via IGP. If resolution fails &mdash; route may be ineligible for FIB. Traffic may use another matching route or default, or be dropped if no usable match. Common production problem: route in BGP table but not in routing table.</p>
@@ -136,16 +124,16 @@ Hop 3: Frame: Src=Router2_MAC, Dst=HostB_MAC (NEW) | Packet: same, TTL=62`}</Cod
       <p style={S.p}><strong>Engineering use:</strong> Inject more-specific route (/32 host route) to override general route for traffic engineering. Default route (0.0.0.0/0) = last resort, matches everything. Modern routers: hardware FIB (TCAM) enables nanosecond parallel matching.</p>
 
       {/* SECTION 9 - NEXT HOP */}
-      <h2 id="next-hop-default" style={S.h2}>Next Hop, Default Route aur Default Gateway</h2>
+      <h2 id="next-hop-default" style={S.h2}>Next Hop, Default Route and Default Gateway</h2>
       <p style={S.p}><strong>Next hop</strong> = IP address of next router where packet should go. Router decides next step &mdash; doesn&apos;t deliver directly to destination.</p>
       <p style={S.p}><strong>Default Route:</strong> 0.0.0.0/0 (IPv4) / ::/0 (IPv6). Used when no specific route matches. &ldquo;Gateway of last resort&rdquo; = router holding default route.</p>
       <p style={S.p}><strong>Default Gateway (host perspective):</strong> Router IP where host sends non-local traffic. Modern hosts maintain routing tables with connected routes, host routes, VPN routes, defaults &mdash; not just a single entry.</p>
 
       {/* SECTION 10 - ARP AND NDP */}
-      <h2 id="arp-ndp" style={S.h2}>ARP, ICMPv6 aur IPv6 Neighbor Discovery</h2>
-      <p style={S.p}>IP routing tells where to forward (next-hop IP). Ethernet needs MAC address. <strong>IPv4: ARP. IPv6: NDP &mdash; not ARP. IPv6 mein ARP exist nahi karta.</strong></p>
+      <h2 id="arp-ndp" style={S.h2}>ARP, ICMPv6 and IPv6 Neighbor Discovery</h2>
+      <p style={S.p}>IP routing tells where to forward (next-hop IP). Ethernet needs a MAC address. <strong>IPv4: ARP. IPv6: NDP &mdash; not ARP. ARP does not exist in IPv6.</strong></p>
       <h3 style={S.h3}>ARP &mdash; IPv4</h3>
-      <p style={S.p}>RFC 826. L2 broadcast: &ldquo;10.0.1.2 kaun hai? Apna MAC batao.&rdquo; Router ARP table (cache) maintains IP&rarr;MAC mappings. Gratuitous ARP: IP conflict detection, FHRP failover announcement.</p>
+      <p style={S.p}>RFC 826. L2 broadcast: &ldquo;Who is 10.0.1.2? Tell me your MAC.&rdquo; The router ARP table (cache) maintains IP&rarr;MAC mappings. Gratuitous ARP: IP conflict detection, FHRP failover announcement.</p>
       <h3 style={S.h3}>IPv6 NDP</h3>
       <p style={S.p}><strong>NDP (RFC 4861):</strong> Neighbor resolution (NS/NA), router discovery (RS/RA), SLAAC, DAD, redirect. Uses ICMPv6 &mdash; cannot block wholesale.</p>
       <p style={S.p}><strong>Link-local addresses (FE80::/10):</strong> Auto-generated on every IPv6 interface. Required for NDP. Non-routable beyond link.</p>
@@ -155,7 +143,7 @@ Hop 3: Frame: Src=Router2_MAC, Dst=HostB_MAC (NEW) | Packet: same, TTL=62`}</Cod
       <p style={S.p}><strong>DHCPv6 relay:</strong> Clients use FF02::1:2 multicast. Relay agent sets <em>link-address field</em> in Relay-forward message header (not an option &mdash; it is a header field) to identify client&apos;s link. Configure separately from DHCPv4 relay.</p>
 
       {/* SECTION 11 - TTL AND ICMP */}
-      <h2 id="ttl-icmp" style={S.h2}>TTL, Hop Limit aur ICMP</h2>
+      <h2 id="ttl-icmp" style={S.h2}>TTL, Hop Limit and ICMP</h2>
       <p style={S.p}><strong>TTL (IPv4):</strong> 8-bit, decremented each hop. 0 &rarr; drop + ICMP Time Exceeded. Prevents routing loops. Common defaults: Linux=64, Windows=128, Cisco IOS=255 (platform-specific).</p>
       <p style={S.p}><strong>Hop Limit (IPv6):</strong> Functional equivalent of TTL. Same behavior, accurate name. No IPv6 header checksum to recalculate after decrement.</p>
       <p style={S.p}><strong>ICMP not just errors:</strong> Echo (ping), Time Exceeded (traceroute), Destination Unreachable, Fragmentation Needed (PMTUD). ICMP error generation not guaranteed for every dropped packet &mdash; protocol exceptions, rate limiting, ACL filtering, implementation factors apply.</p>
@@ -182,7 +170,7 @@ Hop 3: Frame: Src=Router2_MAC, Dst=HostB_MAC (NEW) | Packet: same, TTL=62`}</Cod
       <p style={S.p}><strong>Modular platforms:</strong> Chassis with slots. Line cards swappable. High-end enterprise/SP. Dual supervisors for HA. Investment protection.</p>
 
       {/* SECTION 13 - INTERFACE TYPES */}
-      <h2 id="interface-types" style={S.h2}>Interface Types aur Port Families</h2>
+      <h2 id="interface-types" style={S.h2}>Interface Types and Port Families</h2>
       <Figure caption="Fig D10 &mdash; Router interface types taxonomy with admin/operational state model.">
         <RouterInterfaceTypes />
       </Figure>
@@ -190,7 +178,7 @@ Hop 3: Frame: Src=Router2_MAC, Dst=HostB_MAC (NEW) | Packet: same, TTL=62`}</Cod
       <p style={S.p}><strong>Admin vs Operational state:</strong> Admin state = operator configured (shutdown/no shutdown). Operational = hardware/protocol reports. Admin Up + Operational Down &rarr; physical or L2 problem. Admin Down &rarr; operator disabled &mdash; not a fault. Check both states before deeper troubleshooting.</p>
 
       {/* SECTION 14 - TRANSCEIVERS */}
-      <h2 id="transceivers-fiber" style={S.h2}>Transceivers, Fiber aur Cabling</h2>
+      <h2 id="transceivers-fiber" style={S.h2}>Transceivers, Fiber and Cabling</h2>
       <ComparisonTable title="Common Transceiver Families" headers={["Form Factor","Speeds","Use"]}
         rows={[
           ["SFP","1G","Legacy WAN, 1G Ethernet"],
@@ -202,12 +190,12 @@ Hop 3: Frame: Src=Router2_MAC, Dst=HostB_MAC (NEW) | Packet: same, TTL=62`}</Cod
       <p style={S.p}><strong>DOM/DDM:</strong> Real-time TX/RX power, temperature, voltage, bias current. Trending degradation = pre-failure indicator. Check after insertion and monitor regularly.</p>
 
       {/* SECTION 15 - CONSOLE OOB */}
-      <h2 id="console-oob" style={S.h2}>Console Port aur OOB Management</h2>
+      <h2 id="console-oob" style={S.h2}>Console Port and OOB Management</h2>
       <p style={S.p}><strong>Console port:</strong> Emergency access when network down. Terminal emulator, settings commonly 9600 or 115200 baud, 8N1 &mdash; verify platform documentation. Console server preferred for remote DC access.</p>
       <p style={S.p}><strong>OOB (Out-of-Band):</strong> Separate management network &mdash; SSH, SNMP, syslog. Must remain accessible when production network fails. Management VRF behavior: vendor/platform dependent.</p>
 
       {/* SECTION 16 - PSU FAN */}
-      <h2 id="psu-fan-redundancy" style={S.h2}>PSU, Fan aur Redundancy</h2>
+      <h2 id="psu-fan-redundancy" style={S.h2}>PSU, Fan and Redundancy</h2>
       <p style={S.p}><strong>Dual PSU mandatory:</strong> PSU-1 &rarr; PDU-A (Circuit 1, UPS-A). PSU-2 &rarr; PDU-B (Circuit 2, UPS-B). Separate physical circuits, separate UPS. Single PSU = single point of failure.</p>
       <p style={S.p}><strong>Fan direction:</strong> Must match rack hot/cold-aisle design. Mixed directions = hot spots = hardware failure.</p>
 
@@ -225,7 +213,7 @@ Router READY`}</CodeBlock>
       </Callout>
 
       {/* SECTION 18 - ROUTER TYPES */}
-      <h2 id="router-types" style={S.h2}>Router Types aur Use Cases</h2>
+      <h2 id="router-types" style={S.h2}>Router Types and Use Cases</h2>
       <ComparisonTable title="Router Deployment Categories" headers={["Type","Role","Key Requirements"]}
         rows={[
           ["Branch Router","WAN connectivity, local gateway, VPN","Small footprint, WAN interfaces, IPsec"],
@@ -255,11 +243,11 @@ Router READY`}</CodeBlock>
       </ul>
 
       {/* SECTIONS 21-32 - INSTALLATION AND IP */}
-      <h2 id="rack-installation" style={S.h2}>Rack Installation aur Physical Commissioning</h2>
-      <p style={S.p}>Sequence: (1) Rails install, router mount (weight capacity verify). (2) Airflow direction &mdash; rack hot/cold aisle match. (3) PSU-1&rarr;PDU-A, PSU-2&rarr;PDU-B separate circuits. (4) Chassis grounding. (5) Console cable connect. (6) Production cables NOT yet &mdash; base config pehle.</p>
+      <h2 id="rack-installation" style={S.h2}>Rack Installation and Physical Commissioning</h2>
+      <p style={S.p}>Sequence: (1) Install rails, mount the router (verify weight capacity). (2) Airflow direction &mdash; match the rack hot/cold aisle. (3) PSU-1&rarr;PDU-A, PSU-2&rarr;PDU-B on separate circuits. (4) Chassis grounding. (5) Connect the console cable. (6) Production cables NOT yet &mdash; base config first.</p>
 
-      <h2 id="console-access" style={S.h2}>Console Access aur Initial Login</h2>
-      <p style={S.p}>Power on &rarr; POST output observe karo. Factory default state expected on new hardware. Terminal settings: 9600 or 115200 baud, 8N1 commonly (verify platform). No default credentials leave karna &mdash; change immediately.</p>
+      <h2 id="console-access" style={S.h2}>Console Access and Initial Login</h2>
+      <p style={S.p}>Power on &rarr; observe the POST output. Factory default state expected on new hardware. Terminal settings: 9600 or 115200 baud, 8N1 commonly (verify platform). Never leave default credentials in place &mdash; change them immediately.</p>
 
       <h2 id="initial-config" style={S.h2}>Initial Configuration Workflow</h2>
       <ol style={{ ...S.ul, listStyleType:"decimal" }}>
@@ -274,10 +262,10 @@ Router READY`}</CodeBlock>
         <li><strong>Service hardening</strong> &mdash; disable HTTP, CDP/LLDP on external interfaces</li>
       </ol>
 
-      <h2 id="management-ip" style={S.h2}>Management IP aur OOB Setup</h2>
-      <p style={S.p}>Management interface ko production routing se isolate karo via management VRF (platform dependent) or separate OOB network. Management default route configure karo. SSH reachability from jump host verify karo before production interfaces connected.</p>
+      <h2 id="management-ip" style={S.h2}>Management IP and OOB Setup</h2>
+      <p style={S.p}>Isolate the management interface from production routing via a management VRF (platform dependent) or a separate OOB network. Configure the management default route. Verify SSH reachability from the jump host before production interfaces are connected.</p>
 
-      <h2 id="ipv4-cidr" style={S.h2}>IPv4 Addressing aur CIDR</h2>
+      <h2 id="ipv4-cidr" style={S.h2}>IPv4 Addressing and CIDR</h2>
       <p style={S.p}>CIDR variable-length prefix notation: 192.168.1.0/24 = 24 network bits, 8 host bits, 256 addresses (254 usable). RFC 1918 private: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 &mdash; not routed on public internet.</p>
       <CodeBlock lang="text">{`192.168.1.0/24: Network=192.168.1.0, Broadcast=192.168.1.255
 First usable: 192.168.1.1, Last: 192.168.1.254, Usable: 254`}</CodeBlock>
@@ -295,9 +283,9 @@ Default:    ::/0`}</CodeBlock>
       <p style={S.p}>Elements: IP address + prefix, description, MTU, admin state. Interface up &rarr; connected route + local route auto-added to RIB.</p>
       <h3 style={S.h3}>Loopback Interfaces</h3>
       <p style={S.p}>Logical &mdash; no physical port. Normally independent of physical link state (admin shutdown or platform conditions can bring down). Use cases: Router ID (OSPF/BGP), iBGP update-source (stable peering), management IP, diagnostics. Address: /32 (IPv4), /128 (IPv6). Loopback &ne; host loopback (127.0.0.1) &mdash; router loopback is routable.</p>
-      <h3 style={S.h3}>Subinterfaces aur 802.1Q</h3>
+      <h3 style={S.h3}>Subinterfaces and 802.1Q</h3>
       <p style={S.p}>Subinterface = logical child on physical. Each handles one VLAN with own IP. 802.1Q tag: 4 bytes (TPID 0x8100 + TCI with PCP/DEI/VID), inserted between Src MAC and EtherType. Tagged frame max: 1522 bytes. Subinterface state linked to parent. Native VLAN behavior varies by vendor.</p>
-      <h3 style={S.h3}>SVIs aur Routed Ports</h3>
+      <h3 style={S.h3}>SVIs and Routed Ports</h3>
       <p style={S.p}><strong>SVI:</strong> Logical Layer-3 interface on platforms supporting L2+L3. VLAN-associated gateway. SVI operational state depends on VLAN database + port activity (common platform behavior, not universal). <strong>Routed port:</strong> Physical interface as Layer-3 &mdash; no VLAN, no L2 bridging, IP directly assigned. SVI &ne; subinterface &ne; routed port.</p>
 
       {/* STATIC ROUTING */}
@@ -316,7 +304,7 @@ Default:    ::/0`}</CodeBlock>
         Aggregate prefix advertise + null/discard route locally install. Traffic to unrouted sub-prefixes hits null route (local discard) &mdash; no loop. LPM ensures specific routes still win. ICMP Unreachable on null route: platform/configuration dependent.
       </Callout>
 
-      <h2 id="admin-distance" style={S.h2}>Administrative Distance aur Route Preference</h2>
+      <h2 id="admin-distance" style={S.h2}>Administrative Distance and Route Preference</h2>
       <p style={S.p}><strong>AD</strong> = route-source preference mechanism. Used when competing routes from different sources for same prefix. Lower AD = more preferred. Values are vendor/platform specific &mdash; not universal. Common Cisco IOS values for reference (NOT universal): Connected=0, Static=1, OSPF=110, eBGP=20, iBGP=200. Other vendors use different naming and values. Always verify platform documentation.</p>
 
       <h2 id="routing-metrics" style={S.h2}>Routing Metrics</h2>
@@ -339,7 +327,7 @@ Default:    ::/0`}</CodeBlock>
       </ol>
 
       {/* SECTION 33 - DYNAMIC ROUTING */}
-      <h2 id="dynamic-routing" style={S.h2}>Dynamic Routing &mdash; Kyun aur Kab</h2>
+      <h2 id="dynamic-routing" style={S.h2}>Dynamic Routing &mdash; Why and When</h2>
       <p style={S.p}>500 routers, 2000 prefixes, daily changes &rarr; static = unmanageable. Dynamic routing: automated route learning, best path selection, automatic failover, convergence after topology change.</p>
       <ComparisonTable title="Routing Protocol Classification" headers={["Category","Protocols","Algorithm"]}
         rows={[
@@ -421,7 +409,7 @@ Default:    ::/0`}</CodeBlock>
       <p style={S.p}><strong>Internet route scale:</strong> Default-only (minimal FIB) vs partial routes (targeted engineering) vs full BGP table (maximum control, requires large FIB). Full table size grows continuously &mdash; verify FIB/TCAM capacity. Monitor TCAM utilization.</p>
 
       {/* ECMP */}
-      <h2 id="ecmp-load-sharing" style={S.h2}>ECMP aur Load Sharing</h2>
+      <h2 id="ecmp-load-sharing" style={S.h2}>ECMP and Load Sharing</h2>
       <Figure caption="Fig D9 &mdash; ECMP per-flow hash distribution: not round-robin per packet.">
         <EcmpHashDistribution />
       </Figure>
@@ -458,7 +446,7 @@ Default:    ::/0`}</CodeBlock>
       <p style={S.p}><strong>Route leaking:</strong> Controlled import from one VRF to another (shared services). Implementation platform dependent. Careful policy required &mdash; uncontrolled leaking breaks isolation.</p>
 
       {/* NAT */}
-      <h2 id="nat-pat" style={S.h2}>NAT aur PAT</h2>
+      <h2 id="nat-pat" style={S.h2}>NAT and PAT</h2>
       <Figure caption="Fig D14 &mdash; NAT/PAT translation flow with translation table and return traffic.">
         <NatPatTranslationFlow />
       </Figure>
@@ -483,16 +471,16 @@ Default:    ::/0`}</CodeBlock>
       </Figure>
       <p style={S.p}>ACLs filter packets &mdash; not routing decisions. Stateless by default. &ldquo;Standard ACL&rdquo; (source-only match) and &ldquo;Extended ACL&rdquo; (multi-field match) are Cisco IOS terminology &mdash; other platforms use different naming. Implicit deny at end: Cisco IOS convention &mdash; not universal. ACL pipeline order relative to NAT/routing: platform dependent.</p>
 
-      <h2 id="route-filtering" style={S.h2}>Route Filtering aur Prefix Lists</h2>
+      <h2 id="route-filtering" style={S.h2}>Route Filtering and Prefix Lists</h2>
       <p style={S.p}><strong>Prefix lists:</strong> Most granular IP prefix filter. Matches prefixes with optional length ranges. More efficient than ACLs for routing policy. Distribute-list (ACL-like constructs in routing protocol context): route filtering, not data-plane packet filtering &mdash; do not conflate these two uses.</p>
       <p style={S.p}><strong>Internet edge inbound:</strong> Reject RFC 1918, bogons, own prefixes returned, overly-specific (filtering longer than /24 for IPv4 = common practice, not standard). Outbound: advertise only legitimately held prefixes.</p>
 
-      <h2 id="route-policy" style={S.h2}>Route Policy aur Route Maps</h2>
+      <h2 id="route-policy" style={S.h2}>Route Policy and Route Maps</h2>
       <p style={S.p}><strong>Route maps:</strong> Match conditions (prefix, AS_PATH, community, etc.) + set actions (LOCAL_PREF, MED, community, next-hop). Used for redistribution control, BGP attribute manipulation, PBR.</p>
       <p style={S.p}><strong>BGP communities:</strong> Policy tags &mdash; no inherent routing meaning until policy acts. Well-known: NO_EXPORT (0xFFFFFF01), NO_ADVERTISE (0xFFFFFF02). Large communities (RFC 8092): ASN:value1:value2.</p>
 
       {/* FHRP */}
-      <h2 id="fhrp-vrrp" style={S.h2}>First-Hop Redundancy &mdash; VRRP aur Alternatives</h2>
+      <h2 id="fhrp-vrrp" style={S.h2}>First-Hop Redundancy &mdash; VRRP and Alternatives</h2>
       <Figure caption="Fig D8 &mdash; VRRP Master/Backup: virtual IP/MAC, failover sequence, tracking.">
         <VrrpArchitecture />
       </Figure>
@@ -560,7 +548,7 @@ Default:    ::/0`}</CodeBlock>
       <p style={S.p}><strong>Router vs switch:</strong> Router: inter-subnet multicast routing, IGMP/MLD querier, PIM. Switch: IGMP/MLD Snooping &mdash; forward multicast only to interested ports (without snooping: flood = broadcast behavior).</p>
 
       {/* WAN AND DC */}
-      <h2 id="wan-connectivity" style={S.h2}>WAN Connectivity aur Technologies</h2>
+      <h2 id="wan-connectivity" style={S.h2}>WAN Connectivity and Technologies</h2>
       <p style={S.p}><strong>Layer separation:</strong> Physical transport (fiber/copper) &ne; Layer-2 service (Metro Ethernet, MPLS) &ne; Layer-3 routing (BGP/OSPF/static). MPLS = label-based forwarding architecture &mdash; not &ldquo;just Layer 2.&rdquo;</p>
       <ComparisonTable title="Current WAN Types" headers={["Type","Service Layer","Notes"]}
         rows={[
@@ -593,7 +581,7 @@ Default:    ::/0`}</CodeBlock>
       </Figure>
       <p style={S.p}><strong>DC border router:</strong> BGP with ISPs, route policy, NAT, ACL/prefix filtering, QoS marking. Relationship with Spine-Leaf: default route injection into fabric OR BGP between border and spine/leaf &mdash; depends on architecture and traffic engineering requirements.</p>
 
-      <h2 id="north-south" style={S.h2}>North-South Traffic aur DC Border</h2>
+      <h2 id="north-south" style={S.h2}>North-South Traffic and the DC Border</h2>
       <p style={S.p}><strong>North-South:</strong> Traffic entering/leaving DC (internet/WAN). All passes through border router. <strong>East-West:</strong> Server-to-server within DC fabric &mdash; stays in Spine-Leaf, does NOT traverse border router. East-West increasingly dominant in modern DC.</p>
 
       <h2 id="router-vs-l3switch-dc" style={S.h2}>Router vs L3 Switch in DC Core</h2>
@@ -618,7 +606,7 @@ Default:    ::/0`}</CodeBlock>
       <h2 id="control-plane-protection" style={S.h2}>Control Plane Protection</h2>
       <p style={S.p}><strong>CoPP (Cisco terminology) / equivalent on other platforms:</strong> Classifies and rate-limits CPU-bound traffic. Protects routing protocols + management. Does NOT affect transit data-plane forwarding. BGP sessions + OSPF hellos &rarr; guaranteed rate. ICMP to router &rarr; rate limited. Unknown &rarr; strict limit or drop. Rates and classes: platform and deployment dependent.</p>
 
-      <h2 id="aaa-ssh" style={S.h2}>AAA, SSH aur Secure Management</h2>
+      <h2 id="aaa-ssh" style={S.h2}>AAA, SSH and Secure Management</h2>
       <p style={S.p}><strong>AAA:</strong> Authentication + Authorization + Accounting. TACACS+ (RFC 8907 informational, Cisco-developed, encrypts full body) vs RADIUS (RFC 2865 IETF standard, encrypts only password). TACACS+ common for network device CLI. Local fallback on console.</p>
       <p style={S.p}><strong>SSH v2 mandatory:</strong> No Telnet. Key length: minimum 2048-bit RSA or platform equivalent. VTY: SSH only + source ACL restricting management IPs.</p>
 
@@ -627,13 +615,13 @@ Default:    ::/0`}</CodeBlock>
       <p style={S.p}><strong>BGP TCP authentication:</strong> MD5 (RFC 2385) most common. TCP-AO (RFC 5925) stronger, supports key rollover. Keys must match exactly on both sides. Key changes require coordination with peer &mdash; especially ISPs for eBGP sessions. Depending on platform, coordinated key rollover mechanisms may reduce or avoid session interruption.</p>
 
       {/* MONITORING */}
-      <h2 id="snmp-syslog-telemetry" style={S.h2}>SNMP, Syslog aur Streaming Telemetry</h2>
+      <h2 id="snmp-syslog-telemetry" style={S.h2}>SNMP, Syslog and Streaming Telemetry</h2>
       <p style={S.p}><strong>SNMPv3 USM (RFC 3414):</strong> Originally defines HMAC-MD5-96 and HMAC-SHA-96 authentication + CBC-DES privacy. AES privacy standardized separately (RFC 3826). Modern platforms may support newer SHA/AES variants. authPriv with currently supported strong algorithms recommended &mdash; MD5 and DES not recommended where stronger alternatives available.</p>
       <p style={S.p}><strong>SNMP operations:</strong> GET, GETBULK, SET, TRAP (unacknowledged &mdash; can be lost), INFORM (acknowledged &mdash; more reliable). Complement traps with polling or INFORM for critical state.</p>
       <p style={S.p}><strong>Syslog severity (RFC 5424):</strong> 0=Emergency, 1=Alert, 2=Critical, 3=Error, 4=Warning, 5=Notice, 6=Informational, 7=Debug. Production: Warning (4) or Informational (5). Debug = high CPU, fills buffers &mdash; disable immediately after troubleshooting.</p>
       <p style={S.p}><strong>Streaming Telemetry:</strong> Router pushes operational data. gNMI = open standard using gRPC. gRPC = RPC framework typically running over HTTP/2 (not simply a &ldquo;transport layer&rdquo;). NETCONF (RFC 6241) = configuration/state management &mdash; NOT synonymous with streaming telemetry. Resource impact depends on platform, subscription frequency, encoding &mdash; not universally lower than SNMP polling.</p>
 
-      <h2 id="config-backup" style={S.h2}>Configuration Backup aur Change Management</h2>
+      <h2 id="config-backup" style={S.h2}>Configuration Backup and Change Management</h2>
       <p style={S.p}><strong>Backup:</strong> Running + startup config. After every change (immediately), daily scheduled, before any upgrade (mandatory). SCP preferred (encrypted). Git repository for version control &mdash; diff between versions, commit messages with context.</p>
       <p style={S.p}><strong>Change management:</strong> Pre-change backup. OOB access verified. One change at a time. Each step verified before proceeding. Post-change: routing table verified, config saved, record closed.</p>
       <Callout type="important" title="Configuration Rollback">
@@ -646,7 +634,7 @@ Default:    ::/0`}</CodeBlock>
       <p style={S.p}><strong>Post-upgrade soak:</strong> 24-72h before deleting old image. PSIRT security advisories: subscribe, respond based on risk &mdash; not annual cycles.</p>
 
       {/* HA */}
-      <h2 id="ha-redundancy" style={S.h2}>High Availability aur Redundancy</h2>
+      <h2 id="ha-redundancy" style={S.h2}>High Availability and Redundancy</h2>
       <Figure caption="Fig D23 &mdash; NSF/SSO/GR interaction timeline during supervisor failover.">
         <NsfSsoGrInteraction />
       </Figure>
@@ -660,7 +648,7 @@ Default:    ::/0`}</CodeBlock>
       <p style={S.p}><strong>Structured approach:</strong> (1) Define problem precisely &mdash; which traffic, between which hosts, when started, what changed. (2) Collect evidence before making changes. (3) Form specific hypothesis. (4) Test one change at a time. (5) Document everything &mdash; timestamp, commands, observations, changes.</p>
       <p style={S.p}><strong>OSI-layer sequence:</strong> Physical (cable, DOM/DDM, errors) &rarr; L2 (admin/operational state, CRC/FCS) &rarr; L3 addressing (IP, connected routes, ARP/ND) &rarr; Routing (route present, correct next-hop, neighbor state) &rarr; FIB (route in RIB but not FIB, TCAM exhaustion) &rarr; Policy (ACL, VRF, PBR) &rarr; NAT (translation table, return path) &rarr; MTU (large packets failing) &rarr; QoS (queue drops) &rarr; Application.</p>
       <Callout type="important" title="Never Reboot First">
-        Production router ka first troubleshooting step kabhi reboot nahi hona chahiye. Reboot destroys diagnostic evidence. Diagnose first &mdash; then corrective action.
+        The first troubleshooting step on a production router should never be a reboot. Reboot destroys diagnostic evidence. Diagnose first &mdash; then corrective action.
       </Callout>
 
       <h2 id="interface-down" style={S.h2}>Interface Down Troubleshooting</h2>
@@ -692,7 +680,7 @@ Default:    ::/0`}</CodeBlock>
       <p style={S.p}><strong>Return traffic failing:</strong> Translation table entry present? Timeout expired? Asymmetric routing? If no matching state: behavior (drop, normal routing, logging) depends on platform and configuration.</p>
       <p style={S.p}><strong>Application broken:</strong> ALG needed (FTP, SIP)? Encrypted payload (ALG can&apos;t inspect)? PAT port exhaustion?</p>
 
-      <h2 id="asymmetric-loops" style={S.h2}>Asymmetric Routing aur Routing Loops</h2>
+      <h2 id="asymmetric-loops" style={S.h2}>Asymmetric Routing and Routing Loops</h2>
       <Figure caption="Fig D24 &mdash; Routing loop detection via traceroute + null route prevention.">
         <RoutingLoopNullRoute />
       </Figure>
@@ -732,7 +720,7 @@ Default:    ::/0`}</CodeBlock>
         <li><strong>Phase 6 &mdash; Documentation:</strong> Config saved (startup + external SCP), version-controlled in Git, network diagram + IPAM updated, handover communication sent.</li>
       </ul>
 
-      <h2 id="om-checklist" style={S.h2}>Preventive Maintenance aur O&amp;M Checklist</h2>
+      <h2 id="om-checklist" style={S.h2}>Preventive Maintenance and O&amp;M Checklist</h2>
       <p style={S.p}><strong>Daily:</strong> Interface states (unexpected down?), BGP sessions (flapping?), OSPF adjacencies (all Full where expected?), CPU/memory (sustained high?), syslog review (errors, auth failures, hardware alerts).</p>
       <p style={S.p}><strong>Weekly:</strong> Config backup verified, BGP prefix count vs max-prefix limits, FIB/TCAM utilization on internet-facing routers, interface bandwidth utilization trends, DOM/DDM optical power trends, fan/PSU status.</p>
       <p style={S.p}><strong>Monthly:</strong> Security advisories (PSIRT) vs deployed NOS, NOS end-of-support dates, prefix filter currency (IRR updates), hardware EoS/EoL status.</p>
@@ -763,21 +751,21 @@ Default:    ::/0`}</CodeBlock>
       {/* INTERVIEW */}
       <h2 id="interview-questions" style={S.h2}>Interview / Job Knowledge</h2>
       <h3 style={S.h3}>Fundamental Questions</h3>
-      <p style={S.p}><strong>Q: Router aur switch mein fundamental difference?</strong> Switch MAC addresses ke basis pe same L2 segment mein frames forward karta hai. Router IP addresses ke basis pe different networks ke beech packets forward karta hai. Har hop pe L2 header strip + new L2 header write. IP packet end-to-end unchanged (sirf TTL/Hop Limit decrement).</p>
-      <p style={S.p}><strong>Q: RIB aur FIB mein difference?</strong> RIB = control plane routing database, all sources, full detail, AD-based selection. FIB = data plane forwarding table, selected routes only, next-hop resolved, fast lookup optimized. Packets FIB use karte hain. FIB implementation platform-dependent.</p>
-      <p style={S.p}><strong>Q: LPM kya hai?</strong> Forwarding-time FIB lookup &mdash; most specific matching prefix wins. /32 beats /24 beats /0. Separate from route selection (RIB best-path).</p>
-      <p style={S.p}><strong>Q: Administrative Distance kya hai?</strong> Route-source preference mechanism &mdash; competing sources ke beech preference. Lower AD = more trusted. Values vendor/platform specific &mdash; not universal standard.</p>
+      <p style={S.p}><strong>Q: What is the fundamental difference between a router and a switch?</strong> A switch forwards frames within the same L2 segment based on MAC addresses. A router forwards packets between different networks based on IP addresses. At every hop: L2 header stripped + new L2 header written. IP packet unchanged end-to-end (only TTL/Hop Limit decrement).</p>
+      <p style={S.p}><strong>Q: What is the difference between RIB and FIB?</strong> RIB = control plane routing database, all sources, full detail, AD-based selection. FIB = data plane forwarding table, selected routes only, next-hop resolved, fast lookup optimized. Packets use the FIB. FIB implementation platform-dependent.</p>
+      <p style={S.p}><strong>Q: What is LPM?</strong> Forwarding-time FIB lookup &mdash; most specific matching prefix wins. /32 beats /24 beats /0. Separate from route selection (RIB best-path).</p>
+      <p style={S.p}><strong>Q: What is Administrative Distance?</strong> Route-source preference mechanism &mdash; preference among competing sources. Lower AD = more trusted. Values vendor/platform specific &mdash; not universal standard.</p>
       <h3 style={S.h3}>Protocol Questions</h3>
-      <p style={S.p}><strong>Q: OSPF neighbor Full mein kyun nahi aata?</strong> Hello/Dead timer mismatch, area ID mismatch, authentication mismatch, network type mismatch, MTU mismatch (ExStart/Exchange stuck), ACL blocking OSPF multicast.</p>
-      <p style={S.p}><strong>Q: DR/BDR kab elect hota hai?</strong> Multi-access networks pe (Ethernet broadcast). P2P links pe nahi. Election: highest OSPF priority (0=ineligible), tie: highest Router ID. Non-preemptive by default.</p>
-      <p style={S.p}><strong>Q: iBGP aur eBGP mein difference?</strong> eBGP: different ASes, AS_PATH appended. iBGP: same AS, no AS_PATH modification, loop-prevention rule (no re-advertise without RR). Route Reflectors solve iBGP scaling.</p>
-      <p style={S.p}><strong>Q: BGP session Active mein kyun stuck?</strong> TCP 179 connectivity fail. Check: route to peer, ACL blocking, MD5 key mismatch, update-source for loopback peering, ASN correct.</p>
-      <p style={S.p}><strong>Q: LOCAL_PREF kya control karta hai?</strong> Outbound path selection &mdash; which exit from AS. Higher preferred. iBGP only, not sent to eBGP peers. Primary knob for engineering outbound across multiple ISPs.</p>
-      <p style={S.p}><strong>Q: ECMP kaise kaam karta hai?</strong> Multiple equal-cost paths installed. Traffic via per-flow hashing &mdash; NOT round-robin. Same flow always same path. Single large TCP flow doesn&apos;t aggregate bandwidth.</p>
-      <p style={S.p}><strong>Q: VRF kya hai aur VLAN se kaise alag?</strong> VRF = L3 routing isolation &mdash; separate RIB, FIB, ARP. Same IP prefix multiple VRFs mein. VLAN = L2 segmentation. Different layers, complementary.</p>
-      <p style={S.p}><strong>Q: RPKI ROV kya karta hai?</strong> BGP routes ka origin AS validate karta hai via ROA. Valid/Invalid/NotFound. Operator defines policy &mdash; Invalid commonly de-preferred/rejected. NOT full AS_PATH validation (BGPsec for that, not widely deployed).</p>
-      <p style={S.p}><strong>Q: Dual ISP mein inbound path control?</strong> Inbound = influence only (probabilistic): AS_PATH prepending, MED, provider communities. Outbound = fully controllable: LOCAL_PREF.</p>
-      <p style={S.p}><strong>Q: BGP neighbor up but traffic nahi ja raha?</strong> BGP table check &rarr; RIB check &rarr; FIB check &rarr; policy (ACL, PBR, NAT, MTU) check. NEXT_HOP resolvable? next-hop-self configured? FIB programmed?</p>
+      <p style={S.p}><strong>Q: Why does an OSPF neighbor not reach Full?</strong> Hello/Dead timer mismatch, area ID mismatch, authentication mismatch, network type mismatch, MTU mismatch (ExStart/Exchange stuck), ACL blocking OSPF multicast.</p>
+      <p style={S.p}><strong>Q: When is a DR/BDR elected?</strong> On multi-access networks (Ethernet broadcast). Not on P2P links. Election: highest OSPF priority (0=ineligible), tie: highest Router ID. Non-preemptive by default.</p>
+      <p style={S.p}><strong>Q: What is the difference between iBGP and eBGP?</strong> eBGP: different ASes, AS_PATH appended. iBGP: same AS, no AS_PATH modification, loop-prevention rule (no re-advertise without RR). Route Reflectors solve iBGP scaling.</p>
+      <p style={S.p}><strong>Q: Why is a BGP session stuck in Active?</strong> TCP 179 connectivity fail. Check: route to peer, ACL blocking, MD5 key mismatch, update-source for loopback peering, ASN correct.</p>
+      <p style={S.p}><strong>Q: What does LOCAL_PREF control?</strong> Outbound path selection &mdash; which exit from AS. Higher preferred. iBGP only, not sent to eBGP peers. Primary knob for engineering outbound across multiple ISPs.</p>
+      <p style={S.p}><strong>Q: How does ECMP work?</strong> Multiple equal-cost paths installed. Traffic via per-flow hashing &mdash; NOT round-robin. Same flow always same path. Single large TCP flow doesn&apos;t aggregate bandwidth.</p>
+      <p style={S.p}><strong>Q: What is a VRF, and how is it different from a VLAN?</strong> VRF = L3 routing isolation &mdash; separate RIB, FIB, ARP. Same IP prefix in multiple VRFs. VLAN = L2 segmentation. Different layers, complementary.</p>
+      <p style={S.p}><strong>Q: What does RPKI ROV do?</strong> It validates the origin AS of BGP routes via ROA. Valid/Invalid/NotFound. Operator defines policy &mdash; Invalid commonly de-preferred/rejected. NOT full AS_PATH validation (BGPsec for that, not widely deployed).</p>
+      <p style={S.p}><strong>Q: How do you control the inbound path with dual ISPs?</strong> Inbound = influence only (probabilistic): AS_PATH prepending, MED, provider communities. Outbound = fully controllable: LOCAL_PREF.</p>
+      <p style={S.p}><strong>Q: BGP neighbor is up but traffic is not flowing?</strong> BGP table check &rarr; RIB check &rarr; FIB check &rarr; policy (ACL, PBR, NAT, MTU) check. NEXT_HOP resolvable? next-hop-self configured? FIB programmed?</p>
 
       {/* KEY TAKEAWAYS */}
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
@@ -793,7 +781,7 @@ Default:    ::/0`}</CodeBlock>
       </ul>
       <h3 style={S.h3}>Protocols</h3>
       <ul style={S.ul}>
-        <li><strong>OSPF: link-state IGP.</strong> LSDB &rarr; SPF &rarr; routes &rarr; RIB &rarr; FIB. LSDB &ne; routing table. Hello/Dead timers must match. Router ID explicitly configure karo. OSPFv2 (IPv4) and OSPFv3 (IPv6) distinct protocols.</li>
+        <li><strong>OSPF: link-state IGP.</strong> LSDB &rarr; SPF &rarr; routes &rarr; RIB &rarr; FIB. LSDB &ne; routing table. Hello/Dead timers must match. Configure the Router ID explicitly. OSPFv2 (IPv4) and OSPFv3 (IPv6) distinct protocols.</li>
         <li><strong>BGP: path-vector, policy-driven.</strong> TCP port 179. iBGP loop-prevention rule. NEXT_HOP = prerequisite (not preference step). Best-path = implementation-variant. Route Reflectors for iBGP scale.</li>
         <li><strong>Route redistribution: precision tool.</strong> Never redistribute all. Always filter and tag. Seed metrics explicitly set. Bidirectional at multiple points = highest risk.</li>
         <li><strong>AD &ne; metric.</strong> AD = inter-source preference (vendor-specific). Metric = intra-protocol path cost. ECMP = equal-cost paths within one routing context.</li>

@@ -3,12 +3,12 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const azureMetadata: ArticleMetadata = {
   slug: "azure",
   title: "Microsoft Azure Infrastructure Explained — Cloud for Data Center Engineers",
-  seoTitle: "Azure Kya Hai? VNet, VMs, NSG, ARM, AKS, HA aur Hybrid Connectivity — Complete Hinglish Guide",
+  seoTitle: "What Is Azure? VNet, VMs, NSG, ARM, AKS, HA and Hybrid Connectivity — Complete English Guide",
   seoDescription:
-    "Microsoft Azure infrastructure data center engineers ke liye — Virtual Networks, NSGs, Azure VMs, App Services, AKS, Azure Storage, Cosmos DB, ExpressRoute, Azure Monitor, ARM, RBAC, HA aur disaster recovery in Hinglish.",
+    "Microsoft Azure infrastructure for data center engineers — Virtual Networks, NSGs, Azure VMs, App Services, AKS, Azure Storage, Cosmos DB, ExpressRoute, Azure Monitor, ARM, RBAC, HA and disaster recovery in English.",
   canonicalUrl: "https://behindthetech.in/learn/it/cloud/azure",
   keywords: [
-    "microsoft azure kya hai",
+    "what is microsoft azure",
     "azure virtual network vnet",
     "azure region availability zone",
     "azure nsg network security group",

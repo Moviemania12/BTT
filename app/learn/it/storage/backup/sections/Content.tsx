@@ -17,84 +17,73 @@ export default function Content() {
     <>
       {/* ── Quick Summary ─────────────────────────────────────────────── */}
       <div style={{ background:"#f0fdf4", border:"1px solid #bbf7d0", borderRadius:10, padding:"1.2rem 1.4rem", marginBottom:"2rem" }}>
-        <p style={{ fontWeight:700, color:"#15803d", marginBottom:"0.6rem", fontSize:"1rem" }}>📋 Quick Summary — Backup in 2 Minutes</p>
-        <ul style={{ ...S.ul, marginBottom:0 }}>
-          <li><strong>Backup kya hai:</strong> Production data ka ek independent recoverable copy — different failure domain, separate access controls, historical restore points. Snapshot ya replication replace nahi karta.</li>
-          <li><strong>Snapshot ≠ Backup:</strong> Snapshot same storage pe. Storage fail → snapshot gone. Immutability strength implementation aur enforcement mode pe depend karti hai.</li>
-          <li><strong>Replication ≠ Backup:</strong> Replication corruption, deletion aur ransomware replicate karta hai. Historical restore points nahi hote.</li>
-          <li><strong>RPO:</strong> Acceptable data loss. RTO: Acceptable downtime — detection + decision + restore + startup + validation sab include hain.</li>
-          <li><strong>3-2-1:</strong> 3 copies, 2 media types, 1 offsite. 3-2-1-1-0 adds isolated/immutable copy + verified zero errors.</li>
-          <li><strong>Immutable backup:</strong> Retention period mein delete ya modify nahi — immutability strength implementation aur mode pe dependent.</li>
-          <li><strong>Application-consistent:</strong> VSS/quiesce — databases ke liye mandatory. Application state at backup time preserved — pre-existing corruption protect nahi karta.</li>
-          <li><strong>Restore testing mandatory:</strong> "Success" ≠ recoverable. Periodic isolated restore tests essential hain.</li>
-          <li><strong>Key management critical:</strong> Encryption key lose karo → backup permanently unrecoverable.</li>
-        </ul>
+        <p style={{ fontWeight:700, color:"#15803d", marginBottom:"0.6rem", fontSize:"1rem" }}>📋 Quick Summary — Backup in 2 Minutes</p> <ul style={{ ...S.ul, marginBottom:0 }}> <li><strong>What backup is:</strong> An independent recoverable copy of production data — different failure domain, separate access controls, historical restore points. Snapshots or replication do not replace it.</li> <li><strong>Snapshot ≠ Backup:</strong> A snapshot is on the same storage. Storage fails → snapshot gone. Immutability strength depends on the implementation and enforcement mode.</li> <li><strong>Replication ≠ Backup:</strong> Replication replicates corruption, deletion and ransomware. It has no historical restore points.</li> <li><strong>RPO:</strong> Acceptable data loss. RTO: Acceptable downtime — detection + decision + restore + startup + validation are all included.</li> <li><strong>3-2-1:</strong> 3 copies, 2 media types, 1 offsite. 3-2-1-1-0 adds isolated/immutable copy + verified zero errors.</li> <li><strong>Immutable backup:</strong> No deletion or modification during the retention period — immutability strength depends on implementation and mode.</li> <li><strong>Application-consistent:</strong> VSS/quiesce — mandatory for databases. Application state at backup time is preserved — it does not protect against pre-existing corruption.</li> <li><strong>Restore testing mandatory:</strong> "Success" ≠ recoverable. Periodic isolated restore tests are essential.</li> <li><strong>Key management critical:</strong> Lose the encryption key → backup permanently unrecoverable.</li> </ul>
       </div>
 
       {/* ══ SECTION 1 — DEFINITION ══════════════════════════════════════ */}
-      <h2 id="backup-kya-hai" style={S.h2}>Backup Kya Hai — Definition</h2>
-      <p style={S.p}><strong>Backup = Production data ka ek recoverable copy — maintained with a different failure domain from production, separate access controls, and the ability to recover data to a known previous state.</strong></p>
-      <p style={S.p}>Ye sirf "file kisi doosri jagah copy karna" nahi hai. Enterprise backup mein:</p>
+      <h2 id="backup-kya-hai" style={S.h2}>What Is Backup — Definition</h2>
+      <p style={S.p}><strong>Backup = A recoverable copy of production data — maintained with a different failure domain from production, separate access controls, and the ability to recover data to a known previous state.</strong></p>
+      <p style={S.p}>It is not just "copying a file somewhere else." In enterprise backup:</p>
       <ul style={S.ul}>
-        <li>Point-in-time copies maintained hoti hain — multiple historical restore points</li>
-        <li>Copies different failure domain mein hoti hain — source failure se independent</li>
-        <li>Retention policies control karti hain kitne time tak copies rakhi jaayein</li>
-        <li>Backup catalog restore ke liye metadata maintain karta hai</li>
-        <li>Verification confirm karta hai ki backup actually recoverable hai</li>
-        <li>Security ensure karta hai ki backup sirf authorized parties ko accessible ho</li>
+        <li>Point-in-time copies are maintained — multiple historical restore points</li>
+        <li>Copies live in a different failure domain — independent of source failure</li>
+        <li>Retention policies control how long copies are kept</li>
+        <li>The backup catalog maintains metadata for restore</li>
+        <li>Verification confirms that the backup is actually recoverable</li>
+        <li>Security ensures that the backup is accessible only to authorized parties</li>
       </ul>
       <Callout type="important" title="Core Backup Properties">
-        Traditional definition mein "independent copy" hai — lekin kya matters hai: different failure domain from production, separate access controls, aur ability to recover to a past state. Specific implementations vary — some integrated storage backup features blur the traditional lines. Jo cheez matter karti hai woh hai: backup source failure, deletion, aur attacks ke baad survive kar sake.
+        The traditional definition says "independent copy" — but what matters is: a different failure domain from production, separate access controls, and the ability to recover to a past state. Specific implementations vary — some integrated storage backup features blur the traditional lines. What matters is that the backup can survive source failure, deletion and attacks.
       </Callout>
 
-      <h3 style={S.h3}>Backup Kyun Zaroori Hai — Real Threats</h3>
+      <h3 style={S.h3}>Why Backup Is Required — Real Threats</h3>
       <ul style={S.ul}>
-        <li><strong>Accidental deletion:</strong> Sabse common scenario. User ya admin ne galti se delete kiya.</li>
+        <li><strong>Accidental deletion:</strong> The most common scenario. A user or admin deleted something by mistake.</li>
         <li><strong>Hardware failure:</strong> Drive fail, RAID controller, storage array — data inaccessible.</li>
         <li><strong>Data corruption:</strong> Filesystem corruption, application bug, database corruption.</li>
-        <li><strong>Ransomware:</strong> Malware production data encrypt karta hai. Clean backup = clean restore.</li>
+        <li><strong>Ransomware:</strong> Malware encrypts production data. Clean backup = clean restore.</li>
         <li><strong>Application failure:</strong> Upgrade gone wrong, migration failure, misconfiguration.</li>
         <li><strong>Human error:</strong> Wrong config deployed, wrong data overwritten, wrong table dropped.</li>
-        <li><strong>Site failure:</strong> Fire, flood — on-site backup bhi lost. Offsite copy required.</li>
-        <li><strong>Compliance:</strong> Regulations data retention mandate karte hain. Complex interaction with backup data — see note on GDPR/compliance below.</li>
+        <li><strong>Site failure:</strong> Fire, flood — the on-site backup is lost too. An offsite copy is required.</li>
+        <li><strong>Compliance:</strong> Regulations mandate data retention. Complex interaction with backup data — see note on GDPR/compliance below.</li>
       </ul>
-      <Callout type="warning" title="Compliance aur Backup Retention — Not a Simple IT Decision">
-        Regulatory requirements (GDPR, HIPAA, financial regulations) ke saath backup retention complex hai. GDPR ke "right to erasure" clause ke saath backup mein personal data retain karna conflicts create kar sakta hai — backup se individual data delete karna restore aur modify karne ki zaroorat create karta hai. Regulated environments mein backup retention policy sirf IT decide nahi karta — legal aur compliance team ka input mandatory hai.
+      <Callout type="warning" title="Compliance and Backup Retention — Not a Simple IT Decision">
+        Backup retention is complex under regulatory requirements (GDPR, HIPAA, financial regulations). Retaining personal data in backups can create conflicts with GDPR's "right to erasure" clause — deleting an individual's data from a backup creates the need to restore and modify it. In regulated environments the backup retention policy is not decided by IT alone — input from the legal and compliance team is mandatory.
       </Callout>
 
       {/* ══ SECTION 2 — BACKUP VS SNAPSHOT ══════════════════════════════ */}
       <h2 id="backup-vs-snapshot" style={S.h2}>Backup vs Snapshot</h2>
-      <Figure caption="Fig 1 — Backup vs Snapshot vs Replication: different protection models. Snapshot same storage pe. Replication mirrors everything including corruption. Backup provides historical recovery from independent storage.">
+      <Figure caption="Fig 1 — Backup vs Snapshot vs Replication: different protection models. Snapshot on same storage. Replication mirrors everything including corruption. Backup provides historical recovery from independent storage.">
         <BackupVsSnapshotVsReplication />
       </Figure>
 
-      <h3 style={S.h3}>Snapshot Kya Hai</h3>
-      <p style={S.p}>Snapshot ek point-in-time copy hai jo <strong>same storage system pe</strong> reside karta hai. Implementation filesystem/vendor specific hai.</p>
+      <h3 style={S.h3}>What Is a Snapshot</h3>
+      <p style={S.p}>A snapshot is a point-in-time copy that resides <strong>on the same storage system</strong>. The implementation is filesystem/vendor specific.</p>
 
-      <h3 style={S.h3}>Kyun Snapshot Alone Backup Replace Nahi Karta</h3>
+      <h3 style={S.h3}>Why a Snapshot Alone Does Not Replace Backup</h3>
       <CodeBlock lang="text">
-{`Scenario: Production storage array fail ho gayi.
+{`Scenario: The production storage array has failed.
   → All data on array: LOST
   → Snapshots on same array: ALSO LOST
 
-Scenario: Ransomware ne production data encrypt kiya.
+Scenario: Ransomware encrypted the production data.
   → Production files: encrypted
   → Snapshots on same array: at risk depending on attacker's access level
      (read-only snapshot contents harder to modify for client-side ransomware,
       but if attacker gains administrative or API-level access to storage
       platform, snapshot protection depends on immutability implementation)
 
-Scenario: Admin ne accidentally storage pool delete kiya.
+Scenario: Admin accidentally deleted the storage pool.
   → Data: GONE
   → Snapshots on same pool: ALSO GONE`}
       </CodeBlock>
       <Callout type="important" title="Immutable/Locked Snapshots — Strength Varies">
-        Immutable ya locked snapshots improve protection significantly. Client-side ransomware normally read-only snapshot contents directly modify nahi kar sakta. Agar immutability properly configured ho (compliance mode object lock, WORM) toh deletion bhi blocked hoti hai. Lekin immutability effectiveness depends on: specific implementation mode (governance vs compliance), storage platform's access controls, aur attacker ke access level par. "Immutable" snapshots ki strength implementation-specific hai — blanket claim nahi kiya ja sakta. Independent backup still mandatory.
+        Immutable or locked snapshots improve protection significantly. Client-side ransomware normally cannot directly modify read-only snapshot contents. If immutability is properly configured (compliance mode object lock, WORM), deletion is also blocked. But immutability effectiveness depends on: the specific implementation mode (governance vs compliance), the storage platform's access controls, and the attacker's level of access. The strength of "immutable" snapshots is implementation-specific — no blanket claim can be made. Independent backup is still mandatory.
       </Callout>
 
       {/* ══ SECTION 3 — BACKUP VS REPLICATION ═══════════════════════════ */}
       <h2 id="backup-vs-replication" style={S.h2}>Backup vs Replication</h2>
-      <p style={S.p}>Replication production data ko ek aur location pe continuously ya periodically synchronize karta hai — primarily availability ke liye.</p>
+      <p style={S.p}>Replication continuously or periodically synchronizes production data to another location — primarily for availability.</p>
       <CodeBlock lang="text">
 {`Ransomware encrypts production files:
   → Replication replicates encrypted files to secondary → SECONDARY ALSO ENCRYPTED
@@ -106,11 +95,11 @@ Data corruption on primary:
   → Replication propagates corruption → SECONDARY ALSO CORRUPTED
 
 Conclusion: Replication provides availability/failover.
-  Backup provides recoverability — clean historical copy se restore.
-  Dono complementary hain, alag-alag roles ke saath.
+  Backup provides recoverability — restore from a clean historical copy.
+  The two are complementary, with separate roles.
   Replication ≠ Backup.`}
       </CodeBlock>
-      <p style={S.p}>Replication can be near-real-time ya periodic — both share this fundamental limitation of mirroring logical errors.</p>
+      <p style={S.p}>Replication can be near-real-time or periodic — both share this fundamental limitation of mirroring logical errors.</p>
 
       {/* ══ SECTION 4 — BACKUP VS ARCHIVE ════════════════════════════════ */}
       <h2 id="backup-vs-archive" style={S.h2}>Backup vs Archive</h2>
@@ -130,16 +119,16 @@ Conclusion: Replication provides availability/failover.
 
       {/* ══ SECTION 5 — BACKUP VS DR ══════════════════════════════════════ */}
       <h2 id="backup-vs-dr" style={S.h2}>Backup vs Disaster Recovery</h2>
-      <p style={S.p}><strong>Backup</strong> specific data/systems recover karta hai — specific files, volumes, databases. Focus: data integrity and recoverability.</p>
-      <p style={S.p}><strong>Disaster Recovery (DR)</strong> business/service capability restore karta hai after major disruption — infrastructure, networking, applications, processes, people. Focus: service continuity at defined RTO.</p>
+      <p style={S.p}><strong>Backup</strong> recovers specific data/systems — specific files, volumes, databases. Focus: data integrity and recoverability.</p>
+      <p style={S.p}><strong>Disaster Recovery (DR)</strong> restores business/service capability after major disruption — infrastructure, networking, applications, processes, people. Focus: service continuity at defined RTO.</p>
       <CodeBlock lang="text">
 {`Backup example:
-  "Database table galti se drop ho gayi — kal ki backup se restore karo."
+  "A database table was dropped by mistake — restore it from yesterday's backup."
   Recovery: Hours to restore specific objects.
 
 DR example:
-  "Primary data center flood se destroyed — secondary DC pe
-   entire production environment resume karo within 4-hour RTO."
+  "Primary data center destroyed by flood — resume the entire
+   production environment at the secondary DC within 4-hour RTO."
   Recovery: Entire infrastructure stack, all services, all data.
 
 Backup alone is NOT DR. DR strategy may USE backups,
@@ -149,10 +138,10 @@ network changes, application startup sequences, business process continuity.`}
       <p style={S.p}>Traditional backup restore can take hours to days for large environments depending on data volume, network bandwidth, and storage performance. Modern platforms with instant recovery can make workloads available faster — but permanent production operation typically still requires migration to production storage. Next article — <TopicLink slug="disaster-recovery" variant="inline" /> — covers DR in depth.</p>
 
       {/* ══ SECTION 6 — RPO / RTO ════════════════════════════════════════ */}
-      <h2 id="rpo-rto" style={S.h2}>RPO aur RTO — Deep Explanation</h2>
+      <h2 id="rpo-rto" style={S.h2}>RPO and RTO — Deep Explanation</h2>
 
       <h3 style={S.h3}>RPO — Recovery Point Objective</h3>
-      <p style={S.p}><strong>RPO = Kitna data loss acceptable hai?</strong></p>
+      <p style={S.p}><strong>RPO = How much data loss is acceptable?</strong></p>
       <CodeBlock lang="text">
 {`Last backup: Monday 11 PM
 Failure occurred: Tuesday 3 PM
@@ -172,7 +161,7 @@ If organizational RPO = 4 hours: NOT acceptable (16 > 4)`}
       </Callout>
 
       <h3 style={S.h3}>RTO — Recovery Time Objective</h3>
-      <p style={S.p}><strong>RTO = Kitna downtime acceptable hai?</strong></p>
+      <p style={S.p}><strong>RTO = How much downtime is acceptable?</strong></p>
       <p style={S.p}><strong>Important: RTO is not just "restore speed."</strong> RTO includes: failure detection time + decision/approval time + restore time + application startup time + validation time + network/DNS cutover time.</p>
       <CodeBlock lang="text">
 {`E-commerce website fails at 2 PM.
@@ -196,7 +185,7 @@ RTO determines infrastructure investment:
       <p style={S.p}>Management/control plane — schedules jobs, defines policies, maintains catalog/database, coordinates restores, manages agents/proxies. Architecture varies significantly by vendor.</p>
 
       <h3 style={S.h3}>Backup Proxy / Media Server</h3>
-      <p style={S.p}>Data movement handles karta hai — source read, process (compress/dedupe), repository write. Multiple proxies = parallel jobs = better throughput.</p>
+      <p style={S.p}>Handles data movement — source read, process (compress/dedupe), repository write. Multiple proxies = parallel jobs = better throughput.</p>
 
       <h3 style={S.h3}>Backup Repository</h3>
       <ul style={S.ul}>
@@ -209,7 +198,7 @@ RTO determines infrastructure investment:
       </ul>
 
       <h3 style={S.h3}>Backup Catalog / Metadata Database</h3>
-      <p style={S.p}>Backup software apna catalog maintain karta hai — har restore point ki information, job history, retention, media/location mapping, file index. <strong>Catalog ka backup karo alag se</strong> — catalog loss restore complexity significantly increase karta hai. Some platforms catalog-independent recovery support karte hain, kuch nahi — vendor-specific behavior hai.</p>
+      <p style={S.p}>The backup software maintains its own catalog — information on every restore point, job history, retention, media/location mapping, file index. <strong>Back up the catalog separately</strong> — catalog loss significantly increases restore complexity. Some platforms support catalog-independent recovery, some do not — it is vendor-specific behavior.</p>
 
       {/* ══ SECTION 8 — BACKUP TYPES ══════════════════════════════════════ */}
       <h2 id="backup-types" style={S.h2}>Backup Types — Full, Incremental, Differential</h2>
@@ -218,16 +207,16 @@ RTO determines infrastructure investment:
       </Figure>
 
       <h3 style={S.h3}>Full Backup</h3>
-      <p style={S.p}>Source data ka complete copy — har baar. Maximum storage consumption. Longest backup time. <strong>Fastest restore</strong> — sirf ek set se complete restore, no chain dependency.</p>
+      <p style={S.p}>A complete copy of the source data — every time. Maximum storage consumption. Longest backup time. <strong>Fastest restore</strong> — complete restore from just one set, no chain dependency.</p>
 
       <h3 style={S.h3}>Incremental Backup</h3>
-      <p style={S.p}>Sirf wo data jo last backup (full ya incremental) se change hua hai. Minimum storage. Minimum backup time. <strong>Slowest restore</strong> — full + har intermediate incremental chain mein in sequence.</p>
+      <p style={S.p}>Only the data that changed since the last backup (full or incremental). Minimum storage. Minimum backup time. <strong>Slowest restore</strong> — full + every intermediate incremental in the chain, in sequence.</p>
       <Callout type="danger" title="Backup Chain Dependency — Critical Risk">
-        Incremental chain mein beech ka ek backup corrupt ya missing ho → chain break → sab subsequent restores FAIL. Chain integrity regularly verify karo. Periodic full backups fresh baseline provide karte hain.
+        If one backup in the middle of an incremental chain is corrupt or missing → chain breaks → all subsequent restores FAIL. Verify chain integrity regularly. Periodic full backups provide a fresh baseline.
       </Callout>
 
       <h3 style={S.h3}>Differential Backup</h3>
-      <p style={S.p}>Sirf wo data jo last <strong>full</strong> se change hua hai. Medium storage (grows as week progresses). <strong>Restore: only 2 sets</strong> — last Full + latest Differential.</p>
+      <p style={S.p}>Only the data that changed since the last <strong>full</strong>. Medium storage (grows as week progresses). <strong>Restore: only 2 sets</strong> — last Full + latest Differential.</p>
 
       <ComparisonTable
         title="Backup Types — Quick Comparison"
@@ -244,34 +233,34 @@ RTO determines infrastructure investment:
       />
 
       <h3 style={S.h3}>Incremental Forever</h3>
-      <p style={S.p}>Initial full backup ek baar. Phir sirf incrementals — backup software internally chain assemble karta hai ya synthetic fulls create karta hai for restore. Implementations vary significantly:</p>
+      <p style={S.p}>An initial full backup once. Then only incrementals — the backup software assembles the chain internally or creates synthetic fulls for restore. Implementations vary significantly:</p>
       <ul style={S.ul}>
         <li>Some platforms periodically create synthetic fulls to limit chain depth — even without explicit schedule</li>
         <li>Chain depth limits, if any, are product-specific</li>
         <li>Restore time impact of very long chains varies by product implementation</li>
-        <li>Product documentation check karo for chain management behavior</li>
+        <li>Check product documentation for chain management behavior</li>
       </ul>
 
       <h3 style={S.h3}>Synthetic Full vs Active Full</h3>
-      <p style={S.p}><strong>Synthetic Full:</strong> Backup software existing full + incrementals ko repository pe combine karke new full banata hai — bina source se data read kiye. Zero production I/O impact. Quality depends on integrity of existing chain.</p>
-      <p style={S.p}><strong>Active Full:</strong> Source system se fresh full data read karta hai. Production I/O impact. Provides a fresh verified baseline independent of existing chain. Active full does not automatically guarantee better recoverability in all scenarios — what matters is whether the backup data is complete, consistent, and accessible with valid encryption keys.</p>
+      <p style={S.p}><strong>Synthetic Full:</strong> The backup software combines the existing full + incrementals on the repository to build a new full — without reading data from the source. Zero production I/O impact. Quality depends on integrity of existing chain.</p>
+      <p style={S.p}><strong>Active Full:</strong> Reads fresh full data from the source system. Production I/O impact. Provides a fresh verified baseline independent of existing chain. Active full does not automatically guarantee better recoverability in all scenarios — what matters is whether the backup data is complete, consistent, and accessible with valid encryption keys.</p>
 
       {/* ══ SECTION 9 — BACKUP WINDOW ════════════════════════════════════ */}
       <h2 id="backup-window" style={S.h2}>Backup Window</h2>
       <p style={S.p}>Backup window = scheduled time period when backup jobs run. Production impact includes: source I/O load, network bandwidth, application performance (during quiesce/snapshot), storage space for snapshot delta files.</p>
       <p style={S.p}>Modern backup platforms support always-on/continuous backup mechanisms where traditional window concept is less rigid — but source impact still exists and must be managed.</p>
       <ul style={S.ul}>
-        <li>Off-peak hours schedule karo where possible</li>
-        <li>Concurrent jobs limit karo per infrastructure capacity</li>
-        <li>Long-running jobs monitor karo — window overrun = alert</li>
+        <li>Schedule in off-peak hours where possible</li>
+        <li>Limit concurrent jobs per infrastructure capacity</li>
+        <li>Monitor long-running jobs — window overrun = alert</li>
         <li>Incrementals typically fit tighter windows than fulls</li>
       </ul>
 
       {/* ══ SECTION 10 — RETENTION ════════════════════════════════════════ */}
       <h2 id="retention" style={S.h2}>Retention</h2>
-      <p style={S.p}>Retention policy = kitne time tak backup copies rakhi jaayein. Depends on: business requirements, compliance/regulatory obligations, storage capacity, application criticality. <strong>No universal retention schedule.</strong></p>
+      <p style={S.p}>Retention policy = how long backup copies are kept. Depends on: business requirements, compliance/regulatory obligations, storage capacity, application criticality. <strong>No universal retention schedule.</strong></p>
       <Callout type="warning" title="Do NOT Manually Delete Backup Files">
-        Backup software ke cleanup/retention mechanism use karo. Manually files storage se delete karne se: catalog inconsistency, chain dependency breakage, orphaned restore points. Always let backup software manage retention.
+        Use the backup software's cleanup/retention mechanism. Manually deleting files from storage causes: catalog inconsistency, chain dependency breakage, orphaned restore points. Always let backup software manage retention.
       </Callout>
 
       <h3 style={S.h3}>GFS — Grandfather-Father-Son Retention</h3>
@@ -296,7 +285,7 @@ How GFS is implemented in your backup software:
       </CodeBlock>
 
       {/* ══ SECTION 11 — 3-2-1 ════════════════════════════════════════════ */}
-      <h2 id="strategy-3-2-1" style={S.h2}>3-2-1 aur 3-2-1-1-0 Backup Strategy</h2>
+      <h2 id="strategy-3-2-1" style={S.h2}>3-2-1 and 3-2-1-1-0 Backup Strategy</h2>
       <Figure caption="Fig 4 — 3-2-1 and 3-2-1-1-0 strategy. Strategies/guidelines — not formally codified universal standards. +0 means verified via testing, not assumed from job status.">
         <Backup321Strategy />
       </Figure>
@@ -312,7 +301,7 @@ How GFS is implemented in your backup software:
         <li><strong>+0 verified errors:</strong> Zero errors after verification/testing — backup integrity verified, not just "job success" status</li>
       </ul>
       <Callout type="important" title="Strategy — Not Formal Standard">
-        3-2-1 aur 3-2-1-1-0 widely referenced strategies/guidelines hain — not formally codified ISO/NIST standards. Core principle: multiple independent copies, media diversity, offsite/isolated copy. Implementations vary. "+0" means verify via restore test — job "Success" status alone is not sufficient.
+        3-2-1 and 3-2-1-1-0 are widely referenced strategies/guidelines — not formally codified ISO/NIST standards. Core principle: multiple independent copies, media diversity, offsite/isolated copy. Implementations vary. "+0" means verify via restore test — job "Success" status alone is not sufficient.
       </Callout>
 
       {/* ══ SECTION 12 — AIR GAP ══════════════════════════════════════════ */}
@@ -328,7 +317,7 @@ How GFS is implemented in your backup software:
 
       {/* ══ SECTION 13 — IMMUTABILITY ═════════════════════════════════════ */}
       <h2 id="immutable-backup" style={S.h2}>Immutable Backup</h2>
-      <p style={S.p}>Immutability ek enforcement mechanism hai designed to prevent modification/deletion during the configured retention period according to the platform and configured mode.</p>
+      <p style={S.p}>Immutability is an enforcement mechanism designed to prevent modification/deletion during the configured retention period according to the platform and configured mode.</p>
 
       <h3 style={S.h3}>Implementation Types</h3>
       <ComparisonTable
@@ -344,7 +333,7 @@ How GFS is implemented in your backup software:
         caption="Immutability effectiveness depends on platform and configured enforcement mode — not all immutability implementations provide identical protection. Always verify with vendor documentation."
       />
       <Callout type="warning" title="Immutability Is NOT Invincible">
-        Immutability provides meaningful and important protection. Agar storage platform itself firmware/API level pe compromised ho — immutability potentially bypassed. Governance mode stronger access than regular admin required hai but override possible. Compliance mode strongest — designed so even root cannot delete before retention. Understand your specific implementation and its limits.
+        Immutability provides meaningful and important protection. If the storage platform itself is compromised at the firmware/API level — immutability can potentially be bypassed. Governance mode requires stronger access than a regular admin, but override is possible. Compliance mode is strongest — designed so even root cannot delete before retention. Understand your specific implementation and its limits.
       </Callout>
 
       {/* ══ SECTION 14 — RANSOMWARE ═══════════════════════════════════════ */}
@@ -365,26 +354,26 @@ How GFS is implemented in your backup software:
       </ul>
 
       {/* ══ SECTION 15 — ENCRYPTION ═══════════════════════════════════════ */}
-      <h2 id="backup-encryption" style={S.h2}>Backup Encryption aur Key Management</h2>
+      <h2 id="backup-encryption" style={S.h2}>Backup Encryption and Key Management</h2>
       <h3 style={S.h3}>Encryption Types</h3>
       <ul style={S.ul}>
-        <li><strong>In transit:</strong> Proxy se repository tak — TLS/SSL. Especially important for cloud/offsite backup.</li>
-        <li><strong>At rest:</strong> Repository pe stored data — software level (backup platform) ya hardware level (encrypted drives).</li>
+        <li><strong>In transit:</strong> From proxy to repository — TLS/SSL. Especially important for cloud/offsite backup.</li>
+        <li><strong>At rest:</strong> Data stored on the repository — software level (backup platform) or hardware level (encrypted drives).</li>
       </ul>
       <Callout type="danger" title="Key Management — CRITICAL — No Backdoor Exists">
-        Backup encryption keys ya passwords lose karne se backup permanently unrecoverable ho sakta hai. Enterprise mein mandatory: secure key storage (password manager, HSM), documentation (accessible to authorized recovery personnel), key backup separate from backup data, DR scenario mein key accessibility ensure karo. This has caused real data loss in production environments.
+        Losing backup encryption keys or passwords can make a backup permanently unrecoverable. Mandatory in enterprise: secure key storage (password manager, HSM), documentation (accessible to authorized recovery personnel), key backup separate from backup data, and ensuring key accessibility in a DR scenario. This has caused real data loss in production environments.
       </Callout>
       <p style={S.p}>Backup encryption is strongly recommended for offsite and cloud copies, and mandatory where compliance or contractual requirements specify it. For on-premises backups in physically secured environments, the encryption vs. key-management-risk tradeoff should be evaluated per organizational policy. The critical accompanying requirement is robust key management — if encryption is enabled, loss of the encryption key renders the backup permanently unrecoverable.</p>
 
       {/* ══ SECTION 16 — COMPRESSION + DEDUP ════════════════════════════ */}
-      <h2 id="compression-dedup" style={S.h2}>Backup Compression aur Deduplication</h2>
+      <h2 id="compression-dedup" style={S.h2}>Backup Compression and Deduplication</h2>
       <h3 style={S.h3}>Compression</h3>
-      <p style={S.p}>Data compress karke storage space aur network bandwidth reduce karo. CPU overhead badhta hai. Better for text/logs/databases. Already-compressed data (JPEG, encrypted data, zip archives) minimal additional savings.</p>
+      <p style={S.p}>Compress data to reduce storage space and network bandwidth. CPU overhead increases. Better for text/logs/databases. Already-compressed data (JPEG, encrypted data, zip archives) gives minimal additional savings.</p>
 
       <h3 style={S.h3}>Deduplication</h3>
-      <p style={S.p}>Duplicate data blocks identify karo — sirf ek copy rakho, references maintain karo. Source-side (before network) ya target-side (at repository).</p>
+      <p style={S.p}>Identify duplicate data blocks — keep only one copy and maintain references. Source-side (before network) or target-side (at repository).</p>
       <Callout type="warning" title="Deduplication Ratios — Workload Dependent">
-        Deduplication ratios are highly workload-dependent. Similar VM templates: very high ratios. Unique database data: lower ratios. Already-encrypted data: typically does NOT deduplicate well (each encrypted block appears unique). Compression aur deduplication ratios are NOT simply multiplicative — actual savings depend on data type, backup software implementation order (deduplicate-then-compress vs compress-then-deduplicate), and whether compressed or already-deduplicated data enters each stage. Real-world storage consumption must be measured in your environment. Never rely on theoretical combined ratios for production sizing.
+        Deduplication ratios are highly workload-dependent. Similar VM templates: very high ratios. Unique database data: lower ratios. Already-encrypted data: typically does NOT deduplicate well (each encrypted block appears unique). Compression and deduplication ratios are NOT simply multiplicative — actual savings depend on data type, backup software implementation order (deduplicate-then-compress vs compress-then-deduplicate), and whether compressed or already-deduplicated data enters each stage. Real-world storage consumption must be measured in your environment. Never rely on theoretical combined ratios for production sizing.
       </Callout>
 
       {/* ══ SECTION 17 — APP-CONSISTENT ══════════════════════════════════ */}
@@ -394,12 +383,12 @@ How GFS is implemented in your backup software:
       </Figure>
 
       <h3 style={S.h3}>Crash-Consistent Backup</h3>
-      <p style={S.p}>Application quiesce nahi hua — like pulling power cord on running system. In-flight transactions, unflushed write cache, incomplete writes. May require crash recovery on restore. Some modern applications handle this well — but not guaranteed for all workloads especially databases.</p>
+      <p style={S.p}>The application was not quiesced — like pulling the power cord on a running system. In-flight transactions, unflushed write cache, incomplete writes. May require crash recovery on restore. Some modern applications handle this well — but not guaranteed for all workloads especially databases.</p>
 
       <h3 style={S.h3}>Application-Consistent Backup</h3>
       <p style={S.p}>Application properly quiesced before snapshot — write buffers flushed, in-flight transactions completed, application in known consistent state. Achieved via: VSS (Windows), VMware Tools quiesce, database-specific mechanisms.</p>
       <Callout type="important" title="Application-Consistent ≠ Guaranteed Recoverability">
-        Application-consistent backup preserves known-consistent application state at backup time. Ye guarantee nahi karta: pre-existing data corruption absent (corrupt data backed up consistently = corrupt restore), backup media integrity, encryption key availability, or application startup success. Restore testing still essential.
+        Application-consistent backup preserves known-consistent application state at backup time. It does not guarantee: absence of pre-existing data corruption (corrupt data backed up consistently = corrupt restore), backup media integrity, encryption key availability, or application startup success. Restore testing still essential.
       </Callout>
 
       {/* ══ SECTION 18 — VSS ══════════════════════════════════════════════ */}
@@ -461,14 +450,14 @@ vssadmin list writers
       {/* ══ SECTION 20 — VM BACKUP ═══════════════════════════════════════ */}
       <h2 id="vm-backup" style={S.h2}>VM Backup</h2>
       <h3 style={S.h3}>Image-Level Backup</h3>
-      <p style={S.p}>Entire VM (all virtual disks) ek single image ke roop mein back up hoti hai. Complete VM restore, disk restore, file-level restore from same backup possible.</p>
+      <p style={S.p}>The entire VM (all virtual disks) is backed up as a single image. Complete VM restore, disk restore and file-level restore are possible from the same backup.</p>
 
       <h3 style={S.h3}>Hypervisor APIs</h3>
-      <p style={S.p}>Modern backup platforms hypervisor APIs use karte hain — storage snapshot ke through data read karte hain bina VM performance significantly impact kiye. VMware: VADP. Hyper-V: VSS-based integration.</p>
+      <p style={S.p}>Modern backup platforms use hypervisor APIs — they read data through a storage snapshot without significantly impacting VM performance. VMware: VADP. Hyper-V: VSS-based integration.</p>
 
       <h3 style={S.h3}>Changed Block Tracking (CBT) — VMware</h3>
       <p style={S.p}><strong>CBT = vSphere feature that tracks which disk blocks have changed since last backup. CBT is a tracking mechanism, not backup itself.</strong></p>
-      <p style={S.p}>Backup software CBT information use karta hai for efficient incremental backup — sirf changed blocks reads. CBT corruption/staleness cause kar sakta hai ki incremental backup miss changes. <strong>CBT reset is a remediation action</strong> — performed when CBT is detected as corrupted or producing incorrect results (e.g., unexpectedly large incrementals covering all blocks). It is not routine scheduled maintenance. CBT reset forces a subsequent full backup. If CBT issues suspected: consult backup software and VMware documentation for appropriate diagnostic and remediation procedure for your specific versions.</p>
+      <p style={S.p}>The backup software uses CBT information for efficient incremental backup — reading only changed blocks. CBT corruption/staleness can cause an incremental backup to miss changes. <strong>CBT reset is a remediation action</strong> — performed when CBT is detected as corrupted or producing incorrect results (e.g., unexpectedly large incrementals covering all blocks). It is not routine scheduled maintenance. CBT reset forces a subsequent full backup. If CBT issues suspected: consult backup software and VMware documentation for appropriate diagnostic and remediation procedure for your specific versions.</p>
 
       {/* ══ SECTION 21 — VMWARE BACKUP ════════════════════════════════════ */}
       <h2 id="vmware-backup" style={S.h2}>VMware Backup</h2>
@@ -476,7 +465,7 @@ vssadmin list writers
         <BackupVmwareArch />
       </Figure>
       <h3 style={S.h3}>VADP — vSphere APIs for Data Protection</h3>
-      <p style={S.p}>VMware's framework for third-party backup vendors. Provides VM discovery, snapshot-based backup, CBT support, VM restore. Backup software vCenter/ESXi se communicate karta hai via VADP.</p>
+      <p style={S.p}>VMware's framework for third-party backup vendors. Provides VM discovery, snapshot-based backup, CBT support, VM restore. The backup software communicates with vCenter/ESXi via VADP.</p>
 
       <h3 style={S.h3}>VMware Snapshot During Backup</h3>
       <CodeBlock lang="text">
@@ -498,14 +487,14 @@ Delta files merged back into base disks`}
       <p style={S.p}>Sufficient datastore headroom required for snapshot delta file growth during backup. Required free space depends on VM&apos;s change rate during backup window, snapshot duration, and datastore design — no universal percentage applies. Check VMware documentation and backup vendor recommendations for your specific setup.</p>
 
       <h3 style={S.h3}>Application-Aware Processing in VMware</h3>
-      <p style={S.p}>Backup software VMware Tools ke through guest OS mein communicate karta hai — VSS writers trigger (Windows VMs), pre/post scripts (Linux VMs). Without application-aware processing: VMware backup crash-consistent hoga.</p>
+      <p style={S.p}>The backup software communicates into the guest OS through VMware Tools — triggering VSS writers (Windows VMs) and pre/post scripts (Linux VMs). Without application-aware processing: the VMware backup will be crash-consistent.</p>
 
       <h3 style={S.h3}>Automated Recovery Verification</h3>
-      <p style={S.p}>Some backup platforms support automated testing — backup se VM temporarily start karo in isolated environment, application availability test karo, then shutdown. Veeam Backup &amp; Replication&apos;s &quot;SureBackup&quot; is one well-known vendor-specific implementation — other vendors have equivalent features under different names. Availability depends on backup platform and edition — not universally available.</p>
+      <p style={S.p}>Some backup platforms support automated testing — start the VM temporarily from backup in an isolated environment, test application availability, then shut down. Veeam Backup &amp; Replication&apos;s &quot;SureBackup&quot; is one well-known vendor-specific implementation — other vendors have equivalent features under different names. Availability depends on backup platform and edition — not universally available.</p>
 
       {/* ══ SECTION 22 — HYPER-V ══════════════════════════════════════════ */}
       <h2 id="hyperv-backup" style={S.h2}>Hyper-V Backup</h2>
-      <p style={S.p}>VSS integration: Hyper-V host-level backup VSS use karta hai — coordination between Hyper-V VSS Writer aur guest integration services. Guest integration services must be installed in VMs for application consistency within VMs.</p>
+      <p style={S.p}>VSS integration: Hyper-V host-level backup uses VSS — coordination between the Hyper-V VSS Writer and guest integration services. Guest integration services must be installed in VMs for application consistency within VMs.</p>
       <p style={S.p}><strong>Hyper-V checkpoints (formerly called snapshots)</strong> are operational tools for temporary state capture — not backups. They share the same fundamental limitation as VMware snapshots: they reside on the same storage as the VM and are not independent backups. However, Hyper-V checkpoints differ significantly from VMware in implementation — Hyper-V uses AVHD/AVHDX differencing disks, with its own checkpoint chain behavior and merge process. Do not assume VMware-specific snapshot guidance applies directly to Hyper-V checkpoints.</p>
 
       {/* ══ SECTION 23 — PHYSICAL SERVER ════════════════════════════════ */}
@@ -515,7 +504,7 @@ Delta files merged back into base disks`}
       <p style={S.p}><strong>Volume/Image-level:</strong> Entire disk volume — boot sector, partition table, all data. Faster full restore. Granular file restore also possible from image.</p>
       <h3 style={S.h3}>Bare-Metal Recovery (BMR)</h3>
       <p style={S.p}>Complete system restore — OS, boot configuration, applications, system state, data — on same or different hardware. Requires complete volume/image backup (OS volume included) + boot media (WinPE/Linux boot environment from backup software) + network/media access to repository.</p>
-      <p style={S.p}><strong>Why BMR differs from normal file restore:</strong> Normal restore: OS running hai, specific files restore karo. BMR: OS nahi hai — boot from backup software boot media, restore entire disk image, system becomes bootable.</p>
+      <p style={S.p}><strong>Why BMR differs from normal file restore:</strong> Normal restore: the OS is running, restore specific files. BMR: there is no OS — boot from backup software boot media, restore entire disk image, system becomes bootable.</p>
 
       {/* ══ SECTION 24 — NAS BACKUP ══════════════════════════════════════ */}
       <h2 id="nas-backup" style={S.h2}>NAS Backup</h2>
@@ -530,7 +519,7 @@ Delta files merged back into base disks`}
 
       {/* ══ SECTION 25 — NDMP ════════════════════════════════════════════ */}
       <h2 id="ndmp" style={S.h2}>NDMP — Network Data Management Protocol</h2>
-      <p style={S.p}>NDMP ek long-established protocol hai jo NAS devices ko backup devices se directly communicate karne allow karta hai — without routing all backup data through a general-purpose server.</p>
+      <p style={S.p}>NDMP is a long-established protocol that allows NAS devices to communicate directly with backup devices — without routing all backup data through a general-purpose server.</p>
       <p style={S.p}><strong>Control path vs data path:</strong> Backup server typically handles the control path (initiating, monitoring, cataloging) while actual data may flow directly between NAS and backup media. The specific topology — how many hops the data takes — is NAS platform, backup software, and environment dependent.</p>
       <Callout type="important" title="NDMP Topology — Not Universal">
         NDMP topology modes vary by NAS platform, backup software, and configuration. Do not present one topology as universally applicable. Modern architectures increasingly use vendor-specific APIs and object storage targets alongside or instead of NDMP. Verify NDMP support for your specific NAS platform and backup software version.
@@ -539,8 +528,8 @@ Delta files merged back into base disks`}
       {/* ══ SECTION 26 — SAN BACKUP ══════════════════════════════════════ */}
       <h2 id="san-backup" style={S.h2}>SAN Backup</h2>
       <p style={S.p}><strong>SAN backup = backup of workloads/data residing on SAN storage</strong> — not &quot;backing up the SAN itself.&quot;</p>
-      <p style={S.p}><strong>Standard approach:</strong> Backup agent/hypervisor API workload level pe backup karta hai — SAN infrastructure transparent hai to backup software.</p>
-      <p style={S.p}><strong>Storage array snapshot integration:</strong> Backup software storage array APIs se integrate karke: application quiesce → array snapshot → off-host backup from snapshot → snapshot delete. Production server/VM pe minimal backup load. <strong>Storage snapshot ≠ independent backup</strong> — array snapshot same array pe hai. Independent backup copy alag storage mein zaroori hai.</p>
+      <p style={S.p}><strong>Standard approach:</strong> The backup agent/hypervisor API performs the backup at the workload level — the SAN infrastructure is transparent to the backup software.</p>
+      <p style={S.p}><strong>Storage array snapshot integration:</strong> Backup software integrates with storage array APIs: application quiesce → array snapshot → off-host backup from snapshot → snapshot delete. Minimal backup load on the production server/VM. <strong>Storage snapshot ≠ independent backup</strong> — the array snapshot is on the same array. An independent backup copy on separate storage is required.</p>
       <p style={S.p}>Read more about <TopicLink slug="san" variant="inline" /> — dedicated SAN article.</p>
 
       {/* ══ SECTION 27 — TAPE BACKUP ══════════════════════════════════════ */}
@@ -580,7 +569,7 @@ Delta files merged back into base disks`}
       </ul>
 
       {/* ══ SECTION 28 — D2D/D2D2T/CLOUD ════════════════════════════════ */}
-      <h2 id="d2d-d2d2t" style={S.h2}>Disk-to-Disk, D2D2T aur Cloud</h2>
+      <h2 id="d2d-d2d2t" style={S.h2}>Disk-to-Disk, D2D2T and Cloud</h2>
       <h3 style={S.h3}>Disk-to-Disk (D2D)</h3>
       <p style={S.p}>Primary backup to disk repository — dedup appliance, NAS, object storage. Fast backup, fast restore, concurrent access, deduplication.</p>
 
@@ -610,7 +599,7 @@ Considerations:
       <p style={S.p}><strong>Backup of cloud workloads:</strong> Cloud provider redundancy (multi-AZ, regional replication) protects against infrastructure failure — does NOT protect against accidental deletion, ransomware, or application corruption. Cloud native redundancy ≠ backup.</p>
 
       {/* ══ SECTION 30 — BACKUP COPY ══════════════════════════════════════ */}
-      <h2 id="backup-copy" style={S.h2}>Backup Copy aur Secondary Copies</h2>
+      <h2 id="backup-copy" style={S.h2}>Backup Copy and Secondary Copies</h2>
       <CodeBlock lang="text">
 {`Production VM → Backup Job → Primary Repository (disk, fast)
                                      ↓
@@ -655,7 +644,7 @@ Must be specifically configured with appropriate controls.`}
       {/* ══ SECTION 34 — VERIFICATION ═════════════════════════════════════ */}
       <h2 id="backup-verification" style={S.h2}>Backup Verification</h2>
       <Callout type="danger" title="SUCCESS ≠ RECOVERABLE">
-        Backup job &quot;Success&quot; means data written to repository. Ye prove nahi karta: data consistent hai, complete hai, application-recoverable hai, ya encryption key accessible hai. Periodic restore testing mandatory hai.
+        Backup job &quot;Success&quot; means data written to repository. It does not prove that: the data is consistent, complete, application-recoverable, or that the encryption key is accessible. Periodic restore testing is mandatory.
       </Callout>
       <ul style={S.ul}>
         <li><strong>Checksum/hash verification:</strong> Data hash at write time. Verification: recalculate, compare. Mismatch = corruption.</li>
@@ -665,7 +654,7 @@ Must be specifically configured with appropriate controls.`}
       </ul>
 
       {/* ══ SECTION 35 — RESTORE ══════════════════════════════════════════ */}
-      <h2 id="restore-types" style={S.h2}>Restore Types aur Workflows</h2>
+      <h2 id="restore-types" style={S.h2}>Restore Types and Workflows</h2>
       <ul style={S.ul}>
         <li><strong>File-level restore:</strong> Individual files/folders — most common</li>
         <li><strong>Volume restore:</strong> Entire disk volume</li>
@@ -1001,55 +990,55 @@ Always verify compatibility matrix before any component upgrade.`}
       {/* ══ SECTION 55 — INTERVIEW ═════════════════════════════════════════ */}
       <h2 id="interview-questions" style={S.h2}>Interview / Job Knowledge</h2>
 
-      <h3 style={S.h3}>Q: Backup kya hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Production data ka recoverable copy — different failure domain, separate access controls, historical restore points. Core properties: survives source failure, recoverable to past state. Snapshot ya replication replace nahi karta.</p>
+      <h3 style={S.h3}>Q: What is backup?</h3>
+      <p style={S.p}><strong>Answer:</strong> A recoverable copy of production data — different failure domain, separate access controls, historical restore points. Core properties: survives source failure, recoverable to past state. Snapshots or replication do not replace it.</p>
 
       <h3 style={S.h3}>Q: Backup vs snapshot?</h3>
-      <p style={S.p}><strong>Answer:</strong> Snapshot same storage system pe — source fail → snapshot gone. Immutable snapshots improve protection but strength depends on implementation mode and access level. Independent backup = different failure domain. Snapshot = fast operational recovery; backup = independent protection.</p>
+      <p style={S.p}><strong>Answer:</strong> A snapshot is on the same storage system — source fails → snapshot gone. Immutable snapshots improve protection but strength depends on implementation mode and access level. Independent backup = different failure domain. Snapshot = fast operational recovery; backup = independent protection.</p>
 
       <h3 style={S.h3}>Q: Backup vs replication?</h3>
-      <p style={S.p}><strong>Answer:</strong> Replication continuously/periodically sync karta hai — availability. Corruption, deletion, ransomware replicate hote hain. Backup historical point-in-time copies rakhta hai. Complementary, different roles.</p>
+      <p style={S.p}><strong>Answer:</strong> Replication syncs continuously/periodically — availability. Corruption, deletion and ransomware get replicated. Backup keeps historical point-in-time copies. Complementary, different roles.</p>
 
       <h3 style={S.h3}>Q: Backup vs DR?</h3>
-      <p style={S.p}><strong>Answer:</strong> Backup specific data/systems recover karta hai. DR poori business/service capability restore karta hai — infrastructure, networking, apps, processes. Backup DR ka ek component ho sakta hai but DR much broader hai.</p>
+      <p style={S.p}><strong>Answer:</strong> Backup recovers specific data/systems. DR restores the entire business/service capability — infrastructure, networking, apps, processes. Backup can be one component of DR but DR is much broader.</p>
 
-      <h3 style={S.h3}>Q: RPO kya hai? RTO?</h3>
+      <h3 style={S.h3}>Q: What is RPO? RTO?</h3>
       <p style={S.p}><strong>Answer:</strong> RPO = acceptable data loss — business decision, not IT alone. RPO ≠ simply backup frequency — log-based backup can improve RPO between scheduled backups. RTO = acceptable downtime — includes detection + decision + restore + startup + validation, not just restore speed.</p>
 
       <h3 style={S.h3}>Q: Full vs incremental vs differential?</h3>
       <p style={S.p}><strong>Answer:</strong> Full: everything, max storage, fastest restore. Incremental: changes since last backup, min storage, slowest restore (full chain required). Differential: changes since last full, medium storage (grows), moderate restore (only 2 sets needed).</p>
 
-      <h3 style={S.h3}>Q: Synthetic full kya hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Repository pe existing full + incrementals combine karke new full — bina source data read kiye. Zero production I/O. Quality depends on chain integrity. Product-specific implementation.</p>
+      <h3 style={S.h3}>Q: What is a synthetic full?</h3>
+      <p style={S.p}><strong>Answer:</strong> A new full built by combining the existing full + incrementals on the repository — without reading source data. Zero production I/O. Quality depends on chain integrity. Product-specific implementation.</p>
 
-      <h3 style={S.h3}>Q: 3-2-1 kya hai? 3-2-1-1-0?</h3>
+      <h3 style={S.h3}>Q: What is 3-2-1? 3-2-1-1-0?</h3>
       <p style={S.p}><strong>Answer:</strong> 3 copies, 2 media types, 1 offsite. 3-2-1-1-0 adds: 1 offline/immutable/air-gapped, 0 errors after verification/testing. Strategies/guidelines — not formally codified standards.</p>
 
-      <h3 style={S.h3}>Q: Immutable backup kya hai?</h3>
+      <h3 style={S.h3}>Q: What is an immutable backup?</h3>
       <p style={S.p}><strong>Answer:</strong> Enforcement mechanism designed to prevent modification/deletion during configured retention period per platform and mode. Compliance mode = strongest. Governance mode = privileged override possible. Strength implementation-dependent.</p>
 
       <h3 style={S.h3}>Q: Crash-consistent vs application-consistent?</h3>
       <p style={S.p}><strong>Answer:</strong> Crash-consistent: no quiesce — may require crash recovery. Application-consistent: properly quiesced (VSS/VMware Tools/DB mechanism) — known-consistent state at backup time. Does not protect against pre-existing corruption. Restore testing still essential.</p>
 
-      <h3 style={S.h3}>Q: VSS kya hai?</h3>
+      <h3 style={S.h3}>Q: What is VSS?</h3>
       <p style={S.p}><strong>Answer:</strong> Windows Volume Shadow Copy Service — coordination framework. Requestor (backup app), Provider (creates snapshot), Writer (app ensures consistent state). NOT a backup product.</p>
 
-      <h3 style={S.h3}>Q: CBT kya hai?</h3>
+      <h3 style={S.h3}>Q: What is CBT?</h3>
       <p style={S.p}><strong>Answer:</strong> Changed Block Tracking — VMware vSphere tracking mechanism for which blocks changed. Used by backup software for efficient incremental. CBT = tracking mechanism, not backup itself. CBT reset = remediation when inconsistency detected, not routine maintenance.</p>
 
-      <h3 style={S.h3}>Q: Restore tests kyun important hain?</h3>
+      <h3 style={S.h3}>Q: Why are restore tests important?</h3>
       <p style={S.p}><strong>Answer:</strong> &quot;Success&quot; ≠ recoverable. Data may be corrupt, key inaccessible, catalog inconsistent, application may not start. Find out during routine test — not during crisis.</p>
 
-      <h3 style={S.h3}>Q: Backup jobs suddenly fail — kya check?</h3>
+      <h3 style={S.h3}>Q: Backup jobs suddenly fail — what to check?</h3>
       <p style={S.p}><strong>Answer:</strong> Layer-by-layer: source accessible? Agent running (supported/compatible version per matrix)? VSS/snapshot OK? Proxy OK? Repository accessible + capacity? Network OK? Read exact error — targeted fix. Do not blindly retry.</p>
 
-      <h3 style={S.h3}>Q: Repository full — kya hoga?</h3>
+      <h3 style={S.h3}>Q: Repository full — what happens?</h3>
       <p style={S.p}><strong>Answer:</strong> Jobs fail. Through backup software: old non-immutable data per policy. Extend repository. Review retention. Never manually delete files. Never bypass immutability controls.</p>
 
-      <h3 style={S.h3}>Q: Separate backup credentials kyun?</h3>
+      <h3 style={S.h3}>Q: Why separate backup credentials?</h3>
       <p style={S.p}><strong>Answer:</strong> Compromised production admin → same credentials = backup accessible to attacker. Separate accounts = compromised production ≠ compromised backup. Critical ransomware protection.</p>
 
-      <h3 style={S.h3}>Q: OEM escalation se pehle kya?</h3>
+      <h3 style={S.h3}>Q: What to do before OEM escalation?</h3>
       <p style={S.p}><strong>Answer:</strong> Backup software version/build, job name/workload, exact error + code, timestamps, full job log, backup server log, proxy log, source logs, hypervisor/app version, recent changes, support bundle.</p>
 
       {/* ══ SECTION 56 — KEY TAKEAWAYS ════════════════════════════════════ */}
@@ -1093,11 +1082,11 @@ Always verify compatibility matrix before any component upgrade.`}
       {/* ══ RELATED TOPICS ═════════════════════════════════════════════════ */}
       <h2 style={{ ...S.h2, marginTop:"3rem" }}>Related Topics</h2>
       <ul style={S.ul}>
-        <li><TopicLink slug="disaster-recovery" variant="inline" /> — Backup se aage: full business continuity planning.</li>
-        <li><TopicLink slug="san" variant="inline" /> — SAN storage: enterprise backup ka primary block storage target.</li>
+        <li><TopicLink slug="disaster-recovery" variant="inline" /> — Beyond backup: full business continuity planning.</li>
+        <li><TopicLink slug="san" variant="inline" /> — SAN storage: the primary block storage target for enterprise backup.</li>
         <li><TopicLink slug="nas" variant="inline" /> — NAS storage: large file systems, NAS backup challenges.</li>
-        <li><TopicLink slug="server-basics" variant="inline" /> — Server hardware: physical servers jo backup agents host karte hain.</li>
-        <li><TopicLink slug="virtualization" variant="inline" /> — VMware fundamentals: VM backup ka primary context.</li>
+        <li><TopicLink slug="server-basics" variant="inline" /> — Server hardware: the physical servers that host backup agents.</li>
+        <li><TopicLink slug="virtualization" variant="inline" /> — VMware fundamentals: the primary context for VM backup.</li>
       </ul>
     </>
   );

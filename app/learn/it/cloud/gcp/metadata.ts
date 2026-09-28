@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(gcpMetadata);
+const baseMetadata = buildPageMetadata(gcpMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/it/cloud/gcp",
+    languages: {
+      en: "https://behindthetech.in/learn/it/cloud/gcp",
+      hi: "https://behindthetech.in/hi/learn/it/cloud/gcp",
+      "x-default": "https://behindthetech.in/learn/it/cloud/gcp",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/it/cloud/gcp", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: gcpMetadata.title,

@@ -352,6 +352,216 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       alternates: { languages: { en: 'https://behindthetech.in/learn/non-it/bms-dcim/bms', hi: 'https://behindthetech.in/hi/learn/non-it/bms-dcim/bms' } },
     },
+    {
+      url: 'https://behindthetech.in/learn/it/cloud/aws',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/cloud/aws', hi: 'https://behindthetech.in/hi/learn/it/cloud/aws' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/cloud/aws',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/cloud/aws', hi: 'https://behindthetech.in/hi/learn/it/cloud/aws' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/cloud/azure',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/cloud/azure', hi: 'https://behindthetech.in/hi/learn/it/cloud/azure' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/cloud/azure',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/cloud/azure', hi: 'https://behindthetech.in/hi/learn/it/cloud/azure' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/cloud/gcp',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/cloud/gcp', hi: 'https://behindthetech.in/hi/learn/it/cloud/gcp' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/cloud/gcp',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/cloud/gcp', hi: 'https://behindthetech.in/hi/learn/it/cloud/gcp' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/cloud/hybrid-cloud',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/cloud/hybrid-cloud', hi: 'https://behindthetech.in/hi/learn/it/cloud/hybrid-cloud' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/cloud/hybrid-cloud',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/cloud/hybrid-cloud', hi: 'https://behindthetech.in/hi/learn/it/cloud/hybrid-cloud' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/cloud/multi-cloud',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/cloud/multi-cloud', hi: 'https://behindthetech.in/hi/learn/it/cloud/multi-cloud' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/cloud/multi-cloud',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/cloud/multi-cloud', hi: 'https://behindthetech.in/hi/learn/it/cloud/multi-cloud' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/networking/firewall',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/networking/firewall', hi: 'https://behindthetech.in/hi/learn/it/networking/firewall' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/networking/firewall',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/networking/firewall', hi: 'https://behindthetech.in/hi/learn/it/networking/firewall' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/networking/load-balancer',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/networking/load-balancer', hi: 'https://behindthetech.in/hi/learn/it/networking/load-balancer' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/networking/load-balancer',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/networking/load-balancer', hi: 'https://behindthetech.in/hi/learn/it/networking/load-balancer' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/networking/router',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/networking/router', hi: 'https://behindthetech.in/hi/learn/it/networking/router' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/networking/router',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/networking/router', hi: 'https://behindthetech.in/hi/learn/it/networking/router' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/networking/sd-wan',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/networking/sd-wan', hi: 'https://behindthetech.in/hi/learn/it/networking/sd-wan' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/networking/sd-wan',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/networking/sd-wan', hi: 'https://behindthetech.in/hi/learn/it/networking/sd-wan' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/networking/switch',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/networking/switch', hi: 'https://behindthetech.in/hi/learn/it/networking/switch' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/networking/switch',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/networking/switch', hi: 'https://behindthetech.in/hi/learn/it/networking/switch' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/servers/blade-server',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/servers/blade-server', hi: 'https://behindthetech.in/hi/learn/it/servers/blade-server' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/servers/blade-server',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/servers/blade-server', hi: 'https://behindthetech.in/hi/learn/it/servers/blade-server' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/servers/cpu',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/servers/cpu', hi: 'https://behindthetech.in/hi/learn/it/servers/cpu' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/servers/cpu',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/servers/cpu', hi: 'https://behindthetech.in/hi/learn/it/servers/cpu' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/servers/gpu',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/servers/gpu', hi: 'https://behindthetech.in/hi/learn/it/servers/gpu' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/servers/gpu',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/servers/gpu', hi: 'https://behindthetech.in/hi/learn/it/servers/gpu' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/servers/ram',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/servers/ram', hi: 'https://behindthetech.in/hi/learn/it/servers/ram' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/servers/ram',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/servers/ram', hi: 'https://behindthetech.in/hi/learn/it/servers/ram' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/servers/server-basics',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/servers/server-basics', hi: 'https://behindthetech.in/hi/learn/it/servers/server-basics' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/servers/server-basics',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/servers/server-basics', hi: 'https://behindthetech.in/hi/learn/it/servers/server-basics' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/servers/virtualization',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/servers/virtualization', hi: 'https://behindthetech.in/hi/learn/it/servers/virtualization' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/servers/virtualization',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/servers/virtualization', hi: 'https://behindthetech.in/hi/learn/it/servers/virtualization' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/storage/backup',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/storage/backup', hi: 'https://behindthetech.in/hi/learn/it/storage/backup' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/storage/backup',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/storage/backup', hi: 'https://behindthetech.in/hi/learn/it/storage/backup' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/storage/das',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/storage/das', hi: 'https://behindthetech.in/hi/learn/it/storage/das' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/storage/das',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/storage/das', hi: 'https://behindthetech.in/hi/learn/it/storage/das' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/storage/disaster-recovery',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/storage/disaster-recovery', hi: 'https://behindthetech.in/hi/learn/it/storage/disaster-recovery' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/storage/disaster-recovery',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/storage/disaster-recovery', hi: 'https://behindthetech.in/hi/learn/it/storage/disaster-recovery' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/storage/nas',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/storage/nas', hi: 'https://behindthetech.in/hi/learn/it/storage/nas' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/storage/nas',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/storage/nas', hi: 'https://behindthetech.in/hi/learn/it/storage/nas' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/it/storage/san',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/storage/san', hi: 'https://behindthetech.in/hi/learn/it/storage/san' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/it/storage/san',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/it/storage/san', hi: 'https://behindthetech.in/hi/learn/it/storage/san' } },
+    },
     { url: 'https://behindthetech.in/tools', lastModified: new Date() },
   { url: 'https://behindthetech.in/about/contact', lastModified: new Date() },
 

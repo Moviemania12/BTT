@@ -22,13 +22,13 @@ export default function Content() {
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
         <p style={S.p}>
-          Microsoft Azure duniya ka doosra sabse bada public cloud platform hai — especially enterprises ke liye, kyunki yeh Microsoft ke existing ecosystem (Windows Server, Active Directory, SQL Server, Office 365, Visual Studio) se deeply integrated hai. Data Center engineer ke liye Azure samajhna matlab hai: traditional DC concepts ko cloud mein map karna, Azure-specific architecture samajhna (VNet, NSG, ARM, Entra ID), aur hybrid DC-to-Azure connectivity design karna.
+          Microsoft Azure is the world's second-largest public cloud platform — especially for enterprises, because it is deeply integrated with Microsoft's existing ecosystem (Windows Server, Active Directory, SQL Server, Office 365, Visual Studio). For a Data Center engineer, understanding Azure means: mapping traditional DC concepts to the cloud, understanding Azure-specific architecture (VNet, NSG, ARM, Entra ID), and designing hybrid DC-to-Azure connectivity.
         </p>
         <p style={S.p}>
-          Yeh article AWS article ka Azure counterpart hai — same depth, same engineering accuracy, same Hinglish style. AWS already padh chuke ho toh differences clearly highlight kiye hain. Azure fresh start se padh rahe ho toh complete foundation milegi.
+          This article is the Azure counterpart of the AWS article — same depth, same engineering accuracy, same style. If you have already read the AWS article, the differences are clearly highlighted. If you are starting fresh with Azure, you will get a complete foundation.
         </p>
         <Callout type="important" title="Azure ≠ AWS in Terminology">
-          Azure aur AWS dono public clouds hain lekin terminology significant different hai. AWS VPC = Azure VNet. AWS Security Group = Azure NSG (lekin behavior different). AWS IAM = Azure RBAC + Entra ID. AWS CloudFormation = Azure ARM Templates. Concepts map karte hain lekin implementation details vary karte hain — dono ko assume mat karo identical.
+          Azure and AWS are both public clouds, but their terminology differs significantly. AWS VPC = Azure VNet. AWS Security Group = Azure NSG (but the behavior is different). AWS IAM = Azure RBAC + Entra ID. AWS CloudFormation = Azure ARM Templates. The concepts map to each other, but implementation details vary — do not assume the two are identical.
         </Callout>
       </section>
 
@@ -36,10 +36,10 @@ export default function Content() {
       <section id="what-is-azure">
         <h2 style={S.h2}>What Is Microsoft Azure?</h2>
         <p style={S.p}>
-          Microsoft Azure Microsoft ka public cloud computing platform hai — compute, storage, networking, databases, AI/ML, IoT, security aur hundreds of other services globally available hain. Azure Microsoft ke massive worldwide data center network pe run karta hai.
+          Microsoft Azure is Microsoft's public cloud computing platform — compute, storage, networking, databases, AI/ML, IoT, security and hundreds of other services are available globally. Azure runs on Microsoft's massive worldwide data center network.
         </p>
         <p style={S.p}>
-          Azure ka primary competitive advantage hai Microsoft enterprise ecosystem integration — companies jo Windows Server, SQL Server, Active Directory, Office 365/M365 use karti hain, unke liye Azure natural extension hai. Hybrid cloud aur on-prem-to-cloud journeys mein Azure particularly strong hai.
+          Azure's primary competitive advantage is integration with the Microsoft enterprise ecosystem — for companies that use Windows Server, SQL Server, Active Directory, Office 365/M365, Azure is a natural extension. Azure is particularly strong in hybrid cloud and on-prem-to-cloud journeys.
         </p>
         <ComparisonTable
           headers={["Traditional DC Component", "Azure Equivalent", "Key Note"]}
@@ -62,10 +62,10 @@ export default function Content() {
         <section id="azure-history">
           <h3 style={S.h3}>History and Why Azure Exists</h3>
           <p style={S.p}>
-            Azure 2010 mein "Windows Azure" ke roop mein launch hua — primarily Windows/.NET workloads ke liye. 2014 mein "Microsoft Azure" rename hua aur Linux/open-source support badhaya. Satya Nadella ke CEO banne ke baad Azure enterprise aur hybrid cloud pe focus kiya — yeh strategy bahut successful rahi.
+            Azure launched in 2010 as "Windows Azure" — primarily for Windows/.NET workloads. In 2014 it was renamed "Microsoft Azure" and Linux/open-source support was expanded. After Satya Nadella became CEO, Azure focused on enterprise and hybrid cloud — this strategy proved very successful.
           </p>
           <p style={S.p}>
-            Azure exist karta hai kyunki Microsoft enterprise software ka dominant provider tha — on-prem. Jab enterprises cloud ki taraf move karne lage, Microsoft ko apne customers retain karne ke liye cloud platform chahiye tha. Azure ka DNA enterprise + hybrid hai — AWS ka DNA internet startups se hai. Yeh fundamental difference architecture aur feature priorities mein dikhta hai.
+            Azure exists because Microsoft was the dominant provider of enterprise software — on-prem. When enterprises began moving toward the cloud, Microsoft needed a cloud platform to retain its customers. Azure's DNA is enterprise + hybrid — AWS's DNA comes from internet startups. This fundamental difference shows in architecture and feature priorities.
           </p>
         </section>
 
@@ -93,7 +93,7 @@ export default function Content() {
             ]}
           />
           <Callout type="important" title="Shared Responsibility in Practice">
-            Azure data center physical security = Microsoft responsibility. Tumhara Azure VM ka OS patch nahi hua = tumhari responsibility. Cosmos DB ka firewall rule galat = tumhari responsibility. Har service type ke liye responsibility boundary clearly samjho.
+            Azure data center physical security = Microsoft's responsibility. Your Azure VM's OS not being patched = your responsibility. A wrong Cosmos DB firewall rule = your responsibility. Understand the responsibility boundary clearly for every service type.
           </Callout>
         </section>
       </section>
@@ -105,36 +105,36 @@ export default function Content() {
         <section id="regions">
           <h3 style={S.h3}>Regions</h3>
           <p style={S.p}>
-            Azure 60+ Regions worldwide mein operate karta hai (Microsoft continuously adding). Har Region ek specific geographic area mein Microsoft ka data center cluster hai — East US, Central India, West Europe, Southeast Asia etc. Regions independent hain — ek Region ke resources automatically doosre Region mein nahi jaate.
+            Azure operates in 60+ Regions worldwide (Microsoft is continuously adding more). Each Region is a Microsoft data center cluster in a specific geographic area — East US, Central India, West Europe, Southeast Asia etc. Regions are independent — resources in one Region do not automatically move to another Region.
           </p>
           <p style={S.p}>
-            Data residency: Azure Regions data sovereignty ke liye aligned hain. India mein data rakhna ho toh Central India ya South India Region choose karo. EU GDPR ke liye EU Regions. Resources ek Region mein deploy hote hain aur wahan rahte hain unless explicitly replicated.
+            Data residency: Azure Regions are aligned for data sovereignty. If data must stay in India, choose the Central India or South India Region. For EU GDPR, EU Regions. Resources are deployed in one Region and stay there unless explicitly replicated.
           </p>
         </section>
 
         <section id="availability-zones">
           <h3 style={S.h3}>Availability Zones</h3>
           <p style={S.p}>
-            AZ ek Region ke andar physically separate data center facility hai — independent power, cooling aur networking. Azure ke most Regions mein 3 AZs hain. Ek AZ fail ho toh doosri AZs unaffected rahti hain.
+            An AZ is a physically separate data center facility within a Region — independent power, cooling and networking. Most Azure Regions have 3 AZs. If one AZ fails, the other AZs remain unaffected.
           </p>
           <p style={S.p}>
-            Not all Azure Regions have AZs — older Regions ya smaller geographies mein AZ support absent ho sakti hai. Resources deploy karne se pehle us Region ka AZ support verify karo.
+            Not all Azure Regions have AZs — AZ support may be absent in older Regions or smaller geographies. Verify the Region's AZ support before deploying resources.
           </p>
         </section>
 
         <section id="region-pairs">
-          <h3 style={S.h3}>Region Pairs — Azure ka Unique Concept</h3>
+          <h3 style={S.h3}>Region Pairs — A Unique Azure Concept</h3>
           <p style={S.p}>
-            Azure Regions paired hain — har Region ka ek designated "pair Region" hai same geography mein (typically 300+ miles apart). Examples: East US ↔ West US, North Europe ↔ West Europe, Central India ↔ South India.
+            Azure Regions are paired — each Region has a designated "pair Region" in the same geography (typically 300+ miles apart). Examples: East US ↔ West US, North Europe ↔ West Europe, Central India ↔ South India.
           </p>
           <ul style={S.ul}>
-            <li><strong>Platform updates sequential:</strong> Microsoft dono paired Regions ko simultaneously update nahi karta — risk reduces</li>
-            <li><strong>GRS replication:</strong> Geo-Redundant Storage automatically pair Region mein replicate karta hai</li>
-            <li><strong>DR priority:</strong> Major disaster mein Azure paired Region ko recovery priority deta hai</li>
-            <li><strong>Azure Site Recovery default:</strong> ASR default DR target paired Region hoti hai</li>
+            <li><strong>Platform updates sequential:</strong> Microsoft does not update both paired Regions simultaneously — risk reduces</li>
+            <li><strong>GRS replication:</strong> Geo-Redundant Storage automatically replicates to the pair Region</li>
+            <li><strong>DR priority:</strong> In a major disaster, Azure gives the paired Region recovery priority</li>
+            <li><strong>Azure Site Recovery default:</strong> The ASR default DR target is the paired Region</li>
           </ul>
           <Callout type="important" title="Region Pairs ≠ AWS Analogy">
-            AWS mein explicit "Region Pair" concept nahi hai — engineer khud DR Region choose karta hai. Azure mein Region Pairs Microsoft-defined hain aur platform updates + GRS replication directly linked hain. Architecture decision mein yeh factor karo.
+            AWS has no explicit "Region Pair" concept — the engineer chooses the DR Region themselves. In Azure, Region Pairs are Microsoft-defined, and platform updates + GRS replication are directly linked to them. Factor this into architecture decisions.
           </Callout>
         </section>
 
@@ -176,47 +176,47 @@ export default function Content() {
         <section id="arm">
           <h3 style={S.h3}>Azure Resource Manager (ARM)</h3>
           <p style={S.p}>
-            ARM Azure ka management layer hai — har operation (Portal, CLI, PowerShell, SDK, REST API) ARM ke through jaata hai. ARM resources authenticate karta hai, authorize karta hai (RBAC check), aur resource providers ko route karta hai. Traditional DC analogy: central management plane ya configuration management tool jaise Ansible Tower — lekin yeh Azure ka fundamental backbone hai.
+            ARM is Azure's management layer — every operation (Portal, CLI, PowerShell, SDK, REST API) goes through ARM. ARM authenticates, authorizes (RBAC check), and routes requests to resource providers. Traditional DC analogy: a central management plane or a configuration management tool like Ansible Tower — but this is Azure's fundamental backbone.
           </p>
           <p style={S.p}>
-            <strong>Control Plane vs Data Plane:</strong> ARM ek <em>control plane</em> hai — resources create/read/update/delete karna. <em>Data plane</em> alag hota hai — resource ke andar data operate karna. Example: Storage Account create karna = ARM (control plane). Storage mein blob upload/download = Storage Data Plane APIs (direct endpoint pe). RBAC role assignment bhi alag hai: <code>Microsoft.Storage/storageAccounts/write</code> = control plane permission. <code>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read</code> = data plane permission. Dono alag hain — kisi ko storage account manage karne ka RBAC access dena ≠ unhe data read karne ka access.
+            <strong>Control Plane vs Data Plane:</strong> ARM is a <em>control plane</em> — creating/reading/updating/deleting resources. The <em>data plane</em> is separate — operating on data inside the resource. Example: creating a Storage Account = ARM (control plane). Uploading/downloading a blob in storage = Storage Data Plane APIs (on a direct endpoint). RBAC role assignments are also separate: <code>Microsoft.Storage/storageAccounts/write</code> = control plane permission. <code>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read</code> = data plane permission. The two are separate — giving someone RBAC access to manage a storage account ≠ giving them access to read its data.
           </p>
           <p style={S.p}>
-            <strong>Resource Providers:</strong> ARM specific resource types ke liye requests Resource Providers ko delegate karta hai. Har Azure service ek Resource Provider register karta hai: <code>Microsoft.Compute</code> (VMs), <code>Microsoft.Network</code> (VNet, NSG), <code>Microsoft.Storage</code> (Storage Accounts), <code>Microsoft.Sql</code> (SQL Databases). Subscription mein ek Resource Provider registered hona chahiye before us service ke resources create ho sakein. New subscriptions mein commonly-used providers auto-registered hote hain; niche services ke liye manually register karna pad sakta hai.
+            <strong>Resource Providers:</strong> ARM delegates requests for specific resource types to Resource Providers. Every Azure service registers a Resource Provider: <code>Microsoft.Compute</code> (VMs), <code>Microsoft.Network</code> (VNet, NSG), <code>Microsoft.Storage</code> (Storage Accounts), <code>Microsoft.Sql</code> (SQL Databases). A Resource Provider must be registered in the subscription before resources of that service can be created. In new subscriptions, commonly-used providers are auto-registered; niche services may need to be registered manually.
           </p>
           <p style={S.p}>
-            ARM Templates: JSON/Bicep format mein infrastructure-as-code. Template describe karta hai desired state → ARM deploy karta hai. Idempotent — same template multiple times run karo, same result milta hai.
+            ARM Templates: infrastructure-as-code in JSON/Bicep format. The template describes the desired state → ARM deploys it. Idempotent — run the same template multiple times and you get the same result.
           </p>
         </section>
 
         <section id="resource-groups">
           <h3 style={S.h3}>Resource Groups</h3>
           <p style={S.p}>
-            Resource Group ek logical container hai — related Azure resources together group karta hai. Key rules:
+            A Resource Group is a logical container — it groups related Azure resources together. Key rules:
           </p>
           <ul style={S.ul}>
-            <li>Har Azure resource exactly ek Resource Group mein hona chahiye</li>
-            <li>Resource Group ek Region select karta hai — metadata storage ke liye (resources khud alag Regions mein ho sakte hain)</li>
-            <li>Poora group delete karo → sab resources delete. Ek app ke sab resources ek RG mein rakhna lifecycle management simplify karta hai</li>
-            <li>RBAC aur Azure Policy RG level pe assign kar sakte hain — inherited by all resources in group</li>
-            <li>Billing: tags se cost tracking karo, RG se nahi (unless all resources same RG mein hain)</li>
+            <li>Every Azure resource must be in exactly one Resource Group</li>
+            <li>A Resource Group selects a Region — for metadata storage (the resources themselves can be in different Regions)</li>
+            <li>Delete the whole group → all resources are deleted. Keeping all of an app's resources in one RG simplifies lifecycle management</li>
+            <li>RBAC and Azure Policy can be assigned at the RG level — inherited by all resources in the group</li>
+            <li>Billing: track costs using tags, not RGs (unless all resources are in the same RG)</li>
           </ul>
         </section>
 
         <section id="subscriptions">
           <h3 style={S.h3}>Subscriptions</h3>
           <p style={S.p}>
-            Subscription ek billing unit hai aur resources ka logical boundary hai. Ek subscription ke under resources deploy hote hain. Multiple subscriptions ek organization ke liye hona common hai — prod/dev/staging separation, team isolation, cost center separation.
+            A Subscription is a billing unit and a logical boundary for resources. Resources are deployed under a subscription. It is common for one organization to have multiple subscriptions — prod/dev/staging separation, team isolation, cost center separation.
           </p>
           <p style={S.p}>
-            Subscription limits (quotas): har subscription mein service limits hain — jaise VM cores per region, VNets per subscription. Large deployments mein multiple subscriptions needed ho sakti hain.
+            Subscription limits (quotas): every subscription has service limits — such as VM cores per region, VNets per subscription. Large deployments may need multiple subscriptions.
           </p>
         </section>
 
         <section id="management-groups">
           <h3 style={S.h3}>Management Groups</h3>
           <p style={S.p}>
-            Management Groups multiple Subscriptions ko hierarchically organize karte hain. Root → Management Groups → Subscriptions → Resource Groups → Resources. Azure Policy aur RBAC Management Group pe assign karo → automatically sabhi child subscriptions mein inherit hota hai. Enterprise governance ke liye essential.
+            Management Groups organize multiple Subscriptions hierarchically. Root → Management Groups → Subscriptions → Resource Groups → Resources. Assign Azure Policy and RBAC at the Management Group → automatically inherited by all child subscriptions. Essential for enterprise governance.
           </p>
         </section>
 
@@ -247,7 +247,7 @@ export default function Content() {
         <section id="entra-id">
           <h3 style={S.h3}>Microsoft Entra ID (formerly Azure AD)</h3>
           <p style={S.p}>
-            Microsoft Entra ID cloud-native identity aur access management service hai — web applications, APIs aur Microsoft 365 ke liye. Yeh traditional Active Directory Domain Services (AD DS) ka replacement nahi hai — yeh ek separate, complementary service hai.
+            Microsoft Entra ID is a cloud-native identity and access management service — for web applications, APIs and Microsoft 365. It is not a replacement for traditional Active Directory Domain Services (AD DS) — it is a separate, complementary service.
           </p>
           <ComparisonTable
             headers={["Aspect", "Traditional AD DS", "Microsoft Entra ID"]}
@@ -260,48 +260,48 @@ export default function Content() {
             ]}
           />
           <Callout type="important" title="Entra ID = Cloud IdP, Not Domain Controller">
-            Entra ID ek cloud identity provider hai — on-prem AD ka cloud version nahi. On-prem AD maintain karna padega Windows domain-joined machines aur on-prem apps ke liye. Hybrid: Azure AD Connect tool dono sync karta hai.
+            Entra ID is a cloud identity provider — not a cloud version of on-prem AD. You will still need to maintain on-prem AD for Windows domain-joined machines and on-prem apps. Hybrid: the Azure AD Connect tool syncs the two.
           </Callout>
         </section>
 
         <section id="rbac">
           <h3 style={S.h3}>Azure RBAC</h3>
           <p style={S.p}>
-            Azure RBAC (Role-Based Access Control) Azure resources pe authorization manage karta hai. Three elements: Security Principal (User/Group/Service Principal/Managed Identity) + Role Definition (permissions set) + Scope (Management Group → Subscription → RG → Resource).
+            Azure RBAC (Role-Based Access Control) manages authorization on Azure resources. Three elements: Security Principal (User/Group/Service Principal/Managed Identity) + Role Definition (permissions set) + Scope (Management Group → Subscription → RG → Resource).
           </p>
           <p style={S.p}>
-            Built-in roles: Owner (full control + RBAC), Contributor (full control - RBAC), Reader (view only), + 200+ service-specific roles (Virtual Machine Contributor, Storage Blob Data Reader etc.). Custom roles: exact permissions define karo — enterprise fine-grained access ke liye.
+            Built-in roles: Owner (full control + RBAC), Contributor (full control - RBAC), Reader (view only), + 200+ service-specific roles (Virtual Machine Contributor, Storage Blob Data Reader etc.). Custom roles: define exact permissions — for enterprise fine-grained access.
           </p>
           <p style={S.p}>
-            RBAC assignment inherited: parent scope pe assign karo → child scopes mein automatically applies. Management Group pe Reader assign kiya → that person can read in all subscriptions under it.
+            RBAC assignments are inherited: assign at a parent scope → automatically applies to child scopes. Reader assigned at a Management Group → that person can read in all subscriptions under it.
           </p>
         </section>
 
         <section id="managed-identity">
           <h3 style={S.h3}>Managed Identity</h3>
           <p style={S.p}>
-            Managed Identity Azure resource (VM, Function, AKS pod) ko Entra ID identity deta hai — credentials code mein hardcode karne ki zaroorat nahi. Resource automatically tokens request karta hai Azure Instance Metadata Service se.
+            Managed Identity gives an Azure resource (VM, Function, AKS pod) an Entra ID identity — no need to hardcode credentials in code. The resource automatically requests tokens from the Azure Instance Metadata Service.
           </p>
           <ul style={S.ul}>
-            <li><strong>System-assigned:</strong> Resource ke saath create/delete hoti hai. One-to-one relationship. Resource delete hone pe Entra ID mein corresponding Service Principal automatically remove hota hai — manual cleanup ki zaroorat nahi.</li>
-            <li><strong>User-assigned:</strong> Independently managed, multiple resources pe assign possible. Resource delete hone pe MI exist karti rahti hai — manually delete karna padta hai. Recommended for shared identity patterns aur scenarios jahan same identity multiple resources pe chahiye.</li>
-            <li><strong>Example:</strong> VM ko Key Vault se secrets read karne chahiye → Managed Identity enable karo → Key Vault pe RBAC role assign karo (Key Vault Secrets User) → no credentials needed in code.</li>
+            <li><strong>System-assigned:</strong> Created/deleted along with the resource. One-to-one relationship. When the resource is deleted, the corresponding Service Principal in Entra ID is removed automatically — no manual cleanup needed.</li>
+            <li><strong>User-assigned:</strong> Independently managed, can be assigned to multiple resources. The MI continues to exist after the resource is deleted — it must be deleted manually. Recommended for shared identity patterns and scenarios where the same identity is needed on multiple resources.</li>
+            <li><strong>Example:</strong> A VM needs to read secrets from Key Vault → enable Managed Identity → assign an RBAC role on Key Vault (Key Vault Secrets User) → no credentials needed in code.</li>
           </ul>
         </section>
 
         <section id="hybrid-identity">
           <h3 style={S.h3}>Hybrid Identity</h3>
           <p style={S.p}>
-            On-prem AD + Entra ID together. Azure AD Connect (or newer Azure AD Connect Cloud Sync) on-prem AD se Entra ID mein users/groups sync karta hai. Auth options:
+            On-prem AD + Entra ID together. Azure AD Connect (or the newer Azure AD Connect Cloud Sync) syncs users/groups from on-prem AD into Entra ID. Auth options:
           </p>
           <ul style={S.ul}>
-            <li><strong>Password Hash Sync (PHS):</strong> Password hash cloud mein — cloud authentication. Simplest, most resilient. On-prem down hone pe bhi cloud auth works.</li>
-            <li><strong>Pass-through Authentication (PTA):</strong> Cloud auth request → on-prem agent → AD validates. Password cloud mein nahi jaata. Compliance requirement ke liye.</li>
+            <li><strong>Password Hash Sync (PHS):</strong> Password hash in the cloud — cloud authentication. Simplest, most resilient. Cloud auth works even when on-prem is down.</li>
+            <li><strong>Pass-through Authentication (PTA):</strong> Cloud auth request → on-prem agent → AD validates. The password does not go to the cloud. For compliance requirements.</li>
             <li><strong>Federation (ADFS):</strong> On-prem ADFS handles auth. Most complex, most control. Usually for specific compliance scenarios.</li>
           </ul>
         </section>
 
-        <Figure caption="Azure Identity: Entra ID, RBAC, Managed Identity aur Hybrid Identity — enterprise identity architecture">
+        <Figure caption="Azure Identity: Entra ID, RBAC, Managed Identity and Hybrid Identity — enterprise identity architecture">
           <AzureIdentityDiagram />
         </Figure>
       </section>
@@ -313,17 +313,17 @@ export default function Content() {
         <section id="vnet">
           <h3 style={S.h3}>Azure Virtual Network (VNet)</h3>
           <p style={S.p}>
-            VNet Azure ka isolated virtual network hai — traditional DC ka private enterprise network equivalent. VNet ek Region mein hoti hai lekin multiple AZs span karti hai (subnet pe AZ pin karo VM ke through). VNet ko ek CIDR block assign karo (e.g., <code>10.0.0.0/16</code>).
+            A VNet is Azure's isolated virtual network — the equivalent of a traditional DC's private enterprise network. A VNet lives in one Region but spans multiple AZs (pin the AZ at the VM level, per subnet). Assign the VNet a CIDR block (e.g., <code>10.0.0.0/16</code>).
           </p>
           <p style={S.p}>
-            AWS VPC vs Azure VNet: conceptually same — isolated L3 network. Key difference: Azure VNet mein Internet connectivity by default partially available (outbound) unless specifically blocked. AWS VPC mein default deny. Azure NSG default rules: allow VNet inbound, allow Azure LB inbound, deny all Internet inbound — practically secure by default for inbound.
+            AWS VPC vs Azure VNet: conceptually the same — an isolated L3 network. Key difference: in an Azure VNet, Internet connectivity is partially available by default (outbound) unless specifically blocked. In AWS VPC, default deny. Azure NSG default rules: allow VNet inbound, allow Azure LB inbound, deny all Internet inbound — practically secure by default for inbound.
           </p>
         </section>
 
         <section id="subnets-nsg">
           <h3 style={S.h3}>Subnets and NSG</h3>
           <p style={S.p}>
-            Subnet VNet ka subdivision hai. NSG (Network Security Group) subnet ya NIC pe attach hoti hai — stateful L3/L4 traffic filter. Default NSG rules: allow VNet traffic, allow Azure LB, deny Internet inbound.
+            A Subnet is a subdivision of a VNet. An NSG (Network Security Group) is attached to a subnet or NIC — a stateful L3/L4 traffic filter. Default NSG rules: allow VNet traffic, allow Azure LB, deny Internet inbound.
           </p>
           <ComparisonTable
             headers={["Feature", "Azure NSG", "AWS Security Group"]}
@@ -337,37 +337,37 @@ export default function Content() {
             ]}
           />
           <Callout type="warning" title="NSG on Both Subnet AND NIC — Evaluation Order Matters">
-            Azure mein NSG subnet pe aur NIC pe dono attach ho sakti hain. Evaluation order direction pe depend karta hai: <strong>Inbound traffic</strong> → subnet NSG pehle, phir NIC NSG. <strong>Outbound traffic</strong> → NIC NSG pehle, phir subnet NSG. Default NSG rules (auto-created, delete nahi kar sakte, sirf override karo): priority 65000 (AllowVnetInBound/AllowVnetOutBound), 65001 (AllowAzureLoadBalancerInBound), 65500 (DenyAllInBound/DenyAllOutBound). Outbound Internet by default allowed hai default NSG mein (priority 65001 AllowInternetOutBound). Custom rules 100–4096 priority range mein likho.
+            In Azure, NSGs can be attached to both the subnet and the NIC. The evaluation order depends on direction: <strong>Inbound traffic</strong> → subnet NSG first, then NIC NSG. <strong>Outbound traffic</strong> → NIC NSG first, then subnet NSG. Default NSG rules (auto-created, cannot be deleted, only overridden): priority 65000 (AllowVnetInBound/AllowVnetOutBound), 65001 (AllowAzureLoadBalancerInBound), 65500 (DenyAllInBound/DenyAllOutBound). Outbound Internet is allowed by default in the default NSG (priority 65001 AllowInternetOutBound). Write custom rules in the 100–4096 priority range.
           </Callout>
         </section>
 
         <section id="routing">
           <h3 style={S.h3}>Route Tables and UDR</h3>
           <p style={S.p}>
-            Azure mein har VNet ka implicit system route table hota hai — VNet traffic, Internet traffic, VPN/ExpressRoute routes automatically handle karta hai. User Defined Routes (UDR) custom routes add karte hain — traffic specific appliance (Azure Firewall, NVA) ke through force karne ke liye.
+            In Azure, every VNet has an implicit system route table — it automatically handles VNet traffic, Internet traffic and VPN/ExpressRoute routes. User Defined Routes (UDR) add custom routes — to force traffic through a specific appliance (Azure Firewall, NVA).
           </p>
           <p style={S.p}>
-            Common UDR pattern: 0.0.0.0/0 → Azure Firewall IP. Sab outbound traffic Azure Firewall inspect kare. Traditional DC force routing via firewall concept same hai — lekin Azure mein UDR through implement hota hai.
+            Common UDR pattern: 0.0.0.0/0 → Azure Firewall IP. Azure Firewall inspects all outbound traffic. The traditional DC concept of force-routing via a firewall is the same — but in Azure it is implemented through UDR.
           </p>
         </section>
 
         <section id="vnet-peering">
           <h3 style={S.h3}>VNet Peering and Service Endpoints</h3>
           <p style={S.p}>
-            VNet Peering do VNets ko directly connect karta hai — same Region (local peering) ya different Region (global peering). Non-transitive: A↔B, B↔C but A↔C nahi (unless hub VNet ya Azure Virtual WAN use karo).
+            VNet Peering connects two VNets directly — same Region (local peering) or different Region (global peering). Non-transitive: A↔B, B↔C but not A↔C (unless you use a hub VNet or Azure Virtual WAN).
           </p>
           <p style={S.p}>
-            Service Endpoints: VNet subnet se specific Azure services (Storage, SQL, Key Vault) ke liye optimized private route — traffic Azure backbone pe rehta hai. Service Endpoint → Azure service pe VNet-specific firewall rule add karo.
+            Service Endpoints: an optimized private route from a VNet subnet to specific Azure services (Storage, SQL, Key Vault) — traffic stays on the Azure backbone. Service Endpoint → add a VNet-specific firewall rule on the Azure service.
           </p>
         </section>
 
         <section id="private-link">
           <h3 style={S.h3}>Private Link and Private Endpoints</h3>
           <p style={S.p}>
-            Private Endpoint Azure PaaS service (Storage, SQL, Cosmos DB, Key Vault) ka ek private IP address tumhare VNet mein create karta hai. Traffic Internet se isolated rehta hai — VNet ke andar private IP se service access hoti hai. DNS bhi private hona chahiye — Private DNS Zone configure karo.
+            A Private Endpoint creates a private IP address for an Azure PaaS service (Storage, SQL, Cosmos DB, Key Vault) inside your VNet. Traffic stays isolated from the Internet — the service is accessed via a private IP inside the VNet. DNS must also be private — configure a Private DNS Zone.
           </p>
           <p style={S.p}>
-            AWS PrivateLink se conceptually similar. Private Endpoint Service Endpoint se better security provide karta hai — traffic kisi bhi point pe Internet pe nahi jaata.
+            Conceptually similar to AWS PrivateLink. A Private Endpoint provides better security than a Service Endpoint — traffic does not go onto the Internet at any point.
           </p>
         </section>
 
@@ -380,29 +380,29 @@ export default function Content() {
       <section id="load-balancing">
         <h2 style={S.h2}>Load Balancing and Application Delivery</h2>
         <p style={S.p}>
-          Azure mein multiple load balancing services hain — har ek different use case ke liye. <TopicLink slug="load-balancer" variant="inline" /> article se core LB concepts connect karo.
+          Azure has multiple load balancing services — each for a different use case. Connect the core LB concepts from the <TopicLink slug="load-balancer" variant="inline" /> article.
         </p>
 
         <section id="azure-lb">
           <h3 style={S.h3}>Azure Load Balancer (L4)</h3>
           <p style={S.p}>
-            Azure Load Balancer TCP/UDP L4 traffic distribute karta hai. Zone-redundant (Standard tier) ya zonal deploy ho sakta hai. Internal (private IP frontend) ya Public (public IP frontend). Backend pool: VMs, VMSS instances, IP addresses.
+            Azure Load Balancer distributes TCP/UDP L4 traffic. It can be deployed zone-redundant (Standard tier) or zonal. Internal (private IP frontend) or Public (public IP frontend). Backend pool: VMs, VMSS instances, IP addresses.
           </p>
           <p style={S.p}>
-            Standard vs Basic tier: Standard = production (zone-redundant, SLA, NSG required), Basic = dev/test (no zone support, free). Production mein always Standard use karo.
+            Standard vs Basic tier: Standard = production (zone-redundant, SLA, NSG required), Basic = dev/test (no zone support, free). Always use Standard in production.
           </p>
         </section>
 
         <section id="application-gateway">
           <h3 style={S.h3}>Application Gateway (L7)</h3>
           <p style={S.p}>
-            Application Gateway HTTP/HTTPS L7 application delivery controller hai — SSL termination, URL-based routing, cookie-based session affinity, WAF (Web Application Firewall) integration.
+            Application Gateway is an HTTP/HTTPS L7 application delivery controller — SSL termination, URL-based routing, cookie-based session affinity, WAF (Web Application Firewall) integration.
           </p>
           <ul style={S.ul}>
             <li>URL path routing: <code>/api/*</code> → API backend pool, <code>/images/*</code> → static backend pool</li>
             <li>Multi-site hosting: multiple domain names → different backends on same gateway</li>
             <li>WAF (Application Gateway WAF v2): OWASP ruleset, custom rules, bot protection</li>
-            <li>Autoscaling: demand ke saath scale — min/max instance count configurable</li>
+            <li>Autoscaling: scales with demand — min/max instance count configurable</li>
           </ul>
           <p style={S.p}>
             AWS ALB equivalent. Application Gateway + WAF = AWS ALB + AWS WAF combined.
@@ -422,17 +422,17 @@ export default function Content() {
         <section id="firewall">
           <h3 style={S.h3}>Azure Firewall</h3>
           <p style={S.p}>
-            Azure Firewall managed, stateful network firewall service hai — L3 through L7, FQDN filtering, threat intelligence, centralized logging. Hub VNet mein deploy karo, sab spoke VNets ka traffic inspect karo via UDR.
+            Azure Firewall is a managed, stateful network firewall service — L3 through L7, FQDN filtering, threat intelligence, centralized logging. Deploy it in the hub VNet and inspect traffic from all spoke VNets via UDR.
           </p>
           <ul style={S.ul}>
-            <li>DNAT rules: inbound traffic → internal VMs pe redirect</li>
+            <li>DNAT rules: redirect inbound traffic → to internal VMs</li>
             <li>Network rules: IP/port/protocol based L3/L4 filtering</li>
             <li>Application rules: FQDN-based outbound filtering (*.microsoft.com, etc.)</li>
             <li>Threat Intelligence: known malicious IPs/domains automatically block</li>
             <li>Premium tier: TLS inspection, IDPS, URL filtering</li>
           </ul>
           <Callout type="warning" title="Azure Firewall vs NSG">
-            NSG free hai, basic subnet/NIC level filtering karta hai. Azure Firewall costly hai (hourly + data processed) lekin enterprise-grade — FQDN, threat intelligence, centralized policy. Production enterprise: dono use karo — NSG har subnet pe (defence in depth) + Azure Firewall hub pe (central enforcement).
+            NSG is free and does basic subnet/NIC level filtering. Azure Firewall is costly (hourly + data processed) but enterprise-grade — FQDN, threat intelligence, centralized policy. Production enterprise: use both — NSG on every subnet (defence in depth) + Azure Firewall at the hub (central enforcement).
           </Callout>
         </section>
       </section>
@@ -444,11 +444,11 @@ export default function Content() {
         <section id="vpn-gateway">
           <h3 style={S.h3}>Azure VPN Gateway</h3>
           <p style={S.p}>
-            Azure VPN Gateway on-prem network ko Azure VNet se IPsec/IKE VPN tunnel over Internet se connect karta hai. Two options:
+            Azure VPN Gateway connects the on-prem network to an Azure VNet through an IPsec/IKE VPN tunnel over the Internet. Two options:
           </p>
           <ul style={S.ul}>
             <li><strong>Site-to-Site VPN:</strong> On-prem VPN device (Cisco, Palo Alto, Fortinet etc.) ↔ Azure VPN Gateway. Encrypted. Internet dependent — variable latency.</li>
-            <li><strong>Point-to-Site VPN:</strong> Individual clients → Azure VNet. Remote workers ke liye.</li>
+            <li><strong>Point-to-Site VPN:</strong> Individual clients → Azure VNet. For remote workers.</li>
           </ul>
           <p style={S.p}>
             VPN Gateway SKUs: Basic (dev/test), VpnGw1-5 (production, higher bandwidth/connections). Active-active configuration: two public IPs, higher availability. Connect to <TopicLink slug="router" variant="inline" /> article for BGP concepts used in VPN routing.
@@ -458,7 +458,7 @@ export default function Content() {
         <section id="expressroute">
           <h3 style={S.h3}>Azure ExpressRoute</h3>
           <p style={S.p}>
-            ExpressRoute on-prem ko Azure ke saath private dedicated circuit se connect karta hai — connectivity provider (Tata, Airtel, Reliance Jio etc.) ke through. Internet pe nahi jaata.
+            ExpressRoute connects on-prem to Azure over a private dedicated circuit — through a connectivity provider (Tata, Airtel, Reliance Jio etc.). It does not go over the Internet.
           </p>
           <ComparisonTable
             headers={["Feature", "VPN Gateway", "ExpressRoute"]}
@@ -472,17 +472,17 @@ export default function Content() {
             ]}
           />
           <Callout type="warning" title="ExpressRoute: NOT Encrypted by Default">
-            ExpressRoute dedicated private circuit hai — lekin traffic encrypted nahi hota by default. IPsec over ExpressRoute configure kar sakte hain encryption ke liye (provider circuits aur ExpressRoute Direct dono pe). MACsec (L2 encryption) sirf ExpressRoute Direct connections pe available hai (100Gbps dedicated ports), standard provider-based ExpressRoute circuits pe nahi. AWS Direct Connect ke same caveat hai.
+            ExpressRoute is a dedicated private circuit — but traffic is not encrypted by default. You can configure IPsec over ExpressRoute for encryption (on both provider circuits and ExpressRoute Direct). MACsec (L2 encryption) is available only on ExpressRoute Direct connections (100Gbps dedicated ports), not on standard provider-based ExpressRoute circuits. AWS Direct Connect has the same caveat.
           </Callout>
         </section>
 
         <section id="virtual-wan">
           <h3 style={S.h3}>Azure Virtual WAN</h3>
           <p style={S.p}>
-            Virtual WAN Microsoft-managed hub-and-spoke network architecture hai — multiple branches, sites, VNets aur ExpressRoute/VPN circuits ko centrally connect karta hai. Traditional DC core WAN router equivalent. SD-WAN concepts apply — <TopicLink slug="sd-wan" variant="inline" /> article se connect karo.
+            Virtual WAN is a Microsoft-managed hub-and-spoke network architecture — it centrally connects multiple branches, sites, VNets and ExpressRoute/VPN circuits. The equivalent of a traditional DC core WAN router. SD-WAN concepts apply — connect with the <TopicLink slug="sd-wan" variant="inline" /> article.
           </p>
           <p style={S.p}>
-            Basic tier: VNet connections only. Standard tier: VNet + VPN + ExpressRoute + inter-hub routing. Auto-provisioned managed hubs — Microsoft router infrastructure manage karta hai, you sirf attach karo.
+            Basic tier: VNet connections only. Standard tier: VNet + VPN + ExpressRoute + inter-hub routing. Auto-provisioned managed hubs — Microsoft manages the router infrastructure, you just attach.
           </p>
         </section>
       </section>
@@ -494,16 +494,16 @@ export default function Content() {
         <section id="azure-vms">
           <h3 style={S.h3}>Azure Virtual Machines</h3>
           <p style={S.p}>
-            Azure VM Hyper-V based virtual compute instance hai. Components: VM itself (size selection) + OS Disk (Managed Disk) + NIC (Network Interface Card) + optional Data Disks + Public IP (optional) + NSG. Yeh sab separate resources hain — VM delete karne pe by default attached resources delete nahi hote (except NIC aur OS disk by default delete hoti hai — configurable).
+            An Azure VM is a Hyper-V based virtual compute instance. Components: the VM itself (size selection) + OS Disk (Managed Disk) + NIC (Network Interface Card) + optional Data Disks + Public IP (optional) + NSG. These are all separate resources — deleting a VM does not delete attached resources by default (except the NIC and OS disk, which are deleted by default — configurable).
           </p>
           <p style={S.p}>
-            VM sizes: B-series (burstable, dev/test), D-series (general purpose), E-series (memory optimized), F-series (compute optimized), L-series (storage optimized), N-series (GPU: NVIDIA T4, V100, A100), H-series (HPC). Confidential VMs bhi available hain.
+            VM sizes: B-series (burstable, dev/test), D-series (general purpose), E-series (memory optimized), F-series (compute optimized), L-series (storage optimized), N-series (GPU: NVIDIA T4, V100, A100), H-series (HPC). Confidential VMs are also available.
           </p>
           <p style={S.p}>
             Purchasing options: Pay-as-you-go, Reserved Instances (1yr/3yr, 40-72% savings), Azure Spot VMs (60-90% savings, evictable), Azure Hybrid Benefit (bring Windows Server/SQL Server license — significant savings for existing Microsoft customers).
           </p>
           <Callout type="important" title="Azure Hybrid Benefit">
-            Existing Windows Server aur SQL Server licenses Azure pe use karo — Azure Hybrid Benefit se VM costs significantly reduce ho jaate hain. AWS mein equivalent licensing flexibility limited hai. Enterprise Microsoft customers ke liye yeh major Azure advantage hai.
+            Use existing Windows Server and SQL Server licenses on Azure — Azure Hybrid Benefit significantly reduces VM costs. Equivalent licensing flexibility in AWS is limited. For enterprise Microsoft customers this is a major Azure advantage.
           </Callout>
         </section>
 
@@ -519,55 +519,55 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            Availability Set: Fault Domains (2-3, different racks/power) + Update Domains (up to 20, rolling update isolation). Region ke andar HA — AZ failure protect nahi karta. Older pattern — for new deployments, Availability Zones preferred.
+            Availability Set: Fault Domains (2-3, different racks/power) + Update Domains (up to 20, rolling update isolation). HA within a Region — does not protect against AZ failure. Older pattern — for new deployments, Availability Zones are preferred.
           </p>
           <p style={S.p}>
-            VMSS (VM Scale Set): identical VMs ka set, auto-scale horizontal. Load Balancer ya Application Gateway se attach karo. Zone-spanning VMSS = each AZ mein instances. AWS ASG (Auto Scaling Group) equivalent.
+            VMSS (VM Scale Set): a set of identical VMs, horizontal auto-scale. Attach it to a Load Balancer or Application Gateway. Zone-spanning VMSS = instances in each AZ. Equivalent to AWS ASG (Auto Scaling Group).
           </p>
         </section>
 
         <section id="app-service">
           <h3 style={S.h3}>Azure App Service (PaaS)</h3>
           <p style={S.p}>
-            App Service managed platform for web applications, REST APIs aur mobile backends. Supported runtimes: .NET, Java, Python, Node.js, PHP, Ruby. OS nahi manage karna, runtime nahi patch karna — sirf code deploy karo.
+            App Service is a managed platform for web applications, REST APIs and mobile backends. Supported runtimes: .NET, Java, Python, Node.js, PHP, Ruby. No OS to manage, no runtime to patch — just deploy code.
           </p>
           <ul style={S.ul}>
-            <li>App Service Plan: compute resources define karta hai (size + count). Multiple apps share ek plan.</li>
-            <li>Deployment slots: staging slot pe deploy → validate → production slot swap (zero downtime)</li>
+            <li>App Service Plan: defines compute resources (size + count). Multiple apps share one plan.</li>
+            <li>Deployment slots: deploy to the staging slot → validate → swap with the production slot (zero downtime)</li>
             <li>Custom domains + free SSL (App Service Managed Certificate)</li>
-            <li>Scaling: scale up (bigger plan) ya scale out (more instances, autoscale rules)</li>
-            <li>VNet Integration: App Service se VNet resources access karo (private endpoints, databases)</li>
+            <li>Scaling: scale up (bigger plan) or scale out (more instances, autoscale rules)</li>
+            <li>VNet Integration: access VNet resources from App Service (private endpoints, databases)</li>
           </ul>
           <p style={S.p}>
-            AWS Elastic Beanstalk equivalent — lekin App Service zyada mature aur widely used hai Azure mein.
+            Equivalent to AWS Elastic Beanstalk — but App Service is more mature and more widely used in Azure.
           </p>
         </section>
 
         <section id="aks">
           <h3 style={S.h3}>Azure Kubernetes Service (AKS)</h3>
           <p style={S.p}>
-            AKS Azure ka managed Kubernetes service hai. Microsoft Kubernetes control plane manage karta hai — API server, etcd, scheduler. Tumhara responsibility: worker node pools (VM sizes, count, OS patching), Kubernetes manifests, networking config.
+            AKS is Azure's managed Kubernetes service. Microsoft manages the Kubernetes control plane — API server, etcd, scheduler. Your responsibility: worker node pools (VM sizes, count, OS patching), Kubernetes manifests, networking config.
           </p>
           <ul style={S.ul}>
             <li><strong>Node Pools:</strong> System pool (cluster services) + User pools (app workloads). Different VM sizes per pool possible.</li>
-            <li><strong>Azure CNI:</strong> Pods ko real VNet IPs milte hain — NSG directly pods pe apply. Kubenet: pod IPs VNet ke bahar, NAT required.</li>
+            <li><strong>Azure CNI:</strong> Pods get real VNet IPs — NSG applies directly to pods. Kubenet: pod IPs outside the VNet, NAT required.</li>
             <li><strong>Cluster Autoscaler:</strong> Node pools automatically scale based on pending pods.</li>
-            <li><strong>Managed Identity:</strong> AKS cluster ke liye Managed Identity — no credentials in cluster config.</li>
-            <li><strong>Azure Monitor for containers:</strong> AKS metrics + logs automatically Log Analytics mein.</li>
-            <li><strong>AGIC (Application Gateway Ingress Controller):</strong> Kubernetes Ingress → Application Gateway automatically configure karta hai.</li>
+            <li><strong>Managed Identity:</strong> Managed Identity for the AKS cluster — no credentials in cluster config.</li>
+            <li><strong>Azure Monitor for containers:</strong> AKS metrics + logs automatically in Log Analytics.</li>
+            <li><strong>AGIC (Application Gateway Ingress Controller):</strong> Kubernetes Ingress → automatically configures Application Gateway.</li>
           </ul>
         </section>
 
         <section id="azure-functions">
           <h3 style={S.h3}>Azure Functions (Serverless)</h3>
           <p style={S.p}>
-            Azure Functions event-driven serverless compute hai. Trigger define karo → code execute hota hai → billing per execution + duration. Supported triggers: HTTP, Timer, Blob Storage, Queue, Service Bus, Event Hub, Event Grid, Cosmos DB change feed.
+            Azure Functions is event-driven serverless compute. Define a trigger → code executes → billing per execution + duration. Supported triggers: HTTP, Timer, Blob Storage, Queue, Service Bus, Event Hub, Event Grid, Cosmos DB change feed.
           </p>
           <ul style={S.ul}>
             <li>Hosting plans: Consumption (pay-per-execution, scale-to-zero), Premium (pre-warmed instances, VNet integration), Dedicated (App Service Plan)</li>
             <li>Durable Functions: stateful orchestration — chaining, fan-out/fan-in, human approval workflows</li>
-            <li>Cold starts: Consumption plan mein idle functions ke baad cold start. Premium plan eliminates this.</li>
-            <li>VNet Integration: Functions se private VNet resources (databases, storage) access karna ho toh Premium plan required</li>
+            <li>Cold starts: in the Consumption plan, cold starts occur after functions have been idle. The Premium plan eliminates this.</li>
+            <li>VNet Integration: the Premium plan is required if Functions need to access private VNet resources (databases, storage)</li>
           </ul>
           <p style={S.p}>AWS Lambda equivalent. Azure Functions Consumption plan = Lambda. Azure Durable Functions = AWS Step Functions concepts.</p>
         </section>
@@ -578,7 +578,7 @@ export default function Content() {
             <strong>ACI (Azure Container Instances):</strong> Serverless containers — no cluster management. Per-second billing. Dev/test, batch jobs, event-driven burst. AWS Fargate equivalent.
           </p>
           <p style={S.p}>
-            <strong>Azure Container Apps:</strong> Managed Kubernetes-based platform with KEDA (event-driven autoscaling) + Dapr (distributed app runtime) built-in. Microservices ke liye — K8s complexity without managing it. AWS App Runner ya ECS Fargate equivalent.
+            <strong>Azure Container Apps:</strong> Managed Kubernetes-based platform with KEDA (event-driven autoscaling) + Dapr (distributed app runtime) built-in. For microservices — K8s benefits without managing its complexity. Equivalent to AWS App Runner or ECS Fargate.
           </p>
         </section>
 
@@ -594,7 +594,7 @@ export default function Content() {
         <section id="blob-storage">
           <h3 style={S.h3}>Blob Storage</h3>
           <p style={S.p}>
-            Azure Blob Storage unstructured data object storage hai — images, videos, documents, backups, static websites, big data. Storage Account → Container → Blobs. Traditional DC object storage (NetApp StorageGRID, Dell ECS) equivalent.
+            Azure Blob Storage is object storage for unstructured data — images, videos, documents, backups, static websites, big data. Storage Account → Container → Blobs. Equivalent to traditional DC object storage (NetApp StorageGRID, Dell ECS).
           </p>
           <ul style={S.ul}>
             <li><strong>Block Blob:</strong> General-purpose files, images, videos — most common</li>
@@ -608,30 +608,30 @@ export default function Content() {
         <section id="azure-files">
           <h3 style={S.h3}>Azure Files</h3>
           <p style={S.p}>
-            Azure Files fully managed file share service hai — SMB 3.0 (Windows/Linux/macOS) aur NFS 4.1 (Linux) support. Traditional NAS ka cloud equivalent. Multiple VMs simultaneously mount kar sakti hain.
+            Azure Files is a fully managed file share service — supports SMB 3.0 (Windows/Linux/macOS) and NFS 4.1 (Linux). The cloud equivalent of a traditional NAS. Multiple VMs can mount it simultaneously.
           </p>
           <p style={S.p}>
-            <strong>Azure File Sync:</strong> On-prem Windows Server pe Azure Files cache — cloud tiering se old files automatically Azure mein, hot files local pe rakhte hain. On-prem-to-cloud gradual file server migration ke liye useful.
+            <strong>Azure File Sync:</strong> Azure Files cache on an on-prem Windows Server — with cloud tiering, old files automatically move to Azure while hot files are kept locally. Useful for gradual on-prem-to-cloud file server migration.
           </p>
           <p style={S.p}>
-            Authentication: Azure AD Kerberos authentication support karta hai — domain-joined VMs directly mount kar sakte hain credentials ke bina.
+            Authentication: supports Azure AD Kerberos authentication — domain-joined VMs can mount directly without credentials.
           </p>
         </section>
 
         <section id="queue-table">
           <h3 style={S.h3}>Queue Storage and Table Storage</h3>
           <p style={S.p}>
-            <strong>Queue Storage:</strong> Simple message queue — producer/consumer pattern. Up to 64KB per message, 7-day retention (configurable up to 7 days). App components decouple karne ke liye. AWS SQS Standard equivalent (simpler features).
+            <strong>Queue Storage:</strong> Simple message queue — producer/consumer pattern. Up to 64KB per message, 7-day retention (configurable up to 7 days). For decoupling app components. Equivalent to AWS SQS Standard (simpler features).
           </p>
           <p style={S.p}>
-            <strong>Table Storage:</strong> NoSQL key-value store — schemaless entities, Partition Key + Row Key. Low cost, simple queries. Complex queries ya global distribution ke liye Cosmos DB better. AWS DynamoDB ka simpler, cheaper alternative for basic use cases.
+            <strong>Table Storage:</strong> NoSQL key-value store — schemaless entities, Partition Key + Row Key. Low cost, simple queries. Cosmos DB is better for complex queries or global distribution. A simpler, cheaper alternative to AWS DynamoDB for basic use cases.
           </p>
         </section>
 
         <section id="managed-disks">
           <h3 style={S.h3}>Managed Disks</h3>
           <p style={S.p}>
-            Azure Managed Disks VM ke liye block storage hain — Microsoft storage infrastructure manage karta hai, you sirf disk create karo aur VM attach karo. Automatic 3-copy replication within Region (LRS) by default.
+            Azure Managed Disks are block storage for VMs — Microsoft manages the storage infrastructure, you just create the disk and attach it to the VM. Automatic 3-copy replication within the Region (LRS) by default.
           </p>
           <ul style={S.ul}>
             <li><strong>Ultra Disk:</strong> Sub-ms latency, up to 160,000 IOPS — mission-critical databases</li>
@@ -641,21 +641,21 @@ export default function Content() {
             <li><strong>Standard HDD:</strong> Lowest cost — backup, archival, infrequent access</li>
           </ul>
           <p style={S.p}>
-            Snapshots: Managed Disk ka point-in-time copy. Incremental snapshots available. Cross-region copy possible. AWS EBS Snapshot equivalent.
+            Snapshots: a point-in-time copy of a Managed Disk. Incremental snapshots available. Cross-region copy possible. Equivalent to AWS EBS Snapshot.
           </p>
         </section>
 
         <section id="storage-advanced">
           <h3 style={S.h3}>Data Lake, NetApp Files and File Sync</h3>
           <p style={S.p}>
-            <strong>Azure Data Lake Storage Gen2 (ADLS Gen2):</strong> Blob Storage pe built, hierarchical namespace enable karo. Big data analytics, Apache Spark, Databricks ke liye optimized. AWS S3 + hierarchical namespace equivalent.
+            <strong>Azure Data Lake Storage Gen2 (ADLS Gen2):</strong> Built on Blob Storage — enable the hierarchical namespace. Optimized for big data analytics, Apache Spark, Databricks. Equivalent to AWS S3 + hierarchical namespace.
           </p>
           <p style={S.p}>
-            <strong>Azure NetApp Files:</strong> Managed NetApp ONTAP service — NFS/SMB, ultra-low latency, enterprise file services. SAP HANA, VDI, HPC workloads ke liye. Familiar to enterprises running on-prem NetApp — same APIs, same capabilities.
+            <strong>Azure NetApp Files:</strong> Managed NetApp ONTAP service — NFS/SMB, ultra-low latency, enterprise file services. For SAP HANA, VDI, HPC workloads. Familiar to enterprises running on-prem NetApp — same APIs, same capabilities.
           </p>
         </section>
 
-        <Figure caption="Azure Storage: Blob, Files, Queue, Table, Managed Disks — types, tiers aur DC engineer mapping">
+        <Figure caption="Azure Storage: Blob, Files, Queue, Table, Managed Disks — types, tiers and DC engineer mapping">
           <AzureStorageDiagram />
         </Figure>
       </section>
@@ -667,7 +667,7 @@ export default function Content() {
         <section id="azure-sql">
           <h3 style={S.h3}>Azure SQL Database</h3>
           <p style={S.p}>
-            Azure SQL Database fully managed SQL Server based relational database hai. Microsoft OS, database engine, patches, HA manage karta hai. Tumhari responsibility: schema, queries, security, data.
+            Azure SQL Database is a fully managed, SQL Server based relational database. Microsoft manages the OS, database engine, patches and HA. Your responsibility: schema, queries, security, data.
           </p>
           <ul style={S.ul}>
             <li><strong>Deployment options:</strong> Single Database (isolated), Elastic Pool (multiple DBs shared resources), Managed Instance (full SQL Server compatibility)</li>
@@ -676,23 +676,23 @@ export default function Content() {
             <li><strong>Geo-replication:</strong> Active Geo-Replication — readable secondaries in different Regions. Auto-Failover Groups — automatic failover with DNS endpoint update</li>
           </ul>
           <p style={S.p}>
-            AWS RDS SQL Server equivalent — lekin Managed Instance SQL Server Migration ke liye much better compatibility hai (SQL Agent, CLR, cross-DB queries etc.).
+            Equivalent to AWS RDS SQL Server — but Managed Instance has much better compatibility for SQL Server migration (SQL Agent, CLR, cross-DB queries etc.).
           </p>
         </section>
 
         <section id="cosmos-db">
           <h3 style={S.h3}>Azure Cosmos DB</h3>
           <p style={S.p}>
-            Cosmos DB globally distributed, multi-model NoSQL database hai. APIs: Core SQL (document), MongoDB, Cassandra, Gremlin (graph), Table. Single-digit ms latency globally. Multiple regions pe automatic write replication.
+            Cosmos DB is a globally distributed, multi-model NoSQL database. APIs: Core SQL (document), MongoDB, Cassandra, Gremlin (graph), Table. Single-digit ms latency globally. Automatic write replication across multiple regions.
           </p>
           <ul style={S.ul}>
             <li><strong>Consistency levels:</strong> Strong, Bounded Staleness, Session, Consistent Prefix, Eventual — choose tradeoff</li>
-            <li><strong>Global distribution:</strong> Any Region mein read/write — automatic replication</li>
+            <li><strong>Global distribution:</strong> Read/write in any Region — automatic replication</li>
             <li><strong>Serverless mode:</strong> Pay per request unit, no provisioned throughput</li>
             <li><strong>Partition key:</strong> Critical design decision — determines scalability</li>
           </ul>
           <p style={S.p}>
-            AWS DynamoDB ka competitor — lekin Cosmos DB multi-API (MongoDB, Cassandra) support karta hai jo DynamoDB nahi. Legacy MongoDB/Cassandra workloads Azure pe migrate karna easier hai Cosmos DB ke saath.
+            A competitor to AWS DynamoDB — but Cosmos DB supports multiple APIs (MongoDB, Cassandra), which DynamoDB does not. Migrating legacy MongoDB/Cassandra workloads to Azure is easier with Cosmos DB.
           </p>
         </section>
 
@@ -718,27 +718,27 @@ export default function Content() {
         <section id="ha-options">
           <h3 style={S.h3}>Availability Sets vs Availability Zones</h3>
           <p style={S.p}>
-            Azure mein HA ke liye do primary mechanisms hain VM level pe:
+            In Azure there are two primary mechanisms for HA at the VM level:
           </p>
           <ul style={S.ul}>
-            <li><strong>Availability Set:</strong> Same Region/DC ke andar — different racks (Fault Domains, 2-3) aur different update waves (Update Domains, up to 20). Single AZ failure protect nahi karta. Legacy pattern — older deployments ke liye.</li>
+            <li><strong>Availability Set:</strong> Within the same Region/DC — different racks (Fault Domains, 2-3) and different update waves (Update Domains, up to 20). Does not protect against a single AZ failure. Legacy pattern — for older deployments.</li>
             <li><strong>Availability Zones:</strong> Physically separate data centers within Region. AZ failure isolated. 99.99% SLA for VMs across AZs. Modern recommended approach.</li>
           </ul>
           <Callout type="important" title="Availability Set ≠ Availability Zone">
-            Common misconception: Availability Set = zone-aware. Nahi! Availability Set same data center mein racks distribute karta hai. AZ failure (power loss in one DC) mein Availability Set ka protection nahi milta. Production workloads ke liye Availability Zones use karo.
+            Common misconception: Availability Set = zone-aware. No! An Availability Set distributes across racks in the same data center. In an AZ failure (power loss in one DC), the Availability Set gives no protection. Use Availability Zones for production workloads.
           </Callout>
         </section>
 
         <section id="zone-redundant">
           <h3 style={S.h3}>Zone-Redundant Services</h3>
           <p style={S.p}>
-            Many Azure services natively zone-redundant deploy ho sakte hain — single deployment, automatically spans AZs:
+            Many Azure services can be deployed natively zone-redundant — a single deployment automatically spans AZs:
           </p>
           <ul style={S.ul}>
             <li>Azure Standard Load Balancer: zone-redundant by default (Standard tier)</li>
             <li>Azure Application Gateway v2: zone-redundant with zone pinning option</li>
             <li>Azure SQL Database Business Critical: zone-redundant replicas</li>
-            <li>Azure Storage ZRS: 3 AZs mein synchronous replication</li>
+            <li>Azure Storage ZRS: synchronous replication across 3 AZs</li>
             <li>Azure Kubernetes Service: node pools across AZs</li>
             <li>Azure Cache for Redis: zone-redundant Premium tier</li>
           </ul>
@@ -756,26 +756,26 @@ export default function Content() {
         <section id="azure-site-recovery">
           <h3 style={S.h3}>Azure Site Recovery (ASR)</h3>
           <p style={S.p}>
-            ASR VM replication aur orchestrated failover service hai. Azure VMs ko secondary Region mein continuously replicate karta hai. Physical servers aur VMware VMs bhi Azure mein replicate kar sakte hain (on-prem to Azure DR).
+            ASR is a VM replication and orchestrated failover service. It continuously replicates Azure VMs to a secondary Region. It can also replicate physical servers and VMware VMs into Azure (on-prem to Azure DR).
           </p>
           <ul style={S.ul}>
-            <li>RPO: Azure VMs ke liye as low as 30 seconds</li>
+            <li>RPO: as low as 30 seconds for Azure VMs</li>
             <li>RTO: minutes (automated recovery plans)</li>
-            <li>Test failover: production traffic affect kiye bina DR validate karo</li>
-            <li>Recovery Plans: ordered failover sequence define karo — multiple VMs, dependencies, pre/post scripts</li>
-            <li>Reprotect: primary Region restore hone ke baad reverse replication + failback</li>
+            <li>Test failover: validate DR without affecting production traffic</li>
+            <li>Recovery Plans: define an ordered failover sequence — multiple VMs, dependencies, pre/post scripts</li>
+            <li>Reprotect: reverse replication + failback after the primary Region is restored</li>
           </ul>
         </section>
 
         <section id="backup">
           <h3 style={S.h3}>Azure Backup</h3>
           <p style={S.p}>
-            Azure Backup managed backup service hai — Recovery Services Vault ya Backup Vault mein store. Supports: Azure VMs, Managed Disks, Azure SQL, Azure Files, SAP HANA, on-prem servers (MARS agent).
+            Azure Backup is a managed backup service — stored in a Recovery Services Vault or Backup Vault. Supports: Azure VMs, Managed Disks, Azure SQL, Azure Files, SAP HANA, on-prem servers (MARS agent).
           </p>
           <ul style={S.ul}>
-            <li>Backup policies: retention rules define karo — daily/weekly/monthly/yearly</li>
-            <li>Cross-region restore: GRS Vault se paired Region mein restore possible</li>
-            <li>Soft delete: accidental deletion se 14 days protection (default)</li>
+            <li>Backup policies: define retention rules — daily/weekly/monthly/yearly</li>
+            <li>Cross-region restore: restore to the paired Region from a GRS Vault is possible</li>
+            <li>Soft delete: 14 days of protection against accidental deletion (default)</li>
             <li>Immutable Vault: ransomware protection — backup data tamper-proof</li>
           </ul>
         </section>
@@ -801,12 +801,12 @@ export default function Content() {
         <section id="azure-monitor">
           <h3 style={S.h3}>Azure Monitor</h3>
           <p style={S.p}>
-            Azure Monitor Azure ka central observability platform hai — metrics, logs, alerts, dashboards sab yahan. Traditional DC monitoring (SCOM, Nagios, SolarWinds) ka cloud equivalent.
+            Azure Monitor is Azure's central observability platform — metrics, logs, alerts, dashboards all in one place. The cloud equivalent of traditional DC monitoring (SCOM, Nagios, SolarWinds).
           </p>
           <ul style={S.ul}>
             <li><strong>Metrics:</strong> Near-real-time numeric data (CPU %, network bytes, disk IOPS). 93 days retention. Automatically collected for Azure resources.</li>
             <li><strong>Alerts:</strong> Metric/log/activity alerts → Action Groups (email, SMS, webhook, ITSM ticketing, Logic App automation)</li>
-            <li><strong>Azure Monitor Agent (AMA):</strong> VM pe install karo → logs aur custom metrics Log Analytics workspace mein</li>
+            <li><strong>Azure Monitor Agent (AMA):</strong> Install on the VM → logs and custom metrics go to the Log Analytics workspace</li>
             <li><strong>Activity Log:</strong> ARM-level API calls — who did what, when. CloudTrail equivalent. 90 days retention (send to Log Analytics for longer).</li>
           </ul>
         </section>
@@ -814,16 +814,16 @@ export default function Content() {
         <section id="log-analytics">
           <h3 style={S.h3}>Log Analytics and KQL</h3>
           <p style={S.p}>
-            Log Analytics Workspace Azure Monitor mein log storage aur query engine hai. KQL (Kusto Query Language) se logs query karo. CloudWatch Logs Insights equivalent lekin zyada powerful aur expressive.
+            Log Analytics Workspace is the log storage and query engine in Azure Monitor. Query logs with KQL (Kusto Query Language). Equivalent to CloudWatch Logs Insights, but more powerful and expressive.
           </p>
           <ul style={S.ul}>
             <li>Data sources: VM logs (AMA), AKS container logs, NSG flow logs, Azure Firewall, App Service, SQL, custom sources</li>
             <li>Retention: configurable 30 days to 2 years (Interactive) + archive tier (up to 7 years)</li>
             <li>Workbooks: KQL queries + visualizations = interactive dashboards</li>
-            <li>Application Insights: APM service — web apps ke liye request rates, failures, latency, user flows, distributed tracing. Log Analytics pe built.</li>
+            <li>Application Insights: APM service — request rates, failures, latency, user flows and distributed tracing for web apps. Built on Log Analytics.</li>
           </ul>
           <p style={S.p}>
-            KQL practical examples — yeh queries Log Analytics mein directly run hoti hain:
+            KQL practical examples — these queries run directly in Log Analytics:
           </p>
           <ul style={S.ul}>
             <li><code>{"Heartbeat | summarize count() by Computer, bin(TimeGenerated, 1h)"}</code> — VM heartbeat per hour (connectivity check)</li>
@@ -832,20 +832,20 @@ export default function Content() {
             <li><code>{"Perf | where CounterName == '% Processor Time' | summarize avg(CounterValue) by Computer"}</code> — average CPU per VM</li>
           </ul>
           <p style={S.p}>
-            KQL pipeline syntax: <code>TableName | where condition | project columns | summarize aggregation | order by column</code>. SQL se familiar ho toh KQL quickly pick up hoti hai — syntax different hai lekin concepts overlap karte hain.
+            KQL pipeline syntax: <code>TableName | where condition | project columns | summarize aggregation | order by column</code>. If you are familiar with SQL, you will pick up KQL quickly — the syntax is different but the concepts overlap.
           </p>
         </section>
 
         <section id="defender-cloud">
           <h3 style={S.h3}>Microsoft Defender for Cloud</h3>
           <p style={S.p}>
-            Defender for Cloud (formerly Security Center + Azure Defender) combined CSPM + CWP platform hai. AWS GuardDuty + Security Hub combined equivalent.
+            Defender for Cloud (formerly Security Center + Azure Defender) is a combined CSPM + CWP platform. Equivalent to AWS GuardDuty + Security Hub combined.
           </p>
           <ul style={S.ul}>
-            <li><strong>Secure Score:</strong> Security posture quantify — recommendations follow karo, score improve karo</li>
+            <li><strong>Secure Score:</strong> Quantifies security posture — follow the recommendations, improve the score</li>
             <li><strong>Regulatory Compliance:</strong> CIS, NIST, PCI-DSS, ISO 27001 automated compliance dashboard</li>
             <li><strong>Defender plans:</strong> VMs (JIT, adaptive app controls, file integrity monitoring), SQL, Containers, Storage, Key Vault, App Service, DNS</li>
-            <li><strong>Multi-cloud:</strong> AWS aur GCP resources bhi Defender for Cloud mein manage karo (via Azure Arc)</li>
+            <li><strong>Multi-cloud:</strong> Manage AWS and GCP resources in Defender for Cloud too (via Azure Arc)</li>
           </ul>
         </section>
 
@@ -861,24 +861,24 @@ export default function Content() {
         <section id="key-vault">
           <h3 style={S.h3}>Azure Key Vault</h3>
           <p style={S.p}>
-            Key Vault secrets, keys aur certificates securely store aur manage karta hai. Traditional DC HSM + secret management (CyberArk, HashiCorp Vault) ka cloud equivalent.
+            Key Vault securely stores and manages secrets, keys and certificates. The cloud equivalent of traditional DC HSM + secret management (CyberArk, HashiCorp Vault).
           </p>
           <ul style={S.ul}>
             <li><strong>Secrets:</strong> Connection strings, passwords, API keys — version controlled, audit logged</li>
-            <li><strong>Keys:</strong> Cryptographic keys — software-protected ya HSM-protected (Premium tier). Envelope encryption ke liye use karo (Azure Storage, Azure SQL encryption)</li>
+            <li><strong>Keys:</strong> Cryptographic keys — software-protected or HSM-protected (Premium tier). Use them for envelope encryption (Azure Storage, Azure SQL encryption)</li>
             <li><strong>Certificates:</strong> TLS certificates store, auto-renew, deploy to App Service/Application Gateway</li>
             <li><strong>Access policies vs RBAC:</strong> RBAC preferred for Key Vault access (granular, audit trail)</li>
-            <li><strong>Soft delete:</strong> Accidentally deleted secrets 90 days tak recover ho sakti hain</li>
+            <li><strong>Soft delete:</strong> Accidentally deleted secrets can be recovered for up to 90 days</li>
           </ul>
           <p style={S.p}>
-            Managed Identity + Key Vault = best practice. VM ya Function ko Key Vault mein secrets read karne chahiye → Managed Identity assign karo → Key Vault Secrets User RBAC role assign karo → no credentials in code.
+            Managed Identity + Key Vault = best practice. A VM or Function needs to read secrets from Key Vault → assign a Managed Identity → assign the Key Vault Secrets User RBAC role → no credentials in code.
           </p>
         </section>
 
         <section id="azure-sentinel">
           <h3 style={S.h3}>Microsoft Sentinel (SIEM/SOAR)</h3>
           <p style={S.p}>
-            Microsoft Sentinel cloud-native SIEM (Security Information and Event Management) + SOAR (Security Orchestration, Automation and Response) platform hai. AWS Security Hub se zyada mature SIEM capabilities.
+            Microsoft Sentinel is a cloud-native SIEM (Security Information and Event Management) + SOAR (Security Orchestration, Automation and Response) platform. More mature SIEM capabilities than AWS Security Hub.
           </p>
           <ul style={S.ul}>
             <li>Data connectors: Azure services, Microsoft 365, AWS, third-party security tools, custom</li>
@@ -907,11 +907,11 @@ export default function Content() {
         <section id="arm-templates">
           <h3 style={S.h3}>ARM Templates and Bicep</h3>
           <p style={S.p}>
-            ARM Templates JSON-based declarative IaC hain — Azure native. Complex, verbose JSON. <strong>Bicep</strong> Microsoft ka ARM Templates ke upar DSL (Domain-Specific Language) hai — much cleaner syntax, ARM JSON mein transpile hota hai. Both idempotent — same template run karo, same result.
+            ARM Templates are JSON-based declarative IaC — Azure native. Complex, verbose JSON. <strong>Bicep</strong> is Microsoft's DSL (Domain-Specific Language) on top of ARM Templates — much cleaner syntax, transpiled into ARM JSON. Both are idempotent — run the same template, get the same result.
           </p>
           <ul style={S.ul}>
             <li>Bicep: shorter syntax, type-safe, intellisense support, native Azure integration</li>
-            <li>Template Specs: ARM/Bicep templates centrally store karo → reuse across org</li>
+            <li>Template Specs: store ARM/Bicep templates centrally → reuse across the org</li>
             <li>Deployment Stacks: group deployments, managed cleanup (delete stack → delete all resources)</li>
             <li>What-if: preview changes before deploying (CloudFormation Change Sets equivalent)</li>
           </ul>
@@ -920,10 +920,10 @@ export default function Content() {
         <section id="terraform-azure">
           <h3 style={S.h3}>Terraform on Azure</h3>
           <p style={S.p}>
-            Terraform HashiCorp Provider for Azure (<code>azurerm</code>) use karta hai — all Azure resources manage karne ke liye. Multi-cloud environments, existing Terraform skills, mature Terraform ecosystem ke liye preferred. Azure-specific features (Bicep) ka complete parity nahi hota immediately, lekin community active hai.
+            Terraform uses the HashiCorp Provider for Azure (<code>azurerm</code>) — to manage all Azure resources. Preferred for multi-cloud environments, existing Terraform skills and the mature Terraform ecosystem. It does not always have immediate complete parity with Azure-specific features (Bicep), but the community is active.
           </p>
           <p style={S.p}>
-            Remote state: Azure Blob Storage mein store karo (state file) + Azure Blob lease-based locking (concurrent applies prevent karta hai) — team collaboration ke liye. <code>terraform plan</code> → review → <code>terraform apply</code>. Azure DevOps ya GitHub Actions se CI/CD mein integrate karo.
+            Remote state: store it in Azure Blob Storage (state file) + Azure Blob lease-based locking (prevents concurrent applies) — for team collaboration. <code>terraform plan</code> → review → <code>terraform apply</code>. Integrate into CI/CD with Azure DevOps or GitHub Actions.
           </p>
         </section>
       </section>
@@ -948,7 +948,7 @@ export default function Content() {
             ]}
           />
           <Callout type="warning" title="Deallocate vs Stop">
-            Azure VM ko OS se shutdown karo (Stop inside OS) toh VM still running, still billed. Azure portal ya CLI se Deallocate karo — compute billing stops. Disk charges continue. Important distinction unlike AWS EC2 stop.
+            If you shut down an Azure VM from the OS (Stop inside OS), the VM is still running and still billed. Deallocate it from the Azure portal or CLI — compute billing stops. Disk charges continue. An important distinction, unlike AWS EC2 stop.
           </Callout>
         </section>
 
@@ -956,11 +956,11 @@ export default function Content() {
           <h3 style={S.h3}>Cost Management Tools</h3>
           <ul style={S.ul}>
             <li><strong>Azure Cost Management + Billing:</strong> Spend analysis, budgets, cost alerts, recommendations. AWS Cost Explorer equivalent.</li>
-            <li><strong>Azure Advisor:</strong> Cost, performance, security, reliability, operational excellence recommendations. Idle VMs, underutilized resources identify karta hai. AWS Trusted Advisor equivalent.</li>
+            <li><strong>Azure Advisor:</strong> Cost, performance, security, reliability, operational excellence recommendations. Identifies idle VMs and underutilized resources. Equivalent to AWS Trusted Advisor.</li>
             <li><strong>Reserved Instances:</strong> 1yr/3yr commitment — up to 72% savings on VMs, SQL, Cosmos DB etc.</li>
-            <li><strong>Azure Hybrid Benefit:</strong> Windows Server + SQL Server existing licenses Azure mein use karo — 40-85% savings for licensed workloads.</li>
-            <li><strong>Azure Spot VMs:</strong> Unused Azure capacity — up to 90% discount. Azure 2-minute eviction notice deta hai (Scheduled Events via IMDS) — fault-tolerant workloads ke liye design karo.</li>
-            <li><strong>Tagging strategy:</strong> Environment, Team, Application, CostCenter tags enforce karo — cost attribution ke liye mandatory.</li>
+            <li><strong>Azure Hybrid Benefit:</strong> Use existing Windows Server + SQL Server licenses in Azure — 40-85% savings for licensed workloads.</li>
+            <li><strong>Azure Spot VMs:</strong> Unused Azure capacity — up to 90% discount. Azure gives a 2-minute eviction notice (Scheduled Events via IMDS) — design for fault-tolerant workloads.</li>
+            <li><strong>Tagging strategy:</strong> Enforce Environment, Team, Application, CostCenter tags — mandatory for cost attribution.</li>
           </ul>
         </section>
       </section>
@@ -985,7 +985,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          Objective answer: Azure aur AWS both excellent platforms hain. <strong>Azure choose karo jab:</strong> existing Microsoft enterprise software (Windows, SQL, AD, M365) heavy use ho, hybrid cloud primary concern ho, .NET development team ho. <strong>AWS choose karo jab:</strong> cloud-native startup, widest service selection needed, largest global community needed.
+          Objective answer: Azure and AWS are both excellent platforms. <strong>Choose Azure when:</strong> you heavily use existing Microsoft enterprise software (Windows, SQL, AD, M365), hybrid cloud is the primary concern, or you have a .NET development team. <strong>Choose AWS when:</strong> cloud-native startup, widest service selection needed, largest global community needed.
         </p>
       </section>
 
@@ -1000,7 +1000,7 @@ export default function Content() {
             <li><strong>Web tier:</strong> Application Gateway (L7 LB + WAF) → VMSS (web VMs, AZ-spanning, Standard SSD)</li>
             <li><strong>App tier:</strong> Internal Azure Load Balancer → VMSS (app VMs, private subnet)</li>
             <li><strong>Data tier:</strong> Azure SQL Business Critical (zone-redundant, multi-AZ replicas) + Azure Cache for Redis</li>
-            <li><strong>Security:</strong> NSG on each subnet, Azure Firewall hub VNet pe, Key Vault for secrets/certs, Defender for Cloud enabled</li>
+            <li><strong>Security:</strong> NSG on each subnet, Azure Firewall on the hub VNet, Key Vault for secrets/certs, Defender for Cloud enabled</li>
             <li><strong>Identity:</strong> Managed Identity on VMs → Key Vault, Storage, SQL access</li>
             <li><strong>Monitoring:</strong> Azure Monitor Agent on all VMs → Log Analytics Workspace. Application Insights for web app. Alerts → Action Groups.</li>
             <li><strong>IaC:</strong> Bicep templates, deployed via Azure DevOps pipeline</li>
@@ -1066,22 +1066,22 @@ export default function Content() {
       {/* ─── TROUBLESHOOTING ──────────────────────────────────────────────── */}
       <section id="troubleshooting">
         <h2 style={S.h2}>Troubleshooting</h2>
-        <p style={S.p}>Azure troubleshooting systematic approach chahta hai — resource → network → security → app. VM running ≠ application healthy.</p>
+        <p style={S.p}>Azure troubleshooting needs a systematic approach — resource → network → security → app. VM running ≠ application healthy.</p>
         <ol style={{ ...S.ul, listStyleType: "decimal" }}>
-          <li><strong>DNS resolving?</strong> <code>nslookup / Resolve-DnsName</code> — Azure DNS, Private DNS Zone, custom DNS server check karo</li>
-          <li><strong>VM state correct?</strong> Running? Not Deallocated/Stopped? Azure portal VM state check karo</li>
+          <li><strong>DNS resolving?</strong> <code>nslookup / Resolve-DnsName</code> — check Azure DNS, Private DNS Zone, custom DNS server</li>
+          <li><strong>VM state correct?</strong> Running? Not Deallocated/Stopped? Check the VM state in the Azure portal</li>
           <li><strong>NSG blocking?</strong> Azure portal → NSG → Effective Security Rules. Or use Network Watcher → IP Flow Verify.</li>
-          <li><strong>Route correct?</strong> Network Watcher → Next Hop tool — packet actually kahan ja raha hai</li>
+          <li><strong>Route correct?</strong> Network Watcher → Next Hop tool — where is the packet actually going?</li>
           <li><strong>Azure Firewall blocking?</strong> Firewall logs → Log Analytics → <code>AzureDiagnostics | where Category == "AzureFirewallNetworkRule"</code></li>
-          <li><strong>Load Balancer health?</strong> Backend pool health check karo — probe port/path correct hai?</li>
+          <li><strong>Load Balancer health?</strong> Check backend pool health — is the probe port/path correct?</li>
           <li><strong>App Service errors?</strong> App Service Diagnostics → Log Stream, Application Insights failures</li>
           <li><strong>VM OS/app issue?</strong> Boot Diagnostics screenshot, Serial Console access, Azure Monitor Agent logs</li>
-          <li><strong>RBAC / access denied?</strong> Azure portal → Resource → Access Control (IAM) → Check access. Activity Log mein 403 entries.</li>
-          <li><strong>Key Vault access?</strong> Key Vault → Monitoring → Diagnostic Logs — deny events identify karo</li>
-          <li><strong>Hybrid connectivity?</strong> VPN Gateway / ExpressRoute → Connection Monitor, BGP route tables check karo</li>
+          <li><strong>RBAC / access denied?</strong> Azure portal → Resource → Access Control (IAM) → Check access. 403 entries in the Activity Log.</li>
+          <li><strong>Key Vault access?</strong> Key Vault → Monitoring → Diagnostic Logs — identify deny events</li>
+          <li><strong>Hybrid connectivity?</strong> VPN Gateway / ExpressRoute → check Connection Monitor, BGP route tables</li>
         </ol>
-        <Callout type="important" title="Network Watcher — Azure ke Troubleshooting Swiss Army Knife">
-          Azure Network Watcher: IP Flow Verify (NSG block check), Next Hop (routing check), Connection Monitor (continuous connectivity testing), Packet Capture (VM pe remote capture), NSG Flow Logs (VNet traffic audit). Troubleshooting shuru karne ka best tool hai.
+        <Callout type="important" title="Network Watcher — The Swiss Army Knife of Azure Troubleshooting">
+          Azure Network Watcher: IP Flow Verify (NSG block check), Next Hop (routing check), Connection Monitor (continuous connectivity testing), Packet Capture (remote capture on a VM), NSG Flow Logs (VNet traffic audit). It is the best tool to start troubleshooting with.
         </Callout>
       </section>
 
@@ -1123,10 +1123,10 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          Data Center engineer ke liye recommended path: AZ-900 → AZ-104 → AZ-305. AZ-700 add karo agar networking primary focus hai. Azure certifications enterprise sector mein highly valued hain — especially AZ-104 aur AZ-305.
+          Recommended path for a Data Center engineer: AZ-900 → AZ-104 → AZ-305. Add AZ-700 if networking is your primary focus. Azure certifications are highly valued in the enterprise sector — especially AZ-104 and AZ-305.
         </p>
         <p style={S.p}>
-          Career opportunities: Azure Cloud Engineer, Azure Solutions Architect, Azure Network Engineer, Cloud Security Engineer, DevOps Engineer (Azure). India mein demand rapidly growing hai — especially Bangalore, Hyderabad, Pune mein IT services companies Azure heavily use kar rahi hain.
+          Career opportunities: Azure Cloud Engineer, Azure Solutions Architect, Azure Network Engineer, Cloud Security Engineer, DevOps Engineer (Azure). Demand in India is growing rapidly — especially in Bangalore, Hyderabad and Pune, where IT services companies are using Azure heavily.
         </p>
       </section>
 

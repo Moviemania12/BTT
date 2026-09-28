@@ -27,7 +27,7 @@ export default function AzureArticlePage() {
         slug="azure"
         headings={HEADINGS}
         readingTimeMinutes={azureMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/it/cloud/azure">
         <Content />
       </ArticleLayout>
     </>

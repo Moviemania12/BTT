@@ -11,7 +11,7 @@ export default function BackupPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <ArticleLayout slug="backup" headings={HEADINGS} readingTimeMinutes={40}>
+      <ArticleLayout slug="backup" headings={HEADINGS} readingTimeMinutes={40} lang="en" alternateHref="/hi/learn/it/storage/backup">
         <Content />
       </ArticleLayout>
     </>

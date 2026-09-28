@@ -17,32 +17,22 @@ export default function Content() {
     <>
       {/* ── Quick Summary ─────────────────────────────────────────────── */}
       <div style={{ background:"#f0fdf4", border:"1px solid #bbf7d0", borderRadius:10, padding:"1.2rem 1.4rem", marginBottom:"2rem" }}>
-        <p style={{ fontWeight:700, color:"#15803d", marginBottom:"0.6rem", fontSize:"1rem" }}>📋 Quick Summary — SAN in 2 Minutes</p>
-        <ul style={{ ...S.ul, marginBottom:0 }}>
-          <li><strong>SAN kya hai:</strong> Storage Area Network — dedicated high-speed storage network. Servers ko block-level storage provide karta hai. Server raw LUN dekhta hai — khud filesystem banata hai.</li>
-          <li><strong>Block-level:</strong> SAN raw disk blocks present karta hai. Server's OS ya application filesystem create karta hai upar. NAS files share karta hai; SAN disk share karta hai.</li>
-          <li><strong>Key concept — LUN:</strong> Logical Unit Number — storage array mein ek logical block storage unit. Physical disk nahi — storage pool se carved-out logical volume.</li>
-          <li><strong>Zoning + LUN Masking:</strong> Dono alag layers. Zoning fabric communication controls karta hai. LUN Masking storage-side which-host-sees-which-LUN controls karta hai.</li>
-          <li><strong>Dual Fabric:</strong> Mission-critical FC SAN designs commonly Fabric A + Fabric B use karte hain. Both controllers have ports on both fabrics. Ek fail → doosra active.</li>
-          <li><strong>Multipathing:</strong> Multiple physical paths — same LUN. MPIO (Windows), DM-Multipath (Linux), VMware NMP — OS level pe redundancy aur optional load balancing.</li>
-          <li><strong>Primary use cases:</strong> Oracle/SQL Server databases, VMware shared datastores, mission-critical block storage.</li>
-          <li><strong>Critical warning:</strong> Galat LUN format karna data permanently destroy kar sakta hai. Har action double-verify karo.</li>
-        </ul>
+        <p style={{ fontWeight:700, color:"#15803d", marginBottom:"0.6rem", fontSize:"1rem" }}>📋 Quick Summary — SAN in 2 Minutes</p> <ul style={{ ...S.ul, marginBottom:0 }}> <li><strong>What SAN is:</strong> Storage Area Network — a dedicated high-speed storage network. It provides block-level storage to servers. The server sees a raw LUN — and builds its own filesystem.</li> <li><strong>Block-level:</strong> SAN presents raw disk blocks. The server's OS or application creates the filesystem on top. NAS shares files; SAN shares disk.</li> <li><strong>Key concept — LUN:</strong> Logical Unit Number — a logical block storage unit in a storage array. Not a physical disk — a logical volume carved out of a storage pool.</li> <li><strong>Zoning + LUN Masking:</strong> Two separate layers. Zoning controls fabric communication. LUN Masking controls, on the storage side, which host sees which LUN.</li> <li><strong>Dual Fabric:</strong> Mission-critical FC SAN designs commonly use Fabric A + Fabric B. Both controllers have ports on both fabrics. One fails → the other stays active.</li> <li><strong>Multipathing:</strong> Multiple physical paths — same LUN. MPIO (Windows), DM-Multipath (Linux), VMware NMP — redundancy and optional load balancing at the OS level.</li> <li><strong>Primary use cases:</strong> Oracle/SQL Server databases, VMware shared datastores, mission-critical block storage.</li> <li><strong>Critical warning:</strong> Formatting the wrong LUN can permanently destroy data. Double-verify every action.</li> </ul>
       </div>
 
       {/* ══ SECTION 1 — DEFINITION ══════════════════════════════════════════ */}
-      <h2 id="san-kya-hai" style={S.h2}>SAN Kya Hai — Definition aur Full Form</h2>
+      <h2 id="san-kya-hai" style={S.h2}>What Is SAN — Definition and Full Form</h2>
       <p style={S.p}><strong>SAN = Storage Area Network</strong></p>
-      <p style={S.p}>SAN ek dedicated high-speed network hai jo servers aur storage devices ke beech block-level storage access provide karta hai.</p>
-      <p style={S.p}><strong>Simple definition:</strong> Ek alag network sirf storage ke liye — jahan server storage ko ek local disk ki tarah access karta hai, lekin woh disk actually ek enterprise storage array mein hoti hai.</p>
-      <p style={S.p}><strong>Technical definition:</strong> SAN ek storage-specific network fabric hai jo hosts (servers) ko storage devices (arrays) ke saath connect karta hai — Fibre Channel ya TCP/IP (iSCSI) protocols ke through — aur block-level I/O access provide karta hai.</p>
+      <p style={S.p}>SAN is a dedicated high-speed network that provides block-level storage access between servers and storage devices.</p>
+      <p style={S.p}><strong>Simple definition:</strong> A separate network just for storage — where the server accesses storage like a local disk, but that disk actually lives in an enterprise storage array.</p>
+      <p style={S.p}><strong>Technical definition:</strong> SAN is a storage-specific network fabric that connects hosts (servers) with storage devices (arrays) — through Fibre Channel or TCP/IP (iSCSI) protocols — and provides block-level I/O access.</p>
 
-      <h3 style={S.h3}>SAN Kyun Exist Karta Hai</h3>
+      <h3 style={S.h3}>Why SAN Exists</h3>
       <ul style={S.ul}>
-        <li>Multiple servers ek common storage pool ko block-level access kar sakte hain (with cluster-aware software)</li>
-        <li>VMware jaise hypervisors shared datastores pe vMotion, HA, DRS enable karte hain</li>
-        <li>Mission-critical databases dedicated block storage use karte hain</li>
-        <li>Storage independently scale hoti hai servers se</li>
+        <li>Multiple servers can get block-level access to a common storage pool (with cluster-aware software)</li>
+        <li>Hypervisors like VMware enable vMotion, HA and DRS on shared datastores</li>
+        <li>Mission-critical databases use dedicated block storage</li>
+        <li>Storage scales independently of servers</li>
         <li>Storage consolidation — many servers, one centralized managed storage infrastructure</li>
       </ul>
 
@@ -53,33 +43,33 @@ export default function Content() {
         headers={["Parameter","LAN (Normal Network)","SAN (Storage Network)"]}
         rows={[
           ["Purpose",           "General data communication",    "Storage I/O only"],
-          ["Protocol",          "TCP/IP, HTTP, DNS, etc.",       "Fibre Channel ya iSCSI"],
+          ["Protocol",          "TCP/IP, HTTP, DNS, etc.",       "Fibre Channel or iSCSI"],
           ["Traffic type",      "Files, web, email, queries",    "Raw block storage I/O"],
           ["Latency requirement","Medium",                       "Very low"],
-          ["Infrastructure",    "Standard Ethernet switches",    "FC switches ya dedicated storage Ethernet"],
+          ["Infrastructure",    "Standard Ethernet switches",    "FC switches or dedicated storage Ethernet"],
           ["Failure impact",    "Service disruption",            "Storage inaccessible — potentially critical"],
         ]}
-        caption="SAN ek 'storage fabric' hai — ek alag world sirf storage I/O ke liye. Production SAN traffic aur general network traffic mix nahi hoti."
+        caption="SAN is a 'storage fabric' — a separate world just for storage I/O. Production SAN traffic and general network traffic do not mix."
       />
 
       {/* ══ SECTION 3 — FILE VS BLOCK ══════════════════════════════════════ */}
       <h2 id="file-vs-block" style={S.h2}>File-Level vs Block-Level Storage</h2>
       <h3 style={S.h3}>File-Level Storage (NAS)</h3>
-      <p style={S.p}>NAS ek complete file system expose karta hai. Client files aur folders dekhta hai — NAS ke andar kya hai (RAID, drives) client ko nahi pata.</p>
+      <p style={S.p}>NAS exposes a complete file system. The client sees files and folders — the client does not know what is inside the NAS (RAID, drives).</p>
       <CodeBlock lang="text">
 {`Client → Network → NAS → [NAS internal filesystem] → Storage
-Client sirf FILES dekhta hai`}
+The client sees only FILES`}
       </CodeBlock>
 
       <h3 style={S.h3}>Block-Level Storage (SAN)</h3>
-      <p style={S.p}>SAN raw disk blocks expose karta hai. Server ko ek raw disk milti hai (LUN). Server ka OS ya application uske upar filesystem create karta hai.</p>
+      <p style={S.p}>SAN exposes raw disk blocks. The server gets a raw disk (LUN). The server's OS or application creates a filesystem on top of it.</p>
       <CodeBlock lang="text">
 {`Server → SAN Fabric → Storage Array → [presents raw blocks as LUN]
-Server ek "disk" dekhta hai — NAS pe koi filesystem nahi
-Server khud filesystem banana padta hai`}
+The server sees a "disk" — no filesystem on the NAS side
+The server has to build the filesystem itself`}
       </CodeBlock>
-      <Callout type="important" title="Block-Level Kuch Workloads Ke Liye Kyun Better">
-        Databases directly block-level I/O pe operate kar sakte hain — tight filesystem integration ke saath predictable latency. VMware VMFS block-level (SAN LUN) ke upar chalta hai aur multi-host concurrent access manage karta hai safely.
+      <Callout type="important" title="Why Block-Level Is Better for Some Workloads">
+        Databases can operate directly on block-level I/O — with predictable latency and tight filesystem integration. VMware VMFS runs on top of block-level (SAN LUN) storage and safely manages concurrent multi-host access.
       </Callout>
 
       {/* ══ SECTION 4 — DAS NAS SAN COMPARE ════════════════════════════════ */}
@@ -101,7 +91,7 @@ Server khud filesystem banana padta hai`}
           ["Cost",               "Lowest",                          "Medium",                        "Highest"],
           ["DC use case",        "Local storage, HCI",             "Shared files, backup",          "Databases, VMware, mission-critical"],
         ]}
-        caption="DAS aur SAN dono block-level hain — DAS directly attached, SAN fabric se. Multi-host LUN sharing mein cluster-aware software mandatory."
+        caption="DAS and SAN are both block-level — DAS is directly attached, SAN is via a fabric. Cluster-aware software is mandatory for multi-host LUN sharing."
       />
 
       {/* ══ SECTION 5 — SAN DATA PATH ══════════════════════════════════════ */}
@@ -111,54 +101,54 @@ Server khud filesystem banana padta hai`}
       </Figure>
       <p style={S.p}><strong>Key layers explained:</strong></p>
       <ul style={S.ul}>
-        <li><strong>Multipath Layer:</strong> MPIO/DM-Multipath/VMware NMP — multiple physical paths manage karta hai. Path fail → automatically doosre pe I/O.</li>
-        <li><strong>HBA:</strong> FC ke liye WWPN identity, iSCSI ke liye IQN.</li>
-        <li><strong>SAN Fabric:</strong> FC switches ya iSCSI network — storage frames route karte hain initiator se target tak.</li>
-        <li><strong>Storage Controller:</strong> I/O process karta hai, cache manage karta hai.</li>
-        <li><strong>Write Cache (NVRAM/Flash):</strong> Fast acknowledge — background mein physical media pe flush.</li>
+        <li><strong>Multipath Layer:</strong> MPIO/DM-Multipath/VMware NMP — manages multiple physical paths. Path fails → I/O automatically moves to another.</li>
+        <li><strong>HBA:</strong> WWPN identity for FC, IQN for iSCSI.</li>
+        <li><strong>SAN Fabric:</strong> FC switches or iSCSI network — routes storage frames from initiator to target.</li>
+        <li><strong>Storage Controller:</strong> Processes I/O and manages cache.</li>
+        <li><strong>Write Cache (NVRAM/Flash):</strong> Fast acknowledge — flushed to physical media in the background.</li>
         <li><strong>RAID/Storage Pool:</strong> Data protection layer.</li>
       </ul>
 
       {/* ══ SECTION 6 — TERMINOLOGY ════════════════════════════════════════ */}
-      <h2 id="san-terminology" style={S.h2}>Core SAN Terminology — Engineer Ki Dictionary</h2>
+      <h2 id="san-terminology" style={S.h2}>Core SAN Terminology — The Engineer's Dictionary</h2>
 
       <h3 style={S.h3}>Initiator</h3>
-      <p style={S.p}>Server/host side — jo storage access karna chahta hai. FC mein: FC HBA port = initiator, identity = <strong>WWPN</strong>. iSCSI mein: iSCSI adapter = initiator, identity = <strong>IQN</strong>.</p>
+      <p style={S.p}>The server/host side — the one that wants to access storage. In FC: FC HBA port = initiator, identity = <strong>WWPN</strong>. In iSCSI: iSCSI adapter = initiator, identity = <strong>IQN</strong>.</p>
 
       <h3 style={S.h3}>Target</h3>
-      <p style={S.p}>Storage side — storage array ka port jo I/O requests receive karta hai. FC mein: storage controller ka FC front-end port = target (WWPN). iSCSI mein: storage iSCSI portal = target (IQN + IP:Port).</p>
+      <p style={S.p}>The storage side — the storage array port that receives I/O requests. In FC: the storage controller's FC front-end port = target (WWPN). In iSCSI: the storage iSCSI portal = target (IQN + IP:Port).</p>
 
       <h3 style={S.h3}>LUN — Logical Unit Number</h3>
-      <p style={S.p}>Ek numbered logical storage unit jo storage target expose karta hai. <strong>LUN ek physical disk nahi hai</strong> — storage pool/RAID ke upar software se create ki gayi logical block storage unit.</p>
+      <p style={S.p}>A numbered logical storage unit that the storage target exposes. <strong>A LUN is not a physical disk</strong> — it is a logical block storage unit created in software on top of a storage pool/RAID.</p>
 
       <h3 style={S.h3}>HBA — Host Bus Adapter</h3>
-      <p style={S.p}>Server mein laga PCIe card jo SAN fabric se connect karta hai. FC HBA ya iSCSI-capable NIC. Firmware aur driver OS ke saath HCL-verified hone chahiye.</p>
+      <p style={S.p}>A PCIe card installed in the server that connects to the SAN fabric. An FC HBA or iSCSI-capable NIC. Firmware and driver must be HCL-verified with the OS.</p>
 
       <h3 style={S.h3}>WWN — World Wide Name</h3>
-      <p style={S.p}><strong>WWNN (World Wide Node Name):</strong> HBA device (card) ka unique 8-byte identifier — ek HBA ka ek WWNN.</p>
-      <p style={S.p}><strong>WWPN (World Wide Port Name):</strong> HBA ke specific port ka unique 8-byte identifier. Dual-port HBA = 2 WWPNs. <strong>Zoning aur LUN masking mein WWPN use hota hai — WWNN nahi.</strong></p>
+      <p style={S.p}><strong>WWNN (World Wide Node Name):</strong> A unique 8-byte identifier of the HBA device (card) — one HBA has one WWNN.</p>
+      <p style={S.p}><strong>WWPN (World Wide Port Name):</strong> A unique 8-byte identifier of a specific port of the HBA. Dual-port HBA = 2 WWPNs. <strong>Zoning and LUN masking use the WWPN — not the WWNN.</strong></p>
       <CodeBlock lang="text">
 {`WWPN format: 50:00:D3:10:00:4A:BC:12  (8 bytes, hexadecimal, colon-separated)
 
-WWPN kahan milega:
+Where to find the WWPN:
   Windows: Device Manager → FC HBA properties
   Linux:   cat /sys/class/fc_host/host*/port_name
   VMware:  esxcli storage core adapter list`}
       </CodeBlock>
 
       <h3 style={S.h3}>Fabric, Zoning, LUN Masking, Multipathing, ALUA</h3>
-      <p style={S.p}>Ye sab dedicated sections mein deep-dive mein explain hain. Brief definitions:</p>
+      <p style={S.p}>All of these are explained in depth in dedicated sections. Brief definitions:</p>
       <ul style={S.ul}>
-        <li><strong>Fabric:</strong> FC switches ka interconnected network — ISL (Inter-Switch Links) se connected.</li>
-        <li><strong>Zoning:</strong> FC switch pe — which initiator WWPN can communicate with which target WWPN.</li>
-        <li><strong>LUN Masking:</strong> Storage array pe — which host can see which LUN.</li>
-        <li><strong>Multipathing:</strong> Multiple physical paths same LUN tak — MPIO/DM-Multipath/VMware NMP manage karta hai.</li>
-        <li><strong>ALUA:</strong> T10 SCSI standard — storage array batata hai via Target Port Groups ki kaun sa path preferred (Active/Optimized) hai.</li>
+        <li><strong>Fabric:</strong> An interconnected network of FC switches — connected by ISLs (Inter-Switch Links).</li>
+        <li><strong>Zoning:</strong> On the FC switch — which initiator WWPN can communicate with which target WWPN.</li>
+        <li><strong>LUN Masking:</strong> On the storage array — which host can see which LUN.</li>
+        <li><strong>Multipathing:</strong> Multiple physical paths to the same LUN — managed by MPIO/DM-Multipath/VMware NMP.</li>
+        <li><strong>ALUA:</strong> T10 SCSI standard — the storage array indicates via Target Port Groups which path is preferred (Active/Optimized).</li>
       </ul>
 
       {/* ══ SECTION 7 — LUN DEEP ═══════════════════════════════════════════ */}
       <h2 id="lun-deep" style={S.h2}>LUN — Deep Explanation</h2>
-      <h3 style={S.h3}>LUN Kya Hai Actually</h3>
+      <h3 style={S.h3}>What a LUN Actually Is</h3>
       <CodeBlock lang="text">
 {`Physical Drives (10 × SAS SSDs in array)
           ↓
@@ -172,42 +162,42 @@ Each LUN is a separate logical block storage unit — carved from the pool.
 Same pool can serve multiple hosts via different LUNs.`}
       </CodeBlock>
 
-      <h3 style={S.h3}>LUN Ko Host Kaise Dekhta Hai</h3>
+      <h3 style={S.h3}>How the Host Sees a LUN</h3>
       <ul style={S.ul}>
-        <li><strong>Windows:</strong> Disk Management mein "Disk 1 — 2047.98 GB Unallocated." Engineer initialize, partition, format karta hai.</li>
-        <li><strong>Linux:</strong> <code>/dev/sdb</code> ya <code>/dev/mapper/mpath0</code> jaisa block device. Filesystem banana padega.</li>
-        <li><strong>VMware ESXi:</strong> Storage adapter mein device/LUN appear hota hai. Admin VMFS datastore create karta hai.</li>
+        <li><strong>Windows:</strong> "Disk 1 — 2047.98 GB Unallocated" in Disk Management. The engineer initializes, partitions and formats it.</li>
+        <li><strong>Linux:</strong> A block device such as <code>/dev/sdb</code> or <code>/dev/mapper/mpath0</code>. A filesystem has to be created.</li>
+        <li><strong>VMware ESXi:</strong> The device/LUN appears under the storage adapter. The admin creates a VMFS datastore.</li>
       </ul>
 
       <h3 style={S.h3}>Practical Provisioning Example</h3>
       <CodeBlock lang="text">
-{`Scenario: DBA ko 5TB Oracle database volume chahiye
+{`Scenario: DBA needs a 5TB Oracle database volume
 
 Storage admin:
   1. Storage pool capacity check: 45TB free
-  2. 5TB thin-provisioned LUN create, LUN ID: 5
-  3. Host object banaya for Oracle_DB_Server_1
-  4. Oracle server ka HBA WWPN register kiya
-  5. LUN 5 map kiya to Oracle_DB_Server_1
+  2. Created 5TB thin-provisioned LUN, LUN ID: 5
+  3. Created host object for Oracle_DB_Server_1
+  4. Registered the Oracle server's HBA WWPN
+  5. Mapped LUN 5 to Oracle_DB_Server_1
 
 SAN admin:
-  6. FC zone create: Oracle_Server1_WWPN ↔ Storage_Target_WWPNs
+  6. Created FC zone: Oracle_Server1_WWPN ↔ Storage_Target_WWPNs
      (Both Fabric A and Fabric B — separately)
 
 Server admin:
-  7. Oracle server pe rescan kiya
+  7. Rescanned on the Oracle server
   8. New "Disk 1 — 5.00TB Unallocated" appeared
   9. Initialize GPT, format, Oracle tablespace configured`}
       </CodeBlock>
-      <Callout type="danger" title="LUN ID aur WWPN — Completely Different Concepts">
-        LUN ID ek number hai (0, 1, 5...) — storage target ke context mein specific logical unit identify karta hai. WWPN ek identity address hai — physical port identify karta hai. In dono ko kabhi confuse mat karo.
+      <Callout type="danger" title="LUN ID and WWPN — Completely Different Concepts">
+        The LUN ID is a number (0, 1, 5...) — it identifies a specific logical unit in the context of the storage target. The WWPN is an identity address — it identifies a physical port. Never confuse the two.
       </Callout>
 
       {/* ══ SECTION 8 — SAN ARCHITECTURE ══════════════════════════════════ */}
       <h2 id="san-architecture" style={S.h2}>SAN Architecture — Dual Fabric</h2>
 
       <h3 style={S.h3}>Corrected Dual-Fabric Architecture</h3>
-      <p style={S.p}>Mission-critical enterprise FC SAN designs commonly do independent fabrics use karte hain: <strong>Fabric A</strong> aur <strong>Fabric B</strong> — ek fabric ko single failure domain eliminate karne ke liye.</p>
+      <p style={S.p}>Mission-critical enterprise FC SAN designs commonly use two independent fabrics: <strong>Fabric A</strong> and <strong>Fabric B</strong> — to eliminate a single fabric as a single failure domain.</p>
       <p style={S.p}><strong>Critical point — both controllers on both fabrics:</strong> It is incorrect to associate Controller A exclusively with Fabric A and Controller B exclusively with Fabric B. In typical enterprise SAN designs, <strong>both controllers have front-end ports on both fabrics</strong> — providing redundant paths across all fabric and controller combinations.</p>
       <CodeBlock lang="text">
 {`From Server HBA Port 1 (Fabric A):
@@ -225,23 +215,23 @@ Result: 4 paths to same LUN from dual-HBA server
         <SanDualFabric />
       </Figure>
       <Callout type="important" title="What Happens If Fabric A Fails Completely">
-        Agar Fabric A switch fail ho — sab Fabric A paths fail hote hain. Lekin Fabric B pe dono controllers ke front-end ports hain — Fabric B through sab I/O continue. Multipath software automatically route karta hai. Applications continue — alert generate hota hai, investigation begin hoti hai. <strong>Do NOT disturb Fabric B during active incident.</strong>
+        If the Fabric A switch fails — all Fabric A paths fail. But both controllers have front-end ports on Fabric B — all I/O continues through Fabric B. The multipath software reroutes automatically. Applications continue — an alert is generated and investigation begins. <strong>Do NOT disturb Fabric B during active incident.</strong>
       </Callout>
 
       {/* ══ SECTION 9 — FIBRE CHANNEL ══════════════════════════════════════ */}
       <h2 id="fibre-channel" style={S.h2}>Fibre Channel SAN — Deep Practical Explanation</h2>
 
-      <h3 style={S.h3}>Fibre Channel Kya Hai</h3>
-      <p style={S.p}>Fibre Channel (FC) ek dedicated high-speed serial communication protocol hai — specifically storage networking ke liye designed. Standard Ethernet nahi hai.</p>
+      <h3 style={S.h3}>What Is Fibre Channel</h3>
+      <p style={S.p}>Fibre Channel (FC) is a dedicated high-speed serial communication protocol — designed specifically for storage networking. It is not standard Ethernet.</p>
       <p style={S.p}>Fibre Channel uses credit-based flow control and is engineered to avoid congestion-driven frame loss during normal operation — physical/link errors and abnormal conditions can still cause transmission problems.</p>
 
       <h3 style={S.h3}>FC Hardware Components</h3>
       <ul style={S.ul}>
-        <li><strong>FC HBA:</strong> Server mein PCIe card. Typically 2-port dual-port enterprise mein. Har port ka ek unique WWPN. Firmware aur driver HCL-verified hone chahiye.</li>
-        <li><strong>SFP Transceivers:</strong> FC-specific optical modules — Ethernet SFPs FC ke liye nahi. Speed aur type compatibility required across HBA, switch, aur storage array.</li>
-        <li><strong>Fibre Optic Cable:</strong> Multi-mode (shorter distances, data center) ya single-mode (longer distances). Connector type (LC) aur SFP match karna chahiye.</li>
-        <li><strong>FC SAN Switch (Director):</strong> Dedicated FC fabric device. Two major vendors: <strong>Brocade (Broadcom, FOS firmware)</strong> aur <strong>Cisco MDS (NX-OS firmware)</strong>.</li>
-        <li><strong>Storage Array FC Ports:</strong> Controller ke front-end ports — FC SFPs. These are the targets. Both controllers have ports on both fabrics in typical enterprise design.</li>
+        <li><strong>FC HBA:</strong> PCIe card in the server. Typically 2-port (dual-port) in enterprise. Each port has a unique WWPN. Firmware and driver must be HCL-verified.</li>
+        <li><strong>SFP Transceivers:</strong> FC-specific optical modules — Ethernet SFPs are not for FC. Speed and type compatibility is required across HBA, switch and storage array.</li>
+        <li><strong>Fibre Optic Cable:</strong> Multi-mode (shorter distances, data center) or single-mode (longer distances). Connector type (LC) and SFP must match.</li>
+        <li><strong>FC SAN Switch (Director):</strong> Dedicated FC fabric device. Two major vendors: <strong>Brocade (Broadcom, FOS firmware)</strong> and <strong>Cisco MDS (NX-OS firmware)</strong>.</li>
+        <li><strong>Storage Array FC Ports:</strong> The controller's front-end ports — FC SFPs. These are the targets. Both controllers have ports on both fabrics in typical enterprise design.</li>
       </ul>
 
       <h3 style={S.h3}>FC Speeds — With Interoperability Note</h3>
@@ -259,22 +249,22 @@ Result: 4 paths to same LUN from dual-HBA server
 
       {/* ══ SECTION 10 — FC LOGIN ═══════════════════════════════════════════ */}
       <h2 id="fc-login" style={S.h2}>Fibre Channel Login Process</h2>
-      <p style={S.p}>FC cable connect karne se storage automatically accessible nahi hoti. Ek formal process hoti hai. Yeh ek educational/conceptual sequence hai — actual fabric services, timing aur implementation details platform-specific hain.</p>
+      <p style={S.p}>Connecting an FC cable does not automatically make storage accessible. There is a formal process. This is an educational/conceptual sequence — actual fabric services, timing and implementation details are platform-specific.</p>
 
       <h3 style={S.h3}>FLOGI — Fabric Login</h3>
-      <p style={S.p}>HBA port FC switch se connect hota hai → <strong>FLOGI</strong> send karta hai — HBA apna WWPN fabric mein register karta hai. Fabric accept kare toh HBA ko ek <strong>N_Port ID (FCID)</strong> assign hoti hai — fabric-unique 24-bit address. FLOGI fail ho → HBA fabric ka part nahi. Kuch bhi work nahi karega.</p>
+      <p style={S.p}>The HBA port connects to the FC switch → sends a <strong>FLOGI</strong> — the HBA registers its WWPN in the fabric. If the fabric accepts, the HBA is assigned an <strong>N_Port ID (FCID)</strong> — a fabric-unique 24-bit address. If FLOGI fails → the HBA is not part of the fabric. Nothing will work.</p>
 
       <h3 style={S.h3}>Name Server / Directory Service</h3>
-      <p style={S.p}>FLOGI ke baad HBA fabric ke Name Server mein register ho jaata hai — available devices ki directory. Hosts Name Server se available target ports query kar sakte hain.</p>
+      <p style={S.p}>After FLOGI the HBA registers with the fabric's Name Server — a directory of available devices. Hosts can query the Name Server for available target ports.</p>
 
       <h3 style={S.h3}>PLOGI — Port Login</h3>
-      <p style={S.p}>Initiator ek specific target port se direct connection establish karne ki koshish karta hai — <strong>PLOGI</strong>. Zoning determines which initiator-target pairs are permitted to discover and communicate according to the fabric platform's zoning implementation and enforcement behavior. Agar zoning allow nahi karta — communication blocked hoti hai. Storage accessible nahi hogi.</p>
+      <p style={S.p}>The initiator tries to establish a direct connection with a specific target port — <strong>PLOGI</strong>. Zoning determines which initiator-target pairs are permitted to discover and communicate according to the fabric platform's zoning implementation and enforcement behavior. If zoning does not allow it — communication is blocked. The storage will not be accessible.</p>
 
       <h3 style={S.h3}>PRLI — Process Login</h3>
-      <p style={S.p}><strong>PRLI</strong> SCSI upper protocol layer establish karta hai — confirms this connection is for SCSI I/O.</p>
+      <p style={S.p}><strong>PRLI</strong> establishes the SCSI upper protocol layer — confirms this connection is for SCSI I/O.</p>
 
       <h3 style={S.h3}>LUN Discovery</h3>
-      <p style={S.p}>PRLI ke baad host REPORT LUNS aur INQUIRY commands se LUNs discover karta hai. Storage array sirf wo LUNs report karta hai jo is host ko mapped hain (LUN masking).</p>
+      <p style={S.p}>After PRLI the host discovers LUNs with REPORT LUNS and INQUIRY commands. The storage array reports only the LUNs that are mapped to this host (LUN masking).</p>
 
       <Figure caption="Fig 4 — FC login educational sequence: FLOGI → Name Server → zoning check → PLOGI → PRLI → LUN discovery. Conceptual only — fabric services and timing are platform-specific.">
         <SanFcLoginFlow />
@@ -283,18 +273,18 @@ Result: 4 paths to same LUN from dual-HBA server
       {/* ══ SECTION 11 — ZONING ════════════════════════════════════════════ */}
       <h2 id="san-zoning" style={S.h2}>SAN Zoning — Deep Explanation</h2>
 
-      <h3 style={S.h3}>Zoning Kya Hai</h3>
-      <p style={S.p}>Zoning SAN fabric pe access control mechanism hai — FC switch level pe. Defines: <strong>which initiator WWPN can communicate with which target WWPN</strong> via the fabric, according to the platform's implementation.</p>
+      <h3 style={S.h3}>What Is Zoning</h3>
+      <p style={S.p}>Zoning is an access control mechanism on the SAN fabric — at the FC switch level. It defines: <strong>which initiator WWPN can communicate with which target WWPN</strong> via the fabric, according to the platform's implementation.</p>
 
-      <h3 style={S.h3}>Zoning Kyun Exist Karta Hai</h3>
+      <h3 style={S.h3}>Why Zoning Exists</h3>
       <ul style={S.ul}>
-        <li>Bina zoning ke: har HBA har storage port se potentially communicate kar sakta hai — security risk</li>
-        <li>Isolation — server A ka traffic server B ko affect nahi karta</li>
-        <li>Security layer — wrong server galat LUN access nahi kar sakta (zoning + LUN masking combination)</li>
+        <li>Without zoning: every HBA can potentially communicate with every storage port — a security risk</li>
+        <li>Isolation — server A's traffic does not affect server B</li>
+        <li>Security layer — the wrong server cannot access the wrong LUN (zoning + LUN masking combination)</li>
       </ul>
 
       <h3 style={S.h3}>Zoning Types — Corrected</h3>
-      <p style={S.p}><strong>WWPN-Based Zoning:</strong> Zone defined by WWPN list. Physical switch port change karo — zone still works. Most common in enterprise.</p>
+      <p style={S.p}><strong>WWPN-Based Zoning:</strong> Zone defined by WWPN list. Change the physical switch port — the zone still works. Most common in enterprise.</p>
       <p style={S.p}><strong>Switch-Port-Based Zoning:</strong> Zone defined by switch port numbers. Device move ports → zone no longer applies.</p>
       <Callout type="warning" title="Hard Zoning / Soft Zoning Terminology">
         These terms are used in some vendor documentation but do not have universally agreed definitions. The enforcement mechanism — whether hardware-level frame blocking or Name Server restriction — is vendor and platform dependent. Consult your specific SAN switch vendor documentation for enforcement behavior. Do not use "WWPN = soft, port = hard" as a universal rule.
@@ -339,9 +329,9 @@ Both controllers accessible from each fabric.`}
 
       {/* ══ SECTION 12 — LUN MASKING ════════════════════════════════════════ */}
       <h2 id="lun-masking" style={S.h2}>LUN Masking / Host Mapping</h2>
-      <p style={S.p}>LUN masking storage array level pe access control hai — <strong>which host can ACCESS which LUN</strong>.</p>
+      <p style={S.p}>LUN masking is access control at the storage array level — <strong>which host can ACCESS which LUN</strong>.</p>
       <p style={S.p}><strong>Configuration on storage array:</strong> (1) Create host object — give server a name. (2) Register server's HBA WWPN(s) as initiators. (3) Map specific LUNs to this host object.</p>
-      <p style={S.p}>Different arrays different terminology use karte hain: "Host Group," "Initiator Group," "Host Object," "Volume Map," "LUN Mask" — concept same hai.</p>
+      <p style={S.p}>Different arrays use different terminology: "Host Group," "Initiator Group," "Host Object," "Volume Map," "LUN Mask" — the concept is the same.</p>
       <Callout type="warning" title="Array Default Behavior — Do Not Assume">
         Without explicit LUN masking, array default LUN visibility behavior varies by vendor and platform — some arrays show no LUNs by default (safer), others may differ. Always configure explicit LUN masking. Never rely on default behavior assumptions.
       </Callout>
@@ -369,7 +359,7 @@ Both controllers accessible from each fabric.`}
       {/* ══ SECTION 14 — MULTIPATHING ═══════════════════════════════════════ */}
       <h2 id="multipathing" style={S.h2}>Multipathing — Deep Practical Explanation</h2>
 
-      <h3 style={S.h3}>Kyun Multiple Paths</h3>
+      <h3 style={S.h3}>Why Multiple Paths</h3>
       <p style={S.p}>Corrected architecture: From Server HBA Port 1 (Fabric A), host can reach target ports on BOTH controllers via Fabric A. From HBA Port 2 (Fabric B), host can reach target ports on BOTH controllers via Fabric B.</p>
       <CodeBlock lang="text">
 {`Four paths to same LUN from dual-HBA server (typical enterprise design):
@@ -389,7 +379,7 @@ With multipathing software: OS sees ONE single device — all paths managed tran
 
       <h3 style={S.h3}>ALUA — Target Port Groups Explained</h3>
       <p style={S.p}><strong>ALUA = Asymmetric Logical Unit Access (T10 SCSI standard)</strong></p>
-      <p style={S.p}>ALUA ek standard mechanism hai jisse storage device communicates path access characteristics to a host, using <strong>Target Port Groups (TPGs)</strong> to organize storage target ports.</p>
+      <p style={S.p}>ALUA is a standard mechanism by which a storage device communicates path access characteristics to a host, using <strong>Target Port Groups (TPGs)</strong> to organize storage target ports.</p>
       <ComparisonTable
         title="ALUA Access States"
         headers={["State","Meaning","Typical Implication"]}
@@ -412,7 +402,7 @@ With multipathing software: OS sees ONE single device — all paths managed tran
       {/* ══ SECTION 15 — WINDOWS SAN ═══════════════════════════════════════ */}
       <h2 id="windows-san" style={S.h2}>Windows SAN Practical</h2>
       <Callout type="danger" title="CRITICAL: SAN LUN Format Warning">
-        SAN pe galat LUN format karna data permanently destroy kar sakta hai. Before ANY initialization/format on a SAN LUN: (1) Correct disk number verify karo — size matches expected LUN from storage team. (2) Storage admin written confirmation lo. (3) Change management approval. (4) NEVER format without explicit triple-verification.
+        Formatting the wrong LUN on a SAN can permanently destroy data. Before ANY initialization/format on a SAN LUN: (1) Verify the correct disk number — size matches the expected LUN from the storage team. (2) Get written confirmation from the storage admin. (3) Change management approval. (4) NEVER format without explicit triple-verification.
       </Callout>
 
       <h3 style={S.h3}>Disk Visibility — Safe Diagnostic Commands</h3>
@@ -494,23 +484,23 @@ All 4 paths healthy = expected. Missing path = investigate.
 Output format varies by multipath version and configuration.`}
       </CodeBlock>
       <Callout type="warning" title="Linux SAN Rescan — Environment-Specific">
-        Production system pe storage rescan procedure varies by Linux distribution, HBA driver, and vendor. Do not attempt without understanding your specific environment. Wrong rescan commands can cause issues. Consult storage vendor and OS documentation for your specific setup.
+        The storage rescan procedure on a production system varies by Linux distribution, HBA driver, and vendor. Do not attempt without understanding your specific environment. Wrong rescan commands can cause issues. Consult storage vendor and OS documentation for your specific setup.
       </Callout>
 
       {/* ══ SECTION 17 — VMWARE SAN ═════════════════════════════════════════ */}
       <h2 id="vmware-san" style={S.h2}>VMware SAN</h2>
 
-      <h3 style={S.h3}>ESXi aur SAN</h3>
-      <p style={S.p}>VMware ESXi host SAN storage access karta hai through FC HBA, software iSCSI, hardware iSCSI, or FCoE adapter.</p>
+      <h3 style={S.h3}>ESXi and SAN</h3>
+      <p style={S.p}>A VMware ESXi host accesses SAN storage through an FC HBA, software iSCSI, hardware iSCSI, or FCoE adapter.</p>
 
       <h3 style={S.h3}>LUN to VMFS Datastore</h3>
       <ol style={{ ...S.ul, listStyleType:"decimal" }}>
-        <li>ESXi storage adapter SAN se connect hota hai</li>
+        <li>The ESXi storage adapter connects to the SAN</li>
         <li>LUNs appear as storage devices in ESXi</li>
-        <li>Admin VMFS datastore create karta hai LUN pe</li>
-        <li>VMs VMDK files store karte hain datastore pe</li>
+        <li>The admin creates a VMFS datastore on the LUN</li>
+        <li>VMs store VMDK files on the datastore</li>
       </ol>
-      <p style={S.p}><strong>VMFS (VMware File System):</strong> VMware's clustered filesystem. Multiple ESXi hosts simultaneously same VMFS datastore access kar sakte hain safely — VMFS clustering manages concurrent access. Regular filesystems (NTFS, ext4) ek non-cluster-aware LUN pe multiple hosts simultaneously mount nahi kar sakte safely.</p>
+      <p style={S.p}><strong>VMFS (VMware File System):</strong> VMware's clustered filesystem. Multiple ESXi hosts can safely access the same VMFS datastore simultaneously — VMFS clustering manages concurrent access. Regular filesystems (NTFS, ext4) cannot be safely mounted by multiple hosts simultaneously on a non-cluster-aware LUN.</p>
 
       <h3 style={S.h3}>VMware Path Selection Policy — Corrected</h3>
       <p style={S.p}>VMware NMP (Native Multipathing Plugin) uses <strong>SATP (Storage Array Type Plugin)</strong> + <strong>PSP (Path Selection Policy)</strong>.</p>
@@ -534,13 +524,13 @@ Output format varies by multipath version and configuration.`}
       {/* ══ SECTION 18 — iSCSI SAN ══════════════════════════════════════════ */}
       <h2 id="iscsi-san" style={S.h2}>iSCSI SAN — Deep Practical Explanation</h2>
 
-      <h3 style={S.h3}>iSCSI Kya Hai</h3>
-      <p style={S.p}><strong>iSCSI = Internet Small Computer Systems Interface</strong> — SCSI commands TCP/IP Ethernet pe encapsulate karke storage access.</p>
-      <p style={S.p}>FC mein dedicated hardware chahiye. iSCSI standard NICs pe bhi chal sakta hai — lower cost. Lekin dedicated storage network/VLAN still required.</p>
+      <h3 style={S.h3}>What Is iSCSI</h3>
+      <p style={S.p}><strong>iSCSI = Internet Small Computer Systems Interface</strong> — storage access by encapsulating SCSI commands over TCP/IP Ethernet.</p>
+      <p style={S.p}>FC requires dedicated hardware. iSCSI can run even on standard NICs — lower cost. But a dedicated storage network/VLAN is still required.</p>
 
       <h3 style={S.h3}>iSCSI Components</h3>
       <ul style={S.ul}>
-        <li><strong>Initiator:</strong> Software (OS built-in) ya hardware iSCSI HBA. Identity = IQN.</li>
+        <li><strong>Initiator:</strong> Software (OS built-in) or hardware iSCSI HBA. Identity = IQN.</li>
         <li><strong>Target:</strong> Storage array — IP:Port (portal). Standard port: <strong>TCP 3260</strong>.</li>
         <li><strong>IQN:</strong> iSCSI Qualified Name — unique identifier. Format: <code>iqn.YYYY-MM.reverse-domain:identifier</code></li>
         <li><strong>CHAP:</strong> Challenge Handshake Authentication Protocol — one-way or mutual. Enable in production.</li>
@@ -595,21 +585,21 @@ organizations vary — key requirement is global uniqueness.`}
 
       {/* ══ SECTION 21 — FCoE ════════════════════════════════════════════════ */}
       <h2 id="fcoe" style={S.h2}>FCoE — Fibre Channel over Ethernet</h2>
-      <p style={S.p}>FCoE (Fibre Channel over Ethernet): FC frames over Ethernet using CNA (Converged Network Adapter). Requires DCB (Data Center Bridging) for lossless Ethernet. <strong>FCoE is NOT iSCSI</strong> — completely different protocols. FCoE mein FC frame Ethernet mein encapsulate hoti hai; iSCSI mein SCSI command TCP/IP mein. Deployment depends on vendor support aur infrastructure architecture — not universally adopted.</p>
+      <p style={S.p}>FCoE (Fibre Channel over Ethernet): FC frames over Ethernet using CNA (Converged Network Adapter). Requires DCB (Data Center Bridging) for lossless Ethernet. <strong>FCoE is NOT iSCSI</strong> — completely different protocols. In FCoE the FC frame is encapsulated in Ethernet; in iSCSI the SCSI command is encapsulated in TCP/IP. Deployment depends on vendor support and infrastructure architecture — not universally adopted.</p>
 
       {/* ══ SECTION 22 — NVMe-oF ════════════════════════════════════════════ */}
       <h2 id="nvme-of" style={S.h2}>NVMe over Fabrics (NVMe-oF)</h2>
-      <p style={S.p}>Modern storage networking ka next generation. NVMe protocol ko ek storage fabric pe extend karta hai:</p>
+      <p style={S.p}>The next generation of modern storage networking. It extends the NVMe protocol over a storage fabric:</p>
       <ul style={S.ul}>
         <li><strong>NVMe/FC:</strong> NVMe commands over FC fabric (Gen 6 FC / 32G support)</li>
         <li><strong>NVMe/TCP:</strong> NVMe over TCP/IP Ethernet — simpler deployment, lower hardware cost</li>
         <li><strong>NVMe/RoCE:</strong> RDMA over Converged Ethernet — ultra-low latency</li>
       </ul>
-      <p style={S.p}>Traditional SCSI-based SAN SCSI command overhead rakhti hai. NVMe-oF SCSI layer remove karta hai — lower protocol overhead. Growing adoption in modern all-flash arrays. Deployment maturity depends on array firmware, host drivers, OS compatibility, and fabric infrastructure.</p>
+      <p style={S.p}>A traditional SCSI-based SAN carries SCSI command overhead. NVMe-oF removes the SCSI layer — lower protocol overhead. Growing adoption in modern all-flash arrays. Deployment maturity depends on array firmware, host drivers, OS compatibility, and fabric infrastructure.</p>
 
       {/* ══ SECTION 23 — SAN SWITCH ARCH ════════════════════════════════════ */}
       <h2 id="san-switch-arch" style={S.h2}>SAN Switch Architecture</h2>
-      <p style={S.p}><strong>ISL (Inter-Switch Links):</strong> Multiple switches ke beech — bandwidth planning important. ISL oversubscription congestion create kar sakta hai.</p>
+      <p style={S.p}><strong>ISL (Inter-Switch Links):</strong> Between multiple switches — bandwidth planning is important. ISL oversubscription can create congestion.</p>
       <ComparisonTable
         title="SAN Switch Health Monitoring"
         headers={["Metric","What to Check"]}
@@ -649,7 +639,7 @@ organizations vary — key requirement is global uniqueness.`}
       </CodeBlock>
 
       <h3 style={S.h3}>Hot Spare / Distributed Spare</h3>
-      <p style={S.p}>Traditional: dedicated spare drive — failed drive rebuild ke liye. Distributed spare (modern): spare capacity distributed across pool drives — potentially faster rebuild. Vendor implementation varies.</p>
+      <p style={S.p}>Traditional: a dedicated spare drive — for rebuilding a failed drive. Distributed spare (modern): spare capacity distributed across pool drives — potentially faster rebuild. Vendor implementation varies.</p>
 
       {/* ══ SECTION 25 — VENDORS ════════════════════════════════════════════ */}
       <h2 id="san-vendors" style={S.h2}>Enterprise SAN Vendors / Platforms</h2>
@@ -848,7 +838,7 @@ Thin provisioning requires active pool monitoring.`}
         <li><strong>Firmware:</strong> Timely patches, compatibility testing before upgrade</li>
       </ul>
       <Callout type="warning" title="Zoning Alone is NOT Complete SAN Security">
-        Zoning fabric communication control karta hai. LUN masking array-side LUN visibility control karta hai. Dono required hain. Additionally: management plane security, RBAC, audit logs, firmware patches — sab layers of SAN security hain.
+        Zoning controls fabric communication. LUN masking controls array-side LUN visibility. Both are required. Additionally: management plane security, RBAC, audit logs, firmware patches — all are layers of SAN security.
       </Callout>
 
       {/* ══ SECTION 32 — SAN HA ═════════════════════════════════════════════ */}
@@ -866,7 +856,7 @@ Thin provisioning requires active pool monitoring.`}
           ["RAID/storage protection",          "Disk-level protection",   "Drive failure(s) — per RAID level"],
           ["Replication to secondary site",    "DR/site protection",      "Site failure"],
         ]}
-        caption="HA hardware failures se protect karta hai. Data corruption, ransomware, human error — inke liye backups aur proper access controls required hain."
+        caption="HA protects against hardware failures. For data corruption, ransomware and human error — backups and proper access controls are required."
       />
 
       {/* ══ SECTION 33 — FAILURES ═══════════════════════════════════════════ */}
@@ -984,18 +974,7 @@ Layer 10 — Application
       {/* ══ SECTION 37 — DANGEROUS MISTAKES ════════════════════════════════ */}
       <h2 id="dangerous-mistakes" style={S.h2}>Dangerous SAN Mistakes</h2>
       <Callout type="danger" title="These Mistakes Have Caused Real Data Loss and Outages">
-        <ul style={{ ...S.ul, marginBottom:0 }}>
-          <li><strong>Formatting wrong LUN:</strong> "Disk 2" se "Disk 3" mein confusion — Disk 2 had production database. Data permanently destroyed. TRIPLE-verify before any format.</li>
-          <li><strong>Non-cluster-aware LUN to multiple hosts:</strong> Two Windows servers (non-cluster) both format and mount same LUN → filesystem corruption. Only VMFS/Windows Failover Cluster/Oracle RAC can safely share raw LUNs.</li>
-          <li><strong>Deleting zone in production:</strong> "Cleanup" deleted what looked like unused zone — it was critical path. Production LUN lost a fabric.</li>
-          <li><strong>LUN mapping to wrong host:</strong> De-provisioning from "old server" actually removed from active production server.</li>
-          <li><strong>Wrong multipath configuration:</strong> Wrong PSP on array that requires specific policy — I/O errors or poor performance.</li>
-          <li><strong>Ignoring thin pool warnings:</strong> Pool hits 100% → write I/O fails → applications crash.</li>
-          <li><strong>Rebooting server when one path down:</strong> Multipath handling via other path. Reboot creates unnecessary downtime — investigate first.</li>
-          <li><strong>Firmware upgrade without compatibility check:</strong> HBA firmware incompatible with storage array → connectivity failures.</li>
-          <li><strong>Same-switch "dual fabric":</strong> Both fabrics on same physical switch — switch failure = both "fabrics" down. True independence required.</li>
-          <li><strong>Shared admin credentials:</strong> No audit trail, accountability impossible.</li>
-        </ul>
+        <ul style={{ ...S.ul, marginBottom:0 }}> <li><strong>Formatting wrong LUN:</strong> Confusion between "Disk 2" and "Disk 3" — Disk 2 had the production database. Data permanently destroyed. TRIPLE-verify before any format.</li> <li><strong>Non-cluster-aware LUN to multiple hosts:</strong> Two Windows servers (non-cluster) both format and mount same LUN → filesystem corruption. Only VMFS/Windows Failover Cluster/Oracle RAC can safely share raw LUNs.</li> <li><strong>Deleting zone in production:</strong> "Cleanup" deleted what looked like unused zone — it was critical path. Production LUN lost a fabric.</li> <li><strong>LUN mapping to wrong host:</strong> De-provisioning from "old server" actually removed from active production server.</li> <li><strong>Wrong multipath configuration:</strong> Wrong PSP on array that requires specific policy — I/O errors or poor performance.</li> <li><strong>Ignoring thin pool warnings:</strong> Pool hits 100% → write I/O fails → applications crash.</li> <li><strong>Rebooting server when one path down:</strong> Multipath handling via other path. Reboot creates unnecessary downtime — investigate first.</li> <li><strong>Firmware upgrade without compatibility check:</strong> HBA firmware incompatible with storage array → connectivity failures.</li> <li><strong>Same-switch "dual fabric":</strong> Both fabrics on same physical switch — switch failure = both "fabrics" down. True independence required.</li> <li><strong>Shared admin credentials:</strong> No audit trail, accountability impossible.</li> </ul>
       </Callout>
 
       {/* ══ SECTION 38 — CHANGE MANAGEMENT ══════════════════════════════════ */}
@@ -1161,57 +1140,57 @@ Where to check:
       {/* ══ SECTION 45 — INTERVIEW ══════════════════════════════════════════ */}
       <h2 id="interview-questions" style={S.h2}>Interview / Job Knowledge</h2>
 
-      <h3 style={S.h3}>Q: SAN kya hai aur NAS se kaise alag hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> SAN (Storage Area Network) ek dedicated storage network hai jo servers ko block-level storage (LUN) provide karta hai — server raw disk dekhta hai, khud filesystem banata hai. NAS file-level storage hai — NAS pe filesystem, client files/folders access karta hai (SMB/NFS). SAN databases, VMware, mission-critical applications ke liye. NAS file sharing aur backup ke liye.</p>
+      <h3 style={S.h3}>Q: What is SAN and how is it different from NAS?</h3>
+      <p style={S.p}><strong>Answer:</strong> SAN (Storage Area Network) is a dedicated storage network that provides block-level storage (LUN) to servers — the server sees a raw disk and builds its own filesystem. NAS is file-level storage — the filesystem is on the NAS, and the client accesses files/folders (SMB/NFS). SAN is for databases, VMware and mission-critical applications. NAS is for file sharing and backup.</p>
 
-      <h3 style={S.h3}>Q: LUN kya hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Logical Unit Number — storage array mein logical block storage unit. Physical disk nahi — storage pool/RAID ke upar software-defined logical volume. Host is LUN ko raw block device ki tarah dekhta hai. Host ka OS ya application uske upar filesystem create karta hai. Ek storage pool se multiple LUNs create ho sakti hain.</p>
+      <h3 style={S.h3}>Q: What is a LUN?</h3>
+      <p style={S.p}><strong>Answer:</strong> Logical Unit Number — a logical block storage unit in a storage array. Not a physical disk — a software-defined logical volume on top of a storage pool/RAID. The host sees this LUN as a raw block device. The host OS or application creates a filesystem on top of it. Multiple LUNs can be created from one storage pool.</p>
 
-      <h3 style={S.h3}>Q: WWPN kya hai? WWPN aur WWNN mein fark?</h3>
-      <p style={S.p}><strong>Answer:</strong> WWPN = World Wide Port Name — HBA ke specific port ka globally unique 8-byte identifier. Zoning aur LUN masking mein WWPN use hota hai. WWNN = World Wide Node Name — HBA device/card ka identifier. Dual-port HBA: ek WWNN, do WWPNs. Zoning mein WWPN use karo — WWNN nahi.</p>
+      <h3 style={S.h3}>Q: What is a WWPN? What is the difference between WWPN and WWNN?</h3>
+      <p style={S.p}><strong>Answer:</strong> WWPN = World Wide Port Name — a globally unique 8-byte identifier of a specific HBA port. Zoning and LUN masking use the WWPN. WWNN = World Wide Node Name — the identifier of the HBA device/card. Dual-port HBA: one WWNN, two WWPNs. Use the WWPN in zoning — not the WWNN.</p>
 
-      <h3 style={S.h3}>Q: Zoning kya hai? LUN Masking kya hai? Dono mein fark?</h3>
-      <p style={S.p}><strong>Answer:</strong> Zoning: FC switch fabric level pe — which initiator WWPN can communicate with which target WWPN (per fabric platform's implementation). LUN masking: storage array level pe — which host can see which LUN. Zoning fabric communication control. Masking storage access control. Dono alag layers, dono required.</p>
+      <h3 style={S.h3}>Q: What is zoning? What is LUN Masking? What is the difference?</h3>
+      <p style={S.p}><strong>Answer:</strong> Zoning: at the FC switch fabric level — which initiator WWPN can communicate with which target WWPN (per fabric platform's implementation). LUN masking: at the storage array level — which host can see which LUN. Zoning controls fabric communication. Masking controls storage access. Two separate layers, both required.</p>
 
-      <h3 style={S.h3}>Q: Multipathing kya hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Server ke multiple HBA ports se multiple physical paths — same LUN tak through dual fabrics and dual storage controllers. MPIO (Windows), DM-Multipath (Linux), VMware NMP — OS level pe multiple paths ko ek single device mein aggregate karta hai. Ek path fail → automatically doosre path se I/O. Multipathing RAID nahi hai; storage controller HA nahi hai — host-side path management hai.</p>
+      <h3 style={S.h3}>Q: What is multipathing?</h3>
+      <p style={S.p}><strong>Answer:</strong> Multiple physical paths from the server's multiple HBA ports — to the same LUN through dual fabrics and dual storage controllers. MPIO (Windows), DM-Multipath (Linux), VMware NMP — aggregate the multiple paths into a single device at the OS level. One path fails → I/O automatically goes over another path. Multipathing is not RAID; it is not storage controller HA — it is host-side path management.</p>
 
-      <h3 style={S.h3}>Q: Fabric A aur Fabric B kyun?</h3>
-      <p style={S.p}><strong>Answer:</strong> Mission-critical FC SAN designs commonly two independent fabrics use karte hain. Ek fabric ko single failure domain eliminate karna — ek switch fail → doosra fabric carries all I/O. Both fabrics should have separate switches, cables, and storage controller front-end ports. True independence = true HA.</p>
+      <h3 style={S.h3}>Q: Why Fabric A and Fabric B?</h3>
+      <p style={S.p}><strong>Answer:</strong> Mission-critical FC SAN designs commonly use two independent fabrics. The aim is to eliminate a single fabric as a single failure domain — one switch fails → the other fabric carries all I/O. Both fabrics should have separate switches, cables, and storage controller front-end ports. True independence = true HA.</p>
 
-      <h3 style={S.h3}>Q: Ek SAN switch fail ho toh kya hoga?</h3>
-      <p style={S.p}><strong>Answer:</strong> Correctly configured dual-fabric mein: affected fabric ke sab paths fail hote hain. Multipath software automatically I/O doosri fabric se route karta hai. Applications continue — performance reduced agar load-balanced tha. High alert volume. Do NOT disturb surviving fabric. Investigate failed switch. No server reboot needed.</p>
+      <h3 style={S.h3}>Q: What happens if one SAN switch fails?</h3>
+      <p style={S.p}><strong>Answer:</strong> In a correctly configured dual fabric: all paths of the affected fabric fail. Multipath software automatically routes I/O through the other fabric. Applications continue — performance is reduced if it was load-balanced. High alert volume. Do NOT disturb surviving fabric. Investigate failed switch. No server reboot needed.</p>
 
-      <h3 style={S.h3}>Q: FC aur iSCSI mein difference?</h3>
-      <p style={S.p}><strong>Answer:</strong> FC: dedicated FC hardware (HBA, FC switches, SFP), WWPN-based identity, credit-based flow control fabric. iSCSI: SCSI over TCP/IP, Ethernet infrastructure, IQN-based identity, TCP port 3260. FC purpose-built storage fabric. iSCSI lower cost, IP networking skills. Both provide block-level LUN access. Performance depends on infrastructure aur workload — not protocol alone.</p>
+      <h3 style={S.h3}>Q: What is the difference between FC and iSCSI?</h3>
+      <p style={S.p}><strong>Answer:</strong> FC: dedicated FC hardware (HBA, FC switches, SFP), WWPN-based identity, credit-based flow control fabric. iSCSI: SCSI over TCP/IP, Ethernet infrastructure, IQN-based identity, TCP port 3260. FC is a purpose-built storage fabric. iSCSI is lower cost and uses IP networking skills. Both provide block-level LUN access. Performance depends on infrastructure and workload — not protocol alone.</p>
 
-      <h3 style={S.h3}>Q: IQN kya hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> iSCSI Qualified Name — iSCSI mein unique identifier for initiator or target. Format: <code>iqn.YYYY-MM.reverse-domain:identifier</code>. FC mein WWPN ka equivalent.</p>
+      <h3 style={S.h3}>Q: What is an IQN?</h3>
+      <p style={S.p}><strong>Answer:</strong> iSCSI Qualified Name — the unique identifier for an initiator or target in iSCSI. Format: <code>iqn.YYYY-MM.reverse-domain:identifier</code>. The equivalent of the WWPN in FC.</p>
 
       <h3 style={S.h3}>Q: iSCSI standard port?</h3>
       <p style={S.p}><strong>Answer:</strong> TCP 3260 (standard iSCSI target port). Complete iSCSI environments may have additional dependencies (CHAP ports, management, etc.) — verify with storage vendor documentation.</p>
 
-      <h3 style={S.h3}>Q: ALUA kya hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Asymmetric Logical Unit Access — T10 SCSI standard. Storage array host ko Target Port Groups (TPGs) ke baare mein information provide karta hai — kaun sa TPG Active/Optimized (preferred, lower latency) hai aur kaun sa Active/Non-Optimized. Host multipath software ALUA information se optimized paths prefer karta hai. Behavior architecture-dependent — some arrays active-active (all paths optimized), others use ALUA asymmetrically. Vendor, protocol, model, software-version dependent.</p>
+      <h3 style={S.h3}>Q: What is ALUA?</h3>
+      <p style={S.p}><strong>Answer:</strong> Asymmetric Logical Unit Access — T10 SCSI standard. The storage array provides the host with information about Target Port Groups (TPGs) — which TPG is Active/Optimized (preferred, lower latency) and which is Active/Non-Optimized. The host multipath software uses the ALUA information to prefer optimized paths. Behavior is architecture-dependent — some arrays are active-active (all paths optimized), others use ALUA asymmetrically. Vendor, protocol, model, software-version dependent.</p>
 
-      <h3 style={S.h3}>Q: Thin provisioning kya hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> LUN ka virtual size provision karna — physical storage only as data is written consumed. Better space efficiency lekin over-subscription risk. Pool monitoring mandatory. Pool exhaustion = write failure = application crash.</p>
+      <h3 style={S.h3}>Q: What is thin provisioning?</h3>
+      <p style={S.p}><strong>Answer:</strong> Provisioning a virtual size for a LUN — physical storage is consumed only as data is written. Better space efficiency but over-subscription risk. Pool monitoring is mandatory. Pool exhaustion = write failure = application crash.</p>
 
-      <h3 style={S.h3}>Q: New LUN visible nahi hai — kya check karoge?</h3>
-      <p style={S.p}><strong>Answer:</strong> Layer-by-layer: HBA port online → FLOGI fabric mein → zoning correct both fabrics → storage target port online → host object correct, WWPN registered → LUN mapped, LUN online → host rescan → multipath check → OS device visible.</p>
+      <h3 style={S.h3}>Q: A new LUN is not visible — what would you check?</h3>
+      <p style={S.p}><strong>Answer:</strong> Layer by layer: HBA port online → FLOGI into the fabric → zoning correct on both fabrics → storage target port online → host object correct, WWPN registered → LUN mapped, LUN online → host rescan → multipath check → OS device visible.</p>
 
-      <h3 style={S.h3}>Q: Same LUN ko do independent hosts pe present kyun nahi karna chahiye?</h3>
-      <p style={S.p}><strong>Answer:</strong> Non-cluster-aware software ke saath do independent Windows/Linux servers ek raw LUN simultaneously mount/write karein → filesystem corruption/data loss. Sirf cluster-aware software (VMware VMFS, Windows Failover Cluster, Oracle RAC) shared raw LUN safely use kar sakta hai.</p>
+      <h3 style={S.h3}>Q: Why should the same LUN not be presented to two independent hosts?</h3>
+      <p style={S.p}><strong>Answer:</strong> If two independent Windows/Linux servers with non-cluster-aware software mount/write a raw LUN simultaneously → filesystem corruption/data loss. Only cluster-aware software (VMware VMFS, Windows Failover Cluster, Oracle RAC) can safely use a shared raw LUN.</p>
 
       {/* ══ SECTION 46 — KEY TAKEAWAYS ══════════════════════════════════════ */}
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
       <ul style={S.ul}>
-        <li><strong>SAN = Storage Area Network</strong> — dedicated block-level storage network. Server raw LUN dekhta hai, khud filesystem banata hai.</li>
-        <li><strong>LUN physical disk nahi hai</strong> — storage pool se carved-out logical block storage unit.</li>
-        <li><strong>Zoning (fabric) + LUN Masking (storage)</strong> — dono alag layers, dono required. Zoning alone is not complete security.</li>
-        <li><strong>WWPN</strong> — HBA port identity. Zoning aur masking mein WWPN use karo — WWNN nahi.</li>
+        <li><strong>SAN = Storage Area Network</strong> — a dedicated block-level storage network. The server sees a raw LUN and builds its own filesystem.</li>
+        <li><strong>A LUN is not a physical disk</strong> — it is a logical block storage unit carved out of a storage pool.</li>
+        <li><strong>Zoning (fabric) + LUN Masking (storage)</strong> — two separate layers, both required. Zoning alone is not complete security.</li>
+        <li><strong>WWPN</strong> — HBA port identity. Use the WWPN in zoning and masking — not the WWNN.</li>
         <li><strong>Dual Fabric:</strong> Mission-critical FC SAN commonly uses Fabric A + Fabric B as independent failure domains. Both controllers have ports on both fabrics.</li>
-        <li><strong>ALUA (TPGs):</strong> Storage communicates Active/Optimized vs Non-Optimized path states via Target Port Groups. Architecture, vendor, model aur software-version dependent. Some arrays active-active (all paths optimized).</li>
+        <li><strong>ALUA (TPGs):</strong> Storage communicates Active/Optimized vs Non-Optimized path states via Target Port Groups. Architecture, vendor, model and software-version dependent. Some arrays active-active (all paths optimized).</li>
         <li><strong>Multipathing</strong> — host-side path management. NOT storage HA, NOT RAID. MPIO/DM-Multipath/VMware NMP.</li>
         <li><strong>Windows MPIO:</strong> MSDSM built-in for ALUA arrays. Vendor DSM optional where provided/recommended.</li>
         <li><strong>VMware PSP:</strong> SATP/PSP defaults depend on device rules, ESXi version, vendor HCL. Verify before production.</li>
@@ -1237,11 +1216,11 @@ Where to check:
       {/* ══ RELATED ══════════════════════════════════════════════════════════ */}
       <h2 style={{ ...S.h2, marginTop:"3rem" }}>Related Topics</h2>
       <ul style={S.ul}>
-        <li><TopicLink slug="nas" variant="inline" /> — Network Attached Storage — file-level storage. NAS padho SAN se pehle agar beginner ho.</li>
-        <li><TopicLink slug="das" variant="inline" /> — Direct Attached Storage — block-level, single host. SAN ka simpler predecessor concept.</li>
-        <li><TopicLink slug="backup" variant="inline" /> — Backup strategies — SAN storage ka data protect karna.</li>
+        <li><TopicLink slug="nas" variant="inline" /> — Network Attached Storage — file-level storage. If you are a beginner, read NAS before SAN.</li>
+        <li><TopicLink slug="das" variant="inline" /> — Direct Attached Storage — block-level, single host. The simpler predecessor concept to SAN.</li>
+        <li><TopicLink slug="backup" variant="inline" /> — Backup strategies — protecting the data on SAN storage.</li>
         <li><TopicLink slug="server-basics" variant="inline" /> — Server hardware — HBAs, PCIe slots, SAN connectivity foundation.</li>
-        <li><TopicLink slug="virtualization" variant="inline" /> — VMware — SAN shared datastores ka primary consumer.</li>
+        <li><TopicLink slug="virtualization" variant="inline" /> — VMware — the primary consumer of SAN shared datastores.</li>
       </ul>
     </>
   );

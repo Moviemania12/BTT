@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Backup — Data Protection Engineering Handbook | Behind The Tech",
   description:
-    "Backup kya hai, snapshot vs replication vs DR, RPO/RTO, full/incremental/differential, 3-2-1 strategy, immutable backup, ransomware recovery, VSS, VMware/Hyper-V, database backup, tape, cloud, restore testing aur O&M — complete Hinglish Data Center engineer handbook.",
+    "What backup is, snapshot vs replication vs DR, RPO/RTO, full/incremental/differential, 3-2-1 strategy, immutable backup, ransomware recovery, VSS, VMware/Hyper-V, database backup, tape, cloud, restore testing and O&M — a complete English Data Center engineer handbook.",
   keywords: [
     "data backup", "backup strategy", "RPO RTO", "3-2-1 backup", "immutable backup",
     "ransomware recovery", "backup vs snapshot", "incremental backup", "full backup",
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     title: "Backup — Data Protection Engineering Handbook",
     description: "Backup types, strategy, immutability, ransomware recovery, VMware/database/tape/cloud — complete engineer guide.",
     url: "https://behindthetech.in/learn/it/storage/backup",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -21,43 +22,50 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Backup — Data Protection | Behind The Tech",
-    description: "Backup complete engineer guide Hinglish mein — strategy se production O&M tak.",
+    description: "Complete backup engineer guide in English — from strategy to production O&M.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/it/storage/backup" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/it/storage/backup",
+    languages: {
+      en: "https://behindthetech.in/learn/it/storage/backup",
+      hi: "https://behindthetech.in/hi/learn/it/storage/backup",
+      "x-default": "https://behindthetech.in/learn/it/storage/backup",
+    },
+  },
 };
 
 export const faqs = [
   {
-    q: "Backup aur snapshot mein kya fark hai?",
-    a: "Snapshot same source storage system pe hota hai — source storage fail ho toh snapshot bhi gone. Backup ek independent copy hai alag storage/location pe — source storage fail hone ke baad bhi accessible. Snapshot fast operational recovery ke liye excellent hai (recent accidental deletion, fast rollback). Independent backup longer-term protection aur site-failure recovery ke liye mandatory hai. Snapshot backup replace nahi karta.",
+    q: "What is the difference between backup and snapshot?",
+    a: "A snapshot lives on the same source storage system — if the source storage fails, the snapshot is gone too. A backup is an independent copy on separate storage/location — accessible even after the source storage fails. A snapshot is excellent for fast operational recovery (recent accidental deletion, fast rollback). Independent backup is mandatory for longer-term protection and site-failure recovery. A snapshot does not replace a backup.",
   },
   {
-    q: "RPO aur RTO kya hain?",
-    a: "RPO (Recovery Point Objective): Kitna data loss acceptable hai? Last backup se failure time tak ka gap = potential data loss. Ye business decision hai — application criticality pe based. RTO (Recovery Time Objective): Kitna downtime acceptable hai? Ye sirf restore time nahi hai — detection time, decision time, restore time, application startup time, aur validation time sab include hote hain. Dono business team ke saath define karo, sirf IT nahi.",
+    q: "What are RPO and RTO?",
+    a: "RPO (Recovery Point Objective): How much data loss is acceptable? The gap from the last backup to the failure time = potential data loss. This is a business decision — based on application criticality. RTO (Recovery Time Objective): How much downtime is acceptable? It is not just restore time — detection time, decision time, restore time, application startup time and validation time are all included. Define both with the business team, not IT alone.",
   },
   {
-    q: "Backup job 'Success' show karta hai — kya backup recoverable hai?",
-    a: "Nahi — automatically nahi. Backup job 'Success' means data repository mein write hua. Ye prove nahi karta ki data consistent hai, complete hai, application-recoverable hai, ya encryption key accessible hai. Periodic restore tests mandatory hain — isolated environment mein, application startup verify karo. 'Backup ki pariksha tabhi hoti hai jab restore ki zaroorat hoti hai' — is situation se pehle test karo.",
+    q: "The backup job shows 'Success' — is the backup recoverable?",
+    a: "No — not automatically. A backup job 'Success' means the data was written to the repository. It does not prove that the data is consistent, complete, application-recoverable, or that the encryption key is accessible. Periodic restore tests are mandatory — in an isolated environment, verify application startup. 'A backup is only truly tested when a restore is needed' — test before you are in that situation.",
   },
   {
-    q: "3-2-1 backup strategy kya hai?",
-    a: "3 copies of data, 2 different media/storage types, 1 offsite copy. Modern extension 3-2-1-1-0 adds: 1 offline/air-gapped/immutable copy (ransomware protection ke liye), aur 0 errors after verification/testing. Ye strategies/guidelines hain — formal published standards nahi. Core principle: multiple independent copies, media diversity, offsite/isolated copy.",
+    q: "What is the 3-2-1 backup strategy?",
+    a: "3 copies of data, 2 different media/storage types, 1 offsite copy. The modern extension 3-2-1-1-0 adds: 1 offline/air-gapped/immutable copy (for ransomware protection), and 0 errors after verification/testing. These are strategies/guidelines — not formal published standards. Core principle: multiple independent copies, media diversity, offsite/isolated copy.",
   },
   {
-    q: "Immutable backup kya hai?",
-    a: "Immutable backup retention period mein delete ya modify nahi ki ja sakti. Implementation types: S3 Object Lock (compliance mode — strongest, even root cannot delete; governance mode — privileged users can override), Linux hardened repository, WORM tape. Immutability strength platform aur configured enforcement mode pe depend karti hai — vendor documentation verify karo. Immutability strong protection hai but specific implementation ke limits samjho.",
+    q: "What is an immutable backup?",
+    a: "An immutable backup cannot be deleted or modified during the retention period. Implementation types: S3 Object Lock (compliance mode — strongest, even root cannot delete; governance mode — privileged users can override), Linux hardened repository, WORM tape. Immutability strength depends on the platform and the configured enforcement mode — verify the vendor documentation. Immutability is strong protection, but understand the limits of the specific implementation.",
   },
   {
-    q: "Application-consistent aur crash-consistent mein kya fark hai?",
-    a: "Crash-consistent: Application quiesce nahi hua backup ke waqt — like pulling power cord. May require crash recovery on restore. Application-consistent: Application properly quiesced — write buffers flushed, in-flight transactions completed. Databases aur transactional applications ke liye mandatory. Windows mein VSS (coordination framework), VMware mein VMware Tools quiesce, databases mein vendor-specific mechanisms. Note: Application-consistent backup application state at backup time preserve karta hai — pre-existing corruption ya media issues se protect nahi karta. Restore testing still essential.",
+    q: "What is the difference between application-consistent and crash-consistent?",
+    a: "Crash-consistent: The application was not quiesced at backup time — like pulling the power cord. May require crash recovery on restore. Application-consistent: The application is properly quiesced — write buffers flushed, in-flight transactions completed. Mandatory for databases and transactional applications. VSS (coordination framework) on Windows, VMware Tools quiesce on VMware, vendor-specific mechanisms for databases. Note: An application-consistent backup preserves the application state at backup time — it does not protect against pre-existing corruption or media issues. Restore testing is still essential.",
   },
   {
-    q: "Ransomware attack ke baad backup se recover kaise karein?",
-    a: "(1) Infected systems isolate karo. Shutdown vs keep-running: organizational IR plan aur security team se consult karo — ye decision IR capabilities, forensic requirements aur ransomware behavior pe depend karta hai, universally 'shut down' ya 'do not shut down' nahi keh sakte. (2) Last known clean restore point identify karo — infection se pehle ka. (3) Immutable/offline copy use karo — verify it predates infection. (4) Isolated environment mein restore karo first. (5) Cleanliness verify karo before connecting to production. (6) Incident response team engage karo.",
+    q: "How do you recover from backup after a ransomware attack?",
+    a: "(1) Isolate infected systems. Shutdown vs keep-running: consult the organizational IR plan and security team — this decision depends on IR capabilities, forensic requirements and ransomware behavior; you cannot universally say 'shut down' or 'do not shut down'. (2) Identify the last known clean restore point — from before the infection. (3) Use the immutable/offline copy — verify it predates infection. (4) Restore in an isolated environment first. (5) Verify cleanliness before connecting to production. (6) Engage the incident response team.",
   },
   {
-    q: "Backup retention kitne time tak rakhni chahiye?",
-    a: "Retention business requirements, compliance/regulatory requirements, aur storage budget pe depend karta hai. Koi universal answer nahi hai. Different workloads ke liye different retention: critical databases longer, dev environments shorter. Regulatory environments (financial, healthcare, etc.) specific minimum retention mandate kar sakte hain — in ke interaction with backup data complex ho sakta hai (e.g., GDPR right to erasure). Legal/compliance team se input mandatory hai regulated environments mein. IT akela ye decision nahi karta.",
+    q: "How long should backup retention be kept?",
+    a: "Retention depends on business requirements, compliance/regulatory requirements, and storage budget. There is no universal answer. Different retention for different workloads: longer for critical databases, shorter for dev environments. Regulatory environments (financial, healthcare, etc.) may mandate specific minimum retention — their interaction with backup data can be complex (e.g., GDPR right to erasure). Input from the legal/compliance team is mandatory in regulated environments. IT does not make this decision alone.",
   },
 ];
 

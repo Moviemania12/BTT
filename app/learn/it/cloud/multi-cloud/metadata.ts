@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(multiCloudMetadata);
+const baseMetadata = buildPageMetadata(multiCloudMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/it/cloud/multi-cloud",
+    languages: {
+      en: "https://behindthetech.in/learn/it/cloud/multi-cloud",
+      hi: "https://behindthetech.in/hi/learn/it/cloud/multi-cloud",
+      "x-default": "https://behindthetech.in/learn/it/cloud/multi-cloud",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/it/cloud/multi-cloud", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: multiCloudMetadata.title,

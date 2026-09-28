@@ -22,48 +22,36 @@ export default function Content() {
     <>
       {/* ══ QUICK SUMMARY ══════════════════════════════════════════════════ */}
       <div id="quick-summary" style={{ background:"#f0fdf4", border:"1px solid #bbf7d0", borderRadius:10, padding:"1.2rem 1.4rem", marginBottom:"2rem" }}>
-        <p style={{ fontWeight:700, color:"#15803d", marginBottom:"0.6rem", fontSize:"1rem" }}>📋 Quick Summary — Enterprise Switch in 2 Minutes</p>
-        <ul style={{ ...S.ul, marginBottom:0 }}>
-          <li><strong>Switch kya hai:</strong> Intelligent networking device — MAC address table (CAM table) maintain karta hai, frames sirf correct destination port pe forward karta hai. Hub ke upar: intelligent, dedicated bandwidth, full-duplex.</li>
-          <li><strong>CAM Table:</strong> MAC address → Port + VLAN mapping. ASIC hardware mein parallel lookup — nanoseconds. TCAM: ACL/QoS/policy lookups (platform-dependent implementation).</li>
-          <li><strong>VLAN:</strong> Virtual LAN — ek physical switch pe multiple isolated broadcast domains. Inter-VLAN: L3 routing required (SVI ya Router-on-a-Stick).</li>
-          <li><strong>STP/RSTP:</strong> STP (802.1D) loop prevention — 30-50 sec convergence. RSTP (802.1w) — sub-second via Proposal/Agreement. Root bridge manually configure karo.</li>
-          <li><strong>LACP:</strong> Link Aggregation (IEEE 802.1AX) — multiple physical links → one logical. Deterministic hashing (not round-robin). MLAG: dual-switch LAG — switch-level redundancy.</li>
-          <li><strong>Spine-Leaf:</strong> DC standard — every leaf connects to every spine. Always 2 hops server-to-server (within a given fabric). ECMP — all paths active simultaneously.</li>
-          <li><strong>PoE:</strong> 802.3af (15.4W) · 802.3at/PoE+ (30W) · 802.3bt Type 3/4 (60–100W). Budget plan: sum all devices + 20% headroom.</li>
-          <li><strong>QoS:</strong> CoS (L2 802.1p PCP 3-bit) · DSCP (L3 6-bit). Trust boundary critical. Platform/ASIC-dependent implementation.</li>
-          <li><strong>Security:</strong> DHCP Snooping → DAI → IP Source Guard → 802.1X → Port Security → Storm Control → CoPP. Defense in depth.</li>
-          <li><strong>MTU:</strong> Standard 1500 bytes (L3 payload). Jumbo frames — end-to-end alignment mandatory. Implementation-dependent size.</li>
-        </ul>
+        <p style={{ fontWeight:700, color:"#15803d", marginBottom:"0.6rem", fontSize:"1rem" }}>📋 Quick Summary — Enterprise Switch in 2 Minutes</p> <ul style={{ ...S.ul, marginBottom:0 }}> <li><strong>What a switch is:</strong> An intelligent networking device — it maintains a MAC address table (CAM table) and forwards frames only to the correct destination port. Advantages over a hub: intelligent, dedicated bandwidth, full-duplex.</li> <li><strong>CAM Table:</strong> MAC address → Port + VLAN mapping. Parallel lookup in ASIC hardware — nanoseconds. TCAM: ACL/QoS/policy lookups (platform-dependent implementation).</li> <li><strong>VLAN:</strong> Virtual LAN — multiple isolated broadcast domains on one physical switch. Inter-VLAN: L3 routing required (SVI or Router-on-a-Stick).</li> <li><strong>STP/RSTP:</strong> STP (802.1D) loop prevention — 30-50 sec convergence. RSTP (802.1w) — sub-second via Proposal/Agreement. Configure the root bridge manually.</li> <li><strong>LACP:</strong> Link Aggregation (IEEE 802.1AX) — multiple physical links → one logical. Deterministic hashing (not round-robin). MLAG: dual-switch LAG — switch-level redundancy.</li> <li><strong>Spine-Leaf:</strong> DC standard — every leaf connects to every spine. Always 2 hops server-to-server (within a given fabric). ECMP — all paths active simultaneously.</li> <li><strong>PoE:</strong> 802.3af (15.4W) · 802.3at/PoE+ (30W) · 802.3bt Type 3/4 (60–100W). Budget plan: sum all devices + 20% headroom.</li> <li><strong>QoS:</strong> CoS (L2 802.1p PCP 3-bit) · DSCP (L3 6-bit). Trust boundary critical. Platform/ASIC-dependent implementation.</li> <li><strong>Security:</strong> DHCP Snooping → DAI → IP Source Guard → 802.1X → Port Security → Storm Control → CoPP. Defense in depth.</li> <li><strong>MTU:</strong> Standard 1500 bytes (L3 payload). Jumbo frames — end-to-end alignment mandatory. Implementation-dependent size.</li> </ul>
       </div>
 
       {/* ══ SECTION 2 — SWITCH KYA HAI ══════════════════════════════════════ */}
-      <h2 id="switch-kya-hai" style={S.h2}>Enterprise Network Switch Kya Hai</h2>
-      <p style={S.p}><strong>Enterprise Network Switch = ek intelligent hardware device jo network devices ko connect karta hai aur data frames ko selectively forward karta hai — sirf destination tak.</strong></p>
-      <p style={S.p}>Switch har received frame ka destination MAC address check karta hai apni CAM Table mein. Match milta hai? Sirf us port pe forward karo. Nahi milta? Flood karo same-VLAN ports pe. Yeh simple intelligence hub ko completely replace kar diya — aur modern networking ka foundation ban gaya.</p>
-      <p style={S.p}>Data center mein switches everywhere hain. ToR (Top-of-Rack) switch ek server rack ke ports connect karta hai. Aggregation switches racks ko aapas mein. Spine switches poore DC fabric ki backbone banate hain.</p>
+      <h2 id="switch-kya-hai" style={S.h2}>What Is an Enterprise Network Switch</h2>
+      <p style={S.p}><strong>Enterprise Network Switch = an intelligent hardware device that connects network devices and forwards data frames selectively — only to the destination.</strong></p>
+      <p style={S.p}>For every received frame, the switch checks the destination MAC address in its CAM Table. Match found? Forward only on that port. Not found? Flood on the same-VLAN ports. This simple intelligence completely replaced the hub — and became the foundation of modern networking.</p>
+      <p style={S.p}>Switches are everywhere in a data center. A ToR (Top-of-Rack) switch connects the ports of one server rack. Aggregation switches connect racks to each other. Spine switches form the backbone of the entire DC fabric.</p>
       <Callout type="important" title="Switch is Not a Product — It&apos;s an Ecosystem">
-        Enterprise switch sirf ek hardware box nahi hai. Iske saath aate hain: VLANs, STP/RSTP, LACP, QoS, security features, monitoring, automation, licensing. In sab ko samjhna ek engineer ki responsibility hai.
+        An enterprise switch is not just a hardware box. It comes with: VLANs, STP/RSTP, LACP, QoS, security features, monitoring, automation, licensing. Understanding all of these is an engineer's responsibility.
       </Callout>
 
       {/* ══ SECTION 3 — EVOLUTION ════════════════════════════════════════════ */}
-      <h2 id="evolution" style={S.h2}>Network Switch Ka Itihaas — Evolution</h2>
-      <p style={S.p}><strong>1970s–80s:</strong> Shared coaxial cable — CSMA/CD. Sab devices ek collision domain mein. Jyada devices = jyada collisions = worse performance.</p>
-      <p style={S.p}><strong>Hub era:</strong> Multiport repeater — har port pe aaya signal sab ports pe flood. Intelligence zero. Bandwidth completely shared. Collision domain = entire network.</p>
-      <p style={S.p}><strong>Bridge (1980s–90s):</strong> MAC address learning — per-segment collision domain isolation. Software-based, limited port count. Scale nahi hota tha.</p>
-      <p style={S.p}><strong>1990 — First Ethernet Switch:</strong> Kalpana Systems ne EtherSwitch launch kiya — bridge ki intelligence, hardware-based, har port pe. Microsegmentation. ASIC-based wire-speed forwarding.</p>
+      <h2 id="evolution" style={S.h2}>The History of the Network Switch — Evolution</h2>
+      <p style={S.p}><strong>1970s–80s:</strong> Shared coaxial cable — CSMA/CD. All devices in one collision domain. More devices = more collisions = worse performance.</p>
+      <p style={S.p}><strong>Hub era:</strong> Multiport repeater — the signal arriving on any port was flooded to all ports. Zero intelligence. Bandwidth completely shared. Collision domain = entire network.</p>
+      <p style={S.p}><strong>Bridge (1980s–90s):</strong> MAC address learning — per-segment collision domain isolation. Software-based, limited port count. It did not scale.</p>
+      <p style={S.p}><strong>1990 — First Ethernet Switch:</strong> Kalpana Systems launched the EtherSwitch — bridge intelligence, hardware-based, on every port. Microsegmentation. ASIC-based wire-speed forwarding.</p>
       <p style={S.p}><strong>2000s — Layer 3 Switching:</strong> Traditional routers historically relied more heavily on CPU-based forwarding. Layer 3 switches introduced ASIC-based hardware-accelerated routing — wire-speed inter-VLAN forwarding.</p>
       <p style={S.p}><strong>2010s — Data Center Revolution:</strong> Spine-Leaf, VXLAN/EVPN, 10G/40G/100G. East-West traffic dominance. STP replaced by MLAG/BGP-EVPN in DC fabrics.</p>
       <p style={S.p}><strong>Today:</strong> 400G+ switches, programmable ASICs, white-box switching with open-source NOS (SONiC, DentOS). Enterprise switches use merchant silicon (Broadcom, Marvell) or vendor-designed ASICs — depends on platform and product family.</p>
 
       {/* ══ SECTION 4 — HUB BRIDGE SWITCH ═══════════════════════════════════ */}
-      <h2 id="hub-bridge-switch" style={S.h2}>Hub vs Bridge vs Switch — Fark Samjho</h2>
+      <h2 id="hub-bridge-switch" style={S.h2}>Hub vs Bridge vs Switch — Understanding the Difference</h2>
       <Figure caption="Fig 1 — Hub vs Bridge vs Switch: Collision domain evolution.">
         <HubBridgeSwitch />
       </Figure>
-      <p style={S.p}><strong>Hub:</strong> Sabhi devices ek shared collision domain mein. Bandwidth shared — jyada devices = worse performance for all. Layer 1 — zero intelligence.</p>
-      <p style={S.p}><strong>Bridge:</strong> Har port apna alag collision domain. Lekin: Broadcast Domain ek hi rehta hai — bridge broadcasts dono segments pe forward karta hai. Collision problem solve, broadcast problem nahi.</p>
-      <p style={S.p}><strong>Switch:</strong> Har port dedicated collision domain. Full-duplex. No collisions. VLANs se multiple broadcast domains possible.</p>
+      <p style={S.p}><strong>Hub:</strong> All devices in one shared collision domain. Bandwidth shared — more devices = worse performance for all. Layer 1 — zero intelligence.</p>
+      <p style={S.p}><strong>Bridge:</strong> Each port is its own separate collision domain. But: the Broadcast Domain remains one — the bridge forwards broadcasts to both segments. The collision problem is solved, the broadcast problem is not.</p>
+      <p style={S.p}><strong>Switch:</strong> Every port a dedicated collision domain. Full-duplex. No collisions. Multiple broadcast domains possible with VLANs.</p>
       <ComparisonTable
         title="Hub vs Bridge vs Switch"
         headers={["Feature","Hub","Bridge","Switch"]}
@@ -79,16 +67,16 @@ export default function Content() {
         caption=""
       />
       <h3 style={S.h3}>Switching Modes</h3>
-      <p style={S.p}><strong>Store-and-Forward:</strong> Complete frame receive → FCS check → forward. Highest latency, complete error checking. Enterprise aur DC standard.</p>
-      <p style={S.p}><strong>Cut-Through:</strong> Forwarding can begin before complete frame received. Exact start point aur behavior platform-dependent. Lowest latency, no FCS check.</p>
-      <p style={S.p}><strong>Fragment-Free:</strong> Historical/implementation-specific — not available on all modern switches. Pehle 64 bytes receive, then forward.</p>
+      <p style={S.p}><strong>Store-and-Forward:</strong> Complete frame receive → FCS check → forward. Highest latency, complete error checking. Enterprise and DC standard.</p>
+      <p style={S.p}><strong>Cut-Through:</strong> Forwarding can begin before complete frame received. Exact start point and behavior platform-dependent. Lowest latency, no FCS check.</p>
+      <p style={S.p}><strong>Fragment-Free:</strong> Historical/implementation-specific — not available on all modern switches. Receives the first 64 bytes, then forwards.</p>
       <Callout type="maintenance" title="Auto-Negotiation — Media/PHY/Standard Dependent">
-        Auto-negotiation behavior media type, PHY implementation, aur IEEE standard pe depend karta hai. Duplex mismatch = late collisions aur CRC errors. Production mein: ya dono sides auto-negotiate, ya dono sides same speed/duplex manually set karo.
+        Auto-negotiation behavior depends on the media type, PHY implementation and IEEE standard. Duplex mismatch = late collisions and CRC errors. In production: either both sides auto-negotiate, or manually set the same speed/duplex on both sides.
       </Callout>
 
       {/* ══ SECTION 5 — OSI ══════════════════════════════════════════════════ */}
-      <h2 id="osi-layer" style={S.h2}>OSI Model mein Switch Kahaan Hai</h2>
-      <p style={S.p}><strong>Standard L2 switch Layer 2 (Data Link) pe operate karta hai</strong> — MAC addresses use karta hai. L3 switch Layer 3 (Network) pe bhi — hardware-accelerated IP routing.</p>
+      <h2 id="osi-layer" style={S.h2}>Where the Switch Sits in the OSI Model</h2>
+      <p style={S.p}><strong>A standard L2 switch operates at Layer 2 (Data Link)</strong> — it uses MAC addresses. An L3 switch also operates at Layer 3 (Network) — hardware-accelerated IP routing.</p>
       <ComparisonTable
         title="L2 Switch vs L3 Switch"
         headers={["","L2 Switch","L3 Switch"]}
@@ -103,7 +91,7 @@ export default function Content() {
       />
 
       {/* ══ SECTION 6 — ETHERNET MAC ══════════════════════════════════════════ */}
-      <h2 id="ethernet-mac" style={S.h2}>Ethernet aur MAC Address — Foundation</h2>
+      <h2 id="ethernet-mac" style={S.h2}>Ethernet and the MAC Address — Foundation</h2>
       <CodeBlock lang="text">
 {`Ethernet Frame Sizes:
   Standard untagged:  1518 bytes max (6+6+2+1500+4)
@@ -132,16 +120,16 @@ export default function Content() {
       />
 
       {/* ══ SECTION 7 — SWITCHING PROCESS ════════════════════════════════════ */}
-      <h2 id="switching-process" style={S.h2}>Switching Process — Andar Kya Hota Hai</h2>
-      <Figure caption="Fig 2 — MAC Learning aur CAM Table: Unknown Unicast ≠ Broadcast — destination different, flooding reason different.">
+      <h2 id="switching-process" style={S.h2}>The Switching Process — What Happens Inside</h2>
+      <Figure caption="Fig 2 — MAC Learning and CAM Table: Unknown Unicast ≠ Broadcast — destination different, flooding reason different.">
         <MacLearningFlow />
       </Figure>
-      <p style={S.p}><strong>CAM Table (Content Addressable Memory):</strong> Hardware parallel search — puri table ek single clock cycle mein. Traditional RAM: address do, value milti hai. CAM: value do, location milti hai. Wire-speed forwarding enable karta hai.</p>
+      <p style={S.p}><strong>CAM Table (Content Addressable Memory):</strong> Hardware parallel search — the entire table in a single clock cycle. Traditional RAM: give an address, get a value. CAM: give a value, get the location. It enables wire-speed forwarding.</p>
       <Callout type="warning" title="Unknown Unicast ≠ Broadcast">
-        Unknown Unicast: specific destination MAC, CAM mein nahi → temporary flood. MAC learn hone ke baad: unicast only. Broadcast (FF:FF:FF:FF:FF:FF): sender ne explicitly sabko bheja → hamesha flood, no learning. Dono flooding karte hain lekin reason alag.
+        Unknown Unicast: specific destination MAC, not in the CAM → temporary flood. After the MAC is learned: unicast only. Broadcast (FF:FF:FF:FF:FF:FF): the sender explicitly sent it to everyone → always flooded, no learning. Both are flooded, but for different reasons.
       </Callout>
-      <p style={S.p}><strong>TCAM (Ternary CAM):</strong> Wildcards support — 0, 1, X (don&apos;t-care). ACLs, QoS policies, aur platform-dependent routing entries. Exact implementation ASIC/platform-specific. TCAM ≠ CAM/FDB — different storage for different purposes.</p>
-      <p style={S.p}><strong>CAM table capacity platform-dependent</strong> — verify hardware datasheet. Exhaust hone pe: unknown unicast flooding, performance degradation. Monitor TCAM/CAM utilization in production.</p>
+      <p style={S.p}><strong>TCAM (Ternary CAM):</strong> Supports wildcards — 0, 1, X (don&apos;t-care). ACLs, QoS policies and platform-dependent routing entries. Exact implementation ASIC/platform-specific. TCAM ≠ CAM/FDB — different storage for different purposes.</p>
+      <p style={S.p}><strong>CAM table capacity is platform-dependent</strong> — verify the hardware datasheet. When exhausted: unknown unicast flooding, performance degradation. Monitor TCAM/CAM utilization in production.</p>
 
       {/* ══ SECTION 8 — PACKET JOURNEY ═══════════════════════════════════════ */}
       <h2 id="packet-journey" style={S.h2}>Packet Journey Through a Switch — Ingress to Egress</h2>
@@ -160,9 +148,9 @@ export default function Content() {
       />
 
       {/* ══ SECTION 9 — HARDWARE ANATOMY ══════════════════════════════════════ */}
-      <h2 id="hardware-anatomy" style={S.h2}>Switch Hardware — Andar Ka Anatomy</h2>
+      <h2 id="hardware-anatomy" style={S.h2}>Switch Hardware — Internal Anatomy</h2>
       <p style={S.p}><strong>ASIC:</strong> Forwarding engine — wire-speed MAC lookup, VLAN, ACL, QoS. Enterprise switches use merchant silicon (Broadcom Trident/Tomahawk, Marvell) or vendor-designed ASICs — platform and product family specific.</p>
-      <p style={S.p}><strong>Buffer Memory:</strong> Burst traffic absorb karo bina dropping ke. Architecture workload, traffic patterns aur ASIC design pe depend karta hai.</p>
+      <p style={S.p}><strong>Buffer Memory:</strong> Absorbs burst traffic without dropping. The architecture depends on the workload, traffic patterns and ASIC design.</p>
       <p style={S.p}><strong>Flash:</strong> NOS image (primary + backup mandatory), startup-config, certificates, logs. NVRAM/Flash: startup-config persistence (platform-dependent).</p>
       <ComparisonTable
         title="Fixed vs Modular Switch"
@@ -183,7 +171,7 @@ export default function Content() {
         <SwitchBootProcess />
       </Figure>
       <CodeBlock lang="text">
-{`startup-config  → Flash pe saved · persists reboot · loaded at boot
+{`startup-config  → Saved in Flash · persists reboot · loaded at boot
 running-config  → Currently active in RAM · lost on reload unless saved
 
 Save running config (syntax varies by platform/vendor):
@@ -193,11 +181,11 @@ Save running config (syntax varies by platform/vendor):
 Always save immediately after every configuration change.`}
       </CodeBlock>
       <Callout type="danger" title="ROMMON Recovery — Platform-Specific">
-        Password recovery aur ROMMON procedures har platform pe different hote hain — vendor documentation strictly follow karo. Some platforms support Secure Boot restricting recovery procedures. Console access mandatory.
+        Password recovery and ROMMON procedures are different on every platform — strictly follow vendor documentation. Some platforms support Secure Boot restricting recovery procedures. Console access mandatory.
       </Callout>
 
       {/* ══ SECTION 11 — FRONT/REAR PANEL ════════════════════════════════════ */}
-      <h2 id="front-rear-panel" style={S.h2}>Front Panel, Rear Panel aur LED Indicators</h2>
+      <h2 id="front-rear-panel" style={S.h2}>Front Panel, Rear Panel and LED Indicators</h2>
       <p style={S.p}><strong>Front Panel:</strong> RJ45 copper ports, SFP/SFP+/QSFP transceiver slots, port LEDs, system LEDs, console port (RJ45/USB/mini-USB — baud rate platform-dependent). Always verify physical numbering from chassis — platform-specific.</p>
       <p style={S.p}><strong>Airflow:</strong> Front-to-back (port-to-PSU) most common. Must match rack hot/cold aisle design — mismatch = thermal failure risk.</p>
       <ComparisonTable
@@ -214,7 +202,7 @@ Always save immediately after every configuration change.`}
       />
 
       {/* ══ SECTION 12 — SWITCH TYPES ════════════════════════════════════════ */}
-      <h2 id="switch-types" style={S.h2}>Switch Types — Kaunsa Kab Use Karo</h2>
+      <h2 id="switch-types" style={S.h2}>Switch Types — Which One to Use When</h2>
       <ComparisonTable
         title="Switch Type Comparison"
         headers={["Type","Features","Typical Use"]}
@@ -236,7 +224,7 @@ Always save immediately after every configuration change.`}
       <h2 id="selection-guide" style={S.h2}>Switch Selection Guide</h2>
       <p style={S.p}><strong>Start with business requirements, not specs.</strong> Device type + count → port speed → PoE requirement → redundancy level → budget.</p>
       <Callout type="best-practice" title="Oversubscription — Design Examples Only">
-        Oversubscription ratios are design examples — not universal rules. Actual ratio workload, architecture, aur traffic profile pe depend karta hai. Each deployment apne analysis se evaluate karo.
+        Oversubscription ratios are design examples — not universal rules. The actual ratio depends on the workload, architecture and traffic profile. Evaluate each deployment through its own analysis.
       </Callout>
 
       {/* ══ SECTION 14 — PROCUREMENT ════════════════════════════════════════ */}
@@ -262,7 +250,7 @@ Always save immediately after every configuration change.`}
       {/* ══ SECTIONS 15–31 — ARCHITECTURE ════════════════════════════════════ */}
       <h2 id="network-topologies" style={S.h2}>Network Topologies</h2>
       <p style={S.p}><strong>Star:</strong> Central switch — enterprise LAN standard. Central device = SPOF — mitigate with redundant switches.</p>
-      <p style={S.p}><strong>Tree (Hierarchical):</strong> Access → Distribution → Core. Enterprise three-tier exactly yeh hai.</p>
+      <p style={S.p}><strong>Tree (Hierarchical):</strong> Access → Distribution → Core. This is exactly the enterprise three-tier.</p>
       <p style={S.p}><strong>Full Mesh:</strong> Every device to every other. Maximum redundancy, N² links. Spine layer effectively creates full mesh to all leaves.</p>
 
       <h2 id="three-tier-arch" style={S.h2}>Enterprise Three-Tier Architecture</h2>
@@ -297,14 +285,14 @@ Always save immediately after every configuration change.`}
       <p style={S.p}><strong>East-West:</strong> Inside DC — server-to-server. Web → App → DB. vMotion. iSCSI/NFS. Microservice API calls.</p>
       <p style={S.p}><strong>Evolution:</strong> Pre-virtualization = North-South dominant. Post-virtualization/microservices = East-West dominant. Spine-Leaf directly optimizes East-West — any leaf to any leaf via any spine, 2 hops.</p>
 
-      <h2 id="access-dist-core" style={S.h2}>Access, Distribution aur Core Layers</h2>
+      <h2 id="access-dist-core" style={S.h2}>Access, Distribution and Core Layers</h2>
       <p style={S.p}>Root bridge at Distribution (manually configured). ACLs at Distribution/Access, not Core. Core = speed, no complexity. PortFast + BPDU Guard on all access ports. FHRP at Distribution for gateway redundancy.</p>
 
       <h2 id="dc-switch-arch" style={S.h2}>Data Center Switching Architecture</h2>
       <p style={S.p}><strong>Logical networks per DC:</strong> Production, Storage (iSCSI/NFS), Management/OOB, Backup, vMotion/live migration, BMC/IPMI, PXE provisioning. Separate VLANs, sometimes separate physical infrastructure.</p>
       <p style={S.p}><strong>Dual-homing:</strong> Server dual NICs → two different leaf switches (MLAG) → near-hitless failover on switch failure.</p>
 
-      <h2 id="tor-mor-eor" style={S.h2}>Top-of-Rack, Middle-of-Row aur End-of-Row</h2>
+      <h2 id="tor-mor-eor" style={S.h2}>Top-of-Rack, Middle-of-Row and End-of-Row</h2>
       <ComparisonTable
         title="ToR vs MoR vs EoR"
         headers={["","ToR","MoR","EoR"]}
@@ -317,7 +305,7 @@ Always save immediately after every configuration change.`}
         caption="ToR = modern DC standard. Short copper patch cables, isolated failure domain."
       />
 
-      <h2 id="uplink-design" style={S.h2}>Uplink Design aur Oversubscription</h2>
+      <h2 id="uplink-design" style={S.h2}>Uplink Design and Oversubscription</h2>
       <p style={S.p}><strong>Redundant uplinks mandatory</strong> — dual uplinks to two different distribution/spine switches. Single uplink = SPOF.</p>
       <CodeBlock lang="text">
 {`Oversubscription = Total Downlink Bandwidth / Total Uplink Bandwidth
@@ -397,20 +385,20 @@ No universal "correct" ratio — analyze per deployment.`}
         caption="Passive DAC: no active signal conditioning. Active DAC: electronics improve signal integrity — distinct from distance alone."
       />
 
-      <h2 id="patch-panels" style={S.h2}>Patch Panels aur Structured Cabling</h2>
-      <p style={S.p}><strong>Patch Panel:</strong> Passive component — organizes cable terminations but does not switch, regenerate or process network traffic. Permanent infrastructure cables terminate here. Short patch cables switch ports se panel tak.</p>
+      <h2 id="patch-panels" style={S.h2}>Patch Panels and Structured Cabling</h2>
+      <p style={S.p}><strong>Patch Panel:</strong> Passive component — organizes cable terminations but does not switch, regenerate or process network traffic. Permanent infrastructure cables terminate here. Short patch cables run from the switch ports to the panel.</p>
 
-      <h2 id="physical-installation" style={S.h2}>Physical Installation aur Rack Deployment</h2>
+      <h2 id="physical-installation" style={S.h2}>Physical Installation and Rack Deployment</h2>
       <p style={S.p}><strong>Grounding:</strong> MANDATORY — chassis ground lug → rack ground bar → building grounding. Personnel safety, ESD protection, EMI reduction. Never skip.</p>
       <p style={S.p}><strong>Power:</strong> PSU-1 → PDU-A, PSU-2 → PDU-B (different feeds). Dual-redundant power paths.</p>
-      <p style={S.p}><strong>Cabling:</strong> Velcro ties for patch cables (reusable). Zip ties for permanent infrastructure only. Never over-tighten — cable geometry disturb karta hai (especially Cat6A).</p>
+      <p style={S.p}><strong>Cabling:</strong> Velcro ties for patch cables (reusable). Zip ties for permanent infrastructure only. Never over-tighten — it disturbs the cable geometry (especially Cat6A).</p>
 
       {/* ══ SECTIONS 32–46 — LAYER 2 ══════════════════════════════════════════ */}
       <h2 id="vlan-fundamentals" style={S.h2}>VLAN Fundamentals</h2>
       <Figure caption="Fig 6 — VLAN Segmentation: HR, Finance, Guest — isolated broadcast domains on one physical switch.">
         <VlanSegmentation />
       </Figure>
-      <p style={S.p}><strong>VLAN (Virtual LAN)</strong> = logical network segment — physical infrastructure se independent. Ek physical switch pe multiple isolated virtual networks. Har VLAN = apna broadcast domain. Inter-VLAN: L3 routing required.</p>
+      <p style={S.p}><strong>VLAN (Virtual LAN)</strong> = logical network segment — independent of the physical infrastructure. Multiple isolated virtual networks on one physical switch. Each VLAN = its own broadcast domain. Inter-VLAN: L3 routing required.</p>
       <ComparisonTable
         title="Common Enterprise VLANs"
         headers={["VLAN","Purpose","Devices"]}
@@ -478,14 +466,14 @@ Prevention: STP/RSTP on all switches + BPDU Guard on access ports`}
       </CodeBlock>
 
       <h2 id="stp" style={S.h2}>Spanning Tree Protocol (STP)</h2>
-      <Figure caption="Fig 7 — STP election aur port states. RSTP (802.1w) sub-second convergence via Proposal/Agreement — modern enterprise standard.">
+      <Figure caption="Fig 7 — STP election and port states. RSTP (802.1w) sub-second convergence via Proposal/Agreement — modern enterprise standard.">
         <StpElection />
       </Figure>
-      <p style={S.p}><strong>STP (IEEE 802.1D)</strong> spanning tree create karta hai — redundant paths block karo, failover pe unblock. Root Bridge election: Lowest Bridge ID (Priority + MAC). Default priority 32768 — manually set 4096 on desired root.</p>
+      <p style={S.p}><strong>STP (IEEE 802.1D)</strong> creates a spanning tree — it blocks redundant paths and unblocks them on failover. Root Bridge election: Lowest Bridge ID (Priority + MAC). Default priority 32768 — manually set 4096 on desired root.</p>
       <Callout type="danger" title="STP Path Cost — Platform Verification Required">
         Path cost values (10M=100, 100M=19, 1G=4, 10G=2) represent the commonly used short path-cost method. Modern OS may support the IEEE long path-cost method with different values. Always verify from your target platform documentation.
       </Callout>
-      <p style={S.p}><strong>PortFast:</strong> Access ports pe STP bypass — end device connected, no loop risk. <strong>BPDU Guard:</strong> PortFast port pe BPDU → err-disabled (unauthorized switch blocked). <strong>Root Guard:</strong> Prevents better-priority BPDU from overriding configured root.</p>
+      <p style={S.p}><strong>PortFast:</strong> STP bypass on access ports — end device connected, no loop risk. <strong>BPDU Guard:</strong> BPDU on a PortFast port → err-disabled (unauthorized switch blocked). <strong>Root Guard:</strong> Prevents better-priority BPDU from overriding configured root.</p>
 
       <h2 id="rstp" style={S.h2}>Rapid Spanning Tree Protocol (RSTP)</h2>
       <p style={S.p}><strong>RSTP (IEEE 802.1w)</strong> — modern enterprise standard. 30-50 sec STP → sub-second. 3 states: Discarding/Learning/Forwarding. Alternate Port = pre-identified backup root port.</p>
@@ -504,16 +492,16 @@ Prevention: STP/RSTP on all switches + BPDU Guard on access ports`}
       </Callout>
 
       <h2 id="port-channel" style={S.h2}>Port Channel</h2>
-      <p style={S.p}><strong>Port Channel</strong> = logical interface — 4×10G physical = 1×40G logical. Configuration, VLANs, STP — sab port channel pe, individual members pe nahi. Member ports requirements: same speed, same duplex, same VLAN, connected to same switch (or MLAG pair).</p>
+      <p style={S.p}><strong>Port Channel</strong> = logical interface — 4×10G physical = 1×40G logical. Configuration, VLANs, STP — all on the port channel, not on the individual members. Member ports requirements: same speed, same duplex, same VLAN, connected to same switch (or MLAG pair).</p>
       <Callout type="common-mistake" title="Port Channel Mistakes">
-        (1) Member ports on different physical switches without MLAG = loop risk. (2) Individual port VLAN conflict with port-channel config. (3) Partial LACP config — ek side active, doosri static — behavior platform-dependent.
+        (1) Member ports on different physical switches without MLAG = loop risk. (2) Individual port VLAN conflict with port-channel config. (3) Partial LACP config — one side active, the other static — behavior platform-dependent.
       </Callout>
 
       <h2 id="mlag" style={S.h2}>MLAG — Multi-Chassis Link Aggregation</h2>
       <Figure caption="Fig 9 — MLAG: Two physical switches as one logical LAG partner. Peer link for sync + data. Keepalive prevents split-brain.">
         <MlagArchitecture />
       </Figure>
-      <p style={S.p}><strong>MLAG solves:</strong> Standard LACP requires sab member ports on one physical switch. Switch fail = LAG down. MLAG: two physical switches = one logical LAG partner. Switch fail → remaining switch handles all traffic.</p>
+      <p style={S.p}><strong>MLAG solves:</strong> Standard LACP requires all member ports on one physical switch. Switch fail = LAG down. MLAG: two physical switches = one logical LAG partner. Switch fail → remaining switch handles all traffic.</p>
       <p style={S.p}><strong>Peer Link (ISL):</strong> Control plane sync (MAC, ARP, LACP state) + data forwarding path. <strong>Keepalive:</strong> Peer liveness check via separate link (management network). Peer link fail + keepalive reachable → secondary disables MLAG ports (split-brain prevented).</p>
       <ComparisonTable
         title="MLAG Vendor Terminology"
@@ -579,7 +567,7 @@ Switch documented PoE budget must exceed calculated total.
 Cat6/Cat6A recommended for high-power PoE — lower resistance = less heat.`}
       </CodeBlock>
 
-      <h2 id="jumbo-frames-mtu" style={S.h2}>Jumbo Frames aur MTU</h2>
+      <h2 id="jumbo-frames-mtu" style={S.h2}>Jumbo Frames and MTU</h2>
       <p style={S.p}><strong>MTU (Maximum Transmission Unit):</strong> Maximum IP payload — standard <strong>1500 bytes (L3 payload only)</strong>. Frame size (1518/1522) includes L2 headers + FCS — MTU ≠ frame size. Jumbo frames: payload &gt;1500 bytes, commonly 9000/9216 bytes — implementation-dependent, not IEEE universal standard.</p>
       <Callout type="danger" title="MTU Mismatch — Silent Performance Killer">
         Jumbo frames partial config → large frames silently dropped → TCP retransmits → terrible large-file/iSCSI/NFS performance. Symptoms: ping works, large transfers terrible. Test: ping with DF flag large payload. Fix: configure ALL devices in path simultaneously. One misconfigured device = entire path broken.
@@ -608,26 +596,26 @@ Cat6/Cat6A recommended for high-power PoE — lower resistance = less heat.`}
       <p style={S.p}><strong>DHCP Snooping:</strong> Rogue DHCP server block. Trusted ports: DHCP replies allowed. Untrusted: DHCP replies blocked. Binding table {'{'}MAC, IP, Port, VLAN{'}'} = basis for DAI + IP Source Guard.</p>
       <p style={S.p}><strong>DAI (Dynamic ARP Inspection):</strong> ARP spoofing prevent — ARP vs DHCP Snooping binding verify. Man-in-the-middle attacks blocked.</p>
       <p style={S.p}><strong>802.1X:</strong> Port-based NAC — Supplicant → Authenticator (switch) → RADIUS. Auth success → dynamic VLAN/ACL assignment. MAB for non-802.1X devices.</p>
-      <p style={S.p}><strong>Storm Control:</strong> Broadcast/multicast/unknown unicast rate threshold → block or port shutdown. All access ports pe configure karo.</p>
+      <p style={S.p}><strong>Storm Control:</strong> Broadcast/multicast/unknown unicast rate threshold → block or port shutdown. Configure it on all access ports.</p>
 
-      <h2 id="switch-management" style={S.h2}>Switch Management aur Monitoring</h2>
+      <h2 id="switch-management" style={S.h2}>Switch Management and Monitoring</h2>
       <p style={S.p}><strong>Access methods:</strong> SSH v2 CLI (primary — no Telnet), SNMP v3 (no v1/v2c community strings — cleartext), REST API/NETCONF/gNMI (automation), web GUI (secondary). OOB management network mandatory for production.</p>
       <p style={S.p}><strong>LLDP (IEEE 802.1AB):</strong> Standard neighbor discovery. Disable on external/untrusted ports — prevents topology disclosure.</p>
       <p style={S.p}><strong>SPAN/RSPAN/ERSPAN:</strong> Port mirroring for Wireshark/IDS. RSPAN: across switches. ERSPAN: GRE-encapsulated to any IP destination.</p>
       <p style={S.p}><strong>NetFlow/sFlow/IPFIX:</strong> Traffic flow sampling — bandwidth analysis, top talkers, capacity planning, security anomaly detection.</p>
 
-      <h2 id="logging-ntp" style={S.h2}>Logging aur Time Synchronization</h2>
-      <p style={S.p}><strong>Syslog severity:</strong> 0-Emergency, 1-Alert, 2-Critical, 3-Error, 4-Warning, 5-Notice, 6-Info, 7-Debug. Production: Warning (4) ya Notice (5). Debug = massive volume — active troubleshooting only.</p>
+      <h2 id="logging-ntp" style={S.h2}>Logging and Time Synchronization</h2>
+      <p style={S.p}><strong>Syslog severity:</strong> 0-Emergency, 1-Alert, 2-Critical, 3-Error, 4-Warning, 5-Notice, 6-Info, 7-Debug. Production: Warning (4) or Notice (5). Debug = massive volume — active troubleshooting only.</p>
       <Callout type="danger" title="NTP Not Configured = Incident Investigation Impossible">
         Wrong timestamps → log correlation impossible during incident → forensic timeline useless. NTP = mandatory day-1. Minimum 2 NTP servers. All switches → same servers. No exceptions for production switches.
       </Callout>
 
-      <h2 id="config-management" style={S.h2}>Configuration Management aur Backup</h2>
-      <p style={S.p}><strong>Golden rule:</strong> After every change → save config immediately. Forget karo → reload pe config lost. This is the #1 avoidable mistake in field operations.</p>
+      <h2 id="config-management" style={S.h2}>Configuration Management and Backup</h2>
+      <p style={S.p}><strong>Golden rule:</strong> After every change → save config immediately. Forget it → config lost on reload. This is the #1 avoidable mistake in field operations.</p>
       <p style={S.p}><strong>Backup methods:</strong> SCP (preferred — encrypted), TFTP (unencrypted — internal only). Trigger: every change + daily scheduled + pre-upgrade mandatory.</p>
       <p style={S.p}><strong>Version control:</strong> Git-based config tracking. Diff shows exactly what changed. Rollback = revert commit + apply.</p>
 
-      <h2 id="firmware-upgrade" style={S.h2}>Software Images, Firmware aur Upgrade Strategy</h2>
+      <h2 id="firmware-upgrade" style={S.h2}>Software Images, Firmware and Upgrade Strategy</h2>
       <CodeBlock lang="text">
 {`Pre-Upgrade Checklist:
   □ Release notes: breaking changes? Known issues?
@@ -646,12 +634,12 @@ Post-Upgrade:
   □ Keep old image until confirmed stable`}
       </CodeBlock>
       <Callout type="important" title="ISSU — In-Service Software Upgrade">
-        ISSU depends on hardware architecture, supervisor redundancy, software release, aur supported upgrade paths. Not every platform or software version supports ISSU. Verify vendor documentation before planning in-service upgrade.
+        ISSU depends on hardware architecture, supervisor redundancy, software release and supported upgrade paths. Not every platform or software version supports ISSU. Verify vendor documentation before planning in-service upgrade.
       </Callout>
 
       <h2 id="common-mistakes" style={S.h2}>Common Engineering Mistakes</h2>
       <ComparisonTable
-        title="Top Engineering Mistakes aur Prevention"
+        title="Top Engineering Mistakes and Prevention"
         headers={["Mistake","Impact","Prevention"]}
         rows={[
           ["Wrong VLAN on access port",  "Device wrong network, security breach",      "Verify VLAN before cabling, acceptance test"],
@@ -712,7 +700,7 @@ Post-Upgrade:
       <p style={S.p}>iSCSI performance terrible after new ToR switches deployed. Ping works, SSH works. Root cause: new ToR switches jumbo frames not configured (default 1500). Old switches had 9000 MTU. Large iSCSI I/O silently dropped → TCP retransmits → terrible throughput. Fix: jumbo frames all new switches simultaneously. Lesson: MTU = all-or-nothing per path.</p>
 
       {/* ══ O&M CHECKLIST ══════════════════════════════════════════════════════ */}
-      <h2 id="om-checklist" style={S.h2}>Enterprise Operations aur O&amp;M Checklist</h2>
+      <h2 id="om-checklist" style={S.h2}>Enterprise Operations and O&amp;M Checklist</h2>
       <h3 style={S.h3}>Daily</h3>
       <ul style={S.ul}>
         <li>SNMP alerts/traps review — any critical overnight?</li>
@@ -784,58 +772,58 @@ Post-Upgrade:
       {/* ══ INTERVIEW QUESTIONS ══════════════════════════════════════════════ */}
       <h2 id="interview-questions" style={S.h2}>Interview / Job Knowledge</h2>
 
-      <h3 style={S.h3}>Q: Switch aur Hub mein kya fark hai?</h3>
-      <p style={S.p}><strong>A:</strong> Hub Layer 1 device — dumb repeater, sab ports pe flood, ek shared collision domain, half-duplex. Switch Layer 2 — MAC learning (CAM table), sirf correct port pe forward, per-port dedicated collision domain, full-duplex. Hub enterprise mein dead hai.</p>
+      <h3 style={S.h3}>Q: What is the difference between a switch and a hub?</h3>
+      <p style={S.p}><strong>A:</strong> Hub: Layer 1 device — dumb repeater, floods on all ports, one shared collision domain, half-duplex. Switch: Layer 2 — MAC learning (CAM table), forwards only to the correct port, per-port dedicated collision domain, full-duplex. The hub is dead in the enterprise.</p>
 
-      <h3 style={S.h3}>Q: CAM table aur TCAM mein kya difference hai?</h3>
+      <h3 style={S.h3}>Q: What is the difference between the CAM table and TCAM?</h3>
       <p style={S.p}><strong>A:</strong> CAM/FDB = MAC Address → Switch Port + VLAN mapping. Exact match. ASIC parallel lookup. TCAM = Ternary CAM — wildcards (0/1/X). ACLs, QoS policies, platform-dependent routing lookups. Both hardware — TCAM more expensive resource — monitor utilization.</p>
 
-      <h3 style={S.h3}>Q: VLAN kya hai? Inter-VLAN routing kaise hoti hai?</h3>
-      <p style={S.p}><strong>A:</strong> VLAN = logical network segment — ek physical switch pe multiple isolated broadcast domains. Inter-VLAN: L3 routing required. L3 switch pe SVI create karo per VLAN — SVI = default gateway. ASIC hardware-accelerated routing. Router-on-a-Stick = legacy single interface bottleneck. L3 Switch SVI = enterprise standard.</p>
+      <h3 style={S.h3}>Q: What is a VLAN? How does inter-VLAN routing work?</h3>
+      <p style={S.p}><strong>A:</strong> VLAN = logical network segment — multiple isolated broadcast domains on one physical switch. Inter-VLAN: L3 routing required. Create an SVI per VLAN on the L3 switch — SVI = default gateway. ASIC hardware-accelerated routing. Router-on-a-Stick = legacy single interface bottleneck. L3 Switch SVI = enterprise standard.</p>
 
-      <h3 style={S.h3}>Q: STP kyun exist karta hai? RSTP se kya improve hua?</h3>
-      <p style={S.p}><strong>A:</strong> Ethernet mein loops catastrophic — no TTL, infinite frames, broadcast storm. STP spanning tree create karta hai — redundant paths maintain karo, kuch ports block karo. STP convergence 30-50 seconds (timer-based). RSTP: Proposal/Agreement — sub-second convergence. Alternate Port = pre-identified backup. Modern enterprise: hamesha RSTP use karo.</p>
+      <h3 style={S.h3}>Q: Why does STP exist? What did RSTP improve?</h3>
+      <p style={S.p}><strong>A:</strong> Loops in Ethernet are catastrophic — no TTL, infinite frames, broadcast storm. STP creates a spanning tree — it maintains redundant paths and blocks some ports. STP convergence 30-50 seconds (timer-based). RSTP: Proposal/Agreement — sub-second convergence. Alternate Port = pre-identified backup. Modern enterprise: always use RSTP.</p>
 
-      <h3 style={S.h3}>Q: LACP mein load balancing kaise hoti hai?</h3>
-      <p style={S.p}><strong>A:</strong> Deterministic hashing — NOT round-robin. Hash inputs (src/dst MAC, IP, L4 ports) → link selected. Same flow = same link always. Multiple flows = distributed across links. Single large TCP connection max 1 link bandwidth. Hash imbalance: ek link high → change hash algorithm (src-dst-ip better distribution).</p>
+      <h3 style={S.h3}>Q: How does load balancing work in LACP?</h3>
+      <p style={S.p}><strong>A:</strong> Deterministic hashing — NOT round-robin. Hash inputs (src/dst MAC, IP, L4 ports) → link selected. Same flow = same link always. Multiple flows = distributed across links. Single large TCP connection max 1 link bandwidth. Hash imbalance: one link high → change hash algorithm (src-dst-ip better distribution).</p>
 
-      <h3 style={S.h3}>Q: MLAG kya hai? vPC se kya relationship hai?</h3>
+      <h3 style={S.h3}>Q: What is MLAG? What is its relationship to vPC?</h3>
       <p style={S.p}><strong>A:</strong> MLAG = two physical switches as one logical LAG partner. Switch-level redundancy — switch fail ho, remaining switch handles traffic. Peer link: control sync + data forwarding. Keepalive: split-brain prevention. vPC = Cisco Nexus MLAG implementation. Arista → MLAG. Juniper → MC-LAG. Dell → VLT. Concept same, vendor names different.</p>
 
-      <h3 style={S.h3}>Q: Spine-Leaf three-tier se better kyun hai?</h3>
-      <p style={S.p}><strong>A:</strong> Three-tier problems: variable hops, STP blocking wasted bandwidth, Core bottleneck for East-West. Spine-Leaf: every leaf → every spine (within given fabric). Exactly 2 hops server-to-server. ECMP — all paths active (deterministic hashing). Horizontal scaling. Predictable latency. East-West dominant modern DC ke liye optimized.</p>
+      <h3 style={S.h3}>Q: Why is Spine-Leaf better than three-tier?</h3>
+      <p style={S.p}><strong>A:</strong> Three-tier problems: variable hops, STP blocking wasted bandwidth, Core bottleneck for East-West. Spine-Leaf: every leaf → every spine (within given fabric). Exactly 2 hops server-to-server. ECMP — all paths active (deterministic hashing). Horizontal scaling. Predictable latency. Optimized for the East-West-dominant modern DC.</p>
 
-      <h3 style={S.h3}>Q: PoE budget kaise plan karein?</h3>
-      <p style={S.p}><strong>A:</strong> Sab PoE devices list karo with power class (IEEE 802.3af/at/bt). Sum karo total expected load. 20% headroom add karo. Switch documented PoE budget must exceed total. Cat6/Cat6A for high-power PoE — less resistance, less heat. Budget monitoring via SNMP mandatory.</p>
+      <h3 style={S.h3}>Q: How do you plan a PoE budget?</h3>
+      <p style={S.p}><strong>A:</strong> List all PoE devices with their power class (IEEE 802.3af/at/bt). Sum the total expected load. Add 20% headroom. Switch documented PoE budget must exceed total. Cat6/Cat6A for high-power PoE — less resistance, less heat. Budget monitoring via SNMP mandatory.</p>
 
-      <h3 style={S.h3}>Q: MTU mismatch kaise troubleshoot karein?</h3>
-      <p style={S.p}><strong>A:</strong> Symptom: ping works, large file transfers terrible. Detection: ping with DF flag aur large payload (Linux: ping -M do -s 8972). Timeout ya &quot;Frag needed&quot; = mismatch in path. Fix: all devices in path simultaneously configure. One misconfigured device = path broken.</p>
+      <h3 style={S.h3}>Q: How do you troubleshoot an MTU mismatch?</h3>
+      <p style={S.p}><strong>A:</strong> Symptom: ping works, large file transfers terrible. Detection: ping with DF flag and large payload (Linux: ping -M do -s 8972). Timeout or &quot;Frag needed&quot; = mismatch in path. Fix: all devices in path simultaneously configure. One misconfigured device = path broken.</p>
 
-      <h3 style={S.h3}>Q: Interface err-disabled — cause aur recovery?</h3>
-      <p style={S.p}><strong>A:</strong> Err-disabled = switch ne security violation pe port disable kiya. Common causes: BPDU Guard (switch connected to PortFast port), Port Security (MAC limit exceeded), Storm Control (threshold exceeded). Recovery: (1) Root cause fix karo FIRST. (2) shutdown → no shutdown = manual recovery. errdisable recovery timer = automatic — use carefully after root cause resolved.</p>
+      <h3 style={S.h3}>Q: Interface err-disabled — cause and recovery?</h3>
+      <p style={S.p}><strong>A:</strong> Err-disabled = the switch disabled the port due to a security violation. Common causes: BPDU Guard (switch connected to PortFast port), Port Security (MAC limit exceeded), Storm Control (threshold exceeded). Recovery: (1) Fix the root cause FIRST. (2) shutdown → no shutdown = manual recovery. errdisable recovery timer = automatic — use carefully after root cause resolved.</p>
 
-      <h3 style={S.h3}>Q: VRRP aur HSRP mein kya fark hai?</h3>
-      <p style={S.p}><strong>A:</strong> VRRP = IETF standard (RFC 3768 v2, RFC 5798 v3) — multi-vendor support. HSRP = Cisco proprietary — Cisco-only environments. GLBP = Cisco proprietary — active-active (multiple active gateways). Dono virtual gateway IP provide karte hain — switch fail → virtual IP/MAC seamlessly to standby. VRRP preferred for multi-vendor environments.</p>
+      <h3 style={S.h3}>Q: What is the difference between VRRP and HSRP?</h3>
+      <p style={S.p}><strong>A:</strong> VRRP = IETF standard (RFC 3768 v2, RFC 5798 v3) — multi-vendor support. HSRP = Cisco proprietary — Cisco-only environments. GLBP = Cisco proprietary — active-active (multiple active gateways). Both provide a virtual gateway IP — switch fail → virtual IP/MAC seamlessly to standby. VRRP preferred for multi-vendor environments.</p>
 
-      <h3 style={S.h3}>Q: CRC errors kya indicate karte hain?</h3>
+      <h3 style={S.h3}>Q: What do CRC errors indicate?</h3>
       <p style={S.p}><strong>A:</strong> Physical layer problem — bad cable, dirty fiber, bad SFP, EMI interference. Check DOM/DDM (RX power OK?), replace cable, clean fiber (approved tools), swap SFP. CRC errors + late collisions = duplex mismatch. Incrementing CRC: never ignore — physical issue will worsen.</p>
 
-      <h3 style={S.h3}>Q: Data center mein 5 must-configure security features kaun se hain?</h3>
+      <h3 style={S.h3}>Q: What are the 5 must-configure security features in a data center?</h3>
       <p style={S.p}><strong>A:</strong> (1) SSH-only management + VTY ACL. (2) PortFast + BPDU Guard on all access ports. (3) DHCP Snooping + DAI on all access VLANs. (4) Storm Control on access ports. (5) CoPP to protect switch CPU. Plus: SNMPv3, AAA centralized, unused ports shutdown + unused VLAN, Root Guard on distribution-facing ports.</p>
 
       <h3 style={S.h3}>Q: LACP vs Static EtherChannel — when to use?</h3>
       <p style={S.p}><strong>A:</strong> LACP always preferred — auto-negotiates, detects misconfigurations, standard. Static only when partner doesn&apos;t support LACP or specific legacy scenarios. Static risk: misconfigured end = silent broadcast loop (no LACP PDUs = no detection). LACP active+passive both sides: safe. Static both sides: verify manually.</p>
 
-      <h3 style={S.h3}>Q: ISSU kya hai aur kab possible hai?</h3>
-      <p style={S.p}><strong>A:</strong> ISSU = In-Service Software Upgrade — upgrade NOS without traffic interruption. Requires: redundant supervisor modules, NSF/SSO configured, supported upgrade path, specific hardware architecture. Not universally available — depends on platform, software release, aur vendor support. Always verify vendor documentation before planning ISSU.</p>
+      <h3 style={S.h3}>Q: What is ISSU and when is it possible?</h3>
+      <p style={S.p}><strong>A:</strong> ISSU = In-Service Software Upgrade — upgrade NOS without traffic interruption. Requires: redundant supervisor modules, NSF/SSO configured, supported upgrade path, specific hardware architecture. Not universally available — depends on platform, software release and vendor support. Always verify vendor documentation before planning ISSU.</p>
 
       {/* ══ KEY TAKEAWAYS ══════════════════════════════════════════════════════ */}
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
       <ul style={S.ul}>
-        <li><strong>Switch = selective forwarder.</strong> CAM table — sirf correct port. Unknown unicast ≠ broadcast — same flooding, completely different reason.</li>
+        <li><strong>Switch = selective forwarder.</strong> CAM table — only the correct port. Unknown unicast ≠ broadcast — same flooding, completely different reason.</li>
         <li><strong>ASIC = wire-speed forwarding.</strong> Nanoseconds. TCAM: ACL/QoS/policy — platform-dependent. CAM/FDB: L2 MAC forwarding. Different hardware, different purposes.</li>
         <li><strong>VLAN = broadcast isolation.</strong> Inter-VLAN: L3 required. Native VLAN mismatch = silent security risk. VLAN 1 avoid in production.</li>
-        <li><strong>STP = loop prevention.</strong> Root bridge manually configure karo. RSTP (802.1w) = modern standard — sub-second. PortFast + BPDU Guard on access ports always.</li>
+        <li><strong>STP = loop prevention.</strong> Configure the root bridge manually. RSTP (802.1w) = modern standard — sub-second. PortFast + BPDU Guard on access ports always.</li>
         <li><strong>LACP = link aggregation.</strong> IEEE 802.1AX. Deterministic hashing — not round-robin. MLAG: dual-switch LAG. Keepalive prevents split-brain.</li>
         <li><strong>Spine-Leaf = DC standard.</strong> 2 hops (within fabric). ECMP. East-West optimized. Horizontal scaling.</li>
         <li><strong>PoE budget planning mandatory.</strong> Sum devices + 20% headroom. IEEE 802.3bt standard — vendor names vary. Cat6/Cat6A for high-power PoE.</li>
@@ -887,7 +875,7 @@ Post-Upgrade:
 
       {/* Group B — Layer 2 Protocols */}
       <ComparisonTable
-        title="Layer 2 Protocols aur Standards"
+        title="Layer 2 Protocols and Standards"
         headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
         rows={[
           ["802.1Q",   "IEEE 802.1Q",                               "VLAN tagging standard. Inserts 4-byte tag into Ethernet frame (TPID 0x8100 + TCI). Tagged frame max: 1522 bytes. Defines access ports (untagged) and trunk ports (tagged)."],
@@ -918,7 +906,7 @@ Post-Upgrade:
 
       {/* Group C — Layer 3 & Routing */}
       <ComparisonTable
-        title="Layer 3 aur Routing"
+        title="Layer 3 and Routing"
         headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
         rows={[
           ["AOS-CX",   "Aruba OS-CX",                               "Aruba (HPE) Network Operating System for enterprise switches. Relevant for CLI syntax differences in troubleshooting cross-platform environments."],
@@ -940,7 +928,7 @@ Post-Upgrade:
 
       {/* Group D — QoS & Security */}
       <ComparisonTable
-        title="QoS aur Security"
+        title="QoS and Security"
         headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
         rows={[
           ["AAA",      "Authentication, Authorization, Accounting", "Security framework. Authentication: who are you? Authorization: what can you do? Accounting: what did you do? Implemented via RADIUS or TACACS+ integration. Centralized credential management for switch CLI access."],
@@ -960,7 +948,7 @@ Post-Upgrade:
 
       {/* Group E — Hardware & Physical */}
       <ComparisonTable
-        title="Hardware aur Physical Layer"
+        title="Hardware and Physical Layer"
         headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
         rows={[
           ["AOC",      "Active Optical Cable",                      "Fiber cable with active electro-optic conversion at both ends. EMI-immune, longer reach than DAC. Higher power/cost. Used for cross-row or EMI-sensitive runs where DAC is insufficient."],
@@ -992,7 +980,7 @@ Post-Upgrade:
 
       {/* Group F — Management, Monitoring & Operations */}
       <ComparisonTable
-        title="Management, Monitoring aur Operations"
+        title="Management, Monitoring and Operations"
         headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
         rows={[
           ["API",      "Application Programming Interface",         "Programmatic interface for switch configuration and monitoring. Modern switches support REST API, NETCONF, RESTCONF, and gNMI for automation and network management systems."],
@@ -1035,7 +1023,7 @@ Post-Upgrade:
 
       {/* Group H — Protocols, Standards & RFCs */}
       <ComparisonTable
-        title="Protocols, Standards aur RFCs"
+        title="Protocols, Standards and RFCs"
         headers={["Abbreviation","Full Form","Meaning in Switch Context"]}
         rows={[
           ["802.1Qbb",  "IEEE 802.1Qbb",                            "Priority Flow Control (PFC) standard. Per-priority PAUSE frames. Component of DCB framework. Enables lossless per-class Ethernet in specifically engineered designs."],

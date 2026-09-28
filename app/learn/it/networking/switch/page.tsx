@@ -11,7 +11,7 @@ export default function SwitchPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <ArticleLayout slug="switch" headings={HEADINGS} readingTimeMinutes={75}>
+      <ArticleLayout slug="switch" headings={HEADINGS} readingTimeMinutes={75} lang="en" alternateHref="/hi/learn/it/networking/switch">
         <Content />
       </ArticleLayout>
     </>

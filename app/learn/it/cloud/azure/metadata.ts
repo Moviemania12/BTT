@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(azureMetadata);
+const baseMetadata = buildPageMetadata(azureMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/it/cloud/azure",
+    languages: {
+      en: "https://behindthetech.in/learn/it/cloud/azure",
+      hi: "https://behindthetech.in/hi/learn/it/cloud/azure",
+      "x-default": "https://behindthetech.in/learn/it/cloud/azure",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/it/cloud/azure", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: azureMetadata.title,

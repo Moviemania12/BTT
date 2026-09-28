@@ -3,12 +3,12 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const sdWanMetadata: ArticleMetadata = {
   slug: "sd-wan",
   title: "SD-WAN Explained — Software-Defined WAN for Enterprise and Data Center",
-  seoTitle: "SD-WAN Kya Hai? Underlay, Overlay, Path Selection, Failover aur Architecture",
+  seoTitle: "What Is SD-WAN? Underlay, Overlay, Path Selection, Failover and Architecture",
   seoDescription:
-    "SD-WAN kya hota hai? Underlay vs overlay, application-aware traffic steering, SLA measurement, failover, brownout detection, branch-to-DC architecture, troubleshooting aur operations — complete Hinglish guide engineers ke liye.",
+    "What is SD-WAN? Underlay vs overlay, application-aware traffic steering, SLA measurement, failover, brownout detection, branch-to-DC architecture, troubleshooting and operations — a complete English guide for engineers.",
   canonicalUrl: "https://behindthetech.in/learn/it/networking/sd-wan",
   keywords: [
-    "sd-wan kya hai",
+    "what is sd-wan",
     "software defined wan",
     "sd-wan vs mpls",
     "underlay overlay sd-wan",

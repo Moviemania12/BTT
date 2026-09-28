@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Enterprise Network Switch — Complete Engineer Guide | Behind The Tech",
   description:
-    "Enterprise Network Switch kya hai — MAC learning, CAM table, ASIC, VLAN, STP, RSTP, LACP, MLAG, Spine-Leaf, PoE, QoS, 802.1Q, inter-VLAN routing, fiber, transceivers, physical installation, troubleshooting aur interview tips — complete Hinglish Data Center engineer handbook.",
+    "What is an enterprise network switch — MAC learning, CAM table, ASIC, VLAN, STP, RSTP, LACP, MLAG, Spine-Leaf, PoE, QoS, 802.1Q, inter-VLAN routing, fiber, transceivers, physical installation, troubleshooting and interview tips — the complete English Data Center engineer handbook.",
   keywords: [
     "enterprise network switch", "managed switch", "layer 2 switch", "layer 3 switch",
     "data center switch", "VLAN", "trunk port", "STP spanning tree", "RSTP", "MSTP",
@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     title: "Enterprise Network Switch — Complete Engineer Guide",
     description: "MAC learning, VLAN, STP, LACP, MLAG, Spine-Leaf, PoE, QoS, transceivers, physical installation — complete switch handbook.",
     url: "https://behindthetech.in/learn/it/networking/switch",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -25,41 +26,48 @@ export const metadata: Metadata = {
     title: "Enterprise Network Switch | Behind The Tech",
     description: "Complete switch guide — VLAN, STP, LACP, MLAG, Spine-Leaf, PoE, QoS, troubleshooting — beginner to engineer level.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/it/networking/switch" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/it/networking/switch",
+    languages: {
+      en: "https://behindthetech.in/learn/it/networking/switch",
+      hi: "https://behindthetech.in/hi/learn/it/networking/switch",
+      "x-default": "https://behindthetech.in/learn/it/networking/switch",
+    },
+  },
 };
 
 export const faqs = [
   {
-    q: "Network Switch kya hai aur Hub se kaise alag hai?",
-    a: "Switch ek intelligent networking device hai jo MAC address table (CAM table) maintain karta hai aur frames sirf correct destination port pe forward karta hai. Hub ek dumb repeater tha — har port pe aaya signal sab ports pe flood karta tha, bandwidth share karta tha, aur sab devices ek collision domain mein the. Switch per-port isolated collision domain create karta hai, full-duplex operation enable karta hai, aur dedicated bandwidth provide karta hai. Hub enterprise mein dead hai — har modern network switch use karta hai.",
+    q: "What is a network switch, and how is it different from a hub?",
+    a: "A switch is an intelligent networking device that maintains a MAC address table (CAM table) and forwards frames only to the correct destination port. A hub was a dumb repeater — it flooded the signal arriving on any port out of all ports, shared the bandwidth, and all devices were in one collision domain. A switch creates an isolated collision domain per port, enables full-duplex operation and provides dedicated bandwidth. The hub is dead in the enterprise — every modern network uses switches.",
   },
   {
-    q: "VLAN kya hai aur kyun zaroori hai?",
-    a: "VLAN (Virtual Local Area Network) ek logical network segment hai jo physical infrastructure se independent hota hai. Ek hi physical switch pe multiple isolated virtual networks banata hai — har VLAN apna broadcast domain. Benefits: security isolation (HR traffic Finance tak nahi pahunchta), broadcast containment (ek VLAN ki storm doosre ko affect nahi karti), aur logical grouping. Inter-VLAN communication ke liye Layer 3 routing zaroori hai — switch Layer 2 pe different VLANs ke beech automatically forward nahi karta.",
+    q: "What is a VLAN, and why is it needed?",
+    a: "A VLAN (Virtual Local Area Network) is a logical network segment that is independent of the physical infrastructure. It creates multiple isolated virtual networks on a single physical switch — each VLAN is its own broadcast domain. Benefits: security isolation (HR traffic does not reach Finance), broadcast containment (a storm in one VLAN does not affect another), and logical grouping. Inter-VLAN communication requires Layer 3 routing — a switch does not automatically forward between different VLANs at Layer 2.",
   },
   {
-    q: "STP kya karta hai aur kyun important hai?",
-    a: "STP (Spanning Tree Protocol — IEEE 802.1D) Layer 2 network loops prevent karta hai. Ethernet frames mein IP ka TTL equivalent nahi hota — loop mein frames infinitely circulate karte hain, broadcast storm create karte hain, aur network crash hota hai. STP topology mein spanning tree create karta hai — redundant paths identify karta hai, kuch ports block karta hai, lekin fail hone pe unblock kar sakta hai. Modern enterprise mein RSTP (Rapid STP — IEEE 802.1w) use hota hai — sub-second to seconds convergence vs STP ka 30-50 seconds.",
+    q: "What does STP do, and why is it important?",
+    a: "STP (Spanning Tree Protocol — IEEE 802.1D) prevents Layer 2 network loops. Ethernet frames have no equivalent of the IP TTL — in a loop, frames circulate infinitely, create a broadcast storm, and the network crashes. STP creates a spanning tree in the topology — it identifies redundant paths and blocks some ports, but can unblock them on failure. Modern enterprises use RSTP (Rapid STP — IEEE 802.1w) — sub-second to seconds convergence vs 30-50 seconds for STP.",
   },
   {
-    q: "LACP aur MLAG mein kya difference hai?",
-    a: "LACP (Link Aggregation Control Protocol — IEEE 802.1AX) multiple physical links ko ek logical link mein bundle karta hai — combined bandwidth aur redundancy. Standard LACP mein sab member ports ek hi switch pe connected hone chahiye. MLAG (Multi-Chassis Link Aggregation) LACP ko extend karta hai — do physical switches ek logical LAG partner ki tarah behave karte hain. Isse dual-switch redundancy milti hai — ek switch fail ho, doosra seamlessly traffic handle karta hai. Cisco Nexus mein isse vPC kehte hain, Arista mein MLAG, Juniper mein MC-LAG.",
+    q: "What is the difference between LACP and MLAG?",
+    a: "LACP (Link Aggregation Control Protocol — IEEE 802.1AX) bundles multiple physical links into one logical link — combined bandwidth and redundancy. In standard LACP, all member ports must be connected to a single switch. MLAG (Multi-Chassis Link Aggregation) extends LACP — two physical switches behave as one logical LAG partner. This provides dual-switch redundancy — if one switch fails, the other seamlessly handles the traffic. Cisco Nexus calls it vPC, Arista calls it MLAG, and Juniper calls it MC-LAG.",
   },
   {
-    q: "Spine-Leaf architecture kyun use karte hain traditional three-tier ki jagah?",
-    a: "Three-tier (Access-Distribution-Core) East-West traffic ke liye inefficient hai. Modern data centers mein East-West traffic (server-to-server) dominant hai — virtualization, microservices, storage replication. Spine-Leaf mein har leaf switch har spine se connected hota hai — server A se server B tak hamesha exactly 2 hops (Leaf → Spine → Leaf). ECMP sab paths simultaneously use karta hai — deterministic hashing se. Horizontal scaling easy hai — naya leaf ya spine add karo. Predictable latency, no STP blocking, non-blocking ECMP fabric.",
+    q: "Why use Spine-Leaf architecture instead of the traditional three-tier?",
+    a: "Three-tier (Access-Distribution-Core) is inefficient for East-West traffic. In modern data centers East-West traffic (server-to-server) is dominant — virtualization, microservices, storage replication. In Spine-Leaf, every leaf switch is connected to every spine — from server A to server B is always exactly 2 hops (Leaf → Spine → Leaf). ECMP uses all paths simultaneously — through deterministic hashing. Horizontal scaling is easy — just add a new leaf or spine. Predictable latency, no STP blocking, non-blocking ECMP fabric.",
   },
   {
-    q: "PoE kya hai aur power budget kaise plan karein?",
-    a: "PoE (Power over Ethernet) Ethernet cable ke through data aur electrical power simultaneously deliver karta hai — ek cable, do functions. IP phones, wireless APs, cameras, IoT devices — jahan AC power outlet nahi hota. Standards: IEEE 802.3af (15.4W), 802.3at/PoE+ (30W), 802.3bt Type 3 (60W), 802.3bt Type 4 (90-100W). Budget plan: sab PoE devices ki power class list karo, sum karo, 20% headroom add karo. Switch ka documented PoE budget us total se zyada hona chahiye.",
+    q: "What is PoE, and how do you plan the power budget?",
+    a: "PoE (Power over Ethernet) delivers data and electrical power simultaneously over an Ethernet cable — one cable, two functions. IP phones, wireless APs, cameras, IoT devices — wherever there is no AC power outlet. Standards: IEEE 802.3af (15.4W), 802.3at/PoE+ (30W), 802.3bt Type 3 (60W), 802.3bt Type 4 (90-100W). Budget plan: list the power class of all PoE devices, sum them, and add 20% headroom. The switch's documented PoE budget must be greater than that total.",
   },
   {
-    q: "Interface err-disabled ho gayi — kya karein?",
-    a: "Err-disabled = switch ne security violation pe port disable kiya. Common causes: BPDU Guard (PortFast port pe switch connect hua, BPDU receive hua), Port Security (MAC address limit exceed hua), Storm Control (broadcast/multicast threshold exceed). Recovery: (1) Root cause fix karo — rogue switch remove karo, unauthorized device remove karo. (2) Port manually recover karo: shutdown followed by no shutdown. Ya errdisable recovery cause configure karo with timer for automatic recovery — lekin yeh carefully karo, root cause fix pehle.",
+    q: "An interface has gone err-disabled — what should you do?",
+    a: "Err-disabled = the switch disabled the port due to a security violation. Common causes: BPDU Guard (a switch was connected to a PortFast port and a BPDU was received), Port Security (MAC address limit exceeded), Storm Control (broadcast/multicast threshold exceeded). Recovery: (1) Fix the root cause — remove the rogue switch, remove the unauthorized device. (2) Recover the port manually: shutdown followed by no shutdown. Or configure an errdisable recovery cause with a timer for automatic recovery — but do this carefully, fix the root cause first.",
   },
   {
-    q: "MTU mismatch kaise detect karein aur fix karein?",
-    a: "MTU mismatch ek silent performance killer hai — network kaam karta hai lekin large transfers bahut slow. Detection: ping with 'do not fragment' flag aur large payload size (Linux: ping -M do -s 8972 target_ip). Agar timeout ya 'Frag needed' aaye — path mein MTU mismatch hai. Fix: path ke har device pe MTU consistent configure karo. Jumbo frames (9000 bytes) ke liye: server NIC → ToR switch → aggregation → core → destination — sab ek saath configure karo. Ek misconfigured device = path broken.",
+    q: "How do you detect and fix an MTU mismatch?",
+    a: "An MTU mismatch is a silent performance killer — the network works, but large transfers are very slow. Detection: ping with the 'do not fragment' flag and a large payload size (Linux: ping -M do -s 8972 target_ip). If you get a timeout or 'Frag needed' — there is an MTU mismatch in the path. Fix: configure a consistent MTU on every device in the path. For jumbo frames (9000 bytes): server NIC → ToR switch → aggregation → core → destination — configure them all together. One misconfigured device = path broken.",
   },
 ];
 

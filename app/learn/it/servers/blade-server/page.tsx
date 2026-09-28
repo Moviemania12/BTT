@@ -8,7 +8,7 @@ export default function BladeServerPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="blade-server" headings={HEADINGS} readingTimeMinutes={18}>
+      <ArticleLayout slug="blade-server" headings={HEADINGS} readingTimeMinutes={18} lang="en" alternateHref="/hi/learn/it/servers/blade-server">
         <Content />
       </ArticleLayout>
     </>

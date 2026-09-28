@@ -1,15 +1,15 @@
 import type { ArticleHeading } from "@/components/ArticlePage";
 
 export const HEADINGS: ArticleHeading[] = [
-  { id: "san-kya-hai",            text: "SAN Kya Hai — Definition aur Full Form",          level: 1 },
+  { id: "san-kya-hai",            text: "What Is SAN — Definition and Full Form",          level: 1 },
   { id: "san-vs-lan",             text: "SAN vs Normal Network",                           level: 1 },
   { id: "file-vs-block",          text: "File-Level vs Block-Level Storage",               level: 1 },
   { id: "das-nas-san-compare",    text: "DAS vs NAS vs SAN — Deep Comparison",             level: 1 },
   { id: "san-data-path",          text: "Complete SAN Data Path",                          level: 1 },
-  { id: "san-terminology",        text: "Core SAN Terminology",                            level: 1 },
+  { id: "san-terminology",        text: "Core SAN Terminology — The Engineer's Dictionary",                            level: 1 },
   { id: "lun-deep",               text: "LUN — Deep Explanation",                          level: 1 },
   { id: "san-architecture",       text: "SAN Architecture — Dual Fabric",                  level: 1 },
-  { id: "fibre-channel",          text: "Fibre Channel SAN — Deep Explanation",            level: 1 },
+  { id: "fibre-channel",          text: "Fibre Channel SAN — Deep Practical Explanation",            level: 1 },
   { id: "fc-login",               text: "Fibre Channel Login Process",                     level: 1 },
   { id: "san-zoning",             text: "SAN Zoning — Deep Explanation",                   level: 1 },
   { id: "lun-masking",            text: "LUN Masking / Host Mapping",                      level: 1 },

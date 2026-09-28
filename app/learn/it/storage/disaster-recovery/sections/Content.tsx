@@ -17,9 +17,9 @@ export default function Content() {
       {/* ══ QUICK SUMMARY ══════════════════════════════════════════════════ */}
       <h2 id="quick-summary" style={S.h2}>Quick Summary — DR in 2 Minutes</h2>
       <ul style={S.ul}>
-        <li><strong>DR kya hai:</strong> Documented policies, processes, tools, and infrastructure jo ensure karte hain ki organization critical IT systems aur data ko major disruption ke baad defined RTO aur RPO ke andar restore kar sake.</li>
-        <li><strong>DR ≠ Backup:</strong> Backup data protect karta hai. DR poori service/business capability restore karta hai — infrastructure, network, applications, dependencies sab.</li>
-        <li><strong>DR ≠ HA:</strong> HA component failures ke against continuous operation. DR major site-level ya systemic failures ke baad recovery.</li>
+        <li><strong>What DR is:</strong> Documented policies, processes, tools, and infrastructure that ensure the organization can restore critical IT systems and data within defined RTO and RPO after a major disruption.</li>
+        <li><strong>DR ≠ Backup:</strong> Backup protects data. DR restores the entire service/business capability — infrastructure, network, applications, dependencies, all of it.</li>
+        <li><strong>DR ≠ HA:</strong> HA provides continuous operation against component failures. DR is recovery after major site-level or systemic failures.</li>
         <li><strong>RPO:</strong> Acceptable data loss in time — last consistent recovery point to failure moment. Not simply backup frequency.</li>
         <li><strong>RTO:</strong> Time to restore business-available service — includes detection, declaration, infrastructure, data, dependencies, validation. Not just restore speed.</li>
         <li><strong>DR Sites:</strong> Hot (always-on, near-zero RTO/RPO), Warm (partially provisioned, moderate), Cold (minimal, highest RTO/RPO, lowest cost).</li>
@@ -30,11 +30,11 @@ export default function Content() {
       </ul>
 
       {/* ══ DR KYA HAI ═════════════════════════════════════════════════════ */}
-      <h2 id="dr-kya-hai" style={S.h2}>Disaster Recovery Kya Hai</h2>
+      <h2 id="dr-kya-hai" style={S.h2}>What Is Disaster Recovery</h2>
       <p style={S.p}><strong>Disaster Recovery (DR) = Technology-focused capability to restore IT systems, data, and services after a major disruption — within predefined RTO and RPO targets.</strong></p>
-      <p style={S.p}>DR answers: Agar primary data center fail ho jaaye — services kahan aur kaise chalenge? Kitne time mein? (RTO) Kitna data loss acceptable hai? (RPO) Konsi systems pehle recover hogi? Kaun declare karega failover?</p>
+      <p style={S.p}>DR answers: If the primary data center fails — where and how will services run? In how much time? (RTO) How much data loss is acceptable? (RPO) Which systems will be recovered first? Who will declare failover?</p>
       <Callout type="important" title="DR is Not a Product">
-        DR ek combination hai: documented strategy, infrastructure preparation, tested processes, runbooks, trained people, aur validated technology. Koi ek product ya tool akela DR nahi hai.
+        DR is a combination of: documented strategy, infrastructure preparation, tested processes, runbooks, trained people, and validated technology. No single product or tool is DR on its own.
       </Callout>
 
       {/* ══ DISASTER VS FAILURE ════════════════════════════════════════════ */}
@@ -44,13 +44,13 @@ export default function Content() {
       <p style={S.p}><strong>Incident:</strong> Event disrupting or threatening normal IT service. Ranges from minor to major.</p>
       <p style={S.p}><strong>Disaster:</strong> Event severe enough that normal operations cannot be restored within acceptable time using normal procedures — requiring DR invocation. Data center fire/flood, major power failure, ransomware encrypting all production, ISP failure with no redundancy.</p>
       <Callout type="warning" title="Disaster Declaration = Formal Business Decision">
-        Disaster declaration automatic technical trigger nahi hai. Authority, threshold, aur process advance mein define hone chahiye.
+        Disaster declaration is not an automatic technical trigger. Authority, threshold, and process must be defined in advance.
       </Callout>
 
       {/* ══ BCP VS DR ══════════════════════════════════════════════════════ */}
       <h2 id="bcp-vs-dr" style={S.h2}>Business Continuity vs DR</h2>
       <p style={S.p}><strong>Business Continuity Planning (BCP):</strong> Broader — ensures entire organization (people, processes, facilities, technology) can continue critical functions during and after disruption.</p>
-      <p style={S.p}><strong>Disaster Recovery (DR):</strong> Technology-focused subset of BCP — specifically IT systems, data, aur infrastructure recovery.</p>
+      <p style={S.p}><strong>Disaster Recovery (DR):</strong> Technology-focused subset of BCP — specifically recovery of IT systems, data, and infrastructure.</p>
       <CodeBlock lang="text">
 {`Business Continuity (BCP)
 ├── Disaster Recovery (DR)      ← IT/Technology focus
@@ -66,8 +66,8 @@ If IT recovered but key staff unavailable or supplier systems down
 
       {/* ══ BACKUP VS DR ═══════════════════════════════════════════════════ */}
       <h2 id="backup-vs-dr" style={S.h2}>Backup vs DR</h2>
-      <p style={S.p}><strong><TopicLink slug="backup" variant="inline" /> data protect karta hai.</strong> Historical recoverable copies. Deleted file ya corrupted database restore karne ke liye.</p>
-      <p style={S.p}><strong>DR service capability restore karta hai.</strong> Primary data center unavailable hone pe IT services kaise resume hogi. DR may use backup as one recovery mechanism — but DR encompasses far more.</p>
+      <p style={S.p}><strong><TopicLink slug="backup" variant="inline" /> protects data.</strong> Historical recoverable copies. For restoring a deleted file or a corrupted database.</p>
+      <p style={S.p}><strong>DR restores service capability.</strong> How IT services will resume when the primary data center is unavailable. DR may use backup as one recovery mechanism — but DR encompasses far more.</p>
       <CodeBlock lang="text">
 {`Backup success example:
   500GB SQL Server backup from last night exists.
@@ -153,7 +153,7 @@ runbooks, failover, network, and validation.`}
         <li><strong>Backup-based DR:</strong> RPO = time since last verified backup</li>
       </ul>
       <Callout type="warning" title="Synchronous Replication = Near-Zero RPO, Not Zero RPO">
-        In-flight transactions, application write buffers, aur application state at exact failure moment — sab consider karne hote hain. &quot;Near-zero&quot; technically accurate hai. Also distance/latency limited — each write I/O round-trip includes DR site latency.
+        In-flight transactions, application write buffers, and application state at the exact failure moment — all have to be considered. &quot;Near-zero&quot; is technically accurate. Also distance/latency limited — each write I/O round-trip includes DR site latency.
       </Callout>
 
       {/* ══ RTO ════════════════════════════════════════════════════════════ */}
@@ -194,7 +194,7 @@ recovery objective can be met.`}
       />
 
       {/* ══ MTD / WRT ══════════════════════════════════════════════════════ */}
-      <h2 id="mtd-wrt" style={S.h2}>MTD / MAO aur WRT</h2>
+      <h2 id="mtd-wrt" style={S.h2}>MTD / MAO and WRT</h2>
       <p style={S.p}><strong>MTD (Maximum Tolerable Downtime):</strong> Maximum duration a critical function can be disrupted before organizational impact becomes catastrophic — threatening business survival, regulatory violation, or irreversible customer loss. MTD ≥ RTO always.</p>
       <CodeBlock lang="text">
 {`Timeline relationship:
@@ -294,7 +294,7 @@ Example: Payroll system
       <p style={S.p}>Write acknowledged to application only after confirmed on both primary and DR site. Near-zero data loss for application-acknowledged writes.</p>
       <p style={S.p}><strong>Distance/latency constraint:</strong> Every write I/O round-trip includes DR site network latency. High latency = degraded application performance. Practical synchronous replication distances depend on application I/O profile, acceptable latency overhead, and vendor implementation — no single universal distance limit.</p>
       <Callout type="important" title="Near-Zero RPO — Not Guaranteed Zero">
-        In-flight transactions, write buffers, aur application state at exact failure moment sab matter karte hain. &quot;Near-zero&quot; is the technically accurate characterization.
+        In-flight transactions, write buffers, and application state at the exact failure moment all matter. &quot;Near-zero&quot; is the technically accurate characterization.
       </Callout>
 
       {/* ══ ASYNCHRONOUS ═══════════════════════════════════════════════════ */}
@@ -371,7 +371,7 @@ Example: Payroll system
       </Callout>
 
       {/* ══ DNS / TTL ══════════════════════════════════════════════════════ */}
-      <h2 id="dns-ttl" style={S.h2}>DNS Failover aur TTL</h2>
+      <h2 id="dns-ttl" style={S.h2}>DNS Failover and TTL</h2>
       <p style={S.p}><strong>TTL (Time to Live):</strong> DNS responses are cached by resolvers for TTL seconds. If TTL = 3600, DNS changes take up to 1 hour to propagate.</p>
       <CodeBlock lang="text">
 {`For planned DR failover:
@@ -390,7 +390,7 @@ For emergency failover:
 Internal DNS ≠ External DNS — both must be managed`}
       </CodeBlock>
       <Callout type="warning" title="DNS Propagation Delay Must Be in RTO Calculation">
-        DNS failover update karne ke baad bhi users switch nahi hote — TTL ke basis pe cached IP ko use karte rehte hain. DNS propagation delay explicitly RTO planning mein include karna chahiye.
+        Even after the DNS failover update, users do not switch immediately — they keep using the cached IP based on the TTL. DNS propagation delay must be explicitly included in RTO planning.
       </Callout>
 
       {/* ══ LOAD BALANCER DR ═══════════════════════════════════════════════ */}
@@ -434,12 +434,12 @@ Internal DNS ≠ External DNS — both must be managed`}
       <p style={S.p}>Read more about <TopicLink slug="san" variant="inline" /> and <TopicLink slug="nas" variant="inline" /> in dedicated articles.</p>
 
       {/* ══ BACKUP ROLE IN DR ══════════════════════════════════════════════ */}
-      <h2 id="backup-role-in-dr" style={S.h2}>Backup Ka Role in DR</h2>
+      <h2 id="backup-role-in-dr" style={S.h2}>The Role of Backup in DR</h2>
       <p style={S.p}><strong>Backup is ONE component of DR — not DR itself.</strong> When backup is the DR mechanism (backup-and-restore model, cold site DR): RPO = backup frequency, RTO = hours to days. When backup supplements DR replication: replication provides low RPO/RTO, backup provides longer-term recovery points and alternate recovery path if replication fails.</p>
       <p style={S.p}><strong>Backup at DR site:</strong> Production backup copies sent offsite to DR site or third location. Backup catalog accessible at DR for restore operations. Backup server/proxy/media/repository components as applicable — architecture is vendor/design dependent. Read more: <TopicLink slug="backup" variant="inline" />.</p>
 
       {/* ══ RANSOMWARE DR ══════════════════════════════════════════════════ */}
-      <h2 id="ransomware-dr" style={S.h2}>Ransomware aur DR</h2>
+      <h2 id="ransomware-dr" style={S.h2}>Ransomware and DR</h2>
       <Figure caption="Fig 7 — Ransomware/cyber recovery: traditional DR fails when replication propagates encrypted data. Isolated cyber recovery vault with immutable copies required.">
         <DrRansomwareRecovery />
       </Figure>
@@ -690,7 +690,7 @@ Build dependency map for every application in DR scope.`}
       </ul>
 
       {/* ══ DOCUMENTATION ══════════════════════════════════════════════════ */}
-      <h2 id="dr-documentation" style={S.h2}>Documentation aur Change Management</h2>
+      <h2 id="dr-documentation" style={S.h2}>Documentation and Change Management</h2>
       <p style={S.p}><strong>DR documentation must be current — outdated DR docs fail at the worst moment.</strong> Maintain: DR architecture diagram, application dependency maps, DR runbooks, DR contact list (24/7), vendor support contacts, network diagrams, configuration baselines, replication config, license/certificate inventory with expiry dates, known issues/workarounds.</p>
       <Callout type="danger" title="Change Management + DR = Mandatory Linkage">
         Every production change must be evaluated for DR impact. Infrastructure change → runbook update? Application deployment → DR config update? New application → DR scope and tier assignment? Change management that ignores DR impact creates silent DR failures.
@@ -976,20 +976,20 @@ Layer 9 — Validation
       {/* ══ INTERVIEW ══════════════════════════════════════════════════════ */}
       <h2 id="interview-questions" style={S.h2}>Interview / Job Knowledge</h2>
 
-      <h3 style={S.h3}>Q: DR aur Backup mein kya fark hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Backup data protect karta hai — recoverable historical copies. DR poori service restoration capability hai — infrastructure, network, apps, dependencies, DNS, authentication, validation sab include. Backup DR ka ek component ho sakta hai lekin backup alone DR nahi hai.</p>
+      <h3 style={S.h3}>Q: What is the difference between DR and Backup?</h3>
+      <p style={S.p}><strong>Answer:</strong> Backup protects data — recoverable historical copies. DR is the complete service restoration capability — infrastructure, network, apps, dependencies, DNS, authentication and validation are all included. Backup can be one component of DR, but backup alone is not DR.</p>
 
-      <h3 style={S.h3}>Q: HA aur DR mein kya fark hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> HA uses redundant resources — commonly within a cluster, site, or availability-zone architecture — to maintain operation against component failures. Trigger is automatic, seconds-to-minutes. DR handles failures severe enough to defeat HA — typically site-level or systemic failures at alternate location, declared, minutes-to-days. HA DR ko defeat karne wali events se protect nahi karta (site disaster, widespread ransomware, regional outage).</p>
+      <h3 style={S.h3}>Q: What is the difference between HA and DR?</h3>
+      <p style={S.p}><strong>Answer:</strong> HA uses redundant resources — commonly within a cluster, site, or availability-zone architecture — to maintain operation against component failures. Trigger is automatic, seconds-to-minutes. DR handles failures severe enough to defeat HA — typically site-level or systemic failures at alternate location, declared, minutes-to-days. HA does not protect against the events that DR is meant for (site disaster, widespread ransomware, regional outage).</p>
 
-      <h3 style={S.h3}>Q: RPO exactly define karo.</h3>
-      <p style={S.p}><strong>Answer:</strong> Recovery Point Objective — acceptable data loss measured in time. Maximum age of data at recovery point that organization accepts. Specific backup frequency se automatically defined nahi. Near-zero RPO may be achieved through appropriately designed synchronous or continuous replication. Application-consistent recovery is a separate requirement — may require application-aware replication, transaction/log mechanisms, quiescing, or coordinated recovery depending on the workload.</p>
+      <h3 style={S.h3}>Q: Define RPO exactly.</h3>
+      <p style={S.p}><strong>Answer:</strong> Recovery Point Objective — acceptable data loss measured in time. Maximum age of data at recovery point that organization accepts. It is not automatically defined by a specific backup frequency. Near-zero RPO may be achieved through appropriately designed synchronous or continuous replication. Application-consistent recovery is a separate requirement — may require application-aware replication, transaction/log mechanisms, quiescing, or coordinated recovery depending on the workload.</p>
 
-      <h3 style={S.h3}>Q: RTO mein sirf restore time hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Nahi. RTO defines the target elapsed time for restoring the required service after a disruption. The organization must explicitly define the measurement start and end points. Detection, decision/declaration, technical recovery, dependency startup, and validation delays must all be accounted for when determining whether the business recovery objective can be met.</p>
+      <h3 style={S.h3}>Q: Is RTO only restore time?</h3>
+      <p style={S.p}><strong>Answer:</strong> No. RTO defines the target elapsed time for restoring the required service after a disruption. The organization must explicitly define the measurement start and end points. Detection, decision/declaration, technical recovery, dependency startup, and validation delays must all be accounted for when determining whether the business recovery objective can be met.</p>
 
-      <h3 style={S.h3}>Q: MTD aur WRT kya hain?</h3>
-      <p style={S.p}><strong>Answer:</strong> MTD = Maximum Tolerable Downtime — organization survive kar sakta hai X duration tak before catastrophic impact. MTD ≥ RTO always. WRT = Work Recovery Time — after IT restoration, time to validate, process backlogs, reach business-ready state. RTO + WRT ≤ MTD.</p>
+      <h3 style={S.h3}>Q: What are MTD and WRT?</h3>
+      <p style={S.p}><strong>Answer:</strong> MTD = Maximum Tolerable Downtime — the organization can survive up to X duration before catastrophic impact. MTD ≥ RTO always. WRT = Work Recovery Time — after IT restoration, time to validate, process backlogs, reach business-ready state. RTO + WRT ≤ MTD.</p>
 
       <h3 style={S.h3}>Q: Synchronous vs Asynchronous replication?</h3>
       <p style={S.p}><strong>Answer:</strong> Synchronous: in a typical design, write is acknowledged after local and remote write-commit requirements are satisfied — near-zero RPO, distance/latency limited, write performance impact. Asynchronous: write acknowledged on primary, replicated in background — non-zero RPO (lag = potential data loss). Remote-site round-trip normally not in ack path but overhead may still occur. Supports much greater geographic separation than synchronous; practical distance constrained by connectivity, bandwidth, product limits, and required RPO.</p>
@@ -997,34 +997,34 @@ Layer 9 — Validation
       <h3 style={S.h3}>Q: Hot vs Warm vs Cold site?</h3>
       <p style={S.p}><strong>Answer:</strong> Hot: fully provisioned always-on, near-zero RTO/RPO, highest cost. Warm: partially provisioned standby, hours RTO, moderate cost. Cold: minimal infrastructure, backup-restore based, days RTO, lowest cost. Right-size per application criticality from BIA.</p>
 
-      <h3 style={S.h3}>Q: Active-Active DR mein zero RPO/RTO automatic hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Nahi. Active-Active mein near-zero ya zero RTO possible hai but RPO depends on consistency model. Asynchronously replicated active-active = non-zero RPO. Even synchronous active-active: application-consistent state at failure time matter karta hai. Complexity bhi significantly higher.</p>
+      <h3 style={S.h3}>Q: Is zero RPO/RTO automatic in Active-Active DR?</h3>
+      <p style={S.p}><strong>Answer:</strong> No. Near-zero or zero RTO is possible in Active-Active, but RPO depends on consistency model. Asynchronously replicated active-active = non-zero RPO. Even with synchronous active-active: the application-consistent state at failure time matters. Complexity is also significantly higher.</p>
 
-      <h3 style={S.h3}>Q: Failback simple reverse of failover hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Nahi. Failback requires: primary restoration validation (root cause resolved), data resynchronization (DR → Primary for DR-period changes), planned maintenance window, final delta sync, application activation at primary, DNS updates back, DR to standby, replication restart normal direction. Data validation mandatory before primary activation.</p>
+      <h3 style={S.h3}>Q: Is failback a simple reverse of failover?</h3>
+      <p style={S.p}><strong>Answer:</strong> No. Failback requires: primary restoration validation (root cause resolved), data resynchronization (DR → Primary for DR-period changes), planned maintenance window, final delta sync, application activation at primary, DNS updates back, DR to standby, replication restart normal direction. Data validation mandatory before primary activation.</p>
 
-      <h3 style={S.h3}>Q: Split-brain kya hai? Prevent kaise karein?</h3>
+      <h3 style={S.h3}>Q: What is split-brain? How do you prevent it?</h3>
       <p style={S.p}><strong>Answer:</strong> Split-brain = both primary and DR simultaneously accepting writes — leads to data conflicts/corruption. Prevention: quorum/fencing mechanisms, STONITH, orchestration verifies primary status before DR activation, disaster declaration requires primary inaccessibility confirmation.</p>
 
-      <h3 style={S.h3}>Q: DNS TTL DR mein kyun important hai?</h3>
+      <h3 style={S.h3}>Q: Why is DNS TTL important in DR?</h3>
       <p style={S.p}><strong>Answer:</strong> DNS responses cached by resolvers. High TTL = slow client-visible transition. For planned failover: lower TTL sufficiently in advance so previously cached records expire before cutover. For emergency: DNS transition delay must be in RTO planning. Actual client-visible transition depends on recursive resolver caching, OS/application caching, authoritative update timing, and traffic-management behavior — not simply one TTL value.</p>
 
-      <h3 style={S.h3}>Q: Ransomware attack mein traditional DR kyun fail kar sakta hai?</h3>
+      <h3 style={S.h3}>Q: Why can traditional DR fail in a ransomware attack?</h3>
       <p style={S.p}><strong>Answer:</strong> Traditional DR replication faithfully replicates encrypted/corrupted data to DR site. Failover to DR = failing over to also-encrypted data. Cyber recovery requires: isolated immutable copies (not on replication path), clean recovery point before infection, isolated clean room environment, forensic validation before reconnecting to production.</p>
 
-      <h3 style={S.h3}>Q: DR test types kya hain? Frequency?</h3>
+      <h3 style={S.h3}>Q: What are the DR test types? Frequency?</h3>
       <p style={S.p}><strong>Answer:</strong> Tabletop, walkthrough, simulation, partial failover, full failover test. Increasing confidence and disruption. Example risk-based schedule: quarterly tabletop, semi-annual simulation, annual major exercise for critical apps — actual frequency depends on organizational risk, regulation, and application criticality. Undocumented results insufficient for audit. First test should not be during real disaster.</p>
 
-      <h3 style={S.h3}>Q: Recovery sequence kyun dependency order follow karta hai?</h3>
+      <h3 style={S.h3}>Q: Why does the recovery sequence follow dependency order?</h3>
       <p style={S.p}><strong>Answer:</strong> Applications have dependencies — app needs DB, DB needs storage, everything needs AD/DNS. Recover in wrong order = application fails for unavailable dependency. Dependency map determines correct sequence regardless of application business priority tier.</p>
 
-      <h3 style={S.h3}>Q: DR test mein RTA &gt; RTO — kya karo?</h3>
+      <h3 style={S.h3}>Q: RTA &gt; RTO in a DR test — what do you do?</h3>
       <p style={S.p}><strong>Answer:</strong> Document the gap. Root cause analysis — which steps took longer? Technology, process, or people? Action items. Update runbook with corrected steps. Re-test specific components. Report RTA/RTO gap in DR metrics. Do NOT ignore.</p>
 
-      <h3 style={S.h3}>Q: Cloud mein DR automatic hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Nahi. Cloud provides availability — not automatically DR. Multi-AZ = regional HA, not geographic DR. Cross-region required for geographic protection. Cloud DR requires: cross-region architecture, tested runbooks, DNS management, application-aware recovery. Cloud ≠ DR by itself.</p>
+      <h3 style={S.h3}>Q: Is DR automatic in the cloud?</h3>
+      <p style={S.p}><strong>Answer:</strong> No. Cloud provides availability — not automatically DR. Multi-AZ = regional HA, not geographic DR. Cross-region required for geographic protection. Cloud DR requires: cross-region architecture, tested runbooks, DNS management, application-aware recovery. Cloud ≠ DR by itself.</p>
 
-      <h3 style={S.h3}>Q: OEM escalation se pehle kya collect karein?</h3>
+      <h3 style={S.h3}>Q: What should be collected before OEM escalation?</h3>
       <p style={S.p}><strong>Answer:</strong> DR platform product/version, error messages with timestamps, recent changes, replication product/version (source + target), storage models/firmware, replication lag at failure time, replication error logs, network topology, hypervisor/app version, steps already attempted, business impact (RTO currently at risk).</p>
 
       {/* ══ KEY TAKEAWAYS ══════════════════════════════════════════════════ */}
@@ -1066,11 +1066,11 @@ Layer 9 — Validation
       {/* ══ RELATED TOPICS ═════════════════════════════════════════════════ */}
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Related Topics</h2>
       <ul style={S.ul}>
-        <li><TopicLink slug="backup" variant="inline" /> — Backup fundamentals. DR ka foundational component — data protection, retention, restore testing.</li>
-        <li><TopicLink slug="san" variant="inline" /> — SAN storage architecture. Array-based replication jo DR ka core mechanism hai enterprise mein.</li>
+        <li><TopicLink slug="backup" variant="inline" /> — Backup fundamentals. The foundational component of DR — data protection, retention, restore testing.</li>
+        <li><TopicLink slug="san" variant="inline" /> — SAN storage architecture. Array-based replication, which is the core DR mechanism in enterprise.</li>
         <li><TopicLink slug="nas" variant="inline" /> — NAS storage. File-level replication and NAS DR considerations.</li>
-        <li><TopicLink slug="server-basics" variant="inline" /> — Server hardware fundamentals. Physical servers jo DR infra host karte hain.</li>
-        <li><TopicLink slug="virtualization" variant="inline" /> — VMware fundamentals. VM-level replication aur VMware SRM DR orchestration ka foundation.</li>
+        <li><TopicLink slug="server-basics" variant="inline" /> — Server hardware fundamentals. The physical servers that host DR infrastructure.</li>
+        <li><TopicLink slug="virtualization" variant="inline" /> — VMware fundamentals. The foundation for VM-level replication and VMware SRM DR orchestration.</li>
       </ul>
     </>
   );

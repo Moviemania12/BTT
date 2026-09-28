@@ -27,7 +27,7 @@ export default function MultiCloudArticlePage() {
         slug="multi-cloud"
         headings={HEADINGS}
         readingTimeMinutes={multiCloudMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/it/cloud/multi-cloud">
         <Content />
       </ArticleLayout>
     </>

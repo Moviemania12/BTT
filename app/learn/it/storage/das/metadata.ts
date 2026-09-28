@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "DAS — Direct Attached Storage: Complete Engineer Guide | Behind The Tech",
   description:
-    "DAS kya hai, architecture, types (internal/JBOD/NVMe), interfaces (SAS/SATA/NVMe), RAID, TLER/ERC, production lifecycle (planning se decommissioning tak), troubleshooting, OEM reference aur interview tips — complete Hinglish engineer handbook.",
+    "What DAS is, architecture, types (internal/JBOD/NVMe), interfaces (SAS/SATA/NVMe), RAID, TLER/ERC, production lifecycle (from planning to decommissioning), troubleshooting, OEM reference and interview tips — the complete English engineer handbook.",
   keywords: [
     "direct attached storage", "DAS storage", "JBOD", "SAS storage", "NVMe DAS",
     "RAID controller", "HBA storage", "enterprise storage", "TLER ERC", "hot swap drive",
@@ -11,8 +11,9 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "DAS — Direct Attached Storage: Complete Engineer Guide",
-    description: "DAS architecture, types, interfaces, RAID, production lifecycle, OEM reference aur troubleshooting — complete guide.",
+    description: "DAS architecture, types, interfaces, RAID, production lifecycle, OEM reference and troubleshooting — complete guide.",
     url: "https://behindthetech.in/learn/it/storage/das",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -20,39 +21,46 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "DAS — Direct Attached Storage | Behind The Tech",
-    description: "Direct Attached Storage — complete engineer guide Hinglish mein. Planning se decommissioning tak.",
+    description: "Direct Attached Storage — the complete engineer guide in English. From planning to decommissioning.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/it/storage/das" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/it/storage/das",
+    languages: {
+      en: "https://behindthetech.in/learn/it/storage/das",
+      hi: "https://behindthetech.in/hi/learn/it/storage/das",
+      "x-default": "https://behindthetech.in/learn/it/storage/das",
+    },
+  },
 };
 
 export const faqs = [
   {
-    q: "DAS, NAS aur SAN mein main difference kya hai?",
-    a: "DAS directly ek server se physically connected hai — no network, sirf woh server access karta hai. NAS file-level storage hai jo standard Ethernet network par multiple clients ko accessible hai. SAN block-level storage hai dedicated storage network par (FC ya iSCSI) — multiple servers high-performance block access karte hain. Production mein teeno coexist karte hain alag use cases ke liye.",
+    q: "What is the main difference between DAS, NAS and SAN?",
+    a: "DAS is physically connected directly to one server — no network, only that server accesses it. NAS is file-level storage that is accessible to multiple clients over a standard Ethernet network. SAN is block-level storage on a dedicated storage network (FC or iSCSI) — multiple servers get high-performance block access. In production all three coexist for different use cases.",
   },
   {
-    q: "Consumer drive enterprise RAID mein kyun nahi lagate?",
-    a: "TLER (Time-Limited Error Recovery) consumer drives mein nahi hota. Bad sector milne par consumer drive aggressively retry karta hai — minutes tak. RAID controller ~15 seconds mein decide karta hai drive fail ho gayi — drop kar deta hai. Enterprise drives time-limit ke baad controller ko handoff karti hain. Production mein: consumer drive = RAID drop risk = array degrade = potential data loss.",
+    q: "Why are consumer drives not used in enterprise RAID?",
+    a: "Consumer drives do not have TLER (Time-Limited Error Recovery). When a consumer drive hits a bad sector, it retries aggressively — for minutes. The RAID controller decides within ~15 seconds that the drive has failed — and drops it. Enterprise drives hand off to the controller after a time limit. In production: consumer drive = RAID drop risk = array degrade = potential data loss.",
   },
   {
-    q: "RAID degraded aur RAID failed mein kya fark hai?",
-    a: "Degraded: Ek drive fail, RAID tolerance ke andar — data accessible, redundancy temporarily gone. Failed: Tolerance exceed — RAID 5 mein 2 drives fail, RAID 1 mein both fail — data inaccessible. Degraded pe: backup verify karo, immediately replace karo. Failed pe: backup restore needed typically.",
+    q: "What is the difference between RAID degraded and RAID failed?",
+    a: "Degraded: One drive failed, within the RAID tolerance — data accessible, redundancy temporarily gone. Failed: Tolerance exceeded — 2 drives failed in RAID 5, both failed in RAID 1 — data inaccessible. On degraded: verify the backup, replace immediately. On failed: a backup restore is typically needed.",
   },
   {
-    q: "Hot spare kya hai aur kyun configure karte hain?",
-    a: "Extra pre-assigned drive jo RAID pool mein idle hoti hai. Koi production drive fail hoti hai — hot spare automatically rebuild shuru karta hai bina engineer ke physically present hue. 24x7 operations mein critical — raat 3 baje fail, hot spare rebuild 6 baje tak complete, engineer next morning aata hai already rebuilt.",
+    q: "What is a hot spare and why is it configured?",
+    a: "An extra pre-assigned drive that sits idle in the RAID pool. When a production drive fails — the hot spare automatically starts the rebuild without an engineer being physically present. Critical in 24x7 operations — a drive fails at 3 AM, the hot spare rebuild completes by 6 AM, and when the engineer arrives the next morning it is already rebuilt.",
   },
   {
-    q: "Write cache enable karna safe hai kya bina BBU ke?",
-    a: "Nahi. Write cache enabled + no BBU = power failure pe cached writes permanently lost = filesystem corruption ya database inconsistency. Write cache tabhi enable karo jab BBU ya FBWC healthy aur charged ho. Controller typically battery fail hone par automatically write-through mode mein chala jaata hai.",
+    q: "Is it safe to enable write cache without a BBU?",
+    a: "No. Write cache enabled + no BBU = cached writes permanently lost on power failure = filesystem corruption or database inconsistency. Enable write cache only when the BBU or FBWC is healthy and charged. The controller typically switches to write-through mode automatically when the battery fails.",
   },
   {
-    q: "Secure erase aur format mein kya fark hai?",
-    a: "Format only filesystem metadata remove karta hai — data bytes physically present rehte hain, recovery tools se recoverable. Secure erase actual data bytes overwrite ya cryptographically erase karta hai — recovery extremely difficult ya impossible. Decommissioning mein hamesha secure erase karo. NIST 800-88 guidelines follow karo.",
+    q: "What is the difference between secure erase and format?",
+    a: "Format only removes filesystem metadata — the data bytes remain physically present and are recoverable with recovery tools. Secure erase overwrites or cryptographically erases the actual data bytes — recovery is extremely difficult or impossible. Always secure erase during decommissioning. Follow the NIST 800-88 guidelines.",
   },
   {
-    q: "External JBOD server se kitni door ho sakta hai?",
-    a: "Standard SAS passive cable: reliable ~10 meters. Active SAS cables: ~20 meters possible. Building cross-floor ya long distance ke liye DAS appropriate nahi — SAN consider karo. DAS rack-level direct attachment ke liye designed hai.",
+    q: "How far can an external JBOD be from the server?",
+    a: "Standard SAS passive cable: reliable up to ~10 meters. Active SAS cables: ~20 meters possible. For cross-floor or long distances within a building DAS is not appropriate — consider SAN. DAS is designed for rack-level direct attachment.",
   },
 ];
 

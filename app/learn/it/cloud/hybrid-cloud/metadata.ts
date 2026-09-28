@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(hybridCloudMetadata);
+const baseMetadata = buildPageMetadata(hybridCloudMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/it/cloud/hybrid-cloud",
+    languages: {
+      en: "https://behindthetech.in/learn/it/cloud/hybrid-cloud",
+      hi: "https://behindthetech.in/hi/learn/it/cloud/hybrid-cloud",
+      "x-default": "https://behindthetech.in/learn/it/cloud/hybrid-cloud",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/it/cloud/hybrid-cloud", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: hybridCloudMetadata.title,

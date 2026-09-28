@@ -27,7 +27,7 @@ export default function AwsArticlePage() {
         slug="aws"
         headings={HEADINGS}
         readingTimeMinutes={awsMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/it/cloud/aws">
         <Content />
       </ArticleLayout>
     </>

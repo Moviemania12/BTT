@@ -16,34 +16,23 @@ export default function Content() {
     <>
       {/* ── Quick Summary ─────────────────────────────────────────────────── */}
       <div style={{ background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 10, padding: "1.2rem 1.4rem", marginBottom: "2rem" }}>
-        <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.6rem", fontSize: "1rem" }}>📋 Quick Summary — NAS in 2 Minutes</p>
-        <ul style={{ ...S.ul, marginBottom: 0 }}>
-          <li><strong>NAS kya hai:</strong> Network Attached Storage — ek dedicated storage device jo Ethernet network pe connected hoti hai aur multiple servers aur clients ko simultaneously file-level storage provide karti hai.</li>
-          <li><strong>Golden rule:</strong> Agar storage kisi host se directly attached hai aur general-purpose network file sharing nahi karta — typically DAS pattern hai. Agar storage network pe hai aur multiple systems file-level access karte hain — NAS hai.</li>
-          <li><strong>File-level storage:</strong> NAS files aur folders share karti hai — underlying storage pool ke upar ek specialized file system hoti hai. Clients SMB/NFS protocol se files access karte hain; underlying NAS filesystem clients ko directly nahi dikhta.</li>
-          <li><strong>Protocols:</strong> Windows clients SMB use karte hain (Port 445). Linux/Unix clients NFS use karte hain (Port 2049 primarily). Dono simultaneously ek NAS pe possible hain — lekin multiprotocol datasets ke liye careful identity mapping aur permission design required hai.</li>
-          <li><strong>Data Center use:</strong> Shared file storage, backup targets, log servers, home directories, application data — jahan multiple servers ya users same files access karein.</li>
-          <li><strong>Primary advantage:</strong> Multiple systems ek NAS simultaneously access kar sakte hain — DAS se fundamental fark.</li>
-          <li><strong>Engineer daily kaam:</strong> Health aur capacity monitoring, drive health, share accessibility, replication/backup status, alert handling.</li>
-          <li><strong>Most common beginner mistake:</strong> Ping se NAS service status judge karna — ping work karna aur SMB/NFS work karna alag-alag cheezein hain.</li>
-          <li><strong>Snapshot ≠ Backup:</strong> NAS snapshot data protection tool hai; independent backup, preferably offsite/isolated, alag se required hai.</li>
-        </ul>
+        <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.6rem", fontSize: "1rem" }}>📋 Quick Summary — NAS in 2 Minutes</p> <ul style={{ ...S.ul, marginBottom: 0 }}> <li><strong>What NAS is:</strong> Network Attached Storage — a dedicated storage device that is connected to the Ethernet network and provides file-level storage to multiple servers and clients simultaneously.</li> <li><strong>Golden rule:</strong> If storage is attached directly to a host and does not do general-purpose network file sharing — it is typically a DAS pattern. If storage is on the network and multiple systems access it at file level — it is NAS.</li> <li><strong>File-level storage:</strong> NAS shares files and folders — a specialized file system sits on top of the underlying storage pool. Clients access files via the SMB/NFS protocols; the underlying NAS filesystem is not directly visible to clients.</li> <li><strong>Protocols:</strong> Windows clients use SMB (Port 445). Linux/Unix clients use NFS (primarily Port 2049). Both are possible simultaneously on one NAS — but multiprotocol datasets require careful identity mapping and permission design.</li> <li><strong>Data Center use:</strong> Shared file storage, backup targets, log servers, home directories, application data — wherever multiple servers or users access the same files.</li> <li><strong>Primary advantage:</strong> Multiple systems can access one NAS simultaneously — the fundamental difference from DAS.</li> <li><strong>Engineer's daily work:</strong> Health and capacity monitoring, drive health, share accessibility, replication/backup status, alert handling.</li> <li><strong>Most common beginner mistake:</strong> Judging NAS service status by ping — ping working and SMB/NFS working are two different things.</li> <li><strong>Snapshot ≠ Backup:</strong> A NAS snapshot is a data protection tool; an independent backup, preferably offsite/isolated, is required separately.</li> </ul>
       </div>
 
       {/* ══ SECTION 1 — DEFINITION ══════════════════════════════════════════ */}
-      <h2 id="nas-kya-hai" style={S.h2}>NAS Kya Hai — Definition aur Full Form</h2>
+      <h2 id="nas-kya-hai" style={S.h2}>What Is NAS — Definition and Full Form</h2>
       <p style={S.p}><strong>NAS = Network Attached Storage</strong></p>
-      <p style={S.p}>NAS ek dedicated storage device hai jo directly Ethernet network se connected hoti hai. Servers, computers aur clients is device se network ke through files access karte hain.</p>
-      <p style={S.p}><strong>Simple definition:</strong> Ek storage box jo network pe rakha hai. Koi bhi network pe connected system is box se files read aur write kar sakta hai — ek saath, simultaneously.</p>
-      <p style={S.p}><strong>Technical definition:</strong> NAS ek dedicated storage appliance hai jo ek specialized operating system run karta hai, Ethernet network interfaces rakhta hai, aur file-level storage protocols (primarily SMB aur NFS) expose karta hai — multiple concurrent clients ko shared storage provide karne ke liye.</p>
+      <p style={S.p}>NAS is a dedicated storage device that is connected directly to the Ethernet network. Servers, computers and clients access files on this device over the network.</p>
+      <p style={S.p}><strong>Simple definition:</strong> A storage box placed on the network. Any system connected to the network can read and write files on this box — together, simultaneously.</p>
+      <p style={S.p}><strong>Technical definition:</strong> NAS is a dedicated storage appliance that runs a specialized operating system, has Ethernet network interfaces, and exposes file-level storage protocols (primarily SMB and NFS) — to provide shared storage to multiple concurrent clients.</p>
 
-      <h3 style={S.h3}>NAS Kyun Banaya Gaya</h3>
+      <h3 style={S.h3}>Why NAS Was Created</h3>
       <p style={S.p}>A general-purpose file server can also provide shared file storage, but NAS is a purpose-built storage platform that integrates centralized file services, storage management, redundancy, snapshots and replication into a specialized appliance/platform.</p>
-      <p style={S.p}>Data centers mein yeh need exponentially badi ho jaati hai — hundreds of servers, thousands of users, petabytes of shared data. NAS is need ko dedicated, optimized hardware aur software se address karta hai.</p>
+      <p style={S.p}>In data centers this need grows exponentially — hundreds of servers, thousands of users, petabytes of shared data. NAS addresses this need with dedicated, optimized hardware and software.</p>
 
       {/* ══ SECTION 2 — DAS vs NAS ══════════════════════════════════════════ */}
       <h2 id="das-vs-nas" style={S.h2}>DAS vs NAS — Fundamental Difference</h2>
-      <p style={S.p}>Ye confusion bahut common hai. Ek baar clearly samjho:</p>
+      <p style={S.p}>This confusion is very common. Let's understand it clearly once:</p>
       <CodeBlock lang="text">
 {`Typical DAS (Direct Attached Storage):
 Server ←——— Physical Cable ——→ Storage
@@ -58,7 +47,7 @@ Laptop D ←——┘
 (ALL of them access it simultaneously over network)`}
       </CodeBlock>
       <Callout type="important" title="DAS — Important Nuance">
-        Typical DAS ek single host se directly connected hoti hai aur general-purpose network sharing provide nahi karta. Specialized designs (jaise shared-SAS clusters ya cluster-aware configurations) do ya zyada nodes ke beech shared disk access allow kar sakte hain — lekin yeh general NAS file sharing nahi hai aur platform-specific complexity rakhta hai. Block storage DAS topology ya SAN — dono se provide ho sakti hai.
+        Typical DAS is connected directly to a single host and does not provide general-purpose network sharing. Specialized designs (such as shared-SAS clusters or cluster-aware configurations) can allow shared disk access between two or more nodes — but this is not general NAS file sharing and carries platform-specific complexity. Block storage can be provided by either DAS topology or SAN.
       </Callout>
 
       <Figure caption="Fig 1 — DAS vs NAS data path comparison. DAS: direct cable to host, no general-purpose network sharing. NAS: multiple clients simultaneously via Ethernet. Both data paths shown side-by-side.">
@@ -67,7 +56,7 @@ Laptop D ←——┘
 
       {/* ══ SECTION 3 — NAS vs External HDD ════════════════════════════════ */}
       <h2 id="nas-vs-external-hdd" style={S.h2}>NAS vs Normal External Hard Disk</h2>
-      <p style={S.p}>Ghar pe use hone wali external hard disk aur NAS alag hain:</p>
+      <p style={S.p}>An external hard disk used at home and a NAS are different:</p>
       <ComparisonTable
         title="External Hard Disk vs NAS"
         headers={["Parameter", "External Hard Disk", "NAS"]}
@@ -86,39 +75,39 @@ Laptop D ←——┘
 
       {/* ══ SECTION 4 — NAS vs SAN ══════════════════════════════════════════ */}
       <h2 id="nas-vs-san" style={S.h2}>NAS vs SAN — Brief Introduction</h2>
-      <p style={S.p}>Ye dono alag hain. SAN ka dedicated chapter aayega — yahan sirf context ke liye:</p>
+      <p style={S.p}>These two are different. SAN gets its own dedicated chapter — here it is only for context:</p>
       <ComparisonTable
         title="NAS vs SAN — Overview"
         headers={["", "NAS", "SAN"]}
         rows={[
           ["Access type",  "File-level",                  "Block-level"],
           ["Protocol",     "SMB, NFS",                   "Fibre Channel, iSCSI"],
-          ["Client sees",  "Files aur folders",           "Raw disk/LUN"],
-          ["Network",      "Standard Ethernet",           "Dedicated FC network ya iSCSI"],
+          ["Client sees",  "Files and folders",           "Raw disk/LUN"],
+          ["Network",      "Standard Ethernet",           "Dedicated FC network or iSCSI"],
           ["Typical use",  "Shared files, backups",      "Databases, VMware shared datastores"],
         ]}
         caption="Block-level storage can be provided via local/direct-attached disks (DAS topology) or SAN-provided LUNs. DAS describes attachment topology, not access type. SAN chapter: coming soon."
       />
-      <p style={S.p}><strong>Simple rule:</strong> NAS = files share karna. SAN = raw disk share karna. NAS easier hai use karne mein. SAN higher performance aur control deta hai database-type workloads ke liye.</p>
+      <p style={S.p}><strong>Simple rule:</strong> NAS = sharing files. SAN = sharing raw disk. NAS is easier to use. SAN gives higher performance and control for database-type workloads.</p>
 
       {/* ══ SECTION 5 — NAS vs Cloud ════════════════════════════════════════ */}
       <h2 id="nas-vs-cloud" style={S.h2}>NAS vs Cloud Storage</h2>
-      <p style={S.p}><strong>Cloud storage</strong> (Google Drive, S3, Azure Blob) internet pe storage hai — typically object storage, HTTP/HTTPS protocols.</p>
-      <p style={S.p}><strong>NAS</strong> on-premise network pe hai — file protocols (SMB/NFS), low latency, private network. Data centers mein dono use hote hain alag purposes ke liye.</p>
+      <p style={S.p}><strong>Cloud storage</strong> (Google Drive, S3, Azure Blob) is storage over the internet — typically object storage, HTTP/HTTPS protocols.</p>
+      <p style={S.p}><strong>NAS</strong> sits on the on-premise network — file protocols (SMB/NFS), low latency, private network. Data centers use both, for different purposes.</p>
 
       {/* ══ SECTION 6 — FILE-LEVEL STORAGE ═════════════════════════════════ */}
-      <h2 id="file-level-storage" style={S.h2}>File-Level Storage Kya Hota Hai</h2>
-      <p style={S.p}>Storage world mein teen main access types hain:</p>
+      <h2 id="file-level-storage" style={S.h2}>What Is File-Level Storage</h2>
+      <p style={S.p}>In the storage world there are three main access types:</p>
       <ul style={S.ul}>
-        <li><strong>Block storage:</strong> Raw disk blocks — OS ya application filesystem decide karta hai kaise use karna. Provided by local/direct-attached disks (DAS topology) ya SAN over network.</li>
-        <li><strong>File storage (NAS):</strong> Files aur folders directly. NAS pe hi file system hoti hai. Client simply file open karta hai jaise local file hoti.</li>
-        <li><strong>Object storage (Cloud, Ceph):</strong> Data objects as key-value pairs. HTTP se access. Unstructured data, backups, media ke liye.</li>
+        <li><strong>Block storage:</strong> Raw disk blocks — the OS or application filesystem decides how to use them. Provided by local/direct-attached disks (DAS topology) or SAN over the network.</li>
+        <li><strong>File storage (NAS):</strong> Files and folders directly. The file system lives on the NAS itself. The client simply opens a file as if it were a local file.</li>
+        <li><strong>Object storage (Cloud, Ceph):</strong> Data objects as key-value pairs. Accessed over HTTP. For unstructured data, backups, media.</li>
       </ul>
-      <p style={S.p}>NAS file-level storage hai — client ko raw blocks nahi milte, seedhi files milti hain. Yahi NAS ka simplicity advantage hai aur yahi iska constraint bhi hai.</p>
+      <p style={S.p}>NAS is file-level storage — the client does not get raw blocks, it gets files directly. This is NAS's simplicity advantage and also its constraint.</p>
 
       {/* ══ SECTION 7 — HOW NAS WORKS ══════════════════════════════════════ */}
       <h2 id="how-nas-works" style={S.h2}>How NAS Works — Complete Data Path</h2>
-      <p style={S.p}>Jab ek Windows user <code>\\nas01\engineering</code> se ek file open karta hai, yeh sab hota hai:</p>
+      <p style={S.p}>When a Windows user opens a file from <code>\\nas01\engineering</code>, all of this happens:</p>
       <CodeBlock lang="text">
 {`User double-clicks file in Windows Explorer
               ↓
@@ -148,7 +137,7 @@ Network → Switch → Client NIC
               ↓
 Application opens file`}
       </CodeBlock>
-      <p style={S.p}>Linux path (<code>/mnt/nas</code>) mein NFS protocol use hota hai — same concept, different protocol.</p>
+      <p style={S.p}>A Linux path (<code>/mnt/nas</code>) uses the NFS protocol — same concept, different protocol.</p>
 
       <Figure caption="Fig 2 — NAS file access: complete request and response flow. Every numbered layer must succeed. Authentication, permissions and network path — all checked before data is returned.">
         <NasRequestFlow />
@@ -156,21 +145,21 @@ Application opens file`}
 
       {/* ══ SECTION 8 — NAS HARDWARE ARCHITECTURE ══════════════════════════ */}
       <h2 id="nas-architecture" style={S.h2}>NAS Architecture — Hardware Components</h2>
-      <p style={S.p}>Enterprise NAS ek complex appliance hai. Samjhte hain kya hota hai andar:</p>
+      <p style={S.p}>An enterprise NAS is a complex appliance. Let's understand what happens inside:</p>
 
       <h3 style={S.h3}>NAS Controller (Head Unit)</h3>
-      <p style={S.p}>NAS ka "brain." Ek ya do controllers hote hain (redundancy ke liye). Controller ke andar:</p>
+      <p style={S.p}>The "brain" of the NAS. There are one or two controllers (for redundancy). Inside the controller:</p>
       <ul style={S.ul}>
-        <li><strong>CPU:</strong> NAS OS run karta hai, SMB/NFS requests process karta hai, RAID calculations, deduplication/compression (agar enabled).</li>
-        <li><strong>Memory (RAM):</strong> Read cache — frequently accessed data RAM mein rakho. Write cache — incoming writes buffer. Zyada RAM = better NAS performance generally.</li>
-        <li><strong>Cache (NVRAM / SSD-based):</strong> Dedicated non-volatile write cache — power failure pe bhi cached data safe rehta hai. Regular RAM volatile hota hai.</li>
-        <li><strong>Network Interfaces (NICs):</strong> Typically 10GbE, 25GbE, ya 100GbE enterprise mein. Redundant ports standard.</li>
-        <li><strong>Management Interface:</strong> Separate port — management network ke liye. Production data traffic aur management traffic separate rakhna best practice hai.</li>
-        <li><strong>Storage Controllers:</strong> Internal storage connections manage karte hain — drives aur disk shelves ke saath.</li>
+        <li><strong>CPU:</strong> Runs the NAS OS, processes SMB/NFS requests, RAID calculations, deduplication/compression (if enabled).</li>
+        <li><strong>Memory (RAM):</strong> Read cache — keeps frequently accessed data in RAM. Write cache — buffers incoming writes. More RAM = generally better NAS performance.</li>
+        <li><strong>Cache (NVRAM / SSD-based):</strong> Dedicated non-volatile write cache — cached data stays safe even during a power failure. Regular RAM is volatile.</li>
+        <li><strong>Network Interfaces (NICs):</strong> Typically 10GbE, 25GbE, or 100GbE in enterprise. Redundant ports are standard.</li>
+        <li><strong>Management Interface:</strong> Separate port — for the management network. Keeping production data traffic and management traffic separate is best practice.</li>
+        <li><strong>Storage Controllers:</strong> Manage internal storage connections — with drives and disk shelves.</li>
       </ul>
 
       <h3 style={S.h3}>Storage Shelves (Disk Enclosures)</h3>
-      <p style={S.p}>Controller ke saath additional storage attach karte hain. Large enterprise NAS mein multiple shelves hoti hain.</p>
+      <p style={S.p}>Additional storage is attached to the controller. Large enterprise NAS systems have multiple shelves.</p>
       <ComparisonTable
         title="Drive Types in NAS"
         headers={["Type", "Interface", "Typical Use"]}
@@ -183,8 +172,8 @@ Application opens file`}
         caption="Tiering: some enterprise NAS platforms automatically migrate hot data to NVMe/SSD and cold data to HDD."
       />
 
-      <h3 style={S.h3}>Power Supplies aur Cooling</h3>
-      <p style={S.p}>Redundant PSUs standard in enterprise NAS — ek fail ho toh NAS chalta rahe. Hot-swappable typically. Redundant fans aur temperature monitoring — storage hardware heat-sensitive hai.</p>
+      <h3 style={S.h3}>Power Supplies and Cooling</h3>
+      <p style={S.p}>Redundant PSUs are standard in enterprise NAS — if one fails, the NAS keeps running. Typically hot-swappable. Redundant fans and temperature monitoring — storage hardware is heat-sensitive.</p>
 
       <Figure caption="Fig 3 — Enterprise NAS hardware internal architecture. Controller box: CPU, RAM, NVRAM cache, data NICs (data network), management port, storage controller, redundant PSUs. Disk shelves with hot-swap drives connect via storage controller.">
         <NasHardwareArch />
@@ -194,27 +183,27 @@ Application opens file`}
       <h2 id="types-of-nas" style={S.h2}>Types of NAS</h2>
 
       <h3 style={S.h3}>Desktop / Small Business NAS</h3>
-      <p style={S.p}>Synology, QNAP, WD My Cloud — 2 to 8 drives. Ghar, small office, lab environment. Consumer ya prosumer grade. <strong>Use case:</strong> Home media server, small team file sharing, developer lab, learning environment.</p>
+      <p style={S.p}>Synology, QNAP, WD My Cloud — 2 to 8 drives. Home, small office, lab environment. Consumer or prosumer grade. <strong>Use case:</strong> Home media server, small team file sharing, developer lab, learning environment.</p>
 
       <h3 style={S.h3}>Rackmount NAS</h3>
       <p style={S.p}>Rack-mounted unit — more drives, better redundancy, higher throughput. <strong>Use case:</strong> Small to medium enterprise file storage, backup targets, test environments.</p>
 
       <h3 style={S.h3}>Enterprise NAS — Scale-Up</h3>
-      <p style={S.p}>NetApp AFF/FAS aur other dual-controller enterprise NAS platforms — purpose-built enterprise. Redundant controllers, large drive counts, advanced OS features, enterprise support. Scale-up = ek controller pair mein capacity badhao (more drives, additional shelves).</p>
+      <p style={S.p}>NetApp AFF/FAS and other dual-controller enterprise NAS platforms — purpose-built enterprise. Redundant controllers, large drive counts, advanced OS features, enterprise support. Scale-up = grow capacity within one controller pair (more drives, additional shelves).</p>
       <p style={S.p}><strong>Use case:</strong> Enterprise file servers, corporate home directories, large collaborative workloads, backup infrastructure.</p>
 
       <h3 style={S.h3}>Scale-Out NAS (Clustered NAS)</h3>
-      <p style={S.p}>Multiple nodes form a cluster — aggregate storage aur performance. <strong>Dell PowerScale (OneFS)</strong> is the dominant example. PowerScale ek distributed multi-node architecture use karta hai — scale-up dual-controller/shared-shelf design se fundamentally alag hai. OneFS ek distributed filesystem hai jo PowerScale scale-out storage platform mein integrated hai.</p>
+      <p style={S.p}>Multiple nodes form a cluster — aggregate storage and performance. <strong>Dell PowerScale (OneFS)</strong> is the dominant example. PowerScale uses a distributed multi-node architecture — fundamentally different from a scale-up dual-controller/shared-shelf design. OneFS is a distributed filesystem integrated into the PowerScale scale-out storage platform.</p>
       <p style={S.p}><strong>Use case:</strong> Media and entertainment (video production), large HPC environments, massive unstructured data — petabyte scale.</p>
 
       <h3 style={S.h3}>Unified Storage</h3>
-      <p style={S.p}>Single platform that serves both NAS (file) aur SAN (block) protocols. Dell PowerStore, NetApp AFF/FAS — ye dono NAS aur SAN simultaneously serve kar sakte hain.</p>
+      <p style={S.p}>Single platform that serves both NAS (file) and SAN (block) protocols. Dell PowerStore, NetApp AFF/FAS — both of these can serve NAS and SAN simultaneously.</p>
 
       <h3 style={S.h3}>NAS Gateway</h3>
-      <p style={S.p}>Controller only — apni drives nahi hoti. SAN storage ke upar file services present karta hai. Organizations jo already SAN mein invested hain unke liye.</p>
+      <p style={S.p}>Controller only — it has no drives of its own. It presents file services on top of SAN storage. For organizations already invested in SAN.</p>
 
       <h3 style={S.h3}>Synology / QNAP — Positioning Note</h3>
-      <p style={S.p}>Synology aur QNAP widely used hain SMB, departmental, backup aur lab environments mein. Suitability for enterprise production depends on specific model, HA capability, support SLA, workload aur organizational requirements — universally "non-enterprise" classify karna appropriate nahi.</p>
+      <p style={S.p}>Synology and QNAP are widely used in SMB, departmental, backup and lab environments. Suitability for enterprise production depends on the specific model, HA capability, support SLA, workload and organizational requirements — classifying them universally as "non-enterprise" is not appropriate.</p>
 
       {/* ══ SECTION 10 — ENTERPRISE NAS ARCHITECTURE ════════════════════════ */}
       <h2 id="enterprise-nas-arch" style={S.h2}>Enterprise NAS Architecture — Data Center Deployment</h2>
@@ -239,7 +228,7 @@ NIC A4      NIC B4   }
          ↓
    Disk Shelf 1 ... Shelf N`}
       </CodeBlock>
-      <p style={S.p}>Ek switch fail → traffic automatically second switch se. Ek NIC fail → partner NIC takes over. Ek controller fail → second controller serves all clients. Single drive fail → RAID protects data.</p>
+      <p style={S.p}>One switch fails → traffic automatically moves to the second switch. One NIC fails → the partner NIC takes over. One controller fails → the second controller serves all clients. A single drive fails → RAID protects the data.</p>
 
       <Figure caption="Fig 4 — Generic Dual-Controller Scale-Up NAS Architecture. Note: Scale-out NAS platforms such as Dell PowerScale use a different distributed multi-node architecture — not this shared-shelf design.">
         <NasHaArchitecture />
@@ -248,51 +237,51 @@ NIC A4      NIC B4   }
       {/* ══ SECTION 11 — NAS NETWORKING ════════════════════════════════════ */}
       <h2 id="nas-networking" style={S.h2}>NAS Networking — Practical Concepts</h2>
 
-      <h3 style={S.h3}>IP Address aur Hostname</h3>
-      <p style={S.p}>Har NAS data interface ek IP address rakhta hai. Clients is IP se connect karte hain. Hostname (jaise <code>nas01</code>) DNS se IP mein resolve hota hai.</p>
-      <Callout type="important" title="Hostname aur Failover — Platform-Dependent">
-        Enterprise NAS platforms virtual IPs (VIPs), logical interfaces, floating addresses, cluster namespaces ya DNS aliases use kar sakti hain — depending on platform architecture. Simple hostname-to-IP mapping alone failover cases mein automatically work nahi karta. Apne NAS platform ki documentation check karo ki failover pe client connectivity kaise handle hoti hai.
+      <h3 style={S.h3}>IP Address and Hostname</h3>
+      <p style={S.p}>Every NAS data interface has an IP address. Clients connect to this IP. The hostname (such as <code>nas01</code>) resolves to the IP via DNS.</p>
+      <Callout type="important" title="Hostname and Failover — Platform-Dependent">
+        Enterprise NAS platforms may use virtual IPs (VIPs), logical interfaces, floating addresses, cluster namespaces or DNS aliases — depending on platform architecture. A simple hostname-to-IP mapping alone does not automatically work in failover cases. Check your NAS platform's documentation for how client connectivity is handled during failover.
       </Callout>
 
       <h3 style={S.h3}>Management IP vs Data IP</h3>
       <ul style={S.ul}>
-        <li><strong>Management IP:</strong> Admin GUI aur CLI ke liye. Management network pe. Production traffic se isolated.</li>
-        <li><strong>Data IP (Logical Interface / SVM IP):</strong> Clients is IP se file access karte hain. Storage/data network pe.</li>
+        <li><strong>Management IP:</strong> For the admin GUI and CLI. On the management network. Isolated from production traffic.</li>
+        <li><strong>Data IP (Logical Interface / SVM IP):</strong> Clients access files through this IP. On the storage/data network.</li>
       </ul>
-      <p style={S.p}><strong>Best Practice:</strong> Inhe alag networks pe rakho. Management network compromise hoti hai toh data network affected na ho.</p>
+      <p style={S.p}><strong>Best Practice:</strong> Keep these on separate networks. If the management network is compromised, the data network should not be affected.</p>
 
-      <h3 style={S.h3}>NIC, Bonding aur Link Redundancy</h3>
-      <p style={S.p}><strong>Bonding / Teaming:</strong> Multiple physical NICs ko ek logical interface mein combine karna — redundancy aur optionally bandwidth aggregation ke liye.</p>
-      <p style={S.p}><strong>LACP (IEEE 802.3ad):</strong> Ek common link aggregation approach — switch aur NAS ke beech dynamically links negotiate karta hai. Switch side bhi LACP configured hona chahiye. Lekin NAS platform depending on, redundancy/performance link aggregation ke bajaye failover groups, virtual/logical interfaces, SMB Multichannel, clustering ya vendor-specific networking mechanisms se bhi achieve ho sakti hai.</p>
+      <h3 style={S.h3}>NIC, Bonding and Link Redundancy</h3>
+      <p style={S.p}><strong>Bonding / Teaming:</strong> Combining multiple physical NICs into one logical interface — for redundancy and optionally bandwidth aggregation.</p>
+      <p style={S.p}><strong>LACP (IEEE 802.3ad):</strong> A common link aggregation approach — dynamically negotiates links between the switch and the NAS. LACP must also be configured on the switch side. However, depending on the NAS platform, redundancy/performance can also be achieved through failover groups, virtual/logical interfaces, SMB Multichannel, clustering or vendor-specific networking mechanisms instead of link aggregation.</p>
       <Callout type="maintenance" title="LACP Bandwidth Note">
-        Single large file transfer typically ek link pe hi jaati hai — LACP aggregation multiple concurrent connections se benefit karta hai. Actual bandwidth improvement depends on traffic pattern aur switch implementation.
+        A single large file transfer typically goes over just one link — LACP aggregation benefits multiple concurrent connections. Actual bandwidth improvement depends on the traffic pattern and switch implementation.
       </Callout>
 
       <h3 style={S.h3}>SMB Multichannel</h3>
-      <p style={S.p}>SMB 3.x feature — <strong>alag concept from LACP.</strong> Jab client aur NAS dono support karte hain, SMB Multichannel multiple network connections simultaneously use kar sakta hai ek session ke liye — better throughput aur resilience.</p>
-      <p style={S.p}>Windows clients modern SMB Multichannel automatically negotiate kar sakte hain agar multiple NICs available hain. Actual support aur behavior NAS platform aur OS configuration pe depend karta hai — vendor documentation verify karo.</p>
+      <p style={S.p}>An SMB 3.x feature — <strong>a separate concept from LACP.</strong> When both client and NAS support it, SMB Multichannel can use multiple network connections simultaneously for one session — better throughput and resilience.</p>
+      <p style={S.p}>Windows clients can automatically negotiate modern SMB Multichannel if multiple NICs are available. Actual support and behavior depend on the NAS platform and OS configuration — verify with vendor documentation.</p>
 
       <h3 style={S.h3}>VLAN</h3>
-      <p style={S.p}>NAS storage traffic typically dedicated VLAN pe hoti hai — server management, application, aur user workstation traffic se separated. <strong>Client aur NAS same VLAN ya routed path pe honi chahiye — wrong VLAN = connectivity failure.</strong></p>
+      <p style={S.p}>NAS storage traffic typically sits on a dedicated VLAN — separated from server management, application, and user workstation traffic. <strong>Client and NAS must be on the same VLAN or a routed path — wrong VLAN = connectivity failure.</strong></p>
 
       <h3 style={S.h3}>Jumbo Frames (MTU)</h3>
-      <p style={S.p}>Standard Ethernet MTU = 1500 bytes. Jumbo Frames typically ~9000-byte MTU range (exact value vendor/device dependent — universally 9000 nahi).</p>
+      <p style={S.p}>Standard Ethernet MTU = 1500 bytes. Jumbo Frames are typically in the ~9000-byte MTU range (exact value is vendor/device dependent — not universally 9000).</p>
       <Callout type="warning" title="Jumbo Frames — End-to-End Consistency Mandatory">
-        MTU mismatch se fragmentation ho sakti hai (jahan permitted ho), packet drops, ya Path-MTU-related connectivity aur performance problems. NAS interface, switch ports aur client NICs — sab same MTU configured honi chahiye. Many enterprise environments standard MTU 1500 pe perfectly well run karte hain.
+        An MTU mismatch can cause fragmentation (where permitted), packet drops, or Path-MTU-related connectivity and performance problems. The NAS interface, switch ports and client NICs must all be configured with the same MTU. Many enterprise environments run perfectly well on the standard 1500 MTU.
       </Callout>
 
-      <h3 style={S.h3}>DNS aur Reverse DNS</h3>
-      <p style={S.p}><strong>DNS:</strong> NAS hostname A record DNS mein register hona chahiye. Clients same DNS server use karein.</p>
-      <p style={S.p}><strong>Reverse DNS (PTR record):</strong> Universal NFS requirement nahi hai. Specific Kerberos configurations, security policies, logging ya vendor-specific implementations mein PTR records needed ho sakte hain — generic NFS access ke liye generally required nahi.</p>
+      <h3 style={S.h3}>DNS and Reverse DNS</h3>
+      <p style={S.p}><strong>DNS:</strong> The NAS hostname A record must be registered in DNS. Clients should use the same DNS server.</p>
+      <p style={S.p}><strong>Reverse DNS (PTR record):</strong> Not a universal NFS requirement. PTR records may be needed in specific Kerberos configurations, security policies, logging or vendor-specific implementations — generally not required for generic NFS access.</p>
 
       <h3 style={S.h3}>NTP</h3>
-      <p style={S.p}><strong>NTP mandatory for AD/Kerberos environments:</strong> Microsoft AD mein default maximum clock skew approximately five minutes hota hai (policy se change ho sakta hai). Agar NAS ka time AD se zyada alag ho — Kerberos authentication fail ho sakta hai. Simple fix: NTP configure karo day one.</p>
+      <p style={S.p}><strong>NTP mandatory for AD/Kerberos environments:</strong> In Microsoft AD the default maximum clock skew is approximately five minutes (it can be changed by policy). If the NAS time differs from AD by more than that — Kerberos authentication can fail. Simple fix: configure NTP on day one.</p>
 
       {/* ══ SECTION 12 — NAS PROTOCOLS ═════════════════════════════════════ */}
-      <h2 id="nas-protocols" style={S.h2}>NAS Protocols — SMB aur NFS</h2>
+      <h2 id="nas-protocols" style={S.h2}>NAS Protocols — SMB and NFS</h2>
 
       <h3 style={S.h3}>SMB — Server Message Block</h3>
-      <p style={S.p}><strong>Kya hai:</strong> Windows file sharing protocol. Jab Windows machine ek network drive access karta hai — SMB use ho raha hota hai mostly. <strong>Port:</strong> TCP 445.</p>
+      <p style={S.p}><strong>What it is:</strong> The Windows file sharing protocol. When a Windows machine accesses a network drive — it is mostly using SMB. <strong>Port:</strong> TCP 445.</p>
       <ComparisonTable
         title="SMB Versions"
         headers={["Version", "When", "Notes"]}
@@ -303,15 +292,15 @@ NIC A4      NIC B4   }
           ["SMB 3.0",            "Windows 8/2012",     "Encryption, Multichannel"],
           ["SMB 3.1.1",          "Windows 10/2016+",   "Latest dialect — negotiated between client and server"],
         ]}
-        caption="SMB dialect automatically negotiated between client and server — highest mutually supported version used. SMB 1.0 disable karo everywhere in modern production."
+        caption="SMB dialect automatically negotiated between client and server — highest mutually supported version used. Disable SMB 1.0 everywhere in modern production."
       />
-      <p style={S.p}><strong>CIFS terminology:</strong> CIFS (Common Internet File System) generally SMB 1.0 era ka implementation/dialect refer karta hai. Modern SMB 2.x/3.x ko CIFS nahi kehna chahiye technically — legacy NAS interfaces mein "CIFS" label purani terminology ki wajah se dikhta hai.</p>
+      <p style={S.p}><strong>CIFS terminology:</strong> CIFS (Common Internet File System) generally refers to the SMB 1.0-era implementation/dialect. Technically, modern SMB 2.x/3.x should not be called CIFS — the "CIFS" label appears in legacy NAS interfaces because of old terminology.</p>
       <Callout type="warning" title="SMB 1.0 — Disable in Modern Environments">
-        SMB 1.0 serious security vulnerabilities rakhta hai (EternalBlue, WannaCry). Unavoidable legacy dependencies: isolate, document, compensating controls lagao, migration plan banao.
+        SMB 1.0 has serious security vulnerabilities (EternalBlue, WannaCry). For unavoidable legacy dependencies: isolate, document, apply compensating controls, create a migration plan.
       </Callout>
 
       <h3 style={S.h3}>NFS — Network File System</h3>
-      <p style={S.p}><strong>Kya hai:</strong> Unix/Linux file sharing protocol. <strong>Primary port:</strong> TCP 2049.</p>
+      <p style={S.p}><strong>What it is:</strong> The Unix/Linux file sharing protocol. <strong>Primary port:</strong> TCP 2049.</p>
       <ComparisonTable
         title="NFS Versions"
         headers={["Version", "Common Use", "Port/Notes"]}
@@ -326,8 +315,8 @@ NIC A4      NIC B4   }
 
       <h3 style={S.h3}>NFS Authorization — Two Distinct Layers</h3>
       <p style={S.p}><strong>Export authorization:</strong> Which client machine (IP address / subnet) is permitted to mount an export. This is the first gate.</p>
-      <p style={S.p}><strong>File authorization:</strong> Once mounted, individual file/directory access UID (User ID) aur GID (Group ID) se control hoti hai, POSIX permission bits aur ACLs se. Linux user ka UID NAS pe same UID ke permissions se match karna chahiye.</p>
-      <p style={S.p}><strong>NFSv4 aur Kerberos:</strong> NFSv4 automatically Kerberos use nahi karta. NFSv4 either AUTH_SYS (traditional UID/GID, no user authentication) ya Kerberos use kar sakta hai — configuration pe depend karta hai.</p>
+      <p style={S.p}><strong>File authorization:</strong> Once mounted, individual file/directory access is controlled by UID (User ID) and GID (Group ID), through POSIX permission bits and ACLs. A Linux user's UID must match the permissions of the same UID on the NAS.</p>
+      <p style={S.p}><strong>NFSv4 and Kerberos:</strong> NFSv4 does not automatically use Kerberos. NFSv4 can use either AUTH_SYS (traditional UID/GID, no user authentication) or Kerberos — it depends on configuration.</p>
       <ComparisonTable
         title="NFS Kerberos Security Flavors"
         headers={["Flavor", "Provides"]}
@@ -336,12 +325,12 @@ NIC A4      NIC B4   }
           ["krb5i",  "Authentication + integrity — data tampering detect"],
           ["krb5p",  "Authentication + integrity + privacy (encryption of data in transit)"],
         ]}
-        caption="NFSv4 + krb5p strongest security — configuration aur performance overhead consider karo."
+        caption="NFSv4 + krb5p is the strongest security — consider configuration and performance overhead."
       />
 
       <h3 style={S.h3}>Multiprotocol SMB + NFS — Warning</h3>
       <Callout type="danger" title="Multiprotocol Access — Design Required, Not Optional">
-        NAS ek saath SMB aur NFS expose kar sakta hai — same underlying storage. Lekin dono protocols ke through same dataset access karna — bina proper configuration ke — risky hai. Issues: Windows SID aur Unix UID/GID mismatch, ACL translation problems, security style (NTFS vs Unix), name mapping. NAS vendor documentation specifically for multiprotocol configuration follow karo. Ye "just enable both" situation nahi hai.
+        A NAS can expose SMB and NFS at the same time — on the same underlying storage. But accessing the same dataset through both protocols — without proper configuration — is risky. Issues: Windows SID and Unix UID/GID mismatch, ACL translation problems, security style (NTFS vs Unix), name mapping. Follow the NAS vendor documentation specifically for multiprotocol configuration. This is not a "just enable both" situation.
       </Callout>
 
       <Figure caption="Fig 5 — SMB vs NFS access flow. Windows: TCP 445, Kerberos/NTLM authentication. Linux: TCP 2049, export authorization + AUTH_SYS or Kerberos. Both access same NAS storage — multiprotocol requires identity mapping design.">
@@ -349,7 +338,7 @@ NIC A4      NIC B4   }
       </Figure>
 
       {/* ══ SECTION 13 — SHARES AND EXPORTS ════════════════════════════════ */}
-      <h2 id="nas-shares-exports" style={S.h2}>NAS Shares aur Exports — Practical</h2>
+      <h2 id="nas-shares-exports" style={S.h2}>NAS Shares and Exports — Practical</h2>
 
       <h3 style={S.h3}>SMB Share (Windows)</h3>
       <p style={S.p}><strong>UNC Path format:</strong> <code>{"\\\\server-name\\share-name"}</code></p>
@@ -365,7 +354,7 @@ NIC A4      NIC B4   }
 
       <h3 style={S.h3}>NFS Export (Linux)</h3>
       <p style={S.p}><strong>Export example on NAS (illustrative):</strong> <code>{"/vol/engineering → allowed to 10.10.20.0/24"}</code></p>
-      <p style={S.p}><strong>Note:</strong> NFSv4 pe actual export paths aur namespace/pseudoroot NAS/vendor configuration pe depend karte hain. Ye examples illustrative hain.</p>
+      <p style={S.p}><strong>Note:</strong> On NFSv4, actual export paths and the namespace/pseudoroot depend on NAS/vendor configuration. These examples are illustrative.</p>
       <CodeBlock label="Linux — NFS mount" lang="bash">
 {`# NFSv4 mount (modern, recommended where supported)
 sudo mount -t nfs4 nas01:/vol/engineering /mnt/engineering
@@ -380,21 +369,21 @@ sudo mount -t nfs -o vers=4.1,hard nas01:/vol/engineering /mnt/engineering`}
 # Add vers=4.1 or other options as required by your environment`}
       </CodeBlock>
       <Callout type="warning" title="NFS Mount Options — Environment-Specific">
-        <code>intr</code>/<code>nointr</code> legacy options hain — modern Linux NFS clients pe obsolete ya ignored. <code>sync</code> mount option significant performance impact introduce karta hai — workload aur vendor recommendations check karo. Mount options apne Linux distribution aur NAS vendor documentation se verify karo.
+        <code>intr</code>/<code>nointr</code> are legacy options — obsolete or ignored on modern Linux NFS clients. The <code>sync</code> mount option introduces a significant performance impact — check the workload and vendor recommendations. Verify mount options against your Linux distribution and NAS vendor documentation.
       </Callout>
 
       {/* ══ SECTION 14 — NAS SOFTWARE / OS ═════════════════════════════════ */}
       <h2 id="nas-software-os" style={S.h2}>NAS Software / Operating System</h2>
-      <p style={S.p}>Enterprise NAS sirf hardware nahi hai — specialized OS run karta hai.</p>
+      <p style={S.p}>An enterprise NAS is not just hardware — it runs a specialized OS.</p>
 
       <h3 style={S.h3}>Enterprise NAS Platforms</h3>
-      <p style={S.p}><strong>NetApp ONTAP:</strong> Industry-leading NAS/unified storage OS. NFS, SMB, iSCSI, FC support. Built-in: SnapShot, SnapMirror replication, deduplication, compression, FabricPool cloud tiering. Runs on NetApp AFF/FAS hardware aur ONTAP Select (software-defined).</p>
-      <p style={S.p}><strong>Dell PowerScale (OneFS):</strong> Scale-out NAS dominant platform. Multiple nodes ek single namespace present karte hain. OneFS ek distributed filesystem hai jo PowerScale scale-out storage platform mein integrated hai — ye ZFS, WAFL ya Btrfs jaise per-node filesystems se architecturally alag hai. Petabyte scale common.</p>
+      <p style={S.p}><strong>NetApp ONTAP:</strong> Industry-leading NAS/unified storage OS. NFS, SMB, iSCSI, FC support. Built-in: SnapShot, SnapMirror replication, deduplication, compression, FabricPool cloud tiering. Runs on NetApp AFF/FAS hardware and ONTAP Select (software-defined).</p>
+      <p style={S.p}><strong>Dell PowerScale (OneFS):</strong> The dominant scale-out NAS platform. Multiple nodes present a single namespace. OneFS is a distributed filesystem integrated into the PowerScale scale-out storage platform — it is architecturally different from per-node filesystems such as ZFS, WAFL or Btrfs. Petabyte scale is common.</p>
       <p style={S.p}><strong>TrueNAS (SCALE / CORE):</strong> Open-source NAS OS. TrueNAS CORE: FreeBSD + ZFS. TrueNAS SCALE: Linux + ZFS. Small-to-medium deployments, labs. ZFS powerful — snapshots, deduplication, checksums. iXsystems commercial support available.</p>
-      <p style={S.p}><strong>Synology DSM / QNAP QTS:</strong> Widely used in SMB, departmental, backup aur lab environments. Enterprise production suitability specific model, HA capability, support SLA, workload aur organizational requirements pe depend karti hai.</p>
-      <p style={S.p}><strong>HPE Storage Platforms:</strong> HPE mein file storage capabilities product family aur generation ke hisaab se vary karti hain. Current HPE file/NAS capabilities ke liye HPE ki official documentation check karo.</p>
+      <p style={S.p}><strong>Synology DSM / QNAP QTS:</strong> Widely used in SMB, departmental, backup and lab environments. Enterprise production suitability depends on the specific model, HA capability, support SLA, workload and organizational requirements.</p>
+      <p style={S.p}><strong>HPE Storage Platforms:</strong> At HPE, file storage capabilities vary by product family and generation. Check HPE's official documentation for current HPE file/NAS capabilities.</p>
       <Callout type="important" title="Products Evolve — Verify With Vendor">
-        NAS capabilities across vendors significantly differ in features, scale limits, performance aur licensing. Always verify current capabilities with vendor documentation.
+        NAS capabilities across vendors significantly differ in features, scale limits, performance and licensing. Always verify current capabilities with vendor documentation.
       </Callout>
 
       <ComparisonTable
@@ -413,7 +402,7 @@ sudo mount -t nfs -o vers=4.1,hard nas01:/vol/engineering /mnt/engineering`}
 
       {/* ══ SECTION 15 — MANAGEMENT INTERFACE ══════════════════════════════ */}
       <h2 id="nas-management" style={S.h2}>NAS Management Interface</h2>
-      <p style={S.p}>NAS typically multiple ways se manage hoti hai:</p>
+      <p style={S.p}>A NAS is typically managed in multiple ways:</p>
 
       <h3 style={S.h3}>Web GUI — Primary Interface</h3>
       <p style={S.p}>Typical sections engineer sees: Dashboard, Storage (pools/volumes), Shares, NFS Exports, Network, Sessions, Protocols, Users, Quotas, Snapshots, Replication, Logs, Firmware.</p>
@@ -431,56 +420,56 @@ sudo mount -t nfs -o vers=4.1,hard nas01:/vol/engineering /mnt/engineering`}
       </ul>
 
       <h3 style={S.h3}>REST API</h3>
-      <p style={S.p}>Modern enterprise NAS REST APIs expose karte hain — ONTAP REST API, OneFS REST API. Monitoring tools, ITSM systems, custom automation scripts integrate kar sakte hain.</p>
+      <p style={S.p}>Modern enterprise NAS systems expose REST APIs — ONTAP REST API, OneFS REST API. Monitoring tools, ITSM systems and custom automation scripts can integrate with them.</p>
 
       {/* ══ SECTION 16 — QUOTAS ═════════════════════════════════════════════ */}
       <h2 id="nas-quotas" style={S.h2}>Quotas</h2>
-      <p style={S.p}>Kuch NAS platforms quota management support karte hain:</p>
+      <p style={S.p}>Some NAS platforms support quota management:</p>
       <ul style={S.ul}>
-        <li><strong>User quota:</strong> Individual user kitna space use kar sakta hai</li>
-        <li><strong>Group quota:</strong> AD/LDAP group ka collective limit</li>
-        <li><strong>Directory/tree quota:</strong> Specific folder tree ka space limit (platform-dependent)</li>
-        <li><strong>Soft limit:</strong> Warning generate — access immediately block nahi hota (grace period)</li>
-        <li><strong>Hard limit:</strong> Limit exceed hone pe writes block</li>
+        <li><strong>User quota:</strong> How much space an individual user can use</li>
+        <li><strong>Group quota:</strong> Collective limit for an AD/LDAP group</li>
+        <li><strong>Directory/tree quota:</strong> Space limit for a specific folder tree (platform-dependent)</li>
+        <li><strong>Soft limit:</strong> Generates a warning — access is not blocked immediately (grace period)</li>
+        <li><strong>Hard limit:</strong> Writes are blocked once the limit is exceeded</li>
       </ul>
       <Callout type="important" title="Quota ≠ Physical Pool Free Space">
-        Ek user ka quota 500GB ho sakta hai lekin pool 100GB free ho — actual writes 100GB pe cap honge. Dono dekhna zaroori hai.
+        A user's quota may be 500GB but the pool may have only 100GB free — actual writes will be capped at 100GB. Both need to be watched.
       </Callout>
 
       {/* ══ SECTION 17 — FILE LOCKING ═══════════════════════════════════════ */}
       <h2 id="file-locking" style={S.h2}>File Locking / Open Files</h2>
-      <p style={S.p}>Shared storage pe multiple users same file simultaneously access kar sakte hain — file locking is situation manage karta hai.</p>
-      <p style={S.p}><strong>SMB Leases / Opportunistic Locking (Oplocks):</strong> SMB protocol clients ko locally cache karne deta hai file data — performance improve hoti hai. When another client accesses same file, NAS lease break karta hai — first client cached data flush karta hai.</p>
-      <p style={S.p}><strong>NFS locking:</strong> NFSv4 integrated locking. NFSv3 mein NLM (Network Lock Manager) separate service.</p>
+      <p style={S.p}>On shared storage multiple users can access the same file simultaneously — file locking manages this situation.</p>
+      <p style={S.p}><strong>SMB Leases / Opportunistic Locking (Oplocks):</strong> The SMB protocol lets clients cache file data locally — improving performance. When another client accesses the same file, the NAS breaks the lease — the first client flushes its cached data.</p>
+      <p style={S.p}><strong>NFS locking:</strong> NFSv4 has integrated locking. In NFSv3, NLM (Network Lock Manager) is a separate service.</p>
       <Callout type="danger" title="Active Sessions / Open Files — Never Force-Close Without Impact Assessment">
-        Kabhi bhi active sessions ya open files force-close mat karo bina impact assessment ke. User koi file actively write kar raha hai aur session force-close ho — data corruption possible hai.
+        Never force-close active sessions or open files without an impact assessment. If a user is actively writing a file and the session is force-closed — data corruption is possible.
       </Callout>
 
       {/* ══ SECTION 18 — NAMESPACE ══════════════════════════════════════════ */}
       <h2 id="nas-namespace" style={S.h2}>Namespace</h2>
-      <p style={S.p}>Enterprise environments mein users directly physical NAS controller hostname se connect nahi karte — ek logical namespace se connect karte hain.</p>
-      <p style={S.p}><strong>Example:</strong> <code>{"\\\\files.company.local\\engineering"}</code> — yeh ek logical name hai, actual physical controller nahi. Namespace DFS (Windows Distributed File System), NAS platform cluster namespace, ya DNS alias se serve ho sakta hai.</p>
-      <p style={S.p}><strong>Benefit:</strong> Physical NAS replace ya migrate karo — client namespace change nahi hota. Engineers migrate karte hain backend, clients same path use karte rehte hain.</p>
+      <p style={S.p}>In enterprise environments users do not connect directly to the physical NAS controller hostname — they connect to a logical namespace.</p>
+      <p style={S.p}><strong>Example:</strong> <code>{"\\\\files.company.local\\engineering"}</code> — this is a logical name, not the actual physical controller. The namespace can be served by DFS (Windows Distributed File System), the NAS platform cluster namespace, or a DNS alias.</p>
+      <p style={S.p}><strong>Benefit:</strong> Replace or migrate the physical NAS — the client namespace does not change. Engineers migrate the backend, and clients keep using the same path.</p>
 
       {/* ══ SECTION 19 — CONFIG WORKFLOW ════════════════════════════════════ */}
       <h2 id="nas-config-workflow" style={S.h2}>NAS Configuration — Practical Workflow</h2>
-      <p style={S.p}>High-level workflow jab ek new NAS deploy hoti hai. Exact steps OEM aur model pe vary karte hain.</p>
+      <p style={S.p}>High-level workflow when a new NAS is deployed. Exact steps vary by OEM and model.</p>
       <ol style={{ ...S.ul, listStyleType: "decimal" }}>
         <li><strong>Physical readiness:</strong> Rack mounting, dual PSUs → separate PDU A/B, physical cabling.</li>
         <li><strong>Initial management access:</strong> Management IP configure, Web GUI access verify.</li>
-        <li><strong>Hostname, DNS, NTP:</strong> Hostname set, DNS servers configure, NTP configure (AD mein critical), timezone set.</li>
+        <li><strong>Hostname, DNS, NTP:</strong> Set hostname, configure DNS servers, configure NTP (critical in AD), set timezone.</li>
         <li><strong>Network interface configuration:</strong> Data IPs, subnet, gateway. Link redundancy — bonding, LACP, failover groups as appropriate. VLANs. MTU settings.</li>
         <li><strong>Storage pool creation:</strong> Disk discovery → RAID level → pool create → initialization complete hone do.</li>
         <li><strong>Volume / Filesystem creation:</strong> Size, thin/thick provisioning, filesystem type.</li>
-        <li><strong>Protocol configuration:</strong> SMB service enable. NFS service enable. Multiprotocol use karo toh identity mapping plan karo.</li>
-        <li><strong>Authentication integration (AD):</strong> Domain join, DNS aur AD records resolvable, time sync verify.</li>
+        <li><strong>Protocol configuration:</strong> Enable the SMB service. Enable the NFS service. If using multiprotocol, plan identity mapping.</li>
+        <li><strong>Authentication integration (AD):</strong> Domain join, DNS and AD records resolvable, verify time sync.</li>
         <li><strong>Share/Export creation:</strong> SMB share — path, name, permissions. NFS export — path, allowed clients, options.</li>
-        <li><strong>Permission configuration:</strong> Share-level + folder-level. Test user se verify.</li>
-        <li><strong>Client access testing:</strong> Windows: UNC path. Linux: mount. Read, write, delete — sab test.</li>
+        <li><strong>Permission configuration:</strong> Share-level + folder-level. Verify with a test user.</li>
+        <li><strong>Client access testing:</strong> Windows: UNC path. Linux: mount. Read, write, delete — test everything.</li>
         <li><strong>Performance baseline:</strong> fio (Linux), DiskSPD (Windows), NAS built-in stats.</li>
         <li><strong>Monitoring setup:</strong> Email alerts, SNMP, capacity thresholds.</li>
         <li><strong>Snapshot schedule:</strong> Automated schedule + retention policy.</li>
-        <li><strong>Backup/replication setup:</strong> Backup software + replication job (agar DR required).</li>
+        <li><strong>Backup/replication setup:</strong> Backup software + replication job (if DR is required).</li>
         <li><strong>Documentation:</strong> IPs, share paths, VLAN, RAID config, permissions matrix.</li>
         <li><strong>Production handover:</strong> Change ticket close, monitoring confirmed, stakeholders notified.</li>
       </ol>
@@ -488,7 +477,7 @@ sudo mount -t nfs -o vers=4.1,hard nas01:/vol/engineering /mnt/engineering`}
       {/* ══ SECTION 20 — WINDOWS PRACTICAL ════════════════════════════════ */}
       <h2 id="windows-nas-practical" style={S.h2}>Windows + NAS — Practical Access</h2>
 
-      <h3 style={S.h3}>UNC Path Se Access</h3>
+      <h3 style={S.h3}>Access via UNC Path</h3>
       <CodeBlock lang="text">
 {`\\nas01\engineering         — Windows Explorer direct
 \\nas01\finance             — Finance share
@@ -525,10 +514,10 @@ net use Z: \\nas01\engineering /persistent:yes   # Map Z: drive
 net use Z: /delete                   # Disconnect`}
       </CodeBlock>
       <Callout type="maintenance" title="Get-SmbSession / Get-SmbShare — Local Windows Server Commands">
-        <code>Get-SmbSession</code> aur <code>Get-SmbShare</code> Windows Server pe local SMB server sessions/shares show karte hain. Generic NAS (NetApp, PowerScale, Synology) ke sessions/shares inse query nahi hote — us NAS platform ka apna management tool use karo.
+        <code>Get-SmbSession</code> and <code>Get-SmbShare</code> show local SMB server sessions/shares on Windows Server. Sessions/shares of a generic NAS (NetApp, PowerScale, Synology) are not queried by these — use that NAS platform's own management tool.
       </Callout>
       <Callout type="best-practice" title="Telnet vs Test-NetConnection">
-        Modern Windows mein Telnet client disabled by default. <code>Test-NetConnection</code> PowerShell 3.0+ mein built-in hai — port testing ke liye preferred method.
+        In modern Windows the Telnet client is disabled by default. <code>Test-NetConnection</code> is built into PowerShell 3.0+ — the preferred method for port testing.
       </Callout>
 
       {/* ══ SECTION 21 — LINUX PRACTICAL ════════════════════════════════════ */}
@@ -586,17 +575,17 @@ fuser -vm /mnt/engineering     # Efficient — identify processes using mount
       </CodeBlock>
 
       {/* ══ SECTION 22 — PING, PORT, CONNECTIVITY ══════════════════════════ */}
-      <h2 id="ping-port-connectivity" style={S.h2}>Ping, Port aur Connectivity — Key Concepts</h2>
+      <h2 id="ping-port-connectivity" style={S.h2}>Ping, Port and Connectivity — Key Concepts</h2>
 
-      <h3 style={S.h3}>Ping Kya Test Karta Hai</h3>
-      <p style={S.p}>Ping ICMP use karta hai — "are you alive?" jaisi check.</p>
+      <h3 style={S.h3}>What Ping Tests</h3>
+      <p style={S.p}>Ping uses ICMP — an "are you alive?" type of check.</p>
       <ul style={S.ul}>
-        <li><strong>Ping success matlab:</strong> Network path exists + NAS network stack respond + ICMP enabled</li>
-        <li><strong>Ping success matlab NAHI:</strong> SMB/NFS running, authentication working, shares accessible</li>
-        <li><strong>Ping fail matlab:</strong> NAS down ya network issue — ya sirf ICMP disabled on NAS (security)</li>
+        <li><strong>Ping success means:</strong> Network path exists + NAS network stack responds + ICMP enabled</li>
+        <li><strong>Ping success does NOT mean:</strong> SMB/NFS running, authentication working, shares accessible</li>
+        <li><strong>Ping failure means:</strong> NAS down or a network issue — or simply ICMP disabled on the NAS (security)</li>
       </ul>
       <Callout type="common-mistake" title="Real Incident — Ping Misleads">
-        Client <code>ping nas01</code> karta hai — timeout. "NAS down hai!" Actually ICMP disabled tha NAS pe. <code>Test-NetConnection nas01 -Port 445</code> kiya — TcpTestSucceeded: True. NAS bilkul theek thi.
+        The client runs <code>ping nas01</code> — timeout. "The NAS is down!" Actually ICMP was disabled on the NAS. Ran <code>Test-NetConnection nas01 -Port 445</code> — TcpTestSucceeded: True. The NAS was perfectly fine.
       </Callout>
 
       <h3 style={S.h3}>Troubleshooting Layer Model</h3>
@@ -613,21 +602,21 @@ Layer 5: Does the user have correct permissions?`}
       </CodeBlock>
 
       {/* ══ SECTION 23 — AUTH + PERMISSIONS ════════════════════════════════ */}
-      <h2 id="auth-permissions" style={S.h2}>Authentication aur Permissions</h2>
+      <h2 id="auth-permissions" style={S.h2}>Authentication and Permissions</h2>
 
-      <h3 style={S.h3}>Authentication — Tum Kaun Ho?</h3>
+      <h3 style={S.h3}>Authentication — Who Are You?</h3>
       <ul style={S.ul}>
-        <li><strong>Local users:</strong> NAS pe directly create — simple environments. Enterprise mein generally avoided.</li>
-        <li><strong>Active Directory:</strong> Enterprise standard. NAS domain join karta hai. Single sign-on.</li>
-        <li><strong>LDAP:</strong> Linux/Unix environments mein centralized user directory.</li>
+        <li><strong>Local users:</strong> Created directly on the NAS — simple environments. Generally avoided in enterprise.</li>
+        <li><strong>Active Directory:</strong> Enterprise standard. The NAS joins the domain. Single sign-on.</li>
+        <li><strong>LDAP:</strong> Centralized user directory in Linux/Unix environments.</li>
         <li><strong>NFS AUTH_SYS:</strong> IP-based export control + UID/GID. No cryptographic user verification.</li>
-        <li><strong>NFS + Kerberos:</strong> Proper user authentication. NFSv4 automatically Kerberos use nahi karta — configuration required.</li>
+        <li><strong>NFS + Kerberos:</strong> Proper user authentication. NFSv4 does not automatically use Kerberos — configuration required.</li>
       </ul>
       <Callout type="important" title="AD Integration — Multiple Ports Required">
-        AD integration ke liye multiple ports involved hain — DNS (53), Kerberos (88), LDAP (389), LDAPS (636), NTP (123), SMB (445), Global Catalog (3268/3269), aur possibly RPC/dynamic ports. Apne NAS vendor ki official AD integration port matrix use karo.
+        Multiple ports are involved in AD integration — DNS (53), Kerberos (88), LDAP (389), LDAPS (636), NTP (123), SMB (445), Global Catalog (3268/3269), and possibly RPC/dynamic ports. Use your NAS vendor's official AD integration port matrix.
       </Callout>
 
-      <h3 style={S.h3}>Permissions — Tum Kya Kar Sakte Ho?</h3>
+      <h3 style={S.h3}>Permissions — What Can You Do?</h3>
       <p style={S.p}><strong>SMB — two layers (both must be correct):</strong></p>
       <ul style={S.ul}>
         <li><strong>Share-level:</strong> Who can connect to the share</li>
@@ -664,7 +653,7 @@ Check sequence:
       <h2 id="nas-security" style={S.h2}>NAS Security</h2>
 
       <h3 style={S.h3}>Management Network Separation</h3>
-      <p style={S.p}><strong>Recommended Best Practice:</strong> NAS management interface dedicated management VLAN pe — production data network se isolated.</p>
+      <p style={S.p}><strong>Recommended Best Practice:</strong> NAS management interface on a dedicated management VLAN — isolated from the production data network.</p>
 
       <h3 style={S.h3}>Authentication Security</h3>
       <ul style={S.ul}>
@@ -676,27 +665,27 @@ Check sequence:
 
       <h3 style={S.h3}>Protocol Security</h3>
       <p style={S.p}><strong>Disable SMB 1.0:</strong> Strong recommendation — all modern environments. Legacy dependencies: isolate, document, compensating controls, migration plan.</p>
-      <p style={S.p}><strong>SMB Signing:</strong> Message integrity aur authenticity provide karta hai — data tampering aur certain man-in-the-middle attacks se protect karta hai. Recommended.</p>
-      <p style={S.p}><strong>SMB Encryption:</strong> SMB 3.0+ mein available — data in transit encrypt karta hai. Processing overhead introduce kar sakta hai — actual impact SMB version, CPU capabilities, hardware offload, NAS platform aur workload pe depend karta hai.</p>
-      <p style={S.p}><strong>NFSv4 with Kerberos:</strong> AUTH_SYS se better security. krb5p option data in transit encrypt karta hai.</p>
+      <p style={S.p}><strong>SMB Signing:</strong> Provides message integrity and authenticity — protects against data tampering and certain man-in-the-middle attacks. Recommended.</p>
+      <p style={S.p}><strong>SMB Encryption:</strong> Available in SMB 3.0+ — encrypts data in transit. It can introduce processing overhead — the actual impact depends on SMB version, CPU capabilities, hardware offload, NAS platform and workload.</p>
+      <p style={S.p}><strong>NFSv4 with Kerberos:</strong> Better security than AUTH_SYS. The krb5p option encrypts data in transit.</p>
 
       <h3 style={S.h3}>Ransomware Considerations</h3>
-      <p style={S.p}>NAS shared storage hai — ek infected client NAS files rapidly encrypt kar sakta hai.</p>
+      <p style={S.p}>NAS is shared storage — a single infected client can rapidly encrypt NAS files.</p>
       <ul style={S.ul}>
-        <li><strong>Snapshots:</strong> Client-side ransomware normally read-only snapshot contents directly modify nahi kar sakta. Lekin attacker administrative/API access gain kar le — snapshots delete karna possible. <strong>Immutable/locked snapshots</strong> (where supported) extra protection dete hain.</li>
+        <li><strong>Snapshots:</strong> Client-side ransomware normally cannot directly modify read-only snapshot contents. But if an attacker gains administrative/API access — deleting snapshots is possible. <strong>Immutable/locked snapshots</strong> (where supported) provide extra protection.</li>
         <li><strong>Independent backup:</strong> Independent backup, preferably offsite/isolated, strongly recommended per organizational policy — strongest when isolated, immutable/offline and independently protected.</li>
-        <li><strong>Network segmentation:</strong> NAS sirf required subnets ko accessible hona chahiye</li>
-        <li><strong>Least privilege:</strong> Users ko sirf necessary folders write access</li>
+        <li><strong>Network segmentation:</strong> The NAS should be accessible only to the required subnets</li>
+        <li><strong>Least privilege:</strong> Give users write access only to the necessary folders</li>
       </ul>
 
       <h3 style={S.h3}>Audit Logging</h3>
-      <p style={S.p}>File access logging, failed auth attempts, admin activity logs. <strong>Warning:</strong> File-level audit logging very high log volume generate karta hai — storage aur performance impact plan karo.</p>
+      <p style={S.p}>File access logging, failed auth attempts, admin activity logs. <strong>Warning:</strong> File-level audit logging generates very high log volume — plan for the storage and performance impact.</p>
 
       {/* ══ SECTION 25 — HIGH AVAILABILITY ═════════════════════════════════ */}
       <h2 id="high-availability" style={S.h2}>High Availability (HA)</h2>
 
       <h3 style={S.h3}>Dual Controllers</h3>
-      <p style={S.p}>Enterprise NAS mein typically two controllers. <strong>Active-Active:</strong> Dono simultaneously serve, load distribute. <strong>Active-Passive:</strong> Primary serves, secondary standby, failover pe takeover. Exact behavior OEM aur configuration pe depend karta hai.</p>
+      <p style={S.p}>Enterprise NAS typically has two controllers. <strong>Active-Active:</strong> Both serve simultaneously, load is distributed. <strong>Active-Passive:</strong> Primary serves, secondary on standby, takes over on failover. Exact behavior depends on the OEM and configuration.</p>
 
       <h3 style={S.h3}>NAS Resiliency Design — Protection Map</h3>
       <ComparisonTable
@@ -711,18 +700,18 @@ Check sequence:
           ["Replication / DR",                           "Site/disaster protection","Site failure, major disaster"],
           ["Snapshots + Backup",                         "Data protection",       "Accidental deletion, corruption"],
         ]}
-        caption="HA hardware failures se protect karta hai. Data corruption, ransomware, site failure — inke liye snapshots + independent backup required hain."
+        caption="HA protects against hardware failures. Data corruption, ransomware, site failure — these require snapshots + independent backup."
       />
 
       <h3 style={S.h3}>Failover Testing</h3>
-      <p style={S.p}>HA/failover testing should be performed periodically according to organizational policy, change management and vendor-supported procedures. Vendor-supported planned takeover procedure use karo — production controller deliberately break karna risky approach hai. Verify: client access continuous raha? Alerts generated? Failback works? Document karo.</p>
+      <p style={S.p}>HA/failover testing should be performed periodically according to organizational policy, change management and vendor-supported procedures. Use the vendor-supported planned takeover procedure — deliberately breaking a production controller is a risky approach. Verify: did client access remain continuous? Were alerts generated? Does failback work? Document it.</p>
 
       {/* ══ SECTION 26 — SNAPSHOTS ══════════════════════════════════════════ */}
       <h2 id="snapshots" style={S.h2}>Snapshots</h2>
 
-      <h3 style={S.h3}>Snapshot Kya Hai</h3>
-      <p style={S.p}>Snapshot ek point-in-time copy hai — NAS ke ek specific moment ka state capture karta hai. Implementation filesystem/vendor dependent hai — platforms copy-on-write, redirect-on-write, metadata/pointer techniques ya other mechanisms use kar sakte hain.</p>
-      <p style={S.p}><strong>Space efficiency:</strong> Many modern NAS snapshot implementations space-efficient hain aur initially relatively little additional capacity consume karte hain — exact behavior filesystem/platform dependent hai.</p>
+      <h3 style={S.h3}>What Is a Snapshot</h3>
+      <p style={S.p}>A snapshot is a point-in-time copy — it captures the state of the NAS at a specific moment. Implementation is filesystem/vendor dependent — platforms may use copy-on-write, redirect-on-write, metadata/pointer techniques or other mechanisms.</p>
+      <p style={S.p}><strong>Space efficiency:</strong> Many modern NAS snapshot implementations are space-efficient and initially consume relatively little additional capacity — exact behavior is filesystem/platform dependent.</p>
 
       <h3 style={S.h3}>Snapshot vs Backup — Critical Difference</h3>
       <ComparisonTable
@@ -739,42 +728,42 @@ Check sequence:
         caption="Snapshot is NOT a backup. 3-2-1 principle (3 copies, 2 different media, 1 offsite) is a recommended data-protection strategy."
       />
       <Callout type="danger" title="Snapshot ≠ Backup">
-        Snapshot same hardware pe hai. NAS storage fail ho — snapshot bhi gone. Independent backup, preferably with an offsite/isolated copy, is strongly recommended according to organizational backup and DR policy.
+        A snapshot sits on the same hardware. If the NAS storage fails — the snapshot is gone too. Independent backup, preferably with an offsite/isolated copy, is strongly recommended according to organizational backup and DR policy.
       </Callout>
 
       <h3 style={S.h3}>Snapshot Retention Planning</h3>
-      <p style={S.p}>Example schedule: Hourly (last 24h), Daily (last 7 days), Weekly (last 4 weeks), Monthly (last 6–12 months). Old snapshots automatically delete karo — "forever retain" space exhaust kar sakta hai.</p>
+      <p style={S.p}>Example schedule: Hourly (last 24h), Daily (last 7 days), Weekly (last 4 weeks), Monthly (last 6–12 months). Delete old snapshots automatically — "retain forever" can exhaust space.</p>
 
       {/* ══ SECTION 27 — BACKUP & REPLICATION ══════════════════════════════ */}
-      <h2 id="backup-replication" style={S.h2}>Backup aur Replication</h2>
+      <h2 id="backup-replication" style={S.h2}>Backup and Replication</h2>
 
       <h3 style={S.h3}>NAS Backup Approaches</h3>
       <ul style={S.ul}>
-        <li><strong>Agent-based backup:</strong> Backup software (Veeam, Commvault, NetBackup) agent se files backup.</li>
-        <li><strong>NDMP (Network Data Management Protocol):</strong> Long-established protocol — supported by many enterprise NAS platforms aur backup software. NAS directly backup device se communicate karta hai, data server pe route nahi hota. Modern NAS backup architectures may also use native snapshots, vendor APIs, replication, file-based backup ya object-storage integration — NDMP ek option hai.</li>
-        <li><strong>Snapshot-based backup:</strong> Snapshots create karo, snapshot data backup system ko export karo.</li>
+        <li><strong>Agent-based backup:</strong> Backup software (Veeam, Commvault, NetBackup) backs up files via an agent.</li>
+        <li><strong>NDMP (Network Data Management Protocol):</strong> Long-established protocol — supported by many enterprise NAS platforms and backup software. The NAS communicates directly with the backup device; data is not routed through a server. Modern NAS backup architectures may also use native snapshots, vendor APIs, replication, file-based backup or object-storage integration — NDMP is one option.</li>
+        <li><strong>Snapshot-based backup:</strong> Create snapshots, then export the snapshot data to the backup system.</li>
       </ul>
 
       <h3 style={S.h3}>NAS-to-NAS Replication</h3>
       <p style={S.p}>Primary NAS → Secondary NAS (DR site). Examples: NetApp SnapMirror, OneFS SyncIQ, TrueNAS ZFS Replication.</p>
-      <p style={S.p}><strong>RPO:</strong> Replication frequency se determine. <strong>RTO:</strong> Failover process se determine.</p>
+      <p style={S.p}><strong>RPO:</strong> Determined by replication frequency. <strong>RTO:</strong> Determined by the failover process.</p>
 
       {/* ══ SECTION 28 — CAPACITY MANAGEMENT ═══════════════════════════════ */}
       <h2 id="capacity-management" style={S.h2}>Capacity Management</h2>
 
       <h3 style={S.h3}>Capacity Calculations</h3>
-      <p style={S.p}><strong>Conceptual example:</strong> 24 × 4TB = 96TB raw. RAID 6 (2 parity drives) = 22 × 4TB = 88TB after RAID. Actual usable capacity RAID group/layout, distributed spare capacity, system reserve, metadata, vendor implementation aur TB vs TiB reporting pe depend karta hai.</p>
-      <p style={S.p}><strong>Snapshot consumption:</strong> Changes ke saath snapshots space consume karte hain same pool se. <strong>Thin provisioning:</strong> Over-provisioning risk — total allocated &gt; physical available.</p>
+      <p style={S.p}><strong>Conceptual example:</strong> 24 × 4TB = 96TB raw. RAID 6 (2 parity drives) = 22 × 4TB = 88TB after RAID. Actual usable capacity depends on RAID group/layout, distributed spare capacity, system reserve, metadata, vendor implementation and TB vs TiB reporting.</p>
+      <p style={S.p}><strong>Snapshot consumption:</strong> As data changes, snapshots consume space from the same pool. <strong>Thin provisioning:</strong> Over-provisioning risk — total allocated &gt; physical available.</p>
 
       <h3 style={S.h3}>Why Low Free Space is Dangerous</h3>
       <ul style={S.ul}>
         <li>Write operations fail — applications get I/O errors</li>
-        <li>NAS performance degrade ho sakti hai — thresholds aur behavior platform/filesystem dependent</li>
-        <li>Snapshots new changes capture nahi kar paayenge</li>
-        <li>NAS OS operations affected ho sakte hain</li>
+        <li>NAS performance can degrade — thresholds and behavior are platform/filesystem dependent</li>
+        <li>Snapshots will not be able to capture new changes</li>
+        <li>NAS OS operations can be affected</li>
       </ul>
-      <Callout type="warning" title="Capacity Thresholds — Per Vendor Recommendations aur Policy">
-        Example operational thresholds: ~80% → Warning, ~90% → Critical. Actual thresholds vendor recommendations, snapshot reserve requirements, workload behavior aur organizational policy se set karo.
+      <Callout type="warning" title="Capacity Thresholds — Per Vendor Recommendations and Policy">
+        Example operational thresholds: ~80% → Warning, ~90% → Critical. Set actual thresholds based on vendor recommendations, snapshot reserve requirements, workload behavior and organizational policy.
       </Callout>
 
       {/* ══ SECTION 29 — PERFORMANCE ════════════════════════════════════════ */}
@@ -841,21 +830,21 @@ Background jobs? (backup, replication, rebuild) → Background job impact`}
       <h3 style={S.h3}>Monitoring Tools</h3>
       <ul style={S.ul}>
         <li><strong>OEM Dashboard (Web GUI):</strong> Primary — visual, check this daily</li>
-        <li><strong>SNMP:</strong> Enterprise monitoring platforms (Prometheus, Nagios, Zabbix, SolarWinds) SNMP OIDs poll karte hain</li>
-        <li><strong>Syslog:</strong> NAS events aur alerts centralized log management mein</li>
+        <li><strong>SNMP:</strong> Enterprise monitoring platforms (Prometheus, Nagios, Zabbix, SolarWinds) poll SNMP OIDs</li>
+        <li><strong>Syslog:</strong> NAS events and alerts into centralized log management</li>
         <li><strong>Email Alerts:</strong> Configure day one — direct notification on critical events</li>
         <li><strong>REST API:</strong> Advanced — automation, custom monitoring integration</li>
       </ul>
 
       {/* ══ SECTION 31 — SWITCH-SIDE TROUBLESHOOTING ═══════════════════════ */}
       <h2 id="switch-troubleshooting" style={S.h2}>Network Troubleshooting — Switch Side</h2>
-      <p style={S.p}>NAS troubleshooting often requires checking both NAS-side aur switch-side statistics. NAS side clean dikhta hai lekin switch pe problem ho sakta hai.</p>
+      <p style={S.p}>NAS troubleshooting often requires checking both NAS-side and switch-side statistics. The NAS side may look clean while the problem is on the switch.</p>
       <ComparisonTable
         title="Switch-Side Checklist"
         headers={["Check", "What to Verify"]}
         rows={[
           ["Switch port link state",   "Port up? Speed/duplex correct (no auto-negotiation mismatch)?"],
-          ["VLAN membership",          "NAS port correct VLAN mein?"],
+          ["VLAN membership",          "Is the NAS port in the correct VLAN?"],
           ["LACP state",               "LACP negotiated properly? Both sides active?"],
           ["CRC / interface errors",   "Physical layer errors — bad cable, SFP?"],
           ["Packet drops",             "Input/output drops — congestion?"],
@@ -870,10 +859,10 @@ Background jobs? (backup, replication, rebuild) → Background job impact`}
       <h2 id="common-failures" style={S.h2}>Common NAS Failures — Field Guide</h2>
 
       <h3 style={S.h3}>Failure 1 — Drive Failure</h3>
-      <p style={S.p}><strong>Symptoms:</strong> NAS dashboard mein drive fault alert, RAID degraded, possible performance decrease during rebuild.</p>
-      <p style={S.p}><strong>Action:</strong> Confirm drive bay (GUI → Storage). LED verify karo. Confirm correct replacement — same model/capacity/speed. Change management approval. Hot-swap per OEM procedure. Monitor rebuild progress aur remaining redundancy. Escalate if rebuild behavior abnormal. RAID optimal → document.</p>
+      <p style={S.p}><strong>Symptoms:</strong> Drive fault alert in the NAS dashboard, RAID degraded, possible performance decrease during rebuild.</p>
+      <p style={S.p}><strong>Action:</strong> Confirm the drive bay (GUI → Storage). Verify the LED. Confirm the correct replacement — same model/capacity/speed. Change management approval. Hot-swap per OEM procedure. Monitor rebuild progress and remaining redundancy. Escalate if rebuild behavior is abnormal. RAID optimal → document.</p>
       <Callout type="danger" title="During Drive Replacement">
-        Wrong drive remove mat karo — bay number twice confirm karo. Do not remove second drive during rebuild. Ignore degraded state mat karo — second failure = data loss.
+        Do not remove the wrong drive — confirm the bay number twice. Do not remove a second drive during rebuild. Do not ignore the degraded state — a second failure = data loss.
       </Callout>
 
       <h3 style={S.h3}>Failure 2 — NIC Failure</h3>
@@ -886,7 +875,7 @@ Background jobs? (backup, replication, rebuild) → Background job impact`}
 
       <h3 style={S.h3}>Failure 4 — SMB Service Unavailable</h3>
       <p style={S.p}><strong>Symptoms:</strong> UNC path access fails. Port 445 test fails. Management GUI accessible.</p>
-      <p style={S.p}><strong>Action:</strong> NAS GUI → Protocols → SMB status. Recent changes? Firmware update? Restart SMB service agar supported. OEM support if service won't start.</p>
+      <p style={S.p}><strong>Action:</strong> NAS GUI → Protocols → SMB status. Recent changes? Firmware update? Restart the SMB service if supported. OEM support if the service won't start.</p>
 
       <h3 style={S.h3}>Failure 5 — NFS Mount Failure</h3>
       <CodeBlock label="NFS failure diagnostics" lang="bash">
@@ -902,7 +891,7 @@ nc -zv nas01 2049         # Port 2049 reachable?
       <h3 style={S.h3}>Failure 7 — High Latency / Slow Access</h3>
       <p style={S.p}><strong>Investigation:</strong> Background jobs running (rebuild, backup, replication)? Controller CPU/memory? Cache hit ratio? Network errors? Disk latency? Metadata workload heavy? Client-side changes?</p>
       <Callout type="important" title="RAID Rebuild — Action, Not Just Wait">
-        Rebuild chal raha hai: Confirm degraded/rebuild status, remaining redundancy, rebuild ETA, any errors. Check vendor-supported rebuild priority/QoS controls. Communicate impact to stakeholders. Avoid risky additional maintenance. Escalate if rebuild behavior abnormal.
+        Rebuild in progress: Confirm degraded/rebuild status, remaining redundancy, rebuild ETA, any errors. Check vendor-supported rebuild priority/QoS controls. Communicate impact to stakeholders. Avoid risky additional maintenance. Escalate if rebuild behavior is abnormal.
       </Callout>
 
       <h3 style={S.h3}>Failure 8 — Authentication Failure (Access Denied)</h3>
@@ -949,7 +938,7 @@ nc -zv nas01 2049         # Port 2049 reachable?
 
       <h3 style={S.h3}>Scenario 2 — SMB Works from Some Servers, Not Others</h3>
       <p style={S.p}><strong>Symptoms:</strong> Dev servers access share. Production servers cannot. Same credentials.</p>
-      <p style={S.p}><strong>Root Cause:</strong> Production servers recently moved to new VLAN. Firewall blocking production VLAN → NAS port 445. <strong>Resolution:</strong> Firewall rule update. <strong>Lesson:</strong> "Same credentials" irrelevant agar network block ho — network layer pehle.</p>
+      <p style={S.p}><strong>Root Cause:</strong> Production servers were recently moved to a new VLAN. Firewall blocking production VLAN → NAS port 445. <strong>Resolution:</strong> Firewall rule update. <strong>Lesson:</strong> "Same credentials" is irrelevant if the network is blocked — check the network layer first.</p>
 
       <h3 style={S.h3}>Scenario 3 — NFS Mount Suddenly Fails</h3>
       <p style={S.p}><strong>Symptoms:</strong> 3 AM: Linux app servers NFS mount missing. Applications in error state.</p>
@@ -957,32 +946,32 @@ nc -zv nas01 2049         # Port 2049 reachable?
 {`showmount -e nas01
 # Export /vol/appdata not listed`}
       </CodeBlock>
-      <p style={S.p}><strong>Root Cause:</strong> Junior admin ne "cleanup" ke dauran export delete kiya — actually 12 servers use kar rahe the. <strong>Resolution:</strong> Export re-create, remount, services restart. <strong>Prevention:</strong> NFS exports deletion change management ke under.</p>
+      <p style={S.p}><strong>Root Cause:</strong> A junior admin deleted an export during a "cleanup" — 12 servers were actually using it. <strong>Resolution:</strong> Export re-created, remounted, services restarted. <strong>Prevention:</strong> Put NFS export deletion under change management.</p>
 
       <h3 style={S.h3}>Scenario 4 — File Transfer Extremely Slow</h3>
-      <p style={S.p}><strong>Symptoms:</strong> Engineering team large files copy karne mein hours le raha hai.</p>
+      <p style={S.p}><strong>Symptoms:</strong> The engineering team is taking hours to copy large files.</p>
       <p style={S.p}><strong>Investigation:</strong> NAS dashboard: storage pool rebuilding. Controller CPU 90%+ (rebuild + user workload combined).</p>
-      <p style={S.p}><strong>Action:</strong> Confirm rebuild progress, ETA, remaining redundancy. Check vendor-supported rebuild priority controls. Communicate temporary degradation to users. Do not attempt additional risky maintenance during rebuild. <strong>Prevention:</strong> Hot spare configure karo. Rebuild priority tuning.</p>
+      <p style={S.p}><strong>Action:</strong> Confirm rebuild progress, ETA, remaining redundancy. Check vendor-supported rebuild priority controls. Communicate temporary degradation to users. Do not attempt additional risky maintenance during rebuild. <strong>Prevention:</strong> Configure a hot spare. Rebuild priority tuning.</p>
 
       <h3 style={S.h3}>Scenario 5 — NAS at Critical Capacity</h3>
       <p style={S.p}><strong>Symptoms:</strong> 94% capacity. Previous 80% alert acknowledged but no action taken.</p>
       <p style={S.p}><strong>Investigation:</strong> Video production share — 40TB in 3 weeks (new project). Snapshots also consuming significant space.</p>
-      <p style={S.p}><strong>Immediate actions:</strong> Video team inform. Archive completed project files. Reduce snapshot retention. Emergency procurement. <strong>Prevention:</strong> Warning threshold pe action mandatory — not just acknowledgment.</p>
+      <p style={S.p}><strong>Immediate actions:</strong> Inform the video team. Archive completed project files. Reduce snapshot retention. Emergency procurement. <strong>Prevention:</strong> Action at the warning threshold is mandatory — not just acknowledgment.</p>
 
       {/* ══ SECTION 36 — BEGINNER MISTAKES ═════════════════════════════════ */}
       <h2 id="beginner-mistakes" style={S.h2}>Common Beginner / Field Mistakes</h2>
       <ul style={S.ul}>
-        <li><strong>"Ping success means NAS is working"</strong> — Galat. Ping tests ICMP. SMB/NFS alag hai. Always test at protocol level.</li>
+        <li><strong>"Ping success means NAS is working"</strong> — Wrong. Ping tests ICMP. SMB/NFS is separate. Always test at protocol level.</li>
         <li><strong>Confusing DAS, NAS and SAN</strong> — DAS: direct attachment, typically one host. NAS: network, file-level, multiple clients. SAN: dedicated network, block-level. Different use cases.</li>
-        <li><strong>Testing wrong IP</strong> — Management IP aur data IP alag. Share access test data IP se karo.</li>
-        <li><strong>Wrong VLAN</strong> — Client aur NAS same VLAN ya routed path pe honi chahiye.</li>
-        <li><strong>Wrong DNS or no DNS</strong> — UNC path DNS pe depend karta hai. IP se test kiya — "works" bola. Production hostname se fails.</li>
-        <li><strong>Wrong share path</strong> — Share name exact match chahiye. Typo = access denied.</li>
-        <li><strong>Permissions checked at share level only</strong> — Both share + folder/NTFS levels check karo.</li>
-        <li><strong>Ignoring capacity alerts</strong> — Warning threshold pe capacity planning start karo immediately.</li>
-        <li><strong>Removing a disk without confirming correct bay</strong> — iDRAC/GUI se confirm, LED verify karo before pulling.</li>
-        <li><strong>Treating snapshot as backup</strong> — Snapshot same hardware. Independent backup alag se required.</li>
-        <li><strong>Making network changes without redundancy check</strong> — NIC config change: current link redundant verify karo pehle.</li>
+        <li><strong>Testing wrong IP</strong> — Management IP and data IP are different. Test share access using the data IP.</li>
+        <li><strong>Wrong VLAN</strong> — Client and NAS must be on the same VLAN or a routed path.</li>
+        <li><strong>Wrong DNS or no DNS</strong> — The UNC path depends on DNS. Tested with the IP — said "works". Fails with the production hostname.</li>
+        <li><strong>Wrong share path</strong> — The share name must match exactly. Typo = access denied.</li>
+        <li><strong>Permissions checked at share level only</strong> — Check both share + folder/NTFS levels.</li>
+        <li><strong>Ignoring capacity alerts</strong> — Start capacity planning immediately at the warning threshold.</li>
+        <li><strong>Removing a disk without confirming correct bay</strong> — Confirm via iDRAC/GUI and verify the LED before pulling.</li>
+        <li><strong>Treating snapshot as backup</strong> — A snapshot is on the same hardware. A separate independent backup is required.</li>
+        <li><strong>Making network changes without redundancy check</strong> — NIC config change: verify first that the current link is redundant.</li>
         <li><strong>Force-closing active sessions without impact assessment</strong> — Active writes force-close = data corruption risk.</li>
       </ul>
 
@@ -1035,12 +1024,12 @@ nc -zv nas01 2049         # Port 2049 reachable?
       />
 
       {/* ══ SECTION 39 — LOGS AND EVENTS ════════════════════════════════════ */}
-      <h2 id="logs-events" style={S.h2}>Logs aur Events — What to Collect</h2>
-      <p style={S.p}><strong>OEM support case ke liye collect karo:</strong></p>
+      <h2 id="logs-events" style={S.h2}>Logs and Events — What to Collect</h2>
+      <p style={S.p}><strong>Collect for an OEM support case:</strong></p>
       <ul style={S.ul}>
         <li><strong>System information:</strong> NAS model, serial number, OS/firmware version, controller status</li>
         <li><strong>Problem details:</strong> Error messages (screenshots), timestamps, affected users/shares/clients, recent changes</li>
-        <li><strong>Logs:</strong> System event log (NAS GUI → Events), support bundle/diagnostic package (NAS GUI ya CLI), syslog if configured, client-side logs (Windows Event Viewer, <code>/var/log/messages</code>)</li>
+        <li><strong>Logs:</strong> System event log (NAS GUI → Events), support bundle/diagnostic package (NAS GUI or CLI), syslog if configured, client-side logs (Windows Event Viewer, <code>/var/log/messages</code>)</li>
         <li><strong>NAS diagnostics:</strong> Storage pool status, drive health, network stats, performance graphs near problem time</li>
         <li><strong>Impact:</strong> How many affected, business impact, troubleshooting already performed</li>
       </ul>
@@ -1075,7 +1064,7 @@ nc -zv nas01 2049         # Port 2049 reachable?
       <h3 style={S.h3}>Monthly</h3>
       <ul style={S.ul}>
         <li>Firmware advisory review — security patches released?</li>
-        <li>Full capacity review aur growth projection</li>
+        <li>Full capacity review and growth projection</li>
         <li>Backup restore spot test — verify backup is actually restorable</li>
         <li>Documentation update — changes made this month?</li>
         <li>Open alerts/events review — anything unresolved?</li>
@@ -1087,7 +1076,7 @@ nc -zv nas01 2049         # Port 2049 reachable?
         <li>Capacity procurement review</li>
         <li>Security review — SMB version, inactive accounts, audit logs</li>
         <li>OEM support contract check</li>
-        <li>Participate in organizational DR exercises — validate NAS replication, recovery aur client/application access per DR plan</li>
+        <li>Participate in organizational DR exercises — validate NAS replication, recovery and client/application access per DR plan</li>
       </ul>
 
       {/* ══ SECTION 41 — PREVENTIVE MAINTENANCE ════════════════════════════ */}
@@ -1110,7 +1099,7 @@ nc -zv nas01 2049         # Port 2049 reachable?
       <ul style={S.ul}>
         <li>Snapshot schedules running?</li>
         <li>Replication jobs healthy?</li>
-        <li>Alert email delivery — test send karo</li>
+        <li>Alert email delivery — send a test</li>
         <li>Firmware advisory check</li>
       </ul>
 
@@ -1125,7 +1114,7 @@ nc -zv nas01 2049         # Port 2049 reachable?
 
       {/* ══ SECTION 42 — NAS MIGRATION ══════════════════════════════════════ */}
       <h2 id="nas-migration" style={S.h2}>NAS Migration</h2>
-      <p style={S.p}>NAS replace karte waqt ek basic file copy often insufficient hai. Plan aur validate karo:</p>
+      <p style={S.p}>When replacing a NAS, a basic file copy is often insufficient. Plan and validate:</p>
       <ul style={S.ul}>
         <li><strong>ACLs and ownership</strong> — NTFS ACLs, POSIX permissions, extended ACLs</li>
         <li><strong>Timestamps</strong> — creation, modification, access times</li>
@@ -1140,65 +1129,65 @@ nc -zv nas01 2049         # Port 2049 reachable?
         <li><strong>Data integrity validation</strong> — checksums/verification where appropriate</li>
       </ul>
       <Callout type="warning" title="robocopy / rsync — Not a Complete NAS Migration Tool">
-        robocopy aur rsync useful hain lekin automatically every NAS metadata element, ACL ya protocol-specific configuration preserve nahi karte. Exactly kya preserve hoga aur kya manually migrate karna padega — verify karo. Enterprise NAS migrations typically vendor-specific migration procedures require karte hain.
+        robocopy and rsync are useful, but they do not automatically preserve every NAS metadata element, ACL or protocol-specific configuration. Verify exactly what will be preserved and what will have to be migrated manually. Enterprise NAS migrations typically require vendor-specific migration procedures.
       </Callout>
 
       {/* ══ SECTION 43 — NAS vs WINDOWS FILE SERVER ════════════════════════ */}
       <h2 id="nas-vs-windows-fs" style={S.h2}>NAS vs Windows File Server</h2>
-      <p style={S.p}><strong>Windows File Server:</strong> General-purpose OS (Windows Server) pe SMB share host karna. Microsoft ecosystem ke saath tight integration, flexible.</p>
-      <p style={S.p}><strong>NAS:</strong> Purpose-built storage platform — storage management, hardware redundancy, snapshots, replication aur file protocols ek specialized appliance mein integrated hain.</p>
-      <p style={S.p}>Dono valid solutions hain — choice scale, budget, existing infrastructure, required features aur operational model pe depend karta hai.</p>
+      <p style={S.p}><strong>Windows File Server:</strong> Hosting an SMB share on a general-purpose OS (Windows Server). Tight integration with the Microsoft ecosystem, flexible.</p>
+      <p style={S.p}><strong>NAS:</strong> Purpose-built storage platform — storage management, hardware redundancy, snapshots, replication and file protocols are integrated into one specialized appliance.</p>
+      <p style={S.p}>Both are valid solutions — the choice depends on scale, budget, existing infrastructure, required features and operational model.</p>
 
       {/* ══ SECTION 44 — INTERVIEW QUESTIONS ═══════════════════════════════ */}
       <h2 id="interview-questions" style={S.h2}>Interview / Job Knowledge</h2>
 
-      <h3 style={S.h3}>Q1: NAS kya hai aur DAS se kaise alag hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> NAS ek dedicated file storage appliance hai jo Ethernet network pe connected hota hai aur multiple clients ko simultaneously file-level storage provide karta hai. DAS directly ek host se cable se attached hoti hai — typically general-purpose network file sharing provide nahi karta. NAS ka main advantage: shared multi-client access. DAS ka main advantage: lowest latency, simplest architecture. Production mein dono alag use cases ke liye use hote hain.</p>
+      <h3 style={S.h3}>Q1: What is NAS and how is it different from DAS?</h3>
+      <p style={S.p}><strong>Answer:</strong> NAS is a dedicated file storage appliance that is connected to the Ethernet network and provides file-level storage to multiple clients simultaneously. DAS is attached directly to a single host by cable — it typically does not provide general-purpose network file sharing. The main advantage of NAS: shared multi-client access. The main advantage of DAS: lowest latency, simplest architecture. In production both are used for different use cases.</p>
 
-      <h3 style={S.h3}>Q2: SMB aur NFS mein kya difference hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> SMB (Server Message Block) — Windows file sharing protocol, TCP port 445. NFS (Network File System) — Linux/Unix standard, primarily TCP port 2049. SMB user-based authentication (AD/Kerberos/NTLM) use karta hai. NFS traditionally IP-based export control + UID/GID. NFSv4 with Kerberos proper user auth add karta hai. Same NAS dono simultaneously support kar sakta hai — multiprotocol datasets ke liye identity mapping design required hai.</p>
+      <h3 style={S.h3}>Q2: What is the difference between SMB and NFS?</h3>
+      <p style={S.p}><strong>Answer:</strong> SMB (Server Message Block) — Windows file sharing protocol, TCP port 445. NFS (Network File System) — Linux/Unix standard, primarily TCP port 2049. SMB uses user-based authentication (AD/Kerberos/NTLM). NFS traditionally uses IP-based export control + UID/GID. NFSv4 with Kerberos adds proper user auth. The same NAS can support both simultaneously — multiprotocol datasets require an identity mapping design.</p>
 
-      <h3 style={S.h3}>Q3: Port 445 kya hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> SMB (Server Message Block) protocol ka primary TCP port. Windows file sharing is port pe karta hai. <code>Test-NetConnection nas01 -Port 445</code> se verify karte hain ki NAS par SMB service accessible hai aur port reachable hai.</p>
+      <h3 style={S.h3}>Q3: What is Port 445?</h3>
+      <p style={S.p}><strong>Answer:</strong> The primary TCP port of the SMB (Server Message Block) protocol. Windows file sharing runs on this port. <code>Test-NetConnection nas01 -Port 445</code> is used to verify that the SMB service on the NAS is accessible and the port is reachable.</p>
 
-      <h3 style={S.h3}>Q4: Ping kaam karta hai lekin SMB nahi — kyun?</h3>
-      <p style={S.p}><strong>Answer:</strong> Ping ICMP test karta hai. SMB TCP port 445 use karta hai. Dono alag protocols hain. ICMP enabled ho, SMB service stopped ya port blocked ho — ping tab bhi work karta hai. Always test at protocol level: <code>Test-NetConnection nas01 -Port 445</code>.</p>
+      <h3 style={S.h3}>Q4: Ping works but SMB does not — why?</h3>
+      <p style={S.p}><strong>Answer:</strong> Ping tests ICMP. SMB uses TCP port 445. They are different protocols. ICMP can be enabled while the SMB service is stopped or the port is blocked — ping still works in that case. Always test at protocol level: <code>Test-NetConnection nas01 -Port 445</code>.</p>
 
-      <h3 style={S.h3}>Q5: NAS troubleshoot kaise karte ho jab inaccessible ho?</h3>
-      <p style={S.p}><strong>Answer:</strong> Layer-by-layer: (1) Management GUI accessible? Consider: management VLAN, routing, firewall, service, controller, physical. (2) DNS — hostname resolve? (3) Network path — VLAN/routing correct? (4) Protocol port open? (445 / 2049) (5) Share/export exists? (6) Authentication successful? (7) Permissions correct? Har layer verify karo before assuming hardware failure.</p>
+      <h3 style={S.h3}>Q5: How do you troubleshoot a NAS when it is inaccessible?</h3>
+      <p style={S.p}><strong>Answer:</strong> Layer-by-layer: (1) Management GUI accessible? Consider: management VLAN, routing, firewall, service, controller, physical. (2) DNS — hostname resolving? (3) Network path — VLAN/routing correct? (4) Protocol port open? (445 / 2049) (5) Share/export exists? (6) Authentication successful? (7) Permissions correct? Verify each layer before assuming hardware failure.</p>
 
-      <h3 style={S.h3}>Q6: NAS slow hai — kya check karoge?</h3>
-      <p style={S.p}><strong>Answer:</strong> Network congestion/NIC errors. NAS controller CPU/memory. Background jobs: rebuild, backup, replication. Cache hit ratio. Disk latency. Metadata workload heavy? Client-side issues? Layer-by-layer bottleneck identify karo — ek factor assume mat karo.</p>
+      <h3 style={S.h3}>Q6: The NAS is slow — what will you check?</h3>
+      <p style={S.p}><strong>Answer:</strong> Network congestion/NIC errors. NAS controller CPU/memory. Background jobs: rebuild, backup, replication. Cache hit ratio. Disk latency. Is the metadata workload heavy? Client-side issues? Identify the bottleneck layer by layer — do not assume a single factor.</p>
 
-      <h3 style={S.h3}>Q7: NAS capacity 100% ho jaaye toh kya hoga?</h3>
-      <p style={S.p}><strong>Answer:</strong> Write operations fail honge — applications ko I/O errors. Performance degrade hogi. Snapshots fail kar sakte hain. Serious production impact. Organizational warning threshold pe immediate action lo — wait mat karo 100% tak.</p>
+      <h3 style={S.h3}>Q7: What happens if NAS capacity reaches 100%?</h3>
+      <p style={S.p}><strong>Answer:</strong> Write operations will fail — applications get I/O errors. Performance will degrade. Snapshots can fail. Serious production impact. Take immediate action at the organizational warning threshold — do not wait until 100%.</p>
 
-      <h3 style={S.h3}>Q8: Snapshot aur backup mein kya difference hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Snapshot same NAS pe — fast restore, space-efficient. NAS fail ho — snapshot gone. Independent backup alag storage/location pe — hardware failure, ransomware, site disaster se protect karta hai. Dono alag-alag use karo — snapshot backup replace nahi karta.</p>
+      <h3 style={S.h3}>Q8: What is the difference between a snapshot and a backup?</h3>
+      <p style={S.p}><strong>Answer:</strong> A snapshot lives on the same NAS — fast restore, space-efficient. If the NAS fails — the snapshot is gone. An independent backup lives on separate storage/location — it protects against hardware failure, ransomware and site disaster. Use both, for different purposes — a snapshot does not replace a backup.</p>
 
-      <h3 style={S.h3}>Q9: NFSv3 aur NFSv4 mein firewall mein kya difference hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> NFSv3: portmapper/rpcbind TCP/UDP 111 + NFS data port 2049 + dynamic RPC ports for mountd/locking/stat — complex, multiple ports. NFSv4: primarily TCP 2049 for basic protocol traffic. Kerberos, DNS, identity services additional connectivity require kar sakte hain. Always NAS vendor documentation verify karo.</p>
+      <h3 style={S.h3}>Q9: What is the firewall difference between NFSv3 and NFSv4?</h3>
+      <p style={S.p}><strong>Answer:</strong> NFSv3: portmapper/rpcbind TCP/UDP 111 + NFS data port 2049 + dynamic RPC ports for mountd/locking/stat — complex, multiple ports. NFSv4: primarily TCP 2049 for basic protocol traffic. Kerberos, DNS and identity services may require additional connectivity. Always verify with the NAS vendor documentation.</p>
 
-      <h3 style={S.h3}>Q10: SMB 1.0 kyun disable karna chahiye?</h3>
-      <p style={S.p}><strong>Answer:</strong> SMB 1.0 serious security vulnerabilities rakhta hai — EternalBlue exploit, WannaCry ransomware. Modern systems SMB 2.x/3.x support karte hain. Legacy dependencies: isolate, document, compensating controls, migration plan. Production mein SMB 1.0 enabled rakhna unacceptable security risk hai.</p>
+      <h3 style={S.h3}>Q10: Why should SMB 1.0 be disabled?</h3>
+      <p style={S.p}><strong>Answer:</strong> SMB 1.0 has serious security vulnerabilities — the EternalBlue exploit, WannaCry ransomware. Modern systems support SMB 2.x/3.x. Legacy dependencies: isolate, document, compensating controls, migration plan. Keeping SMB 1.0 enabled in production is an unacceptable security risk.</p>
 
       {/* ══ SECTION 45 — KEY TAKEAWAYS ══════════════════════════════════════ */}
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
       <ul style={S.ul}>
-        <li><strong>NAS = Network Attached Storage</strong> — dedicated file storage appliance on Ethernet. Multiple clients simultaneously access karte hain.</li>
-        <li><strong>File-level storage</strong> — NAS files aur folders share karta hai. Underlying NAS filesystem (ZFS, WAFL, Btrfs, vendor-specific) clients ko directly nahi dikhta.</li>
-        <li><strong>SMB = Windows protocol (Port 445). NFS = Linux/Unix (Port 2049 primarily).</strong> Enterprise NAS dono simultaneously support karta hai — multiprotocol datasets ke liye identity mapping design required hai.</li>
+        <li><strong>NAS = Network Attached Storage</strong> — a dedicated file storage appliance on Ethernet. Multiple clients access it simultaneously.</li>
+        <li><strong>File-level storage</strong> — NAS shares files and folders. The underlying NAS filesystem (ZFS, WAFL, Btrfs, vendor-specific) is not directly visible to clients.</li>
+        <li><strong>SMB = Windows protocol (Port 445). NFS = Linux/Unix (Port 2049 primarily).</strong> Enterprise NAS supports both simultaneously — multiprotocol datasets require an identity mapping design.</li>
         <li><strong>Ping ≠ NAS health.</strong> Always test at protocol port level.</li>
         <li><strong>Layer-by-layer troubleshooting:</strong> Network → DNS → Port → Service → Share → Auth → Permissions.</li>
-        <li><strong>Access Denied ke teen checks:</strong> Share permission, folder permission, authentication.</li>
-        <li><strong>Capacity thresholds</strong> vendor recommendations aur organizational policy se set karo.</li>
-        <li><strong>Snapshot ≠ Backup.</strong> Same hardware pe hai. Independent backup, preferably offsite/isolated, strongly recommended per organizational policy.</li>
-        <li><strong>SMB 1.0 disable karo</strong> — legacy dependencies: isolate, document, migration plan.</li>
+        <li><strong>Three checks for Access Denied:</strong> Share permission, folder permission, authentication.</li>
+        <li><strong>Capacity thresholds</strong> should be set from vendor recommendations and organizational policy.</li>
+        <li><strong>Snapshot ≠ Backup.</strong> It sits on the same hardware. Independent backup, preferably offsite/isolated, strongly recommended per organizational policy.</li>
+        <li><strong>Disable SMB 1.0</strong> — legacy dependencies: isolate, document, migration plan.</li>
         <li><strong>NTP mandatory in AD/Kerberos environments</strong> — time skew = auth failure.</li>
-        <li><strong>HA/failover testing</strong> should be performed periodically per org policy, change management aur vendor-supported procedures.</li>
+        <li><strong>HA/failover testing</strong> should be performed periodically per org policy, change management and vendor-supported procedures.</li>
         <li><strong>NFSv3 firewalling complex</strong> (portmapper + dynamic ports). NFSv4 simpler (primarily TCP 2049 + identity/Kerberos deps).</li>
-        <li><strong>Multiprotocol NAS requires design</strong> — identity mapping, security style, name mapping plan karo before enabling both protocols.</li>
-        <li><strong>NAS migration:</strong> ACLs, timestamps, identity mapping, share/export definitions — sab explicitly plan karo. Basic file copy sufficient nahi.</li>
+        <li><strong>Multiprotocol NAS requires design</strong> — plan identity mapping, security style and name mapping before enabling both protocols.</li>
+        <li><strong>NAS migration:</strong> ACLs, timestamps, identity mapping, share/export definitions — plan all of them explicitly. A basic file copy is not sufficient.</li>
         <li><strong>Monitor daily:</strong> Drive health, RAID status, capacity, network errors, session counts, replication lag, auth failures.</li>
         <li><strong>Document everything:</strong> Share paths, IPs, VLANs, permissions matrix.</li>
       </ul>
@@ -1215,10 +1204,10 @@ nc -zv nas01 2049         # Port 2049 reachable?
       {/* ══ RELATED TOPICS ═══════════════════════════════════════════════════ */}
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Related Topics</h2>
       <ul style={S.ul}>
-        <li><TopicLink slug="das" variant="inline" /> — Direct Attached Storage — NAS ka predecessor concept. DAS ke baad NAS padho.</li>
-        <li><TopicLink slug="san" variant="inline" /> — Storage Area Network — enterprise shared block storage. NAS aur SAN ko compare karo.</li>
-        <li><TopicLink slug="server-basics" variant="inline" /> — Server hardware fundamentals — NAS deploy karne wale servers.</li>
-        <li><TopicLink slug="virtualization" variant="inline" /> — VMware aur NAS — shared datastores aur VM storage.</li>
+        <li><TopicLink slug="das" variant="inline" /> — Direct Attached Storage — the predecessor concept to NAS. Read NAS after DAS.</li>
+        <li><TopicLink slug="san" variant="inline" /> — Storage Area Network — enterprise shared block storage. Compare NAS and SAN.</li>
+        <li><TopicLink slug="server-basics" variant="inline" /> — Server hardware fundamentals — the servers that deploy NAS.</li>
+        <li><TopicLink slug="virtualization" variant="inline" /> — VMware and NAS — shared datastores and VM storage.</li>
       </ul>
     </>
   );

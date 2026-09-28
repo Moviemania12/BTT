@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Enterprise Firewall — Complete Data Center & Enterprise Guide | Behind The Tech",
   description:
-    "Enterprise Firewall kya hai — stateful inspection, session table, security zones, NAT, VPN, IPsec, IKEv2, NGFW, TLS inspection, HA, failover, troubleshooting, commissioning aur design — complete Hinglish Data Center engineer handbook.",
+    "What is an enterprise firewall — stateful inspection, session table, security zones, NAT, VPN, IPsec, IKEv2, NGFW, TLS inspection, HA, failover, troubleshooting, commissioning and design — the complete English Data Center engineer handbook.",
   keywords: [
     "enterprise firewall", "data center firewall", "stateful inspection", "firewall policy",
     "security zones", "NAT firewall", "PAT firewall", "DNAT", "SNAT", "IPsec VPN",
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     title: "Enterprise Firewall — Complete Data Center & Enterprise Guide",
     description: "Stateful inspection, session table, zones, NAT, VPN, IPsec, IKEv2, NGFW, TLS inspection, HA, failover, troubleshooting, design — complete firewall handbook.",
     url: "https://behindthetech.in/learn/it/networking/firewall",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -27,41 +28,48 @@ export const metadata: Metadata = {
     title: "Enterprise Firewall | Behind The Tech",
     description: "Complete firewall guide — stateful inspection, NAT, VPN, NGFW, HA, troubleshooting, design — beginner to engineer level.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/it/networking/firewall" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/it/networking/firewall",
+    languages: {
+      en: "https://behindthetech.in/learn/it/networking/firewall",
+      hi: "https://behindthetech.in/hi/learn/it/networking/firewall",
+      "x-default": "https://behindthetech.in/learn/it/networking/firewall",
+    },
+  },
 };
 
 export const faqs = [
   {
-    q: "Firewall aur Router mein fundamental difference kya hai?",
-    a: "Router ka primary job hai IP packets ko best path pe forward karna — security uska primary concern nahi hai. Firewall ka primary job hai security policy enforce karna — kaun sa traffic permitted hai aur kaun sa nahi. Router pe ACL laga sakte hain lekin ACL stateless hai — har packet independently evaluate hota hai, connection tracking nahi hota. Stateful firewall connection-related state track karta hai — return traffic automatically permitted hoti hai established sessions ke liye bina separate reverse rule ke.",
+    q: "What is the fundamental difference between a firewall and a router?",
+    a: "A router's primary job is to forward IP packets along the best path — security is not its primary concern. A firewall's primary job is to enforce security policy — which traffic is permitted and which is not. You can apply ACLs on a router, but ACLs are stateless — every packet is evaluated independently and there is no connection tracking. A stateful firewall tracks connection-related state — return traffic for established sessions is permitted automatically, without a separate reverse rule.",
   },
   {
-    q: "Stateful inspection ka matlab kya hai — sirf connections yaad rakhna hai?",
-    a: "Nahi — stateful inspection sirf 'connections yaad rakhna' se bahut zyada hai. Firewall protocol-level state track karta hai: TCP ke liye full state machine (SYN → ESTABLISHED → FIN), UDP ke liye tuple-based pseudo-session with idle timeout (no protocol state), ICMP ke liye type/identifier based tracking. Depth varies by platform — TCP flag validation, sequence number checking, protocol anomaly detection — yeh sab platform aur configuration dependent hai. 'State track karna' ek oversimplification hai.",
+    q: "What does stateful inspection mean — is it just remembering connections?",
+    a: "No — stateful inspection is much more than 'remembering connections'. The firewall tracks protocol-level state: a full state machine for TCP (SYN → ESTABLISHED → FIN), a tuple-based pseudo-session with an idle timeout for UDP (no protocol state), and type/identifier-based tracking for ICMP. Depth varies by platform — TCP flag validation, sequence number checking and protocol anomaly detection all depend on the platform and configuration. 'Tracking state' is an oversimplification.",
   },
   {
-    q: "NAT aur Firewall ka kya relationship hai — ek kaam hai ya alag?",
-    a: "NAT aur firewall separate functions hain. NAT address translation karta hai — private IP → public IP. Firewall security policy enforce karta hai — permit/deny. DNAT alone traffic permit nahi karta — security policy separately required hai. NAT aur policy processing order platform-specific hai: kuch platforms DNAT pehle apply karte hain (policy post-NAT address pe match karti hai), kuch policy pehle evaluate karte hain. Yeh most common misconfiguration source hai — testing mandatory hai.",
+    q: "What is the relationship between NAT and the firewall — is it one function or separate?",
+    a: "NAT and the firewall are separate functions. NAT performs address translation — private IP → public IP. The firewall enforces security policy — permit/deny. DNAT alone does not permit traffic — a security policy is required separately. The order of NAT and policy processing is platform-specific: some platforms apply DNAT first (the policy matches on the post-NAT address), while others evaluate the policy first. This is the most common source of misconfiguration — testing is mandatory.",
   },
   {
-    q: "Firewall HA mein session state survive karta hai failover ke baad?",
-    a: "Depends on: (1) whether session state was synchronized to peer before failure, (2) session type supported for synchronization, (3) failover timing — very recent sessions may not have completed sync, (4) asymmetric routing — return path must encounter firewall with compatible state, (5) application protocol behavior. Stateful failover reduces disruption for supported sessions — it does not guarantee zero disruption. Not all platforms synchronize all state types. Config sync aur session sync alag mechanisms hain — dono zaroori hain.",
+    q: "Does session state survive a failover in firewall HA?",
+    a: "Depends on: (1) whether session state was synchronized to peer before failure, (2) session type supported for synchronization, (3) failover timing — very recent sessions may not have completed sync, (4) asymmetric routing — return path must encounter firewall with compatible state, (5) application protocol behavior. Stateful failover reduces disruption for supported sessions — it does not guarantee zero disruption. Not all platforms synchronize all state types. Config sync and session sync are separate mechanisms — both are required.",
   },
   {
-    q: "IKEv2 mein Phase 1 aur Phase 2 kya hota hai?",
-    a: "IKEv2 mein Phase 1/Phase 2 terminology exist nahi karti — yeh IKEv1 ke terms hain. IKEv2 mein: IKE_SA_INIT exchange algorithm selection aur DH keying material establish karta hai (peers not yet authenticated). IKE_AUTH exchange peers authenticate karta hai aur first CHILD SA establish karta hai. IKE SA = IKE control traffic protect karta hai. CHILD SA = actual IPsec protected data traffic carry karta hai. EAP authentication ke liye additional exchanges ho sakte hain before CHILD SA creation.",
+    q: "What are Phase 1 and Phase 2 in IKEv2?",
+    a: "Phase 1/Phase 2 terminology does not exist in IKEv2 — those are IKEv1 terms. In IKEv2: the IKE_SA_INIT exchange performs algorithm selection and establishes DH keying material (peers not yet authenticated). The IKE_AUTH exchange authenticates the peers and establishes the first CHILD SA. IKE SA = protects IKE control traffic. CHILD SA = carries the actual IPsec-protected data traffic. EAP authentication may involve additional exchanges before CHILD SA creation.",
   },
   {
-    q: "TLS decryption firewall pe kaise kaam karta hai aur kya risks hain?",
-    a: "Outbound TLS inspection: firewall forward-proxy ki tarah kaam karta hai — client se ek TLS connection, server se alag TLS connection. Client ko firewall ki CA trust karni padti hai (enterprise certificate management via GPO/MDM). Server ka certificate firewall validate karta hai. Decrypted traffic inspection engines (IPS, URL, file) ko available hoti hai. Risks: privacy (personal banking, healthcare decrypt hota hai), certificate pinning breaks applications, performance overhead significant hai, QUIC/HTTP3 inspection complex hai. TLS 1.3 mein server Certificate message encrypted hoti hai — passive observer nahi dekh sakta. ECH (RFC 9849) SNI bhi encrypt karta hai. Decryption policy selective honi chahiye.",
+    q: "How does TLS decryption work on a firewall, and what are the risks?",
+    a: "Outbound TLS inspection: the firewall works like a forward proxy — one TLS connection with the client and a separate TLS connection with the server. The client must trust the firewall's CA (enterprise certificate management via GPO/MDM). The firewall validates the server's certificate. Decrypted traffic is made available to the inspection engines (IPS, URL, file). Risks: privacy (personal banking and healthcare traffic gets decrypted), certificate pinning breaks applications, performance overhead is significant, and QUIC/HTTP3 inspection is complex. In TLS 1.3 the server Certificate message is encrypted — a passive observer cannot see it. ECH (RFC 9849) encrypts the SNI as well. Decryption policy should be selective.",
   },
   {
-    q: "Split tunnel aur full tunnel mein kya difference hai — kaunsa secure hai?",
-    a: "Full tunnel: enterprise-configured traffic VPN se jaata hai (enterprise inspection/policy apply hoti hai). Split tunnel: sirf specified enterprise destinations VPN use karte hain, baaki traffic client ke local path se jaata hai. Split tunneling inherently insecure nahi hai — security depends on endpoint controls, split-tunnel policy design, aur kya protect karna hai. Full tunnel mein bhi exceptions configured ho sakte hain. Trade-offs: full tunnel = more enterprise visibility but higher VPN bandwidth; split tunnel = lower VPN bandwidth but internet traffic enterprise se nahi guzarta. Architecture decision hai, not a universal security rule.",
+    q: "What is the difference between split tunnel and full tunnel — which one is secure?",
+    a: "Full tunnel: enterprise-configured traffic goes through the VPN (enterprise inspection/policy applies). Split tunnel: only specified enterprise destinations use the VPN, while the remaining traffic goes via the client's local path. Split tunneling is not inherently insecure — security depends on endpoint controls, split-tunnel policy design, and what needs to be protected. Exceptions can be configured even in a full tunnel. Trade-offs: full tunnel = more enterprise visibility but higher VPN bandwidth; split tunnel = lower VPN bandwidth but internet traffic does not pass through the enterprise. It is an architecture decision, not a universal security rule.",
   },
   {
-    q: "Firewall sizing mein sirf throughput kafi hai ya aur kya dekhna chahiye?",
-    a: "Throughput alone is never sufficient for firewall sizing. Required dimensions: (1) Threat-inspection throughput — IPS, app-ID, URL filtering enabled pe significantly lower than baseline, (2) TLS decryption throughput — separate measurable limit, (3) VPN throughput — encrypted tunnel capacity may be separate, (4) Concurrent sessions — session table size, (5) New session rate (connections/second) — burst handling, (6) Traffic mix — small packet PPS vs large flow differ, (7) Enabled security services — each adds processing overhead, (8) HA failure scenario — surviving peer must handle 100% load. Datasheet figures are measured under specific test conditions — validate against your intended production feature set.",
+    q: "Is throughput alone enough for firewall sizing, or what else should be considered?",
+    a: "Throughput alone is never sufficient for firewall sizing. Required dimensions: (1) Threat-inspection throughput — significantly lower than baseline when IPS, app-ID and URL filtering are enabled, (2) TLS decryption throughput — separate measurable limit, (3) VPN throughput — encrypted tunnel capacity may be separate, (4) Concurrent sessions — session table size, (5) New session rate (connections/second) — burst handling, (6) Traffic mix — small packet PPS vs large flow differ, (7) Enabled security services — each adds processing overhead, (8) HA failure scenario — surviving peer must handle 100% load. Datasheet figures are measured under specific test conditions — validate against your intended production feature set.",
   },
 ];
 

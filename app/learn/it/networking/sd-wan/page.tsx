@@ -27,7 +27,7 @@ export default function SdWanArticlePage() {
         slug="sd-wan"
         headings={HEADINGS}
         readingTimeMinutes={sdWanMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/it/networking/sd-wan">
         <Content />
       </ArticleLayout>
     </>

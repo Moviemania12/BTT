@@ -11,7 +11,7 @@ export default function RouterPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <ArticleLayout slug="router" headings={HEADINGS} readingTimeMinutes={90}>
+      <ArticleLayout slug="router" headings={HEADINGS} readingTimeMinutes={90} lang="en" alternateHref="/hi/learn/it/networking/router">
         <Content />
       </ArticleLayout>
     </>

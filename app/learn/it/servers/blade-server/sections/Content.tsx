@@ -8,29 +8,21 @@ export default function Content() {
   return (
     <>
       <div style={{ background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: 10, padding: "1.2rem 1.4rem", marginBottom: "2rem" }}>
-        <p style={{ fontWeight: 700, color: "#c2410c", marginBottom: "0.6rem", fontSize: "1rem" }}>📋 Quick Summary — Blade Servers in 2 Minutes</p>
-        <ul style={{ ...S.ul, marginBottom: 0 }}>
-          <li><strong>Blade kya hai:</strong> Thin, self-contained compute card (blade) jo shared chassis mein slide karta hai. Shared power, cooling, networking chassis se.</li>
-          <li><strong>Chassis:</strong> Enclosure with shared PSUs, fans, I/O modules (networking), management module — sab blades ke liye.</li>
-          <li><strong>Shared failure domain:</strong> Chassis-level failure ya maintenance sab blades affect karta hai — mission-critical mein cross-chassis distribution zaroori.</li>
-          <li><strong>vs Rack server:</strong> Blade = higher density, less cabling, centralised management, chassis dependency. Rack = flexible, independent, lower entry cost.</li>
-          <li><strong>Modular/Composable:</strong> Next step — disaggregated resources dynamically composed via software. More flexibility, higher complexity.</li>
-          <li><strong>Key check:</strong> Power budget, cooling capacity, network oversubscription ratio plan karo — chassis selection ke waqt.</li>
-        </ul>
+        <p style={{ fontWeight: 700, color: "#c2410c", marginBottom: "0.6rem", fontSize: "1rem" }}>📋 Quick Summary — Blade Servers in 2 Minutes</p> <ul style={{ ...S.ul, marginBottom: 0 }}> <li><strong>What a blade is:</strong> A thin, self-contained compute card (blade) that slides into a shared chassis. Power, cooling and networking are shared from the chassis.</li> <li><strong>Chassis:</strong> Enclosure with shared PSUs, fans, I/O modules (networking) and management module — for all blades.</li> <li><strong>Shared failure domain:</strong> A chassis-level failure or maintenance affects all blades — cross-chassis distribution is essential for mission-critical.</li> <li><strong>vs Rack server:</strong> Blade = higher density, less cabling, centralised management, chassis dependency. Rack = flexible, independent, lower entry cost.</li> <li><strong>Modular/Composable:</strong> The next step — disaggregated resources dynamically composed via software. More flexibility, higher complexity.</li> <li><strong>Key check:</strong> Plan power budget, cooling capacity and network oversubscription ratio — at the time of chassis selection.</li> </ul>
       </div>
 
       <h2 id="what-is-blade" style={S.h2}>What Is a Blade Server?</h2>
-      <p style={S.p}>Traditional rack server ek complete, self-contained unit hai — apna power supply, apna cooling, apna networking. Blade server fundamentally different approach use karta hai.</p>
-      <p style={S.p}>Ek <strong>chassis</strong> (enclosure) hota hai jo rack mein mount hota hai. Is chassis mein multiple <strong>blades</strong> (compute cards) slide in hote hain. Blades mein sirf CPU, RAM, local storage hote hain — compute resources. Baaki sab — power supply, cooling, network switching, management — chassis level pe shared hota hai. Har blade ne apna PSU nahi rakhna, apna cooling nahi, apna network switch nahi — yeh chassis se milte hain.</p>
+      <p style={S.p}>A traditional rack server is a complete, self-contained unit — its own power supply, its own cooling, its own networking. A blade server uses a fundamentally different approach.</p>
+      <p style={S.p}>There is a <strong>chassis</strong> (enclosure) that mounts in the rack. Multiple <strong>blades</strong> (compute cards) slide into this chassis. Blades contain only CPU, RAM and local storage — compute resources. Everything else — power supply, cooling, network switching, management — is shared at the chassis level. Each blade does not need its own PSU, its own cooling or its own network switch — these come from the chassis.</p>
 
       <h2 id="blade-architecture" style={S.h2}>Blade Architecture — Component by Component</h2>
       <Figure caption="Fig 1 — Blade chassis architecture: compute blades sharing PSUs, fans, I/O modules and management module through chassis backplane."><BladeChassisArch /></Figure>
-      <p style={S.p}><strong>Chassis (Enclosure):</strong> Rack mein mount hota hai — typically several U space leta hai (exact size vendor aur model pe depend karta hai, vendor documentation verify karo). Multiple blade slots hote hain.</p>
-      <p style={S.p}><strong>Shared Power Supplies:</strong> Multiple PSUs chassis mein — sab blades ek shared power bus se power lete hain. Redundant configuration — specific redundancy mode (N+1, 2N, etc.) chassis design pe depend karta hai.</p>
-      <p style={S.p}><strong>Shared Cooling:</strong> High-performance fans chassis mein — sab blades ke liye. Individual blade fans nahi hote. Central cooling more coordinated ho sakti hai.</p>
-      <p style={S.p}><strong>I/O Modules:</strong> Chassis ke rear mein — networking aur storage connectivity provide karte hain. Blade traffic internal backplane se I/O module tak route hota hai. External cables per-blade nahi hote — I/O module level pe uplinks connect hote hain.</p>
-      <p style={S.p}><strong>Management Module:</strong> Centralised out-of-band management — sab blades ek interface se. Power control, hardware health, virtual console — chassis level pe.</p>
-      <p style={S.p}><strong>Chassis Backplane:</strong> Internal interconnect — power, management signals, aur data aur network traffic sab blades aur chassis components ke beech route karta hai.</p>
+      <p style={S.p}><strong>Chassis (Enclosure):</strong> Mounts in the rack — typically takes several U of space (exact size depends on vendor and model; verify vendor documentation). It has multiple blade slots.</p>
+      <p style={S.p}><strong>Shared Power Supplies:</strong> Multiple PSUs in the chassis — all blades draw power from a shared power bus. Redundant configuration — the specific redundancy mode (N+1, 2N, etc.) depends on chassis design.</p>
+      <p style={S.p}><strong>Shared Cooling:</strong> High-performance fans in the chassis — for all blades. There are no individual blade fans. Central cooling can be more coordinated.</p>
+      <p style={S.p}><strong>I/O Modules:</strong> At the rear of the chassis — they provide networking and storage connectivity. Blade traffic is routed through the internal backplane to the I/O module. There are no per-blade external cables — uplinks connect at the I/O module level.</p>
+      <p style={S.p}><strong>Management Module:</strong> Centralised out-of-band management — all blades from one interface. Power control, hardware health, virtual console — at the chassis level.</p>
+      <p style={S.p}><strong>Chassis Backplane:</strong> Internal interconnect — routes power, management signals, and data and network traffic between all blades and chassis components.</p>
 
       <h2 id="blade-vs-rack" style={S.h2}>Blade vs Rack vs Modular/Composable</h2>
       <ComparisonTable
@@ -48,63 +40,63 @@ export default function Content() {
         ]}
         caption="Selection depends on scale, density requirements, operational model, budget and existing infrastructure."
       />
-      <p style={S.p}><strong>Modular / Composable Infrastructure:</strong> Next evolution — resources (CPU, memory, storage, networking) disaggregated into pools. Software-defined composition — needed resources dynamically assigned. HPE Synergy is concept ka ek commercial example hai lekin koi universal standard nahi hai. Higher flexibility, higher complexity aur investment. Large-scale, standardized deployments ke liye evaluate karo.</p>
+      <p style={S.p}><strong>Modular / Composable Infrastructure:</strong> The next evolution — resources (CPU, memory, storage, networking) disaggregated into pools. Software-defined composition — needed resources are dynamically assigned. HPE Synergy is one commercial example of this concept, but there is no universal standard. Higher flexibility, higher complexity and investment. Evaluate it for large-scale, standardized deployments.</p>
 
       <h2 id="chassis-fabric" style={S.h2}>Chassis Fabric and Interconnects</h2>
-      <p style={S.p}>Blade chassis ka internal interconnect fabric blades ke beech data aur network traffic route karta hai — I/O modules ke saath. Fabric architecture chassis design pe depend karta hai. Kuch chassis crossbar switch fabric use karte hain — blades ke beech non-blocking bandwidth. Kuch simpler shared backplane use karte hain — oversubscription higher ho sakta hai.</p>
-      <p style={S.p}>I/O module types available hote hain alag-alag connectivity ke liye: Ethernet switching module (blades mein virtual switch — ToR tak single uplink), pass-through module (blade NICs directly patch karo ToR switch pe — simpler, more visible), Fibre Channel module (SAN connectivity). I/O module choice — workload, network architecture, aur ops team preference pe based.</p>
+      <p style={S.p}>The blade chassis's internal interconnect fabric routes data and network traffic between blades — together with the I/O modules. Fabric architecture depends on chassis design. Some chassis use a crossbar switch fabric — non-blocking bandwidth between blades. Some use a simpler shared backplane — oversubscription can be higher.</p>
+      <p style={S.p}>I/O module types are available for different connectivity needs: Ethernet switching module (a virtual switch in the blades — a single uplink to the ToR), pass-through module (patch blade NICs directly to the ToR switch — simpler, more visible), Fibre Channel module (SAN connectivity). I/O module choice is based on workload, network architecture, and ops team preference.</p>
 
       <h2 id="oversubscription" style={S.h2}>Oversubscription in Blade Networks</h2>
-      <p style={S.p}>Oversubscription tab hota hai jab total internal blade bandwidth total external uplink bandwidth se zyada ho. Example: 8 blades × 10Gbps per blade = 80Gbps internal aggregate, lekin chassis ke 2 uplinks = 20Gbps — 4:1 oversubscription.</p>
-      <p style={S.p}>Oversubscription kab acceptable hai: Blades sab simultaneously maximum network bandwidth use nahi karte (typical mixed workloads mein — web servers, VMs). Kab problem hai: Storage-heavy workloads, live migration traffic bursts, backup windows. Actual traffic patterns ke hisaab se I/O module uplink capacity plan karo.</p>
+      <p style={S.p}>Oversubscription occurs when total internal blade bandwidth exceeds total external uplink bandwidth. Example: 8 blades × 10Gbps per blade = 80Gbps internal aggregate, but the chassis's 2 uplinks = 20Gbps — 4:1 oversubscription.</p>
+      <p style={S.p}>When oversubscription is acceptable: blades do not all use maximum network bandwidth simultaneously (in typical mixed workloads — web servers, VMs). When it is a problem: storage-heavy workloads, live migration traffic bursts, backup windows. Plan I/O module uplink capacity according to actual traffic patterns.</p>
 
       <h2 id="shared-failure" style={S.h2}>Shared Failure Domain</h2>
       <Callout type="warning" title="Blade Chassis = Shared Failure Domain, Not Universal Single Point of Failure">
-        Blade chassis ek shared failure domain hai — chassis-level failures (complete power loss, management module issue) sab blades affect kar sakte hain. Lekin redundant components (dual PSUs, N+1 fans, dual management modules) individual component failures survive karne ke liye design kiye gaye hain. "Single point of failure" blanket statement technically inaccurate hai — chassis has internal redundancy. Real risk individual chassis level — isliye cross-chassis distribution mission-critical ke liye important hai.
+        A blade chassis is a shared failure domain — chassis-level failures (complete power loss, management module issue) can affect all blades. However, redundant components (dual PSUs, N+1 fans, dual management modules) are designed to survive individual component failures. The blanket statement "single point of failure" is technically inaccurate — the chassis has internal redundancy. The real risk is at the individual chassis level — that is why cross-chassis distribution is important for mission-critical.
       </Callout>
-      <p style={S.p}><strong>Cross-chassis distribution:</strong> Mission-critical services ke liye VMs ya workloads multiple chassis ke beech distribute karo. Ek chassis maintenance ya issue pe doosra chassis service continue karta hai. Yeh requires appropriate virtualisation aur high availability configuration.</p>
+      <p style={S.p}><strong>Cross-chassis distribution:</strong> For mission-critical services, distribute VMs or workloads across multiple chassis. When one chassis has maintenance or an issue, another chassis continues the service. This requires appropriate virtualisation and high availability configuration.</p>
 
       <h2 id="redundancy" style={S.h2}>Redundancy at Chassis Level</h2>
-      <p style={S.p}><strong>Power:</strong> Redundant PSUs — hot-swap, multiple power feeds. A/B power feeds se chassis PSUs connect karo same logic se jo rack servers ke liye hai. Specific PSU redundancy mode chassis vendor documentation se verify karo.</p>
-      <p style={S.p}><strong>Cooling:</strong> Fan modules typically N+1 — one fan module fail hone pe chassis continues (reduced margin). Hot-swap typically supported.</p>
-      <p style={S.p}><strong>Management modules:</strong> Enterprise chassis typically dual management modules support karte hain — active/standby. Primary fail → secondary takes over.</p>
-      <p style={S.p}><strong>I/O modules:</strong> Redundant I/O modules alag bays mein deploy karo — single I/O module failure blade connectivity impact na kare.</p>
+      <p style={S.p}><strong>Power:</strong> Redundant PSUs — hot-swap, multiple power feeds. Connect chassis PSUs to A/B power feeds with the same logic used for rack servers. Verify the specific PSU redundancy mode from the chassis vendor documentation.</p>
+      <p style={S.p}><strong>Cooling:</strong> Fan modules are typically N+1 — if one fan module fails, the chassis continues (with reduced margin). Hot-swap is typically supported.</p>
+      <p style={S.p}><strong>Management modules:</strong> Enterprise chassis typically support dual management modules — active/standby. Primary fails → secondary takes over.</p>
+      <p style={S.p}><strong>I/O modules:</strong> Deploy redundant I/O modules in separate bays — so that a single I/O module failure does not impact blade connectivity.</p>
 
       <h2 id="management" style={S.h2}>Centralised Management</h2>
-      <p style={S.p}>Blade environment ka significant advantage centralised management hai. Chassis management module (vendor-specific — verify current product names with OEM) se sab blades ek interface se manage karo. Power on/off, hardware health, blade configuration templates, firmware update coordination.</p>
-      <p style={S.p}>Template-based deployment: same configuration multiple blades pe push karna automated aur consistent rakhta hai. Useful large, standardized compute environments mein.</p>
+      <p style={S.p}>A significant advantage of a blade environment is centralised management. Manage all blades from one interface through the chassis management module (vendor-specific — verify current product names with the OEM). Power on/off, hardware health, blade configuration templates, firmware update coordination.</p>
+      <p style={S.p}>Template-based deployment: pushing the same configuration to multiple blades keeps it automated and consistent. Useful in large, standardized compute environments.</p>
 
       <h2 id="deployment" style={S.h2}>Deployment Considerations</h2>
-      <p style={S.p}><strong>Physical:</strong> Chassis heavy hoti hai fully loaded — proper rails aur installation team. Rack depth compatibility verify karo. Rear service access — I/O modules aur PSUs rear pe hote hain.</p>
-      <p style={S.p}><strong>Power:</strong> Chassis full loaded pe total power draw calculate karo — rack circuit adequate? A/B feeds planned? Per-blade TDP × total blades + chassis overhead = total draw estimate (vendor power calculator use karo specific numbers ke liye).</p>
-      <p style={S.p}><strong>Cooling:</strong> High-density chassis significant heat produce karta hai — CRAC/CRAH capacity verify karo. Hot-aisle/cold-aisle orientation maintain karo.</p>
-      <p style={S.p}><strong>Network planning:</strong> I/O module uplink bandwidth vs total blade bandwidth — oversubscription ratio plan karo. Management network — chassis management module dedicated management VLAN pe.</p>
+      <p style={S.p}><strong>Physical:</strong> A fully loaded chassis is heavy — use proper rails and an installation team. Verify rack depth compatibility. Rear service access — I/O modules and PSUs are at the rear.</p>
+      <p style={S.p}><strong>Power:</strong> Calculate the total power draw of a fully loaded chassis — is the rack circuit adequate? Are A/B feeds planned? Per-blade TDP × total blades + chassis overhead = total draw estimate (use the vendor power calculator for specific numbers).</p>
+      <p style={S.p}><strong>Cooling:</strong> A high-density chassis produces significant heat — verify CRAC/CRAH capacity. Maintain hot-aisle/cold-aisle orientation.</p>
+      <p style={S.p}><strong>Network planning:</strong> I/O module uplink bandwidth vs total blade bandwidth — plan the oversubscription ratio. Management network — chassis management module on a dedicated management VLAN.</p>
 
       <h2 id="troubleshooting" style={S.h2}>Troubleshooting Blade Environments</h2>
       <h3 style={S.h3}>Blade Not Powering On</h3>
-      <p style={S.p}>Chassis management console check karo — blade recognized? Power budget exceeded (chassis total power limit hit)? Blade properly seated (re-seat)? Blade itself faulty — test with known-good slot.</p>
+      <p style={S.p}>Check the chassis management console — is the blade recognized? Power budget exceeded (chassis total power limit hit)? Is the blade properly seated (re-seat)? Is the blade itself faulty — test with a known-good slot.</p>
       <h3 style={S.h3}>Network Connectivity Issue</h3>
-      <p style={S.p}>Blade ka I/O module path check karo. I/O module healthy — chassis management se verify. Uplink from I/O module to ToR switch status? VLAN configuration I/O module aur blade OS match karte hain?</p>
+      <p style={S.p}>Check the blade's I/O module path. Is the I/O module healthy — verify from chassis management. Status of the uplink from the I/O module to the ToR switch? Do VLAN configurations match between the I/O module and the blade OS?</p>
       <h3 style={S.h3}>Chassis Management Not Accessible</h3>
-      <p style={S.p}>Management network connectivity check karo. Primary management module failed? Secondary take over hua? Network path to management IP working?</p>
+      <p style={S.p}>Check management network connectivity. Has the primary management module failed? Did the secondary take over? Is the network path to the management IP working?</p>
       <h3 style={S.h3}>Thermal Warnings</h3>
-      <p style={S.p}>Fan modules — koi failed? Blanking panels in empty blade slots (required for airflow). Hot-aisle cold-aisle orientation correct? High-power blades concentrated? Ambient rack temperature?</p>
+      <p style={S.p}>Fan modules — any failed? Blanking panels in empty blade slots (required for airflow). Is hot-aisle cold-aisle orientation correct? Are high-power blades concentrated? Ambient rack temperature?</p>
 
       <h2 id="interview-questions" style={S.h2}>Interview Questions</h2>
-      <h3 style={S.h3}>Q1: Blade server aur rack server mein key architectural difference kya hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Blade chassis mein compute blades power, cooling aur networking chassis se shared resources ke through lete hain — per-blade PSU, cooling ya network card nahi. Rack server self-contained hai. Blade: higher density, less cabling, centralised management, chassis-level shared failure domain. Rack: independent, flexible, wider vendor choice, lower initial investment.</p>
-      <h3 style={S.h3}>Q2: Shared failure domain kya hai aur kaise mitigate karte hain?</h3>
-      <p style={S.p}><strong>Answer:</strong> Blade chassis shared infrastructure (power, cooling, I/O) ek failure domain banata hai — chassis-level issue sab blades affect kar sakta hai. Chassis ke andar redundant PSUs, fans, management modules individual component failures se protect karte hain. Mission-critical ke liye: VMs/workloads multiple chassis ke beech distribute karo — ek chassis issue dono simultaneously affect na kare. Yeh virtualisation aur HA configuration ke saath achieve hota hai.</p>
+      <h3 style={S.h3}>Q1: What is the key architectural difference between a blade server and a rack server?</h3>
+      <p style={S.p}><strong>Answer:</strong> In a blade chassis, compute blades take power, cooling and networking through resources shared from the chassis — no per-blade PSU, cooling or network card. A rack server is self-contained. Blade: higher density, less cabling, centralised management, chassis-level shared failure domain. Rack: independent, flexible, wider vendor choice, lower initial investment.</p>
+      <h3 style={S.h3}>Q2: What is a shared failure domain and how do you mitigate it?</h3>
+      <p style={S.p}><strong>Answer:</strong> The shared infrastructure of a blade chassis (power, cooling, I/O) creates one failure domain — a chassis-level issue can affect all blades. Redundant PSUs, fans and management modules inside the chassis protect against individual component failures. For mission-critical: distribute VMs/workloads across multiple chassis — so that one chassis issue does not affect both simultaneously. This is achieved with virtualisation and HA configuration.</p>
 
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
       <ul style={S.ul}>
-        <li>Blade server = compute card in shared chassis — power, cooling, networking chassis se milte hain.</li>
-        <li>Chassis ek shared failure domain hai — internal redundancy exist karti hai, lekin chassis-level issues sab blades affect kar sakte hain.</li>
-        <li>Cross-chassis distribution mission-critical workloads ke liye zaroori hai.</li>
-        <li>I/O modules blade networking define karte hain — type (switching/pass-through/FC) workload aur architecture pe based choose karo.</li>
-        <li>Oversubscription plan karo — total blade bandwidth vs chassis uplink bandwidth.</li>
-        <li>Composable/modular infrastructure next evolution hai — resources disaggregated, software-defined composition.</li>
-        <li>Chassis power budget, cooling capacity aur network uplinks carefully plan karo before deployment.</li>
+        <li>Blade server = compute card in a shared chassis — power, cooling and networking come from the chassis.</li>
+        <li>The chassis is a shared failure domain — internal redundancy exists, but chassis-level issues can affect all blades.</li>
+        <li>Cross-chassis distribution is essential for mission-critical workloads.</li>
+        <li>I/O modules define blade networking — choose the type (switching/pass-through/FC) based on workload and architecture.</li>
+        <li>Plan oversubscription — total blade bandwidth vs chassis uplink bandwidth.</li>
+        <li>Composable/modular infrastructure is the next evolution — resources disaggregated, software-defined composition.</li>
+        <li>Carefully plan chassis power budget, cooling capacity and network uplinks before deployment.</li>
       </ul>
 
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Frequently Asked Questions</h2>
@@ -117,7 +109,7 @@ export default function Content() {
 
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Related Topics</h2>
       <ul style={S.ul}>
-        <li><TopicLink slug="server-basics" variant="inline" /> — Rack server fundamentals aur deployment.</li>
+        <li><TopicLink slug="server-basics" variant="inline" /> — Rack server fundamentals and deployment.</li>
         <li><TopicLink slug="virtualization" variant="inline" /> — VMs across blade chassis, HA configuration.</li>
       </ul>
     </>

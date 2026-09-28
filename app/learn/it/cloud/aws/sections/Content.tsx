@@ -31,13 +31,13 @@ export default function Content() {
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
         <p style={S.p}>
-          AWS (Amazon Web Services) duniya ka sabse bada public cloud platform hai jo hundreds of cloud services across compute, networking, storage, databases, security, analytics, AI/ML aur many other domains offer karta hai. Data Center engineer ke liye AWS samajhna do cheezein hain: traditional DC concepts ka cloud equivalent samajhna, aur real AWS workloads design, connect, secure, monitor aur troubleshoot karna.
+          AWS (Amazon Web Services) is the world's largest public cloud platform, offering hundreds of cloud services across compute, networking, storage, databases, security, analytics, AI/ML and many other domains. For a Data Center engineer, understanding AWS means two things: understanding the cloud equivalents of traditional DC concepts, and designing, connecting, securing, monitoring and troubleshooting real AWS workloads.
         </p>
         <p style={S.p}>
-          Yeh article AWS certification guide nahi hai. Yeh ek infrastructure engineer ka practical reference hai — VPC networking se lekar hybrid DC connectivity tak, Security Groups se IAM tak, Multi-AZ HA se troubleshooting tak.
+          This article is not an AWS certification guide. It is a practical reference for an infrastructure engineer — from VPC networking to hybrid DC connectivity, from Security Groups to IAM, from Multi-AZ HA to troubleshooting.
         </p>
-        <Callout type="important" title="Data Center Engineer Ka Perspective">
-          AWS mein zyada concepts traditional DC se map karte hain — lekin exactly one-to-one nahi. EC2 ek virtual compute instance hai AWS virtualization infrastructure pe — physical server nahi. VPC ek logically isolated software-defined network hai — VLAN nahi. Public subnet routing pe dependent hai, sirf IP address pe nahi. Yeh distinctions article mein clearly explain kiye gaye hain.
+        <Callout type="important" title="The Data Center Engineer's Perspective">
+          Most concepts in AWS map to a traditional DC — but not exactly one-to-one. EC2 is a virtual compute instance on AWS virtualization infrastructure — not a physical server. A VPC is a logically isolated software-defined network — not a VLAN. Whether a subnet is public depends on routing, not just on the IP address. These distinctions are explained clearly in this article.
         </Callout>
       </section>
 
@@ -45,10 +45,10 @@ export default function Content() {
       <section id="what-is-aws">
         <h2 style={S.h2}>What Is AWS?</h2>
         <p style={S.p}>
-          Amazon Web Services duniya ka sabse bada public cloud provider hai. AWS apne massive global data center network pe compute, storage, networking, databases, machine learning aur security services offer karta hai — on-demand, pay-as-you-go model pe.
+          Amazon Web Services is the world's largest public cloud provider. AWS offers compute, storage, networking, databases, machine learning and security services on its massive global data center network — on an on-demand, pay-as-you-go model.
         </p>
         <p style={S.p}>
-          Infrastructure engineer ke liye key insight: AWS sirf ek tool hai. Traditional DC mein jo physical servers, switches, routers, storage arrays, firewalls aur load balancers hote hain — woh sab AWS mein virtualized, managed services ke roop mein milte hain. Physical layer AWS manage karta hai; logical configuration tumhari responsibility hai.
+          The key insight for an infrastructure engineer: AWS is just a tool. The physical servers, switches, routers, storage arrays, firewalls and load balancers found in a traditional DC — all of them are available in AWS as virtualized, managed services. AWS manages the physical layer; the logical configuration is your responsibility.
         </p>
         <ComparisonTable
           headers={["Traditional DC Component", "AWS Equivalent", "Key Difference"]}
@@ -78,14 +78,14 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            Infrastructure engineer ke liye primary focus IaaS hai — EC2, VPC, EBS, storage. PaaS services (RDS, managed LBs) are also commonly used because they reduce operational overhead while still needing design decisions from you.
+            For an infrastructure engineer the primary focus is IaaS — EC2, VPC, EBS, storage. PaaS services (RDS, managed LBs) are also commonly used because they reduce operational overhead while still needing design decisions from you.
           </p>
         </section>
 
         <section id="shared-responsibility">
           <h3 style={S.h3}>Shared Responsibility Model</h3>
           <p style={S.p}>
-            Responsibility service type ke saath vary karti hai — same rules EC2, RDS, Lambda pe alag apply hote hain:
+            Responsibility varies with the service type — the same rules apply differently to EC2, RDS and Lambda:
           </p>
           <ComparisonTable
             headers={["AWS Service", "AWS Manages", "You Manage"]}
@@ -97,7 +97,7 @@ export default function Content() {
             ]}
           />
           <Callout type="important" title="Shared Responsibility Practical Implication">
-            AWS ke infrastructure pe attack hue — AWS ki problem. Tumhara misconfigured Security Group ya leaked IAM key se breach hua — tumhari problem. Managed services mein tumhara responsibility surface kam hota hai lekin zero nahi. Shared responsibility clearly document karo apni org ke liye.
+            If AWS's infrastructure is attacked — that is AWS's problem. If a breach happens through your misconfigured Security Group or a leaked IAM key — that is your problem. With managed services your responsibility surface is smaller, but not zero. Document the shared responsibility clearly for your organization.
           </Callout>
         </section>
       </section>
@@ -109,22 +109,22 @@ export default function Content() {
         <section id="regions">
           <h3 style={S.h3}>Regions</h3>
           <p style={S.p}>
-            AWS multiple independent geographic Regions mein operate karta hai — jaise <code>ap-south-1</code> (Mumbai), <code>us-east-1</code> (N. Virginia), <code>eu-west-1</code> (Ireland). Har Region completely independent hai — different data centers, different network, different services potentially.
+            AWS operates in multiple independent geographic Regions — such as <code>ap-south-1</code> (Mumbai), <code>us-east-1</code> (N. Virginia), <code>eu-west-1</code> (Ireland). Every Region is completely independent — different data centers, different network, and potentially different services.
           </p>
           <p style={S.p}>
-            Data ek Region mein stay karta hai unless explicitly move kiya jaye. Compliance requirements (GDPR, India data residency, PCI DSS scope) ke liye Region selection critical hai.
+            Data stays in a Region unless it is explicitly moved. Region selection is critical for compliance requirements (GDPR, India data residency, PCI DSS scope).
           </p>
         </section>
 
         <section id="availability-zones">
           <h3 style={S.h3}>Availability Zones</h3>
           <p style={S.p}>
-            Har Region mein multiple Availability Zones (AZs) hote hain — typically 3 ya zyada. AZ ek logically isolated failure domain hai — separate power infrastructure, separate cooling, separate network connectivity. AZs physically separated hain lekin same Region mein low-latency distance pe hain for replication.
+            Every Region has multiple Availability Zones (AZs) — typically 3 or more. An AZ is a logically isolated failure domain — separate power infrastructure, separate cooling, separate network connectivity. AZs are physically separated but sit within low-latency distance in the same Region for replication.
           </p>
           <Callout type="warning" title="AZ ≠ Single Physical Building">
-            AWS AZ ko exactly ek physical building guarantee nahi karta. AZ ek logically isolated failure domain hai jo physically separate aur independent hai. Architecture decisions mein is distinction ko mind karo — AZ failure scope samajhna zaroori hai, exact physical topology nahi.
+            AWS does not guarantee that an AZ is exactly one physical building. An AZ is a logically isolated failure domain that is physically separate and independent. Keep this distinction in mind in architecture decisions — what matters is understanding the AZ failure scope, not the exact physical topology.
           </Callout>
-          <Figure caption="AWS Global Infrastructure: Regions and Availability Zones — har Region independent, har AZ isolated failure domain">
+          <Figure caption="AWS Global Infrastructure: Regions and Availability Zones — every Region independent, every AZ an isolated failure domain">
             <AwsGlobalDiagram />
           </Figure>
         </section>
@@ -145,7 +145,7 @@ export default function Content() {
         <section id="edge-infrastructure">
           <h3 style={S.h3}>Edge Locations, Local Zones and Outposts</h3>
           <p style={S.p}>
-            AWS sirf Regions aur AZs nahi hai — global reach ke liye AWS ne multiple additional infrastructure tiers build ki hain:
+            AWS is not just Regions and AZs — for global reach, AWS has built multiple additional infrastructure tiers:
           </p>
           <ComparisonTable
             headers={["Infrastructure", "What It Is", "Use Case", "DC Engineer Analogy"]}
@@ -165,17 +165,17 @@ export default function Content() {
         <section id="region-selection">
           <h3 style={S.h3}>Region Selection Strategy</h3>
           <p style={S.p}>
-            Region selection ek important architecture decision hai. Sirf latency dekh ke mat chuno — multiple factors matter karte hain:
+            Region selection is an important architecture decision. Do not choose based on latency alone — multiple factors matter:
           </p>
           <ul style={S.ul}>
-            <li><strong>Data sovereignty:</strong> GDPR, India IT Act, financial regulations — data kahan store ho sakta hai?</li>
-            <li><strong>Latency to users:</strong> Primary user base ke closest Region — measure karo, assume mat karo</li>
-            <li><strong>Service availability:</strong> Kuch AWS services sirf specific Regions mein available hain</li>
-            <li><strong>Disaster Recovery:</strong> DR Region primary se geographically separated lekin ideally compliant within same jurisdiction</li>
-            <li><strong>Cost:</strong> Region pricing vary karta hai — same service different cost in different Regions</li>
+            <li><strong>Data sovereignty:</strong> GDPR, India IT Act, financial regulations — where can the data be stored?</li>
+            <li><strong>Latency to users:</strong> The Region closest to the primary user base — measure it, do not assume</li>
+            <li><strong>Service availability:</strong> Some AWS services are available only in specific Regions</li>
+            <li><strong>Disaster Recovery:</strong> DR Region geographically separated from the primary, but ideally compliant within the same jurisdiction</li>
+            <li><strong>Cost:</strong> Region pricing varies — the same service costs differently in different Regions</li>
           </ul>
           <Callout type="important" title="Multi-Region ≠ Automatic Active-Active">
-            Multi-Region deployment complex hai — data synchronization, routing, consistency, latency sab manage karne padte hain. Active-passive DR bahut simpler starting point hai. Multi-region active-active design deliberate hai, default nahi.
+            Multi-Region deployment is complex — data synchronization, routing, consistency and latency all have to be managed. Active-passive DR is a much simpler starting point. A multi-region active-active design is deliberate, not a default.
           </Callout>
         </section>
       </section>
@@ -187,10 +187,10 @@ export default function Content() {
         <section id="vpc-concepts">
           <h3 style={S.h3}>VPC, CIDR and Subnets</h3>
           <p style={S.p}>
-            VPC (Virtual Private Cloud) ek logically isolated, software-defined virtual network hai AWS mein jisme tumhare AWS resources run karte hain. Traditional DC analogy: apna private enterprise Layer-3 network — lekin VPC VLAN nahi hai. VLAN Layer 2 Ethernet construct hai; VPC pure Layer-3 logically isolated construct hai with its own routing, CIDR block, and software-defined control plane. No physical switches, no spanning tree, no broadcast domains.
+            A VPC (Virtual Private Cloud) is a logically isolated, software-defined virtual network in AWS in which your AWS resources run. Traditional DC analogy: your own private enterprise Layer-3 network — but a VPC is not a VLAN. A VLAN is a Layer 2 Ethernet construct; a VPC is a pure Layer-3 logically isolated construct with its own routing, CIDR block, and software-defined control plane. No physical switches, no spanning tree, no broadcast domains.
           </p>
           <p style={S.p}>
-            VPC ko ek CIDR block assign karte hain (e.g., <code>10.0.0.0/16</code>). Is range se subnets create karte hain (e.g., <code>10.0.1.0/24</code>, <code>10.0.2.0/24</code>). VPC ek Region ke andar hota hai aur multiple AZs span karta hai. Lekin ek subnet exactly ek AZ mein hoti hai — multi-AZ resiliency ke liye multiple subnets multiple AZs mein chahiye.
+            A VPC is assigned a CIDR block (e.g., <code>10.0.0.0/16</code>). Subnets are created from this range (e.g., <code>10.0.1.0/24</code>, <code>10.0.2.0/24</code>). A VPC lives inside a Region and spans multiple AZs. But a subnet sits in exactly one AZ — for multi-AZ resiliency you need multiple subnets in multiple AZs.
           </p>
           <ComparisonTable
             headers={["Concept", "Traditional DC", "AWS VPC"]}
@@ -209,34 +209,34 @@ export default function Content() {
         <section id="public-private-subnet">
           <h3 style={S.h3}>Public vs Private Subnet</h3>
           <p style={S.p}>
-            Yeh ek critical misconception hai: public subnet woh subnet nahi hai jisme sirf public IPs hain. Subnet public ya private isliye nahi hoti kyunki instances mein public IPs hain — balki isliye ki us subnet ke Route Table mein Internet Gateway (IGW) ki taraf default route (<code>0.0.0.0/0 → igw-xxx</code>) hai ya nahi.
+            This is a critical misconception: a public subnet is not simply a subnet that has public IPs. A subnet is public or private not because its instances have public IPs — but because of whether that subnet's Route Table has a default route (<code>0.0.0.0/0 → igw-xxx</code>) pointing to the Internet Gateway (IGW).
           </p>
           <p style={S.p}>
-            <strong>Public subnet:</strong> Route Table mein <code>0.0.0.0/0 → igw-xxx</code> route hoti hai. Is subnet ke resources Internet se reachable ho sakte hain — subject to public IP assignment aur Security Group rules.
+            <strong>Public subnet:</strong> The Route Table has a <code>0.0.0.0/0 → igw-xxx</code> route. Resources in this subnet can be reachable from the Internet — subject to public IP assignment and Security Group rules.
           </p>
           <p style={S.p}>
-            <strong>Private subnet:</strong> Route Table mein IGW route nahi hoti. Resources Internet se directly reachable nahi hain. Lekin private subnet instances bhi Internet access kar sakte hain — outbound-only, NAT Gateway ke through.
+            <strong>Private subnet:</strong> The Route Table has no IGW route. Resources are not directly reachable from the Internet. But private subnet instances can still access the Internet — outbound-only, through a NAT Gateway.
           </p>
           <Callout type="warning" title="Public IP ≠ Internet Reachable — Routing Matters">
-            Ek instance private subnet mein public IP le sakta hai — lekin agar route table mein IGW route absent hai, Internet connectivity nahi hogi. Public IP assignment aur routing dono zaroori hain inbound Internet access ke liye. Private subnet + NAT Gateway = outbound Internet access, lekin no unsolicited inbound traffic from Internet.
+            An instance in a private subnet can get a public IP — but if the IGW route is absent from the route table, there will be no Internet connectivity. Both public IP assignment and routing are required for inbound Internet access. Private subnet + NAT Gateway = outbound Internet access, but no unsolicited inbound traffic from the Internet.
           </Callout>
         </section>
 
         <section id="route-table">
           <h3 style={S.h3}>Route Tables</h3>
           <p style={S.p}>
-            Har subnet ek route table se associated hoti hai. Route table mein entries hoti hain:
+            Every subnet is associated with a route table. The route table contains entries:
           </p>
           <ul style={S.ul}>
-            <li><strong>Local route:</strong> VPC CIDR (e.g., <code>10.0.0.0/16 → local</code>) — mandatory, always present, VPC ke andar traffic handle karta hai</li>
-            <li><strong>IGW route:</strong> <code>0.0.0.0/0 → igw-xxx</code> — public subnets mein, Internet ke liye</li>
-            <li><strong>NAT Gateway route:</strong> <code>0.0.0.0/0 → nat-xxx</code> — private subnets mein, outbound Internet ke liye</li>
-            <li><strong>VPN/peering/TGW routes:</strong> Specific CIDRs for on-prem ya other VPCs</li>
+            <li><strong>Local route:</strong> VPC CIDR (e.g., <code>10.0.0.0/16 → local</code>) — mandatory, always present, handles traffic inside the VPC</li>
+            <li><strong>IGW route:</strong> <code>0.0.0.0/0 → igw-xxx</code> — in public subnets, for the Internet</li>
+            <li><strong>NAT Gateway route:</strong> <code>0.0.0.0/0 → nat-xxx</code> — in private subnets, for outbound Internet</li>
+            <li><strong>VPN/peering/TGW routes:</strong> Specific CIDRs for on-prem or other VPCs</li>
           </ul>
           <p style={S.p}>
-            Longest-prefix match applies — more specific route wins. AWS VPC router ki route selection behavior traditional physical routers se conceptually similar hai lekin exactly same nahi — AWS documentation se specific behavior verify karo jab edge cases matter karein.
+            Longest-prefix match applies — the more specific route wins. The AWS VPC router's route selection behavior is conceptually similar to traditional physical routers but not exactly the same — verify the specific behavior in the AWS documentation when edge cases matter.
           </p>
-          <Figure caption="AWS VPC Architecture — subnets, route tables, IGW aur NAT Gateway ka layout across multiple AZs">
+          <Figure caption="AWS VPC Architecture — subnets, route tables, IGW and NAT Gateway layout across multiple AZs">
             <VpcArchitectureDiagram />
           </Figure>
         </section>
@@ -244,7 +244,7 @@ export default function Content() {
         <section id="vpc-advanced">
           <h3 style={S.h3}>VPC Advanced: Endpoints, Peering, PrivateLink</h3>
           <p style={S.p}>
-            VPC ke bahar AWS services access karne ke multiple patterns hain — default Internet path se better alternatives:
+            There are multiple patterns for accessing AWS services outside the VPC — better alternatives to the default Internet path:
           </p>
           <ComparisonTable
             headers={["Mechanism", "What It Does", "Use Case", "Cost"]}
@@ -256,7 +256,7 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            VPC Peering non-transitive hai — agar VPC-A peers with VPC-B, aur VPC-B peers with VPC-C, toh VPC-A aur VPC-C automatically connected nahi hain. Transit Gateway transitive routing support karta hai — preferred at scale.
+            VPC Peering is non-transitive — if VPC-A peers with VPC-B, and VPC-B peers with VPC-C, then VPC-A and VPC-C are not automatically connected. Transit Gateway supports transitive routing — preferred at scale.
           </p>
           <Figure caption="VPC advanced connectivity: endpoints, peering, Transit Gateway — multi-VPC architecture">
             <VpcAdvancedDiagram />
@@ -266,17 +266,17 @@ export default function Content() {
         <section id="cidr-planning">
           <h3 style={S.h3}>CIDR Planning and Multi-VPC Design</h3>
           <p style={S.p}>
-            CIDR planning upfront critical hai — overlapping CIDRs peering aur Transit Gateway use impossible banate hain:
+            Upfront CIDR planning is critical — overlapping CIDRs make peering and Transit Gateway use impossible:
           </p>
           <ul style={S.ul}>
-            <li>Har VPC ko unique non-overlapping CIDR assign karo — on-prem ranges bhi include karo comparison mein</li>
+            <li>Assign every VPC a unique non-overlapping CIDR — include on-prem ranges in the comparison too</li>
             <li>Common approach: <code>10.x.0.0/16</code> per VPC (x unique per VPC) — 256 VPCs easily accommodated</li>
-            <li>Subnet sizing: too small = quickly exhaust IPs; AWS reserves 5 IPs per subnet (/28 = sirf 11 usable)</li>
+            <li>Subnet sizing: too small = IPs exhausted quickly; AWS reserves 5 IPs per subnet (/28 = only 11 usable)</li>
             <li>Hub-and-Spoke design: central Transit Gateway + shared services VPC (AD, monitoring) + spoke VPCs per team/app</li>
             <li>IPv6: AWS allocates /56 to VPC, /64 to subnets — globally unique, no NAT needed; dual-stack possible</li>
           </ul>
           <Callout type="warning" title="Overlapping CIDRs = Peering Impossible">
-            Agar VPC-A aur VPC-B dono 10.0.0.0/16 use karte hain — peering kabhi kaam nahi karega, TGW attachment bhi fail hoga. Plan karo pehle. Production mein change karna painful hai.
+            If VPC-A and VPC-B both use 10.0.0.0/16 — peering will never work, and a TGW attachment will fail too. Plan first. Changing it in production is painful.
           </Callout>
         </section>
       </section>
@@ -288,23 +288,23 @@ export default function Content() {
         <section id="igw">
           <h3 style={S.h3}>Internet Gateway</h3>
           <p style={S.p}>
-            IGW ek horizontally scaled, redundant, managed VPC component hai. Yeh VPC level pe attach hota hai (ek VPC — ek IGW). IGW Internet traffic ko VPC mein aane aur jaane deta hai.
+            An IGW is a horizontally scaled, redundant, managed VPC component. It attaches at the VPC level (one VPC — one IGW). The IGW lets Internet traffic enter and leave the VPC.
           </p>
           <p style={S.p}>
-            IPv4 ke liye IGW address translation (public IP ↔ private IP mapping) karta hai — instance ki private IP aur assigned public IP ke beech. IPv6 ke liye generally no translation needed (global unicast addresses directly routable).
+            For IPv4 the IGW performs address translation (public IP ↔ private IP mapping) — between the instance's private IP and its assigned public IP. For IPv6 generally no translation is needed (global unicast addresses are directly routable).
           </p>
           <p style={S.p}>
-            Inbound Internet → instance ke liye requirements: instance pe public IP (Elastic IP ya auto-assigned) + route table mein <code>0.0.0.0/0 → IGW</code> + Security Group allow kare.
+            Requirements for inbound Internet → instance: a public IP on the instance (Elastic IP or auto-assigned) + <code>0.0.0.0/0 → IGW</code> in the route table + the Security Group must allow it.
           </p>
         </section>
 
         <section id="nat-gateway">
           <h3 style={S.h3}>NAT Gateway</h3>
           <p style={S.p}>
-            NAT Gateway private subnet instances ko outbound Internet access deta hai — bina unhe Internet se directly reachable banaye. Traffic flow: Private EC2 → private subnet route (<code>0.0.0.0/0 → NAT GW</code>) → NAT Gateway (public subnet mein) → IGW → Internet. Return traffic same path reverse karta hai.
+            A NAT Gateway gives private subnet instances outbound Internet access — without making them directly reachable from the Internet. Traffic flow: Private EC2 → private subnet route (<code>0.0.0.0/0 → NAT GW</code>) → NAT Gateway (in the public subnet) → IGW → Internet. Return traffic follows the same path in reverse.
           </p>
           <Callout type="warning" title="NAT Gateway: Outbound Initiated Only">
-            NAT Gateway ke through Internet se unsolicited inbound connections private instances tak possible nahi hain. Yeh strictly outbound-initiated traffic ke liye hai — software updates, API calls, package downloads. NAT Gateway AWS-managed hai, per-AZ deployed hota hai; HA ke liye har AZ mein separate NAT Gateway best practice hai. Single NAT Gateway single AZ failure pe outage create karta hai.
+            Unsolicited inbound connections from the Internet to private instances are not possible through a NAT Gateway. It is strictly for outbound-initiated traffic — software updates, API calls, package downloads. The NAT Gateway is AWS-managed and deployed per AZ; for HA, a separate NAT Gateway in every AZ is best practice. A single NAT Gateway creates an outage on a single AZ failure.
           </Callout>
           <Figure caption="Internet traffic paths — inbound to public instance via IGW vs private outbound via NAT Gateway">
             <InternetTrafficDiagram />
@@ -314,13 +314,13 @@ export default function Content() {
         <section id="elastic-ip">
           <h3 style={S.h3}>Elastic IP and ENI</h3>
           <p style={S.p}>
-            <strong>Elastic IP (EIP):</strong> Static public IPv4 address jo tumhare account se associated hai — instance se independent. Instance stop/start karne pe auto-assigned public IP change ho jaata hai; EIP nahi badalti. Use when: stable DNS/IP needed for partner whitelisting, NAT Gateway, EC2 failover scenarios.
+            <strong>Elastic IP (EIP):</strong> A static public IPv4 address associated with your account — independent of the instance. When an instance is stopped/started, the auto-assigned public IP changes; an EIP does not change. Use when: stable DNS/IP needed for partner whitelisting, NAT Gateway, EC2 failover scenarios.
           </p>
           <p style={S.p}>
-            <strong>Elastic Network Interface (ENI):</strong> Virtual network interface — IP addresses (primary + secondary), MAC address, Security Groups carry karta hai. Multiple ENIs ek instance pe attach ho sakti hain. Secondary IPs ek ENI pe possible hain — useful for hosting multiple SSL certs or IP-specific routing. ENI independently exist kar sakti hai — instance se detach karke doosre instance pe attach possible hai (useful for quick failover).
+            <strong>Elastic Network Interface (ENI):</strong> A virtual network interface — it carries IP addresses (primary + secondary), a MAC address and Security Groups. Multiple ENIs can be attached to one instance. Secondary IPs are possible on an ENI — useful for hosting multiple SSL certs or IP-specific routing. An ENI can exist independently — it can be detached from one instance and attached to another (useful for quick failover).
           </p>
           <p style={S.p}>
-            <strong>DNS Resolution in VPC:</strong> AWS-provided DNS (<code>169.254.169.253</code> ya VPC Base + 2) automatically kaam karta hai. Private hosted zones Route 53 mein VPC se associate kar sakte hain — internal DNS resolution. DHCP Option Sets DNS servers aur domain name configure karte hain.
+            <strong>DNS Resolution in VPC:</strong> AWS-provided DNS (<code>169.254.169.253</code> or VPC Base + 2) works automatically. Private hosted zones in Route 53 can be associated with a VPC — internal DNS resolution. DHCP Option Sets configure DNS servers and the domain name.
           </p>
         </section>
       </section>
@@ -329,37 +329,37 @@ export default function Content() {
       <section id="security-group-nacl">
         <h2 style={S.h2}>Security Group vs Network ACL</h2>
         <p style={S.p}>
-          AWS mein do complementary security layers hain — Security Group aur Network ACL. Inhe <TopicLink slug="firewall" variant="inline" /> se conceptually connect karo: dono traffic filter karte hain lekin different level pe aur different statefulness ke saath.
+          AWS has two complementary security layers — the Security Group and the Network ACL. Connect them conceptually with the <TopicLink slug="firewall" variant="inline" />: both filter traffic, but at different levels and with different statefulness.
         </p>
 
         <section id="security-group">
           <h3 style={S.h3}>Security Group</h3>
           <p style={S.p}>
-            Security Group instance-level (ENI-level) stateful virtual firewall hai. Yeh connection state track karta hai — ek allowed connection ki return traffic automatically permit hoti hai bina separate rule ke. Traditional firewall analogy: stateful inspection firewall jo connection table maintain karta hai.
+            A Security Group is an instance-level (ENI-level) stateful virtual firewall. It tracks connection state — return traffic for an allowed connection is permitted automatically without a separate rule. Traditional firewall analogy: a stateful inspection firewall that maintains a connection table.
           </p>
           <ul style={S.ul}>
-            <li><strong>Stateful:</strong> Ek allowed inbound connection ki return traffic automatically allowed hai — koi separate outbound rule nahi chahiye for return packets</li>
-            <li><strong>Allow rules only:</strong> Explicit DENY rules nahi hote; jo allow nahi hai woh implicitly denied hai</li>
-            <li><strong>Source/destination flexibility:</strong> IP CIDR ya dusre Security Group IDs by ID specify kar sakte hain (SG referencing)</li>
+            <li><strong>Stateful:</strong> Return traffic for an allowed inbound connection is automatically allowed — no separate outbound rule is needed for return packets</li>
+            <li><strong>Allow rules only:</strong> There are no explicit DENY rules; whatever is not allowed is implicitly denied</li>
+            <li><strong>Source/destination flexibility:</strong> You can specify an IP CIDR or other Security Group IDs by ID (SG referencing)</li>
             <li><strong>Default SG:</strong> All outbound allowed, all inbound denied from external (unless rules added)</li>
-            <li><strong>Multiple SGs:</strong> Ek instance pe multiple Security Groups apply ho sakte hain — union of all rules</li>
+            <li><strong>Multiple SGs:</strong> Multiple Security Groups can be applied to one instance — union of all rules</li>
           </ul>
         </section>
 
         <section id="nacl">
           <h3 style={S.h3}>Network ACL</h3>
           <p style={S.p}>
-            Network ACL subnet-level stateless firewall hai. Yeh connection state nahi track karta — har packet independently evaluate hota hai. Traditional analogy: router ACL (permit/deny per direction, no state).
+            A Network ACL is a subnet-level stateless firewall. It does not track connection state — every packet is evaluated independently. Traditional analogy: a router ACL (permit/deny per direction, no state).
           </p>
           <ul style={S.ul}>
-            <li><strong>Stateless:</strong> Inbound aur outbound dono explicitly allow karne padte hain — including ephemeral return ports (1024–65535) for response packets</li>
-            <li><strong>Allow aur Deny:</strong> Explicit DENY rules possible hain — SGs se different</li>
-            <li><strong>Numbered rules:</strong> Lowest rule number first evaluate hota hai; first match applies; no implicit allow</li>
+            <li><strong>Stateless:</strong> Both inbound and outbound must be explicitly allowed — including ephemeral return ports (1024–65535) for response packets</li>
+            <li><strong>Allow and Deny:</strong> Explicit DENY rules are possible — different from SGs</li>
+            <li><strong>Numbered rules:</strong> The lowest rule number is evaluated first; the first match applies; no implicit allow</li>
             <li><strong>Default custom NACL:</strong> Deny all by default (both directions)</li>
             <li><strong>Default NACL:</strong> Allow all inbound and outbound</li>
           </ul>
           <Callout type="warning" title="NACL Stateless — Ephemeral Ports Critical">
-            Agar Security Group pe port 443 inbound allow hai lekin NACL pe outbound ephemeral port range (1024-65535) allow nahi hai — client ko response nahi milega even though SG correct hai. NACL mein har direction explicitly check karo. Yeh ek common troubleshooting mistake hai.
+            If port 443 inbound is allowed on the Security Group but the outbound ephemeral port range (1024-65535) is not allowed on the NACL — the client will not get a response even though the SG is correct. Check every direction explicitly on the NACL. This is a common troubleshooting mistake.
           </Callout>
         </section>
 
@@ -390,13 +390,13 @@ export default function Content() {
         <section id="ec2-fundamentals">
           <h3 style={S.h3}>Instance Fundamentals</h3>
           <p style={S.p}>
-            EC2 (Elastic Compute Cloud) AWS ka virtual compute instance service hai — EC2 ek virtual compute instance hai jo AWS ki virtualization infrastructure pe run karta hai, physical server nahi. Har instance ek AMI (Amazon Machine Image) se launch hota hai — AMI mein OS, pre-installed software aur configuration hota hai. AMI ek template hai — isse multiple identical instances launch kar sakte hain; Launch Templates AMI + configuration ko reusable banate hain.
+            EC2 (Elastic Compute Cloud) is AWS's virtual compute instance service — an EC2 instance is a virtual compute instance running on AWS's virtualization infrastructure, not a physical server. Every instance is launched from an AMI (Amazon Machine Image) — the AMI contains the OS, pre-installed software and configuration. An AMI is a template — multiple identical instances can be launched from it; Launch Templates make AMI + configuration reusable.
           </p>
           <p style={S.p}>
-            Instance type vCPU count, memory, network performance aur storage options define karta hai (e.g., <code>t3.medium</code>, <code>m6i.large</code>). Instance type choose karte time sirf interface bandwidth pe focus mat karo — encrypted throughput, packet rate, EBS bandwidth, network burst capacity sab matter karte hain.
+            The instance type defines vCPU count, memory, network performance and storage options (e.g., <code>t3.medium</code>, <code>m6i.large</code>). When choosing an instance type, do not focus only on interface bandwidth — encrypted throughput, packet rate, EBS bandwidth and network burst capacity all matter.
           </p>
           <p style={S.p}>
-            User Data: launch time pe automatically run hone wala script — OS configuration, software install, bootstrap karne ke liye. Instance Metadata Service v2 (IMDSv2): token-based, SSRF-safe; instance apne AMI, instance ID, IAM role credentials metadata endpoint se read karta hai.
+            User Data: a script that runs automatically at launch time — for OS configuration, software install and bootstrapping. Instance Metadata Service v2 (IMDSv2): token-based, SSRF-safe; the instance reads its AMI, instance ID and IAM role credentials from the metadata endpoint.
           </p>
         </section>
 
@@ -417,7 +417,7 @@ export default function Content() {
             ]}
           />
           <Callout type="important" title="Spot Interruption Planning">
-            Spot Instances bahut saste hain lekin AWS 2-minute notice ke saath reclaim kar sakta hai. Spot ke liye workload design karo: stateless, checkpointing, SQS-based, Auto Scaling mixed. Spot Fleets multiple instance types + AZs mein request diversify karte hain.
+            Spot Instances are very cheap, but AWS can reclaim them with a 2-minute notice. Design workloads for Spot: stateless, checkpointing, SQS-based, Auto Scaling mixed. Spot Fleets diversify requests across multiple instance types + AZs.
           </Callout>
         </section>
 
@@ -437,20 +437,20 @@ export default function Content() {
             *Root EBS deletion on terminate configurable. Additional EBS volumes by default persist after terminate — explicitly configure DeleteOnTermination per volume.
           </p>
           <Callout type="warning" title="Stop ≠ Data Safety for Instance Store">
-            Instance store data stop pe lost hoti hai — terminate pe bhi. Instance stop karne pe instance different physical host pe restart ho sakta hai — instance store data survives reboot but NOT stop. Persistent data ke liye sirf EBS use karo.
+            Instance store data is lost on stop — and on terminate as well. When an instance is stopped, it may restart on a different physical host — instance store data survives reboot but NOT stop. Use only EBS for persistent data.
           </Callout>
         </section>
 
         <section id="ec2-advanced">
           <h3 style={S.h3}>AMI, Launch Templates, Placement Groups</h3>
           <p style={S.p}>
-            <strong>AMI (Amazon Machine Image):</strong> Snapshot-based template — OS, software, configuration. Custom AMI create karo: existing instance configure karo → create image → use across Regions (copy AMI). Encryption possible. AMI = EC2 ka "golden image" concept.
+            <strong>AMI (Amazon Machine Image):</strong> A snapshot-based template — OS, software, configuration. Create a custom AMI: configure an existing instance → create image → use across Regions (copy AMI). Encryption is possible. AMI = the "golden image" concept for EC2.
           </p>
           <p style={S.p}>
-            <strong>Launch Template:</strong> Instance configuration reuse karne ke liye — AMI, instance type, key pair, SGs, user data sab store karta hai. Auto Scaling Groups Launch Templates consume karte hain. Versioning supported — rollback easy.
+            <strong>Launch Template:</strong> For reusing instance configuration — it stores the AMI, instance type, key pair, SGs and user data. Auto Scaling Groups consume Launch Templates. Versioning is supported — rollback is easy.
           </p>
           <p style={S.p}>
-            <strong>Placement Groups:</strong> Physical placement control karte hain:
+            <strong>Placement Groups:</strong> Control physical placement:
           </p>
           <ul style={S.ul}>
             <li><strong>Cluster:</strong> Low-latency networking — same rack, same AZ. HPC, tightly coupled. High bandwidth between instances. Single point of hardware failure.</li>
@@ -458,7 +458,7 @@ export default function Content() {
             <li><strong>Partition:</strong> Large distributed workloads (Hadoop, Cassandra, Kafka) — partitions isolated from each other on different racks.</li>
           </ul>
           <p style={S.p}>
-            <strong>EC2 Auto Recovery:</strong> CloudWatch alarm trigger pe AWS automatically instance recover karta hai — same instance ID, same IP, same EBS. Instance store data lost, lekin instance continuity maintained.
+            <strong>EC2 Auto Recovery:</strong> When a CloudWatch alarm triggers, AWS automatically recovers the instance — same instance ID, same IP, same EBS. Instance store data is lost, but instance continuity is maintained.
           </p>
         </section>
       </section>
@@ -470,40 +470,40 @@ export default function Content() {
         <section id="ebs">
           <h3 style={S.h3}>EBS — Block Storage</h3>
           <p style={S.p}>
-            EBS (Elastic Block Store) persistent, network-attached block storage hai — traditional DC mein SAN LUN (iSCSI) ki tarah samajho. EC2 instance se attach hota hai; instance stop ya terminate karne ke baad volume exist karta rehta hai (by default).
+            EBS (Elastic Block Store) is persistent, network-attached block storage — think of it like a SAN LUN (iSCSI) in a traditional DC. It attaches to an EC2 instance; the volume continues to exist after the instance is stopped or terminated (by default).
           </p>
           <ul style={S.ul}>
-            <li>Standard EBS volume ek EC2 instance se ek time pe attached hota hai (io2 Block Express multi-attach supports, limited use cases)</li>
-            <li>EBS volume aur EC2 instance same AZ mein hone chahiye — cross-AZ attachment nahi hoti</li>
-            <li>Snapshots: point-in-time backup — S3 mein stored (managed), incremental. Cross-AZ aur cross-Region copy possible. EBS Snapshot Lifecycle Manager (DLM) automate karta hai</li>
+            <li>A standard EBS volume is attached to one EC2 instance at a time (io2 Block Express supports multi-attach, limited use cases)</li>
+            <li>The EBS volume and EC2 instance must be in the same AZ — cross-AZ attachment is not possible</li>
+            <li>Snapshots: point-in-time backup — stored in S3 (managed), incremental. Cross-AZ and cross-Region copy possible. EBS Snapshot Lifecycle Manager (DLM) automates them</li>
             <li>Volume types: gp3 (general purpose, configurable IOPS/throughput), io2 (provisioned IOPS, high performance DB), st1/sc1 (HDD, throughput/cold storage)</li>
-            <li>Encryption: KMS key se at rest aur in transit encrypted — snapshots bhi encrypted rahti hain</li>
+            <li>Encryption: encrypted at rest and in transit with a KMS key — snapshots also stay encrypted</li>
           </ul>
         </section>
 
         <section id="s3">
           <h3 style={S.h3}>S3 — Object Storage</h3>
           <p style={S.p}>
-            S3 (Simple Storage Service) object storage hai — massive key-value store at scale. S3 mein objects store hote hain buckets mein, API (HTTP/HTTPS) se access hota hai. S3 filesystem mount nahi hoti directly. Traditional DC mein object storage tier (like NetApp StorageGRID, Dell ECS) se compare karo.
+            S3 (Simple Storage Service) is object storage — a massive key-value store at scale. In S3, objects are stored in buckets and accessed via API (HTTP/HTTPS). S3 is not mounted directly as a filesystem. Compare it with the object storage tier in a traditional DC (like NetApp StorageGRID, Dell ECS).
           </p>
           <p style={S.p}>
-            S3 data redundant storage across multiple devices and facilities within a Region mein maintain karta hai per AWS documentation. Features: versioning (every object version retained), Object Lock (WORM compliance), Cross-Region Replication, Transfer Acceleration (CloudFront edge for faster upload/download), Event Notifications (trigger Lambda/SQS/SNS on object events).
+            S3 maintains data in redundant storage across multiple devices and facilities within a Region, per AWS documentation. Features: versioning (every object version retained), Object Lock (WORM compliance), Cross-Region Replication, Transfer Acceleration (CloudFront edge for faster upload/download), Event Notifications (trigger Lambda/SQS/SNS on object events).
           </p>
           <p style={S.p}>
             <strong>S3 Storage Classes:</strong> Standard → Standard-IA (Infrequent Access) → One Zone-IA → Glacier Instant Retrieval → Glacier Flexible Retrieval → Glacier Deep Archive. Intelligent-Tiering auto-moves objects based on access patterns. Lifecycle Policies automate transitions — e.g., 30 days → Standard-IA, 90 days → Glacier.
           </p>
           <Callout type="important" title="EBS vs S3 — Fundamental Difference">
-            EBS = block device, filesystem attach, low-latency random I/O, EC2-specific, AZ-scoped. S3 = object store, API access, high durability, no filesystem, not AZ-specific, internet-accessible with proper policy. Dono completely different use cases ke liye hain — confusion dangerous hai (e.g., S3 ko database ki tarah use karna wrong design).
+            EBS = block device, filesystem attach, low-latency random I/O, EC2-specific, AZ-scoped. S3 = object store, API access, high durability, no filesystem, not AZ-specific, internet-accessible with proper policy. The two are for completely different use cases — confusing them is dangerous (e.g., using S3 like a database is the wrong design).
           </Callout>
         </section>
 
         <section id="efs">
           <h3 style={S.h3}>EFS — File Storage</h3>
           <p style={S.p}>
-            EFS (Elastic File System) AWS ka managed NFS service hai — traditional NAS ki tarah samajho. Multiple EC2 instances simultaneously mount kar sakti hain — shared filesystem. EFS multi-AZ capable hai (Regional EFS automatically multiple AZs mein stores). Automatically grows aur shrinks as files added/removed — no capacity planning needed.
+            EFS (Elastic File System) is AWS's managed NFS service — think of it like a traditional NAS. Multiple EC2 instances can mount it simultaneously — a shared filesystem. EFS is multi-AZ capable (Regional EFS automatically stores across multiple AZs). It automatically grows and shrinks as files are added/removed — no capacity planning needed.
           </p>
           <p style={S.p}>
-            Use cases: shared content repositories, web serving, home directories, CMS content, DevOps build environments. EFS block storage alternative nahi hai — different use case hai.
+            Use cases: shared content repositories, web serving, home directories, CMS content, DevOps build environments. EFS is not an alternative to block storage — it is a different use case.
           </p>
         </section>
 
@@ -513,12 +513,12 @@ export default function Content() {
             <strong>Amazon FSx:</strong> Managed file systems for specific workloads:
           </p>
           <ul style={S.ul}>
-            <li><strong>FSx for Windows File Server:</strong> Managed Windows SMB file share — AD integration, DFS, shadow copies. Traditional DC Windows file server ka cloud equivalent.</li>
+            <li><strong>FSx for Windows File Server:</strong> Managed Windows SMB file share — AD integration, DFS, shadow copies. The cloud equivalent of a traditional DC Windows file server.</li>
             <li><strong>FSx for Lustre:</strong> High-performance parallel file system — HPC, ML training, video processing. Sub-millisecond latency, hundreds GB/s throughput.</li>
             <li><strong>FSx for NetApp ONTAP:</strong> Multi-protocol (NFS, SMB, iSCSI) with ONTAP features — familiar to enterprises running NetApp.</li>
           </ul>
           <p style={S.p}>
-            <strong>AWS Storage Gateway:</strong> On-premises appliance (software or hardware) jo on-prem storage workloads ko AWS se connect karta hai. Types: S3 File Gateway (NFS/SMB → S3), FSx File Gateway (cached FSx for Windows), Volume Gateway (iSCSI → S3/EBS), Tape Gateway (virtual tape library → S3/Glacier). Traditional DC se AWS storage hybrid bridge hai.
+            <strong>AWS Storage Gateway:</strong> An on-premises appliance (software or hardware) that connects on-prem storage workloads to AWS. Types: S3 File Gateway (NFS/SMB → S3), FSx File Gateway (cached FSx for Windows), Volume Gateway (iSCSI → S3/EBS), Tape Gateway (virtual tape library → S3/Glacier). It is the hybrid bridge from a traditional DC to AWS storage.
           </p>
         </section>
 
@@ -534,7 +534,7 @@ export default function Content() {
       <section id="load-balancing">
         <h2 style={S.h2}>Load Balancing</h2>
         <p style={S.p}>
-          AWS Elastic Load Balancing (ELB) managed load balancer service hai. <TopicLink slug="load-balancer" variant="inline" /> article mein core concepts cover hain — yahan AWS-specific implementation pe focus karte hain.
+          AWS Elastic Load Balancing (ELB) is a managed load balancer service. The core concepts are covered in the <TopicLink slug="load-balancer" variant="inline" /> article — here we focus on the AWS-specific implementation.
         </p>
 
         <section id="elb-types">
@@ -548,20 +548,20 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            Gateway Load Balancer ek powerful pattern hai: all VPC traffic GWLB se guzarti hai — woh traffic third-party virtual firewall/IDS appliances ke fleet ko bhejta hai → inspect hoti hai → wapas GWLB → destination. Centralized security inspection at scale, without changing routing for each service.
+            Gateway Load Balancer is a powerful pattern: all VPC traffic passes through the GWLB — it sends that traffic to a fleet of third-party virtual firewall/IDS appliances → the traffic is inspected → back to the GWLB → destination. Centralized security inspection at scale, without changing routing for each service.
           </p>
         </section>
 
         <section id="target-groups">
           <h3 style={S.h3}>Target Groups and Health Checks</h3>
           <p style={S.p}>
-            LB traffic target groups pe route karta hai. Target group mein registered targets hote hain — EC2 instances, IP addresses ya Lambda functions. Health checks target group level pe configure hote hain — LB sirf healthy targets pe traffic bhejta hai.
+            The LB routes traffic to target groups. A target group contains registered targets — EC2 instances, IP addresses or Lambda functions. Health checks are configured at the target group level — the LB sends traffic only to healthy targets.
           </p>
           <p style={S.p}>
-            Multi-AZ design: target group mein multiple AZs ke targets register karo. LB AZ-unhealthy targets automatically bypass karta hai aur healthy targets pe route karta hai — lekin application layer pe bhi stateless design zaroori hai.
+            Multi-AZ design: register targets from multiple AZs in the target group. The LB automatically bypasses AZ-unhealthy targets and routes to healthy targets — but a stateless design at the application layer is also necessary.
           </p>
           <Callout type="important" title="Health Check ≠ Application Healthy">
-            LB health check pass karna means target port pe response aa raha hai. Application logic correctly working hai ya nahi — health check endpoint design pe depend karta hai. Shallow health endpoint 200 return kar sakta hai while app broken ho. Meaningful health endpoints design karo.
+            Passing an LB health check means a response is coming from the target port. Whether the application logic is working correctly depends on the health check endpoint design. A shallow health endpoint can return 200 while the app is broken. Design meaningful health endpoints.
           </Callout>
         </section>
       </section>
@@ -573,10 +573,10 @@ export default function Content() {
         <section id="asg">
           <h3 style={S.h3}>Auto Scaling Group</h3>
           <p style={S.p}>
-            Auto Scaling Group (ASG) automatically EC2 instances manage karta hai — min/desired/max capacity ke andar. Demand badhne pe instances add hote hain; demand kam hone pe reduce hote hain. ASG ek unhealthy instance detect karta hai (via EC2 health check ya LB health check) aur automatically replace karta hai.
+            An Auto Scaling Group (ASG) automatically manages EC2 instances — within min/desired/max capacity. When demand rises, instances are added; when demand falls, they are reduced. The ASG detects an unhealthy instance (via EC2 health check or LB health check) and automatically replaces it.
           </p>
           <p style={S.p}>
-            Scaling policies: Target Tracking (maintain metric at value, e.g., CPU 70%), Step Scaling (step adjustments based on alarm), Scheduled (predictable patterns), Predictive (ML-based forecast). Scale-out slow karna: warmup period; scale-in protect karna: scale-in protection pe specific instances.
+            Scaling policies: Target Tracking (maintain metric at value, e.g., CPU 70%), Step Scaling (step adjustments based on alarm), Scheduled (predictable patterns), Predictive (ML-based forecast). To slow scale-out: warmup period; to protect scale-in: scale-in protection on specific instances.
           </p>
           <ComparisonTable
             headers={["Concept", "Auto Scaling Group", "Load Balancer"]}
@@ -588,7 +588,7 @@ export default function Content() {
             ]}
           />
           <Callout type="warning" title="Scaling ≠ High Availability">
-            ASG sirf ek AZ mein configured hai toh AZ failure = complete outage — scaling regardless. Multi-AZ mein ASG configure karo. Scale karna aur HA dono complementary hain lekin alag cheezein hain.
+            If the ASG is configured in only one AZ, then AZ failure = complete outage — regardless of scaling. Configure the ASG across multiple AZs. Scaling and HA are complementary, but they are different things.
           </Callout>
         </section>
       </section>
@@ -597,16 +597,16 @@ export default function Content() {
       <section id="dns-route53">
         <h2 style={S.h2}>DNS — Route 53</h2>
         <p style={S.p}>
-          Route 53 AWS ka managed DNS service hai — traditional DC enterprise DNS (BIND, Microsoft DNS, Infoblox) ka cloud equivalent. Hosted zones mein DNS records configure hote hain (A, AAAA, CNAME, ALIAS, MX, TXT etc). Public hosted zones Internet-facing; private hosted zones VPC-internal.
+          Route 53 is AWS's managed DNS service — the cloud equivalent of traditional DC enterprise DNS (BIND, Microsoft DNS, Infoblox). DNS records are configured in hosted zones (A, AAAA, CNAME, ALIAS, MX, TXT etc). Public hosted zones are Internet-facing; private hosted zones are VPC-internal.
         </p>
         <p style={S.p}>
           Routing policies: Simple (single value), Weighted (A/B testing or gradual migration), Latency-based (lowest latency endpoint per AWS measurement), Failover (primary/secondary with health checks), Geolocation (client geography-based), Geoproximity (geographic + bias), Multivalue (multiple IPs with health check filtering).
         </p>
         <p style={S.p}>
-          Route 53 apne health checks bhi run kar sakta hai — endpoints ke against. Failover routing policy in health checks pe dependent hoti hai. LB health checks aur Route 53 health checks alag mechanisms hain — dono ka use case distinct hai.
+          Route 53 can also run its own health checks — against endpoints. The failover routing policy depends on these health checks. LB health checks and Route 53 health checks are separate mechanisms — each has a distinct use case.
         </p>
         <Callout type="important" title="DNS ≠ Inline Load Balancer">
-          Route 53 DNS-based traffic steering provide karta hai — inline LB nahi. DNS TTL aur resolver/client caching failover timing affect karte hain. Route 53 failover LB health-check-based failover se slower ho sakta hai. DNS traffic distribution accurately model karna hard hai because of caching behavior. Inbound HTTP traffic ke liye LB preferred hai granular health checking aur fast failover ke liye.
+          Route 53 provides DNS-based traffic steering — it is not an inline LB. DNS TTL and resolver/client caching affect failover timing. Route 53 failover can be slower than LB health-check-based failover. Modeling DNS traffic distribution accurately is hard because of caching behavior. For inbound HTTP traffic an LB is preferred for granular health checking and fast failover.
         </Callout>
       </section>
 
@@ -617,11 +617,11 @@ export default function Content() {
         <section id="iam-concepts">
           <h3 style={S.h3}>Users, Roles and Policies</h3>
           <p style={S.p}>
-            IAM authentication aur authorization ke liye hai — do alag concepts:
+            IAM is for authentication and authorization — two separate concepts:
           </p>
           <ul style={S.ul}>
-            <li><strong>Authentication:</strong> Identity verify karna — "Kya tum ho jo kehte ho?" IAM user credentials ya role-assumed STS token se.</li>
-            <li><strong>Authorization:</strong> Permission verify karna — "Kya tumhe yeh karne ki permission hai?" IAM policy evaluation se.</li>
+            <li><strong>Authentication:</strong> Verifying identity — "Are you who you say you are?" Via IAM user credentials or a role-assumed STS token.</li>
+            <li><strong>Authorization:</strong> Verifying permission — "Are you allowed to do this?" Via IAM policy evaluation.</li>
           </ul>
           <ComparisonTable
             headers={["IAM Entity", "What It Is", "Credential Type", "Use Case"]}
@@ -640,10 +640,10 @@ export default function Content() {
         <section id="iam-best-practices">
           <h3 style={S.h3}>Roles vs Long-Lived Keys</h3>
           <p style={S.p}>
-            EC2 instance ya Lambda function ko AWS services access karne ke liye IAM Role attach karo — hard-coded access keys nahi. Role assume karne pe temporary credentials automatically rotate hote hain via STS. Application ko sirf instance metadata service (IMDSv2) se credentials read karni hoti hain.
+            To let an EC2 instance or Lambda function access AWS services, attach an IAM Role — not hard-coded access keys. When a role is assumed, temporary credentials rotate automatically via STS. The application only needs to read credentials from the instance metadata service (IMDSv2).
           </p>
           <Callout type="warning" title="Access Keys in Code = Security Risk">
-            Application code ya configuration mein AWS access key aur secret embed karna ek serious security risk hai. Leak hone pe — code repo, logs, error messages mein — attacker full access le sakta hai. IAM roles with temporary credentials use karo. Least privilege principle: sirf minimum required permissions grant karo.
+            Embedding an AWS access key and secret in application code or configuration is a serious security risk. If it leaks — in a code repo, logs or error messages — an attacker can gain full access. Use IAM roles with temporary credentials. Least privilege principle: grant only the minimum required permissions.
           </Callout>
           <Figure caption="IAM: authentication vs authorization, users vs roles, least privilege and policy evaluation">
             <IamDiagram />
@@ -653,16 +653,16 @@ export default function Content() {
         <section id="iam-advanced">
           <h3 style={S.h3}>Permission Boundaries, Organizations and SCP</h3>
           <p style={S.p}>
-            <strong>Permission Boundaries:</strong> IAM entity (user/role) pe set karta hai — maximum permissions jo woh ever receive kar sakta hai, regardless of what policies say. Useful for delegated admin scenarios: dev team ko IAM manage karne do lekin only within boundary.
+            <strong>Permission Boundaries:</strong> Set on an IAM entity (user/role) — the maximum permissions it can ever receive, regardless of what policies say. Useful for delegated admin scenarios: let the dev team manage IAM, but only within the boundary.
           </p>
           <p style={S.p}>
-            <strong>AWS Organizations:</strong> Multiple AWS accounts centrally manage karne ke liye. Organizational Units (OUs) account hierarchy banate hain. Service Control Policies (SCPs) OU/account pe set karte hain — maximum permission limit for entire account. SCP identity policies override nahi karta — ek account mein even Administrator cannot exceed SCP boundary.
+            <strong>AWS Organizations:</strong> For managing multiple AWS accounts centrally. Organizational Units (OUs) form the account hierarchy. Service Control Policies (SCPs) are set on an OU/account — the maximum permission limit for the entire account. An SCP is not overridden by identity policies — in an account, even an Administrator cannot exceed the SCP boundary.
           </p>
           <p style={S.p}>
-            <strong>IAM Identity Center (SSO):</strong> Centralized SSO for multiple accounts — SAML/OIDC federation with corporate IdP (Active Directory, Okta, etc). Permission sets reuse karte hain across accounts — one place se manage karo. Traditional DC AD → AWS SSO integration common enterprise pattern.
+            <strong>IAM Identity Center (SSO):</strong> Centralized SSO for multiple accounts — SAML/OIDC federation with a corporate IdP (Active Directory, Okta, etc). Permission sets are reused across accounts — manage them from one place. Traditional DC AD → AWS SSO integration is a common enterprise pattern.
           </p>
           <p style={S.p}>
-            <strong>AWS Control Tower:</strong> Multi-account environment setup automate karta hai — landing zone, guardrails (preventive via SCPs, detective via Config Rules), Account Factory.
+            <strong>AWS Control Tower:</strong> Automates multi-account environment setup — landing zone, guardrails (preventive via SCPs, detective via Config Rules), Account Factory.
           </p>
         </section>
       </section>
@@ -682,10 +682,10 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            Multi-AZ HA design ka typical pattern: Route 53 DNS → ALB (multi-AZ) → ASG (instances AZ-a, AZ-b, AZ-c) → RDS Multi-AZ. NAT Gateway har AZ mein separately (single NAT GW single AZ failure pe outage).
+            The typical Multi-AZ HA design pattern: Route 53 DNS → ALB (multi-AZ) → ASG (instances AZ-a, AZ-b, AZ-c) → RDS Multi-AZ. A NAT Gateway separately in every AZ (a single NAT GW means an outage on a single AZ failure).
           </p>
           <Callout type="important" title="Multi-AZ ≠ Automatic HA">
-            Resources multiple AZs mein hona zaroori hai lekin sufficient nahi. Application stateless hona chahiye ya shared state external store (ElastiCache, DynamoDB) mein. Database failover DNS-based hoti hai — application ko reconnect handle karna chahiye. Architecture ke har layer pe analyze karo ki single point of failure kahan hai.
+            Having resources in multiple AZs is necessary but not sufficient. The application should be stateless, or keep shared state in an external store (ElastiCache, DynamoDB). Database failover is DNS-based — the application must handle reconnects. Analyze every layer of the architecture to find where the single point of failure is.
           </Callout>
         </section>
         <Figure caption="Multi-AZ HA architecture — Route 53, ALB, ASG across AZs, RDS Multi-AZ">
@@ -697,7 +697,7 @@ export default function Content() {
       <section id="rds">
         <h2 style={S.h2}>RDS — Managed Database</h2>
         <p style={S.p}>
-          RDS (Relational Database Service) AWS ka managed relational database hai — MySQL, PostgreSQL, MariaDB, Oracle, SQL Server support karta hai. AWS OS patching, backups, hardware management karta hai. Tumhari responsibility: schema, queries, security group configuration, parameter group tuning.
+          RDS (Relational Database Service) is AWS's managed relational database — it supports MySQL, PostgreSQL, MariaDB, Oracle and SQL Server. AWS handles OS patching, backups and hardware management. Your responsibility: schema, queries, security group configuration, parameter group tuning.
         </p>
 
         <section id="rds-multiaz">
@@ -714,7 +714,7 @@ export default function Content() {
             ]}
           />
           <Callout type="warning" title="Multi-AZ ≠ Read Scaling">
-            Multi-AZ standby sirf HA ke liye hai — reads ya writes ke liye use nahi hoti normal operation mein. Read Replicas read traffic distribute karte hain lekin automatic HA failover nahi hai by default. Dono ko mix mat karo.
+            The Multi-AZ standby is only for HA — it is not used for reads or writes in normal operation. Read Replicas distribute read traffic but do not provide automatic HA failover by default. Do not mix the two.
           </Callout>
         </section>
 
@@ -739,7 +739,7 @@ export default function Content() {
       <section id="dr-backup">
         <h2 style={S.h2}>Backup and Disaster Recovery</h2>
         <p style={S.p}>
-          Key concepts: <strong>RTO</strong> (Recovery Time Objective — kitni der mein service restore honi chahiye) aur <strong>RPO</strong> (Recovery Point Objective — kitna data loss acceptable hai). Yeh business decisions hain — AWS tools inhe achieve karne mein help karte hain.
+          Key concepts: <strong>RTO</strong> (Recovery Time Objective — how quickly the service must be restored) and <strong>RPO</strong> (Recovery Point Objective — how much data loss is acceptable). These are business decisions — AWS tools help achieve them.
         </p>
         <ComparisonTable
           headers={["DR Pattern", "RTO", "RPO", "Cost", "Approach"]}
@@ -752,10 +752,10 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          AWS Backup: centralized backup policy across EC2, EBS, RDS, EFS, DynamoDB, FSx. Backup Vaults: immutable backup storage with vault lock (WORM). Cross-region backup copies: DR strategy requirement ke liye automate karo.
+          AWS Backup: centralized backup policy across EC2, EBS, RDS, EFS, DynamoDB, FSx. Backup Vaults: immutable backup storage with vault lock (WORM). Cross-region backup copies: automate them as required by the DR strategy.
         </p>
         <Callout type="important" title="DR Testing Mandatory">
-          DR plan jo tested nahi hua woh sirf theory hai. Production mein failover test karo — regularly. RTO aur RPO measure karo actual exercise mein. Assumptions challenge karo.
+          A DR plan that has not been tested is just theory. Test failover in production — regularly. Measure RTO and RPO in an actual exercise. Challenge your assumptions.
         </Callout>
       </section>
 
@@ -763,7 +763,7 @@ export default function Content() {
       <section id="observability">
         <h2 style={S.h2}>Observability — CloudWatch and CloudTrail</h2>
         <p style={S.p}>
-          Do fundamentally different services hain jo often confuse hote hain:
+          These are two fundamentally different services that are often confused:
         </p>
         <ComparisonTable
           headers={["Service", "Purpose", "What It Answers", "Examples"]}
@@ -773,28 +773,28 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          CloudWatch metrics automatically collected hote hain AWS resources ke liye — CPU, network, disk. Application-level metrics custom namespace mein push kar sakte hain. Alarms configure karo — SNS notification ya Auto Scaling trigger. CloudWatch Logs mein application aur system logs store karo, query karo.
+          CloudWatch metrics are collected automatically for AWS resources — CPU, network, disk. Application-level metrics can be pushed to a custom namespace. Configure alarms — SNS notification or Auto Scaling trigger. Store and query application and system logs in CloudWatch Logs.
         </p>
         <p style={S.p}>
-          CloudTrail by default Management Events log karta hai. S3 aur Lambda data events separately enable karne padte hain. Security investigation ke liye CloudTrail essential hai — unauthorized API calls, resource deletion, IAM changes sab yahan milte hain.
+          By default CloudTrail logs Management Events. S3 and Lambda data events have to be enabled separately. CloudTrail is essential for security investigation — unauthorized API calls, resource deletion and IAM changes are all found here.
         </p>
-        <Figure caption="CloudWatch (operational observability) vs CloudTrail (API audit trail) — do alag services, different purposes">
+        <Figure caption="CloudWatch (operational observability) vs CloudTrail (API audit trail) — two separate services, different purposes">
           <ObservabilityDiagram />
         </Figure>
 
         <section id="observability-advanced">
           <h3 style={S.h3}>VPC Flow Logs, EventBridge and X-Ray</h3>
           <p style={S.p}>
-            <strong>VPC Flow Logs:</strong> Network-level packet metadata — source IP, destination IP, port, protocol, accept/reject. Network forensics aur security investigation ke liye critical. CloudWatch Logs ya S3 mein store karo. Traditional DC NetFlow/sFlow equivalent.
+            <strong>VPC Flow Logs:</strong> Network-level packet metadata — source IP, destination IP, port, protocol, accept/reject. Critical for network forensics and security investigation. Store them in CloudWatch Logs or S3. Equivalent of traditional DC NetFlow/sFlow.
           </p>
           <p style={S.p}>
-            <strong>AWS Config:</strong> Configuration compliance — resource configuration history, compliance rules (e.g., "all S3 buckets must be encrypted"), drift detection. Audit aur compliance use case. Not operational monitoring — configuration state tracking.
+            <strong>AWS Config:</strong> Configuration compliance — resource configuration history, compliance rules (e.g., "all S3 buckets must be encrypted"), drift detection. Audit and compliance use case. Not operational monitoring — configuration state tracking.
           </p>
           <p style={S.p}>
-            <strong>Amazon EventBridge:</strong> Event-driven automation — AWS service events, custom events, scheduled rules → trigger Lambda, Step Functions, SQS, SNS. Decoupled architecture enable karta hai.
+            <strong>Amazon EventBridge:</strong> Event-driven automation — AWS service events, custom events, scheduled rules → trigger Lambda, Step Functions, SQS, SNS. Enables a decoupled architecture.
           </p>
           <p style={S.p}>
-            <strong>AWS X-Ray:</strong> Distributed tracing — microservices request path trace karo across services. Latency bottleneck identify karo. Service map visualize karo. Traditional APM tool (Dynatrace, New Relic) ka AWS equivalent.
+            <strong>AWS X-Ray:</strong> Distributed tracing — trace the request path of microservices across services. Identify latency bottlenecks. Visualize the service map. The AWS equivalent of a traditional APM tool (Dynatrace, New Relic).
           </p>
         </section>
       </section>
@@ -806,7 +806,7 @@ export default function Content() {
         <section id="vpn-directconnect">
           <h3 style={S.h3}>Site-to-Site VPN and Direct Connect</h3>
           <p style={S.p}>
-            On-prem data center ko AWS VPC se connect karne ke do primary approaches hain:
+            There are two primary approaches for connecting an on-prem data center to an AWS VPC:
           </p>
           <ComparisonTable
             headers={["Feature", "Site-to-Site VPN", "Direct Connect"]}
@@ -821,7 +821,7 @@ export default function Content() {
             ]}
           />
           <Callout type="warning" title="Direct Connect: NOT Encrypted by Default">
-            Direct Connect ek dedicated private circuit hai — Internet se isolated — lekin traffic encrypted nahi hota by default. Encryption ke liye separate layer configure karo (jaise IPsec over Direct Connect). Compliance requirements ke liye explicitly verify karo. Connect karo <TopicLink slug="firewall" variant="inline" /> aur <TopicLink slug="router" variant="inline" /> concepts se — on-prem routing, BGP, aur firewall policies sab relevant hain.
+            Direct Connect is a dedicated private circuit — isolated from the Internet — but traffic is not encrypted by default. Configure a separate layer for encryption (such as IPsec over Direct Connect). Verify this explicitly for compliance requirements. Connect it with the <TopicLink slug="firewall" variant="inline" /> and <TopicLink slug="router" variant="inline" /> concepts — on-prem routing, BGP, and firewall policies are all relevant.
           </Callout>
           <Figure caption="Hybrid connectivity — Site-to-Site VPN (encrypted over Internet) vs Direct Connect (private circuit, not encrypted by default)">
             <HybridConnectivityDiagram />
@@ -831,13 +831,13 @@ export default function Content() {
         <section id="transit-gateway">
           <h3 style={S.h3}>Transit Gateway and Hybrid DNS</h3>
           <p style={S.p}>
-            Multiple VPCs aur on-prem connections point-to-point VPC peering se manage karna complex ho jaata hai at scale. Transit Gateway ek central hub hai — multiple VPCs aur on-prem connections (VPN, Direct Connect) ko centrally interconnect karta hai. Traditional DC mein core WAN router analogy — hub-and-spoke topology.
+            Managing multiple VPCs and on-prem connections with point-to-point VPC peering becomes complex at scale. Transit Gateway is a central hub — it interconnects multiple VPCs and on-prem connections (VPN, Direct Connect) centrally. The analogy in a traditional DC is the core WAN router — hub-and-spoke topology.
           </p>
           <p style={S.p}>
-            <strong>Direct Connect Gateway:</strong> Single Direct Connect connection se multiple Regions ke VPCs tak connect possible hai. <strong>Transit VIF (Virtual Interface):</strong> Direct Connect pe Transit Gateway ke saath use karne ke liye. BGP on-prem se AWS tak routes advertise karta hai — <TopicLink slug="router" variant="inline" /> BGP concepts directly apply hote hain.
+            <strong>Direct Connect Gateway:</strong> Makes it possible to connect a single Direct Connect connection to VPCs in multiple Regions. <strong>Transit VIF (Virtual Interface):</strong> For use with a Transit Gateway over Direct Connect. BGP advertises routes from on-prem to AWS — <TopicLink slug="router" variant="inline" /> BGP concepts apply directly.
           </p>
           <p style={S.p}>
-            <strong>Hybrid DNS:</strong> On-prem DNS server AWS private zones resolve nahi kar sakta directly. Route 53 Resolver Inbound Endpoint: on-prem se AWS private DNS queries forward karo. Route 53 Resolver Outbound Endpoint: AWS se on-prem DNS resolve karo. Dono milake bidirectional hybrid DNS resolution enable karte hain.
+            <strong>Hybrid DNS:</strong> An on-prem DNS server cannot resolve AWS private zones directly. Route 53 Resolver Inbound Endpoint: forward AWS private DNS queries from on-prem. Route 53 Resolver Outbound Endpoint: resolve on-prem DNS from AWS. Together they enable bidirectional hybrid DNS resolution.
           </p>
         </section>
       </section>
@@ -849,7 +849,7 @@ export default function Content() {
         <section id="what-are-containers">
           <h3 style={S.h3}>What Are Containers?</h3>
           <p style={S.p}>
-            Container ek lightweight, portable application runtime hai — host OS kernel share karta hai lekin isolated filesystem, network aur process space rakhta hai. Traditional VM se fundamental difference: VM ek complete OS run karta hai (hypervisor pe); container sirf application aur its dependencies package karta hai, kernel OS se share karta hai.
+            A container is a lightweight, portable application runtime — it shares the host OS kernel but keeps an isolated filesystem, network and process space. The fundamental difference from a traditional VM: a VM runs a complete OS (on a hypervisor); a container packages only the application and its dependencies and shares the kernel with the OS.
           </p>
           <ComparisonTable
             headers={["Property", "Virtual Machine", "Container"]}
@@ -863,70 +863,70 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            Traditional DC mein server consolidation ke liye VMs use hote the — containers zyada efficient hain same goal ke liye. "Build once, run anywhere" — dev laptop pe build karo, same container production pe run karo without environment differences.
+            In a traditional DC, VMs were used for server consolidation — containers are more efficient for the same goal. "Build once, run anywhere" — build on a dev laptop, run the same container in production without environment differences.
           </p>
         </section>
 
         <section id="docker-fundamentals">
           <h3 style={S.h3}>Docker Fundamentals</h3>
           <p style={S.p}>
-            Docker container ecosystem ka de-facto standard hai. Key concepts:
+            Docker is the de-facto standard of the container ecosystem. Key concepts:
           </p>
           <ul style={S.ul}>
-            <li><strong>Dockerfile:</strong> Text file jo container image build karne ke instructions define karta hai — base image, dependencies install, app copy, startup command</li>
-            <li><strong>Container Image:</strong> Immutable snapshot — application + runtime + dependencies bundled. Registry mein stored.</li>
-            <li><strong>Container:</strong> Running instance of an image — ephemeral by default, data container ke andar persist nahi hota restart pe (volume use karo)</li>
+            <li><strong>Dockerfile:</strong> A text file that defines the instructions for building a container image — base image, dependency install, app copy, startup command</li>
+            <li><strong>Container Image:</strong> Immutable snapshot — application + runtime + dependencies bundled. Stored in a registry.</li>
+            <li><strong>Container:</strong> Running instance of an image — ephemeral by default; data inside the container does not persist across restarts (use a volume)</li>
             <li><strong>Registry:</strong> Image store — ECR (AWS private), Docker Hub (public), GitHub Container Registry. ECR AWS native, IAM-integrated.</li>
-            <li><strong>Container Runtime:</strong> Docker Engine, containerd — actual containers run karta hai. ECS aur EKS containerd use karte hain.</li>
+            <li><strong>Container Runtime:</strong> Docker Engine, containerd — runs the actual containers. ECS and EKS use containerd.</li>
           </ul>
-          <Callout type="important" title="Container Images Immutable Hain">
-            Running container mein changes container stop hone pe lost ho jaate hain. Persistent data ke liye volumes use karo (EBS, EFS). Configuration environment variables se inject karo — image mein hardcode mat karo.
+          <Callout type="important" title="Container Images Are Immutable">
+            Changes in a running container are lost when the container stops. Use volumes for persistent data (EBS, EFS). Inject configuration through environment variables — do not hardcode it in the image.
           </Callout>
         </section>
 
         <section id="amazon-ecs">
           <h3 style={S.h3}>Amazon ECS</h3>
           <p style={S.p}>
-            ECS (Elastic Container Service) AWS ka native container orchestration service hai. Key concepts:
+            ECS (Elastic Container Service) is AWS's native container orchestration service. Key concepts:
           </p>
           <ul style={S.ul}>
-            <li><strong>Task Definition:</strong> Blueprint — kaun sa container image, CPU/memory, ports, environment variables, IAM role, logging config. Version controlled.</li>
-            <li><strong>Task:</strong> Running instance of a Task Definition — ek ya zyada containers together. Ephemeral ya long-running.</li>
-            <li><strong>Service:</strong> Desired task count maintain karta hai — ek task fail ho toh replace karta hai. ALB ke saath integrate karta hai for traffic routing. Auto Scaling pe task count badhata/ghataata hai.</li>
-            <li><strong>Cluster:</strong> Logical grouping of tasks/services. EC2 launch type mein: underlying EC2 instances cluster mein registered. Fargate mein: serverless, koi EC2 nahi.</li>
+            <li><strong>Task Definition:</strong> Blueprint — which container image, CPU/memory, ports, environment variables, IAM role, logging config. Version controlled.</li>
+            <li><strong>Task:</strong> Running instance of a Task Definition — one or more containers together. Ephemeral or long-running.</li>
+            <li><strong>Service:</strong> Maintains the desired task count — if a task fails, it replaces it. Integrates with the ALB for traffic routing. Increases/decreases the task count with Auto Scaling.</li>
+            <li><strong>Cluster:</strong> Logical grouping of tasks/services. In the EC2 launch type: the underlying EC2 instances are registered in the cluster. In Fargate: serverless, no EC2.</li>
           </ul>
           <p style={S.p}>
-            ECS Service → ALB integration: har task Fargate awsvpc mode mein apna private IP rakhta hai → ALB target group mein registered hota hai → traffic distribute hota hai. Health check fail karne pe ECS task replace karta hai aur ALB se deregister hota hai.
+            ECS Service → ALB integration: each task in Fargate awsvpc mode has its own private IP → it is registered in the ALB target group → traffic is distributed. When a health check fails, ECS replaces the task and it is deregistered from the ALB.
           </p>
         </section>
 
         <section id="amazon-eks">
           <h3 style={S.h3}>Amazon EKS</h3>
           <p style={S.p}>
-            EKS (Elastic Kubernetes Service) AWS managed Kubernetes control plane hai. Kubernetes (K8s) ek open-source container orchestration platform hai — Google ne develop kiya, now CNCF. ECS se zyada complex lekin zyada portable aur ecosystem-rich.
+            EKS (Elastic Kubernetes Service) is the AWS managed Kubernetes control plane. Kubernetes (K8s) is an open-source container orchestration platform — developed by Google, now CNCF. More complex than ECS but more portable and ecosystem-rich.
           </p>
           <ul style={S.ul}>
-            <li><strong>Control Plane:</strong> AWS manages — API server, etcd, scheduler. High availability guaranteed. You sirf worker nodes manage karte ho.</li>
-            <li><strong>Worker Nodes:</strong> EC2 instances (managed node groups ya self-managed) ya Fargate pods</li>
-            <li><strong>Pod:</strong> Kubernetes smallest deployable unit — ek ya zyada containers together, shared network namespace</li>
-            <li><strong>Deployment:</strong> Desired replica count maintain karta hai — rolling updates, rollback</li>
+            <li><strong>Control Plane:</strong> AWS manages it — API server, etcd, scheduler. High availability guaranteed. You manage only the worker nodes.</li>
+            <li><strong>Worker Nodes:</strong> EC2 instances (managed node groups or self-managed) or Fargate pods</li>
+            <li><strong>Pod:</strong> The smallest deployable unit in Kubernetes — one or more containers together, shared network namespace</li>
+            <li><strong>Deployment:</strong> Maintains the desired replica count — rolling updates, rollback</li>
             <li><strong>Service (K8s):</strong> Load balancing within cluster + external exposure via AWS LB Controller</li>
           </ul>
           <p style={S.p}>
-            EKS choose karo jab: existing Kubernetes workloads migrate karna ho, multi-cloud portability chahiye, specific K8s ecosystem tools (Istio, Argo CD, Prometheus) use karne ho. ECS choose karo jab: AWS-native, simpler operations, no K8s expertise needed.
+            Choose EKS when: you need to migrate existing Kubernetes workloads, you need multi-cloud portability, or you need specific K8s ecosystem tools (Istio, Argo CD, Prometheus). Choose ECS when: AWS-native, simpler operations, no K8s expertise needed.
           </p>
         </section>
 
         <section id="aws-fargate">
           <h3 style={S.h3}>AWS Fargate</h3>
           <p style={S.p}>
-            Fargate serverless compute engine hai containers ke liye — EC2 instances provision ya manage karne ki zaroorat nahi. ECS aur EKS dono Fargate use kar sakte hain.
+            Fargate is a serverless compute engine for containers — there is no need to provision or manage EC2 instances. Both ECS and EKS can use Fargate.
           </p>
           <ul style={S.ul}>
             <li>No EC2 to patch, no cluster capacity to manage, no AMI updates</li>
-            <li>Per-task billing: vCPU + memory per second — idle capacity pay nahi karo</li>
-            <li>Each Fargate task apne dedicated micro-VM pe run karta hai (stronger isolation than shared EC2)</li>
-            <li>awsvpc networking: each task ko own ENI, own private IP, own Security Group</li>
+            <li>Per-task billing: vCPU + memory per second — you do not pay for idle capacity</li>
+            <li>Each Fargate task runs on its own dedicated micro-VM (stronger isolation than shared EC2)</li>
+            <li>awsvpc networking: each task gets its own ENI, own private IP, own Security Group</li>
           </ul>
           <p style={S.p}>
             Fargate vs EC2 launch type: unpredictable burst workloads, batch jobs, event-driven tasks → Fargate. Steady-state high-density workloads, GPU requirement, specific EC2 features → EC2 launch type.
@@ -936,13 +936,13 @@ export default function Content() {
         <section id="container-networking">
           <h3 style={S.h3}>Container Networking</h3>
           <p style={S.p}>
-            ECS awsvpc mode (recommended): har task ko VPC mein apna ENI milta hai — own private IP, own Security Group, independent network identity. Task IAM Role = fine-grained AWS permissions per task (not EC2 instance role).
+            ECS awsvpc mode (recommended): every task gets its own ENI in the VPC — own private IP, own Security Group, independent network identity. Task IAM Role = fine-grained AWS permissions per task (not EC2 instance role).
           </p>
           <p style={S.p}>
-            EKS networking: AWS VPC CNI plugin (recommended) — each pod gets real VPC IP from subnet. Security Groups for Pods: per-pod SG assign karo. ALB Ingress Controller: Kubernetes Ingress → AWS ALB automatically provision karta hai.
+            EKS networking: AWS VPC CNI plugin (recommended) — each pod gets a real VPC IP from the subnet. Security Groups for Pods: assign a per-pod SG. ALB Ingress Controller: Kubernetes Ingress → provisions an AWS ALB automatically.
           </p>
           <p style={S.p}>
-            ECR (Elastic Container Registry): private Docker registry, IAM-based access control, image scanning (Inspector integration), lifecycle policies (purge old images automatically). Traditional DC private Docker registry (Nexus, Harbor) ka AWS equivalent.
+            ECR (Elastic Container Registry): private Docker registry, IAM-based access control, image scanning (Inspector integration), lifecycle policies (purge old images automatically). The AWS equivalent of a traditional DC private Docker registry (Nexus, Harbor).
           </p>
         </section>
 
@@ -971,13 +971,13 @@ export default function Content() {
       <section id="serverless">
         <h2 style={S.h2}>Serverless — Lambda, API Gateway</h2>
         <p style={S.p}>
-          Serverless architecture mein tum sirf application logic pe focus karte ho — infrastructure provision, patch, scale AWS automatically manage karta hai. Pay-per-use model: idle pe zero cost.
+          In a serverless architecture you focus only on application logic — AWS automatically manages infrastructure provisioning, patching and scaling. Pay-per-use model: zero cost when idle.
         </p>
 
         <section id="lambda-execution">
           <h3 style={S.h3}>Lambda Execution Model</h3>
           <p style={S.p}>
-            Lambda event-triggered function-as-a-service hai. Trigger aata hai → Lambda invokes your function → execution completes → billing stops. Supported runtimes: Node.js, Python, Java, Go, Ruby, .NET, custom runtime (any binary).
+            Lambda is event-triggered function-as-a-service. A trigger arrives → Lambda invokes your function → execution completes → billing stops. Supported runtimes: Node.js, Python, Java, Go, Ruby, .NET, custom runtime (any binary).
           </p>
           <ComparisonTable
             headers={["Aspect", "Lambda Behavior", "Engineering Consideration"]}
@@ -996,40 +996,40 @@ export default function Content() {
         <section id="cold-starts">
           <h3 style={S.h3}>Cold Starts</h3>
           <p style={S.p}>
-            Cold start tab hota hai jab Lambda function pehli baar invoke hota hai ya long idle ke baad — AWS naya execution environment initialize karta hai: container download, runtime init, function handler load. Yeh 100ms se seconds tak lag sakta hai depending on runtime aur initialization code.
+            A cold start happens when a Lambda function is invoked for the first time or after a long idle period — AWS initializes a new execution environment: container download, runtime init, function handler load. This can take from 100ms to seconds depending on the runtime and initialization code.
           </p>
           <ul style={S.ul}>
             <li><strong>Warm invocation:</strong> Existing container reuse — no cold start, fast (milliseconds)</li>
             <li><strong>Cold start factors:</strong> Runtime (Python/Node fast; Java/C# slow), package size, VPC ENI creation (biggest contributor for VPC Lambda), initialization code</li>
             <li><strong>Provisioned Concurrency:</strong> Pre-warm N containers always — eliminates cold starts for those N. Cost: you pay for warm containers even when not invoked</li>
-            <li><strong>VPC Lambda:</strong> ENI creation badhata tha cold start; AWS ne Hyperplane ENIs se fix kiya hai — modern VPC Lambda cold starts significantly reduced</li>
+            <li><strong>VPC Lambda:</strong> ENI creation used to increase cold start; AWS has fixed this with Hyperplane ENIs — modern VPC Lambda cold starts are significantly reduced</li>
           </ul>
           <Callout type="important" title="Cold Start vs Latency Requirements">
-            User-facing synchronous APIs ke liye cold start matter karta hai — Provisioned Concurrency ya lightweight runtime use karo. Background async processing ke liye cold start generally acceptable hai.
+            Cold start matters for user-facing synchronous APIs — use Provisioned Concurrency or a lightweight runtime. For background async processing, cold start is generally acceptable.
           </Callout>
         </section>
 
         <section id="api-gateway">
           <h3 style={S.h3}>API Gateway</h3>
           <p style={S.p}>
-            API Gateway fully managed service hai jo REST, HTTP aur WebSocket APIs create, publish, secure aur scale karta hai. Lambda ke saath pair karo → complete serverless API.
+            API Gateway is a fully managed service that creates, publishes, secures and scales REST, HTTP and WebSocket APIs. Pair it with Lambda → a complete serverless API.
           </p>
           <ul style={S.ul}>
             <li><strong>REST API:</strong> Full-featured — usage plans, API keys, request/response transformation, custom authorizers</li>
-            <li><strong>HTTP API:</strong> Newer, simpler, cheaper (lower latency) — JWT auth, Lambda proxy. Simple use cases ke liye preferred.</li>
+            <li><strong>HTTP API:</strong> Newer, simpler, cheaper (lower latency) — JWT auth, Lambda proxy. Preferred for simple use cases.</li>
             <li><strong>WebSocket API:</strong> Bi-directional communication — real-time chat, notifications, gaming</li>
-            <li><strong>Authorizers:</strong> Lambda Authorizer (custom auth logic) ya Cognito User Pool (JWT validation) — IAM auth bhi possible</li>
+            <li><strong>Authorizers:</strong> Lambda Authorizer (custom auth logic) or Cognito User Pool (JWT validation) — IAM auth is also possible</li>
             <li><strong>Throttling:</strong> Per-stage, per-method rate limits — DDoS protection, cost control</li>
           </ul>
           <p style={S.p}>
-            Traditional DC mein: NGINX + uWSGI + Flask = API setup. AWS mein: API Gateway + Lambda = same without managing any server. Auto-scales to millions of requests, no capacity planning.
+            In a traditional DC: NGINX + uWSGI + Flask = API setup. In AWS: API Gateway + Lambda = the same without managing any server. Auto-scales to millions of requests, no capacity planning.
           </p>
         </section>
 
         <section id="step-functions">
           <h3 style={S.h3}>Step Functions</h3>
           <p style={S.p}>
-            Step Functions serverless workflow orchestration service hai — Lambda functions aur AWS services ko complex workflows mein coordinate karta hai. State machine visual designer + JSON/YAML definition.
+            Step Functions is a serverless workflow orchestration service — it coordinates Lambda functions and AWS services into complex workflows. State machine visual designer + JSON/YAML definition.
           </p>
           <ul style={S.ul}>
             <li><strong>States:</strong> Task (Lambda/service call), Choice (conditional branching), Parallel (concurrent branches), Wait (delay), Map (iterate over array), Catch/Retry (error handling)</li>
@@ -1044,15 +1044,15 @@ export default function Content() {
         <section id="event-driven">
           <h3 style={S.h3}>Event-Driven Architecture</h3>
           <p style={S.p}>
-            Event-driven architecture mein services loosely coupled hain — ek service event produce karta hai, doosra consume karta hai, dono ko ek dusre ka directly pata nahi.
+            In an event-driven architecture services are loosely coupled — one service produces an event, another consumes it, and neither knows about the other directly.
           </p>
           <ul style={S.ul}>
-            <li><strong>EventBridge:</strong> Event bus — AWS services, custom apps, SaaS events route karo. Rules define karo: kaunsa event → kaunhi target (Lambda, SQS, Step Functions, etc)</li>
-            <li><strong>SQS (Simple Queue Service):</strong> Message queue — producer ne message publish kiya, consumer pull karta hai apni pace pe. Decoupling + buffering. Standard (at-least-once) ya FIFO (exactly-once ordered).</li>
-            <li><strong>SNS (Simple Notification Service):</strong> Pub/sub — ek message → multiple subscribers (Lambda, SQS, HTTP endpoints, email). Fan-out pattern.</li>
+            <li><strong>EventBridge:</strong> Event bus — route AWS service, custom app and SaaS events. Define rules: which event → which target (Lambda, SQS, Step Functions, etc)</li>
+            <li><strong>SQS (Simple Queue Service):</strong> Message queue — the producer publishes a message, the consumer pulls it at its own pace. Decoupling + buffering. Standard (at-least-once) or FIFO (exactly-once ordered).</li>
+            <li><strong>SNS (Simple Notification Service):</strong> Pub/sub — one message → multiple subscribers (Lambda, SQS, HTTP endpoints, email). Fan-out pattern.</li>
           </ul>
           <p style={S.p}>
-            Classic pattern: S3 image upload → S3 event → SQS → Lambda (resize) → S3 (output) → EventBridge → SNS notification. Sab serverless, sab pay-per-use, zero idle cost.
+            Classic pattern: S3 image upload → S3 event → SQS → Lambda (resize) → S3 (output) → EventBridge → SNS notification. All serverless, all pay-per-use, zero idle cost.
           </p>
 
           <section id="serverless-use-cases">
@@ -1080,60 +1080,60 @@ export default function Content() {
         <section id="iac-why">
           <h3 style={S.h3}>Why Infrastructure as Code</h3>
           <p style={S.p}>
-            Manual AWS console clicks reproducible, auditable, version-controlled nahi hote. Koi bhi production environment eventually yeh problems face karta hai: "Yeh VPC kisne create kiya aur kyun?" "Staging environment production se kaise alag hai?" "Is S3 bucket ka encryption config kya hai?"
+            Manual AWS console clicks are not reproducible, auditable or version-controlled. Every production environment eventually faces these problems: "Who created this VPC and why?" "How is the staging environment different from production?" "What is the encryption config of this S3 bucket?"
           </p>
           <p style={S.p}>
-            IaC in problems solve karta hai — infrastructure define karo code mein, version control mein track karo, automate karo deployments. Benefits: repeatability (same template → same infra every time), drift detection, rollback, living documentation, GitOps (PR-based review), CI/CD integration.
+            IaC solves these problems — define infrastructure in code, track it in version control, automate deployments. Benefits: repeatability (same template → same infra every time), drift detection, rollback, living documentation, GitOps (PR-based review), CI/CD integration.
           </p>
           <Callout type="important" title="IaC from Day One">
-            Production AWS environments bina IaC ke eventually unmaintainable ho jaate hain. Console clicks track nahi hote, reproducible nahi hain. IaC adopt karo project start se — migration painful hai baad mein.
+            Production AWS environments without IaC eventually become unmaintainable. Console clicks are not tracked and not reproducible. Adopt IaC from the start of the project — migrating later is painful.
           </Callout>
         </section>
 
         <section id="cloudformation">
           <h3 style={S.h3}>AWS CloudFormation</h3>
           <p style={S.p}>
-            CloudFormation AWS native IaC service hai — YAML ya JSON templates mein resources define karo, CloudFormation Stacks deploy karta hai. AWS Service directly managed — no additional tool install needed.
+            CloudFormation is AWS's native IaC service — define resources in YAML or JSON templates, and CloudFormation deploys Stacks. Directly managed as an AWS service — no additional tool install needed.
           </p>
           <ul style={S.ul}>
             <li><strong>Template:</strong> YAML/JSON file — Resources, Parameters, Outputs, Mappings, Conditions sections</li>
-            <li><strong>Stack:</strong> Template se created resources ka group — create, update, delete atomically</li>
-            <li><strong>Stack Sets:</strong> Multiple accounts + Regions mein same stack deploy — organization-wide infra</li>
-            <li><strong>Change Sets:</strong> Preview karo kya change hoga before applying — production mein critical</li>
-            <li><strong>Drift Detection:</strong> Console se manual changes detect karo — drift report generate karta hai</li>
-            <li><strong>Rollback:</strong> Failed update pe automatic rollback previous successful state pe</li>
+            <li><strong>Stack:</strong> A group of resources created from a template — created, updated and deleted atomically</li>
+            <li><strong>Stack Sets:</strong> Deploy the same stack across multiple accounts + Regions — organization-wide infra</li>
+            <li><strong>Change Sets:</strong> Preview what will change before applying — critical in production</li>
+            <li><strong>Drift Detection:</strong> Detect manual changes made from the console — generates a drift report</li>
+            <li><strong>Rollback:</strong> On a failed update, automatic rollback to the previous successful state</li>
           </ul>
           <p style={S.p}>
-            CloudFormation choose karo jab: AWS-only environment, no HashiCorp dependency, native AWS integration (StackSets for multi-account), serverless application model (SAM — CloudFormation extension for Lambda).
+            Choose CloudFormation when: AWS-only environment, no HashiCorp dependency, native AWS integration (StackSets for multi-account), serverless application model (SAM — CloudFormation extension for Lambda).
           </p>
         </section>
 
         <section id="terraform">
           <h3 style={S.h3}>Terraform</h3>
           <p style={S.p}>
-            Terraform HashiCorp ka open-source IaC tool hai — multi-cloud, 1000+ providers ke saath (AWS, Azure, GCP, Kubernetes, databases). HCL (HashiCorp Configuration Language) mein resources define karo.
+            Terraform is HashiCorp's open-source IaC tool — multi-cloud, with 1000+ providers (AWS, Azure, GCP, Kubernetes, databases). Resources are defined in HCL (HashiCorp Configuration Language).
           </p>
           <ul style={S.ul}>
-            <li><strong>Provider:</strong> AWS provider resources manage karta hai — aws_vpc, aws_instance, aws_rds_cluster etc</li>
-            <li><strong>State File:</strong> Terraform current state track karta hai — remote state S3 + DynamoDB locking (team collaboration ke liye)</li>
+            <li><strong>Provider:</strong> The AWS provider manages resources — aws_vpc, aws_instance, aws_rds_cluster etc</li>
+            <li><strong>State File:</strong> Terraform tracks the current state — remote state in S3 + DynamoDB locking (for team collaboration)</li>
             <li><strong>Plan:</strong> <code>terraform plan</code> → preview changes before apply (CloudFormation Change Sets equivalent)</li>
-            <li><strong>Apply:</strong> <code>terraform apply</code> → changes execute karo</li>
-            <li><strong>Modules:</strong> Reusable infrastructure components — VPC module, EC2 module. Terraform Registry se public modules available.</li>
+            <li><strong>Apply:</strong> <code>terraform apply</code> → execute the changes</li>
+            <li><strong>Modules:</strong> Reusable infrastructure components — VPC module, EC2 module. Public modules available from the Terraform Registry.</li>
           </ul>
           <p style={S.p}>
-            Terraform choose karo jab: multi-cloud environment, existing Terraform skills/modules, Kubernetes + AWS together manage karna, strong community ecosystem needed.
+            Choose Terraform when: multi-cloud environment, existing Terraform skills/modules, managing Kubernetes + AWS together, strong community ecosystem needed.
           </p>
         </section>
 
         <section id="aws-cdk">
           <h3 style={S.h3}>AWS CDK</h3>
           <p style={S.p}>
-            AWS CDK (Cloud Development Kit) code-first IaC approach hai — TypeScript, Python, Java, C#, Go mein infra define karo using real programming language constructs. CDK code CloudFormation templates mein compile hota hai.
+            AWS CDK (Cloud Development Kit) is a code-first IaC approach — define infra in TypeScript, Python, Java, C# or Go using real programming language constructs. CDK code compiles into CloudFormation templates.
           </p>
           <ul style={S.ul}>
             <li><strong>Constructs:</strong> Reusable CDK components — L1 (raw CloudFormation), L2 (opinionated defaults), L3 (complete patterns)</li>
-            <li><strong>App:</strong> CDK application — ek ya zyada Stacks contain karta hai</li>
-            <li><strong>Synth:</strong> <code>cdk synth</code> → CloudFormation template generate karo</li>
+            <li><strong>App:</strong> CDK application — contains one or more Stacks</li>
+            <li><strong>Synth:</strong> <code>cdk synth</code> → generate the CloudFormation template</li>
             <li><strong>Deploy:</strong> <code>cdk deploy</code> → synthesize + deploy</li>
             <li><strong>Benefit:</strong> Real language = loops, conditions, abstractions, unit tests on infra</li>
           </ul>
@@ -1142,13 +1142,13 @@ export default function Content() {
         <section id="iac-change-management">
           <h3 style={S.h3}>IaC Change Management and Best Practices</h3>
           <ul style={S.ul}>
-            <li><strong>Version Control:</strong> IaC code Git mein — every infrastructure change PR se approve ho</li>
+            <li><strong>Version Control:</strong> IaC code in Git — every infrastructure change approved through a PR</li>
             <li><strong>Branches:</strong> dev/staging/prod environments → separate branches or workspaces</li>
             <li><strong>CI/CD for IaC:</strong> PR → automated <code>plan</code> output → review → merge → auto <code>apply</code></li>
             <li><strong>State locking:</strong> Terraform: DynamoDB lock; CloudFormation: native stack locking</li>
-            <li><strong>Secrets:</strong> IaC mein secrets hardcode mat karo — Secrets Manager ya Parameter Store reference karo</li>
+            <li><strong>Secrets:</strong> Do not hardcode secrets in IaC — reference Secrets Manager or Parameter Store</li>
             <li><strong>Modular structure:</strong> Networking, compute, database — separate modules/stacks. Dependencies explicit.</li>
-            <li><strong>Tagging via IaC:</strong> IaC templates mein tags enforce karo — manual tagging unreliable</li>
+            <li><strong>Tagging via IaC:</strong> Enforce tags in IaC templates — manual tagging is unreliable</li>
           </ul>
           <ComparisonTable
             headers={["Tool", "AWS Native?", "Language", "State Management", "Best For"]}
@@ -1168,7 +1168,7 @@ export default function Content() {
         <section id="migration-6r">
           <h3 style={S.h3}>7 Rs Migration Framework</h3>
           <p style={S.p}>
-            Traditional DC se AWS mein migrate karne ke multiple strategies hain — "7 Rs" framework. Har application alag strategy deserve karta hai:
+            There are multiple strategies for migrating from a traditional DC to AWS — the "7 Rs" framework. Every application deserves its own strategy:
           </p>
           <ComparisonTable
             headers={["Strategy", "What It Means", "Effort", "Cloud Benefit", "When to Choose"]}
@@ -1183,51 +1183,51 @@ export default function Content() {
             ]}
           />
           <Callout type="important" title="Rehost First, Optimize Later">
-            Bahut enterprises Rehost se start karte hain — quickly move to cloud, then Replatform/Refactor gradually. Refactor pehle karna expensive aur risky hota hai. Lift-and-shift first = faster results.
+            Many enterprises start with Rehost — move to the cloud quickly, then Replatform/Refactor gradually. Refactoring first is expensive and risky. Lift-and-shift first = faster results.
           </Callout>
         </section>
 
         <section id="migration-hub">
           <h3 style={S.h3}>AWS Migration Hub</h3>
           <p style={S.p}>
-            Migration Hub single dashboard hai jo sab migration tools ki progress track karta hai — Application Migration Service, DMS, partner tools sab yahan aggregate hote hain. Application grouping, dependency mapping, migration status tracking.
+            Migration Hub is a single dashboard that tracks the progress of all migration tools — Application Migration Service, DMS and partner tools are all aggregated here. Application grouping, dependency mapping, migration status tracking.
           </p>
           <p style={S.p}>
-            Migration Hub Strategy Recommendations: existing applications analyze karta hai (via AWS Collector agent) aur each application ke liye recommended migration strategy suggest karta hai.
+            Migration Hub Strategy Recommendations: analyzes existing applications (via the AWS Collector agent) and suggests a recommended migration strategy for each application.
           </p>
         </section>
 
         <section id="application-migration-service">
           <h3 style={S.h3}>AWS Application Migration Service (MGN)</h3>
           <p style={S.p}>
-            MGN server replication + cutover tool hai — physical, virtual (VMware, Hyper-V) ya cloud servers ko EC2 pe continuously replicate karo. Cutover ke time minimal downtime.
+            MGN is a server replication + cutover tool — continuously replicate physical, virtual (VMware, Hyper-V) or cloud servers to EC2. Minimal downtime at cutover time.
           </p>
           <ul style={S.ul}>
-            <li>AWS Replication Agent on-prem server pe install hota hai</li>
+            <li>The AWS Replication Agent is installed on the on-prem server</li>
             <li>Continuous block-level replication to AWS (encrypted)</li>
             <li>Test launches → validate environment before actual cutover</li>
             <li>Cutover window: minutes (final delta sync + DNS change)</li>
-            <li>Traditional DC se lift-and-shift ke liye yeh fastest tool hai</li>
+            <li>This is the fastest tool for lift-and-shift from a traditional DC</li>
           </ul>
         </section>
 
         <section id="database-migration-service">
           <h3 style={S.h3}>AWS Database Migration Service (DMS)</h3>
           <p style={S.p}>
-            DMS source database se target database mein migrate karta hai — homogeneous (MySQL → RDS MySQL) ya heterogeneous (Oracle → Aurora PostgreSQL) migrations.
+            DMS migrates from a source database to a target database — homogeneous (MySQL → RDS MySQL) or heterogeneous (Oracle → Aurora PostgreSQL) migrations.
           </p>
           <ul style={S.ul}>
-            <li><strong>Full Load:</strong> Existing data migrate karo — initial bulk load</li>
-            <li><strong>CDC (Change Data Capture):</strong> Ongoing changes replicate karo — minimal downtime migration</li>
-            <li><strong>Schema Conversion Tool (SCT):</strong> Heterogeneous: Oracle/SQL Server stored procedures, functions → PostgreSQL/MySQL compatible code mein convert</li>
-            <li><strong>Replication Instance:</strong> DMS managed EC2 instance jo migration perform karta hai — size on data volume/rate depend karta hai</li>
+            <li><strong>Full Load:</strong> Migrate existing data — initial bulk load</li>
+            <li><strong>CDC (Change Data Capture):</strong> Replicate ongoing changes — minimal downtime migration</li>
+            <li><strong>Schema Conversion Tool (SCT):</strong> Heterogeneous: converts Oracle/SQL Server stored procedures and functions into PostgreSQL/MySQL compatible code</li>
+            <li><strong>Replication Instance:</strong> A DMS managed EC2 instance that performs the migration — its size depends on data volume/rate</li>
           </ul>
         </section>
 
         <section id="snowball">
           <h3 style={S.h3}>AWS Snowball and Snowmobile</h3>
           <p style={S.p}>
-            Internet se large data transfer impractical hai jab terabytes/petabytes migrate karne ho — bandwidth limitation aur time pe. Physical data transfer devices:
+            Large data transfer over the Internet is impractical when terabytes/petabytes need to be migrated — due to bandwidth limitations and time. Physical data transfer devices:
           </p>
           <ComparisonTable
             headers={["Device", "Capacity", "Use Case", "Compute"]}
@@ -1239,7 +1239,7 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            Workflow: AWS Snowball device deliver karta hai → data copy karo → device wapas AWS ko → AWS S3/Glacier mein import karta hai. Encrypted at rest (AES-256) aur in transit. Traditional DC-to-DC data migration ke liye physical shipper equivalent.
+            Workflow: AWS delivers a Snowball device → copy the data → ship the device back to AWS → AWS imports it into S3/Glacier. Encrypted at rest (AES-256) and in transit. The physical shipper equivalent for traditional DC-to-DC data migration.
           </p>
         </section>
 
@@ -1261,7 +1261,7 @@ export default function Content() {
       <section id="security-advanced">
         <h2 style={S.h2}>Security — Defense in Depth</h2>
         <p style={S.p}>
-          AWS security defense-in-depth approach follow karta hai — multiple layers, koi single layer perfect nahi. Traditional DC security layers ka cloud equivalent:
+          AWS security follows a defense-in-depth approach — multiple layers, no single layer is perfect. The cloud equivalent of traditional DC security layers:
         </p>
         <Figure caption="AWS security layers: Organizations/SCP, WAF/Shield, VPC security, IAM, data protection, threat detection">
           <SecurityLayersDiagram />
@@ -1270,90 +1270,90 @@ export default function Content() {
         <section id="kms">
           <h3 style={S.h3}>AWS KMS — Key Management Service</h3>
           <p style={S.p}>
-            KMS managed cryptographic key service hai — encryption keys create, manage aur use karo without managing key material yourself. Traditional DC HSM (Hardware Security Module) ka cloud equivalent.
+            KMS is a managed cryptographic key service — create, manage and use encryption keys without managing the key material yourself. The cloud equivalent of a traditional DC HSM (Hardware Security Module).
           </p>
           <ul style={S.ul}>
-            <li><strong>CMK (Customer Master Key):</strong> Master key — directly data encrypt nahi karta, data keys generate karta hai (envelope encryption)</li>
-            <li><strong>Envelope Encryption:</strong> KMS CMK → data key generate → data key se data encrypt → encrypted data key + ciphertext store karo. Decrypt: KMS se data key decrypt → data key se data decrypt</li>
-            <li><strong>AWS Managed Keys:</strong> AWS services (S3, EBS, RDS) ke liye automatically create/rotate — no management needed</li>
-            <li><strong>Customer Managed Keys:</strong> You control rotation, deletion, access policy — compliance requirements ke liye</li>
-            <li><strong>Key Policies:</strong> IAM policies se different — KMS keys pe resource-based policy mandatory hai</li>
+            <li><strong>CMK (Customer Master Key):</strong> Master key — it does not encrypt data directly; it generates data keys (envelope encryption)</li>
+            <li><strong>Envelope Encryption:</strong> KMS CMK → generate data key → encrypt data with the data key → store the encrypted data key + ciphertext. Decrypt: decrypt the data key via KMS → decrypt the data with the data key</li>
+            <li><strong>AWS Managed Keys:</strong> Created/rotated automatically for AWS services (S3, EBS, RDS) — no management needed</li>
+            <li><strong>Customer Managed Keys:</strong> You control rotation, deletion, access policy — for compliance requirements</li>
+            <li><strong>Key Policies:</strong> Different from IAM policies — a resource-based policy is mandatory on KMS keys</li>
           </ul>
           <p style={S.p}>
-            Integration: S3 SSE-KMS, EBS encryption, RDS encryption, Secrets Manager, CloudTrail log encryption — sab KMS use karte hain. KMS key deletion scheduled (7-30 days wait) — accidentally delete hone se protection.
+            Integration: S3 SSE-KMS, EBS encryption, RDS encryption, Secrets Manager, CloudTrail log encryption — all use KMS. KMS key deletion is scheduled (7-30 days wait) — protection against accidental deletion.
           </p>
         </section>
 
         <section id="secrets-manager">
           <h3 style={S.h3}>AWS Secrets Manager</h3>
           <p style={S.p}>
-            Secrets Manager sensitive credentials (database passwords, API keys, OAuth tokens) securely store aur automatically rotate karta hai. Traditional DC CyberArk / HashiCorp Vault equivalent.
+            Secrets Manager securely stores and automatically rotates sensitive credentials (database passwords, API keys, OAuth tokens). Equivalent of traditional DC CyberArk / HashiCorp Vault.
           </p>
           <ul style={S.ul}>
             <li><strong>Storage:</strong> Encrypted with KMS; versioned; audit via CloudTrail</li>
-            <li><strong>Automatic Rotation:</strong> Lambda function pe delegate — RDS passwords, OAuth tokens, custom secrets</li>
-            <li><strong>Cross-account access:</strong> Resource policy se other accounts ke applications access kar sakte hain</li>
+            <li><strong>Automatic Rotation:</strong> Delegated to a Lambda function — RDS passwords, OAuth tokens, custom secrets</li>
+            <li><strong>Cross-account access:</strong> Applications in other accounts can access secrets via a resource policy</li>
             <li><strong>Integration:</strong> RDS, Redshift, DocumentDB native rotation; custom Lambda for others</li>
           </ul>
           <p style={S.p}>
-            Never hardcode credentials in code or environment variables. Secrets Manager reference karo from application — SDK call karo, fresh credentials milte hain. Rotation transparent hai application ko.
+            Never hardcode credentials in code or environment variables. Reference Secrets Manager from the application — make an SDK call and you get fresh credentials. Rotation is transparent to the application.
           </p>
         </section>
 
         <section id="acm">
           <h3 style={S.h3}>AWS Certificate Manager (ACM)</h3>
           <p style={S.p}>
-            ACM TLS/SSL certificates provision, manage aur deploy karta hai — free public certificates, auto-renewal, direct ALB/CloudFront/API Gateway integration.
+            ACM provisions, manages and deploys TLS/SSL certificates — free public certificates, auto-renewal, direct ALB/CloudFront/API Gateway integration.
           </p>
           <ul style={S.ul}>
             <li><strong>Public Certificates:</strong> Free for AWS services — ALB, CloudFront, API Gateway. Auto-renewed before expiry.</li>
             <li><strong>Private CA (ACM PCA):</strong> Internal PKI — private certificates for internal services, mTLS, code signing</li>
-            <li><strong>Validation:</strong> DNS validation (Route 53 auto-configure karta hai, recommended) ya email validation</li>
-            <li><strong>Note:</strong> ACM certificates EC2 directly attach nahi hote — only with integrated AWS services. EC2 pe apne certs use karo (import karo ACM mein ya self-manage).</li>
+            <li><strong>Validation:</strong> DNS validation (Route 53 auto-configures it, recommended) or email validation</li>
+            <li><strong>Note:</strong> ACM certificates cannot be attached directly to EC2 — only with integrated AWS services. On EC2, use your own certs (import them into ACM or self-manage).</li>
           </ul>
           <p style={S.p}>
-            Certificate expiry monitoring: ACM auto-renews managed certs. Imported certs: CloudWatch Events se expiry alert configure karo. Traditional DC mein cert expiry monitoring often manual hota hai — ACM yeh pain eliminate karta hai.
+            Certificate expiry monitoring: ACM auto-renews managed certs. Imported certs: configure expiry alerts via CloudWatch Events. In a traditional DC, cert expiry monitoring is often manual — ACM eliminates this pain.
           </p>
         </section>
 
         <section id="guardduty">
           <h3 style={S.h3}>Amazon GuardDuty</h3>
           <p style={S.p}>
-            GuardDuty intelligent threat detection service hai — CloudTrail, VPC Flow Logs, DNS logs, EKS audit logs analyze karta hai continuously. Machine learning + threat intelligence feeds se anomalies detect karta hai.
+            GuardDuty is an intelligent threat detection service — it continuously analyzes CloudTrail, VPC Flow Logs, DNS logs and EKS audit logs. It detects anomalies using machine learning + threat intelligence feeds.
           </p>
           <ul style={S.ul}>
             <li><strong>Threat types:</strong> Unauthorized IAM activity, EC2 instance communicating with known malicious IPs, cryptocurrency mining, compromised credentials, data exfiltration patterns</li>
-            <li><strong>No agent:</strong> Agentless — sirf logs analyze karta hai. Enable karo, bas.</li>
+            <li><strong>No agent:</strong> Agentless — it only analyzes logs. Enable it, and that is it.</li>
             <li><strong>Findings:</strong> Severity (low/medium/high), description, affected resource, recommended action</li>
             <li><strong>Integration:</strong> EventBridge → Lambda → auto-remediate (isolate instance, revoke credentials)</li>
             <li><strong>Multi-account:</strong> Organizations-wide GuardDuty — delegated admin account centrally manages</li>
           </ul>
           <p style={S.p}>
-            Traditional DC SIEM pe threat intelligence feed + log correlation = similar concept, lekin GuardDuty AWS-aware hai — IAM activity patterns, AWS-specific attack vectors understand karta hai.
+            Threat intelligence feed + log correlation on a traditional DC SIEM = a similar concept, but GuardDuty is AWS-aware — it understands IAM activity patterns and AWS-specific attack vectors.
           </p>
         </section>
 
         <section id="inspector">
           <h3 style={S.h3}>Amazon Inspector</h3>
           <p style={S.p}>
-            Inspector automated vulnerability assessment service hai — EC2 instances, container images (ECR), Lambda functions continuously scan karta hai CVEs aur network exposure ke liye.
+            Inspector is an automated vulnerability assessment service — it continuously scans EC2 instances, container images (ECR) and Lambda functions for CVEs and network exposure.
           </p>
           <ul style={S.ul}>
-            <li><strong>EC2:</strong> OS packages, application packages mein known CVEs scan karo</li>
-            <li><strong>ECR:</strong> Container image push hone pe automatically scan — CI/CD pipeline mein integrate</li>
-            <li><strong>Lambda:</strong> Function code + layers mein vulnerabilities</li>
-            <li><strong>CVSS scoring:</strong> Prioritized findings — critical pehle fix karo</li>
-            <li><strong>SSM Agent required:</strong> EC2 scanning ke liye SSM Agent installed hona chahiye</li>
+            <li><strong>EC2:</strong> Scan OS packages and application packages for known CVEs</li>
+            <li><strong>ECR:</strong> Automatic scan when a container image is pushed — integrate into the CI/CD pipeline</li>
+            <li><strong>Lambda:</strong> Vulnerabilities in function code + layers</li>
+            <li><strong>CVSS scoring:</strong> Prioritized findings — fix critical ones first</li>
+            <li><strong>SSM Agent required:</strong> The SSM Agent must be installed for EC2 scanning</li>
           </ul>
           <p style={S.p}>
-            Traditional DC vulnerability scanner (Nessus, Qualys, Tenable) ka equivalent — lekin agentless for containers, automatically integrated with ECR pipeline.
+            The equivalent of a traditional DC vulnerability scanner (Nessus, Qualys, Tenable) — but agentless for containers, automatically integrated with the ECR pipeline.
           </p>
         </section>
 
         <section id="security-hub">
           <h3 style={S.h3}>AWS Security Hub</h3>
           <p style={S.p}>
-            Security Hub ek aggregator hai — GuardDuty, Inspector, Macie, IAM Access Analyzer, Firewall Manager, partner solutions sab ke findings ek jagah collect karta hai. CSPM (Cloud Security Posture Management) functionality bhi hai.
+            Security Hub is an aggregator — it collects findings from GuardDuty, Inspector, Macie, IAM Access Analyzer, Firewall Manager and partner solutions in one place. It also has CSPM (Cloud Security Posture Management) functionality.
           </p>
           <ul style={S.ul}>
             <li><strong>Security Standards:</strong> CIS AWS Foundations, AWS Foundational Security Best Practices, PCI DSS — automated compliance checks</li>
@@ -1366,28 +1366,28 @@ export default function Content() {
         <section id="waf-shield">
           <h3 style={S.h3}>AWS WAF and AWS Shield</h3>
           <p style={S.p}>
-            <strong>AWS WAF (Web Application Firewall):</strong> Layer 7 HTTP/HTTPS traffic inspect aur filter karta hai. CloudFront, ALB, API Gateway, AppSync ke saath deploy hota hai.
+            <strong>AWS WAF (Web Application Firewall):</strong> Inspects and filters Layer 7 HTTP/HTTPS traffic. Deployed with CloudFront, ALB, API Gateway, AppSync.
           </p>
           <ul style={S.ul}>
             <li>Rules: SQLi protection, XSS protection, geo-blocking, IP reputation lists, rate limiting (per-IP), custom rules</li>
-            <li>Managed Rule Groups: AWS aur 3rd party (Cloudflare, F5, Imperva) pre-built rules — immediately enable karo</li>
-            <li>Bot Control: Automated bot traffic identify aur manage karo (crawlers, scrapers, credential stuffing)</li>
-            <li>CAPTCHA integration: Suspicious requests pe CAPTCHA challenge</li>
+            <li>Managed Rule Groups: pre-built rules from AWS and 3rd parties (Cloudflare, F5, Imperva) — enable them immediately</li>
+            <li>Bot Control: Identify and manage automated bot traffic (crawlers, scrapers, credential stuffing)</li>
+            <li>CAPTCHA integration: CAPTCHA challenge on suspicious requests</li>
           </ul>
           <p style={S.p}>
             <strong>AWS Shield:</strong> DDoS protection service.
           </p>
           <ul style={S.ul}>
             <li><strong>Shield Standard:</strong> Automatically enabled for all AWS customers — L3/L4 DDoS protection (SYN floods, UDP reflection, volumetric attacks). No additional cost.</li>
-            <li><strong>Shield Advanced:</strong> L3/L4/L7 protection, DDoS Response Team (DRT) access 24/7, cost protection (AWS credits during attack), Global Accelerator aur Route 53 protection, real-time metrics. Annual commitment required.</li>
+            <li><strong>Shield Advanced:</strong> L3/L4/L7 protection, DDoS Response Team (DRT) access 24/7, cost protection (AWS credits during attack), Global Accelerator and Route 53 protection, real-time metrics. Annual commitment required.</li>
           </ul>
           <p style={S.p}>
-            Traditional DC: on-path WAF appliance (F5 ASM, Imperva) + upstream DDoS scrubbing center (Akamai, Cloudflare). AWS mein: WAF + Shield = same protection, managed, auto-scale.
+            Traditional DC: on-path WAF appliance (F5 ASM, Imperva) + upstream DDoS scrubbing center (Akamai, Cloudflare). In AWS: WAF + Shield = the same protection, managed, auto-scale.
           </p>
         </section>
 
         <p style={S.p}>
-          Multi-account security best practice: separate accounts for production, dev, security tooling, log archive. SCPs prevent anyone from disabling security services (GuardDuty, CloudTrail). Security Hub aggregates across accounts. Centralized log archive account mein CloudTrail logs write karo — tampering prevent karne ke liye.
+          Multi-account security best practice: separate accounts for production, dev, security tooling, log archive. SCPs prevent anyone from disabling security services (GuardDuty, CloudTrail). Security Hub aggregates across accounts. Write CloudTrail logs to a centralized log archive account — to prevent tampering.
         </p>
       </section>
 
@@ -1395,7 +1395,7 @@ export default function Content() {
       <section id="cost-awareness">
         <h2 style={S.h2}>Cost Optimization</h2>
         <p style={S.p}>
-          Infrastructure engineers ke liye cloud cost awareness zaroori hai — architecture decisions directly cost affect karte hain. Current prices AWS pricing page pe hain (yahan provide nahi karte — prices change karte hain).
+          Cloud cost awareness is essential for infrastructure engineers — architecture decisions directly affect cost. Current prices are on the AWS pricing page (we do not provide them here — prices change).
         </p>
         <ComparisonTable
           headers={["Cost Driver", "Billing Basis", "Engineering Implication"]}
@@ -1413,7 +1413,7 @@ export default function Content() {
         <section id="cost-tools">
           <h3 style={S.h3}>Cost Explorer</h3>
           <p style={S.p}>
-            Cost Explorer visual analytics tool hai — historical spend analyze karo, service-level breakdown dekho, future costs forecast karo. Filters: by service, linked account, region, tag, usage type.
+            Cost Explorer is a visual analytics tool — analyze historical spend, view the service-level breakdown, forecast future costs. Filters: by service, linked account, region, tag, usage type.
           </p>
           <ul style={S.ul}>
             <li>Savings Plan purchase recommendations: based on past 7/14/30 days usage</li>
@@ -1423,10 +1423,10 @@ export default function Content() {
 
           <h3 style={S.h3}>AWS Budgets</h3>
           <p style={S.p}>
-            Budget thresholds set karo — actual ya forecast spend pe alerts. Types: Cost budget (spend X se zyada hone pe alert), Usage budget (specific service usage pe), RI/SP utilization budget (reserved capacity under-utilized alert).
+            Set budget thresholds — alerts on actual or forecast spend. Types: Cost budget (alert when spend exceeds X), Usage budget (on specific service usage), RI/SP utilization budget (alert when reserved capacity is under-utilized).
           </p>
           <p style={S.p}>
-            Action: Budget breach pe automatically action trigger karo — IAM policy apply (restrict new resource creation), EC2/RDS instances stop, SNS notification → Lambda remediation.
+            Action: automatically trigger an action on a budget breach — apply an IAM policy (restrict new resource creation), stop EC2/RDS instances, SNS notification → Lambda remediation.
           </p>
 
           <h3 style={S.h3}>Reserved Instances and Savings Plans</h3>
@@ -1444,7 +1444,7 @@ export default function Content() {
 
           <h3 style={S.h3}>Rightsizing and Compute Optimization</h3>
           <ul style={S.ul}>
-            <li><strong>Compute Optimizer:</strong> CloudWatch metrics analyze karke EC2, ASG, EBS, Lambda ke liye right-size recommendations. Over-provisioned instances identify karo — downsize karke save karo.</li>
+            <li><strong>Compute Optimizer:</strong> Analyzes CloudWatch metrics to give right-size recommendations for EC2, ASG, EBS, Lambda. Identify over-provisioned instances — downsize them and save.</li>
             <li><strong>Instance type changes:</strong> m5.xlarge → m6i.large (newer gen, same cost, better performance)</li>
             <li><strong>Graviton (ARM):</strong> Same workload, 20-40% cheaper. Java, Python, Go, .NET workloads well-supported.</li>
             <li><strong>Spot for appropriate workloads:</strong> Batch, CI/CD runners, dev environments — 60-90% savings</li>
@@ -1453,21 +1453,21 @@ export default function Content() {
           <h3 style={S.h3}>Storage Cost Optimization</h3>
           <ul style={S.ul}>
             <li><strong>S3 Intelligent-Tiering:</strong> Automatically move objects between tiers — zero retrieval cost for frequent access tier</li>
-            <li><strong>EBS unattached volumes:</strong> EC2 terminate hone pe volumes often orphan ho jaate hain — regularly audit</li>
-            <li><strong>EBS snapshot lifecycle:</strong> Old snapshots delete karo — DLM (Data Lifecycle Manager) automate karta hai</li>
-            <li><strong>EBS gp2 → gp3 migration:</strong> gp3 same performance cheaper hai — existing gp2 volumes migrate karo</li>
+            <li><strong>EBS unattached volumes:</strong> When EC2 is terminated, volumes are often orphaned — audit regularly</li>
+            <li><strong>EBS snapshot lifecycle:</strong> Delete old snapshots — DLM (Data Lifecycle Manager) automates this</li>
+            <li><strong>EBS gp2 → gp3 migration:</strong> gp3 gives the same performance cheaper — migrate existing gp2 volumes</li>
           </ul>
 
           <h3 style={S.h3}>Trusted Advisor</h3>
           <p style={S.p}>
-            Trusted Advisor automated best practice checks karta hai — five categories: Cost Optimization, Performance, Security, Fault Tolerance, Service Limits. Free tier: limited checks. Business/Enterprise support: all checks available.
+            Trusted Advisor performs automated best practice checks — five categories: Cost Optimization, Performance, Security, Fault Tolerance, Service Limits. Free tier: limited checks. Business/Enterprise support: all checks available.
           </p>
           <p style={S.p}>
-            Cost Optimization checks: idle EC2 instances (CPU below threshold), unused Elastic IPs, underutilized EBS volumes, unused RIs. Security checks: open Security Groups, MFA on root. Action: recommendations implement karo → re-check.
+            Cost Optimization checks: idle EC2 instances (CPU below threshold), unused Elastic IPs, underutilized EBS volumes, unused RIs. Security checks: open Security Groups, MFA on root. Action: implement the recommendations → re-check.
           </p>
 
           <Callout type="important" title="FinOps from Day One">
-            Cloud cost governance post-launch add karna hard hai. Tagging enforce karo from day one — AWS Config rules se. Budget alerts set karo pehle deploy se. Architecture review mein cost impact estimate karo. Cloud cost = engineering responsibility, sirf finance team nahi.
+            Adding cloud cost governance post-launch is hard. Enforce tagging from day one — via AWS Config rules. Set budget alerts before the first deploy. Estimate cost impact in architecture reviews. Cloud cost = engineering responsibility, not just the finance team's.
           </Callout>
         </section>
       </section>
@@ -1476,7 +1476,7 @@ export default function Content() {
       <section id="well-architected">
         <h2 style={S.h2}>AWS Well-Architected Framework</h2>
         <p style={S.p}>
-          AWS Well-Architected Framework six pillars define karta hai jo cloud architecture quality measure karte hain. Infrastructure engineer ke liye yeh ek practical design checklist hai:
+          The AWS Well-Architected Framework defines six pillars that measure cloud architecture quality. For an infrastructure engineer this is a practical design checklist:
         </p>
         <Figure caption="AWS Well-Architected Framework: six pillars with practical examples for DC engineers">
           <WellArchitectedDiagram />
@@ -1485,13 +1485,13 @@ export default function Content() {
         <section id="wa-operational-excellence">
           <h3 style={S.h3}>Pillar 1: Operational Excellence</h3>
           <p style={S.p}>
-            Systems run karo, monitor karo, aur continuously improve karo. Operations ek code delivery ki tarah treat karo.
+            Run systems, monitor them, and continuously improve them. Treat operations like code delivery.
           </p>
           <ul style={S.ul}>
             <li><strong>IaC mandatory:</strong> All changes via code — no manual console clicks in production</li>
-            <li><strong>Frequent small changes:</strong> Large infrequent deployments risky hain — CI/CD pipeline se small, reversible deployments</li>
+            <li><strong>Frequent small changes:</strong> Large infrequent deployments are risky — small, reversible deployments via a CI/CD pipeline</li>
             <li><strong>Runbooks:</strong> Documented procedures for routine operations — onboarding new team member, deployment, rollback</li>
-            <li><strong>Postmortems (blameless):</strong> Every incident → root cause analysis → process improvement. Blame people ko nahi, systems ko fix karo.</li>
+            <li><strong>Postmortems (blameless):</strong> Every incident → root cause analysis → process improvement. Do not blame people; fix the systems.</li>
             <li><strong>CloudWatch dashboards:</strong> Real-time visibility — key metrics always visible to operations team</li>
           </ul>
         </section>
@@ -1499,11 +1499,11 @@ export default function Content() {
         <section id="wa-security">
           <h3 style={S.h3}>Pillar 2: Security</h3>
           <p style={S.p}>
-            Har layer pe security — identity, infrastructure, data, applications, monitoring.
+            Security at every layer — identity, infrastructure, data, applications, monitoring.
           </p>
           <ul style={S.ul}>
             <li><strong>Strong identity:</strong> IAM roles everywhere, MFA on all humans, no long-lived access keys in code</li>
-            <li><strong>Enable traceability:</strong> CloudTrail + VPC Flow Logs + GuardDuty always on — turn off mat karo</li>
+            <li><strong>Enable traceability:</strong> CloudTrail + VPC Flow Logs + GuardDuty always on — never turn them off</li>
             <li><strong>Security at all layers:</strong> Edge (WAF/Shield) + Network (SG/NACL) + Instance (patching) + App + Data</li>
             <li><strong>Encrypt everything:</strong> S3 SSE-KMS, EBS encrypted, RDS encrypted, TLS in transit</li>
             <li><strong>Prepare for incidents:</strong> GuardDuty + Security Hub + automated response playbooks. Practice tabletop exercises.</li>
@@ -1513,61 +1513,61 @@ export default function Content() {
         <section id="wa-reliability">
           <h3 style={S.h3}>Pillar 3: Reliability</h3>
           <p style={S.p}>
-            System failures se automatically recover karo. Scale horizontally. Failure test karo regularly.
+            Recover automatically from system failures. Scale horizontally. Test failure regularly.
           </p>
           <ul style={S.ul}>
-            <li><strong>Test recovery procedures:</strong> DR plan jo kabhi test nahi hua woh plan nahi — annually ya quarterly test karo</li>
-            <li><strong>Scale horizontally:</strong> Single large server → multiple smaller servers behind LB. Single point of failure eliminate karo.</li>
-            <li><strong>Stop guessing capacity:</strong> Auto Scaling se demand-driven scaling — over-provision mat karo</li>
+            <li><strong>Test recovery procedures:</strong> A DR plan that has never been tested is not a plan — test it annually or quarterly</li>
+            <li><strong>Scale horizontally:</strong> Single large server → multiple smaller servers behind an LB. Eliminate the single point of failure.</li>
+            <li><strong>Stop guessing capacity:</strong> Demand-driven scaling with Auto Scaling — do not over-provision</li>
             <li><strong>Manage change in automation:</strong> Manual changes = errors. IaC + CI/CD = predictable changes</li>
-            <li><strong>Chaos Engineering:</strong> Production mein controlled failures inject karo (Chaos Monkey concept) — Netflix pioneered, AWS Fault Injection Simulator tool available</li>
+            <li><strong>Chaos Engineering:</strong> Inject controlled failures in production (Chaos Monkey concept) — Netflix pioneered it, AWS Fault Injection Simulator tool available</li>
           </ul>
         </section>
 
         <section id="wa-performance">
           <h3 style={S.h3}>Pillar 4: Performance Efficiency</h3>
           <p style={S.p}>
-            Sahi resource type choose karo. Managed services use karo jab appropriate. Performance monitor karo.
+            Choose the right resource type. Use managed services when appropriate. Monitor performance.
           </p>
           <ul style={S.ul}>
-            <li><strong>Right resource types:</strong> Memory-intensive workload → r-series EC2, not t-series. Choose correctly pehle, then optimize.</li>
+            <li><strong>Right resource types:</strong> Memory-intensive workload → r-series EC2, not t-series. Choose correctly first, then optimize.</li>
             <li><strong>Use managed services:</strong> RDS instead of self-managed MySQL on EC2 — AWS patches, backs up, multi-AZ manages</li>
             <li><strong>Serverless where appropriate:</strong> Lambda for event-driven — no idle cost, auto-scale</li>
-            <li><strong>Go global in minutes:</strong> CloudFront + multi-region deployment — users ke paas content deliver karo</li>
-            <li><strong>Benchmark and experiment:</strong> CloudWatch metrics se performance baselines establish karo — changes ke impact measure karo</li>
+            <li><strong>Go global in minutes:</strong> CloudFront + multi-region deployment — deliver content close to users</li>
+            <li><strong>Benchmark and experiment:</strong> Establish performance baselines with CloudWatch metrics — measure the impact of changes</li>
           </ul>
         </section>
 
         <section id="wa-cost-optimization">
           <h3 style={S.h3}>Pillar 5: Cost Optimization</h3>
           <p style={S.p}>
-            Sirf zaroori resources use karo. Right-size karo. Consumption model adopt karo.
+            Use only the resources you need. Right-size. Adopt a consumption model.
           </p>
           <ul style={S.ul}>
-            <li><strong>Adopt consumption model:</strong> Pay for what you use — dev environments nights/weekends band karo</li>
-            <li><strong>Measure overall efficiency:</strong> Business outcome per dollar spend track karo — not just total spend</li>
-            <li><strong>Avoid undifferentiated heavy lifting:</strong> Managed services use karo — self-managing Kafka on EC2 vs Amazon MSK</li>
+            <li><strong>Adopt consumption model:</strong> Pay for what you use — shut down dev environments on nights/weekends</li>
+            <li><strong>Measure overall efficiency:</strong> Track business outcome per dollar spent — not just total spend</li>
+            <li><strong>Avoid undifferentiated heavy lifting:</strong> Use managed services — self-managing Kafka on EC2 vs Amazon MSK</li>
             <li><strong>Analyze spend:</strong> Cost Explorer weekly review. Anomaly alerts. Team-level chargebacks via tags.</li>
-            <li><strong>Reserved capacity:</strong> Steady-state workloads pe RIs/Savings Plans se 30-70% savings</li>
+            <li><strong>Reserved capacity:</strong> 30-70% savings with RIs/Savings Plans on steady-state workloads</li>
           </ul>
         </section>
 
         <section id="wa-sustainability">
           <h3 style={S.h3}>Pillar 6: Sustainability</h3>
           <p style={S.p}>
-            Environmental impact minimize karo — cloud pe yeh resource efficiency maximize karne se hota hai.
+            Minimize environmental impact — in the cloud this is achieved by maximizing resource efficiency.
           </p>
           <ul style={S.ul}>
             <li><strong>Managed services:</strong> Better hardware utilization than dedicated servers — AWS shared infrastructure more efficient</li>
-            <li><strong>Right-size workloads:</strong> Oversized instances waste energy — Compute Optimizer recommendations follow karo</li>
+            <li><strong>Right-size workloads:</strong> Oversized instances waste energy — follow Compute Optimizer recommendations</li>
             <li><strong>Graviton (ARM) processors:</strong> Same performance, 20-60% less energy than x86</li>
-            <li><strong>Minimize data movement:</strong> Data transfer = energy. Same-region, same-AZ resources prefer karo where latency allows.</li>
+            <li><strong>Minimize data movement:</strong> Data transfer = energy. Prefer same-region, same-AZ resources where latency allows.</li>
             <li><strong>Region selection:</strong> AWS Regions differ in renewable energy use — sustainability-focused Regions exist (e.g., EU regions)</li>
           </ul>
         </section>
 
         <p style={S.p}>
-          AWS Well-Architected Tool (free, in console) workloads ko review karta hai in six pillars ke against — questions answer karo, improvement recommendations milte hain. Milestones track karo — quarterly review recommended.
+          The AWS Well-Architected Tool (free, in console) reviews workloads against these six pillars — answer the questions and you get improvement recommendations. Track milestones — a quarterly review is recommended.
         </p>
       </section>
 
@@ -1578,23 +1578,23 @@ export default function Content() {
         <section id="small-web-app">
           <h3 style={S.h3}>Small Web Application</h3>
           <p style={S.p}>
-            Simple web application — startup ya internal tool. Cost-optimized, low-complexity.
+            A simple web application — a startup or an internal tool. Cost-optimized, low-complexity.
           </p>
           <ul style={S.ul}>
             <li><strong>Why this architecture:</strong> Low traffic, budget-conscious, single developer/small team. Simplicity over redundancy initially.</li>
             <li>Route 53 → CloudFront → ALB → single EC2 (t3.medium, AZ-a)</li>
             <li>RDS (single-AZ — cost saving for non-critical) in private subnet</li>
-            <li>S3 for static assets (images, CSS, JS) — CloudFront se serve karo</li>
+            <li>S3 for static assets (images, CSS, JS) — serve them via CloudFront</li>
             <li>Certificate Manager → ALB HTTPS termination. No HTTP.</li>
             <li>CloudWatch basic monitoring + billing alarm</li>
-            <li><strong>Limitation:</strong> Single-AZ = AZ failure → outage. Acceptable for non-critical internal tools. Production customer-facing → Multi-AZ upgrade karo.</li>
+            <li><strong>Limitation:</strong> Single-AZ = AZ failure → outage. Acceptable for non-critical internal tools. For production customer-facing workloads → upgrade to Multi-AZ.</li>
           </ul>
         </section>
 
         <section id="three-tier">
           <h3 style={S.h3}>Three-Tier Enterprise Application</h3>
           <p style={S.p}>
-            Classic enterprise three-tier architecture AWS mein — HA, scalable, secure.
+            The classic enterprise three-tier architecture in AWS — HA, scalable, secure.
           </p>
           <p style={S.p}>
             <strong>Why this architecture:</strong> Production workload, customer-facing, SLA requirement. Each tier independently scalable, failure isolated.
@@ -1640,33 +1640,33 @@ export default function Content() {
           <ul style={S.ul}>
             <li><strong>Active-Passive DR:</strong> Primary Region (ap-south-1) fully active. DR Region (us-east-1) Pilot Light/Warm Standby. Route 53 failover routing. RDS cross-region read replica (manual promote on DR).</li>
             <li><strong>Active-Active global:</strong> Route 53 latency-based routing → nearest Region. DynamoDB Global Tables (multi-region sync). S3 Cross-Region Replication. Application stateless with global DB. Much more complex to manage.</li>
-            <li><strong>Data synchronization challenge:</strong> Active-active mein write conflicts possible — application design carefully karo. DynamoDB Global Tables last-writer-wins by default.</li>
+            <li><strong>Data synchronization challenge:</strong> Write conflicts are possible in active-active — design the application carefully. DynamoDB Global Tables are last-writer-wins by default.</li>
             <li><strong>Cost:</strong> 2x infrastructure + cross-region data transfer costs. Calculate ROI vs downtime cost.</li>
           </ul>
           <Callout type="warning" title="Multi-Region Complexity">
-            Multi-region active-active ek advanced pattern hai — experienced teams ke liye. Start with single region HA, then consider multi-region DR. Multi-region active-active ke bina single-region HA bahut problems solve kar deta hai.
+            Multi-region active-active is an advanced pattern — for experienced teams. Start with single region HA, then consider multi-region DR. Even without multi-region active-active, single-region HA solves a lot of problems.
           </Callout>
         </section>
 
         <section id="hybrid-dc-example">
           <h3 style={S.h3}>Hybrid Data Center Integration</h3>
           <p style={S.p}>
-            Enterprise hybrid pattern — on-prem DC aur AWS dono simultaneously. Most enterprise AWS journeys yahi se start karte hain.
+            The enterprise hybrid pattern — on-prem DC and AWS running simultaneously. Most enterprise AWS journeys start here.
           </p>
           <p style={S.p}>
-            <strong>Why this architecture:</strong> On-prem aur AWS applications dono exist karein — gradual migration, compliance requirements for some data on-prem, latency-sensitive workloads on-prem.
+            <strong>Why this architecture:</strong> Both on-prem and AWS applications exist — gradual migration, compliance requirements to keep some data on-prem, latency-sensitive workloads on-prem.
           </p>
           <ul style={S.ul}>
             <li>Direct Connect (primary, 1Gbps) + Site-to-Site VPN (backup) → Transit Gateway → VPC attachments</li>
             <li>On-prem AD → AWS IAM Identity Center via SAML federation — single identity across both</li>
             <li>Route 53 Resolver Endpoints — bidirectional DNS between on-prem and AWS private zones</li>
-            <li>Storage Gateway — on-prem file shares → S3 for archival aur backup</li>
-            <li>AWS Outposts — latency-sensitive applications on-prem pe, same AWS APIs</li>
+            <li>Storage Gateway — on-prem file shares → S3 for archival and backup</li>
+            <li>AWS Outposts — latency-sensitive applications on-prem, with the same AWS APIs</li>
             <li>Centralized logging: CloudTrail + VPC Flow Logs → S3 (separate log archive account)</li>
             <li>Security Hub + GuardDuty across all AWS accounts → SIEM integration via EventBridge</li>
           </ul>
           <Callout type="important" title="Hybrid Network Path Analysis">
-            Hybrid environment mein traffic path trace karo: on-prem router → DX/VPN → TGW → VPC route table → subnet route → SG check → NACL check → instance. Return path reverse karo. Asymmetric routing common issue hai — both directions explicitly verify karo.
+            In a hybrid environment, trace the traffic path: on-prem router → DX/VPN → TGW → VPC route table → subnet route → SG check → NACL check → instance. Trace the return path in reverse. Asymmetric routing is a common issue — verify both directions explicitly.
           </Callout>
         </section>
       </section>
@@ -1717,31 +1717,31 @@ export default function Content() {
       <section id="troubleshooting">
         <h2 style={S.h2}>Troubleshooting</h2>
         <p style={S.p}>
-          AWS troubleshooting ek systematic approach chahti hai — Identify → Verify → Isolate → Measure → Analyze → Fix → Validate → Monitor. Layers skip karna dangerous hai.
+          AWS troubleshooting needs a systematic approach — Identify → Verify → Isolate → Measure → Analyze → Fix → Validate → Monitor. Skipping layers is dangerous.
         </p>
 
         <section id="ts-sequence">
           <h3 style={S.h3}>Systematic Sequence</h3>
           <ol style={{ ...S.ul, listStyleType: "decimal" }}>
-            <li><strong>DNS resolving correctly?</strong> <code>nslookup</code> / <code>dig</code> — Route 53 record exist karta hai? Correct IP? TTL cached old value?</li>
-            <li><strong>Public/private connectivity design correct?</strong> IGW VPC se attached hai? Public subnet mein route hai IGW ke liye?</li>
-            <li><strong>Route table correct?</strong> Subnet ka route table check karo — required route present hai?</li>
-            <li><strong>IGW/NAT path correct?</strong> Public instance ke liye: IGW route + public IP. Private outbound: NAT GW route, NAT GW public subnet mein.</li>
-            <li><strong>Security Group allows traffic?</strong> Stateful — inbound rule check karo. Source IP/SG correct hai? Protocol aur port exact match?</li>
-            <li><strong>NACL allows traffic AND return path?</strong> Stateless — inbound aur outbound dono check karo. Ephemeral ports outbound allow hain?</li>
+            <li><strong>DNS resolving correctly?</strong> <code>nslookup</code> / <code>dig</code> — Does the Route 53 record exist? Correct IP? Is an old value cached due to TTL?</li>
+            <li><strong>Public/private connectivity design correct?</strong> Is the IGW attached to the VPC? Does the public subnet have a route to the IGW?</li>
+            <li><strong>Route table correct?</strong> Check the subnet's route table — is the required route present?</li>
+            <li><strong>IGW/NAT path correct?</strong> For a public instance: IGW route + public IP. Private outbound: NAT GW route, NAT GW in the public subnet.</li>
+            <li><strong>Security Group allows traffic?</strong> Stateful — check the inbound rule. Is the source IP/SG correct? Do protocol and port match exactly?</li>
+            <li><strong>NACL allows traffic AND return path?</strong> Stateless — check both inbound and outbound. Are ephemeral ports allowed outbound?</li>
             <li><strong>Load Balancer healthy?</strong> LB status, listener rules, target group association, certificate valid?</li>
             <li><strong>Target registered and healthy?</strong> Target group health checks passing? Correct health check port/path configured?</li>
             <li><strong>EC2 instance running?</strong> Instance state Running — not stopped, terminated, pending.</li>
-            <li><strong>OS/application listening?</strong> EC2 Running ≠ Application healthy. Port pe process sun raha hai? Application crashed hai? <code>ss -tlnp</code> ya <code>netstat</code>.</li>
-            <li><strong>Return routing correct?</strong> Instance apna response correctly route kar sakta hai — asymmetric path issues? VPC Flow Logs verify karo.</li>
-            <li><strong>IAM permissions relevant?</strong> AccessDenied error? IAM policy, role attachment, resource policy, SCP check karo. CloudTrail mein API error dekho.</li>
-            <li><strong>CloudWatch logs/metrics?</strong> Application logs mein error pattern? Metrics mein anomaly? VPC Flow Logs mein REJECT entries?</li>
+            <li><strong>OS/application listening?</strong> EC2 Running ≠ Application healthy. Is a process listening on the port? Has the application crashed? <code>ss -tlnp</code> or <code>netstat</code>.</li>
+            <li><strong>Return routing correct?</strong> Can the instance route its response correctly — asymmetric path issues? Verify with VPC Flow Logs.</li>
+            <li><strong>IAM permissions relevant?</strong> AccessDenied error? Check the IAM policy, role attachment, resource policy, SCP. Look for the API error in CloudTrail.</li>
+            <li><strong>CloudWatch logs/metrics?</strong> Error pattern in application logs? Anomaly in metrics? REJECT entries in VPC Flow Logs?</li>
           </ol>
-          <Figure caption="AWS troubleshooting layered diagnostic sequence — DNS se OS/application tak, layer by layer">
+          <Figure caption="AWS troubleshooting layered diagnostic sequence — from DNS to OS/application, layer by layer">
             <TroubleshootingFlowDiagram />
           </Figure>
           <p style={S.p}>
-            <strong>EC2 Troubleshooting:</strong> Status checks (System check = AWS infrastructure; Instance check = OS). Failed system check = AWS responsibility. Failed instance check = OS/software issue. System Log aur Screenshot via console available without SSH.
+            <strong>EC2 Troubleshooting:</strong> Status checks (System check = AWS infrastructure; Instance check = OS). Failed system check = AWS responsibility. Failed instance check = OS/software issue. System Log and Screenshot are available via the console without SSH.
           </p>
           <p style={S.p}>
             <strong>Storage Troubleshooting:</strong> EBS performance degraded → CloudWatch volume metrics (BurstBalance, IOps, Throughput). S3 access denied → bucket policy + IAM policy + ACL interaction check. EFS mount fails → Security Group (NFS port 2049), subnet routing.
@@ -1781,16 +1781,16 @@ export default function Content() {
       <section id="final-architecture">
         <h2 style={S.h2}>Final AWS Architecture</h2>
         <p style={S.p}>
-          Yeh ek production-grade multi-AZ architecture hai jo sab covered concepts integrate karta hai:
+          This is a production-grade multi-AZ architecture that integrates all the concepts covered:
         </p>
         <ul style={S.ul}>
-          <li>Internet users Route 53 se domain resolve karte hain → CloudFront (CDN + WAF) → IGW → ALB (multi-AZ)</li>
-          <li>ALB private subnets mein ASG-managed EC2 instances pe load balance karta hai</li>
-          <li>Private instances outbound access ke liye NAT Gateway use karte hain (per-AZ)</li>
-          <li>RDS Multi-AZ — synchronous standby AZ-b mein; ElastiCache Redis for session caching</li>
+          <li>Internet users resolve the domain via Route 53 → CloudFront (CDN + WAF) → IGW → ALB (multi-AZ)</li>
+          <li>The ALB load balances across ASG-managed EC2 instances in private subnets</li>
+          <li>Private instances use a NAT Gateway (per-AZ) for outbound access</li>
+          <li>RDS Multi-AZ — synchronous standby in AZ-b; ElastiCache Redis for session caching</li>
           <li>Security Groups per instance, NACLs per subnet, VPC Flow Logs enabled</li>
           <li>CloudWatch operational monitoring, CloudTrail API audit, GuardDuty threat detection</li>
-          <li>IAM Roles EC2 pe — no embedded keys; Secrets Manager for DB credentials</li>
+          <li>IAM Roles on EC2 — no embedded keys; Secrets Manager for DB credentials</li>
           <li>On-prem connectivity: Direct Connect (primary) + VPN (backup) → Transit Gateway</li>
           <li>All infra in CloudFormation/Terraform; tagging enforced; budgets set</li>
         </ul>
@@ -1806,7 +1806,7 @@ export default function Content() {
           <li><strong>AWS:</strong> Hundreds of services across compute, network, storage, DB, security, ML — not just EC2</li>
           <li><strong>Region/AZ:</strong> Region = independent geography; AZ = isolated failure domain; AZ ≠ single building</li>
           <li><strong>VPC:</strong> Layer-3 logically isolated software-defined network — NOT a VLAN; no broadcast domain</li>
-          <li><strong>Subnet:</strong> Exactly ek AZ; public = IGW route in RT; private = no IGW route but NAT outbound possible</li>
+          <li><strong>Subnet:</strong> Exactly one AZ; public = IGW route in RT; private = no IGW route but NAT outbound possible</li>
           <li><strong>Routing:</strong> Route table explicit; local route mandatory; longest-prefix match</li>
           <li><strong>IGW vs NAT:</strong> IGW = bidirectional public; NAT GW = outbound-initiated private only</li>
           <li><strong>Security Group:</strong> Stateful, instance-level, allow only; tracks connection state</li>

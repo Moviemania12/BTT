@@ -15,7 +15,7 @@ export default function DisasterRecoveryPage() {
         slug="disaster-recovery"
         headings={HEADINGS}
         readingTimeMinutes={40}
-      >
+       lang="en" alternateHref="/hi/learn/it/storage/disaster-recovery">
         <Content />
       </ArticleLayout>
     </>

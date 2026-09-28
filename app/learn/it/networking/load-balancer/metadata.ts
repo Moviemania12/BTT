@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Load Balancer — Complete Data Center & Enterprise Guide | Behind The Tech",
   description:
-    "Load Balancer kya hai — VIP, backend pools, health monitoring, algorithms, persistence, L7 content switching, TLS offload, GSLB, HA, troubleshooting aur data center integration — complete Hinglish Data Center engineer handbook.",
+    "What is a Load Balancer — VIP, backend pools, health monitoring, algorithms, persistence, L7 content switching, TLS offload, GSLB, HA, troubleshooting and data center integration — complete English Data Center engineer handbook.",
   keywords: [
     "load balancer", "data center load balancer", "VIP virtual IP", "backend pool",
     "health monitoring load balancer", "round robin algorithm", "least connections",
@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     description:
       "VIP, backend pools, health monitoring, algorithms, persistence, L7 routing, TLS offload, GSLB, HA, troubleshooting — complete load balancer handbook.",
     url: "https://behindthetech.in/learn/it/networking/load-balancer",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -30,41 +31,48 @@ export const metadata: Metadata = {
     description:
       "Complete load balancer guide — VIP, health checks, algorithms, persistence, TLS, GSLB, HA, troubleshooting — beginner to engineer level.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/it/networking/load-balancer" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/it/networking/load-balancer",
+    languages: {
+      en: "https://behindthetech.in/learn/it/networking/load-balancer",
+      hi: "https://behindthetech.in/hi/learn/it/networking/load-balancer",
+      "x-default": "https://behindthetech.in/learn/it/networking/load-balancer",
+    },
+  },
 };
 
 export const faqs = [
   {
-    q: "Load Balancer kya hota hai aur kyun use karte hain?",
-    a: "Load Balancer ek device ya software hai jo incoming service traffic ko multiple backend servers ke beech distribute karta hai. Isko isliye use karte hain taaki koi ek server overloaded na ho, individual server failure service-level failure na bane, aur application independently scale kar sake. Client ek single address (VIP) se connect karta hai — backend complexity hide rehti hai.",
+    q: "What is a Load Balancer and why is it used?",
+    a: "A Load Balancer is a device or software that distributes incoming service traffic across multiple backend servers. It is used so that no single server gets overloaded, an individual server failure does not become a service-level failure, and the application can scale independently. The client connects to a single address (VIP) — the backend complexity stays hidden.",
   },
   {
-    q: "VIP kya hota hai Load Balancer mein?",
-    a: "VIP (Virtual IP) woh address hai jis pe clients connect karte hain. Yeh kisi ek physical server ka address nahi hota — Load Balancer pe configured ek virtual service address hota hai. DNS domain ko VIP pe point karta hai. Clients VIP se connect karte hain, Load Balancer backend pool mein se ek eligible server select karke traffic forward karta hai. VIP ka implementation platform aur deployment architecture pe depend karta hai — interface address, software construct, cloud-managed frontend, ya anycast address ho sakta hai.",
+    q: "What is a VIP in a Load Balancer?",
+    a: "A VIP (Virtual IP) is the address that clients connect to. It is not the address of any single physical server — it is a virtual service address configured on the Load Balancer. DNS points the domain to the VIP. Clients connect to the VIP, and the Load Balancer selects an eligible server from the backend pool and forwards the traffic. VIP implementation depends on the platform and deployment architecture — it can be an interface address, a software construct, a cloud-managed frontend, or an anycast address.",
   },
   {
-    q: "Load Balancer aur Firewall mein kya farq hai?",
-    a: "Firewall ka primary kaam security policy enforce karna hai — kaun sa traffic allowed hai aur kaun sa nahi. Load Balancer ka primary kaam service traffic ko available backend servers ke beech distribute karna hai. Dono ek hi network mein coexist karte hain aur alag functions serve karte hain. Kuch modern platforms dono capabilities include karte hain, lekin ye functionally alag concerns hain.",
+    q: "What is the difference between a Load Balancer and a Firewall?",
+    a: "A Firewall's primary job is to enforce security policy — which traffic is allowed and which is not. A Load Balancer's primary job is to distribute service traffic across available backend servers. Both coexist in the same network and serve different functions. Some modern platforms include both capabilities, but these are functionally separate concerns.",
   },
   {
-    q: "Health check kyun zaroori hai Load Balancer mein?",
-    a: "Without health check, Load Balancer failed ya unhealthy servers pe bhi traffic bhejta rahega. Health check periodically verify karta hai ki backend server actually traffic serve kar sakta hai ya nahi. TCP check se pata chalta hai port open hai; HTTP check se pata chalta hai server respond kar raha hai; application-aware check se pata chalta hai application correctly kaam kar rahi hai. Ek failed probe se backend ineligible nahi hota — fall threshold (consecutive failures) required hota hai.",
+    q: "Why is a health check necessary in a Load Balancer?",
+    a: "Without a health check, the Load Balancer will keep sending traffic even to failed or unhealthy servers. A health check periodically verifies whether the backend server can actually serve traffic. A TCP check tells you the port is open; an HTTP check tells you the server is responding; an application-aware check tells you the application is working correctly. A single failed probe does not make a backend ineligible — a fall threshold (consecutive failures) is required.",
   },
   {
-    q: "Round Robin load balancing algorithm kya guarantee karta hai?",
-    a: "Round Robin sirf scheduling units (connection ya request — proxy mode aur protocol pe dependent) sequentially distribute karta hai. Yeh equal load guarantee nahi karta. Agar ek server ki requests zyada time lein (slow queries, long uploads), woh server bakiyon se zyada loaded ho sakta hai. Server capacity differences bhi affect karti hain. Algorithm selection use case pe depend karna chahiye.",
+    q: "What does the Round Robin load balancing algorithm guarantee?",
+    a: "Round Robin only distributes scheduling units (connections or requests — dependent on proxy mode and protocol) sequentially. It does not guarantee equal load. If one server's requests take longer (slow queries, long uploads), that server can become more loaded than the rest. Server capacity differences also have an effect. Algorithm selection should depend on the use case.",
   },
   {
-    q: "L4 aur L7 load balancing mein kya difference hai?",
-    a: "L4 load balancing transport-layer information pe based hai — IP address, port, protocol. Content nahi dekhta. L7 load balancing application-layer content pe based hai — HTTP headers, URL path, Host header, cookies. L7 content-based routing enable karta hai (e.g., /api/* alag pool, /images/* alag pool). HTTPS ke liye HTTP-layer routing ke liye TLS termination zaroori hai; TLS metadata (SNI) routing alag hai — decryption ke bina bhi possible hai. Many products dono modes support karte hain.",
+    q: "What is the difference between L4 and L7 load balancing?",
+    a: "L4 load balancing is based on transport-layer information — IP address, port, protocol. It does not look at content. L7 load balancing is based on application-layer content — HTTP headers, URL path, Host header, cookies. L7 enables content-based routing (e.g., /api/* to a separate pool, /images/* to a separate pool). For HTTPS, TLS termination is required for HTTP-layer routing; TLS metadata (SNI) routing is different — it is possible even without decryption. Many products support both modes.",
   },
   {
-    q: "Load Balancer fail ho sakta hai kya?",
-    a: "Haan. Load Balancer hardware failure, software crash, configuration error, ya capacity exhaustion se fail ho sakta hai. Isliye Load Balancers bhi HA pair mein deploy kiye jaate hain — ek active, ek standby. Active fail ho toh standby service responsibility assume karta hai — mechanism (address mobility, routing update, ya platform-specific method) platform/deployment pe depend karta hai. Session continuity failover pe platform aur session synchronization support pe depend karti hai.",
+    q: "Can a Load Balancer fail?",
+    a: "Yes. A Load Balancer can fail due to hardware failure, software crash, configuration error, or capacity exhaustion. That is why Load Balancers are also deployed in an HA pair — one active, one standby. If the active fails, the standby assumes service responsibility — the mechanism (address mobility, routing update, or a platform-specific method) depends on the platform/deployment. Session continuity on failover depends on the platform and session synchronization support.",
   },
   {
-    q: "DNS load balancing aur Load Balancer mein kya farq hai?",
-    a: "Standard DNS multi-A-record distribution bina health integration ke real-time backend health nahi jaanta, aur client DNS TTL se cache karta hai. Inline Load Balancer actively backends monitor karta hai, per-connection distribution karta hai, aur failed backend ko detection window ke baad bypass karta hai. GSLB (Global Server Load Balancing) DNS-based distribution ke saath health monitoring combine karta hai — simple multi-record DNS se zyada capable. DNS failover timing sirf TTL pe nahi — resolver caching, client caching, aur connection reuse bhi affect karte hain.",
+    q: "What is the difference between DNS load balancing and a Load Balancer?",
+    a: "Standard DNS multi-A-record distribution without health integration does not know real-time backend health, and the client caches according to the DNS TTL. An inline Load Balancer actively monitors backends, distributes per connection, and bypasses a failed backend after the detection window. GSLB (Global Server Load Balancing) combines DNS-based distribution with health monitoring — more capable than simple multi-record DNS. DNS failover timing does not depend only on TTL — resolver caching, client caching, and connection reuse also have an effect.",
   },
 ];
 

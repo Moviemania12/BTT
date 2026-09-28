@@ -12,33 +12,24 @@ export default function Content() {
     <>
       {/* Quick Summary */}
       <div style={{ background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 10, padding: "1.2rem 1.4rem", marginBottom: "2rem" }}>
-        <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.6rem", fontSize: "1rem" }}>📋 Quick Summary — Server Basics in 2 Minutes</p>
-        <ul style={{ ...S.ul, marginBottom: 0 }}>
-          <li><strong>Server kya hai:</strong> Ek dedicated computer jo network pe doosre devices ko resources, data ya services provide karta hai — 24/7 continuous operation ke liye designed.</li>
-          <li><strong>PC se alag kyun:</strong> ECC RAM, redundant PSUs, hot-swap storage, BMC/iDRAC out-of-band management, rack-mount form factor — sab availability aur manageability ke liye.</li>
-          <li><strong>Form factors:</strong> Tower (standalone), Rack (1U/2U/4U — data center standard), Blade (shared chassis), Modular/Composable (software-defined resources).</li>
-          <li><strong>Rack Unit (U):</strong> 1U = 1.75 inches (44.45 mm). 42U rack mein 42 U slots hain — lekin actual deployable servers power, cooling, weight, cabling constraints se limited hain.</li>
-          <li><strong>Boot flow:</strong> Power → BMC init (standby power se) → UEFI POST → Boot device (PXE/disk/SAN) → Bootloader → OS/Hypervisor.</li>
-          <li><strong>BMC:</strong> Separate chip — OS crash ya server off hone ke baad bhi accessible (standby power required). Remote console, power control, hardware health.</li>
-          <li><strong>PSU redundancy:</strong> Dual PSUs ko A aur B feeds se connect karo — separate electrical circuits se. Redundancy mode server model pe depend karta hai.</li>
-        </ul>
+        <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.6rem", fontSize: "1rem" }}>📋 Quick Summary — Server Basics in 2 Minutes</p> <ul style={{ ...S.ul, marginBottom: 0 }}> <li><strong>What a server is:</strong> A dedicated computer that provides resources, data or services to other devices on the network — designed for 24/7 continuous operation.</li> <li><strong>Why it differs from a PC:</strong> ECC RAM, redundant PSUs, hot-swap storage, BMC/iDRAC out-of-band management, rack-mount form factor — all for availability and manageability.</li> <li><strong>Form factors:</strong> Tower (standalone), Rack (1U/2U/4U — data center standard), Blade (shared chassis), Modular/Composable (software-defined resources).</li> <li><strong>Rack Unit (U):</strong> 1U = 1.75 inches (44.45 mm). A 42U rack has 42 U slots — but the actual number of deployable servers is limited by power, cooling, weight and cabling constraints.</li> <li><strong>Boot flow:</strong> Power → BMC init (from standby power) → UEFI POST → Boot device (PXE/disk/SAN) → Bootloader → OS/Hypervisor.</li> <li><strong>BMC:</strong> Separate chip — accessible even after an OS crash or with the server off (standby power required). Remote console, power control, hardware health.</li> <li><strong>PSU redundancy:</strong> Connect dual PSUs to A and B feeds — from separate electrical circuits. The redundancy mode depends on the server model.</li> </ul>
       </div>
 
       <h2 id="what-is-a-server" style={S.h2}>What Is a Server?</h2>
-      <p style={S.p}>Jab aap YouTube pe video play karte hain, Google pe search karte hain, ya UPI payment karte hain — background mein ek computer aapki request process kar raha hota hai. Woh computer ek <strong>server</strong> hai.</p>
-      <p style={S.p}>Server ek dedicated computer system hai jo network pe doosre devices (clients) ko services, data ya compute resources provide karta hai. "Server" ka literal meaning hai "serve karne wala" — kisi doosri device ki request fulfill karna.</p>
-      <p style={S.p}>Lekin server sirf ek powerful PC nahi hai. Design philosophy, components, form factor — sab kuch fundamentally alag hota hai. Server continuous, uninterrupted operation ke liye designed hota hai jahan hardware failure minimise honi chahiye aur recovery fast honi chahiye.</p>
+      <p style={S.p}>When you play a video on YouTube, search on Google or make a UPI payment — a computer in the background is processing your request. That computer is a <strong>server</strong>.</p>
+      <p style={S.p}>A server is a dedicated computer system that provides services, data or compute resources to other devices (clients) on the network. The literal meaning of "server" is "one who serves" — fulfilling another device's request.</p>
+      <p style={S.p}>But a server is not just a powerful PC. Design philosophy, components, form factor — everything is fundamentally different. A server is designed for continuous, uninterrupted operation, where hardware failures must be minimised and recovery must be fast.</p>
 
       <h2 id="server-vs-pc" style={S.h2}>Server vs Personal Computer</h2>
-      <p style={S.p}>"Agar server bhi CPU, RAM aur storage use karta hai toh PC se alag kya hai?" — yeh valid question hai. Difference hardware features mein hai jo continuous operation support karte hain.</p>
+      <p style={S.p}>"If a server also uses a CPU, RAM and storage, how is it different from a PC?" — this is a valid question. The difference lies in the hardware features that support continuous operation.</p>
       <Figure caption="Fig 1 — Server vs PC: key hardware differences across memory, power, storage, management and form factor."><ServerVsPc /></Figure>
       <Callout type="important" title="Availability Is a System Property, Not Just a Server Property">
-        Kisi bhi single server ki individual uptime claim carefully evaluate karo. Actual service availability server hardware, redundancy architecture, software stack, networking, power infrastructure aur operations processes ka combined outcome hai. High availability targets system-level design se achieve hote hain — sirf server hardware se nahi.
+        Evaluate any individual uptime claim for a single server carefully. Actual service availability is the combined outcome of server hardware, redundancy architecture, software stack, networking, power infrastructure and operations processes. High availability targets are achieved through system-level design — not through server hardware alone.
       </Callout>
-      <p style={S.p}><strong>ECC RAM</strong> (Error-Correcting Code) server ka standard hai. Memory errors — cosmic rays, electrical interference, aging — rare hain lekin hote hain. ECC implementation ke hisaab se single-bit aur some multi-bit errors detect aur/ya correct kar sakta hai. Consumer RAM mein yeh protection typically nahi hoti. Actual ECC capabilities implementation pe depend karti hain.</p>
-      <p style={S.p}><strong>Redundant PSUs</strong> ek aur key differentiator hain. Server typically 2 PSUs rakhta hai. PSU redundancy configuration — active-active, active-standby, load-sharing — server model aur PSU type pe depend karta hai. Ideally dono PSUs alag A aur B electrical feeds se connected honi chahiye.</p>
-      <p style={S.p}><strong>Hot-swap components</strong> allow karte hain drives, PSUs (aur kuch models mein fans) ko running server pe replace karna. Yeh requires appropriate hardware support aur OS/RAID configuration.</p>
-      <p style={S.p}><strong>BMC (Baseboard Management Controller)</strong> separate microcontroller hai — server ke main system se independent. Dedicated network port pe BMC accessible hota hai. Standby power required hai — matlab jab tak PSU mein AC supply hai, BMC function karta hai even jab server off ho.</p>
+      <p style={S.p}><strong>ECC RAM</strong> (Error-Correcting Code) is the server standard. Memory errors — from cosmic rays, electrical interference, aging — are rare, but they do happen. Depending on the implementation, ECC can detect and/or correct single-bit and some multi-bit errors. Consumer RAM typically lacks this protection. Actual ECC capabilities depend on the implementation.</p>
+      <p style={S.p}><strong>Redundant PSUs</strong> are another key differentiator. A server typically has 2 PSUs. The PSU redundancy configuration — active-active, active-standby, load-sharing — depends on the server model and PSU type. Ideally, both PSUs should be connected to separate A and B electrical feeds.</p>
+      <p style={S.p}><strong>Hot-swap components</strong> allow drives, PSUs (and fans in some models) to be replaced on a running server. This requires appropriate hardware support and OS/RAID configuration.</p>
+      <p style={S.p}><strong>BMC (Baseboard Management Controller)</strong> is a separate microcontroller — independent of the server's main system. The BMC is accessible on a dedicated network port. Standby power is required — meaning that as long as the PSU has AC supply, the BMC functions even when the server is off.</p>
 
       <h2 id="server-form-factors" style={S.h2}>Server Form Factors</h2>
       <ComparisonTable
@@ -52,17 +43,17 @@ export default function Content() {
         ]}
         caption="Form factor selection depends on density requirements, budget, operational model and existing infrastructure."
       />
-      <p style={S.p}><strong>Tower server</strong> standalone box hai — small office ya lab ke liye. Data center mein space inefficient hai kyunki rack mein standard mount nahi hota easily.</p>
-      <p style={S.p}><strong>Rack server</strong> data center standard hai — standard 19-inch rack mein mount hota hai. Blade servers aur modular infrastructure deeper mein <TopicLink slug="blade-server" variant="inline"/> mein cover honge.</p>
+      <p style={S.p}><strong>Tower server</strong> is a standalone box — for a small office or lab. It is space-inefficient in a data center because it does not easily mount in a standard rack.</p>
+      <p style={S.p}><strong>Rack server</strong> is the data center standard — it mounts in a standard 19-inch rack. Blade servers and modular infrastructure will be covered in depth in <TopicLink slug="blade-server" variant="inline"/>.</p>
 
       <h2 id="rack-mount-deployment" style={S.h2}>Rack Mount Deployment — The Full Picture</h2>
-      <p style={S.p}>Data center deployment sirf server buy karna aur plug in karna nahi hai. Ek complete deployment mein physical mounting, power planning, cooling, cabling, aur management network sab involve hote hain.</p>
+      <p style={S.p}>Data center deployment is not just buying a server and plugging it in. A complete deployment involves physical mounting, power planning, cooling, cabling and the management network.</p>
       <Callout type="best-practice" title="19-Inch Rack Standard">
-        Data center equipment typically 19-inch EIA-310 standard rack ke liye designed hota hai — rack ke dono sides pe mounting holes 19 inches (482.6 mm) apart hote hain. Equipment ke mounting ears is width ke liye designed hote hain. Rack compatible equipment chunte time mounting width aur depth verify karo.
+        Data center equipment is typically designed for the 19-inch EIA-310 standard rack — the mounting holes on both sides of the rack are 19 inches (482.6 mm) apart. Equipment mounting ears are designed for this width. When choosing rack-compatible equipment, verify the mounting width and depth.
       </Callout>
 
       <h2 id="rack-u-explained" style={S.h2}>Rack Unit (U) Explained</h2>
-      <p style={S.p}>Rack height <strong>U (Rack Units)</strong> mein measure hoti hai. <strong>1U = 1.75 inches = 44.45 mm.</strong> Yeh server ki physical height define karta hai — server performance ya capabilities se koi direct relation nahi hai.</p>
+      <p style={S.p}>Rack height is measured in <strong>U (Rack Units)</strong>. <strong>1U = 1.75 inches = 44.45 mm.</strong> This defines the server's physical height — it has no direct relation to server performance or capabilities.</p>
       <ComparisonTable
         title="Common Rack Heights"
         headers={["Rack Height","Total U Capacity","Typical Use"]}
@@ -78,98 +69,97 @@ export default function Content() {
       <p style={S.p}><strong>4U server:</strong> Large storage configurations, GPU-accelerated servers, high-expansion workloads. Takes significant rack space but provides maximum expansion capability.</p>
       <Figure caption="Fig 2 — Rack elevation showing 1U and 2U servers, network switches, patch panels, blanking panels and PDUs with U positions marked. For illustration only — actual deployments vary."><RackElevation /></Figure>
       <Callout type="warning" title="42U Rack ≠ 42 × 1U Servers">
-        Ek 42U rack ka matlab yeh nahi ki 42 servers safely deploy ho sakte hain. Actual deployable count in sab constraints se limited hota hai:
-        Power: Rack PDU current rating aur circuit breaker capacity. Cooling: CRAC/CRAH aur aisle capacity for heat removal. Weight: Rack aur floor load rating — servers heavy hote hain. Network: Switch ports aur patch panel space. Cabling: Cable management space. Redundancy: Blanking panels, operational clearance. Practical planning mein U slots aur sab other constraints simultaneously evaluate karo.
+        A 42U rack does not mean 42 servers can be safely deployed. The actual deployable count is limited by all of these constraints: Power: Rack PDU current rating and circuit breaker capacity. Cooling: CRAC/CRAH and aisle capacity for heat removal. Weight: Rack and floor load rating — servers are heavy. Network: Switch ports and patch panel space. Cabling: Cable management space. Redundancy: Blanking panels, operational clearance. In practical planning, evaluate U slots and all other constraints simultaneously.
       </Callout>
 
       <h2 id="rack-planning" style={S.h2}>Practical Rack Planning</h2>
-      <p style={S.p}><strong>Server depth aur clearance:</strong> Servers typically 600-900 mm deep hote hain. Rack depth compatible honi chahiye. Front mein service clearance (typically 1 meter recommended) aur rear mein cabling/PSU access ke liye space chahiye.</p>
-      <p style={S.p}><strong>Rack rails:</strong> Most servers slide-in rail kit ke saath aate hain — server rack mein horizontal mount hota hai rails pe, fir slide in. Rails rack ke vertical mounting strips pe attach hote hain. Server phir rails pe slide karo aur cable karo. Rack-mount rails vendor aur rack ke saath compatible hone chahiye.</p>
-      <p style={S.p}><strong>Blanking panels:</strong> Empty U slots mein blanking panels lagana mandatory hai. Blanking panels airflow maintain karte hain — bina panels ke cool air hot-air zone mein recirculate kar sakti hai, rack cooling efficiency degrade hoti hai.</p>
-      <p style={S.p}><strong>Hot-aisle / Cold-aisle orientation:</strong> All servers same direction mein mount karo — front (air intake) cold aisle ki taraf, rear (exhaust) hot aisle ki taraf. Consistent orientation CRAC/CRAH effectiveness ke liye critical hai. Mixed orientation airflow short-circuit kar sakta hai.</p>
-      <p style={S.p}><strong>Cable management:</strong> Power cables, network cables, management cables — organized aur labeled. Poor cable management airflow block kar sakta hai, troubleshooting slow karta hai, aur accidental disconnection risk badh jaata hai. Velcro ties, cable managers, labeled cables standard practice hain.</p>
+      <p style={S.p}><strong>Server depth and clearance:</strong> Servers are typically 600-900 mm deep. The rack depth must be compatible. Space is needed at the front for service clearance (typically 1 meter recommended) and at the rear for cabling/PSU access.</p>
+      <p style={S.p}><strong>Rack rails:</strong> Most servers come with a slide-in rail kit — the server mounts horizontally on rails in the rack, then slides in. The rails attach to the rack's vertical mounting strips. Then slide the server onto the rails and cable it. Rack-mount rails must be compatible with the vendor and the rack.</p>
+      <p style={S.p}><strong>Blanking panels:</strong> Installing blanking panels in empty U slots is mandatory. Blanking panels maintain airflow — without them, cool air can recirculate into the hot-air zone and rack cooling efficiency degrades.</p>
+      <p style={S.p}><strong>Hot-aisle / Cold-aisle orientation:</strong> Mount all servers in the same direction — front (air intake) facing the cold aisle, rear (exhaust) facing the hot aisle. Consistent orientation is critical for CRAC/CRAH effectiveness. Mixed orientation can short-circuit the airflow.</p>
+      <p style={S.p}><strong>Cable management:</strong> Power cables, network cables, management cables — organized and labeled. Poor cable management can block airflow, slows troubleshooting and increases the risk of accidental disconnection. Velcro ties, cable managers and labeled cables are standard practice.</p>
       <Figure caption="Fig 3 — Redundant A/B power path: dual-PSU server connected to separate A and B rack PDUs on independent electrical circuits."><DualPsuPower /></Figure>
-      <p style={S.p}><strong>A/B Redundant Power:</strong> Dual-PSU server ke liye PSU 1 ko Rack PDU A se aur PSU 2 ko Rack PDU B se connect karo. Rack PDU A aur B alag upstream electrical circuits se fed honi chahiye — UPS, breaker, ya distribution path separate hone chahiye. Is arrangement mein ek complete power path fail ho toh server continues running on other PSU.</p>
-      <p style={S.p}><strong>Weight planning:</strong> Fully loaded 2U server 15-30 kg ya more ho sakta hai — actual weight model pe depend karta hai. 42U rack servers se full hota hai toh significant weight ban sakti hai. Heavy equipment lower rack mein install karo — centre of gravity low rakho stability ke liye. Floor load rating verify karo especially older buildings mein.</p>
+      <p style={S.p}><strong>A/B Redundant Power:</strong> For a dual-PSU server, connect PSU 1 to Rack PDU A and PSU 2 to Rack PDU B. Rack PDU A and B should be fed from separate upstream electrical circuits — the UPS, breaker or distribution path should be separate. In this arrangement, if one complete power path fails, the server continues running on the other PSU.</p>
+      <p style={S.p}><strong>Weight planning:</strong> A fully loaded 2U server can weigh 15-30 kg or more — the actual weight depends on the model. When a 42U rack is filled with servers, the weight can become significant. Install heavy equipment in the lower part of the rack — keep the centre of gravity low for stability. Verify the floor load rating, especially in older buildings.</p>
 
       <h2 id="server-components" style={S.h2}>Key Server Components</h2>
-      <p style={S.p}><strong>Motherboard (Server Board):</strong> CPU sockets, DIMM slots, PCIe slots, storage controllers, NIC ports, BMC chip — sab yahan hain. Server motherboards typically multi-socket support karte hain (1S, 2S configurations most common).</p>
-      <p style={S.p}><strong>CPU:</strong> Server compute engine. Intel Xeon aur AMD EPYC data center mein common hain — multi-socket support, more PCIe lanes, RAS features. Deep dive <TopicLink slug="cpu" variant="inline"/> mein.</p>
-      <p style={S.p}><strong>RAM:</strong> Server mein ECC RAM standard hai — specific ECC implementation capability vendor aur platform pe depend karti hai. Typically RDIMM (Registered DIMM) form factor. <TopicLink slug="ram" variant="inline"/> mein detail mein.</p>
-      <p style={S.p}><strong>Storage:</strong> SAS (Serial Attached SCSI) enterprise drives — higher cost. SATA drives — wide availability, various reliability classes. NVMe SSDs (PCIe-based) — very high performance. Drive reliability server-grade vs consumer-grade model aur workload rating pe depend karta hai — simplistic generalisations avoid karo. Backplane hot-swap enable karta hai.</p>
-      <p style={S.p}><strong>RAID Controller vs HBA:</strong> RAID controller multiple drives ko combine karta hai redundancy ya performance ke liye — hardware RAID processing onboard karta hai. HBA (Host Bus Adapter) drives directly OS ko present karta hai without RAID processing — software RAID ya direct disk access ke liye. Choice workload aur architecture pe depend karta hai.</p>
-      <p style={S.p}><strong>NIC (Network Interface Card):</strong> Multiple NICs ya ports — redundancy (bonding/teaming), separate VLANs, management traffic. 10GbE, 25GbE, 100GbE modern data centers mein common hain.</p>
-      <p style={S.p}><strong>PSU:</strong> Typically redundant. Hot-swap. Server-grade efficiency ratings (80 Plus Platinum/Titanium common). PSU redundancy mode configuration pe depend karta hai.</p>
-      <p style={S.p}><strong>TPM (Trusted Platform Module):</strong> Hardware security chip — cryptographic keys secure store karta hai. Secure Boot, disk encryption (BitLocker, dm-crypt), remote attestation ke liye use hota hai. Modern servers mein typically present, configuration required to enable features.</p>
-      <p style={S.p}><strong>Secure Boot:</strong> UEFI feature — sirf cryptographically signed bootloaders aur OS kernels run hone allow karta hai. Unauthorized OS ya bootkit prevent karta hai. Enterprise environments mein often enabled.</p>
+      <p style={S.p}><strong>Motherboard (Server Board):</strong> CPU sockets, DIMM slots, PCIe slots, storage controllers, NIC ports, BMC chip — all are here. Server motherboards typically support multiple sockets (1S, 2S configurations most common).</p>
+      <p style={S.p}><strong>CPU:</strong> The server compute engine. Intel Xeon and AMD EPYC are common in data centers — multi-socket support, more PCIe lanes, RAS features. Deep dive in <TopicLink slug="cpu" variant="inline"/>.</p>
+      <p style={S.p}><strong>RAM:</strong> ECC RAM is standard in servers — the specific ECC implementation capability depends on the vendor and platform. Typically RDIMM (Registered DIMM) form factor. Covered in detail in <TopicLink slug="ram" variant="inline"/>.</p>
+      <p style={S.p}><strong>Storage:</strong> SAS (Serial Attached SCSI) enterprise drives — higher cost. SATA drives — wide availability, various reliability classes. NVMe SSDs (PCIe-based) — very high performance. Drive reliability, server-grade vs consumer-grade, depends on the model and workload rating — avoid simplistic generalisations. The backplane enables hot-swap.</p>
+      <p style={S.p}><strong>RAID Controller vs HBA:</strong> A RAID controller combines multiple drives for redundancy or performance — it performs hardware RAID processing onboard. An HBA (Host Bus Adapter) presents drives directly to the OS without RAID processing — for software RAID or direct disk access. The choice depends on the workload and architecture.</p>
+      <p style={S.p}><strong>NIC (Network Interface Card):</strong> Multiple NICs or ports — redundancy (bonding/teaming), separate VLANs, management traffic. 10GbE, 25GbE and 100GbE are common in modern data centers.</p>
+      <p style={S.p}><strong>PSU:</strong> Typically redundant. Hot-swap. Server-grade efficiency ratings (80 Plus Platinum/Titanium common). The PSU redundancy mode depends on the configuration.</p>
+      <p style={S.p}><strong>TPM (Trusted Platform Module):</strong> Hardware security chip — securely stores cryptographic keys. Used for Secure Boot, disk encryption (BitLocker, dm-crypt) and remote attestation. Typically present in modern servers; configuration required to enable features.</p>
+      <p style={S.p}><strong>Secure Boot:</strong> UEFI feature — allows only cryptographically signed bootloaders and OS kernels to run. Prevents unauthorized OSes or bootkits. Often enabled in enterprise environments.</p>
 
       <h2 id="boot-flow" style={S.h2}>Server Boot Flow</h2>
       <Figure caption="Fig 4 — Server boot sequence: from power applied, BMC init (on standby power), UEFI POST, boot device selection, bootloader, to OS/Hypervisor."><ServerBootFlow /></Figure>
-      <p style={S.p}><strong>Step 1 — Power applied → BMC initialises:</strong> Standby power BMC ko milti hai. BMC hardware health monitoring start karta hai, network management accessible ho jaata hai. Main CPU abhi boot nahi hua.</p>
-      <p style={S.p}><strong>Step 2 — UEFI/BIOS POST:</strong> Unified Extensible Firmware Interface (UEFI) modern servers mein standard hai — older BIOS replace karta hai. POST (Power-On Self-Test) CPU, RAM, storage controllers, PCIe devices check karta hai. Issues ho toh error codes ya indicator LEDs se diagnostics milti hai.</p>
-      <p style={S.p}><strong>Step 3 — Boot device:</strong> UEFI boot order se pehla valid device select hota hai. Options: Local disk (SATA/NVMe/SAS), PXE (network boot — OS over network se), SAN boot (storage area network se), USB (temporary/recovery). PXE boot large-scale automated OS deployment ke liye useful hai.</p>
-      <p style={S.p}><strong>Step 4 — Bootloader → OS/Hypervisor:</strong> GRUB (Linux), Windows Boot Manager, ya hypervisor-specific bootloader. OS kernel ya hypervisor (VMware ESXi, Hyper-V, KVM) load hota hai. Services start hoti hain.</p>
-      <p style={S.p}>Boot time hardware, storage speed, OS/hypervisor aur services pe depend karta hai — koi universal boot time claim technically accurate nahi hogi.</p>
+      <p style={S.p}><strong>Step 1 — Power applied → BMC initialises:</strong> The BMC receives standby power. The BMC starts hardware health monitoring and network management becomes accessible. The main CPU has not booted yet.</p>
+      <p style={S.p}><strong>Step 2 — UEFI/BIOS POST:</strong> Unified Extensible Firmware Interface (UEFI) is standard in modern servers — it replaces the older BIOS. POST (Power-On Self-Test) checks the CPU, RAM, storage controllers and PCIe devices. If there are issues, diagnostics are provided via error codes or indicator LEDs.</p>
+      <p style={S.p}><strong>Step 3 — Boot device:</strong> The first valid device is selected from the UEFI boot order. Options: Local disk (SATA/NVMe/SAS), PXE (network boot — OS over the network), SAN boot (from a storage area network), USB (temporary/recovery). PXE boot is useful for large-scale automated OS deployment.</p>
+      <p style={S.p}><strong>Step 4 — Bootloader → OS/Hypervisor:</strong> GRUB (Linux), Windows Boot Manager, or a hypervisor-specific bootloader. The OS kernel or hypervisor (VMware ESXi, Hyper-V, KVM) loads. Services start.</p>
+      <p style={S.p}>Boot time depends on hardware, storage speed, OS/hypervisor and services — no universal boot time claim would be technically accurate.</p>
 
       <h2 id="bmc-management" style={S.h2}>BMC and Out-of-Band Management</h2>
-      <p style={S.p}>Data center mein 500 servers ko physical console cables se manage karna impractical hai. BMC (Baseboard Management Controller) is problem solve karta hai.</p>
-      <p style={S.p}>BMC server ke main system se completely independent microcontroller hai. Apna dedicated network port rakhta hai — typically management VLAN pe, production traffic se separated. <strong>Important:</strong> BMC ko function karne ke liye AC power supply connected honi chahiye (standby power) — completely unplugged server pe BMC accessible nahi hoga.</p>
-      <p style={S.p}><strong>BMC se kya kya hota hai:</strong> Remote power on/off/reset. Virtual console (keyboard/video/mouse over network). Hardware health monitoring (CPU temperature, fan speeds, PSU status, drive health). Remote media mount (OS installation over network). Firmware/BIOS update. System event log access. Alert generation (SNMP traps, email).</p>
-      <p style={S.p}><strong>Protocols:</strong> IPMI (Intelligent Platform Management Interface) v2.0 — legacy standard. Redfish — modern REST API based standard, JSON, growing adoption. Vendor-specific GUIs aur CLIs — Dell iDRAC (OpenManage), HPE iLO (iLO Amplifier), Lenovo XCC, Supermicro IPMI.</p>
+      <p style={S.p}>Managing 500 servers in a data center with physical console cables is impractical. The BMC (Baseboard Management Controller) solves this problem.</p>
+      <p style={S.p}>The BMC is a microcontroller completely independent of the server's main system. It has its own dedicated network port — typically on a management VLAN, separated from production traffic. <strong>Important:</strong> For the BMC to function, AC power supply must be connected (standby power) — the BMC will not be accessible on a completely unplugged server.</p>
+      <p style={S.p}><strong>What the BMC can do:</strong> Remote power on/off/reset. Virtual console (keyboard/video/mouse over network). Hardware health monitoring (CPU temperature, fan speeds, PSU status, drive health). Remote media mount (OS installation over network). Firmware/BIOS update. System event log access. Alert generation (SNMP traps, email).</p>
+      <p style={S.p}><strong>Protocols:</strong> IPMI (Intelligent Platform Management Interface) v2.0 — legacy standard. Redfish — modern REST API based standard, JSON, growing adoption. Vendor-specific GUIs and CLIs — Dell iDRAC (OpenManage), HPE iLO (iLO Amplifier), Lenovo XCC, Supermicro IPMI.</p>
 
       <h2 id="redundancy" style={S.h2}>Redundancy in Servers</h2>
-      <p style={S.p}><strong>PSU redundancy:</strong> Dual PSUs common hain. Configuration — active-active (both PSUs load share), active-standby (one PSU carries full load, other standby) ya other modes — server model aur PSU type pe depend karta hai. OEM documentation verify karo.</p>
-      <p style={S.p}><strong>Storage redundancy:</strong> RAID multiple drives combine karta hai. RAID 1 (mirror — 2 drives, same data), RAID 5 (striping with parity — minimum 3 drives), RAID 10 (stripe + mirror) common configurations hain. RAID ek drive failure survive kar sakta hai (depends on RAID level). RAID backup replace nahi karta.</p>
-      <p style={S.p}><strong>NIC redundancy (bonding/teaming):</strong> Multiple NICs ek logical interface mein combine — ek NIC ya switch port fail ho toh doosra path active. Linux bonding, Windows NIC teaming.</p>
-      <p style={S.p}><strong>ECC RAM:</strong> Memory errors se protect karta hai — single point of protection for data in flight. Actual protection level ECC implementation pe depend karta hai.</p>
+      <p style={S.p}><strong>PSU redundancy:</strong> Dual PSUs are common. The configuration — active-active (both PSUs share load), active-standby (one PSU carries full load, other standby) or other modes — depends on the server model and PSU type. Verify OEM documentation.</p>
+      <p style={S.p}><strong>Storage redundancy:</strong> RAID combines multiple drives. RAID 1 (mirror — 2 drives, same data), RAID 5 (striping with parity — minimum 3 drives) and RAID 10 (stripe + mirror) are common configurations. RAID can survive a drive failure (depends on RAID level). RAID does not replace backup.</p>
+      <p style={S.p}><strong>NIC redundancy (bonding/teaming):</strong> Multiple NICs combined into one logical interface — if one NIC or switch port fails, the other path stays active. Linux bonding, Windows NIC teaming.</p>
+      <p style={S.p}><strong>ECC RAM:</strong> Protects against memory errors — single point of protection for data in flight. The actual protection level depends on the ECC implementation.</p>
 
       <h2 id="server-lifecycle" style={S.h2}>Server Lifecycle</h2>
-      <p style={S.p}><strong>Planning:</strong> Workload requirements assess karo — CPU cores, RAM, storage, network bandwidth. Form factor, redundancy level, power budget. Vendor selection, compatibility verification.</p>
-      <p style={S.p}><strong>Procurement aur Deployment:</strong> Hardware arrive → asset tag → rack aur cable → power on aur POST verify → firmware update (UEFI, BMC, drives) → OS/hypervisor install (PXE ya manual) → configuration → testing → handover.</p>
+      <p style={S.p}><strong>Planning:</strong> Assess workload requirements — CPU cores, RAM, storage, network bandwidth. Form factor, redundancy level, power budget. Vendor selection, compatibility verification.</p>
+      <p style={S.p}><strong>Procurement and Deployment:</strong> Hardware arrive → asset tag → rack and cable → power on and verify POST → firmware update (UEFI, BMC, drives) → OS/hypervisor install (PXE or manual) → configuration → testing → handover.</p>
       <p style={S.p}><strong>Operation:</strong> Monitoring (hardware health via BMC, OS metrics, application metrics). Patch management (OS, firmware — planned maintenance windows). Incident response. Capacity tracking.</p>
-      <p style={S.p}><strong>Maintenance:</strong> Planned hardware replacements (drives, PSUs — proactively based on health). Firmware lifecycle management — keep firmware updated for security aur stability, lekin test karo pehle. Drive predictive failure alerts act karo before actual failure.</p>
-      <p style={S.p}><strong>Decommissioning:</strong> Workload migrate/terminate. Data sanitization — secure erase (NIST 800-88 guidelines reference karo). Remove from monitoring, DCIM, DNS, IPAM. Physical removal, asset disposal (vendor return, certified recycling, resale).</p>
+      <p style={S.p}><strong>Maintenance:</strong> Planned hardware replacements (drives, PSUs — proactively based on health). Firmware lifecycle management — keep firmware updated for security and stability, but test it first. Act on drive predictive failure alerts before actual failure.</p>
+      <p style={S.p}><strong>Decommissioning:</strong> Workload migrate/terminate. Data sanitization — secure erase (refer to NIST 800-88 guidelines). Remove from monitoring, DCIM, DNS, IPAM. Physical removal, asset disposal (vendor return, certified recycling, resale).</p>
 
       <h2 id="monitoring" style={S.h2}>Monitoring a Server</h2>
       <p style={S.p}><strong>Hardware health (via BMC/IPMI/Redfish):</strong> CPU temperatures, inlet/ambient temperature, fan speeds (RPM), PSU status, drive health (SMART), memory errors, system event log.</p>
       <p style={S.p}><strong>OS-level:</strong> CPU utilization, RAM usage, disk I/O, network throughput, process health — standard monitoring agents (Prometheus node_exporter, Zabbix agent, Datadog agent, etc.).</p>
-      <p style={S.p}><strong>Out-of-band alerts:</strong> BMC direct SNMP traps ya email alerts — OS crash hone ke baad bhi deliver hote hain. Critical hardware events ke liye essential.</p>
-      <p style={S.p}><strong>Firmware monitoring:</strong> Vendor security advisories track karo — firmware vulnerabilities exist karte hain. Scheduled firmware update cycles maintain karo.</p>
+      <p style={S.p}><strong>Out-of-band alerts:</strong> BMC direct SNMP traps or email alerts — delivered even after an OS crash. Essential for critical hardware events.</p>
+      <p style={S.p}><strong>Firmware monitoring:</strong> Track vendor security advisories — firmware vulnerabilities do exist. Maintain scheduled firmware update cycles.</p>
 
       <h2 id="troubleshooting" style={S.h2}>Common Faults and Troubleshooting</h2>
       <h3 style={S.h3}>Server Not Powering On</h3>
-      <p style={S.p}>PSU connected hai? LED indicators? A aur B feeds both live hain? BMC accessible hai (standby power indicator)? Power button ya BMC se power on try karo. Physical power button issue ho sakta hai — BMC remote power on try karo.</p>
+      <p style={S.p}>Is the PSU connected? LED indicators? Are both the A and B feeds live? Is the BMC accessible (standby power indicator)? Try powering on via the power button or the BMC. There may be a physical power button issue — try BMC remote power on.</p>
       <h3 style={S.h3}>Server Not Responding / OS Not Accessible</h3>
-      <p style={S.p}>BMC accessible hai? BMC se virtual console open karo — crash screen ya hung OS dikhe. System event log check karo — hardware fault? BMC power cycle karo. Bhi kuch nahi — physical access required.</p>
+      <p style={S.p}>Is the BMC accessible? Open the virtual console from the BMC — you may see a crash screen or a hung OS. Check the system event log — hardware fault? Power cycle via the BMC. If still nothing works — physical access is required.</p>
       <h3 style={S.h3}>Drive Failure Alert</h3>
-      <p style={S.p}>RAID controller / BMC se failed drive identify karo (slot number, bay LED). RAID status check karo — degraded? Hot-swap replacement — RAID rebuild start ho. Rebuild progress monitor karo. During rebuild additional drive failure risk hota hai — backup verify karo.</p>
+      <p style={S.p}>Identify the failed drive from the RAID controller / BMC (slot number, bay LED). Check RAID status — degraded? Hot-swap replacement — the RAID rebuild should start. Monitor rebuild progress. During a rebuild there is a risk of additional drive failure — verify backups.</p>
       <h3 style={S.h3}>PSU Failure</h3>
-      <p style={S.p}>BMC alert check karo — which PSU? Server redundant hai toh continues running. Failed PSU hot-swap replace karo. Power feeds verify karo — A aur B both live?</p>
+      <p style={S.p}>Check the BMC alert — which PSU? If the server is redundant, it continues running. Hot-swap replace the failed PSU. Verify the power feeds — are both A and B live?</p>
       <h3 style={S.h3}>Thermal / Fan Issues</h3>
-      <p style={S.p}>BMC se temperatures aur fan speeds check karo. Airflow blocked? Cable management? Blanking panels missing? Ambient rack temperature high? Fan failure? Fan hot-swap replace karo agar possible. CPU/RAM ke thermal contact verify karo (heatsink properly seated).</p>
+      <p style={S.p}>Check temperatures and fan speeds from the BMC. Airflow blocked? Cable management? Blanking panels missing? Ambient rack temperature high? Fan failure? Hot-swap replace the fan if possible. Verify CPU/RAM thermal contact (heatsink properly seated).</p>
       <h3 style={S.h3}>POST Error / Server Not Booting</h3>
-      <p style={S.p}>BMC virtual console se UEFI POST error message capture karo. Common causes: new DIMM not compatible/not seated, new PCIe card issue, storage controller issue. Last change identify karo aur revert karo to isolate. UEFI event log check karo.</p>
+      <p style={S.p}>Capture the UEFI POST error message via the BMC virtual console. Common causes: new DIMM not compatible/not seated, new PCIe card issue, storage controller issue. Identify the last change and revert it to isolate. Check the UEFI event log.</p>
 
       <h2 id="interview-questions" style={S.h2}>Interview Questions</h2>
-      <h3 style={S.h3}>Q1: Server aur PC mein key differences kya hain?</h3>
-      <p style={S.p}><strong>Answer:</strong> ECC RAM (memory error correction — implementation pe dependent), redundant PSUs (single PSU failure survive karna — mode config pe dependent), hot-swap storage aur PSUs (running system pe replace karna), BMC/iDRAC out-of-band management (OS-independent remote access, standby power required), rack-mount form factor (data center density ke liye). Consumer PC mein yeh features typically nahi hoti kyunki occasional downtime acceptable hota hai.</p>
-      <h3 style={S.h3}>Q2: BMC kya hai, kaise kaam karta hai, kab accessible hota hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Baseboard Management Controller server ka independent microcontroller hai — main CPU/OS se alag. BMC apna dedicated network port rakhta hai. Accessible rehta hai jab tak PSU mein AC supply hai (standby power) — server off hone ke baad bhi. Virtual console, power control, hardware health, system event log — sab BMC se remotely. Protocol: IPMI v2.0 ya modern Redfish API.</p>
-      <h3 style={S.h3}>Q3: 42U rack mein kitne servers deploy ho sakte hain aur kyun?</h3>
-      <p style={S.p}><strong>Answer:</strong> 42U rack ≠ 42 servers. Actual deployable count in constraints se limited hota hai: Rack PDU power capacity aur circuit rating. CRAC/CRAH cooling capacity for heat removal. Rack aur floor weight limits. Network switch ports aur patch panels (jo U space lete hain). Cable management space. Blanking panels (empty slots mein required). Practical planning mein sab simultaneously evaluate karo, sirf U count mat dekho.</p>
-      <h3 style={S.h3}>Q4: A/B redundant power kya hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Dual-PSU server mein PSU 1 Rack PDU A se aur PSU 2 Rack PDU B se connected hoti hai. Rack PDU A aur B completely alag electrical circuits (upstream UPS, breaker, distribution) se fed honi chahiye. Ek complete power path fail ho toh server doosre PSU se continue karta hai. Redundancy mode — active-active, active-standby — server model aur PSU configuration pe depend karta hai.</p>
+      <h3 style={S.h3}>Q1: What are the key differences between a server and a PC?</h3>
+      <p style={S.p}><strong>Answer:</strong> ECC RAM (memory error correction — dependent on implementation), redundant PSUs (surviving a single PSU failure — dependent on mode config), hot-swap storage and PSUs (replacing on a running system), BMC/iDRAC out-of-band management (OS-independent remote access, standby power required), rack-mount form factor (for data center density). A consumer PC typically lacks these features because occasional downtime is acceptable.</p>
+      <h3 style={S.h3}>Q2: What is a BMC, how does it work, and when is it accessible?</h3>
+      <p style={S.p}><strong>Answer:</strong> The Baseboard Management Controller is the server's independent microcontroller — separate from the main CPU/OS. The BMC has its own dedicated network port. It remains accessible as long as the PSU has AC supply (standby power) — even after the server is off. Virtual console, power control, hardware health, system event log — all remotely via the BMC. Protocol: IPMI v2.0 or the modern Redfish API.</p>
+      <h3 style={S.h3}>Q3: How many servers can be deployed in a 42U rack, and why?</h3>
+      <p style={S.p}><strong>Answer:</strong> 42U rack ≠ 42 servers. The actual deployable count is limited by these constraints: Rack PDU power capacity and circuit rating. CRAC/CRAH cooling capacity for heat removal. Rack and floor weight limits. Network switch ports and patch panels (which take up U space). Cable management space. Blanking panels (required in empty slots). In practical planning, evaluate everything simultaneously — do not look at the U count alone.</p>
+      <h3 style={S.h3}>Q4: What is A/B redundant power?</h3>
+      <p style={S.p}><strong>Answer:</strong> In a dual-PSU server, PSU 1 is connected to Rack PDU A and PSU 2 to Rack PDU B. Rack PDU A and B should be fed from completely separate electrical circuits (upstream UPS, breaker, distribution). If one complete power path fails, the server continues on the other PSU. The redundancy mode — active-active, active-standby — depends on the server model and PSU configuration.</p>
 
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
       <ul style={S.ul}>
-        <li>Server continuous operation ke liye designed hai — ECC RAM, redundant PSUs, hot-swap components, BMC management.</li>
-        <li>1U = 1.75 inches (44.45 mm). Form factor physical height batata hai — performance nahi.</li>
-        <li>42U rack mein 42 servers automatically deploy nahi ho sakte — power, cooling, weight, cabling sab constraints hain.</li>
-        <li>BMC standby power se operate karta hai — server off hone ke baad bhi accessible (jab tak AC power connected).</li>
-        <li>A/B redundant power ke liye PSUs alag independent electrical circuits se feed hone chahiye.</li>
-        <li>Blanking panels empty rack slots mein lagana mandatory hai — airflow maintain karne ke liye.</li>
-        <li>Server lifecycle: planning → deployment → operation → maintenance → decommissioning — har phase ki apni requirements hain.</li>
-        <li>Hot-swap, PSU redundancy mode, ECC capabilities — sab server model aur configuration pe depend karte hain, OEM documentation verify karo.</li>
+        <li>A server is designed for continuous operation — ECC RAM, redundant PSUs, hot-swap components, BMC management.</li>
+        <li>1U = 1.75 inches (44.45 mm). The form factor indicates physical height — not performance.</li>
+        <li>42 servers cannot automatically be deployed in a 42U rack — power, cooling, weight and cabling are all constraints.</li>
+        <li>The BMC operates on standby power — accessible even after the server is off (as long as AC power is connected).</li>
+        <li>For A/B redundant power, the PSUs must be fed from separate, independent electrical circuits.</li>
+        <li>Installing blanking panels in empty rack slots is mandatory — to maintain airflow.</li>
+        <li>Server lifecycle: planning → deployment → operation → maintenance → decommissioning — each phase has its own requirements.</li>
+        <li>Hot-swap, PSU redundancy mode, ECC capabilities — all depend on the server model and configuration; verify OEM documentation.</li>
       </ul>
 
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Frequently Asked Questions</h2>
@@ -182,7 +172,7 @@ export default function Content() {
 
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Related Topics</h2>
       <ul style={S.ul}>
-        <li><TopicLink slug="cpu" variant="inline" /> — Server ka compute engine — architecture, NUMA, selection.</li>
+        <li><TopicLink slug="cpu" variant="inline" /> — The server's compute engine — architecture, NUMA, selection.</li>
         <li><TopicLink slug="ram" variant="inline" /> — ECC, channels, DIMM population, memory troubleshooting.</li>
         <li><TopicLink slug="gpu" variant="inline" /> — AI/HPC accelerators in servers.</li>
         <li><TopicLink slug="blade-server" variant="inline" /> — High-density shared-chassis compute.</li>

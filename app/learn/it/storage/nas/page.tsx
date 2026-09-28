@@ -11,7 +11,7 @@ export default function NasPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <ArticleLayout slug="nas" headings={HEADINGS} readingTimeMinutes={45}>
+      <ArticleLayout slug="nas" headings={HEADINGS} readingTimeMinutes={45} lang="en" alternateHref="/hi/learn/it/storage/nas">
         <Content />
       </ArticleLayout>
     </>

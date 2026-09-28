@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(awsMetadata);
+const baseMetadata = buildPageMetadata(awsMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/it/cloud/aws",
+    languages: {
+      en: "https://behindthetech.in/learn/it/cloud/aws",
+      hi: "https://behindthetech.in/hi/learn/it/cloud/aws",
+      "x-default": "https://behindthetech.in/learn/it/cloud/aws",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/it/cloud/aws", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: awsMetadata.title,

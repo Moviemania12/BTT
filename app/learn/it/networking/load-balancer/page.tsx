@@ -11,7 +11,7 @@ export default function LoadBalancerPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <ArticleLayout slug="load-balancer" headings={HEADINGS} readingTimeMinutes={110}>
+      <ArticleLayout slug="load-balancer" headings={HEADINGS} readingTimeMinutes={110} lang="en" alternateHref="/hi/learn/it/networking/load-balancer">
         <Content />
       </ArticleLayout>
     </>

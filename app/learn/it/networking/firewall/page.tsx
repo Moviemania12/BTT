@@ -11,7 +11,7 @@ export default function FirewallPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <ArticleLayout slug="firewall" headings={HEADINGS} readingTimeMinutes={120}>
+      <ArticleLayout slug="firewall" headings={HEADINGS} readingTimeMinutes={120} lang="en" alternateHref="/hi/learn/it/networking/firewall">
         <Content />
       </ArticleLayout>
     </>

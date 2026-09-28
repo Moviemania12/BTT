@@ -27,7 +27,7 @@ export default function HybridCloudArticlePage() {
         slug="hybrid-cloud"
         headings={HEADINGS}
         readingTimeMinutes={hybridCloudMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/it/cloud/hybrid-cloud">
         <Content />
       </ArticleLayout>
     </>

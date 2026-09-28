@@ -20,13 +20,13 @@ export default function Content() {
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
         <p style={S.p}>
-          SD-WAN (Software-Defined Wide Area Network) ek overlay architecture hai jo available WAN transports — MPLS, Internet broadband, LTE/5G — ke upar ek policy-driven, centrally managed network create karta hai. Physical transports replace nahi hote; SD-WAN unke upar operate karta hai.
+          SD-WAN (Software-Defined Wide Area Network) is an overlay architecture that creates a policy-driven, centrally managed network on top of the available WAN transports — MPLS, Internet broadband, LTE/5G. The physical transports are not replaced; SD-WAN operates on top of them.
         </p>
         <p style={S.p}>
-          Key value: application-aware path selection, continuous path quality measurement (latency, jitter, packet loss), aur brownout detection — jo traditional routing provide nahi karta.
+          Key value: application-aware path selection, continuous path quality measurement (latency, jitter, packet loss), and brownout detection — which traditional routing does not provide.
         </p>
-        <Callout type="important" title="Is Article Ka Scope">
-          Yeh article SD-WAN concepts vendor-neutral explain karta hai. Specific platform behavior, configuration commands, aur implementation details vary karte hain — official platform documentation always consult karo.
+        <Callout type="important" title="Scope of This Article">
+          This article explains SD-WAN concepts in a vendor-neutral way. Specific platform behavior, configuration commands, and implementation details vary — always consult the official platform documentation.
         </Callout>
       </section>
 
@@ -34,10 +34,10 @@ export default function Content() {
       <section id="what-is-sdwan">
         <h2 style={S.h2}>What Is SD-WAN?</h2>
         <p style={S.p}>
-          Traditional enterprise networking mein WAN connections — MPLS, leased lines, Internet — independently manage hote the, alag-alag hardware configurations ke saath, branch-by-branch. Routing decisions link state, routing protocol metrics, BFD/IP-SLA, ya policy-based routing pe based ho sakte the. Lekin yeh mechanisms typically application-level business intent ya real-time path quality (latency, jitter, loss) ke basis pe traffic steer karna inherently nahi support karte.
+          In traditional enterprise networking, WAN connections — MPLS, leased lines, Internet — were managed independently, with separate hardware configurations, branch by branch. Routing decisions could be based on link state, routing protocol metrics, BFD/IP-SLA, or policy-based routing. But these mechanisms typically do not inherently support steering traffic based on application-level business intent or real-time path quality (latency, jitter, loss).
         </p>
         <p style={S.p}>
-          SD-WAN iska approach fundamentally change karta hai. Yeh ek software layer hai jo WAN transport selection ko centrally policy-driven banata hai, continuously path quality measure karta hai, aur traffic ko application requirements aur business intent ke hisaab se best available path pe steer karta hai — application/business-policy-aware steering across available transports.
+          SD-WAN fundamentally changes this approach. It is a software layer that makes WAN transport selection centrally policy-driven, continuously measures path quality, and steers traffic to the best available path according to application requirements and business intent — application/business-policy-aware steering across available transports.
         </p>
 
         <section id="traditional-wan-limits">
@@ -66,8 +66,8 @@ export default function Content() {
             <li>Simplified branch deployment (zero-touch provisioning on some platforms)</li>
             <li>Centralized visibility and analytics</li>
           </ul>
-          <Callout type="warning" title="SD-WAN Physical Transport Replace Nahi Karta">
-            SD-WAN ek overlay hai. Physical WAN connections — MPLS circuit, Internet broadband, LTE SIM — abhi bhi exist karte hain. SD-WAN unhe replace nahi karta; unke upar ek intelligent control aur policy layer add karta hai. Underlay fail ho toh overlay paths affected hote hain.
+          <Callout type="warning" title="SD-WAN Does Not Replace Physical Transport">
+            SD-WAN is an overlay. The physical WAN connections — MPLS circuit, Internet broadband, LTE SIM — still exist. SD-WAN does not replace them; it adds an intelligent control and policy layer on top of them. If the underlay fails, the overlay paths are affected.
           </Callout>
         </section>
       </section>
@@ -76,17 +76,17 @@ export default function Content() {
       <section id="underlay-vs-overlay">
         <h2 style={S.h2}>Underlay vs Overlay</h2>
         <p style={S.p}>
-          SD-WAN samajhne ke liye yeh distinction critical hai. Do separate layers hain — physical/transport layer (underlay) aur SD-WAN ki logical layer (overlay).
+          This distinction is critical to understanding SD-WAN. There are two separate layers — the physical/transport layer (underlay) and the SD-WAN logical layer (overlay).
         </p>
 
-        <Figure caption="SD-WAN underlay transports (physical) aur SD-WAN overlay (logical policy layer) — dono distinct layers hain">
+        <Figure caption="SD-WAN underlay transports (physical) and SD-WAN overlay (logical policy layer) — two distinct layers">
           <UnderlayOverlayDiagram />
         </Figure>
 
         <section id="underlay">
           <h3 style={S.h3}>The Underlay</h3>
           <p style={S.p}>
-            Underlay woh actual physical/logical transport connections hain jo sites ke beech data carry karte hain. Common underlay types:
+            The underlay is the actual physical/logical transport connections that carry data between sites. Common underlay types:
           </p>
           <ComparisonTable
             headers={["Underlay Type", "Characteristics", "Typical Use"]}
@@ -98,20 +98,20 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            Underlay failure — jaise ISP circuit down ho jaana ya physical link cut ho jaana — overlay ko directly affect karta hai. SD-WAN woh path ke upar kaam nahi kar sakta jo exist hi nahi karta.
+            An underlay failure — such as an ISP circuit going down or a physical link being cut — directly affects the overlay. SD-WAN cannot work over a path that does not exist.
           </p>
         </section>
 
         <section id="overlay">
           <h3 style={S.h3}>The Overlay</h3>
           <p style={S.p}>
-            SD-WAN overlay ek logical network hai jo physical transports ke upar establish hota hai. SD-WAN edge devices tunnels ya logical paths create karte hain jo available underlay transports use karte hain.
+            The SD-WAN overlay is a logical network established on top of the physical transports. SD-WAN edge devices create tunnels or logical paths that use the available underlay transports.
           </p>
           <p style={S.p}>
-            Overlay ke through: routing, policy enforcement, path quality monitoring, aur traffic steering hoti hai. Overlay "tunnel UP" hona iska matlab nahi hai ki path application-usable quality ka hai — underlay quality continuously monitor hoti hai.
+            Routing, policy enforcement, path quality monitoring, and traffic steering happen through the overlay. An overlay "tunnel UP" does not mean the path is of application-usable quality — underlay quality is monitored continuously.
           </p>
           <Callout type="important" title="Overlay Health ≠ Underlay Perfect">
-            SD-WAN overlay tunnel establish ho sakta hai even when underlay quality degraded ho. Tunnel UP sirf logical connectivity prove karta hai. Actual latency, jitter, aur packet loss values separately measure hote hain — aur yeh values determine karte hain ki path application ke liye usable hai ya nahi.
+            An SD-WAN overlay tunnel can be established even when underlay quality is degraded. Tunnel UP only proves logical connectivity. The actual latency, jitter, and packet loss values are measured separately — and these values determine whether the path is usable for the application.
           </Callout>
         </section>
       </section>
@@ -120,10 +120,10 @@ export default function Content() {
       <section id="sdwan-architecture">
         <h2 style={S.h2}>SD-WAN Architecture</h2>
         <p style={S.p}>
-          SD-WAN solutions typically three functional planes mein organize hoti hain — lekin actual implementation, co-location, aur terminology significantly vary karte hain platform to platform.
+          SD-WAN solutions are typically organized into three functional planes — but the actual implementation, co-location, and terminology vary significantly from platform to platform.
         </p>
 
-        <Figure caption="SD-WAN ka three-plane model — Management, Control, aur Data planes. Actual co-location aur distribution platform-specific hai">
+        <Figure caption="The SD-WAN three-plane model — Management, Control, and Data planes. Actual co-location and distribution are platform-specific">
           <ArchitecturePlanesDiagram />
         </Figure>
 
@@ -138,23 +138,23 @@ export default function Content() {
             ]}
           />
           <Callout type="important" title="Plane Separation Varies">
-            Kuch platforms mein Control Plane centralized controller pe hoti hai. Dusron mein distributed edge devices pe. Kuch platforms Data aur Control Plane combine karte hain edges pe. Control/controller connectivity issues route or policy distribution aur related functions ko affect kar sakti hain — architecture pe depend karta hai. Management/orchestrator failure configuration, monitoring, visibility aur ZTP ko affect karta hai. Na Control Plane failure na Management Plane failure automatically existing data plane forwarding immediately rokti hai — exact behavior platform-specific hai. Platform documentation se specific behavior samjho.
+            On some platforms the Control Plane sits on a centralized controller. On others it is on distributed edge devices. Some platforms combine the Data and Control Plane on the edges. Control/controller connectivity issues can affect route or policy distribution and related functions — it depends on the architecture. Management/orchestrator failure affects configuration, monitoring, visibility and ZTP. Neither a Control Plane failure nor a Management Plane failure automatically stops existing data plane forwarding immediately — the exact behavior is platform-specific. Understand the specific behavior from the platform documentation.
           </Callout>
         </section>
 
         <section id="key-components">
           <h3 style={S.h3}>Key Components</h3>
           <p style={S.p}>
-            <strong>SD-WAN Edge:</strong> Customer site pe physical ya virtual device jo WAN interfaces connect karta hai, tunnels establish karta hai, aur policy enforce karta hai. Edges typically branch, Data Center, hub ya cloud locations pe deploy hote hain — design pe depend karta hai.
+            <strong>SD-WAN Edge:</strong> A physical or virtual device at the customer site that connects WAN interfaces, establishes tunnels, and enforces policy. Edges are typically deployed at branch, Data Center, hub or cloud locations — depending on the design.
           </p>
           <p style={S.p}>
-            <strong>Controller / Control Component:</strong> Route distribution, policy distribution, aur path computation handle karta hai. Centralized ya distributed ho sakta hai.
+            <strong>Controller / Control Component:</strong> Handles route distribution, policy distribution, and path computation. Can be centralized or distributed.
           </p>
           <p style={S.p}>
-            <strong>Orchestrator / Management System:</strong> Centralized configuration management, monitoring dashboard, aur analytics. Often cloud-hosted, on-premises bhi possible.
+            <strong>Orchestrator / Management System:</strong> Centralized configuration management, monitoring dashboard, and analytics. Often cloud-hosted; on-premises is also possible.
           </p>
           <p style={S.p}>
-            <strong>Analytics / Monitoring:</strong> Path quality metrics, application performance data, aur flow logs. Kuch platforms separate analytics component rakhte hain.
+            <strong>Analytics / Monitoring:</strong> Path quality metrics, application performance data, and flow logs. Some platforms have a separate analytics component.
           </p>
         </section>
       </section>
@@ -163,18 +163,18 @@ export default function Content() {
       <section id="sdwan-edge">
         <h2 style={S.h2}>SD-WAN Edge</h2>
         <p style={S.p}>
-          SD-WAN Edge device woh point hai jahan physical WAN connectivity, SD-WAN overlay, aur LAN network meet karte hain. Yeh Data Plane ka core component hai.
+          The SD-WAN Edge device is the point where physical WAN connectivity, the SD-WAN overlay, and the LAN network meet. It is the core component of the Data Plane.
         </p>
 
         <section id="branch-edge">
           <h3 style={S.h3}>Branch Edge</h3>
           <p style={S.p}>
-            Branch edge pe typically multiple WAN interfaces hote hain (MPLS, Internet, LTE), ek ya zyada LAN interfaces, aur SD-WAN software. Functions may include:
+            A branch edge typically has multiple WAN interfaces (MPLS, Internet, LTE), one or more LAN interfaces, and the SD-WAN software. Functions may include:
           </p>
           <ul style={S.ul}>
-            <li>WAN link monitoring aur path quality measurement</li>
+            <li>WAN link monitoring and path quality measurement</li>
             <li>Tunnel establishment over available underlays</li>
-            <li>Application classification aur traffic steering</li>
+            <li>Application classification and traffic steering</li>
             <li>Local routing (OSPF/BGP with LAN side)</li>
             <li>NAT for Internet-destined traffic (where configured)</li>
             <li>Local security functions (platform-dependent)</li>
@@ -185,13 +185,13 @@ export default function Content() {
         <section id="dc-edge">
           <h3 style={S.h3}>Data Center Edge</h3>
           <p style={S.p}>
-            DC edge typically higher-capacity device hota hai jo multiple branch tunnels terminate karta hai aur DC internal network se connect karta hai. DC edge ke baad typically dedicated <TopicLink slug="firewall" variant="inline" /> hota hai security inspection ke liye.
+            The DC edge is typically a higher-capacity device that terminates multiple branch tunnels and connects to the DC internal network. After the DC edge there is typically a dedicated <TopicLink slug="firewall" variant="inline" /> for security inspection.
           </p>
           <p style={S.p}>
-            <strong>Virtual/Cloud Edge:</strong> Public cloud environments (AWS, Azure) mein virtual SD-WAN edge appliances cloud workloads ko SD-WAN fabric mein integrate karti hain. Yeh platform-specific capability hai.
+            <strong>Virtual/Cloud Edge:</strong> In public cloud environments (AWS, Azure), virtual SD-WAN edge appliances integrate cloud workloads into the SD-WAN fabric. This is a platform-specific capability.
           </p>
           <Callout type="warning" title="Edge Functions Vary">
-            Har SD-WAN edge device har function provide nahi karta. Security services, routing protocols, aur NAT capabilities platform aur model pe depend karti hain. Platform documentation verify karo.
+            Not every SD-WAN edge device provides every function. Security services, routing protocols, and NAT capabilities depend on the platform and model. Verify the platform documentation.
           </Callout>
         </section>
       </section>
@@ -203,24 +203,24 @@ export default function Content() {
         <section id="overlay-paths">
           <h3 style={S.h3}>Overlay Paths</h3>
           <p style={S.p}>
-            SD-WAN edges available underlay transports pe logical overlay paths establish karte hain. Yeh paths typically:
+            SD-WAN edges establish logical overlay paths over the available underlay transports. These paths typically:
           </p>
           <ul style={S.ul}>
-            <li>Tunnel endpoints edge devices ke addresses hote hain</li>
-            <li>Encapsulation traffic ko wrap karta hai underlay transport ke liye</li>
-            <li>Encryption many platforms pe available hai (verify your platform)</li>
-            <li>Multiple paths simultaneously active ho sakte hain — MPLS over one tunnel, Internet over another</li>
-            <li>Continuous quality probing per path hoti hai</li>
+            <li>Tunnel endpoints are the addresses of the edge devices</li>
+            <li>Encapsulation wraps traffic for the underlay transport</li>
+            <li>Encryption is available on many platforms (verify your platform)</li>
+            <li>Multiple paths can be active simultaneously — MPLS over one tunnel, Internet over another</li>
+            <li>Continuous quality probing happens per path</li>
           </ul>
-          <Callout type="important" title="Tunnel Protocol Universal Nahi">
-            Different SD-WAN vendors different protocols use karte hain — some use IPSec, some proprietary tunneling, some combinations. Ek universal SD-WAN tunnel standard nahi hai. Platform documentation refer karo.
+          <Callout type="important" title="Tunnel Protocol Is Not Universal">
+            Different SD-WAN vendors use different protocols — some use IPSec, some proprietary tunneling, some combinations. There is no single universal SD-WAN tunnel standard. Refer to the platform documentation.
           </Callout>
         </section>
 
         <section id="routing-in-sdwan">
           <h3 style={S.h3}>Routing in SD-WAN</h3>
           <p style={S.p}>
-            SD-WAN routing eliminate nahi karta — <TopicLink slug="router" variant="inline" /> article ke concepts yahan bhi apply hote hain. SD-WAN routing ka ek additional layer add karta hai.
+            SD-WAN does not eliminate routing — the concepts from the <TopicLink slug="router" variant="inline" /> article apply here too. SD-WAN adds an additional layer on top of routing.
           </p>
           <ComparisonTable
             headers={["Routing Layer", "Where It Operates", "Examples"]}
@@ -232,10 +232,10 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            Common scenarios: branch mein static default route to SD-WAN edge, edge OSPF ya BGP run karta hai LAN side mein, DC edge BGP peer karta hai DC core routers ke saath. Exact design site requirements pe depend karta hai.
+            Common scenarios: a static default route to the SD-WAN edge in the branch, the edge runs OSPF or BGP on the LAN side, the DC edge peers BGP with the DC core routers. The exact design depends on site requirements.
           </p>
           <Callout type="warning" title="Route Processing Order">
-            SD-WAN path selection aur routing protocol route learning alag functions hain. Platform-specific documentation se samjho ki routing decisions kaise interact karte hain SD-WAN policy ke saath.
+            SD-WAN path selection and routing protocol route learning are separate functions. Understand from the platform-specific documentation how routing decisions interact with SD-WAN policy.
           </Callout>
         </section>
       </section>
@@ -244,27 +244,27 @@ export default function Content() {
       <section id="app-aware-steering">
         <h2 style={S.h2}>Application-Aware Traffic Steering</h2>
         <p style={S.p}>
-          Yeh SD-WAN ka central differentiation hai traditional routing se. Applications ke alag-alag quality requirements hote hain — aur SD-WAN har application type ke liye best available path select kar sakta hai.
+          This is the central differentiation of SD-WAN from traditional routing. Applications have different quality requirements — and SD-WAN can select the best available path for each application type.
         </p>
 
-        <Figure caption="Application classification se path selection tak — policy engine eligible paths evaluate karta hai current quality ke against">
+        <Figure caption="From application classification to path selection — the policy engine evaluates eligible paths against current quality">
           <AppPathSelectionDiagram />
         </Figure>
 
         <section id="application-classification">
           <h3 style={S.h3}>Application Classification</h3>
           <p style={S.p}>
-            Traffic steer karne se pehle SD-WAN edge ko identify karna hota hai ki traffic kis application se belong karta hai. Classification methods vary by platform:
+            Before steering traffic, the SD-WAN edge has to identify which application the traffic belongs to. Classification methods vary by platform:
           </p>
           <ul style={S.ul}>
-            <li><strong>Deep Packet Inspection (DPI):</strong> Packet content analyze karke application identify karta hai</li>
-            <li><strong>IP/Port based:</strong> Well-known ports aur destination IPs se classification</li>
-            <li><strong>URL / Domain:</strong> DNS hostname ya URL path based classification</li>
+            <li><strong>Deep Packet Inspection (DPI):</strong> Identifies the application by analyzing packet content</li>
+            <li><strong>IP/Port based:</strong> Classification by well-known ports and destination IPs</li>
+            <li><strong>URL / Domain:</strong> Classification based on DNS hostname or URL path</li>
             <li><strong>Custom signatures:</strong> Administrator-defined application definitions</li>
-            <li><strong>DSCP markings:</strong> Upstream marking se inherit karna</li>
+            <li><strong>DSCP markings:</strong> Inheriting from upstream marking</li>
           </ul>
           <Callout type="warning" title="First-Packet Classification">
-            Kuch platforms first packet se application classify kar lete hain; dusron ko kaafi packets ya full flow analysis chahiye. Encrypted traffic (TLS) classification IP/port, SNI/domain metadata (jahan visible ho), flow signatures, flow characteristics, aur platform-specific application intelligence ka combination use kar sakti hai. ECH jaise mechanisms SNI visibility bhi reduce kar sakte hain. Platform capabilities aur encryption handling verify karo.
+            Some platforms classify the application from the first packet; others need several packets or full flow analysis. Encrypted traffic (TLS) classification can use a combination of IP/port, SNI/domain metadata (where visible), flow signatures, flow characteristics, and platform-specific application intelligence. Mechanisms such as ECH can also reduce SNI visibility. Verify platform capabilities and encryption handling.
           </Callout>
         </section>
 
@@ -273,7 +273,7 @@ export default function Content() {
           <ComparisonTable
             headers={["Application", "Requirement", "Preferred Path", "Fallback"]}
             rows={[
-              ["Voice / Video (UC)", "Acceptable latency, jitter aur packet loss per configured application SLA", "MPLS (predictable quality)", "Internet if MPLS within SLA"],
+              ["Voice / Video (UC)", "Acceptable latency, jitter and packet loss per configured application SLA", "MPLS (predictable quality)", "Internet if MPLS within SLA"],
               ["ERP / Banking apps", "Privacy, reliability — latency less critical", "MPLS only", "No fallback to Internet (security policy)"],
               ["Web browsing / Updates", "Bandwidth, not latency-sensitive", "Internet (DIA from branch)", "MPLS as backup"],
               ["SaaS (Office 365, Salesforce)", "Direct cloud access preferred", "DIA from branch", "Via DC if local breakout unavailable"],
@@ -281,7 +281,7 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            Yeh policies administrator define karta hai. SD-WAN policy engine continuously path quality check karta hai aur eligible paths mein se current conditions ke based best option select karta hai.
+            These policies are defined by the administrator. The SD-WAN policy engine continuously checks path quality and selects the best option among eligible paths based on current conditions.
           </p>
         </section>
       </section>
@@ -290,7 +290,7 @@ export default function Content() {
       <section id="sla-path-quality">
         <h2 style={S.h2}>SLA and Path Quality</h2>
 
-        <Figure caption="Link UP state aur application-usable path quality ka distinction — brownout detection SD-WAN ka key advantage hai">
+        <Figure caption="The distinction between Link UP state and application-usable path quality — brownout detection is a key advantage of SD-WAN">
           <SlaPathQualityDiagram />
         </Figure>
 
@@ -306,30 +306,30 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            SD-WAN edges typically probes bhejte hain — regular test packets — each path pe yeh metrics measure karne ke liye. Measurement frequency aur probe mechanism platform-specific hai.
+            SD-WAN edges typically send probes — regular test packets — on each path to measure these metrics. Measurement frequency and probe mechanism are platform-specific.
           </p>
           <Callout type="warning" title="No Universal Thresholds">
-            "Voice ke liye latency 150ms se kam honi chahiye" jaise statements general guidelines hain, SD-WAN platform requirements nahi. Apne specific applications aur platform SLA configuration se thresholds determine karo.
+            Statements like "latency for voice should be below 150ms" are general guidelines, not SD-WAN platform requirements. Determine thresholds from your specific applications and platform SLA configuration.
           </Callout>
         </section>
 
         <section id="link-up-vs-usable">
           <h3 style={S.h3}>Link UP vs Application-Usable</h3>
           <p style={S.p}>
-            Traditional routing ke liye: link UP = traffic bhejo. Yeh sirf blackout (link completely down) detect karta hai.
+            For traditional routing: link UP = send traffic. This only detects a blackout (link completely down).
           </p>
           <p style={S.p}>
-            SD-WAN: link UP + path quality within configured SLA = traffic bhejo. Agar path UP hai lekin latency 200ms, jitter 80ms, ya loss 5% hai — SD-WAN us path ko voice traffic ke liye avoid kar sakta hai, even though link technically UP hai.
+            SD-WAN: link UP + path quality within configured SLA = send traffic. If the path is UP but latency is 200ms, jitter is 80ms, or loss is 5% — SD-WAN can avoid that path for voice traffic, even though the link is technically UP.
           </p>
           <p style={S.p}>
-            Yeh <strong>brownout detection</strong> hai — aur yeh traditional routing pe major advantage hai.
+            This is <strong>brownout detection</strong> — and it is a major advantage over traditional routing.
           </p>
         </section>
 
         <section id="dynamic-path-selection">
           <h3 style={S.h3}>Dynamic Path Selection</h3>
           <p style={S.p}>
-            Conceptual decision model (actual processing platform-specific hai):
+            Conceptual decision model (actual processing is platform-specific):
           </p>
           <ol style={{ ...S.ul, listStyle: "decimal" }}>
             <li>Traffic arrives at SD-WAN edge</li>
@@ -347,7 +347,7 @@ export default function Content() {
       <section id="failover">
         <h2 style={S.h2}>Failover</h2>
         <p style={S.p}>
-          Branch mein MPLS + Internet hai. MPLS pe voice traffic preferred hai. Agar MPLS fail ya degrade ho jaaye — SD-WAN eligible voice traffic Internet path pe steer kar sakta hai (agar policy allow karta hai).
+          The branch has MPLS + Internet. Voice traffic is preferred on MPLS. If MPLS fails or degrades — SD-WAN can steer eligible voice traffic to the Internet path (if policy allows).
         </p>
 
         <section id="blackout-brownout">
@@ -360,20 +360,20 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            Brownout detection SD-WAN ka important advantage hai. Internet link pe ISP congestion 3% packet loss create kar raha hai — voice immediately degrade ho jaayegi. SD-WAN yeh detect karke MPLS pe steer kar sakta hai before users notice.
+            Brownout detection is an important advantage of SD-WAN. ISP congestion on the Internet link is creating 3% packet loss — voice will degrade immediately. SD-WAN can detect this and steer to MPLS before users notice.
           </p>
         </section>
 
         <section id="active-active">
           <h3 style={S.h3}>Active-Active Links</h3>
           <p style={S.p}>
-            SD-WAN multiple WAN links simultaneously use kar sakta hai — dono links traffic carry karte hain concurrently. Lekin yeh equal split guarantee nahi karta.
+            SD-WAN can use multiple WAN links simultaneously — both links carry traffic concurrently. But this does not guarantee an equal split.
           </p>
           <p style={S.p}>
-            Example: Voice traffic MPLS pe, web traffic Internet pe — dono simultaneously active. Actual bandwidth utilization per link application policy pe depend karta hai, 50/50 split by default nahi hota.
+            Example: Voice traffic on MPLS, web traffic on Internet — both active simultaneously. Actual bandwidth utilization per link depends on application policy; there is no 50/50 split by default.
           </p>
           <Callout type="warning" title="Failover Guarantees">
-            Failover speed detection time + switchover time pe depend karti hai — probe intervals, failure type, aur hold timers sab matter karte hain. Physical link failure quality degradation se faster detect ho sakti hai, lekin detection failure type, probe configuration, timers aur platform behavior pe depend karti hai. Session continuity (existing TCP connections) guaranteed nahi hai — path change pe kuch sessions reset ho sakte hain. Platform aur application type dono matter karte hain.
+            Failover speed depends on detection time + switchover time — probe intervals, failure type, and hold timers all matter. A physical link failure can be detected faster than quality degradation, but detection depends on failure type, probe configuration, timers and platform behavior. Session continuity (existing TCP connections) is not guaranteed — some sessions may reset on path change. Both platform and application type matter.
           </Callout>
         </section>
       </section>
@@ -382,7 +382,7 @@ export default function Content() {
       <section id="hybrid-wan">
         <h2 style={S.h2}>Hybrid WAN — MPLS, Internet, LTE/5G</h2>
         <p style={S.p}>
-          Real-world SD-WAN deployments typically multiple transport types combine karte hain. Common designs:
+          Real-world SD-WAN deployments typically combine multiple transport types. Common designs:
         </p>
         <ComparisonTable
           headers={["Design", "Links", "Use Case"]}
@@ -395,10 +395,10 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>Trade-offs consider karo:</strong> MPLS more expensive hai, long provisioning time (weeks/months), predictable quality. Internet cheaper hai, faster provisioning, variable quality. LTE/5G mobile friendly, typically higher latency aur cost per GB, good for backup.
+          <strong>Consider the trade-offs:</strong> MPLS is more expensive, with long provisioning time (weeks/months) and predictable quality. Internet is cheaper, with faster provisioning and variable quality. LTE/5G is mobile friendly, typically with higher latency and cost per GB, good for backup.
         </p>
         <p style={S.p}>
-          Provider diversity important hai HA ke liye — dono Internet links ek hi ISP se lene pe single provider outage dono fail kar sakta hai. Physical diversity bhi consider karo (different cable entry points).
+          Provider diversity is important for HA — if both Internet links come from the same ISP, a single provider outage can fail both. Consider physical diversity too (different cable entry points).
         </p>
       </section>
 
@@ -406,7 +406,7 @@ export default function Content() {
       <section id="branch-to-dc">
         <h2 style={S.h2}>Branch to Data Center Architecture</h2>
         <p style={S.p}>
-          Enterprise SD-WAN deployment mein branch users → SD-WAN overlay → DC edge → internal DC stack ka typical flow:
+          In an enterprise SD-WAN deployment, the typical flow is branch users → SD-WAN overlay → DC edge → internal DC stack:
         </p>
 
         <Figure caption="Branch-to-DC traffic flow: SD-WAN overlay, multiple transports, DC edge, Firewall, Load Balancer, Application servers">
@@ -414,19 +414,19 @@ export default function Content() {
         </Figure>
 
         <p style={S.p}>
-          <strong>Responsibilities at each layer:</strong> SD-WAN handles WAN path selection aur overlay; <TopicLink slug="firewall" variant="inline" /> security policy enforce karta hai DC ingress pe; <TopicLink slug="load-balancer" variant="inline" /> application tier traffic distribute karta hai. SD-WAN Firewall replace nahi karta — dono separate functions hain.
+          <strong>Responsibilities at each layer:</strong> SD-WAN handles WAN path selection and overlay; the <TopicLink slug="firewall" variant="inline" /> enforces security policy at DC ingress; the <TopicLink slug="load-balancer" variant="inline" /> distributes application tier traffic. SD-WAN does not replace the Firewall — they are two separate functions.
         </p>
 
         <section id="direct-internet-access">
           <h3 style={S.h3}>Direct Internet Access (DIA)</h3>
           <p style={S.p}>
-            Traditional design: Branch → DC → Internet (DC pe centralized Internet breakout).
+            Traditional design: Branch → DC → Internet (centralized Internet breakout at the DC).
           </p>
           <p style={S.p}>
-            SD-WAN possible design: Branch Internet traffic directly local ISP connection se bahar — DC backhaul avoid karta hai. Benefits for SaaS applications (Office 365, Salesforce) jahan DC routing adds unnecessary latency.
+            Possible SD-WAN design: Branch Internet traffic goes out directly via the local ISP connection — avoiding DC backhaul. Benefits for SaaS applications (Office 365, Salesforce) where DC routing adds unnecessary latency.
           </p>
           <Callout type="warning" title="DIA Security Implication">
-            Direct Internet breakout ke liye local security controls necessary hain — branch-level <TopicLink slug="firewall" variant="inline" /> ya cloud-delivered security (SASE). Sensitive/private traffic still DC route kar sakte ho policy se. DIA automatically better nahi hai — security posture aur application requirements architecture decide karte hain.
+            Direct Internet breakout requires local security controls — a branch-level <TopicLink slug="firewall" variant="inline" /> or cloud-delivered security (SASE). Sensitive/private traffic can still be routed via the DC by policy. DIA is not automatically better — security posture and application requirements decide the architecture.
           </Callout>
         </section>
       </section>
@@ -435,15 +435,15 @@ export default function Content() {
       <section id="cloud-saas">
         <h2 style={S.h2}>Cloud and SaaS Connectivity</h2>
         <p style={S.p}>
-          SD-WAN cloud aur SaaS applications ke liye connectivity improve kar sakta hai, lekin important limitations hain.
+          SD-WAN can improve connectivity for cloud and SaaS applications, but there are important limitations.
         </p>
         <ul style={S.ul}>
-          <li>DIA from branch SaaS latency reduce karta hai DC backhaul eliminate karke</li>
-          <li>Some platforms cloud on-ramp features provide karte hain — cloud provider PoPs se connectivity optimize karta hai</li>
-          <li>Virtual SD-WAN edges public cloud (AWS/Azure/GCP) mein deploy ho sakte hain cloud workloads ke liye</li>
+          <li>DIA from the branch reduces SaaS latency by eliminating DC backhaul</li>
+          <li>Some platforms provide cloud on-ramp features — optimizing connectivity via cloud provider PoPs</li>
+          <li>Virtual SD-WAN edges can be deployed in public cloud (AWS/Azure/GCP) for cloud workloads</li>
         </ul>
-        <Callout type="important" title="SD-WAN Internet Control Nahi Karta">
-          SD-WAN branch se Internet entry point tak optimize kar sakta hai, lekin SaaS provider ke servers tak ka complete Internet path SD-WAN control mein nahi hai. Provider network congestion, BGP routing, aur SaaS infrastructure SD-WAN ke bahar hain. "End-to-end SaaS performance guarantee" claim karne wale vendors se carefully evaluate karo.
+        <Callout type="important" title="SD-WAN Does Not Control the Internet">
+          SD-WAN can optimize from the branch to the Internet entry point, but the complete Internet path to the SaaS provider's servers is not under SD-WAN control. Provider network congestion, BGP routing, and SaaS infrastructure are outside SD-WAN. Evaluate vendors claiming an "end-to-end SaaS performance guarantee" carefully.
         </Callout>
       </section>
 
@@ -451,7 +451,7 @@ export default function Content() {
       <section id="sdwan-security">
         <h2 style={S.h2}>SD-WAN Security</h2>
         <p style={S.p}>
-          SD-WAN networking features provide karta hai — security SD-WAN ke saath separate ya integrated hoti hai.
+          SD-WAN provides networking features — security is separate from or integrated with SD-WAN.
         </p>
         <ComparisonTable
           headers={["SD-WAN Feature", "Security Function", "Separate NGFW Function"]}
@@ -467,7 +467,7 @@ export default function Content() {
         <section id="segmentation">
           <h3 style={S.h3}>Segmentation</h3>
           <p style={S.p}>
-            SD-WAN logical segmentation support kar sakta hai — different traffic types ya user groups ko isolated logical networks pe:
+            SD-WAN can support logical segmentation — putting different traffic types or user groups on isolated logical networks:
           </p>
           <ul style={S.ul}>
             <li>Corporate users vs Guest WiFi</li>
@@ -476,20 +476,20 @@ export default function Content() {
             <li>Management network isolation</li>
           </ul>
           <p style={S.p}>
-            Implementation mechanisms vary — VRFs, VPNs, segments, policy constructs — platform-specific. Segmentation verify karo actual testing se, assume mat karo.
+            Implementation mechanisms vary — VRFs, VPNs, segments, policy constructs — platform-specific. Verify segmentation through actual testing; do not assume.
           </p>
         </section>
 
         <section id="sdwan-firewall">
           <h3 style={S.h3}>SD-WAN and Firewall</h3>
           <p style={S.p}>
-            <strong>Architecture Option 1: SD-WAN Edge + Separate Firewall</strong> — SD-WAN edge WAN path handling karta hai; dedicated <TopicLink slug="firewall" variant="inline" /> traffic inspect karta hai. Clear separation of responsibilities. DC edge ke baad NGFW common hai.
+            <strong>Architecture Option 1: SD-WAN Edge + Separate Firewall</strong> — The SD-WAN edge handles the WAN path; a dedicated <TopicLink slug="firewall" variant="inline" /> inspects traffic. Clear separation of responsibilities. An NGFW after the DC edge is common.
           </p>
           <p style={S.p}>
-            <strong>Architecture Option 2: Integrated SD-WAN/Security Platform</strong> — Kuch vendors SD-WAN + NGFW features ek device mein combine karte hain. Simpler for small branches, lekin capabilities separate dedicated appliances jitni nahi hoti.
+            <strong>Architecture Option 2: Integrated SD-WAN/Security Platform</strong> — Some vendors combine SD-WAN + NGFW features in one device. Simpler for small branches, but capabilities are not equal to separate dedicated appliances.
           </p>
           <p style={S.p}>
-            Neither approach universally superior. Branch size, security requirements, aur existing infrastructure determine karte hain.
+            Neither approach is universally superior. Branch size, security requirements, and existing infrastructure determine the choice.
           </p>
         </section>
       </section>
@@ -498,7 +498,7 @@ export default function Content() {
       <section id="high-availability">
         <h2 style={S.h2}>High Availability</h2>
         <p style={S.p}>
-          SD-WAN HA multiple layers pe consider hoti hai:
+          SD-WAN HA is considered at multiple layers:
         </p>
         <ComparisonTable
           headers={["HA Layer", "Mechanism", "What It Protects Against"]}
@@ -512,7 +512,7 @@ export default function Content() {
           ]}
         />
         <Callout type="warning" title="Dual Links ≠ Complete HA">
-          Two WAN links hona SD-WAN HA guarantee nahi karta. Agar dono links ek hi provider se hain, provider outage both fail kar sakta hai. Agar SD-WAN edge single point of failure hai, edge failure site down kar sakta hai. Failure domains analyze karo — har HA layer independently.
+          Having two WAN links does not guarantee SD-WAN HA. If both links come from the same provider, a provider outage can fail both. If the SD-WAN edge is a single point of failure, an edge failure can take the site down. Analyze failure domains — each HA layer independently.
         </Callout>
 
         <section id="controller-failure">
@@ -521,13 +521,13 @@ export default function Content() {
             Important concept: Management/Control Plane unavailability ≠ Data Plane immediately stops.
           </p>
           <p style={S.p}>
-            Typically: edges apni existing forwarding state (routes, policies, tunnel state) maintain karte hain even when controller unreachable ho. Existing traffic continue hoti hai per last known state.
+            Typically: edges maintain their existing forwarding state (routes, policies, tunnel state) even when the controller is unreachable. Existing traffic continues per the last known state.
           </p>
           <p style={S.p}>
             What stops when controller unavailable: new configuration pushes, policy updates, zero-touch provisioning for new sites, centralized monitoring, new path calculations (platform-dependent).
           </p>
           <Callout type="warning" title="Platform-Specific Behavior">
-            Controller failure behavior significantly platform se vary karta hai. Kuch platforms edges pe more autonomous behavior support karte hain; dusron ko connectivity required hai certain functions ke liye. Apne platform ka exact behavior test karo — assume mat karo.
+            Controller failure behavior varies significantly by platform. Some platforms support more autonomous behavior on the edges; others require connectivity for certain functions. Test the exact behavior of your platform — do not assume.
           </Callout>
         </section>
       </section>
@@ -536,13 +536,13 @@ export default function Content() {
       <section id="nat-qos">
         <h2 style={S.h2}>NAT and QoS</h2>
         <p style={S.p}>
-          <strong>NAT:</strong> Internet transports ya local breakout ke saath NAT typically exist karta hai — branch private IPs Internet-routable addresses pe translate hote hain. NAT placement (edge pe ya separate device pe) aur processing architecture platform-specific hai. Deep NAT theory <TopicLink slug="firewall" variant="inline" /> article mein hai.
+          <strong>NAT:</strong> NAT typically exists with Internet transports or local breakout — branch private IPs are translated to Internet-routable addresses. NAT placement (on the edge or on a separate device) and processing architecture are platform-specific. Deep NAT theory is in the <TopicLink slug="firewall" variant="inline" /> article.
         </p>
         <p style={S.p}>
-          <strong>QoS:</strong> SD-WAN local policy mein traffic classification, queuing, aur bandwidth management support kar sakta hai. Lekin important limitation: SD-WAN local QoS policy provider network ke andar end-to-end QoS guarantee nahi karta.
+          <strong>QoS:</strong> SD-WAN can support traffic classification, queuing, and bandwidth management in local policy. But an important limitation: SD-WAN local QoS policy does not guarantee end-to-end QoS inside the provider network.
         </p>
         <Callout type="warning" title="QoS Limitations">
-          SD-WAN branch edge pe DSCP mark kar sakta hai, lekin Internet providers typically DSCP markings ignore karte hain ya erase karte hain. MPLS providers SLA-based QoS offer karte hain lekin specific configuration required hoti hai. "QoS = quality guarantee" nahi hai — local policy + provider support dono necessary hain.
+          SD-WAN can mark DSCP at the branch edge, but Internet providers typically ignore or erase DSCP markings. MPLS providers offer SLA-based QoS, but specific configuration is required. "QoS = quality guarantee" is not true — both local policy and provider support are necessary.
         </Callout>
       </section>
 
@@ -550,7 +550,7 @@ export default function Content() {
       <section id="performance-monitoring">
         <h2 style={S.h2}>Performance and Monitoring</h2>
         <p style={S.p}>
-          <strong>Sizing factors</strong> (interface bandwidth se beyond): Encrypted throughput (hardware acceleration varies), packet rate (small packets more CPU-intensive), concurrent tunnel count, number of sites/peers, security services if integrated, logging/telemetry load, HA requirements.
+          <strong>Sizing factors</strong> (beyond interface bandwidth): Encrypted throughput (hardware acceleration varies), packet rate (small packets more CPU-intensive), concurrent tunnel count, number of sites/peers, security services if integrated, logging/telemetry load, HA requirements.
         </p>
         <p style={S.p}>
           <strong>Key monitoring signals:</strong>
@@ -567,7 +567,7 @@ export default function Content() {
           <li>Device health: CPU, memory, license status</li>
         </ul>
         <Callout type="important" title="Alert Configuration">
-          Unconfigured monitoring = invisible problems. Meaningful alerts configure karo: link down, path quality SLA violated, tunnel down, high packet loss threshold crossed, controller unreachable. Default dashboards dekho, lekin active alerting explicitly set karo.
+          Unconfigured monitoring = invisible problems. Configure meaningful alerts: link down, path quality SLA violated, tunnel down, high packet loss threshold crossed, controller unreachable. Look at the default dashboards, but set up active alerting explicitly.
         </Callout>
       </section>
 
@@ -575,10 +575,10 @@ export default function Content() {
       <section id="troubleshooting">
         <h2 style={S.h2}>Troubleshooting</h2>
         <p style={S.p}>
-          SD-WAN troubleshooting ka core principle: multiple distinct layers hain, aur problems ek ya zyada layers mein ho sakti hain simultaneously. Systematically isolate karo.
+          The core principle of SD-WAN troubleshooting: there are multiple distinct layers, and problems can exist in one or more layers simultaneously. Isolate systematically.
         </p>
 
-        <Figure caption="SD-WAN troubleshooting sequence — 13 steps: underlay se application tak. Har step pass karo toh aage badho; fail karo toh us layer investigate karo">
+        <Figure caption="SD-WAN troubleshooting sequence — 13 steps: from underlay to application. If a step passes, move on; if it fails, investigate that layer">
           <TroubleshootingFlowDiagram />
         </Figure>
 
@@ -616,7 +616,7 @@ export default function Content() {
             <li>Application itself works? (direct DC test, application logs)</li>
           </ol>
           <Callout type="important" title="Core Principle">
-            TUNNEL UP ≠ APPLICATION WORKING. Tunnel state, path quality, routing, policy, security, aur application — yeh sab separate layers hain. Ek layer ka OK hona doosri layer guarantee nahi karta.
+            TUNNEL UP ≠ APPLICATION WORKING. Tunnel state, path quality, routing, policy, security, and application — these are all separate layers. One layer being OK does not guarantee another.
           </Callout>
         </section>
       </section>
@@ -659,7 +659,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          Failover testing particularly important hai — many deployments "assume" failover works but never actually test it. Actual link disconnect karo, measure karo, document karo.
+          Failover testing is particularly important — many deployments "assume" failover works but never actually test it. Actually disconnect the link, measure, and document.
         </p>
       </section>
 
@@ -669,16 +669,16 @@ export default function Content() {
         <ComparisonTable
           headers={["Misconception", "Reality"]}
           rows={[
-            ["SD-WAN MPLS replace karta hai", "SD-WAN MPLS ke upar operate karta hai overlay ke roop mein. MPLS abhi bhi useful hai quality-sensitive apps ke liye. SD-WAN architecture mein MPLS ek underlay option hai."],
-            ["Tunnel UP matlab traffic theek hai", "Tunnel UP sirf logical path existence prove karta hai. Latency, jitter, loss still poor ho sakte hain. Application layer alag check karo."],
-            ["Two links = complete HA", "Agar dono links same provider se hain, provider outage both fail kar sakta hai. Failure domain analysis required hai."],
-            ["Controller down = traffic stops", "Existing forwarding aur kuch local path decisions locally available state, policy aur measurements ke basis pe continue ho sakte hain. Management functions unavailable hote hain. Exact behavior platform aur architecture pe depend karta hai."],
-            ["Active-active = 50/50 split", "Traffic distribution application policy pe depend karta hai. Voice MPLS pe, web Internet pe — equal split by default nahi."],
-            ["SD-WAN automatically zero packet loss deta hai", "SD-WAN better path select karta hai, lekin cannot improve underlying transport quality ya compensate for physical issues beyond capabilities."],
-            ["SD-WAN Firewall replace karta hai", "SD-WAN networking features provide karta hai. Security ke liye dedicated NGFW ya integrated security platform required hai."],
-            ["SD-WAN Internet ka poora path control karta hai", "SD-WAN edge se Internet entry point tak optimize kar sakta hai. SaaS provider tak complete Internet path SD-WAN control mein nahi hai."],
-            ["DIA sabke liye automatically better hai", "DIA latency reduce karta hai SaaS ke liye lekin local security controls require karta hai. Sensitive traffic still DC route karna appropriate ho sakta hai."],
-            ["Failover always seamless hoti hai", "Path change pe kuch TCP sessions reset ho sakte hain. Failover speed detection + switchover time pe depend karti hai. Test karo, assume mat karo."],
+            ["SD-WAN replaces MPLS", "SD-WAN operates on top of MPLS as an overlay. MPLS is still useful for quality-sensitive apps. In SD-WAN architecture, MPLS is one underlay option."],
+            ["Tunnel UP means traffic is fine", "Tunnel UP only proves logical path existence. Latency, jitter and loss can still be poor. Check the application layer separately."],
+            ["Two links = complete HA", "If both links are from the same provider, a provider outage can fail both. Failure domain analysis is required."],
+            ["Controller down = traffic stops", "Existing forwarding and some local path decisions can continue based on locally available state, policy and measurements. Management functions become unavailable. Exact behavior depends on platform and architecture."],
+            ["Active-active = 50/50 split", "Traffic distribution depends on application policy. Voice on MPLS, web on Internet — no equal split by default."],
+            ["SD-WAN automatically gives zero packet loss", "SD-WAN selects a better path, but cannot improve underlying transport quality or compensate for physical issues beyond its capabilities."],
+            ["SD-WAN replaces the Firewall", "SD-WAN provides networking features. A dedicated NGFW or integrated security platform is required for security."],
+            ["SD-WAN controls the entire Internet path", "SD-WAN can optimize from the edge to the Internet entry point. The complete Internet path to the SaaS provider is not under SD-WAN control."],
+            ["DIA is automatically better for everyone", "DIA reduces latency for SaaS but requires local security controls. Routing sensitive traffic via the DC can still be appropriate."],
+            ["Failover is always seamless", "Some TCP sessions may reset on path change. Failover speed depends on detection + switchover time. Test it, do not assume."],
           ]}
         />
       </section>
@@ -687,21 +687,21 @@ export default function Content() {
       <section id="final-architecture">
         <h2 style={S.h2}>Final Integrated Architecture</h2>
         <p style={S.p}>
-          Complete enterprise SD-WAN deployment — multiple branches, multiple transport types, SD-WAN overlay, redundant DC infrastructure, aur management plane:
+          A complete enterprise SD-WAN deployment — multiple branches, multiple transport types, SD-WAN overlay, redundant DC infrastructure, and management plane:
         </p>
 
-        <Figure caption="Complete SD-WAN enterprise architecture: branches, underlay transports, SD-WAN overlay, DC edge HA pair, Firewall, Load Balancer, aur application servers">
+        <Figure caption="Complete SD-WAN enterprise architecture: branches, underlay transports, SD-WAN overlay, DC edge HA pair, Firewall, Load Balancer, and application servers">
           <FinalArchitectureDiagram />
         </Figure>
 
         <p style={S.p}>
-          Management plane (Orchestrator) typically cloud-hosted ya on-premises centralized system hai jo dashed lines se edges aur controllers se connect karta hai — visibility aur configuration ke liye, data plane forwarding ke liye nahi.
+          The management plane (Orchestrator) is typically a cloud-hosted or on-premises centralized system that connects to edges and controllers via dashed lines — for visibility and configuration, not for data plane forwarding.
         </p>
         <p style={S.p}>
-          DC mein: SD-WAN edge HA pair branch tunnels terminate karta hai → Firewall security inspect karta hai → <TopicLink slug="load-balancer" variant="inline" /> application tier pe distribute karta hai → Application servers requests serve karte hain.
+          In the DC: the SD-WAN edge HA pair terminates branch tunnels → the Firewall performs security inspection → the <TopicLink slug="load-balancer" variant="inline" /> distributes to the application tier → Application servers serve the requests.
         </p>
         <Callout type="warning" title="Design Caveat">
-          Yeh ek common reference architecture hai, universal mandatory design nahi. Actual HA configuration, controller placement, edge count, aur path design requirements, platform capabilities, aur budget pe depend karta hai.
+          This is a common reference architecture, not a universal mandatory design. Actual HA configuration, controller placement, edge count, and path design depend on requirements, platform capabilities, and budget.
         </Callout>
       </section>
 
@@ -709,16 +709,16 @@ export default function Content() {
       <section id="key-takeaways">
         <h2 style={S.h2}>Key Takeaways</h2>
         <ul style={S.ul}>
-          <li>SD-WAN ek overlay hai — physical transports (MPLS/Internet/LTE) underlay hain, replace nahi hote</li>
-          <li>Routing abhi bhi matter karta hai — SD-WAN routing ke upar policy layer add karta hai, eliminate nahi</li>
-          <li>Path selection application classification + policy + measured path quality pe based hai</li>
-          <li>Link UP ≠ application-quality path — latency, jitter, loss separately measure hote hain</li>
-          <li>Brownout detection SD-WAN ka key advantage hai — quality-based path avoidance, sirf link state nahi</li>
-          <li>Failover automatically session-preserving ya instantaneous nahi hai — platform aur failure type matter karte hain</li>
-          <li>Controller down hone pe data plane typically existing state se continue karta hai — management functions unavailable</li>
-          <li>SD-WAN Firewall automatically replace nahi karta — different functions, complementary hai</li>
-          <li>Troubleshooting mein underlay, overlay, routing, policy, security, aur application layers separately isolate karo</li>
-          <li>Tunnel UP ≠ application working — yeh sabse important principle hai</li>
+          <li>SD-WAN is an overlay — physical transports (MPLS/Internet/LTE) are the underlay and are not replaced</li>
+          <li>Routing still matters — SD-WAN adds a policy layer on top of routing, it does not eliminate it</li>
+          <li>Path selection is based on application classification + policy + measured path quality</li>
+          <li>Link UP ≠ application-quality path — latency, jitter and loss are measured separately</li>
+          <li>Brownout detection is a key advantage of SD-WAN — quality-based path avoidance, not just link state</li>
+          <li>Failover is not automatically session-preserving or instantaneous — platform and failure type matter</li>
+          <li>When the controller is down, the data plane typically continues from existing state — management functions unavailable</li>
+          <li>SD-WAN does not automatically replace the Firewall — different functions, complementary</li>
+          <li>In troubleshooting, isolate the underlay, overlay, routing, policy, security, and application layers separately</li>
+          <li>Tunnel UP ≠ application working — this is the most important principle</li>
         </ul>
       </section>
 

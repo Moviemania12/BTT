@@ -11,7 +11,7 @@ export default function DasPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <ArticleLayout slug="das" headings={HEADINGS} readingTimeMinutes={35}>
+      <ArticleLayout slug="das" headings={HEADINGS} readingTimeMinutes={35} lang="en" alternateHref="/hi/learn/it/storage/das">
         <Content />
       </ArticleLayout>
     </>

@@ -9,26 +9,17 @@ export default function Content() {
   return (
     <>
       <div style={{ background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 10, padding: "1.2rem 1.4rem", marginBottom: "2rem" }}>
-        <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.6rem", fontSize: "1rem" }}>📋 Quick Summary — CPU in 2 Minutes</p>
-        <ul style={{ ...S.ul, marginBottom: 0 }}>
-          <li><strong>CPU kya hai:</strong> Central Processing Unit — server ka primary compute engine. Instructions execute karta hai, calculations perform karta hai.</li>
-          <li><strong>Topology:</strong> Socket (physical CPU) → Core (physical execution unit) → Thread (logical — SMT/Hyperthreading se ek core 2 threads present karta hai OS ko).</li>
-          <li><strong>Cache:</strong> L1 (per-core, fastest) → L2 (per-core) → L3 (all cores share) — RAM se much faster. Cache miss hone pe RAM fetch — latency badh jaati hai.</li>
-          <li><strong>NUMA:</strong> Multi-socket mein har CPU ki local RAM hoti hai. Remote RAM access slow hota hai — workload placement matter karta hai.</li>
-          <li><strong>TDP:</strong> Thermal Design Power — cooling aur power budgeting reference value. Universal maximum power figure nahi.</li>
-          <li><strong>Virtualisation extensions:</strong> Intel VT-x / AMD-V — hardware se VMs efficiently run karne ke liye required, modern server CPUs mein standard.</li>
-          <li><strong>Selection:</strong> Single-threaded workloads = higher clock speed priority. Parallel workloads = more cores priority. Workload analyse karo phir CPU choose karo.</li>
-        </ul>
+        <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.6rem", fontSize: "1rem" }}>📋 Quick Summary — CPU in 2 Minutes</p> <ul style={{ ...S.ul, marginBottom: 0 }}> <li><strong>What a CPU is:</strong> Central Processing Unit — the server's primary compute engine. It executes instructions and performs calculations.</li> <li><strong>Topology:</strong> Socket (physical CPU) → Core (physical execution unit) → Thread (logical — with SMT/Hyperthreading, one core presents 2 threads to the OS).</li> <li><strong>Cache:</strong> L1 (per-core, fastest) → L2 (per-core) → L3 (shared by all cores) — much faster than RAM. On a cache miss, data is fetched from RAM — latency increases.</li> <li><strong>NUMA:</strong> In multi-socket systems, each CPU has its own local RAM. Remote RAM access is slower — workload placement matters.</li> <li><strong>TDP:</strong> Thermal Design Power — a reference value for cooling and power budgeting. Not a universal maximum power figure.</li> <li><strong>Virtualisation extensions:</strong> Intel VT-x / AMD-V — required to run VMs efficiently in hardware, standard in modern server CPUs.</li> <li><strong>Selection:</strong> Single-threaded workloads = prioritise higher clock speed. Parallel workloads = prioritise more cores. Analyse the workload, then choose the CPU.</li> </ul>
       </div>
 
       <h2 id="what-is-a-cpu" style={S.h2}>What Is a CPU?</h2>
-      <p style={S.p}>CPU (Central Processing Unit) server ka primary compute engine hai. Har instruction jo application run karti hai — arithmetic, comparison, memory read/write, network packet processing — ultimately CPU pe execute hota hai. Modern server CPUs ek simple "calculator" se kahin zyada complex hain — sophisticated execution pipelines, prediction units, memory controllers, aur I/O interfaces hain.</p>
-      <p style={S.p}>Ek CPU core ek instruction at a time execute karta hai — yeh oversimplification hai. Modern CPUs out-of-order execution, superscalar pipelines aur branch prediction use karte hain, matlab ek core multiple instructions simultaneously different stages pe process kar sakta hai (pipeline parallelism). Ek core ek sequential instruction stream handle karta hai (thread), lekin internally kaafi parallel processing hoti hai.</p>
+      <p style={S.p}>The CPU (Central Processing Unit) is the server's primary compute engine. Every instruction an application runs — arithmetic, comparison, memory read/write, network packet processing — is ultimately executed on the CPU. Modern server CPUs are far more complex than a simple "calculator" — they have sophisticated execution pipelines, prediction units, memory controllers, and I/O interfaces.</p>
+      <p style={S.p}>Saying a CPU core executes one instruction at a time is an oversimplification. Modern CPUs use out-of-order execution, superscalar pipelines and branch prediction, meaning one core can process multiple instructions simultaneously at different stages (pipeline parallelism). A core handles one sequential instruction stream (thread), but internally a lot of parallel processing happens.</p>
 
       <h2 id="x86-vs-arm" style={S.h2}>x86 vs ARM — Server CPU Architectures</h2>
-      <p style={S.p}><strong>x86 (Intel / AMD):</strong> Historically server dominant architecture. Intel Xeon aur AMD EPYC families. Complex Instruction Set Computing (CISC) — rich instruction set, hardware complexity high. Excellent software ecosystem — virtually sab enterprise software natively supported.</p>
-      <p style={S.p}><strong>ARM-based servers:</strong> Growing significantly. AWS Graviton (Amazon data centers mein use), Ampere Altra, NVIDIA Grace Hopper. Reduced Instruction Set Computing (RISC) — simpler instructions, often better performance-per-watt in certain workloads. Cloud providers ARM instances offer karte hain. Software compatibility check karo — kuch software ARM native binaries required karte hain ya performance tuning needed hota hai.</p>
-      <p style={S.p}>Architecture choice ecosystem, software support, workload characteristics aur organizational standards pe depend karta hai. Specific performance comparisons model, workload aur configuration pe highly dependent hain.</p>
+      <p style={S.p}><strong>x86 (Intel / AMD):</strong> Historically the dominant server architecture. Intel Xeon and AMD EPYC families. Complex Instruction Set Computing (CISC) — rich instruction set, high hardware complexity. Excellent software ecosystem — virtually all enterprise software is natively supported.</p>
+      <p style={S.p}><strong>ARM-based servers:</strong> Growing significantly. AWS Graviton (used in Amazon data centers), Ampere Altra, NVIDIA Grace Hopper. Reduced Instruction Set Computing (RISC) — simpler instructions, often better performance-per-watt in certain workloads. Cloud providers offer ARM instances. Check software compatibility — some software requires ARM native binaries or needs performance tuning.</p>
+      <p style={S.p}>Architecture choice depends on ecosystem, software support, workload characteristics and organizational standards. Specific performance comparisons are highly dependent on model, workload and configuration.</p>
 
       <h2 id="server-vs-consumer" style={S.h2}>Server CPU vs Consumer CPU</h2>
       <ComparisonTable
@@ -47,41 +38,41 @@ export default function Content() {
       />
 
       <h2 id="cpu-topology" style={S.h2}>CPU Topology: Socket → Core → Thread</h2>
-      <p style={S.p}><strong>Socket:</strong> Physical CPU slot on motherboard. 1-socket (1S) server ek physical CPU. 2-socket (2S) do physical CPUs ek motherboard pe — double cores, double memory channels, NUMA introduces hoti hai. Socket type CPU generation specific hoti hai — socket match must hona chahiye.</p>
-      <p style={S.p}><strong>Core:</strong> Physical execution unit within the CPU. Each core instructions execute kar sakta hai independently. More cores = more parallel workloads simultaneously. Core count CPU model pe significantly vary karta hai.</p>
-      <p style={S.p}><strong>Thread (Hyperthreading/SMT):</strong> Intel Hyper-Threading Technology / AMD Simultaneous Multi-Threading (SMT) — ek physical core ke resources do logical threads ke beech share karte hain. OS ko ek physical core 2 logical processors ki tarah dikhta hai. Benefit workload-specific hai — memory-bound ya branch-heavy code mein more benefit; pure integer compute mein less. SMT by default most servers pe enabled hota hai.</p>
+      <p style={S.p}><strong>Socket:</strong> Physical CPU slot on the motherboard. A 1-socket (1S) server has one physical CPU. A 2-socket (2S) server has two physical CPUs on one motherboard — double the cores, double the memory channels, and NUMA is introduced. Socket type is specific to the CPU generation — the socket must match.</p>
+      <p style={S.p}><strong>Core:</strong> Physical execution unit within the CPU. Each core can execute instructions independently. More cores = more parallel workloads simultaneously. Core count varies significantly by CPU model.</p>
+      <p style={S.p}><strong>Thread (Hyperthreading/SMT):</strong> Intel Hyper-Threading Technology / AMD Simultaneous Multi-Threading (SMT) — one physical core's resources are shared between two logical threads. To the OS, one physical core appears as 2 logical processors. The benefit is workload-specific — more benefit in memory-bound or branch-heavy code; less in pure integer compute. SMT is enabled by default on most servers.</p>
       <Figure caption="Fig 1 — CPU topology (illustrative): socket → core → thread, plus NUMA showing local vs remote memory access in a 2-socket system."><CpuTopologyNuma /></Figure>
       <Callout type="important" title="NUMA Awareness Is Critical for Performance">
-        Multi-socket server mein workload ko NUMA-aware deploy karo. VM ya database process jo ek NUMA node pe run ho lekin doosre node ki RAM access kare — silently performance degraded rehti hai bina obvious error ke. `numactl --hardware` Linux mein NUMA topology check karo. NUMA imbalance performance issues identify karne ke liye `numastat` use karo.
+        Deploy workloads NUMA-aware on multi-socket servers. A VM or database process running on one NUMA node but accessing another node's RAM stays silently performance-degraded without any obvious error. Check NUMA topology in Linux with `numactl --hardware`. Use `numastat` to identify NUMA imbalance performance issues.
       </Callout>
 
       <h2 id="cache-hierarchy" style={S.h2}>Cache Hierarchy</h2>
-      <p style={S.p}>CPU cache temporary high-speed memory hai CPU package ke andar. RAM se access karna relatively slow hota hai — cache frequently used data CPU ke paas rakhta hai. Cache miss hone pe CPU RAM se fetch karta hai — significant latency increase.</p>
+      <p style={S.p}>CPU cache is temporary high-speed memory inside the CPU package. Accessing RAM is relatively slow — the cache keeps frequently used data close to the CPU. On a cache miss, the CPU fetches from RAM — a significant latency increase.</p>
       <Figure caption="Fig 2 — Memory hierarchy from L1 cache (fastest, smallest) down to storage (slowest, largest)."><CacheHierarchy /></Figure>
-      <p style={S.p}><strong>L1 cache:</strong> Fastest, smallest capacity, per-core. Instruction cache aur data cache separate hote hain typically.</p>
+      <p style={S.p}><strong>L1 cache:</strong> Fastest, smallest capacity, per-core. Instruction cache and data cache are typically separate.</p>
       <p style={S.p}><strong>L2 cache:</strong> Larger than L1, per-core. L1 miss → L2 check.</p>
-      <p style={S.p}><strong>L3 cache (Last Level Cache / LLC):</strong> Largest on-chip cache — all cores share karte hain. L2 miss → L3 check. Server CPUs mein significant L3 capacity hoti hai — database buffer pools, frequently accessed working sets ko cache karna.</p>
-      <p style={S.p}>Actual latency aur capacity values CPU architecture, generation aur implementation pe depend karte hain — specific numbers OEM technical documentation se verify karo.</p>
+      <p style={S.p}><strong>L3 cache (Last Level Cache / LLC):</strong> Largest on-chip cache — shared by all cores. L2 miss → check L3. Server CPUs have significant L3 capacity — caching database buffer pools and frequently accessed working sets.</p>
+      <p style={S.p}>Actual latency and capacity values depend on CPU architecture, generation and implementation — verify specific numbers from OEM technical documentation.</p>
 
       <h2 id="memory-channels" style={S.h2}>Memory Channels and Bandwidth</h2>
-      <p style={S.p}>CPU memory controller RAM se memory channels ke through connect hota hai. Multiple channels parallel mein operate karte hain — bandwidth multiply hoti hai. Server CPUs multiple memory channels support karte hain — specific count model aur generation pe depend karta hai.</p>
-      <p style={S.p}><strong>Maximise bandwidth:</strong> Sab available memory channels populate karo identical DIMMs se (symmetric population). Asymmetric population kuch channels unused chhod deta hai — bandwidth sub-optimal. OEM memory population guidelines follow karo exactly — platform manual mandatory reference hai.</p>
-      <p style={S.p}>Memory bandwidth CPU-intensive vs memory-bandwidth-intensive workloads ke liye differently important hota hai. Scientific computing, large dataset analytics, in-memory databases memory bandwidth se significantly benefit karte hain.</p>
+      <p style={S.p}>The CPU memory controller connects to RAM through memory channels. Multiple channels operate in parallel — bandwidth multiplies. Server CPUs support multiple memory channels — the specific count depends on model and generation.</p>
+      <p style={S.p}><strong>Maximise bandwidth:</strong> Populate all available memory channels with identical DIMMs (symmetric population). Asymmetric population leaves some channels unused — bandwidth is sub-optimal. Follow OEM memory population guidelines exactly — the platform manual is the mandatory reference.</p>
+      <p style={S.p}>Memory bandwidth matters differently for CPU-intensive vs memory-bandwidth-intensive workloads. Scientific computing, large dataset analytics and in-memory databases benefit significantly from memory bandwidth.</p>
 
       <h2 id="numa" style={S.h2}>NUMA — Non-Uniform Memory Access</h2>
-      <p style={S.p}>2-socket server mein dono CPUs ko sab RAM access karni hoti hai. Lekin physical architecture mein kuch RAM CPU 0 ke memory controller se directly connected hai, kuch CPU 1 se. CPU 0 apni local RAM access kare → fast. CPU 0 CPU 1 ki RAM access kare → CPU-to-CPU interconnect (Intel UPI / AMD Infinity Fabric) se jaana padta hai → higher latency, lower bandwidth.</p>
-      <p style={S.p}><strong>NUMA nodes:</strong> Har socket aur uski directly-connected RAM ek NUMA node form karta hai. `numactl --hardware` Linux mein node topology aur distances show karta hai. Lower NUMA distance = faster access.</p>
-      <p style={S.p}><strong>Practical implications:</strong> Database workloads — NUMA node pe pin karo (numactl). VMs — same NUMA node pe vCPUs aur vRAM assign karo. Application behaviour — NUMA-aware applications locality optimise kar sakte hain. OS typically NUMA-aware allocation karta hai default — but large applications ko explicit configuration benefit deta hai.</p>
+      <p style={S.p}>In a 2-socket server, both CPUs need to access all the RAM. But in the physical architecture, some RAM is directly connected to CPU 0's memory controller and some to CPU 1's. CPU 0 accessing its own local RAM → fast. CPU 0 accessing CPU 1's RAM → it has to go through the CPU-to-CPU interconnect (Intel UPI / AMD Infinity Fabric) → higher latency, lower bandwidth.</p>
+      <p style={S.p}><strong>NUMA nodes:</strong> Each socket and its directly-connected RAM form a NUMA node. In Linux, `numactl --hardware` shows node topology and distances. Lower NUMA distance = faster access.</p>
+      <p style={S.p}><strong>Practical implications:</strong> Database workloads — pin to a NUMA node (numactl). VMs — assign vCPUs and vRAM on the same NUMA node. Application behaviour — NUMA-aware applications can optimise locality. The OS typically does NUMA-aware allocation by default — but large applications benefit from explicit configuration.</p>
 
       <h2 id="tdp-power" style={S.h2}>TDP and Power</h2>
-      <p style={S.p}>TDP (Thermal Design Power) watt mein ek reference value hai jis pe cooling solution design karna chahiye. Yeh specific workload conditions pe CPU ka heat dissipation estimate hai. TDP universal maximum power consumption figure nahi hai — actual power workload aur configuration pe depend karta hai. Kuch scenarios mein brief periods mein TDP exceed ho sakta hai (all-core turbo), kuch mein idle load pe significantly under hota hai.</p>
-      <p style={S.p}><strong>Data center relevance:</strong> Rack power budget planning mein TDP figures reference karo. Cooling system design — heatsink, airflow — TDP pe based hoti hai. Actual power monitoring (BMC power readings, rack PDU monitoring) deployment ke baad karo accurate capacity planning ke liye.</p>
-      <p style={S.p}>High-core-count, high-TDP CPUs power per rack aur cooling requirements badha sakte hain. CPU selection mein performance per watt consider karo along with raw performance.</p>
+      <p style={S.p}>TDP (Thermal Design Power) is a reference value in watts against which the cooling solution should be designed. It is an estimate of the CPU's heat dissipation under specific workload conditions. TDP is not a universal maximum power consumption figure — actual power depends on workload and configuration. In some scenarios TDP can be exceeded for brief periods (all-core turbo); in others, at idle load, power is significantly under it.</p>
+      <p style={S.p}><strong>Data center relevance:</strong> Reference TDP figures in rack power budget planning. Cooling system design — heatsink, airflow — is based on TDP. After deployment, do actual power monitoring (BMC power readings, rack PDU monitoring) for accurate capacity planning.</p>
+      <p style={S.p}>High-core-count, high-TDP CPUs can increase power per rack and cooling requirements. Consider performance per watt along with raw performance in CPU selection.</p>
 
       <h2 id="virtualisation-ext" style={S.h2}>Hardware Virtualisation Extensions</h2>
-      <p style={S.p}><strong>Intel VT-x (Virtualisation Technology for x86) / AMD-V (AMD Virtualisation):</strong> Hardware features jo hypervisors ko efficiently VMs run karne allow karte hain. Software-only virtualisation se much better performance. Modern server CPUs mein standard — typically UEFI mein enabled by default hote hain. Hypervisor run karne ke liye required (VMware ESXi, Hyper-V, KVM).</p>
-      <p style={S.p}><strong>Intel VT-d / AMD-Vi (IOMMU):</strong> I/O virtualisation — devices directly VMs ko pass-through karna allow karta hai without hypervisor overhead (PCIe passthrough). GPU passthrough ke liye bhi use hota hai. UEFI mein enable karna typically required.</p>
-      <p style={S.p}><strong>EPT (Extended Page Tables) / AMD RVI (Rapid Virtualisation Indexing):</strong> Hardware-accelerated memory address translation for VMs — software TLB management pe less overhead. VM memory performance improve karta hai.</p>
+      <p style={S.p}><strong>Intel VT-x (Virtualisation Technology for x86) / AMD-V (AMD Virtualisation):</strong> Hardware features that allow hypervisors to run VMs efficiently. Much better performance than software-only virtualisation. Standard in modern server CPUs — typically enabled by default in UEFI. Required to run a hypervisor (VMware ESXi, Hyper-V, KVM).</p>
+      <p style={S.p}><strong>Intel VT-d / AMD-Vi (IOMMU):</strong> I/O virtualisation — allows devices to be passed through directly to VMs without hypervisor overhead (PCIe passthrough). Also used for GPU passthrough. Typically needs to be enabled in UEFI.</p>
+      <p style={S.p}><strong>EPT (Extended Page Tables) / AMD RVI (Rapid Virtualisation Indexing):</strong> Hardware-accelerated memory address translation for VMs — less overhead from software TLB management. Improves VM memory performance.</p>
 
       <h2 id="cpu-selection" style={S.h2}>Workload-Based CPU Selection</h2>
       <ComparisonTable
@@ -97,41 +88,41 @@ export default function Content() {
         ]}
         caption="Workload requirements vary significantly. Benchmark with representative workloads before finalising selection."
       />
-      <p style={S.p}>Socket selection: 1S simpler, lower cost — small-medium workloads. 2S double resources but NUMA consideration. More sockets — specialized requirements, higher complexity aur cost. Workload fit karo minimum required socket count mein.</p>
+      <p style={S.p}>Socket selection: 1S is simpler, lower cost — small-to-medium workloads. 2S doubles resources but brings NUMA considerations. More sockets — specialized requirements, higher complexity and cost. Fit the workload into the minimum required socket count.</p>
 
       <h2 id="cpu-in-virtualisation" style={S.h2}>CPU in Virtualisation</h2>
-      <p style={S.p}><strong>vCPU:</strong> Hypervisor VM ko virtual CPU cores present karta hai. vCPU physical CPU threads pe scheduled hote hain. VM ko 8 vCPUs → hypervisor 8 physical threads use/schedule karta hai.</p>
-      <p style={S.p}><strong>CPU overcommit:</strong> Physical threads se zyada vCPUs assign karna. Work karta hai kyunki sab VMs simultaneously peak mein nahi hote. Risk: sab VMs simultaneously heavy load pe → CPU ready queue mein wait → performance degradation. Overcommit ratio carefully monitor karo.</p>
-      <p style={S.p}><strong>NUMA in VMs:</strong> VM ke vCPUs aur vRAM same physical NUMA node pe hone chahiye ideally — hypervisor typically manage karta hai lekin large VMs pe explicit configuration benefit deta hai. Hypervisor NUMA topology expose karta hai VM ko bhi.</p>
-      <p style={S.p}><strong>EVC (Enhanced vMotion Compatibility) — VMware:</strong> CPUs ke beech feature differences mask karta hai live migration ke liye. CPU feature sets mein difference ho toh EVC mode enable karo cluster level pe. Yeh concept other hypervisors mein bhi similar feature hoti hai.</p>
+      <p style={S.p}><strong>vCPU:</strong> The hypervisor presents virtual CPU cores to a VM. vCPUs are scheduled on physical CPU threads. A VM with 8 vCPUs → the hypervisor uses/schedules 8 physical threads.</p>
+      <p style={S.p}><strong>CPU overcommit:</strong> Assigning more vCPUs than physical threads. It works because not all VMs peak simultaneously. Risk: all VMs under heavy load simultaneously → waiting in the CPU ready queue → performance degradation. Monitor the overcommit ratio carefully.</p>
+      <p style={S.p}><strong>NUMA in VMs:</strong> A VM's vCPUs and vRAM should ideally be on the same physical NUMA node — the hypervisor typically manages this, but large VMs benefit from explicit configuration. The hypervisor also exposes NUMA topology to the VM.</p>
+      <p style={S.p}><strong>EVC (Enhanced vMotion Compatibility) — VMware:</strong> Masks feature differences between CPUs for live migration. If CPU feature sets differ, enable EVC mode at the cluster level. Other hypervisors have a similar feature for this concept as well.</p>
 
       <h2 id="troubleshooting" style={S.h2}>CPU Troubleshooting</h2>
       <h3 style={S.h3}>High CPU Utilization</h3>
-      <p style={S.p}>`top` ya `htop` Linux mein — per-core utilization. Which processes? `ps aux --sort=-%cpu`. Spike hai ya sustained? All cores ya single core? Single core 100% = single-threaded bottleneck — software issue, hardware nahi solve karega.</p>
+      <p style={S.p}>`top` or `htop` in Linux — per-core utilization. Which processes? `ps aux --sort=-%cpu`. Is it a spike or sustained? All cores or a single core? Single core at 100% = single-threaded bottleneck — a software issue that hardware will not solve.</p>
       <h3 style={S.h3}>CPU Steal (Virtualised)</h3>
-      <p style={S.p}>`%st` in top — physical host busy hai doosre VMs ke saath. High steal = overcommitted host. Workload migrate karo ya host capacity add karo. Monitoring pe CPU steal track karo baseline establish karo.</p>
+      <p style={S.p}>`%st` in top — the physical host is busy with other VMs. High steal = overcommitted host. Migrate the workload or add host capacity. Track CPU steal in monitoring and establish a baseline.</p>
       <h3 style={S.h3}>Thermal Issues / Throttling</h3>
-      <p style={S.p}>BMC temperature readings check karo. Fan speeds normal hain? Airflow adequate? Heatsink properly seated? CPU frequency drop check karo (performance mode disabled? Power capping?). CPU thermal throttle karta hai to prevent damage — root cause fix karo.</p>
+      <p style={S.p}>Check BMC temperature readings. Are fan speeds normal? Is airflow adequate? Is the heatsink properly seated? Check for CPU frequency drops (performance mode disabled? Power capping?). The CPU thermally throttles to prevent damage — fix the root cause.</p>
       <h3 style={S.h3}>NUMA Performance Issues</h3>
-      <p style={S.p}>`numastat` — NUMA miss rate. High remote memory access rate. Workload NUMA node pe pin karo (`numactl`). VMs large hain toh NUMA topology check karo hypervisor se.</p>
+      <p style={S.p}>`numastat` — NUMA miss rate. High remote memory access rate. Pin the workload to a NUMA node (`numactl`). If VMs are large, check NUMA topology from the hypervisor.</p>
 
       <h2 id="interview-questions" style={S.h2}>Interview Questions</h2>
-      <h3 style={S.h3}>Q1: NUMA kya hai aur performance pe kaise impact karta hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Multi-socket server mein har CPU (socket) ki directly-connected local RAM hoti hai — NUMA node banata hai. CPU apni local RAM access kare to fast. Doosre CPU ki RAM access karne ke liye CPU-to-CPU interconnect se jaana padta hai — higher latency. NUMA-unaware workload placement silently performance degrade kar sakta hai. `numactl --hardware` topology dikhata hai, `numastat` miss rates.</p>
-      <h3 style={S.h3}>Q2: TDP kya hota hai — kya yeh CPU ka maximum power consumption hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> TDP (Thermal Design Power) ek reference value hai jis pe cooling system design karna chahiye — specific load conditions pe heat dissipation estimate. Yeh universal maximum power figure nahi hai — actual power workload pe vary karta hai. Idle pe TDP se significantly under hota hai, some all-core turbo scenarios mein briefly exceed bhi ho sakta hai. Cooling design aur rack power budgeting ke liye reference use karo, exact maximum power figure ke roop mein nahi.</p>
-      <h3 style={S.h3}>Q3: Intel VT-x / AMD-V kya hai aur kyun zaroori hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Hardware virtualisation extensions hain — hypervisors ko efficiently VMs run karne allow karte hain. Bina hardware support ke software-only virtualisation much slower hoti. Modern server CPUs mein standard feature hai. VMware ESXi, Hyper-V, KVM — sab require karte hain. UEFI mein enabled hona chahiye (typically default).</p>
+      <h3 style={S.h3}>Q1: What is NUMA and how does it impact performance?</h3>
+      <p style={S.p}><strong>Answer:</strong> In a multi-socket server, each CPU (socket) has directly-connected local RAM — forming a NUMA node. When a CPU accesses its own local RAM, it is fast. To access another CPU's RAM, it has to go through the CPU-to-CPU interconnect — higher latency. NUMA-unaware workload placement can silently degrade performance. `numactl --hardware` shows the topology, `numastat` the miss rates.</p>
+      <h3 style={S.h3}>Q2: What is TDP — is it the CPU's maximum power consumption?</h3>
+      <p style={S.p}><strong>Answer:</strong> TDP (Thermal Design Power) is a reference value against which the cooling system should be designed — a heat dissipation estimate under specific load conditions. It is not a universal maximum power figure — actual power varies with workload. At idle it is significantly under TDP, and in some all-core turbo scenarios it can briefly exceed it. Use it as a reference for cooling design and rack power budgeting, not as an exact maximum power figure.</p>
+      <h3 style={S.h3}>Q3: What is Intel VT-x / AMD-V and why is it essential?</h3>
+      <p style={S.p}><strong>Answer:</strong> They are hardware virtualisation extensions — they allow hypervisors to run VMs efficiently. Without hardware support, software-only virtualisation would be much slower. It is a standard feature in modern server CPUs. VMware ESXi, Hyper-V, KVM — all require it. It must be enabled in UEFI (typically the default).</p>
 
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
       <ul style={S.ul}>
-        <li>CPU topology: Socket → Core → Thread. SMT/Hyperthreading ek core pe 2 logical threads present karta hai.</li>
-        <li>Cache hierarchy: L1 (fastest, per-core) → L2 (per-core) → L3 (shared) → RAM. Cache miss hone pe latency significantly badh jaati hai.</li>
-        <li>NUMA multi-socket servers mein critical — local vs remote memory access performance ko meaningfully affect karta hai.</li>
-        <li>TDP cooling reference value hai — universal maximum power figure nahi. Actual power workload pe depend karta hai.</li>
-        <li>Intel VT-x / AMD-V virtualisation ke liye hardware requirement hain — server CPUs mein standard.</li>
+        <li>CPU topology: Socket → Core → Thread. SMT/Hyperthreading presents 2 logical threads on one core.</li>
+        <li>Cache hierarchy: L1 (fastest, per-core) → L2 (per-core) → L3 (shared) → RAM. On a cache miss, latency increases significantly.</li>
+        <li>NUMA is critical in multi-socket servers — local vs remote memory access meaningfully affects performance.</li>
+        <li>TDP is a cooling reference value — not a universal maximum power figure. Actual power depends on workload.</li>
+        <li>Intel VT-x / AMD-V are hardware requirements for virtualisation — standard in server CPUs.</li>
         <li>CPU selection: single-threaded workloads = clock speed priority; parallel = core count priority; workload-specific benchmarking best approach.</li>
-        <li>x86 (Intel Xeon/AMD EPYC) dominant, ARM-based servers (Graviton, Ampere) growing — software compatibility check karo.</li>
+        <li>x86 (Intel Xeon/AMD EPYC) is dominant, ARM-based servers (Graviton, Ampere) are growing — check software compatibility.</li>
       </ul>
 
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Frequently Asked Questions</h2>

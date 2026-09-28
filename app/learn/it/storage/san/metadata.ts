@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "SAN — Storage Area Network: Complete Engineer Guide | Behind The Tech",
   description:
-    "SAN kya hai, Fibre Channel, iSCSI, LUN, zoning, LUN masking, multipathing, ALUA, dual fabric, Windows/Linux/VMware practical, troubleshooting, OEM escalation aur interview tips — complete Hinglish Data Center engineer handbook.",
+    "What SAN is, Fibre Channel, iSCSI, LUN, zoning, LUN masking, multipathing, ALUA, dual fabric, Windows/Linux/VMware practicals, troubleshooting, OEM escalation and interview tips — a complete English Data Center engineer handbook.",
   keywords: [
     "storage area network", "SAN storage", "fibre channel", "iSCSI", "LUN",
     "SAN zoning", "LUN masking", "multipathing", "MPIO", "DM-Multipath",
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     title: "SAN — Storage Area Network: Complete Engineer Guide",
     description: "Fibre Channel, iSCSI, LUN, zoning, multipathing, ALUA, dual fabric, troubleshooting — complete SAN handbook.",
     url: "https://behindthetech.in/learn/it/storage/san",
+    locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
     authors: ["Kumar Anil"],
@@ -21,43 +22,50 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "SAN — Storage Area Network | Behind The Tech",
-    description: "SAN complete engineer guide Hinglish mein — FC, iSCSI, LUN, zoning, multipathing, troubleshooting.",
+    description: "Complete SAN engineer guide in English — FC, iSCSI, LUN, zoning, multipathing, troubleshooting.",
   },
-  alternates: { canonical: "https://behindthetech.in/learn/it/storage/san" },
+  alternates: {
+    canonical: "https://behindthetech.in/learn/it/storage/san",
+    languages: {
+      en: "https://behindthetech.in/learn/it/storage/san",
+      hi: "https://behindthetech.in/hi/learn/it/storage/san",
+      "x-default": "https://behindthetech.in/learn/it/storage/san",
+    },
+  },
 };
 
 export const faqs = [
   {
-    q: "SAN kya hai aur NAS se kaise alag hai?",
-    a: "SAN (Storage Area Network) ek dedicated high-speed storage network hai jo servers ko block-level storage provide karta hai — server raw disk (LUN) dekhta hai aur khud filesystem banata hai. NAS file-level storage provide karta hai — NAS pe filesystem hoti hai, client files access karta hai (SMB/NFS). SAN databases, VMware shared datastores aur mission-critical applications ke liye use hota hai. NAS file sharing aur backup ke liye.",
+    q: "What is SAN and how is it different from NAS?",
+    a: "SAN (Storage Area Network) is a dedicated high-speed storage network that provides block-level storage to servers — the server sees a raw disk (LUN) and builds its own filesystem. NAS provides file-level storage — the filesystem lives on the NAS, and the client accesses files (SMB/NFS). SAN is used for databases, VMware shared datastores and mission-critical applications. NAS is used for file sharing and backup.",
   },
   {
-    q: "LUN kya hai?",
-    a: "LUN (Logical Unit Number) storage array mein ek logical block storage unit hai — physical disk nahi. Storage pool/RAID ke upar software se create ki gayi logical volume hoti hai. Host is LUN ko ek raw block device ki tarah dekhta hai — host ka OS ya application uske upar filesystem create karta hai. Ek storage pool se multiple LUNs create ho sakti hain.",
+    q: "What is a LUN?",
+    a: "A LUN (Logical Unit Number) is a logical block storage unit in a storage array — not a physical disk. It is a logical volume created in software on top of a storage pool/RAID. The host sees this LUN as a raw block device — the host OS or application creates a filesystem on top of it. Multiple LUNs can be created from one storage pool.",
   },
   {
-    q: "Zoning aur LUN masking mein kya fark hai?",
-    a: "Zoning SAN switch (fabric) level pe hai — controls which initiator WWPN can communicate with which target WWPN. LUN masking storage array level pe hai — controls which host can see which LUN. Dono alag layers hain — dono required hain. Zoning fabric communication control karta hai; LUN masking storage access control karta hai.",
+    q: "What is the difference between zoning and LUN masking?",
+    a: "Zoning is at the SAN switch (fabric) level — it controls which initiator WWPN can communicate with which target WWPN. LUN masking is at the storage array level — it controls which host can see which LUN. They are two separate layers — both are required. Zoning controls fabric communication; LUN masking controls storage access.",
   },
   {
-    q: "Multipathing kya hai aur kyun important hai?",
-    a: "Multipathing host ke multiple HBA ports se multiple physical paths provide karta hai — same LUN tak through dual fabrics and dual storage controllers. MPIO (Windows), DM-Multipath (Linux), VMware NMP — OS level pe yeh multiple paths ek single device mein aggregate karta hai. Ek path fail → automatically doosre path se I/O continue hota hai bina application disruption ke.",
+    q: "What is multipathing and why is it important?",
+    a: "Multipathing provides multiple physical paths from the host's multiple HBA ports — to the same LUN through dual fabrics and dual storage controllers. MPIO (Windows), DM-Multipath (Linux), VMware NMP — at the OS level these aggregate the multiple paths into a single device. If one path fails → I/O automatically continues over another path without application disruption.",
   },
   {
-    q: "FC SAN aur iSCSI SAN mein kya difference hai?",
-    a: "FC SAN dedicated Fibre Channel hardware use karta hai (FC HBAs, FC switches), WWPN-based addressing, purpose-built lossless fabric. iSCSI SCSI over TCP/IP use karta hai — standard Ethernet infrastructure, IQN-based addressing, TCP port 3260. FC historically purpose-built aur predictable. iSCSI lower cost, IP networking skills transferable. Modern environments mein dono high performance achieve kar sakte hain — choice workload, budget aur infrastructure pe depend karta hai.",
+    q: "What is the difference between FC SAN and iSCSI SAN?",
+    a: "FC SAN uses dedicated Fibre Channel hardware (FC HBAs, FC switches), WWPN-based addressing, and a purpose-built lossless fabric. iSCSI uses SCSI over TCP/IP — standard Ethernet infrastructure, IQN-based addressing, TCP port 3260. FC is historically purpose-built and predictable. iSCSI is lower cost, and IP networking skills are transferable. In modern environments both can achieve high performance — the choice depends on workload, budget and infrastructure.",
   },
   {
-    q: "Dual fabric kyun use karte hain?",
-    a: "Mission-critical enterprise FC SAN designs commonly two independent fabrics (Fabric A aur Fabric B) use karte hain — ek fabric ko single failure domain eliminate karne ke liye. Har server mein 2 HBAs — ek Fabric A se, ek Fabric B se. Storage array ke controllers ke front-end ports dono fabrics pe hote hain. Ek fabric fail ho → doosra fabric automatically sab I/O handle karta hai.",
+    q: "Why use a dual fabric?",
+    a: "Mission-critical enterprise FC SAN designs commonly use two independent fabrics (Fabric A and Fabric B) — to eliminate a single fabric as a single failure domain. Each server has 2 HBAs — one to Fabric A, one to Fabric B. The front-end ports of the storage array's controllers are on both fabrics. If one fabric fails → the other fabric automatically handles all I/O.",
   },
   {
-    q: "New LUN visible nahi hai — kya check karein?",
-    a: "Layer-by-layer: (1) HBA port online hai? (2) FLOGI — fabric mein logged in? (3) Zoning correct? Correct initiator + target WWPN? Configuration active? Both fabrics? (4) Storage target front-end port online? (5) Host object correct on array? WWPN registered? (6) LUN mapped to host? LUN online? (7) Host rescan karo. (8) Multipath check — expected paths visible? (9) OS mein device appear hua?",
+    q: "A new LUN is not visible — what should be checked?",
+    a: "Layer by layer: (1) Is the HBA port online? (2) FLOGI — logged in to the fabric? (3) Is zoning correct? Correct initiator + target WWPN? Configuration active? Both fabrics? (4) Is the storage target front-end port online? (5) Is the host object correct on the array? WWPN registered? (6) LUN mapped to the host? LUN online? (7) Rescan the host. (8) Multipath check — expected paths visible? (9) Did the device appear in the OS?",
   },
   {
-    q: "ALUA kya hai?",
-    a: "ALUA (Asymmetric Logical Unit Access) ek T10 SCSI standard hai jisse storage array host ko Target Port Groups (TPGs) ke baare mein information provide karta hai — kaun sa TPG Active/Optimized (preferred, lower latency) hai aur kaun sa Active/Non-Optimized. Host multipath software ALUA information se optimal paths choose karta hai. Behavior architecture-dependent hai — some arrays active-active (all paths optimized), others use ALUA asymmetrically.",
+    q: "What is ALUA?",
+    a: "ALUA (Asymmetric Logical Unit Access) is a T10 SCSI standard through which the storage array provides the host with information about Target Port Groups (TPGs) — which TPG is Active/Optimized (preferred, lower latency) and which is Active/Non-Optimized. The host multipath software uses the ALUA information to choose optimal paths. Behavior is architecture-dependent — some arrays are active-active (all paths optimized), others use ALUA asymmetrically.",
   },
 ];
 

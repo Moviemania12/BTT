@@ -12,30 +12,18 @@ export default function Content() {
     <>
       {/* ── Quick Summary ─────────────────────────────────────────────────── */}
       <div style={{ background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 10, padding: "1.2rem 1.4rem", marginBottom: "2rem" }}>
-        <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.6rem", fontSize: "1rem" }}>📋 Quick Summary — DAS in 2 Minutes</p>
-        <ul style={{ ...S.ul, marginBottom: 0 }}>
-          <li><strong>DAS kya hai:</strong> Direct Attached Storage — storage jo directly ek server se connected hoti hai, bina kisi network ke. Server ke andar ki drives DAS hain. Ek external box directly SAS cable se connected ho — woh bhi DAS hai.</li>
-          <li><strong>Golden rule:</strong> Server aur storage ke beech agar network hai — DAS nahi. Directly cable se connected hai — DAS hai.</li>
-          <li><strong>Kyun relevant hai:</strong> Network overhead zero, latency lowest, cost sabse kam. Single server ke liye fastest storage option.</li>
-          <li><strong>Primary limitation:</strong> Sirf woh ek server access kar sakta hai jisse directly connected hai — shareable nahi.</li>
-          <li><strong>Types:</strong> Internal DAS (server ke andar), External DAS / JBOD (bahar se SAS cable), NVMe-based DAS (PCIe-direct).</li>
-          <li><strong>Interfaces:</strong> SATA (OS drives / budget), SAS (enterprise standard), NVMe (highest performance).</li>
-          <li><strong>Enterprise use:</strong> Databases, virtualization hosts, HCI foundation, AI/ML training nodes, edge servers, OS boot drives.</li>
-          <li><strong>HCI connection:</strong> VMware vSAN, Nutanix, Microsoft S2D — sab DAS drives ko software se pool karte hain. HCI ka foundation DAS hai.</li>
-          <li><strong>Engineer daily kaam:</strong> RAID status monitor karna, S.M.A.R.T. health dekhna, predictive failure alerts pe act karna, capacity trends track karna.</li>
-          <li><strong>Most critical field rule:</strong> Consumer drives enterprise RAID mein kabhi mat lagao — TLER nahi hota, production array degrade ho jaata hai.</li>
-        </ul>
+        <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.6rem", fontSize: "1rem" }}>📋 Quick Summary — DAS in 2 Minutes</p> <ul style={{ ...S.ul, marginBottom: 0 }}> <li><strong>What DAS is:</strong> Direct Attached Storage — storage that is connected directly to one server, without any network. The drives inside a server are DAS. An external box connected directly by a SAS cable — that is DAS too.</li> <li><strong>Golden rule:</strong> If there is a network between the server and the storage — it is not DAS. If it is connected directly by cable — it is DAS.</li> <li><strong>Why it is relevant:</strong> Zero network overhead, lowest latency, lowest cost. The fastest storage option for a single server.</li> <li><strong>Primary limitation:</strong> Only the one server it is directly connected to can access it — not shareable.</li> <li><strong>Types:</strong> Internal DAS (inside the server), External DAS / JBOD (outside, via SAS cable), NVMe-based DAS (PCIe-direct).</li> <li><strong>Interfaces:</strong> SATA (OS drives / budget), SAS (enterprise standard), NVMe (highest performance).</li> <li><strong>Enterprise use:</strong> Databases, virtualization hosts, HCI foundation, AI/ML training nodes, edge servers, OS boot drives.</li> <li><strong>HCI connection:</strong> VMware vSAN, Nutanix, Microsoft S2D — all pool DAS drives through software. DAS is the foundation of HCI.</li> <li><strong>Engineer's daily work:</strong> Monitoring RAID status, checking S.M.A.R.T. health, acting on predictive failure alerts, tracking capacity trends.</li> <li><strong>Most critical field rule:</strong> Never put consumer drives in enterprise RAID — they have no TLER, and the production array degrades.</li> </ul>
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════
           SECTION 1 — DEFINITION
       ══════════════════════════════════════════════════════════════════ */}
-      <h2 id="das-kya-hai" style={S.h2}>DAS Kya Hai — Definition aur Full Form</h2>
+      <h2 id="das-kya-hai" style={S.h2}>What Is DAS — Definition and Full Form</h2>
       <p style={S.p}><strong>DAS = Direct Attached Storage</strong></p>
-      <p style={S.p}>Koi bhi storage device jo physically aur directly ek single server ya workstation se connected ho — bina kisi network, switch ya shared infrastructure ke — woh DAS hai.</p>
-      <p style={S.p}>Ye kisi specific product ka naam nahi hai. Ye ek architecture pattern hai.</p>
-      <p style={S.p}>DAS sabse pehle aaya — networking se pehle, shared storage se pehle. Pehle ke sab servers DAS pe chale. Aaj bhi data centers mein widely deployed hai — specifically jahan single-server local performance maximum chahiye.</p>
-      <p style={S.p}><strong>Why it still matters:</strong> NAS aur SAN ne shared storage introduce ki, lekin network ke saath latency bhi aai. High-performance databases, real-time processing, AI training — inhe consistent microsecond-level storage access chahiye. DAS woh deta hai.</p>
+      <p style={S.p}>Any storage device that is physically and directly connected to a single server or workstation — without any network, switch or shared infrastructure — is DAS.</p>
+      <p style={S.p}>This is not the name of a specific product. It is an architecture pattern.</p>
+      <p style={S.p}>DAS came first — before networking, before shared storage. All early servers ran on DAS. It is still widely deployed in data centers today — specifically where maximum single-server local performance is needed.</p>
+      <p style={S.p}><strong>Why it still matters:</strong> NAS and SAN introduced shared storage, but along with the network came latency. High-performance databases, real-time processing, AI training — these need consistent microsecond-level storage access. DAS delivers that.</p>
       <CodeBlock lang="text">
 {`Application → OS → Storage Driver → Physical Drive
 
@@ -46,7 +34,7 @@ No network. No switch. No protocol overhead.`}
           SECTION 2 — DAS vs PC Storage
       ══════════════════════════════════════════════════════════════════ */}
       <h2 id="das-vs-pc-storage" style={S.h2}>DAS vs Normal PC Storage</h2>
-      <p style={S.p}>Surface pe dono same lagte hain — directly attached drives. Lekin engineering aur production use mein bada fark hai.</p>
+      <p style={S.p}>On the surface both look the same — directly attached drives. But in engineering and production use there is a big difference.</p>
       <ComparisonTable
         title="PC Storage vs Enterprise DAS"
         headers={["Parameter", "PC / Laptop Storage", "Enterprise DAS"]}
@@ -66,13 +54,13 @@ No network. No switch. No protocol overhead.`}
 
       <h3 style={S.h3}>TLER / ERC — Most Important Difference in Practice</h3>
       <p style={S.p}><strong>TLER = Time-Limited Error Recovery | ERC = Error Recovery Control</strong></p>
-      <p style={S.p}>Jab drive ko bad sector milta hai, woh recover karne ki koshish karta hai.</p>
+      <p style={S.p}>When a drive hits a bad sector, it tries to recover it.</p>
       <ul style={S.ul}>
-        <li><strong>Consumer drive:</strong> Aggressively retry karta hai — 30 se 120 seconds tak. RAID controller itna wait nahi karta — drive ko fail mark kar deta hai. Array degrade ho jaata hai even though drive physically theek hai.</li>
-        <li><strong>Enterprise drive:</strong> Error recovery time-limit hoti hai (typically 7–15 seconds). Drive controller ko batati hai "error hai, tum handle karo." RAID proper error handling karta hai.</li>
+        <li><strong>Consumer drive:</strong> Retries aggressively — for 30 to 120 seconds. The RAID controller does not wait that long — it marks the drive as failed. The array degrades even though the drive is physically fine.</li>
+        <li><strong>Enterprise drive:</strong> Error recovery is time-limited (typically 7–15 seconds). The drive tells the controller "there is an error, you handle it." RAID handles the error properly.</li>
       </ul>
-      <Callout type="common-mistake" title="Consumer Drive Enterprise RAID Mein — Kabhi Nahi">
-        Consumer drive kabhi enterprise server RAID mein mat lagao. Ek bad sector encounter par drive drop ho sakti hai. Agar doosri drive bhi worn out hai — data loss risk. Ye most common aur avoidable production mistake hai.
+      <Callout type="common-mistake" title="Consumer Drives in Enterprise RAID — Never">
+        Never put a consumer drive in an enterprise server RAID. The drive can drop on encountering a single bad sector. If another drive is also worn out — there is a data loss risk. This is the most common and most avoidable production mistake.
       </Callout>
 
       {/* ══════════════════════════════════════════════════════════════════
@@ -94,8 +82,8 @@ No network. No switch. No protocol overhead.`}
              |
 [ Physical Drives — HDD / SSD / NVMe ]
 
-Ye data path completely local hai.
-Network nahi, switch nahi, protocol handshake nahi.`}
+This data path is completely local.
+No network, no switch, no protocol handshake.`}
       </CodeBlock>
 
       <Figure caption="Fig 1 — DAS Data Path Overview. Left: Internal DAS showing direct path from server to drive bays with no network. Right: External JBOD connected via direct SAS cable. Note the crossed-out network switch — it does not exist in DAS.">
@@ -107,16 +95,16 @@ Network nahi, switch nahi, protocol handshake nahi.`}
         title="Controller Types"
         headers={["Type", "What It Does", "When to Use"]}
         rows={[
-          ["RAID Controller", "Hardware RAID — apna processor aur cache RAM rakhta hai. Parity, caching, patrol read sab hardware level pe.", "Production workloads jahan hardware RAID protection chahiye"],
-          ["HBA (Host Bus Adapter)", "Drives directly OS ko present karta hai — no RAID processing. OS ya software decide karta hai.", "HCI (vSAN/Nutanix), software RAID, direct disk access"],
-          ["Integrated Controller", "Motherboard par built-in — mostly SATA. Limited drive count aur features.", "Entry-level servers, OS boot drives only"],
+          ["RAID Controller", "Hardware RAID — has its own processor and cache RAM. Parity, caching, patrol read all at hardware level.", "Production workloads where hardware RAID protection is needed"],
+          ["HBA (Host Bus Adapter)", "Presents drives directly to the OS — no RAID processing. The OS or software decides.", "HCI (vSAN/Nutanix), software RAID, direct disk access"],
+          ["Integrated Controller", "Built into the motherboard — mostly SATA. Limited drive count and features.", "Entry-level servers, OS boot drives only"],
         ]}
         caption="OEM Examples — Dell: PERC H755 (RAID), HBA355i (HBA). HPE: Smart Array P408i-a (RAID), SR Gen11 (HBA). Lenovo: RAID 9350-8i, 430-8i HBA."
       />
 
       <h3 style={S.h3}>Component 2 — Backplane</h3>
-      <p style={S.p}>Server ke andar passive ya active PCB jo drive bays ko storage controller se connect karta hai. Power aur data signal dono route karta hai. Hot-swap backplane se aata hai — har bay independently controlled hoti hai.</p>
-      <p style={S.p}><strong>Active backplane</strong> mein SAS expander hota hai — multiple drives ek HBA port se connect ho sakti hain. <strong>Passive backplane</strong> sirf signal route karta hai — simpler, less points of failure.</p>
+      <p style={S.p}>A passive or active PCB inside the server that connects the drive bays to the storage controller. It routes both power and data signals. Hot-swap comes from the backplane — every bay is controlled independently.</p>
+      <p style={S.p}>An <strong>active backplane</strong> has a SAS expander — multiple drives can connect through one HBA port. A <strong>passive backplane</strong> only routes signals — simpler, fewer points of failure.</p>
 
       <h3 style={S.h3}>Component 3 — Physical Drives</h3>
       <ComparisonTable
@@ -133,36 +121,30 @@ Network nahi, switch nahi, protocol handshake nahi.`}
       {/* ══════════════════════════════════════════════════════════════════
           SECTION 4 — DAS TYPES
       ══════════════════════════════════════════════════════════════════ */}
-      <h2 id="das-ke-types" style={S.h2}>DAS ke Types</h2>
+      <h2 id="das-ke-types" style={S.h2}>Types of DAS</h2>
 
       <h3 style={S.h3}>Type 1 — Internal DAS</h3>
-      <p style={S.p}>Server chassis ke andar installed drives. <strong>Sabse common DAS form — har rack server mein hota hai.</strong></p>
-      <p style={S.p}>Drives server ke front ya rear drive bays mein fit hoti hain — backplane ke through controller se connected.</p>
+      <p style={S.p}>Drives installed inside the server chassis. <strong>The most common form of DAS — present in every rack server.</strong></p>
+      <p style={S.p}>Drives fit into the server's front or rear drive bays — connected to the controller through the backplane.</p>
 
       <Figure caption="Fig 2 — Internal Drive Bay Layout — 2U server front view. Bay 7 (amber) = failed drive with fault LED on. Bay 12 (green) = active rebuild. Bay numbering starts at 0 from top-left. Inset shows drive carrier components.">
         <DasBayLayout />
       </Figure>
 
-      <p style={S.p}><strong>Generic concept:</strong> 2U server typically 24 × 2.5" SFF bays ya 12 × 3.5" LFF bays rakhta hai. Actual count server model aur chassis design pe depend karta hai.</p>
+      <p style={S.p}><strong>Generic concept:</strong> A 2U server typically has 24 × 2.5" SFF bays or 12 × 3.5" LFF bays. The actual count depends on the server model and chassis design.</p>
 
       <Callout type="maintenance" title="OEM Examples — Internal DAS Servers">
-        <ul style={{ ...S.ul, marginBottom: 0 }}>
-          <li><strong>Dell:</strong> PowerEdge R750 — up to 24 × 2.5" SFF (SAS/SATA/NVMe mix), R6525 — NVMe-heavy configurations</li>
-          <li><strong>HPE:</strong> ProLiant DL380 Gen11 — 8 LFF ya 24 SFF bays, NVMe-capable; DL360 Gen11 — 1U dense, up to 10 SFF</li>
-          <li><strong>Lenovo:</strong> ThinkSystem SR650 V3, SR630 V3 — flexible bay configurations</li>
-          <li><strong>Supermicro:</strong> 1029P series — dense NVMe-only configurations</li>
-        </ul>
-        Always verify current specs on vendor site — models update frequently.
+        <ul style={{ ...S.ul, marginBottom: 0 }}> <li><strong>Dell:</strong> PowerEdge R750 — up to 24 × 2.5" SFF (SAS/SATA/NVMe mix), R6525 — NVMe-heavy configurations</li> <li><strong>HPE:</strong> ProLiant DL380 Gen11 — 8 LFF or 24 SFF bays, NVMe-capable; DL360 Gen11 — 1U dense, up to 10 SFF</li> <li><strong>Lenovo:</strong> ThinkSystem SR650 V3, SR630 V3 — flexible bay configurations</li> <li><strong>Supermicro:</strong> 1029P series — dense NVMe-only configurations</li> </ul> Always verify current specs on vendor site — models update frequently.
       </Callout>
 
       <h3 style={S.h3}>Type 2 — External DAS / JBOD</h3>
-      <p style={S.p}>Ek separate enclosure — server ke bahar — directly SAS cable se server ke HBA/controller se connected. <strong>Koi network nahi. Direct cable.</strong></p>
-      <p style={S.p}><strong>JBOD = Just a Bunch of Disks</strong> — drives as-is present karta hai bina RAID ke. Host server decide karta hai kaise use karna hai.</p>
-      <p style={S.p}>Kab use hota hai:</p>
+      <p style={S.p}>A separate enclosure — outside the server — connected directly by SAS cable to the server's HBA/controller. <strong>No network. Direct cable.</strong></p>
+      <p style={S.p}><strong>JBOD = Just a Bunch of Disks</strong> — presents the drives as-is without RAID. The host server decides how to use them.</p>
+      <p style={S.p}>When it is used:</p>
       <ul style={S.ul}>
-        <li>Server ke internal bays full ho gayi hain</li>
-        <li>Bahut zyada capacity chahiye ek server ke saath</li>
-        <li>HCI software ke liye additional raw drives chahiye</li>
+        <li>The server's internal bays are full</li>
+        <li>A lot of capacity is needed with a single server</li>
+        <li>Additional raw drives are needed for HCI software</li>
       </ul>
 
       <Figure caption="Fig 3 — External JBOD Connection. Server HBA → Direct SAS Cable (SFF-8644 connector, max ~10 m) → JBOD Enclosure. No network switch exists in this path. Optional daisy-chain to second JBOD via SAS OUT port.">
@@ -178,8 +160,8 @@ Network nahi, switch nahi, protocol handshake nahi.`}
       </Callout>
 
       <h3 style={S.h3}>Type 3 — NVMe-Based DAS (Direct PCIe Attached)</h3>
-      <p style={S.p}>NVMe SSDs PCIe bus par directly connected — ya U.2 backplane ke through. <strong>Abhi fastest commercially available DAS option.</strong></p>
-      <p style={S.p}>Latency: single-digit microseconds. Sequential throughput: GB/s mein. IOPS: lakhs mein. AI/ML training, real-time analytics, high-frequency databases — yahan NVMe DAS standard choice ban raha hai.</p>
+      <p style={S.p}>NVMe SSDs connected directly on the PCIe bus — or through a U.2 backplane. <strong>Currently the fastest commercially available DAS option.</strong></p>
+      <p style={S.p}>Latency: single-digit microseconds. Sequential throughput: in GB/s. IOPS: in the hundreds of thousands. AI/ML training, real-time analytics, high-frequency databases — this is where NVMe DAS is becoming the standard choice.</p>
 
       <Callout type="maintenance" title="OEM Examples — NVMe DAS">
         <ul style={{ ...S.ul, marginBottom: 0 }}>
@@ -193,72 +175,72 @@ Network nahi, switch nahi, protocol handshake nahi.`}
           SECTION 5 — INTERFACES
       ══════════════════════════════════════════════════════════════════ */}
       <h2 id="das-interfaces" style={S.h2}>DAS Interfaces — Brief Introduction</h2>
-      <p style={S.p}>Detailed interface chapters aage aayenge. Yahan sirf DAS context ke liye overview.</p>
+      <p style={S.p}>Detailed interface chapters will come later. Here is just an overview for DAS context.</p>
       <ComparisonTable
         title="DAS Storage Interfaces"
         headers={["Interface", "Type", "Approx. Max Speed*", "Typical Use in DAS"]}
         rows={[
           ["SATA III",          "Serial",          "~600 MB/s",       "OS drives, budget servers, cold data"],
-          ["SAS 12Gb/s",        "Serial Attached SCSI", "~1,200 MB/s","Enterprise HDDs aur SSDs — mainstream"],
+          ["SAS 12Gb/s",        "Serial Attached SCSI", "~1,200 MB/s","Enterprise HDDs and SSDs — mainstream"],
           ["SAS 24Gb/s",        "Serial Attached SCSI", "~2,400 MB/s","High-performance enterprise SSDs"],
           ["NVMe PCIe 4.0 x4", "PCIe direct",     "~7,000 MB/s",    "High-performance databases, AI"],
           ["NVMe PCIe 5.0 x4", "PCIe direct",     "~14,000 MB/s",   "Next-gen AI/HPC servers"],
         ]}
         caption="*Approximate peak sequential read speeds. Actual performance varies significantly with RAID level, queue depth and workload pattern."
       />
-      <Callout type="important" title="SAS ka Critical Advantage — Dual Port">
-        Enterprise SAS drives dual-port hoti hain — do independent paths se server se connect ho sakti hain. Ek path fail → doosra active. SATA single-port hai. Mission-critical storage ke liye SAS prefer karo.
+      <Callout type="important" title="The Critical Advantage of SAS — Dual Port">
+        Enterprise SAS drives are dual-port — they can connect to the server through two independent paths. One path fails → the other is active. SATA is single-port. Prefer SAS for mission-critical storage.
       </Callout>
 
       {/* ══════════════════════════════════════════════════════════════════
           SECTION 6 — USE CASES
       ══════════════════════════════════════════════════════════════════ */}
-      <h2 id="das-kahan-use" style={S.h2}>DAS Kahan Use Hota Hai — Production Examples</h2>
+      <h2 id="das-kahan-use" style={S.h2}>Where DAS Is Used — Production Examples</h2>
 
       <h3 style={S.h3}>Database Servers — High I/O Workloads</h3>
-      <p style={S.p}>OLTP databases (Oracle, SQL Server, PostgreSQL, MySQL) ke liye NVMe ya SAS SSD DAS consistent low-latency deta hai. Network-based storage ke compared latency predictable rehti hai peak load par bhi. Typical configuration: NVMe/SAS SSD, RAID 10, data volume aur log volume separate.</p>
+      <p style={S.p}>For OLTP databases (Oracle, SQL Server, PostgreSQL, MySQL), NVMe or SAS SSD DAS delivers consistent low latency. Compared to network-based storage, latency stays predictable even at peak load. Typical configuration: NVMe/SAS SSD, RAID 10, separate data volume and log volume.</p>
 
-      <h3 style={S.h3}>Virtualization Hosts — Local Boot aur Scratch Storage</h3>
-      <p style={S.p}>VMware ESXi ya Hyper-V host ka local datastore. Small VMs, test environments, ephemeral workloads — local DAS pe run karte hain. Production VMs ke shared storage ke liye SAN/NFS use hoti hai — lekin local NVMe DAS host performance measurably improve karta hai VM density ke saath.</p>
+      <h3 style={S.h3}>Virtualization Hosts — Local Boot and Scratch Storage</h3>
+      <p style={S.p}>The local datastore of a VMware ESXi or Hyper-V host. Small VMs, test environments, ephemeral workloads — run on local DAS. SAN/NFS is used for shared storage of production VMs — but local NVMe DAS measurably improves host performance as VM density grows.</p>
 
       <h3 style={S.h3}>Hyperconverged Infrastructure (HCI)</h3>
-      <p style={S.p}>VMware vSAN, Nutanix AHV, Microsoft Storage Spaces Direct — sab locally attached DAS drives ko software se pool karke shared storage banate hain. Multiple servers ke DAS drives ek distributed storage cluster form karte hain. <strong>HCI ka poora foundation DAS hai.</strong></p>
+      <p style={S.p}>VMware vSAN, Nutanix AHV, Microsoft Storage Spaces Direct — all pool locally attached DAS drives through software to create shared storage. The DAS drives of multiple servers form a distributed storage cluster. <strong>The entire foundation of HCI is DAS.</strong></p>
 
       <h3 style={S.h3}>AI / ML Training Nodes</h3>
-      <p style={S.p}>GPU servers ko training data bahut fast chahiye — GPU processing speed se storage speed match karni padti hai. NVMe DAS arrays GPU servers ko data feed karte hain microsecond latency ke saath. High-bandwidth sequential reads ke liye NVMe DAS purpose-built solution hai.</p>
+      <p style={S.p}>GPU servers need training data very fast — storage speed has to match GPU processing speed. NVMe DAS arrays feed data to GPU servers with microsecond latency. For high-bandwidth sequential reads, NVMe DAS is the purpose-built solution.</p>
 
       <h3 style={S.h3}>Edge Servers / Remote Locations</h3>
-      <p style={S.p}>Branch offices, retail endpoints, factory floors, telecom towers — dedicated storage network banana impractical hai. DAS simple, reliable, network-independent. Maintenance minimal.</p>
+      <p style={S.p}>Branch offices, retail endpoints, factory floors, telecom towers — building a dedicated storage network is impractical. DAS is simple, reliable, network-independent. Maintenance is minimal.</p>
 
       <h3 style={S.h3}>OS Boot Drives</h3>
-      <p style={S.p}><strong>Best Practice:</strong> 2 × enterprise SSD, internal DAS, RAID 1 — har server mein. Production storage SAN par bhi ho toh OS drives local DAS par. Always separate volume — OS aur data mix mat karo.</p>
+      <p style={S.p}><strong>Best Practice:</strong> 2 × enterprise SSD, internal DAS, RAID 1 — in every server. Even if production storage is on SAN, the OS drives stay on local DAS. Always a separate volume — do not mix OS and data.</p>
 
-      <h3 style={S.h3}>Log aur Scratch Space</h3>
-      <p style={S.p}>Application logs, temporary processing files — local DAS. <strong>Production rule:</strong> Log volume OS volume se alag rakho. Logs fill ho jaate hain — agar same volume ho — OS crash hoga.</p>
+      <h3 style={S.h3}>Log and Scratch Space</h3>
+      <p style={S.p}>Application logs, temporary processing files — local DAS. <strong>Production rule:</strong> Keep the log volume separate from the OS volume. Logs fill up — if they are on the same volume — the OS will crash.</p>
 
       {/* ══════════════════════════════════════════════════════════════════
           SECTION 7 — AVOID
       ══════════════════════════════════════════════════════════════════ */}
-      <h2 id="das-avoid" style={S.h2}>DAS Kahan Avoid Karna Chahiye</h2>
+      <h2 id="das-avoid" style={S.h2}>Where DAS Should Be Avoided</h2>
       <ComparisonTable
         title="DAS — When Not to Use"
         headers={["Scenario", "Reason", "Better Option"]}
         rows={[
-          ["Multiple servers ko same data",     "DAS shareable nahi — ek server only",       "NAS ya SAN"],
+          ["Multiple servers need same data", "DAS is not shareable — one server only",       "NAS or SAN"],
           ["VM live migration / vMotion",        "Shared storage required",                    "SAN / NFS"],
-          ["Centralized backup infrastructure", "Har server ka DAS separately managed",       "NAS / SAN + backup software"],
+          ["Centralized backup infrastructure", "Each server's DAS is managed separately",       "NAS / SAN + backup software"],
           ["Dynamic storage pool scaling",       "Server chassis capacity ceiling",            "SAN / Scale-out NAS"],
-          ["HA clustering — shared disk",        "DAS ek server se tied",                     "SAN with multipathing"],
-          ["Large file sharing across users",    "DAS network-accessible nahi directly",      "NAS"],
-          ["Long-distance replication",          "Built-in replication nahi",                  "SAN / NAS with replication"],
+          ["HA clustering — shared disk",        "DAS is tied to one server",                     "SAN with multipathing"],
+          ["Large file sharing across users",    "DAS is not directly network-accessible",      "NAS"],
+          ["Long-distance replication",          "No built-in replication",                  "SAN / NAS with replication"],
         ]}
-        caption="DAS ki primary limitation hai: shareable nahi. Architecture se fundamental constraint hai — software se fix nahi hoti."
+        caption="The primary limitation of DAS: it is not shareable. It is a fundamental constraint of the architecture — software cannot fix it."
       />
 
       {/* ══════════════════════════════════════════════════════════════════
           SECTION 8 — ADVANTAGES
       ══════════════════════════════════════════════════════════════════ */}
-      <h2 id="das-advantages" style={S.h2}>DAS ke Advantages</h2>
+      <h2 id="das-advantages" style={S.h2}>Advantages of DAS</h2>
       <ComparisonTable
         title="DAS Advantages"
         headers={["Advantage", "Engineering Reason"]}
@@ -275,7 +257,7 @@ Network nahi, switch nahi, protocol handshake nahi.`}
       {/* ══════════════════════════════════════════════════════════════════
           SECTION 9 — LIMITATIONS
       ══════════════════════════════════════════════════════════════════ */}
-      <h2 id="das-limitations" style={S.h2}>DAS ki Limitations</h2>
+      <h2 id="das-limitations" style={S.h2}>Limitations of DAS</h2>
       <ComparisonTable
         title="DAS Limitations"
         headers={["Limitation", "Engineering Impact"]}
@@ -295,19 +277,19 @@ Network nahi, switch nahi, protocol handshake nahi.`}
       ══════════════════════════════════════════════════════════════════ */}
       <h2 id="misconceptions" style={S.h2}>Common Misconceptions</h2>
       <ul style={S.ul}>
-        <li><strong>"DAS outdated hai"</strong> — Galat. HCI platforms (vSAN, Nutanix), AI training infrastructure, NVMe-based databases — sab active DAS use karte hain. NVMe DAS abhi fastest commercially available storage hai.</li>
-        <li><strong>"Internal drives DAS nahi hain"</strong> — Galat. Internal drives DAS ka sabse common example hain. Har rack server mein hota hai.</li>
-        <li><strong>"DAS mein RAID nahi hoti"</strong> — Galat. RAID controller ya software RAID — dono DAS ke saath standard practice hain.</li>
-        <li><strong>"External storage = SAN"</strong> — Galat. External enclosure directly SAS cable se ek server se connected ho — woh DAS hai. SAN mein dedicated network aur protocols hote hain.</li>
-        <li><strong>"DAS sirf HDDs ke liye hai"</strong> — Galat. NVMe DAS currently fastest option. Modern AI servers NVMe DAS par run karte hain.</li>
-        <li><strong>"DAS sirf chhote setups ke liye hai"</strong> — Galat. Hyperscale facilities NVMe DAS per-server use karti hain. Enterprise HCI globally deployed hai — sab DAS-based.</li>
+        <li><strong>"DAS is outdated"</strong> — Wrong. HCI platforms (vSAN, Nutanix), AI training infrastructure, NVMe-based databases — all actively use DAS. NVMe DAS is currently the fastest commercially available storage.</li>
+        <li><strong>"Internal drives are not DAS"</strong> — Wrong. Internal drives are the most common example of DAS. Every rack server has them.</li>
+        <li><strong>"DAS has no RAID"</strong> — Wrong. RAID controller or software RAID — both are standard practice with DAS.</li>
+        <li><strong>"External storage = SAN"</strong> — Wrong. An external enclosure connected directly to one server by SAS cable — that is DAS. SAN has a dedicated network and protocols.</li>
+        <li><strong>"DAS is only for HDDs"</strong> — Wrong. NVMe DAS is currently the fastest option. Modern AI servers run on NVMe DAS.</li>
+        <li><strong>"DAS is only for small setups"</strong> — Wrong. Hyperscale facilities use NVMe DAS per server. Enterprise HCI is deployed globally — all DAS-based.</li>
       </ul>
 
       {/* ══════════════════════════════════════════════════════════════════
           SECTION 11 — DAS vs NAS vs SAN
       ══════════════════════════════════════════════════════════════════ */}
-      <h2 id="das-vs-nas-san" style={S.h2}>DAS aur NAS/SAN — Brief Comparison</h2>
-      <p style={S.p}><TopicLink slug="nas" variant="inline" /> aur <TopicLink slug="san" variant="inline" /> ke liye dedicated chapters aage hain. Yahan sirf positioning clear karna hai.</p>
+      <h2 id="das-vs-nas-san" style={S.h2}>DAS and NAS/SAN — Brief Comparison</h2>
+      <p style={S.p}>Dedicated chapters for <TopicLink slug="nas" variant="inline" /> and <TopicLink slug="san" variant="inline" /> come later. Here we only want to clarify positioning.</p>
       <ComparisonTable
         title="DAS vs NAS vs SAN"
         headers={["", "DAS", "NAS", "SAN"]}
@@ -320,7 +302,7 @@ Network nahi, switch nahi, protocol handshake nahi.`}
           ["Cost",                "Lowest",           "Medium",           "Highest"],
           ["Best for",            "Single server perf, HCI", "File sharing, backup", "Shared databases, VMware HA"],
         ]}
-        caption="Simple rule: Ek server, max performance → DAS. File sharing → NAS. Shared block storage, VMware → SAN."
+        caption="Simple rule: One server, max performance → DAS. File sharing → NAS. Shared block storage, VMware → SAN."
       />
 
       {/* ══════════════════════════════════════════════════════════════════
@@ -359,7 +341,7 @@ Network nahi, switch nahi, protocol handshake nahi.`}
         caption="Verify current specs at hpe.com."
       />
 
-      <h3 style={S.h3}>Lenovo aur Supermicro</h3>
+      <h3 style={S.h3}>Lenovo and Supermicro</h3>
       <ComparisonTable
         title=""
         headers={["Vendor", "Category", "Model"]}
@@ -381,37 +363,37 @@ Network nahi, switch nahi, protocol handshake nahi.`}
         title=""
         headers={["Term", "Engineering Meaning"]}
         rows={[
-          ["RAID",              "Redundant Array of Independent Disks — drives combine karna redundancy ya performance ke liye. Dedicated chapter aayega."],
-          ["HBA",               "Host Bus Adapter — drives directly OS ko present, no RAID processing"],
-          ["RAID Controller",   "Dedicated hardware controller — RAID manage karta hai, apna processor aur cache"],
-          ["Backplane",         "Internal PCB — drive bays aur storage controller ke beech signal route"],
+          ["RAID",              "Redundant Array of Independent Disks — combining drives for redundancy or performance. A dedicated chapter will follow."],
+          ["HBA",               "Host Bus Adapter — presents drives directly to the OS, no RAID processing"],
+          ["RAID Controller",   "Dedicated hardware controller — manages RAID, has its own processor and cache"],
+          ["Backplane",         "Internal PCB — routes signals between drive bays and the storage controller"],
           ["JBOD",              "Just a Bunch of Disks — drives as-is presented, no RAID, typically external enclosure"],
           ["SAS",               "Serial Attached SCSI — enterprise interface, dual-port, hot-swap"],
           ["SATA",              "Serial ATA — common interface, single-port, lower cost"],
           ["NVMe",              "Non-Volatile Memory Express — PCIe-based SSD protocol"],
           ["U.2",               "Enterprise NVMe SSD form factor — 2.5\" size, hot-swap support"],
-          ["Hot-swap",          "Drive replace karna bina server band kiye"],
+          ["Hot-swap",          "Replacing a drive without shutting down the server"],
           ["LFF / SFF",         "Large Form Factor (3.5\") / Small Form Factor (2.5\")"],
           ["IOPS",              "Input/Output Operations Per Second"],
           ["MTBF",              "Mean Time Between Failures — manufacturer-specified reliability indicator"],
           ["TLER / ERC",        "Time-Limited Error Recovery — enterprise drive RAID compatibility feature"],
           ["S.M.A.R.T.",       "Self-Monitoring, Analysis and Reporting Technology — drive health monitoring"],
-          ["BBU",               "Battery Backup Unit — controller cache protect karta hai power loss pe"],
-          ["FBWC",              "Flash-Backed Write Cache — BBU ka modern capacitor/flash alternative"],
-          ["Write Cache",       "Controller RAM buffer jo writes cache karta hai — performance improve karta hai"],
-          ["Hot Spare",         "Pre-assigned spare drive — automatically rebuild karta hai jab koi drive fail ho"],
-          ["Reallocated Sector","Bad sector jo spare area se replace hua — S.M.A.R.T. mein tracked"],
+          ["BBU",               "Battery Backup Unit — protects the controller cache on power loss"],
+          ["FBWC",              "Flash-Backed Write Cache — the modern capacitor/flash alternative to BBU"],
+          ["Write Cache",       "Controller RAM buffer that caches writes — improves performance"],
+          ["Hot Spare",         "Pre-assigned spare drive — automatically rebuilds when a drive fails"],
+          ["Reallocated Sector","A bad sector replaced from the spare area — tracked in S.M.A.R.T."],
           ["DWPD",              "Drive Writes Per Day — SSD endurance specification"],
         ]}
-        caption="Terms related to RAID levels, filesystem types, LVM, SAN protocols — dedicated chapters mein cover honge."
+        caption="Terms related to RAID levels, filesystem types, LVM, SAN protocols — will be covered in dedicated chapters."
       />
 
       {/* ══════════════════════════════════════════════════════════════════
           LIFECYCLE PHASES
       ══════════════════════════════════════════════════════════════════ */}
       <h2 id="lifecycle-planning" style={S.h2}>Phase 1 — Planning</h2>
-      <Callout type="important" title="Workload Analysis Pehle — Procurement Baad Mein">
-        Workload ke bina drive selection karna sab se common planning mistake hai. Pehle IOPS, latency, capacity aur redundancy requirements define karo — phir hardware choose karo.
+      <Callout type="important" title="Workload Analysis First — Procurement Later">
+        Selecting drives without considering the workload is the most common planning mistake. First define IOPS, latency, capacity and redundancy requirements — then choose the hardware.
       </Callout>
 
       <h3 style={S.h3}>Drive Type Selection by Workload</h3>
@@ -420,7 +402,7 @@ Network nahi, switch nahi, protocol handshake nahi.`}
         headers={["Workload", "Recommended Drive Type", "RAID Level", "Notes"]}
         rows={[
           ["OS boot drives",          "2 × Enterprise SSD (SATA/SAS)",  "RAID 1",  "Mandatory — separate volume"],
-          ["High-performance DB",     "NVMe U.2 ya SAS SSD",            "RAID 10", "Best performance + redundancy"],
+          ["High-performance DB",     "NVMe U.2 or SAS SSD",            "RAID 10", "Best performance + redundancy"],
           ["Mixed enterprise",        "SAS SSD",                         "RAID 5/10","Balance of capacity and protection"],
           ["High-capacity bulk",      "SAS HDD 7200 RPM",               "RAID 6",  "2-drive fault tolerance"],
           ["AI/ML training data",     "NVMe U.2",                        "RAID 0/10","Data typically regenerable from source"],
@@ -465,24 +447,24 @@ Network nahi, switch nahi, protocol handshake nahi.`}
 
       <h3 style={S.h3}>Drive Installation Procedure</h3>
       <ol style={{ ...S.ul, listStyleType: "decimal" }}>
-        <li>Server documentation se bay numbering confirm karo — Bay 0 typically left ya top</li>
-        <li>Drive carrier mein drive mount karo — screws evenly tighten karo</li>
-        <li>Bay mein slide in karo — lock mechanism engage hona chahiye (click sound)</li>
-        <li>Bay LED activity check karo — server ne drive detect ki?</li>
+        <li>Confirm bay numbering from the server documentation — Bay 0 is typically left or top</li>
+        <li>Mount the drive in the drive carrier — tighten the screws evenly</li>
+        <li>Slide it into the bay — the lock mechanism must engage (click sound)</li>
+        <li>Check the bay LED activity — did the server detect the drive?</li>
       </ol>
 
       <h3 style={S.h3}>RAID Configuration — Controller Utility</h3>
       <CodeBlock label="Dell — OpenManage Storage Manager / perccli64" lang="bash">
-{`# Server POST ke dauran Ctrl+R → RAID controller configuration
-# Ya OS ke andar:
+{`# During server POST, Ctrl+R → RAID controller configuration
+# Or from within the OS:
 perccli64 /c0 show all`}
       </CodeBlock>
       <CodeBlock label="HPE — Smart Storage Administrator (SSA)" lang="bash">
-{`# POST ke dauran F10 → Intelligent Provisioning → Smart Storage Administrator
-# Ya OS ke andar:
+{`# During POST, F10 → Intelligent Provisioning → Smart Storage Administrator
+# Or from within the OS:
 ssacli ctrl all show status`}
       </CodeBlock>
-      <p style={S.p}><strong>Generic steps (controller-agnostic):</strong> Available drives list karo → RAID level select, drives select, hot spare assign → Initialize karo (<strong>Full Initialize recommended</strong> for new deployments — bad sectors identify hote hain) → Logical drive / virtual disk create karo.</p>
+      <p style={S.p}><strong>Generic steps (controller-agnostic):</strong> List available drives → select RAID level, select drives, assign hot spare → Initialize (<strong>Full Initialize recommended</strong> for new deployments — bad sectors get identified) → Create the logical drive / virtual disk.</p>
 
       <h3 style={S.h3}>External JBOD — Cabling</h3>
       <ul style={S.ul}>
@@ -492,40 +474,40 @@ ssacli ctrl all show status`}
         <li><strong>Maximum reliable SAS cable length: ~10 meters</strong> (active cables ~20m+ possible)</li>
       </ul>
       <Callout type="best-practice" title="Cable Labeling — Mandatory Best Practice">
-        Both ends label karo: [Server Name]/[HBA Port] | [JBOD Unit]/[SAS IN Port]. Future maintenance mein guide karta hai. Unlabeled SAS cables troubleshooting nightmare hain.
+        Label both ends: [Server Name]/[HBA Port] | [JBOD Unit]/[SAS IN Port]. This guides future maintenance. Unlabeled SAS cables are a troubleshooting nightmare.
       </Callout>
 
       {/* ── Phase 3: OS Config ── */}
       <h2 id="lifecycle-os-config" style={S.h2}>Phase 3 — OS-Level Configuration</h2>
 
       <h3 style={S.h3}>Linux</h3>
-      <CodeBlock label="Linux — Disk identification aur filesystem creation" lang="bash">
-{`# New disk identify karo
+      <CodeBlock label="Linux — Disk identification and filesystem creation" lang="bash">
+{`# Identify the new disk
 lsblk
 # OR
 fdisk -l
 
-# Partition create karo (GPT — drives >2TB ke liye mandatory)
+# Create a partition (GPT — mandatory for drives >2TB)
 gdisk /dev/sdb
 
-# Filesystem create karo
+# Create the filesystem
 mkfs.xfs /dev/sdb1     # XFS — databases, large files, high performance
 mkfs.ext4 /dev/sdb1   # ext4 — general purpose
 
-# Mount karo
+# Mount it
 mkdir /data
 mount /dev/sdb1 /data
 
 # Persistent mount — /etc/fstab
-# UUID use karo — /dev/sdX nahi (device name boot pe change ho sakta hai)
+# Use the UUID — not /dev/sdX (the device name can change on boot)
 echo "UUID=$(blkid -s UUID -o value /dev/sdb1)  /data  xfs  defaults,nofail  0  2" >> /etc/fstab`}
       </CodeBlock>
-      <Callout type="important" title="nofail Flag — Production Mein Mandatory">
-        /etc/fstab mein <code>nofail</code> flag important hai — agar storage mount fail ho toh OS boot nahi rukta. Bina is flag ke drive issue hone par server boot loop mein ja sakta hai.
+      <Callout type="important" title="nofail Flag — Mandatory in Production">
+        The <code>nofail</code> flag in /etc/fstab is important — if the storage mount fails, the OS boot does not halt. Without this flag, a drive issue can send the server into a boot loop.
       </Callout>
 
       <h3 style={S.h3}>Windows</h3>
-      <p style={S.p}>Disk Management (diskmgmt.msc) ya <code>diskpart</code> se: Disk initialize karo → <strong>GPT</strong> (2TB+ ya UEFI systems ke liye mandatory) → Volume create karo → Format NTFS → Drive letter assign karo.</p>
+      <p style={S.p}>Using Disk Management (diskmgmt.msc) or <code>diskpart</code>: Initialize the disk → <strong>GPT</strong> (mandatory for 2TB+ or UEFI systems) → Create a volume → Format NTFS → Assign a drive letter.</p>
 
       <h3 style={S.h3}>Volume Planning — Best Practice</h3>
       <ComparisonTable
@@ -534,14 +516,14 @@ echo "UUID=$(blkid -s UUID -o value /dev/sdb1)  /data  xfs  defaults,nofail  0  
         rows={[
           ["OS Volume",      "OS only — no application data"],
           ["Data Volume",    "Application data files"],
-          ["Log Volume",     "Application logs — separate karo: high write workloads OS ko affect nahi karenge"],
-          ["DB Log Volume",  "Database transaction logs — separate from data files (I/O patterns alag hain)"],
+          ["Log Volume",     "Application logs — keep separate: high-write workloads will not affect the OS"],
+          ["DB Log Volume",  "Database transaction logs — separate from data files (I/O patterns are different)"],
         ]}
         caption=""
       />
 
       {/* ── Phase 4: Commissioning ── */}
-      <h2 id="lifecycle-commissioning" style={S.h2}>Phase 4 — Commissioning aur Baseline Testing</h2>
+      <h2 id="lifecycle-commissioning" style={S.h2}>Phase 4 — Commissioning and Baseline Testing</h2>
 
       <h3 style={S.h3}>RAID Health Verification — Mandatory Before Production</h3>
       <CodeBlock label="Dell — perccli64" lang="bash">
@@ -563,11 +545,11 @@ ssacli ctrl slot=0 pd all show detail`}
       </ul>
 
       <h3 style={S.h3}>Performance Baseline — Recommended Best Practice</h3>
-      <Callout type="best-practice" title="Baseline Testing — Karo Hamesha Before Production">
-        Baseline test karna not optional for production. Agar 6 months baad "storage slow ho gaya hai" complaint aaye — compare karne ke liye data chahiye. Bina baseline ke root cause analysis impossible hoti hai.
+      <Callout type="best-practice" title="Baseline Testing — Always Do It Before Production">
+        Baseline testing is not optional for production. If a "storage has become slow" complaint comes in 6 months later — you need data to compare against. Without a baseline, root cause analysis becomes impossible.
       </Callout>
       <CodeBlock label="Linux — fio performance baseline (fio 3.x+, tested on RHEL 8/9, Ubuntu 20.04+)" lang="bash">
-{`# fio install karo (RHEL/CentOS: yum install fio, Ubuntu: apt install fio)
+{`# Install fio (RHEL/CentOS: yum install fio, Ubuntu: apt install fio)
 
 # Sequential Read — 1M block
 fio --name=seq-read --filename=/dev/sdb --bs=1M --size=10G \
@@ -589,12 +571,12 @@ fio --name=rand-write --filename=/dev/sdb --bs=4k --size=10G \
     --numjobs=4 --iodepth=64 --rw=randwrite --direct=1 \
     --ioengine=libaio --runtime=60 --time_based`}
       </CodeBlock>
-      <p style={S.p}><strong>Document karo:</strong> Sequential read/write (MB/s), Random IOPS (4K read/write), Average latency (ms). Ye future comparison ke liye baseline hai.</p>
+      <p style={S.p}><strong>Document:</strong> Sequential read/write (MB/s), Random IOPS (4K read/write), Average latency (ms). This is the baseline for future comparison.</p>
 
       <h3 style={S.h3}>S.M.A.R.T. Baseline Check</h3>
       <CodeBlock label="smartmontools (RHEL: yum install smartmontools, Ubuntu: apt install smartmontools)" lang="bash">
 {`smartctl -a /dev/sda
-# New drives mein sab zero hone chahiye:
+# On new drives these should all be zero:
 # Reallocated_Sector_Ct, Pending_Sector_Count, Uncorrectable_Sector_Ct`}
       </CodeBlock>
 
@@ -612,24 +594,24 @@ fio --name=rand-write --filename=/dev/sdb --bs=4k --size=10G \
           ["Controller cache degraded",   "P2 — Schedule maintenance"],
           ["BBU / FBWC failure",          "P2 — Schedule replacement"],
         ]}
-        caption="Configure email ya SNMP traps to monitoring system. iDRAC/iLO → Alerts → configure SMTP or SNMP destination."
+        caption="Configure email or SNMP traps to monitoring system. iDRAC/iLO → Alerts → configure SMTP or SNMP destination."
       />
 
       <h3 style={S.h3}>OS-Level Monitoring</h3>
-      <CodeBlock label="Linux — iostat aur S.M.A.R.T." lang="bash">
+      <CodeBlock label="Linux — iostat and S.M.A.R.T." lang="bash">
 {`# Disk utilization (sysstat package)
 iostat -x 1 5
 # %util near 100% + high await = storage bottleneck
 
 # Filesystem usage
-df -h   # 80%+ = warning threshold configure karo
+df -h   # 80%+ = configure the warning threshold
 
 # S.M.A.R.T. automated monitoring — smartd daemon
-# /etc/smartd.conf mein add karo:
+# Add to /etc/smartd.conf:
 /dev/sda -a -o on -S on -s (S/../.././02|L/../../6/03) \
     -m storage-alerts@company.com`}
       </CodeBlock>
-      <p style={S.p}><strong>Capacity trending:</strong> Daily utilization record karo. <strong>Alert threshold: 80% utilized → Warning; 90% → Critical.</strong></p>
+      <p style={S.p}><strong>Capacity trending:</strong> Record daily utilization. <strong>Alert threshold: 80% utilized → Warning; 90% → Critical.</strong></p>
 
       {/* ── Phase 6: Daily Ops ── */}
       <h2 id="lifecycle-ops" style={S.h2}>Phase 6 — Daily Operations</h2>
@@ -678,13 +660,13 @@ Schedule hot-swap (predictive = some lead time, don't delay unnecessarily)
       |
 Hot-swap procedure (see Phase 8)
       |
-Rebuild monitor karo
+Monitor the rebuild
       |
 Rebuild complete → RAID Optimal → document + close ticket`}
       </CodeBlock>
 
-      <Callout type="warning" title="RAID Degraded Alert — Pehla Kaam: Backup Verify Karo">
-        RAID degraded alert aane par pehla kaam — <strong>backup status verify karo.</strong> Replacement baad mein. Agar doosri drive bhi fail ho rebuild ke dauran — recovery option hona chahiye.
+      <Callout type="warning" title="RAID Degraded Alert — First Task: Verify the Backup">
+        When a RAID degraded alert arrives, the first task — <strong>verify the backup status.</strong> Replacement comes after. If another drive also fails during the rebuild — there must be a recovery option.
       </Callout>
 
       <h3 style={S.h3}>Rebuild Time Estimates</h3>
@@ -705,19 +687,19 @@ Rebuild complete → RAID Optimal → document + close ticket`}
       <h3 style={S.h3}>Pre-Check</h3>
       <ol style={{ ...S.ul, listStyleType: "decimal" }}>
         <li>RAID status confirm — degraded (one drive gone), not failed (multiple gone)</li>
-        <li>Failed drive bay identify — iDRAC se physical locate LED on karo</li>
-        <li>Replacement drive ready — same interface, form factor, speed; capacity same ya larger</li>
-        <li>Current backup status verify karo</li>
+        <li>Identify the failed drive bay — turn on the physical locate LED from iDRAC</li>
+        <li>Replacement drive ready — same interface, form factor, speed; capacity same or larger</li>
+        <li>Verify the current backup status</li>
       </ol>
 
       <h3 style={S.h3}>Hot-Swap Procedure</h3>
       <ol style={{ ...S.ul, listStyleType: "decimal" }}>
-        <li>Carrier latch release karo — mechanism press karo</li>
+        <li>Release the carrier latch — press the mechanism</li>
         <li>Drive carrier gently pull out — slow, steady</li>
-        <li>Old drive: screws remove, carrier se nikalo</li>
-        <li>New drive: carrier mein fit karo, screws evenly tighten</li>
-        <li>Bay mein slide in — fully seated hona chahiye (click sound)</li>
-        <li>Activity LED check karo</li>
+        <li>Old drive: remove the screws, take it out of the carrier</li>
+        <li>New drive: fit it into the carrier, tighten the screws evenly</li>
+        <li>Slide it into the bay — it must be fully seated (click sound)</li>
+        <li>Check the activity LED</li>
       </ol>
 
       <h3 style={S.h3}>Post-Replacement Verification</h3>
@@ -733,12 +715,7 @@ watch -n 30 "perccli64 /c0 /v0 show | grep -E 'State|Progress'"`}
       </CodeBlock>
 
       <Callout type="danger" title="During Rebuild — What NOT to Do">
-        <ul style={{ ...S.ul, marginBottom: 0 }}>
-          <li>Doosri drive remove mat karo</li>
-          <li>Server reboot mat karo (unless genuine emergency)</li>
-          <li>Controller firmware upgrade mat karo</li>
-          <li>Heavy I/O workloads deliberately schedule mat karo during rebuild window</li>
-        </ul>
+        <ul style={{ ...S.ul, marginBottom: 0 }}> <li>Do not remove a second drive</li> <li>Do not reboot the server (unless genuine emergency)</li> <li>Do not upgrade the controller firmware</li> <li>Do not deliberately schedule heavy I/O workloads during the rebuild window</li> </ul>
       </Callout>
 
       {/* ── Phase 9: PM ── */}
@@ -754,30 +731,30 @@ watch -n 30 "perccli64 /c0 /v0 show | grep -E 'State|Progress'"`}
         caption=""
       />
       <Callout type="best-practice" title="Proactive Drive Replacement — Don't Wait for Failure">
-        Enterprise HDDs typically rated for ~5 years. SSD endurance depends on DWPD specification aur workload. Drives ek batch ki saath fail hoti hain — proactive replacement cycle banao, individual failure ka wait mat karo.
+        Enterprise HDDs are typically rated for ~5 years. SSD endurance depends on the DWPD specification and workload. Drives from the same batch tend to fail together — build a proactive replacement cycle, do not wait for individual failures.
       </Callout>
 
       {/* ── Phase 10: Troubleshooting ── */}
       <h2 id="lifecycle-troubleshoot" style={S.h2}>Phase 10 — Troubleshooting</h2>
 
       <h3 style={S.h3}>Scenario 1 — RAID Degraded</h3>
-      <CodeBlock label="Failed drive identify karo" lang="bash">
+      <CodeBlock label="Identify the failed drive" lang="bash">
 {`# Dell
 perccli64 /c0 /eall /sall show
-# "Failed" ya "Unconfigured(bad)" dhundo
+# Look for "Failed" or "Unconfigured(bad)"
 
 # HPE
 ssacli ctrl slot=0 pd all show detail
-# "Failed" dhundo
+# Look for "Failed"
 
 # Physical: iDRAC → Storage → Physical Drives → Locate LED
-# Ya: Bay amber LED visual confirmation`}
+# Or: Bay amber LED visual confirmation`}
       </CodeBlock>
       <p style={S.p}>→ Drive replacement procedure (Phase 8)</p>
 
       <h3 style={S.h3}>Scenario 2 — Storage Performance Degraded</h3>
       <CodeBlock label="Performance degradation diagnosis" lang="bash">
-{`# Step 1: RAID rebuild chal raha hai? (Expected degradation)
+{`# Step 1: Is a RAID rebuild running? (Expected degradation)
 perccli64 /c0 /v0 show
 
 # Step 2: I/O saturation check
@@ -787,37 +764,37 @@ iostat -x 1 10
 # Step 3: S.M.A.R.T. wear check
 smartctl -A /dev/sda | grep -E "Reallocated|Pending|Uncorrectable|Wear_Leveling"
 
-# Significant degradation = possible controller issue ya drive degradation
+# Significant degradation = possible controller issue or drive degradation
 # Compare to commissioning baseline`}
       </CodeBlock>
 
-      <h3 style={S.h3}>Scenario 3 — Drive / Volume OS Mein Visible Nahi</h3>
+      <h3 style={S.h3}>Scenario 3 — Drive / Volume Not Visible in the OS</h3>
       <CodeBlock label="Drive detection check" lang="bash">
-{`# Controller ne detect kiya?
-perccli64 /c0 /eall /sall show  # Drive listed hai?
+{`# Did the controller detect it?
+perccli64 /c0 /eall /sall show  # Is the drive listed?
 ssacli ctrl slot=0 pd all show detail
 
 # OS level
 lsblk
 dmesg | grep -iE "sd[a-z]|nvme|ata"   # Kernel messages`}
       </CodeBlock>
-      <p style={S.p}>If not detected by controller: Drive properly seated? → Pull out aur re-insert. Different bay try karo — backplane port issue? SAS cable re-seat (external JBOD ke liye). Controller event log check karo.</p>
+      <p style={S.p}>If not detected by controller: Is the drive properly seated? → Pull it out and re-insert. Try a different bay — backplane port issue? Re-seat the SAS cable (for external JBOD). Check the controller event log.</p>
 
       <h3 style={S.h3}>Scenario 4 — Controller Not Detected / Server Boot Issue</h3>
       <ul style={S.ul}>
-        <li>BIOS/UEFI mein controller listed hai?</li>
-        <li>PCIe slot mein properly seated hai?</li>
-        <li>Power off → remove → clean contacts → re-insert → different PCIe slot try karo</li>
-        <li>iDRAC event log mein controller error?</li>
-        <li>OEM support engage karo — controller hardware failure possible</li>
+        <li>Is the controller listed in BIOS/UEFI?</li>
+        <li>Is it properly seated in the PCIe slot?</li>
+        <li>Power off → remove → clean contacts → re-insert → try a different PCIe slot</li>
+        <li>Controller error in the iDRAC event log?</li>
+        <li>Engage OEM support — controller hardware failure possible</li>
       </ul>
 
       <h3 style={S.h3}>Scenario 5 — Volume Full</h3>
-      <CodeBlock label="Space consumption identify karo" lang="bash">
+      <CodeBlock label="Identify space consumption" lang="bash">
 {`# What's consuming space
 du -sh /* 2>/dev/null | sort -rh | head -20
 
-# Large files dhundo
+# Find large files
 find /data -size +1G -type f 2>/dev/null
 
 # Common causes:
@@ -826,19 +803,11 @@ find /data -size +1G -type f 2>/dev/null
 # 3. Temp files not cleaned
 # 4. Database growth — capacity planning required`}
       </CodeBlock>
-      <p style={S.p}>Short-term: Unnecessary files clean karo. Long-term: Storage expansion plan (Phase 13).</p>
+      <p style={S.p}>Short-term: Clean up unnecessary files. Long-term: Storage expansion plan (Phase 13).</p>
 
       <h3 style={S.h3}>Common Field Mistakes — Quick Reference</h3>
       <Callout type="common-mistake" title="Most Common Production DAS Mistakes">
-        <ul style={{ ...S.ul, marginBottom: 0 }}>
-          <li><strong>Consumer drives RAID mein:</strong> TLER nahi = drive drop risk. Never do this.</li>
-          <li><strong>RAID rebuild ke waqt backup verify na karna:</strong> Rebuild ke dauran second failure = potential data loss.</li>
-          <li><strong>Hot-swap ke baad RAID status check na karna:</strong> Rebuild actually started? Always verify in controller.</li>
-          <li><strong>OS aur data volume same volume pe:</strong> Logs fill = OS crash. Separate volumes mandatory.</li>
-          <li><strong>Bay mapping document na karna:</strong> 24 bays mein failed drive locate karna nightmare.</li>
-          <li><strong>Performance baseline na lena:</strong> Future issue mein comparison point nahi hoga.</li>
-          <li><strong>Write cache bina BBU ke enable karna:</strong> Power cut = cached data lost = corruption risk.</li>
-        </ul>
+        <ul style={{ ...S.ul, marginBottom: 0 }}> <li><strong>Consumer drives in RAID:</strong> No TLER = drive drop risk. Never do this.</li> <li><strong>Not verifying the backup during a RAID rebuild:</strong> A second failure during rebuild = potential data loss.</li> <li><strong>Not checking RAID status after a hot-swap:</strong> Did the rebuild actually start? Always verify in the controller.</li> <li><strong>OS and data on the same volume:</strong> Logs fill = OS crash. Separate volumes mandatory.</li> <li><strong>Not documenting bay mapping:</strong> Locating a failed drive among 24 bays becomes a nightmare.</li> <li><strong>Not taking a performance baseline:</strong> There will be no comparison point for future issues.</li> <li><strong>Enabling write cache without a BBU:</strong> Power cut = cached data lost = corruption risk.</li> </ul>
       </Callout>
 
       {/* ── Phase 11: RCA ── */}
@@ -847,11 +816,11 @@ find /data -size +1G -type f 2>/dev/null
       <ol style={{ ...S.ul, listStyleType: "decimal" }}>
         <li><strong>What failed:</strong> Drive model, serial number, bay position, age (from installation date)</li>
         <li><strong>S.M.A.R.T. pre-failure data:</strong> Which attribute triggered — Reallocated_Sector_Ct? Pending? Read_Error_Rate?</li>
-        <li><strong>Failure type:</strong> Predictive (S.M.A.R.T. warning aaya tha) ya sudden (no warning)?</li>
+        <li><strong>Failure type:</strong> Predictive (was there a S.M.A.R.T. warning) or sudden (no warning)?</li>
         <li><strong>Impact:</strong> RAID degraded only? Data loss? Downtime? Rebuild duration?</li>
         <li><strong>Root cause:</strong> Drive age/wear, infant mortality, firmware bug, physical shock, environmental</li>
         <li><strong>Corrective actions:</strong> Monitoring improved? Hot spare added? Replacement cycle updated?</li>
-        <li><strong>Preventive recommendation:</strong> Same batch ke similar-age drives — proactive replacement schedule?</li>
+        <li><strong>Preventive recommendation:</strong> Similar-age drives from the same batch — proactive replacement schedule?</li>
       </ol>
 
       {/* ── Phase 12: Firmware ── */}
@@ -881,7 +850,7 @@ chmod +x MR_SATA_SAS_FW_xxx.bin
 # Reboot required after upgrade`}
       </CodeBlock>
       <CodeBlock label="HPE — Service Pack for ProLiant (Recommended)" lang="text">
-{`# Boot from SPP ISO ya use Smart Update Manager
+{`# Boot from SPP ISO or use Smart Update Manager
 # All components update in correct dependency order`}
       </CodeBlock>
 
@@ -891,22 +860,16 @@ chmod +x MR_SATA_SAS_FW_xxx.bin
       </CodeBlock>
 
       <Callout type="danger" title="Mandatory Precautions Before Any Firmware Upgrade">
-        <ul style={{ ...S.ul, marginBottom: 0 }}>
-          <li>RAID array: Optimal status confirm karo</li>
-          <li>Hot spare present hai</li>
-          <li>Current backup verified</li>
-          <li>RAID configuration document karo (edge cases mein config loss possible)</li>
-          <li>Upgrade during rebuild mat karo — data integrity risk</li>
-        </ul>
+        <ul style={{ ...S.ul, marginBottom: 0 }}> <li>RAID array: confirm Optimal status</li> <li>Hot spare is present</li> <li>Current backup verified</li> <li>Document the RAID configuration (config loss is possible in edge cases)</li> <li>Do not upgrade during a rebuild — data integrity risk</li> </ul>
       </Callout>
 
       {/* ── Phase 13: Expansion ── */}
       <h2 id="lifecycle-expansion" style={S.h2}>Phase 13 — Capacity Expansion</h2>
 
       <h3 style={S.h3}>Option 1 — Larger Capacity Drives (Rolling Replacement)</h3>
-      <p style={S.p}>Ek drive at a time replace karo (larger capacity se), rebuild complete hone do, phir next. Sab drives replace hone ke baad RAID online expansion possible (controller-dependent). Filesystem expand karo:</p>
+      <p style={S.p}>Replace one drive at a time (with larger capacity), let the rebuild complete, then do the next. After all drives are replaced, RAID online expansion is possible (controller-dependent). Expand the filesystem:</p>
       <CodeBlock label="Filesystem expansion" lang="bash">
-{`# XFS (online expansion — filesystem mounted rehta hai)
+{`# XFS (online expansion — the filesystem stays mounted)
 xfs_growfs /data
 
 # ext4
@@ -914,33 +877,33 @@ resize2fs /dev/sdb1`}
       </CodeBlock>
 
       <h3 style={S.h3}>Option 2 — Additional Drives in Empty Bays</h3>
-      <p style={S.p}>Empty bays mein drives install karo. New RAID array create karo additional drives se (simpler, recommended). Ya existing array mein add karo — controller support verify karo pehle (not all controllers support online array expansion).</p>
+      <p style={S.p}>Install drives in the empty bays. Create a new RAID array from the additional drives (simpler, recommended). Or add them to the existing array — verify controller support first (not all controllers support online array expansion).</p>
 
-      <h3 style={S.h3}>Option 3 — External JBOD Add Karo</h3>
-      <p style={S.p}>JBOD rack mein install, power on, server HBA se SAS cable connect karo. Drives detect hone ke baad new RAID configure karo. <strong>Planning considerations:</strong> Controller maximum supported drive count check karo. Additional power draw + heat — rack capacity planning.</p>
+      <h3 style={S.h3}>Option 3 — Add an External JBOD</h3>
+      <p style={S.p}>Install the JBOD in the rack, power it on, connect the SAS cable to the server HBA. Once the drives are detected, configure the new RAID. <strong>Planning considerations:</strong> Check the controller's maximum supported drive count. Additional power draw + heat — rack capacity planning.</p>
 
       {/* ── Phase 14: Migration ── */}
       <h2 id="lifecycle-migration" style={S.h2}>Phase 14 — Migration</h2>
 
       <h3 style={S.h3}>DAS → SAN Migration</h3>
-      <p style={S.p}><strong>Option A — Online (preferred, minimal downtime):</strong> SAN pe equivalent LUN provision karo → data sync (`rsync` Linux / robocopy Windows) → Application briefly quiesce → final sync → cut over to SAN path → DAS decommission.</p>
-      <p style={S.p}><strong>Option B — VMware Storage vMotion:</strong> VM running hai — Storage vMotion initiate karo → VM storage automatically migrates DAS → SAN. Typically zero downtime.</p>
+      <p style={S.p}><strong>Option A — Online (preferred, minimal downtime):</strong> Provision an equivalent LUN on the SAN → data sync (`rsync` Linux / robocopy Windows) → briefly quiesce the application → final sync → cut over to the SAN path → decommission the DAS.</p>
+      <p style={S.p}><strong>Option B — VMware Storage vMotion:</strong> While the VM is running — initiate Storage vMotion → VM storage automatically migrates DAS → SAN. Typically zero downtime.</p>
 
       <h3 style={S.h3}>DAS → New Server (Physical Drive Move)</h3>
       <Callout type="danger" title="Same Controller Model — Critical Requirement">
-        RAID foreign configuration import ke liye same controller model new server mein hona chahiye. Different model controller ne RAID metadata recognize nahi kiya → data inaccessible. OEM se compatibility confirm karo before attempting.
+        To import a RAID foreign configuration, the new server must have the same controller model. A different controller model will not recognize the RAID metadata → data inaccessible. Confirm compatibility with the OEM before attempting.
       </Callout>
       <ol style={{ ...S.ul, listStyleType: "decimal" }}>
         <li>Old server power off</li>
-        <li>RAID configuration document karo</li>
-        <li>Drives physically move karo same slot positions mein (best practice)</li>
+        <li>Document the RAID configuration</li>
+        <li>Physically move the drives into the same slot positions (best practice)</li>
         <li>New server power on → controller → "Import Foreign Configuration"</li>
       </ol>
 
       {/* ── Phase 15: Decommissioning ── */}
       <h2 id="lifecycle-decommission" style={S.h2}>Phase 15 — Decommissioning</h2>
-      <Callout type="important" title="Data Sanitization — Format Sufficient Nahi Hai">
-        Simply delete ya format karna sufficient nahi hai — data recovery tools se recoverable. Decommissioning mein hamesha secure erase karo.
+      <Callout type="important" title="Data Sanitization — Format Is Not Sufficient">
+        Simply deleting or formatting is not sufficient — data is recoverable with recovery tools. Always secure erase during decommissioning.
       </Callout>
 
       <ComparisonTable
@@ -948,11 +911,11 @@ resize2fs /dev/sdb1`}
         headers={["Method", "Use Case", "Classification"]}
         rows={[
           ["Cryptographic Erase (NVMe/SSD)",  "Fastest, most reliable for SSDs",         "Recommended Best Practice"],
-          ["Secure Erase (SATA)",              "HDDs aur SATA SSDs ke liye",               "Recommended"],
+          ["Secure Erase (SATA)",              "For HDDs and SATA SSDs",               "Recommended"],
           ["OS overwrite (shred)",             "Where hardware erase not supported",        "Acceptable for general data"],
           ["Physical destruction",             "Highly sensitive / regulated data",         "Mandatory per policy"],
         ]}
-        caption="NIST 800-88 guidelines follow karo: Clear (general/internal reuse) → Purge (sensitive data) → Destroy (classified/regulated)."
+        caption="Follow NIST 800-88 guidelines: Clear (general/internal reuse) → Purge (sensitive data) → Destroy (classified/regulated)."
       />
 
       <CodeBlock label="NVMe Cryptographic Erase (nvme-cli required)" lang="bash">
@@ -969,10 +932,10 @@ nvme format /dev/nvme0n1 --ses=1  # ses=1 = Cryptographic erase`}
 
       <h3 style={S.h3}>Asset Tracking — Mandatory for Compliance Environments</h3>
       <ul style={S.ul}>
-        <li>Drive serial numbers record karo pre-destruction</li>
-        <li>Certificate of destruction obtain karo from disposal vendor</li>
-        <li>CMDB/asset management mein decommissioned mark karo</li>
-        <li>Asset tag remove ya destroy karo</li>
+        <li>Record drive serial numbers pre-destruction</li>
+        <li>Obtain a certificate of destruction from the disposal vendor</li>
+        <li>Mark as decommissioned in the CMDB/asset management</li>
+        <li>Remove or destroy the asset tag</li>
       </ul>
 
       {/* ── Phase 16: Documentation ── */}
@@ -1002,45 +965,45 @@ nvme format /dev/nvme0n1 --ses=1  # ses=1 = Cryptographic erase`}
       ══════════════════════════════════════════════════════════════════ */}
       <h2 id="interview-tips" style={S.h2}>Interview Tips</h2>
 
-      <h3 style={S.h3}>Q1: DAS, NAS, SAN mein main difference?</h3>
-      <p style={S.p}><strong>Answer:</strong> DAS directly ek server se physically connected hai — no network, sirf woh server access karta hai. NAS file-level storage hai standard Ethernet network par — multiple clients simultaneously access karte hain. SAN block-level storage hai dedicated storage network par (FC ya iSCSI) — multiple servers high-performance block access karte hain. Production mein teeno coexist karte hain alag use cases ke liye.</p>
+      <h3 style={S.h3}>Q1: Main difference between DAS, NAS and SAN?</h3>
+      <p style={S.p}><strong>Answer:</strong> DAS is physically connected directly to one server — no network, only that server accesses it. NAS is file-level storage on a standard Ethernet network — multiple clients access it simultaneously. SAN is block-level storage on a dedicated storage network (FC or iSCSI) — multiple servers get high-performance block access. In production all three coexist for different use cases.</p>
 
-      <h3 style={S.h3}>Q2: Consumer drive enterprise RAID mein kyun nahi lagate?</h3>
-      <p style={S.p}><strong>Answer:</strong> TLER (Time-Limited Error Recovery) consumer drives mein nahi hota. Bad sector milne par consumer drive aggressively retry karta hai — minutes tak. RAID controller ~15 seconds mein decide karta hai drive fail ho gayi — drop kar deta hai. Enterprise drives time-limit ke baad controller ko handoff karti hain. Production mein: consumer drive = RAID drop risk = array degrade = potential data loss.</p>
+      <h3 style={S.h3}>Q2: Why are consumer drives not used in enterprise RAID?</h3>
+      <p style={S.p}><strong>Answer:</strong> Consumer drives do not have TLER (Time-Limited Error Recovery). When a consumer drive hits a bad sector, it retries aggressively — for minutes. The RAID controller decides within ~15 seconds that the drive has failed — and drops it. Enterprise drives hand off to the controller after a time limit. In production: consumer drive = RAID drop risk = array degrade = potential data loss.</p>
 
-      <h3 style={S.h3}>Q3: RAID degraded aur RAID failed mein kya fark hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> Degraded: Ek drive fail, RAID tolerance ke andar — data accessible, redundancy temporarily gone. Failed: Tolerance exceed — RAID 5 mein 2 drives fail, RAID 1 mein both fail — data inaccessible. Degraded pe: backup verify karo, immediately replace karo. Failed pe: backup restore needed typically.</p>
+      <h3 style={S.h3}>Q3: What is the difference between RAID degraded and RAID failed?</h3>
+      <p style={S.p}><strong>Answer:</strong> Degraded: One drive failed, within the RAID tolerance — data accessible, redundancy temporarily gone. Failed: Tolerance exceeded — 2 drives failed in RAID 5, both failed in RAID 1 — data inaccessible. On degraded: verify the backup, replace immediately. On failed: a backup restore is typically needed.</p>
 
-      <h3 style={S.h3}>Q4: Hot spare kya hai aur kyun configure karte hain?</h3>
-      <p style={S.p}><strong>Answer:</strong> Extra pre-assigned drive jo RAID pool mein idle hoti hai. Koi production drive fail hoti hai — hot spare automatically rebuild shuru karta hai bina engineer ke physically present hue. 24×7 operations mein critical — raat 3 baje fail, hot spare rebuild 6 baje tak complete, engineer next morning aata hai already rebuilt.</p>
+      <h3 style={S.h3}>Q4: What is a hot spare and why is it configured?</h3>
+      <p style={S.p}><strong>Answer:</strong> An extra pre-assigned drive that sits idle in the RAID pool. When a production drive fails — the hot spare automatically starts the rebuild without an engineer being physically present. Critical in 24×7 operations — a drive fails at 3 AM, the hot spare rebuild completes by 6 AM, and when the engineer arrives the next morning it is already rebuilt.</p>
 
-      <h3 style={S.h3}>Q5: Write cache enable karna safe hai kya bina BBU ke?</h3>
-      <p style={S.p}><strong>Answer:</strong> Nahi. Write cache enabled + no BBU = power failure pe cached writes permanently lost = filesystem corruption ya database inconsistency. Write cache tabhi enable karo jab BBU ya FBWC healthy aur charged ho. Controller typically battery fail hone par automatically write-through mode mein chala jaata hai.</p>
+      <h3 style={S.h3}>Q5: Is it safe to enable write cache without a BBU?</h3>
+      <p style={S.p}><strong>Answer:</strong> No. Write cache enabled + no BBU = cached writes permanently lost on power failure = filesystem corruption or database inconsistency. Enable write cache only when the BBU or FBWC is healthy and charged. The controller typically switches to write-through mode automatically when the battery fails.</p>
 
-      <h3 style={S.h3}>Q6: RAID rebuild ke dauran kya precautions lete hain?</h3>
-      <p style={S.p}><strong>Answer:</strong> 1. Current backup verify karo before replacement. 2. Doosri drive mat remove karo — rebuild ke dauran second failure = potential data loss. 3. Heavy workloads avoid karo — rebuild I/O pe compete karta hai. 4. Controller firmware upgrade mat karo. 5. Monitor karo — rebuild hung? Investigate. 6. Rebuild complete — RAID optimal confirm karo.</p>
+      <h3 style={S.h3}>Q6: What precautions are taken during a RAID rebuild?</h3>
+      <p style={S.p}><strong>Answer:</strong> 1. Verify the current backup before replacement. 2. Do not remove a second drive — a second failure during rebuild = potential data loss. 3. Avoid heavy workloads — the rebuild competes for I/O. 4. Do not upgrade the controller firmware. 5. Monitor — is the rebuild hung? Investigate. 6. Rebuild complete — confirm RAID optimal.</p>
 
-      <h3 style={S.h3}>Q7: External DAS aur SAN mein physically kya difference hai?</h3>
-      <p style={S.p}><strong>Answer:</strong> External DAS: Direct SAS cable ek server se JBOD enclosure — no network, no switch, no protocol. Sirf woh server access karta hai. SAN: Dedicated storage network (Fibre Channel ya iSCSI switches), multiple servers access karte hain, centralized management. Cable directly attached hai ya network through — yahi main distinction.</p>
+      <h3 style={S.h3}>Q7: What is the physical difference between external DAS and SAN?</h3>
+      <p style={S.p}><strong>Answer:</strong> External DAS: A direct SAS cable from one server to a JBOD enclosure — no network, no switch, no protocol. Only that server accesses it. SAN: A dedicated storage network (Fibre Channel or iSCSI switches), multiple servers access it, centralized management. Whether the cable is directly attached or goes through a network — that is the main distinction.</p>
 
       {/* ══════════════════════════════════════════════════════════════════
           KEY TAKEAWAYS
       ══════════════════════════════════════════════════════════════════ */}
       <h2 id="key-takeaways" style={S.h2}>Key Takeaways</h2>
       <ul style={S.ul}>
-        <li><strong>DAS = Direct Attached Storage</strong> — architecture pattern, specific product nahi. Network beech mein → DAS nahi. Direct cable → DAS.</li>
+        <li><strong>DAS = Direct Attached Storage</strong> — an architecture pattern, not a specific product. Network in between → not DAS. Direct cable → DAS.</li>
         <li><strong>Fastest, simplest, cheapest</strong> single-server storage. Network overhead zero.</li>
-        <li><strong>Internal DAS</strong> sabse common — har rack server mein hota hai.</li>
-        <li><strong>NVMe DAS</strong> abhi fastest commercially available storage — AI/ML, databases ke liye.</li>
-        <li><strong>Primary limitation:</strong> Shareable nahi — sirf ek server. Multiple servers → NAS ya SAN.</li>
-        <li><strong>TLER/ERC</strong> — consumer drives enterprise RAID mein kabhi mat lagao. Ye most common aur avoidable production mistake hai.</li>
-        <li><strong>HCI ka foundation DAS hai</strong> — vSAN, Nutanix, S2D sab local DAS drives pool karte hain.</li>
-        <li><strong>Hot spare configure karo</strong> — drive fail = automatic rebuild, no engineer needed immediately.</li>
-        <li><strong>Write cache + BBU together</strong> — write cache bina BBU ke = power failure pe data loss risk.</li>
-        <li><strong>Baseline performance lo</strong> before production — future degradation compare karne ke liye.</li>
-        <li><strong>Bay mapping document karo</strong> — production mein mandatory.</li>
-        <li><strong>Decommissioning: secure erase mandatory</strong> — format sufficient nahi.</li>
-        <li><strong>RAID rebuild ke dauran:</strong> backup current rakho, doosri drive mat remove karo.</li>
+        <li><strong>Internal DAS</strong> is the most common — present in every rack server.</li>
+        <li><strong>NVMe DAS</strong> is currently the fastest commercially available storage — for AI/ML and databases.</li>
+        <li><strong>Primary limitation:</strong> Not shareable — one server only. Multiple servers → NAS or SAN.</li>
+        <li><strong>TLER/ERC</strong> — never put consumer drives in enterprise RAID. This is the most common and most avoidable production mistake.</li>
+        <li><strong>DAS is the foundation of HCI</strong> — vSAN, Nutanix, S2D all pool local DAS drives.</li>
+        <li><strong>Configure a hot spare</strong> — drive fails = automatic rebuild, no engineer needed immediately.</li>
+        <li><strong>Write cache + BBU together</strong> — write cache without a BBU = data loss risk on power failure.</li>
+        <li><strong>Take a performance baseline</strong> before production — to compare future degradation against.</li>
+        <li><strong>Document bay mapping</strong> — mandatory in production.</li>
+        <li><strong>Decommissioning: secure erase mandatory</strong> — format is not sufficient.</li>
+        <li><strong>During a RAID rebuild:</strong> keep the backup current, do not remove a second drive.</li>
       </ul>
 
       {/* ══════════════════════════════════════════════════════════════════
@@ -1059,10 +1022,10 @@ nvme format /dev/nvme0n1 --ses=1  # ses=1 = Cryptographic erase`}
       ══════════════════════════════════════════════════════════════════ */}
       <h2 style={{ ...S.h2, marginTop: "3rem" }}>Related Topics</h2>
       <ul style={S.ul}>
-        <li><TopicLink slug="nas" variant="inline" /> — Network Attached Storage — file-level shared storage, DAS ka natural next step.</li>
-        <li><TopicLink slug="san" variant="inline" /> — Storage Area Network — enterprise shared block storage, VMware aur large databases ke liye.</li>
-        <li><TopicLink slug="server-basics" variant="inline" /> — Server hardware fundamentals — DAS ka foundation.</li>
-        <li><TopicLink slug="virtualization" variant="inline" /> — Virtualization pe DAS ka role — local datastores aur HCI.</li>
+        <li><TopicLink slug="nas" variant="inline" /> — Network Attached Storage — file-level shared storage, the natural next step after DAS.</li>
+        <li><TopicLink slug="san" variant="inline" /> — Storage Area Network — enterprise shared block storage, for VMware and large databases.</li>
+        <li><TopicLink slug="server-basics" variant="inline" /> — Server hardware fundamentals — the foundation of DAS.</li>
+        <li><TopicLink slug="virtualization" variant="inline" /> — The role of DAS in virtualization — local datastores and HCI.</li>
       </ul>
     </>
   );

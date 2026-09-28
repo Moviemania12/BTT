@@ -22,13 +22,13 @@ export default function Content() {
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
         <p style={S.p}>
-          Google Cloud Platform (GCP) duniya ka teesra sabse bada public cloud hai — lekin kuch areas mein genuinely unique hai: Global VPC (single VPC jो poori duniya mein span karta hai), Cloud Spanner (duniya ka pehla globally distributed SQL database), Network Tiers (Google ka private backbone vs Internet), aur Sustained Use Discounts (automatic, koi commitment nahi). Data Center engineer ke liye GCP samajhna matlab hai: AWS/Azure ke concepts ko GCP terminology mein map karna, aur GCP ke genuinely different architectural choices ko samajhna.
+          Google Cloud Platform (GCP) is the world's third-largest public cloud — but it is genuinely unique in some areas: Global VPC (a single VPC that spans the entire world), Cloud Spanner (the world's first globally distributed SQL database), Network Tiers (Google's private backbone vs the Internet), and Sustained Use Discounts (automatic, no commitment). For a Data Center engineer, understanding GCP means mapping AWS/Azure concepts to GCP terminology, and understanding GCP's genuinely different architectural choices.
         </p>
         <p style={S.p}>
-          GCP ka DNA Google ke own infrastructure se aaya hai — BigQuery, Kubernetes (Google ne banaya, GKE pe managed), TensorFlow, aur global fiber network. Yeh article DC engineer ka practical reference hai — Global VPC se hybrid connectivity tak, IAM se troubleshooting tak.
+          GCP's DNA comes from Google's own infrastructure — BigQuery, Kubernetes (built by Google, managed on GKE), TensorFlow, and a global fiber network. This article is a practical reference for the DC engineer — from Global VPC to hybrid connectivity, from IAM to troubleshooting.
         </p>
-        <Callout type="important" title="AWS/Azure se Coming? Key Differences Pehle Padho">
-          GCP VPC = Global (AWS/Azure VPC = per Region). GCP Firewall Rules = VPC level, network tags se (AWS: Security Groups on NIC, NACLs on subnet). GCP mein koi Region Pairs nahi (Azure jaise) — DR Region tum choose karo. GCP mein Sustained Use Discounts automatic hain — AWS/Azure mein nahi. GCP Spot VMs = 30-second notice (AWS Spot = 2-minute notice). Yeh differences architecture decisions pe directly impact karte hain.
+        <Callout type="important" title="Coming from AWS/Azure? Read the Key Differences First">
+          GCP VPC = Global (AWS/Azure VPC = per Region). GCP Firewall Rules = VPC level, via network tags (AWS: Security Groups on NIC, NACLs on subnet). GCP has no Region Pairs (as Azure does) — you choose the DR Region. In GCP, Sustained Use Discounts are automatic — not in AWS/Azure. GCP Spot VMs = 30-second notice (AWS Spot = 2-minute notice). These differences directly impact architecture decisions.
         </Callout>
       </section>
 
@@ -36,10 +36,10 @@ export default function Content() {
       <section id="what-is-gcp">
         <h2 style={S.h2}>What Is Google Cloud Platform?</h2>
         <p style={S.p}>
-          GCP Google ka public cloud platform hai — compute, storage, networking, databases, AI/ML, analytics — globally available. Jo cheez GCP ko practically interesting banati hai: yeh Google ke own infrastructure pe chalta hai — wahi infrastructure jis pe Search, YouTube, Gmail aur Maps operate karte hain. Yeh marketing nahi hai — iska direct impact network performance, global load balancing aur Kubernetes maturity pe hota hai.
+          GCP is Google's public cloud platform — compute, storage, networking, databases, AI/ML, analytics — available globally. What makes GCP practically interesting: it runs on Google's own infrastructure — the same infrastructure on which Search, YouTube, Gmail and Maps operate. This is not marketing — it has a direct impact on network performance, global load balancing and Kubernetes maturity.
         </p>
         <p style={S.p}>
-          GCP ki strongest hand: globally distributed fiber (Premium Tier), BigQuery for analytics at scale, aur Cloud Spanner jaise services jo AWS ya Azure ke paas directly nahi hain. AI/ML ke liye TPUs aur Vertex AI bhi differentiate karte hain. Agar tumhara workload Kubernetes-heavy hai ya analytics-first hai, GCP naturally fit hoti hai.
+          GCP's strongest hand: globally distributed fiber (Premium Tier), BigQuery for analytics at scale, and services like Cloud Spanner that AWS or Azure do not directly have. For AI/ML, TPUs and Vertex AI also differentiate it. If your workload is Kubernetes-heavy or analytics-first, GCP is a natural fit.
         </p>
         <ComparisonTable
           headers={["Traditional DC Component", "GCP Equivalent", "Key Note"]}
@@ -62,10 +62,10 @@ export default function Content() {
         <section id="gcp-history">
           <h3 style={S.h3}>History and Why GCP Exists</h3>
           <p style={S.p}>
-            GCP 2008 mein App Engine se shuru hua — Google ki PaaS offering. 2012 mein Compute Engine launch hua (IaaS). Google ne Kubernetes 2014 mein open-source release kiya, jo cloud-native computing ka foundation ban gaya. 2015 mein Google ne platform formally "Google Cloud Platform" ke roop mein rebrand kiya aur enterprise push kiya.
+            GCP started in 2008 with App Engine — Google's PaaS offering. Compute Engine launched in 2012 (IaaS). Google released Kubernetes as open source in 2014, and it became the foundation of cloud-native computing. In 2015 Google formally rebranded the platform as "Google Cloud Platform" and made an enterprise push.
           </p>
           <p style={S.p}>
-            GCP exist karta hai kyunki Google ke paas duniya ka ek best distributed computing infrastructure tha — aur isse monetize karne ka natural path external cloud services tha. Google ka DNA search, analytics aur large-scale distributed systems se hai — yeh GCP ke strengths mein clearly dikhta hai (BigQuery, Spanner, global network, AI/ML).
+            GCP exists because Google had one of the world's best distributed computing infrastructures — and the natural path to monetize it was external cloud services. Google's DNA is in search, analytics and large-scale distributed systems — and this clearly shows in GCP's strengths (BigQuery, Spanner, global network, AI/ML).
           </p>
         </section>
 
@@ -93,7 +93,7 @@ export default function Content() {
             ]}
           />
           <Callout type="important" title="Shared Responsibility in Data Center Context">
-            GCP physical data center security = Google responsibility. Tumhara Compute Engine VM ka OS patch nahi hua = tumhari responsibility. Cloud SQL ka authorized networks galat configure kiya = tumhari responsibility. Har service ke liye boundary clearly samjho.
+            GCP physical data center security = Google's responsibility. Your Compute Engine VM's OS was not patched = your responsibility. Cloud SQL authorized networks configured wrongly = your responsibility. Understand the boundary clearly for every service.
           </Callout>
         </section>
       </section>
@@ -105,10 +105,10 @@ export default function Content() {
         <section id="regions-zones">
           <h3 style={S.h3}>Regions and Zones</h3>
           <p style={S.p}>
-            GCP 40+ Regions mein operate karta hai globally (continuously expanding). Har Region ek specific geographic location hai — asia-south1 (Mumbai), us-central1 (Iowa), europe-west1 (Belgium) etc. Har Region mein typically 3 Zones hain — named a, b, c (some Regions have more or different naming).
+            GCP operates in 40+ Regions globally (continuously expanding). Each Region is a specific geographic location — asia-south1 (Mumbai), us-central1 (Iowa), europe-west1 (Belgium) etc. Each Region typically has 3 Zones — named a, b, c (some Regions have more or different naming).
           </p>
           <p style={S.p}>
-            Zone ek isolated deployment area hai within a Region — physically separate building with independent power, cooling, aur networking. Ek Zone failure doosri Zones ko affect nahi karta. Production workloads ke liye always multiple Zones use karo.
+            A Zone is an isolated deployment area within a Region — a physically separate building with independent power, cooling, and networking. One Zone failure does not affect the other Zones. Always use multiple Zones for production workloads.
           </p>
           <ComparisonTable
             headers={["Level", "GCP", "AWS Equivalent", "Azure Equivalent"]}
@@ -125,27 +125,27 @@ export default function Content() {
         <section id="no-region-pairs">
           <h3 style={S.h3}>No Region Pairs — DR Is Your Choice</h3>
           <p style={S.p}>
-            Azure mein Region Pairs Microsoft-defined hain — East US ↔ West US. GCP mein aisa concept nahi hai. Engineer khud DR Region select karta hai based on requirements: data residency, latency, available services, regulatory compliance.
+            In Azure, Region Pairs are Microsoft-defined — East US ↔ West US. GCP has no such concept. The engineer selects the DR Region themselves based on requirements: data residency, latency, available services, regulatory compliance.
           </p>
           <p style={S.p}>
-            GCP Multi-region locations exist karte hain Cloud Storage ke liye (US, EU, ASIA) — lekin yeh compute DR se alag hai. Compute Engine DR ke liye: snapshots/images second Region mein store karo, MIG templates second Region mein maintain karo, Cloud SQL cross-region replicas configure karo.
+            GCP Multi-region locations exist for Cloud Storage (US, EU, ASIA) — but this is separate from compute DR. For Compute Engine DR: store snapshots/images in a second Region, maintain MIG templates in the second Region, configure Cloud SQL cross-region replicas.
           </p>
-          <Callout type="important" title="GCP mein DR = Engineer ka Design">
-            AWS aur Azure mein bhi engineer DR design karta hai — lekin Azure mein Region Pairs platform updates aur GRS storage replication ke liye pre-defined hain. GCP mein yeh concept nahi hai. GCP DR architecture completely engineer-designed hona chahiye. Yeh zyada flexibility deta hai lekin zyada responsibility bhi.
+          <Callout type="important" title="In GCP, DR = the Engineer's Design">
+            In AWS and Azure too, the engineer designs DR — but in Azure, Region Pairs are pre-defined for platform updates and GRS storage replication. GCP has no such concept. GCP DR architecture must be completely engineer-designed. This gives more flexibility but also more responsibility.
           </Callout>
         </section>
 
         <section id="edge-network">
           <h3 style={S.h3}>Edge Network and Network Tiers</h3>
           <p style={S.p}>
-            GCP Network Service Tiers ek unique concept hai — AWS ya Azure mein nahi hai:
+            GCP Network Service Tiers are a unique concept — not present in AWS or Azure:
           </p>
           <ul style={S.ul}>
-            <li><strong>Premium Tier (default):</strong> Traffic Google backbone pe enter karta hai nearest PoP pe — lowest latency, highest reliability. User-facing applications ke liye.</li>
-            <li><strong>Standard Tier:</strong> Traffic public Internet pe travel karta hai — AWS/Azure default jaisi behavior. Lower cost, variable latency.</li>
+            <li><strong>Premium Tier (default):</strong> Traffic enters the Google backbone at the nearest PoP — lowest latency, highest reliability. For user-facing applications.</li>
+            <li><strong>Standard Tier:</strong> Traffic travels over the public Internet — behavior similar to the AWS/Azure default. Lower cost, variable latency.</li>
           </ul>
           <p style={S.p}>
-            Cloud CDN: Cloud Load Balancing ke saath integrated CDN. Media CDN: high-scale video/media delivery. Cloud Armor: DDoS protection aur WAF at edge. Cloud Interconnect PoPs: Google's colocation facilities globally jahan dedicated circuits terminate hote hain.
+            Cloud CDN: CDN integrated with Cloud Load Balancing. Media CDN: high-scale video/media delivery. Cloud Armor: DDoS protection and WAF at the edge. Cloud Interconnect PoPs: Google's colocation facilities globally where dedicated circuits terminate.
           </p>
         </section>
 
@@ -153,7 +153,7 @@ export default function Content() {
           <h3 style={S.h3}>Region Selection Strategy</h3>
           <ul style={S.ul}>
             <li><strong>Data residency/compliance:</strong> Indian IT Act, EU GDPR, financial data localization — primary driver</li>
-            <li><strong>User proximity:</strong> Asia-South1 (Mumbai) India ke users ke liye, asia-southeast1 (Singapore) SE Asia ke liye</li>
+            <li><strong>User proximity:</strong> Asia-South1 (Mumbai) for users in India, asia-southeast1 (Singapore) for SE Asia</li>
             <li><strong>Service availability:</strong> Not all services in all Regions — verify before committing</li>
             <li><strong>Zone availability:</strong> Production → 3-zone Region. Some Regions have fewer zones.</li>
             <li><strong>Pricing:</strong> Same service different cost in different Regions (e.g., us-central1 typically cheapest)</li>
@@ -161,7 +161,7 @@ export default function Content() {
           </ul>
         </section>
 
-        <Figure caption="GCP Global Infrastructure: Regions, Zones, Global VPC aur edge network — AWS/Azure se key differences">
+        <Figure caption="GCP Global Infrastructure: Regions, Zones, Global VPC and edge network — key differences from AWS/Azure">
           <GcpGlobalDiagram />
         </Figure>
       </section>
@@ -173,29 +173,29 @@ export default function Content() {
         <section id="org-folders-projects">
           <h3 style={S.h3}>Organization, Folders and Projects</h3>
           <p style={S.p}>
-            GCP Resource Hierarchy: <strong>Organization → Folders → Projects → Resources</strong>. Yeh structure IAM inheritance aur policy enforcement ka backbone hai.
+            GCP Resource Hierarchy: <strong>Organization → Folders → Projects → Resources</strong>. This structure is the backbone of IAM inheritance and policy enforcement.
           </p>
           <ul style={S.ul}>
-            <li><strong>Organization:</strong> Root node — Google Workspace ya Cloud Identity domain se tied. IAM policies yahan assign karo → sab resources inherit karte hain. AWS Organizations equivalent.</li>
-            <li><strong>Folders:</strong> Logical grouping of Projects — department ya environment se organize karo (Production, Development, Shared Services). Nested folders possible (up to 10 levels). IAM/Policy at Folder level → all Projects inside inherit.</li>
-            <li><strong>Projects:</strong> GCP ka fundamental unit — billing, resource management, API enablement. Har resource exactly ek Project mein. Resources different Regions mein ho sakte hain same Project mein. AWS Account equivalent. Project ID globally unique, immutable after creation.</li>
-            <li><strong>Resources:</strong> Actual services — VMs, buckets, Cloud SQL instances etc. IAM at resource level bhi possible — narrowest scope.</li>
+            <li><strong>Organization:</strong> Root node — tied to a Google Workspace or Cloud Identity domain. Assign IAM policies here → all resources inherit them. AWS Organizations equivalent.</li>
+            <li><strong>Folders:</strong> Logical grouping of Projects — organize by department or environment (Production, Development, Shared Services). Nested folders possible (up to 10 levels). IAM/Policy at Folder level → all Projects inside inherit.</li>
+            <li><strong>Projects:</strong> GCP's fundamental unit — billing, resource management, API enablement. Every resource belongs to exactly one Project. Resources can be in different Regions within the same Project. AWS Account equivalent. Project ID is globally unique, immutable after creation.</li>
+            <li><strong>Resources:</strong> Actual services — VMs, buckets, Cloud SQL instances etc. IAM at resource level is also possible — the narrowest scope.</li>
           </ul>
           <Callout type="important" title="IAM Inheritance — Top-Down Only">
-            IAM bindings parent se child mein inherit hote hain. Organization pe role assign kiya → Folder mein, Project mein, sab resources mein inherited. Child pe inherited role ko REMOVE nahi kar sakte — sirf ADD kar sakte hain. Yeh AWS/Azure se important difference hai — AWS mein deny policies kisi bhi level pe effective hain. GCP mein IAM Deny Policies (newer feature) similar capability provide karti hain.
+            IAM bindings are inherited from parent to child. Assign a role at the Organization → it is inherited in the Folder, the Project, and all resources. You cannot REMOVE an inherited role at the child — you can only ADD. This is an important difference from AWS/Azure — in AWS, deny policies are effective at any level. In GCP, IAM Deny Policies (a newer feature) provide similar capability.
           </Callout>
         </section>
 
         <section id="billing-accounts">
           <h3 style={S.h3}>Billing Accounts</h3>
           <p style={S.p}>
-            Billing Account GCP resources ke charges collect karta hai — ek ya multiple Projects se linked ho sakta hai. Billing Account Organization se alag manage hota hai — Project directly Billing Account se linked hota hai, Organization se nahi.
+            The Billing Account collects charges for GCP resources — it can be linked to one or multiple Projects. The Billing Account is managed separately from the Organization — a Project is linked directly to a Billing Account, not to the Organization.
           </p>
           <ul style={S.ul}>
-            <li>Budget alerts: Billing Account level ya Project level — spend thresholds pe notification</li>
-            <li>Cost export: Cloud Billing data → BigQuery export → custom dashboards aur analysis</li>
-            <li>Committed Use Discounts: Billing Account level pe apply hote hain</li>
-            <li>Multiple Billing Accounts: alag business units, departments, client billing ke liye</li>
+            <li>Budget alerts: at Billing Account level or Project level — notification at spend thresholds</li>
+            <li>Cost export: Cloud Billing data → BigQuery export → custom dashboards and analysis</li>
+            <li>Committed Use Discounts: applied at the Billing Account level</li>
+            <li>Multiple Billing Accounts: for separate business units, departments, client billing</li>
           </ul>
         </section>
 
@@ -205,10 +205,10 @@ export default function Content() {
             <strong>Labels:</strong> User-defined key-value pairs on resources — cost allocation, filtering, automation. Example: <code>{"environment=prod"}</code>, <code>{"team=networking"}</code>. AWS Tags equivalent.
           </p>
           <p style={S.p}>
-            <strong>Tags (Network Tags):</strong> Strings on Compute Engine VMs — Firewall Rules mein target pe use. Example: VM pe tag <code>web-server</code> → Firewall Rule target <code>web-server</code> tag wale VMs pe allow 443.
+            <strong>Tags (Network Tags):</strong> Strings on Compute Engine VMs — used as targets in Firewall Rules. Example: tag <code>web-server</code> on a VM → Firewall Rule allows 443 on VMs with the target tag <code>web-server</code>.
           </p>
           <p style={S.p}>
-            <strong>Org Policies:</strong> Resource configuration constraints — IAM permissions se alag. Example: restrict which Regions resources can be created in, disable external IPs on VMs, require OS Login. AWS SCPs equivalent.
+            <strong>Org Policies:</strong> Resource configuration constraints — separate from IAM permissions. Example: restrict which Regions resources can be created in, disable external IPs on VMs, require OS Login. AWS SCPs equivalent.
           </p>
         </section>
 
@@ -240,7 +240,7 @@ export default function Content() {
         <section id="iam-principals">
           <h3 style={S.h3}>Principals: Users, Groups, Service Accounts</h3>
           <p style={S.p}>
-            Cloud IAM mein access WHO (principal) + WHAT (role/permissions) + WHERE (resource) combination se define hota hai. Principal = identity jo request karti hai.
+            In Cloud IAM, access is defined by the combination of WHO (principal) + WHAT (role/permissions) + WHERE (resource). Principal = the identity that makes the request.
           </p>
           <ComparisonTable
             headers={["Principal Type", "Description", "Use Case"]}
@@ -259,48 +259,48 @@ export default function Content() {
         <section id="iam-roles">
           <h3 style={S.h3}>Roles: Basic, Predefined, Custom</h3>
           <p style={S.p}>
-            Role = permissions ka set. Principal ko role assign hota hai ek resource ke context mein. Three categories:
+            Role = a set of permissions. A role is assigned to a principal in the context of a resource. Three categories:
           </p>
           <ul style={S.ul}>
-            <li><strong>Basic Roles (primitive):</strong> Owner, Editor, Viewer. Project level pe broad access. Production mein avoid karo — least privilege violate karte hain.</li>
+            <li><strong>Basic Roles (primitive):</strong> Owner, Editor, Viewer. Broad access at Project level. Avoid in production — they violate least privilege.</li>
             <li><strong>Predefined Roles:</strong> Google-managed, service-specific — <code>roles/compute.instanceAdmin</code>, <code>roles/storage.objectViewer</code>, <code>roles/container.developer</code> etc. 500+ predefined roles available.</li>
-            <li><strong>Custom Roles:</strong> Exact permission set define karo for your use case. Project ya Organization level pe create possible. Maintenance responsibility tumhari — Google updates predefined roles automatically.</li>
+            <li><strong>Custom Roles:</strong> Define the exact permission set for your use case. Can be created at Project or Organization level. Maintenance is your responsibility — Google updates predefined roles automatically.</li>
           </ul>
           <p style={S.p}>
-            IAM policy evaluation: Allow bindings check hoti hain. IAM Deny Policies (newer feature): explicitly deny specific principals specific permissions — Deny policies Allow bindings ko override karti hain, matlab Deny wins even if Allow binding exists. Policy Troubleshooter: console/CLI tool jo batata hai why access was granted or denied — production debugging mein essential.
+            IAM policy evaluation: Allow bindings are checked. IAM Deny Policies (newer feature): explicitly deny specific principals specific permissions — Deny policies override Allow bindings, meaning Deny wins even if an Allow binding exists. Policy Troubleshooter: a console/CLI tool that tells you why access was granted or denied — essential in production debugging.
           </p>
         </section>
 
         <section id="service-accounts">
           <h3 style={S.h3}>Service Accounts and Workload Identity</h3>
           <p style={S.p}>
-            Service Account GCP ka workload identity mechanism hai — machines aur applications ke liye, humans ke liye nahi. Compute Engine VM ko Service Account attach karo → VM automatically that SA ke permissions se GCP APIs call kar sakti hai.
+            A Service Account is GCP's workload identity mechanism — for machines and applications, not for humans. Attach a Service Account to a Compute Engine VM → the VM can automatically call GCP APIs with that SA's permissions.
           </p>
           <ul style={S.ul}>
             <li><strong>Service Account key files:</strong> JSON private key — avoid wherever possible. Key file compromise = full SA access. Rotation manual, leak risk high.</li>
-            <li><strong>Attached SA (Compute Engine):</strong> VM ko SA attach karo → instance metadata se automatic token. No key file. AWS IAM Instance Profile equivalent.</li>
-            <li><strong>Workload Identity (GKE):</strong> K8s Service Account → GCP Service Account mapping. GKE pods automatically assume GCP SA identity without any JSON key — token exchange happens transparently via metadata server. AWS EKS IRSA (IAM Roles for Service Accounts) ka direct equivalent. Note: "Workload Identity Federation" alag feature hai — external identity providers (GitHub Actions, AWS, Azure) ke liye, not GKE-specific.</li>
-            <li><strong>SA impersonation:</strong> User ya SA ek doosri SA ka impersonate kar sakti hai — delegated access pattern.</li>
+            <li><strong>Attached SA (Compute Engine):</strong> Attach an SA to the VM → automatic token from instance metadata. No key file. AWS IAM Instance Profile equivalent.</li>
+            <li><strong>Workload Identity (GKE):</strong> K8s Service Account → GCP Service Account mapping. GKE pods automatically assume the GCP SA identity without any JSON key — token exchange happens transparently via the metadata server. Direct equivalent of AWS EKS IRSA (IAM Roles for Service Accounts). Note: "Workload Identity Federation" is a separate feature — for external identity providers (GitHub Actions, AWS, Azure), not GKE-specific.</li>
+            <li><strong>SA impersonation:</strong> A user or SA can impersonate another SA — delegated access pattern.</li>
           </ul>
           <Callout type="best-practice" title="Service Account Keys — Last Resort Only">
-            SA key files hamesha avoid karo — Compute Engine attached SA ya Workload Identity Federation use karo. Agar key file must use karo: 90-day rotation policy, Secret Manager mein store, never in code/git, audit regularly via Cloud Audit Logs.
+            Always avoid SA key files — use a Compute Engine attached SA or Workload Identity Federation. If you must use a key file: 90-day rotation policy, store in Secret Manager, never in code/git, audit regularly via Cloud Audit Logs.
           </Callout>
         </section>
 
         <section id="iam-best-practices">
           <h3 style={S.h3}>IAM Best Practices</h3>
           <ul style={S.ul}>
-            <li>Least privilege: sirf required permissions. Basic roles (Owner/Editor) production mein nahi.</li>
-            <li>Group-based access: users ko groups mein add karo, groups ko roles assign karo — not individual users</li>
-            <li>Service accounts: ek SA per application/service — shared SAs avoid karo</li>
-            <li>SA key rotation: automated key rotation ya Workload Identity Federation prefer karo</li>
+            <li>Least privilege: only the required permissions. No Basic roles (Owner/Editor) in production.</li>
+            <li>Group-based access: add users to groups, assign roles to groups — not individual users</li>
+            <li>Service accounts: one SA per application/service — avoid shared SAs</li>
+            <li>SA key rotation: prefer automated key rotation or Workload Identity Federation</li>
             <li>Org Policy: restrict resource creation to specific Regions, disable SA key creation where possible</li>
             <li>Audit: Cloud Audit Logs (Admin Activity always on) — regular IAM policy review</li>
-            <li>IAM Recommender: Google ka ML-based tool — unused permissions identify karo aur remove karo</li>
+            <li>IAM Recommender: Google's ML-based tool — identify and remove unused permissions</li>
           </ul>
         </section>
 
-        <Figure caption="GCP Cloud IAM: Who (Principal) + What (Role) + Where (Resource), Service Accounts aur Workload Identity">
+        <Figure caption="GCP Cloud IAM: Who (Principal) + What (Role) + Where (Resource), Service Accounts and Workload Identity">
           <GcpIamDiagram />
         </Figure>
       </section>
@@ -312,35 +312,35 @@ export default function Content() {
         <section id="global-vpc">
           <h3 style={S.h3}>Global VPC Architecture</h3>
           <p style={S.p}>
-            GCP VPC ka sabse important architectural difference: <strong>VPC is GLOBAL</strong>. Ek single VPC multiple Regions span karta hai automatically. AWS mein VPC Region-specific hai — multi-region connectivity ke liye VPC Peering ya Transit Gateway chahiye. Azure mein VNet Region-specific hai. GCP mein ek VPC create karo → Mumbai, Iowa, Belgium sab ek network.
+            The most important architectural difference of GCP VPC: <strong>VPC is GLOBAL</strong>. A single VPC spans multiple Regions automatically. In AWS, a VPC is Region-specific — multi-region connectivity requires VPC Peering or Transit Gateway. In Azure, a VNet is Region-specific. In GCP, create one VPC → Mumbai, Iowa, Belgium are all one network.
           </p>
           <p style={S.p}>
-            Internal traffic ek Region se doosre Region mein same VPC ke andar: Google backbone pe route hota hai automatically — no extra configuration. Mumbai VM → Iowa VM, same VPC — direct internal IP, no IGW needed.
+            Internal traffic from one Region to another within the same VPC is routed over the Google backbone automatically — no extra configuration. Mumbai VM → Iowa VM, same VPC — direct internal IP, no IGW needed.
           </p>
           <Callout type="important" title="Global VPC ≠ Global Free-for-All">
-            VPC global hai lekin subnets regional hain. Tum control karte ho ki kaun se subnets kaun se Regions mein hain. Firewall Rules bhi VPC-wide hain — lekin target by network tags ya SA. Kisi bhi VM pe specific tag lagao → specific firewall rules apply. No per-subnet security groups jaise AWS.
+            The VPC is global but subnets are regional. You control which subnets are in which Regions. Firewall Rules are also VPC-wide — but targeted by network tags or SA. Apply a specific tag to any VM → specific firewall rules apply. No per-subnet security groups like AWS.
           </Callout>
         </section>
 
         <section id="subnets">
           <h3 style={S.h3}>Regional Subnets</h3>
           <p style={S.p}>
-            Subnet ek Regional resource hai — ek Region select karte hain, lekin us Region ke sab Zones span karta hai. Example: asia-south1 mein subnet create karo → asia-south1-a, asia-south1-b, asia-south1-c — sab pe VMs us subnet se IPs le sakte hain.
+            A subnet is a Regional resource — you select a Region, but it spans all Zones of that Region. Example: create a subnet in asia-south1 → VMs on asia-south1-a, asia-south1-b, asia-south1-c can all take IPs from that subnet.
           </p>
           <p style={S.p}>
-            AWS mein subnet AZ-specific hota hai — ek subnet = ek AZ. GCP mein subnet = ek Region (multiple AZs). Yeh HA design simplify karta hai — ek subnet mein VMs across multiple zones deploy karo.
+            In AWS a subnet is AZ-specific — one subnet = one AZ. In GCP, subnet = one Region (multiple AZs). This simplifies HA design — deploy VMs across multiple zones in one subnet.
           </p>
           <ul style={S.ul}>
-            <li>Private Google Access: subnet pe enable karo → VMs public IP ke bina Google APIs access kar sakti hain (googleapis.com)</li>
-            <li>Subnet secondary ranges: alias IPs ke liye — GKE pods ke liye commonly used</li>
-            <li>Subnet expansion: CIDR range expand kar sakte hain (shrink nahi)</li>
+            <li>Private Google Access: enable on the subnet → VMs can access Google APIs (googleapis.com) without a public IP</li>
+            <li>Subnet secondary ranges: for alias IPs — commonly used for GKE pods</li>
+            <li>Subnet expansion: the CIDR range can be expanded (not shrunk)</li>
           </ul>
         </section>
 
         <section id="firewall-rules">
           <h3 style={S.h3}>Firewall Rules</h3>
           <p style={S.p}>
-            GCP Firewall Rules VPC-level pe apply hote hain — not subnet-level. AWS Security Groups (NIC-level) ya NACLs (subnet-level) se different hai. Rule targeting: source/destination by IP ranges, network tags, ya Service Account identity.
+            GCP Firewall Rules apply at the VPC level — not at the subnet level. This is different from AWS Security Groups (NIC-level) or NACLs (subnet-level). Rule targeting: source/destination by IP ranges, network tags, or Service Account identity.
           </p>
           <ComparisonTable
             headers={["Feature", "GCP Firewall Rules", "AWS Security Groups", "Azure NSG"]}
@@ -354,53 +354,53 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            Network tags best practice: tag-based rules IP management se far better hain. VM pe tag add karo <code>web-server</code> → automatically firewall rule apply. IP change hone pe rules update nahi karne padte.
+            Network tags best practice: tag-based rules are far better than IP management. Add the tag <code>web-server</code> to a VM → the firewall rule applies automatically. When an IP changes, the rules do not need to be updated.
           </p>
         </section>
 
         <section id="routes">
           <h3 style={S.h3}>Routes and Cloud Router</h3>
           <p style={S.p}>
-            GCP VPC mein automatically system-generated routes hote hain — VPC ke andar traffic, Internet ke liye default route. Custom static routes add kar sakte hain — specific next-hops define karo (VM, VPN tunnel, etc.).
+            A GCP VPC automatically has system-generated routes — traffic within the VPC, a default route for the Internet. You can add custom static routes — define specific next-hops (VM, VPN tunnel, etc.).
           </p>
           <p style={S.p}>
-            <strong>Cloud Router:</strong> BGP-based dynamic routing — Cloud VPN ya Cloud Interconnect ke saath use karo. On-prem routes automatically VPC mein advertise hote hain, VPC routes on-prem ko. Traditional DC core router equivalent function (routing protocol peering) — lekin managed service hai.
+            <strong>Cloud Router:</strong> BGP-based dynamic routing — use with Cloud VPN or Cloud Interconnect. On-prem routes are automatically advertised into the VPC, and VPC routes to on-prem. Function equivalent to a traditional DC core router (routing protocol peering) — but it is a managed service.
           </p>
         </section>
 
         <section id="cloud-nat">
           <h3 style={S.h3}>Cloud NAT</h3>
           <p style={S.p}>
-            Cloud NAT VMs ko private IPs ke saath Internet outbound connectivity deta hai — without public IP on VM. Managed service — no NAT gateway VM manage karna nahi padta. AWS NAT Gateway equivalent.
+            Cloud NAT gives VMs with private IPs outbound Internet connectivity — without a public IP on the VM. Managed service — there is no NAT gateway VM to manage. AWS NAT Gateway equivalent.
           </p>
           <ul style={S.ul}>
-            <li>Subnet-level configuration — specific subnets ko NAT enable karo</li>
-            <li>Manual NAT IP allocation ya auto allocation</li>
+            <li>Subnet-level configuration — enable NAT for specific subnets</li>
+            <li>Manual NAT IP allocation or auto allocation</li>
             <li>Port allocation: per-VM port count configurable (affects max concurrent connections)</li>
-            <li>Cloud NAT logs: connection logs Cloud Logging mein — audit, troubleshoot outbound traffic</li>
+            <li>Cloud NAT logs: connection logs in Cloud Logging — audit and troubleshoot outbound traffic</li>
           </ul>
         </section>
 
         <section id="vpc-peering-shared">
           <h3 style={S.h3}>VPC Peering and Shared VPC</h3>
           <p style={S.p}>
-            <strong>VPC Peering:</strong> Do VPCs ko directly connect karo — same ya different Projects, same ya different Organizations. Non-transitive: A↔B, B↔C but A↔C nahi (unless Network Connectivity Center use karo). Internal IP routing, no external traffic. AWS VPC Peering equivalent.
+            <strong>VPC Peering:</strong> Connect two VPCs directly — same or different Projects, same or different Organizations. Non-transitive: A↔B, B↔C but not A↔C (unless you use Network Connectivity Center). Internal IP routing, no external traffic. AWS VPC Peering equivalent.
           </p>
           <p style={S.p}>
-            <strong>Shared VPC:</strong> Ek Host Project ka VPC multiple Service Projects ke saath share karo. Service Projects ke resources (VMs etc.) Host Project ke subnets mein deploy hote hain. Centralized networking management — separate billing per project. AWS Resource Access Manager (RAM) + Transit Gateway ke concepts similar hai lekin simpler architecture.
+            <strong>Shared VPC:</strong> Share one Host Project's VPC with multiple Service Projects. Service Projects' resources (VMs etc.) are deployed in the Host Project's subnets. Centralized networking management — separate billing per project. Similar to the concepts of AWS Resource Access Manager (RAM) + Transit Gateway, but a simpler architecture.
           </p>
         </section>
 
         <section id="private-service-access">
           <h3 style={S.h3}>Private Service Access and Private Service Connect</h3>
           <p style={S.p}>
-            <strong>Private Service Access:</strong> Managed services (Cloud SQL, Cloud Filestore, AlloyDB) ke liye — VPC mein dedicated IP range allocate karo → service Google-managed network se accessible hoti hai privately. Cloud SQL ka Private IP mode yahi use karta hai.
+            <strong>Private Service Access:</strong> For managed services (Cloud SQL, Cloud Filestore, AlloyDB) — allocate a dedicated IP range in the VPC → the service becomes privately accessible from the Google-managed network. Cloud SQL's Private IP mode uses exactly this.
           </p>
           <p style={S.p}>
-            <strong>Private Service Connect (PSC):</strong> Google managed services ya third-party services ko VPC mein ek private IP endpoint se access karo — traffic kabhi Internet pe nahi jaata. Private Service Access se alag hai: PSC ek specific endpoint object create karta hai (IP address), Private Service Access VPC peering pe based hai.
+            <strong>Private Service Connect (PSC):</strong> Access Google managed services or third-party services through a private IP endpoint in the VPC — traffic never goes over the Internet. It is different from Private Service Access: PSC creates a specific endpoint object (IP address), while Private Service Access is based on VPC peering.
           </p>
           <p style={S.p}>
-            Practical example: production environment mein <code>storage.googleapis.com</code> ko public Internet se access nahi karni. PSC endpoint create karo → VMs ek internal IP se GCS call karein — NAT bhi nahi, Internet path bhi nahi. BFSI aur healthcare compliance mein yeh pattern mandatory ho jaata hai.
+            Practical example: in a production environment, <code>storage.googleapis.com</code> must not be accessed over the public Internet. Create a PSC endpoint → VMs call GCS through an internal IP — no NAT, no Internet path. In BFSI and healthcare compliance, this pattern becomes mandatory.
           </p>
         </section>
 
@@ -413,7 +413,7 @@ export default function Content() {
       <section id="load-balancing">
         <h2 style={S.h2}>Load Balancing</h2>
         <p style={S.p}>
-          GCP Cloud Load Balancing globally distributed hai — single anycast IP, traffic automatically nearest PoP pe route hota hai. Traditional <TopicLink slug="load-balancer" variant="inline" /> concepts apply karte hain lekin implementation globally distributed hai.
+          GCP Cloud Load Balancing is globally distributed — a single anycast IP, traffic is automatically routed to the nearest PoP. Traditional <TopicLink slug="load-balancer" variant="inline" /> concepts apply, but the implementation is globally distributed.
         </p>
 
         <section id="cloud-lb-types">
@@ -431,20 +431,20 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            GCP LB ka differentiator: Global anycast LB single IP globally — traffic nearest Google PoP pe enter karta hai, phir Google backbone pe backend tak. AWS ALB regional hai, Global Accelerator alag service hai. GCP mein globally distributed LB ek product hai.
+            The GCP LB differentiator: a global anycast LB with a single IP globally — traffic enters at the nearest Google PoP, then travels over the Google backbone to the backend. AWS ALB is regional, and Global Accelerator is a separate service. In GCP, the globally distributed LB is one product.
           </p>
         </section>
 
         <section id="cloud-armor">
           <h3 style={S.h3}>Cloud Armor and CDN</h3>
           <p style={S.p}>
-            <strong>Cloud Armor:</strong> DDoS protection aur WAF — External HTTPS Load Balancer ke saath directly integrated. OWASP Top 10 preconfigured rule sets, custom CEL-based rules, adaptive protection (ML-based DDoS mitigation), rate limiting per IP/region, bot management. Real example: ek e-commerce site pe Black Friday ke din volumetric DDoS attack aaya — Cloud Armor Adaptive Protection ne automatically traffic pattern identify kiya aur attack IPs block kiye, bina manual intervention ke.
+            <strong>Cloud Armor:</strong> DDoS protection and WAF — directly integrated with the External HTTPS Load Balancer. OWASP Top 10 preconfigured rule sets, custom CEL-based rules, adaptive protection (ML-based DDoS mitigation), rate limiting per IP/region, bot management. Real example: an e-commerce site was hit by a volumetric DDoS attack on Black Friday — Cloud Armor Adaptive Protection automatically identified the traffic pattern and blocked the attack IPs, without manual intervention.
           </p>
           <p style={S.p}>
-            <strong>Cloud CDN:</strong> External HTTPS LB ke saath integrated CDN — cache static content Google edge PoPs pe. Origin-pull model. Cache invalidation API se. AWS CloudFront equivalent — lekin tightly integrated with GCP LB not a separate service.
+            <strong>Cloud CDN:</strong> CDN integrated with the External HTTPS LB — caches static content at Google edge PoPs. Origin-pull model. Cache invalidation via API. AWS CloudFront equivalent — but tightly integrated with the GCP LB, not a separate service.
           </p>
           <Callout type="warning" title="Cloud Interconnect Encryption">
-            Cloud Interconnect (Dedicated ya Partner) NOT encrypted by default — same caveat as AWS Direct Connect aur Azure ExpressRoute. MACsec add kar sakte hain Dedicated Interconnect pe additional configuration se. Compliance requirements ke liye explicitly encryption layer plan karo.
+            Cloud Interconnect (Dedicated or Partner) is NOT encrypted by default — the same caveat as AWS Direct Connect and Azure ExpressRoute. MACsec can be added on Dedicated Interconnect with additional configuration. For compliance requirements, explicitly plan an encryption layer.
           </Callout>
         </section>
       </section>
@@ -456,7 +456,7 @@ export default function Content() {
         <section id="cloud-vpn">
           <h3 style={S.h3}>Cloud VPN (HA VPN)</h3>
           <p style={S.p}>
-            Cloud VPN on-prem network ko GCP VPC se IPsec tunnel over Internet se connect karta hai. HA VPN recommended: 2 interfaces, 4 tunnels → 99.99% SLA.
+            Cloud VPN connects the on-prem network to the GCP VPC through an IPsec tunnel over the Internet. HA VPN recommended: 2 interfaces, 4 tunnels → 99.99% SLA.
           </p>
           <ComparisonTable
             headers={["Feature", "HA VPN", "Classic VPN"]}
@@ -469,14 +469,14 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            HA VPN + Cloud Router: BGP dynamic routing — on-prem routes automatically advertise/learn. Traditional DC <TopicLink slug="router" variant="inline" /> ke BGP concepts apply hote hain.
+            HA VPN + Cloud Router: BGP dynamic routing — on-prem routes are advertised/learned automatically. The BGP concepts of a traditional DC <TopicLink slug="router" variant="inline" /> apply.
           </p>
         </section>
 
         <section id="cloud-interconnect">
           <h3 style={S.h3}>Cloud Interconnect</h3>
           <p style={S.p}>
-            Cloud Interconnect on-prem ko GCP ke saath private dedicated circuit se connect karta hai — Internet se nahi. Colocation facility mein Google network directly connect hota hai.
+            Cloud Interconnect connects on-prem to GCP through a private dedicated circuit — not over the Internet. In a colocation facility, the Google network connects directly.
           </p>
           <ComparisonTable
             headers={["Feature", "Dedicated Interconnect", "Partner Interconnect"]}
@@ -494,14 +494,14 @@ export default function Content() {
         <section id="network-connectivity-center">
           <h3 style={S.h3}>Network Connectivity Center</h3>
           <p style={S.p}>
-            Network Connectivity Center (NCC) GCP ka hub-and-spoke WAN fabric hai. Multiple on-prem sites, branch offices aur VPCs ek central hub se connect ho jaate hain — point-to-point mesh banane ki zaroorat nahi. AWS Transit Gateway ka GCP equivalent.
+            Network Connectivity Center (NCC) is GCP's hub-and-spoke WAN fabric. Multiple on-prem sites, branch offices and VPCs connect through a central hub — no need to build a point-to-point mesh. GCP equivalent of AWS Transit Gateway.
           </p>
           <p style={S.p}>
-            Spokes teen types ke hote hain: HA VPN tunnels, Dedicated/Partner Interconnect attachments, aur Router appliances (third-party <TopicLink slug="sd-wan" variant="inline" /> devices jo Cloud Router se peer karte hain). Practical use case: company ke Mumbai HQ, Bangalore branch aur GCP VPC — teeno NCC hub se connect karo, sab ek dusre se reachable ho jaate hain bina per-site peering ke.
+            Spokes are of three types: HA VPN tunnels, Dedicated/Partner Interconnect attachments, and Router appliances (third-party <TopicLink slug="sd-wan" variant="inline" /> devices that peer with Cloud Router). Practical use case: a company's Mumbai HQ, Bangalore branch and GCP VPC — connect all three to the NCC hub, and they all become reachable from each other without per-site peering.
           </p>
         </section>
 
-        <Figure caption="GCP Hybrid Connectivity: HA VPN, Dedicated Interconnect, Partner Interconnect aur Network Tiers comparison">
+        <Figure caption="GCP Hybrid Connectivity: HA VPN, Dedicated Interconnect, Partner Interconnect and Network Tiers comparison">
           <GcpHybridDiagram />
         </Figure>
       </section>
@@ -513,7 +513,7 @@ export default function Content() {
         <section id="compute-engine">
           <h3 style={S.h3}>Compute Engine (VMs)</h3>
           <p style={S.p}>
-            Compute Engine GCP ka IaaS virtual compute service hai — KVM-based VMs. VM = machine type + boot disk (Persistent Disk) + NICs (VPC subnet se IPs). Public IP optional — internal IP mandatory (VPC subnet se assigned).
+            Compute Engine is GCP's IaaS virtual compute service — KVM-based VMs. VM = machine type + boot disk (Persistent Disk) + NICs (IPs from the VPC subnet). Public IP optional — internal IP mandatory (assigned from the VPC subnet).
           </p>
           <p style={S.p}>
             Machine families:
@@ -527,7 +527,7 @@ export default function Content() {
             <li><strong>T2A:</strong> Arm-based (Ampere Altra) — scale-out, cost-sensitive</li>
           </ul>
           <p style={S.p}>
-            Live Migration: GCP ke host maintenance ke dauran VMs automatically migrate hote hain doosre host pe — downtime nahi. AWS/Azure equivalent nahi — GCP advantage for certain workloads.
+            Live Migration: during GCP host maintenance, VMs are automatically migrated to another host — no downtime. No AWS/Azure equivalent — a GCP advantage for certain workloads.
           </p>
         </section>
 
@@ -544,21 +544,21 @@ export default function Content() {
               ["Preemptible VMs (legacy)", "Same as Spot but max 24hr runtime", "60–91%", "None — interruptible, 24hr max"],
             ]}
           />
-          <Callout type="important" title="SUDs — GCP Ka Unique Advantage">
-            Sustained Use Discounts AWS ya Azure mein nahi hain. GCP automatically discount deta hai jitna zyada ek resource ek month mein run karta hai. 100% of month run = ~30% discount — koi action nahi chahiye. AWS mein On-Demand pricing full month pe = full cost. CUDs ke saath combine karo for maximum savings on predictable baseline workloads.
+          <Callout type="important" title="SUDs — GCP's Unique Advantage">
+            Sustained Use Discounts are not available in AWS or Azure. GCP automatically gives a discount the longer a resource runs in a month. Run 100% of the month = ~30% discount — no action needed. In AWS, On-Demand pricing for a full month = full cost. Combine with CUDs for maximum savings on predictable baseline workloads.
           </Callout>
         </section>
 
         <section id="gke">
           <h3 style={S.h3}>Google Kubernetes Engine (GKE)</h3>
           <p style={S.p}>
-            GKE Google ka managed Kubernetes service hai — Google ne Kubernetes banaya, GKE uska most mature managed implementation hai. Control plane (API server, etcd, scheduler) Google manage karta hai.
+            GKE is Google's managed Kubernetes service — Google built Kubernetes, and GKE is its most mature managed implementation. Google manages the control plane (API server, etcd, scheduler).
           </p>
           <ul style={S.ul}>
-            <li><strong>GKE Standard:</strong> Node pools tum manage karo — machine type, count, OS, auto-upgrade settings. Full flexibility.</li>
-            <li><strong>GKE Autopilot:</strong> Google nodes manage karta hai — tum sirf pods deploy karo. Billing per pod (requested CPU/memory). Prod mein recommended for most teams — less operational overhead.</li>
+            <li><strong>GKE Standard:</strong> You manage node pools — machine type, count, OS, auto-upgrade settings. Full flexibility.</li>
+            <li><strong>GKE Autopilot:</strong> Google manages the nodes — you only deploy pods. Billing per pod (requested CPU/memory). Recommended in prod for most teams — less operational overhead.</li>
             <li><strong>Cluster types:</strong> Zonal (single master zone, dev/test), Regional (3 control plane zones, 99.95% SLA — use for prod)</li>
-            <li><strong>Workload Identity:</strong> K8s Service Account → GCP Service Account map karo — pods bina key file ke GCP APIs access karte hain. Always use this.</li>
+            <li><strong>Workload Identity:</strong> Map K8s Service Account → GCP Service Account — pods access GCP APIs without a key file. Always use this.</li>
             <li><strong>GKE Autopilot limitations:</strong> DaemonSets allowed with restrictions, privileged pods restricted, some node-level configs not available. Check workload compatibility before migrating.</li>
           </ul>
         </section>
@@ -566,31 +566,31 @@ export default function Content() {
         <section id="cloud-run">
           <h3 style={S.h3}>Cloud Run</h3>
           <p style={S.p}>
-            Cloud Run serverless container platform hai — container image deploy karo, Google scaling aur infrastructure manage karta hai. HTTP-triggered services ke liye. Scale-to-zero support — idle pe cost zero. AWS Fargate (serverless mode) + Lambda Container Images equivalent.
+            Cloud Run is a serverless container platform — deploy a container image, and Google manages scaling and infrastructure. For HTTP-triggered services. Scale-to-zero support — zero cost when idle. AWS Fargate (serverless mode) + Lambda Container Images equivalent.
           </p>
           <ul style={S.ul}>
             <li>CPU/memory allocations: 0.08–8 vCPU, 128MB–32GB per container instance</li>
-            <li>Concurrency: ek container instance multiple requests handle kar sakta hai (unlike Lambda)</li>
+            <li>Concurrency: one container instance can handle multiple requests (unlike Lambda)</li>
             <li>Cloud Run jobs: non-HTTP workloads, batch jobs — containerized, scheduled or triggered</li>
-            <li>VPC connector / Direct VPC egress: Cloud Run se VPC private resources access karo</li>
-            <li>Min instances: cold start eliminate karo — pre-warmed instances maintain karo</li>
+            <li>VPC connector / Direct VPC egress: access VPC private resources from Cloud Run</li>
+            <li>Min instances: eliminate cold starts — maintain pre-warmed instances</li>
           </ul>
         </section>
 
         <section id="cloud-functions">
           <h3 style={S.h3}>Cloud Functions</h3>
           <p style={S.p}>
-            Cloud Functions event-driven FaaS (Functions-as-a-Service) hai — code deploy karo, Google sab manage karta hai. AWS Lambda equivalent. Supported runtimes: Node.js, Python, Go, Java, Ruby, PHP, .NET.
+            Cloud Functions is event-driven FaaS (Functions-as-a-Service) — deploy code, and Google manages everything. AWS Lambda equivalent. Supported runtimes: Node.js, Python, Go, Java, Ruby, PHP, .NET.
           </p>
           <ul style={S.ul}>
             <li><strong>Triggers:</strong> HTTP, Pub/Sub, Cloud Storage, Firestore, Firebase, Cloud Scheduler, Eventarc</li>
             <li><strong>Gen 1 vs Gen 2:</strong> Gen 2 (Cloud Run based) — longer timeout (60 min), higher memory (32GB), concurrency support</li>
-            <li><strong>Cold starts:</strong> Min instances = 0 pe cold start possible. Min instances &gt; 0 = warm instances, higher cost.</li>
-            <li><strong>VPC connector:</strong> Functions se VPC private resources access (Cloud SQL, Memorystore etc.)</li>
+            <li><strong>Cold starts:</strong> Cold starts possible at Min instances = 0. Min instances &gt; 0 = warm instances, higher cost.</li>
+            <li><strong>VPC connector:</strong> Access VPC private resources from Functions (Cloud SQL, Memorystore etc.)</li>
           </ul>
         </section>
 
-        <Figure caption="GCP Compute: Compute Engine, GKE, Cloud Run, Cloud Functions — abstraction levels aur DC mapping">
+        <Figure caption="GCP Compute: Compute Engine, GKE, Cloud Run, Cloud Functions — abstraction levels and DC mapping">
           <GcpComputeDiagram />
         </Figure>
       </section>
@@ -602,7 +602,7 @@ export default function Content() {
         <section id="cloud-storage">
           <h3 style={S.h3}>Cloud Storage (GCS)</h3>
           <p style={S.p}>
-            Cloud Storage GCP ka object storage service hai — Bucket ke andar Objects. Hierarchy simple hai: bucket ek globally unique name se create hota hai, uske andar objects (files) key-value style mein store hote hain. Traditional DC mein NetApp StorageGRID ya Dell ECS jaise object stores ka yeh cloud counterpart hai — lekin scale aur durability (11 nines) ki wajah se comparison karna mushkil hai.
+            Cloud Storage is GCP's object storage service — Objects inside a Bucket. The hierarchy is simple: a bucket is created with a globally unique name, and inside it objects (files) are stored in key-value style. It is the cloud counterpart of object stores like NetApp StorageGRID or Dell ECS in a traditional DC — but because of its scale and durability (11 nines), a direct comparison is difficult.
           </p>
           <ul style={S.ul}>
             <li><strong>Location types:</strong> Regional (single region, lowest latency), Dual-region (two specific regions, 99.99% availability), Multi-region (large geo area, US/EU/ASIA — highest availability, content global)</li>
@@ -617,7 +617,7 @@ export default function Content() {
         <section id="persistent-disk">
           <h3 style={S.h3}>Persistent Disk and Hyperdisk</h3>
           <p style={S.p}>
-            Persistent Disk network-attached block storage hai — Compute Engine VMs ke liye. AWS EBS equivalent. Traditional DC SAN LUN equivalent.
+            Persistent Disk is network-attached block storage — for Compute Engine VMs. AWS EBS equivalent. Traditional DC SAN LUN equivalent.
           </p>
           <ComparisonTable
             headers={["Disk Type", "IOPS / Throughput", "Latency", "Use Case"]}
@@ -639,18 +639,18 @@ export default function Content() {
         <section id="filestore">
           <h3 style={S.h3}>Filestore</h3>
           <p style={S.p}>
-            Filestore managed NFS file storage service hai — multiple VMs simultaneously mount kar sakti hain. Traditional DC NAS (Network Attached Storage) ka cloud equivalent. <TopicLink slug="nas" variant="inline" /> article se networking concepts connect karo.
+            Filestore is a managed NFS file storage service — multiple VMs can mount it simultaneously. Cloud equivalent of traditional DC NAS (Network Attached Storage). Connect the networking concepts from the <TopicLink slug="nas" variant="inline" /> article.
           </p>
           <ul style={S.ul}>
             <li><strong>Basic HDD/SSD:</strong> Zonal — dev/test, basic workloads</li>
             <li><strong>Enterprise:</strong> Regional, HA — production workloads</li>
             <li><strong>High Scale:</strong> High capacity, high throughput — ML training data, HPC</li>
-            <li>NFS v3 aur v4.1 support — broad client compatibility</li>
-            <li>AWS EFS equivalent — lekin only NFS (no SMB like Azure Files)</li>
+            <li>NFS v3 and v4.1 support — broad client compatibility</li>
+            <li>AWS EFS equivalent — but NFS only (no SMB like Azure Files)</li>
           </ul>
         </section>
 
-        <Figure caption="GCP Storage: Cloud Storage, Persistent Disk, Filestore, Local SSD aur Database services">
+        <Figure caption="GCP Storage: Cloud Storage, Persistent Disk, Filestore, Local SSD and Database services">
           <GcpStorageDiagram />
         </Figure>
       </section>
@@ -662,31 +662,31 @@ export default function Content() {
         <section id="cloud-sql">
           <h3 style={S.h3}>Cloud SQL</h3>
           <p style={S.p}>
-            Cloud SQL managed relational database service hai — MySQL, PostgreSQL, aur SQL Server support karta hai. OS patches, database engine upgrades, automated backups — Google ka kaam. Tumhara kaam: schema design, queries, access control, aur connection management. Zyaadatar teams jo RDS pe comfortable hain unhe Cloud SQL familiar lagta hai — core concepts same hain, terminology thodi alag.
+            Cloud SQL is a managed relational database service — it supports MySQL, PostgreSQL, and SQL Server. OS patches, database engine upgrades, automated backups — Google's job. Your job: schema design, queries, access control, and connection management. Most teams that are comfortable with RDS find Cloud SQL familiar — the core concepts are the same, the terminology slightly different.
           </p>
           <ul style={S.ul}>
             <li><strong>HA configuration:</strong> Primary instance + standby instance (different Zone) — automatic failover in case of zone failure (~60 seconds typically)</li>
-            <li><strong>Read replicas:</strong> Same Region ya different Region pe readable replicas — read scaling + DR</li>
-            <li><strong>Private IP:</strong> Private Service Access se VPC mein private IP — public IP expose mat karo production mein</li>
+            <li><strong>Read replicas:</strong> Readable replicas in the same Region or a different Region — read scaling + DR</li>
+            <li><strong>Private IP:</strong> Private IP in the VPC via Private Service Access — do not expose a public IP in production</li>
             <li><strong>Backups:</strong> Automated daily backups + on-demand backups. Point-in-time recovery (PITR) with binary logging.</li>
-            <li><strong>Cloud SQL Auth Proxy:</strong> Secure connection without IP allowlisting — Cloud IAM se auth, SSL tunnel automatic</li>
+            <li><strong>Cloud SQL Auth Proxy:</strong> Secure connection without IP allowlisting — auth via Cloud IAM, SSL tunnel automatic</li>
           </ul>
         </section>
 
         <section id="cloud-spanner">
           <h3 style={S.h3}>Cloud Spanner</h3>
           <p style={S.p}>
-            Cloud Spanner duniya ka pehla globally distributed, strongly consistent, horizontally scalable SQL database hai. Yeh GCP ka truly unique service hai — AWS ya Azure mein direct equivalent nahi hai.
+            Cloud Spanner is the world's first globally distributed, strongly consistent, horizontally scalable SQL database. It is a truly unique GCP service — AWS or Azure have no direct equivalent.
           </p>
           <ul style={S.ul}>
-            <li>Global distribution: multiple Regions pe synchronous replication + strong consistency — yeh theoretically impossible lagta tha (CAP theorem) lekin GCP ne Truetime API se implement kiya</li>
+            <li>Global distribution: synchronous replication across multiple Regions + strong consistency — this seemed theoretically impossible (CAP theorem), but GCP implemented it with the Truetime API</li>
             <li>Horizontal scale: petabytes of data, millions of transactions per second — add nodes = more throughput</li>
-            <li>ACID transactions globally — consistency sirf single Region mein nahi, globally</li>
+            <li>ACID transactions globally — consistency not just in a single Region, but globally</li>
             <li>Use case: financial systems, global inventory, gaming leaderboards, global user databases</li>
-            <li>Cost: premium — traditional databases se zyada. Justify karo: global consistency requirement ya extreme scale</li>
+            <li>Cost: premium — more than traditional databases. Justify it with: a global consistency requirement or extreme scale</li>
           </ul>
           <Callout type="important" title="Cloud Spanner vs Cloud SQL">
-            Dono managed SQL databases hain lekin fundamentally different. Cloud SQL = traditional RDBMS managed (scale-up). Cloud Spanner = globally distributed scale-out. Spanner choose karo when: global consistency needed, horizontal scale beyond single server, multi-region active-active SQL. Cloud SQL choose karo when: standard workloads, cost sensitivity, existing MySQL/PostgreSQL apps.
+            Both are managed SQL databases but fundamentally different. Cloud SQL = traditional RDBMS, managed (scale-up). Cloud Spanner = globally distributed scale-out. Choose Spanner when: global consistency is needed, horizontal scale beyond a single server, multi-region active-active SQL. Choose Cloud SQL when: standard workloads, cost sensitivity, existing MySQL/PostgreSQL apps.
           </Callout>
         </section>
 
@@ -704,7 +704,7 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            AlloyDB ≠ Cloud SQL. AlloyDB ek alag product hai — columnar storage engine, AI/ML integration, 4x faster analytics than standard PostgreSQL. Production enterprise PostgreSQL workloads ke liye — Cloud SQL se zyada capable lekin zyada costly.
+            AlloyDB ≠ Cloud SQL. AlloyDB is a separate product — columnar storage engine, AI/ML integration, 4x faster analytics than standard PostgreSQL. For production enterprise PostgreSQL workloads — more capable than Cloud SQL but more costly.
           </p>
         </section>
       </section>
@@ -716,7 +716,7 @@ export default function Content() {
         <section id="zone-regional-ha">
           <h3 style={S.h3}>Zonal vs Regional Resources</h3>
           <p style={S.p}>
-            GCP resources categorize hote hain zonal, regional, ya global:
+            GCP resources are categorized as zonal, regional, or global:
           </p>
           <ComparisonTable
             headers={["Resource Type", "Scope", "HA Pattern", "Example"]}
@@ -728,21 +728,21 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            Production HA principle: zonal resources ko multiple zones mein deploy karo. Regional resources automatically multi-zone hain. Global resources extra HA planning nahi chahte.
+            Production HA principle: deploy zonal resources across multiple zones. Regional resources are automatically multi-zone. Global resources do not need extra HA planning.
           </p>
         </section>
 
         <section id="migs">
           <h3 style={S.h3}>Managed Instance Groups (MIGs)</h3>
           <p style={S.p}>
-            MIG identical VMs ka group hai — autoscaling, autohealing, rolling updates, multi-zone distribution. AWS Auto Scaling Group (ASG) equivalent. Azure VMSS equivalent.
+            A MIG is a group of identical VMs — autoscaling, autohealing, rolling updates, multi-zone distribution. AWS Auto Scaling Group (ASG) equivalent. Azure VMSS equivalent.
           </p>
           <ul style={S.ul}>
             <li><strong>Zonal MIG:</strong> Single zone — simpler, lower cost</li>
-            <li><strong>Regional MIG:</strong> Multiple zones in Region — HA, zone failure survive karta hai. Production ke liye use karo.</li>
+            <li><strong>Regional MIG:</strong> Multiple zones in a Region — HA, survives a zone failure. Use for production.</li>
             <li><strong>Autoscaling:</strong> CPU utilization, LB capacity, custom metrics (Cloud Monitoring), scheduled — min/max instance count</li>
             <li><strong>Autohealing:</strong> Health check fail → instance automatically recreate. Application-level health, not just VM ping.</li>
-            <li><strong>Rolling updates:</strong> Template update karo → MIG gradually instances update karta hai — configurable max surge/unavailable</li>
+            <li><strong>Rolling updates:</strong> Update the template → the MIG gradually updates instances — configurable max surge/unavailable</li>
             <li><strong>Stateless vs stateful MIGs:</strong> Stateful — per-instance config (disk, IP preserved) — database-like workloads</li>
           </ul>
         </section>
@@ -755,7 +755,7 @@ export default function Content() {
         <section id="dr-patterns">
           <h3 style={S.h3}>DR Patterns and Backup</h3>
           <p style={S.p}>
-            GCP mein koi single managed DR service nahi hai (like Azure Site Recovery). DR engineer design karta hai using existing services.
+            GCP has no single managed DR service (like Azure Site Recovery). The engineer designs DR using existing services.
           </p>
           <ComparisonTable
             headers={["Pattern", "RTO", "RPO", "Cost", "Approach"]}
@@ -769,7 +769,7 @@ export default function Content() {
           <ul style={S.ul}>
             <li><strong>VM backups:</strong> Disk snapshots (scheduled policies), machine images (VM + disk + metadata)</li>
             <li><strong>Cloud SQL:</strong> Cross-region read replicas → promote to standalone on DR. Automated backups + PITR.</li>
-            <li><strong>Cloud Storage:</strong> Dual-region bucket (e.g., asia-south1 + asia-southeast1) create karo — objects automatically dono regions mein sync hote hain, zero extra config. Ek region down ho toh doosri region se seamless serve hota hai. Turbo replication enable karo 15-minute RPO ke liye.</li>
+            <li><strong>Cloud Storage:</strong> Create a dual-region bucket (e.g., asia-south1 + asia-southeast1) — objects automatically sync to both regions, zero extra config. If one region goes down, content is served seamlessly from the other region. Enable Turbo replication for a 15-minute RPO.</li>
             <li><strong>Cloud Spanner:</strong> Multi-region configuration — globally distributed instances survive regional failures</li>
             <li><strong>DNS failover:</strong> Cloud DNS health checks + routing policies for automatic failover</li>
           </ul>
@@ -783,19 +783,19 @@ export default function Content() {
         <section id="cloud-kms">
           <h3 style={S.h3}>Cloud KMS and Secret Manager</h3>
           <p style={S.p}>
-            <strong>Cloud KMS (Key Management Service):</strong> Cryptographic keys manage karo — software-backed ya HSM-backed (Cloud HSM). Envelope encryption: data encrypt karo DEK se, DEK encrypt karo KMS key se. AWS KMS equivalent.
+            <strong>Cloud KMS (Key Management Service):</strong> Manage cryptographic keys — software-backed or HSM-backed (Cloud HSM). Envelope encryption: encrypt data with a DEK, encrypt the DEK with the KMS key. AWS KMS equivalent.
           </p>
           <ul style={S.ul}>
-            <li>CMEK (Customer-Managed Encryption Keys): Cloud Storage, BigQuery, Cloud SQL, Compute Engine disk encryption KMS keys se</li>
+            <li>CMEK (Customer-Managed Encryption Keys): Cloud Storage, BigQuery, Cloud SQL, Compute Engine disk encryption with KMS keys</li>
             <li>Key rotation: automatic scheduled rotation</li>
-            <li>External Key Manager (EKM): keys outside GCP (on-prem HSM) se — HYOK (Hold Your Own Key)</li>
+            <li>External Key Manager (EKM): with keys outside GCP (on-prem HSM) — HYOK (Hold Your Own Key)</li>
           </ul>
           <p style={S.p}>
-            <strong>Secret Manager:</strong> Application secrets (API keys, passwords, certificates) securely store karo. Versioned, audited, IAM-controlled access. AWS Secrets Manager equivalent.
+            <strong>Secret Manager:</strong> Securely store application secrets (API keys, passwords, certificates). Versioned, audited, IAM-controlled access. AWS Secrets Manager equivalent.
           </p>
           <ul style={S.ul}>
             <li>Versions: multiple versions per secret — rotate without app restart</li>
-            <li>Automatic rotation: Cloud Functions trigger pe auto-rotate support</li>
+            <li>Automatic rotation: auto-rotate support via Cloud Functions trigger</li>
             <li>Access via API/SDK: Compute Engine VMs, Cloud Run, Cloud Functions — no credentials in code</li>
           </ul>
         </section>
@@ -803,10 +803,10 @@ export default function Content() {
         <section id="security-command-center">
           <h3 style={S.h3}>Security Command Center</h3>
           <p style={S.p}>
-            Security Command Center (SCC) GCP ka centralized CSPM + threat detection platform hai. Ek jagah se pura GCP environment ka security posture dekho — misconfigurations, active threats, compliance gaps sab consolidated view mein.
+            Security Command Center (SCC) is GCP's centralized CSPM + threat detection platform. See the security posture of the entire GCP environment from one place — misconfigurations, active threats, compliance gaps, all in a consolidated view.
           </p>
           <ul style={S.ul}>
-            <li><strong>Security Health Analytics:</strong> Misconfigurations detect karo — public buckets, overly permissive firewall rules (allow all ingress), exposed SA keys, unencrypted disks</li>
+            <li><strong>Security Health Analytics:</strong> Detect misconfigurations — public buckets, overly permissive firewall rules (allow all ingress), exposed SA keys, unencrypted disks</li>
             <li><strong>Threat Detection:</strong> ML-based — cryptomining, data exfiltration, brute force, malware signals</li>
             <li><strong>Event Threat Detection:</strong> Cloud Logging streams analyze — anomalous IAM grants, suspicious logins, privilege escalation</li>
             <li><strong>Container Threat Detection:</strong> GKE runtime threat detection — suspicious binaries, libraries</li>
@@ -817,18 +817,18 @@ export default function Content() {
         <section id="vpc-service-controls">
           <h3 style={S.h3}>VPC Service Controls</h3>
           <p style={S.p}>
-            VPC Service Controls ek security perimeter define karta hai GCP managed services ke around — data exfiltration prevent karo. Even with valid IAM credentials, perimeter ke bahar se access deny ho sakti hai.
+            VPC Service Controls define a security perimeter around GCP managed services — preventing data exfiltration. Even with valid IAM credentials, access from outside the perimeter can be denied.
           </p>
           <p style={S.p}>
-            Example: BigQuery dataset — sirf corporate VPC se accessible. Employee rogue credentials se bahar se data nahi nikal sakta. Cloud Storage bucket — sirf specific VPC sources se. Compliance ke liye (BFSI, healthcare) critical feature.
+            Example: a BigQuery dataset — accessible only from the corporate VPC. An employee with rogue credentials cannot pull data out from outside. A Cloud Storage bucket — only from specific VPC sources. A critical feature for compliance (BFSI, healthcare).
           </p>
           <ul style={S.ul}>
-            <li>Access Levels: additional conditions define karo (device policy, IP range, region)</li>
+            <li>Access Levels: define additional conditions (device policy, IP range, region)</li>
             <li>Ingress/Egress rules: fine-grained control on what can enter/leave perimeter</li>
-            <li>Dry run mode: audit mode — violations log karo, deny nahi karo — before enforcing</li>
+            <li>Dry run mode: audit mode — log violations, do not deny — before enforcing</li>
           </ul>
           <Callout type="important" title="BeyondCorp Enterprise">
-            BeyondCorp Enterprise Google ka zero-trust access product hai — corporate VPN ke bina enterprise applications access karo, based on user identity + device trust level + context (location, device compliance). Google ne yeh apne own employees ke liye pehle build kiya tha — "BeyondCorp" research papers 2014 se publicly available hain. Network location (VPN connected hai ya nahi) matter nahi karta, device posture aur user identity matter karta hai.
+            BeyondCorp Enterprise is Google's zero-trust access product — access enterprise applications without a corporate VPN, based on user identity + device trust level + context (location, device compliance). Google first built this for its own employees — the "BeyondCorp" research papers have been publicly available since 2014. Network location (whether you are connected to the VPN or not) does not matter; device posture and user identity matter.
           </Callout>
         </section>
       </section>
@@ -840,28 +840,28 @@ export default function Content() {
         <section id="cloud-monitoring">
           <h3 style={S.h3}>Cloud Monitoring</h3>
           <p style={S.p}>
-            Cloud Monitoring GCP infrastructure aur applications ke metrics collect, visualize aur alert karta hai — GCP resources ka data automatically aata hai, additional configuration nahi chahiye. AWS/Azure infra bhi monitor kar sakte ho same workspace se (multi-cloud agent deploy karo).
+            Cloud Monitoring collects, visualizes and alerts on metrics of GCP infrastructure and applications — data from GCP resources arrives automatically, no additional configuration needed. You can also monitor AWS/Azure infra from the same workspace (deploy the multi-cloud agent).
           </p>
           <ul style={S.ul}>
             <li>GCP resource metrics auto-collected: Compute Engine CPU/disk/network, GKE node/pod, Cloud SQL queries etc.</li>
-            <li>Custom metrics: Monitoring API ya OpenTelemetry se push karo</li>
-            <li>Uptime checks: HTTP/TCP/HTTPS endpoint health checks — global locations se</li>
+            <li>Custom metrics: push via the Monitoring API or OpenTelemetry</li>
+            <li>Uptime checks: HTTP/TCP/HTTPS endpoint health checks — from global locations</li>
             <li>Alerting policies: metric threshold, absence of metric, metric ratio — notification channels (email, PagerDuty, Slack, Pub/Sub, webhook)</li>
             <li>Dashboards: pre-built + custom. Metrics Explorer: ad-hoc metric queries.</li>
-            <li>SLO monitoring: SLI define karo → SLO track karo → error budget monitor karo</li>
+            <li>SLO monitoring: define SLIs → track SLOs → monitor the error budget</li>
           </ul>
         </section>
 
         <section id="cloud-logging">
           <h3 style={S.h3}>Cloud Logging and Audit Logs</h3>
           <p style={S.p}>
-            Cloud Logging GCP ka centralized log ingestion aur querying platform hai. GCP services automatically logs bhejte hain — Compute Engine (OS logs via Ops Agent), GKE, Cloud SQL, Cloud Run, Cloud Functions sab included. Log Router sab logs receive karta hai aur decide karta hai kahan store karna hai ya export karna hai.
+            Cloud Logging is GCP's centralized log ingestion and querying platform. GCP services send logs automatically — Compute Engine (OS logs via Ops Agent), GKE, Cloud SQL, Cloud Run, Cloud Functions are all included. The Log Router receives all logs and decides where to store or export them.
           </p>
           <ul style={S.ul}>
-            <li>Log Router: sab logs Cloud Logging mein aate hain — Log Router decides where to store/export</li>
+            <li>Log Router: all logs arrive in Cloud Logging — the Log Router decides where to store/export</li>
             <li>Log sinks: export logs to Cloud Storage (archival), BigQuery (analytics), Pub/Sub (streaming), third-party SIEMs</li>
-            <li>Log-based metrics: logs se custom metrics create karo → alerting pe use karo</li>
-            <li>Log exclusions: unnecessary logs exclude karo — cost control</li>
+            <li>Log-based metrics: create custom metrics from logs → use them for alerting</li>
+            <li>Log exclusions: exclude unnecessary logs — cost control</li>
           </ul>
           <p style={S.p}>
             <strong>Cloud Audit Logs — 4 types:</strong>
@@ -870,23 +870,23 @@ export default function Content() {
             <li><strong>Admin Activity:</strong> Resource configuration changes — ALWAYS on, cannot disable. "Who created/deleted/modified resource X."</li>
             <li><strong>Data Access:</strong> Data read/write — configurable (off by default for storage cost). "Who read object Y from bucket Z."</li>
             <li><strong>System Event:</strong> Google-automated actions — VM live migration, autoscaling events.</li>
-            <li><strong>Policy Denied:</strong> VPC Service Controls ya Org Policy violations.</li>
+            <li><strong>Policy Denied:</strong> VPC Service Controls or Org Policy violations.</li>
           </ul>
           <Callout type="best-practice" title="Audit Logs — Production Mandatory">
-            Admin Activity logs always on rakhna mandatory hai (already can't disable). Data Access logs production mein enable karo for compliance — sirf high-volume services pe cost monitor karo. BigQuery data access logs especially important for data governance. Log sink to Cloud Storage for 7-year retention (financial compliance).
+            Keeping Admin Activity logs always on is mandatory (they already can't be disabled). Enable Data Access logs in production for compliance — just monitor cost on high-volume services. BigQuery data access logs are especially important for data governance. Log sink to Cloud Storage for 7-year retention (financial compliance).
           </Callout>
         </section>
 
         <section id="trace-profiler">
           <h3 style={S.h3}>Cloud Trace and Profiler</h3>
           <p style={S.p}>
-            <strong>Cloud Trace:</strong> Distributed tracing — request ke latency across microservices trace karo. GKE, App Engine, Cloud Run automatically integrated. AWS X-Ray equivalent. Bottlenecks identify karo: "Order API 500ms slow kyu hai — database query slow hai ya network?"
+            <strong>Cloud Trace:</strong> Distributed tracing — trace request latency across microservices. GKE, App Engine, Cloud Run automatically integrated. AWS X-Ray equivalent. Identify bottlenecks: "Why is the Order API 500ms slow — is the database query slow or the network?"
           </p>
           <p style={S.p}>
-            <strong>Cloud Profiler:</strong> Production mein always-on CPU aur heap profiler — low overhead (&lt;1%). Performance hotspots identify karo without separate profiling sessions. AWS CodeGuru Profiler equivalent.
+            <strong>Cloud Profiler:</strong> Always-on CPU and heap profiler in production — low overhead (&lt;1%). Identify performance hotspots without separate profiling sessions. AWS CodeGuru Profiler equivalent.
           </p>
           <p style={S.p}>
-            <strong>Error Reporting:</strong> Application errors automatically detect aur group karo — stacktraces, first/last occurrence, user impact count. App Engine, Cloud Run, GKE se auto-integrate.
+            <strong>Error Reporting:</strong> Automatically detect and group application errors — stacktraces, first/last occurrence, user impact count. Auto-integrates with App Engine, Cloud Run, GKE.
           </p>
         </section>
 
@@ -902,16 +902,16 @@ export default function Content() {
         <section id="deployment-manager-tf">
           <h3 style={S.h3}>Terraform and Deployment Manager</h3>
           <p style={S.p}>
-            <strong>Terraform (HashiCorp):</strong> GCP ke liye <code>google</code> provider — all GCP resources manage karne ke liye. Multi-cloud environments ke liye preferred. State management: Cloud Storage bucket mein Terraform state file store karo + GCS object versioning enable karo. State locking: GCP Cloud Storage object lock ya separately Firestore/Datastore.
+            <strong>Terraform (HashiCorp):</strong> The <code>google</code> provider for GCP — for managing all GCP resources. Preferred for multi-cloud environments. State management: store the Terraform state file in a Cloud Storage bucket + enable GCS object versioning. State locking: GCP Cloud Storage object lock or separately Firestore/Datastore.
           </p>
           <p style={S.p}>
-            <strong>Deployment Manager:</strong> GCP ka native IaC — YAML/Python/Jinja2. Being superseded by Terraform aur Config Connector for most use cases. Legacy projects mein dikhega.
+            <strong>Deployment Manager:</strong> GCP's native IaC — YAML/Python/Jinja2. Being superseded by Terraform and Config Connector for most use cases. You will see it in legacy projects.
           </p>
           <p style={S.p}>
-            <strong>Config Connector:</strong> Kubernetes operator jo GCP resources ko K8s custom resources se manage karta hai — GitOps workflows ke liye, GKE clusters mein. Infra aur app deployments ek Kubernetes manifest se manage karo.
+            <strong>Config Connector:</strong> A Kubernetes operator that manages GCP resources as K8s custom resources — for GitOps workflows, in GKE clusters. Manage infra and app deployments from one Kubernetes manifest.
           </p>
           <ul style={S.ul}>
-            <li>Terraform + Cloud Build: CI/CD pipeline — PR pe <code>terraform plan</code>, merge pe <code>terraform apply</code></li>
+            <li>Terraform + Cloud Build: CI/CD pipeline — <code>terraform plan</code> on PR, <code>terraform apply</code> on merge</li>
             <li>Terraform modules: reusable modules for GCP patterns (VPC, GKE cluster, Cloud SQL)</li>
             <li>Google-provided modules: <code>terraform-google-modules</code> GitHub organization — production-ready</li>
           </ul>
@@ -943,12 +943,12 @@ export default function Content() {
           <h3 style={S.h3}>Cost Management Tools</h3>
           <ul style={S.ul}>
             <li><strong>Cloud Billing:</strong> Cost reports, invoice management, payment profiles. Export to BigQuery for custom analysis.</li>
-            <li><strong>Budget Alerts:</strong> Billing Account ya Project level pe budget define karo → alerts at 50%, 90%, 100% thresholds.</li>
-            <li><strong>Cost Table / Cost Breakdown:</strong> Service, SKU, project, label pe drill-down cost analysis.</li>
+            <li><strong>Budget Alerts:</strong> Define a budget at the Billing Account or Project level → alerts at 50%, 90%, 100% thresholds.</li>
+            <li><strong>Cost Table / Cost Breakdown:</strong> Drill-down cost analysis by service, SKU, project, label.</li>
             <li><strong>Recommendations:</strong> Committed Use Discount recommendations, idle VM recommendations, oversized VM suggestions — Recommender API.</li>
             <li><strong>Pricing Calculator:</strong> cloud.google.com/products/calculator — estimate costs before deploying.</li>
             <li><strong>Labels strategy:</strong> environment, team, application, cost-center mandatory labels — enforce with Org Policy.</li>
-            <li><strong>Resource hierarchy for billing:</strong> Projects → Billing Accounts → reporting hierarchy design karo upfront.</li>
+            <li><strong>Resource hierarchy for billing:</strong> Design the Projects → Billing Accounts → reporting hierarchy upfront.</li>
           </ul>
         </section>
       </section>
@@ -973,7 +973,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>GCP choose karo jab:</strong> Analytics/BigQuery primary need ho, Kubernetes-native architecture, AI/ML workloads (TPUs, Vertex AI), global network performance premium tier required, cost-sensitive compute (SUDs advantage). <strong>AWS choose karo jab:</strong> Widest service selection, largest global community, most mature ecosystem, multi-cloud strategy. <strong>Azure choose karo jab:</strong> Microsoft enterprise software heavy use (Windows, SQL Server, AD, M365), hybrid cloud primary concern.
+          <strong>Choose GCP when:</strong> Analytics/BigQuery is the primary need, Kubernetes-native architecture, AI/ML workloads (TPUs, Vertex AI), global network performance premium tier required, cost-sensitive compute (SUDs advantage). <strong>Choose AWS when:</strong> Widest service selection, largest global community, most mature ecosystem, multi-cloud strategy. <strong>Choose Azure when:</strong> Heavy use of Microsoft enterprise software (Windows, SQL Server, AD, M365), hybrid cloud is the primary concern.
         </p>
       </section>
 
@@ -999,11 +999,11 @@ export default function Content() {
           <ul style={S.ul}>
             <li>Dedicated Interconnect (primary, 10Gbps) + HA VPN (backup) → Cloud Router (BGP) → VPC</li>
             <li>Shared VPC: centralized networking project → multiple service projects use its subnets</li>
-            <li>Cloud DNS private zones: hybrid DNS — on-prem resolver pe GCP zones forward karo</li>
-            <li>Private Service Connect: on-prem se GCP APIs (googleapis.com) → private IP access</li>
+            <li>Cloud DNS private zones: hybrid DNS — forward GCP zones on the on-prem resolver</li>
+            <li>Private Service Connect: from on-prem to GCP APIs (googleapis.com) → private IP access</li>
             <li>Cloud Identity: on-prem AD → Cloud Identity (GCDS sync) → GCP IAM</li>
-            <li>Anthos / GKE Enterprise: on-prem K8s clusters aur GKE centrally manage karo</li>
-            <li>Cloud Storage Transfer Service: on-prem data → GCS migrate karo (initial + incremental)</li>
+            <li>Anthos / GKE Enterprise: centrally manage on-prem K8s clusters and GKE</li>
+            <li>Cloud Storage Transfer Service: migrate on-prem data → GCS (initial + incremental)</li>
           </ul>
         </section>
       </section>
@@ -1021,7 +1021,7 @@ export default function Content() {
             ["VPC design", "Shared VPC for org, non-overlapping CIDRs globally planned upfront", "Scalability, no future conflict"],
             ["Firewall rules", "Tag-based, deny-by-default explicitly. Remove default rules.", "Principle of least privilege"],
             ["Private IPs", "Cloud SQL, Memorystore, all PaaS via Private Service Access — no public IPs", "Reduce attack surface"],
-            ["MIGs", "Regional MIGs (not zonal) for production. Autohealing always.", "Zone failure survive"],
+            ["MIGs", "Regional MIGs (not zonal) for production. Autohealing always.", "Survives zone failure"],
             ["GCS versioning", "Enable on critical buckets + lifecycle policy for cost control", "Accidental delete protection + cost"],
             ["Audit logs", "Admin Activity always on. Data Access enable for sensitive services.", "Compliance, forensics"],
             ["CUDs", "Analyze 3-month usage → purchase CUDs for predictable baseline", "30–70% savings"],
@@ -1057,11 +1057,11 @@ export default function Content() {
         <h2 style={S.h2}>Troubleshooting</h2>
         <p style={S.p}>GCP troubleshooting systematic approach: connectivity → firewall → IAM → app → monitoring data.</p>
         <ol style={{ ...S.ul, listStyleType: "decimal" }}>
-          <li><strong>DNS resolution?</strong> <code>nslookup / dig</code> from VM — Cloud DNS resolver, private zone config check karo</li>
+          <li><strong>DNS resolution?</strong> <code>nslookup / dig</code> from the VM — check the Cloud DNS resolver and private zone config</li>
           <li><strong>VM reachable?</strong> VM running status check: <code>gcloud compute instances describe</code>. SSH via IAP (no public IP needed): <code>gcloud compute ssh VM_NAME --tunnel-through-iap</code></li>
-          <li><strong>Firewall blocking?</strong> Connectivity Tests tool (Network Intelligence Center) — source to destination simulate karo. Firewall Rules Logging enable karo → Cloud Logging mein check karo</li>
-          <li><strong>Route issue?</strong> <code>gcloud compute routes list</code>. Connectivity Tests tool next-hop verify karta hai.</li>
-          <li><strong>IAM denied?</strong> Policy Troubleshooter (console ya <code>gcloud policy-troubleshoot iam RESOURCE --principal EMAIL --permission PERMISSION</code>)</li>
+          <li><strong>Firewall blocking?</strong> Connectivity Tests tool (Network Intelligence Center) — simulate source to destination. Enable Firewall Rules Logging → check in Cloud Logging</li>
+          <li><strong>Route issue?</strong> <code>gcloud compute routes list</code>. The Connectivity Tests tool verifies the next-hop.</li>
+          <li><strong>IAM denied?</strong> Policy Troubleshooter (console or <code>gcloud policy-troubleshoot iam RESOURCE --principal EMAIL --permission PERMISSION</code>)</li>
           <li><strong>Cloud SQL unreachable?</strong> Private IP → Private Service Access peering check. Cloud SQL Auth Proxy running? Authorized networks (if public IP) check.</li>
           <li><strong>GKE pod issue?</strong> <code>kubectl describe pod</code>, <code>kubectl logs</code>, Events check. Workload Identity federation — SA permissions?</li>
           <li><strong>Cloud Storage access denied?</strong> IAM permissions on bucket (roles/storage.objectViewer), bucket ACLs, VPC Service Controls perimeter check.</li>
@@ -1069,8 +1069,8 @@ export default function Content() {
           <li><strong>Cost spike?</strong> Cloud Billing → Cost Table → filter by Project/Service/Label. Unexpected resources (VMs left running, large storage).</li>
           <li><strong>Interconnect/VPN down?</strong> Cloud Router BGP session status. HA VPN tunnel status. Partner Interconnect → provider status.</li>
         </ol>
-        <Callout type="important" title="Network Intelligence Center — GCP ka Troubleshooting Platform">
-          Network Intelligence Center tools: Connectivity Tests (end-to-end path simulation), Network Topology (live traffic visualization), Firewall Insights (unused rules, shadow rules), Performance Dashboard (packet loss, latency). Troubleshooting shuru karo Connectivity Tests se — yeh simulate karta hai bina actual traffic ke.
+        <Callout type="important" title="Network Intelligence Center — GCP's Troubleshooting Platform">
+          Network Intelligence Center tools: Connectivity Tests (end-to-end path simulation), Network Topology (live traffic visualization), Firewall Insights (unused rules, shadow rules), Performance Dashboard (packet loss, latency). Start troubleshooting with Connectivity Tests — it simulates without actual traffic.
         </Callout>
       </section>
 
@@ -1112,10 +1112,10 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          Data Center engineer ke liye recommended path: Associate Cloud Engineer (ACE) → Professional Cloud Architect (PCA) → Professional Cloud Network Engineer (networking-focused). ACE practical skills test karta hai — hands-on labs mandatory practice karo (Cloud Skills Boost / Qwiklabs).
+          Recommended path for a Data Center engineer: Associate Cloud Engineer (ACE) → Professional Cloud Architect (PCA) → Professional Cloud Network Engineer (networking-focused). ACE tests practical skills — practising hands-on labs is a must (Cloud Skills Boost / Qwiklabs).
         </p>
         <p style={S.p}>
-          Career opportunities: GCP Cloud Engineer, Cloud Architect, GKE/Platform Engineer, Data Engineer (BigQuery), ML Engineer (Vertex AI). India mein GCP demand AWS se kam hai overall — lekin analytics, AI/ML aur e-commerce companies strong GCP adoption kar rahi hain. Multi-cloud skills (AWS + GCP ya Azure + GCP) highest value dete hain market mein.
+          Career opportunities: GCP Cloud Engineer, Cloud Architect, GKE/Platform Engineer, Data Engineer (BigQuery), ML Engineer (Vertex AI). In India, GCP demand is lower than AWS overall — but analytics, AI/ML and e-commerce companies are adopting GCP strongly. Multi-cloud skills (AWS + GCP or Azure + GCP) carry the highest value in the market.
         </p>
       </section>
 
@@ -1123,19 +1123,19 @@ export default function Content() {
       <section id="key-takeaways">
         <h2 style={S.h2}>Key Takeaways</h2>
         <ul style={S.ul}>
-          <li><strong>Global VPC:</strong> GCP ka #1 differentiator — single VPC all Regions, subnets regional, no per-Region VPC needed</li>
-          <li><strong>No Region Pairs:</strong> AWS/Azure jaisa Microsoft-defined pairing nahi — DR Region tum design karo</li>
+          <li><strong>Global VPC:</strong> GCP's #1 differentiator — single VPC across all Regions, subnets regional, no per-Region VPC needed</li>
+          <li><strong>No Region Pairs:</strong> No Microsoft-defined pairing as in AWS/Azure — you design the DR Region</li>
           <li><strong>Firewall Rules:</strong> VPC-level, network tag/SA-based targeting (not subnet-level like AWS NACLs)</li>
           <li><strong>Resource Hierarchy:</strong> Org → Folder → Project → Resource. IAM inheritance top-down only.</li>
-          <li><strong>Service Accounts:</strong> Workload identity — attached SA ya Workload Identity Federation. JSON key files avoid karo.</li>
-          <li><strong>SUDs:</strong> Automatic discounts — no action required. AWS/Azure mein equivalent nahi.</li>
-          <li><strong>Spot VMs:</strong> 30-second notice (AWS = 2-minute). Application ko graceful shutdown 30 seconds mein handle karna chahiye.</li>
+          <li><strong>Service Accounts:</strong> Workload identity — attached SA or Workload Identity Federation. Avoid JSON key files.</li>
+          <li><strong>SUDs:</strong> Automatic discounts — no action required. No equivalent in AWS/Azure.</li>
+          <li><strong>Spot VMs:</strong> 30-second notice (AWS = 2-minute). The application must handle graceful shutdown within 30 seconds.</li>
           <li><strong>Cloud Spanner:</strong> Globally distributed SQL — no AWS/Azure direct equivalent. Use when global consistency + horizontal scale needed.</li>
           <li><strong>Network Tiers:</strong> Premium (Google backbone) vs Standard (Internet) — unique GCP concept.</li>
-          <li><strong>Interconnect:</strong> NOT encrypted by default — MACsec/IPsec explicitly configure karo.</li>
+          <li><strong>Interconnect:</strong> NOT encrypted by default — explicitly configure MACsec/IPsec.</li>
           <li><strong>Operations Suite:</strong> Cloud Monitoring + Logging + Trace + Profiler + Audit Logs — complete observability stack.</li>
-          <li><strong>GKE Autopilot:</strong> Prod mein recommended for most teams — Google nodes manage karta hai, per-pod billing.</li>
-          <li><strong>Troubleshoot:</strong> Connectivity Tests (Network Intelligence Center) pehle — firewall, route, IAM issues diagnose karo.</li>
+          <li><strong>GKE Autopilot:</strong> Recommended in prod for most teams — Google manages nodes, per-pod billing.</li>
+          <li><strong>Troubleshoot:</strong> Connectivity Tests (Network Intelligence Center) first — diagnose firewall, route and IAM issues.</li>
           <li><strong>Cost:</strong> SUDs automatic. CUDs for baseline. Labels mandatory. Budget alerts from day 1.</li>
           <li><strong>IaC:</strong> Terraform (google provider) preferred. State in GCS. CI/CD via Cloud Build.</li>
         </ul>

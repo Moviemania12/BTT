@@ -27,7 +27,7 @@ export default function GcpArticlePage() {
         slug="gcp"
         headings={HEADINGS}
         readingTimeMinutes={gcpMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/it/cloud/gcp">
         <Content />
       </ArticleLayout>
     </>

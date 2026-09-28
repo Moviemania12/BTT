@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(sdWanMetadata);
+const baseMetadata = buildPageMetadata(sdWanMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/it/networking/sd-wan",
+    languages: {
+      en: "https://behindthetech.in/learn/it/networking/sd-wan",
+      hi: "https://behindthetech.in/hi/learn/it/networking/sd-wan",
+      "x-default": "https://behindthetech.in/learn/it/networking/sd-wan",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/it/networking/sd-wan", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: sdWanMetadata.title,
