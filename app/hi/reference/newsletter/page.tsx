@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "BTT Weekly Newsletter — Behind The Tech",
   description:
-    "Behind The Tech weekly newsletter — Data Center engineering insights, incident case studies, new article alerts, industry news, and learning roadmap updates. For DC engineers, with DC engineers.",
+    "Behind The Tech weekly newsletter — Data Center engineering insights, incident case studies, new article alerts, industry news, and learning roadmap updates. DC engineers ke liye, DC engineers ke saath.",
   alternates: {
-    canonical: "https://behindthetech.in/reference/newsletter",
+    canonical: "https://behindthetech.in/hi/reference/newsletter",
     languages: {
-      "hi": "https://behindthetech.in/hi/reference/newsletter",
+      "en": "https://behindthetech.in/reference/newsletter",
     },
   },
 };
@@ -43,7 +43,7 @@ export default function NewsletterPage() {
           BTT Weekly — Engineering Insights
         </h1>
         <p style={{ fontSize: "1.1rem", color: "#475569", marginBottom: "2.5rem", maxWidth: "640px" }}>
-          A technical deep-dive every week: DC incidents, engineering decisions, new content alerts, and field notes. Textbook-free. No filler. Written for engineers who work in data centers.
+          Har hafte ek technical deep-dive: DC incidents, engineering decisions, new content alerts, aur field notes. Textbook-free. No filler. Written for engineers who work in data centers.
         </p>
 
         {/* Subscribe form */}

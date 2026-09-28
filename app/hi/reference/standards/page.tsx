@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   description:
     "Complete Data Center standards reference — Uptime Institute Tier, TIA-942, ISO 27001, ISO 20000, ISO 22301, PCI-DSS, SOC 2, EN 50600, ASHRAE TC9.9, NFPA 75, NFPA 76, IEC 60364. What each standard requires and how DCs implement it.",
   alternates: {
-    canonical: "https://behindthetech.in/reference/standards",
+    canonical: "https://behindthetech.in/hi/reference/standards",
     languages: {
-      "hi": "https://behindthetech.in/hi/reference/standards",
+      "en": "https://behindthetech.in/reference/standards",
     },
   },
 };
@@ -25,7 +25,7 @@ export default function StandardsPage() {
           Data Center Standards Reference
         </h1>
         <p style={{ fontSize: "1.1rem", color: "#475569", marginBottom: "2rem", maxWidth: "700px" }}>
-          {STANDARDS.length} standards — Uptime Institute, TIA, ISO, PCI, NFPA, IEC, ASHRAE. Every standard covers: what it is, why it matters, key requirements, and a real DC implementation example. Search or use the category filter.
+          {STANDARDS.length} standards — Uptime Institute, TIA, ISO, PCI, NFPA, IEC, ASHRAE. Har standard mein: what it is, why it matters, key requirements, aur real DC implementation example. Search ya category filter use karo.
         </p>
         <StandardsClient standards={STANDARDS} categories={STANDARDS_CATEGORIES} />
         <div style={{ marginTop: "3rem", padding: "2rem", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: "12px" }}>

@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   description:
     "Free Data Center engineering templates — UPS maintenance reports, DG test records, battery inspection forms, rack audit sheets, incident report templates, RCA templates, change management forms, capacity planning worksheets. Print-ready PDF generation.",
   alternates: {
-    canonical: "https://behindthetech.in/reference/downloads",
+    canonical: "https://behindthetech.in/hi/reference/downloads",
     languages: {
-      "hi": "https://behindthetech.in/hi/reference/downloads",
+      "en": "https://behindthetech.in/reference/downloads",
     },
   },
 };
@@ -30,7 +30,7 @@ export default function DownloadsPage() {
           Engineering Templates and Forms
         </h1>
         <p style={{ fontSize: "1.1rem", color: "#475569", marginBottom: "2rem", maxWidth: "700px" }}>
-          {DOWNLOAD_ITEMS.length} templates, {totalFields} total fields — production-ready forms for DC operations, maintenance, and management. Every template is print-ready — save it directly as a PDF from your browser.
+          {DOWNLOAD_ITEMS.length} templates, {totalFields} total fields — production-ready forms for DC operations, maintenance, and management. Har template print-ready hai — browser se directly PDF save karo.
         </p>
         <DownloadsClient items={DOWNLOAD_ITEMS} categories={DOWNLOAD_CATEGORIES} />
         <div style={{ marginTop: "3rem", padding: "2rem", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: "12px" }}>

@@ -13,7 +13,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
     categoryColor: "#f97316",
     title: "UPS Automatic Bypass — Load Unprotected",
     symptoms: [
-      "UPS front panel 'BYPASS' LED blinking or solid",
+      "UPS front panel pe 'BYPASS' LED blinking ya solid",
       "DCIM/BMS alarm: 'UPS in bypass mode'",
       "UPS input/output voltages same (no conversion happening)",
       "Battery not charging despite grid available",
@@ -26,8 +26,8 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
       "Manual bypass switched accidentally during maintenance",
     ],
     verify: [
-      "UPS event log download (LCD menu or SNMP trap history) — review last 50 events",
-      "Note down front panel alarm codes — each code is a specific fault",
+      "UPS event log download (LCD menu ya SNMP trap history) — review last 50 events",
+      "Front panel alarm codes note karo — each code is a specific fault",
       "Load meter check: actual kW vs UPS rated kW capacity",
       "Ambient temperature around UPS — inlet vents blocked?",
       "Bypass switch position — manual bypass accidentally engaged?",
@@ -40,11 +40,11 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
       "Temperature check: UPS internal temperature (LCD or SNMP) — high temp auto-bypass triggers",
       "Contact OEM support 24x7 hotline with event log data already downloaded",
       "DO NOT force return to inverter without understanding root cause",
-      "If overload: identify load shed — which non-critical loads can be moved",
+      "If overload: Load shed identify karo — which non-critical loads can be moved",
       "OEM diagnostic session: Remote access to UPS for deeper fault analysis",
       "Document everything — timestamp, actions, communications",
     ],
-    rootCause: "Most common: Overloading (after server additions without capacity check) and inverter IGBT failure (capacitor aging in older units, typically after 5-7 years). Fan failure causing temperature-induced bypass is also frequent.",
+    rootCause: "Most common: Overloading (after server additions without capacity check) aur inverter IGBT failure (capacitor aging in older units, typically after 5-7 years). Fan failure se temperature-induced bypass bhi frequent.",
     resolution: "Overload: Immediate load shed + capacity planning review. Inverter fault: OEM field engineer, module replacement if modular UPS. Temperature: Clean cooling path, replace fans. Return to inverter only after root cause resolved.",
     prevention: [
       "UPS load monitoring weekly — alert configured at 75% loading",
@@ -54,9 +54,9 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
       "SNMP traps to DCIM/BMS so bypass alarm gives instant notification",
     ],
     escalation: "OEM L2 support immediately. If site safety concern or outage risk — escalate to site manager + customer within 15 minutes of discovery.",
-    siteExample: "At a Mumbai DC, a UPS went into bypass after midnight. Log check: load was 98% on one phase (unbalanced). Three servers added that afternoon without capacity check. Balanced load across phases, UPS returned to inverter without fault. Added capacity check to server deployment process.",
+    siteExample: "Mumbai DC mein ek UPS ne bypass liya after midnight. Log check: load was 98% on one phase (unbalanced). Three servers added that afternoon without capacity check. Balanced load across phases, UPS returned to inverter without fault. Added capacity check to server deployment process.",
     mistakes: [
-      "Ignoring it or saying 'keep monitoring' — bypass state = imminent outage risk",
+      "Ignore karna ya 'keep monitoring' bolna — bypass state = imminent outage risk",
       "Force transfer back to inverter without root cause = possible power blip",
       "Event log download bhool jaana — OEMs always ask for this first",
     ],
@@ -67,7 +67,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
     categoryColor: "#f97316",
     title: "UPS Battery Fault / Low Battery Warning",
     symptoms: [
-      "UPS alarm: 'Battery fault', 'Battery disconnect', or 'Replace battery'",
+      "UPS alarm: 'Battery fault', 'Battery disconnect', ya 'Replace battery'",
       "UPS runtime significantly reduced (from 15 minutes to 2-3 minutes)",
       "Battery temperature elevated on battery string sensors",
       "Battery voltage reading outside normal float range",
@@ -206,7 +206,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
       "E-Stop buttons: Any emergency stop pressed on DG or ATS panel?",
     ],
     steps: [
-      "Check DG output parameters: Voltage and frequency within spec?",
+      "Check DG output parameters: Voltage aur frequency within spec?",
       "ATS acceptance window: Some ATSs have tight frequency windows (49.5-50.5Hz). If DG governer slightly off — frequency out of window",
       "Manual transfer test (if ATS has manual mode): Attempt manual transfer from ATS panel",
       "Inspect ATS mechanism: Contacts visually OK? No burnt contacts?",

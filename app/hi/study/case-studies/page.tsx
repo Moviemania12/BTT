@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   description:
     "Real-world Data Center incident case studies — UPS failures, DG fault, CRAC overheating, water leakage, FM200 false discharge, ransomware, cloud outages. Full timeline, RCA, and lessons learned for every incident.",
   alternates: {
-    canonical: "https://behindthetech.in/study/case-studies",
+    canonical: "https://behindthetech.in/hi/study/case-studies",
     languages: {
-      "hi": "https://behindthetech.in/hi/study/case-studies",
+      "en": "https://behindthetech.in/study/case-studies",
     },
   },
 };
@@ -25,7 +25,7 @@ export default function CaseStudiesPage() {
           Data Center Incident Case Studies
         </h1>
         <p style={{ fontSize: "1.1rem", color: "#475569", marginBottom: "2rem", maxWidth: "700px" }}>
-          {CASE_STUDIES.length} real-world incidents — each one with a full timeline, investigation steps, root cause analysis, and lessons learned. Straight from production experience. Click any case to expand.
+          {CASE_STUDIES.length} real-world incidents — har ek mein full timeline, investigation steps, root cause analysis, aur lessons learned. Production experience se seedha. Click any case to expand.
         </p>
         <CaseStudiesClient cases={CASE_STUDIES} categories={CASE_STUDY_CATEGORIES} />
         <div style={{ marginTop: "3rem", padding: "2rem", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: "12px" }}>

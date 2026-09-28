@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { TROUBLESHOOTING_GUIDES, TROUBLESHOOTING_CATEGORIES } from "@/content/study/troubleshooting";
+import { TROUBLESHOOTING_GUIDES, TROUBLESHOOTING_CATEGORIES } from "@/content/study/troubleshooting.hi";
 import TroubleshootingClient from "@/components/study/TroubleshootingClient";
 
 export const metadata: Metadata = {
   title: "Data Center Troubleshooting Guides — Behind The Tech",
   description:
-    "Practical Data Center troubleshooting guides — Power, Cooling, UPS, DG, Networking, Storage, Cloud. Real symptoms, root causes, step-by-step resolution, and prevention. A field-ready reference for DC engineers.",
+    "Practical Data Center troubleshooting guides — Power, Cooling, UPS, DG, Networking, Storage, Cloud. Real symptoms, root causes, step-by-step resolution, aur prevention. DC engineer ke liye field-ready reference.",
   alternates: {
-    canonical: "https://behindthetech.in/study/troubleshooting",
+    canonical: "https://behindthetech.in/hi/study/troubleshooting",
     languages: {
-      "hi": "https://behindthetech.in/hi/study/troubleshooting",
+      "en": "https://behindthetech.in/study/troubleshooting",
     },
   },
 };
@@ -25,7 +25,7 @@ export default function TroubleshootingPage() {
           Data Center Troubleshooting Guides
         </h1>
         <p style={{ fontSize: "1.1rem", color: "#475569", marginBottom: "2rem", maxWidth: "700px" }}>
-          {TROUBLESHOOTING_GUIDES.length} production-tested guides — real symptoms, verified steps, root causes, and prevention. Search or use the category filter.
+          {TROUBLESHOOTING_GUIDES.length} production-tested guides — real symptoms, verified steps, root causes, aur prevention. Search karo ya category filter use karo.
         </p>
         <TroubleshootingClient
           guides={TROUBLESHOOTING_GUIDES}

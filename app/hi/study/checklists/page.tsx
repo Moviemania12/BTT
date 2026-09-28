@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   description:
     "Engineer-grade Data Center checklists — Daily, Weekly, Monthly, UPS, DG, Cooling, Fire, Network, Pre-Shutdown, Commissioning. Production-ready templates for DC operations teams.",
   alternates: {
-    canonical: "https://behindthetech.in/study/checklists",
+    canonical: "https://behindthetech.in/hi/study/checklists",
     languages: {
-      "hi": "https://behindthetech.in/hi/study/checklists",
+      "en": "https://behindthetech.in/study/checklists",
     },
   },
 };
@@ -30,7 +30,7 @@ export default function ChecklistsPage() {
           Data Center Operations Checklists
         </h1>
         <p style={{ fontSize: "1.1rem", color: "#475569", marginBottom: "2rem", maxWidth: "700px" }}>
-          {CHECKLISTS.length} checklists, {totalItems} total checks — production-ready templates. ★ items are critical. Search or use the frequency filter.
+          {CHECKLISTS.length} checklists, {totalItems} total checks — production-ready templates. ★ items critical. Search karo ya frequency filter use karo.
         </p>
         <ChecklistsClient checklists={CHECKLISTS} />
       </div>
