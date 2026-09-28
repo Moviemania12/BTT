@@ -16,51 +16,51 @@ export default function Content() {
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
         <p style={S.p}>
-          Google Gemini Google DeepMind ka flagship AI model family hai — <TopicLink slug="openai" variant="inline" /> aur <TopicLink slug="anthropic" variant="inline" /> se fundamentally alag kyunki Google apna khud ka AI hardware design karta hai. <TopicLink slug="tpu" variant="inline" /> (Tensor Processing Units) Google ka purpose-built accelerator hai jo training aur inference dono ke liye use hota hai.
+          Google Gemini is Google DeepMind's flagship AI model family — fundamentally different from <TopicLink slug="openai" variant="inline" /> and <TopicLink slug="anthropic" variant="inline" /> because Google designs its own AI hardware. <TopicLink slug="tpu" variant="inline" /> (Tensor Processing Units) is Google's purpose-built accelerator, used for both training and inference.
         </p>
         <p style={S.p}>
-          Is article mein hum Gemini ko infrastructure lens se dekhenge: models, access paths, TPU architecture, training vs inference, data center power aur cooling requirements, aur practical O&M perspective.
+          In this article, we'll look at Gemini through an infrastructure lens: models, access paths, TPU architecture, training vs inference, data center power and cooling requirements, and a practical O&M perspective.
         </p>
         <Callout type="important" title="Accuracy Note — Official Sources Only">
-          Google ke internal infrastructure details publicly fully disclosed nahi hain. Is article mein sirf officially documented ya publicly verified information use ki gayi hai. Specific TPU counts, exact data center locations, ya internal serving topology — jo officially confirm nahi hain — invent nahi kiye gaye hain. Exact production infrastructure details are not publicly disclosed.
+          Google's internal infrastructure details are not fully disclosed publicly. This article only uses officially documented or publicly verified information. Specific TPU counts, exact data center locations, or internal serving topology — where not officially confirmed — have not been invented. Exact production infrastructure details are not publicly disclosed.
         </Callout>
       </section>
 
       <section id="who-should-read">
         <h2 style={S.h2}>Who Should Read This</h2>
         <ul style={S.ul}>
-          <li><strong>Data Center Engineers:</strong> Google TPU infrastructure ka perspective, AI DC power/cooling implications</li>
+          <li><strong>Data Center Engineers:</strong> Google TPU infrastructure perspective, AI DC power/cooling implications</li>
           <li><strong>AI Infrastructure Engineers:</strong> Gemini platform, TPU architecture, training vs inference</li>
-          <li><strong>Enterprise IT Teams:</strong> Vertex AI vs Gemini API — deployment aur compliance decisions</li>
+          <li><strong>Enterprise IT Teams:</strong> Vertex AI vs Gemini API — deployment and compliance decisions</li>
           <li><strong>O&M Engineers:</strong> High-density AI racks, cooling management, troubleshooting</li>
-          <li><strong>Students aur Beginners:</strong> AI platforms ka infrastructure perspective — zero se samjhenge</li>
+          <li><strong>Students and Beginners:</strong> the infrastructure perspective on AI platforms — explained from the ground up</li>
         </ul>
       </section>
 
       <section id="what-is-gemini">
         <h2 style={S.h2}>What Is Google Gemini?</h2>
         <p style={S.p}>
-          Google Gemini Google DeepMind ka flagship multimodal AI model family hai — December 2023 mein initially announced, continuously updated. "Multimodal" ka matlab: text, images, audio, video, aur code — sab ek hi model mein natively process kar sakta hai.
+          Google Gemini is Google DeepMind's flagship multimodal AI model family — initially announced in December 2023, continuously updated. "Multimodal" means: text, images, audio, video, and code can all be processed natively within a single model.
         </p>
         <p style={S.p}>
-          Google Bard ko rename karke Gemini kiya gaya (February 2024 mein). Gemini sirf ek consumer chatbot nahi hai — yeh Google ke product ecosystem mein deeply integrated hai: Google Search, Gmail, Google Docs, Android, Chrome, aur Google Cloud sab Gemini capabilities use karte hain.
+          Google Bard was renamed to Gemini (in February 2024). Gemini isn't just a consumer chatbot — it's deeply integrated into Google's product ecosystem: Google Search, Gmail, Google Docs, Android, Chrome, and Google Cloud all use Gemini capabilities.
         </p>
-        <p style={S.p}><strong>Infrastructure perspective se Google Gemini unique hai kyunki:</strong></p>
+        <p style={S.p}><strong>From an infrastructure perspective, Google Gemini is unique because:</strong></p>
         <ul style={S.ul}>
-          <li>Google apna custom TPU architecture design karta hai aur Google infrastructure aur Google Cloud ke through deploy karta hai</li>
-          <li>Google apna training framework (JAX/XLA) khud develop karta hai</li>
-          <li>Google ke apne global data centers mein run karta hai — other major AI providers different combinations of owned, partner aur cloud infrastructure use karte hain</li>
-          <li>Consumer scale (large-scale Search aur product queries) aur API scale dono simultaneously serve karta hai</li>
+          <li>Google designs its own custom TPU architecture and deploys it through Google's infrastructure and Google Cloud</li>
+          <li>Google develops its own training framework (JAX/XLA) in-house</li>
+          <li>It runs in Google's own global data centers — other major AI providers use different combinations of owned, partner, and cloud infrastructure</li>
+          <li>It serves consumer scale (large-scale Search and product queries) and API scale simultaneously</li>
         </ul>
         <Callout type="important" title="Google DeepMind = Research + Product">
-          Google Brain aur DeepMind ko 2023 mein merge karke Google DeepMind bana. Gemini Google DeepMind ka primary frontier AI model initiative hai. Yeh Google Research se alag hai — Google DeepMind specifically AI products develop karta hai.
+          Google Brain and DeepMind merged in 2023 to form Google DeepMind. Gemini is Google DeepMind's primary frontier AI model initiative. This is different from Google Research — Google DeepMind specifically develops AI products.
         </Callout>
       </section>
 
       <section id="model-family">
         <h2 style={S.h2}>Gemini Model Family</h2>
         <p style={S.p}>
-          Gemini model family tiered approach use karti hai — different capability, speed, aur cost tradeoffs ke saath. Model versions rapidly evolve karte hain — always official documentation se current lineup verify karo.
+          The Gemini model family uses a tiered approach — with different capability, speed, and cost tradeoffs. Model versions evolve rapidly — always verify the current lineup from official documentation.
         </p>
         <ComparisonTable
           title="Gemini Model Tiers — Category Overview (verify current models at ai.google.dev/gemini-api/docs/models)"
@@ -73,9 +73,9 @@ export default function Content() {
           ]}
         />
         <Callout type="warning" title="Model Lineup Rapidly Evolves — Verify Current Models">
-          Gemini 1.0, 1.5, 2.0, 2.5, aur beyond — Google regular cadence pe new versions release karta hai. Historical model tiers (Ultra, Pro, Flash, Nano) ek conceptual framework hain — current available models aur their exact names, context windows, aur capabilities official documentation se verify karo: <a href="https://ai.google.dev/gemini-api/docs/models/gemini" style={{ color: "#2563eb" }}>ai.google.dev/gemini-api/docs/models/gemini</a>
+          Gemini 1.0, 1.5, 2.0, 2.5, and beyond — Google releases new versions on a regular cadence. Historical model tiers (Ultra, Pro, Flash, Nano) are a conceptual framework — verify current available models and their exact names, context windows, and capabilities from official documentation: <a href="https://ai.google.dev/gemini-api/docs/models/gemini" style={{ color: "#2563eb" }}>ai.google.dev/gemini-api/docs/models/gemini</a>
         </Callout>
-        <p style={S.p}><strong>Gemini 1.5 Pro — historical example:</strong> Long context window (up to 1 million tokens in certain configurations) ek significant engineering achievement tha jo publicly documented hai. Yeh current model capabilities ka indicator nahi hai — current context window specifications official documentation se verify karo. Infrastructure implication: Very long context mein KV cache enormous ho jaata hai — substantial accelerator memory per active session required.</p>
+        <p style={S.p}><strong>Gemini 1.5 Pro — historical example:</strong> a long context window (up to 1 million tokens in certain configurations) was a significant engineering achievement that's publicly documented. This isn't an indicator of current model capabilities — verify current context window specifications from official documentation. Infrastructure implication: at very long context, the KV cache becomes enormous — requiring substantial accelerator memory per active session.</p>
       </section>
 
       <section id="ai-studio">
@@ -83,24 +83,24 @@ export default function Content() {
         <Figure caption="Gemini Access Paths: Four ways to access Gemini — AI Studio (prototyping), Gemini API direct (production apps), Vertex AI (enterprise), Google Products (built-in). All paths reach Gemini inference on Google's TPU/accelerator infrastructure. Compliance features and data handling vary by path — verify current scope at official documentation.">
           <GeminiAccessPaths />
         </Figure>
-        <p style={S.p}><strong>Google AI Studio</strong> ek web-based development environment hai — browser mein directly Gemini models ke saath experiment karo. Prompt design, model parameter tuning, aur quick prototyping ke liye ideal. Free tier generous hai. AI Studio se directly API keys generate karo production use ke liye.</p>
-        <p style={S.p}><strong>Gemini API</strong> programmatic access hai — REST ya client libraries (Python, JavaScript, etc.) se. Pay per token model. Infrastructure design ke liye key parameters:</p>
+        <p style={S.p}><strong>Google AI Studio</strong> is a web-based development environment — experiment with Gemini models directly in the browser. Ideal for prompt design, model parameter tuning, and quick prototyping. The free tier is generous. Generate API keys directly from AI Studio for production use.</p>
+        <p style={S.p}><strong>Gemini API</strong> is programmatic access — via REST or client libraries (Python, JavaScript, etc.). Pay-per-token model. Key parameters for infrastructure design:</p>
         <ul style={S.ul}>
-          <li><strong>Input/output tokens:</strong> Billing aur latency dono token count pe depend karte hain</li>
+          <li><strong>Input/output tokens:</strong> Both billing and latency depend on token count</li>
           <li><strong>Context window:</strong> Maximum tokens (input + output) per request — model-dependent, verify at official docs</li>
           <li><strong>Rate limits:</strong> RPM (Requests Per Minute), TPM (Tokens Per Minute) — tier-based. Current limits: <a href="https://ai.google.dev/gemini-api/docs/rate-limits" style={{ color: "#2563eb" }}>ai.google.dev/gemini-api/docs/rate-limits</a></li>
-          <li><strong>Streaming:</strong> Server-sent events se token-by-token streaming — better perceived TTFT</li>
-          <li><strong>Multimodal inputs:</strong> Images, audio, video alongside text — infrastructure pe larger payloads</li>
+          <li><strong>Streaming:</strong> token-by-token streaming via server-sent events — better perceived TTFT</li>
+          <li><strong>Multimodal inputs:</strong> images, audio, video alongside text — larger payloads on infrastructure</li>
         </ul>
         <Callout type="best-practice" title="AI Studio → API → Vertex AI — Common Development Path">
-          Ek common development progression: Prototype AI Studio mein → API key generate karo → direct Gemini API se production app build karo → enterprise scale ya compliance requirements pe Vertex AI evaluate karo. Exact path project requirements pe depend karta hai.
+          A common development progression: prototype in AI Studio → generate an API key → build a production app directly with the Gemini API → evaluate Vertex AI at enterprise scale or for compliance requirements. The exact path depends on project requirements.
         </Callout>
       </section>
 
       <section id="vertex-ai">
         <h2 style={S.h2}>Gemini on Google Cloud Vertex AI</h2>
         <p style={S.p}>
-          Vertex AI Google Cloud ka managed ML platform hai — enterprise-grade Gemini deployment ke liye. Yeh wahi role play karta hai jo Azure OpenAI Service ya Amazon Bedrock play karte hain unke respective AI models ke liye.
+          Vertex AI is Google Cloud's managed ML platform — for enterprise-grade Gemini deployment. It plays the same role that Azure OpenAI Service or Amazon Bedrock play for their respective AI models.
         </p>
         <ComparisonTable
           title="Gemini API Direct vs Vertex AI"
@@ -119,55 +119,55 @@ export default function Content() {
           ]}
         />
         <Callout type="important" title="Cloud Platform ≠ Google-Owned Gemini Infrastructure">
-          Vertex AI pe Gemini access karna yeh confirm nahi karta ki Google ka Gemini-specific infrastructure specifically us region mein hai. Vertex AI Google Cloud infrastructure pe run karta hai — exact Gemini model serving topology publicly disclosed nahi hai. Data residency options Vertex AI configuration se control hoti hain — verify current scope at official docs.
+          Accessing Gemini on Vertex AI doesn't confirm that Google's Gemini-specific infrastructure is specifically in that region. Vertex AI runs on Google Cloud infrastructure — the exact Gemini model serving topology is not publicly disclosed. Data residency options are controlled by Vertex AI configuration — verify current scope at official docs.
         </Callout>
       </section>
 
       <section id="google-infra-overview">
         <h2 style={S.h2}>Google AI Infrastructure Overview</h2>
         <p style={S.p}>
-          Google ki AI infrastructure fundamentally alag hai OpenAI ya Anthropic se — kyunki Google hardware-to-software stack khud control karta hai.
+          Google's AI infrastructure is fundamentally different from OpenAI or Anthropic — because Google controls the hardware-to-software stack itself.
         </p>
-        <p style={S.p}><strong>Google ka vertical integration:</strong></p>
+        <p style={S.p}><strong>Google's vertical integration:</strong></p>
         <ul style={S.ul}>
-          <li><strong>Hardware:</strong> Custom TPUs (Tensor Processing Units) — Google apna custom TPU architecture design karta hai aur Google infrastructure aur Google Cloud ke through deploy karta hai</li>
-          <li><strong>Interconnect:</strong> ICI (Inter-Chip Interconnect) — TPUs ke beech custom high-speed network</li>
-          <li><strong>Software/Framework:</strong> JAX aur XLA compiler — TPUs ke saath tightly integrated; supported frameworks TPU generation aur current Google Cloud support pe depend karte hain</li>
-          <li><strong>Distributed training:</strong> Pathways system — publicly described architecture jo multiple accelerator types/datacenters coordinate kar sakta hai. Exact role in current Gemini training pipelines publicly confirmed nahi hai.</li>
-          <li><strong>Storage:</strong> Colossus distributed file system — Google-scale publicly described technology. Exact role in current Gemini training/checkpoint pipelines publicly confirmed nahi hai.</li>
-          <li><strong>Data centers:</strong> Global network — Google ke owned aur operated facilities</li>
+          <li><strong>Hardware:</strong> Custom TPUs (Tensor Processing Units) — Google designs its own custom TPU architecture and deploys it through Google's infrastructure and Google Cloud</li>
+          <li><strong>Interconnect:</strong> ICI (Inter-Chip Interconnect) — a custom high-speed network between TPUs</li>
+          <li><strong>Software/Framework:</strong> JAX and the XLA compiler — tightly integrated with TPUs; supported frameworks depend on the TPU generation and current Google Cloud support</li>
+          <li><strong>Distributed training:</strong> Pathways system — a publicly described architecture that can coordinate multiple accelerator types/datacenters. Its exact role in current Gemini training pipelines is not publicly confirmed.</li>
+          <li><strong>Storage:</strong> Colossus distributed file system — a publicly described Google-scale technology. Its exact role in current Gemini training/checkpoint pipelines is not publicly confirmed.</li>
+          <li><strong>Data centers:</strong> A global network — Google's owned and operated facilities</li>
         </ul>
         <p style={S.p}>
-          Google ka highly vertically integrated AI infrastructure stack hai — custom accelerators (TPUs), networking (ICI, Jupiter), aur software (JAX/XLA) sab in-house developed hain. Hardware-software co-optimization is integration ki wajah se possible hoti hai. Other major AI providers different combinations of owned, partner aur cloud infrastructure use karte hain — har provider ka approach alag hai.
+          Google has a highly vertically integrated AI infrastructure stack — custom accelerators (TPUs), networking (ICI, Jupiter), and software (JAX/XLA) are all developed in-house. This integration is what makes hardware-software co-optimization possible. Other major AI providers use different combinations of owned, partner, and cloud infrastructure — each provider's approach differs.
         </p>
         <Callout type="important" title="Exact Production Details Not Disclosed">
-          Gemini training clusters ka exact scale, specific TPU generations used for specific Gemini versions, per-facility power consumption — yeh sab publicly confirmed nahi hain. Google high-level architecture publicly describes karta hai lekin production specifics proprietary hain.
+          The exact scale of Gemini training clusters, the specific TPU generations used for specific Gemini versions, per-facility power consumption — none of this is publicly confirmed. Google publicly describes high-level architecture but production specifics are proprietary.
         </Callout>
       </section>
 
       <section id="tpu-architecture">
         <h2 style={S.h2}>TPU Architecture</h2>
         <p style={S.p}>
-          TPU (Tensor Processing Unit) Google ka purpose-built AI accelerator hai. NVIDIA GPU se fundamentally alag approach hai — TPU specifically neural network matrix operations ke liye optimized hai.
+          TPU (Tensor Processing Unit) is Google's purpose-built AI accelerator. It's a fundamentally different approach from an NVIDIA GPU — a TPU is specifically optimized for neural network matrix operations.
         </p>
         <Figure caption="TPU Architecture Conceptual Overview: MXUs (Matrix Multiply Units) use systolic array architecture for efficient matrix operations. HBM (High Bandwidth Memory) feeds weights and activations to MXUs. On-chip SRAM handles intermediate results. XLA and supported framework tooling compile workloads for TPU execution; framework support depends on TPU generation and current Google Cloud documentation. ICI network connects to other TPU chips in the pod. Host CPU manages orchestration. This is a generalized educational diagram — exact Google TPU implementation is not publicly fully disclosed.">
           <TpuArchitectureDiagram />
         </Figure>
-        <p style={S.p}><strong>Systolic Array Architecture:</strong> TPU ka core innovation hai systolic array — ek grid of processing elements jo data rhythmically flow karte hain ek element se doosre tak. Matrix multiplication ke liye ideal: partial products accumulate karte jaate hain jaise data flow karta hai. Very high compute efficiency for matrix operations, low control overhead.</p>
+        <p style={S.p}><strong>Systolic Array Architecture:</strong> the TPU's core innovation is the systolic array — a grid of processing elements through which data flows rhythmically from one element to the next. Ideal for matrix multiplication: partial products accumulate as data flows. Very high compute efficiency for matrix operations, low control overhead.</p>
         <p style={S.p}><strong>Key components (publicly described at high level):</strong></p>
         <ul style={S.ul}>
           <li><strong>MXU (Matrix Multiply Unit):</strong> Core compute engine — systolic array based matrix multiplication</li>
-          <li><strong>HBM (High Bandwidth Memory):</strong> High-speed stacked DRAM — model weights aur activations store karta hai</li>
-          <li><strong>Vector/Scalar Units:</strong> Non-matrix operations (activation functions, normalization, etc.) ke liye</li>
-          <li><strong>XLA (Accelerated Linear Algebra) Compiler:</strong> XLA aur supported framework tooling workloads ko TPU execution ke liye compile karte hain; framework support TPU generation aur current Google Cloud documentation pe depend karta hai</li>
-          <li><strong>ICI (Inter-Chip Interconnect):</strong> Multiple TPU chips ko pod mein connect karta hai</li>
+          <li><strong>HBM (High Bandwidth Memory):</strong> high-speed stacked DRAM — stores model weights and activations</li>
+          <li><strong>Vector/Scalar Units:</strong> for non-matrix operations (activation functions, normalization, etc.)</li>
+          <li><strong>XLA (Accelerated Linear Algebra) Compiler:</strong> XLA and supported framework tooling compile workloads for TPU execution; framework support depends on the TPU generation and current Google Cloud documentation</li>
+          <li><strong>ICI (Inter-Chip Interconnect):</strong> connects multiple TPU chips into a pod</li>
         </ul>
       </section>
 
       <section id="tpu-generations">
         <h2 style={S.h2}>TPU Generations and Evolution</h2>
         <p style={S.p}>
-          Google TPUs multiple generations mein evolve kiye hain — publicly announced:
+          Google TPUs have evolved across multiple generations — publicly announced:
         </p>
         <ComparisonTable
           title="Google TPU Generations — Publicly Documented Overview"
@@ -184,52 +184,52 @@ export default function Content() {
           ]}
         />
         <Callout type="important" title="Gemini + TPU Generation — What Is Publicly Documented">
-          Gemini 1.0 ka TPU v4 aur v5e pe training publicly documented hai (Google technical reports aur announcements). Selected later Gemini versions ke liye TPU usage bhi publicly discussed hai. Lekin complete current model→TPU mapping publicly disclosed nahi hai — exact production configurations proprietary hain. Official Google Cloud documentation pe current available TPU versions verify karo: <a href="https://cloud.google.com/tpu/docs/supported-tpu-configurations" style={{ color: "#2563eb" }}>cloud.google.com/tpu/docs</a>
+          Gemini 1.0 training on TPU v4 and v5e is publicly documented (in Google technical reports and announcements). TPU usage for selected later Gemini versions is also publicly discussed. But the complete current model→TPU mapping is not publicly disclosed — exact production configurations are proprietary. Verify current available TPU versions in official Google Cloud documentation: <a href="https://cloud.google.com/tpu/docs/supported-tpu-configurations" style={{ color: "#2563eb" }}>cloud.google.com/tpu/docs</a>
         </Callout>
       </section>
 
       <section id="hbm">
         <h2 style={S.h2}>HBM — High Bandwidth Memory</h2>
         <p style={S.p}>
-          HBM (High Bandwidth Memory) AI accelerators mein ek critical component hai — conventional DDR/LPDDR se substantially different memory architecture use karta hai.
+          HBM (High Bandwidth Memory) is a critical component in AI accelerators — using a substantially different memory architecture from conventional DDR/LPDDR.
         </p>
-        <p style={S.p}><strong>How HBM works:</strong> Multiple DRAM dies vertically stack ki jaati hain — through-silicon vias (TSVs) se interconnected. Wide data bus (1024-bit ya wider) ke through accelerator se connected. Result: very high memory bandwidth at relatively lower power vs conventional memory.</p>
+        <p style={S.p}><strong>How HBM works:</strong> multiple DRAM dies are stacked vertically — interconnected via through-silicon vias (TSVs). Connected to the accelerator through a wide data bus (1024-bit or wider). Result: very high memory bandwidth at relatively lower power vs conventional memory.</p>
         <p style={S.p}><strong>Why HBM matters for AI:</strong></p>
         <ul style={S.ul}>
-          <li><strong>Bandwidth bottleneck:</strong> AI training aur inference mein compute units constantly memory se data fetch karte hain — model weights, activations, gradients. Agar bandwidth insufficient ho, fast compute units idle wait karte hain.</li>
-          <li><strong>Model size:</strong> Large frontier models ke weights billions of parameters hote hain — HBM capacity directly determines maximum model size per accelerator chip.</li>
-          <li><strong>Speed:</strong> Prefill phase mein (LLM inference mein input processing) memory bandwidth dominant factor hai.</li>
+          <li><strong>Bandwidth bottleneck:</strong> in AI training and inference, compute units constantly fetch data from memory — model weights, activations, gradients. If bandwidth is insufficient, fast compute units sit idle waiting.</li>
+          <li><strong>Model size:</strong> the weights of large frontier models run into billions of parameters — HBM capacity directly determines the maximum model size per accelerator chip.</li>
+          <li><strong>Speed:</strong> during the prefill phase (input processing in LLM inference), memory bandwidth is the dominant factor.</li>
         </ul>
-        <p style={S.p}><strong>HBM generations:</strong> HBM2, HBM2e, HBM3, HBM3e — increasing bandwidth aur capacity per generation. Google TPUs mein HBM use hoti hai — specific HBM versions per TPU generation Google ke public technical specs mein documented hain.</p>
-        <p style={S.p}><strong>Data center implication:</strong> HBM high heat density create karti hai — AI accelerators thermal management critical hai. HBM ka thermal performance directly accelerator reliability aur performance affect karta hai.</p>
+        <p style={S.p}><strong>HBM generations:</strong> HBM2, HBM2e, HBM3, HBM3e — increasing bandwidth and capacity per generation. Google TPUs use HBM — the specific HBM versions per TPU generation are documented in Google's public technical specs.</p>
+        <p style={S.p}><strong>Data center implication:</strong> HBM creates high heat density — thermal management is critical for AI accelerators. HBM's thermal performance directly affects accelerator reliability and performance.</p>
       </section>
 
       <section id="tpu-interconnect">
         <h2 style={S.h2}>TPU Interconnect and ICI</h2>
         <p style={S.p}>
-          Large-scale AI training ke liye multiple accelerators coordinate karne hote hain — high-speed interconnect essential hai.
+          Large-scale AI training requires coordinating multiple accelerators — a high-speed interconnect is essential.
         </p>
-        <p style={S.p}><strong>ICI (Inter-Chip Interconnect):</strong> Google ka purpose-built TPU-to-TPU communication fabric. Standard Ethernet ya InfiniBand se different — specifically TPU pods ke liye designed. Very high bandwidth, low latency chip-to-chip communication. <TopicLink slug="ai-networking" variant="inline" /> article mein general AI networking concepts covered hain.</p>
-        <p style={S.p}><strong>TPU v4 optical switching:</strong> Publicly documented — TPU v4 pods mein Google ne optical circuit switching use kiya interconnect ke liye. Yeh reconfigurable topology allow karta hai — different communication patterns ke liye optimal paths dynamically set kar sakte hain. Data center perspective: optical components fiber aur optical transceivers require karte hain — maintenance, cleaning, aur optical power monitoring different hoti hai electrical interconnects se.</p>
-        <p style={S.p}><strong>Collective operations:</strong> Training mein AllReduce, AllGather — sab TPUs gradients synchronize karte hain har step pe. ICI bandwidth directly training throughput determine karta hai. <TopicLink slug="ai-networking" variant="inline" /></p>
+        <p style={S.p}><strong>ICI (Inter-Chip Interconnect):</strong> Google's purpose-built TPU-to-TPU communication fabric. Different from standard Ethernet or InfiniBand — specifically designed for TPU pods. Very high bandwidth, low latency chip-to-chip communication. The <TopicLink slug="ai-networking" variant="inline" /> article covers general AI networking concepts.</p>
+        <p style={S.p}><strong>TPU v4 optical switching:</strong> publicly documented — Google used optical circuit switching for interconnect in TPU v4 pods. This allows a reconfigurable topology — optimal paths can be dynamically set for different communication patterns. Data center perspective: optical components require fiber and optical transceivers — maintenance, cleaning, and optical power monitoring differ from electrical interconnects.</p>
+        <p style={S.p}><strong>Collective operations:</strong> in training, AllReduce and AllGather synchronize gradients across all TPUs at every step. ICI bandwidth directly determines training throughput. <TopicLink slug="ai-networking" variant="inline" /></p>
       </section>
 
       <section id="tpu-pods">
         <h2 style={S.h2}>TPU Pods and Scaling</h2>
         <p style={S.p}>
-          TPU Pod multiple TPU chips ko high-speed ICI network ke through connect karke ek logical distributed accelerator banata hai.
+          A TPU Pod connects multiple TPU chips through a high-speed ICI network to form a single logical distributed accelerator.
         </p>
-        <p style={S.p}><strong>Why pods:</strong> Frontier-scale training generally distributed across many accelerator chips hoti hai — model, memory aur compute requirements ek single accelerator ki practical capacity exceed karte hain. Pod mein distributed accelerator memory collectively large models accommodate kar sakti hai.</p>
-        <p style={S.p}><strong>Pod slices:</strong> Large pods ko smaller "slices" mein partition kar sakte hain — different jobs ko different slices allocate hoti hain. Google Cloud pe yeh publicly documented feature hai — users specific pod slice configurations order kar sakte hain.</p>
+        <p style={S.p}><strong>Why pods:</strong> frontier-scale training is generally distributed across many accelerator chips — model, memory, and compute requirements exceed the practical capacity of a single accelerator. Within a pod, distributed accelerator memory can collectively accommodate large models.</p>
+        <p style={S.p}><strong>Pod slices:</strong> large pods can be partitioned into smaller "slices" — different slices are allocated to different jobs. This is a publicly documented feature on Google Cloud — users can order specific pod slice configurations.</p>
         <p style={S.p}><strong>Data center implications of TPU pods:</strong></p>
         <ul style={S.ul}>
-          <li><strong>Physical proximity:</strong> Pod ke chips ek specific rack/row/section mein physically close hote hain — interconnect latency aur bandwidth ke liye</li>
-          <li><strong>Power:</strong> Ek large TPU pod ka total power consumption enormous hota hai — dedicated power infrastructure required</li>
+          <li><strong>Physical proximity:</strong> the chips in a pod are physically close together in a specific rack/row/section — for interconnect latency and bandwidth</li>
+          <li><strong>Power:</strong> the total power consumption of a large TPU pod is enormous — dedicated power infrastructure is required</li>
           <li><strong>Cooling:</strong> High density power = high density heat — specialized cooling (per TPU v3 documentation, liquid cooling used)</li>
-          <li><strong>Failure domains:</strong> Pod mein kisi bhi chip ya interconnect link failure training job affect kar sakta hai — redundancy aur fault tolerance design critical hai</li>
+          <li><strong>Failure domains:</strong> a failure of any chip or interconnect link in a pod can affect the training job — redundancy and fault tolerance design is critical</li>
         </ul>
         <Callout type="important" title="Pod Scale — Official Google Cloud Numbers">
-          Google Cloud publicly available TPU pod configurations (v4 pods up to 4096 chips publicly mentioned) verify karo current Google Cloud documentation pe: <a href="https://cloud.google.com/tpu/docs/system-architecture-tpu-vm" style={{ color: "#2563eb" }}>cloud.google.com/tpu/docs/system-architecture-tpu-vm</a>
+          Verify publicly available TPU pod configurations on Google Cloud (v4 pods up to 4096 chips publicly mentioned) in current Google Cloud documentation: <a href="https://cloud.google.com/tpu/docs/system-architecture-tpu-vm" style={{ color: "#2563eb" }}>cloud.google.com/tpu/docs/system-architecture-tpu-vm</a>
         </Callout>
       </section>
 
@@ -251,29 +251,29 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          Practical implication for enterprises: Gemini on TPUs exclusively through Google Cloud. On-premise Gemini deployment possible nahi hai — unlike some open-source alternatives. This is a fundamental difference from NVIDIA GPU-based AI infrastructure where organizations can own hardware.
+          Practical implication for enterprises: Gemini on TPUs is available exclusively through Google Cloud. On-premise Gemini deployment isn't possible — unlike some open-source alternatives. This is a fundamental difference from NVIDIA GPU-based AI infrastructure where organizations can own hardware.
         </p>
       </section>
 
       <section id="training-infra">
         <h2 style={S.h2}>Gemini Training Infrastructure</h2>
         <p style={S.p}>
-          Gemini jaise frontier models train karna unprecedented compute scale require karta hai. Google ne publicly kuch details share kiye hain technical papers aur blog posts mein.
+          Training frontier models like Gemini requires unprecedented compute scale. Google has publicly shared some details in technical papers and blog posts.
         </p>
         <p style={S.p}><strong>Publicly documented elements:</strong></p>
         <ul style={S.ul}>
-          <li>Gemini 1.0 ka TPU v4 aur v5e pe training publicly documented hai — selected later Gemini versions ke liye bhi TPU usage publicly referenced hai; complete model→TPU mapping not disclosed</li>
-          <li>JAX/XLA framework use hota hai — Google ke public papers mein documented; supported frameworks per TPU generation vary kar sakte hain</li>
-          <li>Pathways architecture — Google ke 2022 paper mein described, multiple datacenters coordinate kar sakta hai; exact role in current Gemini training pipelines publicly confirmed nahi hai</li>
-          <li>Multimodal training — text, image, audio, video data sab ek training run mein</li>
-          <li>Gemini Technical Report (2023, updated versions) publicly available hai — describes training approach at high level</li>
+          <li>Gemini 1.0 training on TPU v4 and v5e is publicly documented — TPU usage for selected later Gemini versions is also publicly referenced; the complete model→TPU mapping is not disclosed</li>
+          <li>The JAX/XLA framework is used — documented in Google's public papers; supported frameworks can vary per TPU generation</li>
+          <li>Pathways architecture — described in Google's 2022 paper, can coordinate multiple datacenters; its exact role in current Gemini training pipelines is not publicly confirmed</li>
+          <li>Multimodal training — text, image, audio, and video data all in a single training run</li>
+          <li>The Gemini Technical Report (2023, updated versions) is publicly available — describes the training approach at a high level</li>
         </ul>
         <p style={S.p}><strong>General large-scale training infrastructure elements</strong> (applicable, not Gemini-specific confirmed):</p>
         <ul style={S.ul}>
           <li>Distributed training strategies: data parallelism, model parallelism, pipeline parallelism — all coordinated</li>
           <li>High-speed interconnects (ICI) essential for gradient synchronization — <TopicLink slug="ai-networking" variant="inline" /></li>
           <li>Training data storage — large-scale datasets; Colossus is a publicly described Google-scale distributed file system; its exact role in current Gemini pipelines not publicly confirmed</li>
-          <li>Checkpoint storage — significant aur frequent; frontier model checkpoints very large hote hain</li>
+          <li>Checkpoint storage — significant and frequent; frontier model checkpoints are very large</li>
           <li>Sustained high power draw — training runs weeks to months</li>
         </ul>
       </section>
@@ -281,15 +281,15 @@ export default function Content() {
       <section id="inference-infra">
         <h2 style={S.h2}>Inference Infrastructure</h2>
         <p style={S.p}>
-          Gemini inference ka scale bahut bada hai — Google Search, Gmail, Docs, Android, plus API customers sab simultaneously serve hote hain. Gemini very large scale pe operate karta hai across Google products aur API workloads — exact production volumes publicly disclosed nahi hain.
+          Gemini inference operates at massive scale — Google Search, Gmail, Docs, Android, plus API customers are all served simultaneously. Gemini operates at very large scale across Google products and API workloads — exact production volumes are not publicly disclosed.
         </p>
         <p style={S.p}><strong>Key inference infrastructure characteristics:</strong></p>
         <ul style={S.ul}>
-          <li><strong>Global distribution:</strong> Google ke worldwide data centers pe — users ke paas low-latency serving. Exact locations aur serving topology publicly undisclosed.</li>
-          <li><strong>Model weights in memory:</strong> Inference accelerators pe weights preloaded — cold start eliminate. Large models distributed across multiple TPU chips.</li>
-          <li><strong>Quantization:</strong> Inference models often quantized (lower precision weights) — smaller memory footprint, faster computation. Slight accuracy tradeoff. Google TPUs quantization hardware support rakhte hain.</li>
-          <li><strong>Prefill vs decode:</strong> LLM inference mein two phases: Prefill (input tokens process) = compute intensive. Decode (output token-by-token generation) = memory bandwidth intensive. Different optimization strategies possible.</li>
-          <li><strong>Gemini Nano (on-device):</strong> Android Pixel phones pe directly run kar sakta hai — supported on-device use cases mein inference locally ho sakti hai. Exact behavior device, feature, aur implementation pe depend karta hai. Server inference nahi hoti jab on-device mode active ho.</li>
+          <li><strong>Global distribution:</strong> across Google's worldwide data centers — for low-latency serving to users. Exact locations and serving topology are undisclosed.</li>
+          <li><strong>Model weights in memory:</strong> weights are preloaded on inference accelerators — eliminating cold start. Large models are distributed across multiple TPU chips.</li>
+          <li><strong>Quantization:</strong> inference models are often quantized (lower precision weights) — smaller memory footprint, faster computation. Slight accuracy tradeoff. Google TPUs have quantization hardware support.</li>
+          <li><strong>Prefill vs decode:</strong> two phases in LLM inference: prefill (processing input tokens) = compute intensive. Decode (token-by-token output generation) = memory bandwidth intensive. Different optimization strategies are possible.</li>
+          <li><strong>Gemini Nano (on-device):</strong> can run directly on Android Pixel phones — in supported on-device use cases, inference can happen locally. Exact behavior depends on the device, feature, and implementation. Server inference doesn't happen when on-device mode is active.</li>
         </ul>
       </section>
 
@@ -314,82 +314,82 @@ export default function Content() {
       <section id="networking">
         <h2 style={S.h2}>Networking and Distributed Training</h2>
         <p style={S.p}>
-          Large-scale Gemini training mein network performance directly training throughput determine karta hai.
+          In large-scale Gemini training, network performance directly determines training throughput.
         </p>
         <p style={S.p}><strong>Training network:</strong></p>
         <ul style={S.ul}>
-          <li><strong>ICI (intra-pod):</strong> TPU chips ke beech high-speed Google ICI — gradient AllReduce ke liye</li>
-          <li><strong>Datacenter network (inter-pod/inter-DC):</strong> Multiple pod ya datacenter communication ke liye — Jupiter network (Google ka datacenter fabric, publicly described) aur Pathways architecture</li>
+          <li><strong>ICI (intra-pod):</strong> high-speed Google ICI between TPU chips — for gradient AllReduce</li>
+          <li><strong>Datacenter network (inter-pod/inter-DC):</strong> for communication across multiple pods or datacenters — the Jupiter network (Google's datacenter fabric, publicly described) and the Pathways architecture</li>
           <li><strong>Collective operations:</strong> AllReduce, AllGather — distributed gradient aggregation. <TopicLink slug="ai-networking" variant="inline" /></li>
         </ul>
-        <p style={S.p}><strong>Jupiter datacenter network:</strong> Google Jupiter publicly documented hai — multiple generations. Software-defined networking, high-bandwidth fabric. Specific configurations for Gemini training not disclosed.</p>
-        <p style={S.p}><strong>Pathways:</strong> Google ka publicly described multi-controller distributed training system — multiple datacenters coordinate kar sakte hain ek training job ke liye. Traditional single-datacenter training se more complex fault tolerance aur coordination require karta hai. Exact role in current Gemini training publicly confirmed nahi hai.</p>
+        <p style={S.p}><strong>Jupiter datacenter network:</strong> Google Jupiter is publicly documented — across multiple generations. Software-defined networking, a high-bandwidth fabric. Specific configurations for Gemini training are not disclosed.</p>
+        <p style={S.p}><strong>Pathways:</strong> Google's publicly described multi-controller distributed training system — can coordinate multiple datacenters for a single training job. Requires more complex fault tolerance and coordination than traditional single-datacenter training. Its exact role in current Gemini training is not publicly confirmed.</p>
       </section>
 
       <section id="storage">
         <h2 style={S.h2}>Storage and Checkpoints</h2>
-        <p style={S.p}><strong>Colossus:</strong> Google ka publicly described large-scale distributed file system — GFS (Google File System) ka successor. Very large scale, high throughput ke liye designed. Exact role in current Gemini training aur checkpoint pipelines publicly confirmed nahi hai — Colossus Google-scale technology hai jo broadly used hai. <TopicLink slug="ai-storage" variant="inline" /></p>
-        <p style={S.p}><strong>Training data storage:</strong> Gemini multimodal training data — text, images, audio, video — internet-scale datasets. Exact storage scale publicly confirmed nahi hai. Very large storage requirements, fast I/O for training throughput.</p>
-        <p style={S.p}><strong>Checkpoint storage:</strong> Training ke dauran regular checkpoints essential — hardware failure pe restart point. Frontier models ke checkpoints very large hote hain. Frequent checkpointing I/O load significant hai. Multiple checkpoint versions typically retained.</p>
-        <p style={S.p}><strong>Model weights storage (production):</strong> Multiple Gemini model variants aur generations — significant storage footprint. Fast access needed for model loading.</p>
+        <p style={S.p}><strong>Colossus:</strong> Google's publicly described large-scale distributed file system — the successor to GFS (Google File System). Designed for very large scale, high throughput. Its exact role in current Gemini training and checkpoint pipelines is not publicly confirmed — Colossus is a broadly used Google-scale technology. <TopicLink slug="ai-storage" variant="inline" /></p>
+        <p style={S.p}><strong>Training data storage:</strong> Gemini multimodal training data — text, images, audio, video — internet-scale datasets. The exact storage scale is not publicly confirmed. Very large storage requirements, fast I/O for training throughput.</p>
+        <p style={S.p}><strong>Checkpoint storage:</strong> regular checkpoints during training are essential — a restart point in case of hardware failure. Frontier model checkpoints are very large. Frequent checkpointing creates significant I/O load. Multiple checkpoint versions are typically retained.</p>
+        <p style={S.p}><strong>Model weights storage (production):</strong> multiple Gemini model variants and generations — a significant storage footprint. Fast access is needed for model loading.</p>
       </section>
 
       <section id="power-density">
         <h2 style={S.h2}>AI Data Center Power and High-Density Racks</h2>
         <p style={S.p}>
-          Google TPU-based AI infrastructure data centers mein significant power density create karta hai.
+          Google's TPU-based AI infrastructure creates significant power density in data centers.
         </p>
-        <p style={S.p}><strong>TPU power consumption:</strong> Different TPU generations alag power consume karte hain — Google Cloud documentation mein per-chip aur per-pod power figures kuch versions ke liye available hain. Verify current specs at: <a href="https://cloud.google.com/tpu/docs/tpus-in-gke" style={{ color: "#2563eb" }}>cloud.google.com/tpu/docs</a></p>
+        <p style={S.p}><strong>TPU power consumption:</strong> different TPU generations consume different amounts of power — per-chip and per-pod power figures are available for some versions in Google Cloud documentation. Verify current specs at: <a href="https://cloud.google.com/tpu/docs/tpus-in-gke" style={{ color: "#2563eb" }}>cloud.google.com/tpu/docs</a></p>
         <p style={S.p}><strong>High-density rack implications:</strong></p>
         <ul style={S.ul}>
-          <li>Modern AI accelerator rack designs can reach tens of kW and, depending on accelerator generation, rack configuration aur server design, substantially higher densities — <TopicLink slug="ai-cooling" variant="inline" /></li>
-          <li>Traditional CRAC/CRAH air cooling sufficiency depends on actual rack density aur facility design — not universally mandatory liquid cooling</li>
+          <li>Modern AI accelerator rack designs can reach tens of kW and, depending on accelerator generation, rack configuration and server design, substantially higher densities — <TopicLink slug="ai-cooling" variant="inline" /></li>
+          <li>Traditional CRAC/CRAH air cooling sufficiency depends on actual rack density and facility design — liquid cooling isn't universally mandatory</li>
           <li>Power distribution: high-current PDUs, redundant A+B feeds for critical systems</li>
-          <li>Floor loading: High-density AI racks significantly heavier hote hain — structural assessment required</li>
+          <li>Floor loading: high-density AI racks are significantly heavier — structural assessment is required</li>
         </ul>
-        <p style={S.p}><strong>Google's energy approach:</strong> Google publicly commits to matching 100% of its global electricity consumption with renewable energy through Power Purchase Agreements (PPAs). Google 24/7 carbon-free energy (CFE) goal bhi pursue karta hai. PUE (Power Usage Effectiveness) — Google ne historically fleet-wide PUE values ~1.1 ke aas paas report kiye hain; current figures latest Google Environmental Report se verify karo. WUE (Water Usage Effectiveness) — Google water usage publicly reports karta hai annual environmental reports mein.</p>
+        <p style={S.p}><strong>Google's energy approach:</strong> Google publicly commits to matching 100% of its global electricity consumption with renewable energy through Power Purchase Agreements (PPAs). Google also pursues a 24/7 carbon-free energy (CFE) goal. PUE (Power Usage Effectiveness) — Google has historically reported fleet-wide PUE values around ~1.1; verify current figures from the latest Google Environmental Report. WUE (Water Usage Effectiveness) — Google publicly reports water usage in annual environmental reports.</p>
       </section>
 
       <section id="cooling">
         <h2 style={S.h2}>Cooling and Thermal Management</h2>
         <p style={S.p}>
-          Google ke AI data centers cooling ke baare mein publicly documented hai — specific per-facility configurations detailed nahi hain.
+          Google's AI data centers cooling is publicly documented — specific per-facility configurations aren't detailed.
         </p>
         <p style={S.p}><strong>What Google publicly states:</strong></p>
         <ul style={S.ul}>
-          <li>TPU v3 documentation specifically mentions liquid cooling — yeh publicly documented hai</li>
-          <li>Google evaporative cooling aur chilled water extensively use karta hai globally</li>
-          <li>Google warm water cooling research aur deployment ka publicly reference karta hai high-density workloads ke liye</li>
-          <li>Google ne historically fleet-wide PUE values ~1.1 ke aas paas report kiye hain — current figures latest Google Environmental Report se verify karo</li>
+          <li>TPU v3 documentation specifically mentions liquid cooling — this is publicly documented</li>
+          <li>Google extensively uses evaporative cooling and chilled water globally</li>
+          <li>Google publicly references warm water cooling research and deployment for high-density workloads</li>
+          <li>Google has historically reported fleet-wide PUE values around ~1.1 — verify current figures from the latest Google Environmental Report</li>
         </ul>
-        <Callout type="important" title="Liquid Cooling Universally Mandatory Nahi">
-          Cooling technology (air, rear-door HX, direct liquid cooling, immersion) server/TPU OEM design, actual rack density, aur facility capability pe depend karti hai. TPU v3 liquid-cooled documented hai — newer generations ke specific cooling configurations fully publicly disclosed nahi hain. <TopicLink slug="ai-cooling" variant="inline" />
+        <Callout type="important" title="Liquid Cooling Not Universally Mandatory">
+          Cooling technology (air, rear-door HX, direct liquid cooling, immersion) depends on server/TPU OEM design, actual rack density, and facility capability. TPU v3 is documented as liquid-cooled — the specific cooling configurations of newer generations are not fully publicly disclosed. <TopicLink slug="ai-cooling" variant="inline" />
         </Callout>
         <p style={S.p}><strong>General AI data center cooling considerations</strong> (engineering principles — not Google-specific confirmed):</p>
         <ul style={S.ul}>
-          <li>ASHRAE recommended inlet temperature: 18–27°C (A1/A2 class equipment ke liye)</li>
-          <li>Relative humidity aur dew point — per applicable ASHRAE class aur OEM specs</li>
-          <li>Hot aisle/cold aisle containment — bypass airflow reduce karta hai</li>
-          <li>High-density racks ke liye: rear-door heat exchangers, direct liquid cooling (CDU-based), ya immersion evaluate karo</li>
+          <li>ASHRAE recommended inlet temperature: 18–27°C (for A1/A2 class equipment)</li>
+          <li>Relative humidity and dew point — per applicable ASHRAE class and OEM specs</li>
+          <li>Hot aisle/cold aisle containment — reduces bypass airflow</li>
+          <li>For high-density racks: evaluate rear-door heat exchangers, direct liquid cooling (CDU-based), or immersion</li>
         </ul>
       </section>
 
       <section id="liquid-cooling-chain">
         <h2 style={S.h2}>Liquid Cooling Chain</h2>
         <p style={S.p}>
-          Jab liquid cooling deployed hoti hai high-density AI racks ke liye, conceptual chain yeh hai — actual implementation OEM design, CDU type, aur facility architecture pe depend karti hai:
+          When liquid cooling is deployed for high-density AI racks, the conceptual chain is as follows — actual implementation depends on OEM design, CDU type, and facility architecture:
         </p>
         <ol style={S.ol}>
-          <li><strong>Facility Cooling Plant:</strong> Chiller ya dry cooler → facility-level cold water. Air-cooled ya water-cooled chiller — climate, water availability, design basis ke anusaar.</li>
-          <li><strong>CDU (Cooling Distribution Unit):</strong> Facility water aur IT equipment secondary loop ke beech heat exchanger. Dono loops physically separate — chemistry aur contamination control ke liye.</li>
-          <li><strong>Secondary Loop:</strong> CDU se cooled fluid rack manifold tak. IT-safe fluid chemistry.</li>
-          <li><strong>Server/Rack Manifold:</strong> Secondary loop fluid individual accelerator cold plates pe distribute karta hai.</li>
-          <li><strong>Accelerator Cold Plates:</strong> TPU/GPU chips pe directly mounted — heat chip se coolant mein transfer hoti hai.</li>
-          <li><strong>Return:</strong> Warm coolant wapas manifold → CDU → facility return → chiller. Cycle continues.</li>
+          <li><strong>Facility Cooling Plant:</strong> chiller or dry cooler → facility-level cold water. Air-cooled or water-cooled chiller — depending on climate, water availability, and design basis.</li>
+          <li><strong>CDU (Cooling Distribution Unit):</strong> a heat exchanger between the facility water and the IT equipment secondary loop. Both loops are physically separate — for chemistry and contamination control.</li>
+          <li><strong>Secondary Loop:</strong> cooled fluid from the CDU to the rack manifold. IT-safe fluid chemistry.</li>
+          <li><strong>Server/Rack Manifold:</strong> distributes secondary loop fluid to individual accelerator cold plates.</li>
+          <li><strong>Accelerator Cold Plates:</strong> mounted directly on TPU/GPU chips — heat transfers from the chip into the coolant.</li>
+          <li><strong>Return:</strong> warm coolant returns to the manifold → CDU → facility return → chiller. The cycle continues.</li>
         </ol>
         <p style={S.p}><strong>Key parameters to monitor:</strong></p>
         <ul style={S.ul}>
-          <li>Coolant supply temperature (CDU secondary) — OEM specified range mein hona chahiye</li>
+          <li>Coolant supply temperature (CDU secondary) — must be within the OEM specified range</li>
           <li>Coolant return temperature — combined with supply gives ΔT</li>
           <li>ΔT (supply − return): Q = ṁ × Cₚ × ΔT — heat load indicator</li>
           <li>Flow rate — below design spec = inadequate cooling</li>
@@ -400,15 +400,15 @@ export default function Content() {
 
       <section id="monitoring">
         <h2 style={S.h2}>Monitoring</h2>
-        <p style={S.p}>Comprehensive monitoring without which problems invisible rehte hain:</p>
+        <p style={S.p}>Comprehensive monitoring, without which problems stay invisible:</p>
         <ComparisonTable
           title="AI Data Center Monitoring — Key Metrics for TPU/GPU Infrastructure"
           headers={["Parameter", "Why Monitor", "Concern Indicator"]}
           rows={[
             ["Accelerator junction temperature", "Thermal throttling trigger; hardware health", "Approaching OEM thermal limit → throttling risk"],
-            ["Accelerator clock/utilization", "Throttling aur workload efficiency", "Clock drop during load → throttling; sustained low util → inefficiency"],
+            ["Accelerator clock/utilization", "Throttling and workload efficiency", "Clock drop during load → throttling; sustained low util → inefficiency"],
             ["Rack inlet temperature", "IT equipment directly affected", "Above applicable ASHRAE class recommended range"],
-            ["RH + dew point", "Condensation risk (high) aur ESD risk (low)", "Outside applicable ASHRAE class envelope — verify class"],
+            ["RH + dew point", "Condensation risk (high) and ESD risk (low)", "Outside applicable ASHRAE class envelope — verify class"],
             ["Coolant supply temp (CDU secondary)", "IT equipment inlet spec", "Above OEM-specified max inlet temperature"],
             ["Coolant return temp", "Combined with supply gives ΔT", "ΔT abnormally high or low vs design"],
             ["Coolant ΔT", "Q = ṁ × Cₚ × ΔT — heat load", "Rising ΔT at same flow → more load; falling → bypass or low load"],
@@ -446,21 +446,21 @@ export default function Content() {
 
       <section id="reliability">
         <h2 style={S.h2}>Reliability and Redundancy</h2>
-        <p style={S.p}><strong>Google Cloud SLAs:</strong> Vertex AI aur Gemini API ke SLA terms current Google Cloud documentation se verify karo. Service availability ≠ confirmed physical redundancy details — SLA terms specific conditions pe based hote hain.</p>
+        <p style={S.p}><strong>Google Cloud SLAs:</strong> verify Vertex AI and Gemini API SLA terms from current Google Cloud documentation. Service availability ≠ confirmed physical redundancy details — SLA terms are based on specific conditions.</p>
         <p style={S.p}><strong>Google infrastructure redundancy (publicly stated at high level):</strong></p>
         <ul style={S.ul}>
           <li>Multiple data centers globally — geographic redundancy</li>
-          <li>N+1 ya higher redundancy for critical systems — general Google infrastructure design principle</li>
+          <li>N+1 or higher redundancy for critical systems — a general Google infrastructure design principle</li>
           <li>Automatic failover — Google's serving infrastructure automatically routes around failures</li>
           <li>Checkpoint-based training recovery — failed training jobs restart from last checkpoint</li>
         </ul>
         <p style={S.p}><strong>Application-level reliability design:</strong></p>
         <ul style={S.ul}>
-          <li>Retry logic with exponential backoff — 429, 503 errors ke liye</li>
-          <li>Timeout handling — especially long context requests ke liye</li>
-          <li>Graceful degradation — agar Gemini API unavailable ho toh application kya kare?</li>
+          <li>Retry logic with exponential backoff — for 429, 503 errors</li>
+          <li>Timeout handling — especially for long context requests</li>
+          <li>Graceful degradation — what should the application do if Gemini API becomes unavailable?</li>
           <li>Status monitoring: <a href="https://status.google.com" style={{ color: "#2563eb" }}>status.google.com</a></li>
-          <li>Multi-model fallback strategy — critical applications ke liye</li>
+          <li>Multi-model fallback strategy — for critical applications</li>
         </ul>
       </section>
 
@@ -469,15 +469,15 @@ export default function Content() {
         <p style={S.p}><strong>Deployment options for enterprises:</strong></p>
         <ul style={S.ul}>
           <li><strong>Gemini API (ai.google.dev):</strong> Direct access — developers, startups. Latest models first. Google AI billing.</li>
-          <li><strong>Vertex AI:</strong> Enterprise-grade — GCP compliance features, VPC Service Controls, Cloud IAM, audit logging, managed model versions, SLAs. Regulated industries ke liye recommended path. Verify current compliance scope at cloud.google.com.</li>
-          <li><strong>Google Workspace + Gemini:</strong> Organizations already using Google Workspace (Gmail, Docs, Sheets) ke liye — Gemini directly integrated. Admin controls, enterprise data protection per Workspace terms.</li>
-          <li><strong>Google Cloud (custom models):</strong> Vertex AI pe fine-tuning aur custom model training — organization-specific data pe. Gemini aur other Google foundation models fine-tune kar sakte hain per current Vertex AI documentation.</li>
+          <li><strong>Vertex AI:</strong> enterprise-grade — GCP compliance features, VPC Service Controls, Cloud IAM, audit logging, managed model versions, SLAs. The recommended path for regulated industries. Verify current compliance scope at cloud.google.com.</li>
+          <li><strong>Google Workspace + Gemini:</strong> for organizations already using Google Workspace (Gmail, Docs, Sheets) — Gemini is directly integrated. Admin controls, enterprise data protection per Workspace terms.</li>
+          <li><strong>Google Cloud (custom models):</strong> fine-tuning and custom model training on Vertex AI — on organization-specific data. You can fine-tune Gemini and other Google foundation models per current Vertex AI documentation.</li>
         </ul>
         <p style={S.p}><strong>Integration patterns:</strong></p>
         <ul style={S.ul}>
           <li><strong>RAG (Retrieval Augmented Generation):</strong> Gemini + Vector Search (Vertex AI feature) + company knowledge base — grounded responses without fine-tuning</li>
-          <li><strong>Function calling/tool use:</strong> Gemini structured tool calls kar sakta hai — database queries, API calls, code execution</li>
-          <li><strong>Grounding with Google Search:</strong> Gemini responses ko real-time Google Search results se ground kar sakte hain — factual accuracy improve hoti hai</li>
+          <li><strong>Function calling/tool use:</strong> Gemini can make structured tool calls — database queries, API calls, code execution</li>
+          <li><strong>Grounding with Google Search:</strong> Gemini responses can be grounded with real-time Google Search results — improving factual accuracy</li>
           <li><strong>Internal API proxy:</strong> Centralized auth, rate limiting, logging, cost allocation — enterprise-standard pattern</li>
         </ul>
       </section>
@@ -497,15 +497,15 @@ export default function Content() {
           ]}
         />
         <Callout type="warning" title="Policies Vary — Always Verify Current Terms">
-          Training aur retention policies product, plan, aur configuration ke basis pe vary karti hain. Kisi bhi deployment ke liye current official Google policy verify karo — policies change ho sakti hain. Regulated industries ke liye Vertex AI recommended hai — current compliance certifications cloud.google.com pe verify karo.
+          Training and retention policies vary by product, plan, and configuration. Verify current official Google policy for any deployment — policies can change. Vertex AI is recommended for regulated industries — verify current compliance certifications at cloud.google.com.
         </Callout>
         <p style={S.p}><strong>Security best practices:</strong></p>
         <ul style={S.ul}>
-          <li>API keys environment variables ya Secret Manager mein — never client-side</li>
+          <li>API keys in environment variables or Secret Manager — never client-side</li>
           <li>Service accounts with minimum required permissions (principle of least privilege)</li>
           <li>VPC Service Controls (Vertex AI) — network-level isolation</li>
-          <li>Audit logging enable karo — Cloud Audit Logs for Vertex AI</li>
-          <li>Input validation aur prompt injection protection</li>
+          <li>Enable audit logging — Cloud Audit Logs for Vertex AI</li>
+          <li>Input validation and prompt injection protection</li>
           <li>Regular API key/service account rotation</li>
         </ul>
       </section>
@@ -513,14 +513,14 @@ export default function Content() {
       <section id="dc-perspective">
         <h2 style={S.h2}>Practical Data Center and O&M Perspective</h2>
         <p style={S.p}>
-          Google Gemini aur TPU infrastructure data center industry pe broader implications rakhte hain jo facility engineers ke liye relevant hain.
+          Google Gemini and TPU infrastructure have broader implications for the data center industry that are relevant to facility engineers.
         </p>
-        <p style={S.p}><strong>Custom silicon trend:</strong> Google TPUs demonstrate karte hain ki large-scale AI operators general-purpose GPUs se beyond custom hardware develop karte hain. AWS Trainium/Inferentia, Microsoft Maia, Meta MTIA — yeh trend accelerate ho raha hai. Data center engineers ke liye: future AI infrastructure increasingly diverse accelerator types hogi — different power, cooling, aur operational requirements.</p>
-        <p style={S.p}><strong>Optical interconnects:</strong> TPU v4 pods mein optical circuit switching publicly documented hai. Optical components data centers mein increasing role play karenge — different maintenance needs (fiber cleaning, optical power monitoring, transceiver management) vs electrical interconnects.</p>
-        <p style={S.p}><strong>Power unprecedented scale:</strong> Google ka total data center power consumption publicly reportable scale pe hai — AI workloads significant portion consume karte hain. Grid-scale renewable energy procurement aur 24/7 CFE (Carbon Free Energy) AI companies ke liye infrastructure planning ka part ban raha hai.</p>
-        <p style={S.p}><strong>Water consumption:</strong> Google annually water usage publicly reports karta hai. Evaporative cooling towers significant water use karte hain — water-scarce regions mein dry cooling ya closed-loop alternatives increasingly important.</p>
-        <p style={S.p}><strong>On-device AI (Gemini Nano):</strong> Ek interesting trend — inference server se edge device tak shift. Gemini Nano Android Pixel pe demonstrate karta hai ki enough capability on-device possible hai for many tasks. Data center engineers ke liye: edge inference growing trend hai — centralized server infrastructure per task type se zyada diverse.</p>
-        <p style={S.p}><strong>Vertical integration advantage:</strong> Google ka hardware-software-infrastructure control enterprise data center managers ko yeh sochne pe majboor karta hai: kya organization ka AI workload bhi custom optimization se benefit kar sakta hai? On-premise custom silicon abhi accessible nahi hai, lekin cloud-based access (Google Cloud TPUs) organizations ko Google ke hardware optimization se benefit karne deta hai.</p>
+        <p style={S.p}><strong>Custom silicon trend:</strong> Google TPUs demonstrate that large-scale AI operators are moving beyond general-purpose GPUs to develop custom hardware. AWS Trainium/Inferentia, Microsoft Maia, Meta MTIA — this trend is accelerating. For data center engineers: future AI infrastructure will increasingly involve diverse accelerator types — with different power, cooling, and operational requirements.</p>
+        <p style={S.p}><strong>Optical interconnects:</strong> optical circuit switching in TPU v4 pods is publicly documented. Optical components will play an increasing role in data centers — with different maintenance needs (fiber cleaning, optical power monitoring, transceiver management) vs electrical interconnects.</p>
+        <p style={S.p}><strong>Power at unprecedented scale:</strong> Google's total data center power consumption is at a publicly reportable scale — AI workloads consume a significant portion. Grid-scale renewable energy procurement and 24/7 CFE (Carbon Free Energy) are becoming part of infrastructure planning for AI companies.</p>
+        <p style={S.p}><strong>Water consumption:</strong> Google publicly reports water usage annually. Evaporative cooling towers use significant water — in water-scarce regions, dry cooling or closed-loop alternatives are becoming increasingly important.</p>
+        <p style={S.p}><strong>On-device AI (Gemini Nano):</strong> an interesting trend — the shift of inference from server to edge device. Gemini Nano on Android Pixel demonstrates that enough capability is possible on-device for many tasks. For data center engineers: edge inference is a growing trend — infrastructure is becoming more diverse per task type than purely centralized server infrastructure.</p>
+        <p style={S.p}><strong>Vertical integration advantage:</strong> Google's control over hardware-software-infrastructure prompts enterprise data center managers to consider: could their organization's AI workload also benefit from custom optimization? On-premise custom silicon isn't accessible yet, but cloud-based access (Google Cloud TPUs) lets organizations benefit from Google's hardware optimization.</p>
       </section>
 
       <section id="references">
@@ -586,16 +586,16 @@ export default function Content() {
       <section id="key-takeaways">
         <h2 style={S.h2}>Key Takeaways</h2>
         <ul style={S.ul}>
-          <li><strong>Google Gemini vertically integrated AI stack pe run karta hai:</strong> Custom TPU hardware, JAX/XLA compiler, aur Google's own data centers. Other major AI providers (OpenAI, Anthropic etc.) different combinations of owned, partner aur cloud infrastructure use karte hain — each provider ka approach alag hai.</li>
-          <li><strong>TPU aur GPU different architectural approaches hain:</strong> TPU systolic array matrix multiplication ke liye purpose-built hai. NVIDIA GPU general-purpose parallel compute hai jo AI ke liye widely used hai. TPUs Google Cloud ke through accessible hain — on-premise option nahi hai unlike NVIDIA hardware.</li>
-          <li><strong>HBM AI accelerator performance ka critical factor hai:</strong> High Bandwidth Memory accelerator compute units ko data feed karta hai. HBM capacity model size limits, HBM bandwidth inference latency affect karta hai. Thermal management HBM performance aur reliability ke liye essential hai.</li>
-          <li><strong>TPU pods massive distributed training enable karte hain:</strong> ICI interconnect TPU chips ko pod mein connect karta hai — effectively ek giant distributed accelerator. Pod scale ke saath power aur cooling requirements dramatically badh ti hain. Data center infrastructure pod ke liye specifically designed honi chahiye.</li>
-          <li><strong>Gemini access path choice compliance aur data handling determine karta hai:</strong> AI Studio → prototyping. Direct Gemini API → production apps. Vertex AI → enterprise compliance. Har path ke alag data handling policies hain — always current official documentation verify karo.</li>
-          <li><strong>Google Gemini inference ka scale massive hai:</strong> Google Search, Gmail, Docs plus API — enormous query volume across Google products aur API customers simultaneously. Exact query volumes publicly disclosed nahi hain. Gemini Nano on-device inference bhi add karta hai distributed AI serving ka ek dimension.</li>
-          <li><strong>Liquid cooling TPU v3 se documented hai lekin universally mandatory nahi:</strong> Actual cooling technology accelerator generation, rack density, server design, aur facility capability pe depend karti hai. AI cooling design <TopicLink slug="ai-cooling" variant="inline" /> article mein detail mein covered hai.</li>
-          <li><strong>Training aur inference fundamentally alag infrastructure challenges hain:</strong> Training — massive synchronized pods, weeks-long runs, checkpoint storage. Inference — globally distributed, latency-sensitive, continuous, quantized models.</li>
-          <li><strong>Google ka custom silicon trend data center industry ko reshape kar raha hai:</strong> AWS Trainium, Google TPU, Microsoft Maia, Meta MTIA — major AI operators custom hardware develop kar rahe hain. Future AI data centers diverse accelerator ecosystem rakhenge — different power, cooling, aur operational requirements.</li>
-          <li><strong>Privacy policies access path pe depend karti hain — absolute claims avoid karo:</strong> AI Studio free tier se Vertex AI enterprise tak — data handling alag hai. Current official Google policies verify karo aur regulated industries ke liye Vertex AI preferred path hai.</li>
+          <li><strong>Google Gemini runs on a vertically integrated AI stack:</strong> custom TPU hardware, the JAX/XLA compiler, and Google's own data centers. Other major AI providers (OpenAI, Anthropic, etc.) use different combinations of owned, partner, and cloud infrastructure — each provider's approach differs.</li>
+          <li><strong>TPU and GPU are different architectural approaches:</strong> the TPU systolic array is purpose-built for matrix multiplication. The NVIDIA GPU is general-purpose parallel compute widely used for AI. TPUs are accessible through Google Cloud — there's no on-premise option unlike NVIDIA hardware.</li>
+          <li><strong>HBM is a critical factor in AI accelerator performance:</strong> High Bandwidth Memory feeds data to accelerator compute units. HBM capacity limits model size, HBM bandwidth affects inference latency. Thermal management is essential for HBM performance and reliability.</li>
+          <li><strong>TPU pods enable massive distributed training:</strong> ICI interconnect connects TPU chips within a pod — effectively one giant distributed accelerator. Power and cooling requirements grow dramatically with pod scale. Data center infrastructure must be specifically designed for the pod.</li>
+          <li><strong>The Gemini access path choice determines compliance and data handling:</strong> AI Studio → prototyping. Direct Gemini API → production apps. Vertex AI → enterprise compliance. Each path has different data handling policies — always verify current official documentation.</li>
+          <li><strong>Google Gemini inference operates at massive scale:</strong> Google Search, Gmail, Docs plus API — enormous query volume simultaneously across Google products and API customers. Exact query volumes are not publicly disclosed. Gemini Nano on-device inference also adds a dimension to distributed AI serving.</li>
+          <li><strong>Liquid cooling is documented from TPU v3 but isn't universally mandatory:</strong> the actual cooling technology depends on accelerator generation, rack density, server design, and facility capability. AI cooling design is covered in detail in the <TopicLink slug="ai-cooling" variant="inline" /> article.</li>
+          <li><strong>Training and inference are fundamentally different infrastructure challenges:</strong> training — massive synchronized pods, weeks-long runs, checkpoint storage. Inference — globally distributed, latency-sensitive, continuous, quantized models.</li>
+          <li><strong>Google's custom silicon trend is reshaping the data center industry:</strong> AWS Trainium, Google TPU, Microsoft Maia, Meta MTIA — major AI operators are developing custom hardware. Future AI data centers will have a diverse accelerator ecosystem — with different power, cooling, and operational requirements.</li>
+          <li><strong>Privacy policies depend on the access path — avoid absolute claims:</strong> from AI Studio free tier to Vertex AI enterprise — data handling differs. Verify current official Google policies, and Vertex AI is the preferred path for regulated industries.</li>
         </ul>
       </section>
 

@@ -3,12 +3,12 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const tpuMetadata: ArticleMetadata = {
   slug: "tpu",
   title: "TPU (Tensor Processing Unit) — The Complete Engineering Guide",
-  seoTitle: "TPU Kya Hai? Google Tensor Processing Unit Architecture, Systolic Array, TPU Pod, Cloud TPU — Complete Hinglish Guide",
+  seoTitle: "What Is a TPU? Google Tensor Processing Unit Architecture, Systolic Array, TPU Pod, Cloud TPU — Complete English Guide",
   seoDescription:
-    "TPU ka complete engineering guide — CPU vs GPU vs TPU, Systolic Array architecture, MXU, HBM, TPU Pod, TPU Interconnect, Cloud TPU, TensorFlow, PyTorch/XLA, training vs inference, cost analysis, Google AI infrastructure, data center deployment aur future roadmap. AI engineers, DC engineers aur architects ke liye.",
+    "A complete engineering guide to the TPU — CPU vs GPU vs TPU, Systolic Array architecture, MXU, HBM, TPU Pod, TPU Interconnect, Cloud TPU, TensorFlow, PyTorch/XLA, training vs inference, cost analysis, Google AI infrastructure, data center deployment, and the future roadmap. For AI engineers, DC engineers, and architects.",
   canonicalUrl: "https://behindthetech.in/learn/ai/hardware/tpu",
   keywords: [
-    "tpu kya hai",
+    "what is a tpu",
     "tensor processing unit explained hindi",
     "google tpu architecture",
     "systolic array explained",

@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(nvidiaArchMetadata);
+const baseMetadata = buildPageMetadata(nvidiaArchMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/hardware/nvidia-architecture",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/hardware/nvidia-architecture",
+      hi: "https://behindthetech.in/hi/learn/ai/hardware/nvidia-architecture",
+      "x-default": "https://behindthetech.in/learn/ai/hardware/nvidia-architecture",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/hardware/nvidia-architecture", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: nvidiaArchMetadata.title,

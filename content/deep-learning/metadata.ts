@@ -3,12 +3,12 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const dlMetadata: ArticleMetadata = {
   slug: "deep-learning",
   title: "Deep Learning — The Complete Engineering Guide",
-  seoTitle: "Deep Learning Kya Hai? Neural Networks, CNN, Transformer, GPU Training — Complete Hinglish Guide",
+  seoTitle: "What Is Deep Learning? Neural Networks, CNN, Transformer, GPU Training — Complete English Guide",
   seoDescription:
-    "Deep Learning ka complete engineering guide — neural networks, CNN, RNN, LSTM, Transformers, attention mechanism, GPU acceleration, distributed training, CUDA stack, inference infrastructure, enterprise deployment aur production operations. DC engineers, IT engineers aur AI engineers ke liye.",
+    "A complete engineering guide to Deep Learning — neural networks, CNN, RNN, LSTM, Transformers, attention mechanism, GPU acceleration, distributed training, the CUDA stack, inference infrastructure, enterprise deployment, and production operations. For DC engineers, IT engineers, and AI engineers.",
   canonicalUrl: "https://behindthetech.in/learn/ai/fundamentals/deep-learning",
   keywords: [
-    "deep learning kya hai",
+    "what is deep learning english",
     "deep learning explained hindi",
     "neural networks beginners",
     "transformer architecture explained",

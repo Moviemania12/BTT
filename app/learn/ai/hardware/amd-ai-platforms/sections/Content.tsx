@@ -25,16 +25,16 @@ export default function Content() {
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
         <p style={S.p}>
-          NVIDIA ke baare mein aapne detail mein padh liya. Ab ek cheez aur samajhni hai jo AI hardware landscape mein increasingly important ho rahi hai: AMD ka AI ecosystem.
+          You've read about NVIDIA in detail already. There's one more thing you need to understand now that's becoming increasingly important in the AI hardware landscape: AMD's AI ecosystem.
         </p>
         <p style={S.p}>
-          AMD — Advanced Micro Devices — woh company hai jisne CPUs aur GPUs banane mein decades laga diye. Gaming mein Radeon. Servers mein EPYC. Aur ab AI mein: Instinct MI series. MI300X abhi market mein ek aise competitor ke roop mein hai jo seriously NVIDIA ke paas jaata hai — especially ek area mein jahan NVIDIA actually peeche hai: memory capacity.
+          AMD — Advanced Micro Devices — is a company that's spent decades building CPUs and GPUs. Radeon in gaming. EPYC in servers. And now in AI: the Instinct MI series. MI300X is currently a serious competitor to NVIDIA — especially in one area where NVIDIA actually falls behind: memory capacity.
         </p>
         <p style={S.p}>
-          Yeh article AMD ki AI architecture ko zero se cover karta hai. GCN se CDNA 4 tak evolution. Compute Units kya hote hain. Dedicated Matrix Core hardware kaise kaam karta hai. ROCm ecosystem — CUDA ka AMD alternative. MI300X kyun 192 GB HBM3 ke saath interesting hai large model inference ke liye. Aur honestly — kab AMD consider karo aur kab NVIDIA hi sahi choice hai.
+          This article covers AMD's AI architecture from zero. Evolution from GCN to CDNA 4. What Compute Units are. How dedicated Matrix Core hardware works. The ROCm ecosystem — CUDA's AMD alternative. Why MI300X is interesting with its 192 GB of HBM3 for large-model inference. And honestly — when to consider AMD and when NVIDIA is still the right choice.
         </p>
         <Callout type="important" title="Ek Line Reality Check">
-          Hardware pe: MI300X impressive hai. Software ecosystem pe: ROCm, CUDA se kaafi peeche hai lekin rapidly improving. Enterprise adoption: growing, lekin early stages. Yeh article aapko wo sab batayega jo actually decision-relevant hai — marketing nahi.
+          On hardware: MI300X is impressive. On the software ecosystem: ROCm is well behind CUDA but improving rapidly. Enterprise adoption: growing, but early stage. This article will tell you everything that's actually decision-relevant — not marketing.
         </Callout>
       </section>
 
@@ -42,10 +42,10 @@ export default function Content() {
       <section id="who-should-read">
         <h2 style={S.h2}>Who Should Read This</h2>
         <ul style={S.ul}>
-          <li><strong>AI/ML Engineers</strong> — ROCm pe PyTorch kaise run hota hai, HIP programming model kya hai, NVIDIA se migration mein kya challenges hain, kab AMD accelerators seriously evaluate karein.</li>
-          <li><strong>Data Center Engineers</strong> — MI300X power requirements, cooling, rack density, Infinity Fabric topology, chiplet architecture ke DC implications.</li>
+          <li><strong>AI/ML Engineers</strong> — how PyTorch runs on ROCm, what the HIP programming model is, what challenges come up when migrating from NVIDIA, when to seriously evaluate AMD accelerators.</li>
+          <li><strong>Data Center Engineers</strong> — MI300X power requirements, cooling, rack density, Infinity Fabric topology, the DC implications of chiplet architecture.</li>
           <li><strong>System Architects</strong> — MI300/MI350 cluster design, ROCm vs CUDA ecosystem tradeoffs, enterprise AMD AI deployment strategy.</li>
-          <li><strong>Students aur Freshers</strong> — AMD GPU architecture ka complete overview, NVIDIA se kaise compare karta hai, aur AI hardware landscape mein AMD ka actual role.</li>
+          <li><strong>Students and Freshers</strong> — a complete overview of AMD GPU architecture, how it compares to NVIDIA, and AMD's actual role in the AI hardware landscape.</li>
         </ul>
       </section>
 
@@ -53,21 +53,21 @@ export default function Content() {
       <section id="what-you-will-learn">
         <h2 style={S.h2}>What You Will Learn</h2>
         <ul style={S.ul}>
-          <li>AMD AI chip evolution — GCN se CDNA 4 tak, har generation ka specific improvement</li>
-          <li>Compute Unit (CU) architecture — AMD GPU ka fundamental building block</li>
-          <li>Stream Processors, Matrix Cores — NVIDIA ke CUDA Core aur Tensor Core equivalents</li>
-          <li>Infinity Cache — AMD ka unique on-chip cache innovation</li>
-          <li>HBM memory in AMD context — bandwidth aur capacity comparison</li>
-          <li>Infinity Fabric (internal) aur xGMI (external) — AMD ke chip connections</li>
-          <li>Chiplet architecture — MI300X kyun 3D stacked chiplets use karta hai</li>
-          <li>MI100, MI200, MI300, MI350 — product evolution aur specs</li>
-          <li>ROCm ecosystem — AMD ka CUDA alternative, kya work karta hai aur kya nahi</li>
-          <li>HIP programming model — CUDA code AMD pe kaise chalate hain</li>
-          <li>RCCL — AMD ka NCCL equivalent for distributed training</li>
+          <li>AMD AI chip evolution — from GCN to CDNA 4, each generation's specific improvement</li>
+          <li>Compute Unit (CU) architecture — the fundamental building block of an AMD GPU</li>
+          <li>Stream Processors, Matrix Cores — AMD's equivalents of NVIDIA's CUDA Cores and Tensor Cores</li>
+          <li>Infinity Cache — AMD's unique on-chip cache innovation</li>
+          <li>HBM memory in AMD's context — bandwidth and capacity comparison</li>
+          <li>Infinity Fabric (internal) and xGMI (external) — AMD's chip connections</li>
+          <li>Chiplet architecture — why MI300X uses 3D-stacked chiplets</li>
+          <li>MI100, MI200, MI300, MI350 — product evolution and specs</li>
+          <li>The ROCm ecosystem — AMD's CUDA alternative, what works and what doesn't</li>
+          <li>The HIP programming model — how CUDA code is run on AMD</li>
+          <li>RCCL — AMD's NCCL equivalent for distributed training</li>
           <li>AMD AI software stack — complete picture</li>
-          <li>Training aur inference workflows on AMD hardware</li>
+          <li>Training and inference workflows on AMD hardware</li>
           <li>AMD vs NVIDIA — honest technical comparison</li>
-          <li>Enterprise deployment, rack design, power aur cooling</li>
+          <li>Enterprise deployment, rack design, power and cooling</li>
           <li>Best practices, common mistakes, troubleshooting</li>
         </ul>
       </section>
@@ -81,7 +81,7 @@ export default function Content() {
           <li><strong>Related concepts:</strong> <TopicLink slug="deep-learning" variant="inline" />, <TopicLink slug="llm" variant="inline" /></li>
         </ul>
         <p style={S.p}>
-          <em>Note: Yeh article NVIDIA Architecture pe build karta hai. Agar aapne woh padh liya hai toh AMD ka comparison perspective zyada clear hoga. Lekin yeh article standalone bhi complete hai.</em>
+          <em>Note: This article builds on the NVIDIA Architecture article. If you've read that one, AMD's comparison perspective will be clearer. But this article is also complete on its own.</em>
         </p>
       </section>
 
@@ -89,19 +89,19 @@ export default function Content() {
       <section id="introduction">
         <h2 style={S.h2}>Introduction</h2>
         <p style={S.p}>
-          2020 mein ek interesting cheez hui. AMD ne MI100 launch kiya — pehla accelerator specifically for AI aur HPC (High Performance Computing — data centers mein scientific calculations ke liye). Tab tak NVIDIA V100 dominant tha. MI100 ne compete kiya lekin match nahi kiya.
+          Something interesting happened in 2020. AMD launched the MI100 — the first accelerator built specifically for AI and HPC (High Performance Computing — scientific calculations in data centers). Until then, NVIDIA's V100 was dominant. MI100 competed, but didn't match it.
         </p>
         <p style={S.p}>
-          2021 mein MI200 aaya. Yahan AMD ne ek interesting bet lagai: double-die design, 128 GB HBM2e memory per card. Market ne notice kiya.
+          MI200 arrived in 2021. Here AMD placed an interesting bet: a dual-die design, 128 GB of HBM2e memory per card. The market took notice.
         </p>
         <p style={S.p}>
-          2023 mein MI300X aaya. 192 GB HBM3. Ek single accelerator card pe. NVIDIA H100 ke paas 80 GB tha. Memory capacity mein AMD ek saath 2.4× aage nikal gayi.
+          MI300X arrived in 2023. 192 GB of HBM3. On a single accelerator card. NVIDIA's H100 had 80 GB. In memory capacity, AMD suddenly pulled 2.4× ahead.
         </p>
         <p style={S.p}>
-          Yeh sirf numbers ki baat nahi hai. LLM inference ke liye memory capacity ek critical constraint hai — ek large model ko GPU memory mein fit karna padta hai inference ke liye. MI300X pe, jo model H100 pe do cards chahiye tha, woh ek card pe fit ho jaata hai. Simpler deployment, less communication overhead, potentially lower cost.
+          This isn't just about numbers. For LLM inference, memory capacity is a critical constraint — a large model has to fit in GPU memory for inference. On MI300X, a model that needed two H100 cards fits on a single card. Simpler deployment, less communication overhead, potentially lower cost.
         </p>
-        <Callout type="best-practice" title="AMD Serious Player Hai?">
-          Honestly — depends on use case. Hardware pe: MI300X impressive hai. Software ecosystem pe: ROCm CUDA se kaafi peeche hai lekin rapidly improving. Enterprise adoption: growing lekin early stages. Yeh article aapko wo sab batayega jo actually decision-relevant hai.
+        <Callout type="best-practice" title="Is AMD a Serious Player?">
+          Honestly — it depends on the use case. On hardware: MI300X is impressive. On the software ecosystem: ROCm is well behind CUDA but improving rapidly. Enterprise adoption: growing but early stage. This article will tell you everything that's actually decision-relevant.
         </Callout>
       </section>
 
@@ -109,19 +109,19 @@ export default function Content() {
       <section id="why-amd-matters">
         <h2 style={S.h2}>Why AMD AI Architecture Matters</h2>
         <p style={S.p}>
-          AMD ek "GPU company" nahi hai — yeh ek semiconductor company hai jo CPUs, GPUs, aur now AI accelerators banati hai. Yeh vertical integration AMD ko kuch unique advantages deta hai.
+          AMD isn't a "GPU company" — it's a semiconductor company that makes CPUs, GPUs, and now AI accelerators. This vertical integration gives AMD some unique advantages.
         </p>
         <p style={S.p}>
-          <strong>CPU side:</strong> EPYC processors server market mein strong — Intel Xeon ke serious competitor. AMD ke paas CPU design expertise hai.
+          <strong>CPU side:</strong> EPYC processors are strong in the server market — a serious competitor to Intel Xeon. AMD has CPU design expertise.
         </p>
         <p style={S.p}>
-          <strong>GPU side:</strong> Radeon gaming GPUs — NVIDIA GeForce ke competitors. Woh foundation data center chips ke liye use hoti hai.
+          <strong>GPU side:</strong> Radeon gaming GPUs — competitors to NVIDIA GeForce. That foundation is used for data center chips too.
         </p>
         <p style={S.p}>
-          <strong>AI accelerators:</strong> Instinct MI series — specifically for AI training aur inference. Consumer GPU se completely separate product line, separate architecture (CDNA).
+          <strong>AI accelerators:</strong> the Instinct MI series — specifically for AI training and inference. A completely separate product line from consumer GPUs, a separate architecture (CDNA).
         </p>
         <p style={S.p}>
-          <strong>The unified vision:</strong> AMD ka bet yeh hai ki CPU + GPU + memory tightly integrated karo. MI300A (APU variant) mein CPU, GPU, aur HBM sab ek package mein hain. AMD aur NVIDIA alag bets laga rahe hain: NVIDIA world&apos;s best standalone GPU accelerator; AMD tight CPU-GPU integration, large memory, chiplet-based scalability.
+          <strong>The unified vision:</strong> AMD's bet is to tightly integrate CPU + GPU + memory. MI300A (the APU variant) has CPU, GPU, and HBM all in one package. AMD and NVIDIA are placing different bets: NVIDIA on the world's best standalone GPU accelerator; AMD on tight CPU-GPU integration, large memory, chiplet-based scalability.
         </p>
       </section>
 
@@ -129,7 +129,7 @@ export default function Content() {
       <section id="evolution">
         <h2 style={S.h2}>Evolution — GCN to CDNA 4</h2>
         <p style={S.p}>
-          Har generation ek problem solve karta hai. AMD ki AI chip evolution samajhne ke liye starting point hai GCN — jo gaming GPU ka foundation tha — aur journey hai CDNA 4 tak jo pure AI computing hai.
+          Every generation solves a problem. To understand AMD's AI chip evolution, the starting point is GCN — the foundation of its gaming GPUs — and the journey runs to CDNA 4, which is pure AI computing.
         </p>
         <Figure caption="AMD CDNA Architecture Evolution: GCN (2012-19) was the programmable GPU foundation. CDNA 1 (2020, MI100) removed graphics entirely — first compute-only AMD chip. CDNA 2 (2021, MI250X) added dual-die design with 128GB HBM2e and FP64 Matrix Cores — used in Frontier supercomputer. CDNA 3 (2023, MI300X) introduced 3D chiplets with 192GB HBM3 — the memory revolution. CDNA 4 (2025, MI350) focuses on FP8 inference — verify specs at amd.com/instinct.">
           <CdnaEvolutionTimeline />
@@ -146,13 +146,13 @@ export default function Content() {
           ]}
         />
 
-        <p style={S.p}><strong>GCN — Graphics Core Next (2012–2019):</strong> AMD ka unified shader architecture tha. NVIDIA ke Fermi/Maxwell jaisa period. GCN ne ek programmable GPU architecture define kiya jo both graphics aur compute ke liye use ho sakti thi. Compute Units (CUs) as primary building blocks introduced kiye. AI ke liye technically use hoti thi — ROCm ka initial support GCN pe tha. Lekin yeh architecture AI ke liye optimized nahi tha — graphics-first design.</p>
+        <p style={S.p}><strong>GCN — Graphics Core Next (2012–2019):</strong> AMD's unified shader architecture. A period like NVIDIA's Fermi/Maxwell. GCN defined a programmable GPU architecture that could be used for both graphics and compute. It introduced Compute Units (CUs) as the primary building blocks. It was technically usable for AI — ROCm's initial support was on GCN. But this architecture wasn't optimized for AI — a graphics-first design.</p>
 
-        <p style={S.p}><strong>CDNA 1 (2020) — MI100:</strong> Woh moment jab AMD ne decide kiya ki AI/HPC aur gaming chips alag honge. Consumer GPUs RDNA (Radeon DNA) architecture pe rahe. Data center AI chips CDNA pe gaye. Graphics components completely removed. Dedicated Matrix Core hardware introduced for matrix operations. 32 GB HBM2, 300W. MI100 market ko prove kiya ki AMD compute-only chips bana sakta hai.</p>
+        <p style={S.p}><strong>CDNA 1 (2020) — MI100:</strong> The moment AMD decided AI/HPC and gaming chips would go separate ways. Consumer GPUs stayed on the RDNA (Radeon DNA) architecture. Data center AI chips moved to CDNA. Graphics components were completely removed. Dedicated Matrix Core hardware was introduced for matrix operations. 32 GB HBM2, 300W. MI100 proved to the market that AMD could build compute-only chips.</p>
 
-        <p style={S.p}><strong>CDNA 2 (2021) — MI200 Series:</strong> AMD ka &quot;fix the memory problem&quot; generation. MCM (Multi-Chip Module) design — ek single card pe do GPU dies. MI250X: 220 CUs total, 128 GB HBM2e, 3.2 TB/s, FP64 dedicated Matrix Cores — pehli baar. Frontier supercomputer (world&apos;s first exascale system, 2022) AMD MI250X pe build hua. Scientific computing mein MI250X clearly won on FP64 performance.</p>
+        <p style={S.p}><strong>CDNA 2 (2021) — MI200 Series:</strong> AMD's "fix the memory problem" generation. MCM (Multi-Chip Module) design — two GPU dies on a single card. MI250X: 220 CUs total, 128 GB HBM2e, 3.2 TB/s, dedicated FP64 Matrix Cores — for the first time. The Frontier supercomputer (the world's first exascale system, 2022) was built on AMD MI250X. In scientific computing, MI250X clearly won on FP64 performance.</p>
 
-        <p style={S.p}><strong>CDNA 3 (2023) — MI300 Series:</strong> Yeh woh generation hai jisne AMD ko seriously relevant banaya AI market mein. Three major innovations: 3D Chiplet Architecture (8 XCDs + 1 AID + 4 HBM stacks), massive 192 GB HBM3 memory, aur MI300A (APU variant with CPU + GPU + unified HBM). Microsoft Azure, Oracle OCI, aur others ne MI300X adopt kiya.</p>
+        <p style={S.p}><strong>CDNA 3 (2023) — MI300 Series:</strong> This is the generation that made AMD seriously relevant in the AI market. Three major innovations: 3D chiplet architecture (8 XCDs + 1 AID + 4 HBM stacks), massive 192 GB of HBM3 memory, and MI300A (the APU variant with CPU + GPU + unified HBM). Microsoft Azure, Oracle OCI, and others adopted MI300X.</p>
 
         <p style={S.p}><strong>CDNA 4 (2025) — MI350 Series:</strong> Details limited at time of writing.</p>
         <Callout type="warning" title="MI350 Specifications">
@@ -164,17 +164,17 @@ export default function Content() {
       <section id="compute-unit">
         <h2 style={S.h2}>Compute Unit (CU) — AMD's Building Block</h2>
         <p style={S.p}>
-          <strong>CU (Compute Unit)</strong> — yeh AMD GPU ka fundamental compute building block hai. NVIDIA ke SM (Streaming Multiprocessor) ka AMD equivalent. Jab aap sunate ho &quot;MI300X has 304 Compute Units&quot; — yeh 304 independently parallel kaam karne wali compute units hain.
+          <strong>CU (Compute Unit)</strong> — this is the fundamental compute building block of an AMD GPU. AMD's equivalent of NVIDIA's SM (Streaming Multiprocessor). When you hear "MI300X has 304 Compute Units" — that means 304 independently, parallel-working compute units.
         </p>
         <p style={S.p}>
-          <strong>Factory analogy:</strong> Socho ek badi factory hai — AMD GPU. Factory mein 304 departments hain (CUs). Har department independently apna kaam karta hai. Sab simultaneously. Department manager (Scheduler) decide karta hai kaun kab kya kare.
+          <strong>Factory analogy:</strong> Picture a big factory — the AMD GPU. The factory has 304 departments (CUs). Each department does its own work independently. All simultaneously. A department manager (the Scheduler) decides who does what and when.
         </p>
         <Figure caption="GPU Compute Unit (CU) — AMD's Main Processing Block: 4 groups of 32 Parallel Math Units (SIMD32) handle regular calculations. AI Math Engine (Matrix Core hardware) does dedicated matrix multiply for AI. Fast Shared Memory (Local Data Share, 64KB) is the team whiteboard. Task Scheduler (Wavefront Scheduler) decides what 64-thread group runs next. Private Working Memory (Vector Registers, 256KB) stores each thread's data. Automatic Fast Buffer (L1 Cache, 16KB) speeds up repeat access.">
           <ComputeUnitDiagram />
         </Figure>
         <p style={S.p}><strong>What is inside a single CU (CDNA 3 reference):</strong></p>
         <ul style={S.ul}>
-          <li><strong>4 SIMD32 units</strong> — har ek mein 32 Stream Processors = 128 Stream Processors per CU total</li>
+          <li><strong>4 SIMD32 units</strong> — each with 32 Stream Processors = 128 Stream Processors per CU total</li>
           <li><strong>Dedicated Matrix Core hardware</strong> — integrated inside each CU for matrix operations (AI math engine)</li>
           <li><strong>64 KB LDS (Local Data Share)</strong> — shared memory equivalent (programmer-managed fast memory, "team whiteboard")</li>
           <li><strong>Scalar ALU</strong> — control flow, address calculations</li>
@@ -188,14 +188,14 @@ export default function Content() {
       <section id="stream-processors">
         <h2 style={S.h2}>Stream Processors — The Compute Workers</h2>
         <p style={S.p}>
-          <strong>Stream Processors (SPs)</strong> — AMD ka CUDA Core equivalent. Yeh individual floating-point arithmetic units hain. Ek Stream Processor ek clock cycle mein ek FP32 operation karta hai.
+          <strong>Stream Processors (SPs)</strong> — AMD's equivalent of the CUDA Core. These are individual floating-point arithmetic units. A Stream Processor performs one FP32 operation per clock cycle.
         </p>
         <p style={S.p}>
-          <strong>Critical distinction — same as NVIDIA:</strong> Stream Processor ek &quot;CPU core&quot; nahi hai. CPU core ke paas apna instruction decoder, branch predictor, out-of-order execution hota hai. SP sirf ek basic ALU (Arithmetic Logic Unit — Math Unit) hai — math karta hai, wavefront ke saath kaam karta hai, independent nahi.
+          <strong>Critical distinction — same as NVIDIA:</strong> a Stream Processor is not a "CPU core." A CPU core has its own instruction decoder, branch predictor, out-of-order execution. An SP is just a basic ALU (Arithmetic Logic Unit — a math unit) — it does math, works with the wavefront, and isn't independent.
         </p>
         <ul style={S.ul}>
           <li><strong>What Stream Processors do in AI:</strong> Element-wise operations (activation functions — ReLU, GELU, sigmoid), normalization operations (layer norm, batch norm per element), scale and add operations, data type conversions.</li>
-          <li><strong>What they don&apos;t primarily do:</strong> Matrix multiplication — dedicated Matrix Core hardware ka kaam hai.</li>
+          <li><strong>What they don&apos;t primarily do:</strong> matrix multiplication — that's the job of dedicated Matrix Core hardware.</li>
           <li><strong>Think of it this way:</strong> Stream Processors = general workers. Matrix Cores = AI specialists. Neural network forward pass: Matrix Cores do heavy matrix multiply (90% compute), Stream Processors do activation function after each layer (10% compute). Both necessary.</li>
           <li><strong>MI300X count:</strong> 304 CUs × 128 Stream Processors per CU = 19,456 Stream Processors total.</li>
         </ul>
@@ -208,16 +208,16 @@ export default function Content() {
       <section id="wavefront">
         <h2 style={S.h2}>Wavefront — AMD's Warp Equivalent</h2>
         <p style={S.p}>
-          <strong>Wavefront</strong> — NVIDIA ke warp ka AMD equivalent. Ek wavefront 64 work items (threads) ka group hai. CDNA mein yeh 64 items hain — NVIDIA warp ke 32 threads se 2× wider.
+          <strong>Wavefront</strong> — AMD's equivalent of NVIDIA's warp. A wavefront is a group of 64 work items (threads). On CDNA these are 64 items — 2× wider than NVIDIA warp's 32 threads.
         </p>
         <Figure caption="AMD Wavefront vs NVIDIA Warp: Both concepts are identical — lockstep parallel execution of multiple threads. NVIDIA Warp has 32 threads. AMD Wavefront has 64 work items (twice as wide). Critical for code migration: never hardcode warpSize = 32 — use the warpSize variable. On AMD it returns 64, on NVIDIA it returns 32.">
           <WavefrontVsWarp />
         </Figure>
         <p style={S.p}><strong>Same concept, different width — practical implications:</strong></p>
         <ul style={S.ul}>
-          <li>Wavefront divergence: Same concept as warp divergence. Agar wavefront ke threads alag if-else paths lein — serialize hoga. 2× slowdown worst case. Same mitigation strategies.</li>
-          <li><strong>Why 64 vs 32:</strong> AMD SIMD units wider hain. Theoretically more throughput per scheduling event.</li>
-          <li><strong>Code migration critical point:</strong> Code jo <code style={S.code}>warpSize = 32</code> hardcode kare — AMD pe wrong. Always use <code style={S.code}>warpSize</code> macro — returns 64 on AMD, 32 on NVIDIA.</li>
+          <li>Wavefront divergence: the same concept as warp divergence. If threads in a wavefront take different if-else paths — it serializes. 2× slowdown worst case. Same mitigation strategies.</li>
+          <li><strong>Why 64 vs 32:</strong> AMD's SIMD units are wider. Theoretically more throughput per scheduling event.</li>
+          <li><strong>Code migration critical point:</strong> code that hardcodes <code style={S.code}>warpSize = 32</code> is wrong on AMD. Always use the <code style={S.code}>warpSize</code> macro — it returns 64 on AMD, 32 on NVIDIA.</li>
           <li>Warp-level primitives (<code style={S.code}>__shfl_sync</code>, <code style={S.code}>__ballot_sync</code>) — AMD equivalents exist but behavior slightly different for 64-wide wavefront. Test carefully.</li>
         </ul>
       </section>
@@ -226,13 +226,13 @@ export default function Content() {
       <section id="matrix-cores">
         <h2 style={S.h2}>Matrix Cores — The AI Math Engine</h2>
         <p style={S.p}>
-          <strong>Matrix Cores</strong> — dedicated hardware integrated inside each Compute Unit that accelerates matrix multiply-accumulate operations. CDNA 1 mein introduced. NVIDIA ke Tensor Core ka AMD equivalent.
+          <strong>Matrix Cores</strong> — dedicated hardware integrated inside each Compute Unit that accelerates matrix multiply-accumulate operations. Introduced in CDNA 1. AMD's equivalent of NVIDIA's Tensor Core.
         </p>
         <p style={S.p}>
-          <strong>Simple analogy:</strong> Stream Processor ek regular calculator hai — ek button dabao, ek answer. Matrix Core hardware ek specialized machine hai jo ek operation mein puri matrix multiply kar deta hai simultaneously — bahut zyada buttons ka kaam ek click mein.
+          <strong>Simple analogy:</strong> a Stream Processor is like a regular calculator — press one button, get one answer. Matrix Core hardware is a specialized machine that multiplies an entire matrix simultaneously in a single operation — a lot of button-presses done in one click.
         </p>
         <p style={S.p}>
-          <strong>D = A × B + C:</strong> Yeh fundamental matrix multiply-accumulate operation hai. Neural network layer = this operation. Dedicated Matrix Core hardware yeh accelerate karta hai — much faster than Stream Processors doing the same work element by element.
+          <strong>D = A × B + C:</strong> this is the fundamental matrix multiply-accumulate operation. A neural network layer = this operation. Dedicated Matrix Core hardware accelerates this — much faster than Stream Processors doing the same work element by element.
         </p>
         <ComparisonTable
           title="Matrix Core Generations in CDNA Architecture"
@@ -253,15 +253,15 @@ export default function Content() {
       <section id="infinity-cache">
         <h2 style={S.h2}>Infinity Cache — AMD's Cache Innovation</h2>
         <p style={S.p}>
-          <strong>Infinity Cache</strong> — AMD ka unique on-chip large cache innovation. Originally gaming GPUs ke liye introduce hua (RDNA 2 mein), aur concept data center chips mein bhi exists in different form.
+          <strong>Infinity Cache</strong> — AMD's unique large on-chip cache innovation. Originally introduced for gaming GPUs (in RDNA 2), and the concept exists in a different form in data center chips too.
         </p>
         <p style={S.p}>
-          <strong>Simple analogy:</strong> Socho normal memory ek warehouse hai — bahut bada storage lekin door. L1/L2 cache ek counter pe rakhei kuch items hain — fast access. Infinity Cache ek bade in-store storage room ki tarah hai — warehouse se chhota lekin counter se bahut bada, aur bahut fast.
+          <strong>Simple analogy:</strong> picture normal memory as a warehouse — huge storage but far away. L1/L2 cache is like a few items kept at the counter — fast access. Infinity Cache is like a large in-store storage room — smaller than the warehouse but much bigger than the counter, and very fast.
         </p>
         <ul style={S.ul}>
-          <li><strong>Gaming GPU mein (RDNA):</strong> 128 MB Infinity Cache RX 6000 series mein — gaming workloads mein 2× effective bandwidth improvement. GDDR memory ki effective bandwidth dramatically increase karta hai for repetitive access patterns.</li>
-          <li><strong>Data center mein (CDNA):</strong> CDNA chips primarily HBM pe rely karte hain — jo already very high bandwidth hai. Infinity Cache ka same role nahi hai. Lekin large on-chip cache concepts persist in L3 cache form across CDNA architecture.</li>
-          <li><strong>AI relevance:</strong> Large on-chip caches reduce HBM pressure for repeated access patterns. Model layers jo frequently accessed hain — higher level cache mein fit hone se HBM bandwidth free hoti hai for new data.</li>
+          <li><strong>In gaming GPUs (RDNA):</strong> 128 MB of Infinity Cache in the RX 6000 series — a 2× effective bandwidth improvement for gaming workloads. It dramatically increases the effective bandwidth of GDDR memory for repetitive access patterns.</li>
+          <li><strong>In data centers (CDNA):</strong> CDNA chips rely primarily on HBM — which already has very high bandwidth. Infinity Cache doesn't play the same role here. But large on-chip cache concepts persist in L3 cache form across CDNA architecture.</li>
+          <li><strong>AI relevance:</strong> large on-chip caches reduce HBM pressure for repeated access patterns. Model layers that are accessed frequently — fitting them in a higher-level cache frees up HBM bandwidth for new data.</li>
         </ul>
       </section>
 
@@ -269,7 +269,7 @@ export default function Content() {
       <section id="hbm-amd">
         <h2 style={S.h2}>HBM Memory in AMD Context</h2>
         <p style={S.p}>
-          <strong>HBM (High Bandwidth Memory)</strong> — AMD aur NVIDIA dono same HBM technology use karte hain (same vendors: SK Hynix, Micron, Samsung). Lekin AMD ne capacity pe different bets lagayi hain.
+          <strong>HBM (High Bandwidth Memory)</strong> — both AMD and NVIDIA use the same HBM technology (the same vendors: SK Hynix, Micron, Samsung). But AMD has placed different bets on capacity.
         </p>
         <Figure caption="Memory Comparison: NVIDIA H100 has 80GB HBM3 at 3.35 TB/s — a 70B LLaMA model at FP16 (140GB) does not fit on one card, needs 2 cards. AMD MI300X has 192GB HBM3 at 5.3 TB/s — same 70B model fits with 52GB spare for KV cache on ONE card. Important: peak AI throughput is measured differently by AMD and NVIDIA — memory capacity alone does not determine overall performance.">
           <MemoryComparisonDiagram />
@@ -288,9 +288,9 @@ export default function Content() {
           Specifications may change. Verify current specifications from AMD official documentation before procurement.
         </Callout>
         <ul style={S.ul}>
-          <li><strong>AMD ka HBM strategy:</strong> AMD ka thesis — memory capacity AI inference ke liye increasingly critical constraint hai. Agar ek card pe poora large model fit ho jaaye — simpler deployment, no inter-card communication overhead, lower latency.</li>
-          <li><strong>Memory bandwidth:</strong> MI300X 5.3 TB/s vs H100 3.35 TB/s — 58% more bandwidth. LLM inference mein memory-bandwidth-bound workloads pe AMD compelling advantage.</li>
-          <li><strong>ECC support:</strong> MI300X mein ECC (Error Correcting Code) memory hai — same enterprise reliability requirement. Single-bit errors auto-correct. Double-bit errors detected.</li>
+          <li><strong>AMD's HBM strategy:</strong> AMD's thesis — memory capacity is an increasingly critical constraint for AI inference. If an entire large model fits on one card — simpler deployment, no inter-card communication overhead, lower latency.</li>
+          <li><strong>Memory bandwidth:</strong> MI300X 5.3 TB/s vs H100 3.35 TB/s — 58% more bandwidth. For memory-bandwidth-bound workloads in LLM inference, that's a compelling AMD advantage.</li>
+          <li><strong>ECC support:</strong> MI300X has ECC (Error Correcting Code) memory — the same enterprise reliability requirement. Single-bit errors are auto-corrected. Double-bit errors are detected.</li>
         </ul>
       </section>
 
@@ -298,18 +298,18 @@ export default function Content() {
       <section id="infinity-fabric">
         <h2 style={S.h2}>Infinity Fabric — AMD's Interconnect</h2>
         <p style={S.p}>
-          <strong>Infinity Fabric</strong> — AMD ka proprietary internal chip interconnect technology. Yeh AMD ke sab chips ka internal connection system hai — chip ke andar dies ko ek dusre se aur memory controllers se connect karta hai. Infinity Fabric NVLink ka equivalent nahi hai — yeh ek internal chip-level interconnect hai, external GPU-to-GPU link nahi.
+          <strong>Infinity Fabric</strong> — AMD's proprietary internal chip interconnect technology. It's the internal connection system across all of AMD's chips — connecting dies inside a chip to each other and to memory controllers. Infinity Fabric is not the equivalent of NVLink — it's an internal chip-level interconnect, not an external GPU-to-GPU link.
         </p>
         <p style={S.p}>
-          <strong>xGMI (external Global Memory Interface)</strong> — yeh Infinity Fabric ka external variant hai jo GPU cards ke beech communication ke liye use hota hai. Do alag cheezein hain: Infinity Fabric = internal chip connections, xGMI = external inter-card connections.
+          <strong>xGMI (external Global Memory Interface)</strong> — this is the external variant of Infinity Fabric, used for communication between GPU cards. Two different things: Infinity Fabric = internal chip connections, xGMI = external inter-card connections.
         </p>
         <Figure caption="AMD Interconnect Architecture: Inside the MI300X, Infinity Fabric (High-Speed Internal Chip Connection) links all Compute Modules (XCDs) to the Base Controller Chip (AID) and Ultra-Fast Memory (HBM3). For external GPU-to-GPU connections between cards, xGMI (external Global Memory Interface) is used. For large multi-server clusters, standard InfiniBand network is required — AMD does not have a dedicated GPU switch chip equivalent to NVIDIA NVSwitch.">
           <InfinityFabricDiagram />
         </Figure>
         <ul style={S.ul}>
-          <li><strong>Infinity Fabric inside MI300X:</strong> 8 XCD dies aur 1 AID die ke beech ultra-high bandwidth connections. Die-to-die bandwidth: hundreds of GB/s. All XCDs AID ke through memory controllers access karte hain.</li>
-          <li><strong>xGMI for external GPU communication:</strong> Multiple MI300X cards server mein — xGMI links via server topology. AMD ke paas NVSwitch jaisa dedicated switch chip nahi hai. xGMI bandwidth NVLink 4.0 se kam hai for raw any-to-any connectivity.</li>
-          <li><strong>Multi-GPU connectivity gap:</strong> AMD clusters rely karte hain InfiniBand ya RoCE Ethernet for inter-GPU communication — same as NVIDIA for inter-node. Intra-node: AMD less optimized than NVSwitch-equipped DGX clusters. Yeh AMD ka current gap hai for large-scale distributed training.</li>
+          <li><strong>Infinity Fabric inside MI300X:</strong> ultra-high-bandwidth connections between the 8 XCD dies and the 1 AID die. Die-to-die bandwidth: hundreds of GB/s. All XCDs access memory controllers through the AID.</li>
+          <li><strong>xGMI for external GPU communication:</strong> multiple MI300X cards in a server — xGMI links via server topology. AMD doesn't have a dedicated switch chip like NVSwitch. xGMI bandwidth is lower than NVLink 4.0 for raw any-to-any connectivity.</li>
+          <li><strong>Multi-GPU connectivity gap:</strong> AMD clusters rely on InfiniBand or RoCE Ethernet for inter-GPU communication — the same as NVIDIA for inter-node. Intra-node: AMD is less optimized than NVSwitch-equipped DGX clusters. This is AMD's current gap for large-scale distributed training.</li>
         </ul>
       </section>
 
@@ -317,14 +317,14 @@ export default function Content() {
       <section id="memory-controllers">
         <h2 style={S.h2}>Memory Controllers</h2>
         <p style={S.p}>
-          <strong>Memory Controllers</strong> — dedicated hardware units jo HBM access manage karte hain. MI300X mein 6 HBM3 stacks hain, har stack ke liye dedicated memory controller (AID die mein).
+          <strong>Memory Controllers</strong> — dedicated hardware units that manage HBM access. MI300X has 6 HBM3 stacks, each with a dedicated memory controller (in the AID die).
         </p>
         <p style={S.p}>
-          Memory controllers SM/CU requests queue karte hain, burst transfers optimize karte hain, aur multiple CUs ke simultaneous requests handle karte hain.
+          Memory controllers queue SM/CU requests, optimize burst transfers, and handle simultaneous requests from multiple CUs.
         </p>
         <ul style={S.ul}>
-          <li><strong>Unified Memory in MI300A:</strong> MI300A (APU variant) mein CPU aur GPU same HBM memory share karte hain — ek unified memory pool. Memory controller sab access manage karta hai. CPU pointer aur GPU pointer same address space mein — no explicit data copies needed.</li>
-          <li><strong>ECC:</strong> MI300X pe ECC default ON. Production AI deployments ke liye mandatory. Single-bit errors auto-correct. Double-bit errors: detect karta hai, job may crash. Monitor via <code style={S.code}>rocm-smi --showmeminfo</code>.</li>
+          <li><strong>Unified Memory in MI300A:</strong> in MI300A (the APU variant), the CPU and GPU share the same HBM memory — a unified memory pool. The memory controller manages all access. The CPU pointer and GPU pointer sit in the same address space — no explicit data copies needed.</li>
+          <li><strong>ECC:</strong> ECC is on by default on MI300X. Mandatory for production AI deployments. Single-bit errors are auto-corrected. Double-bit errors: detected, the job may crash. Monitor via <code style={S.code}>rocm-smi --showmeminfo</code>.</li>
         </ul>
       </section>
 
@@ -332,27 +332,27 @@ export default function Content() {
       <section id="chiplet-architecture">
         <h2 style={S.h2}>Chiplet Architecture</h2>
         <p style={S.p}>
-          <strong>Chiplet</strong> — ek chhota chip jo ek specific function perform karta hai. Ek &quot;chiplet-based design&quot; mein multiple chiplets ek package mein combine hote hain, interconnect se linked.
+          <strong>Chiplet</strong> — a small chip that performs one specific function. In a "chiplet-based design," multiple chiplets are combined into one package, linked by an interconnect.
         </p>
         <p style={S.p}>
-          <strong>Simple analogy:</strong> Traditional monolithic chip ek hi badi building mein sab offices. Agar ek office mein koi problem hai (manufacturing defect) — poori building useless. Chiplet approach: alag-alag chhoti buildings (chiplets), ek campus pe connected. Agar ek building mein problem hai — sirf woh replace karo. Baaki campus chalti rehti hai.
+          <strong>Simple analogy:</strong> a traditional monolithic chip is like one big building with all the offices. If there's a problem in one office (a manufacturing defect) — the whole building is useless. The chiplet approach: separate small buildings (chiplets), connected on one campus. If there's a problem in one building — just replace that one. The rest of the campus keeps running.
         </p>
         <Figure caption="MI300X Chiplet Architecture (3D stacked): Bottom layer = Silicon Interposer (the connection platform). Middle layer = AID (Base Controller Chip with memory controllers, PCIe, inter-die switching). Top layer = 8 GPU Compute Modules (XCDs, 38 Compute Units each). Sides = 4 stacks of Ultra-Fast Memory (HBM3, 48GB each = 192GB total at 5.3 TB/s). All connected by high-density wiring through the interposer.">
           <Mi300xChipletDiagram />
         </Figure>
         <p style={S.p}><strong>MI300X chiplet layout:</strong></p>
         <ul style={S.ul}>
-          <li><strong>Silicon Interposer (bottom):</strong> Passive substrate jo sab chiplets ko physically connect karta hai with high-density interconnect wiring — like a very dense printed circuit board.</li>
-          <li><strong>AID (Active Interposer Die, middle):</strong> Base controller chip. Memory controllers, PCIe interface, inter-die switching sab yahan. Traffic controller ki tarah.</li>
-          <li><strong>8 XCDs (top layer):</strong> Accelerator Complex Dies — yeh actual GPU compute chiplets hain. Har XCD mein 38 active CUs, L1/L2 cache, local compute.</li>
+          <li><strong>Silicon Interposer (bottom):</strong> a passive substrate that physically connects all the chiplets with high-density interconnect wiring — like a very dense printed circuit board.</li>
+          <li><strong>AID (Active Interposer Die, middle):</strong> the base controller chip. Memory controllers, PCIe interface, inter-die switching — all here. Like a traffic controller.</li>
+          <li><strong>8 XCDs (top layer):</strong> Accelerator Complex Dies — these are the actual GPU compute chiplets. Each XCD has 38 active CUs, L1/L2 cache, local compute.</li>
           <li><strong>4 HBM3 stacks (sides):</strong> Ultra-Fast Memory. 48 GB each = 192 GB total. High-density interconnect through interposer.</li>
         </ul>
         <p style={S.p}><strong>Why chiplets for AI chips:</strong></p>
         <ul style={S.ul}>
-          <li><strong>Yield improvement:</strong> Ek 192 GB monolithic chip banana mushkil hai — agar ek corner mein defect hai, poori chip waste. 8 small XCDs alag banao — higher yield per chiplet.</li>
-          <li><strong>Heterogeneous integration:</strong> Different dies different process nodes pe. Compute dies (XCDs) advanced node pe for maximum performance. AID older cheaper node pe. HBM 3D stacked.</li>
-          <li><strong>Memory capacity breakthrough:</strong> 192 GB HBM3 monolithic approach se achieve karna practically impossible tha.</li>
-          <li><strong>NUMA-like challenge:</strong> Die boundary crossing latency exists. Careful workload placement aur memory distribution needed for peak performance.</li>
+          <li><strong>Yield improvement:</strong> building a 192 GB monolithic chip is hard — if there's a defect in one corner, the whole chip is wasted. Build 8 small XCDs separately — higher yield per chiplet.</li>
+          <li><strong>Heterogeneous integration:</strong> different dies on different process nodes. Compute dies (XCDs) on an advanced node for maximum performance. AID on an older, cheaper node. HBM 3D stacked.</li>
+          <li><strong>Memory capacity breakthrough:</strong> achieving 192 GB of HBM3 was practically impossible with a monolithic approach.</li>
+          <li><strong>NUMA-like challenge:</strong> die-boundary-crossing latency exists. Careful workload placement and memory distribution are needed for peak performance.</li>
         </ul>
       </section>
 
@@ -363,16 +363,16 @@ export default function Content() {
           <MiSeriesTimeline />
         </Figure>
 
-        <p style={S.p}><strong>MI100 (CDNA 1, 2020):</strong> Target: Scientific computing, initial AI training. Key specs: 120 CUs, 7,680 Stream Processors, 32 GB HBM2, 1.23 TB/s bandwidth, 300W, PCIe 4.0. Significance: AMD ka pehla dedicated AI accelerator. First to prove CDNA concept. Limitation: 32 GB HBM2 small for large models. ROCm ecosystem immature.</p>
+        <p style={S.p}><strong>MI100 (CDNA 1, 2020):</strong> Target: scientific computing, initial AI training. Key specs: 120 CUs, 7,680 Stream Processors, 32 GB HBM2, 1.23 TB/s bandwidth, 300W, PCIe 4.0. Significance: AMD's first dedicated AI accelerator. First to prove the CDNA concept. Limitation: 32 GB HBM2 is small for large models. ROCm ecosystem immature.</p>
 
-        <p style={S.p}><strong>MI250X (CDNA 2, 2021):</strong> 220 CUs (110 per die × 2 dies), 14,080 Stream Processors, 128 GB HBM2e, 3.2 TB/s, 500W TDP. FP64 dedicated Matrix Cores — first time. Used in Frontier supercomputer at Oak Ridge. Scientific computing mein MI250X clearly won on FP64 performance.</p>
+        <p style={S.p}><strong>MI250X (CDNA 2, 2021):</strong> 220 CUs (110 per die × 2 dies), 14,080 Stream Processors, 128 GB HBM2e, 3.2 TB/s, 500W TDP. Dedicated FP64 Matrix Cores — for the first time. Used in the Frontier supercomputer at Oak Ridge. In scientific computing, MI250X clearly won on FP64 performance.</p>
 
         <p style={S.p}><strong>MI300X (CDNA 3, 2023) — Current Flagship:</strong> 304 CUs (38 × 8 XCDs), 19,456 Stream Processors, 192 GB HBM3, 5.3 TB/s bandwidth, 750W TDP, PCIe 5.0 x16. Who is using: Microsoft Azure (ND MI300X v5), Oracle OCI, Meta (reported), various AI companies for inference.</p>
 
-        <p style={S.p}><strong>MI300A (CDNA 3, 2023) — APU Variant:</strong> 24 EPYC CPU cores (Zen 4) + 228 GPU CUs + 128 GB HBM3 unified memory. CPU aur GPU same memory share karte hain. Target: HPC scientific computing. Grace-Blackwell ka AMD answer.</p>
+        <p style={S.p}><strong>MI300A (CDNA 3, 2023) — APU Variant:</strong> 24 EPYC CPU cores (Zen 4) + 228 GPU CUs + 128 GB of unified HBM3 memory. CPU and GPU share the same memory. Target: HPC scientific computing. AMD's answer to Grace-Blackwell.</p>
 
         <Callout type="warning" title="MI350 — Verify Before Procurement">
-          MI350 series (CDNA 4) announced hai lekin specifications may change. Verify current specifications, availability, and pricing from AMD official documentation at amd.com/instinct before any procurement decision.
+          The MI350 series (CDNA 4) has been announced but specifications may change. Verify current specifications, availability, and pricing from AMD's official documentation at amd.com/instinct before any procurement decision.
         </Callout>
       </section>
 
@@ -380,7 +380,7 @@ export default function Content() {
       <section id="instinct-accelerators">
         <h2 style={S.h2}>Instinct Accelerators — Complete Family</h2>
         <p style={S.p}>
-          AMD &quot;Instinct&quot; brand name hai specifically data center AI/HPC accelerators ke liye. Consumer Radeon (gaming) se completely separate product line.
+          AMD's "Instinct" is a brand name specifically for data center AI/HPC accelerators. A completely separate product line from consumer Radeon (gaming).
         </p>
         <ComparisonTable
           title="AMD Instinct Product Family — Data Center Only"
@@ -398,8 +398,8 @@ export default function Content() {
         />
         <p style={S.p}><strong>Form factors:</strong></p>
         <ul style={S.ul}>
-          <li><strong>OAM (Open Accelerator Module):</strong> High-power server form factor. AMD ka NVLink SXM equivalent. HPE Cray EX234a, Supermicro servers support OAM format. Highest performance.</li>
-          <li><strong>PCIe form factor:</strong> Standard PCIe servers mein. Lower power, lower performance vs OAM equivalent. More flexible deployment.</li>
+          <li><strong>OAM (Open Accelerator Module):</strong> a high-power server form factor. AMD's equivalent of NVLink SXM. HPE Cray EX234a, Supermicro servers support the OAM format. Highest performance.</li>
+          <li><strong>PCIe form factor:</strong> for standard PCIe servers. Lower power, lower performance than the OAM equivalent. More flexible deployment.</li>
         </ul>
       </section>
 
@@ -407,10 +407,10 @@ export default function Content() {
       <section id="rocm-ecosystem">
         <h2 style={S.h2}>ROCm Ecosystem — AMD's CUDA Alternative</h2>
         <p style={S.p}>
-          <strong>ROCm (Radeon Open Compute platform)</strong> — yeh AMD ka open-source GPU computing platform hai. CUDA ka AMD equivalent — lekin important differences hain.
+          <strong>ROCm (Radeon Open Compute platform)</strong> — this is AMD's open-source GPU computing platform. CUDA's AMD equivalent — but with important differences.
         </p>
         <p style={S.p}>
-          <strong>Simple analogy:</strong> CUDA ek proprietary highway system hai — NVIDIA ka. Every driver learns NVIDIA&apos;s roads. Infrastructure best in class. AMD wali side pe: ROCm ek open-standard highway system hai jo build ho rahi hai. Roads mostly ready hain, signs kaafi hain lekin kuch remote exits still missing. Improving every month.
+          <strong>Simple analogy:</strong> CUDA is a proprietary highway system — NVIDIA's. Every driver learns NVIDIA's roads. Infrastructure best in class. On AMD's side: ROCm is an open-standard highway system still being built. Most roads are ready, plenty of signs are up, but a few remote exits are still missing. Improving every month.
         </p>
         <Figure caption="ROCm Software Stack: AMD GPU Hardware at bottom. ROCm Driver + Runtime translates software commands to GPU hardware. Core Libraries (hipBLAS for math, MIOpen for AI ops, RCCL for multi-GPU, hipFFT for signal). Framework Layer — PyTorch uses torch.cuda API for compatibility while ROCm provides the backend implementation. AI Application Libraries (vLLM, DeepSpeed, Hugging Face). Your Application at top. All open-source.">
           <RocmSoftwareStack />
@@ -437,7 +437,7 @@ export default function Content() {
           <li><strong>Hugging Face Transformers:</strong> Most models work on ROCm with PyTorch backend.</li>
         </ul>
         <Callout type="warning" title="Honest ROCm Assessment">
-          Works well: Standard PyTorch training on standard architectures (BERT, GPT, LLaMA fine-tuning), MIOpen-accelerated operations, basic distributed training. Challenging: Custom CUDA kernels (need HIP rewrite), cutting-edge research code, FlashAttention latest versions (AMD port lags), inference optimizers (no TensorRT equivalent). Improving monthly — AMD heavy investment kar raha hai ROCm mein.
+          Works well: standard PyTorch training on standard architectures (BERT, GPT, LLaMA fine-tuning), MIOpen-accelerated operations, basic distributed training. Challenging: custom CUDA kernels (need a HIP rewrite), cutting-edge research code, the latest FlashAttention versions (AMD port lags), inference optimizers (no TensorRT equivalent). Improving monthly — AMD is investing heavily in ROCm.
         </Callout>
       </section>
 
@@ -445,7 +445,7 @@ export default function Content() {
       <section id="hip-programming">
         <h2 style={S.h2}>HIP Programming Model</h2>
         <p style={S.p}>
-          <strong>HIP (Heterogeneous-compute Interface for Portability)</strong> — AMD ka answer to CUDA programming. HIP code AMD GPU pe run karta hai natively, aur NVIDIA GPU pe bhi compile ho sakta hai (via CUDA backend). &quot;Write once, run on both&quot; theory.
+          <strong>HIP (Heterogeneous-compute Interface for Portability)</strong> — AMD's answer to CUDA programming. HIP code runs natively on AMD GPUs, and can also compile for NVIDIA GPUs (via the CUDA backend). The "write once, run on both" theory.
         </p>
         <p style={S.p}>
           <strong>Syntax almost identical to CUDA:</strong>
@@ -460,7 +460,7 @@ export default function Content() {
           <strong>hipify-perl migration tool:</strong> Automatic CUDA-to-HIP conversion. Most standard CUDA code: 90%+ automated conversion. CUDA-specific intrinsics: manual conversion needed. Run: <code style={S.code}>hipify-perl --inplace source_file.cu</code>
         </p>
         <p style={S.p}>
-          <strong>Critical wavefront width difference:</strong> AMD wavefront = 64 work items. Code jo <code style={S.code}>warpSize</code> hardcode kare as 32 — AMD pe wrong. Always use <code style={S.code}>warpSize</code> macro.
+          <strong>Critical wavefront width difference:</strong> AMD wavefront = 64 work items. Code that hardcodes <code style={S.code}>warpSize</code> as 32 is wrong on AMD. Always use the <code style={S.code}>warpSize</code> macro.
         </p>
         <ComparisonTable
           title="CUDA vs HIP Migration Guide"
@@ -481,20 +481,20 @@ export default function Content() {
       <section id="rccl">
         <h2 style={S.h2}>RCCL — AMD's Collective Communications</h2>
         <p style={S.p}>
-          <strong>RCCL (ROCm Collective Communications Library)</strong> — NVIDIA NCCL ka AMD equivalent. Distributed GPU training ke liye AllReduce, AllGather, Broadcast, ReduceScatter operations.
+          <strong>RCCL (ROCm Collective Communications Library)</strong> — AMD's equivalent of NVIDIA NCCL. AllReduce, AllGather, Broadcast, ReduceScatter operations for distributed GPU training.
         </p>
         <p style={S.p}><strong>RCCL operations:</strong></p>
         <ul style={S.ul}>
-          <li><strong>AllReduce:</strong> Sab GPUs ke gradients average karo, result sab ko do. Gradient synchronization ke liye main operation.</li>
-          <li><strong>AllGather:</strong> Har GPU apna tensor share kare, sab ko full concatenated tensor mile.</li>
-          <li><strong>ReduceScatter:</strong> AllReduce ko 2 phases mein (ZeRO/FSDP ke liye).</li>
-          <li><strong>Broadcast:</strong> Ek GPU se sab ko same data.</li>
+          <li><strong>AllReduce:</strong> average the gradients across all GPUs, give the result to all of them. The main operation for gradient synchronization.</li>
+          <li><strong>AllGather:</strong> each GPU shares its tensor, everyone gets the full concatenated tensor.</li>
+          <li><strong>ReduceScatter:</strong> AllReduce split into 2 phases (for ZeRO/FSDP).</li>
+          <li><strong>Broadcast:</strong> one GPU sends the same data to everyone.</li>
         </ul>
         <p style={S.p}>
-          <strong>PyTorch integration:</strong> PyTorch distributed training mein <code style={S.code}>dist.init_process_group(backend=&quot;nccl&quot;)</code> likhne pe — PyTorch automatically maps this to RCCL on AMD systems. Alag code likhne ki zaroorat nahi.
+          <strong>PyTorch integration:</strong> when you write <code style={S.code}>dist.init_process_group(backend=&quot;nccl&quot;)</code> in PyTorch distributed training — PyTorch automatically maps this to RCCL on AMD systems. No need to write different code.
         </p>
         <Callout type="best-practice" title="RCCL Maturity Note">
-          RCCL standard operations ke liye mature hai. Debugging less tools available vs NCCL. Multi-node distributed training pe thoroughly test karo before production. NCCL_DEBUG=INFO environment variable RCCL pe bhi kaam karta hai for debugging.
+          RCCL is mature for standard operations. Fewer debugging tools available compared to NCCL. Test thoroughly on multi-node distributed training before production. The NCCL_DEBUG=INFO environment variable also works on RCCL for debugging.
         </Callout>
       </section>
 
@@ -502,18 +502,18 @@ export default function Content() {
       <section id="amd-software-stack">
         <h2 style={S.h2}>AMD AI Software Stack</h2>
         <p style={S.p}>
-          Ek complete view of what you need to run AI on AMD:
+          A complete view of what you need to run AI on AMD:
         </p>
         <ul style={S.ul}>
           <li><strong>Layer 1 — Hardware:</strong> AMD Instinct MI300X accelerator, AMD EPYC CPU server, InfiniBand or RoCE networking</li>
-          <li><strong>Layer 2 — Driver aur Runtime:</strong> AMD GPU PRO driver (production), amdkfd kernel driver, ROCm runtime (hipRuntime)</li>
+          <li><strong>Layer 2 — Driver and Runtime:</strong> AMD GPU PRO driver (production), amdkfd kernel driver, ROCm runtime (hipRuntime)</li>
           <li><strong>Layer 3 — Low-level Libraries:</strong> hipBLAS (matrix math), MIOpen (deep learning primitives), hipFFT, RCCL (collective communications)</li>
           <li><strong>Layer 4 — Framework:</strong> PyTorch + ROCm backend (torch.cuda API, ROCm provides implementation), TensorFlow + ROCm, JAX (partial)</li>
           <li><strong>Layer 5 — Application:</strong> Your training/inference code, Hugging Face Transformers, DeepSpeed (ROCm support), vLLM (ROCm support growing)</li>
         </ul>
         <p style={S.p}><strong>Key tools:</strong></p>
         <ul style={S.ul}>
-          <li><code style={S.code}>rocm-smi</code>: nvidia-smi ka AMD equivalent — GPU utilization, temperature, memory, power monitoring</li>
+          <li><code style={S.code}>rocm-smi</code>: AMD's equivalent of nvidia-smi — GPU utilization, temperature, memory, power monitoring</li>
           <li><code style={S.code}>rocProfiler</code>: Performance profiling — kernel timing, memory bandwidth analysis</li>
           <li><code style={S.code}>rocgdb</code>: GPU debugging</li>
           <li><code style={S.code}>hipify-perl</code>: CUDA-to-HIP code migration tool</li>
@@ -539,7 +539,7 @@ export default function Content() {
           <li>Single node 8 GPUs: <code style={S.code}>torchrun --nproc_per_node=8 train.py</code></li>
           <li>Backend setting: <code style={S.code}>dist.init_process_group(backend=&quot;nccl&quot;)</code> — PyTorch automatically maps this to RCCL on AMD systems</li>
         </ul>
-        <p style={S.p}><strong>Memory management advantage:</strong> MI300X ke 192 GB available hain. Batch sizes larger possible. Gradient checkpointing less often needed. ZeRO optimizer still useful for very large models.</p>
+        <p style={S.p}><strong>Memory management advantage:</strong> MI300X has 192 GB available. Larger batch sizes are possible. Gradient checkpointing is needed less often. ZeRO optimizer is still useful for very large models.</p>
         <p style={S.p}><strong>Common training bottlenecks on AMD:</strong></p>
         <ul style={S.ul}>
           <li>Custom CUDA extensions: If training code uses custom CUDA kernels — biggest blocker. Needs HIP conversion.</li>
@@ -552,17 +552,17 @@ export default function Content() {
       <section id="inference-workflow">
         <h2 style={S.h2}>Inference Workflow on AMD</h2>
         <p style={S.p}>
-          <strong>LLM inference on MI300X — the sweet spot:</strong> MI300X ka 192 GB HBM3 large model inference ke liye specifically compelling hai. 70B LLaMA model single MI300X pe serve karo — no model parallelism needed.
+          <strong>LLM inference on MI300X — the sweet spot:</strong> MI300X's 192 GB of HBM3 is specifically compelling for large-model inference. Serve a 70B LLaMA model on a single MI300X — no model parallelism needed.
         </p>
         <ul style={S.ul}>
-          <li><strong>vLLM on AMD:</strong> ROCm compatible version available. Large LLaMA-70B model single MI300X pe serve karo. Same vLLM API, ROCm backend.</li>
-          <li><strong>Quantization:</strong> INT8 quantization through bitsandbytes (ROCm support growing). FP8 quantization: AMD CDNA 3 hardware support hai lekin software tooling less mature than NVIDIA&apos;s Transformer Engine.</li>
+          <li><strong>vLLM on AMD:</strong> a ROCm-compatible version is available. Serve a large LLaMA-70B model on a single MI300X. Same vLLM API, ROCm backend.</li>
+          <li><strong>Quantization:</strong> INT8 quantization through bitsandbytes (ROCm support growing). FP8 quantization: AMD CDNA 3 hardware supports it, but software tooling is less mature than NVIDIA's Transformer Engine.</li>
           <li><strong>ONNX Runtime:</strong> ROCm execution provider available. Standard vision/NLP models inference.</li>
         </ul>
         <p style={S.p}><strong>What AMD lacks for inference vs NVIDIA:</strong></p>
         <ul style={S.ul}>
-          <li><strong>TensorRT equivalent:</strong> AMD ke paas comparable production inference optimizer nahi hai yet. MIOpen kuch optimizations provide karta hai lekin comprehensive TensorRT-level tool missing.</li>
-          <li><strong>Continuous batching maturity:</strong> vLLM ROCm support tha lekin less polished than NVIDIA. Improving.</li>
+          <li><strong>TensorRT equivalent:</strong> AMD doesn't yet have a comparable production inference optimizer. MIOpen provides some optimizations but a comprehensive TensorRT-level tool is missing.</li>
+          <li><strong>Continuous batching maturity:</strong> vLLM had ROCm support but it was less polished than NVIDIA's. Improving.</li>
           <li><strong>Speculative decoding:</strong> Less testing on AMD.</li>
         </ul>
       </section>
@@ -571,7 +571,7 @@ export default function Content() {
       <section id="amd-vs-nvidia">
         <h2 style={S.h2}>AMD vs NVIDIA — Technical Comparison</h2>
         <p style={S.p}>
-          Yeh comparison honest hai — marketing nahi. Actual technical strengths aur weaknesses.
+          This comparison is honest — not marketing. Actual technical strengths and weaknesses.
         </p>
         <Callout type="important" title="Performance Numbers — Important Caveat">
           Peak AI throughput is measured differently by AMD and NVIDIA. Direct TFLOPS/TOPS comparison alone should not be used for performance evaluation. Actual performance depends on workload type, software optimization, compiler efficiency, and many other factors. Always benchmark your specific model before making deployment decisions.
@@ -650,9 +650,9 @@ export default function Content() {
         <h2 style={S.h2}>Rack Design for AMD Instinct Clusters</h2>
         <ul style={S.ul}>
           <li><strong>Standard MI300X server rack:</strong> MI300X per card: 750W. 8-GPU server: ~10-12 kW. 4 servers per rack: ~40-48 kW. Liquid cooling strongly recommended.</li>
-          <li><strong>Network topology:</strong> AMD clusters primarily use InfiniBand networking — HDR (200 Gb/s) ya NDR (400 Gb/s) per port. Fat-tree topology recommended. AMD ke paas NVSwitch equivalent nahi hai — InfiniBand extra important for AMD multi-node clusters.</li>
-          <li><strong>Within-server GPU connectivity:</strong> Multiple MI300X cards PCIe switch ya direct PCIe lanes through server architecture pe connected. xGMI links via server topology for intra-node GPU-to-GPU.</li>
-          <li><strong>Sparing strategy:</strong> AMD ke paas DGX jaisi own server ecosystem nahi hai. OEM vendor replacement procedures follow karo. 3-5% spare MI300X cards maintain karo for field replacement.</li>
+          <li><strong>Network topology:</strong> AMD clusters primarily use InfiniBand networking — HDR (200 Gb/s) or NDR (400 Gb/s) per port. Fat-tree topology recommended. AMD doesn't have an NVSwitch equivalent — InfiniBand matters extra for AMD multi-node clusters.</li>
+          <li><strong>Within-server GPU connectivity:</strong> multiple MI300X cards connected via a PCIe switch or direct PCIe lanes through the server architecture. xGMI links via server topology for intra-node GPU-to-GPU.</li>
+          <li><strong>Sparing strategy:</strong> AMD doesn't have its own server ecosystem like DGX. Follow OEM vendor replacement procedures. Maintain 3-5% spare MI300X cards for field replacement.</li>
           <li><strong>Power distribution:</strong> Redundant PSU recommended. PDU per rack rated for 120%+ of peak load. Dedicated high-amperage circuits per server.</li>
           <li><strong>Floor load:</strong> AMD OAM servers heavier than standard compute — structural assessment required. Verify with OEM server specifications.</li>
         </ul>
@@ -687,8 +687,8 @@ export default function Content() {
       <section id="dc-considerations">
         <h2 style={S.h2}>Data Center Considerations</h2>
         <ul style={S.ul}>
-          <li><strong>ROCm Driver Stability:</strong> AMD ROCm drivers historically less stable than NVIDIA on certain OS versions. Always test new ROCm versions on staging before production rollout. Kernel version compatibility important. amd.com/support pe compatibility matrix check karo.</li>
-          <li><strong>Vendor Support:</strong> NVIDIA direct enterprise support strong aur global. AMD enterprise AI support improving but thinner. OEM server vendor (HPE, Dell) through which AMD purchased — good support path. Factor into deployment planning.</li>
+          <li><strong>ROCm Driver Stability:</strong> AMD ROCm drivers have historically been less stable than NVIDIA's on certain OS versions. Always test new ROCm versions on staging before a production rollout. Kernel version compatibility matters. Check the compatibility matrix at amd.com/support.</li>
+          <li><strong>Vendor Support:</strong> NVIDIA's direct enterprise support is strong and global. AMD's enterprise AI support is improving but thinner. OEM server vendors (HPE, Dell) through whom AMD is purchased — a good support path. Factor this into deployment planning.</li>
           <li><strong>Software Validation:</strong> Run your specific model/framework stack end-to-end on AMD before committing. Don&apos;t assume NVIDIA performance equals AMD performance for same code without testing. Profile with rocProfiler to identify AMD-specific bottlenecks.</li>
           <li><strong>Mixed AMD-NVIDIA Environments:</strong> Some enterprises trying AMD for inference (memory advantage) and NVIDIA for training (ecosystem). Mixed clusters complex to manage — different drivers, different monitoring, different tooling. Consider whether complexity is worth it for your organization.</li>
           <li><strong>Open-Source Advantage:</strong> ROCm fully open-source (GitHub: RadeonOpenCompute). Enterprise can contribute, fork, inspect. For organizations with open-source requirements (government, research), AMD&apos;s approach a genuine advantage.</li>
@@ -705,7 +705,7 @@ export default function Content() {
           <li><strong>Wavefront size awareness:</strong> Search for <code style={S.code}>warpSize = 32</code> hardcodes in codebase before AMD migration. AMD wavefront = 64 — this will break if hardcoded.</li>
           <li><strong>Large batch sizes on MI300X:</strong> 192 GB available — utilize the memory advantage. Larger batches = better GPU utilization. Gradient accumulation less necessary than on H100.</li>
           <li><strong>RCCL for distributed:</strong> <code style={S.code}>dist.init_process_group(&quot;nccl&quot;)</code> — PyTorch automatically maps to RCCL on AMD. Test AllReduce performance specifically before production.</li>
-          <li><strong>Profile before optimizing:</strong> <code style={S.code}>rocProfiler</code> use karo — identify actual bottlenecks. AMD performance characteristics differ from NVIDIA — don&apos;t assume same optimization applies.</li>
+          <li><strong>Profile before optimizing:</strong> use <code style={S.code}>rocProfiler</code> — identify actual bottlenecks. AMD's performance characteristics differ from NVIDIA's — don&apos;t assume the same optimization applies.</li>
           <li><strong>Leverage memory capacity for inference:</strong> Load larger models without quantization for better quality. Fit models that H100 cannot on single card.</li>
           <li><strong>MIOpen kernel cache warmup:</strong> First run always slow (compilation). Run dummy batch at start before timing. <code style={S.code}>MIOPEN_FIND_ENFORCE=3</code> forces aggressive caching.</li>
         </ul>
@@ -719,7 +719,7 @@ export default function Content() {
           <li><strong>Wavefront size hardcoded as 32:</strong> AMD wavefront = 64 — <code style={S.code}>#define WARP_SIZE 32</code> is wrong. Use <code style={S.code}>warpSize</code> macro. Common in research code from NVIDIA-focused researchers.</li>
           <li><strong>Wrong Docker image:</strong> CPU-only PyTorch in AMD container = GPU not used. Verify: <code style={S.code}>python -c &quot;import torch; print(torch.version.hip)&quot;</code> — should show ROCm version.</li>
           <li><strong>Not testing at cluster scale before production:</strong> Single GPU works fine. 8-GPU RCCL issues possible. 16-node cluster: networking edge cases. Always test end-to-end before committing.</li>
-          <li><strong>Auto-upgrading ROCm in production:</strong> ROCm major versions have breaking changes. Container images version-pin karo. Test upgrade on staging with your specific workload first.</li>
+          <li><strong>Auto-upgrading ROCm in production:</strong> major ROCm versions have breaking changes. Pin the version in container images. Test upgrades on staging with your specific workload first.</li>
           <li><strong>Ignoring thermal management:</strong> MI300X 750W TDP — same as H100 roughly. Don&apos;t assume standard air-cooled rack handles MI300X properly. Check OEM thermal specifications.</li>
           <li><strong>Expecting equivalent performance for all workloads:</strong> &quot;MI300X has 5.3 TB/s bandwidth so it must be faster&quot; — only if workload is memory-bandwidth-bound. Compute-bound workloads: NVIDIA software optimizations often ahead. Benchmark your specific model.</li>
           <li><strong>Treating torch.cuda as CUDA-specific:</strong> On AMD ROCm, PyTorch uses torch.cuda API for compatibility while ROCm provides the backend — <code style={S.code}>torch.cuda.is_available()</code> returns True on AMD. This is by design, not an error.</li>
@@ -733,7 +733,7 @@ export default function Content() {
           headers={["Problem", "Diagnostic", "Solution"]}
           rows={[
             ["rocm-smi not showing GPUs", "lspci | grep -i amd; dmesg | grep amdgpu", "Check amdgpu driver: modprobe amdgpu. User permissions: usermod -a -G render,video $USER + logout."],
-            ["PyTorch not using AMD GPU", "python -c 'import torch; print(torch.cuda.is_available())'", "Wrong PyTorch installed (CUDA variant). pip uninstall torch → pip install torch --index-url .../rocm6.0"],
+            ["PyTorch not using AMD GPU", "python -c 'import torch; print(torch.cuda.is_available())'", "Wrong PyTorch installed (CUDA variant). pip uninstall torch → pip install torch --index-url …/rocm6.0"],
             ["Training slower than expected", "rocProfiler — identify slow kernels. Check MIOpen launch times.", "MIOpen cache cold (warmup needed). FP32 instead of BF16. Batch size too small. Custom ops not optimized for AMD."],
             ["RCCL AllReduce hanging", "NCCL_DEBUG=INFO env variable. Check ibstat for InfiniBand.", "InfiniBand misconfigured. NCCL_SOCKET_IFNAME, NCCL_IB_HCA env vars. Version mismatch between nodes."],
             ["GPU OOM despite 192 GB available", "rocm-smi --showmeminfo all", "Model loading multiple copies. Optimizer states not sharded (use ZeRO). torch.cuda.empty_cache() on AMD too."],
@@ -750,27 +750,27 @@ export default function Content() {
         <h2 style={S.h2}>Interview Questions</h2>
         {[
           {
-            q: "AMD CDNA architecture aur NVIDIA CUDA architecture mein fundamental design philosophy kya hai — kahan agree karte hain aur kahan differ?",
-            a: "Both architectures fundamental agreement mein hain: massively parallel compute, high-bandwidth memory (HBM), dedicated matrix multiply hardware (Matrix Cores vs Tensor Cores), memory hierarchy (L1/L2 cache + main memory). Key philosophical differences: Memory strategy: AMD bets on higher memory capacity (192 GB MI300X vs 80 GB H100). NVIDIA bets on higher compute throughput optimization per byte. AMD thesis: model ek single accelerator pe fit karna simpler aur more efficient hai. Chiplet approach: AMD aggressively chiplets pe — MI300X mein 8 GPU compute dies + interposer + HBM. NVIDIA H100 monolithic (Blackwell first step to dual-die). AMD's yield aur scalability argument vs simpler programming. Open vs proprietary: ROCm open-source. CUDA proprietary. AMD's open ecosystem attracts diverse developers, allows customization. Execution width: AMD wavefront = 64 work items. NVIDIA warp = 32 threads. AMD's wider SIMD theoretically more throughput per scheduling event, different divergence characteristics. CPU integration: AMD has MI300A (CPU+GPU+HBM integrated). NVIDIA Grace-Blackwell equivalent. Both converging on same integrated approach.",
+            q: "What is the fundamental design philosophy of AMD's CDNA architecture vs NVIDIA's CUDA architecture — where do they agree and where do they differ?",
+            a: "Both architectures fundamentally agree on: massively parallel compute, high-bandwidth memory (HBM), dedicated matrix multiply hardware (Matrix Cores vs Tensor Cores), memory hierarchy (L1/L2 cache + main memory). Key philosophical differences: Memory strategy: AMD bets on higher memory capacity (192 GB MI300X vs 80 GB H100). NVIDIA bets on higher compute throughput optimization per byte. AMD's thesis: fitting a model on a single accelerator is simpler and more efficient. Chiplet approach: AMD goes aggressively into chiplets — MI300X has 8 GPU compute dies + interposer + HBM. NVIDIA's H100 is monolithic (Blackwell is the first step toward dual-die). AMD's yield and scalability argument vs simpler programming. Open vs proprietary: ROCm open-source. CUDA proprietary. AMD's open ecosystem attracts diverse developers, allows customization. Execution width: AMD wavefront = 64 work items. NVIDIA warp = 32 threads. AMD's wider SIMD theoretically means more throughput per scheduling event, with different divergence characteristics. CPU integration: AMD has MI300A (CPU+GPU+HBM integrated). NVIDIA's Grace-Blackwell equivalent. Both are converging on the same integrated approach.",
           },
           {
-            q: "ROCm aur CUDA ecosystem mein practical gap exactly kahan hai — ek engineer ke perspective se?",
-            a: "Custom kernels: Sabse bada gap. CUDA pe custom kernels 18+ years of optimization tools, examples, community knowledge. HIP pe migration possible lekin less documented, less community support, less mature profiling. FlashAttention: FlashAttention 3 CUDA-only originally, ROCm support lag karta hai. LLM training critical optimization. AMD community port available lekin days-to-weeks behind CUDA releases. Profiling depth: Nsight Systems visual timeline, bottleneck identification, warp efficiency analysis — sehr polished. rocProfiler functional lekin less visual, less intuitive. Triton compiler: NVIDIA Triton primarily targets CUDA. ROCm backend exists lekin less tested. cuDNN depth: Manually tuned convolution kernels for every NVIDIA GPU generation. MIOpen has automated tuning lekin less hand-optimization depth. Framework edge cases: 95% of PyTorch works. Remaining 5% — custom CUDA ops in model code, specialized attention variants, quantization kernels — AMD-specific testing aur often fixes needed. Practical impact: Standard model training on standard architectures (BERT, GPT, LLaMA fine-tuning) — ROCm gap small. Research code with custom kernels — significant migration effort.",
+            q: "Where exactly is the practical gap between the ROCm and CUDA ecosystems — from an engineer's perspective?",
+            a: "Custom kernels: the biggest gap. CUDA has 18+ years of optimization tools, examples, and community knowledge for custom kernels. Migration to HIP is possible but less documented, less community support, less mature profiling. FlashAttention: FlashAttention 3 was originally CUDA-only, ROCm support lags. A critical optimization for LLM training. An AMD community port is available but is typically days-to-weeks behind CUDA releases. Profiling depth: Nsight Systems' visual timeline, bottleneck identification, warp efficiency analysis — very polished. rocProfiler is functional but less visual, less intuitive. Triton compiler: NVIDIA's Triton primarily targets CUDA. A ROCm backend exists but is less tested. cuDNN depth: manually tuned convolution kernels for every NVIDIA GPU generation. MIOpen has automated tuning but less hand-optimization depth. Framework edge cases: 95% of PyTorch works. The remaining 5% — custom CUDA ops in model code, specialized attention variants, quantization kernels — need AMD-specific testing and often fixes. Practical impact: standard model training on standard architectures (BERT, GPT, LLaMA fine-tuning) — the ROCm gap is small. Research code with custom kernels — significant migration effort.",
           },
           {
-            q: "MI300X ke 192 GB memory advantage ka actual LLM serving pe kya impact hai — kab matters aur kab nahi?",
+            q: "What's the actual impact of MI300X's 192 GB memory advantage on real LLM serving — when does it matter and when doesn't it?",
             a: "When it matters significantly: Model size 80-192 GB (FP16): Models in this range — 70B LLaMA at FP16 = 140 GB. Fits MI300X single card, needs 2x H100. Single-card inference: lower latency (no inter-card communication), simpler serving infrastructure, potentially lower cost. Long context inference: KV cache grows with sequence length. 128K context 70B model: KV cache alone tens of GB. More base memory = more room for KV cache = longer contexts possible without model parallelism. Batch size: More memory = larger batch sizes at same model size = better GPU utilization = higher throughput. When it doesn't matter: Models under 80 GB (FP16): Fit on both H100 and MI300X — memory advantage not realized. Quantized models: INT4 quantized 70B = ~35 GB. Fits on both easily — AMD advantage disappears. Training large clusters: Memory per card less important when 100s or 1000s of cards available. NVSwitch advantage (NVIDIA) more critical for gradient sync. Highest compute throughput: NVIDIA software optimizations (Transformer Engine) often ahead. Memory is not the only factor. Practical recommendation: MI300X memory advantage most valuable for inference of unquantized 70B class models or very long context serving.",
           },
           {
-            q: "Chiplet architecture AMD ke AI chips mein kyun hai — ek system design perspective se kya advantages aur challenges hain?",
-            a: "Advantages: Yield improvement: 7nm/5nm process pe large monolithic die pe defect density high hoti hai. Small chiplets pe: higher yield per die, assemble only passing dies. Manufacturing cost reduces significantly at scale. Heterogeneous integration: Compute dies (XCDs) aggressive node pe (TSMC N5P). IO die (AID) ya interposer older cheaper node pe. HBM 3D stacked. Each component optimal node pe manufacture hota hai. Scalability: Want more compute? More XCD chiplets add karo to same interposer design. Memory capacity breakthrough: MI300X ka 192 GB HBM3 — monolithic approach se achieve karna practically impossible given area constraints. Challenges: NUMA-like effects: Die boundary crossing latency. Data on XCD 1 fetch karni hai XCD 5 ke liye — slower than local access. Software pe careful memory placement required for peak performance. Programming complexity: Cache coherency across dies. Workload placement across XCDs for optimal performance. AMD-specific optimization knowledge required. Thermal management: Multiple dies different thermal profiles. OEM server thermal design critical. Industry trend: Blackwell (NVIDIA) dual-die is AMD-like direction. Intel Gaudi chiplet also. AMD ahead in multi-chiplet integration — advantage may not last long.",
+            q: "Why does AMD use chiplet architecture in its AI chips — from a system design perspective, what are the advantages and challenges?",
+            a: "Advantages: Yield improvement: at 7nm/5nm process nodes, defect density is high on a large monolithic die. On small chiplets: higher yield per die, assemble only the passing dies. Manufacturing cost drops significantly at scale. Heterogeneous integration: compute dies (XCDs) on an aggressive node (TSMC N5P). The IO die (AID) or interposer on an older, cheaper node. HBM 3D stacked. Each component is manufactured on its optimal node. Scalability: want more compute? Add more XCD chiplets to the same interposer design. Memory capacity breakthrough: MI300X's 192 GB of HBM3 — practically impossible to achieve with a monolithic approach given area constraints. Challenges: NUMA-like effects: die-boundary-crossing latency. Data on XCD 1 needed by XCD 5 — slower than local access. Careful memory placement in software is required for peak performance. Programming complexity: cache coherency across dies. Workload placement across XCDs for optimal performance. AMD-specific optimization knowledge required. Thermal management: multiple dies with different thermal profiles. OEM server thermal design is critical. Industry trend: Blackwell (NVIDIA) dual-die is an AMD-like direction. Intel Gaudi is chiplet-based too. AMD is ahead in multi-chiplet integration — that advantage may not last long.",
           },
           {
-            q: "Production AMD Instinct deployment mein kya pre-deployment validation karna zaroori hai?",
-            a: "ROCm version validation: Target OS + kernel version + ROCm version compatibility matrix confirm karo (amd.com/support). Test ROCm install on one node before cluster-wide deployment. Framework stack validation: rocm/pytorch:specific_version container mein specific model run karo end-to-end. Not just 'does it run' — profile baseline performance. Compare vs expected benchmarks for AMD hardware. Distributed training validation: RCCL AllReduce correctness test. Intra-node first (single server, 8 GPUs), then multi-node. Record AllReduce bandwidth — if significantly below theoretical, networking issue. Note: PyTorch maps backend='nccl' to RCCL on AMD automatically. Model-specific validation: Run your actual model (not just benchmark). AMD performance profile different from NVIDIA. Custom kernels test specifically. Memory usage profile — 192 GB available but allocation patterns matter. Thermal validation: Run at peak load for 24+ hours. Monitor junction temperatures. Verify cooling infrastructure adequate. Check throttle events. Monitoring setup validation: rocm-smi Prometheus exporter working, Grafana dashboards showing correct metrics, alerting configured.",
+            q: "What pre-deployment validation is necessary for a production AMD Instinct deployment?",
+            a: "ROCm version validation: confirm the target OS + kernel version + ROCm version compatibility matrix (amd.com/support). Test the ROCm install on one node before cluster-wide deployment. Framework stack validation: run a specific model end-to-end in a rocm/pytorch:specific_version container. Not just 'does it run' — profile baseline performance. Compare against expected benchmarks for AMD hardware. Distributed training validation: test RCCL AllReduce correctness. Intra-node first (single server, 8 GPUs), then multi-node. Record AllReduce bandwidth — if significantly below theoretical, that's a networking issue. Note: PyTorch automatically maps backend='nccl' to RCCL on AMD. Model-specific validation: run your actual model (not just a benchmark). AMD's performance profile differs from NVIDIA's. Test custom kernels specifically. Memory usage profile — 192 GB available but allocation patterns matter. Thermal validation: run at peak load for 24+ hours. Monitor junction temperatures. Verify cooling infrastructure is adequate. Check throttle events. Monitoring setup validation: rocm-smi Prometheus exporter working, Grafana dashboards showing correct metrics, alerting configured.",
           },
           {
-            q: "AMD ROCm pe CUDA code migrate karne ka step-by-step process kya hai — aur kab migration worth nahi hai?",
+            q: "What's the step-by-step process for migrating CUDA code to AMD ROCm — and when isn't migration worth it?",
             a: "Step-by-step migration: Step 1: Codebase audit. Find all .cu files, CUDA_VISIBLE_DEVICES, cudaMalloc/cudaMemcpy/cudaStream, library imports (cublas, cudnn direct calls), compiler directives. Step 2: Automated hipify. hipify-perl --inplace source_file.cu converts most standard CUDA syntax. Review diff carefully. Step 3: Fix remaining issues. warpSize hardcodes (AMD wavefront = 64, not 32). __syncwarp() equivalents in HIP. Custom PTX — no equivalent in HIP, must rewrite in HIP C++. Step 4: Compile and test. hipcc --offload-arch=gfx90a (MI300X) source.cpp. Fix compilation errors. Run correctness tests. Step 5: Performance validation. Profile with rocProfiler. Identify AMD-specific slow kernels. Verify AllReduce bandwidth in distributed setup. When migration NOT worth it: Heavy PTX/SASS usage — complete rewrite needed. CUDA-specific hardware features (Transformer Engine, TMA) — no AMD equivalent. Critical path on niche cuDNN functions — MIOpen may lag. Timeline pressure — migration for complex codebases takes weeks to months. Team expertise gap — AMD/HIP learning curve real cost. When worth it: Standard model architectures, memory-bound inference (MI300X advantage), cost sensitivity, open-source requirements, Azure/Oracle already chosen as cloud.",
           },
         ].map((item, i) => (
@@ -823,16 +823,16 @@ export default function Content() {
       <section id="key-takeaways">
         <h2 style={S.h2}>Key Takeaways</h2>
         <ul style={S.ul}>
-          <li>AMD CDNA architecture deliberately graphics-free hai — compute-first design: CDNA 1 (2020) mein AMD ne graphics, display output, rasterization — sab data center chips se remove kar diya. Die area 100% compute ke liye. Dedicated Matrix Core hardware for AI math, HBM for bandwidth, Infinity Fabric for internal chip connections. Yeh NVIDIA ke approach se alag tha — NVIDIA started from graphics and added AI; AMD made a clean break for data center products.</li>
-          <li>MI300X ka 192 GB HBM3 LLM inference ke liye game-changing hai: Single card pe 192 GB. 70B LLaMA at FP16 = 140 GB — fits on ONE MI300X. NVIDIA H100 ke liye TWO cards chahiye. Simpler deployment, no inter-card communication overhead, lower latency for single-model inference. Memory bandwidth 5.3 TB/s — 58% more than H100. Memory-bound inference workloads pe AMD compelling advantage. Note: Peak AI throughput is measured differently by AMD and NVIDIA — always benchmark your specific workload.</li>
-          <li>Chiplet architecture MI300X ka core innovation hai: 8 XCDs (compute dies) + 1 AID (interposer die) + 4 HBM3 stacks — sab ek package mein. Why chiplets: higher manufacturing yield, heterogeneous integration (different process nodes), modularity, memory capacity scaling. Industry chiplets ki taraf ja raha hai — NVIDIA bhi Blackwell mein dual-die gaya. AMD ka earlier chiplet bet is architecture mein advantage deta hai.</li>
-          <li>Infinity Fabric aur xGMI alag hain — yeh samajhna zaroori hai: Infinity Fabric = AMD ka internal chip interconnect (inside MI300X — XCDs to AID to HBM). xGMI = external GPU-to-GPU links between cards. Dono alag hai. AMD ke paas NVSwitch jaisa any-to-any switching fabric nahi hai — large cluster training mein InfiniBand pe depend karna padta hai. Yeh AMD ka current gap hai for distributed training scale-out.</li>
-          <li>ROCm improving rapidly lekin CUDA se significant gap hai: Standard PyTorch training on standard architectures — ROCm works well. PyTorch torch.cuda API AMD pe bhi kaam karta hai — PyTorch uses torch.cuda for compatibility while ROCm provides backend. Custom CUDA kernels, cutting-edge optimizations, production inference tools (TensorRT level) — CUDA still ahead. Gap closing monthly as AMD invests heavily. Decision depends on your specific workload mix and organization&apos;s needs.</li>
-          <li>Wavefront = 64, not 32 — ek critical AMD-specific detail: AMD wavefront = 64 work items. NVIDIA warp = 32 threads. Same concept, different width. Code jo warpSize = 32 assume kare: AMD pe wrong. Every CUDA to HIP migration mein yeh check zaroori hai. Always use warpSize macro — returns 64 on AMD, 32 on NVIDIA. This is the most common migration bug.</li>
-          <li>Multi-GPU training: AMD gap vs NVIDIA NVSwitch: AMD ke paas dedicated switch chip (NVSwitch equivalent) nahi hai. Multi-GPU intra-node connectivity via xGMI through server topology — less any-to-any bandwidth than NVSwitch. Large-scale distributed training (100+ GPUs): NVIDIA NVSwitch + NVLink advantage real hai. AMD clusters rely heavily on InfiniBand for scale-out. This is AMD&apos;s biggest current gap for pure training at scale.</li>
-          <li>Data center deployment: AMD aur NVIDIA same power/cooling requirements mein hain: MI300X: 750W. H100 SXM5: 700W. Virtually same. Same cooling engineering needed — air cooling 40+ kW/rack challenging, liquid cooling recommended. Same power distribution planning. Difference: NVIDIA better enterprise support infrastructure, more mature monitoring tools. AMD catching up through OEM partnerships (HPE, Dell, Supermicro).</li>
+          <li>AMD's CDNA architecture is deliberately graphics-free — a compute-first design: with CDNA 1 (2020), AMD removed graphics, display output, rasterization — everything — from its data center chips. 100% of die area for compute. Dedicated Matrix Core hardware for AI math, HBM for bandwidth, Infinity Fabric for internal chip connections. This was different from NVIDIA's approach — NVIDIA started from graphics and added AI; AMD made a clean break for data center products.</li>
+          <li>MI300X's 192 GB of HBM3 is a game-changer for LLM inference: 192 GB on a single card. 70B LLaMA at FP16 = 140 GB — fits on ONE MI300X. NVIDIA's H100 needs TWO cards. Simpler deployment, no inter-card communication overhead, lower latency for single-model inference. Memory bandwidth of 5.3 TB/s — 58% more than H100. A compelling AMD advantage for memory-bound inference workloads. Note: peak AI throughput is measured differently by AMD and NVIDIA — always benchmark your specific workload.</li>
+          <li>Chiplet architecture is MI300X's core innovation: 8 XCDs (compute dies) + 1 AID (interposer die) + 4 HBM3 stacks — all in one package. Why chiplets: higher manufacturing yield, heterogeneous integration (different process nodes), modularity, memory capacity scaling. The industry is heading toward chiplets — NVIDIA also went dual-die with Blackwell. AMD's earlier chiplet bet gives it an advantage in this architecture.</li>
+          <li>Infinity Fabric and xGMI are different — this is important to understand: Infinity Fabric = AMD's internal chip interconnect (inside MI300X — XCDs to AID to HBM). xGMI = external GPU-to-GPU links between cards. The two are different. AMD doesn't have an NVSwitch-like any-to-any switching fabric — for large cluster training, it has to depend on InfiniBand. This is AMD's current gap for distributed training at scale.</li>
+          <li>ROCm is improving rapidly but there's still a significant gap with CUDA: standard PyTorch training on standard architectures — ROCm works well. The PyTorch torch.cuda API also works on AMD — PyTorch uses torch.cuda for compatibility while ROCm provides the backend. Custom CUDA kernels, cutting-edge optimizations, production inference tools (TensorRT-level) — CUDA is still ahead. The gap is closing monthly as AMD invests heavily. The decision depends on your specific workload mix and organization&apos;s needs.</li>
+          <li>Wavefront = 64, not 32 — a critical AMD-specific detail: AMD wavefront = 64 work items. NVIDIA warp = 32 threads. Same concept, different width. Code that assumes warpSize = 32: wrong on AMD. This check is essential in every CUDA-to-HIP migration. Always use the warpSize macro — returns 64 on AMD, 32 on NVIDIA. This is the most common migration bug.</li>
+          <li>Multi-GPU training: AMD's gap vs NVIDIA NVSwitch: AMD doesn't have a dedicated switch chip (NVSwitch equivalent). Multi-GPU intra-node connectivity via xGMI through server topology — less any-to-any bandwidth than NVSwitch. Large-scale distributed training (100+ GPUs): NVIDIA's NVSwitch + NVLink advantage is real. AMD clusters rely heavily on InfiniBand for scale-out. This is AMD&apos;s biggest current gap for pure training at scale.</li>
+          <li>Data center deployment: AMD and NVIDIA are in the same power/cooling requirements range: MI300X: 750W. H100 SXM5: 700W. Virtually the same. Same cooling engineering needed — air cooling above 40 kW/rack is challenging, liquid cooling recommended. Same power distribution planning. Difference: NVIDIA has better enterprise support infrastructure, more mature monitoring tools. AMD is catching up through OEM partnerships (HPE, Dell, Supermicro).</li>
           <li>AMD&apos;s open-source approach is a genuine differentiator: ROCm fully open-source (GitHub: RadeonOpenCompute). No license fee for software. Full source code available — enterprise can inspect, contribute, fork. Government labs, research institutions, open-source compliance organizations — AMD&apos;s approach real advantage. CUDA proprietary — no source, NVIDIA controls roadmap. For organizations where software freedom and auditability important: AMD&apos;s open approach valuable beyond just technical specs.</li>
-          <li>Future direction: AMD CPU + GPU + memory integration is compelling: MI300A (CPU+GPU+HBM ek package mein) AMD ka unique bet hai. Same direction as Grace-Blackwell (NVIDIA). Unified memory (CPU pointer = GPU pointer, no copies) simplifies heterogeneous workloads dramatically. Future AMD chips likely continue this integration path. For organizations using AMD EPYC CPUs already + needing AI acceleration: MI300A integrated approach worth evaluating. Always verify current MI350 specifications at amd.com/instinct before procurement planning.</li>
+          <li>Future direction: AMD's CPU + GPU + memory integration is compelling: MI300A (CPU+GPU+HBM in one package) is AMD's unique bet. Same direction as Grace-Blackwell (NVIDIA). Unified memory (CPU pointer = GPU pointer, no copies) dramatically simplifies heterogeneous workloads. Future AMD chips will likely continue this integration path. For organizations already using AMD EPYC CPUs and needing AI acceleration: MI300A's integrated approach is worth evaluating. Always verify current MI350 specifications at amd.com/instinct before procurement planning.</li>
         </ul>
       </section>
 

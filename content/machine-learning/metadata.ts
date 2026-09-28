@@ -3,12 +3,12 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const mlMetadata: ArticleMetadata = {
   slug: "machine-learning",
   title: "Machine Learning — The Complete Engineering Guide",
-  seoTitle: "Machine Learning Kya Hai? Supervised, Unsupervised, ML Pipeline, Infrastructure — Complete Hinglish Guide",
+  seoTitle: "What Is Machine Learning? Supervised, Unsupervised, ML Pipeline, Infrastructure — Complete English Guide",
   seoDescription:
-    "Machine Learning ka complete engineering guide — supervised learning, unsupervised, reinforcement learning, ML infrastructure, distributed training, MLOps, feature store, model deployment, enterprise ML pipeline aur industry examples. DC engineers, IT engineers aur AI engineers ke liye.",
+    "A complete engineering guide to Machine Learning — supervised learning, unsupervised learning, reinforcement learning, ML infrastructure, distributed training, MLOps, feature stores, model deployment, the enterprise ML pipeline, and industry examples. For DC engineers, IT engineers, and AI engineers.",
   canonicalUrl: "https://behindthetech.in/learn/ai/fundamentals/machine-learning",
   keywords: [
-    "machine learning kya hai",
+    "what is machine learning",
     "machine learning explained in hindi",
     "machine learning for beginners",
     "supervised unsupervised learning",

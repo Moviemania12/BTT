@@ -2,13 +2,13 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 
 export const metaAiMetadata: ArticleMetadata = {
   slug: "meta-ai",
-  title: "Meta AI: Muse Spark, Llama Open-Weight Models, MTIA Custom Silicon, AI Infrastructure aur Data Center Engineering",
-  seoTitle: "Meta AI Kya Hai? Muse Spark, Llama Open-Weight, MTIA 300/400/450/500, 24K/129K GPU Clusters — Complete Hinglish Guide",
+  title: "Meta AI: Muse Spark, Llama Open-Weight Models, MTIA Custom Silicon, AI Infrastructure and Data Center Engineering",
+  seoTitle: "What is Meta AI? Muse Spark, Llama Open-Weight, MTIA 300/400/450/500, 24K/129K GPU Clusters — Complete English Guide",
   seoDescription:
-    "Meta AI ka complete infrastructure guide — Meta AI consumer product (Muse Spark 1.1/Muse Image), Llama open-weight models, MTIA custom silicon (MTIA 300 production, 400 deploying, 450/500 roadmap), NVIDIA/AMD heterogeneous GPU strategy, Grand Teton/OpenRack, TWO 24K GPU clusters (RoCEv2 + InfiniBand), Prometheus 1GW/Hyperion 5GW, Tectonic/BLOB storage, AALC cooling, CDU, O&M aur troubleshooting. AI infrastructure engineers aur DC professionals ke liye.",
+    "A complete infrastructure guide to Meta AI — the Meta AI consumer product (Muse Spark 1.1/Muse Image), Llama open-weight models, MTIA custom silicon (MTIA 300 in production, 400 deploying, 450/500 on the roadmap), NVIDIA/AMD heterogeneous GPU strategy, Grand Teton/OpenRack, TWO 24K GPU clusters (RoCEv2 + InfiniBand), Prometheus 1GW/Hyperion 5GW, Tectonic/BLOB storage, AALC cooling, CDU, O&M and troubleshooting. For AI infrastructure engineers and DC professionals.",
   canonicalUrl: "https://behindthetech.in/learn/ai/platforms/meta-ai",
   keywords: [
-    "meta ai kya hai hindi",
+    "what is meta ai",
     "meta ai muse spark model",
     "llama open weight model infrastructure",
     "meta mtia custom silicon ai",

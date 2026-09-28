@@ -27,7 +27,7 @@ export default function AiDataCenterBasicsPage() {
         slug="ai-data-center-basics"
         headings={HEADINGS}
         readingTimeMinutes={aiDcMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/data-centers/ai-data-center-basics">
         <Content />
       </ArticleLayout>
     </>

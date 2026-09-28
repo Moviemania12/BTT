@@ -27,7 +27,7 @@ export default function GpuClusterPage() {
         slug="gpu-cluster"
         headings={HEADINGS}
         readingTimeMinutes={gpuClusterMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/data-centers/gpu-cluster">
         <Content />
       </ArticleLayout>
     </>

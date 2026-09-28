@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(aiGpuMetadata);
+const baseMetadata = buildPageMetadata(aiGpuMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/hardware/ai-gpu",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/hardware/ai-gpu",
+      hi: "https://behindthetech.in/hi/learn/ai/hardware/ai-gpu",
+      "x-default": "https://behindthetech.in/learn/ai/hardware/ai-gpu",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/hardware/ai-gpu", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: aiGpuMetadata.title,

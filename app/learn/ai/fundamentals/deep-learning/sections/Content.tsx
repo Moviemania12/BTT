@@ -28,13 +28,13 @@ export default function Content() {
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
         <p style={S.p}>
-          Deep Learning Machine Learning ka ek subset hai jisme multi-layer artificial neural networks large amounts of data se complex patterns automatically seekhte hain. "Deep" ka matlab layers ki depth hai — ek single layer se nahi, balki dozens ya hundreds of stacked layers se jo progressively more abstract representations build karte hain.
+          Deep Learning is a subset of Machine Learning in which multi-layer artificial neural networks automatically learn complex patterns from large amounts of data. "Deep" refers to the depth of layers — not a single layer, but dozens or hundreds of stacked layers that build progressively more abstract representations.
         </p>
         <p style={S.p}>
-          Pichle article mein Machine Learning cover kiya — traditional ML algorithms (XGBoost, Random Forest, SVM) jo structured data pe well kaam karte hain. Deep Learning tab aata hai jab data unstructured hai (images, text, audio, video), scale massive hai, aur patterns itne complex hain ki traditional algorithms genuinely fail karte hain.
+          The previous article covered Machine Learning — traditional ML algorithms (XGBoost, Random Forest, SVM) that work well on structured data. Deep Learning comes in when the data is unstructured (images, text, audio, video), the scale is massive, and the patterns are so complex that traditional algorithms genuinely fail.
         </p>
         <Callout type="important" title="Infrastructure Perspective">
-          Traditional ML typically CPUs pe chalti hai, kilobytes to megabytes of model size, seconds mein train hoti hai. Deep Learning GPUs pe chalti hai, gigabytes to hundreds of gigabytes of model size, hours to weeks mein train hoti hai. Woh sari AI Infrastructure jo previous articles mein describe ki — GPU clusters, InfiniBand, liquid cooling, NVLink, HBM — primarily Deep Learning workloads ke liye exist karti hai.
+          Traditional ML typically runs on CPUs, with model sizes from kilobytes to megabytes, and trains in seconds. Deep Learning runs on GPUs, with model sizes from gigabytes to hundreds of gigabytes, and trains over hours to weeks. All that AI Infrastructure described in previous articles — GPU clusters, InfiniBand, liquid cooling, NVLink, HBM — exists primarily for Deep Learning workloads.
         </Callout>
       </section>
 
@@ -42,12 +42,12 @@ export default function Content() {
       <section id="who-should-read">
         <h2 style={S.h2}>Who Should Read This</h2>
         <ul style={S.ul}>
-          <li><strong>Data Center Engineers:</strong> Deep Learning training jobs itni power aur cooling kyun consume karti hain iska physics samajhna — aur future capacity planning ke liye kya expect karna hai.</li>
-          <li><strong>IT Infrastructure Engineers:</strong> GPU server management, CUDA ecosystem, distributed training setup jo sab Deep Learning ke liye specifically designed hai.</li>
-          <li><strong>AI/MLOps Engineers:</strong> Production Deep Learning systems — training pipelines, inference serving, model monitoring — ka end-to-end understanding.</li>
-          <li><strong>Cloud Engineers:</strong> Deep Learning workloads ke liye GPU instance selection, distributed training infrastructure, aur managed services.</li>
-          <li><strong>Software Engineers transitioning to AI:</strong> Neural networks se lekar Transformers tak — jo aaj production AI ka backbone hai.</li>
-          <li><strong>Technical Managers aur Architects:</strong> Deep Learning investments evaluate karna aur infrastructure roadmaps plan karna.</li>
+          <li><strong>Data Center Engineers:</strong> understanding the physics of why Deep Learning training jobs consume so much power and cooling — and what to expect for future capacity planning.</li>
+          <li><strong>IT Infrastructure Engineers:</strong> GPU server management, the CUDA ecosystem, distributed training setup — all specifically designed for Deep Learning.</li>
+          <li><strong>AI/MLOps Engineers:</strong> an end-to-end understanding of production Deep Learning systems — training pipelines, inference serving, model monitoring.</li>
+          <li><strong>Cloud Engineers:</strong> GPU instance selection for Deep Learning workloads, distributed training infrastructure, and managed services.</li>
+          <li><strong>Software Engineers transitioning to AI:</strong> from neural networks to Transformers — the backbone of production AI today.</li>
+          <li><strong>Technical Managers and Architects:</strong> evaluating Deep Learning investments and planning infrastructure roadmaps.</li>
         </ul>
       </section>
 
@@ -55,11 +55,11 @@ export default function Content() {
       <section id="what-you-will-learn">
         <h2 style={S.h2}>What You Will Learn</h2>
         <ul style={S.ul}>
-          <li>Deep Learning fundamentally kaise kaam karta hai — neurons, weights, activation functions, backpropagation</li>
-          <li>Why Deep Learning exists aur traditional ML se kahan aur kyun better hai</li>
-          <li>CNN, RNN, LSTM, aur Transformer architectures — concepts aur infrastructure requirements</li>
+          <li>How Deep Learning fundamentally works — neurons, weights, activation functions, backpropagation</li>
+          <li>Why Deep Learning exists and where and why it beats traditional ML</li>
+          <li>CNN, RNN, LSTM, and Transformer architectures — concepts and infrastructure requirements</li>
           <li>Training process: forward propagation, loss, backpropagation, gradient descent, optimizers</li>
-          <li>CUDA Software Stack aur GPU Memory Hierarchy</li>
+          <li>The CUDA Software Stack and GPU Memory Hierarchy</li>
           <li>Deep Learning frameworks: PyTorch, TensorFlow, JAX, Keras, ONNX, TensorRT, OpenVINO</li>
           <li>Deep Learning libraries: cuBLAS, cuDNN, NCCL, CUTLASS, TensorRT</li>
           <li>Distributed training strategies: data parallelism, model parallelism, tensor parallelism, FSDP, ZeRO</li>
@@ -88,16 +88,16 @@ export default function Content() {
       <section id="introduction">
         <h2 style={S.h2}>Introduction</h2>
         <p style={S.p}>
-          2009 mein ek interesting experiment hua Stanford mein. Andrew Ng aur team ne Google ke saath collaborate kiya 1000 computers pe ek neural network train karne ke liye — 16,000 CPU cores. Objective: YouTube thumbnails mein cats identify karna. Network ne 74.8% accuracy achieve ki without anyone telling it what a cat looks like.
+          An interesting experiment happened at Stanford in 2009. Andrew Ng and team collaborated with Google to train a neural network on 1000 computers — 16,000 CPU cores. Objective: identify cats in YouTube thumbnails. The network achieved 74.8% accuracy without anyone telling it what a cat looks like.
         </p>
         <p style={S.p}>
-          Woh accuracy impressive nahi lagti aaj. Lekin context important hai: is network ne cat ka concept completely unsupervised discover kiya — sirf videos dekhke, bina kisi label ke.
+          That accuracy doesn't seem impressive today. But context matters: this network discovered the concept of a cat completely unsupervised — just by watching videos, with no labels.
         </p>
         <p style={S.p}>
-          Ek saal baad, AlexNet ne ImageNet competition mein 26% se 15% error rate le aaya — sirf do NVIDIA GTX 580 GPUs pe. Yeh gap itna dramatic tha ki conference mein jo researchers wahan the, woh samajh gaye ki kuch permanently shift ho gaya tha.
+          A year later, AlexNet brought the ImageNet competition error rate down from 26% to 15% — on just two NVIDIA GTX 580 GPUs. The gap was so dramatic that the researchers at the conference realized something had permanently shifted.
         </p>
         <p style={S.p}>
-          Woh shift kya tha? Yeh realization ki neural networks, given enough data aur compute, manually engineered features ki zaroorat nahi hai. Woh khud features discover karte hain — aur jo features woh discover karte hain woh often engineer-designed features se dramatically better hain.
+          What was that shift? The realization that neural networks, given enough data and compute, don't need manually engineered features. They discover features themselves — and the features they discover are often dramatically better than engineer-designed features.
         </p>
       </section>
 
@@ -105,13 +105,13 @@ export default function Content() {
       <section id="what-is-dl">
         <h2 style={S.h2}>What is Deep Learning?</h2>
         <p style={S.p}>
-          Deep Learning ek Machine Learning approach hai jo artificial neural networks use karta hai jo brain ki neural structure se loosely inspired hain. "Deep" refer karta hai in networks mein layers ki number ko — shallow networks 1-2 hidden layers rakhte hain, deep networks dozens ya hundreds rakhte hain.
+          Deep Learning is a Machine Learning approach that uses artificial neural networks loosely inspired by the brain's neural structure. "Deep" refers to the number of layers in these networks — shallow networks have 1-2 hidden layers, deep networks have dozens or hundreds.
         </p>
         <p style={S.p}>
-          Ek traditional ML approach mein engineer manually decide karta hai ki data ke kaunse aspects important hain — yeh called hai feature engineering. Deep Learning mein yeh step largely automated hai. Network raw data (pixels, text tokens, audio waveforms) input karta hai aur automatically learns ki kaunse internal representations useful hain prediction task ke liye.
+          In a traditional ML approach, the engineer manually decides which aspects of the data matter — this is called feature engineering. In Deep Learning this step is largely automated. The network takes raw data (pixels, text tokens, audio waveforms) as input and automatically learns which internal representations are useful for the prediction task.
         </p>
         <p style={S.p}>
-          Image recognition example: CNN ke early layers edges detect karti hain. Middle layers curves aur shapes compose karti hain. Later layers complete objects recognize karti hain. Kisi ne in hierarchical features ko manually program nahi kiya — network ne data se learn kiya. Yeh automatic feature learning Deep Learning ka sabse powerful property hai.
+          Image recognition example: a CNN's early layers detect edges. Middle layers compose curves and shapes. Later layers recognize complete objects. No one manually programmed this hierarchy of features — the network learned it from data. This automatic feature learning is Deep Learning's most powerful property.
         </p>
       </section>
 
@@ -119,9 +119,9 @@ export default function Content() {
       <section id="why-dl-exists">
         <h2 style={S.h2}>Why Deep Learning Exists</h2>
         <ul style={S.ul}>
-          <li><strong>Unstructured data at scale:</strong> Image mein 224×224 pixels × 3 channels = 150,528 input features. Traditional ML algorithms yahan struggle karte hain. Deep Learning convolutional layers through spatial structure efficiently leverage karta hai. Text: sequential context dependencies — "bank" ka matlab river ya financial — Transformers yeh model karte hain.</li>
-          <li><strong>Scale with data aur compute:</strong> Traditional ML algorithms ek certain data size ke baad saturate ho jaate hain. Deep Learning is limitation se free hai. Data aur compute badhaate raho — performance consistently improves. Yeh "scaling laws" hain jo foundation of modern AI hai.</li>
-          <li><strong>End-to-end learning:</strong> Traditional pipeline: raw data → feature engineering → ML model → prediction. Deep Learning end-to-end train kar sakta hai: raw data → deep network → prediction. Network internally learn karta hai ki data ko kaise represent karna chahiye task ke liye optimal ho.</li>
+          <li><strong>Unstructured data at scale:</strong> an image has 224×224 pixels × 3 channels = 150,528 input features. Traditional ML algorithms struggle here. Deep Learning efficiently leverages spatial structure through convolutional layers. Text: sequential context dependencies — "bank" meaning river or financial — Transformers model this.</li>
+          <li><strong>Scales with data and compute:</strong> traditional ML algorithms saturate after a certain data size. Deep Learning is free of this limitation. Keep increasing data and compute — performance consistently improves. These are the "scaling laws" that are the foundation of modern AI.</li>
+          <li><strong>End-to-end learning:</strong> traditional pipeline: raw data → feature engineering → ML model → prediction. Deep Learning can train end-to-end: raw data → deep network → prediction. The network internally learns how to represent data optimally for the task.</li>
         </ul>
       </section>
 
@@ -152,22 +152,22 @@ export default function Content() {
       <section id="neural-networks">
         <h2 style={S.h2}>Artificial Neural Networks — Building Blocks</h2>
         <p style={S.p}>
-          Deep Learning samajhna hai toh pehle individual building blocks samajhna padega.
+          To understand Deep Learning you first need to understand the individual building blocks.
         </p>
 
         <section id="neuron">
           <h3 style={S.h3}>Neuron, Weights, and Bias</h3>
           <p style={S.p}>
-            Ek artificial neuron: multiple inputs receive karta hai (x₁, x₂, ...), har input ko ek weight se multiply karta hai (w₁, w₂, ...), all weighted inputs sum karta hai, ek bias term add karta hai, result ek activation function ke through pass karta hai, aur output produce karta hai.
+            An artificial neuron: receives multiple inputs (x₁, x₂, ...), multiplies each input by a weight (w₁, w₂, ...), sums all the weighted inputs, adds a bias term, passes the result through an activation function, and produces an output.
           </p>
           <p style={S.p}>
             Mathematically: <code style={S.code}>output = activation(w₁x₁ + w₂x₂ + ... + b)</code>
           </p>
           <p style={S.p}>
-            <strong>Weights</strong> woh parameters hain jo training ke dauran learn hote hain. GPT-3 mein 175 billion weights hain. Yeh weights model ki learned knowledge hain. Infrastructure perspective: ek 70B parameter model at FP16 precision = 140GB memory sirf weights ke liye. Training ke dauran gradients aur optimizer states additional 2-3x memory maangte hain.
+            <strong>Weights</strong> are the parameters learned during training. GPT-3 has 175 billion weights. These weights are the model's learned knowledge. Infrastructure perspective: a 70B parameter model at FP16 precision = 140GB memory just for the weights. During training, gradients and optimizer states demand an additional 2-3x memory.
           </p>
           <p style={S.p}>
-            <strong>Bias</strong> ek additional learnable parameter hai jo neuron ke output ko shift karta hai regardless of input — network ko data fit karne mein help karta hai.
+            <strong>Bias</strong> is an additional learnable parameter that shifts the neuron's output regardless of input — helps the network fit the data.
           </p>
           <Figure caption="Artificial Neural Network: Input layer, two hidden layers, and output layer — weights define connection strengths, activation function introduces nonlinearity">
             <ArtificialNeuralNetworkDiagram />
@@ -177,7 +177,7 @@ export default function Content() {
         <section id="activation-functions">
           <h3 style={S.h3}>Activation Functions</h3>
           <p style={S.p}>
-            Bina activation functions ke, kitna bhi deep network essentially ek linear function hai — complex patterns learn nahi kar sakta. Activation functions nonlinearity introduce karti hain.
+            Without activation functions, no matter how deep, a network is essentially a linear function — it can't learn complex patterns. Activation functions introduce nonlinearity.
           </p>
           <ComparisonTable
             headers={["Function", "Formula", "Range", "Best For", "Problem"]}
@@ -195,7 +195,7 @@ export default function Content() {
         <section id="hidden-layers">
           <h3 style={S.h3}>Hidden Layers — The Depth</h3>
           <p style={S.p}>
-            "Deep" in Deep Learning = multiple hidden layers. Ek shallow network = 1 hidden layer. Deep network = many hidden layers (sometimes hundreds). Each layer previous layer ke output pe build karta hai increasingly abstract representations banakar. Image network: Layer 1 edges, Layer 2 corners/textures, Layer 3 object parts, Layer 4+ complete objects. Yeh hierarchical representation learning Deep Learning ka power hai.
+            "Deep" in Deep Learning = multiple hidden layers. A shallow network = 1 hidden layer. A deep network = many hidden layers (sometimes hundreds). Each layer builds on the previous layer's output, creating increasingly abstract representations. Image network: Layer 1 edges, Layer 2 corners/textures, Layer 3 object parts, Layer 4+ complete objects. This hierarchical representation learning is Deep Learning's power.
           </p>
         </section>
       </section>
@@ -204,13 +204,13 @@ export default function Content() {
       <section id="forward-propagation">
         <h2 style={S.h2}>Forward Propagation</h2>
         <p style={S.p}>
-          Training ya inference ke dauran, data network ke through front to back flow karta hai — yahi hai forward propagation. Input data enter karta hai → first hidden layer: inputs × weights + bias → activation → second hidden layer ke inputs → layer by layer continue → output layer prediction produce karta hai.
+          During training or inference, data flows front to back through the network — this is forward propagation. Input data enters → first hidden layer: inputs × weights + bias → activation → inputs to the second hidden layer → continues layer by layer → the output layer produces a prediction.
         </p>
         <p style={S.p}>
-          Mathematically: yeh ek series of matrix multiplications aur element-wise nonlinear operations hai. Exactly woh hai jo GPU efficiently compute karta hai. Forward propagation = inference (prediction). Training mein forward propagation ke baad backpropagation hoti hai.
+          Mathematically: this is a series of matrix multiplications and element-wise nonlinear operations. Exactly what a GPU computes efficiently. Forward propagation = inference (prediction). In training, backpropagation follows forward propagation.
         </p>
         <Callout type="maintenance" title="Infrastructure Note">
-          Ek transformer model ka forward pass (single inference) = billions of floating point operations. H100 GPU ek trillion FP16 operations per second handle kar sakta hai. Isliye inference latency milliseconds mein hoti hai even for large models — agar efficient batching ho.
+          A transformer model's forward pass (a single inference) = billions of floating point operations. An H100 GPU can handle a trillion FP16 operations per second. That's why inference latency is in milliseconds even for large models — if batching is efficient.
         </Callout>
       </section>
 
@@ -218,13 +218,13 @@ export default function Content() {
       <section id="loss-function">
         <h2 style={S.h2}>Loss Function — Measuring Error</h2>
         <p style={S.p}>
-          Forward propagation ke baad network ek prediction produce karta hai. Loss function yeh measure karta hai ki prediction kitni wrong hai — training ka goal loss minimize karna hai.
+          After forward propagation, the network produces a prediction. The loss function measures how wrong the prediction is — the goal of training is to minimize the loss.
         </p>
         <ul style={S.ul}>
-          <li><strong>Cross-Entropy Loss:</strong> Multi-class classification ke liye standard. Perfect prediction = zero loss. Wrong confident prediction = high loss.</li>
-          <li><strong>Binary Cross-Entropy:</strong> Binary classification tasks ke liye (fraud/not fraud, spam/not spam).</li>
-          <li><strong>Mean Squared Error (MSE):</strong> Regression tasks ke liye standard. Predicted aur actual ka squared difference.</li>
-          <li><strong>Contrastive Loss / Triplet Loss:</strong> Embedding learning ke liye — similar examples paas, dissimilar examples door.</li>
+          <li><strong>Cross-Entropy Loss:</strong> the standard for multi-class classification. Perfect prediction = zero loss. Wrong confident prediction = high loss.</li>
+          <li><strong>Binary Cross-Entropy:</strong> for binary classification tasks (fraud/not fraud, spam/not spam).</li>
+          <li><strong>Mean Squared Error (MSE):</strong> the standard for regression tasks. Squared difference between predicted and actual.</li>
+          <li><strong>Contrastive Loss / Triplet Loss:</strong> for embedding learning — similar examples close, dissimilar examples far.</li>
         </ul>
       </section>
 
@@ -232,16 +232,16 @@ export default function Content() {
       <section id="backpropagation">
         <h2 style={S.h2}>Backpropagation — The Learning Algorithm</h2>
         <p style={S.p}>
-          Forward propagation prediction karta hai. Loss function error measure karta hai. Backpropagation error ke basis pe model ko update karta hai. Chain rule of calculus ka application hai yeh.
+          Forward propagation makes a prediction. The loss function measures the error. Backpropagation updates the model based on the error. This is an application of the chain rule of calculus.
         </p>
         <p style={S.p}>
-          Output se starting, loss ke gradient output layer weights ke respect mein calculate karo. Phir chain rule apply karo aur yeh gradient previous layer tak propagate karo. Layer by layer, output se input tak, har weight ka gradient calculate hota hai. Phir optimizer in gradients use karta hai weights update karne ke liye taaki loss reduce ho.
+          Starting from the output, calculate the gradient of the loss with respect to the output layer weights. Then apply the chain rule and propagate this gradient back to the previous layer. Layer by layer, from output to input, the gradient for every weight is calculated. Then the optimizer uses these gradients to update the weights so the loss decreases.
         </p>
         <Figure caption="Forward Propagation (data flow left→right) and Backpropagation (gradient flow right→left via chain rule) — optimizer updates weights after each backward pass">
           <ForwardBackpropDiagram />
         </Figure>
         <Callout type="important" title="Infrastructure Impact of Backprop">
-          Backward pass ≈ 2-3x forward pass ka compute. Training mein activations store karne padte hain forward pass ki backward ke liye. Large models ke liye yeh significant memory consume karta hai. Gradient checkpointing technique: activations selectively discard karo, backward pass mein recompute karo — memory kam karta hai at 30-33% compute overhead.
+          The backward pass ≈ 2-3x the compute of the forward pass. Training requires storing the forward pass's activations for the backward pass. For large models this consumes significant memory. Gradient checkpointing technique: selectively discard activations, recompute them during the backward pass — reduces memory at a 30-33% compute overhead.
         </Callout>
       </section>
 
@@ -249,7 +249,7 @@ export default function Content() {
       <section id="gradient-descent">
         <h2 style={S.h2}>Gradient Descent and Optimizers</h2>
         <p style={S.p}>
-          Backpropagation gradients compute karta hai. Optimizer in gradients use karke weights update karta hai loss minimize karne ke liye. Weight update rule: <code style={S.code}>W_new = W_old - learning_rate × gradient</code>
+          Backpropagation computes gradients. The optimizer uses these gradients to update the weights to minimize the loss. Weight update rule: <code style={S.code}>W_new = W_old - learning_rate × gradient</code>
         </p>
         <ComparisonTable
           title="Optimizers Comparison"
@@ -263,7 +263,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>Learning rate scheduling:</strong> Warmup (training ke shuru mein small LR se start, gradually increase), cosine annealing (sinusoidal schedule se reduce), step decay, one-cycle. BERT aur GPT linear warmup + linear decay use karte hain. Without proper scheduling, large model training diverge kar sakta hai.
+          <strong>Learning rate scheduling:</strong> warmup (start with a small LR at the beginning of training, gradually increase), cosine annealing (reduce on a sinusoidal schedule), step decay, one-cycle. BERT and GPT use linear warmup + linear decay. Without proper scheduling, large model training can diverge.
         </p>
       </section>
 
@@ -271,18 +271,18 @@ export default function Content() {
       <section id="training-process">
         <h2 style={S.h2}>Training Process — End to End</h2>
         <ol style={{ ...S.ul, listStyleType: "decimal" }}>
-          <li><strong>Initialization:</strong> Weights randomly initialize karo — Xavier/He initialization. Bad initialization training fail kar sakti hai.</li>
-          <li><strong>Mini-batch select karo:</strong> Training data se random subset.</li>
-          <li><strong>Forward pass:</strong> Batch through network, predictions generate karo.</li>
-          <li><strong>Loss compute karo:</strong> Predictions vs actual labels.</li>
-          <li><strong>Backward pass:</strong> Gradients compute karo har parameter ke liye.</li>
-          <li><strong>Optimizer step:</strong> Gradients use karke parameters update karo.</li>
-          <li><strong>Repeat:</strong> Steps 2-6 repeat karo millions ya billions of times.</li>
-          <li><strong>Validation:</strong> Periodically validation set pe evaluate karo.</li>
-          <li><strong>Checkpoint:</strong> Model state periodically save karo — failure recovery ke liye.</li>
+          <li><strong>Initialization:</strong> randomly initialize weights — Xavier/He initialization. Bad initialization can make training fail.</li>
+          <li><strong>Select a mini-batch:</strong> a random subset from the training data.</li>
+          <li><strong>Forward pass:</strong> the batch through the network, generate predictions.</li>
+          <li><strong>Compute loss:</strong> predictions vs actual labels.</li>
+          <li><strong>Backward pass:</strong> compute gradients for every parameter.</li>
+          <li><strong>Optimizer step:</strong> update parameters using the gradients.</li>
+          <li><strong>Repeat:</strong> repeat steps 2-6 millions or billions of times.</li>
+          <li><strong>Validation:</strong> periodically evaluate on the validation set.</li>
+          <li><strong>Checkpoint:</strong> periodically save model state — for failure recovery.</li>
         </ol>
         <Callout type="warning" title="Training Stability Issues">
-          Gradient explosion: gradients bahut large → training diverges. Fix: gradient clipping (max_grad_norm=1.0). Vanishing gradients: gradients near zero in deep networks → early layers barely learn. Fix: residual connections, batch normalization, GELU activations. NaN loss: learning rate too high ya numerical instability. Fix: reduce LR, check data for inf/nan values.
+          Gradient explosion: gradients get very large → training diverges. Fix: gradient clipping (max_grad_norm=1.0). Vanishing gradients: gradients near zero in deep networks → early layers barely learn. Fix: residual connections, batch normalization, GELU activations. NaN loss: learning rate too high or numerical instability. Fix: reduce LR, check data for inf/nan values.
         </Callout>
       </section>
 
@@ -293,10 +293,10 @@ export default function Content() {
         <section id="cnn">
           <h3 style={S.h3}>CNN — Convolutional Neural Networks</h3>
           <p style={S.p}>
-            Images aur spatial data ke liye design ki gayi. Key insight: images mein local patterns (edges, textures) translational invariance rakhte hain — ek edge image ke center mein aur edge corner mein same detector se recognize honi chahiye.
+            Designed for images and spatial data. Key insight: local patterns in images (edges, textures) have translational invariance — an edge in the center of an image and an edge in the corner should be recognized by the same detector.
           </p>
           <p style={S.p}>
-            <strong>Convolutional layer:</strong> Small filter (3×3 ya 5×5) image pe slide karta hai aur local patterns detect karta hai. Same filter poori image pe apply hota hai — weight sharing. Dramatically fewer parameters than fully connected on images. <strong>Pooling layer:</strong> Spatial dimensions reduce karta hai — max pooling. Translation invariance help karta hai.
+            <strong>Convolutional layer:</strong> a small filter (3×3 or 5×5) slides across the image and detects local patterns. The same filter is applied across the whole image — weight sharing. Dramatically fewer parameters than fully connected on images. <strong>Pooling layer:</strong> reduces spatial dimensions — max pooling. Helps with translation invariance.
           </p>
           <Figure caption="CNN Architecture: Input image → Conv layers (edge/texture detection) → Pooling → Conv layers (object parts) → Global Average Pooling → FC → Classification">
             <CnnArchitectureDiagram />
@@ -309,20 +309,20 @@ export default function Content() {
         <section id="rnn">
           <h3 style={S.h3}>RNN and LSTM</h3>
           <p style={S.p}>
-            Sequential data ke liye — text, time series, audio. RNNs hidden state maintain karte hain jo past information represent karta hai. Problem: long-range dependencies mein vanishing gradient severe hai. Sequential nature GPU parallelization ko limit karta hai.
+            For sequential data — text, time series, audio. RNNs maintain a hidden state that represents past information. Problem: vanishing gradient is severe over long-range dependencies. The sequential nature limits GPU parallelization.
           </p>
           <p style={S.p}>
-            <strong>LSTM (Long Short-Term Memory):</strong> 1997 mein propose kiya, 2013-2018 mein widespread use. Explicit memory cell aur three gates: forget gate (kya bhulna hai), input gate (kya store karna hai), output gate (kya output karna hai). Better long-range dependencies than vanilla RNN. Still used in: time series, embedded/edge systems (smaller size), legacy production systems.
+            <strong>LSTM (Long Short-Term Memory):</strong> proposed in 1997, widely used 2013-2018. An explicit memory cell and three gates: forget gate (what to forget), input gate (what to store), output gate (what to output). Better long-range dependencies than a vanilla RNN. Still used in: time series, embedded/edge systems (smaller size), legacy production systems.
           </p>
         </section>
 
         <section id="transformers">
           <h3 style={S.h3}>Transformers — The Modern Dominant Architecture</h3>
           <p style={S.p}>
-            2017 mein Google Brain ka paper "Attention is All You Need" ne Transformer introduce kiya. Yeh architecture ne NLP mein revolution la di aur ab computer vision, audio, multimodal tasks mein bhi dominant hai.
+            In 2017, Google Brain's paper "Attention is All You Need" introduced the Transformer. This architecture revolutionized NLP and is now dominant in computer vision, audio, and multimodal tasks too.
           </p>
           <p style={S.p}>
-            Core insight: <strong>Self-Attention</strong> mechanism allow karta hai model ko directly relate karne ke liye sequence ke kisi bhi two positions ko regardless of distance. "The cat sat on the mat because it was tired" — "it" refer karta hai "cat" ko. Attention directly yeh relationship model kar sakta hai. Fully parallelizable — unlike RNNs.
+            Core insight: the <strong>Self-Attention</strong> mechanism lets the model directly relate any two positions in a sequence, regardless of distance. "The cat sat on the mat because it was tired" — "it" refers to "cat." Attention can directly model this relationship. Fully parallelizable — unlike RNNs.
           </p>
           <Figure caption="Transformer Block: Multi-Head Self-Attention → Residual Add → Layer Norm → Feed-Forward Network → Residual Add — stacked N times">
             <TransformerArchitectureDiagram />
@@ -331,7 +331,7 @@ export default function Content() {
             Full Transformer block: Input → LayerNorm → Multi-Head Attention → Residual → LayerNorm → Feed-Forward (4× expansion) → Residual → Output. Stack N blocks. BERT: 12. GPT-3: 96. Large models: 128+.
           </p>
           <Callout type="important" title="Infrastructure Requirements for Transformers">
-            Attention is O(n²) in sequence length — quadratic memory aur compute with context window. Flash Attention yeh dramatically improve karta hai. Transformer training inherently parallelizable — woh reason hai ki GPU clusters pe efficiently scale karte hain. Large context windows (128K tokens) Flash Attention ke bina practically infeasible hain.
+            Attention is O(n²) in sequence length — quadratic memory and compute with the context window. Flash Attention dramatically improves this. Transformer training is inherently parallelizable — that's why it scales efficiently on GPU clusters. Large context windows (128K tokens) are practically infeasible without Flash Attention.
           </Callout>
         </section>
       </section>
@@ -340,7 +340,7 @@ export default function Content() {
       <section id="attention">
         <h2 style={S.h2}>Attention Mechanism — Deep Dive</h2>
         <p style={S.p}>
-          Attention mechanism Deep Learning mein arguably sabse important innovation hai last decade ki. Queries (Q), Keys (K), Values (V) matrices se:
+          The attention mechanism is arguably the most important innovation in Deep Learning of the last decade. From Query (Q), Key (K), Value (V) matrices:
         </p>
         <p style={S.p}>
           <code style={S.code}>Attention(Q,K,V) = softmax(QK^T / √d_k) × V</code>
@@ -351,10 +351,10 @@ export default function Content() {
           <li><strong>Softmax:</strong> Convert scores to probabilities summing to 1.</li>
           <li><strong>× V:</strong> Weighted combination of values based on attention.</li>
           <li><strong>Multi-Head:</strong> Multiple parallel attention operations capture different relationship types simultaneously.</li>
-          <li><strong>Causal (Masked) Attention:</strong> GPT-style autoregressive — future tokens invisible. Upper triangular mask pe -infinity before softmax.</li>
+          <li><strong>Causal (Masked) Attention:</strong> GPT-style autoregressive — future tokens are invisible. An upper triangular mask sets -infinity before softmax.</li>
         </ul>
         <p style={S.p}>
-          <strong>KV Cache for inference:</strong> Autoregressive generation mein previously computed Key aur Value tensors cache karo. Per-request memory overhead. Large context windows (128K tokens) ke liye KV cache = significant GPU memory constraint.
+          <strong>KV Cache for inference:</strong> in autoregressive generation, cache previously computed Key and Value tensors. A per-request memory overhead. For large context windows (128K tokens), the KV cache is a significant GPU memory constraint.
         </p>
       </section>
 
@@ -362,13 +362,13 @@ export default function Content() {
       <section id="embeddings">
         <h2 style={S.h2}>Embeddings — Representing the World Numerically</h2>
         <p style={S.p}>
-          Neural networks numerical inputs process karte hain. Text, images, audio — sab kuch numerical vectors mein convert karna padta hai.
+          Neural networks process numerical inputs. Text, images, audio — everything has to be converted into numerical vectors.
         </p>
         <ul style={S.ul}>
-          <li><strong>Word2Vec (2013):</strong> Words ko dense continuous vectors mein map karo. Semantically similar words ke vectors close hote hain. "King - Man + Woman ≈ Queen" — mathematical analogy captures.</li>
-          <li><strong>Contextual Embeddings (BERT):</strong> Same word, different context = different embedding. "Bank" financial aur river — different vectors based on surrounding words.</li>
-          <li><strong>Token Embeddings (LLMs):</strong> Subword tokenization (BPE). GPT-3: 50K tokens × 12288 dimensions = 600M parameters sirf embedding table mein.</li>
-          <li><strong>Positional Embeddings:</strong> Position information encode karna. RoPE (Rotary Positional Embeddings) modern LLMs ka standard — longer sequences pe well extrapolates.</li>
+          <li><strong>Word2Vec (2013):</strong> map words to dense continuous vectors. Semantically similar words have close vectors. "King - Man + Woman ≈ Queen" — it captures the mathematical analogy.</li>
+          <li><strong>Contextual Embeddings (BERT):</strong> same word, different context = different embedding. "Bank" financial vs river — different vectors based on surrounding words.</li>
+          <li><strong>Token Embeddings (LLMs):</strong> subword tokenization (BPE). GPT-3: 50K tokens × 12288 dimensions = 600M parameters just in the embedding table.</li>
+          <li><strong>Positional Embeddings:</strong> encoding position information. RoPE (Rotary Positional Embeddings) is the standard for modern LLMs — extrapolates well to longer sequences.</li>
         </ul>
       </section>
 
@@ -376,12 +376,12 @@ export default function Content() {
       <section id="transfer-learning">
         <h2 style={S.h2}>Transfer Learning — Standing on Giants' Shoulders</h2>
         <p style={S.p}>
-          Pre-train ek large model on massive data, phir specific tasks ke liye fine-tune karo. Early layers of any deep network learn general features — edges for images, syntax for text — useful across many tasks.
+          Pre-train a large model on massive data, then fine-tune it for specific tasks. The early layers of any deep network learn general features — edges for images, syntax for text — useful across many tasks.
         </p>
         <ul style={S.ul}>
-          <li><strong>Computer vision:</strong> ImageNet pre-trained model lao (ResNet, EfficientNet). Final layer replace karo. Fine-tune on your smaller dataset. Hundreds of images se surprisingly good performance.</li>
-          <li><strong>NLP (BERT, 2018):</strong> Masked language modeling pe pre-train. Fine-tune on specific tasks (QA, classification, NER). BERT ne NLP benchmarks pe massive improvements diye.</li>
-          <li><strong>Foundation Models:</strong> GPT-4, Claude, Gemini, LLaMA-3, Stable Diffusion. Large pre-trained models adaptable to many downstream tasks via prompting ya fine-tuning.</li>
+          <li><strong>Computer vision:</strong> take an ImageNet pre-trained model (ResNet, EfficientNet). Replace the final layer. Fine-tune on your smaller dataset. Surprisingly good performance from hundreds of images.</li>
+          <li><strong>NLP (BERT, 2018):</strong> pre-train on masked language modeling. Fine-tune on specific tasks (QA, classification, NER). BERT delivered massive improvements on NLP benchmarks.</li>
+          <li><strong>Foundation Models:</strong> GPT-4, Claude, Gemini, LLaMA-3, Stable Diffusion. Large pre-trained models adaptable to many downstream tasks via prompting or fine-tuning.</li>
         </ul>
         <Callout type="best-practice" title="Practical Guidance">
           Foundation model fine-tuning almost always beats training from scratch unless you have truly unique architecture needs or massive proprietary datasets. Training from scratch = GPT-3 scale cost ($4-12M). Fine-tuning = $1K-$100K depending on model size and data.
@@ -403,7 +403,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>RLHF (Reinforcement Learning from Human Feedback):</strong> Base LLM → SFT → Reward Model training → PPO optimization. ChatGPT, Claude, Gemini — sab yeh ya similar techniques use karte hain. Multiple models simultaneously training — significant GPU cluster required.
+          <strong>RLHF (Reinforcement Learning from Human Feedback):</strong> Base LLM → SFT → Reward Model training → PPO optimization. ChatGPT, Claude, Gemini — all use this or similar techniques. Multiple models training simultaneously — requires a significant GPU cluster.
         </p>
       </section>
 
@@ -411,15 +411,15 @@ export default function Content() {
       <section id="inference-process">
         <h2 style={S.h2}>Inference Process</h2>
         <p style={S.p}>
-          <strong>Autoregressive Generation (LLMs):</strong> Next token predict karo, append, repeat. 1000 tokens generate karna = 1000 forward passes. KV Cache: previously computed attention keys aur values cache karo — 10-50x faster generation without recomputation.
+          <strong>Autoregressive Generation (LLMs):</strong> predict the next token, append it, repeat. Generating 1000 tokens = 1000 forward passes. KV Cache: cache previously computed attention keys and values — 10-50x faster generation without recomputation.
         </p>
         <Figure caption="LLM Inference: Autoregressive token generation with KV Cache — each step generates one token, cache avoids recomputing attention for previous tokens">
           <InferencePipelineDiagram />
         </Figure>
         <ul style={S.ul}>
-          <li><strong>Continuous Batching:</strong> New requests join in-progress batch jab tokens complete hote hain. GPU utilization dramatically better. vLLM, TensorRT-LLM yeh implement karte hain.</li>
-          <li><strong>Speculative Decoding:</strong> Small fast draft model parallel predictions generate karta hai, large model verify karta hai. 2-4x throughput improvement.</li>
-          <li><strong>Beam Search:</strong> Top-k candidates maintain karo. Better quality for structured outputs at higher compute cost.</li>
+          <li><strong>Continuous Batching:</strong> new requests join an in-progress batch as tokens complete. Dramatically better GPU utilization. vLLM, TensorRT-LLM implement this.</li>
+          <li><strong>Speculative Decoding:</strong> a small fast draft model generates predictions in parallel, the large model verifies. 2-4x throughput improvement.</li>
+          <li><strong>Beam Search:</strong> maintain the top-k candidates. Better quality for structured outputs at higher compute cost.</li>
         </ul>
       </section>
 
@@ -439,7 +439,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          PyTorch industry mein dominant hai research aur increasingly production mein. TensorFlow abhi bhi significant enterprise footprint rakhta hai particularly legacy systems mein. JAX Google ke internal research mein preferred hai. ONNX export karo PyTorch/TF se, OpenVINO ya TensorRT mein optimize karo deployment ke liye.
+          PyTorch is dominant in the industry for research and increasingly in production. TensorFlow still has a significant enterprise footprint, particularly in legacy systems. JAX is preferred in Google's internal research. Export ONNX from PyTorch/TF, optimize in OpenVINO or TensorRT for deployment.
         </p>
       </section>
 
@@ -447,7 +447,7 @@ export default function Content() {
       <section id="cuda-stack">
         <h2 style={S.h2}>CUDA Software Stack</h2>
         <p style={S.p}>
-          NVIDIA ka dominance sirf hardware nahi — software ecosystem hai. CUDA foundation hai jo sab Deep Learning frameworks ke niche kaam karta hai. Jab aap PyTorch code likhte hain, ultimately CUDA calls GPU pe jaati hain.
+          NVIDIA's dominance is not just hardware — it's the software ecosystem. CUDA is the foundation that underlies every Deep Learning framework. When you write PyTorch code, ultimately CUDA calls go to the GPU.
         </p>
         <Figure caption="CUDA Software Stack: Application code → PyTorch/TF → CUDA Runtime → cuDNN primitives → NCCL communications → CUDA Driver → GPU hardware">
           <CudaSoftwareStackDiagram />
@@ -473,7 +473,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          cuDNN version pinning production mein critical hai — version upgrade convolution algorithms change kar sakta hai, numeric results slightly different ho sakte hain. cuDNN 8.x to 9.x mein breaking changes documented hain. Infrastructure teams: CUDA + cuDNN + framework versions ek tested matrix ke against lock karo.
+          cuDNN version pinning is critical in production — a version upgrade can change convolution algorithms, and numeric results can be slightly different. Breaking changes are documented from cuDNN 8.x to 9.x. Infrastructure teams: lock CUDA + cuDNN + framework versions against a tested matrix.
         </p>
       </section>
 
@@ -555,7 +555,7 @@ export default function Content() {
             <li><strong>OpenVINO:</strong> Inference optimization toolkit for Intel hardware. Model compression, quantization, hardware-specific optimizations. Strong for CPU inference and edge deployment.</li>
           </ul>
           <p style={S.p}>
-            <strong>Google TPU Architecture:</strong> Custom ASICs specifically designed for matrix multiply-accumulate operations. Each TPU v4 chip: 2D systolic array for matrix ops, HBM for memory, high-bandwidth chip-to-chip interconnect. TPU Pods: hundreds to thousands of chips connected via custom ICI (Inter-Chip Interconnect) fabric. Available only through Google Cloud. TensorFlow aur JAX pe natively optimized — PyTorch support added later. Best for: Google's own foundation model training, highly parallel transformer workloads.
+            <strong>Google TPU Architecture:</strong> custom ASICs specifically designed for matrix multiply-accumulate operations. Each TPU v4 chip: a 2D systolic array for matrix ops, HBM for memory, high-bandwidth chip-to-chip interconnect. TPU Pods: hundreds to thousands of chips connected via a custom ICI (Inter-Chip Interconnect) fabric. Available only through Google Cloud. Natively optimized on TensorFlow and JAX — PyTorch support added later. Best for: Google's own foundation model training, highly parallel transformer workloads.
           </p>
         </section>
       </section>
@@ -583,7 +583,7 @@ export default function Content() {
             <MultiGpuTopologyDiagram />
           </Figure>
           <Callout type="best-practice" title="Distributed Training Best Practice">
-            Always run NCCL bandwidth test (<code style={S.code}>nccl-tests all_reduce_perf</code>) before starting any large training run. Ek misconfigured fabric ya single slow link poora cluster slow kar sakta hai. Non-blocking InfiniBand fat-tree topology mandatory hai large-scale training ke liye. NVLink within node + InfiniBand between nodes = optimal topology.
+            Always run an NCCL bandwidth test (<code style={S.code}>nccl-tests all_reduce_perf</code>) before starting any large training run. A misconfigured fabric or a single slow link can slow down the whole cluster. A non-blocking InfiniBand fat-tree topology is mandatory for large-scale training. NVLink within a node + InfiniBand between nodes = the optimal topology.
           </Callout>
         </section>
       </section>
@@ -592,11 +592,11 @@ export default function Content() {
       <section id="memory-optimization">
         <h2 style={S.h2}>Memory Optimization Techniques</h2>
         <ul style={S.ul}>
-          <li><strong>Mixed Precision (BF16):</strong> FP32 → BF16 training. Memory 2x reduce, Tensor Cores acceleration. BF16 preferred (no loss scaling needed). PyTorch: <code style={S.code}>torch.cuda.amp.autocast()</code> ya trainer flag. Same quality, 2x faster, 2x less memory.</li>
-          <li><strong>Gradient Checkpointing:</strong> Activations backward pass ke liye recompute karo instead of storing. 30-33% compute overhead, significant memory reduction. <code style={S.code}>model.gradient_checkpointing_enable()</code> — Hugging Face.</li>
-          <li><strong>Flash Attention:</strong> Attention O(n²) memory → O(n). HBM traffic minimize karo by tiling computation. 2-4x speed improvement. Flash Attention 2 aur 3: further improvements. Virtually all modern LLM training use karta hai.</li>
-          <li><strong>CPU Offloading (ZeRO-Infinity):</strong> Optimizer states CPU DRAM pe move karo, parameters NVMe pe. Enables training models larger than GPU memory. PCIe bandwidth limited lekin feasible.</li>
-          <li><strong>Activation Recomputation:</strong> Selective — sirf expensive-to-store activations recompute karo. Optimal balance between memory aur recompute overhead.</li>
+          <li><strong>Mixed Precision (BF16):</strong> FP32 → BF16 training. Memory reduced 2x, Tensor Core acceleration. BF16 is preferred (no loss scaling needed). PyTorch: <code style={S.code}>torch.cuda.amp.autocast()</code> or a trainer flag. Same quality, 2x faster, 2x less memory.</li>
+          <li><strong>Gradient Checkpointing:</strong> recompute activations for the backward pass instead of storing them. 30-33% compute overhead, significant memory reduction. <code style={S.code}>model.gradient_checkpointing_enable()</code> — Hugging Face.</li>
+          <li><strong>Flash Attention:</strong> attention O(n²) memory → O(n). Minimizes HBM traffic by tiling the computation. 2-4x speed improvement. Flash Attention 2 and 3: further improvements. Used by virtually all modern LLM training.</li>
+          <li><strong>CPU Offloading (ZeRO-Infinity):</strong> move optimizer states to CPU DRAM, parameters to NVMe. Enables training models larger than GPU memory. PCIe bandwidth limited but feasible.</li>
+          <li><strong>Activation Recomputation:</strong> selective — recompute only the activations that are expensive to store. An optimal balance between memory and recompute overhead.</li>
         </ul>
       </section>
 
@@ -670,7 +670,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          MLPerf results use karo hardware procurement decisions mein. NVIDIA consistently top results training mein. AMD MI300X competitive hai memory-intensive workloads mein (192GB HBM3). Google TPU v5 excellent hai Google Cloud pe. Caveat: benchmark performance real workload se different ho sakti hai — specific model architectures aur batch sizes pe test karo.
+          Use MLPerf results in hardware procurement decisions. NVIDIA consistently posts top training results. AMD MI300X is competitive for memory-intensive workloads (192GB HBM3). Google TPU v5 is excellent on Google Cloud. Caveat: benchmark performance can differ from real workload performance — test with your specific model architectures and batch sizes.
         </p>
       </section>
 
@@ -694,7 +694,7 @@ export default function Content() {
           ]}
         />
         <Callout type="important" title="Cost Analysis Note">
-          Yeh indicative numbers hain — actual costs GPU market pricing, your DC electricity tariff, aur team cost pe depend karte hain. Cloud costs highly variable — spot instances, committed use discounts dramatically change numbers. At sustained high utilization (70%+) for 12+ months, on-premises typically wins TCO. Break-even typically 18-30 months.
+          These are indicative numbers — actual costs depend on GPU market pricing, your DC electricity tariff, and team cost. Cloud costs are highly variable — spot instances and committed use discounts dramatically change the numbers. At sustained high utilization (70%+) for 12+ months, on-premises typically wins on TCO. Break-even is typically 18-30 months.
         </Callout>
       </section>
 
@@ -767,10 +767,10 @@ export default function Content() {
       <section id="security">
         <h2 style={S.h2}>Security Considerations</h2>
         <ul style={S.ul}>
-          <li><strong>Model theft:</strong> Repeated API queries se behavior reverse engineer karna. Mitigation: rate limiting, query monitoring, output watermarking.</li>
+          <li><strong>Model theft:</strong> reverse-engineering behavior through repeated API queries. Mitigation: rate limiting, query monitoring, output watermarking.</li>
           <li><strong>Adversarial attacks:</strong> Crafted inputs fool model with high confidence. Stop sign sticker misleads autonomous vehicle. Mitigation: adversarial training, input preprocessing, ensemble models.</li>
           <li><strong>Training data poisoning:</strong> Malicious data manipulate model behavior. Backdoor attack: specific trigger → wrong output. Mitigation: data validation, anomaly detection in training data, differential privacy.</li>
-          <li><strong>Privacy in training data:</strong> LLMs memorize training data. PII in training → model mein memorized. Mitigation: PII scrubbing before training, differential privacy, membership inference defense.</li>
+          <li><strong>Privacy in training data:</strong> LLMs memorize training data. PII in training data → memorized in the model. Mitigation: PII scrubbing before training, differential privacy, membership inference defense.</li>
           <li><strong>Infrastructure security:</strong> GPU cluster = valuable compute target (crypto mining). Model weights = valuable IP. BMC/IPMI isolated from training fabric. Encryption at rest for model weights, strict access controls.</li>
         </ul>
       </section>
@@ -779,9 +779,9 @@ export default function Content() {
       <section id="responsible-ai">
         <h2 style={S.h2}>Responsible AI and Explainability</h2>
         <ul style={S.ul}>
-          <li><strong>Model Bias:</strong> Training data ki biases models inherit aur amplify karte hain. Face recognition: historically higher error on darker skin tones. Mitigation: diverse training data, bias auditing, fairness constraints. Tools: Fairlearn, IBM AI Fairness 360.</li>
+          <li><strong>Model Bias:</strong> models inherit and amplify biases in the training data. Face recognition: historically higher error on darker skin tones. Mitigation: diverse training data, bias auditing, fairness constraints. Tools: Fairlearn, IBM AI Fairness 360.</li>
           <li><strong>Explainability (XAI):</strong> SHAP values — feature attribution per prediction. LIME — local linear approximation. Attention visualization (Transformer). Required in regulated domains: finance, healthcare, lending.</li>
-          <li><strong>EU AI Act (2024):</strong> High-risk AI (credit, healthcare, employment, law enforcement): conformity assessment, human oversight, audit trails, transparency. Deep Learning models in high-risk applications compliant hone chahiye.</li>
+          <li><strong>EU AI Act (2024):</strong> high-risk AI (credit, healthcare, employment, law enforcement): conformity assessment, human oversight, audit trails, transparency. Deep Learning models in high-risk applications need to be compliant.</li>
           <li><strong>Model Cards:</strong> Structured documentation — training data, intended use, evaluation results, known limitations, ethical considerations. Best practice becoming regulatory requirement.</li>
           <li><strong>India Context:</strong> DPDP Act (2023), RBI ML guidelines (explainability for credit decisions), CDSCO upcoming medical AI regulation.</li>
         </ul>
@@ -791,8 +791,8 @@ export default function Content() {
       <section id="advantages">
         <h2 style={S.h2}>Advantages of Deep Learning</h2>
         <ul style={S.ul}>
-          <li><strong>Automatic feature learning:</strong> Raw data se directly — engineer-defined features ki zaroorat nahi. Domain-agnostic architecture different data types pe adapt karo.</li>
-          <li><strong>Scales with compute aur data:</strong> More data + more compute = better performance. Consistent scaling laws. Traditional ML plateau karta hai.</li>
+          <li><strong>Automatic feature learning:</strong> directly from raw data — no need for engineer-defined features. A domain-agnostic architecture adapts to different data types.</li>
+          <li><strong>Scales with compute and data:</strong> more data + more compute = better performance. Consistent scaling laws. Traditional ML plateaus.</li>
           <li><strong>State-of-the-art across domains:</strong> Computer vision, NLP, speech, time series, drug discovery — Deep Learning approaches dominate benchmarks.</li>
           <li><strong>Transfer learning enables small-data applications:</strong> Foundation model → small dataset fine-tune → production-quality results.</li>
           <li><strong>End-to-end optimization:</strong> Raw input to final output, single differentiable system. No information loss at pipeline boundaries.</li>
@@ -818,12 +818,12 @@ export default function Content() {
       <section id="best-practices">
         <h2 style={S.h2}>Best Practices</h2>
         <ul style={S.ul}>
-          <li><strong>Start with pre-trained models:</strong> Foundation models fine-tune karna almost always beats training from scratch. Rarely necessary to train from scratch.</li>
+          <li><strong>Start with pre-trained models:</strong> fine-tuning foundation models almost always beats training from scratch. Rarely necessary to train from scratch.</li>
           <li><strong>Reproducibility from day 1:</strong> Seed everything (random, numpy, torch seeds). Log hyperparameters, data versions, code versions via Weights &amp; Biases / MLflow.</li>
-          <li><strong>Monitor training curves actively:</strong> Loss curves, validation metrics, gradient norms. Training divergence early catch karna expensive failed runs avoid karta hai.</li>
-          <li><strong>Gradual scaling:</strong> Small experiments pehle karo — architecture validation, data quality check. Phir scale karo. Before week-long runs, small-scale proof.</li>
+          <li><strong>Actively monitor training curves:</strong> loss curves, validation metrics, gradient norms. Catching training divergence early avoids expensive failed runs.</li>
+          <li><strong>Gradual scaling:</strong> run small experiments first — architecture validation, data quality check. Then scale up. Before week-long runs, a small-scale proof.</li>
           <li><strong>Infrastructure testing before long runs:</strong> NCCL bandwidth test, storage throughput benchmark, single node stability check — mandatory before large training runs.</li>
-          <li><strong>Always gradient clipping:</strong> <code style={S.code}>max_grad_norm=1.0</code> configure karo. Prevents gradient explosion → NaN loss → failed run.</li>
+          <li><strong>Always use gradient clipping:</strong> configure <code style={S.code}>max_grad_norm=1.0</code>. Prevents gradient explosion → NaN loss → failed run.</li>
         </ul>
       </section>
 
@@ -833,8 +833,8 @@ export default function Content() {
         <ul style={S.ul}>
           <li><strong>Training from scratch when fine-tuning works:</strong> Unnecessary cost. Foundation models almost always better starting point.</li>
           <li><strong>Ignoring learning rate:</strong> Most common cause of training failure. Too high: divergence. Without warmup for large models: instability.</li>
-          <li><strong>No validation monitoring:</strong> Overfitting silently happens. Early stopping configure karo.</li>
-          <li><strong>Batch size too small for distributed training:</strong> GPU utilization low. Gradient accumulation se effective batch size badhaao.</li>
+          <li><strong>No validation monitoring:</strong> overfitting happens silently. Configure early stopping.</li>
+          <li><strong>Batch size too small for distributed training:</strong> low GPU utilization. Increase effective batch size through gradient accumulation.</li>
           <li><strong>Skipping data preprocessing validation:</strong> Garbage data → silent bad model. Validate distribution, labels, preprocessing before launching.</li>
           <li><strong>Inference optimization ignored during model design:</strong> Production SLA &lt;100ms. Evaluate inference latency early — not after training is complete.</li>
         </ul>
@@ -893,7 +893,7 @@ export default function Content() {
         <h2 style={S.h2}>Case Studies</h2>
         <ul style={S.ul}>
           <li><strong>DeepMind AlphaFold (2020-21):</strong> Protein structure prediction — 50-year unsolved biology problem. Graph Neural Network + attention-based architecture. 200 million protein structures predicted. TPU pod infrastructure. Biology research permanently transformed. Infrastructure lesson: solving hard scientific problems with DL requires Google-scale infrastructure investment.</li>
-          <li><strong>Tesla Autopilot — Vision-Only:</strong> 2021 mein radar remove kiya. Pure camera-based CNN + Transformer perception. Fleet learning: millions of vehicles generate training data. Shadow mode: new model silently compares to human driver before deployment. Custom FSD chip for on-vehicle inference. Neural network training on internal GPU clusters.</li>
+          <li><strong>Tesla Autopilot — Vision-Only:</strong> removed radar in 2021. Pure camera-based CNN + Transformer perception. Fleet learning: millions of vehicles generate training data. Shadow mode: a new model silently compares against the human driver before deployment. Custom FSD chip for on-vehicle inference. Neural network training on internal GPU clusters.</li>
           <li><strong>Google Search + MUM:</strong> RankBrain (2015) → BERT (2019) → MUM (2021). 8.5 billion searches/day. MUM: 1000x more powerful than BERT, multilingual, multimodal. Inference infrastructure at that scale: massive global GPU deployment, &lt;200ms end-to-end latency requirement.</li>
           <li><strong>Google DeepMind DC Cooling:</strong> RL + Deep Learning for DC cooling optimization. 40% cooling energy reduction. Direct overlap with DC engineering domain — sensors → DL model → HVAC control. Now running autonomously in Google's own data centers.</li>
         </ul>
@@ -925,28 +925,23 @@ export default function Content() {
         <h2 style={S.h2}>Interview Questions</h2>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: Backpropagation kaise kaam karta hai?</p>
-          <p style={S.p}>Chain rule of calculus ka application. Output se starting, loss ke gradient output layer weights ke respect mein calculate karo. Phir chain rule se yeh gradient previous layer tak propagate karo — layer by layer, output se input tak. Each layer: gradient from next layer × current layer partial derivative = gradient for current layer weights. Optimizer in gradients use karke weights update karta hai loss reduce karne ke liye. Infrastructure: backward pass ≈ 2-3x forward pass compute. Activations store karne padte hain — gradient checkpointing se memory/compute trade-off.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: How does backpropagation work?</p> <p style={S.p}>An application of the chain rule of calculus. Starting from the output, calculate the gradient of the loss with respect to the output layer weights. Then propagate this gradient back to the previous layer via the chain rule — layer by layer, from output to input. Each layer: gradient from the next layer × current layer partial derivative = gradient for the current layer's weights. The optimizer uses these gradients to update the weights to reduce the loss. Infrastructure: the backward pass ≈ 2-3x the forward pass's compute. Activations have to be stored — gradient checkpointing gives a memory/compute trade-off.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: CNN aur Transformer mein fundamental architectural difference kya hai?</p>
-          <p style={S.p}>CNN: local receptive fields, weight sharing across spatial positions, translation invariance. Inductive bias: locality aur translation invariance. Efficient for images, smaller datasets. Transformer: global self-attention — any position can attend to any other regardless of distance. No locality assumption. Parallelizable training (unlike RNNs). Scales dramatically better with large models aur large datasets. Modern trend: Vision Transformers (ViT) images ke liye bhi competitive, though CNNs still better for smaller datasets.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: What is the fundamental architectural difference between CNN and Transformer?</p> <p style={S.p}>CNN: local receptive fields, weight sharing across spatial positions, translation invariance. Inductive bias: locality and translation invariance. Efficient for images, smaller datasets. Transformer: global self-attention — any position can attend to any other regardless of distance. No locality assumption. Parallelizable training (unlike RNNs). Scales dramatically better with large models and large datasets. Modern trend: Vision Transformers (ViT) are competitive for images too, though CNNs are still better for smaller datasets.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: Vanishing gradient problem kya hai aur kaise solve karte hain?</p>
-          <p style={S.p}>Very deep networks mein, backpropagation ke dauran gradients layer by layer multiply hote hain. Agar weights/activations small fractions multiply karte hain, gradients exponentially small ho jaate hain — early layers effectively zero gradient pate hain, nothing learn hota. Solutions: Residual connections (ResNets) — gradients directly flow through skip connections. Batch normalization — activations normalize karo. Careful initialization (Xavier, He init). GELU/ReLU activations (vs sigmoid which saturates). Layer normalization in Transformers.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: What is the vanishing gradient problem and how is it solved?</p> <p style={S.p}>In very deep networks, gradients multiply layer by layer during backpropagation. If weights/activations multiply by small fractions, gradients become exponentially small — early layers effectively get zero gradient and learn nothing. Solutions: residual connections (ResNets) — gradients flow directly through skip connections. Batch normalization — normalize activations. Careful initialization (Xavier, He init). GELU/ReLU activations (vs sigmoid, which saturates). Layer normalization in Transformers.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: CUDA stack Deep Learning mein kaise kaam karta hai?</p>
-          <p style={S.p}>Application code PyTorch operations call karta hai. PyTorch internally cuDNN call karta hai optimized primitives ke liye (convolution, attention, normalization). cuDNN CUDA Runtime use karta hai kernel launch aur memory management ke liye. CUDA Runtime CUDA Driver ke through kernels GPU pe schedule karta hai. GPU Tensor Cores actual matrix multiply-accumulate operations perform karte hain. NCCL distributed training mein all-reduce collective operations handle karta hai InfiniBand ke through. Sab layers tightly integrated hain — version mismatch = broken training.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: How does the CUDA stack work in Deep Learning?</p> <p style={S.p}>Application code calls PyTorch operations. PyTorch internally calls cuDNN for optimized primitives (convolution, attention, normalization). cuDNN uses the CUDA Runtime for kernel launch and memory management. The CUDA Runtime schedules kernels on the GPU through the CUDA Driver. GPU Tensor Cores perform the actual matrix multiply-accumulate operations. NCCL handles all-reduce collective operations in distributed training over InfiniBand. All layers are tightly integrated — a version mismatch means broken training.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: Production mein Deep Learning model deploy karne se pehle kya verify karna chahiye?</p>
-          <p style={S.p}>Latency profiling: inference time on target hardware within SLA? Memory footprint: model + KV cache + batch overhead GPU memory mein fit? Quantization impact: quality vs speed acceptable? Stress test: peak load pe stable? Training-serving consistency: same preprocessing? Monitoring configured: drift detection, performance metrics? Rollback plan: previous version deployable? Model card documented with known limitations. Load test: peak traffic pe model stable hai ya OOM hoti hai?</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: What should you verify before deploying a Deep Learning model to production?</p> <p style={S.p}>Latency profiling: is inference time on target hardware within SLA? Memory footprint: do model + KV cache + batch overhead fit in GPU memory? Quantization impact: is the quality vs speed trade-off acceptable? Stress test: stable under peak load? Training-serving consistency: same preprocessing? Monitoring configured: drift detection, performance metrics? Rollback plan: is the previous version deployable? Model card documented with known limitations. Load test: is the model stable at peak traffic, or does it OOM?</p>
         </div>
       </section>
 
@@ -1005,7 +1000,7 @@ export default function Content() {
       <section id="ai-learning-path">
         <h2 style={S.h2}>BTT AI Learning Path</h2>
         <p style={S.p}>
-          Behind The Tech AI Infrastructure track ka complete learning path — beginner se enterprise engineer tak:
+          The Behind The Tech AI Infrastructure track's complete learning path — from beginner to enterprise engineer:
         </p>
         <ComparisonTable
           title="BTT AI Infrastructure Learning Path"
@@ -1025,12 +1020,12 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          Har article previous pe build karta hai. Deep Learning article ke baad, Generative AI naturally aata hai — jo Deep Learning ka direct extension hai lekin dramatically different scale aur infrastructure implications ke saath.
+          Each article builds on the previous one. After the Deep Learning article, Generative AI comes naturally — a direct extension of Deep Learning but with dramatically different scale and infrastructure implications.
         </p>
         <ul style={S.ul}>
-          <li><strong>Infrastructure engineers:</strong> Articles 1, 6, 7, 8, 9, 10, 11 pe focus karo — direct DC engineering relevance.</li>
-          <li><strong>ML/AI engineers:</strong> Articles 2, 3, 4, 5 pe focus karo — theory aur production pipeline.</li>
-          <li><strong>Full-stack AI engineers:</strong> Sab articles read karo — yeh cross-domain understanding aaj ki sabse valuable engineering skill hai.</li>
+          <li><strong>Infrastructure engineers:</strong> focus on articles 1, 6, 7, 8, 9, 10, 11 — direct DC engineering relevance.</li>
+          <li><strong>ML/AI engineers:</strong> focus on articles 2, 3, 4, 5 — theory and production pipeline.</li>
+          <li><strong>Full-stack AI engineers:</strong> read every article — cross-domain understanding is today's most valuable engineering skill.</li>
         </ul>
       </section>
 
@@ -1038,16 +1033,16 @@ export default function Content() {
       <section id="key-takeaways">
         <h2 style={S.h2}>Key Takeaways</h2>
         <ul style={S.ul}>
-          <li>Deep Learning Machine Learning ka subset hai lekin fundamentally different infrastructure require karta hai — GPUs mandatory hain, model sizes GBs to TBs mein hain, training days to weeks leti hai. Woh sari AI Infrastructure — H100, NVLink, InfiniBand, liquid cooling — primarily Deep Learning workloads ke liye hai.</li>
-          <li>Neural network ki core operation matrix multiplication hai — yahi woh reason hai ki GPUs essential hain. Tensor Cores dedicated hardware hain specifically matrix multiply-accumulate ke liye. GPU architecture parallel workloads ke liye designed hai, exactly jaise DL training.</li>
-          <li>CUDA software stack Deep Learning ka invisible foundation hai. Application → PyTorch → CUDA Runtime → cuDNN → CUDA Driver → GPU — har layer matters. Version mismatch production mein silent failures create kar sakta hai.</li>
-          <li>Transformer architecture ne Deep Learning revolutionize kar diya hai 2017 se. Self-attention: long-range dependencies efficiently model karta hai, training parallelizable hai, scaling laws work karte hain. NLP, vision, audio, multimodal — sab Transformer-based hain aaj.</li>
-          <li>GPU Memory Hierarchy samajhna performance optimization ke liye critical hai. Flash Attention HBM traffic minimize karta hai. Gradient checkpointing compute/memory trade karta hai. Mixed precision (BF16) 2x faster training delivers. Yeh techniques ek ke baad ek layer optimizations hain.</li>
-          <li>Distributed training engineering — NCCL, DDP, FSDP, ZeRO, Megatron-LM — complex hai lekin large models ke liye necessary hai. InfiniBand fabric bandwidth directly training throughput determine karta hai. Non-blocking fat-tree topology mandatory hai serious clusters ke liye.</li>
-          <li>Kubernetes + GPU Operator + Kubeflow/KServe modern enterprise AI platform ka standard hai. Gang scheduling distributed training jobs ke liye critical hai. Helm + ArgoCD GitOps infrastructure as code enable karta hai.</li>
-          <li>DCGM + Prometheus + Grafana production AI monitoring ka baseline hai. GPU utilization, ECC errors, NVLink bandwidth, temperature — sab monitor karo. Silent GPU degradation expensive training failures create karta hai.</li>
-          <li>Training cost analysis: on-premises 256× H100 cluster pe 70B model training run ~$63K-97K infrastructure cost. Cloud pe equivalent: $855K-1.1M. At scale aur sustained utilization, on-premises TCO wins.</li>
-          <li>DC engineers ke liye: Deep Learning workloads ka trajectory clear hai — power density badhti jaayegi, liquid cooling mandatory hoti jaayegi, networking speeds increase hoti jaayegi. Yeh understanding next years mein increasingly valuable hogi. AI Infrastructure engineer jo Deep Learning samajhta hai woh sab se zyada valuable asset hai aaj ki market mein.</li>
+          <li>Deep Learning is a subset of Machine Learning but requires fundamentally different infrastructure — GPUs are mandatory, model sizes are in GBs to TBs, training takes days to weeks. All that AI Infrastructure — H100, NVLink, InfiniBand, liquid cooling — exists primarily for Deep Learning workloads.</li>
+          <li>The core operation of a neural network is matrix multiplication — that's exactly why GPUs are essential. Tensor Cores are dedicated hardware specifically for matrix multiply-accumulate. GPU architecture is designed for parallel workloads, exactly like DL training.</li>
+          <li>The CUDA software stack is the invisible foundation of Deep Learning. Application → PyTorch → CUDA Runtime → cuDNN → CUDA Driver → GPU — every layer matters. A version mismatch can create silent failures in production.</li>
+          <li>The Transformer architecture has revolutionized Deep Learning since 2017. Self-attention: efficiently models long-range dependencies, training is parallelizable, scaling laws work. NLP, vision, audio, multimodal — all are Transformer-based today.</li>
+          <li>Understanding the GPU Memory Hierarchy is critical for performance optimization. Flash Attention minimizes HBM traffic. Gradient checkpointing trades compute for memory. Mixed precision (BF16) delivers 2x faster training. These techniques are layered optimizations, one on top of another.</li>
+          <li>Distributed training engineering — NCCL, DDP, FSDP, ZeRO, Megatron-LM — is complex but necessary for large models. InfiniBand fabric bandwidth directly determines training throughput. A non-blocking fat-tree topology is mandatory for serious clusters.</li>
+          <li>Kubernetes + GPU Operator + Kubeflow/KServe is the standard for a modern enterprise AI platform. Gang scheduling is critical for distributed training jobs. Helm + ArgoCD enables GitOps infrastructure as code.</li>
+          <li>DCGM + Prometheus + Grafana is the baseline for production AI monitoring. GPU utilization, ECC errors, NVLink bandwidth, temperature — monitor all of it. Silent GPU degradation creates expensive training failures.</li>
+          <li>Training cost analysis: on-premises, a 256× H100 cluster running a 70B model training costs ~$63K-97K in infrastructure. The cloud equivalent: $855K-1.1M. At scale and sustained utilization, on-premises wins on TCO.</li>
+          <li>For DC engineers: the trajectory of Deep Learning workloads is clear — power density will keep rising, liquid cooling will become mandatory, networking speeds will keep increasing. This understanding will become increasingly valuable in the coming years. An AI Infrastructure engineer who understands Deep Learning is the most valuable asset in today's market.</li>
         </ul>
       </section>
 

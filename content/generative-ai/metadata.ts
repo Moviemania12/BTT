@@ -3,12 +3,12 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const genAiMetadata: ArticleMetadata = {
   slug: "generative-ai",
   title: "Generative AI — The Complete Engineering Guide",
-  seoTitle: "Generative AI Kya Hai? LLMs, Diffusion Models, RAG, AI Agents, Enterprise Infrastructure — Complete Hinglish Guide",
+  seoTitle: "What Is Generative AI? LLMs, Diffusion Models, RAG, AI Agents, Enterprise Infrastructure — Complete English Guide",
   seoDescription:
-    "Generative AI ka complete engineering guide — foundation models, LLMs, diffusion models, RAG, AI agents, MCP, function calling, vector databases, enterprise GenAI stack, inference infrastructure, cost optimization, guardrails aur production deployments. DC engineers, AI engineers aur enterprise architects ke liye.",
+    "A complete engineering guide to Generative AI — foundation models, LLMs, diffusion models, RAG, AI agents, MCP, function calling, vector databases, the enterprise GenAI stack, inference infrastructure, cost optimization, guardrails, and production deployments. For DC engineers, AI engineers, and enterprise architects.",
   canonicalUrl: "https://behindthetech.in/learn/ai/fundamentals/generative-ai",
   keywords: [
-    "generative ai kya hai",
+    "what is generative ai",
     "generative ai explained hindi",
     "large language models infrastructure",
     "diffusion models explained",

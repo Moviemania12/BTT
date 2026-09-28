@@ -24,13 +24,13 @@ export default function Content() {
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
         <p style={S.p}>
-          Large Language Models (LLMs) woh massive neural networks hain jo natural language ko itne scale pe process karte hain ki unke andar emergent capabilities appear hoti hain — reasoning, coding, math, translation, summarization — jo explicitly train nahi ki gayi thi. "Large" sirf size ka indicator nahi hai — yeh ek qualitative shift hai jahan models genuinely useful ho jaate hain real-world complex tasks ke liye.
+          Large Language Models (LLMs) are massive neural networks that process natural language at such scale that emergent capabilities appear within them — reasoning, coding, math, translation, summarization — that weren't explicitly trained for. "Large" isn't just an indicator of size — it's a qualitative shift where models become genuinely useful for real-world complex tasks.
         </p>
         <p style={S.p}>
-          Modern generative LLMs such as GPT, Llama, Mistral, Claude aur Gemma are primarily decoder-only Transformer architectures. However, Large Language Models also include encoder-only (BERT family) and encoder-decoder (T5/BART/FLAN-T5) architectures for different NLP workloads. Active model weights are loaded into GPU HBM during inference. Training ke liye hazaron H100s weeks to months ke liye. Aur inference ke liye woh continuously serve karte hain — yeh ongoing compute demand hai jo AI Infrastructure industry ko drive kar raha hai.
+          Modern generative LLMs such as GPT, Llama, Mistral, Claude and Gemma are primarily decoder-only Transformer architectures. However, Large Language Models also include encoder-only (BERT family) and encoder-decoder (T5/BART/FLAN-T5) architectures for different NLP workloads. Active model weights are loaded into GPU HBM during inference. For training, thousands of H100s for weeks to months. And for inference, they serve continuously — this is the ongoing compute demand driving the AI Infrastructure industry.
         </p>
         <Callout type="important" title="Infrastructure Scale">
-          Ek 70B parameter model at FP16 = 140GB GPU HBM sirf weights ke liye. Training at Llama 3.1 scale: 16,000+ H100 GPUs, months of continuous compute, InfiniBand NDR fabric, petabytes of storage. Yeh infrastructure reality hai — not future promise.
+          A 70B parameter model at FP16 = 140GB GPU HBM just for the weights. Training at Llama 3.1 scale: 16,000+ H100 GPUs, months of continuous compute, InfiniBand NDR fabric, petabytes of storage. This is infrastructure reality — not a future promise.
         </Callout>
       </section>
 
@@ -38,12 +38,12 @@ export default function Content() {
       <section id="who-should-read">
         <h2 style={S.h2}>Who Should Read This</h2>
         <ul style={S.ul}>
-          <li><strong>DC Engineers:</strong> LLM workloads itni power aur density demand kyon karte hain — aur kya expect karna hai jab aapka DC in workloads host karna shuru kare.</li>
-          <li><strong>IT/Infrastructure Engineers:</strong> GPU cluster management, storage requirements, networking topology jo LLM serving ke liye specifically needed hai.</li>
+          <li><strong>DC Engineers:</strong> why LLM workloads demand so much power and density — and what to expect when your DC starts hosting these workloads.</li>
+          <li><strong>IT/Infrastructure Engineers:</strong> GPU cluster management, storage requirements, networking topology specifically needed for LLM serving.</li>
           <li><strong>AI/MLOps Engineers:</strong> LLM training pipelines, fine-tuning strategies, production serving — complete technical picture.</li>
           <li><strong>Cloud Engineers:</strong> GPU instance selection, distributed serving architecture, managed LLM services vs self-hosted.</li>
-          <li><strong>Software Engineers:</strong> LLM APIs integrate karna, function calling implement karna, RAG architectures build karna.</li>
-          <li><strong>CTOs aur Architects:</strong> LLM infrastructure roadmap planning, build vs buy decisions, cost modeling.</li>
+          <li><strong>Software Engineers:</strong> integrating LLM APIs, implementing function calling, building RAG architectures.</li>
+          <li><strong>CTOs and Architects:</strong> LLM infrastructure roadmap planning, build vs buy decisions, cost modeling.</li>
         </ul>
       </section>
 
@@ -51,16 +51,16 @@ export default function Content() {
       <section id="what-you-will-learn">
         <h2 style={S.h2}>What You Will Learn</h2>
         <ul style={S.ul}>
-          <li>Transformer architecture ka complete internal diagram — har component ka kya kaam hai</li>
-          <li>Parameters, tokens, embeddings, positional encoding, self-attention ka exact mathematical intuition</li>
+          <li>A complete internal diagram of Transformer architecture — what each component does</li>
+          <li>The exact mathematical intuition of parameters, tokens, embeddings, positional encoding, self-attention</li>
           <li>Pretraining, distributed training strategies, fine-tuning, instruction tuning, RLHF, DPO — poori training pipeline</li>
           <li>LoRA, QLoRA, Mixture of Experts, quantization, distillation, speculative decoding</li>
-          <li>KV cache, Flash Attention, continuous batching — inference optimization ka full picture</li>
+          <li>KV cache, Flash Attention, continuous batching — the full picture of inference optimization</li>
           <li>GPU memory requirements per model size — exact numbers with reasoning</li>
           <li>vLLM, TensorRT-LLM, Triton, SGLang — production serving frameworks</li>
           <li>Enterprise LLM stack: gateway, observability, guardrails, cost optimization</li>
           <li>Open source vs closed source comparison with infrastructure implications</li>
-          <li>Production troubleshooting — real failure scenarios aur their resolutions</li>
+          <li>Production troubleshooting — real failure scenarios and their resolutions</li>
         </ul>
       </section>
 
@@ -79,22 +79,22 @@ export default function Content() {
       <section id="introduction">
         <h2 style={S.h2}>Introduction</h2>
         <p style={S.p}>
-          2020 mein GPT-3 release hua. 175 billion parameters. Public estimates suggest training costs ranged between approximately USD 4–12 million. Microsoft ne exclusive license le liya. Aur initially, most researchers ne socha ki yeh ek impressive but ultimately academic achievement hai.
+          GPT-3 was released in 2020. 175 billion parameters. Public estimates suggest training costs ranged between approximately USD 4–12 million. Microsoft took an exclusive license. And initially, most researchers thought this was an impressive but ultimately academic achievement.
         </p>
         <p style={S.p}>
-          Phir OpenAI ne GPT-3.5 fine-tune kiya instruction following ke liye. ChatGPT bana. November 30, 2022 ko launch hua. Aur kuch weeks mein poori industry ka trajectory change ho gayi.
+          Then OpenAI fine-tuned GPT-3.5 for instruction following. ChatGPT was born. It launched on November 30, 2022. And within a few weeks, the entire industry's trajectory changed.
         </p>
         <p style={S.p}>
-          Jo actually change hua woh yeh tha: scale pe ek qualitative shift hoti hai. GPT-2 (1.5B parameters) ek coherent paragraph likh sakta tha. GPT-3 (175B parameters) code debug kar sakta tha, essays write kar sakta tha, basic reasoning perform kar sakta tha — explicitly train kiye bina in tasks ke liye. Yeh "emergent capabilities" hain.
+          What actually changed was this: there's a qualitative shift at scale. GPT-2 (1.5B parameters) could write a coherent paragraph. GPT-3 (175B parameters) could debug code, write essays, perform basic reasoning — without being explicitly trained for these tasks. These are "emergent capabilities."
         </p>
         <p style={S.p}>
-          Engineers ke liye, yeh shift ek clear implication laya: LLMs ek new category of compute-intensive workloads hain. Traditional software applications RAM mein run karti hain. Active model weights are loaded into GPU HBM during inference — multiple servers ke across, continuous inference ke saath. Ek single 70B parameter model 140GB GPU memory maangta hai — sirf weights ke liye.
+          For engineers, this shift carried a clear implication: LLMs are a new category of compute-intensive workloads. Traditional software applications run in RAM. Active model weights are loaded into GPU HBM during inference — across multiple servers, with continuous inference. A single 70B parameter model requires 140GB of GPU memory — just for the weights.
         </p>
       </section>
 
       {/* ─── NLP EVOLUTION ─────────────────────────────────────────────── */}
       <section id="nlp-evolution">
-        <h2 style={S.h2}>NLP ka Evolution — LLMs se Pehle</h2>
+        <h2 style={S.h2}>The Evolution of NLP — Before LLMs</h2>
         <Figure caption="NLP Evolution: From rule-based systems (1950s) to statistical NLP to word embeddings to sequence models to the Transformer (2017) — foundation of all modern LLMs">
           <NlpEvolutionTimeline />
         </Figure>
@@ -105,7 +105,7 @@ export default function Content() {
           <li><strong>2014-2016 Sequence Models:</strong> LSTM, GRU, encoder-decoder. Attention mechanism (Bahdanau 2015). Revolutionary but sequential computation limits GPU parallelism.</li>
           <li><strong>2017 Transformer:</strong> "Attention is All You Need." Recurrence eliminated. Pure attention. Fully parallelizable training. Direct ancestor of GPT-4, Claude, Gemini, Llama.</li>
           <li><strong>2018-2019 BERT + GPT:</strong> BERT: bidirectional encoder, masked LM. GPT: decoder-only, causal LM. Two paths diverge — encoder for understanding, decoder for generation.</li>
-          <li><strong>2020-Present Scale aur Emergence:</strong> GPT-3 (175B), Chinchilla, Llama, Mistral, Gemini, Claude. Scaling laws consistently work. Emergent capabilities at scale.</li>
+          <li><strong>2020-Present Scale and Emergence:</strong> GPT-3 (175B), Chinchilla, Llama, Mistral, Gemini, Claude. Scaling laws consistently hold. Emergent capabilities at scale.</li>
         </ul>
       </section>
 
@@ -113,10 +113,10 @@ export default function Content() {
       <section id="what-is-llm">
         <h2 style={S.h2}>What is an LLM?</h2>
         <p style={S.p}>
-          Large Language Models woh neural networks hain jo natural language ke underlying patterns learn karte hain at massive scale — billions to hundreds of billions of parameters, trained on trillions of tokens of text. "Large" indicate karta hai ki model size ek threshold cross kar gaya hai jahan qualitatively different capabilities emerge hoti hain.
+          Large Language Models are neural networks that learn the underlying patterns of natural language at massive scale — billions to hundreds of billions of parameters, trained on trillions of tokens of text. "Large" indicates that model size has crossed a threshold where qualitatively different capabilities emerge.
         </p>
         <p style={S.p}>
-          Architecture ke perspective se: modern generative LLMs such as GPT, Llama, Mistral, Claude aur Gemma primarily decoder-only Transformer architectures hain. However, the broader LLM family mein encoder-only (BERT, RoBERTa — classification aur embeddings ke liye) aur encoder-decoder (T5, BART, FLAN-T5 — translation aur summarization ke liye) bhi hain. Is article mein primarily decoder-only generative LLMs cover hote hain kyunki woh aaj enterprise production ka dominant use case hain.
+          From an architecture perspective: modern generative LLMs such as GPT, Llama, Mistral, Claude and Gemma are primarily decoder-only Transformer architectures. However, the broader LLM family also includes encoder-only (BERT, RoBERTa — for classification and embeddings) and encoder-decoder (T5, BART, FLAN-T5 — for translation and summarization). This article primarily covers decoder-only generative LLMs since they are today's dominant use case in enterprise production.
         </p>
       </section>
 
@@ -124,28 +124,28 @@ export default function Content() {
       <section id="parameters">
         <h2 style={S.h2}>Parameters Explained</h2>
         <p style={S.p}>
-          "70 billion parameter model" — yeh number har jagah aata hai. Concretely kya hota hai? Parameters woh learnable numbers hain jo neural network ke connections ko define karte hain. Har weight matrix mein billions of individual floating-point numbers hain. Training process in numbers ko iteratively update karta hai taaki model better predictions kare.
+          "70 billion parameter model" — this number comes up everywhere. What does it concretely mean? Parameters are the learnable numbers that define a neural network's connections. Each weight matrix contains billions of individual floating-point numbers. The training process iteratively updates these numbers so the model makes better predictions.
         </p>
         <p style={S.p}>
-          Weight matrices ek Transformer block mein: Attention (Q, K, V projections — 3 matrices per head, N heads), Output projection, Feed-forward (two large linear layers, typically 4× embedding dimension), Layer normalization (scale aur shift parameters).
+          Weight matrices in a Transformer block: Attention (Q, K, V projections — 3 matrices per head, N heads), Output projection, Feed-forward (two large linear layers, typically 4× embedding dimension), Layer normalization (scale and shift parameters).
         </p>
         <Callout type="important" title="Infrastructure Math">
-          Ek parameter at FP16 = 2 bytes. 70B parameters × 2 bytes = 140GB. Sirf model weights ke liye. Training mein: gradients (140GB) + Adam optimizer states (2× more = 280GB) + activations = 560GB+ total. Inference: sirf weights + KV cache.
+          A parameter at FP16 = 2 bytes. 70B parameters × 2 bytes = 140GB. Just for the model weights. In training: gradients (140GB) + Adam optimizer states (2× more = 280GB) + activations = 560GB+ total. Inference: just weights + KV cache.
         </Callout>
         <p style={S.p}>
-          <strong>Parameter count aur quality:</strong> More parameters ≠ always better. Chinchilla paper (Hoffmann et al., 2022) ne show kiya ki given a compute budget, smaller model with more data often beats larger model with less data. Parameters, training tokens, aur compute budget sab together scale karne padte hain — sirf model size badhaana sufficient nahi. Llama 2 7B — carefully trained on high-quality data — many larger models se better perform karta hai specific tasks pe.
+          <strong>Parameter count and quality:</strong> More parameters ≠ always better. The Chinchilla paper (Hoffmann et al., 2022) showed that given a compute budget, a smaller model with more data often beats a larger model with less data. Parameters, training tokens, and compute budget all need to scale together — simply increasing model size isn't sufficient. Llama 2 7B — carefully trained on high-quality data — outperforms many larger models on specific tasks.
         </p>
       </section>
 
       {/* ─── TOKENS ────────────────────────────────────────────────────── */}
       <section id="tokens">
-        <h2 style={S.h2}>Tokens aur Tokenization</h2>
+        <h2 style={S.h2}>Tokens and Tokenization</h2>
         <p style={S.p}>
-          LLMs text ko tokens mein process karte hain — raw characters ya whole words nahi. Byte Pair Encoding (BPE) sabse common tokenization algorithm hai. Training process: start with individual characters, phir iteratively most frequent character pairs merge karo into single tokens.
+          LLMs process text as tokens — not raw characters or whole words. Byte Pair Encoding (BPE) is the most common tokenization algorithm. Training process: start with individual characters, then iteratively merge the most frequent character pairs into single tokens.
         </p>
         <ul style={S.ul}>
           <li><strong>Vocabulary size:</strong> Modern LLMs: 32K-128K vocabulary size. Llama 3: 128K. GPT-4: ~100K. Larger vocabulary = fewer tokens per sequence (efficient), larger embedding table (more memory).</li>
-          <li><strong>Tokenization aur infrastructure:</strong> Context window length tokens mein measured. KV cache size tokens ke saath grows. API pricing per token. Throughput tokens/second mein. Hindi/Devanagari text: typically 2-4× more tokens per word than English — important for Indian language application cost planning.</li>
+          <li><strong>Tokenization and infrastructure:</strong> Context window length is measured in tokens. KV cache size grows with tokens. API pricing is per token. Throughput is in tokens/second. Hindi/Devanagari text: typically 2-4× more tokens per word than English — important for cost planning of Indian language applications.</li>
           <li><strong>Special tokens:</strong> &lt;BOS&gt; (beginning), &lt;EOS&gt; (end), &lt;PAD&gt; (padding for batching), instruction format tokens. Correct special tokens = correct output. Wrong special tokens = garbage output in production.</li>
         </ul>
       </section>
@@ -154,13 +154,13 @@ export default function Content() {
       <section id="embeddings">
         <h2 style={S.h2}>Embeddings</h2>
         <p style={S.p}>
-          Tokenization ke baad, har token ID ek high-dimensional dense vector mein convert hota hai. Embeddings encode contextual numerical representations learned during training — not just static lookup values but learned representations that capture semantic relationships, usage patterns, aur linguistic properties.
+          After tokenization, each token ID is converted into a high-dimensional dense vector. Embeddings encode contextual numerical representations learned during training — not just static lookup values but learned representations that capture semantic relationships, usage patterns, and linguistic properties.
         </p>
         <p style={S.p}>
-          <strong>Embedding dimension:</strong> GPT-3: 12,288 dimensions. Llama 3 70B: 8,192. Smaller models (7B): 4,096. Dimension size model's "width" — zyada dimensions = zyada representational capacity per token.
+          <strong>Embedding dimension:</strong> GPT-3: 12,288 dimensions. Llama 3 70B: 8,192. Smaller models (7B): 4,096. Dimension size is the model's "width" — more dimensions means more representational capacity per token.
         </p>
         <p style={S.p}>
-          <strong>Memory implications:</strong> Embedding table: 128K tokens × 8192 dimensions × 2 bytes (FP16) = 2GB. Sirf embedding table ke liye. Small fraction of total model size but always in GPU HBM during inference.
+          <strong>Memory implications:</strong> Embedding table: 128K tokens × 8192 dimensions × 2 bytes (FP16) = 2GB. Just for the embedding table. A small fraction of total model size but always in GPU HBM during inference.
         </p>
       </section>
 
@@ -168,13 +168,13 @@ export default function Content() {
       <section id="positional-encoding">
         <h2 style={S.h2}>Positional Encoding</h2>
         <p style={S.p}>
-          Self-attention inherently position-agnostic hai — it doesn't know which token came first. Positional encoding position information inject karta hai.
+          Self-attention is inherently position-agnostic — it doesn't know which token came first. Positional encoding injects position information.
         </p>
         <ul style={S.ul}>
           <li><strong>Sinusoidal (original Transformer):</strong> Fixed mathematical functions (sine/cosine of different frequencies). No learned parameters. Generalizes to longer sequences than seen in training.</li>
-          <li><strong>Learned absolute positions:</strong> Trainable position embeddings. Simple lekin max sequence length mein bound. BERT yeh use karta hai.</li>
-          <li><strong>RoPE (Rotary Positional Embeddings):</strong> Modern LLMs ka standard (Llama, Mistral, Gemma, PaLM 2). Rotation matrices ke through relative position encode karta hai. Longer contexts pe well generalizes. YaRN extension: context window extend karo bina full retraining ke.</li>
-          <li><strong>ALiBi (Attention with Linear Biases):</strong> Attention scores pe linear bias add karo — recent tokens more attention naturally. MPT models use karte hain.</li>
+          <li><strong>Learned absolute positions:</strong> Trainable position embeddings. Simple but bound by max sequence length. BERT uses this.</li>
+          <li><strong>RoPE (Rotary Positional Embeddings):</strong> The standard for modern LLMs (Llama, Mistral, Gemma, PaLM 2). Encodes relative position through rotation matrices. Generalizes well to longer contexts. YaRN extension: extend the context window without full retraining.</li>
+          <li><strong>ALiBi (Attention with Linear Biases):</strong> Add a linear bias to attention scores — recent tokens naturally get more attention. Used by MPT models.</li>
         </ul>
       </section>
 
@@ -182,13 +182,13 @@ export default function Content() {
       <section id="transformer-arch">
         <h2 style={S.h2}>Transformer Architecture — Complete Internals</h2>
         <p style={S.p}>
-          Modern LLMs Transformer architecture pe based hain. Har cheez baaki is foundation se build hoti hai. Ek Transformer block do main parts se bana hai: Multi-Head Self-Attention aur Feed-Forward Network. Dono ke aas-paas Residual Connections aur Layer Normalization hain. Yeh block N times stack hoti hai. GPT-3: 96 blocks. Llama 3 70B: 80 blocks.
+          Modern LLMs are based on Transformer architecture. Everything else builds on this foundation. A Transformer block is made up of two main parts: Multi-Head Self-Attention and a Feed-Forward Network. Residual Connections and Layer Normalization surround both. This block is stacked N times. GPT-3: 96 blocks. Llama 3 70B: 80 blocks.
         </p>
         <Figure caption="Complete Transformer Block: Input → RMSNorm → Multi-Head GQA Attention (Flash Attention + KV Cache) → Residual → RMSNorm → FFN (SwiGLU) → Residual → Output — stacked N times">
           <TransformerArchitectureDiagram />
         </Figure>
         <p style={S.p}>
-          Input processing: Raw text → Tokenizer → Token IDs → Embedding Lookup → Positional Encoding (RoPE applied to Q aur K within attention) → First Transformer Block Input. Yeh pipeline simple lagti hai lekin har step critical hai.
+          Input processing: Raw text → Tokenizer → Token IDs → Embedding Lookup → Positional Encoding (RoPE applied to Q and K within attention) → First Transformer Block Input. This pipeline looks simple but every step is critical.
         </p>
       </section>
 
@@ -196,19 +196,19 @@ export default function Content() {
       <section id="self-attention">
         <h2 style={S.h2}>Self-Attention — The Core Mechanism</h2>
         <p style={S.p}>
-          Har token apni embedding se teen vectors produce karta hai: Query (Q — "Main kya dhundh raha hoon?"), Key (K — "Mujhe kaise dhundhte hain?"), Value (V — "Mera actual information kya hai?").
+          Each token produces three vectors from its embedding: Query (Q — "What am I looking for?"), Key (K — "How can I be found?"), Value (V — "What is my actual information?").
         </p>
         <p style={S.p}>
-          Attention score: <code style={S.code}>Q × Kᵀ / √d_k → softmax → weighted sum of V</code>. Mathematical insight: yeh ek differentiable database retrieval hai. Query se keys search karo, matching values retrieve karo.
+          Attention score: <code style={S.code}>Q × Kᵀ / √d_k → softmax → weighted sum of V</code>. Mathematical insight: this is a differentiable database retrieval. Search the keys with the query, retrieve matching values.
         </p>
         <p style={S.p}>
-          <strong>Causal masking:</strong> Decoder-only LLMs causal attention use karte hain — each token sirf apne previous tokens pe attend kar sakta hai. Upper triangular mask: future positions ko -infinity before softmax.
+          <strong>Causal masking:</strong> Decoder-only LLMs use causal attention — each token can only attend to the tokens before it. Upper triangular mask: future positions set to -infinity before softmax.
         </p>
         <p style={S.p}>
-          <strong>Attention complexity:</strong> Standard attention computation approximately quadratic O(n²) time hai sequence length n mein. 1K tokens: manageable. 128K tokens: impractical without optimization. Flash Attention reduces memory complexity by tiling computation — HBM mein full attention matrix kabhi materialize nahi hoti. Attention computation itself approximately quadratic rehti hai, but memory footprint dramatically reduces.
+          <strong>Attention complexity:</strong> Standard attention computation is approximately quadratic O(n²) time in sequence length n. 1K tokens: manageable. 128K tokens: impractical without optimization. Flash Attention reduces memory complexity by tiling computation — the full attention matrix never materializes in HBM. Attention computation itself remains approximately quadratic, but memory footprint reduces dramatically.
         </p>
         <p style={S.p}>
-          Flash Attention standard hai in most modern production training aur inference frameworks. Flash Attention 2 (2023) aur Flash Attention 3 (2024) ne further improvements diye.
+          Flash Attention is standard in most modern production training and inference frameworks. Flash Attention 2 (2023) and Flash Attention 3 (2024) brought further improvements.
         </p>
       </section>
 
@@ -216,15 +216,15 @@ export default function Content() {
       <section id="multi-head-attention">
         <h2 style={S.h2}>Multi-Head Attention</h2>
         <p style={S.p}>
-          Single attention head ek type of relationship capture karta hai. Multi-head attention: multiple attention heads simultaneously, each capturing different aspects. H heads parallel mein run karte hain. Each head: d_model/H dimension ke Q, K, V projections. All heads ke outputs concatenate karo → final linear projection.
+          A single attention head captures one type of relationship. Multi-head attention: multiple attention heads simultaneously, each capturing different aspects. H heads run in parallel. Each head: Q, K, V projections of dimension d_model/H. Concatenate all heads' outputs → a final linear projection.
         </p>
         <p style={S.p}>
-          Different heads different linguistic phenomena learn karte hain — syntactic dependencies, semantic relationships, coreference. This specialization automatically emerges during training.
+          Different heads learn different linguistic phenomena — syntactic dependencies, semantic relationships, coreference. This specialization emerges automatically during training.
         </p>
         <ul style={S.ul}>
           <li><strong>Head count per model size:</strong> Llama 3 8B: 32 attention heads, 8 KV heads (GQA). Llama 3 70B: 64 attention heads, 8 KV heads (GQA).</li>
-          <li><strong>GQA (Grouped-Query Attention):</strong> N query heads, M key heads, M value heads (M &lt; N, typically 8). Multiple query heads share same K aur V. KV cache dramatically smaller. Same quality, faster inference. Llama 2/3, Mistral, Gemma standard choice.</li>
-          <li><strong>MQA (Multi-Query Attention):</strong> Extreme version — single K aur V shared by all query heads. Even smaller KV cache, slight quality trade-off.</li>
+          <li><strong>GQA (Grouped-Query Attention):</strong> N query heads, M key heads, M value heads (M &lt; N, typically 8). Multiple query heads share the same K and V. The KV cache is dramatically smaller. Same quality, faster inference. The standard choice for Llama 2/3, Mistral, Gemma.</li>
+          <li><strong>MQA (Multi-Query Attention):</strong> An extreme version — a single K and V shared by all query heads. Even smaller KV cache, a slight quality trade-off.</li>
         </ul>
       </section>
 
@@ -232,12 +232,12 @@ export default function Content() {
       <section id="ffn">
         <h2 style={S.h2}>Feed-Forward Networks</h2>
         <p style={S.p}>
-          Har attention sublayer ke baad ek position-wise FFN aata hai: <code style={S.code}>FFN(x) = Linear₂(Activation(Linear₁(x)))</code>
+          A position-wise FFN comes after every attention sublayer: <code style={S.code}>FFN(x) = Linear₂(Activation(Linear₁(x)))</code>
         </p>
         <ul style={S.ul}>
           <li><strong>Dimensions:</strong> Hidden dimension typically 4× embedding dimension. Llama 3 70B: 8192 dim → 28,672 FFN hidden dim.</li>
           <li><strong>Activation:</strong> Modern LLMs: SwiGLU (PaLM, Llama, Mistral) — better performance but three matrices instead of two. GELU (GPT-style). ReLU (original Transformer).</li>
-          <li><strong>Knowledge storage:</strong> Research suggests FFN sublayers factual knowledge store karte hain. Knowledge editing techniques often FFN weights target karte hain.</li>
+          <li><strong>Knowledge storage:</strong> Research suggests FFN sublayers store factual knowledge. Knowledge editing techniques often target FFN weights.</li>
           <li><strong>Computational cost:</strong> FFN operations typically ~2/3 of total compute in a Transformer block. Large hidden dimension = GPU compute dominant here.</li>
         </ul>
       </section>
@@ -246,10 +246,10 @@ export default function Content() {
       <section id="residual-connections">
         <h2 style={S.h2}>Residual Connections</h2>
         <p style={S.p}>
-          Simple lekin critical. Each sublayer ka output uski input se add karo: <code style={S.code}>Output = LayerNorm(x + Sublayer(x))</code>
+          Simple but critical. Add each sublayer's output to its input: <code style={S.code}>Output = LayerNorm(x + Sublayer(x))</code>
         </p>
         <p style={S.p}>
-          Vanishing gradients se bachao very deep networks mein. Gradients directly skip connections ke through flow kar sakte hain. ResNets ne computer vision mein demonstrate kiya (2015). Transformers ne adopt kiya.
+          Protects against vanishing gradients in very deep networks. Gradients can flow directly through skip connections. ResNets demonstrated this in computer vision (2015). Transformers adopted it.
         </p>
         <p style={S.p}>
           <strong>Pre-norm vs Post-norm:</strong> Original Transformer: post-norm. Modern LLMs (Llama, Mistral, PaLM): pre-norm (LayerNorm before sublayer). Pre-norm: training stability better, especially at large scale.
@@ -260,10 +260,10 @@ export default function Content() {
       <section id="layer-normalization">
         <h2 style={S.h2}>Layer Normalization</h2>
         <p style={S.p}>
-          Training stabilize karna large models ke liye mandatory. Layer Normalization activations ko normalize karta hai mean zero, variance one.
+          Stabilizing training is mandatory for large models. Layer Normalization normalizes activations to mean zero, variance one.
         </p>
         <p style={S.p}>
-          <strong>RMSNorm:</strong> LLaMA, Mistral, Gemma use karte hain. Sirf RMS (root mean square) compute karo, mean subtract nahi karo. Slightly faster computation, same empirical performance. Small efficiency gain at large scale matters.
+          <strong>RMSNorm:</strong> Used by LLaMA, Mistral, Gemma. Just compute the RMS (root mean square), don't subtract the mean. Slightly faster computation, same empirical performance. A small efficiency gain that matters at large scale.
         </p>
       </section>
 
@@ -271,7 +271,7 @@ export default function Content() {
       <section id="decoder-only">
         <h2 style={S.h2}>Decoder-Only Models — The Generative LLM Standard</h2>
         <p style={S.p}>
-          GPT family, Llama, Mistral, Gemma, Command R+ — sab decoder-only hain. Sirf causal (masked) self-attention. Next token prediction pe pretrain. No separate encoder. Simple, homogeneous architecture — ek hi block type scale pe. Few-shot prompting naturally works — examples in-context provide karo.
+          GPT family, Llama, Mistral, Gemma, Command R+ — all decoder-only. Only causal (masked) self-attention. Pretrained on next token prediction. No separate encoder. Simple, homogeneous architecture — one block type at scale. Few-shot prompting naturally works — provide examples in-context.
         </p>
         <ComparisonTable
           title="Key Decoder-Only Models — Infrastructure Requirements"
@@ -286,7 +286,7 @@ export default function Content() {
           ]}
         />
         <Callout type="important" title="Llama 3.1 405B">
-          Llama 3.1 405B is a dense model — not MoE. Sabse bade open-source frontier dense model hai. Full 405B parameters active per token. Infrastructure requirement accordingly high hai.
+          Llama 3.1 405B is a dense model — not MoE. The largest open-source frontier dense model. Full 405B parameters active per token. Infrastructure requirement accordingly high.
         </Callout>
       </section>
 
@@ -308,7 +308,7 @@ export default function Content() {
           T5, BART, mT5, FLAN-T5 — encoder processes full input, decoder generates output with cross-attention to encoder. Best for: translation, summarization, structured input→output transformations. NLLB (Meta): 200-language translation model. FLAN-T5: instruction-tuned variant of T5.
         </p>
         <p style={S.p}>
-          LLM era mein relative decline lekin still relevant: structured task performance often better than equivalent decoder-only for same compute, and typically smaller memory footprint for specialized tasks.
+          A relative decline in the LLM era but still relevant: structured task performance is often better than an equivalent decoder-only model for the same compute, and typically a smaller memory footprint for specialized tasks.
         </p>
       </section>
 
@@ -326,7 +326,7 @@ export default function Content() {
           ]}
         />
         <Callout type="maintenance" title="Gemini Context Window">
-          Gemini ka supported context window depends on model version aur deployment. Different Gemini variants (Flash, Pro, Ultra) aur deployment configurations (AI Studio, Vertex AI) alag-alag limits rakhte hain. Always check current documentation.
+          Gemini's supported context window depends on model version and deployment. Different Gemini variants (Flash, Pro, Ultra) and deployment configurations (AI Studio, Vertex AI) have different limits. Always check current documentation.
         </Callout>
         <p style={S.p}>
           <strong>KV cache size at long context — exact calculation:</strong> KV cache per token per layer: 2 × (d_head × n_kv_heads) × 2 bytes (FP16). Llama 3 70B: 80 layers × 8 KV heads × 128 head_dim × 2 × 2 bytes = 327,680 bytes per token. At 128K context: ~42.9GB per request. Plus model weights (140GB): total 183GB for one request at full context. Need 3× H100 SXM5 (240GB combined) minimum.
@@ -340,14 +340,14 @@ export default function Content() {
           <KvCacheDiagram />
         </Figure>
         <p style={S.p}>
-          <strong>Without KV cache:</strong> Token N generate karne ke liye: sab previous N-1 tokens ke through full forward pass. O(n²) total compute. Catastrophically slow.
+          <strong>Without KV cache:</strong> Generating token N requires a full forward pass through all previous N-1 tokens. O(n²) total compute. Catastrophically slow.
         </p>
         <p style={S.p}>
-          <strong>With KV cache:</strong> Prefill: all input tokens simultaneously process (parallelizable). K aur V tensors GPU HBM mein store. Decode: sirf new token ka Q compute, cached K/V se attend. O(1) per step. 10-50× faster generation.
+          <strong>With KV cache:</strong> Prefill: process all input tokens simultaneously (parallelizable). Store K and V tensors in GPU HBM. Decode: compute only the new token's Q, attend to cached K/V. O(1) per step. 10-50× faster generation.
         </p>
         <ul style={S.ul}>
-          <li><strong>PagedAttention (vLLM):</strong> KV cache ko OS virtual memory concepts se manage karo. Fixed-size pages, non-contiguous GPU memory, fragmentation eliminate, dynamic sequence lengths efficiently handle. 2-5× throughput vs naive.</li>
-          <li><strong>Prefix caching:</strong> Shared prefix (system prompt, few-shot examples) ka KV cache ek baar compute karo, multiple requests ke liye reuse. Anthropic, Google cloud APIs support. Significant savings for long system prompts.</li>
+          <li><strong>PagedAttention (vLLM):</strong> Manage the KV cache using OS virtual memory concepts. Fixed-size pages, non-contiguous GPU memory, eliminate fragmentation, efficiently handle dynamic sequence lengths. 2-5× throughput vs naive.</li>
+          <li><strong>Prefix caching:</strong> Compute the KV cache for a shared prefix (system prompt, few-shot examples) once, reuse for multiple requests. Anthropic, Google cloud APIs support this. Significant savings for long system prompts.</li>
           <li><strong>KV cache quantization:</strong> INT8 KV cache → 50% memory reduction. Quality: negligible impact for most tasks.</li>
         </ul>
       </section>
@@ -356,13 +356,13 @@ export default function Content() {
       <section id="scaling-laws">
         <h2 style={S.h2}>Scaling Laws</h2>
         <p style={S.p}>
-          Chinchilla paper (Hoffmann et al., 2022) ne ek fundamental insight provide ki: given a fixed compute budget, optimal performance tab milti hai jab parameters aur training tokens proportionally scale karein — sirf model size badhaana sufficient nahi. "Compute-optimal" training: model size aur data size roughly equal importance rakhte hain.
+          The Chinchilla paper (Hoffmann et al., 2022) provided a fundamental insight: given a fixed compute budget, optimal performance is achieved when parameters and training tokens scale proportionally — simply increasing model size isn't sufficient. "Compute-optimal" training: model size and data size carry roughly equal importance.
         </p>
         <p style={S.p}>
-          Practical implication: parameters, training tokens, aur compute budget sab together scale karne chahiye. Ek 70B model ko compute-optimally train karne ke liye ~1.4 trillion tokens chahiye. Llama 3 ne yeh further push kiya — 70B model pe 15 trillion tokens — data scaling ke benefits demonstrate karte hue. Infrastructure impact: more training data = more storage, more preprocessing compute, longer training runs.
+          Practical implication: parameters, training tokens, and compute budget should all scale together. Training a 70B model compute-optimally requires ~1.4 trillion tokens. Llama 3 pushed this further — 15 trillion tokens on a 70B model — demonstrating the benefits of data scaling. Infrastructure impact: more training data means more storage, more preprocessing compute, longer training runs.
         </p>
         <p style={S.p}>
-          <strong>Emergent capabilities:</strong> Certain abilities ek certain scale ke baad suddenly appear hoti hain — few-shot learning, chain-of-thought reasoning, code generation. Yeh non-linear transitions hain. Predictable nahi tha ki yeh specific scale pe emerge hogi. Yeh aspect LLM scaling ko particularly interesting banata hai aur larger models mein continued investment drive karta hai.
+          <strong>Emergent capabilities:</strong> Certain abilities suddenly appear after a certain scale — few-shot learning, chain-of-thought reasoning, code generation. These are non-linear transitions. It wasn't predictable that they would emerge at that specific scale. This aspect makes LLM scaling particularly interesting and drives continued investment in larger models.
         </p>
       </section>
 
@@ -376,7 +376,7 @@ export default function Content() {
         <section id="pretraining">
           <h3 style={S.h3}>Pretraining</h3>
           <p style={S.p}>
-            Foundation model banana — raw text se knowledge aur capabilities seekhna. Data: Common Crawl, books, Wikipedia, academic papers, code (GitHub), multilingual text. Deduplication, quality filtering, PII scrubbing, tokenization, shuffling.
+            Building the foundation model — learning knowledge and capabilities from raw text. Data: Common Crawl, books, Wikipedia, academic papers, code (GitHub), multilingual text. Deduplication, quality filtering, PII scrubbing, tokenization, shuffling.
           </p>
           <p style={S.p}>
             Training objective: next token prediction. Cross-entropy loss over vocabulary. Adam/AdamW optimizer. Learning rate warmup + cosine decay. Gradient clipping (max_norm = 1.0). Llama 3: 15 trillion tokens on 16,000+ H100s.
@@ -392,11 +392,11 @@ export default function Content() {
             <DistributedTrainingDiagram />
           </Figure>
           <ul style={S.ul}>
-            <li><strong>Data Parallelism (DDP/FSDP):</strong> Same model, alag data batches on alag GPUs. All-reduce gradients every step via NCCL. Simplest approach. Model single GPU mein fit hona chahiye. PyTorch DDP standard. PyTorch FSDP: parameters + gradients + optimizer states sab sharded across GPUs — effective memory reduction.</li>
-            <li><strong>Tensor Parallelism:</strong> Individual layer operations split across GPUs — matrix multiply divided, different GPUs different portions compute karte hain. NVLink bandwidth critical. Megatron-LM yeh efficiently implement karta hai. Best within DGX/HGX node (NVLink available).</li>
-            <li><strong>Pipeline Parallelism:</strong> Model layers vertically split in stages — GPU 1 layers 1-32, GPU 2 layers 33-64. Micro-batch pipelining pipeline bubbles reduce karta hai. PipeDream, Megatron-LM yeh implement karte hain.</li>
-            <li><strong>Expert Parallelism:</strong> MoE models mein different experts on different GPUs. Router tokens dispatch karta hai — InfiniBand inter-node expert routing handle karta hai. Load balancing critical.</li>
-            <li><strong>3D Parallelism:</strong> Frontier models: data + tensor + pipeline combined. Example: 16,000 H100s → 8 tensor parallel × 64 pipeline × 31 data parallel groups. Megatron-LM, DeepSpeed aur PyTorch FSDP yeh coordinate karte hain.</li>
+            <li><strong>Data Parallelism (DDP/FSDP):</strong> The same model, different data batches on different GPUs. All-reduce gradients every step via NCCL. The simplest approach. The model must fit on a single GPU. PyTorch DDP is standard. PyTorch FSDP: parameters + gradients + optimizer states all sharded across GPUs — an effective memory reduction.</li>
+            <li><strong>Tensor Parallelism:</strong> Individual layer operations split across GPUs — matrix multiply divided, different GPUs compute different portions. NVLink bandwidth is critical. Megatron-LM implements this efficiently. Best within a DGX/HGX node (NVLink available).</li>
+            <li><strong>Pipeline Parallelism:</strong> Model layers split vertically into stages — GPU 1 layers 1-32, GPU 2 layers 33-64. Micro-batch pipelining reduces pipeline bubbles. PipeDream, Megatron-LM implement this.</li>
+            <li><strong>Expert Parallelism:</strong> In MoE models, different experts on different GPUs. The router dispatches tokens — InfiniBand handles inter-node expert routing. Load balancing is critical.</li>
+            <li><strong>3D Parallelism:</strong> Frontier models: data + tensor + pipeline combined. Example: 16,000 H100s → 8 tensor parallel × 64 pipeline × 31 data parallel groups. Megatron-LM, DeepSpeed and PyTorch FSDP coordinate this.</li>
             <li><strong>Enterprise frameworks:</strong> PyTorch FSDP (native, widely used), DeepSpeed (ZeRO optimizer, CPU offload, pipeline parallelism), Megatron-LM (NVIDIA's battle-tested 3D parallel framework for largest models).</li>
           </ul>
         </section>
@@ -404,7 +404,7 @@ export default function Content() {
         <section id="fine-tuning">
           <h3 style={S.h3}>Fine-Tuning</h3>
           <p style={S.p}>
-            Pretrained base model ko specific use cases ke liye adapt karna. Supervised Fine-Tuning (SFT): human-written instruction-response pairs. Standard cross-entropy loss. Few thousand to few hundred thousand examples. Hours to days on appropriate GPU cluster.
+            Adapting a pretrained base model for specific use cases. Supervised Fine-Tuning (SFT): human-written instruction-response pairs. Standard cross-entropy loss. A few thousand to a few hundred thousand examples. Hours to days on an appropriate GPU cluster.
           </p>
         </section>
 
@@ -416,19 +416,19 @@ export default function Content() {
         </section>
 
         <section id="rlhf">
-          <h3 style={S.h3}>RLHF aur Alignment Techniques</h3>
+          <h3 style={S.h3}>RLHF and Alignment Techniques</h3>
           <p style={S.p}>
-            ChatGPT, Claude, Gemini — sab RLHF ya similar use karte hain. Step 1: SFT model as starting point. Step 2: Reward model training — human annotators preferred responses select karte hain. Reward model predict karta hai ki kaunsa response better hai. Step 3: PPO optimization — reward maximize karo without diverging from SFT model (KL divergence constraint).
+            ChatGPT, Claude, Gemini — all use RLHF or something similar. Step 1: SFT model as the starting point. Step 2: reward model training — human annotators select preferred responses. The reward model predicts which response is better. Step 3: PPO optimization — maximize reward without diverging from the SFT model (KL divergence constraint).
           </p>
           <p style={S.p}>
-            <strong>Modern preference optimization techniques:</strong> RLHF + PPO traditional approach hai. DPO (Direct Preference Optimization): reward model ke bina, directly from preferences optimize karo — single training phase, more stable. ORPO (Odds Ratio Preference Optimization): negative examples bhi process karo ek single objective mein — no reference model needed. IPO (Identity Preference Optimization): DPO ka theoretically motivated variant jo overfitting reduce karta hai. Each approach different trade-offs rakhti hai infrastructure requirements aur training stability mein.
+            <strong>Modern preference optimization techniques:</strong> RLHF + PPO is the traditional approach. DPO (Direct Preference Optimization): optimizes directly from preferences without a reward model — a single training phase, more stable. ORPO (Odds Ratio Preference Optimization): processes negative examples too in a single objective — no reference model needed. IPO (Identity Preference Optimization): a theoretically motivated variant of DPO that reduces overfitting. Each approach carries different trade-offs in infrastructure requirements and training stability.
           </p>
         </section>
 
         <section id="dpo">
           <h3 style={S.h3}>DPO</h3>
           <p style={S.p}>
-            Direct Preference Optimization RLHF simplification hai — no separate reward model, no PPO. Direct optimization from paired preferred/rejected responses. Used in: Llama 3, Zephyr, many open-source aligned models. Lower infrastructure requirements than RLHF. Single training phase. More stable training.
+            Direct Preference Optimization is a simplification of RLHF — no separate reward model, no PPO. Directly optimizes from paired preferred/rejected responses. Used in: Llama 3, Zephyr, many open-source aligned models. Lower infrastructure requirements than RLHF. A single training phase. More stable training.
           </p>
         </section>
       </section>
@@ -437,11 +437,11 @@ export default function Content() {
       <section id="lora">
         <h2 style={S.h2}>LoRA — Low-Rank Adaptation</h2>
         <p style={S.p}>
-          Mathematical insight: weight updates during fine-tuning ek low-rank structure follow karte hain. <code style={S.code}>dW ≈ A × B</code> jahan A is (d × r) aur B is (r × k) aur r &lt;&lt; min(d,k). Implementation: original weight matrix W freeze karo. Sirf A aur B train karo (typically 0.1-1% of total parameters). Inference: W_effective = W + A×B — adapters merge ho jaate hain, no inference overhead.
+          Mathematical insight: weight updates during fine-tuning follow a low-rank structure. <code style={S.code}>dW ≈ A × B</code> where A is (d × r) and B is (r × k) and r &lt;&lt; min(d,k). Implementation: freeze the original weight matrix W. Train only A and B (typically 0.1-1% of total parameters). Inference: W_effective = W + A×B — the adapters get merged in, no inference overhead.
         </p>
         <ul style={S.ul}>
           <li><strong>Rank r selection:</strong> r=4 (basic task adaptation), r=16 (good balance, most tasks), r=64 (complex tasks), r=256 (near full fine-tuning).</li>
-          <li><strong>Production serving with LoRA:</strong> Multiple LoRA adapters serve karo on single base model. Different customers/departments ke liye different adapters. Memory: base model once + each adapter (MBs). LoRAX framework yeh efficiently handle karta hai.</li>
+          <li><strong>Production serving with LoRA:</strong> Serve multiple LoRA adapters on a single base model. Different adapters for different customers/departments. Memory: base model once + each adapter (MBs). The LoRAX framework handles this efficiently.</li>
         </ul>
       </section>
 
@@ -449,10 +449,10 @@ export default function Content() {
       <section id="qlora">
         <h2 style={S.h2}>QLoRA — Quantized LoRA</h2>
         <p style={S.p}>
-          Base model 4-bit NF4 (Normal Float 4) quantization. Double quantization: quantization constants ko bhi quantize karo. LoRA adapters BF16 precision mein. Paged Attention: memory spikes manage karo.
+          Base model 4-bit NF4 (Normal Float 4) quantization. Double quantization: also quantize the quantization constants. LoRA adapters in BF16 precision. Paged Attention: manage memory spikes.
         </p>
         <p style={S.p}>
-          <strong>Result:</strong> 65B model fine-tuning on single A100 (40GB). Previously 8 A100s required. 70B model on single H100 (80GB). QLoRA ne LLM fine-tuning har organization ke liye accessible bana diya. Quality: slightly lower than full BF16 LoRA, negligible for most production tasks.
+          <strong>Result:</strong> 65B model fine-tuning on a single A100 (40GB). Previously required 8 A100s. 70B model on a single H100 (80GB). QLoRA has made LLM fine-tuning accessible for every organization. Quality: slightly lower than full BF16 LoRA, negligible for most production tasks.
         </p>
       </section>
 
@@ -463,7 +463,7 @@ export default function Content() {
           <MixtureOfExpertsDiagram />
         </Figure>
         <p style={S.p}>
-          Traditional dense Transformer: har input ke liye har parameter use hota hai. MoE: sparse activation — sirf kuch parameters per token activate. N expert FFN networks. Router network (small, learned): har token ke liye top-K experts select karo (typically K=1 or K=2). Sirf selected experts compute karo.
+          Traditional dense Transformer: every parameter is used for every input. MoE: sparse activation — only some parameters activate per token. N expert FFN networks. A router network (small, learned): selects the top-K experts for each token (typically K=1 or K=2). Only the selected experts compute.
         </p>
         <ComparisonTable
           headers={["Model", "Total Params", "Active Params", "Memory (FP16)", "Quality", "Compute"]}
@@ -475,7 +475,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>Infrastructure implications:</strong> Expert parallelism: different GPUs par different experts. Load balancing: router uniform distribution ensure karna padta hai (dead expert problem — auxiliary loss). MoE: memory intensive, compute efficient. Best for high-throughput serving, not low-latency single-request.
+          <strong>Infrastructure implications:</strong> Expert parallelism: different experts on different GPUs. Load balancing: the router has to ensure a uniform distribution (the dead expert problem — auxiliary loss). MoE: memory intensive, compute efficient. Best for high-throughput serving, not low-latency single-request.
         </p>
       </section>
 
@@ -494,7 +494,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>FP8 Mixed Precision Training</strong> using NVIDIA Transformer Engine H100 aur newer hardware pe standard ban raha hai. Transformer Engine dynamically determines FP8 vs FP16 per layer per step — quality FP16 training ke comparable, throughput ~2× better. Activation scaling aur delayed scaling algorithms numerical stability ensure karte hain.
+          <strong>FP8 Mixed Precision Training</strong> using NVIDIA Transformer Engine is becoming standard on H100 and newer hardware. Transformer Engine dynamically determines FP8 vs FP16 per layer per step — quality comparable to FP16 training, throughput ~2× better. Activation scaling and delayed scaling algorithms ensure numerical stability.
         </p>
       </section>
 
@@ -502,10 +502,10 @@ export default function Content() {
       <section id="distillation">
         <h2 style={S.h2}>Knowledge Distillation</h2>
         <p style={S.p}>
-          Large teacher model se small student model train karo — similar capabilities, dramatically smaller. Teacher: large, high-quality model (e.g., 70B). Student: small model (e.g., 7B). Training: student ko teacher ki outputs pe train karo — not just labels, but soft probability distributions. Teacher's "dark knowledge" contain important information.
+          Training a small student model from a large teacher model — similar capabilities, dramatically smaller. Teacher: a large, high-quality model (e.g., 70B). Student: a small model (e.g., 7B). Training: train the student on the teacher's outputs — not just labels, but soft probability distributions. The teacher's "dark knowledge" contains important information.
         </p>
         <p style={S.p}>
-          <strong>Production applications:</strong> DistilBERT: BERT ka 60% size, 97% performance. Many organizations GPT-4 outputs se smaller proprietary models train karti hain. Customer service chatbots: expensive frontier model se synthetic data generate karo, cheaper model train karo. Phi-4 (Microsoft): high-quality synthetic data se distilled small model.
+          <strong>Production applications:</strong> DistilBERT: 60% the size of BERT, 97% the performance. Many organizations train smaller proprietary models from GPT-4 outputs. Customer service chatbots: generate synthetic data from an expensive frontier model, train a cheaper model. Phi-4 (Microsoft): a small model distilled from high-quality synthetic data.
         </p>
       </section>
 
@@ -513,10 +513,10 @@ export default function Content() {
       <section id="speculative-decoding">
         <h2 style={S.h2}>Speculative Decoding</h2>
         <p style={S.p}>
-          Throughput 2-4× improve karo without quality loss. Draft model (small, fast — typically 7B): K tokens ahead speculate karo. Target model (large — 70B): all K draft tokens verify karo in one forward pass. If draft correct: accept all K tokens. If wrong at position i: reject from i onward, resample. Acceptance rate typically 70-90%.
+          Improve throughput 2-4× without quality loss. Draft model (small, fast — typically 7B): speculates K tokens ahead. Target model (large — 70B): verifies all K draft tokens in one forward pass. If the draft is correct: accept all K tokens. If wrong at position i: reject from i onward, resample. Acceptance rate is typically 70-90%.
         </p>
         <p style={S.p}>
-          <strong>Infrastructure:</strong> Two models simultaneously in GPU memory. Memory: small model + large model = more total. But throughput: 2-4× better. vLLM, TGI, TensorRT-LLM yeh implement karte hain. Llama 3 8B draft → Llama 3 70B target = common production pairing.
+          <strong>Infrastructure:</strong> Two models simultaneously in GPU memory. Memory: small model + large model = more total. But throughput: 2-4× better. vLLM, TGI, TensorRT-LLM implement this. Llama 3 8B draft → Llama 3 70B target is a common production pairing.
         </p>
       </section>
 
@@ -524,15 +524,15 @@ export default function Content() {
       <section id="context-engineering">
         <h2 style={S.h2}>Context Engineering</h2>
         <p style={S.p}>
-          Context engineering prompt engineering se zyada structured discipline hai. Sirf instructions likhna nahi — strategically decide karna ki model ke context window mein kya jaata hai, kya nahi jaata, kis order mein, aur kyun.
+          Context engineering is a more structured discipline than prompt engineering. It's not just about writing instructions — it's strategically deciding what goes into the model's context window, what doesn't, in what order, and why.
         </p>
         <ul style={S.ul}>
-          <li><strong>System prompt design:</strong> Model ka base behavior, persona, constraints, safety guardrails. Token budget carefully manage karo — system prompt har request ke saath sent hota hai.</li>
-          <li><strong>Conversation history management:</strong> Kya keep karo, kya truncate. Summarization-based compression. Selective retention of key turns.</li>
-          <li><strong>Retrieved context placement:</strong> RAG chunks kahan insert ho — before ya after user query? Research: beginning aur end of context better retrieved than middle.</li>
-          <li><strong>Lost in the Middle problem:</strong> Models middle-of-context information worse retrieve karte hain. Solution: important information beginning ya end mein rakho. Production implication: RAG chunks ko strategically position karo.</li>
-          <li><strong>Context compression:</strong> Long contexts ko meaningful summaries mein reduce karo LLM ki help se. Token cost reduce karo while preserving key information.</li>
-          <li><strong>Infrastructure impact:</strong> Every context decision token count affect karta hai — cost aur latency directly. 1000 extra tokens per request × 1M requests/day = significant cost differential.</li>
+          <li><strong>System prompt design:</strong> The model's base behavior, persona, constraints, safety guardrails. Carefully manage token budget — the system prompt is sent with every request.</li>
+          <li><strong>Conversation history management:</strong> What to keep, what to truncate. Summarization-based compression. Selective retention of key turns.</li>
+          <li><strong>Retrieved context placement:</strong> Where do RAG chunks get inserted — before or after the user query? Research: content at the beginning and end of context is retrieved better than the middle.</li>
+          <li><strong>Lost in the Middle problem:</strong> Models retrieve middle-of-context information worse. Solution: put important information at the beginning or end. Production implication: strategically position RAG chunks.</li>
+          <li><strong>Context compression:</strong> Reduce long contexts into meaningful summaries with the LLM's help. Reduce token cost while preserving key information.</li>
+          <li><strong>Infrastructure impact:</strong> Every context decision affects token count — directly affecting cost and latency. 1000 extra tokens per request × 1M requests/day = a significant cost differential.</li>
         </ul>
       </section>
 
@@ -540,12 +540,12 @@ export default function Content() {
       <section id="prompt-processing">
         <h2 style={S.h2}>Prompt Processing Pipeline</h2>
         <p style={S.p}>
-          User se GPU tak — yeh journey samajhna production debugging ke liye critical hai.
+          Understanding this journey from user to GPU is critical for production debugging.
         </p>
         <ol style={{ ...S.ul, listStyleType: "decimal" }}>
           <li><strong>Tokenization:</strong> Raw text → BPE tokenizer → token IDs. CPU typically. Sub-millisecond.</li>
-          <li><strong>Embedding lookup:</strong> Token IDs → embedding vectors. GPU HBM se embedding table lookup. Batch of tokens simultaneously.</li>
-          <li><strong>Positional encoding:</strong> RoPE rotation apply karo to Q aur K matrices within attention (not to embeddings directly in modern LLMs).</li>
+          <li><strong>Embedding lookup:</strong> Token IDs → embedding vectors. Embedding table lookup from GPU HBM. A batch of tokens simultaneously.</li>
+          <li><strong>Positional encoding:</strong> Apply RoPE rotation to Q and K matrices within attention (not directly to embeddings in modern LLMs).</li>
           <li><strong>Transformer blocks (N times):</strong> RMSNorm → Multi-Head GQA Attention (with KV cache) → Residual Add → RMSNorm → FFN (SwiGLU) → Residual Add. 99% of compute here.</li>
           <li><strong>Final layer norm + LM head:</strong> Last block output → RMSNorm → Linear projection to vocabulary size → logits.</li>
           <li><strong>Sampling:</strong> Logits → probabilities via softmax → temperature scaling, top-k, top-p → token selected.</li>
@@ -555,15 +555,15 @@ export default function Content() {
 
       {/* ─── FUNCTION CALLING ──────────────────────────────────────────── */}
       <section id="function-calling">
-        <h2 style={S.h2}>Function Calling aur MCP</h2>
+        <h2 style={S.h2}>Function Calling and MCP</h2>
         <p style={S.p}>
           Function calling: developer defines tools (JSON Schema). Model decides which tool to call, with what arguments. Application executes tool, returns result. Model synthesizes final response.
         </p>
         <p style={S.p}>
-          <strong>MCP (Model Context Protocol):</strong> Anthropic ka open standard jo standardize karta hai AI ↔ tool connectivity. MCP Servers resources aur tools expose karte hain standardized protocol ke through (JSON-RPC 2.0). Ek baar MCP Server build karo → har compatible AI tool use kar sakta hai. Enterprise benefit: per-tool, per-model integration eliminate karo.
+          <strong>MCP (Model Context Protocol):</strong> Anthropic's open standard that standardizes AI ↔ tool connectivity. MCP Servers expose resources and tools through a standardized protocol (JSON-RPC 2.0). Build an MCP Server once → every compatible AI tool can use it. Enterprise benefit: eliminate per-tool, per-model integration.
         </p>
         <Callout type="best-practice" title="Tool Execution Infrastructure">
-          Tool calls sandboxed environments mein run karo. Timeout enforce karo (30s typical). Complete audit logging for compliance. Retry logic — tool failure gracefully handle karo. Token overhead: tool definitions tokens consume karte hain (cost implications).
+          Run tool calls in sandboxed environments. Enforce timeouts (30s typical). Complete audit logging for compliance. Retry logic — gracefully handle tool failure. Token overhead: tool definitions consume tokens (cost implications).
         </Callout>
       </section>
 
@@ -571,10 +571,10 @@ export default function Content() {
       <section id="rag-integration">
         <h2 style={S.h2}>RAG Integration</h2>
         <p style={S.p}>
-          RAG real-time, organization-specific knowledge inject karta hai inference time pe. Basic flow: Query embedding → vector database ANN search → top-K relevant chunks retrieve karo → augmented prompt → LLM grounded generation.
+          RAG injects real-time, organization-specific knowledge at inference time. Basic flow: query embedding → vector database ANN search → retrieve top-K relevant chunks → augmented prompt → grounded LLM generation.
         </p>
         <ul style={S.ul}>
-          <li><strong>Advanced RAG:</strong> Re-ranking (retrieved chunks quality-score karo), hybrid search (vector + BM25), metadata filtering, multi-hop retrieval, contextual compression.</li>
+          <li><strong>Advanced RAG:</strong> Re-ranking (quality-score the retrieved chunks), hybrid search (vector + BM25), metadata filtering, multi-hop retrieval, contextual compression.</li>
           <li><strong>Infrastructure:</strong> Embedding model: separate inference (CPU for batch indexing, GPU for real-time). Vector database: Qdrant, Weaviate, Pinecone, pgvector. Query latency: 10-100ms ANN search.</li>
         </ul>
       </section>
@@ -583,10 +583,10 @@ export default function Content() {
       <section id="ai-agents">
         <h2 style={S.h2}>AI Agents with LLMs</h2>
         <p style={S.p}>
-          Agents LLMs ko observation → reasoning → action loops mein embed karte hain. ReAct pattern: Thought → Action → Observation → Thought → Final Answer. 5-20 LLM calls per complex task. Cost proportionally higher. Frameworks: LangChain, AutoGen (Microsoft), CrewAI, OpenAI Assistants.
+          Agents embed LLMs in observation → reasoning → action loops. ReAct pattern: Thought → Action → Observation → Thought → Final Answer. 5-20 LLM calls per complex task. Cost proportionally higher. Frameworks: LangChain, AutoGen (Microsoft), CrewAI, OpenAI Assistants.
         </p>
         <p style={S.p}>
-          <strong>Infrastructure:</strong> State persistence (database ya vector store), sandboxed execution (code execution, web browsing), loop detection (max steps enforce karo), human-in-loop for high-risk actions, cost monitoring mandatory.
+          <strong>Infrastructure:</strong> State persistence (database or vector store), sandboxed execution (code execution, web browsing), loop detection (enforce max steps), human-in-the-loop for high-risk actions, cost monitoring is mandatory.
         </p>
       </section>
 
@@ -673,10 +673,10 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>All-reduce communication:</strong> Every training step. Gradients (~140GB for 70B model) synchronized across all GPUs. Ring all-reduce ya tree all-reduce via NCCL. Communication overlap with computation (gradient compression, pipeline bubble filling) critical for training efficiency.
+          <strong>All-reduce communication:</strong> Every training step. Gradients (~140GB for a 70B model) synchronized across all GPUs. Ring all-reduce or tree all-reduce via NCCL. Overlapping communication with computation (gradient compression, pipeline bubble filling) is critical for training efficiency.
         </p>
         <p style={S.p}>
-          <strong>NVSwitch:</strong> DGX/HGX H100 mein 3 NVSwitch chips connect all 8 GPUs at full NVLink bandwidth. Any GPU → any GPU at 900 GB/s — no bandwidth sharing. Critical for tensor parallelism within node. Without NVSwitch: inter-GPU bandwidth limited to PCIe (64 GB/s) — 14× slower for tensor-parallel operations.
+          <strong>NVSwitch:</strong> In a DGX/HGX H100, 3 NVSwitch chips connect all 8 GPUs at full NVLink bandwidth. Any GPU → any GPU at 900 GB/s — no bandwidth sharing. Critical for tensor parallelism within a node. Without NVSwitch: inter-GPU bandwidth limited to PCIe (64 GB/s) — 14× slower for tensor-parallel operations.
         </p>
       </section>
 
@@ -711,7 +711,7 @@ export default function Content() {
         <section id="sglang">
           <h3 style={S.h3}>SGLang</h3>
           <p style={S.p}>
-            SGLang (Structured Generation Language) ek emerging high-performance LLM serving framework hai jo complex multi-call LLM programs efficiently execute karta hai. RadixAttention: automatic KV cache reuse across multiple requests with shared prefixes — prefix caching vLLM se more aggressive. JSON decoding, constrained generation native support. Multi-model serving aur complex agentic workflows ke liye well-suited. Enterprise mein: agentic applications aur RAG pipelines jahan structured generation aur shared context important hai.
+            SGLang (Structured Generation Language) is an emerging high-performance LLM serving framework that efficiently executes complex multi-call LLM programs. RadixAttention: automatic KV cache reuse across multiple requests with shared prefixes — more aggressive prefix caching than vLLM. Native support for JSON decoding, constrained generation. Well-suited for multi-model serving and complex agentic workflows. In enterprise: useful for agentic applications and RAG pipelines where structured generation and shared context matter.
           </p>
         </section>
       </section>
@@ -720,9 +720,9 @@ export default function Content() {
       <section id="kubernetes">
         <h2 style={S.h2}>Kubernetes for LLM Serving</h2>
         <ul style={S.ul}>
-          <li><strong>NVIDIA GPU Operator:</strong> GPU drivers, CUDA toolkit, DCGM, MIG configuration automatically manage karo. GPU resource advertisement to K8s scheduler. Essential for any K8s-based AI cluster.</li>
-          <li><strong>Gang scheduling:</strong> Distributed inference (tensor parallel) requires all GPU pods simultaneously start. Volcano ya Run:AI gang scheduling support karte hain. Critical for multi-GPU model deployment.</li>
-          <li><strong>HPA (Horizontal Pod Autoscaling):</strong> Scale on GPU utilization (DCGM Prometheus metrics) ya request queue depth. Target: 70-85% GPU utilization. Scale-up fast, scale-down slow.</li>
+          <li><strong>NVIDIA GPU Operator:</strong> Automatically manage GPU drivers, CUDA toolkit, DCGM, MIG configuration. GPU resource advertisement to the K8s scheduler. Essential for any K8s-based AI cluster.</li>
+          <li><strong>Gang scheduling:</strong> Distributed inference (tensor parallel) requires all GPU pods to start simultaneously. Volcano or Run:AI support gang scheduling. Critical for multi-GPU model deployment.</li>
+          <li><strong>HPA (Horizontal Pod Autoscaling):</strong> Scale on GPU utilization (DCGM Prometheus metrics) or request queue depth. Target: 70-85% GPU utilization. Scale up fast, scale down slow.</li>
           <li><strong>Cold start mitigation:</strong> Model pre-loading in CPU memory. Warm pool: minimum replicas always running. Predictive scaling based on traffic patterns.</li>
         </ul>
       </section>
@@ -739,12 +739,12 @@ export default function Content() {
       <section id="ai-gateway">
         <h2 style={S.h2}>Enterprise AI Gateway</h2>
         <p style={S.p}>
-          Enterprise AI Gateway ek central proxy layer hai jo sab AI API traffic manage karta hai — authentication, rate limiting, caching, routing, monitoring, guardrails.
+          An Enterprise AI Gateway is a central proxy layer that manages all AI API traffic — authentication, rate limiting, caching, routing, monitoring, guardrails.
         </p>
         <ul style={S.ul}>
           <li><strong>LiteLLM:</strong> Open-source Python proxy. 100+ model providers unified API. Per-team cost tracking. Fallback routing. Widely adopted for multi-provider enterprise deployments.</li>
-          <li><strong>Envoy AI Gateway:</strong> CNCF project Envoy pe built. Cloud-native, production-grade. Rate limiting, auth, observability. AI-specific extensions — streaming support, token-based rate limiting. Enterprise infrastructure teams familiar hai Envoy se.</li>
-          <li><strong>Kong AI Gateway:</strong> Kong API Gateway ka AI extension. Plugin ecosystem. Enterprise support. Hybrid deployment (cloud + on-premises). Large organizations jo already Kong use kar rahe hain ke liye natural choice.</li>
+          <li><strong>Envoy AI Gateway:</strong> A CNCF project built on Envoy. Cloud-native, production-grade. Rate limiting, auth, observability. AI-specific extensions — streaming support, token-based rate limiting. Enterprise infrastructure teams are already familiar with Envoy.</li>
+          <li><strong>Kong AI Gateway:</strong> The AI extension of Kong API Gateway. Plugin ecosystem. Enterprise support. Hybrid deployment (cloud + on-premises). A natural choice for large organizations already using Kong.</li>
           <li><strong>Core functions:</strong> Model routing (cost/quality), prompt caching (prefix + semantic), complete audit trail, cost attribution per team, guardrails, failover.</li>
         </ul>
       </section>
@@ -753,13 +753,13 @@ export default function Content() {
       <section id="inference-scheduling">
         <h2 style={S.h2}>Inference Scheduling</h2>
         <p style={S.p}>
-          Inference scheduling LLM serving mein ek distinct engineering challenge hai jo traditional ML inference se alag hai.
+          Inference scheduling is a distinct engineering challenge in LLM serving that differs from traditional ML inference.
         </p>
         <ul style={S.ul}>
-          <li><strong>Continuous batching vs static batching:</strong> Static batching: fixed batch size, wait for batch to fill. Continuous batching (vLLM, TGI): requests dynamically join aur leave batch. GPU idle time dramatically reduce. 2-4× better throughput.</li>
-          <li><strong>Prefill-Decode disaggregation:</strong> Emerging technique — separate GPU pools for prefill (compute-intensive) aur decode (memory-bandwidth-bound). Prefill servers: large models, high compute. Decode servers: optimized for streaming. Different hardware optimal for each phase.</li>
+          <li><strong>Continuous batching vs static batching:</strong> Static batching: fixed batch size, wait for the batch to fill. Continuous batching (vLLM, TGI): requests dynamically join and leave the batch. GPU idle time reduces dramatically. 2-4× better throughput.</li>
+          <li><strong>Prefill-Decode disaggregation:</strong> An emerging technique — separate GPU pools for prefill (compute-intensive) and decode (memory-bandwidth-bound). Prefill servers: large models, high compute. Decode servers: optimized for streaming. Different hardware is optimal for each phase.</li>
           <li><strong>Priority scheduling:</strong> High-priority requests (paid tiers, SLA-bound) preempt low-priority. Request queuing with priority. Max wait time enforcement.</li>
-          <li><strong>Chunked prefill:</strong> Large prompts ko chunks mein process karo — TTFT latency improve karo for other queued requests. vLLM support karta hai. Long-document processing scenarios mein important.</li>
+          <li><strong>Chunked prefill:</strong> Process large prompts in chunks — improve TTFT latency for other queued requests. vLLM supports this. Important in long-document processing scenarios.</li>
           <li><strong>Request routing:</strong> Model version routing (A/B testing). Load balancing (least-connections, GPU-utilization-based). Prefix-aware routing: similar prompts → same server for cache hits.</li>
         </ul>
       </section>
@@ -783,7 +783,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          TTFT aur TPOT dono track karo separately. TTFT prefill phase quality indicate karta hai. TPOT decode phase indicate karta hai. Different optimization strategies target different metrics.
+          Track both TTFT and TPOT separately. TTFT indicates prefill phase quality. TPOT indicates the decode phase. Different optimization strategies target different metrics.
         </p>
       </section>
 
@@ -821,10 +821,10 @@ export default function Content() {
         <ComparisonTable
           headers={["Attack Type", "Description", "Mitigation"]}
           rows={[
-            ["Prompt Injection", "User input mein malicious instructions jo system prompt override karein", "Input sanitization, instruction hierarchy, output monitoring, NeMo Guardrails"],
+            ["Prompt Injection", "Malicious instructions in user input that override the system prompt", "Input sanitization, instruction hierarchy, output monitoring, NeMo Guardrails"],
             ["Jailbreak Detection", "Creative prompts bypass safety training — roleplay, hypothetical, foreign language", "Multi-layer safety classifiers, pattern monitoring, constitutional training, rate-limit suspicious patterns"],
             ["Prompt Leakage", "User extracts system prompt via clever queries", "System prompt masking, output audit for verbatim repetition"],
-            ["Model Poisoning", "Training data ya fine-tuning data mein malicious examples", "Training data provenance tracking, automated quality checks, anomaly detection"],
+            ["Model Poisoning", "Malicious examples in training or fine-tuning data", "Training data provenance tracking, automated quality checks, anomaly detection"],
             ["Training Data Poisoning", "Subtle backdoor injection in pre-training corpus", "Data source vetting, deduplication, content filtering, third-party audits"],
             ["Supply Chain Attacks", "Malicious weights via compromised model repositories", "SHA-256 hash verification, signed model artifacts, trusted sources only"],
             ["Data Exfiltration", "LLMs can memorize training data — membership inference attacks", "Differential privacy training, PII scrubbing before training, output filtering"],
@@ -857,12 +857,12 @@ export default function Content() {
 
       {/* ─── ALIGNMENT AND SAFETY ──────────────────────────────────────── */}
       <section id="alignment-safety">
-        <h2 style={S.h2}>Alignment aur Safety</h2>
+        <h2 style={S.h2}>Alignment and Safety</h2>
         <p style={S.p}>
-          Alignment: model behavior actual human values ke saath align karna. Language model objective (next token prediction) doesn't inherently mean helpful, honest, harmless. RLHF, DPO, ORPO, Constitutional AI — sab is problem address karte hain.
+          Alignment: aligning model behavior with actual human values. The language model objective (next token prediction) doesn't inherently mean helpful, honest, harmless. RLHF, DPO, ORPO, Constitutional AI — all address this problem.
         </p>
         <ul style={S.ul}>
-          <li><strong>Constitutional AI (Anthropic):</strong> Explicit principles define karo. Model apne responses in principles ke against critique karta hai. RLAIF (AI Feedback instead of Human Feedback). Scales better than pure human feedback.</li>
+          <li><strong>Constitutional AI (Anthropic):</strong> Define explicit principles. The model critiques its own responses against these principles. RLAIF (AI Feedback instead of Human Feedback). Scales better than pure human feedback.</li>
           <li><strong>Evaluation:</strong> BBQ (bias), TruthfulQA (hallucination), ToxiGen (toxic content), HarmBench (adversarial safety). Continuous eval on production outputs. Red teaming: dedicated adversarial testing team.</li>
           <li><strong>Guardrails:</strong> Llama Guard (Meta): open-source safety classifier. NeMo Guardrails (NVIDIA): programmable safety rules. Azure Content Safety. Custom domain-specific classifiers.</li>
           <li><strong>EU AI Act implications:</strong> GPAI models: transparency requirements. High-risk applications: human oversight, conformity assessment. India: DPDP Act 2023.</li>
@@ -920,7 +920,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          GPT-4 exact architecture has not been officially disclosed by OpenAI. Industry estimates suggest it may use a Mixture of Experts (MoE) design, but this remains unconfirmed. Infrastructure planning ke liye: treat as API-only, no GPU requirements, per-token pricing.
+          GPT-4 exact architecture has not been officially disclosed by OpenAI. Industry estimates suggest it may use a Mixture of Experts (MoE) design, but this remains unconfirmed. For infrastructure planning: treat it as API-only, no GPU requirements, per-token pricing.
         </p>
         <p style={S.p}>
           <strong>Hybrid approach:</strong> Proprietary API for complex reasoning + fine-tuned open source for high-volume routine tasks. Typical savings: 70-80% cost reduction while maintaining quality where needed.
@@ -929,7 +929,7 @@ export default function Content() {
 
       {/* ─── HOPPER AND BLACKWELL ──────────────────────────────────────── */}
       <section id="hopper-blackwell">
-        <h2 style={S.h2}>Hopper aur Blackwell Infrastructure</h2>
+        <h2 style={S.h2}>Hopper and Blackwell Infrastructure</h2>
         <h3 style={S.h3}>NVIDIA H100 (Hopper) — Current Production Standard</h3>
         <ul style={S.ul}>
           <li><strong>H100 SXM5 specifications:</strong> 80GB HBM3 (3.35 TB/s bandwidth). FP8 Mixed Precision Training via Transformer Engine. 4th gen Tensor Cores. NVLink 4.0: 900 GB/s bidirectional per GPU. TDP: 700W.</li>
@@ -938,10 +938,10 @@ export default function Content() {
         </ul>
         <h3 style={S.h3}>NVIDIA Blackwell (B200, GB200) — Next Generation</h3>
         <p style={S.p}>
-          Blackwell architecture compared to Hopper: higher compute throughput, higher HBM3e memory capacity, higher memory bandwidth, higher NVLink bandwidth, better inference efficiency per watt. Exact benchmark numbers vary by workload — vendor published benchmarks aur MLPerf results se actual numbers verify karo.
+          Blackwell architecture compared to Hopper: higher compute throughput, higher HBM3e memory capacity, higher memory bandwidth, higher NVLink bandwidth, better inference efficiency per watt. Exact benchmark numbers vary by workload — verify actual numbers from vendor published benchmarks and MLPerf results.
         </p>
         <ul style={S.ul}>
-          <li><strong>B200:</strong> 192GB HBM3e. Significantly higher bandwidth than H100. NVLink 5.0. Improved FP8 aur FP4 support. Lower power per FLOP than H100.</li>
+          <li><strong>B200:</strong> 192GB HBM3e. Significantly higher bandwidth than H100. NVLink 5.0. Improved FP8 and FP4 support. Lower power per FLOP than H100.</li>
           <li><strong>GB200 NVL72:</strong> 36 Grace CPU + 72 Blackwell GPU modules. 6.9TB aggregate HBM3e. 1.8 TB/s NVLink within rack — all GPUs effectively one logical unit. 70B model inference: single NVL72 rack comfortable. No inter-node InfiniBand needed for this configuration.</li>
           <li><strong>Infrastructure implication:</strong> GB200 NVL72 dramatically simplifies large model serving topology. Previously 8+ H100 nodes with InfiniBand required for 70B; now single NVL72 rack sufficient with NVLink connectivity.</li>
         </ul>
@@ -985,33 +985,27 @@ export default function Content() {
         <h2 style={S.h2}>Interview Questions</h2>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: Transformer architecture mein attention mechanism kyun important hai?</p>
-          <p style={S.p}>Self-attention allow karta hai har token ko sequence mein kisi bhi doosre token se directly relate karne ke liye — distance irrelevant. RNN ka problem: long-range dependencies mein gradient vanishes over many steps. Attention: direct connection. "The cat sat on the mat because it was tired" — "it" ko "cat" se connect karna 6 tokens paar. Attention trivially handle karta hai. Multi-head attention: multiple types of relationships simultaneously capture karta hai. Parallelizable training: unlike RNNs, all attention operations simultaneously compute ho sakte hain — GPU efficiency maximized. Yeh woh reason hai ki Transformers GPU clusters pe efficiently scale karte hain.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: Why is the attention mechanism important in Transformer architecture?</p> <p style={S.p}>Self-attention allows every token in a sequence to relate directly to any other token — distance is irrelevant. RNN's problem: gradients vanish over many steps in long-range dependencies. Attention: a direct connection. "The cat sat on the mat because it was tired" — connecting "it" to "cat" across 6 tokens. Attention handles this trivially. Multi-head attention: captures multiple types of relationships simultaneously. Parallelizable training: unlike RNNs, all attention operations can be computed simultaneously — maximizing GPU efficiency. This is the reason Transformers scale so efficiently on GPU clusters.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: KV cache kya hai aur production mein kyun critical hai?</p>
-          <p style={S.p}>Without KV cache: token N generate karne ke liye sab N-1 previous tokens process — O(n²) total compute. With KV cache: prefill phase mein all input tokens process karo, Key aur Value tensors GPU HBM mein store. Decode phase mein: sirf new token ka Query compute, cached K/V se attend. O(1) per step. 10-50× faster generation. Trade-off: memory grows linearly with context aur batch size. Production implications: KV cache + model weights = total GPU memory requirement. PagedAttention (vLLM) KV cache ko OS virtual memory concepts se manage karta hai — fragmentation eliminate, throughput maximize.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: What is the KV cache and why is it critical in production?</p> <p style={S.p}>Without KV cache: generating token N requires processing all N-1 previous tokens — O(n²) total compute. With KV cache: process all input tokens in the prefill phase, store Key and Value tensors in GPU HBM. In the decode phase: compute only the new token's Query, attend to the cached K/V. O(1) per step. 10-50× faster generation. Trade-off: memory grows linearly with context and batch size. Production implications: KV cache + model weights = total GPU memory requirement. PagedAttention (vLLM) manages the KV cache using OS virtual memory concepts — eliminating fragmentation, maximizing throughput.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: RLHF aur DPO mein kya difference hai?</p>
-          <p style={S.p}>RLHF: SFT model → reward model train on human preferences → PPO optimization against reward model. Complex three-stage. Expensive infrastructure: multiple models simultaneously. DPO: paired preferred/rejected responses se directly optimize. No separate reward model. Single training phase. More stable. Lower infrastructure. Quality: DPO RLHF ke comparable ya better on many benchmarks. Modern variants: ORPO (odds ratio, no reference model needed), IPO (theoretically motivated, reduces overfitting). Choose RLHF: nuanced reward modeling, large human preference dataset. Choose DPO/ORPO: simpler pipeline, limited resources.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: What is the difference between RLHF and DPO?</p> <p style={S.p}>RLHF: SFT model → train a reward model on human preferences → PPO optimization against the reward model. A complex three-stage process. Expensive infrastructure: multiple models simultaneously. DPO: optimizes directly from paired preferred/rejected responses. No separate reward model. A single training phase. More stable. Lower infrastructure. Quality: DPO is comparable to or better than RLHF on many benchmarks. Modern variants: ORPO (odds ratio, no reference model needed), IPO (theoretically motivated, reduces overfitting). Choose RLHF: nuanced reward modeling, large human preference dataset. Choose DPO/ORPO: simpler pipeline, limited resources.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: 70B model production mein deploy karne ke liye infrastructure planning kaise karein?</p>
-          <p style={S.p}>Step 1: precision decide karo. FP16 = 140GB, INT8 = 70GB, INT4 = 35GB. Step 2: KV cache estimate. 4096 context × batch 32 × per-token KV: ~20GB. Step 3: Total = weights + KV cache + 20% buffer. FP16: ~185GB → 3× H100 80GB. INT4: ~63GB → 1× H100 80GB. Step 4: vLLM with PagedAttention. Step 5: Tensor parallelism if multi-GPU — NVLink within node. Step 6: K8s HPA auto-scaling. Step 7: Monitoring — DCGM, vLLM metrics, LangFuse for LLM traces.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: How do you plan infrastructure for deploying a 70B model in production?</p> <p style={S.p}>Step 1: decide precision. FP16 = 140GB, INT8 = 70GB, INT4 = 35GB. Step 2: estimate KV cache. 4096 context × batch 32 × per-token KV: ~20GB. Step 3: Total = weights + KV cache + 20% buffer. FP16: ~185GB → 3× H100 80GB. INT4: ~63GB → 1× H100 80GB. Step 4: vLLM with PagedAttention. Step 5: tensor parallelism if multi-GPU — NVLink within the node. Step 6: K8s HPA auto-scaling. Step 7: monitoring — DCGM, vLLM metrics, LangFuse for LLM traces.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: Distributed LLM training mein kaunse parallelism strategies use karte hain?</p>
-          <p style={S.p}>Data Parallelism (DDP/FSDP): same model, alag data batches. All-reduce gradients via NCCL. Simplest. PyTorch FSDP: params+grads+optimizer sharded. Tensor Parallelism: individual layer operations split across GPUs — NVLink bandwidth critical. Megatron-LM standard. Pipeline Parallelism: model layers vertical split in stages, micro-batch pipelining. Expert Parallelism: MoE models mein different experts on different GPUs. 3D Parallelism: sab combined at frontier scale. DeepSpeed ZeRO: memory-efficient training with CPU offload options. Infrastructure requirement: InfiniBand NDR for inter-node, NVLink for intra-node.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: What parallelism strategies are used in distributed LLM training?</p> <p style={S.p}>Data Parallelism (DDP/FSDP): the same model, different data batches. All-reduce gradients via NCCL. Simplest. PyTorch FSDP: params+grads+optimizer sharded. Tensor Parallelism: individual layer operations split across GPUs — NVLink bandwidth critical. Megatron-LM is standard. Pipeline Parallelism: model layers split vertically into stages, micro-batch pipelining. Expert Parallelism: in MoE models, different experts on different GPUs. 3D Parallelism: all combined at frontier scale. DeepSpeed ZeRO: memory-efficient training with CPU offload options. Infrastructure requirement: InfiniBand NDR for inter-node, NVLink for intra-node.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: LLM inference mein latency optimize kaise karein?</p>
-          <p style={S.p}>TTFT optimize karo: prompt length reduce karo (prefill time), chunked prefill enable karo (large prompts in chunks), dedicated prefill instances consider karo. TPOT optimize karo: model quantization (INT4 → faster decode, bandwidth-bound), Flash Attention (memory efficient), speculative decoding (small draft model predicts, large model verifies — 2-4× TPOT improvement), reduce tensor parallelism if not memory-constrained (inter-GPU communication overhead). Hardware: higher HBM bandwidth → better decode speed. Network: gRPC vs REST (gRPC lower overhead). Caching: prefix cache → TTFT near-zero for cached prefix.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: How do you optimize latency in LLM inference?</p> <p style={S.p}>Optimize TTFT: reduce prompt length (prefill time), enable chunked prefill (large prompts in chunks), consider dedicated prefill instances. Optimize TPOT: model quantization (INT4 → faster decode, bandwidth-bound), Flash Attention (memory efficient), speculative decoding (a small draft model predicts, the large model verifies — 2-4× TPOT improvement), reduce tensor parallelism if not memory-constrained (inter-GPU communication overhead). Hardware: higher HBM bandwidth → better decode speed. Network: gRPC vs REST (gRPC lower overhead). Caching: prefix cache → near-zero TTFT for a cached prefix.</p>
         </div>
       </section>
 
@@ -1021,22 +1015,22 @@ export default function Content() {
         <ComparisonTable
           headers={["Term", "Definition"]}
           rows={[
-            ["Alignment", "Model behavior ko human values ke saath align karna — helpful, harmless, honest."],
-            ["Autoregressive Generation", "Token-by-token text generation jahan each token previous tokens pe conditioned hota hai."],
+            ["Alignment", "Aligning model behavior with human values — helpful, harmless, honest."],
+            ["Autoregressive Generation", "Token-by-token text generation where each token is conditioned on previous tokens."],
             ["BF16 (Brain Float 16)", "16-bit float with FP32's exponent range — preferred for LLM training. No loss scaling needed."],
             ["BPE (Byte Pair Encoding)", "Tokenization algorithm merging frequent character sequences into subword tokens."],
             ["Causal Attention", "Masked attention — each token only attends to previous tokens. Enables autoregressive LLM generation."],
-            ["Chinchilla Scaling Laws", "Parameters, training tokens, aur compute budget sab proportionally scale karne chahiye for optimal compute efficiency."],
-            ["Constitutional AI", "Anthropic ka alignment approach — training model with explicit principles to critique its own outputs."],
-            ["Context Window", "Maximum tokens model ek time pe process kar sakta hai — input + output combined."],
-            ["Continuous Batching", "Dynamic batching jahan new requests in-progress batch mein join karte hain jab tokens complete hote hain."],
+            ["Chinchilla Scaling Laws", "Parameters, training tokens, and compute budget should all scale proportionally for optimal compute efficiency."],
+            ["Constitutional AI", "Anthropic's alignment approach — training a model with explicit principles to critique its own outputs."],
+            ["Context Window", "The maximum tokens a model can process at one time — input + output combined."],
+            ["Continuous Batching", "Dynamic batching where new requests join an in-progress batch as tokens complete."],
             ["CUDA", "NVIDIA's parallel computing platform — enables GPU general compute. Foundation of LLM training."],
             ["DGX", "NVIDIA's purpose-built AI server — 8× H100 GPUs, NVSwitch, ConnectX-7 NICs, 10-11kW."],
             ["DPO (Direct Preference Optimization)", "RLHF alternative — no reward model, directly optimize from preferred/rejected response pairs."],
             ["Embedding", "Dense vector representation encoding contextual numerical representations learned during training."],
-            ["Expert Parallelism", "MoE models mein different expert FFN networks on different GPUs."],
+            ["Expert Parallelism", "In MoE models, different expert FFN networks on different GPUs."],
             ["Flash Attention", "Memory-efficient attention algorithm — O(n) memory via tiling instead of O(n²). 2-4× speedup."],
-            ["FP8 / Transformer Engine", "8-bit float format — H100+ Tensor Cores support karte hain. Mixed precision training with automatic scaling."],
+            ["FP8 / Transformer Engine", "An 8-bit float format — supported by H100+ Tensor Cores. Mixed precision training with automatic scaling."],
             ["FSDP (Fully Sharded Data Parallel)", "PyTorch's native sharding — params + gradients + optimizer states sharded across GPUs."],
             ["GQA (Grouped-Query Attention)", "Multiple query heads, fewer KV heads — smaller KV cache, faster inference."],
             ["Hallucination", "LLM confidently generating factually incorrect information."],
@@ -1067,7 +1061,7 @@ export default function Content() {
             ["Speculative Decoding", "Small draft model generates, large model verifies — 2-4× throughput without quality loss."],
             ["Tensor Parallelism", "Individual layer operations split across multiple GPUs. NVLink critical."],
             ["TensorRT-LLM", "NVIDIA's LLM inference optimization library — maximum throughput on NVIDIA hardware via compilation."],
-            ["Token", "Subword unit — LLM ka atomic input/output unit. ~0.75 English words per token."],
+            ["Token", "A subword unit — the LLM's atomic input/output unit. ~0.75 English words per token."],
             ["Triton Inference Server", "NVIDIA's multi-framework inference serving platform — enterprise multi-model production."],
             ["vLLM", "Open-source LLM serving framework — PagedAttention, continuous batching, OpenAI-compatible API."],
             ["ZeRO (DeepSpeed)", "Zero Redundancy Optimizer — shards optimizer states, gradients, parameters for memory efficiency."],
@@ -1079,16 +1073,16 @@ export default function Content() {
       <section id="key-takeaways">
         <h2 style={S.h2}>Key Takeaways</h2>
         <ul style={S.ul}>
-          <li>Modern generative LLMs primarily decoder-only Transformer architectures hain — lekin LLM ecosystem mein encoder-only (BERT family) aur encoder-decoder (T5/FLAN-T5) bhi hain jo specific NLP tasks ke liye better suited hain. Woh sari AI infrastructure — H100, NVLink, InfiniBand, liquid cooling — primarily generative LLM workloads ke liye exist karti hai.</li>
-          <li>Transformer architecture ka har component ek specific engineering purpose serve karta hai. Self-attention: token relationships capture karo. Multi-head: multiple relationship types simultaneously. FFN: per-token transformations aur knowledge storage. Residual connections: very deep networks train karo. RMSNorm: training stability at scale. In components ka collective understanding = debugging LLM behavior in production.</li>
-          <li>KV Cache LLM inference mein sabse important optimization hai. Without it: O(n²) generation compute. With it: O(1) per step. PagedAttention (vLLM) KV cache ko OS virtual memory concepts se manage karta hai. Memory planning: model weights + KV cache peak = total GPU HBM requirement.</li>
-          <li>Scaling Laws fundamental hain: parameters, training tokens, aur compute budget sab together scale karein. Sirf model size badhaana sufficient nahi. Llama 3 ne demonstrate kiya ki high-quality data pe longer training dramatically better results deta hai. Infrastructure implication: data pipeline quality aur scale as important as GPU count.</li>
-          <li>Distributed training modern LLM development ka backbone hai. Data Parallelism, Tensor Parallelism, Pipeline Parallelism, aur Expert Parallelism — sab combined (3D Parallelism) frontier models train karne ke liye. PyTorch FSDP, DeepSpeed, aur Megatron-LM enterprise standard frameworks hain.</li>
-          <li>LoRA aur QLoRA ne LLM fine-tuning democratize kar diya. 70B model QLoRA fine-tuning: single H100 pe possible. Previously 8 A100s required. Production serving mein LoRA adapters enable karte hain different use cases / departments ko same base model pe efficiently serve karna.</li>
-          <li>vLLM, TensorRT-LLM, SGLang, aur Triton — yeh serving frameworks enterprise LLM serving ka core hain. vLLM: flexibility, wide model support. TensorRT-LLM: maximum NVIDIA hardware performance. SGLang: aggressive prefix caching aur structured generation. Triton: enterprise multi-model serving.</li>
-          <li>AI Gateway (LiteLLM, Envoy, Kong) enterprise mein architectural necessity hai — central governance, cost control, vendor flexibility, security. Without gateway: distributed teams duplicate security aur cost tracking work inconsistently.</li>
-          <li>GPT-4 exact architecture officially disclosed nahi hua hai — industry mein MoE speculation hai lekin unconfirmed. Llama 3.1 405B ek dense model hai — sabse bada open-source dense frontier model. Infrastructure planning mein: verified specs pe rely karo, speculation pe nahi.</li>
-          <li>DC engineers ke liye: LLM inference is a continuous, memory-intensive workload. 40-100kW per rack for GPU servers. Active model weights loaded in GPU HBM throughout inference — not swapped in and out. DLC mandatory above 40kW/rack. InfiniBand for training, NVLink for inference. These constraints shape AI Data Center design fundamentally.</li>
+          <li>Modern generative LLMs are primarily decoder-only Transformer architectures — but the LLM ecosystem also includes encoder-only (BERT family) and encoder-decoder (T5/FLAN-T5) architectures that are better suited for specific NLP tasks. All that AI infrastructure — H100, NVLink, InfiniBand, liquid cooling — exists primarily for generative LLM workloads.</li>
+          <li>Every component of Transformer architecture serves a specific engineering purpose. Self-attention: capture token relationships. Multi-head: multiple relationship types simultaneously. FFN: per-token transformations and knowledge storage. Residual connections: train very deep networks. RMSNorm: training stability at scale. A collective understanding of these components is essential for debugging LLM behavior in production.</li>
+          <li>KV Cache is the most important optimization in LLM inference. Without it: O(n²) generation compute. With it: O(1) per step. PagedAttention (vLLM) manages the KV cache using OS virtual memory concepts. Memory planning: model weights + peak KV cache = total GPU HBM requirement.</li>
+          <li>Scaling Laws are fundamental: parameters, training tokens, and compute budget should all scale together. Simply increasing model size isn't sufficient. Llama 3 demonstrated that longer training on high-quality data delivers dramatically better results. Infrastructure implication: data pipeline quality and scale matter as much as GPU count.</li>
+          <li>Distributed training is the backbone of modern LLM development. Data Parallelism, Tensor Parallelism, Pipeline Parallelism, and Expert Parallelism — all combined (3D Parallelism) to train frontier models. PyTorch FSDP, DeepSpeed, and Megatron-LM are the enterprise standard frameworks.</li>
+          <li>LoRA and QLoRA have democratized LLM fine-tuning. 70B model QLoRA fine-tuning: possible on a single H100. Previously required 8 A100s. In production serving, LoRA adapters enable efficiently serving different use cases/departments on the same base model.</li>
+          <li>vLLM, TensorRT-LLM, SGLang, and Triton — these serving frameworks are the core of enterprise LLM serving. vLLM: flexibility, wide model support. TensorRT-LLM: maximum performance on NVIDIA hardware. SGLang: aggressive prefix caching and structured generation. Triton: enterprise multi-model serving.</li>
+          <li>An AI Gateway (LiteLLM, Envoy, Kong) is an architectural necessity in the enterprise — central governance, cost control, vendor flexibility, security. Without a gateway: distributed teams duplicate security and cost tracking work inconsistently.</li>
+          <li>GPT-4's exact architecture has not been officially disclosed — there's MoE speculation in the industry but it's unconfirmed. Llama 3.1 405B is a dense model — the largest open-source dense frontier model. For infrastructure planning: rely on verified specs, not speculation.</li>
+          <li>For DC engineers: LLM inference is a continuous, memory-intensive workload. 40-100kW per rack for GPU servers. Active model weights loaded in GPU HBM throughout inference — not swapped in and out. DLC mandatory above 40kW/rack. InfiniBand for training, NVLink for inference. These constraints fundamentally shape AI Data Center design.</li>
         </ul>
       </section>
 

@@ -27,7 +27,7 @@ export default function MachineLearningPage() {
         slug="machine-learning"
         headings={HEADINGS}
         readingTimeMinutes={mlMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/fundamentals/machine-learning">
         <Content />
       </ArticleLayout>
     </>

@@ -2,72 +2,72 @@ import type { FaqItem } from "@/lib/schemas";
 
 export const aiInfraFaq: FaqItem[] = [
   {
-    question: "AI Infrastructure kya hota hai?",
+    question: "What is AI Infrastructure?",
     answer:
-      "AI Infrastructure woh purpose-built technology stack hai jo machine learning models ko train karne, deploy karne aur operate karne ke liye chahiye — GPU clusters, high-speed networking (InfiniBand/RoCE), parallel storage, specialized power aur cooling systems, aur supporting software stack (PyTorch, NCCL, Kubernetes/Slurm). Traditional IT infrastructure se fundamentally alag hai kyunki ek hi workload type (matrix math) pe extreme scale pe operate karta hai.",
+      "AI Infrastructure is the purpose-built technology stack needed to train, deploy, and operate machine learning models — GPU clusters, high-speed networking (InfiniBand/RoCE), parallel storage, specialized power and cooling systems, and a supporting software stack (PyTorch, NCCL, Kubernetes/Slurm). It's fundamentally different from traditional IT infrastructure because it operates a single workload type (matrix math) at extreme scale.",
   },
   {
-    question: "GPU CPU se AI ke liye better kyun hai?",
+    question: "Why is GPU better than CPU for AI?",
     answer:
-      "CPU mein 8-128 powerful general-purpose cores hain jo diverse workloads handle karte hain. GPU mein 10,000-16,000+ simpler cores hain specifically parallel computation ke liye. Neural network training ka core operation hai matrix multiplication — inherently parallel. Ek NVIDIA H100 GPU matrix multiplication ke liye ek top-end CPU se 60-80x faster hai. AI training ek GPU pe nahi hoti — hazaron GPUs simultaneously kaam karte hain. Parallelism hi GPU ko AI ka primary compute resource banata hai.",
+      "A CPU has 8-128 powerful general-purpose cores that handle diverse workloads. A GPU has 10,000-16,000+ simpler cores specifically for parallel computation. The core operation of neural network training is matrix multiplication — inherently parallel. An NVIDIA H100 GPU is 60-80x faster than a top-end CPU for matrix multiplication. AI training doesn't happen on a single GPU — thousands of GPUs work simultaneously. This parallelism is exactly what makes the GPU AI's primary compute resource.",
   },
   {
-    question: "AI Infrastructure mein InfiniBand kyun use karte hain regular Ethernet ki jagah?",
+    question: "Why do we use InfiniBand instead of regular Ethernet in AI Infrastructure?",
     answer:
-      "AI training distributed fashion mein thousands of GPUs pe hoti hai. Har training step mein gradients all-reduce operation ke through synchronize hote hain — latency directly training speed affect karti hai. InfiniBand (HDR 200Gbps / NDR 400Gbps) sub-microsecond latency aur native RDMA support provide karta hai. NCCL (NVIDIA's collective communications library) InfiniBand ke liye optimized hai. Large clusters ke liye InfiniBand training throughput 20-30% improve karta hai vs Ethernet. Ethernet (RoCE) viable hai smaller deployments ya cost-sensitive setups ke liye, lekin large-scale training ke liye InfiniBand preferred hai.",
+      "AI training happens in a distributed fashion across thousands of GPUs. In every training step, gradients are synchronized through an all-reduce operation — latency directly affects training speed. InfiniBand (HDR 200Gbps / NDR 400Gbps) provides sub-microsecond latency and native RDMA support. NCCL (NVIDIA's collective communications library) is optimized for InfiniBand. For large clusters, InfiniBand improves training throughput by 20-30% vs Ethernet. Ethernet (RoCE) is viable for smaller deployments or cost-sensitive setups, but InfiniBand is preferred for large-scale training.",
   },
   {
-    question: "AI Data Center aur traditional Data Center mein kya difference hai?",
+    question: "What is the difference between an AI Data Center and a traditional Data Center?",
     answer:
-      "Key differences: Power density (AI 40-100+ kW per rack vs traditional 5-15 kW), cooling method (liquid cooling mandatory for AI vs air cooling for traditional), networking (400G InfiniBand/Ethernet vs 10-25GbE), primary compute (GPU-centric vs CPU-centric), utilization target (80-95%+ GPU vs 40-70% CPU), failure tolerance (checkpointing for training vs N+1 hardware), aur cost profile (GPU dominates 60-70% of hardware spend vs balanced distribution).",
+      "Key differences: power density (AI 40-100+ kW per rack vs traditional 5-15 kW), cooling method (liquid cooling mandatory for AI vs air cooling for traditional), networking (400G InfiniBand/Ethernet vs 10-25GbE), primary compute (GPU-centric vs CPU-centric), utilization target (80-95%+ GPU vs 40-70% CPU), failure tolerance (checkpointing for training vs N+1 hardware), and cost profile (GPU dominates 60-70% of hardware spend vs balanced distribution).",
   },
   {
-    question: "AI Infrastructure jobs mein kya skills chahiye?",
+    question: "What skills are needed for AI Infrastructure jobs?",
     answer:
-      "AI Infrastructure Engineer ke liye: Linux system administration (RHEL/Ubuntu), GPU driver/CUDA ecosystem knowledge, distributed systems (Kubernetes, Slurm), networking (InfiniBand/RoCE configuration, NCCL tuning), Python scripting, ML framework basics (PyTorch), monitoring (DCGM, Prometheus, Grafana), storage systems (Lustre, Weka, NFS), aur physical infrastructure awareness (power density, liquid cooling concepts). Data Center background wale engineers ke liye additional skills: GPU health monitoring, NCCL troubleshooting, distributed training debugging.",
+      "For an AI Infrastructure Engineer: Linux system administration (RHEL/Ubuntu), GPU driver/CUDA ecosystem knowledge, distributed systems (Kubernetes, Slurm), networking (InfiniBand/RoCE configuration, NCCL tuning), Python scripting, ML framework basics (PyTorch), monitoring (DCGM, Prometheus, Grafana), storage systems (Lustre, Weka, NFS), and physical infrastructure awareness (power density, liquid cooling concepts). Additional skills for engineers coming from a Data Center background: GPU health monitoring, NCCL troubleshooting, distributed training debugging.",
   },
   {
-    question: "AI Training aur AI Inference mein kya difference hai infrastructure perspective se?",
+    question: "What is the difference between AI Training and AI Inference from an infrastructure perspective?",
     answer:
-      "Training: batch size 512-4096, weeks-long continuous jobs, maximum GPU throughput priority, large parallel storage needed, few large clusters, checkpointing required. Inference: real-time latency <500ms, variable traffic load, smaller batch sizes (1-32), autoscaling needed, many deployment instances. GPU choice differs: H100 for training large models, A10G/L4/L40S more cost-effective for inference. Infrastructure design completely alag — training cluster aur inference cluster ideally separate honi chahiye.",
+      "Training: batch size 512-4096, weeks-long continuous jobs, maximum GPU throughput priority, large parallel storage needed, a few large clusters, checkpointing required. Inference: real-time latency <500ms, variable traffic load, smaller batch sizes (1-32), autoscaling needed, many deployment instances. GPU choice differs: H100 for training large models, A10G/L4/L40S more cost-effective for inference. The infrastructure design is completely different — ideally the training cluster and inference cluster should be separate.",
   },
   {
-    question: "NVLink aur NVSwitch kya hai aur kyun important hai?",
+    question: "What are NVLink and NVSwitch and why do they matter?",
     answer:
-      "NVLink NVIDIA ka high-speed GPU-to-GPU interconnect hai. H100 generation mein NVLink 4.0 pe 900 GB/s bidirectional bandwidth per GPU milti hai — PCIe 5.0 (64 GB/s) se 14x zyada. NVSwitch ek dedicated chip hai jo ek server ke andar sab 8 GPUs ko full bandwidth pe interconnect karta hai. Matlab: tensor parallelism (model layers GPUs pe split karna) efficiently ek server ke andar kaam karta hai. NVLink bandwidth hi reason hai ki 8 H100 GPUs ek node mein almost ek giant GPU jaise behave karte hain. PCIe-based systems mein yeh bandwidth available nahi hoti — training slower hoti hai.",
+      "NVLink is NVIDIA's high-speed GPU-to-GPU interconnect. In the H100 generation, NVLink 4.0 provides 900 GB/s bidirectional bandwidth per GPU — 14x more than PCIe 5.0 (64 GB/s). NVSwitch is a dedicated chip that interconnects all 8 GPUs inside a server at full bandwidth. This means: tensor parallelism (splitting model layers across GPUs) works efficiently within a single server. NVLink bandwidth is exactly why 8 H100 GPUs in one node behave almost like a single giant GPU. PCIe-based systems don't have this bandwidth available — training is slower.",
   },
   {
-    question: "NVIDIA Blackwell kya hai aur GB200 NVL72 kya hota hai?",
+    question: "What is NVIDIA Blackwell and what is the GB200 NVL72?",
     answer:
-      "Blackwell NVIDIA ki next-generation GPU architecture hai. B100/B200 GPUs Hopper (H100) ke successor hain. B200 BF16 peak performance ~4.5 PFLOPS deliver karta hai — H100 ke ~2 PFLOPS se roughly 2x improvement. GB200 ek combined Grace CPU + Blackwell GPU package hai (Grace Blackwell). NVL72 ek rack-scale system hai jisme 36 GB200 modules hain (72 Blackwell GPUs + 36 Grace CPUs) jo NVLink se interconnect hote hain — effectively ek giant unified system. NVL72 ke andar GPU-to-GPU bandwidth 1.8 TB/s hai — training clusters ke liye game-changing.",
+      "Blackwell is NVIDIA's next-generation GPU architecture. B100/B200 GPUs are the successors to Hopper (H100). The B200 delivers ~4.5 PFLOPS of BF16 peak performance — roughly 2x the improvement over H100's ~2 PFLOPS. GB200 is a combined Grace CPU + Blackwell GPU package (Grace Blackwell). NVL72 is a rack-scale system with 36 GB200 modules (72 Blackwell GPUs + 36 Grace CPUs) interconnected via NVLink — effectively one giant unified system. GPU-to-GPU bandwidth inside the NVL72 is 1.8 TB/s — a game-changer for training clusters.",
   },
   {
-    question: "CXL kya hai aur AI Infrastructure mein kyun relevant hai?",
+    question: "What is CXL and why is it relevant to AI Infrastructure?",
     answer:
-      "CXL (Compute Express Link) ek open interconnect standard hai (PCIe 5.0 pe based) jo CPUs, GPUs, aur memory devices ko high-bandwidth, low-latency link se connect karta hai. AI Infrastructure relevance: Memory pooling — multiple GPUs ek shared memory pool access kar sakte hain. Memory capacity expansion — GPU HBM ke bahar additional fast memory. CPU-GPU memory coherence — GPU direct CPU memory access efficiently kar sakta hai. CXL 3.0 (2022+) fabric support add karta hai — multiple hosts aur devices ek memory pool share kar sakte hain. Long-term yeh GPU memory limitation ko partially address kar sakta hai.",
+      "CXL (Compute Express Link) is an open interconnect standard (based on PCIe 5.0) that connects CPUs, GPUs, and memory devices with a high-bandwidth, low-latency link. AI Infrastructure relevance: Memory pooling — multiple GPUs can access a shared memory pool. Memory capacity expansion — additional fast memory beyond GPU HBM. CPU-GPU memory coherence — the GPU can efficiently access CPU memory directly. CXL 3.0 (2022+) adds fabric support — multiple hosts and devices can share a memory pool. Long-term, this could partially address the GPU memory limitation.",
   },
   {
-    question: "AI Infrastructure ke liye power density planning kaise karte hain?",
+    question: "How do you plan power density for AI Infrastructure?",
     answer:
-      "Step 1: GPU count aur server spec se power estimate karo. NVIDIA HGX H100 server (8 GPUs): ~10-11 kW. Step 2: Networking, storage overhead add karo (typically 15-20% of compute power). Step 3: PUE factor apply karo (AI DC target PUE 1.2-1.4): total facility power = IT power × PUE. Step 4: Rack layout planning — 4 HGX H100 servers per rack = 40-44 kW per rack. Existing DC mein retrofit ke liye: high-density PDUs, 3-phase distribution, liquid cooling manifolds install karne padte hain. Step 5: UPS sizing for full cluster load — MW scale systems ke liye dedicated UPS banks. Step 6: Generator capacity for sustained AI training runs.",
+      "Step 1: Estimate power from GPU count and server spec. NVIDIA HGX H100 server (8 GPUs): ~10-11 kW. Step 2: Add networking and storage overhead (typically 15-20% of compute power). Step 3: Apply the PUE factor (AI DC target PUE 1.2-1.4): total facility power = IT power × PUE. Step 4: Rack layout planning — 4 HGX H100 servers per rack = 40-44 kW per rack. For retrofitting an existing DC: you'll need to install high-density PDUs, 3-phase distribution, and liquid cooling manifolds. Step 5: UPS sizing for the full cluster load — dedicated UPS banks for MW-scale systems. Step 6: Generator capacity for sustained AI training runs.",
   },
   {
-    question: "AI Infrastructure cloud pe run karein ya on-premises?",
+    question: "Should you run AI Infrastructure on cloud or on-premises?",
     answer:
-      "Cloud best hai: experimentation, variable workloads, no GPU expertise in team, short-term projects, small-medium training runs. On-premises justified: sustained predictable workloads (12+ months continuous use), data sovereignty/regulatory requirements (RBI, healthcare data), >$2-5M/year cloud GPU spend, customization needed. Hybrid common: owned infrastructure for sustained training, cloud for burst capacity, inference on cloud with autoscaling. Cost analysis at 1-3 year horizon typically shows break-even when GPU utilization is consistently high. CoreWeave, Lambda Labs offer GPU-dedicated cloud with better AI pricing than hyperscalers.",
+      "Cloud is best for: experimentation, variable workloads, no GPU expertise on the team, short-term projects, small-medium training runs. On-premises is justified for: sustained predictable workloads (12+ months continuous use), data sovereignty/regulatory requirements (RBI, healthcare data), >$2-5M/year cloud GPU spend, customization needed. Hybrid is common: owned infrastructure for sustained training, cloud for burst capacity, inference on cloud with autoscaling. Cost analysis over a 1-3 year horizon typically shows a break-even when GPU utilization is consistently high. CoreWeave and Lambda Labs often offer better AI pricing than hyperscalers with GPU-dedicated cloud.",
   },
   {
-    question: "AI Infrastructure mein liquid cooling kyun mandatory ho rahi hai?",
+    question: "Why is liquid cooling becoming mandatory in AI Infrastructure?",
     answer:
-      "NVIDIA HGX H100 server 10-11 kW per 2U chassis draw karta hai. 4 servers per rack = 40-44 kW. ASHRAE A1 class aur traditional CRAC/CRAH systems efficiently 30-40 kW per rack tak handle karte hain — AI rack density se below. Air cooling above 40 kW per rack: massive airflow volumes chahiye (noise, pressure management complex), cooling infrastructure over-provisioning required, PUE suffers. Direct Liquid Cooling (DLC) cold plates GPUs, CPUs pe directly heat absorb karte hain — 80-130+ kW per rack easily achievable. NVIDIA H100 servers DLC ke liye designed hain. New AI DC deployments mein liquid cooling default ban raha hai.",
+      "The NVIDIA HGX H100 server draws 10-11 kW per 2U chassis. 4 servers per rack = 40-44 kW. ASHRAE A1 class and traditional CRAC/CRAH systems efficiently handle up to 30-40 kW per rack — below AI rack density. Air cooling above 40 kW per rack needs massive airflow volumes (noise, complex pressure management), requires cooling infrastructure over-provisioning, and PUE suffers. Direct Liquid Cooling (DLC) cold plates absorb heat directly from GPUs and CPUs — easily achieving 80-130+ kW per rack. NVIDIA H100 servers are designed for DLC. Liquid cooling is becoming the default in new AI DC deployments.",
   },
   {
-    question: "BlueField DPU aur SmartNIC AI Infrastructure mein kya karte hain?",
+    question: "What do BlueField DPU and SmartNIC do in AI Infrastructure?",
     answer:
-      "DPU (Data Processing Unit) — NVIDIA BlueField — ek programmable network processor hai jo networking, storage, aur security offload tasks CPU se DPU pe shift karta hai. AI Infrastructure relevance: Storage offload: NVMe-over-Fabric operations DPU pe, CPU free for AI computation. Network security: encryption/decryption offload. Telemetry: network monitoring without CPU overhead. Isolation: multi-tenant AI clusters mein tenant isolation. SmartNIC broader category hai — NICs with onboard processing. Production AI clusters mein, jab hundreds of servers hote hain aur CPU cycles precious hote hain, DPU/SmartNIC CPU ko sirf AI compute pe focus karne deta hai.",
+      "A DPU (Data Processing Unit) — NVIDIA BlueField — is a programmable network processor that shifts networking, storage, and security offload tasks from the CPU to the DPU. AI Infrastructure relevance: Storage offload: NVMe-over-Fabric operations on the DPU, freeing the CPU for AI computation. Network security: encryption/decryption offload. Telemetry: network monitoring without CPU overhead. Isolation: tenant isolation in multi-tenant AI clusters. SmartNIC is the broader category — NICs with onboard processing. In production AI clusters, where there are hundreds of servers and CPU cycles are precious, DPU/SmartNIC lets the CPU focus purely on AI compute.",
   },
   {
-    question: "AI Infrastructure sustainability aur PUE kya hota hai?",
+    question: "What is AI Infrastructure sustainability and PUE?",
     answer:
       "PUE (Power Usage Effectiveness) = Total Facility Power / IT Equipment Power. AI DC target: 1.2-1.4 with liquid cooling. Traditional DC average: 1.58 (Uptime Institute 2023). WUE (Water Usage Effectiveness): cooling water consumption per kWh of IT load. CUE (Carbon Usage Effectiveness): kg CO2 per kWh. AI training energy consumption growing rapidly — Microsoft FY2024 carbon emissions increased 30% due to AI infrastructure buildout. Mitigation approaches: renewable energy PPAs, nuclear power contracts (Microsoft-Constellation), liquid cooling for higher efficiency, waste heat reuse for building heating in cold climates, AI workload scheduling for low-carbon grid hours.",
   },

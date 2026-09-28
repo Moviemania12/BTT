@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(aiInfraMetadata);
+const baseMetadata = buildPageMetadata(aiInfraMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/fundamentals/what-is-ai-infrastructure",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/fundamentals/what-is-ai-infrastructure",
+      hi: "https://behindthetech.in/hi/learn/ai/fundamentals/what-is-ai-infrastructure",
+      "x-default": "https://behindthetech.in/learn/ai/fundamentals/what-is-ai-infrastructure",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/fundamentals/what-is-ai-infrastructure", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: aiInfraMetadata.title,

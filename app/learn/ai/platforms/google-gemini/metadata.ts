@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(googleGeminiMetadata);
+const baseMetadata = buildPageMetadata(googleGeminiMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/platforms/google-gemini",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/platforms/google-gemini",
+      hi: "https://behindthetech.in/hi/learn/ai/platforms/google-gemini",
+      "x-default": "https://behindthetech.in/learn/ai/platforms/google-gemini",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/platforms/google-gemini", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: googleGeminiMetadata.title,

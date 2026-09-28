@@ -27,7 +27,7 @@ export default function GenerativeAiPage() {
         slug="generative-ai"
         headings={HEADINGS}
         readingTimeMinutes={genAiMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/fundamentals/generative-ai">
         <Content />
       </ArticleLayout>
     </>

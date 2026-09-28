@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(openaiMetadata);
+const baseMetadata = buildPageMetadata(openaiMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/platforms/openai",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/platforms/openai",
+      hi: "https://behindthetech.in/hi/learn/ai/platforms/openai",
+      "x-default": "https://behindthetech.in/learn/ai/platforms/openai",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/platforms/openai", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: openaiMetadata.title,

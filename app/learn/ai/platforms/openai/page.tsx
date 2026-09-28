@@ -27,7 +27,7 @@ export default function OpenAiPage() {
         slug="openai"
         headings={HEADINGS}
         readingTimeMinutes={openaiMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/platforms/openai">
         <Content />
       </ArticleLayout>
     </>

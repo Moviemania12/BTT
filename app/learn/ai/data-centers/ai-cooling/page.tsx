@@ -27,7 +27,7 @@ export default function AiCoolingPage() {
         slug="ai-cooling"
         headings={HEADINGS}
         readingTimeMinutes={aiCoolingMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/data-centers/ai-cooling">
         <Content />
       </ArticleLayout>
     </>

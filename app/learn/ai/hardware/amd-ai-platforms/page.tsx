@@ -27,7 +27,7 @@ export default function AmdAiPlatformsPage() {
         slug="amd-ai-platforms"
         headings={HEADINGS}
         readingTimeMinutes={amdAiMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/hardware/amd-ai-platforms">
         <Content />
       </ArticleLayout>
     </>

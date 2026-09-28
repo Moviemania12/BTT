@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(genAiMetadata);
+const baseMetadata = buildPageMetadata(genAiMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/fundamentals/generative-ai",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/fundamentals/generative-ai",
+      hi: "https://behindthetech.in/hi/learn/ai/fundamentals/generative-ai",
+      "x-default": "https://behindthetech.in/learn/ai/fundamentals/generative-ai",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/fundamentals/generative-ai", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: genAiMetadata.title,

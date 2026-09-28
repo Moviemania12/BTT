@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(llmMetadata);
+const baseMetadata = buildPageMetadata(llmMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/fundamentals/llm",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/fundamentals/llm",
+      hi: "https://behindthetech.in/hi/learn/ai/fundamentals/llm",
+      "x-default": "https://behindthetech.in/learn/ai/fundamentals/llm",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/fundamentals/llm", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: llmMetadata.title,

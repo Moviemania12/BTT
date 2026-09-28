@@ -3,12 +3,12 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const gpuClusterMetadata: ArticleMetadata = {
   slug: "gpu-cluster",
   title: "GPU Cluster — Complete Engineering Guide",
-  seoTitle: "GPU Cluster Kya Hai? Architecture, Networking, Storage, Scheduling, Distributed Training — Complete Hinglish Guide",
+  seoTitle: "What Is a GPU Cluster? Architecture, Networking, Storage, Scheduling, Distributed Training — Complete English Guide",
   seoDescription:
-    "GPU Cluster ka complete engineering guide — GPU vs CPU comparison, GPU Compute Node internals, HBM vs System RAM, NVLink vs InfiniBand vs RoCE vs PCIe, management vs compute network, East-West traffic, parallel file systems, Slurm job scheduling, multi-tenancy, data parallelism, tensor parallelism, pipeline parallelism, GPU utilization, checkpointing, power cooling, reliability aur monitoring. AI engineers, DC engineers aur architects ke liye.",
+    "A complete engineering guide to GPU clusters — GPU vs CPU comparison, GPU compute node internals, HBM vs system RAM, NVLink vs InfiniBand vs RoCE vs PCIe, management vs compute network, East-West traffic, parallel file systems, Slurm job scheduling, multi-tenancy, data parallelism, tensor parallelism, pipeline parallelism, GPU utilization, checkpointing, power, cooling, reliability, and monitoring. For AI engineers, DC engineers, and architects.",
   canonicalUrl: "https://behindthetech.in/learn/ai/data-centers/gpu-cluster",
   keywords: [
-    "gpu cluster kya hai hindi",
+    "what is a gpu cluster english guide",
     "gpu cluster architecture explained",
     "nvlink vs infiniband vs roce vs pcie",
     "management network vs compute network",

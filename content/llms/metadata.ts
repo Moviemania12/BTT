@@ -3,12 +3,12 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const llmMetadata: ArticleMetadata = {
   slug: "llm",
   title: "Large Language Models (LLMs) — The Complete Engineering Guide",
-  seoTitle: "Large Language Models Kya Hain? LLM Architecture, Training, Inference, GPU Infrastructure — Complete Hinglish Guide",
+  seoTitle: "What Are Large Language Models? LLM Architecture, Training, Inference, GPU Infrastructure — Complete English Guide",
   seoDescription:
-    "Large Language Models ka complete engineering guide — Transformer architecture, parameters, tokens, KV cache, training pipeline, RLHF, DPO, LoRA, QLoRA, MoE, quantization, vLLM, TensorRT-LLM, enterprise deployment, GPU requirements, monitoring aur production operations. DC engineers, AI engineers aur enterprise architects ke liye.",
+    "A complete engineering guide to Large Language Models — Transformer architecture, parameters, tokens, KV cache, the training pipeline, RLHF, DPO, LoRA, QLoRA, MoE, quantization, vLLM, TensorRT-LLM, enterprise deployment, GPU requirements, monitoring, and production operations. For DC engineers, AI engineers, and enterprise architects.",
   canonicalUrl: "https://behindthetech.in/learn/ai/fundamentals/llm",
   keywords: [
-    "large language models kya hai",
+    "what are large language models",
     "llm explained hindi",
     "transformer architecture explained",
     "llm training pipeline",

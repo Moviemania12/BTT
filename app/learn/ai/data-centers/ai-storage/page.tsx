@@ -27,7 +27,7 @@ export default function AiStoragePage() {
         slug="ai-storage"
         headings={HEADINGS}
         readingTimeMinutes={aiStorageMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/data-centers/ai-storage">
         <Content />
       </ArticleLayout>
     </>

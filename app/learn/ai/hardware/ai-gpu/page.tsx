@@ -27,7 +27,7 @@ export default function AiGpuPage() {
         slug="ai-gpu"
         headings={HEADINGS}
         readingTimeMinutes={aiGpuMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/hardware/ai-gpu">
         <Content />
       </ArticleLayout>
     </>

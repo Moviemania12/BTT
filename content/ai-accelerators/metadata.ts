@@ -3,12 +3,12 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const aiAcceleratorsMetadata: ArticleMetadata = {
   slug: "ai-accelerators",
   title: "AI Accelerators — NPU, DPU, FPGA, ASIC & Custom AI Chips Complete Guide",
-  seoTitle: "AI Accelerators Kya Hain? NPU, DPU, FPGA, ASIC, AWS Trainium, Intel Gaudi, Cerebras — Complete Hinglish Guide",
+  seoTitle: "What Are AI Accelerators? NPU, DPU, FPGA, ASIC, AWS Trainium, Intel Gaudi, Cerebras — Complete English Guide",
   seoDescription:
-    "AI Accelerators ka complete engineering guide — NPU vs GPU vs TPU, DPU (Data Processing Unit), FPGA programming for AI, ASIC design, AWS Trainium & Inferentia, Intel Gaudi, Cerebras WSE, SambaNova, Graphcore IPU, custom silicon strategy, data center deployment, power, cooling, cost analysis aur future roadmap. AI engineers, DC engineers aur architects ke liye.",
+    "AI Accelerators' complete engineering guide — NPU vs GPU vs TPU, DPU (Data Processing Unit), FPGA programming for AI, ASIC design, AWS Trainium & Inferentia, Intel Gaudi, Cerebras WSE, SambaNova, Graphcore IPU, custom silicon strategy, data center deployment, power, cooling, cost analysis and future roadmap. For AI engineers, DC engineers and architects.",
   canonicalUrl: "https://behindthetech.in/learn/ai/hardware/ai-accelerators",
   keywords: [
-    "ai accelerators kya hai",
+    "what are ai accelerators",
     "npu explained hindi",
     "dpu data processing unit",
     "fpga for ai explained",

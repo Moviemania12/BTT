@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(aiStorageMetadata);
+const baseMetadata = buildPageMetadata(aiStorageMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/data-centers/ai-storage",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/data-centers/ai-storage",
+      hi: "https://behindthetech.in/hi/learn/ai/data-centers/ai-storage",
+      "x-default": "https://behindthetech.in/learn/ai/data-centers/ai-storage",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/data-centers/ai-storage", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: aiStorageMetadata.title,

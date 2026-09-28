@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(tpuMetadata);
+const baseMetadata = buildPageMetadata(tpuMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/hardware/tpu",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/hardware/tpu",
+      hi: "https://behindthetech.in/hi/learn/ai/hardware/tpu",
+      "x-default": "https://behindthetech.in/learn/ai/hardware/tpu",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/hardware/tpu", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: tpuMetadata.title,

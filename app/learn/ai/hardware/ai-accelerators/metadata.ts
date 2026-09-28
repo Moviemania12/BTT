@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(aiAcceleratorsMetadata);
+const baseMetadata = buildPageMetadata(aiAcceleratorsMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/hardware/ai-accelerators",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/hardware/ai-accelerators",
+      hi: "https://behindthetech.in/hi/learn/ai/hardware/ai-accelerators",
+      "x-default": "https://behindthetech.in/learn/ai/hardware/ai-accelerators",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/hardware/ai-accelerators", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: aiAcceleratorsMetadata.title,

@@ -25,13 +25,13 @@ export default function Content() {
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
         <p style={S.p}>
-          GPU sirf ek option hai AI ke liye — lekin sirf ek option nahi hai. Aaj 2024 mein AI hardware landscape mein bohot saare players hain: NPU aapke phone mein hai (Face ID use karta hai), DPU aapke data center network mein hai (data flow manage karta hai), FPGA ek reprogrammable chip hai (researcher ka best friend), ASIC ek permanently optimized chip hai (hyperscaler ka choice), aur phir custom chips hain — AWS Trainium, Intel Gaudi, Cerebras, Graphcore — sab apne aap mein alag approach.
+          GPU is just one option for AI — but not the only one. As of 2024, the AI hardware landscape has many players: the NPU is in your phone (that's what runs Face ID), the DPU is in your data center network (manages data flow), the FPGA is a reprogrammable chip (a researcher's best friend), the ASIC is a permanently optimized chip (the hyperscaler's choice), and then there are custom chips — AWS Trainium, Intel Gaudi, Cerebras, Graphcore — each with its own distinct approach.
         </p>
         <p style={S.p}>
-          Yeh article in sab ko ek jagah explain karta hai — beginner se engineer level tak. Kaunsa chip kya karta hai, kab use karein, data center mein kaise deploy hota hai, power aur cooling kya chahiye — sab kuch.
+          This article explains all of them in one place — from beginner to engineer level. What each chip does, when to use it, how it's deployed in a data center, what power and cooling it needs — everything.
         </p>
         <Callout type="important" title="Ek Line Reality Check">
-          NVIDIA GPU AI infrastructure ka dominant choice hai aur rahega — lekin blindly GPU choose karna galat hai. Sahi chip ka selection use case, scale, framework, aur budget pe depend karta hai. Yeh article aapko woh decision confidently karne mein help karega.
+          NVIDIA GPU is and will remain the dominant choice for AI infrastructure — but blindly choosing a GPU is a mistake. The right chip selection depends on use case, scale, framework, and budget. This article will help you make that decision confidently.
         </Callout>
       </section>
 
@@ -39,11 +39,11 @@ export default function Content() {
       <section id="who-should-read">
         <h2 style={S.h2}>Who Should Read This</h2>
         <ul style={S.ul}>
-          <li><strong>AI/ML Engineers:</strong> GPU ke alternatives samajhna — kab AWS Trainium, Intel Gaudi, ya Cloud TPU consider karein aur kab simply GPU pe rehna sahi hai.</li>
-          <li><strong>Data Center Engineers:</strong> Different accelerators ke power, cooling, networking, aur rack density requirements — planning ke liye concrete numbers.</li>
+          <li><strong>AI/ML Engineers:</strong> Understanding GPU alternatives — when to consider AWS Trainium, Intel Gaudi, or Cloud TPU, and when simply sticking with GPU is the right call.</li>
+          <li><strong>Data Center Engineers:</strong> Power, cooling, networking, and rack density requirements of different accelerators — concrete numbers for planning.</li>
           <li><strong>Cloud/Infrastructure Architects:</strong> Training vs inference hardware selection, multi-chip scale-out design, software stack compatibility.</li>
-          <li><strong>Product Managers aur Technical Architects:</strong> Custom silicon strategy — kab GPU kharidna sahi hai aur kab FPGA ya ASIC development justify hota hai.</li>
-          <li><strong>Students aur Freshers:</strong> AI hardware ka complete landscape — ek jagah, simple language mein.</li>
+          <li><strong>Product Managers and Technical Architects:</strong> Custom silicon strategy — when buying a GPU is right, and when FPGA or ASIC development is justified.</li>
+          <li><strong>Students and Freshers:</strong> The complete landscape of AI hardware — in one place, in simple language.</li>
         </ul>
       </section>
 
@@ -51,12 +51,12 @@ export default function Content() {
       <section id="what-you-will-learn">
         <h2 style={S.h2}>What You Will Learn</h2>
         <ul style={S.ul}>
-          <li>AI accelerator landscape — CPU se ASIC tak, sab types ka overview</li>
-          <li>NPU (Neural Processing Unit) — phone mein AI kaise kaam karta hai</li>
-          <li>DPU (Data Processing Unit) — data center mein AI data flow manager</li>
-          <li>FPGA for AI — reprogrammable chip, kab use karein</li>
-          <li>ASIC design philosophy — kab custom silicon justify hota hai</li>
-          <li>AWS Trainium aur Inferentia — Amazon ke custom AI chips</li>
+          <li>AI accelerator landscape — from CPU to ASIC, an overview of all types</li>
+          <li>NPU (Neural Processing Unit) — how AI works on your phone</li>
+          <li>DPU (Data Processing Unit) — the AI data flow manager in the data center</li>
+          <li>FPGA for AI — a reprogrammable chip, when to use it</li>
+          <li>ASIC design philosophy — when custom silicon is justified</li>
+          <li>AWS Trainium and Inferentia — Amazon's custom AI chips</li>
           <li>Intel Gaudi 3 — H100 alternative, real comparison</li>
           <li>Cerebras WSE — wafer-scale chip, unique architecture</li>
           <li>Graphcore IPU — different approach to AI compute</li>
@@ -65,7 +65,7 @@ export default function Content() {
           <li>Training vs inference hardware differences</li>
           <li>Data center deployment — power, cooling, networking per chip type</li>
           <li>Custom silicon strategy — GPU vs build your own decision</li>
-          <li>Software ecosystem — CUDA dominance aur alternatives</li>
+          <li>Software ecosystem — CUDA dominance and alternatives</li>
           <li>Cost and TCO analysis</li>
         </ul>
       </section>
@@ -85,19 +85,19 @@ export default function Content() {
       <section id="introduction">
         <h2 style={S.h2}>Introduction</h2>
         <p style={S.p}>
-          2012 mein AlexNet ne ImageNet competition jeet li aur GPU-based deep learning ka era shuru hua. Tab se ek simple assumption ban gayi AI world mein: AI = NVIDIA GPU.
+          In 2012, AlexNet won the ImageNet competition and the era of GPU-based deep learning began. Since then, a simple assumption took hold in the AI world: AI = NVIDIA GPU.
         </p>
         <p style={S.p}>
-          Yeh assumption 2024 mein accurate nahi rahi. Aaj aapke phone mein Apple Neural Engine hai (on-device AI ke liye), aapke data center server mein NVIDIA BlueField DPU hai (network offload ke liye), AWS ke cloud mein Trainium chips hain (training ke liye), aur Google ke racks mein TPUs hain (Gemini ke liye). Sab "AI accelerators" hain — lekin sab bilkul alag hain.
+          That assumption isn't accurate anymore, in 2024. Today your phone has an Apple Neural Engine (for on-device AI), your data center server has an NVIDIA BlueField DPU (for network offload), AWS's cloud has Trainium chips (for training), and Google's racks have TPUs (for Gemini). All of these are "AI accelerators" — but they're all completely different.
         </p>
         <p style={S.p}>
-          <strong>Simple question:</strong> Kisi bhi AI system mein, computation slow kyon hota hai? Kyunki ek regular chip — CPU — ek time pe ek kaam karta hai (sequential), lekin AI math (matrix multiplication) mein ek saath lakhon calculations karni hoti hain (parallel). AI accelerator ek chip hai jo parallel math efficiently kar sake.
+          <strong>Simple question:</strong> In any AI system, why is computation slow? Because a regular chip — the CPU — does one thing at a time (sequential), but AI math (matrix multiplication) needs millions of calculations done at once (parallel). An AI accelerator is a chip built to do parallel math efficiently.
         </p>
         <p style={S.p}>
-          Lekin "efficiently" ka matlab alag-alag chips ke liye alag hai. GPU efficiently karta hai via thousands of CUDA cores. TPU efficiently karta hai via systolic array. NPU efficiently karta hai via low-power fixed pipeline. Har approach ke tradeoffs hain.
+          But "efficiently" means something different for different chips. A GPU does it efficiently through thousands of CUDA cores. A TPU does it efficiently through a systolic array. An NPU does it efficiently through a low-power fixed pipeline. Each approach has its tradeoffs.
         </p>
         <Callout type="best-practice" title="Why This Matters for Data Center Engineers">
-          Har alag accelerator type ke alag power requirements, cooling methods, network interfaces, aur rack footprints hain. GPU server: ~10 kW per chassis, liquid cooling recommended. TPU Pod: 40-100 kW per rack, liquid mandatory. NPU: milliwatts, fan-less. Aapko sab samajhne honge kyunki future DC infrastructure will host mix of these chips.
+          Each different accelerator type has different power requirements, cooling methods, network interfaces, and rack footprints. GPU server: ~10 kW per chassis, liquid cooling recommended. TPU Pod: 40-100 kW per rack, liquid mandatory. NPU: milliwatts, fan-less. You need to understand all of these because future DC infrastructure will host a mix of these chips.
         </Callout>
       </section>
 
@@ -105,13 +105,13 @@ export default function Content() {
       <section id="why-accelerators-exist">
         <h2 style={S.h2}>Why AI Accelerators Exist</h2>
         <p style={S.p}>
-          <strong>Simple answer:</strong> CPU AI math ke liye bahut slow aur power-hungry hai at scale.
+          <strong>Simple answer:</strong> The CPU is too slow and power-hungry for AI math at scale.
         </p>
         <p style={S.p}>
-          <strong>Concrete example:</strong> Ek smartphone mein Face ID ke liye Apple Neural Engine ek recognition ~1 millisecond mein karta hai aur &lt;1 Watt use karta hai. Agar wahi kaam CPU pe karo — 100+ milliseconds aur 5+ Watts. Battery ek ghante mein khatam ho jaayegi.
+          <strong>Concrete example:</strong> On a smartphone, the Apple Neural Engine does a Face ID recognition in ~1 millisecond using &lt;1 Watt. If you did the same job on a CPU — 100+ milliseconds and 5+ Watts. The battery would drain within an hour.
         </p>
         <p style={S.p}>
-          Cloud scale pe: Google Search pe ek query process karna = dozens of neural network operations. Google billions of queries per day handle karta hai. Standard CPU se karna: thousands of servers chahiye, expensive aur energy-intensive. Google TPU se: fraction of the servers, fraction of the electricity.
+          At cloud scale: processing one Google Search query = dozens of neural network operations. Google handles billions of queries a day. Doing this on standard CPUs: you'd need thousands of servers, expensive and energy-intensive. Doing it on Google TPU: a fraction of the servers, a fraction of the electricity.
         </p>
         <p style={S.p}>
           <strong>Three reasons AI accelerators dominate:</strong>
@@ -119,7 +119,7 @@ export default function Content() {
         <ul style={S.ul}>
           <li><strong>Parallelism:</strong> AI math = same operation on many data points simultaneously. CPU: 8-128 cores. GPU: 10,000+ cores. NPU: dedicated parallel pipelines. Accelerators win.</li>
           <li><strong>Memory bandwidth:</strong> AI operations need to read/write model weights rapidly. CPU uses DDR5 (~100 GB/s). GPU uses HBM3 (~3.35 TB/s). 33× faster memory access = 33× less waiting.</li>
-          <li><strong>Specialization:</strong> CPU die area mein: branch prediction, out-of-order execution, large caches — all for general purpose. AI accelerator die area: mostly matrix multiply units. Specialization = efficiency for the target workload.</li>
+          <li><strong>Specialization:</strong> CPU die area goes into: branch prediction, out-of-order execution, large caches — all for general purpose. AI accelerator die area: mostly matrix multiply units. Specialization = efficiency for the target workload.</li>
         </ul>
       </section>
 
@@ -127,7 +127,7 @@ export default function Content() {
       <section id="accelerator-landscape">
         <h2 style={S.h2}>The AI Accelerator Landscape</h2>
         <p style={S.p}>
-          Ek overview se shuru karte hain — sab types ek jagah.
+          Let's start with an overview — all the types in one place.
         </p>
         <Figure caption="The AI Accelerator Landscape: from general-purpose CPU to extreme-specialist Custom ASICs. GPU is the sweet spot for most teams. Custom ASICs (TPU, Trainium, Inferentia) only make sense at hyperscaler scale (billions of queries/day). NPU handles on-device AI. DPU handles data movement.">
           <AcceleratorLandscape />
@@ -136,11 +136,11 @@ export default function Content() {
           <strong>The spectrum — from flexible to specialist:</strong>
         </p>
         <ul style={S.ul}>
-          <li><strong>CPU (Central Processing Unit):</strong> Maximum flexibility, minimum AI efficiency. Every computer has one. AI pe kaam karta hai lekin slowly aur expensively at scale.</li>
-          <li><strong>GPU (Graphics Processing Unit):</strong> The AI workhorse. Originally for graphics (pixels), repurposed for AI (parallel math). CUDA ecosystem ne ise AI ka default bana diya.</li>
+          <li><strong>CPU (Central Processing Unit):</strong> Maximum flexibility, minimum AI efficiency. Every computer has one. It works for AI but slowly and expensively at scale.</li>
+          <li><strong>GPU (Graphics Processing Unit):</strong> The AI workhorse. Originally for graphics (pixels), repurposed for AI (parallel math). The CUDA ecosystem made it the default for AI.</li>
           <li><strong>TPU (Tensor Processing Unit):</strong> Google's matrix multiply specialist. (Covered in detail in previous article — <TopicLink slug="tpu" variant="inline" />)</li>
-          <li><strong>NPU (Neural Processing Unit):</strong> Mobile/edge low-power AI engine. Aapke phone mein hota hai. This article covers in detail.</li>
-          <li><strong>DPU (Data Processing Unit):</strong> Network + storage I/O specialist. CPU aur GPU ka burden lift karta hai. This article covers in detail.</li>
+          <li><strong>NPU (Neural Processing Unit):</strong> A low-power mobile/edge AI engine. It's in your phone. This article covers it in detail.</li>
+          <li><strong>DPU (Data Processing Unit):</strong> A network + storage I/O specialist. Lifts the burden off the CPU and GPU. This article covers it in detail.</li>
           <li><strong>FPGA (Field Programmable Gate Array):</strong> Reprogrammable chip. Flexible but complex to program. Detailed coverage in this article.</li>
           <li><strong>ASIC (Application Specific Integrated Circuit):</strong> Permanently optimized chip for one job. Maximum efficiency, zero flexibility. AWS Trainium, Intel Gaudi, Cerebras — all ASICs.</li>
         </ul>
@@ -150,26 +150,26 @@ export default function Content() {
       <section id="npu">
         <h2 style={S.h2}>NPU — Neural Processing Unit</h2>
         <p style={S.p}>
-          <strong>NPU (Neural Processing Unit)</strong> — yeh woh chip hai jo aapke phone mein face unlock karta hai, voice assistant ko "Hey Siri" ya "OK Google" sunata hai, camera mein scene detect karta hai, aur real-time translation karta hai — sab kuch bina cloud pe jaaye, milliseconds mein, battery barely use karke.
+          <strong>NPU (Neural Processing Unit)</strong> — this is the chip that unlocks your phone with face recognition, listens for "Hey Siri" or "OK Google" for your voice assistant, detects the scene in your camera, and does real-time translation — all without going to the cloud, in milliseconds, barely using any battery.
         </p>
         <p style={S.p}>
-          <strong>Simple analogy:</strong> GPU ek powerful factory hai — thousands of workers, high electricity, big building. NPU ek specialized small workshop hai — few dedicated workers, low electricity, compact space. Factory zyada produce kar sakti hai, lekin workshop apna specific kaam bohot efficiently karta hai aur aapke bag mein fit hota hai.
+          <strong>Simple analogy:</strong> A GPU is a powerful factory — thousands of workers, high electricity, a big building. An NPU is a specialized small workshop — a few dedicated workers, low electricity, compact space. The factory can produce more, but the workshop does its specific job very efficiently and fits in your bag.
         </p>
         <Figure caption="NPU (Neural Processing Unit) inside a mobile SoC (System on Chip): MAC Array does AI math, SRAM is fast on-chip memory, DMA Engine moves data efficiently, Scheduler manages tasks, and Power Manager keeps battery drain minimal at 1-5 Watts — vs cloud GPU at 300-700 Watts.">
           <NpuArchitecture />
         </Figure>
         <p style={S.p}>
-          <strong>How NPU kaam karta hai — technically:</strong> NPU mein ek <strong>MAC Array (Multiply-Accumulate Array)</strong> — yeh woh hardware hai jo matrix multiplication karta hai, same as GPU ka Tensor Core ya TPU ka MXU, lekin much smaller aur lower power. On-chip SRAM (fast local memory) model weights ke important parts ko store rakhta hai taaki slow DRAM access minimum ho. DMA Engine (Direct Memory Access — dedicated data mover) background mein data load/store karta hai jab MAC Array compute kar raha hota hai.
+          <strong>How an NPU works — technically:</strong> An NPU has a <strong>MAC Array (Multiply-Accumulate Array)</strong> — the hardware that does matrix multiplication, the same job as a GPU's Tensor Core or a TPU's MXU, but much smaller and lower power. On-chip SRAM (fast local memory) stores the important parts of model weights so slow DRAM access is minimized. A DMA Engine (Direct Memory Access — a dedicated data mover) loads/stores data in the background while the MAC Array is computing.
         </p>
         <ul style={S.ul}>
-          <li><strong>Apple Neural Engine (ANE):</strong> Apple ke A-series aur M-series chips mein. A17 Pro: 35 TOPS (Tera Operations Per Second — trillion operations/second). Face ID, Siri, on-device ML all run here. INT8 precision.</li>
-          <li><strong>Qualcomm Hexagon NPU:</strong> Snapdragon chipsets mein (Samsung, OnePlus, Motorola Android phones). Hexagon AI engine with dedicated DSP (Digital Signal Processor). 73 TOPS on latest Snapdragon 8 Gen 3.</li>
-          <li><strong>Google Tensor chip:</strong> Pixel phones mein. Custom designed by Google. Tight integration with Google's TFLite models (speech recognition, photo processing).</li>
-          <li><strong>MediaTek APU:</strong> Budget Android phones mein. APU (AI Processing Unit) is MediaTek's NPU variant. 5-45 TOPS depending on chip tier.</li>
+          <li><strong>Apple Neural Engine (ANE):</strong> In Apple's A-series and M-series chips. A17 Pro: 35 TOPS (Tera Operations Per Second — trillion operations/second). Face ID, Siri, on-device ML all run here. INT8 precision.</li>
+          <li><strong>Qualcomm Hexagon NPU:</strong> In Snapdragon chipsets (Samsung, OnePlus, Motorola Android phones). Hexagon AI engine with a dedicated DSP (Digital Signal Processor). 73 TOPS on the latest Snapdragon 8 Gen 3.</li>
+          <li><strong>Google Tensor chip:</strong> In Pixel phones. Custom designed by Google. Tight integration with Google's TFLite models (speech recognition, photo processing).</li>
+          <li><strong>MediaTek APU:</strong> In budget Android phones. APU (AI Processing Unit) is MediaTek's NPU variant. 5-45 TOPS depending on chip tier.</li>
           <li><strong>Samsung Exynos NPU:</strong> Samsung's own phones (Korea, some markets). Neural processing unit with Samsung's One UI AI features.</li>
         </ul>
         <Callout type="best-practice" title="DC Engineer Perspective: Why NPUs Matter for Data Centers">
-          Edge AI revolution NPU se driven hai. Future DC architecture mein: not everything will go to cloud. Time-sensitive inference (factory robot reaction, autonomous vehicle, real-time security camera), privacy-sensitive inference (medical device, financial transaction), aur bandwidth-constrained inference (remote location) will all happen on-device via NPU. DC engineers design hybrid systems: NPU handles first-pass inference on device, complex cases escalate to cloud GPU.
+          The edge AI revolution is driven by the NPU. In future DC architecture: not everything will go to the cloud. Time-sensitive inference (a factory robot's reaction, an autonomous vehicle, a real-time security camera), privacy-sensitive inference (a medical device, a financial transaction), and bandwidth-constrained inference (a remote location) will all happen on-device via NPU. DC engineers design hybrid systems: the NPU handles first-pass inference on the device, complex cases escalate to a cloud GPU.
         </Callout>
       </section>
 
@@ -177,25 +177,25 @@ export default function Content() {
       <section id="dpu">
         <h2 style={S.h2}>DPU — Data Processing Unit</h2>
         <p style={S.p}>
-          <strong>DPU (Data Processing Unit)</strong> — yeh directly AI compute nahi karta. Lekin AI workloads ke liye ek hidden bottleneck solve karta hai. Samajhna zaroori hai.
+          <strong>DPU (Data Processing Unit)</strong> — this doesn't do AI compute directly. But it solves a hidden bottleneck for AI workloads. It's important to understand.
         </p>
         <p style={S.p}>
-          <strong>The problem it solves:</strong> Ek GPU training job mein, GPU sirf AI math karta hai. Lekin AI math se pehle — data storage se data load karna hai, network pe gradient sync karna hai (distributed training), TLS/SSL security handle karni hai, load balancing manage karni hai. Yeh sab kaam traditionally CPU karta hai. Ek busy GPU cluster mein CPU in I/O tasks mein itna busy rehta hai ki GPU ke liye data pipeline ready karna late ho jaata hai — GPU waits. $30,000 ka GPU idle baitha hai CPU ka wait karke.
+          <strong>The problem it solves:</strong> In a GPU training job, the GPU only does the AI math. But before the AI math — data has to be loaded from storage, gradients have to be synced over the network (distributed training), TLS/SSL security has to be handled, load balancing has to be managed. Traditionally, the CPU does all of this. In a busy GPU cluster, the CPU stays so busy with these I/O tasks that preparing the data pipeline for the GPU falls behind — the GPU waits. A $30,000 GPU sits idle waiting on the CPU.
         </p>
         <p style={S.p}>
-          <strong>DPU ka solution:</strong> Network card (NIC) ko ek full processor bana do. DPU ek network card hai jispe ek ARM processor, dedicated network acceleration, aur storage engines hain. Yeh CPU se sab I/O tasks le leta hai — network, storage, security. CPU free ho jaata hai GPU orchestration ke liye. GPU continuously fed rehta hai. 10-20% training speedup sirf I/O offload se.
+          <strong>The DPU's solution:</strong> Turn the network card (NIC) into a full processor. A DPU is a network card with an ARM processor, dedicated network acceleration, and storage engines on it. It takes all the I/O tasks off the CPU — network, storage, security. The CPU is freed up for GPU orchestration. The GPU stays continuously fed. A 10-20% training speedup just from I/O offload.
         </p>
         <Figure caption="DPU (Data Processing Unit) in an AI Data Center: Without DPU, CPU wastes 30-40% time on network/storage I/O, and GPU sits idle waiting for data. With DPU, all I/O is offloaded to the DPU — CPU manages GPU orchestration, GPU does AI compute 85-95% of the time.">
           <DpuDataCenter />
         </Figure>
         <ul style={S.ul}>
-          <li><strong>NVIDIA BlueField-3 DPU:</strong> Most widely deployed. 400 GbE networking, ARM Cortex cores onboard, DOCA software framework. Direct integration with NVIDIA GPU servers (DGX H100 mein optional BlueField). NVIDIA&apos;s vision: every AI server has a DPU.</li>
+          <li><strong>NVIDIA BlueField-3 DPU:</strong> The most widely deployed. 400 GbE networking, ARM Cortex cores onboard, DOCA software framework. Direct integration with NVIDIA GPU servers (optional BlueField in the DGX H100). NVIDIA&apos;s vision: every AI server has a DPU.</li>
           <li><strong>Marvell OCTEON:</strong> Enterprise networking DPU. Strong in telecom and cloud provider deployments. Lower power than BlueField.</li>
-          <li><strong>Intel IPU (Infrastructure Processing Unit):</strong> Intel ka DPU equivalent. Integrated with Intel Xeon ecosystem. Mount Evans IPU specifically for cloud-scale infrastructure offload.</li>
+          <li><strong>Intel IPU (Infrastructure Processing Unit):</strong> Intel's DPU equivalent. Integrated with the Intel Xeon ecosystem. The Mount Evans IPU is specifically for cloud-scale infrastructure offload.</li>
           <li><strong>Fungible DPU (acquired by Microsoft):</strong> Microsoft acquired Fungible (2023) — expect Azure-specific DPU deployments.</li>
         </ul>
         <Callout type="important" title="When DPU Makes Sense — and When It Doesn't">
-          DPU ROI positive hai: Large GPU clusters (16+ GPUs), high-throughput distributed training, multi-tenant GPU serving (isolation important), security-sensitive AI workloads. DPU overkill hai: Single GPU workstations, small teams, research experiments. Practical threshold: if your AI cluster has 8+ GPU nodes doing distributed training, DPU investment worth evaluating.
+          DPU ROI is positive for: large GPU clusters (16+ GPUs), high-throughput distributed training, multi-tenant GPU serving (where isolation matters), security-sensitive AI workloads. DPU is overkill for: single GPU workstations, small teams, research experiments. Practical threshold: if your AI cluster has 8+ GPU nodes doing distributed training, DPU investment is worth evaluating.
         </Callout>
       </section>
 
@@ -203,26 +203,26 @@ export default function Content() {
       <section id="fpga-for-ai">
         <h2 style={S.h2}>FPGA for AI — The Reprogrammable Chip</h2>
         <p style={S.p}>
-          <strong>FPGA (Field Programmable Gate Array)</strong> — yeh ek chip hai jise aap software se reprogram kar sakte ho. "Field Programmable" ka matlab hai: factory se baad bhi, field mein deploy hone ke baad bhi, aap iska logic change kar sakte ho.
+          <strong>FPGA (Field Programmable Gate Array)</strong> — a chip you can reprogram through software. "Field Programmable" means: even after it leaves the factory, even after it's deployed in the field, you can still change its logic.
         </p>
         <p style={S.p}>
-          <strong>Simple analogy:</strong> FPGA ek whiteboard hai. Aap kuch likho, mita do, kuch aur likho. Har baar bilkul nayi cheez. ASIC ek printed book hai — ek baar print hone ke baad change nahi hogi, lekin padhna bahut fast hai. FPGA whiteboard ki tarah flexible hai, ASIC printed book ki tarah efficient.
+          <strong>Simple analogy:</strong> An FPGA is a whiteboard. You write something, erase it, write something else. A completely new thing every time. An ASIC is a printed book — once printed it can't be changed, but reading it is very fast. An FPGA is flexible like a whiteboard, an ASIC is efficient like a printed book.
         </p>
         <p style={S.p}>
-          <strong>Technically kaise kaam karta hai:</strong> FPGA mein thousands of <strong>LUTs (Look-Up Tables — reprogrammable logic blocks)</strong> hote hain jo ek grid mein connected hain. Aap <strong>HDL (Hardware Description Language — jaise VHDL ya Verilog)</strong> ya modern high-level tools (Intel HLS, Xilinx HLS — High Level Synthesis) use karke define karte ho ki yeh LUTs kaise behave karein. Load hone ke baad, FPGA woh custom logic run karta hai — hardware level pe, very fast.
+          <strong>How it works, technically:</strong> An FPGA has thousands of <strong>LUTs (Look-Up Tables — reprogrammable logic blocks)</strong> connected in a grid. You use <strong>HDL (Hardware Description Language — like VHDL or Verilog)</strong> or modern high-level tools (Intel HLS, Xilinx HLS — High Level Synthesis) to define how these LUTs should behave. Once loaded, the FPGA runs that custom logic — at the hardware level, very fast.
         </p>
         <Figure caption="FPGA (Reprogrammable Chip — like a whiteboard, change anytime) vs ASIC (Permanent Custom Chip — like a printed book, fixed forever but very efficient). FPGA: faster to market, flexible, higher cost per unit. ASIC: 18-24 months design time, $10M+ upfront, but 5-10x cheaper per unit at scale and 3-5x more power efficient.">
           <FpgaVsAsic />
         </Figure>
         <p style={S.p}>
-          <strong>AI ke liye FPGA kab use hota hai:</strong>
+          <strong>When FPGA is used for AI:</strong>
         </p>
         <ul style={S.ul}>
-          <li><strong>Low-latency inference:</strong> FPGA pipelined architecture microsecond-level inference possible banata hai — faster than GPU at some specific tasks. High-frequency trading firms AI inference on FPGA run karte hain for sub-millisecond decisions.</li>
-          <li><strong>Edge deployment:</strong> FPGA configurable power profile allow karta hai — GPU se much less power. Industrial IoT, medical devices, defense systems mein FPGA common hai.</li>
-          <li><strong>Algorithm prototyping:</strong> ASIC banane se pehle algorithm validate karo FPGA pe. Much cheaper than building wrong ASIC.</li>
-          <li><strong>Custom data pipelines:</strong> Real-time data preprocessing (video stream, sensor data) — FPGA custom pipeline bahut efficient hoti hai.</li>
-          <li><strong>Protocol flexibility:</strong> Network protocols jo CPU/GPU efficiently handle nahi karte, FPGA custom hardware implement kar sakta hai.</li>
+          <li><strong>Low-latency inference:</strong> The FPGA's pipelined architecture makes microsecond-level inference possible — faster than a GPU for some specific tasks. High-frequency trading firms run AI inference on FPGA for sub-millisecond decisions.</li>
+          <li><strong>Edge deployment:</strong> The FPGA's configurable power profile allows much less power than a GPU. FPGAs are common in industrial IoT, medical devices, and defense systems.</li>
+          <li><strong>Algorithm prototyping:</strong> Validate the algorithm on an FPGA before building an ASIC. Much cheaper than building the wrong ASIC.</li>
+          <li><strong>Custom data pipelines:</strong> Real-time data preprocessing (video stream, sensor data) — a custom FPGA pipeline is very efficient for this.</li>
+          <li><strong>Protocol flexibility:</strong> For network protocols that a CPU/GPU can't handle efficiently, an FPGA can implement custom hardware.</li>
         </ul>
         <ComparisonTable
           title="Major FPGA Vendors for AI"
@@ -240,22 +240,22 @@ export default function Content() {
       <section id="asic-for-ai">
         <h2 style={S.h2}>ASIC — Custom Silicon for AI</h2>
         <p style={S.p}>
-          <strong>ASIC (Application Specific Integrated Circuit)</strong> — ek chip jo ek specific kaam ke liye permanently design kiya gaya hai. "Application Specific" = sirf ek application ke liye. "Integrated Circuit" = ek silicon chip pe sab kuch.
+          <strong>ASIC (Application Specific Integrated Circuit)</strong> — a chip permanently designed for one specific job. "Application Specific" = for just one application. "Integrated Circuit" = everything on one silicon chip.
         </p>
         <p style={S.p}>
-          Google TPU ek ASIC hai — sirf matrix multiplication ke liye optimized. AWS Trainium ek ASIC hai — sirf neural network training ke liye. Apple A17 Neural Engine ek ASIC hai — sirf on-device AI inference ke liye.
+          Google TPU is an ASIC — optimized only for matrix multiplication. AWS Trainium is an ASIC — only for neural network training. Apple's A17 Neural Engine is an ASIC — only for on-device AI inference.
         </p>
         <p style={S.p}>
-          <strong>Why ASIC is the ultimate chip (for the right use case):</strong> Jab ek chip ek hi kaam kare, toh us kaam ke liye har transistor perfectly placed ho sakta hai. Koi wasted space nahi — general-purpose circuits ke liye koi area reserve nahi. Result: FPGA se 3-5× more power efficient, FPGA se 5-10× lower cost per unit at scale, maximum performance for that specific workload.
+          <strong>Why ASIC is the ultimate chip (for the right use case):</strong> When a chip does only one job, every transistor for that job can be perfectly placed. No wasted space — no area reserved for general-purpose circuits. Result: 3-5x more power efficient than FPGA, 5-10x lower cost per unit at scale than FPGA, maximum performance for that specific workload.
         </p>
         <ul style={S.ul}>
           <li><strong>Design cost:</strong> $10M–$100M+ for chip design, mask creation, tape-out. Only makes sense at very high volume (millions of queries per day) or high-value applications.</li>
-          <li><strong>Time to market:</strong> 18–24 months from design start to first silicon. Risk: agar algorithm change ho jaaye is beech, ASIC obsolete ho sakti hai.</li>
-          <li><strong>Who designs ASICs:</strong> Mostly hyperscalers (Google, AWS, Meta, Microsoft, Apple, Tesla) aur specialized chip companies. Regular enterprises: GPU use karo — ASIC investment justify nahi hota.</li>
-          <li><strong>Manufacturing:</strong> TSMC, Samsung Foundry — same foundries jo NVIDIA ke GPUs banati hain. Advanced process nodes (5nm, 3nm) use karte hain AI ASICs.</li>
+          <li><strong>Time to market:</strong> 18-24 months from design start to first silicon. Risk: if the algorithm changes in that time, the ASIC can become obsolete.</li>
+          <li><strong>Who designs ASICs:</strong> Mostly hyperscalers (Google, AWS, Meta, Microsoft, Apple, Tesla) and specialized chip companies. Regular enterprises: use a GPU — an ASIC investment doesn't pay off.</li>
+          <li><strong>Manufacturing:</strong> TSMC, Samsung Foundry — the same foundries that make NVIDIA's GPUs. AI ASICs use advanced process nodes (5nm, 3nm).</li>
         </ul>
         <Callout type="important" title="The ASIC Paradox">
-          ASIC sabse efficient chip hai — lekin tabhi kab banaao jab volume itni zyada ho ki design cost justify ho. Google ne TPU v1 banaya kyunki unhe billions of daily queries handle karni thi aur CPU/GPU per query cost too high tha. Ek startup ke liye wahi decision — GPU use karo, ASIC mat banao.
+          The ASIC is the most efficient chip — but only build one when the volume is high enough to justify the design cost. Google built TPU v1 because they had to handle billions of daily queries and the per-query cost of CPU/GPU was too high. For a startup, the same decision would be: use a GPU, don't build an ASIC.
         </Callout>
       </section>
 
@@ -293,24 +293,24 @@ export default function Content() {
       <section id="aws-trainium">
         <h2 style={S.h2}>AWS Trainium — Amazon's Training Chip</h2>
         <p style={S.p}>
-          <strong>AWS Trainium</strong> (chip naam) — Amazon ka custom ASIC specifically AI model training ke liye banaya gaya. "Trn1" instance type pe available hai AWS EC2 pe.
+          <strong>AWS Trainium</strong> (the chip's name) — Amazon's custom ASIC built specifically for AI model training. Available on AWS EC2 via the "Trn1" instance type.
         </p>
         <p style={S.p}>
-          <strong>Why Amazon built it:</strong> AWS thousands of GPU instances rent karta tha (NVIDIA se). At scale, margin thin tha. Custom chip banao → cost control, differentiation, better margin. Yahi reason hai Google (TPU), Microsoft (Maia), Meta (MTIA) ne bhi custom chips banaye — volume justify karta hai.
+          <strong>Why Amazon built it:</strong> AWS was renting thousands of GPU instances (from NVIDIA). At scale, the margin was thin. Build a custom chip → cost control, differentiation, better margin. This is the same reason Google (TPU), Microsoft (Maia), and Meta (MTIA) also built custom chips — volume justifies it.
         </p>
         <Figure caption="AWS Trainium (model builder) vs AWS Inferentia (model server): Trainium has high memory, NeuronLink for multi-chip scale-out, BFloat16 for training. Inferentia has low-latency INT8 support, 40-60% cheaper than GPU inference at AWS. Both use the same Neuron SDK for PyTorch/TensorFlow code compilation.">
           <AwsChipsDiagram />
         </Figure>
         <ul style={S.ul}>
-          <li><strong>Trainium (Trn1) chip specs:</strong> NeuronCore v2, 32 GB HBM2e per chip, BFloat16 + FP32 + FP16 + INT8 support. NeuronLink: Amazon ka custom chip-to-chip interconnect (like NVLink for GPU).</li>
+          <li><strong>Trainium (Trn1) chip specs:</strong> NeuronCore v2, 32 GB HBM2e per chip, BFloat16 + FP32 + FP16 + INT8 support. NeuronLink: Amazon's custom chip-to-chip interconnect (like NVLink for GPU).</li>
           <li><strong>Trn1 instance:</strong> Trn1.2xl (1 chip), Trn1.32xl (16 chips, 512 GB total HBM). Up to 3.4 petaflops BF16 in Trn1.32xl.</li>
           <li><strong>Trn2 (2024):</strong> Second generation, improved performance, more memory. Verify current specs on AWS documentation.</li>
-          <li><strong>Software: Neuron SDK:</strong> AWS ne ek SDK banaya hai jo PyTorch aur TensorFlow code Trainium ke liye compile karta hai. Same concept as Google ka XLA. Models ko "neuron compile" karna padta hai — first compile slow, subsequent runs fast.</li>
-          <li><strong>Cost advantage:</strong> AWS claims 50% lower training cost vs P4de (A100) instances for suitable workloads. Actual savings depend heavily on model type aur whether it compiles cleanly via Neuron SDK.</li>
-          <li><strong>Limitation:</strong> Neuron SDK ecosystem CUDA se much smaller. Not all PyTorch operations supported. Custom ops may need rewriting. Debugging less mature. Same tradeoffs as switching to any non-NVIDIA chip.</li>
+          <li><strong>Software: Neuron SDK:</strong> AWS built an SDK that compiles PyTorch and TensorFlow code for Trainium. Same concept as Google's XLA. Models need to be "neuron compiled" — the first compile is slow, subsequent runs are fast.</li>
+          <li><strong>Cost advantage:</strong> AWS claims a 50% lower training cost vs. P4de (A100) instances for suitable workloads. Actual savings depend heavily on the model type and whether it compiles cleanly via the Neuron SDK.</li>
+          <li><strong>Limitation:</strong> The Neuron SDK ecosystem is much smaller than CUDA's. Not all PyTorch operations are supported. Custom ops may need rewriting. Debugging is less mature. Same tradeoffs as switching to any non-NVIDIA chip.</li>
         </ul>
         <Callout type="best-practice" title="When to Try Trainium">
-          Trainium pe shift karo agar: AWS pe already training kar rahe ho, standard transformer architectures use ho rahi hain (BERT, T5, LLaMA family), Neuron SDK mein tumhara model compile hota ho (test karo pehle), aur 30%+ cost savings ka target realistic ho. Test karo: Neuron Compiler pe apna model run karo → compilation success check karo → benchmark vs P4/P3 → phir decision.
+          Move to Trainium if: you're already training on AWS, you're using standard transformer architectures (BERT, T5, the LLaMA family), your model compiles on the Neuron SDK (test this first), and a 30%+ cost saving target is realistic. Test it: run your model on the Neuron Compiler → check compilation success → benchmark vs. P4/P3 → then decide.
         </Callout>
       </section>
 
@@ -318,18 +318,18 @@ export default function Content() {
       <section id="aws-inferentia">
         <h2 style={S.h2}>AWS Inferentia — Amazon's Inference Chip</h2>
         <p style={S.p}>
-          <strong>AWS Inferentia</strong> — Trainium ka sibling, lekin alag job ke liye. Inferentia trained models serve karne ke liye optimize kiya gaya hai — training nahi, production inference.
+          <strong>AWS Inferentia</strong> — Trainium's sibling, but for a different job. Inferentia is optimized for serving trained models — not training, production inference.
         </p>
         <p style={S.p}>
-          <strong>Simple analogy:</strong> Trainium ek factory hai — high capital, runs continuously, produces the product. Inferentia ek retail store hai — lower cost per transaction, customer-facing, scale up/down with demand.
+          <strong>Simple analogy:</strong> Trainium is a factory — high capital, runs continuously, produces the product. Inferentia is a retail store — lower cost per transaction, customer-facing, scales up/down with demand.
         </p>
         <ul style={S.ul}>
           <li><strong>Inf2 chip specs:</strong> NeuronCore v2 (same architecture family as Trainium), 32 GB HBM2e per chip, INT8 + BF16 + FP16 support. NeuronLink: multiple Inf2 chips connect for large model serving.</li>
           <li><strong>Inf2.48xl:</strong> 12 chips, 384 GB total memory — enough to run 70B parameter models at FP16 inference without quantization.</li>
           <li><strong>Cost advantage:</strong> AWS claims 40-60% lower cost per inference vs G5 (A10G GPU) instances for supported models. Real savings depend on model, batch size, framework.</li>
-          <li><strong>INT8 support:</strong> Quantized models (INT8) run faster and cheaper on Inferentia vs running FP16. AWS Neuron SDK mein automatic quantization tools available hain.</li>
-          <li><strong>Same Neuron SDK:</strong> Trainium pe trained model → Neuron compile → Inferentia pe deploy. One SDK for both — this is a key advantage.</li>
-          <li><strong>Use case examples:</strong> Hugging Face Transformers (BERT, GPT-2, DistilBERT) AWS ne specifically Inferentia ke liye optimize kiya hai. Many popular models ke liye pre-compiled Neuron artifacts available hain.</li>
+          <li><strong>INT8 support:</strong> Quantized models (INT8) run faster and cheaper on Inferentia vs. running FP16. Automatic quantization tools are available in the AWS Neuron SDK.</li>
+          <li><strong>Same Neuron SDK:</strong> Model trained on Trainium → Neuron compile → deploy on Inferentia. One SDK for both — this is a key advantage.</li>
+          <li><strong>Use case examples:</strong> AWS has specifically optimized Hugging Face Transformers (BERT, GPT-2, DistilBERT) for Inferentia. Pre-compiled Neuron artifacts are available for many popular models.</li>
         </ul>
       </section>
 
@@ -337,23 +337,23 @@ export default function Content() {
       <section id="intel-gaudi">
         <h2 style={S.h2}>Intel Gaudi — H100 Alternative</h2>
         <p style={S.p}>
-          <strong>Intel Gaudi</strong> (originally Habana Labs — Intel ne 2019 mein acquire kiya) — Intel ka direct H100 competitor. Gaudi 2 aur Gaudi 3 data center training aur inference ke liye designed hain.
+          <strong>Intel Gaudi</strong> (originally Habana Labs — acquired by Intel in 2019) — Intel's direct H100 competitor. Gaudi 2 and Gaudi 3 are designed for data center training and inference.
         </p>
         <p style={S.p}>
-          <strong>Why Intel is a serious player:</strong> Gaudi 3 mein 96 GB HBM2e memory hai (H100 ke 80 GB se zyada) aur competitive BF16 performance hai. Most importantly: <strong>RoCE 2.0 (RDMA over Converged Ethernet)</strong> — yeh open standard networking hai, NVIDIA ke proprietary NVLink ke viparit. Matlab Gaudi chips standard 200GbE Ethernet switches ke saath scale hote hain — no vendor lock-in for networking.
+          <strong>Why Intel is a serious player:</strong> The Gaudi 3 has 96 GB of HBM2e memory (more than the H100's 80 GB) and competitive BF16 performance. Most importantly: <strong>RoCE 2.0 (RDMA over Converged Ethernet)</strong> — an open standard for networking, unlike NVIDIA's proprietary NVLink. That means Gaudi chips scale with standard 200GbE Ethernet switches — no vendor lock-in for networking.
         </p>
         <Figure caption="Intel Gaudi 3 Architecture: MME (Matrix Math Engine) for dense AI compute, TPC Clusters (programmable Tensor Cores equivalent), 96 GB HBM2e memory (more than H100's 80 GB), and RoCE 2.0 open networking (21×200GbE per chip) for scale-out without proprietary switches.">
           <IntelGaudiDiagram />
         </Figure>
         <ul style={S.ul}>
           <li><strong>Gaudi 3 specs:</strong> ~1,835 BF16 TFLOPS (H100 ~1,979 TFLOPS — very close). 96 GB HBM2e. 21 × 200 GbE network ports per chip. 900 W TDP. PCIe Gen 5 host interface.</li>
-          <li><strong>Software: Habana SynapseAI SDK:</strong> PyTorch aur TensorFlow support, Habana model optimization tools. Smaller ecosystem than CUDA but growing. Hugging Face Optimum Habana library models optimize karta hai.</li>
-          <li><strong>Open networking advantage:</strong> Gaudi pods standard InfiniBand ya RoCE Ethernet se connect hote hain. NVIDIA ke NVLink ecosystem se independent scale-out possible. Lower networking cost for some configurations.</li>
-          <li><strong>Availability:</strong> Intel Developer Cloud pe available. Select OEM server partners (Supermicro, HPE, Dell) Gaudi-based servers bechte hain. On-premises deployment possible — unlike TPU.</li>
+          <li><strong>Software: Habana SynapseAI SDK:</strong> PyTorch and TensorFlow support, Habana model optimization tools. A smaller ecosystem than CUDA but growing. The Hugging Face Optimum Habana library optimizes models.</li>
+          <li><strong>Open networking advantage:</strong> Gaudi pods connect via standard InfiniBand or RoCE Ethernet. Scale-out is possible independent of NVIDIA's NVLink ecosystem. Lower networking cost for some configurations.</li>
+          <li><strong>Availability:</strong> Available on Intel Developer Cloud. Select OEM server partners (Supermicro, HPE, Dell) sell Gaudi-based servers. On-premises deployment is possible — unlike TPU.</li>
           <li><strong>Who is using it:</strong> Stability AI, Intel flagship AI customers, select enterprises exploring non-NVIDIA options.</li>
         </ul>
         <Callout type="warning" title="Realistic Assessment of Gaudi">
-          Hardware specs Gaudi 3 competitive banate hain. Lekin software ecosystem aur community support mein CUDA se significant gap hai. PyTorch Gaudi pe chalti hai lekin CUDA ka extensive library support (FlashAttention, DeepSpeed optimizations, custom kernels) sirf CUDA mein mature hai. Gaudi consider karo agar: NVIDIA hardware supply constrained hai, open networking important hai, aur team SynapseAI SDK invest kar sakti hai.
+          The hardware specs make Gaudi 3 competitive. But there's a significant gap versus CUDA in software ecosystem and community support. PyTorch runs on Gaudi, but CUDA's extensive library support (FlashAttention, DeepSpeed optimizations, custom kernels) is mature only in CUDA. Consider Gaudi if: NVIDIA hardware supply is constrained, open networking matters, and your team can invest in the SynapseAI SDK.
         </Callout>
       </section>
 
@@ -361,24 +361,24 @@ export default function Content() {
       <section id="cerebras-wse">
         <h2 style={S.h2}>Cerebras WSE — The Wafer-Scale Engine</h2>
         <p style={S.p}>
-          <strong>Cerebras WSE (Wafer Scale Engine)</strong> — semiconductor industry ka ek radical rethink. Normal chips: semiconductor wafer ko thousands of small chips mein cut karo. Cerebras: wafar ko cut mat karo — poori wafer ek chip hai.
+          <strong>Cerebras WSE (Wafer Scale Engine)</strong> — a radical rethink of the semiconductor industry. Normal chips: cut a semiconductor wafer into thousands of small chips. Cerebras: don't cut the wafer at all — the entire wafer is one chip.
         </p>
         <p style={S.p}>
-          <strong>Simple analogy:</strong> Normally ek apartment building banate ho — har apartment ek chip hai, residents (data) ko lifts (interconnects) se ek floor se doosre floor pe jaana padta hai. Cerebras ne poori city block ek apartment banaya — sab space aapka, koi lifts nahi, sab kuch ek hi level pe.
+          <strong>Simple analogy:</strong> Normally you build an apartment building — each apartment is a chip, and residents (data) have to take lifts (interconnects) from one floor to another. Cerebras made an entire city block into one apartment — all the space is yours, no lifts, everything on one level.
         </p>
         <Figure caption="Cerebras WSE-3 vs Normal Chip Approach: Normal approach cuts wafer into many small chips that need chip-to-chip communication. Cerebras uses the ENTIRE wafer as one chip — 900,000 AI cores, 44 GB on-chip SRAM, no inter-chip communication bottleneck. Die size: 46,225 mm² (vs H100's ~814 mm²).">
           <CerebrasDiagram />
         </Figure>
         <ul style={S.ul}>
-          <li><strong>WSE-3 specs:</strong> 900,000 AI cores (Sparse Linear Algebra Compute cores), 44 GB on-chip SRAM (vs H100 ka 80 MB L2 cache — WSE-3 on-chip memory 550× more). 125 PFLOPS peak BF16. 46,225 mm² die size (H100: ~814 mm²).</li>
-          <li><strong>Why massive on-chip SRAM matters:</strong> Large model weights on-chip memory mein fit ho sakti hain — HBM (off-chip) access ki zaroorat dramatically kam hoti hai. Memory bandwidth bottleneck remove hoti hai. Specific workloads pe dramatic speedups possible hain.</li>
-          <li><strong>Main limitation — cannot scale beyond one chip:</strong> WSE is designed as a single-chip system. Multi-chip scaling (like GPU NVLink or TPU ICI) nahi hota. Model poori on-chip memory mein fit hona chahiye. Very large models (GPT-4 class) pe limited.</li>
-          <li><strong>Cerebras CS-3 system:</strong> WSE-3 chip ek dedicated "MemoryX" memory system ke saath ata hai jo model weights store karta hai aur streaming fashion mein chip ko feed karta hai — workaround for large models that don't fit on-chip.</li>
-          <li><strong>Software: Cerebras software stack:</strong> PyTorch aur TensorFlow support. Cerebras Graph Compiler code compile karta hai. Relatively simple programming model — less complex than GPU distributed training setup.</li>
-          <li><strong>Deployment:</strong> On-premises or Cerebras Cloud. Cerebras ne dedicated AI supercomputer contracts (Abu Dhabi, Cincinnati, Saudi Arabia) liye hain.</li>
+          <li><strong>WSE-3 specs:</strong> 900,000 AI cores (Sparse Linear Algebra Compute cores), 44 GB on-chip SRAM (vs. the H100's 80 MB L2 cache — the WSE-3 has 550x more on-chip memory). 125 PFLOPS peak BF16. 46,225 mm² die size (H100: ~814 mm²).</li>
+          <li><strong>Why massive on-chip SRAM matters:</strong> Large model weights can fit in on-chip memory — the need for HBM (off-chip) access drops dramatically. The memory bandwidth bottleneck goes away. Dramatic speedups are possible for specific workloads.</li>
+          <li><strong>Main limitation — cannot scale beyond one chip:</strong> The WSE is designed as a single-chip system. Multi-chip scaling (like GPU NVLink or TPU ICI) doesn't happen. The model must fit entirely in on-chip memory. Limited for very large models (GPT-4 class).</li>
+          <li><strong>Cerebras CS-3 system:</strong> The WSE-3 chip comes with a dedicated "MemoryX" memory system that stores model weights and feeds the chip in a streaming fashion — a workaround for large models that don't fit on-chip.</li>
+          <li><strong>Software: Cerebras software stack:</strong> PyTorch and TensorFlow support. The Cerebras Graph Compiler compiles the code. A relatively simple programming model — less complex than a GPU distributed training setup.</li>
+          <li><strong>Deployment:</strong> On-premises or Cerebras Cloud. Cerebras has signed dedicated AI supercomputer contracts (Abu Dhabi, Cincinnati, Saudi Arabia).</li>
         </ul>
         <Callout type="best-practice" title="When Cerebras WSE Makes Sense">
-          WSE compelling hai: Large model inference jahan single-chip latency critical hai, scientific computing (molecular dynamics, weather modeling) where computation graph irregular, LLM inference jahan HBM bandwidth bottleneck GPU pe hai. WSE not ideal: Multi-node training of frontier models, workloads requiring conventional multi-chip parallelism. Practical: access mostly via Cerebras Cloud or direct partnership — not available casually.
+          WSE is compelling for: large model inference where single-chip latency is critical, scientific computing (molecular dynamics, weather modeling) where the computation graph is irregular, LLM inference where HBM bandwidth is the bottleneck on GPU. WSE is not ideal for: multi-node training of frontier models, workloads that need conventional multi-chip parallelism. Practical: access is mostly via Cerebras Cloud or direct partnership — not available casually.
         </Callout>
       </section>
 
@@ -386,17 +386,17 @@ export default function Content() {
       <section id="graphcore-ipu">
         <h2 style={S.h2}>Graphcore IPU — A Different Architecture</h2>
         <p style={S.p}>
-          <strong>Graphcore IPU (Intelligence Processing Unit)</strong> — ek fundamentally different AI chip architecture from the UK. Instead of optimizing for large dense matrix multiplication (GPU ka strength), IPU large on-chip SRAM use karta hai aur fine-grained parallelism pe focus karta hai.
+          <strong>Graphcore IPU (Intelligence Processing Unit)</strong> — a fundamentally different AI chip architecture from the UK. Instead of optimizing for large dense matrix multiplication (a GPU's strength), the IPU uses large on-chip SRAM and focuses on fine-grained parallelism.
         </p>
         <p style={S.p}>
-          <strong>Architecture difference — simple explanation:</strong> GPU ek freeway hai — high throughput, trucks (large data) move fast, parallel lanes (CUDA cores). IPU ek detailed city road network hai — thousands of small streets (1,472 IPU processors), great for complex routing, packages (data) move independently, less ideal for 18-wheelers (large dense matrices).
+          <strong>The architecture difference — simple explanation:</strong> A GPU is a freeway — high throughput, trucks (large data) move fast, parallel lanes (CUDA cores). An IPU is a detailed city road network — thousands of small streets (1,472 IPU processors), great for complex routing, packages (data) move independently, less ideal for 18-wheelers (large dense matrices).
         </p>
         <ul style={S.ul}>
           <li><strong>IPU-M2000 specs:</strong> 1,472 independent IPU processor cores, 900 MB on-chip SRAM (much larger than GPU L2 cache), BSP (Bulk Synchronous Parallel) execution model, 251 TFLOPS FP16.</li>
           <li><strong>BSP execution model:</strong> Compute phase → communicate phase → repeat. Deterministic execution — same result every run. Less suitable for streaming workloads, better for iterative algorithms.</li>
-          <li><strong>Where IPU is strong:</strong> Sparse computation (Graph Neural Networks, sparse transformer attention), recommendation systems (irregular data patterns), research mein unusual model architectures.</li>
+          <li><strong>Where IPU is strong:</strong> Sparse computation (Graph Neural Networks, sparse transformer attention), recommendation systems (irregular data patterns), unusual model architectures in research.</li>
           <li><strong>Where IPU is weak:</strong> Large dense LLM training (GPU better), memory-capacity-limited workloads (900 MB on-chip limited vs HBM GPUs), production deployment at scale (limited ecosystem).</li>
-          <li><strong>Software: Poplar SDK:</strong> PyTorch aur TensorFlow support via PopTorch/TF-Poplar. C++ graph programming also possible. Smaller community than CUDA.</li>
+          <li><strong>Software: Poplar SDK:</strong> PyTorch and TensorFlow support via PopTorch/TF-Poplar. C++ graph programming is also possible. A smaller community than CUDA.</li>
           <li><strong>Market reality:</strong> Graphcore raised significant funding, faced challenges in mainstream adoption. Niche but technically interesting. Watch for ecosystem developments.</li>
         </ul>
       </section>
@@ -405,13 +405,13 @@ export default function Content() {
       <section id="sambanova">
         <h2 style={S.h2}>SambaNova — Reconfigurable AI</h2>
         <p style={S.p}>
-          <strong>SambaNova Systems</strong> — ek full-stack AI company jisme silicon, software, aur pre-configured systems sab include hain. SambaNova ka DataScale SN40L system ek enterprise AI appliance hai — box deliver hota hai, setup minimal, AI run karo.
+          <strong>SambaNova Systems</strong> — a full-stack AI company that includes silicon, software, and pre-configured systems, all together. SambaNova's DataScale SN40L system is an enterprise AI appliance — the box arrives, setup is minimal, you run AI.
         </p>
         <ul style={S.ul}>
-          <li><strong>Architecture:</strong> RDU (Reconfigurable Dataflow Unit) — FPGA aur ASIC dono ke elements combine karta hai. Reconfigurable dataflow architecture allows efficient execution of different model types.</li>
+          <li><strong>Architecture:</strong> RDU (Reconfigurable Dataflow Unit) — combines elements of both FPGA and ASIC. The reconfigurable dataflow architecture allows efficient execution of different model types.</li>
           <li><strong>SambaNova SN40L chip:</strong> 520 MB on-chip SRAM (very large — similar philosophy to Cerebras), 64 GB HBM2e. Focus on memory bandwidth and low latency inference.</li>
-          <li><strong>Full stack differentiator:</strong> SambaNova GPU-like experience dene ki koshish karta hai with SambaFlow SDK (PyTorch compatible). Enterprise customers ko "AI appliance" model better fits than DIY GPU cluster setup.</li>
-          <li><strong>Target market:</strong> Financial services (on-prem LLM inference with data privacy), healthcare (HIPAA-compliant AI), government (data sovereignty). Organizations jinhein cloud chips use nahi karne chahiye (compliance reasons) aur GPU expertise nahi hai.</li>
+          <li><strong>Full stack differentiator:</strong> SambaNova tries to give a GPU-like experience with the SambaFlow SDK (PyTorch compatible). For enterprise customers, the "AI appliance" model often fits better than a DIY GPU cluster setup.</li>
+          <li><strong>Target market:</strong> Financial services (on-prem LLM inference with data privacy), healthcare (HIPAA-compliant AI), government (data sovereignty). Organizations that shouldn't use cloud chips (for compliance reasons) and don't have GPU expertise.</li>
           <li><strong>Pricing:</strong> Enterprise pricing, contact sales. Not publicly available. Significantly higher upfront than cloud — but if data cannot leave premises, comparison changes.</li>
         </ul>
       </section>
@@ -420,7 +420,7 @@ export default function Content() {
       <section id="edge-ai-chips">
         <h2 style={S.h2}>Edge AI Chips — NPUs in Your Pocket</h2>
         <p style={S.p}>
-          <strong>Edge AI</strong> — AI inference directly on the device, without sending data to cloud. <strong>Edge AI chips</strong> mostly NPUs hain jaise humne NPU section mein padha — lekin yahan hum complete ecosystem cover karte hain: phones se lekar industrial cameras tak.
+          <strong>Edge AI</strong> — AI inference directly on the device, without sending data to the cloud. <strong>Edge AI chips</strong> are mostly NPUs, as we covered in the NPU section — but here we cover the complete ecosystem: from phones to industrial cameras.
         </p>
         <ComparisonTable
           title="Edge AI Chip Landscape"
@@ -437,10 +437,10 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>NVIDIA Jetson</strong> worth special mention — yeh edge GPU hai (not NPU). Jetson Orin NX: ARM CPU + Ampere GPU cores + CUDA support. Yeh bridge hai cloud GPU aur mobile NPU ke beech — real CUDA code directly chalti hai. Robotics, autonomous vehicles, factory automation mein widely used. More expensive aur more power than NPU, lekin GPU flexibility on-the-edge milti hai.
+          <strong>NVIDIA Jetson</strong> deserves special mention — this is an edge GPU (not an NPU). Jetson Orin NX: ARM CPU + Ampere GPU cores + CUDA support. This is the bridge between cloud GPU and mobile NPU — real CUDA code runs directly. Widely used in robotics, autonomous vehicles, and factory automation. More expensive and more power than an NPU, but you get GPU flexibility at the edge.
         </p>
         <Callout type="best-practice" title="Hybrid Edge-Cloud Architecture">
-          Real production systems often hybrid hain: Edge NPU pe lightweight model run karo (real-time, low latency, privacy) → interesting/complex cases cloud GPU pe send karo (heavy processing, model update). Example: factory camera pe Hailo chip defect detect karta hai real-time. Complex or novel defects cloud LLM pe analyze hote hain. DC engineers need to design for both — edge connectivity, edge device management, cloud AI endpoints.
+          Real production systems are often hybrid: run a lightweight model on the edge NPU (real-time, low latency, privacy) → send interesting/complex cases to a cloud GPU (heavy processing, model update). Example: a factory camera's Hailo chip detects defects in real time. Complex or novel defects get analyzed on a cloud LLM. DC engineers need to design for both — edge connectivity, edge device management, cloud AI endpoints.
         </Callout>
       </section>
 
@@ -471,7 +471,7 @@ export default function Content() {
       <section id="training-vs-inference">
         <h2 style={S.h2}>Training vs Inference — Different Hardware Needs</h2>
         <p style={S.p}>
-          Ek common mistake hai: same hardware use karo training aur inference ke liye. Reality: dono ke hardware requirements fundamentally different hain, aur wrong choice expensive hoti hai.
+          A common mistake is using the same hardware for both training and inference. Reality: the hardware requirements for both are fundamentally different, and the wrong choice gets expensive.
         </p>
         <Figure caption="Training needs: high memory capacity (weights+gradients+optimizer = 4x model size), high memory bandwidth for frequent weight updates, large batch processing, BF16 precision, scale-out interconnect. Inference needs: low latency, high throughput, INT8 quantization support, cost per query optimization, lower memory (weights only).">
           <TrainingVsInferenceHW />
@@ -489,7 +489,7 @@ export default function Content() {
           ]}
         />
         <Callout type="best-practice" title="Practical Strategy: Separate Training and Inference Infrastructure">
-          Best practice: Train pe H100 ya TPU (high memory, high bandwidth). After training: quantize model to INT8. Deploy quantized model on inference-optimized chips (Inferentia, L4, A10G). Savings: H100 inference cost per query often 3-5× higher than L4 for same throughput. Always benchmark your specific model before infrastructure decisions.
+          Best practice: train on H100 or TPU (high memory, high bandwidth). After training: quantize the model to INT8. Deploy the quantized model on inference-optimized chips (Inferentia, L4, A10G). Savings: H100 inference cost per query is often 3-5x higher than L4 for the same throughput. Always benchmark your specific model before making infrastructure decisions.
         </Callout>
       </section>
 
@@ -497,7 +497,7 @@ export default function Content() {
       <section id="custom-silicon-strategy">
         <h2 style={S.h2}>Custom Silicon Strategy</h2>
         <p style={S.p}>
-          <strong>Custom silicon</strong> — apna khud ka chip design karna. Ye decision hardware world ka biggest investment hai. Kab sahi hai, kab galat?
+          <strong>Custom silicon</strong> — designing your own chip. This decision is the biggest investment in the hardware world. When does it make sense, and when doesn't it?
         </p>
         <Figure caption="Custom Silicon Decision Framework: Start with your query volume and algorithm stability. Under 10M queries/day: use GPU. 10M-100M/day with stable algorithm: consider FPGA first, then ASIC. Over 100M/day with budget: Cloud GPU/TPU or custom ASIC (hyperscaler territory).">
           <CustomSiliconStrategy />
@@ -530,14 +530,14 @@ export default function Content() {
       <section id="dc-deployment">
         <h2 style={S.h2}>Data Center Deployment</h2>
         <p style={S.p}>
-          Har AI accelerator type data center mein alag tarike se deploy hota hai. DC engineers ke liye yeh concrete operational differences hain.
+          Every type of AI accelerator gets deployed differently in a data center. For DC engineers, these are concrete operational differences.
         </p>
         <ul style={S.ul}>
           <li>
             <strong>GPU Servers (NVIDIA DGX, HGX):</strong> Standard 4U–8U rack servers. 8 GPUs per server typical (DGX H100). PCIe Gen 5 host interface. NVLink internal GPU-to-GPU. InfiniBand external server-to-server. Deployment: standard DC rack, network cabling, IB switch fabric. Monitoring: NVIDIA DCGM (Data Center GPU Manager) — metrics per GPU, health alerts.
           </li>
           <li>
-            <strong>TPU Boards (Google Cloud):</strong> Google-proprietary hardware — you don&apos;t physically deploy it. Cloud API se access. Physical reality at Google DC: custom 8U-equivalent boards, 4 chips per board, optical ICI cabling, liquid cooling manifolds. You manage software; Google manages physical infra.
+            <strong>TPU Boards (Google Cloud):</strong> Google-proprietary hardware — you don&apos;t physically deploy it. Access via the cloud API. The physical reality at a Google DC: custom 8U-equivalent boards, 4 chips per board, optical ICI cabling, liquid cooling manifolds. You manage the software; Google manages the physical infrastructure.
           </li>
           <li>
             <strong>AWS Trainium/Inferentia (EC2):</strong> Similar to TPU — cloud instances only. AWS manages physical hardware. You manage EC2 instances, Neuron SDK, model deployment. Inf2/Trn1 instances: launch same as regular EC2. No physical access.
@@ -561,7 +561,7 @@ export default function Content() {
       <section id="power-cooling">
         <h2 style={S.h2}>Power and Cooling for AI Accelerators</h2>
         <p style={S.p}>
-          DC engineers ke liye yeh sabse critical section hai. Har chip type different power aur cooling demands rakhta hai — ek hi data center mein different systems host karne ke liye planning zaroori hai.
+          This is the most critical section for DC engineers. Every chip type has different power and cooling demands — planning is essential to host different systems in the same data center.
         </p>
         <Figure caption="AI Accelerator Power Consumption: NPU (under 5W, passive cooling), CPU server (~3 kW per rack), GPU H100 server (~10 kW per 8-GPU chassis, liquid cooling recommended above 15kW/rack), TPU Pod rack (40-100 kW, liquid cooling mandatory), Cerebras WSE-3 (23 kW single unit, liquid mandatory). Higher power = more infrastructure needed.">
           <AiAcceleratorDcPower />
@@ -595,20 +595,20 @@ export default function Content() {
       <section id="networking-storage">
         <h2 style={S.h2}>Networking and Storage</h2>
         <p style={S.p}>
-          AI accelerators ke performance ki asली limiting factor often networking aur storage hoti hai — chip jitna fast compute kar sakti hai, utni fast data aana chahiye.
+          The real limiting factor for AI accelerator performance is often networking and storage — no matter how fast a chip can compute, data needs to arrive just as fast.
         </p>
         <ul style={S.ul}>
           <li>
-            <strong>GPU Cluster Networking:</strong> Within a server: NVLink (NVIDIA proprietary, 900 GB/s per GPU). Between servers: InfiniBand HDR/NDR (200–400 Gb/s) ya RoCE 2.0 (RDMA over Converged Ethernet). InfiniBand: lowest latency, highest bandwidth, proprietary switches (Mellanox/NVIDIA). RoCE 2.0: standard Ethernet infrastructure pe RDMA, cheaper switches, growing adoption. Fat-tree topology: GPU cluster standard — full bisection bandwidth, no oversubscription.
+            <strong>GPU Cluster Networking:</strong> Within a server: NVLink (NVIDIA proprietary, 900 GB/s per GPU). Between servers: InfiniBand HDR/NDR (200–400 Gb/s) or RoCE 2.0 (RDMA over Converged Ethernet). InfiniBand: lowest latency, highest bandwidth, proprietary switches (Mellanox/NVIDIA). RoCE 2.0: RDMA on standard Ethernet infrastructure, cheaper switches, growing adoption. Fat-tree topology: the standard for GPU clusters — full bisection bandwidth, no oversubscription.
           </li>
           <li>
-            <strong>Gaudi 3 Networking:</strong> RoCE 2.0 natively (no proprietary network). Standard 200GbE/400GbE switches (Arista, Cisco, Juniper) use kar sakte ho. No InfiniBand hardware needed. Lower networking CapEx in some scenarios.
+            <strong>Gaudi 3 Networking:</strong> RoCE 2.0 natively (no proprietary network). You can use standard 200GbE/400GbE switches (Arista, Cisco, Juniper). No InfiniBand hardware needed. Lower networking CapEx in some scenarios.
           </li>
           <li>
             <strong>TPU / AWS Chips Networking:</strong> Google/AWS internal network — you don't design this. Cloud provider&apos;s responsibility. Your job: GCS/S3 bucket in same region as compute, VPC configuration, data pipeline design.
           </li>
           <li>
-            <strong>Storage for AI training:</strong> Training data storage: Parallel file systems (Lustre, GPFS) for on-premises HPC clusters. All-flash NVMe for hot training data. Object storage (S3, GCS) for archive aur cloud training. Data loading pipeline critical: if storage bandwidth less than GPU compute throughput, GPU waits. Rule of thumb: each GPU server should have dedicated storage bandwidth of 10–20 GB/s.
+            <strong>Storage for AI training:</strong> Training data storage: parallel file systems (Lustre, GPFS) for on-premises HPC clusters. All-flash NVMe for hot training data. Object storage (S3, GCS) for archive and cloud training. The data loading pipeline is critical: if storage bandwidth is less than GPU compute throughput, the GPU waits. Rule of thumb: each GPU server should have dedicated storage bandwidth of 10–20 GB/s.
           </li>
           <li>
             <strong>Storage for AI inference:</strong> Model files: load once at startup, keep in GPU/NPU memory. Low latency NVMe for fast model loading. Fast model swap for multi-tenant serving. Checkpoint storage: frequent writes during training, fast SSD needed.
@@ -623,7 +623,7 @@ export default function Content() {
       <section id="software-ecosystem">
         <h2 style={S.h2}>Software Ecosystems — CUDA vs the Rest</h2>
         <p style={S.p}>
-          Hardware specifications se zyada important often software ecosystem hota hai. Yeh woh reason hai ki NVIDIA GPU dominant hai despite competitors having comparable specs.
+          Often, the software ecosystem matters more than the hardware specs. This is the reason NVIDIA GPU is dominant despite competitors having comparable specs.
         </p>
         <ComparisonTable
           title="Software Ecosystem Comparison"
@@ -643,11 +643,11 @@ export default function Content() {
           <strong>Why CUDA ecosystem is so sticky:</strong>
         </p>
         <ul style={S.ul}>
-          <li><strong>FlashAttention:</strong> Critical LLM attention optimization — CUDA kernels. Flash Attention 2 and 3: GPT-4, LLaMA 2, Mistral — sab CUDA-specific. Non-NVIDIA chips pe sirf approximate equivalents available hain.</li>
-          <li><strong>DeepSpeed:</strong> Microsoft ka distributed training library — CUDA optimized. ZeRO optimizer stages, gradient checkpointing, pipeline parallelism — all CUDA-native.</li>
-          <li><strong>cuDNN, cuBLAS:</strong> NVIDIA ke optimized math libraries. Decades of hand-tuned kernels. Competitor equivalent libraries exist but often lag in performance.</li>
+          <li><strong>FlashAttention:</strong> A critical LLM attention optimization — CUDA kernels. Flash Attention 2 and 3: GPT-4, LLaMA 2, Mistral — all CUDA-specific. Only approximate equivalents are available on non-NVIDIA chips.</li>
+          <li><strong>DeepSpeed:</strong> Microsoft's distributed training library — CUDA optimized. ZeRO optimizer stages, gradient checkpointing, pipeline parallelism — all CUDA-native.</li>
+          <li><strong>cuDNN, cuBLAS:</strong> NVIDIA's optimized math libraries. Decades of hand-tuned kernels. Competing equivalent libraries exist but often lag in performance.</li>
           <li><strong>Hugging Face ecosystem:</strong> 400,000+ models, all primarily tested on GPU. CUDA de-facto requirement for most HF workflows.</li>
-          <li><strong>Stack Overflow, GitHub issues:</strong> Problem solve karna mushkil hota hai non-CUDA platforms pe — community help limited hoti hai.</li>
+          <li><strong>Stack Overflow, GitHub issues:</strong> Solving problems is harder on non-CUDA platforms — community help is limited.</li>
         </ul>
       </section>
 
@@ -655,7 +655,7 @@ export default function Content() {
       <section id="cost-tco">
         <h2 style={S.h2}>Cost and TCO Analysis</h2>
         <p style={S.p}>
-          <strong>TCO (Total Cost of Ownership)</strong> — sirf chip ki price nahi, complete 3-year cost of running AI infrastructure.
+          <strong>TCO (Total Cost of Ownership)</strong> — not just the chip's price, but the complete 3-year cost of running AI infrastructure.
         </p>
         <ComparisonTable
           title="TCO Components for AI Accelerator Deployment"
@@ -672,7 +672,7 @@ export default function Content() {
           ]}
         />
         <Callout type="warning" title="Pricing Changes — Always Verify">
-          GPU prices, cloud instance pricing, aur chip availability rapidly change karte hain. NVIDIA H100 spot prices 2023 mein $40K+ tak gayi, 2024 mein normalize hui. AWS, Google Cloud ne multiple times pricing revise kiya. Numbers upar illustrative hain — always check current pricing before budgeting. Also: total cost evaluation mein engineer time for migration (non-NVIDIA) aur ecosystem investment always include karo.
+          GPU prices, cloud instance pricing, and chip availability change rapidly. NVIDIA H100 spot prices went above $40K+ in 2023, and normalized in 2024. AWS and Google Cloud have revised pricing multiple times. The numbers above are illustrative — always check current pricing before budgeting. Also: always include engineer time for migration (non-NVIDIA) and ecosystem investment in your total cost evaluation.
         </Callout>
       </section>
 
@@ -738,28 +738,28 @@ export default function Content() {
         <h2 style={S.h2}>Interview Questions</h2>
         {[
           {
-            q: "NPU, GPU, aur TPU mein kya fundamental difference hai?",
-            a: "GPU general-purpose parallel processor hai — originally graphics ke liye, AI ke liye repurposed. Thousands of CUDA cores, CUDA ecosystem, flexible for any AI workload. TPU Google ka matrix multiply specialist ASIC hai — sirf AI training/inference, TF/JAX optimized, Google Cloud only. NPU low-power mobile/edge AI engine hai — milliwatts se watts range, on-device inference ke liye design, MAC Array based. Key distinction: GPU flexibility high lekin less efficient per operation than specialist chips. TPU/ASIC maximum efficiency for target workload lekin zero flexibility. NPU extreme power efficiency lekin limited model size/compute. Right chip selection depends on: (1) Use case (cloud training vs edge inference), (2) Framework (CUDA vs TF/JAX), (3) Power envelope, (4) Data privacy requirements.",
+            q: "What is the fundamental difference between NPU, GPU, and TPU?",
+            a: "GPU is a general-purpose parallel processor — originally for graphics, repurposed for AI. Thousands of CUDA cores, the CUDA ecosystem, flexible for any AI workload. TPU is Google's matrix-multiply specialist ASIC — only for AI training/inference, TF/JAX optimized, Google Cloud only. NPU is a low-power mobile/edge AI engine — in the milliwatt to watt range, designed for on-device inference, MAC Array based. Key distinction: GPU flexibility is high but less efficient per operation than specialist chips. TPU/ASIC gives maximum efficiency for the target workload but zero flexibility. NPU gives extreme power efficiency but limited model size/compute. The right chip choice depends on: (1) use case (cloud training vs edge inference), (2) framework (CUDA vs TF/JAX), (3) power envelope, (4) data privacy requirements.",
           },
           {
-            q: "FPGA aur ASIC mein kya difference hai — kab kaunsa choose karein?",
-            a: "FPGA: Reprogrammable chip. Logic software se change kar sakte ho. Whiteboard analogy — write, erase, rewrite. Lower per-unit cost, weeks to deploy, FPGA off-shelf khareed lo. Limitation: 3-5× more power, 5-10× higher cost per unit vs equivalent ASIC. ASIC: Permanently fixed chip for one specific job. Printed book analogy — once printed, can't change, but very efficient to read. $10M+ upfront design cost, 18-24 month lead time. Maximum efficiency for target workload. Choose FPGA when: algorithm may change (research phase), volume low (<50K units), need rapid prototype, time-to-market critical, or compliance requires on-premises flexible compute. Choose ASIC when: algorithm stable for 3+ years, volume very high (millions), maximum efficiency critical (battery/power constrained), and budget for chip design exists. Hyperscalers choose ASIC (TPU, Trainium). Research teams choose FPGA. Most companies: just buy GPU.",
+            q: "What is the difference between FPGA and ASIC — when to choose which?",
+            a: "FPGA: a reprogrammable chip. You can change the logic through software. Whiteboard analogy — write, erase, rewrite. Lower per-unit cost, weeks to deploy, buy an FPGA off the shelf. Limitation: 3-5x more power, 5-10x higher cost per unit vs an equivalent ASIC. ASIC: a permanently fixed chip for one specific job. Printed book analogy — once printed, can't change, but very efficient to read. $10M+ upfront design cost, 18-24 month lead time. Maximum efficiency for the target workload. Choose FPGA when: the algorithm might change (research phase), volume is low (<50K units), you need a rapid prototype, time-to-market is critical, or compliance requires on-premises flexible compute. Choose ASIC when: the algorithm is stable for 3+ years, volume is very high (millions), maximum efficiency is critical (battery/power constrained), and there's a budget for chip design. Hyperscalers choose ASIC (TPU, Trainium). Research teams choose FPGA. Most companies: just buy a GPU.",
           },
           {
-            q: "AWS Trainium pe migration ke liye kya process hai aur kya challenges hain?",
-            a: "Process: (1) AWS Neuron SDK install karo, (2) apna PyTorch/TF model Neuron compiler se compile karo (neuron-cc command), (3) compilation success check karo — unsupported ops error mein list milegi, (4) successful compile hone pe benchmark — throughput, latency GPU vs Trainium, (5) cost comparison karo (GPU hours vs Trn1 hours × ratio), (6) agar favorable → migrate. Key challenges: Neuron SDK limited op support — custom CUDA kernels, some advanced PyTorch ops Trainium pe nahi chalte. Dynamic shapes recompilation cause karte hain (XLA jaisi problem). Smaller community — debugging harder, less Stack Overflow help. FlashAttention equivalent Neuron-native hai lekin CUDA version se lag possible. Recommendation: test karo pehle model compilation success, phir benchmark, phir commit karo. Don't assume migration easy — har model alag experience hai.",
+            q: "What is the process for migrating to AWS Trainium and what are the challenges?",
+            a: "Process: (1) install the AWS Neuron SDK, (2) compile your PyTorch/TF model with the Neuron compiler (neuron-cc command), (3) check compilation success — you'll get a list of unsupported ops in the error, (4) benchmark once it compiles successfully — throughput, latency GPU vs Trainium, (5) do a cost comparison (GPU hours vs Trn1 hours x ratio), (6) migrate if favorable. Key challenges: the Neuron SDK has limited op support — custom CUDA kernels, some advanced PyTorch ops don't run on Trainium. Dynamic shapes cause recompilation (an XLA-like problem). Smaller community — debugging is harder, less Stack Overflow help. A FlashAttention equivalent exists natively for Neuron but may lag the CUDA version. Recommendation: test model compilation success first, then benchmark, then commit. Don't assume migration is easy — every model is a different experience.",
           },
           {
-            q: "DPU data center mein kyun use hota hai — kab ROI positive hota hai?",
-            a: "DPU (Data Processing Unit) network aur storage I/O tasks CPU se offload karta hai. In AI workloads: network I/O (gradient sync in distributed training), storage I/O (training data loading), TLS/security, load balancing — yeh sab CPU tasks GPU ko data starved karte hain. Without DPU: CPU 30-40% busy with I/O, GPU utilization 60-70%, expensive GPU idle baitha hai wait karke. With DPU: I/O offloaded, CPU free for GPU orchestration, GPU utilization 85-95%, training 10-20% faster. ROI positive hai when: Large GPU clusters (16+ GPU nodes doing distributed training), high network I/O workloads (frequent gradient sync, large dataset streaming), multi-tenant environments (isolation important), security-sensitive AI (DPU handles encryption without CPU overhead). ROI negative/overkill: Single GPU workstations, research experiments, small teams. DPU examples: NVIDIA BlueField-3, Marvell OCTEON, Intel IPU.",
+            q: "Why is DPU used in the data center — when does the ROI turn positive?",
+            a: "A DPU (Data Processing Unit) offloads network and storage I/O tasks from the CPU. In AI workloads: network I/O (gradient sync in distributed training), storage I/O (training data loading), TLS/security, load balancing — all of these CPU tasks starve the GPU of data. Without a DPU: the CPU is 30-40% busy with I/O, GPU utilization is 60-70%, and an expensive GPU sits idle waiting. With a DPU: I/O is offloaded, the CPU is free for GPU orchestration, GPU utilization is 85-95%, training is 10-20% faster. ROI is positive when: large GPU clusters (16+ GPU nodes doing distributed training), high network I/O workloads (frequent gradient sync, large dataset streaming), multi-tenant environments (where isolation matters), security-sensitive AI (the DPU handles encryption without CPU overhead). ROI is negative/overkill for: single GPU workstations, research experiments, small teams. DPU examples: NVIDIA BlueField-3, Marvell OCTEON, Intel IPU.",
           },
           {
-            q: "Training aur inference ke liye alag hardware kyun chahiye?",
-            a: "Training aur inference ke hardware requirements fundamentally different hain. Training needs: (1) Very high memory capacity — model weights + gradients + optimizer states = 3-4× model size. 70B model: ~560 GB for full training. (2) High memory bandwidth — frequent weight updates during backprop. (3) Large batch sizes — more samples per gradient step = more stable convergence. (4) Scale-out interconnect — model too large for one chip, gradient sync across chips. (5) BF16/FP16 precision. Inference needs: (1) Low latency — user waiting for response, milliseconds matter. (2) High throughput — thousands of concurrent users. (3) INT8/INT4 quantization support — smaller precision = 2-4× faster compute. (4) Lower memory — weights only, no gradients. (5) Cost-per-query optimization. Best practice: train on H100/TPU (high memory, high bandwidth), quantize model to INT8, deploy on inference-optimized chip (Inferentia, L4, A10G). H100 inference often 3-5× more expensive per query than dedicated inference chip for same throughput.",
+            q: "Why do training and inference need different hardware?",
+            a: "The hardware requirements for training and inference are fundamentally different. Training needs: (1) very high memory capacity — model weights + gradients + optimizer states = 3-4x model size. A 70B model: ~560 GB for full training. (2) high memory bandwidth — frequent weight updates during backprop. (3) large batch sizes — more samples per gradient step = more stable convergence. (4) scale-out interconnect — the model is too large for one chip, gradient sync across chips. (5) BF16/FP16 precision. Inference needs: (1) low latency — the user is waiting for a response, milliseconds matter. (2) high throughput — thousands of concurrent users. (3) INT8/INT4 quantization support — smaller precision = 2-4x faster compute. (4) lower memory — weights only, no gradients. (5) cost-per-query optimization. Best practice: train on H100/TPU (high memory, high bandwidth), quantize the model to INT8, deploy on an inference-optimized chip (Inferentia, L4, A10G). H100 inference is often 3-5x more expensive per query than a dedicated inference chip for the same throughput.",
           },
           {
-            q: "Cerebras WSE ka unique architecture kya hai aur kab use karte hain?",
-            a: "Cerebras WSE unique hai kyunki woh puri semiconductor wafer ko ek chip banata hai — normal chips wafer se cut karte hain. WSE-3: 900,000 AI cores, 44 GB on-chip SRAM (GPU ka L2 cache 80 MB — WSE 550× more on-chip memory), 125 PFLOPS BF16. Key advantage: koi inter-chip communication nahi — sab cores ek hi die pe. Model weights on-chip SRAM mein fit hoti hain → HBM bandwidth bottleneck remove hoti hai. GPU pe LLM inference: attention layers mein weights repeatedly HBM se load karne padte hain (slow). WSE pe: weights on-chip, no HBM round-trips for those weights → significant latency improvement. When to use: Large model single-chip inference (latency critical), scientific computing with irregular patterns, LLM inference where memory bandwidth is bottleneck. Limitations: Cannot scale beyond one chip (unlike GPU multi-chip pods), very large models still need MemoryX expansion, specialized deployment, niche ecosystem. Practical access: mostly Cerebras Cloud or direct partnerships.",
+            q: "What is unique about Cerebras WSE's architecture and when is it used?",
+            a: "Cerebras WSE is unique because it turns the entire semiconductor wafer into one chip — normal chips are cut from the wafer. WSE-3: 900,000 AI cores, 44 GB on-chip SRAM (a GPU's L2 cache is 80 MB — the WSE has 550x more on-chip memory), 125 PFLOPS BF16. Key advantage: no inter-chip communication — all cores are on a single die. Model weights fit in on-chip SRAM → the HBM bandwidth bottleneck goes away. On a GPU, LLM inference: attention layers have to repeatedly load weights from HBM (slow). On WSE: weights are on-chip, no HBM round-trips for those weights → a significant latency improvement. When to use it: large model single-chip inference (latency critical), scientific computing with irregular patterns, LLM inference where memory bandwidth is the bottleneck. Limitations: cannot scale beyond one chip (unlike GPU multi-chip pods), very large models still need MemoryX expansion, specialized deployment, a niche ecosystem. Practical access: mostly through Cerebras Cloud or direct partnerships.",
           },
         ].map((item, i) => (
           <div key={i} style={{ borderLeft: "4px solid #ea580c", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
@@ -807,16 +807,16 @@ export default function Content() {
       <section id="key-takeaways">
         <h2 style={S.h2}>Key Takeaways</h2>
         <ul style={S.ul}>
-          <li>AI accelerator ek spectrum hai — CPU (flexible, inefficient for AI) se ASIC (inflexible, maximally efficient for one AI task) tak. GPU sweet spot hai kyunki woh flexibility aur performance balance karta hai. CUDA ecosystem ne GPU ko dominant banaya — hardware specs se zyada, software lock-in matter karta hai.</li>
-          <li>NPU (Neural Processing Unit) aapke phone mein already hai — Face ID, voice assistant, camera AI yahi karta hai. 1-5 Watts mein. Cloud GPU 300-700W use karta hai. Edge AI revolution NPU pe build ho rahi hai — DC engineers ko hybrid edge-cloud architectures design karne aane chahiye.</li>
-          <li>DPU (Data Processing Unit) GPU performance improve karta hai without touching the GPU. Network + storage I/O CPU se offload karke GPU utilization 60-70% se 85-95% tak improve hoti hai. 10-20% training speedup sirf I/O offload se. Large GPU clusters (16+ nodes) mein DPU investment evaluate karo.</li>
-          <li>FPGA vs ASIC: FPGA whiteboard (flexible, change anytime, higher cost per unit). ASIC printed book (fixed, maximum efficiency, lower cost at scale, $10M+ upfront). Most companies GPU use karo — ASIC sirf hyperscalers ke liye justify hota hai.</li>
-          <li>AWS Trainium/Inferentia: Same Neuron SDK, alag jobs. Trainium = model banana (training). Inferentia = model bechna (inference). 40-60% cheaper inference vs H100 at AWS — lekin sirf agar Neuron SDK aapka model support karta ho. Test pehle, migrate baad mein.</li>
-          <li>Intel Gaudi 3: H100 ke comparable specs, open RoCE 2.0 networking (standard switches chalte hain, proprietary InfiniBand nahi chahiye), on-premises available (unlike TPU). Software ecosystem smaller than CUDA — evaluate based on your framework requirements aur willingness to invest in SynapseAI SDK.</li>
-          <li>Cerebras WSE: Radical architecture — poori wafer ek chip. 900K cores, 44 GB on-chip SRAM. No inter-chip communication bottleneck. Ideal for large model inference latency. Cannot scale multi-chip. Specialized deployment. Not for everyone — but technically compelling for right workloads.</li>
+          <li>AI accelerators are a spectrum — from CPU (flexible, inefficient for AI) to ASIC (inflexible, maximally efficient for one AI task). GPU is the sweet spot because it balances flexibility and performance. The CUDA ecosystem made GPU dominant — software lock-in matters more than hardware specs.</li>
+          <li>The NPU (Neural Processing Unit) is already in your phone — it's what runs Face ID, voice assistant, and camera AI. In 1-5 Watts. A cloud GPU uses 300-700W. The edge AI revolution is being built on the NPU — DC engineers need to know how to design hybrid edge-cloud architectures.</li>
+          <li>The DPU (Data Processing Unit) improves GPU performance without touching the GPU. Offloading network + storage I/O from the CPU improves GPU utilization from 60-70% to 85-95%. A 10-20% training speedup just from I/O offload. Evaluate DPU investment for large GPU clusters (16+ nodes).</li>
+          <li>FPGA vs ASIC: FPGA is a whiteboard (flexible, change anytime, higher cost per unit). ASIC is a printed book (fixed, maximum efficiency, lower cost at scale, $10M+ upfront). Most companies should use a GPU — ASIC only pays off for hyperscalers.</li>
+          <li>AWS Trainium/Inferentia: same Neuron SDK, different jobs. Trainium = building the model (training). Inferentia = selling the model (inference). 40-60% cheaper inference vs H100 on AWS — but only if the Neuron SDK supports your model. Test first, migrate later.</li>
+          <li>Intel Gaudi 3: comparable specs to H100, open RoCE 2.0 networking (works with standard switches, no proprietary InfiniBand needed), available on-premises (unlike TPU). The software ecosystem is smaller than CUDA — evaluate based on your framework requirements and willingness to invest in the SynapseAI SDK.</li>
+          <li>Cerebras WSE: a radical architecture — the entire wafer as one chip. 900K cores, 44 GB on-chip SRAM. No inter-chip communication bottleneck. Ideal for latency-critical large model inference. Cannot scale multi-chip. Specialized deployment. Not for everyone — but technically compelling for the right workloads.</li>
           <li>Training vs inference hardware: Always separate budget and strategy. Train on high-memory, high-bandwidth GPU/TPU. Quantize model to INT8. Deploy on inference-optimized chip. H100 inference often 3-5× more expensive per query than L4 or Inferentia for same throughput.</li>
           <li>Data center planning: Power density varies dramatically — CPU server 3-5 kW/rack, GPU server 10-25 kW/rack, TPU Pod 40-100 kW/rack, Cerebras 23 kW single unit. Liquid cooling threshold: 15-20 kW/rack. Plan DLC infrastructure from day 1 if hosting any GPU/ASIC AI chips — retrofitting is 3× more expensive. Storage bandwidth must match compute throughput.</li>
-          <li>CUDA ecosystem moat is real: Even when alternative hardware specs match GPU, CUDA ecosystem (FlashAttention, DeepSpeed, cuDNN, HuggingFace optimization) mein decade+ of optimization hai. Switching cost = engineer time + potential performance regression + limited community support. Evaluate holistically — not just hardware specs, but total cost including migration and operations.</li>
+          <li>The CUDA ecosystem moat is real: even when alternative hardware specs match GPU, the CUDA ecosystem (FlashAttention, DeepSpeed, cuDNN, HuggingFace optimization) has over a decade of optimization behind it. Switching cost = engineer time + potential performance regression + limited community support. Evaluate holistically — not just hardware specs, but total cost including migration and operations.</li>
         </ul>
       </section>
 

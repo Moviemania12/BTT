@@ -25,13 +25,13 @@ export default function Content() {
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
         <p style={S.p}>
-          Generative AI ek category of artificial intelligence hai jo new content create karta hai — text, images, audio, video, code, aur 3D models — existing data se seekhke. Traditional AI classify karta hai ya predict karta hai. Generative AI create karta hai.
+          Generative AI is a category of artificial intelligence that creates new content — text, images, audio, video, code, and 3D models — by learning from existing data. Traditional AI classifies or predicts. Generative AI creates.
         </p>
         <p style={S.p}>
-          Pichle articles mein Machine Learning aur Deep Learning cover kiye — jo predominantly discriminative systems hain: yeh input leke ek category ya value output karte hain. Generative AI fundamentally different direction mein kaam karta hai: woh data ke underlying distribution ko itna deeply samajhta hai ki us distribution se new samples generate kar sakta hai.
+          Earlier articles covered Machine Learning and Deep Learning — which are predominantly discriminative systems: they take an input and output a category or value. Generative AI works in a fundamentally different direction: it understands the underlying distribution of data so deeply that it can generate new samples from that distribution.
         </p>
         <Callout type="important" title="Infrastructure Scale Perspective">
-          GPT-4 training ke liye Microsoft ne Azure mein ek dedicated supercomputer build kiya tha — 10,000 NVIDIA A100 GPUs, custom high-bandwidth networking, petabytes of storage. Yeh sirf ek AI model nahi tha. Yeh ek new category of infrastructure demand tha. Aaj har major technology company ek "AI Factory" build kar rahi hai — primarily Generative AI workloads ke liye.
+          To train GPT-4, Microsoft built a dedicated supercomputer in Azure — 10,000 NVIDIA A100 GPUs, custom high-bandwidth networking, petabytes of storage. This wasn't just an AI model. It was a new category of infrastructure demand. Today every major technology company is building an "AI Factory" — primarily for Generative AI workloads.
         </Callout>
       </section>
 
@@ -39,12 +39,12 @@ export default function Content() {
       <section id="who-should-read">
         <h2 style={S.h2}>Who Should Read This</h2>
         <ul style={S.ul}>
-          <li><strong>Data Center Engineers:</strong> GenAI inference ke specific power aur cooling requirements — traditional ML se dramatically different — samajhna ke liye.</li>
-          <li><strong>IT Infrastructure Engineers:</strong> GPU server configuration, memory requirements, high-availability inference clusters jo GenAI production serving ke liye needed hain.</li>
+          <li><strong>Data Center Engineers:</strong> to understand the specific power and cooling requirements of GenAI inference — dramatically different from traditional ML.</li>
+          <li><strong>IT Infrastructure Engineers:</strong> GPU server configuration, memory requirements, high-availability inference clusters needed for GenAI production serving.</li>
           <li><strong>Cloud Engineers:</strong> Managed GenAI services vs self-hosted decisions, GPU instance selection for LLM inference.</li>
           <li><strong>AI/MLOps Engineers:</strong> GenAI production pipeline — model serving, prompt management, output monitoring, cost optimization, responsible AI guardrails.</li>
-          <li><strong>Software Engineers:</strong> GenAI APIs integrate karna, RAG architectures build karna, AI agents implement karna, MCP servers build karna.</li>
-          <li><strong>Technical Managers aur CTOs:</strong> GenAI investments evaluate karna, build vs buy decisions, enterprise AI strategy.</li>
+          <li><strong>Software Engineers:</strong> integrating GenAI APIs, building RAG architectures, implementing AI agents, building MCP servers.</li>
+          <li><strong>Technical Managers and CTOs:</strong> evaluating GenAI investments, build-vs-buy decisions, enterprise AI strategy.</li>
         </ul>
       </section>
 
@@ -52,9 +52,9 @@ export default function Content() {
       <section id="what-you-will-learn">
         <h2 style={S.h2}>What You Will Learn</h2>
         <ul style={S.ul}>
-          <li>Generative AI kya hai aur traditional AI se kaise different hai</li>
-          <li>Tokens, embeddings, latent space — GenAI ke core mathematical building blocks</li>
-          <li>Decoder-only, encoder-decoder, diffusion models, GANs, VAEs — architectures aur use cases</li>
+          <li>What Generative AI is and how it differs from traditional AI</li>
+          <li>Tokens, embeddings, latent space — the core mathematical building blocks of GenAI</li>
+          <li>Decoder-only, encoder-decoder, diffusion models, GANs, VAEs — architectures and use cases</li>
           <li>Foundation models, fine-tuning, LoRA, QLoRA, RLHF, DPO</li>
           <li>Function calling, structured outputs, JSON Schema — enterprise tool integration</li>
           <li>Model Context Protocol (MCP) — standardized AI-to-tool connectivity</li>
@@ -62,7 +62,7 @@ export default function Content() {
           <li>AI Agents — Planner, Memory, Tool Executor, multi-agent collaboration</li>
           <li>Multimodal AI — vision, audio, video, OCR, speech</li>
           <li>Enterprise AI Gateway — routing, caching, rate limiting, cost tracking</li>
-          <li>Prompt injection deep dive aur comprehensive guardrail pipeline</li>
+          <li>A deep dive into prompt injection and a comprehensive guardrail pipeline</li>
           <li>AI Observability — LangFuse, LangSmith, Phoenix, Arize, cost dashboards</li>
           <li>AI deployment patterns — cloud API, self-hosted, hybrid, edge, air-gapped</li>
           <li>Training cost analysis, inference scaling, hardware mapping</li>
@@ -85,13 +85,13 @@ export default function Content() {
       <section id="introduction">
         <h2 style={S.h2}>Introduction</h2>
         <p style={S.p}>
-          October 2022 mein kuch hua jo technology industry ke bahar bhi notice hua. Stability AI ne Stable Diffusion release kiya — ek open-source image generation model jo consumer hardware pe chalta tha. Do mahine baad, November 30 2022 mein, OpenAI ne ChatGPT launch kiya. 5 din mein 1 million users. 2 mahine mein 100 million. Koi bhi technology previously itni fast viral nahi huyi thi.
+          Something happened in October 2022 that got noticed even outside the technology industry. Stability AI released Stable Diffusion — an open-source image generation model that ran on consumer hardware. Two months later, on November 30, 2022, OpenAI launched ChatGPT. 1 million users in 5 days. 100 million in 2 months. No technology had ever gone viral this fast before.
         </p>
         <p style={S.p}>
-          Lekin jo industry insiders notice kiya woh launch ke excitement se zyada interesting tha: GPT-4 training ke liye Microsoft ne Azure mein ek dedicated supercomputer build kiya tha — 10,000 NVIDIA A100 GPUs, custom high-bandwidth networking, petabytes of storage. Yeh sirf ek AI model nahi tha. Yeh ek new category of infrastructure demand tha.
+          But what industry insiders noticed was more interesting than the excitement of the launch: to train GPT-4, Microsoft built a dedicated supercomputer in Azure — 10,000 NVIDIA A100 GPUs, custom high-bandwidth networking, petabytes of storage. This wasn't just an AI model. It was a new category of infrastructure demand.
         </p>
         <p style={S.p}>
-          Aaj, 2024-25 mein, har major technology company ek "AI Factory" build kar rahi hai. Microsoft, Google, Amazon, Meta — sab combined hundreds of billions of dollars invest kar rahe hain GPU clusters, purpose-built AI data centers, aur specialized networking mein. Yeh investment primarily ek cheez ke liye hai: Generative AI workloads.
+          Today, in 2024-25, every major technology company is building an "AI Factory." Microsoft, Google, Amazon, Meta — together they're investing hundreds of billions of dollars in GPU clusters, purpose-built AI data centers, and specialized networking. This investment is primarily for one thing: Generative AI workloads.
         </p>
       </section>
 
@@ -99,13 +99,13 @@ export default function Content() {
       <section id="what-is-genai">
         <h2 style={S.h2}>What is Generative AI?</h2>
         <p style={S.p}>
-          Generative AI ek class of AI systems hai jo new, original content create karte hain — text, images, audio, video, code, molecules, 3D assets — jo training data mein directly exist nahi karta.
+          Generative AI is a class of AI systems that create new, original content — text, images, audio, video, code, molecules, 3D assets — that doesn't directly exist in the training data.
         </p>
         <p style={S.p}>
-          Traditional discriminative AI: input → classification/prediction. "Yeh email spam hai." Generative AI: input (prompt) → new content generation. "Yeh email likho." Fundamental difference: discriminative models data space ko boundaries mein divide karte hain. Generative models data ki underlying probability distribution learn karte hain — aur phir us distribution se sample karte hain.
+          Traditional discriminative AI: input → classification/prediction. "This email is spam." Generative AI: input (prompt) → new content generation. "Write this email." The fundamental difference: discriminative models divide the data space into boundaries. Generative models learn the underlying probability distribution of the data — and then sample from that distribution.
         </p>
         <p style={S.p}>
-          Ek practical example: ek fraud detection model 1 million transactions dekh ke patterns identify karta hai. Ek generative model woh same data dekh ke transactions ki underlying distribution learn karta hai — phir synthetic transactions generate kar sakta hai jo statistically identical hain real data se lekin actually never happened.
+          A practical example: a fraud detection model looks at 1 million transactions and identifies patterns. A generative model looking at that same data learns the underlying distribution of transactions — and can then generate synthetic transactions that are statistically identical to real data but never actually happened.
         </p>
       </section>
 
@@ -113,9 +113,9 @@ export default function Content() {
       <section id="why-genai-exists">
         <h2 style={S.h2}>Why Generative AI Exists</h2>
         <ul style={S.ul}>
-          <li><strong>Scale of unlabeled data:</strong> World mein vast majority of data unlabeled hai — text, images, audio. Generative models self-supervised learn kar sakte hain — next token predict karo, masked token fill karo. Yeh "free" training signal enable karta hai billion-parameter models training on trillion-token datasets without manual labeling.</li>
-          <li><strong>Emergent capabilities at scale:</strong> GPT-3 ne few-shot learning demonstrate kiya — explicitly trained nahi ki gayi capability. Larger models consistently unexpected capabilities show karte hain. Scale badhaao, qualitatively different abilities appear hoti hain.</li>
-          <li><strong>Universal interface possibility:</strong> Natural language ek universal interface ban sakta hai sab software se interact karne ke liye — "Mere sales data ka analysis karo aur next quarter ka forecast do" ek single natural language request mein database query, analytics, aur report generate karta hai.</li>
+          <li><strong>Scale of unlabeled data:</strong> The vast majority of data in the world is unlabeled — text, images, audio. Generative models can learn self-supervised — predict the next token, fill in the masked token. This "free" training signal enables training billion-parameter models on trillion-token datasets without manual labeling.</li>
+          <li><strong>Emergent capabilities at scale:</strong> GPT-3 demonstrated few-shot learning — a capability it wasn't explicitly trained for. Larger models consistently show unexpected capabilities. Increase scale, and qualitatively different abilities appear.</li>
+          <li><strong>Universal interface possibility:</strong> Natural language can become a universal interface for interacting with all software — "Analyze my sales data and give me a forecast for next quarter" performs a database query, analytics, and report generation in a single natural language request.</li>
         </ul>
       </section>
 
@@ -146,10 +146,10 @@ export default function Content() {
           Common theme across all generative approaches: learn the distribution of training data, then sample from that distribution.
         </p>
         <p style={S.p}>
-          Large Language Models training objective: next token predict karna given all previous tokens. Trillions of tokens dekhke, model language structure, facts, aur reasoning patterns seekh leta hai. Inference time pe: given input tokens (prompt), model probabilities compute karta hai next token ke liye across vocabulary, sample karta hai, append karta hai, repeat karta hai.
+          The training objective of Large Language Models: predict the next token given all previous tokens. Having seen trillions of tokens, the model learns language structure, facts, and reasoning patterns. At inference time: given input tokens (the prompt), the model computes probabilities for the next token across the vocabulary, samples, appends, repeats.
         </p>
         <Callout type="maintenance" title="Why This Is Computationally Demanding">
-          Ek 70B parameter model vocabulary mein 128K tokens rakhta hai. Har generation step pe: 70 billion floating point operations. H100 GPU at BF16: ~2 PFLOPS. Single token: ~35ms. At 1000 tokens/sec throughput target: 70 TFLOPS per user. 100,000 concurrent users: 7 PFLOPS dedicated — multiple full HGX H100 servers sirf inference ke liye.
+          A 70B parameter model has a vocabulary of 128K tokens. At each generation step: 70 billion floating point operations. H100 GPU at BF16: ~2 PFLOPS. Single token: ~35ms. At a 1000 tokens/sec throughput target: 70 TFLOPS per user. 100,000 concurrent users: 7 PFLOPS dedicated — multiple full HGX H100 servers just for inference.
         </Callout>
         <Figure caption="Token Generation: Each step — forward pass through all transformer layers, sample from vocabulary probabilities, append, repeat — KV cache prevents recomputation of previous tokens">
           <TokenGenerationFlow />
@@ -160,10 +160,10 @@ export default function Content() {
       <section id="tokens">
         <h2 style={S.h2}>Tokens — The Atomic Unit of GenAI</h2>
         <p style={S.p}>
-          LLMs text ko raw characters ya complete words ke form mein nahi dekhte. Woh <strong>tokens</strong> use karte hain — subword units. Byte Pair Encoding (BPE) sabse common tokenization algorithm hai. Common character sequences merge hoke single tokens ban jaate hain.
+          LLMs don't see text as raw characters or complete words. They use <strong>tokens</strong> — subword units. Byte Pair Encoding (BPE) is the most common tokenization algorithm. Common character sequences get merged into single tokens.
         </p>
         <ul style={S.ul}>
-          <li><strong>Context window:</strong> Tokens mein measured. GPT-4: 128K tokens. Gemini 1.5: 2M tokens. Llama 3.1: 128K tokens.</li>
+          <li><strong>Context window:</strong> Measured in tokens. GPT-4: 128K tokens. Gemini 1.5: 2M tokens. Llama 3.1: 128K tokens.</li>
           <li><strong>KV Cache memory:</strong> Grows linearly with context length. 128K context × large model = significant HBM requirement.</li>
           <li><strong>Pricing:</strong> Per token basis. Hindi/regional languages often more expensive — more tokens per word than English.</li>
           <li><strong>Throughput:</strong> Tokens per second (TPS) — primary inference performance metric.</li>
@@ -175,10 +175,10 @@ export default function Content() {
       <section id="embeddings">
         <h2 style={S.h2}>Embeddings</h2>
         <p style={S.p}>
-          Tokens → Embedding lookup → Dense vectors. GPT-3: each token maps to a 12,288-dimensional vector. "King" aur "Queen" ke embeddings similar in most dimensions. "Paris" aur "France" ke embeddings "capital-of" relationship capture karte hain.
+          Tokens → embedding lookup → dense vectors. GPT-3: each token maps to a 12,288-dimensional vector. The embeddings for "King" and "Queen" are similar across most dimensions. The embeddings for "Paris" and "France" capture a "capital-of" relationship.
         </p>
         <p style={S.p}>
-          <strong>Embedding table size:</strong> GPT-3: 50K × 12288 = ~600M parameters sirf embedding table mein. This table stays in GPU HBM throughout inference — cannot be swapped out.
+          <strong>Embedding table size:</strong> GPT-3: 50K × 12288 = ~600M parameters just in the embedding table. This table stays in GPU HBM throughout inference — it cannot be swapped out.
         </p>
         <p style={S.p}>
           <strong>Standalone embedding models</strong> (OpenAI text-embedding-3-large, E5-large, BGE-M3): text → fixed-size vectors for semantic search. Used in RAG systems. These require separate inference capacity from generation models — though CPU-based embedding is often sufficient for batch indexing.
@@ -189,13 +189,13 @@ export default function Content() {
       <section id="latent-space">
         <h2 style={S.h2}>Latent Space</h2>
         <p style={S.p}>
-          Latent space woh high-dimensional mathematical space hai jahan model data ko internally represent karta hai. Similar images → nearby points. Smooth interpolation possible between points. Specific dimensions manipulate karo → controlled generation.
+          Latent space is the high-dimensional mathematical space where the model internally represents data. Similar images → nearby points. Smooth interpolation is possible between points. Manipulate specific dimensions → controlled generation.
         </p>
         <p style={S.p}>
-          <strong>Diffusion models mein:</strong> Noise se starting, iteratively denoise karo latent space mein → image decode karo. Latent Diffusion (Stable Diffusion): compressed latent space mein diffusion karo, not pixel space — VAE encoder/decoder image ↔ latent convert karta hai. Much more efficient than pixel-space diffusion.
+          <strong>In diffusion models:</strong> starting from noise, iteratively denoise in latent space → decode the image. Latent Diffusion (Stable Diffusion): diffusion happens in a compressed latent space, not pixel space — a VAE encoder/decoder converts image ↔ latent. Much more efficient than pixel-space diffusion.
         </p>
         <p style={S.p}>
-          <strong>LLM hidden states:</strong> Each transformer layer produces intermediate "latent" representations. These can be probed to understand what model "knows" at each processing stage — useful for interpretability research aur hallucination detection systems.
+          <strong>LLM hidden states:</strong> Each transformer layer produces intermediate "latent" representations. These can be probed to understand what the model "knows" at each processing stage — useful for interpretability research and hallucination detection systems.
         </p>
       </section>
 
@@ -203,16 +203,16 @@ export default function Content() {
       <section id="prompt-engineering">
         <h2 style={S.h2}>Prompt Engineering</h2>
         <p style={S.p}>
-          Prompt engineering ek GenAI-specific skill hai: how to construct inputs that elicit desired outputs from generative models.
+          Prompt engineering is a GenAI-specific skill: how to construct inputs that elicit desired outputs from generative models.
         </p>
         <ul style={S.ul}>
-          <li><strong>Zero-shot:</strong> Directly task describe karo without examples.</li>
-          <li><strong>Few-shot:</strong> Examples provide karo format ke saath — models automatically pattern follow karte hain.</li>
-          <li><strong>Chain-of-Thought (CoT):</strong> "Let's think step by step" — reasoning steps explicitly show karne se complex tasks dramatically improve hoti hain.</li>
-          <li><strong>System prompts:</strong> Developer-set behavior, persona, constraints, safety guardrails. End users ko visible nahi.</li>
+          <li><strong>Zero-shot:</strong> Describe the task directly without examples.</li>
+          <li><strong>Few-shot:</strong> Provide examples along with the format — models automatically follow the pattern.</li>
+          <li><strong>Chain-of-Thought (CoT):</strong> "Let's think step by step" — explicitly showing reasoning steps dramatically improves complex tasks.</li>
+          <li><strong>System prompts:</strong> Developer-set behavior, persona, constraints, safety guardrails. Not visible to end users.</li>
         </ul>
         <Callout type="important" title="Production Prompt Engineering">
-          Prompts version control karo like code. A/B test variations. Monitor over time — model updates silently change behavior. Template system for dynamic construction. Injection attack prevention — user input sanitize karo before inserting into prompts. Prefix caching: identical system prompts KV cache reuse karo (Anthropic, Google support) — 60-80% cost reduction on system prompt tokens.
+          Version control prompts like code. A/B test variations. Monitor over time — model updates silently change behavior. A template system for dynamic construction. Injection attack prevention — sanitize user input before inserting into prompts. Prefix caching: reuse the KV cache for identical system prompts (Anthropic, Google support this) — 60-80% cost reduction on system prompt tokens.
         </Callout>
         <Figure caption="Prompt Processing Pipeline: System prompt + few-shot examples + RAG context + user message → tokenizer → LLM → streaming output — prefix caching reuses KV for shared prompt portions">
           <PromptProcessingPipeline />
@@ -241,10 +241,10 @@ export default function Content() {
       <section id="attention-genai">
         <h2 style={S.h2}>Attention in Generative AI</h2>
         <ul style={S.ul}>
-          <li><strong>Causal (masked) attention:</strong> Decoder-only models mein each token sirf apne pehle ke tokens pe attend kar sakta hai — future invisible. Autoregressive generation enable karta hai.</li>
-          <li><strong>GQA (Grouped-Query Attention):</strong> Groups of heads share K aur V matrices — smaller KV cache, faster inference, same quality. Llama 2/3, Mistral, Gemma use karte hain. Production standard.</li>
-          <li><strong>Sliding Window Attention:</strong> Mistral, Mixtral use karte hain. Each token sirf local window of recent tokens — efficient long-context without full quadratic cost.</li>
-          <li><strong>Flash Attention 2/3:</strong> HBM traffic minimize karo by tiling computation. 2-4x speedup. O(n) memory vs O(n²). Critical for long context windows — without it, 128K context would OOM on most GPUs.</li>
+          <li><strong>Causal (masked) attention:</strong> In decoder-only models each token can only attend to tokens before it — the future is invisible. This enables autoregressive generation.</li>
+          <li><strong>GQA (Grouped-Query Attention):</strong> Groups of heads share K and V matrices — a smaller KV cache, faster inference, same quality. Used by Llama 2/3, Mistral, Gemma. Production standard.</li>
+          <li><strong>Sliding Window Attention:</strong> Used by Mistral, Mixtral. Each token attends only to a local window of recent tokens — efficient long-context without full quadratic cost.</li>
+          <li><strong>Flash Attention 2/3:</strong> Minimizes HBM traffic by tiling computation. 2-4x speedup. O(n) memory vs O(n²). Critical for long context windows — without it, 128K context would OOM on most GPUs.</li>
         </ul>
       </section>
 
@@ -252,7 +252,7 @@ export default function Content() {
       <section id="decoder-only">
         <h2 style={S.h2}>Decoder-Only Models — The LLM Standard</h2>
         <p style={S.p}>
-          Aaj ke most powerful language models — GPT-4, Claude, Gemini, Llama, Mistral — decoder-only Transformer architectures hain. Pre-training objective: next token prediction (causal language modeling).
+          Today's most powerful language models — GPT-4, Claude, Gemini, Llama, Mistral — are decoder-only Transformer architectures. Pre-training objective: next token prediction (causal language modeling).
         </p>
         <ComparisonTable
           title="Key Decoder-Only Models — Infrastructure Requirements"
@@ -272,7 +272,7 @@ export default function Content() {
       <section id="encoder-decoder">
         <h2 style={S.h2}>Encoder-Decoder Models</h2>
         <p style={S.p}>
-          T5, BART, mT5 — encoder bidirectionally input process karta hai, decoder autoregressively output generate karta hai with cross-attention to encoder. Best for: translation, summarization, structured input→output transformations. LLM era mein relative decline — decoder-only models prompting se in tasks handle kar sakte hain — but still superior for specific structured tasks.
+          T5, BART, mT5 — the encoder processes the input bidirectionally, the decoder autoregressively generates output with cross-attention to the encoder. Best for: translation, summarization, structured input→output transformations. Has declined relatively in the LLM era — decoder-only models can handle these tasks through prompting — but is still superior for specific structured tasks.
         </p>
       </section>
 
@@ -280,12 +280,12 @@ export default function Content() {
       <section id="diffusion-models">
         <h2 style={S.h2}>Diffusion Models — Image Generation Engine</h2>
         <p style={S.p}>
-          DALL-E 3, Stable Diffusion 3, Midjourney — sab diffusion-based. Forward process: clean image pe gradually noise add karo → pure noise. Training: noisy image given timestep t se noise predict karna. Inference: random noise → iteratively denoise → clean image.
+          DALL-E 3, Stable Diffusion 3, Midjourney — all diffusion-based. Forward process: gradually add noise to a clean image → pure noise. Training: predict the noise from a noisy image given timestep t. Inference: random noise → iteratively denoise → clean image.
         </p>
         <ul style={S.ul}>
           <li><strong>Steps vs quality:</strong> Standard 20-50 steps. DDIM/DPM++: 10-20 steps. LCM: 4-8 steps. More steps = better quality, slower.</li>
           <li><strong>Infrastructure:</strong> Each denoising step = one U-Net/DiT forward pass. Stable Diffusion XL: 6-8GB minimum. Commercial quality: 16-24GB.</li>
-          <li><strong>Latent Diffusion:</strong> Compressed latent space mein diffusion — VAE encoder/decoder image ↔ latent convert karta hai. Much more efficient than pixel-space.</li>
+          <li><strong>Latent Diffusion:</strong> Diffusion in a compressed latent space — a VAE encoder/decoder converts image ↔ latent. Much more efficient than pixel-space.</li>
         </ul>
       </section>
 
@@ -293,10 +293,10 @@ export default function Content() {
       <section id="gans">
         <h2 style={S.h2}>GANs — Generative Adversarial Networks</h2>
         <p style={S.p}>
-          Generator: noise → fake content. Discriminator: real ya fake classify. Adversarial training → increasingly realistic generation. StyleGAN: photorealistic faces. CycleGAN: unpaired image translation.
+          Generator: noise → fake content. Discriminator: classify real or fake. Adversarial training → increasingly realistic generation. StyleGAN: photorealistic faces. CycleGAN: unpaired image translation.
         </p>
         <p style={S.p}>
-          <strong>Why largely replaced by diffusion:</strong> Mode collapse, training instability, failure detection difficult. Diffusion: superior quality aur diversity. GANs still used: real-time applications (single forward pass), super-resolution, medical image augmentation.
+          <strong>Why largely replaced by diffusion:</strong> Mode collapse, training instability, difficult failure detection. Diffusion: superior quality and diversity. GANs are still used for: real-time applications (single forward pass), super-resolution, medical image augmentation.
         </p>
       </section>
 
@@ -307,7 +307,7 @@ export default function Content() {
           Probabilistic latent space — encoder produces distribution (mean + variance), reparameterization trick enables differentiable sampling, decoder reconstructs. Continuous structured latent space enables smooth interpolation.
         </p>
         <p style={S.p}>
-          <strong>Current critical role:</strong> VAE encoder aur decoder Stable Diffusion mein image ↔ latent space compression/decompression ke liye use hote hain. Standalone generation ke liye largely superseded by diffusion + LLMs.
+          <strong>Current critical role:</strong> VAE encoders and decoders are used in Stable Diffusion for image ↔ latent space compression/decompression. Largely superseded by diffusion + LLMs for standalone generation.
         </p>
       </section>
 
@@ -315,7 +315,7 @@ export default function Content() {
       <section id="foundation-models">
         <h2 style={S.h2}>Foundation Models — The New Infrastructure</h2>
         <p style={S.p}>
-          Foundation Models woh large pre-trained models hain jo diverse downstream tasks ke liye fine-tune ya prompt kiye ja sakte hain. Pre-train once (weeks to months, millions of dollars) → adapt many times (hours to days, thousands of dollars) → deploy for many applications.
+          Foundation Models are large pre-trained models that can be fine-tuned or prompted for diverse downstream tasks. Pre-train once (weeks to months, millions of dollars) → adapt many times (hours to days, thousands of dollars) → deploy for many applications.
         </p>
         <ComparisonTable
           title="Foundation Model Landscape"
@@ -330,7 +330,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>Infrastructure for foundation model pre-training:</strong> 1,000-100,000+ GPUs running continuously for weeks to months. InfiniBand NDR ya custom fabrics. Petabytes of training data aur checkpoint storage. MW to GW scale facility power. Cost: single large model = $10M-$500M+ in compute alone.
+          <strong>Infrastructure for foundation model pre-training:</strong> 1,000-100,000+ GPUs running continuously for weeks to months. InfiniBand NDR or custom fabrics. Petabytes of training data and checkpoint storage. MW to GW scale facility power. Cost: a single large model can cost $10M-$500M+ in compute alone.
         </p>
       </section>
 
@@ -352,7 +352,7 @@ export default function Content() {
           <strong>When to fine-tune:</strong> Consistent format/behavior, domain-specific tone/style, complex task-specific reasoning. <strong>When RAG is better:</strong> Factual knowledge (updatable, auditable), frequently changing information, when source attribution needed.
         </p>
         <p style={S.p}>
-          <strong>LoRA adapter serving:</strong> Base model once load karo, multiple LoRA adapters dynamically swap per request — memory-efficient multi-tenant serving. Different departments ke liye alag adapters same GPU fleet pe serve kar sakte ho.
+          <strong>LoRA adapter serving:</strong> Load the base model once, dynamically swap multiple LoRA adapters per request — memory-efficient multi-tenant serving. Different departments can be served different adapters on the same GPU fleet.
         </p>
       </section>
 
@@ -360,17 +360,17 @@ export default function Content() {
       <section id="function-calling">
         <h2 style={S.h2}>Function Calling and Structured Outputs</h2>
         <p style={S.p}>
-          Function Calling LLM ko structured tool invocations generate karne ki capability hai — JSON format mein, predefined schema ke according. Yeh AI agents ka foundation hai.
+          Function Calling is the LLM's ability to generate structured tool invocations — in JSON format, according to a predefined schema. This is the foundation of AI agents.
         </p>
         <Figure caption="Function Calling Flow: User request → LLM selects tool from schema → JSON tool call generated → Tool executed in sandbox → Result returned → LLM synthesizes final response">
           <LlmApiFlow />
         </Figure>
         <ul style={S.ul}>
-          <li><strong>JSON Schema:</strong> Tool definitions strict schema follow karte hain — name, description, parameters (types, required fields). LLM guaranteed valid JSON generate karta hai.</li>
-          <li><strong>Parallel tool calls:</strong> Modern LLMs multiple tools simultaneously invoke kar sakte hain — "Compare NVDA and AMD" → two parallel API calls.</li>
-          <li><strong>Structured outputs:</strong> LLM output guarantee karna ek specific JSON structure follow kare — extraction tasks ke liye. OpenAI Structured Outputs, JSON mode.</li>
-          <li><strong>Enterprise tool integration:</strong> Database queries, REST APIs, internal systems — LLM natural language se structured API call generate karta hai. No custom parsing code.</li>
-          <li><strong>Infrastructure:</strong> Tool calls sandboxed execution environments mein run karo. Timeout enforce karo (typically 30s). All calls aur results log karo for audit. Error handling mandatory — LLM should gracefully handle tool failure.</li>
+          <li><strong>JSON Schema:</strong> Tool definitions follow a strict schema — name, description, parameters (types, required fields). The LLM is guaranteed to generate valid JSON.</li>
+          <li><strong>Parallel tool calls:</strong> Modern LLMs can invoke multiple tools simultaneously — "Compare NVDA and AMD" → two parallel API calls.</li>
+          <li><strong>Structured outputs:</strong> Guaranteeing the LLM output follows a specific JSON structure — for extraction tasks. OpenAI Structured Outputs, JSON mode.</li>
+          <li><strong>Enterprise tool integration:</strong> Database queries, REST APIs, internal systems — the LLM generates a structured API call from natural language. No custom parsing code needed.</li>
+          <li><strong>Infrastructure:</strong> Run tool calls in sandboxed execution environments. Enforce timeouts (typically 30s). Log all calls and results for audit. Error handling is mandatory — the LLM should handle tool failure gracefully.</li>
         </ul>
       </section>
 
@@ -378,7 +378,7 @@ export default function Content() {
       <section id="mcp">
         <h2 style={S.h2}>Model Context Protocol (MCP)</h2>
         <p style={S.p}>
-          MCP Anthropic ka open standard hai jo standardize karta hai ki AI models external data sources aur tools se kaise connect karte hain. "USB for AI" — ek universal connector jo vendor lock-in eliminate karta hai.
+          MCP is Anthropic's open standard that standardizes how AI models connect to external data sources and tools. "USB for AI" — a universal connector that eliminates vendor lock-in.
         </p>
         <Figure caption="MCP Architecture: MCP Client (LLM host) ↔ JSON-RPC 2.0 protocol ↔ MCP Servers exposing filesystem, databases, GitHub, custom APIs — build once, use with any MCP-compatible AI">
           <McpArchitecture />
@@ -394,10 +394,10 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>Enterprise MCP workflow:</strong> IT team ek MCP server build karta hai internal CRM ke liye. Ek baar. Phir har MCP-compatible AI tool (Claude, GPT-4, future models) us server use kar sakta hai — alag-alag integrations build nahi karne padte. Vendor lock-in reduce hota hai significantly.
+          <strong>Enterprise MCP workflow:</strong> The IT team builds an MCP server for the internal CRM. Once. Then every MCP-compatible AI tool (Claude, GPT-4, future models) can use that server — no need to build separate integrations. Vendor lock-in is reduced significantly.
         </p>
         <Callout type="best-practice" title="MCP Security">
-          MCP servers enterprise infrastructure access karte hain — strict IAM controls mandatory. Tool execution audit logs essential. Input validation on MCP server side — never trust LLM-generated tool calls blindly. Principle of least privilege: har MCP server sirf minimum required permissions rakhe.
+          MCP servers access enterprise infrastructure — strict IAM controls are mandatory. Tool execution audit logs are essential. Input validation on the MCP server side — never blindly trust LLM-generated tool calls. Principle of least privilege: every MCP server should have only the minimum required permissions.
         </Callout>
       </section>
 
@@ -405,15 +405,15 @@ export default function Content() {
       <section id="rag">
         <h2 style={S.h2}>RAG — Retrieval Augmented Generation</h2>
         <p style={S.p}>
-          RAG ek architecture pattern hai jisme generation se pehle relevant information retrieve kiya jaata hai external knowledge source se. Foundation models knowledge cutoff rakhte hain, hallucinate karte hain, proprietary documents nahi jaante — RAG yeh sab address karta hai.
+          RAG is an architecture pattern where relevant information is retrieved from an external knowledge source before generation. Foundation models have a knowledge cutoff, hallucinate, and don't know proprietary documents — RAG addresses all of this.
         </p>
         <Figure caption="RAG Vector Search Flow: Query embed → vector DB ANN similarity search → top-K chunks retrieved → re-ranked → augmented prompt → LLM grounded generation — with offline document indexing pipeline">
           <VectorSearchFlow />
         </Figure>
         <ul style={S.ul}>
-          <li><strong>Chunking strategy:</strong> 512-1024 tokens per chunk typically. Overlap between chunks (10-20%) improve karta hai retrieval at boundary cases.</li>
-          <li><strong>Hybrid search:</strong> Vector similarity + BM25 keyword search combine karo → better retrieval than either alone. Especially good for named entities aur technical terms.</li>
-          <li><strong>Re-ranking:</strong> Retrieved chunks reorder karo quality score ke basis pe. Cohere Rerank, BGE Reranker — dramatically improve final retrieval quality.</li>
+          <li><strong>Chunking strategy:</strong> Typically 512-1024 tokens per chunk. Overlap between chunks (10-20%) improves retrieval at boundary cases.</li>
+          <li><strong>Hybrid search:</strong> Combine vector similarity + BM25 keyword search → better retrieval than either alone. Especially good for named entities and technical terms.</li>
+          <li><strong>Re-ranking:</strong> Reorder retrieved chunks based on a quality score. Cohere Rerank, BGE Reranker — dramatically improve final retrieval quality.</li>
           <li><strong>Metadata filtering:</strong> Date range, document type, author — filter before vector search to exclude irrelevant documents.</li>
         </ul>
       </section>
@@ -422,7 +422,7 @@ export default function Content() {
       <section id="ai-agents">
         <h2 style={S.h2}>AI Agents</h2>
         <p style={S.p}>
-          AI Agents GenAI systems hain jo tools use kar sakte hain, multi-step reasoning karte hain, decisions lete hain, aur long-horizon tasks complete karte hain. Traditional LLM call: one prompt → one response. Agent: observe → think → act → observe result → think again → complete task.
+          AI Agents are GenAI systems that can use tools, perform multi-step reasoning, make decisions, and complete long-horizon tasks. Traditional LLM call: one prompt → one response. Agent: observe → think → act → observe result → think again → complete task.
         </p>
         <p style={S.p}>
           <strong>Popular frameworks:</strong> LangChain, LlamaIndex (orchestration), AutoGen (Microsoft, multi-agent conversations), CrewAI (role-based agent teams), OpenAI Assistants API (managed).
@@ -434,11 +434,11 @@ export default function Content() {
             <AiAgentArchitecture />
           </Figure>
           <ul style={S.ul}>
-            <li><strong>Planner:</strong> LLM jo task decompose karta hai, agle action decide karta hai. ReAct (Reasoning + Acting) aur CoT patterns. Core intelligence of the agent.</li>
+            <li><strong>Planner:</strong> The LLM that decomposes the task and decides the next action. ReAct (Reasoning + Acting) and CoT patterns. The core intelligence of the agent.</li>
             <li><strong>Memory:</strong> Short-term (conversation window), Long-term (vector store — past interactions, learned facts), Episodic (past task results).</li>
-            <li><strong>Tool Executor:</strong> Planner ke decision pe appropriate tool invoke. Sandboxed execution, timeout enforcement, error handling.</li>
-            <li><strong>Function Calling:</strong> LLM structured JSON tool calls generate karta hai — Tool Router backend pe route karta hai.</li>
-            <li><strong>Multi-Agent Collaboration:</strong> Orchestrator agent complex task sub-tasks mein divide karta hai, specialist agents ko delegate — parallel execution. CrewAI, AutoGen yeh patterns implement karte hain.</li>
+            <li><strong>Tool Executor:</strong> Invokes the appropriate tool based on the planner's decision. Sandboxed execution, timeout enforcement, error handling.</li>
+            <li><strong>Function Calling:</strong> The LLM generates structured JSON tool calls — the Tool Router routes them on the backend.</li>
+            <li><strong>Multi-Agent Collaboration:</strong> An orchestrator agent divides a complex task into sub-tasks, delegates to specialist agents — parallel execution. CrewAI, AutoGen implement these patterns.</li>
           </ul>
           <Callout type="warning" title="Agent Infrastructure Cost">
             Complex tasks = 5-20 LLM calls per agent run. Monitoring mandatory: per-agent-run cost tracking, loop detection, human-in-loop for high-risk actions (financial transactions, data deletion). Without monitoring, agent costs can spiral unexpectedly.
@@ -453,13 +453,13 @@ export default function Content() {
           headers={["Modality", "Processing", "Infrastructure Impact", "Use Cases"]}
           rows={[
             ["Vision", "ViT image encoder → image tokens → cross-attention to LLM", "Additional GPU memory for image tokens (~1K tokens per image)", "Document analysis, chart reading, medical imaging, quality control"],
-            ["Audio (speech)", "ASR pipeline (Whisper) ya audio encoder", "Real-time needs low latency; streaming ASR for voice", "Voice assistants, call center AI, transcription, multilingual support"],
+            ["Audio (speech)", "ASR pipeline (Whisper) or audio encoder", "Real-time needs low latency; streaming ASR for voice", "Voice assistants, call center AI, transcription, multilingual support"],
             ["Video", "Frame sampling, temporal modeling — very high compute", "Extreme GPU requirements — minutes of video = thousands of tokens", "Video understanding, surveillance, sports analytics, training data"],
             ["OCR/Document", "Layout-aware models (LayoutLM, Donut)", "Document preprocessing pipeline + LLM", "Invoice processing, KYC, contract analysis, digitization"],
           ]}
         />
         <p style={S.p}>
-          <strong>Infrastructure note:</strong> Image input dramatically increases context — ek image ~1,000-5,000 tokens equivalent. Dedicated image preprocessing pipeline (resize, encode) separates compute from generation, enabling better scaling.
+          <strong>Infrastructure note:</strong> Image input dramatically increases context — an image is roughly 1,000-5,000 tokens equivalent. A dedicated image preprocessing pipeline (resize, encode) separates compute from generation, enabling better scaling.
         </p>
       </section>
 
@@ -478,7 +478,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>Training failures aur recovery:</strong> At 1,000+ GPU scale, hardware failures daily occurrence. Checkpoint every 30-60 minutes. Loss spike detection: automatic rollback to pre-spike checkpoint. 24/7 team monitoring during critical runs.
+          <strong>Training failures and recovery:</strong> At 1,000+ GPU scale, hardware failures are a daily occurrence. Checkpoint every 30-60 minutes. Loss spike detection: automatic rollback to the pre-spike checkpoint. 24/7 team monitoring during critical runs.
         </p>
       </section>
 
@@ -486,10 +486,10 @@ export default function Content() {
       <section id="inference-pipeline">
         <h2 style={S.h2}>Inference Pipeline</h2>
         <ul style={S.ul}>
-          <li><strong>Prefill phase:</strong> All input tokens simultaneously process karo (parallelizable). Compute-bound. Fast.</li>
-          <li><strong>Decode phase:</strong> Autoregressive token generation — sequential, memory-bandwidth bound. KV cache se previous computation reuse.</li>
-          <li><strong>Continuous batching:</strong> New requests dynamically join batch as tokens complete. PagedAttention: KV cache OS virtual memory concepts se manage. 2-5x throughput improvement.</li>
-          <li><strong>Speculative decoding:</strong> Small draft model predicts multiple tokens, large model verifies batch mein. 2-4x speedup.</li>
+          <li><strong>Prefill phase:</strong> Process all input tokens simultaneously (parallelizable). Compute-bound. Fast.</li>
+          <li><strong>Decode phase:</strong> Autoregressive token generation — sequential, memory-bandwidth bound. Reuses previous computation from the KV cache.</li>
+          <li><strong>Continuous batching:</strong> New requests dynamically join the batch as tokens complete. PagedAttention: manages the KV cache using OS virtual memory concepts. 2-5x throughput improvement.</li>
+          <li><strong>Speculative decoding:</strong> A small draft model predicts multiple tokens, the large model verifies them in a batch. 2-4x speedup.</li>
         </ul>
         <Figure caption="Inference Scaling: Single GPU (7B dev) → Multi-GPU tensor parallel (70B production minimum) → K8s cluster with load balancer and HPA auto-scaling (enterprise scale)">
           <InferenceScaling />
@@ -531,7 +531,7 @@ export default function Content() {
           ]}
         />
         <Callout type="important" title="KV Cache Additional Memory">
-          Model weights + KV cache + activations = total GPU memory needed. 70B model, 4096 context, batch 32: ~20GB KV cache additional. Total: 140GB weights + 20GB KV = 160GB minimum. Need 3× H100 for comfortable production margin. PagedAttention dramatically improves KV cache efficiency — vLLM use karo production mein.
+          Model weights + KV cache + activations = total GPU memory needed. 70B model, 4096 context, batch 32: ~20GB additional KV cache. Total: 140GB weights + 20GB KV = 160GB minimum. Need 3× H100 for a comfortable production margin. PagedAttention dramatically improves KV cache efficiency — use vLLM in production.
         </Callout>
       </section>
 
@@ -577,7 +577,7 @@ export default function Content() {
       <section id="ai-gateway">
         <h2 style={S.h2}>Enterprise AI Gateway</h2>
         <p style={S.p}>
-          Enterprise AI Gateway ek central proxy layer hai jo sab AI API traffic manage karta hai — authentication, rate limiting, caching, routing, monitoring — single governance point for all AI consumption.
+          An Enterprise AI Gateway is a central proxy layer that manages all AI API traffic — authentication, rate limiting, caching, routing, monitoring — a single governance point for all AI consumption.
         </p>
         <Figure caption="Enterprise AI Gateway: Central proxy for all AI traffic — Auth/RBAC, Rate Limiting, Prompt Cache, Model Router, Guardrails, Cost Tracking — routing to multiple LLM providers transparently">
           <EnterpriseAiGateway />
@@ -675,7 +675,7 @@ export default function Content() {
             ["LangSmith", "No (LangChain)", "LangChain integrated tracing", "Deep LangChain integration, comprehensive eval suite"],
             ["Arize Phoenix", "Yes", "LLM observability + RAG", "Retrieval quality metrics, embedding visualization"],
             ["W&B Weave", "Commercial", "Experiment + production tracking", "Best for teams already using W&B for ML experiments"],
-            ["PromptLayer", "SaaS", "Prompt versioning + analytics", "Simple, focused on prompt management aur version history"],
+            ["PromptLayer", "SaaS", "Prompt versioning + analytics", "Simple, focused on prompt management and version history"],
           ]}
         />
         <ul style={S.ul}>
@@ -757,7 +757,7 @@ export default function Content() {
             <GuardrailPipeline />
           </Figure>
           <ul style={S.ul}>
-            <li><strong>Input guardrails:</strong> PII detection aur masking, toxicity filter, prompt injection detection, topic policy filter, rate limit check.</li>
+            <li><strong>Input guardrails:</strong> PII detection and masking, toxicity filter, prompt injection detection, topic policy filter, rate limit check.</li>
             <li><strong>Output guardrails:</strong> Hallucination detection, PII leakage check, toxic content filter, copyright filter, factual accuracy scoring.</li>
             <li><strong>Tools:</strong> Llama Guard (Meta), Azure Content Safety, Perspective API, NeMo Guardrails (NVIDIA), custom classifiers.</li>
             <li><strong>Hallucination detection:</strong> Vectara Hallucination Evaluator, SelfCheckGPT, FactScore, LLM-as-judge with factuality rubric.</li>
@@ -787,8 +787,8 @@ export default function Content() {
         <ul style={S.ul}>
           <li><strong>Hallucinations:</strong> Confidently wrong. Mitigation: RAG grounding, citations, self-consistency, human-in-loop for high-stakes. Production: factual accuracy eval on output sample.</li>
           <li><strong>AI Safety:</strong> Jailbreaking bypass safety training. Dual-use risk. Mitigation: Constitutional AI, RLHF, output filtering, usage policies, monitoring misuse patterns.</li>
-          <li><strong>Bias aur Fairness:</strong> Training data biases inherited. Mitigation: diverse training data, RLHF with diverse evaluators, bias testing across demographic dimensions.</li>
-          <li><strong>Copyright aur Licensing:</strong> Training data copyright — ongoing litigation. Output copyright: jurisdictionally complex. Llama, Mistral: license terms vary. Enterprise: maintain audit trails for generated content IP ownership.</li>
+          <li><strong>Bias and Fairness:</strong> Training data biases are inherited. Mitigation: diverse training data, RLHF with diverse evaluators, bias testing across demographic dimensions.</li>
+          <li><strong>Copyright and Licensing:</strong> Training data copyright — ongoing litigation. Output copyright: jurisdictionally complex. Llama, Mistral: license terms vary. Enterprise: maintain audit trails for generated content IP ownership.</li>
           <li><strong>EU AI Act (2024):</strong> GPAI models transparency requirements. High-risk applications: human oversight, conformity assessment. India: DPDP Act 2023, emerging AI regulation.</li>
           <li><strong>Model Cards:</strong> Document training data, intended use, limitations, evaluation results, ethical considerations. Becoming regulatory requirement in some jurisdictions.</li>
         </ul>
@@ -902,11 +902,11 @@ export default function Content() {
         <h2 style={S.h2}>Future of Generative AI</h2>
         <ul style={S.ul}>
           <li><strong>Reasoning Models (o3, Gemini 2.0 Thinking):</strong> Chain-of-thought explicitly performed — "thinking tokens" generated before answering. Dramatically better on complex reasoning, math, science. Infrastructure: longer outputs, higher latency, higher cost. New market: premium reasoning API tier. Streaming mandatory — users can't wait minutes for output.</li>
-          <li><strong>Agentic AI:</strong> Models that complete multi-step real-world tasks autonomously — browse web, write aur execute code, manage files. 2025-26: agentic AI from experimental to production. Infrastructure: long-running jobs, sandboxed execution, persistent state, cost spirals without monitoring. New category: "AI workers" vs "AI assistants."</li>
+          <li><strong>Agentic AI:</strong> Models that complete multi-step real-world tasks autonomously — browsing the web, writing and executing code, managing files. 2025-26: agentic AI moving from experimental to production. Infrastructure: long-running jobs, sandboxed execution, persistent state, cost spirals without monitoring. A new category: "AI workers" vs "AI assistants."</li>
           <li><strong>Physical AI (Robotics Foundation Models):</strong> NVIDIA Isaac, Google RT-2 — foundation models for robotic control. Sensor inputs + vision → motor commands. Training: massive simulation compute. Edge inference on embedded GPU (Jetson Orin). Manufacturing, logistics, healthcare robotics.</li>
-          <li><strong>World Models:</strong> AI that models physics, causality, aur the structure of the real world. Genie 2 (Google), Sora's world simulation capabilities. Enable: better planning, physical AI training, simulation-based data generation. Very high compute requirements — nascent but powerful direction.</li>
+          <li><strong>World Models:</strong> AI that models physics, causality, and the structure of the real world. Genie 2 (Google), Sora's world simulation capabilities. Enable: better planning, physical AI training, simulation-based data generation. Very high compute requirements — a nascent but powerful direction.</li>
           <li><strong>AI Operating Systems:</strong> AI as primary interface to all computing — not an app, but the OS layer. Devices controlled via natural language. Ambient intelligence. Infrastructure: always-on, ultra-low latency, on-device model required (NPU in mobile chips).</li>
-          <li><strong>AI Factories:</strong> NVIDIA's vision: massive purpose-built AI data centers continuously producing AI output as "digital intelligence." Hundreds of thousands of GPUs. GW-scale power. Hundreds of billions in investment. 2025-30: AI Factories as new industrial infrastructure category — on par with traditional manufacturing.</li>
+          <li><strong>AI Factories:</strong> NVIDIA's vision: massive purpose-built AI data centers continuously producing AI output as "digital intelligence." Hundreds of thousands of GPUs. GW-scale power. Hundreds of billions in investment. 2025-30: AI Factories becoming a new industrial infrastructure category — on par with traditional manufacturing.</li>
         </ul>
       </section>
 
@@ -933,28 +933,23 @@ export default function Content() {
         <h2 style={S.h2}>Interview Questions</h2>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: Generative AI aur traditional discriminative AI mein fundamental difference kya hai?</p>
-          <p style={S.p}>Discriminative AI input se classification/prediction karta hai — P(y|x). Generative AI underlying data distribution learn karta hai aur new samples generate karta hai — P(x) ya P(x,y). Infrastructure difference: generative models much larger (billions vs millions params), GPU mandatory, inference compute intensive because of autoregressive token-by-token generation. Fraud model sirf "fraud/not" batata hai. GenAI ek poori realistic transaction history create kar sakta hai.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: What is the fundamental difference between generative AI and traditional discriminative AI?</p> <p style={S.p}>Discriminative AI classifies/predicts from an input — P(y|x). Generative AI learns the underlying data distribution and generates new samples — P(x) or P(x,y). Infrastructure difference: generative models are much larger (billions vs millions of parameters), GPUs are mandatory, inference is compute-intensive because of autoregressive token-by-token generation. A fraud model just says "fraud/not". GenAI can create a whole realistic transaction history.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: 70B parameter model GPU infrastructure planning kaise karein?</p>
-          <p style={S.p}>Step 1: Precision decide karo. FP16 = 140GB, INT8 = 70GB, INT4 = 35GB. Step 2: KV cache estimate karo: context_length × batch_size × per-token-per-layer size. 4096 context × batch 32: ~20GB. Step 3: Total = weights + KV cache + 20% buffer. At FP16: ~192GB → 3× H100 80GB recommended. At INT4: ~66GB → 1× H100 tight. Step 4: vLLM with PagedAttention for serving. Step 5: Tensor parallelism if multi-GPU — NVLink within node required. Step 6: Load balancer + K8s HPA auto-scaling for production.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: How do you plan GPU infrastructure for a 70B parameter model?</p> <p style={S.p}>Step 1: Decide precision. FP16 = 140GB, INT8 = 70GB, INT4 = 35GB. Step 2: Estimate the KV cache: context_length × batch_size × per-token-per-layer size. 4096 context × batch 32: ~20GB. Step 3: Total = weights + KV cache + 20% buffer. At FP16: ~192GB → 3× H100 80GB recommended. At INT4: ~66GB → 1× H100 is tight. Step 4: vLLM with PagedAttention for serving. Step 5: Tensor parallelism if multi-GPU — NVLink within the node required. Step 6: Load balancer + K8s HPA auto-scaling for production.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: Enterprise AI Gateway kyun deploy karte hain?</p>
-          <p style={S.p}>Central proxy hai sab AI API traffic ke liye. Single auth layer (IAM/RBAC), rate limiting (per-user/team quotas prevent cost spikes), prompt caching (identical requests intercept → cost = 0), model routing (cost/quality optimization), complete audit trail (compliance), cost attribution (per-team breakdown), guardrails (centralized filtering), failover (primary model fails → backup automatically). Without gateway: every team independently implements security, cost tracking, routing — duplicated effort, inconsistent governance.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: Why deploy an Enterprise AI Gateway?</p> <p style={S.p}>It's a central proxy for all AI API traffic. A single auth layer (IAM/RBAC), rate limiting (per-user/team quotas prevent cost spikes), prompt caching (intercepting identical requests → cost = 0), model routing (cost/quality optimization), complete audit trail (compliance), cost attribution (per-team breakdown), guardrails (centralized filtering), failover (primary model fails → backup automatically). Without a gateway: every team independently implements security, cost tracking, routing — duplicated effort, inconsistent governance.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: RAG aur fine-tuning mein kab kya choose karein?</p>
-          <p style={S.p}>RAG: factual knowledge injection (updatable, auditable, with citations), frequently changing information, proprietary documents, cheaper. Fine-tuning: consistent behavior aur format, domain-specific tone/style, complex task-specific reasoning patterns, latency-critical (smaller fine-tuned model vs prompting large model). Often complementary: fine-tune for behavior, RAG for knowledge. LoRA/QLoRA ne fine-tuning cost dramatically reduce kar diya hai — single H100 pe 70B model possible.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: When should you choose RAG vs fine-tuning?</p> <p style={S.p}>RAG: factual knowledge injection (updatable, auditable, with citations), frequently changing information, proprietary documents, cheaper. Fine-tuning: consistent behavior and format, domain-specific tone/style, complex task-specific reasoning patterns, latency-critical (a smaller fine-tuned model vs prompting a large model). Often complementary: fine-tune for behavior, RAG for knowledge. LoRA/QLoRA have dramatically reduced fine-tuning cost — a 70B model is now possible on a single H100.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: MCP (Model Context Protocol) kya hai aur enterprise mein kaise beneficial hai?</p>
-          <p style={S.p}>MCP Anthropic ka open standard hai standardizing AI models aur external tools/resources ke beech connection. MCP Server external resource expose karta hai (database, filesystem, API). MCP Client (LLM application) standardized protocol se connect karta hai (JSON-RPC 2.0). Enterprise benefit: IT team ek baar MCP server build karte hain internal CRM ke liye — phir Claude Desktop, Cursor, custom agent — sab automatically use kar sakte hain. Alag-alag integrations build nahi karne padte. Open standard = multiple AI models ek hi tool ecosystem share kar sakte hain — vendor lock-in dramatically reduces.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: What is MCP (Model Context Protocol) and how is it beneficial for the enterprise?</p> <p style={S.p}>MCP is Anthropic's open standard standardizing the connection between AI models and external tools/resources. An MCP Server exposes an external resource (database, filesystem, API). An MCP Client (the LLM application) connects via a standardized protocol (JSON-RPC 2.0). Enterprise benefit: the IT team builds an MCP server once for the internal CRM — then Claude Desktop, Cursor, a custom agent — all can automatically use it. No need to build separate integrations. Open standard = multiple AI models can share the same tool ecosystem — vendor lock-in reduces dramatically.</p>
         </div>
       </section>
 
@@ -1039,16 +1034,16 @@ export default function Content() {
       <section id="key-takeaways">
         <h2 style={S.h2}>Key Takeaways</h2>
         <ul style={S.ul}>
-          <li>Generative AI traditional AI ka evolutionary upgrade nahi hai — yeh fundamentally different paradigm hai. Discriminative AI classify karta hai. Generative AI create karta hai. Yeh shift $100B+ infrastructure investment drive kar raha hai globally.</li>
-          <li>Foundation models ne AI economics change kar diye hain. Pre-train once (millions) → adapt many times (thousands). LoRA aur QLoRA ne fine-tuning democratize kar diya — single H100 pe 70B model fine-tune karna now possible.</li>
-          <li>Inference is the ongoing engineering challenge. Training ek baar hoti hai. Inference continuously millions of users serve karta hai. KV cache management, continuous batching, speculative decoding, quantization — yeh sab production GenAI engineering hai.</li>
-          <li>GPU memory is the primary constraint. 70B model at FP16 = 140GB minimum — sirf weights ke liye. KV cache additional. Infrastructure planning: model size × precision → GPU count → topology → serving config. Yeh DC engineering hai.</li>
-          <li>AI Agents aur MCP production mein aa rahe hain. Function calling, MCP servers, multi-agent orchestration — 2025-26 mein enterprise AI primary interface shift kar raha hai single-turn chat se autonomous task completion ki taraf. Infrastructure: sandboxed execution, persistent state, cost monitoring mandatory.</li>
-          <li>Enterprise AI Gateway ek architectural necessity hai, nice-to-have nahi. Central governance, cost control, vendor flexibility, security — bina gateway ke enterprise scale pe achieve nahi hote.</li>
-          <li>Guardrails aur observability sirf after-the-fact safety net nahi hain — yeh engineering requirements hain. Prompt injection, hallucinations, cost spirals — sab ko proactively architect karo, not reactively patch karo.</li>
-          <li>Cost optimization GenAI operations ka core engineering discipline hai. Model cascading, prompt caching, quantization, speculative decoding — combined 60-80% cost reduction achievable. Token economics samajhna mandatory hai AI engineers ke liye.</li>
-          <li>The future is agentic, multimodal, reasoning-first. Models jo sirf text generate karte hain ab commodity ban rahe hain. Value: agents jo complex tasks autonomously complete karein, models jo genuinely reason karein, AI jo physical world understand kare.</li>
-          <li>DC engineers ke liye: Generative AI is why your next expansion is happening. Power density 40-100kW/rack, liquid cooling mandatory, InfiniBand fabric, MW-scale UPS — sab GenAI inference aur training workloads drive kar rahe hain. Yeh knowledge next years mein increasingly valuable hoga.</li>
+          <li>Generative AI is not an evolutionary upgrade of traditional AI — it is a fundamentally different paradigm. Discriminative AI classifies. Generative AI creates. This shift is driving $100B+ in infrastructure investment globally.</li>
+          <li>Foundation models have changed AI economics. Pre-train once (millions) → adapt many times (thousands). LoRA and QLoRA have democratized fine-tuning — fine-tuning a 70B model on a single H100 is now possible.</li>
+          <li>Inference is the ongoing engineering challenge. Training happens once. Inference continuously serves millions of users. KV cache management, continuous batching, speculative decoding, quantization — this is all production GenAI engineering.</li>
+          <li>GPU memory is the primary constraint. A 70B model at FP16 = 140GB minimum — just for the weights. KV cache is additional. Infrastructure planning: model size × precision → GPU count → topology → serving config. This is DC engineering.</li>
+          <li>AI Agents and MCP are arriving in production. Function calling, MCP servers, multi-agent orchestration — in 2025-26 enterprise AI is shifting its primary interface from single-turn chat toward autonomous task completion. Infrastructure: sandboxed execution, persistent state, cost monitoring are mandatory.</li>
+          <li>An Enterprise AI Gateway is an architectural necessity, not a nice-to-have. Central governance, cost control, vendor flexibility, security — none of these are achievable at enterprise scale without a gateway.</li>
+          <li>Guardrails and observability aren't just an after-the-fact safety net — they are engineering requirements. Prompt injection, hallucinations, cost spirals — architect for all of these proactively, don't patch them reactively.</li>
+          <li>Cost optimization is a core engineering discipline of GenAI operations. Model cascading, prompt caching, quantization, speculative decoding — combined, a 60-80% cost reduction is achievable. Understanding token economics is mandatory for AI engineers.</li>
+          <li>The future is agentic, multimodal, reasoning-first. Models that just generate text are becoming a commodity. The value is in: agents that autonomously complete complex tasks, models that genuinely reason, AI that understands the physical world.</li>
+          <li>For DC engineers: Generative AI is why your next expansion is happening. Power density 40-100kW/rack, liquid cooling mandatory, InfiniBand fabric, MW-scale UPS — all of this is being driven by GenAI inference and training workloads. This knowledge will become increasingly valuable in the coming years.</li>
         </ul>
       </section>
 

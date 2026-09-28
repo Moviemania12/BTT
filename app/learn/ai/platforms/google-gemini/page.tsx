@@ -27,7 +27,7 @@ export default function GoogleGeminiPage() {
         slug="google-gemini"
         headings={HEADINGS}
         readingTimeMinutes={googleGeminiMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/platforms/google-gemini">
         <Content />
       </ArticleLayout>
     </>

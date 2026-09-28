@@ -3,12 +3,12 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const aiGpuMetadata: ArticleMetadata = {
   slug: "ai-gpu",
   title: "AI GPU — The Complete Engineering Guide",
-  seoTitle: "AI GPU Kya Hai? CUDA Cores, Tensor Cores, HBM, NVLink, DGX, H100, B200 — Complete Hinglish Guide",
+  seoTitle: "What Is an AI GPU? CUDA Cores, Tensor Cores, HBM, NVLink, DGX, H100, B200 — Complete English Guide",
   seoDescription:
-    "AI GPU ka complete engineering guide — CPU vs GPU, CUDA Cores, Tensor Cores, HBM memory, NVLink, NVSwitch, MIG, DGX, HGX, GPU Cluster, AI Factory, cooling, power, monitoring, troubleshooting aur enterprise deployment. DC engineers, AI engineers aur infrastructure architects ke liye.",
+    "AI GPU's complete engineering guide — CPU vs GPU, CUDA Cores, Tensor Cores, HBM memory, NVLink, NVSwitch, MIG, DGX, HGX, GPU Cluster, AI Factory, cooling, power, monitoring, troubleshooting and enterprise deployment. For DC engineers, AI engineers and infrastructure architects.",
   canonicalUrl: "https://behindthetech.in/learn/ai/hardware/ai-gpu",
   keywords: [
-    "ai gpu kya hai",
+    "what is an ai gpu",
     "gpu explained hindi",
     "cuda cores vs tensor cores",
     "hbm memory gpu",

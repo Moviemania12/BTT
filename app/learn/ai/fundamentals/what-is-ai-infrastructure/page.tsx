@@ -27,7 +27,7 @@ export default function WhatIsAiInfrastructurePage() {
         slug="what-is-ai-infrastructure"
         headings={HEADINGS}
         readingTimeMinutes={aiInfraMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/fundamentals/what-is-ai-infrastructure">
         <Content />
       </ArticleLayout>
     </>

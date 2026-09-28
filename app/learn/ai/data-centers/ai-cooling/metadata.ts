@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(aiCoolingMetadata);
+const baseMetadata = buildPageMetadata(aiCoolingMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/data-centers/ai-cooling",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/data-centers/ai-cooling",
+      hi: "https://behindthetech.in/hi/learn/ai/data-centers/ai-cooling",
+      "x-default": "https://behindthetech.in/learn/ai/data-centers/ai-cooling",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/data-centers/ai-cooling", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: aiCoolingMetadata.title,

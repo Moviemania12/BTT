@@ -2,78 +2,78 @@ import type { FaqItem } from "@/lib/schemas";
 
 export const mlFaq: FaqItem[] = [
   {
-    question: "Machine Learning kya hota hai aur traditional programming se kaise alag hai?",
+    question: "What is Machine Learning and how is it different from traditional programming?",
     answer:
-      "Traditional programming mein engineer explicit rules likhta hai aur computer un rules ko data pe apply karta hai. Machine Learning mein yeh process ulta hota hai — engineer labeled data provide karta hai aur algorithm automatically rules derive karta hai. ML tabhi use karo jab rules too complex hain to enumerate (face recognition), ya environment continuously change hota hai (fraud patterns), ya personalization required hai (recommendations). Traditional approach tab use karo jab rules clearly definable aur stable hain.",
+      "In traditional programming, the engineer writes explicit rules and the computer applies those rules to data. In Machine Learning, this process is reversed — the engineer provides labeled data, and the algorithm automatically derives the rules. Use ML when rules are too complex to enumerate (face recognition), the environment keeps changing (fraud patterns), or personalization is required (recommendations). Use the traditional approach when rules are clearly definable and stable.",
   },
   {
-    question: "Supervised aur Unsupervised Learning mein kya difference hai?",
+    question: "What is the difference between Supervised and Unsupervised Learning?",
     answer:
-      "Supervised Learning mein labeled data hota hai — har training example mein input aur correct output dono. Algorithm input-output mapping sikhta hai. Examples: spam detection, fraud classification, image recognition. Unsupervised Learning mein labels nahi hote — algorithm apne aap data mein hidden patterns dhundta hai. Examples: customer segmentation, anomaly detection, topic modeling. Semi-supervised approach dono ko combine karta hai: thodi labeled data + bahut zyada unlabeled data.",
+      "Supervised Learning uses labeled data — every training example has both an input and the correct output. The algorithm learns the input-output mapping. Examples: spam detection, fraud classification, image recognition. Unsupervised Learning has no labels — the algorithm discovers hidden patterns in the data on its own. Examples: customer segmentation, anomaly detection, topic modeling. A semi-supervised approach combines both: a small amount of labeled data plus a much larger amount of unlabeled data.",
   },
   {
-    question: "ML Infrastructure mein GPU kyun zaroori hai CPU ki bajay?",
+    question: "Why is GPU needed for ML Infrastructure instead of CPU?",
     answer:
-      "Neural network training ka core operation matrix multiplication hai — inherently parallel. GPU mein 10,000-16,000+ cores hain jo simultaneously yeh operations perform karte hain. CPU mein sirf 8-128 powerful general-purpose cores hain. Ek H100 GPU matrix multiplication mein top-end CPU se 60-80x faster hai. Large model training ke liye thousands of GPUs simultaneously kaam karte hain — yeh scale CPU architecture pe possible hi nahi hai.",
+      "The core operation of neural network training is matrix multiplication — inherently parallel. A GPU has 10,000-16,000+ cores that perform these operations simultaneously. A CPU has only 8-128 powerful general-purpose cores. A single H100 GPU is 60-80x faster than a top-end CPU at matrix multiplication. For large model training, thousands of GPUs work simultaneously — this scale simply isn't possible on CPU architecture.",
   },
   {
-    question: "MLOps kya hota hai aur production ML mein kyun zaroori hai?",
+    question: "What is MLOps and why is it necessary in production ML?",
     answer:
-      "MLOps (Machine Learning Operations) ML model lifecycle ka engineering aur automation hai — data collection se lekar model training, deployment, monitoring aur retraining tak. Bina MLOps ke: models manually deploy hote hain, reproducibility nahi hoti, production failures detect karne mein waqt lagta hai. MLOps ke saath: CI/CD pipelines automatically models validate aur deploy karti hain, experiment tracking reproducibility ensure karta hai, monitoring data drift aur model degradation detect karta hai, automated retraining pipelines model freshness maintain karti hain.",
+      "MLOps (Machine Learning Operations) is the engineering and automation of the ML model lifecycle — from data collection through model training, deployment, monitoring, and retraining. Without MLOps: models are deployed manually, reproducibility suffers, and it takes a long time to detect production failures. With MLOps: CI/CD pipelines automatically validate and deploy models, experiment tracking ensures reproducibility, monitoring detects data drift and model degradation, and automated retraining pipelines maintain model freshness.",
   },
   {
-    question: "Feature Store kya hai aur kyun important hai?",
+    question: "What is a Feature Store and why is it important?",
     answer:
-      "Feature Store centralized repository hai precomputed ML features ke liye. Do critical problems solve karta hai: (1) Training-serving skew — training mein features alag compute hote hain serving se. Feature store ensure karta hai ki same features dono jagah use hote hain. (2) Feature reuse — ek team ki computed features doosri team ke models bhi use kar sakti hain without recomputation. Online feature store (Redis) real-time inference ke liye low-latency reads provide karta hai. Offline feature store (data warehouse) training ke liye large-scale feature computation karta hai.",
+      "A Feature Store is a centralized repository for precomputed ML features. It solves two critical problems: (1) Training-serving skew — in training, features are computed differently than in serving. The feature store ensures the same features are used in both places. (2) Feature reuse — features computed by one team can be used by another team's models without recomputation. An online feature store (Redis) provides low-latency reads for real-time inference. An offline feature store (data warehouse) handles large-scale feature computation for training.",
   },
   {
-    question: "Distributed Training mein NCCL kya karta hai?",
+    question: "What does NCCL do in Distributed Training?",
     answer:
-      "NCCL (NVIDIA Collective Communications Library) GPU-optimized communication library hai jo distributed training mein collective operations handle karta hai — all-reduce (gradients synchronize karna), broadcast, scatter, gather. Distributed training mein har GPU apne data batch pe gradients compute karta hai, phir NCCL in gradients ko all GPUs ke beech aggregate karta hai taaki sab GPUs consistent updated model weights rakhein. NCCL InfiniBand aur NVLink ke liye natively optimized hai — maximum bandwidth aur minimum latency ke liye.",
+      "NCCL (NVIDIA Collective Communications Library) is a GPU-optimized communication library that handles collective operations in distributed training — all-reduce (synchronizing gradients), broadcast, scatter, gather. In distributed training, each GPU computes gradients on its own data batch, and NCCL then aggregates these gradients across all GPUs so every GPU keeps a consistent, updated set of model weights. NCCL is natively optimized for InfiniBand and NVLink — for maximum bandwidth and minimum latency.",
   },
   {
-    question: "Data Drift kya hai aur production ML mein kyun problematic hai?",
+    question: "What is Data Drift and why is it problematic in production ML?",
     answer:
-      "Data drift tab hota hai jab real-world data distribution shift hoti hai training distribution se. Covariate shift: input feature distribution changes (average transaction amount 2019 se 2024 dramatically badha). Concept drift: input-output relationship changes (fraud patterns naye techniques adopt karte hain). Label shift: output class distribution changes. Problem: model stale training data pe based predictions karta rehta hai. Solution: statistical monitoring (KS test, PSI), automated retraining triggers, business metric correlation. Silent failure hai — model errors return nahi karta, bas inaccurate predictions deta hai.",
+      "Data drift occurs when the real-world data distribution shifts away from the training distribution. Covariate shift: the input feature distribution changes (average transaction amount rose dramatically from 2019 to 2024). Concept drift: the input-output relationship changes (fraud patterns adopt new techniques). Label shift: the output class distribution changes. The problem: the model keeps making predictions based on stale training data. Solution: statistical monitoring (KS test, PSI), automated retraining triggers, correlation with business metrics. It's a silent failure — the model doesn't throw errors, it just gives inaccurate predictions.",
   },
   {
-    question: "Model Quantization kya hai aur inference mein kaise help karta hai?",
+    question: "What is Model Quantization and how does it help with inference?",
     answer:
-      "Quantization model weights ko high-precision format (FP32/FP16) se lower precision (INT8, INT4) mein convert karta hai. Benefits: memory footprint reduce hota hai (INT4 = 4x reduction vs FP16), inference speed improve hoti hai (lower precision = faster compute), power consumption kam hoti hai. 70B parameter model at FP16: ~140GB GPU memory — multiple H100s required. Same model at INT4: ~35GB — ek H100 pe fit. Quality tradeoff: minimal for most practical applications. Tools: TensorRT, bitsandbytes, GPTQ, AWQ.",
+      "Quantization converts model weights from a high-precision format (FP32/FP16) to lower precision (INT8, INT4). Benefits: reduced memory footprint (INT4 = 4x reduction vs FP16), improved inference speed (lower precision = faster compute), and lower power consumption. A 70B parameter model at FP16: ~140GB of GPU memory — requires multiple H100s. The same model at INT4: ~35GB — fits on a single H100. Quality tradeoff: minimal for most practical applications. Tools: TensorRT, bitsandbytes, GPTQ, AWQ.",
   },
   {
-    question: "ML Engineer aur Data Scientist mein kya difference hai?",
+    question: "What is the difference between an ML Engineer and a Data Scientist?",
     answer:
-      "Data Scientist primarily model development pe focus karta hai — data analysis, feature engineering, algorithm selection, experimentation. Production deployment secondary hoti hai. ML Engineer production ML systems build karta hai — training pipelines, serving infrastructure, monitoring, automation. Systems engineering background important hai. Data Engineer data infrastructure build karta hai — pipelines, warehouses, lake architectures. MLOps Engineer CI/CD for ML — automation, deployment, monitoring. Platform Engineer GPU clusters, Kubernetes, infrastructure maintain karta hai jo ML workloads run hote hain.",
+      "A Data Scientist focuses primarily on model development — data analysis, feature engineering, algorithm selection, experimentation. Production deployment is secondary. An ML Engineer builds production ML systems — training pipelines, serving infrastructure, monitoring, automation. A systems engineering background matters here. A Data Engineer builds data infrastructure — pipelines, warehouses, lake architectures. An MLOps Engineer handles CI/CD for ML — automation, deployment, monitoring. A Platform Engineer maintains GPU clusters, Kubernetes, and the infrastructure that ML workloads run on.",
   },
   {
-    question: "AI Governance aur Responsible AI kya hai?",
+    question: "What is AI Governance and Responsible AI?",
     answer:
-      "AI Governance framework hai jo ensure karta hai ki AI systems ethical, fair, transparent, aur compliant hain. Key dimensions: (1) Bias aur Fairness — models discriminate nahi karne chahiye protected characteristics pe. (2) Explainability — decisions explain honi chahiye, especially regulated domains mein. (3) Privacy — training data aur model outputs personal information expose nahi karne chahiye. (4) Regulatory compliance — EU AI Act (2024), GDPR ML systems pe specific requirements impose karta hai. (5) Auditing — model decisions traceable aur auditable hone chahiye. Organizations: model cards, datasheets for datasets, bias testing reports publish karte hain.",
+      "AI Governance is a framework that ensures AI systems are ethical, fair, transparent, and compliant. Key dimensions: (1) Bias and Fairness — models shouldn't discriminate on protected characteristics. (2) Explainability — decisions should be explainable, especially in regulated domains. (3) Privacy — training data and model outputs shouldn't expose personal information. (4) Regulatory compliance — the EU AI Act (2024) and GDPR impose specific requirements on ML systems. (5) Auditing — model decisions should be traceable and auditable. Organizations publish model cards, datasheets for datasets, and bias testing reports.",
   },
   {
-    question: "Cloud ML (SageMaker/Vertex AI) vs On-Premises ML infrastructure — kya choose karein?",
+    question: "Cloud ML (SageMaker/Vertex AI) vs on-premises ML infrastructure — which should you choose?",
     answer:
-      "Cloud choose karo jab: experimentation phase mein ho, GPU expertise limited hai, workloads variable/unpredictable hain, quick start chahiye bina CAPEX ke. On-premises justify karo jab: GPU utilization consistently >70% for 12+ months, data sovereignty requirements hain (banking, healthcare), cloud spend Rs. 2-5 crore+ per year GPU pe, deep hardware customization needed. Hybrid common hai: training on-premises, inference on cloud with autoscaling. Managed cloud ML services (SageMaker, Vertex AI) infrastructure complexity abstract karte hain — ideal for teams jinka focus ML hai, not infrastructure.",
+      "Choose cloud when: you're in the experimentation phase, GPU expertise is limited, workloads are variable/unpredictable, or you need a quick start without CAPEX. Justify on-premises when: GPU utilization stays consistently above 70% for 12+ months, there are data sovereignty requirements (banking, healthcare), cloud GPU spend exceeds Rs. 2-5 crore+ per year, or deep hardware customization is needed. Hybrid is common: training on-premises, inference on cloud with autoscaling. Managed cloud ML services (SageMaker, Vertex AI) abstract away infrastructure complexity — ideal for teams whose focus is ML, not infrastructure.",
   },
   {
-    question: "ML model ko production mein deploy karne se pehle kya verify karna chahiye?",
+    question: "What should you verify before deploying an ML model to production?",
     answer:
-      "Pre-deployment checklist: (1) Offline metrics sufficient hain — AUC, F1, precision/recall business requirements satisfy karte hain. (2) Latency SLA met hai — inference time production requirement ke andar hai. (3) A/B test plan ready hai — traffic split, metric tracking, statistical significance. (4) Monitoring configured hai — data drift detection, prediction distribution, business metrics. (5) Rollback plan documented hai — kab aur kaise rollback karein. (6) Feature store consistency verified hai — same features training aur serving mein. (7) Model card documented hai — training data, known limitations, intended use. (8) Load test complete hai — peak traffic pe model stable hai.",
+      "Pre-deployment checklist: (1) Offline metrics are sufficient — AUC, F1, precision/recall meet business requirements. (2) Latency SLA is met — inference time is within the production requirement. (3) A/B test plan is ready — traffic split, metric tracking, statistical significance. (4) Monitoring is configured — data drift detection, prediction distribution, business metrics. (5) Rollback plan is documented — when and how to roll back. (6) Feature store consistency is verified — same features in training and serving. (7) Model card is documented — training data, known limitations, intended use. (8) Load testing is complete — the model is stable under peak traffic.",
   },
   {
-    question: "Machine Learning mein Overfitting kaise detect aur fix karte hain?",
+    question: "How do you detect and fix Overfitting in Machine Learning?",
     answer:
-      "Detection: training accuracy consistently validation accuracy se zyada high hai, gap training ke saath badhta jaata hai. Loss curves diverge hoti hain — training loss girta hai, validation loss plateau ya increase karta hai. Fixes: (1) More training data — most effective. (2) Regularization — L1 (sparse features), L2 (weight decay), Dropout (neural networks). (3) Simpler model architecture. (4) Data augmentation — training examples artificially diverse banao. (5) Early stopping — validation loss improve hona band ho toh training rok do. (6) Cross-validation — more reliable performance estimate.",
+      "Detection: training accuracy is consistently much higher than validation accuracy, and the gap grows as training progresses. Loss curves diverge — training loss keeps falling, validation loss plateaus or increases. Fixes: (1) More training data — the most effective. (2) Regularization — L1 (sparse features), L2 (weight decay), Dropout (neural networks). (3) A simpler model architecture. (4) Data augmentation — artificially diversify the training examples. (5) Early stopping — stop training once validation loss stops improving. (6) Cross-validation — a more reliable performance estimate.",
   },
   {
-    question: "ML vs Deep Learning vs Generative AI mein kya relationship hai?",
+    question: "What is the relationship between ML, Deep Learning, and Generative AI?",
     answer:
-      "Yeh nested categories hain. AI sabse broad category hai — intelligence simulate karne wale any approach. Machine Learning AI ka subset hai — data se automatically learning. Deep Learning ML ka subset hai — multi-layer neural networks use karta hai, large datasets aur compute se scale karta hai. Generative AI Deep Learning models ka application hai — text, images, audio, code generate karna. Traditional ML (decision trees, SVM, regression) small datasets pe bhi kaam karta hai. Deep Learning typically large datasets aur GPUs required karta hai. GenAI massive compute aur specialized infrastructure chahti hai.",
+      "These are nested categories. AI is the broadest category — any approach that simulates intelligence. Machine Learning is a subset of AI — learning automatically from data. Deep Learning is a subset of ML — it uses multi-layer neural networks and scales with large datasets and compute. Generative AI is an application of Deep Learning models — generating text, images, audio, code. Traditional ML (decision trees, SVM, regression) works even on small datasets. Deep Learning typically requires large datasets and GPUs. GenAI needs massive compute and specialized infrastructure.",
   },
   {
-    question: "LoRA aur QLoRA kya hain aur fine-tuning mein kaise use hote hain?",
+    question: "What are LoRA and QLoRA, and how are they used in fine-tuning?",
     answer:
-      "LoRA (Low-Rank Adaptation) pre-trained large model ko efficiently fine-tune karne ka technique hai. Full fine-tuning: sab parameters update karo — expensive, memory-intensive. LoRA: original model parameters freeze karo, sirf small low-rank matrices train karo (typically 0.1-1% of original parameters). Memory aur compute dramatically reduce hoti hai. QLoRA: LoRA + quantization (4-bit base model) — extremely memory-efficient fine-tuning. 70B model fine-tuning: typically 8+ H100s required at full precision. QLoRA se: single H100 pe possible. Production use: custom domain adaptation, instruction fine-tuning, task-specific specialization of large models.",
+      "LoRA (Low-Rank Adaptation) is a technique for efficiently fine-tuning a pre-trained large model. Full fine-tuning: update all the parameters — expensive, memory-intensive. LoRA: freeze the original model parameters, train only small low-rank matrices (typically 0.1-1% of the original parameters). Memory and compute drop dramatically. QLoRA: LoRA + quantization (4-bit base model) — extremely memory-efficient fine-tuning. Fine-tuning a 70B model: typically needs 8+ H100s at full precision. With QLoRA: possible on a single H100. Production uses: custom domain adaptation, instruction fine-tuning, task-specific specialization of large models.",
   },
 ];

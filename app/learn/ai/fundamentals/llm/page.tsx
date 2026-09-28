@@ -27,7 +27,7 @@ export default function LargeLanguageModelsPage() {
         slug="llm"
         headings={HEADINGS}
         readingTimeMinutes={llmMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/fundamentals/llm">
         <Content />
       </ArticleLayout>
     </>

@@ -27,7 +27,7 @@ export default function MetaAiPage() {
         slug="meta-ai"
         headings={HEADINGS}
         readingTimeMinutes={metaAiMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/platforms/meta-ai">
         <Content />
       </ArticleLayout>
     </>

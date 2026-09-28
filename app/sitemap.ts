@@ -562,6 +562,196 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       alternates: { languages: { en: 'https://behindthetech.in/learn/it/storage/san', hi: 'https://behindthetech.in/hi/learn/it/storage/san' } },
     },
+    {
+      url: 'https://behindthetech.in/learn/ai/data-centers/ai-cooling',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/data-centers/ai-cooling', hi: 'https://behindthetech.in/hi/learn/ai/data-centers/ai-cooling' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/data-centers/ai-cooling',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/data-centers/ai-cooling', hi: 'https://behindthetech.in/hi/learn/ai/data-centers/ai-cooling' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/data-centers/ai-data-center-basics',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/data-centers/ai-data-center-basics', hi: 'https://behindthetech.in/hi/learn/ai/data-centers/ai-data-center-basics' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/data-centers/ai-data-center-basics',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/data-centers/ai-data-center-basics', hi: 'https://behindthetech.in/hi/learn/ai/data-centers/ai-data-center-basics' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/data-centers/ai-networking',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/data-centers/ai-networking', hi: 'https://behindthetech.in/hi/learn/ai/data-centers/ai-networking' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/data-centers/ai-networking',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/data-centers/ai-networking', hi: 'https://behindthetech.in/hi/learn/ai/data-centers/ai-networking' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/data-centers/ai-storage',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/data-centers/ai-storage', hi: 'https://behindthetech.in/hi/learn/ai/data-centers/ai-storage' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/data-centers/ai-storage',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/data-centers/ai-storage', hi: 'https://behindthetech.in/hi/learn/ai/data-centers/ai-storage' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/data-centers/gpu-cluster',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/data-centers/gpu-cluster', hi: 'https://behindthetech.in/hi/learn/ai/data-centers/gpu-cluster' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/data-centers/gpu-cluster',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/data-centers/gpu-cluster', hi: 'https://behindthetech.in/hi/learn/ai/data-centers/gpu-cluster' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/fundamentals/deep-learning',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/fundamentals/deep-learning', hi: 'https://behindthetech.in/hi/learn/ai/fundamentals/deep-learning' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/fundamentals/deep-learning',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/fundamentals/deep-learning', hi: 'https://behindthetech.in/hi/learn/ai/fundamentals/deep-learning' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/fundamentals/generative-ai',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/fundamentals/generative-ai', hi: 'https://behindthetech.in/hi/learn/ai/fundamentals/generative-ai' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/fundamentals/generative-ai',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/fundamentals/generative-ai', hi: 'https://behindthetech.in/hi/learn/ai/fundamentals/generative-ai' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/fundamentals/llm',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/fundamentals/llm', hi: 'https://behindthetech.in/hi/learn/ai/fundamentals/llm' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/fundamentals/llm',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/fundamentals/llm', hi: 'https://behindthetech.in/hi/learn/ai/fundamentals/llm' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/fundamentals/machine-learning',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/fundamentals/machine-learning', hi: 'https://behindthetech.in/hi/learn/ai/fundamentals/machine-learning' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/fundamentals/machine-learning',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/fundamentals/machine-learning', hi: 'https://behindthetech.in/hi/learn/ai/fundamentals/machine-learning' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/fundamentals/what-is-ai-infrastructure',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/fundamentals/what-is-ai-infrastructure', hi: 'https://behindthetech.in/hi/learn/ai/fundamentals/what-is-ai-infrastructure' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/fundamentals/what-is-ai-infrastructure',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/fundamentals/what-is-ai-infrastructure', hi: 'https://behindthetech.in/hi/learn/ai/fundamentals/what-is-ai-infrastructure' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/hardware/ai-accelerators',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/hardware/ai-accelerators', hi: 'https://behindthetech.in/hi/learn/ai/hardware/ai-accelerators' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/hardware/ai-accelerators',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/hardware/ai-accelerators', hi: 'https://behindthetech.in/hi/learn/ai/hardware/ai-accelerators' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/hardware/ai-gpu',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/hardware/ai-gpu', hi: 'https://behindthetech.in/hi/learn/ai/hardware/ai-gpu' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/hardware/ai-gpu',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/hardware/ai-gpu', hi: 'https://behindthetech.in/hi/learn/ai/hardware/ai-gpu' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/hardware/amd-ai-platforms',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/hardware/amd-ai-platforms', hi: 'https://behindthetech.in/hi/learn/ai/hardware/amd-ai-platforms' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/hardware/amd-ai-platforms',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/hardware/amd-ai-platforms', hi: 'https://behindthetech.in/hi/learn/ai/hardware/amd-ai-platforms' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/hardware/nvidia-architecture',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/hardware/nvidia-architecture', hi: 'https://behindthetech.in/hi/learn/ai/hardware/nvidia-architecture' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/hardware/nvidia-architecture',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/hardware/nvidia-architecture', hi: 'https://behindthetech.in/hi/learn/ai/hardware/nvidia-architecture' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/hardware/tpu',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/hardware/tpu', hi: 'https://behindthetech.in/hi/learn/ai/hardware/tpu' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/hardware/tpu',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/hardware/tpu', hi: 'https://behindthetech.in/hi/learn/ai/hardware/tpu' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/platforms/anthropic',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/platforms/anthropic', hi: 'https://behindthetech.in/hi/learn/ai/platforms/anthropic' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/platforms/anthropic',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/platforms/anthropic', hi: 'https://behindthetech.in/hi/learn/ai/platforms/anthropic' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/platforms/google-gemini',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/platforms/google-gemini', hi: 'https://behindthetech.in/hi/learn/ai/platforms/google-gemini' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/platforms/google-gemini',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/platforms/google-gemini', hi: 'https://behindthetech.in/hi/learn/ai/platforms/google-gemini' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/platforms/meta-ai',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/platforms/meta-ai', hi: 'https://behindthetech.in/hi/learn/ai/platforms/meta-ai' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/platforms/meta-ai',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/platforms/meta-ai', hi: 'https://behindthetech.in/hi/learn/ai/platforms/meta-ai' } },
+    },
+    {
+      url: 'https://behindthetech.in/learn/ai/platforms/openai',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/platforms/openai', hi: 'https://behindthetech.in/hi/learn/ai/platforms/openai' } },
+    },
+    {
+      url: 'https://behindthetech.in/hi/learn/ai/platforms/openai',
+      lastModified: new Date(),
+      alternates: { languages: { en: 'https://behindthetech.in/learn/ai/platforms/openai', hi: 'https://behindthetech.in/hi/learn/ai/platforms/openai' } },
+    },
     { url: 'https://behindthetech.in/tools', lastModified: new Date() },
   { url: 'https://behindthetech.in/about/contact', lastModified: new Date() },
 

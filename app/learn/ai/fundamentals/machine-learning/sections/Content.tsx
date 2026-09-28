@@ -22,13 +22,13 @@ export default function Content() {
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
         <p style={S.p}>
-          Machine Learning (ML) ek approach hai jisme computers explicitly programmed rules follow karne ki bajay data se patterns seekhte hain. Traditional programming mein engineer rules likhta hai — computer un rules ko data pe apply karta hai. ML mein yeh ulta hota hai: engineer data deta hai — computer khud rules derive karta hai.
+          Machine Learning (ML) is an approach in which computers learn patterns from data instead of following explicitly programmed rules. In traditional programming, the engineer writes the rules — the computer applies those rules to data. In ML this is reversed: the engineer provides the data — the computer derives the rules itself.
         </p>
         <p style={S.p}>
-          Yeh distinction simple lagti hai, lekin infrastructure implications massive hain. Rules-based systems ek laptop pe chal sakte hain. Production ML systems — jo real organizations run karte hain — GPU clusters, petabyte-scale storage, high-throughput networking, aur continuous deployment pipelines maangti hain.
+          This distinction sounds simple, but its infrastructure implications are massive. Rules-based systems can run on a single laptop. Production ML systems — the ones real organizations run — require GPU clusters, petabyte-scale storage, high-throughput networking, and continuous deployment pipelines.
         </p>
-        <Callout type="important" title="Pichle Article se Continuity">
-          Previous article mein AI Infrastructure ka complete ecosystem dekha — GPU clusters, NVLink, InfiniBand, liquid cooling. Is article mein us infrastructure ka primary consumer samjhenge: Machine Learning workloads jo us hardware pe actually chalte hain.
+        <Callout type="important" title="Continuity from the Previous Article">
+          The previous article looked at the complete AI Infrastructure ecosystem — GPU clusters, NVLink, InfiniBand, liquid cooling. This article looks at the primary consumer of that infrastructure: the Machine Learning workloads that actually run on that hardware.
         </Callout>
       </section>
 
@@ -36,12 +36,12 @@ export default function Content() {
       <section id="who-should-read">
         <h2 style={S.h2}>Who Should Read This</h2>
         <ul style={S.ul}>
-          <li><strong>Data Center Engineers:</strong> Samajhna ki ML training jobs itni power aur cooling kyun consume karti hain, aur inference serving ke specific infrastructure requirements kya hain.</li>
-          <li><strong>IT Infrastructure Engineers:</strong> ML pipelines ke storage, networking, aur compute requirements jo standard enterprise workloads se fundamentally different hain.</li>
-          <li><strong>Cloud Engineers:</strong> ML training clusters design karna, GPU instance selection, aur managed ML services (SageMaker, Vertex AI, Azure ML) ka infrastructure.</li>
-          <li><strong>AI/MLOps Engineers:</strong> End-to-end ML pipeline ka deeper infrastructure understanding — data ingestion se model serving tak.</li>
-          <li><strong>System Administrators:</strong> GPU server management, CUDA ecosystem, aur ML job scheduling (Slurm, Kubernetes).</li>
-          <li><strong>Technical Managers aur CTOs:</strong> ML infrastructure investments ko justify karna aur evaluate karna.</li>
+          <li><strong>Data Center Engineers:</strong> Understand why ML training jobs consume so much power and cooling, and what the specific infrastructure requirements are for inference serving.</li>
+          <li><strong>IT Infrastructure Engineers:</strong> The storage, networking, and compute requirements of ML pipelines, which are fundamentally different from standard enterprise workloads.</li>
+          <li><strong>Cloud Engineers:</strong> Designing ML training clusters, GPU instance selection, and the infrastructure behind managed ML services (SageMaker, Vertex AI, Azure ML).</li>
+          <li><strong>AI/MLOps Engineers:</strong> A deeper infrastructure understanding of the end-to-end ML pipeline — from data ingestion to model serving.</li>
+          <li><strong>System Administrators:</strong> GPU server management, the CUDA ecosystem, and ML job scheduling (Slurm, Kubernetes).</li>
+          <li><strong>Technical Managers and CTOs:</strong> Justifying and evaluating ML infrastructure investments.</li>
         </ul>
       </section>
 
@@ -49,8 +49,8 @@ export default function Content() {
       <section id="what-you-will-learn">
         <h2 style={S.h2}>What You Will Learn</h2>
         <ul style={S.ul}>
-          <li>Machine Learning actually kaise kaam karta hai — mathematics ki zaroorat ke bina clear engineering mental model</li>
-          <li>Supervised, Unsupervised, Semi-supervised, aur Reinforcement Learning — real use cases ke saath</li>
+          <li>How Machine Learning actually works — a clear engineering mental model, no math required</li>
+          <li>Supervised, Unsupervised, Semi-supervised, and Reinforcement Learning — with real use cases</li>
           <li>Complete ML Lifecycle: Collect → Clean → Train → Validate → Deploy → Monitor → Retrain → Retire</li>
           <li>ML Infrastructure Architecture: Data Lake, Feature Store, Training Cluster, Model Registry, Serving, Monitoring</li>
           <li>Distributed Training engineering: NCCL, DDP, FSDP, ZeRO, Horovod, DeepSpeed, Megatron-LM</li>
@@ -69,7 +69,7 @@ export default function Content() {
         <h2 style={S.h2}>Learning Path</h2>
         <ul style={S.ul}>
           <li><strong>Previous:</strong> <TopicLink slug="what-is-ai-infrastructure" variant="inline" /> — GPU clusters, InfiniBand, liquid cooling</li>
-          <li><strong>Current:</strong> Machine Learning — concepts, workflow, aur infrastructure requirements</li>
+          <li><strong>Current:</strong> Machine Learning — concepts, workflow, and infrastructure requirements</li>
           <li><strong>Next:</strong> <TopicLink slug="deep-learning" variant="inline" /> — neural networks, architectures, transformers</li>
           <li><strong>Related:</strong> <TopicLink slug="generative-ai" variant="inline" />, <TopicLink slug="llm" variant="inline" />, <TopicLink slug="ai-gpu" variant="inline" /></li>
         </ul>
@@ -79,13 +79,13 @@ export default function Content() {
       <section id="introduction">
         <h2 style={S.h2}>Introduction</h2>
         <p style={S.p}>
-          Pichle article mein ek specific example use kiya tha: AlexNet. 2012 mein do NVIDIA GTX 580 GPUs pe train hua, 3GB memory combined, aur training mein kaafi samay laga. Phir bhi usne ImageNet competition aise jeeta ki puri research community ka direction change ho gayi.
+          The previous article used a specific example: AlexNet. In 2012 it trained on two NVIDIA GTX 580 GPUs, with 3GB combined memory, and training took quite a while. Yet it won the ImageNet competition so decisively that it changed the direction of the entire research community.
         </p>
         <p style={S.p}>
-          Us moment se pehle, computer vision mein dominant approach thi: engineers manually features define karte the — "edge yahan hai, texture woh hai, shape aise dikhti hai" — aur phir classifier un predefined features pe kaam karta tha. AlexNet ne kuch alag kiya. Usne raw pixels se seedha classification sikhi. Kisi ne manually nahi bataya ki "yeh corner hai." Network ne khud data dekha, patterns identify kiye, aur representation banayi jo classification ke liye useful thi.
+          Before that moment, the dominant approach in computer vision was: engineers manually defined features — "here's an edge, there's a texture, this is what a shape looks like" — and a classifier then worked on those predefined features. AlexNet did something different. It learned classification directly from raw pixels. Nobody manually told it "this is a corner." The network looked at the data itself, identified patterns, and built representations useful for classification.
         </p>
         <p style={S.p}>
-          Yahi Machine Learning ka core idea hai: data se automatically learn karna. Lekin yeh idea ek massive infrastructure dependency create karta hai. Data chahiye (bahut zyada). Compute chahiye (specialized, expensive). Storage chahiye (high-throughput, parallel). Aur ek deployment pipeline chahiye jo trained model ko production mein le jaaye aur wahan stable rakhe.
+          This is the core idea of Machine Learning: learning automatically from data. But this idea creates a massive infrastructure dependency. You need data (a lot of it). You need compute (specialized, expensive). You need storage (high-throughput, parallel). And you need a deployment pipeline that takes the trained model into production and keeps it stable there.
         </p>
       </section>
 
@@ -93,19 +93,19 @@ export default function Content() {
       <section id="what-is-ml">
         <h2 style={S.h2}>What is Machine Learning?</h2>
         <p style={S.p}>
-          Formally: Machine Learning ek field of computer science hai jisme algorithms aise design kiye jaate hain jo experience (data) se automatically improve karte hain without being explicitly programmed.
+          Formally: Machine Learning is a field of computer science in which algorithms are designed to automatically improve from experience (data) without being explicitly programmed.
         </p>
         <p style={S.p}>
-          Ek concrete example se samjhte hain. Email spam filter:
+          Let's understand this with a concrete example. An email spam filter:
         </p>
         <p style={S.p}>
-          <strong>Traditional approach:</strong> Engineer manually rules likhta — "Free money" contain karta hai → spam. Subject mein excessive capitals → spam. Problem: spammers in rules ko quickly bypass karte hain. Engineer baar baar naye rules add karta rehta hai, rule set brittle ho jaata hai.
+          <strong>Traditional approach:</strong> The engineer manually writes rules — contains "Free money" → spam. Excessive capitals in the subject → spam. Problem: spammers quickly bypass these rules. The engineer keeps adding new rules, and the rule set becomes brittle.
         </p>
         <p style={S.p}>
-          <strong>ML approach:</strong> 100,000 labeled emails collect karo — "spam" ya "not spam" tagged. ML algorithm patterns extract karta hai automatically — word combinations, sender patterns, timing, link density — without engineer explicitly defining them. Naye examples pe model apne seekhe hue patterns apply karta hai.
+          <strong>ML approach:</strong> Collect 100,000 labeled emails — tagged "spam" or "not spam." The ML algorithm automatically extracts patterns — word combinations, sender patterns, timing, link density — without the engineer explicitly defining them. The model applies the patterns it has learned to new examples.
         </p>
         <Callout type="important" title="Key Distinction">
-          Ek traditional program ek fixed function hai: Input → [Fixed Rules] → Output. Ek ML program ek learnable function hai: Input + Data → [Learning Algorithm] → Learned Model → Output. Woh "learned model" — woh sab kuch hai jo training process generate karta hai.
+          A traditional program is a fixed function: Input → [Fixed Rules] → Output. An ML program is a learnable function: Input + Data → [Learning Algorithm] → Learned Model → Output. That "learned model" is everything the training process generates.
         </Callout>
       </section>
 
@@ -113,12 +113,12 @@ export default function Content() {
       <section id="why-ml-exists">
         <h2 style={S.h2}>Why Machine Learning Exists</h2>
         <p style={S.p}>
-          Traditional programming itne saalon se kaam kar rahi thi — toh ML kyun chahiye? Answer teen problems mein hai jinhe traditional programming solve nahi kar sakti:
+          Traditional programming has worked for so many years — so why do we need ML? The answer lies in three problems that traditional programming can't solve:
         </p>
         <ul style={S.ul}>
-          <li><strong>Complexity jahan rules manually define karna impossible hai:</strong> Face recognition, natural language understanding, medical image diagnosis. Koi bhi engineer yeh rules sufficiently define nahi kar sakta. ML millions of labeled examples se automatically seekh sakta hai.</li>
-          <li><strong>Scale jahan manual rules maintain karna economically infeasible hai:</strong> Amazon pe crores of daily transactions. Fraudsters continuously naye patterns develop karte hain. Manual rule updates practically impossible hain. ML system continuously new patterns absorb kar sakta hai.</li>
-          <li><strong>Personalization jahan ek rule sab pe apply nahi hoti:</strong> Netflix ke paas 260M+ subscribers hain. Har subscriber ki preferences different hain. ML individual behavior patterns learn karke per-user recommendations generate karta hai — at scale.</li>
+          <li><strong>Complexity where rules can't be manually defined:</strong> Face recognition, natural language understanding, medical image diagnosis. No engineer can sufficiently define these rules. ML can learn automatically from millions of labeled examples.</li>
+          <li><strong>Scale where maintaining manual rules is economically infeasible:</strong> Amazon processes crores of daily transactions. Fraudsters continuously develop new patterns. Manual rule updates are practically impossible. An ML system can continuously absorb new patterns.</li>
+          <li><strong>Personalization where one rule doesn't fit everyone:</strong> Netflix has 260M+ subscribers. Every subscriber's preferences are different. ML learns individual behavior patterns to generate per-user recommendations — at scale.</li>
         </ul>
       </section>
 
@@ -126,7 +126,7 @@ export default function Content() {
       <section id="history">
         <h2 style={S.h2}>History and Evolution</h2>
         <p style={S.p}>
-          ML ka evolution AI Infrastructure ke evolution se directly linked hai. Dono simultaneously develop hue — ek ne doosre ko possible banaya.
+          The evolution of ML is directly linked to the evolution of AI Infrastructure. The two developed simultaneously — each made the other possible.
         </p>
 
         <section id="ai-evolution-timeline">
@@ -157,16 +157,16 @@ export default function Content() {
       <section id="how-ml-works">
         <h2 style={S.h2}>How Machine Learning Works</h2>
         <p style={S.p}>
-          Sab kuch samajhne ke liye ek simple mental model: <strong>ML ek function approximation problem hai.</strong>
+          A simple mental model to understand everything: <strong>ML is a function approximation problem.</strong>
         </p>
         <p style={S.p}>
-          Imagine karo ek function f hai jo inputs se outputs map karta hai. Yahan f woh "true function" hai jo yeh decision correctly karta hai — lekin hum directly access nahi kar sakte. ML kya karta hai: labeled examples se ek approximation f̂ learn karta hai jo f ke jitna close possible ho.
+          Imagine there's a function f that maps inputs to outputs. Here f is the "true function" that makes this decision correctly — but we can't access it directly. What ML does: it learns an approximation f̂ from labeled examples that gets as close to f as possible.
         </p>
         <p style={S.p}>
-          Yeh kaise hota hai concretely: (1) Labeled data collect karo. (2) Ek parameterized model choose karo — jaise neural network. (3) Loss define karo — model output aur actual output ka difference. (4) Gradient descent se parameters adjust karo taaki loss minimize ho. (5) Yeh process millions ya billions of times repeat karo.
+          Here's how that happens, concretely: (1) Collect labeled data. (2) Choose a parameterized model — like a neural network. (3) Define a loss — the difference between the model's output and the actual output. (4) Use gradient descent to adjust parameters to minimize the loss. (5) Repeat this process millions or billions of times.
         </p>
         <Callout type="maintenance" title="Infrastructure Perspective">
-          Step 4 — optimization — woh step hai jo GPU compute maangta hai. Gradient computation mathematically matrix multiplication hai — GPU ki sweet spot. Step 1 — data collection — parallel file systems aur high-throughput storage maangta hai. Trained model production mein serve karna — inference — latency-optimized infrastructure maangta hai.
+          Step 4 — optimization — is the step that demands GPU compute. Gradient computation is mathematically matrix multiplication — a GPU's sweet spot. Step 1 — data collection — demands parallel file systems and high-throughput storage. Serving the trained model in production — inference — demands latency-optimized infrastructure.
         </Callout>
       </section>
 
@@ -174,19 +174,19 @@ export default function Content() {
       <section id="ml-workflow">
         <h2 style={S.h2}>Machine Learning Workflow</h2>
         <p style={S.p}>
-          Real ML projects ek simple "data in, model out" se bahut zyada complex hote hain. Production ML workflow:
+          Real ML projects are far more complex than a simple "data in, model out." The production ML workflow:
         </p>
         <ol style={{ ...S.ul, listStyleType: "decimal" }}>
-          <li><strong>Problem Definition:</strong> Clear karo ki kya predict karna chahte ho. "AI improve karo" ek problem statement nahi hai. Input defined, output defined, business value clear.</li>
-          <li><strong>Data Collection aur Ingestion:</strong> Data kahan hai? Databases, APIs, logs, sensors. Pipelines build karo. Infrastructure: Kafka for streaming, ETL for batch, S3/GCS for raw data lake.</li>
-          <li><strong>Data Preparation aur Cleaning:</strong> Missing values, duplicates, inconsistent formats, outliers. Data scientists typically 60-80% time yahan spend karte hain.</li>
-          <li><strong>Feature Engineering:</strong> Raw data → ML-ready representation. Date column se "day of week," "is holiday" derive karna. Text se numerical vectors.</li>
-          <li><strong>Model Selection aur Training:</strong> Algorithm choose karo, GPU infrastructure setup karo, training run karo. Large models: distributed training across multiple GPUs.</li>
-          <li><strong>Validation aur Evaluation:</strong> Test set pe evaluate karo. Accuracy, precision, recall, F1, AUC-ROC. Business metrics se correlate karo.</li>
-          <li><strong>Hyperparameter Tuning:</strong> Multiple runs compare karo. Grid search, random search, Bayesian optimization. Each trial = significant compute.</li>
-          <li><strong>Model Deployment:</strong> REST API, batch prediction, ya real-time streaming. Inference servers, model registries, A/B testing.</li>
-          <li><strong>Monitoring aur Maintenance:</strong> Production mein accuracy track karo. Data drift detect karo. Retrain trigger karo.</li>
-          <li><strong>Retraining:</strong> Continuous loop — ek single deployment event nahi.</li>
+          <li><strong>Problem Definition:</strong> Be clear about what you want to predict. "Improve AI" is not a problem statement. Input defined, output defined, business value clear.</li>
+          <li><strong>Data Collection and Ingestion:</strong> Where is the data? Databases, APIs, logs, sensors. Build pipelines. Infrastructure: Kafka for streaming, ETL for batch, S3/GCS for the raw data lake.</li>
+          <li><strong>Data Preparation and Cleaning:</strong> Missing values, duplicates, inconsistent formats, outliers. Data scientists typically spend 60-80% of their time here.</li>
+          <li><strong>Feature Engineering:</strong> Raw data → an ML-ready representation. Deriving "day of week," "is holiday" from a date column. Text into numerical vectors.</li>
+          <li><strong>Model Selection and Training:</strong> Choose an algorithm, set up the GPU infrastructure, run training. For large models: distributed training across multiple GPUs.</li>
+          <li><strong>Validation and Evaluation:</strong> Evaluate on the test set. Accuracy, precision, recall, F1, AUC-ROC. Correlate with business metrics.</li>
+          <li><strong>Hyperparameter Tuning:</strong> Compare multiple runs. Grid search, random search, Bayesian optimization. Each trial = significant compute.</li>
+          <li><strong>Model Deployment:</strong> REST API, batch prediction, or real-time streaming. Inference servers, model registries, A/B testing.</li>
+          <li><strong>Monitoring and Maintenance:</strong> Track accuracy in production. Detect data drift. Trigger retraining.</li>
+          <li><strong>Retraining:</strong> A continuous loop — not a single deployment event.</li>
         </ol>
 
         <section id="ml-lifecycle">
@@ -195,7 +195,7 @@ export default function Content() {
             <MlLifecycleDiagram />
           </Figure>
           <p style={S.p}>
-            <strong>Retire</strong> step often overlooked hota hai. Models indefinitely production mein nahi chalte. Jab better model available ho ya business use case sunset ho, model gracefully retire karna padta hai — endpoints disable karo, storage cleanup karo, audit trail maintain karo.
+            The <strong>Retire</strong> step is often overlooked. Models don't run in production indefinitely. When a better model becomes available or the business use case sunsets, the model has to be retired gracefully — disable the endpoints, clean up storage, maintain an audit trail.
           </p>
         </section>
       </section>
@@ -207,7 +207,7 @@ export default function Content() {
         <section id="supervised">
           <h3 style={S.h3}>Supervised Learning</h3>
           <p style={S.p}>
-            Sabse common type. <strong>Labeled data</strong> se seekhna — har training example mein input aur correct output dono. Teacher ke saath padhai karna jo har answer ke liye correct solution batata hai.
+            The most common type. Learning from <strong>labeled data</strong> — every training example has both an input and the correct output. It's like studying with a teacher who gives the correct solution for every answer.
           </p>
           <ul style={S.ul}>
             <li><strong>Image classification:</strong> Input = image, Output = "cat/dog/car"</li>
@@ -216,44 +216,44 @@ export default function Content() {
             <li><strong>Price prediction:</strong> Input = house features, Output = estimated price</li>
           </ul>
           <p style={S.p}>
-            Infrastructure requirement: Labeled datasets bahut expensive hain — human annotation cost karta hai. Scale AI, Toloka jaise services annotation ke liye. Large supervised datasets: ImageNet (14M images), Common Crawl (petabytes of text).
+            Infrastructure requirement: labeled datasets are very expensive — human annotation costs money. Services like Scale AI and Toloka handle annotation. Large supervised datasets: ImageNet (14M images), Common Crawl (petabytes of text).
           </p>
         </section>
 
         <section id="unsupervised">
           <h3 style={S.h3}>Unsupervised Learning</h3>
           <p style={S.p}>
-            <strong>Unlabeled data</strong> se seekhna — algorithm apne aap data mein hidden structure dhundta hai. Bina teacher ke apne aap patterns dhundna.
+            Learning from <strong>unlabeled data</strong> — the algorithm discovers hidden structure in the data on its own. Finding patterns by itself, without a teacher.
           </p>
           <ul style={S.ul}>
-            <li><strong>Customer segmentation:</strong> Purchase behavior ke based pe groups — without pre-defining groups</li>
-            <li><strong>Anomaly detection:</strong> Network traffic mein unusual patterns — without labeled anomalies</li>
-            <li><strong>Topic modeling:</strong> Thousands of documents mein main topics identify karna automatically</li>
+            <li><strong>Customer segmentation:</strong> Grouping based on purchase behavior — without predefining groups</li>
+            <li><strong>Anomaly detection:</strong> Unusual patterns in network traffic — without labeled anomalies</li>
+            <li><strong>Topic modeling:</strong> Automatically identifying the main topics across thousands of documents</li>
           </ul>
           <p style={S.p}>
-            Infrastructure requirement: Unlabeled data much easier aur cheaper to collect. Log data, sensor data, web click streams — yeh sab naturally unlabeled hote hain aur excellent unsupervised learning candidates hain.
+            Infrastructure requirement: unlabeled data is much easier and cheaper to collect. Log data, sensor data, web click streams — all of these are naturally unlabeled and are excellent unsupervised learning candidates.
           </p>
         </section>
 
         <section id="semi-supervised">
           <h3 style={S.h3}>Semi-Supervised Learning</h3>
           <p style={S.p}>
-            <strong>Thodi labeled + bahut zyada unlabeled</strong> data ka combination. Real world mein labeled data scarce hoti hai. Medical images: radiology scans toh bahut hain, lekin har scan pe radiologist annotation time-consuming aur expensive hai. Semi-supervised: 1,000 labeled scans + 1,000,000 unlabeled scans se effective model train karo. Google Photos — kuch tagged photos + massive unlabeled corpus se person recognition improve karna.
+            A combination of <strong>a little labeled data + a lot of unlabeled data</strong>. In the real world, labeled data is scarce. Medical images: there are plenty of radiology scans, but annotating each scan with a radiologist's time is time-consuming and expensive. Semi-supervised: train an effective model from 1,000 labeled scans + 1,000,000 unlabeled scans. Google Photos — improving person recognition from a few tagged photos plus a massive unlabeled corpus.
           </p>
         </section>
 
         <section id="reinforcement">
           <h3 style={S.h3}>Reinforcement Learning</h3>
           <p style={S.p}>
-            Labeled data se bilkul alag paradigm. RL mein ek <strong>agent</strong> ek <strong>environment</strong> mein actions leta hai aur <strong>rewards ya penalties</strong> receive karta hai. Trial and error se optimal behavior seekhna.
+            A completely different paradigm from labeled data. In RL, an <strong>agent</strong> takes actions in an <strong>environment</strong> and receives <strong>rewards or penalties</strong>. Learning optimal behavior through trial and error.
           </p>
           <ul style={S.ul}>
-            <li><strong>AlphaGo:</strong> Go game mein world champion beat kiya. AlphaStar: StarCraft 2 grandmaster level.</li>
-            <li><strong>Data Center cooling:</strong> Google DeepMind ne RL use kiya DC cooling optimize karne ke liye — 40% energy reduction achieved.</li>
-            <li><strong>Recommendation systems:</strong> YouTube, TikTok — content recommend karna jo watch time maximize kare.</li>
+            <li><strong>AlphaGo:</strong> Beat the world champion at Go. AlphaStar: grandmaster-level at StarCraft 2.</li>
+            <li><strong>Data Center cooling:</strong> Google DeepMind used RL to optimize DC cooling — achieving a 40% reduction in energy.</li>
+            <li><strong>Recommendation systems:</strong> YouTube, TikTok — recommending content that maximizes watch time.</li>
           </ul>
           <p style={S.p}>
-            Infrastructure requirement: RL training particularly expensive hai — agent ko environment ke saath millions of interactions chahiye. Simulation environments at scale run karna padta hai — thousands of parallel simulations.
+            Infrastructure requirement: RL training is particularly expensive — the agent needs millions of interactions with the environment. Simulation environments have to run at scale — thousands of parallel simulations.
           </p>
         </section>
       </section>
@@ -262,7 +262,7 @@ export default function Content() {
       <section id="ml-vs-dl-vs-genai">
         <h2 style={S.h2}>ML vs Deep Learning vs Generative AI</h2>
         <p style={S.p}>
-          Yeh terms often confusingly interchange hote hain. Clear karte hain:
+          These terms often get confusingly interchanged. Let's clarify:
         </p>
         <ComparisonTable
           headers={["Category", "What It Is", "Data Requirement", "Compute Need", "Examples"]}
@@ -274,18 +274,18 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          Yeh nested circles hain — sab ML hain, sab AI hain, lekin sab AI ML nahi hain. Traditional ML (decision trees, SVM) small datasets pe bhi kaam karta hai. Deep Learning typically large datasets aur GPUs required karta hai. GenAI massive compute aur specialized infrastructure chahti hai — previous article mein jo infrastructure describe hua, woh primarily GenAI ke liye hai.
+          These are nested circles — everything is ML, everything is AI, but not all AI is ML. Traditional ML (decision trees, SVM) works even on small datasets. Deep Learning typically requires large datasets and GPUs. GenAI needs massive compute and specialized infrastructure — the infrastructure described in the previous article is primarily for GenAI.
         </p>
       </section>
 
       {/* ─── ML MODELS ──────────────────────────────────────────────────── */}
       <section id="ml-models">
-        <h2 style={S.h2}>ML Models — Kya Hota Hai Ek Model?</h2>
+        <h2 style={S.h2}>ML Models — What Exactly Is a Model?</h2>
         <p style={S.p}>
-          Technically: ek ML model ek mathematical function hai with learned parameters. Neural network model concretely: billions of floating point numbers (weights aur biases) jo layers mein organized hain. GPT-3: 175 billion parameters = roughly 350GB memory at FP16 precision.
+          Technically: an ML model is a mathematical function with learned parameters. Concretely, for a neural network model: billions of floating point numbers (weights and biases) organized into layers. GPT-3: 175 billion parameters = roughly 350GB of memory at FP16 precision.
         </p>
         <ComparisonTable
-          title="Model Size aur Infrastructure Requirements"
+          title="Model Size and Infrastructure Requirements"
           headers={["Model Size", "Memory (FP16)", "Training GPUs", "Inference GPUs"]}
           rows={[
             ["7B parameters", "~14 GB", "4-8× H100", "1× H100 or A10G"],
@@ -296,7 +296,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          Modern models typically saved hote hain PyTorch <code style={S.code}>.pt</code> files, TensorFlow SavedModel, ONNX (cross-framework), ya HuggingFace safetensors format mein.
+          Modern models are typically saved as PyTorch <code style={S.code}>.pt</code> files, a TensorFlow SavedModel, ONNX (cross-framework), or the HuggingFace safetensors format.
         </p>
       </section>
 
@@ -323,10 +323,10 @@ export default function Content() {
       <section id="features-labels">
         <h2 style={S.h2}>Features and Labels</h2>
         <p style={S.p}>
-          <strong>Labels:</strong> Training data mein correct answers. "Spam" ya "not spam." Labels woh hain jo model seekhna chahta hai predict karna. Label quality directly model quality determine karti hai — noisy labels model confusing patterns sikh sakta hai.
+          <strong>Labels:</strong> The correct answers in the training data. "Spam" or "not spam." Labels are what the model is trying to learn to predict. Label quality directly determines model quality — noisy labels can teach the model confusing patterns.
         </p>
         <p style={S.p}>
-          <strong>Features:</strong> Input variables jo model prediction ke liye use karta hai. Email spam ke liye: word count, sender domain, link count, subject length, time sent. House price ke liye: square footage, location, age, bedrooms. Feature selection aur engineering often model quality ko algorithm choice se zyada affect karta hai.
+          <strong>Features:</strong> The input variables the model uses for prediction. For email spam: word count, sender domain, link count, subject length, time sent. For house price: square footage, location, age, bedrooms. Feature selection and engineering often affect model quality more than algorithm choice does.
         </p>
       </section>
 
@@ -334,16 +334,16 @@ export default function Content() {
       <section id="dataset-preparation">
         <h2 style={S.h2}>Dataset Preparation</h2>
         <p style={S.p}>
-          "Garbage in, garbage out." Dataset quality directly model quality determine karti hai — compute amount se zyada.
+          "Garbage in, garbage out." Dataset quality directly determines model quality — more than the amount of compute does.
         </p>
         <p style={S.p}>
-          <strong>Data splitting:</strong> Training set (70-80%): model in examples pe train hota hai. Validation set (10-15%): hyperparameter tuning aur early stopping ke liye. Test set (10-15%): final evaluation — training complete hone ke baad ek baar evaluate karo.
+          <strong>Data splitting:</strong> Training set (70-80%): the model trains on these examples. Validation set (10-15%): for hyperparameter tuning and early stopping. Test set (10-15%): final evaluation — evaluated once, after training is complete.
         </p>
         <p style={S.p}>
-          <strong>Class imbalance:</strong> Fraud detection: 99.9% transactions legitimate, 0.1% fraud. Agar model sirf "legitimate" predict kare toh 99.9% accuracy — lekin useless. Fix: oversampling minority class, undersampling majority, class weights in loss function.
+          <strong>Class imbalance:</strong> Fraud detection: 99.9% of transactions are legitimate, 0.1% are fraud. If the model just predicts "legitimate" every time, that's 99.9% accuracy — but useless. Fix: oversampling the minority class, undersampling the majority, class weights in the loss function.
         </p>
-        <Callout type="warning" title="Data Leakage — Sabse Costly Mistake">
-          Future information jo prediction time pe available nahi hogi accidentally features mein include ho jaana. Credit card fraud model mein "chargeback received" feature include karna — prediction fraud hone se pehle karna hai, jab chargeback exist nahi karta. Yeh artificially high training accuracy create karta hai jo production mein completely disappear ho jaati hai.
+        <Callout type="warning" title="Data Leakage — The Most Costly Mistake">
+          Future information that won't be available at prediction time accidentally getting included in the features. Including a "chargeback received" feature in a credit card fraud model — the prediction has to happen before the fraud occurs, when the chargeback doesn't exist yet. This artificially creates high training accuracy that completely disappears in production.
         </Callout>
       </section>
 
@@ -352,9 +352,9 @@ export default function Content() {
         <h2 style={S.h2}>Data Quality</h2>
         <ul style={S.ul}>
           <li><strong>Schema validation:</strong> Expected data types, ranges, allowed values. Automated checks jo new data batches validate karein before training.</li>
-          <li><strong>Distribution monitoring:</strong> Real-world data distribution continuously shift hoti hai — "data drift." Statistical tests (Kolmogorov-Smirnov, Population Stability Index) distribution shifts detect karte hain.</li>
-          <li><strong>Label quality:</strong> Inter-annotator agreement metrics (Cohen's Kappa) label consistency measure karte hain.</li>
-          <li><strong>Data freshness:</strong> Stale training data se trained models stale predictions karte hain. 2019 ka credit data 2024 mein probably outdated — pandemic se consumer behavior permanently changed.</li>
+          <li><strong>Distribution monitoring:</strong> The real-world data distribution keeps shifting continuously — "data drift." Statistical tests (Kolmogorov-Smirnov, Population Stability Index) detect distribution shifts.</li>
+          <li><strong>Label quality:</strong> Inter-annotator agreement metrics (Cohen's Kappa) measure label consistency.</li>
+          <li><strong>Data freshness:</strong> Models trained on stale training data make stale predictions. 2019's credit data is probably outdated by 2024 — the pandemic permanently changed consumer behavior.</li>
         </ul>
       </section>
 
@@ -362,13 +362,13 @@ export default function Content() {
       <section id="feature-engineering">
         <h2 style={S.h2}>Feature Engineering</h2>
         <p style={S.p}>
-          Raw data ko ML models ke liye useful representation mein transform karna. Yeh often model quality ka biggest driver hai.
+          Transforming raw data into a representation useful for ML models. This is often the biggest driver of model quality.
         </p>
         <ul style={S.ul}>
-          <li><strong>Temporal features:</strong> Timestamp se extract karo — day of week, hour of day, time since last event, rolling averages.</li>
-          <li><strong>Interaction features:</strong> "Amount / Account_Average_Amount" — Rs. 100,000 transaction ek account se jo normally Rs. 500 karta hai — much more suspicious.</li>
-          <li><strong>Text features:</strong> TF-IDF ya transformer embeddings (BERT, Sentence-BERT) se dense vector representations. Similar words ke vectors automatically close hote hain.</li>
-          <li><strong>Embeddings:</strong> High-cardinality categoricals ke liye — product IDs, user IDs, location names. Similar entities ke embeddings automatically similar ho jaate hain.</li>
+          <li><strong>Temporal features:</strong> Extract from the timestamp — day of week, hour of day, time since last event, rolling averages.</li>
+          <li><strong>Interaction features:</strong> "Amount / Account_Average_Amount" — a Rs. 100,000 transaction from an account that normally does Rs. 500 — much more suspicious.</li>
+          <li><strong>Text features:</strong> Dense vector representations via TF-IDF or transformer embeddings (BERT, Sentence-BERT). Vectors for similar words end up automatically close together.</li>
+          <li><strong>Embeddings:</strong> For high-cardinality categoricals — product IDs, user IDs, location names. Embeddings of similar entities automatically end up similar.</li>
         </ul>
       </section>
 
@@ -376,11 +376,11 @@ export default function Content() {
       <section id="feature-store">
         <h2 style={S.h2}>Feature Store Architecture</h2>
         <p style={S.p}>
-          Feature Store centralized repository hai precomputed ML features ke liye. Do critical problems solve karta hai:
+          A Feature Store is a centralized repository for precomputed ML features. It solves two critical problems:
         </p>
         <ul style={S.ul}>
-          <li><strong>Training-serving skew:</strong> Training mein features alag compute hote hain serving se — Feature store ensure karta hai ki same features dono jagah use hote hain.</li>
-          <li><strong>Feature reuse:</strong> Ek team ki computed features doosri team ke models bhi use kar sakti hain without recomputation.</li>
+          <li><strong>Training-serving skew:</strong> Features are computed differently in training than in serving — the feature store ensures the same features are used in both places.</li>
+          <li><strong>Feature reuse:</strong> Features computed by one team can be used by another team's models without recomputation.</li>
         </ul>
         <Figure caption="Feature Store Architecture: Online store for real-time inference, offline store for training — same transformation logic ensures consistency">
           <FeatureStoreDiagram />
@@ -402,7 +402,7 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            <strong>Feature Versioning:</strong> Features change hote hain — yeh versioned hone chahiye. Ek model v2 feature definition pe trained tha, serving v1 feature serve kar rahi hai — silent accuracy loss. Feature store versioning ensures ki training aur serving same feature definition use karein.
+            <strong>Feature Versioning:</strong> Features change — they need to be versioned. A model trained on the v2 feature definition, but serving is serving v1 features — silent accuracy loss. Feature store versioning ensures training and serving use the same feature definition.
           </p>
         </section>
       </section>
@@ -411,18 +411,18 @@ export default function Content() {
       <section id="model-training">
         <h2 style={S.h2}>Model Training — Infrastructure Deep Dive</h2>
         <p style={S.p}>
-          Training phase woh hai jahan infrastructure investment justify hoti hai. Ek single training step:
+          The training phase is where the infrastructure investment gets justified. A single training step:
         </p>
         <ol style={{ ...S.ul, listStyleType: "decimal" }}>
-          <li>Batch of training examples load karo GPU memory mein (data loading)</li>
+          <li>Load a batch of training examples into GPU memory (data loading)</li>
           <li>Forward pass: input → model → prediction</li>
-          <li>Loss compute karo: prediction vs actual label</li>
-          <li>Backward pass (backpropagation): loss se gradients compute karo</li>
-          <li>Parameter update: gradients use karke parameters adjust karo (optimizer step)</li>
+          <li>Compute the loss: prediction vs actual label</li>
+          <li>Backward pass (backpropagation): compute gradients from the loss</li>
+          <li>Parameter update: adjust parameters using the gradients (optimizer step)</li>
           <li>Next batch, repeat — millions of times</li>
         </ol>
         <p style={S.p}>
-          Steps 2-4 matrix operations hain — GPU ka kaam. Step 1 storage bandwidth-bound hai. Efficient training mein data loading GPU compute ke concurrent chalti hai (prefetching).
+          Steps 2-4 are matrix operations — the GPU's job. Step 1 is storage bandwidth-bound. In efficient training, data loading runs concurrently with GPU compute (prefetching).
         </p>
 
         <section id="distributed-training">
@@ -444,10 +444,10 @@ export default function Content() {
             ]}
           />
           <p style={S.p}>
-            <strong>NCCL (NVIDIA Collective Communications Library):</strong> GPU-optimized communication library hai jo all-reduce operations handle karta hai. InfiniBand aur NVLink ke liye natively optimized. Distributed training ka backbone. NCCL performance directly training throughput determine karta hai — poor NCCL bandwidth = GPUs sit idle waiting for gradient sync.
+            <strong>NCCL (NVIDIA Collective Communications Library):</strong> A GPU-optimized communication library that handles all-reduce operations. Natively optimized for InfiniBand and NVLink. The backbone of distributed training. NCCL performance directly determines training throughput — poor NCCL bandwidth means GPUs sit idle waiting for gradient sync.
           </p>
           <Callout type="best-practice" title="Distributed Training Best Practice">
-            Always run NCCL bandwidth test (<code style={S.code}>nccl-tests all-reduce</code>) before starting any large training run. Ek misconfigured fabric ya single slow link poora cluster slow kar sakta hai. Non-blocking InfiniBand fat-tree topology mandatory hai large-scale training ke liye.
+            Always run an NCCL bandwidth test (<code style={S.code}>nccl-tests all-reduce</code>) before starting any large training run. A misconfigured fabric or a single slow link can slow down the entire cluster. A non-blocking InfiniBand fat-tree topology is mandatory for large-scale training.
           </Callout>
         </section>
       </section>
@@ -469,7 +469,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>Bias-Variance tradeoff:</strong> High bias (underfitting) = model too simple, training data pe bhi poorly performs — fix: more complex model, more features. High variance (overfitting) = training pe great, new data pe poor — fix: more data, regularization, simpler model, dropout.
+          <strong>Bias-Variance tradeoff:</strong> High bias (underfitting) = the model is too simple, performs poorly even on training data — fix: a more complex model, more features. High variance (overfitting) = great on training, poor on new data — fix: more data, regularization, a simpler model, dropout.
         </p>
       </section>
 
@@ -477,15 +477,15 @@ export default function Content() {
       <section id="hyperparameter-tuning">
         <h2 style={S.h2}>Hyperparameter Tuning</h2>
         <p style={S.p}>
-          Model parameters training ke dauran learned hote hain. Hyperparameters training ke pehle set kiye jaate hain — learning rate, batch size, layer count, regularization strength.
+          Model parameters are learned during training. Hyperparameters are set before training — learning rate, batch size, layer count, regularization strength.
         </p>
         <ul style={S.ul}>
-          <li><strong>Grid search:</strong> Sab possible combinations try karo. Simple lekin exponentially expensive.</li>
+          <li><strong>Grid search:</strong> Try every possible combination. Simple but exponentially expensive.</li>
           <li><strong>Random search:</strong> Randomly sample from hyperparameter space — often more efficient than grid search.</li>
-          <li><strong>Bayesian optimization:</strong> Prior trials ke results use karke next trial choose karo intelligently. Most efficient. Tools: Optuna, Ray Tune, W&B Sweeps.</li>
+          <li><strong>Bayesian optimization:</strong> Use the results of prior trials to intelligently choose the next trial. Most efficient. Tools: Optuna, Ray Tune, W&B Sweeps.</li>
         </ul>
         <p style={S.p}>
-          Infrastructure: hyperparameter tuning = many parallel training runs. Ray Tune ya similar frameworks efficiently parallelize across GPU cluster.
+          Infrastructure: hyperparameter tuning means many parallel training runs. Ray Tune or similar frameworks parallelize efficiently across a GPU cluster.
         </p>
       </section>
 
@@ -493,9 +493,9 @@ export default function Content() {
       <section id="model-deployment">
         <h2 style={S.h2}>Model Deployment</h2>
         <ul style={S.ul}>
-          <li><strong>Real-time inference:</strong> Single request → immediate prediction. REST API ya gRPC endpoint. Latency SLA typically &lt;100ms. NVIDIA Triton, TorchServe, vLLM.</li>
-          <li><strong>Batch prediction:</strong> Large batch collect karo, ek saath process karo. Throughput over latency. Kubernetes Jobs, AWS Batch. Cost-effective — off-peak scheduling.</li>
-          <li><strong>Edge deployment:</strong> Model device pe hi run karta hai. Network not required. Privacy better. Constraints: model size aur compute severely limited. Quantization, pruning, distillation required.</li>
+          <li><strong>Real-time inference:</strong> Single request → immediate prediction. REST API or gRPC endpoint. Latency SLA typically &lt;100ms. NVIDIA Triton, TorchServe, vLLM.</li>
+          <li><strong>Batch prediction:</strong> Collect a large batch, process it all at once. Throughput over latency. Kubernetes Jobs, AWS Batch. Cost-effective — off-peak scheduling.</li>
+          <li><strong>Edge deployment:</strong> The model runs directly on the device. No network required. Better privacy. Constraints: model size and compute are severely limited. Quantization, pruning, distillation required.</li>
         </ul>
         <ComparisonTable
           title="Model Serving Infrastructure"
@@ -515,10 +515,10 @@ export default function Content() {
       <section id="mlops">
         <h2 style={S.h2}>MLOps — Production ML Engineering</h2>
         <p style={S.p}>
-          MLOps (Machine Learning Operations) ML model lifecycle ka engineering aur automation hai — data collection se lekar model training, deployment, monitoring aur retraining tak. Bina MLOps ke: models manually deploy hote hain, reproducibility nahi hoti, production failures detect karne mein bahut samay lagta hai.
+          MLOps (Machine Learning Operations) is the engineering and automation of the ML model lifecycle — from data collection through model training, deployment, monitoring, and retraining. Without MLOps: models are deployed manually, reproducibility suffers, and it takes a long time to detect production failures.
         </p>
         <p style={S.p}>
-          MLOps ke saath: CI/CD pipelines automatically models validate aur deploy karti hain, experiment tracking reproducibility ensure karta hai, monitoring data drift aur model degradation detect karta hai.
+          With MLOps: CI/CD pipelines automatically validate and deploy models, experiment tracking ensures reproducibility, and monitoring detects data drift and model degradation.
         </p>
         <Figure caption="MLOps CI/CD Pipeline: Code commit through shadow deployment, canary release, to full production — with automated rollback">
           <MlopsPipelineDiagram />
@@ -528,11 +528,11 @@ export default function Content() {
           <h3 style={S.h3}>CI/CD, Shadow Deploy, Canary, Rollback</h3>
           <ul style={S.ul}>
             <li><strong>CI/CD for ML:</strong> Code change → automated unit tests → integration tests → model training → validation → staging → production. GitHub Actions, GitLab CI, Jenkins — same tools as software, ML-specific steps added.</li>
-            <li><strong>Experiment Tracking:</strong> Weights &amp; Biases, MLflow — har training run ka: hyperparameters, metrics, artifacts, code version. Reproducibility aur comparison ke liye.</li>
-            <li><strong>Shadow Deployment:</strong> New model production traffic pe predictions karta hai, lekin results actual users ko nahi dikhate. Real traffic pe predictions compare karo silently. Zero user risk. Infrastructure: production request duplicate karo shadow model ko bhi.</li>
-            <li><strong>Canary Deployment:</strong> 5-10% traffic naye model ko route karo. Business metrics monitor karo. Agar stable: gradually increase. Agar degraded: rollback immediately. Safer than full cutover.</li>
-            <li><strong>Rollback:</strong> Model performance degrade ho ya drift detect ho — previous version pe revert karo. Model registry se previous version load karo, traffic route back karo. Rollback procedure documented aur tested hona chahiye pehle se.</li>
-            <li><strong>Model Versioning:</strong> Training code, dataset version, hyperparameters, environment — sab versioned. Ek specific model version exactly reproduce karna possible hona chahiye 6 months later.</li>
+            <li><strong>Experiment Tracking:</strong> Weights &amp; Biases, MLflow — for every training run: hyperparameters, metrics, artifacts, code version. For reproducibility and comparison.</li>
+            <li><strong>Shadow Deployment:</strong> The new model makes predictions on production traffic, but the results aren't shown to actual users. Compare predictions against real traffic silently. Zero user risk. Infrastructure: duplicate production requests to the shadow model too.</li>
+            <li><strong>Canary Deployment:</strong> Route 5-10% of traffic to the new model. Monitor business metrics. If stable: gradually increase. If degraded: roll back immediately. Safer than a full cutover.</li>
+            <li><strong>Rollback:</strong> If model performance degrades or drift is detected — revert to the previous version. Load the previous version from the model registry, route traffic back. The rollback procedure should be documented and tested ahead of time.</li>
+            <li><strong>Model Versioning:</strong> Training code, dataset version, hyperparameters, environment — all versioned. It should be possible to exactly reproduce a specific model version six months later.</li>
           </ul>
         </section>
       </section>
@@ -541,7 +541,7 @@ export default function Content() {
       <section id="ml-infra-architecture">
         <h2 style={S.h2}>ML Infrastructure Architecture</h2>
         <p style={S.p}>
-          Ab sab pieces ko ek complete picture mein dekho:
+          Now let's look at all the pieces as one complete picture:
         </p>
         <Figure caption="ML Infrastructure Architecture: Data Lake → Feature Store → Training Cluster → Model Registry → Serving → Monitoring → Automated Retraining Loop">
           <MlInfraArchDiagram />
@@ -553,7 +553,7 @@ export default function Content() {
             <EnterpriseAiStackDiagram />
           </Figure>
           <p style={S.p}>
-            Physical infrastructure sabse neeche hai — aur sabse critical hai. Ek organization jo GPU clusters afford kar sakti hai lekin cooling upgrade nahi kar sakti, woh upper layers ke potential ko waste kar rahi hai. Enterprise AI stack ka har layer previous layer pe depend karta hai — koi shortcut nahi.
+            Physical infrastructure sits at the bottom — and is the most critical. An organization that can afford GPU clusters but can't upgrade cooling is wasting the potential of the upper layers. Every layer of the enterprise AI stack depends on the previous layer — there's no shortcut.
           </p>
         </section>
       </section>
@@ -562,7 +562,7 @@ export default function Content() {
       <section id="gpus-in-ml">
         <h2 style={S.h2}>GPUs in Machine Learning</h2>
         <p style={S.p}>
-          Neural network training = matrix multiplication at scale. Ek single transformer attention operation: multiple large matrix multiplications simultaneously. GPU ke thousands of CUDA cores yeh massively parallel karte hain. CPU pe same operation GPU se 60-100x slower hai.
+          Neural network training = matrix multiplication at scale. A single transformer attention operation: multiple large matrix multiplications happening simultaneously. The GPU's thousands of CUDA cores do this massively in parallel. The same operation on a CPU is 60-100x slower than on a GPU.
         </p>
         <ComparisonTable
           title="GPU Selection for ML Workloads"
@@ -577,7 +577,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>CUDA ecosystem dominance:</strong> NVIDIA ki dominance sirf hardware nahi — software ecosystem hai. CUDA toolkit, cuDNN (deep learning primitives), cuBLAS (linear algebra), NCCL (collective communications) — yeh sab PyTorch aur TensorFlow ke niche directly use hote hain. AMD ka ROCm alternative existing hai lekin ecosystem maturity abhi bhi gap hai.
+          <strong>CUDA ecosystem dominance:</strong> NVIDIA's dominance isn't just hardware — it's the software ecosystem. The CUDA toolkit, cuDNN (deep learning primitives), cuBLAS (linear algebra), NCCL (collective communications) — all of these are used directly underneath PyTorch and TensorFlow. AMD's ROCm alternative exists but there's still an ecosystem maturity gap.
         </p>
       </section>
 
@@ -596,10 +596,10 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          Storage throughput requirements: 256 H100 cluster ke liye minimum 43+ GB/s sustained read throughput required. Most parallel FS deployments target 100-300+ GB/s for a 256-GPU cluster. Standard NAS (NFS server) at 5-10 GB/s — insufficient for large GPU clusters.
+          Storage throughput requirements: a 256 H100 cluster needs a minimum of 43+ GB/s sustained read throughput. Most parallel FS deployments target 100-300+ GB/s for a 256-GPU cluster. Standard NAS (NFS server) at 5-10 GB/s — insufficient for large GPU clusters.
         </p>
         <p style={S.p}>
-          <strong>Checkpoint strategy:</strong> 70B model checkpoint = ~140GB at FP16. Async checkpointing: write to NVMe first, background copy to parallel FS — training pause minimize karo. Retain last N checkpoints only — full history storage impractical.
+          <strong>Checkpoint strategy:</strong> A 70B model checkpoint = ~140GB at FP16. Async checkpointing: write to NVMe first, then background copy to the parallel FS — minimizing training pauses. Retain only the last N checkpoints — storing full history is impractical.
         </p>
       </section>
 
@@ -618,7 +618,7 @@ export default function Content() {
       <section id="ml-in-dc-operations">
         <h2 style={S.h2}>Machine Learning in Data Center Operations</h2>
         <p style={S.p}>
-          ML sirf DC pe run nahi karta — ML DC ko better operate karne mein help karta hai. Yeh dual relationship important hai:
+          ML doesn't just run on the DC — ML also helps the DC operate better. This dual relationship matters:
         </p>
         <ComparisonTable
           title="ML Applications in DC Operations"
@@ -634,8 +634,8 @@ export default function Content() {
             ["Security threat detection", "Classification on log data", "Insider threat, credential abuse patterns"],
           ]}
         />
-        <Callout type="best-practice" title="DC Engineer ke Liye Practical ML">
-          DCIM systems mein ML integration increasingly common hai. Sensor data se anomaly detection, predictive maintenance, aur capacity forecasting — yeh sab production DC operations mein apply ho rahe hain. DC engineer jo ML samajhta hai woh in tools ko better deploy aur tune kar sakta hai.
+        <Callout type="best-practice" title="Practical ML for DC Engineers">
+          ML integration into DCIM systems is increasingly common. Anomaly detection from sensor data, predictive maintenance, and capacity forecasting — all of these are being applied in production DC operations. A DC engineer who understands ML can deploy and tune these tools better.
         </Callout>
       </section>
 
@@ -643,7 +643,7 @@ export default function Content() {
       <section id="enterprise-ml-pipeline">
         <h2 style={S.h2}>Enterprise ML Pipeline</h2>
         <p style={S.p}>
-          Ek real enterprise mein ML kaise end-to-end chalta hai:
+          How ML actually runs end-to-end in a real enterprise:
         </p>
 
         <section id="enterprise-tools">
@@ -714,7 +714,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>India-specific context:</strong> BFSI (Banking, Financial Services, Insurance) ML adoption sabse mature hai — RBI guidelines, SEBI compliance, aur massive transaction volumes ne ML adoption drive ki hai. Healthcare mein AIIMS aur Apollo jaise institutions computer vision for radiology piloting kar rahe hain. Manufacturing mein Tata, Mahindra — predictive maintenance pe invest kar rahe hain.
+          <strong>India-specific context:</strong> BFSI (Banking, Financial Services, Insurance) has the most mature ML adoption — RBI guidelines, SEBI compliance, and massive transaction volumes have driven ML adoption. In healthcare, institutions like AIIMS and Apollo are piloting computer vision for radiology. In manufacturing, Tata and Mahindra are investing in predictive maintenance.
         </p>
       </section>
 
@@ -740,7 +740,7 @@ export default function Content() {
       <section id="model-optimization">
         <h2 style={S.h2}>Model Optimization</h2>
         <p style={S.p}>
-          Trained models ko production ke liye optimize karna — memory reduce karo, speed improve karo, cost kam karo.
+          Optimizing trained models for production — reducing memory, improving speed, lowering cost.
         </p>
 
         <section id="quantization">
@@ -762,13 +762,13 @@ export default function Content() {
         <section id="lora-qlora">
           <h3 style={S.h3}>LoRA, QLoRA and Fine-tuning</h3>
           <p style={S.p}>
-            <strong>Full Fine-tuning:</strong> Sab model parameters update karo on new data. Most powerful lekin most expensive — same compute as training from scratch.
+            <strong>Full Fine-tuning:</strong> Update all model parameters on new data. Most powerful but most expensive — same compute as training from scratch.
           </p>
           <p style={S.p}>
-            <strong>LoRA (Low-Rank Adaptation):</strong> Original parameters freeze karo, sirf small low-rank matrices train karo (0.1-1% of parameters). Memory aur compute dramatically reduce. Same quality for many adaptation tasks.
+            <strong>LoRA (Low-Rank Adaptation):</strong> Freeze the original parameters, train only small low-rank matrices (0.1-1% of parameters). Memory and compute drop dramatically. Same quality for many adaptation tasks.
           </p>
           <p style={S.p}>
-            <strong>QLoRA (Quantized LoRA):</strong> Base model 4-bit quantize karo + LoRA adapters FP16 mein train karo. Extremely memory-efficient. 70B model fine-tuning: typically 8+ H100s required at full precision. QLoRA se: single H100 pe possible. Production use: custom domain adaptation, instruction fine-tuning, task-specific specialization.
+            <strong>QLoRA (Quantized LoRA):</strong> Quantize the base model to 4-bit + train LoRA adapters in FP16. Extremely memory-efficient. Fine-tuning a 70B model: typically needs 8+ H100s at full precision. With QLoRA: possible on a single H100. Production use: custom domain adaptation, instruction fine-tuning, task-specific specialization.
           </p>
           <ComparisonTable
             headers={["Fine-tuning Method", "Trainable Params", "Memory (70B model)", "Quality", "Cost"]}
@@ -805,7 +805,7 @@ export default function Content() {
           <strong>Cloud TCO comparison:</strong> 256× H100 on AWS P5 (on-demand): ~$500-600 per hour = $4-5M/month. Reserved (1 year): ~$2.5-3M/month. At sustained utilization for 12+ months, on-premises TCO typically wins. Break-even: typically 18-30 months.
         </p>
         <Callout type="important" title="Cost Analysis Caveat">
-          Yeh indicative numbers hain — actual costs GPU market pricing pe depend karte hain (highly variable), your DC space cost, electricity tariff, aur team cost pe. Analysis hamesha actual quotes ke saath karo. Include hidden costs: network connectivity, backup power, disaster recovery.
+          These are indicative numbers — actual costs depend on GPU market pricing (highly variable), your DC space cost, electricity tariff, and team cost. Always run the analysis with actual quotes. Include hidden costs: network connectivity, backup power, disaster recovery.
         </Callout>
       </section>
 
@@ -841,7 +841,7 @@ export default function Content() {
           ]}
         />
         <p style={S.p}>
-          <strong>DC Engineer ke liye career transition:</strong> AI Infrastructure / Platform Engineer role fastest growing hai. DC background — power, cooling, networking, storage — directly applicable hai. Add: GPU cluster management, CUDA ecosystem basics, Kubernetes with GPU operators, distributed training concepts. Demand bahut zyada hai, supply bahut kam.
+          <strong>Career transition for DC Engineers:</strong> the AI Infrastructure / Platform Engineer role is the fastest growing. A DC background — power, cooling, networking, storage — is directly applicable. Add: GPU cluster management, CUDA ecosystem basics, Kubernetes with GPU operators, distributed training concepts. Demand is very high, supply is very low.
         </p>
       </section>
 
@@ -849,18 +849,18 @@ export default function Content() {
       <section id="ai-governance">
         <h2 style={S.h2}>AI Governance and Responsible AI</h2>
         <p style={S.p}>
-          AI systems powerful hain — aur powerful systems harm kar sakte hain agar governed properly nahi kiye jaayein. AI Governance framework hai jo ensure karta hai ki AI systems ethical, fair, transparent, aur compliant hain.
+          AI systems are powerful — and powerful systems can cause harm if not governed properly. AI Governance is a framework that ensures AI systems are ethical, fair, transparent, and compliant.
         </p>
         <ul style={S.ul}>
-          <li><strong>Model Bias aur Fairness:</strong> ML models training data ki biases inherit karte hain. Credit scoring model jo minority communities ko discriminate kare — legal liability aur harm. Bias testing mandatory hai: model performance across demographic groups check karo. Tools: Fairlearn (Microsoft), IBM AI Fairness 360, Google What-If Tool.</li>
-          <li><strong>Explainability (XAI):</strong> "Why did the model make this prediction?" — regulated domains mein (credit, insurance, healthcare) explain karna legally required hai. SHAP values (SHapley Additive exPlanations), LIME, Integrated Gradients — methods jo individual predictions explain karte hain.</li>
+          <li><strong>Model Bias and Fairness:</strong> ML models inherit the biases of their training data. A credit scoring model that discriminates against minority communities — legal liability and harm. Bias testing is mandatory: check model performance across demographic groups. Tools: Fairlearn (Microsoft), IBM AI Fairness 360, Google What-If Tool.</li>
+          <li><strong>Explainability (XAI):</strong> "Why did the model make this prediction?" — in regulated domains (credit, insurance, healthcare), explaining this is legally required. SHAP values (SHapley Additive exPlanations), LIME, Integrated Gradients — methods that explain individual predictions.</li>
           <li><strong>EU AI Act (2024):</strong> World's first comprehensive AI regulation. Risk tiers: Unacceptable risk (ban) → High risk (conformity assessment required) → Limited risk (transparency obligations) → Minimal risk. High-risk AI: credit scoring, employment decisions, healthcare, law enforcement. Compliance: documentation, testing, human oversight, audit trails.</li>
-          <li><strong>GDPR aur ML:</strong> Training data mein EU citizens' personal data → GDPR applies. Right to explanation (Article 22): automated decisions pe explanation required. Right to be forgotten: training data delete karna — "machine unlearning" ek active research area hai. Data minimization: sirf necessary data collect karo.</li>
-          <li><strong>Model Cards:</strong> Google ne introduce kiya — structured documentation for ML models. Training data description, evaluation results, intended use, known limitations, ethical considerations. Best practice banata ja raha hai — GitHub pe publicly available hote hain.</li>
-          <li><strong>Auditing:</strong> Regular model audits — performance degradation check, bias re-evaluation, regulatory compliance verification. Audit trail: model decisions, training data lineage, evaluation results — reproducible aur reviewable.</li>
+          <li><strong>GDPR and ML:</strong> EU citizens' personal data in the training data → GDPR applies. Right to explanation (Article 22): explanation required for automated decisions. Right to be forgotten: deleting training data — "machine unlearning" is an active research area. Data minimization: collect only necessary data.</li>
+          <li><strong>Model Cards:</strong> Introduced by Google — structured documentation for ML models. Training data description, evaluation results, intended use, known limitations, ethical considerations. Becoming best practice — often published publicly on GitHub.</li>
+          <li><strong>Auditing:</strong> Regular model audits — checking for performance degradation, re-evaluating bias, verifying regulatory compliance. Audit trail: model decisions, training data lineage, evaluation results — reproducible and reviewable.</li>
         </ul>
         <Callout type="warning" title="Compliance is Not Optional">
-          India mein bhi DPDP Act (Digital Personal Data Protection) 2023 personal data ke ML use pe restrictions impose karta hai. Banking sector: RBI guidelines ML models ke liye specific explainability requirements set karte hain. Healthcare: CDSCO upcoming medical AI regulations. Compliance infrastructure design karo from day 1 — retrofit karna bahut expensive hai.
+          In India too, the DPDP Act (Digital Personal Data Protection) 2023 imposes restrictions on the use of personal data in ML. Banking sector: RBI guidelines set specific explainability requirements for ML models. Healthcare: CDSCO has upcoming medical AI regulations. Design compliance infrastructure from day 1 — retrofitting it later is very expensive.
         </Callout>
       </section>
 
@@ -868,11 +868,11 @@ export default function Content() {
       <section id="advantages">
         <h2 style={S.h2}>Advantages of Machine Learning</h2>
         <ul style={S.ul}>
-          <li><strong>Handles complexity rules can't:</strong> Face recognition, NLP, protein structure — problems too complex for manual rules. ML yeh solve kar sakta hai.</li>
-          <li><strong>Scales automatically:</strong> Once trained, same model billions of users serve kar sakta hai — ek model, sab users. Netflix ka recommendation model sab 260M subscribers ke liye kaam karta hai.</li>
-          <li><strong>Continuously improves:</strong> New data se retrain karo — model automatically current patterns reflect karta hai.</li>
-          <li><strong>Finds patterns humans miss:</strong> High-dimensional data mein patterns identify karna jo no human analyst would notice.</li>
-          <li><strong>Cost reduction at scale:</strong> Manual expert review replace karna with automated ML predictions — at scale, significant cost reduction.</li>
+          <li><strong>Handles complexity rules can't:</strong> Face recognition, NLP, protein structure — problems too complex for manual rules. ML can solve these.</li>
+          <li><strong>Scales automatically:</strong> Once trained, the same model can serve billions of users — one model, all users. Netflix's recommendation model works for all 260M subscribers.</li>
+          <li><strong>Continuously improves:</strong> Retrain with new data — the model automatically reflects current patterns.</li>
+          <li><strong>Finds patterns humans miss:</strong> Identifying patterns in high-dimensional data that no human analyst would notice.</li>
+          <li><strong>Cost reduction at scale:</strong> Replacing manual expert review with automated ML predictions — significant cost reduction at scale.</li>
         </ul>
       </section>
 
@@ -880,9 +880,9 @@ export default function Content() {
       <section id="limitations">
         <h2 style={S.h2}>Limitations</h2>
         <ul style={S.ul}>
-          <li><strong>Data hungry:</strong> Complex models large amounts of labeled data chahte hain. Labeling expensive. Data collection, cleaning — often most expensive part of ML project.</li>
+          <li><strong>Data hungry:</strong> Complex models need large amounts of labeled data. Labeling is expensive. Data collection and cleaning are often the most expensive part of an ML project.</li>
           <li><strong>Black box:</strong> Deep neural networks — interpretability limited. "Why did the model make this prediction?" — often hard to answer rigorously. Regulatory domains require explainability.</li>
-          <li><strong>Distribution shift:</strong> Real world changes — new fraud patterns, pandemic behavior, market shifts — model accuracy degrades. Continuous monitoring aur retraining required.</li>
+          <li><strong>Distribution shift:</strong> The real world changes — new fraud patterns, pandemic behavior, market shifts — model accuracy degrades. Continuous monitoring and retraining required.</li>
           <li><strong>Adversarial vulnerabilities:</strong> Carefully crafted inputs fool ML models. Spam filters evaded, image classifiers misled. Real security concern.</li>
           <li><strong>Requires specialized expertise:</strong> Data engineering, ML, software engineering, MLOps, infrastructure — multiple specializations simultaneously required.</li>
           <li><strong>Compute cost:</strong> Training large models: expensive. Inference at scale: ongoing cost. Electricity, hardware, engineering time.</li>
@@ -893,13 +893,13 @@ export default function Content() {
       <section id="best-practices">
         <h2 style={S.h2}>Best Practices</h2>
         <ul style={S.ul}>
-          <li><strong>Start simple:</strong> Logistic regression ya XGBoost se shuru karo. Often surprisingly competitive. Complex neural networks tabhi justify hote hain jab simpler models genuinely insufficient hain.</li>
-          <li><strong>Data quality first:</strong> Model choice se zyada important. 100K clean examples beat 10M noisy ones for most tasks.</li>
-          <li><strong>Baseline establish karo:</strong> Always naive baseline se compare karo. Agar ML model significantly better nahi, something fundamentally wrong hai.</li>
-          <li><strong>Version everything:</strong> Code, data, models, experiments — sab versioned. Reproducibility ek engineering requirement hai.</li>
-          <li><strong>Monitor production aggressively:</strong> Model accuracy degrade hoti hai silently. Active monitoring: prediction distribution, data drift, business metrics.</li>
-          <li><strong>Feature engineering mein invest karo:</strong> Domain expertise apply karo. Talk to domain experts — fraud investigators, doctors, logistics managers.</li>
-          <li><strong>Separate training aur serving infrastructure:</strong> Different optimization targets, different cost profiles, different scaling patterns.</li>
+          <li><strong>Start simple:</strong> Start with logistic regression or XGBoost. Often surprisingly competitive. Complex neural networks are only justified when simpler models are genuinely insufficient.</li>
+          <li><strong>Data quality first:</strong> More important than model choice. 100K clean examples beat 10M noisy ones for most tasks.</li>
+          <li><strong>Establish a baseline:</strong> Always compare against a naive baseline. If the ML model isn't significantly better, something is fundamentally wrong.</li>
+          <li><strong>Version everything:</strong> Code, data, models, experiments — all versioned. Reproducibility is an engineering requirement.</li>
+          <li><strong>Monitor production aggressively:</strong> Model accuracy degrades silently. Active monitoring: prediction distribution, data drift, business metrics.</li>
+          <li><strong>Invest in feature engineering:</strong> Apply domain expertise. Talk to domain experts — fraud investigators, doctors, logistics managers.</li>
+          <li><strong>Separate training and serving infrastructure:</strong> Different optimization targets, different cost profiles, different scaling patterns.</li>
         </ul>
       </section>
 
@@ -907,12 +907,12 @@ export default function Content() {
       <section id="common-mistakes">
         <h2 style={S.h2}>Common Mistakes</h2>
         <ul style={S.ul}>
-          <li><strong>Training data pe test set include karna:</strong> Data leakage. Results artificially optimistic. Strict separation maintain karo.</li>
-          <li><strong>Offline metrics blindly trust karna:</strong> AUC 0.98 training mein, production pe model useless. Always online A/B tests with business metrics karo.</li>
-          <li><strong>Imbalanced datasets handle nahi karna:</strong> 99% negative class → 99% accuracy naive model. Class weights, stratified sampling, appropriate metrics (F1, AUC-ROC).</li>
-          <li><strong>ML solution jab simpler solution exists:</strong> Rule-based system ya lookup table kaafi hai — ML overkill hai.</li>
-          <li><strong>Inference latency ignore karna:</strong> Heavy model training pe fine hai lekin production pe &lt;100ms requirement ke against fail. Evaluate early.</li>
-          <li><strong>No monitoring setup:</strong> Model degradation silently happens. Monitoring day 1 se setup karo, not after problems appear.</li>
+          <li><strong>Including the test set in training data:</strong> Data leakage. Results become artificially optimistic. Maintain strict separation.</li>
+          <li><strong>Blindly trusting offline metrics:</strong> AUC 0.98 in training, the model is useless in production. Always run online A/B tests with business metrics.</li>
+          <li><strong>Not handling imbalanced datasets:</strong> 99% negative class → 99% accuracy for a naive model. Class weights, stratified sampling, appropriate metrics (F1, AUC-ROC).</li>
+          <li><strong>An ML solution when a simpler solution exists:</strong> A rule-based system or lookup table is enough — ML is overkill.</li>
+          <li><strong>Ignoring inference latency:</strong> The heavy model is fine during training but fails against the &lt;100ms requirement in production. Evaluate early.</li>
+          <li><strong>No monitoring setup:</strong> Model degradation happens silently. Set up monitoring from day 1, not after problems appear.</li>
         </ul>
       </section>
 
@@ -920,10 +920,10 @@ export default function Content() {
       <section id="security">
         <h2 style={S.h2}>Security Considerations</h2>
         <ul style={S.ul}>
-          <li><strong>Model theft:</strong> Attacker public API query karke model reproduce kar sakta hai. Mitigation: API rate limiting, query monitoring.</li>
+          <li><strong>Model theft:</strong> An attacker can reproduce the model by querying the public API. Mitigation: API rate limiting, query monitoring.</li>
           <li><strong>Data poisoning:</strong> Training data deliberately corrupted to manipulate model behavior. Mitigation: robust training, data validation, anomaly detection in training data.</li>
-          <li><strong>Adversarial attacks:</strong> Carefully crafted inputs jo model confidently misclassify karta hai. Mitigation: adversarial training, input preprocessing, ensemble methods.</li>
-          <li><strong>Model inversion:</strong> From model predictions, training data reconstruct karna — patient data leakage possible. Mitigation: differential privacy.</li>
+          <li><strong>Adversarial attacks:</strong> Carefully crafted inputs that make the model confidently misclassify. Mitigation: adversarial training, input preprocessing, ensemble methods.</li>
+          <li><strong>Model inversion:</strong> Reconstructing training data from model predictions — potential patient data leakage. Mitigation: differential privacy.</li>
           <li><strong>Infrastructure security:</strong> ML training clusters valuable compute — cryptocurrency mining target. Model weights intellectual property — protect access. BMC/IPMI isolation mandatory.</li>
         </ul>
       </section>
@@ -936,7 +936,7 @@ export default function Content() {
           <li><strong>Mixed precision (BF16):</strong> Default for all training on modern GPUs. 2x faster computation vs FP32, same quality.</li>
           <li><strong>Flash Attention:</strong> Memory-efficient attention — avoids materializing full attention matrix in HBM. Always use for transformer models.</li>
           <li><strong>Gradient accumulation:</strong> Reduce all-reduce frequency. N mini-batches before optimizer step — useful when communication is bottleneck.</li>
-          <li><strong>Data loading:</strong> Multiple DataLoader workers, pin memory, local NVMe cache. GPU idle time minimize karo during data loading.</li>
+          <li><strong>Data loading:</strong> Multiple DataLoader workers, pinned memory, local NVMe cache. Minimize GPU idle time during data loading.</li>
           <li><strong>Continuous batching (vLLM):</strong> New requests join ongoing inference batch — dramatically increases GPU utilization vs naive one-request-at-a-time.</li>
         </ul>
       </section>
@@ -951,7 +951,7 @@ export default function Content() {
           <strong>Scaling laws (Kaplan et al. 2020):</strong> Model performance scales predictably with compute × data × parameters. More GPUs + more data + more parameters = reliably better models. Infrastructure scale directly translates to model capability — making AI infrastructure a strategic competitive advantage.
         </p>
         <p style={S.p}>
-          <strong>Inference autoscaling:</strong> Kubernetes HPA based on GPU utilization ya request queue depth. Scale down during low traffic — especially on cloud — to save cost.
+          <strong>Inference autoscaling:</strong> Kubernetes HPA based on GPU utilization or request queue depth. Scale down during low traffic — especially on cloud — to save cost.
         </p>
       </section>
 
@@ -978,7 +978,7 @@ export default function Content() {
         <ul style={S.ul}>
           <li><strong>AlphaFold (DeepMind):</strong> Protein structure prediction — 50-year unsolved problem. 200 million protein structures predicted. Biology research permanently transformed. Required Google-scale TPU infrastructure. Infrastructure lesson: ML can solve problems that no rules-based system could — but required Google-scale infrastructure.</li>
           <li><strong>Waymo — Autonomous Driving:</strong> Simulation at massive scale — millions of miles for training. Inference: dedicated on-vehicle compute, latency sub-millisecond for safety-critical decisions. Key challenge: geographic expansion = new data collection + new training.</li>
-          <li><strong>Ola/Uber Surge Pricing (India):</strong> Real-time demand-supply modeling. Inference: &lt;50ms. Festival periods pe 10x normal traffic. Indian peculiarities — festivals, monsoon, cricket match schedule — all affect demand patterns differently than Western markets.</li>
+          <li><strong>Ola/Uber Surge Pricing (India):</strong> Real-time demand-supply modeling. Inference: &lt;50ms. 10x normal traffic during festival periods. Indian peculiarities — festivals, monsoon, cricket match schedules — all affect demand patterns differently than Western markets.</li>
           <li><strong>Google DC Cooling (DeepMind RL):</strong> Reinforcement learning for DC cooling optimization. Inputs: sensor readings (temperatures, power consumption, pump speeds). Output: HVAC control setpoints. Result: 40% cooling energy reduction. Deployed in Google's own data centers. Direct overlap with DC engineering domain.</li>
         </ul>
       </section>
@@ -988,28 +988,23 @@ export default function Content() {
         <h2 style={S.h2}>Interview Questions</h2>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: Machine Learning aur traditional programming mein fundamental difference kya hai?</p>
-          <p style={S.p}>Traditional programming: engineer explicit rules likhta hai → computer rules apply karta hai data pe. ML: engineer data provide karta hai → algorithm rules derive karta hai automatically. Traditional: kab appropriate jab rules clearly definable aur stable hain. ML: kab appropriate jab rules too complex hain (face recognition), ya environment change hota rehta hai (fraud), ya personalization required hai (recommendations).</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: What is the fundamental difference between Machine Learning and traditional programming?</p> <p style={S.p}>Traditional programming: the engineer writes explicit rules → the computer applies the rules to data. ML: the engineer provides data → the algorithm derives the rules automatically. Traditional: appropriate when rules are clearly definable and stable. ML: appropriate when rules are too complex (face recognition), the environment keeps changing (fraud), or personalization is required (recommendations).</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: Overfitting kya hai aur kaise detect aur fix karte hain?</p>
-          <p style={S.p}>Overfitting: model training data pe bahut closely fit — including noise. Result: training accuracy high, validation accuracy significantly lower. Detection: train/validation loss curves diverge. Fixes: more training data (most effective), regularization (L1, L2, dropout), simpler model architecture, data augmentation, early stopping.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: What is Overfitting and how do you detect and fix it?</p> <p style={S.p}>Overfitting: the model fits the training data too closely — including the noise. Result: training accuracy is high, validation accuracy is significantly lower. Detection: train/validation loss curves diverge. Fixes: more training data (most effective), regularization (L1, L2, dropout), a simpler model architecture, data augmentation, early stopping.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: Feature store kya hai aur kyun important hai?</p>
-          <p style={S.p}>Feature store centralized repository hai precomputed ML features ke liye. Training-serving skew solve karta hai — same features training aur serving mein. Online feature store (Redis): real-time inference ke liye low latency. Offline feature store (data warehouse): training ke liye. Feature versioning consistency ensure karta hai across model versions.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: What is a feature store and why is it important?</p> <p style={S.p}>A feature store is a centralized repository for precomputed ML features. It solves training-serving skew — the same features in both training and serving. Online feature store (Redis): low latency for real-time inference. Offline feature store (data warehouse): for training. Feature versioning ensures consistency across model versions.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: NCCL distributed training mein kya karta hai?</p>
-          <p style={S.p}>NCCL (NVIDIA Collective Communications Library) GPU-optimized communication library hai — all-reduce, broadcast, scatter, gather collective operations handle karta hai. Distributed training mein har GPU gradients compute karta hai, NCCL in gradients ko all GPUs ke beech aggregate karta hai. InfiniBand aur NVLink ke liye natively optimized. NCCL performance directly training throughput determine karta hai.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: What does NCCL do in distributed training?</p> <p style={S.p}>NCCL (NVIDIA Collective Communications Library) is a GPU-optimized communication library — it handles collective operations like all-reduce, broadcast, scatter, gather. In distributed training, each GPU computes gradients, and NCCL aggregates these gradients across all GPUs. Natively optimized for InfiniBand and NVLink. NCCL performance directly determines training throughput.</p>
         </div>
 
         <div style={{ borderLeft: "4px solid #2563EB", paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: Shadow deployment aur canary deployment mein kya difference hai?</p>
-          <p style={S.p}>Shadow deployment: new model production traffic pe predictions karta hai lekin results users ko nahi dikhate — zero user risk, real traffic pe silent comparison. Canary deployment: 5-10% actual traffic naye model ko route karo, results real users ko milte hain — risk limited, real business metrics track hote hain. Sequence: shadow → canary → full rollout.</p>
+          <p style={{ fontWeight: 700, color: "#1e40af", marginBottom: "0.5rem" }}>Q: What is the difference between shadow deployment and canary deployment?</p> <p style={S.p}>Shadow deployment: the new model makes predictions on production traffic but the results aren't shown to users — zero user risk, silent comparison on real traffic. Canary deployment: route 5-10% of actual traffic to the new model, results reach real users — risk is limited, real business metrics are tracked. Sequence: shadow → canary → full rollout.</p>
         </div>
       </section>
 
@@ -1075,16 +1070,16 @@ export default function Content() {
       <section id="key-takeaways">
         <h2 style={S.h2}>Key Takeaways</h2>
         <ul style={S.ul}>
-          <li>Machine Learning explicitly programmed rules ki bajay data se patterns automatically learn karta hai — yeh fundamental shift complex domains, high-scale applications, aur personalization ke liye practical solutions possible banata hai.</li>
-          <li>ML ka core training loop matrix multiplication operations hai — yahi reason hai ki GPUs essential hain. CPU pe same computation 60-100x slower hota hai GPU se.</li>
-          <li>Data quality algorithm choice se zyada important hai. 100K clean examples beat 10M noisy ones. Data pipeline mein invest karo.</li>
-          <li>Feature Store training-serving skew prevent karta hai — production ML systems ki sabse common failure mode. Implement karo from day 1.</li>
-          <li>Distributed training engineering — NCCL, DDP, FSDP, ZeRO, DeepSpeed — complex hai lekin necessary hai large models ke liye. Networking fabric (InfiniBand) directly training throughput determine karta hai.</li>
-          <li>MLOps ek optional nicety nahi hai — yeh production ML ki foundation hai. CI/CD, experiment tracking, shadow deploy, canary, rollback — yeh sab production-grade ML mein mandatory hain.</li>
-          <li>Production ML ek single deployment event nahi hai — yeh ek continuous loop hai: data → training → validation → deployment → monitoring → retraining. Ek stage bhi weak ho toh poora system suffer karta hai.</li>
-          <li>Model optimization — quantization, LoRA, QLoRA — ne large model deployment democratize kar diya hai. 70B model jo 8 H100s maangta tha, QLoRA se ek H100 pe fine-tune ho sakta hai.</li>
-          <li>AI Governance ab technical luxury nahi hai — regulatory requirement hai. EU AI Act, GDPR, India DPDP Act — compliance from day 1 design karo.</li>
-          <li>DC engineers ke liye: ML infrastructure engineering fastest growing specialization hai AI field mein. Power, cooling, networking, storage background directly applicable hai. GPU cluster management + CUDA ecosystem + Kubernetes add karo — career trajectory dramatically improve ho jaata hai.</li>
+          <li>Machine Learning automatically learns patterns from data instead of explicitly programmed rules — this fundamental shift makes practical solutions possible for complex domains, high-scale applications, and personalization.</li>
+          <li>The core training loop of ML is matrix multiplication operations — this is exactly why GPUs are essential. The same computation on CPU is 60-100x slower than on GPU.</li>
+          <li>Data quality matters more than algorithm choice. 100K clean examples beat 10M noisy ones. Invest in the data pipeline.</li>
+          <li>A Feature Store prevents training-serving skew — the most common failure mode in production ML systems. Implement it from day 1.</li>
+          <li>Distributed training engineering — NCCL, DDP, FSDP, ZeRO, DeepSpeed — is complex but necessary for large models. The networking fabric (InfiniBand) directly determines training throughput.</li>
+          <li>MLOps isn't an optional nicety — it's the foundation of production ML. CI/CD, experiment tracking, shadow deploy, canary, rollback — all of these are mandatory in production-grade ML.</li>
+          <li>Production ML isn't a single deployment event — it's a continuous loop: data → training → validation → deployment → monitoring → retraining. If even one stage is weak, the whole system suffers.</li>
+          <li>Model optimization — quantization, LoRA, QLoRA — has democratized large model deployment. A 70B model that once needed 8 H100s can now be fine-tuned on a single H100 with QLoRA.</li>
+          <li>AI Governance is no longer a technical luxury — it's a regulatory requirement. EU AI Act, GDPR, India's DPDP Act — design for compliance from day 1.</li>
+          <li>For DC engineers: ML infrastructure engineering is the fastest growing specialization in the AI field. A background in power, cooling, networking, and storage is directly applicable. Add GPU cluster management + the CUDA ecosystem + Kubernetes, and your career trajectory improves dramatically.</li>
         </ul>
       </section>
 

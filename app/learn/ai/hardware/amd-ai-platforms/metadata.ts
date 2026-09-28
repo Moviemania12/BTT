@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(amdAiMetadata);
+const baseMetadata = buildPageMetadata(amdAiMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/hardware/amd-ai-platforms",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/hardware/amd-ai-platforms",
+      hi: "https://behindthetech.in/hi/learn/ai/hardware/amd-ai-platforms",
+      "x-default": "https://behindthetech.in/learn/ai/hardware/amd-ai-platforms",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/hardware/amd-ai-platforms", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: amdAiMetadata.title,

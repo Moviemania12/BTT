@@ -27,7 +27,7 @@ export default function AnthropicPage() {
         slug="anthropic"
         headings={HEADINGS}
         readingTimeMinutes={anthropicMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/platforms/anthropic">
         <Content />
       </ArticleLayout>
     </>

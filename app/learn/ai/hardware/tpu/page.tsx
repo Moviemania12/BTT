@@ -27,7 +27,7 @@ export default function TpuPage() {
         slug="tpu"
         headings={HEADINGS}
         readingTimeMinutes={tpuMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/hardware/tpu">
         <Content />
       </ArticleLayout>
     </>

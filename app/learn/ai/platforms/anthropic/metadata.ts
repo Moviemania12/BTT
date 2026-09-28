@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(anthropicMetadata);
+const baseMetadata = buildPageMetadata(anthropicMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/platforms/anthropic",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/platforms/anthropic",
+      hi: "https://behindthetech.in/hi/learn/ai/platforms/anthropic",
+      "x-default": "https://behindthetech.in/learn/ai/platforms/anthropic",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/platforms/anthropic", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: anthropicMetadata.title,

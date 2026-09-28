@@ -27,7 +27,7 @@ export default function AiNetworkingPage() {
         slug="ai-networking"
         headings={HEADINGS}
         readingTimeMinutes={aiNetworkingMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/data-centers/ai-networking">
         <Content />
       </ArticleLayout>
     </>

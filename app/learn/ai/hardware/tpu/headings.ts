@@ -9,7 +9,7 @@ export const HEADINGS: ArticleHeading[] = [
   { id: "why-tpu-exists",         text: "Why TPU Exists — The Problem It Solved",     level: 1 },
   { id: "cpu-gpu-tpu",            text: "CPU vs GPU vs TPU — The Big Picture",        level: 1 },
   { id: "tpu-history",            text: "History of TPU — v1 to v6",                 level: 1 },
-  { id: "matrix-multiplication",  text: "Matrix Multiplication — TPU Ka Core Job",   level: 1 },
+  { id: "matrix-multiplication",  text: "Matrix Multiplication — The TPU's Core Job",   level: 1 },
   { id: "systolic-array",         text: "Systolic Array — How TPU Does Math",        level: 1 },
   { id: "tpu-chip-architecture",  text: "TPU Chip Architecture — Inside the Silicon", level: 1 },
   { id: "mxu",                    text: "MXU — Matrix Multiply Unit",                level: 1 },

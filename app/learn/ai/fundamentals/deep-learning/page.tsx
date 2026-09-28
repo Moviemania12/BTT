@@ -27,7 +27,7 @@ export default function DeepLearningPage() {
         slug="deep-learning"
         headings={HEADINGS}
         readingTimeMinutes={dlMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/fundamentals/deep-learning">
         <Content />
       </ArticleLayout>
     </>

@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(aiDcMetadata);
+const baseMetadata = buildPageMetadata(aiDcMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/data-centers/ai-data-center-basics",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/data-centers/ai-data-center-basics",
+      hi: "https://behindthetech.in/hi/learn/ai/data-centers/ai-data-center-basics",
+      "x-default": "https://behindthetech.in/learn/ai/data-centers/ai-data-center-basics",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/data-centers/ai-data-center-basics", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: aiDcMetadata.title,

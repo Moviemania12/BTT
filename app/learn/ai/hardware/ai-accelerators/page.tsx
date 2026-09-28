@@ -27,7 +27,7 @@ export default function AiAcceleratorsPage() {
         slug="ai-accelerators"
         headings={HEADINGS}
         readingTimeMinutes={aiAcceleratorsMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/hardware/ai-accelerators">
         <Content />
       </ArticleLayout>
     </>

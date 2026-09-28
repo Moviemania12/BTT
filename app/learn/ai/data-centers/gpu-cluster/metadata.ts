@@ -8,7 +8,20 @@ import {
   buildFaqSchema,
 } from "@/lib/schemas";
 
-export const metadata: Metadata = buildPageMetadata(gpuClusterMetadata);
+const baseMetadata = buildPageMetadata(gpuClusterMetadata);
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  alternates: {
+    canonical: "https://behindthetech.in/learn/ai/data-centers/gpu-cluster",
+    languages: {
+      en: "https://behindthetech.in/learn/ai/data-centers/gpu-cluster",
+      hi: "https://behindthetech.in/hi/learn/ai/data-centers/gpu-cluster",
+      "x-default": "https://behindthetech.in/learn/ai/data-centers/gpu-cluster",
+    },
+  },
+  openGraph: { ...baseMetadata.openGraph, url: "https://behindthetech.in/learn/ai/data-centers/gpu-cluster", locale: "en_US" },
+};
 
 export const articleSchema = buildArticleSchema({
   headline: gpuClusterMetadata.title,

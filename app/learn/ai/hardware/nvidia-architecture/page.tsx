@@ -27,7 +27,7 @@ export default function NvidiaArchitecturePage() {
         slug="nvidia-architecture"
         headings={HEADINGS}
         readingTimeMinutes={nvidiaArchMetadata.readingTimeMinutes}
-      >
+       lang="en" alternateHref="/hi/learn/ai/hardware/nvidia-architecture">
         <Content />
       </ArticleLayout>
     </>

@@ -17,13 +17,13 @@ export default function Content() {
       <section id="quick-summary">
         <h2 style={S.h2}>Quick Summary</h2>
         <p style={S.p}>
-          OpenAI ek AI research aur deployment company hai jo frontier language models train karta hai aur unhe products (ChatGPT) aur APIs ke through accessible banata hai. Data center professionals ke liye OpenAI important isliye hai kyunki yeh demonstrate karta hai ki modern AI workloads — training aur inference dono — traditional enterprise compute se dramatically alag infrastructure require karte hain.
+          OpenAI is an AI research and deployment company that trains frontier language models and makes them accessible through products (ChatGPT) and APIs. OpenAI matters for data center professionals because it demonstrates how dramatically different modern AI workloads — both training and inference — are from traditional enterprise compute infrastructure.
         </p>
         <p style={S.p}>
-          Is article mein hum OpenAI ko ek infrastructure lens se dekhenge: models kaise train hote hain, inference kaise serve hoti hai, request flow kya hota hai, GPU compute ki requirements kya hain, aur data center perspective se kya implications hain.
+          In this article, we'll look at OpenAI through an infrastructure lens: how models are trained, how inference is served, what the request flow looks like, what the GPU compute requirements are, and what the implications are from a data center perspective.
         </p>
         <Callout type="important" title="Accuracy Note — Official Sources Only">
-          OpenAI ke internal infrastructure details publicly documented nahi hain beyond official announcements. Is article mein sirf officially documented ya publicly verified information use ki gayi hai. Specific hardware counts, exact data center locations, ya internal architecture details jo officially confirmed nahi hain, invent nahi kiye gaye.
+          OpenAI's internal infrastructure details are not publicly documented beyond official announcements. This article only uses officially documented or publicly verified information. Specific hardware counts, exact data center locations, or internal architecture details that are not officially confirmed have not been invented.
         </Callout>
       </section>
 
@@ -31,11 +31,11 @@ export default function Content() {
       <section id="who-should-read">
         <h2 style={S.h2}>Who Should Read This</h2>
         <ul style={S.ul}>
-          <li><strong>Data Center Engineers:</strong> AI inference infrastructure ki scale aur requirements samajhna</li>
-          <li><strong>AI Infrastructure Engineers:</strong> OpenAI platform ka technical perspective — API, models, scaling</li>
-          <li><strong>Enterprise IT Teams:</strong> OpenAI vs Azure OpenAI Service — deployment aur compliance decisions</li>
-          <li><strong>Students aur Beginners:</strong> AI platform companies ka infrastructure perspective</li>
-          <li><strong>O&M Engineers:</strong> AI workloads ki characteristics jo facility planning affect karti hain</li>
+          <li><strong>Data Center Engineers:</strong> understanding the scale and requirements of AI inference infrastructure</li>
+          <li><strong>AI Infrastructure Engineers:</strong> a technical perspective on the OpenAI platform — API, models, scaling</li>
+          <li><strong>Enterprise IT Teams:</strong> OpenAI vs Azure OpenAI Service — deployment and compliance decisions</li>
+          <li><strong>Students and Beginners:</strong> an infrastructure perspective on AI platform companies</li>
+          <li><strong>O&M Engineers:</strong> AI workload characteristics that affect facility planning</li>
         </ul>
       </section>
 
@@ -43,18 +43,18 @@ export default function Content() {
       <section id="what-is-openai">
         <h2 style={S.h2}>What Is OpenAI?</h2>
         <p style={S.p}>
-          OpenAI ek American AI research organization aur company hai, headquartered in San Francisco, California. 2015 mein founded, 2019 mein "capped-profit" structure mein transition kiya. Mission statement: "to ensure that artificial general intelligence benefits all of humanity."
+          OpenAI is an American AI research organization and company, headquartered in San Francisco, California. Founded in 2015, it transitioned to a "capped-profit" structure in 2019. Mission statement: "to ensure that artificial general intelligence benefits all of humanity."
         </p>
         <p style={S.p}>
-          Infrastructure perspective se OpenAI teen roles mein exist karta hai:
+          From an infrastructure perspective, OpenAI exists across three roles:
         </p>
         <ul style={S.ul}>
-          <li><strong>AI Research Lab:</strong> Frontier models develop karta hai — GPT series, o-series reasoning models, DALL-E, Whisper, Codex, Embeddings. Research publications regularly release karta hai (though increasingly less detailed about training specifics).</li>
-          <li><strong>Consumer Product Company:</strong> ChatGPT — world ka most widely used AI consumer application. Web, mobile, desktop apps. Hundreds of millions of users (per public statements).</li>
-          <li><strong>Enterprise API Platform:</strong> Developers aur businesses OpenAI models programmatically access karte hain. Ek extensive platform hai: chat completions, assistants, fine-tuning, embeddings, image generation, speech, aur more.</li>
+          <li><strong>AI Research Lab:</strong> develops frontier models — the GPT series, o-series reasoning models, DALL-E, Whisper, Codex, Embeddings. Regularly releases research publications (though increasingly less detailed about training specifics).</li>
+          <li><strong>Consumer Product Company:</strong> ChatGPT — the world's most widely used AI consumer application. Web, mobile, desktop apps. Hundreds of millions of users (per public statements).</li>
+          <li><strong>Enterprise API Platform:</strong> developers and businesses access OpenAI models programmatically. An extensive platform: chat completions, assistants, fine-tuning, embeddings, image generation, speech, and more.</li>
         </ul>
         <p style={S.p}>
-          OpenAI ke paas Microsoft ke saath substantial strategic partnership hai (2019 se ongoing, multiple rounds of investment) jisme Microsoft ne Azure-based compute OpenAI training ke liye provide kiya. Yeh infrastructure relationship AI companies aur cloud providers ke beech ek important pattern demonstrate karta hai.
+          OpenAI has a substantial strategic partnership with Microsoft (ongoing since 2019, multiple rounds of investment) in which Microsoft has provided Azure-based compute for OpenAI training. This infrastructure relationship demonstrates an important pattern between AI companies and cloud providers.
         </p>
       </section>
 
@@ -62,7 +62,7 @@ export default function Content() {
       <section id="model-ecosystem">
         <h2 style={S.h2}>OpenAI Model Ecosystem</h2>
         <p style={S.p}>
-          OpenAI several model families maintain karta hai, har ek alag use cases ke liye optimized. Infrastructure perspective se important hai ki har model family alag compute requirements rakhti hai.
+          OpenAI maintains several model families, each optimized for different use cases. From an infrastructure perspective it's important that each model family has different compute requirements.
         </p>
         <ComparisonTable
           title="OpenAI Model Families — Key Categories (verify current models at platform.openai.com/docs/models)"
@@ -77,7 +77,7 @@ export default function Content() {
           ]}
         />
         <Callout type="warning" title="Model Portfolio Rapidly Evolves">
-          OpenAI regularly models add, deprecate, aur update karta hai — specific model names, versions aur capabilities is article ke baad bhi change ho sakte hain. Upar diye gaye categories illustrative hain. Always official OpenAI documentation se current models verify karo: <a href="https://platform.openai.com/docs/models" style={{ color: "#2563eb" }}>platform.openai.com/docs/models</a>
+          OpenAI regularly adds, deprecates, and updates models — specific model names, versions, and capabilities may change even after this article. The categories above are illustrative. Always verify current models from official OpenAI documentation: <a href="https://platform.openai.com/docs/models" style={{ color: "#2563eb" }}>platform.openai.com/docs/models</a>
         </Callout>
       </section>
 
@@ -85,7 +85,7 @@ export default function Content() {
       <section id="chatgpt-vs-api">
         <h2 style={S.h2}>ChatGPT vs OpenAI API</h2>
         <p style={S.p}>
-          Yeh distinction practically important hai — especially enterprise deployments ke liye.
+          This distinction matters practically — especially for enterprise deployments.
         </p>
         <ComparisonTable
           title="ChatGPT vs OpenAI API — Key Differences"
@@ -102,8 +102,8 @@ export default function Content() {
             ["Enterprise", "ChatGPT Enterprise product", "API with enterprise agreements, Azure OpenAI Service"],
           ]}
         />
-        <Callout type="important" title="Data Privacy Distinction Critical Hai">
-          Enterprise deployments ke liye yeh most important difference hai: <strong>API ke through send kiya gaya data OpenAI ke models train karne ke liye use nahi hota</strong> (per current policy). ChatGPT consumer product mein training opt-out available hai but default ON hai. Always current OpenAI usage policies verify karo — policies change ho sakti hain.
+        <Callout type="important" title="Data Privacy Distinction Is Critical">
+          For enterprise deployments this is the most important difference: <strong>data sent through the API is not used to train OpenAI's models</strong> (per current policy). In the ChatGPT consumer product, a training opt-out is available but is ON by default. Always verify current OpenAI usage policies — policies can change.
         </Callout>
       </section>
 
@@ -111,77 +111,77 @@ export default function Content() {
       <section id="azure-partnership">
         <h2 style={S.h2}>OpenAI and Microsoft Azure</h2>
         <p style={S.p}>
-          OpenAI aur Microsoft ke beech partnership AI infrastructure ka ek significant example hai — ek frontier AI lab aur ek major cloud provider ka collaboration.
+          The partnership between OpenAI and Microsoft is a significant example of AI infrastructure — a collaboration between a frontier AI lab and a major cloud provider.
         </p>
         <p style={S.p}><strong>Infrastructure relationship:</strong></p>
         <ul style={S.ul}>
-          <li>Microsoft ne OpenAI mein multiple billion-dollar investments kiye hain (2019, 2021, 2023 aur ongoing)</li>
-          <li>Microsoft OpenAI ka ek primary aur major cloud infrastructure partner hai — significant training aur inference capacity Azure-based infrastructure pe hai</li>
-          <li>OpenAI infrastructure sirf Azure tak limited nahi hai — OpenAI independent infrastructure capacity bhi expand kar raha hai (Stargate project — see below)</li>
-          <li>Microsoft Office 365 aur Azure products mein OpenAI models integrate kiye gaye hain (Microsoft Copilot)</li>
+          <li>Microsoft has made multiple billion-dollar investments in OpenAI (2019, 2021, 2023, and ongoing)</li>
+          <li>Microsoft is a primary and major cloud infrastructure partner for OpenAI — significant training and inference capacity runs on Azure-based infrastructure</li>
+          <li>OpenAI's infrastructure isn't limited to Azure alone — OpenAI is also expanding independent infrastructure capacity (the Stargate project — see below)</li>
+          <li>OpenAI models are integrated into Microsoft Office 365 and Azure products (Microsoft Copilot)</li>
         </ul>
-        <p style={S.p}><strong>Stargate — OpenAI infrastructure expansion:</strong> OpenAI ne publicly Stargate project announce kiya hai — ek large-scale AI infrastructure initiative jisme OpenAI, SoftBank, aur other partners dedicated AI infrastructure build kar rahe hain. Publicly confirmed details: Abilene, Texas ek confirmed Stargate site hai. OpenAI ne publicly NVIDIA GB200-based infrastructure Abilene mein discuss kiya hai. OpenAI ne publicly stated hai ki GPT-5.5 training Abilene facility mein run ki ja rahi hai. Remaining technical details — exact total capacity, full GPU fleet, power distribution, network architecture — publicly confirmed nahi hain aur infer ya invent nahi kiye gaye hain. Always current official announcements verify karo: <a href="https://openai.com/index/announcing-the-stargate-project/" style={{ color: "#2563eb" }}>openai.com</a></p>
+        <p style={S.p}><strong>Stargate — OpenAI infrastructure expansion:</strong> OpenAI has publicly announced the Stargate project — a large-scale AI infrastructure initiative in which OpenAI, SoftBank, and other partners are building dedicated AI infrastructure. Publicly confirmed details: Abilene, Texas is a confirmed Stargate site. OpenAI has publicly discussed NVIDIA GB200-based infrastructure in Abilene. OpenAI has publicly stated that GPT-5.5 training is being run at the Abilene facility. Remaining technical details — exact total capacity, full GPU fleet, power distribution, network architecture — are not publicly confirmed and have not been inferred or invented. Always verify current official announcements: <a href="https://openai.com/index/announcing-the-stargate-project/" style={{ color: "#2563eb" }}>openai.com</a></p>
         <p style={S.p}><strong>Azure OpenAI Service — separate product:</strong></p>
         <p style={S.p}>
-          Azure OpenAI Service Microsoft ka enterprise product hai jo same OpenAI models ko Azure infrastructure ke through expose karta hai. Enterprise customers ke liye key advantages:
+          Azure OpenAI Service is Microsoft's enterprise product that exposes the same OpenAI models through Azure infrastructure. Key advantages for enterprise customers:
         </p>
         <ul style={S.ul}>
-          <li>Data Azure regions mein rehta hai — data residency aur sovereignty requirements meet karne mein help</li>
-          <li>Azure compliance certifications apply hoti hain (SOC 2, ISO 27001, FedRAMP, HIPAA eligibility)</li>
-          <li>Azure Private Link se private network access possible</li>
-          <li>Existing Azure enterprise agreements aur billing leverage</li>
+          <li>Data stays in Azure regions — helps meet data residency and sovereignty requirements</li>
+          <li>Azure compliance certifications apply (SOC 2, ISO 27001, FedRAMP, HIPAA eligibility)</li>
+          <li>Private network access possible via Azure Private Link</li>
+          <li>Leverage existing Azure enterprise agreements and billing</li>
           <li>Azure Active Directory/Entra ID integration</li>
           <li>Content filtering configuration</li>
         </ul>
-        <p style={S.p}><strong>Tradeoff:</strong> Azure OpenAI Service mein latest models OpenAI direct API se typically thodi der baad available hote hain — Microsoft deployment process involve hota hai. Direct OpenAI API pe latest models pehle milte hain.</p>
+        <p style={S.p}><strong>Tradeoff:</strong> latest models on Azure OpenAI Service are typically available a bit later than the direct OpenAI API — a Microsoft deployment process is involved. The direct OpenAI API gets the latest models first.</p>
       </section>
 
       {/* ── REQUEST FLOW ──────────────────────────────────── */}
       <section id="request-flow">
         <h2 style={S.h2}>How an AI Request Flows</h2>
         <p style={S.p}>
-          Jab aap OpenAI API call karte hain — ya ChatGPT use karte hain — ek complete infrastructure chain traverse hoti hai.
+          When you call the OpenAI API — or use ChatGPT — a complete infrastructure chain is traversed.
         </p>
         <Callout type="important" title="Generalized Educational Architecture">
-          Neeche shown flow ek generalized AI-serving architecture hai jo educational purposes ke liye represent karta hai typical AI API infrastructure. Yeh OpenAI ka publicly confirmed internal architecture nahi hai — OpenAI apna production routing, load balancing ya serving topology publicly document nahi karta.
+          The flow shown below is a generalized AI-serving architecture that represents typical AI API infrastructure for educational purposes. This is not OpenAI's publicly confirmed internal architecture — OpenAI does not publicly document its production routing, load balancing, or serving topology.
         </Callout>
         <Figure caption="Generalized AI API Request Flow (educational): Application → API Gateway (auth, rate limiting) → Load Balancer → Inference Cluster (GPU servers, model weights in VRAM) → Token Generation (autoregressive, one token at a time) → Response (streaming or batch). This represents a typical AI-serving pattern, not a confirmed OpenAI architecture.">
           <RequestFlowDiagram />
         </Figure>
         <ol style={S.ol}>
-          <li><strong>Client Request:</strong> Application HTTPS POST request send karta hai — API key (authentication), model specification, messages array (conversation history), aur parameters (temperature, max_tokens, etc.)</li>
-          <li><strong>API Gateway:</strong> Request validate hoti hai — API key verify, rate limit check, request format validate. Agar rate limit exceed ho → 429 error return. Agar valid → inference routing ke liye forward.</li>
-          <li><strong>Load Balancer / Router:</strong> Available inference server select karta hai. Geographic routing possible (user ke paas wala server). Model-specific routing — different model categories alag infrastructure configurations pe serve hote hain (exact routing architecture publicly undisclosed).</li>
-          <li><strong>Inference Server:</strong> GPU server jahan model weights already memory mein loaded hain. Input tokens process hote hain (tokenization → embedding → transformer layers → logits). Output tokens autoregressively generate hote hain — ek ek token, har token previous tokens pe conditioned.</li>
-          <li><strong>Streaming vs Batch:</strong> <code style={S.code}>stream: true</code> ke saath — har token generate hone ke saath Server-Sent Events ke through client tak pahonchta hai (better perceived latency). Without streaming — poora response buffer hoke ek saath return hota hai.</li>
-          <li><strong>Token Counting &amp; Billing:</strong> Input tokens + output tokens count hote hain. Usage response mein return hoti hai aur billing ke liye track hoti hai.</li>
+          <li><strong>Client Request:</strong> the application sends an HTTPS POST request — API key (authentication), model specification, messages array (conversation history), and parameters (temperature, max_tokens, etc.)</li>
+          <li><strong>API Gateway:</strong> the request is validated — API key verified, rate limit checked, request format validated. If the rate limit is exceeded → a 429 error is returned. If valid → forwarded for inference routing.</li>
+          <li><strong>Load Balancer / Router:</strong> selects an available inference server. Geographic routing is possible (the server closest to the user). Model-specific routing — different model categories are served on different infrastructure configurations (exact routing architecture publicly undisclosed).</li>
+          <li><strong>Inference Server:</strong> the GPU server where model weights are already loaded in memory. Input tokens are processed (tokenization → embedding → transformer layers → logits). Output tokens are generated autoregressively — one token at a time, each token conditioned on previous tokens.</li>
+          <li><strong>Streaming vs Batch:</strong> with <code style={S.code}>stream: true</code> — each token reaches the client via Server-Sent Events as it's generated (better perceived latency). Without streaming — the complete response is buffered and returned at once.</li>
+          <li><strong>Token Counting &amp; Billing:</strong> input tokens + output tokens are counted. Usage is returned in the response and tracked for billing.</li>
         </ol>
-        <p style={S.p}><strong>Latency breakdown:</strong> Total response latency = network round-trip + API gateway processing + inference time (proportional to input length + output length) + model size overhead. <strong>TTFT (Time to First Token)</strong> — pehla token aane mein time — streaming UX ke liye critical metric hai. Large models naturally higher TTFT have.</p>
+        <p style={S.p}><strong>Latency breakdown:</strong> total response latency = network round-trip + API gateway processing + inference time (proportional to input length + output length) + model size overhead. <strong>TTFT (Time to First Token)</strong> — the time until the first token arrives — a critical metric for streaming UX. Larger models naturally have higher TTFT.</p>
       </section>
 
       {/* ── TRAINING INFRA ────────────────────────────────── */}
       <section id="training-infra">
         <h2 style={S.h2}>Training Infrastructure</h2>
         <p style={S.p}>
-          Frontier AI models train karna unprecedented compute scale require karta hai. OpenAI publicly ne kuch details share kiye hain, though specific numbers limited hain.
+          Training frontier AI models requires unprecedented compute scale. OpenAI has publicly shared some details, though specific numbers are limited.
         </p>
         <p style={S.p}><strong>What is publicly documented:</strong></p>
         <ul style={S.ul}>
-          <li>OpenAI ne Microsoft ke saath kaam kiya ek purpose-built AI supercomputing infrastructure build karne ke liye — exact cluster sizes aur locations not officially disclosed</li>
-          <li>Microsoft CEO Satya Nadella ne public statements mein Azure OpenAI infrastructure investments ka reference kiya hai</li>
-          <li>OpenAI GPT-4 technical report (2023) mein training compute documented hai lekin specific hardware counts disclosed nahi</li>
-          <li>Training runs weeks to months chalte hain at scale</li>
-          <li>Distributed training mein model parallelism, data parallelism, aur pipeline parallelism sab use hote hain</li>
+          <li>OpenAI worked with Microsoft to build purpose-built AI supercomputing infrastructure — exact cluster sizes and locations not officially disclosed</li>
+          <li>Microsoft CEO Satya Nadella has referenced Azure OpenAI infrastructure investments in public statements</li>
+          <li>OpenAI's GPT-4 technical report (2023) documents training compute but doesn't disclose specific hardware counts</li>
+          <li>Training runs last weeks to months at scale</li>
+          <li>Distributed training uses model parallelism, data parallelism, and pipeline parallelism together</li>
         </ul>
         <p style={S.p}><strong>Inferred from general AI training knowledge</strong> (not OpenAI-specific confirmed):</p>
         <ul style={S.ul}>
-          <li>High-speed GPU interconnects (InfiniBand class) essential — <TopicLink slug="ai-networking" variant="inline" /> article mein covered hai why</li>
-          <li>Parallel file systems for training data — <TopicLink slug="ai-storage" variant="inline" /> article mein covered</li>
-          <li>Checkpoint storage — large models ke checkpoints very large hote hain; frontier-scale training mein significant checkpoint storage required hoti hai</li>
+          <li>High-speed GPU interconnects (InfiniBand class) are essential — covered in the <TopicLink slug="ai-networking" variant="inline" /> article, which explains why</li>
+          <li>Parallel file systems for training data — covered in the <TopicLink slug="ai-storage" variant="inline" /> article</li>
+          <li>Checkpoint storage — checkpoints for large models are very large; significant checkpoint storage is required in frontier-scale training</li>
           <li>Dedicated high-density <TopicLink slug="ai-cooling" variant="inline" /> for GPU clusters</li>
         </ul>
-        <Callout type="warning" title="Specific Numbers Invent Nahi Kiye Gaye">
-          OpenAI ke training infrastructure ke exact GPU counts, data center locations, ya power consumption publicly officially confirmed nahi hain beyond general statements. Koi bhi specific numbers jo internet pe circulate karte hain unofficial hain. Is article mein verified facts aur general AI training concepts se inference alag rakhee gayi hai.
+        <Callout type="warning" title="Specific Numbers Not Invented">
+          The exact GPU counts, data center locations, or power consumption of OpenAI's training infrastructure are not officially publicly confirmed beyond general statements. Any specific numbers circulating online are unofficial. This article keeps verified facts separate from inferences drawn from general AI training concepts.
         </Callout>
       </section>
 
@@ -189,22 +189,22 @@ export default function Content() {
       <section id="inference-infra">
         <h2 style={S.h2}>Inference Infrastructure</h2>
         <p style={S.p}>
-          Inference — trained model se live responses generate karna — training se bilkul alag infrastructure challenge hai. OpenAI millions of users simultaneously serve karta hai — yeh massive scale continuous serving problem hai.
+          Inference — generating live responses from a trained model — is a completely different infrastructure challenge from training. OpenAI serves millions of users simultaneously — a massive scale, continuous serving problem.
         </p>
         <p style={S.p}><strong>Key inference infrastructure characteristics:</strong></p>
         <ul style={S.ul}>
-          <li><strong>Global distribution:</strong> Users globally hain — latency minimize karne ke liye geographically distributed inference capacity zaruri hai. OpenAI ka global infrastructure — exact production routing aur location architecture publicly disclosed nahi hai — yeh distributed serving enable karta hai.</li>
-          <li><strong>Model weights in memory:</strong> GPU servers par model weights VRAM mein preloaded rehte hain — har request pe model reload nahi hota. Yeh cold-start latency eliminate karta hai lekin significant memory commitment hai.</li>
-          <li><strong>High concurrency:</strong> Ek server multiple requests simultaneously serve karta hai — batching techniques se GPU utilization maximize hota hai.</li>
-          <li><strong>Autoscaling:</strong> Demand spikes (viral moments, business hours) ke saath capacity scale karna — yeh large-scale cloud infrastructure ka standard feature hai.</li>
-          <li><strong>Model-specific clusters:</strong> Different models alag hardware configurations pe serve hote hain — ek single cluster sab models efficiently serve nahi kar sakta.</li>
+          <li><strong>Global distribution:</strong> users are global — geographically distributed inference capacity is necessary to minimize latency. OpenAI's global infrastructure — the exact production routing and location architecture is not publicly disclosed — enables this distributed serving.</li>
+          <li><strong>Model weights in memory:</strong> model weights stay preloaded in VRAM on GPU servers — the model isn't reloaded on every request. This eliminates cold-start latency but represents a significant memory commitment.</li>
+          <li><strong>High concurrency:</strong> a single server serves multiple requests simultaneously — batching techniques maximize GPU utilization.</li>
+          <li><strong>Autoscaling:</strong> scaling capacity with demand spikes (viral moments, business hours) — a standard feature of large-scale cloud infrastructure.</li>
+          <li><strong>Model-specific clusters:</strong> different models are served on different hardware configurations — a single cluster can't efficiently serve every model.</li>
         </ul>
         <p style={S.p}><strong>Inference optimization techniques</strong> (general industry practices, not OpenAI-specific confirmed):</p>
         <ul style={S.ul}>
-          <li><strong>Quantization:</strong> Model weights lower precision (INT8, FP8) mein store karna — smaller memory footprint, faster compute, slight accuracy tradeoff</li>
-          <li><strong>KV Cache:</strong> Previously computed key-value pairs cache karna — long conversations mein efficiency improve hoti hai</li>
-          <li><strong>Continuous batching:</strong> Different lengths ke requests ko dynamically batch karna — GPU utilization maximize karta hai</li>
-          <li><strong>Speculative decoding:</strong> Smaller "draft" model se tokens predict karna, larger model se verify — throughput improve hoti hai</li>
+          <li><strong>Quantization:</strong> storing model weights at lower precision (INT8, FP8) — smaller memory footprint, faster compute, slight accuracy tradeoff</li>
+          <li><strong>KV Cache:</strong> caching previously computed key-value pairs — improves efficiency in long conversations</li>
+          <li><strong>Continuous batching:</strong> dynamically batching requests of different lengths — maximizes GPU utilization</li>
+          <li><strong>Speculative decoding:</strong> predicting tokens with a smaller "draft" model, verified by the larger model — improves throughput</li>
         </ul>
       </section>
 
@@ -212,25 +212,25 @@ export default function Content() {
       <section id="reasoning-models">
         <h2 style={S.h2}>Reasoning Models and Infrastructure Impact</h2>
         <p style={S.p}>
-          OpenAI ne o-series reasoning models introduce kiye hain jo "chain-of-thought reasoning" ya "extended thinking" use karte hain. Yeh standard general-purpose models (GPT-4o class) se fundamentally alag inference pattern hai — aur infrastructure pe significant impact hai. Current o-series lineup verify karo: <a href="https://platform.openai.com/docs/models" style={{ color: "#2563eb" }}>platform.openai.com/docs/models</a>
+          OpenAI has introduced o-series reasoning models that use "chain-of-thought reasoning" or "extended thinking." This is a fundamentally different inference pattern from standard general-purpose models (GPT-4o class) — and it has a significant impact on infrastructure. Verify the current o-series lineup: <a href="https://platform.openai.com/docs/models" style={{ color: "#2563eb" }}>platform.openai.com/docs/models</a>
         </p>
         <p style={S.p}><strong>How reasoning models differ:</strong></p>
         <ul style={S.ul}>
-          <li>Model problem solve karne se pehle internally "think" karta hai — yeh internal reasoning tokens generate karta hai jo user ko visible nahi hote (by default)</li>
-          <li>Complex problems pe substantially more tokens generate hote hain before final answer</li>
-          <li>Per-request GPU compute significantly higher hota hai</li>
-          <li>Response latency higher hoti hai — seconds to minutes for complex problems</li>
-          <li>API pricing accordingly higher hai — per token cost zyada</li>
+          <li>The model "thinks" internally before solving the problem — generating internal reasoning tokens not visible to the user (by default)</li>
+          <li>Substantially more tokens are generated for complex problems before the final answer</li>
+          <li>Per-request GPU compute is significantly higher</li>
+          <li>Response latency is higher — seconds to minutes for complex problems</li>
+          <li>API pricing is correspondingly higher — higher per-token cost</li>
         </ul>
         <p style={S.p}><strong>Infrastructure implications:</strong></p>
         <ul style={S.ul}>
-          <li>Applications jo reasoning models use karte hain unhe much longer timeouts implement karne padte hain</li>
-          <li>Cost per interaction significantly higher — use case ki justification important hai</li>
-          <li>Server-side mein longer GPU holding time per request</li>
-          <li>UX ke liye streaming especially important — user ko feedback milta hai ki request processing ho rahi hai</li>
+          <li>Applications using reasoning models have to implement much longer timeouts</li>
+          <li>Cost per interaction is significantly higher — justifying the use case matters</li>
+          <li>Longer server-side GPU holding time per request</li>
+          <li>Streaming is especially important for UX — it gives the user feedback that the request is being processed</li>
         </ul>
         <Callout type="best-practice" title="Right Model for Right Task">
-          Har task ke liye most capable reasoning model use karna infrastructure aur cost waste hai. Simple tasks (summarization, classification, Q&A) ke liye efficient/smaller models adequate hote hain aur much cheaper. Complex reasoning (math proofs, code debugging, scientific analysis) ke liye reasoning models justified hain. Model selection architecture decision hai — cost optimization ke liye benchmark karo specific use case pe. Current models aur pricing: <a href="https://platform.openai.com/docs/models" style={{ color: "#2563eb" }}>platform.openai.com/docs/models</a>
+          Using the most capable reasoning model for every task wastes infrastructure and cost. For simple tasks (summarization, classification, Q&A), efficient/smaller models are adequate and much cheaper. For complex reasoning (math proofs, code debugging, scientific analysis), reasoning models are justified. Model selection is an architecture decision — benchmark whether a cheaper model gives acceptable quality for the specific task. Current models and pricing: <a href="https://platform.openai.com/docs/models" style={{ color: "#2563eb" }}>platform.openai.com/docs/models</a>
         </Callout>
       </section>
 
@@ -238,23 +238,23 @@ export default function Content() {
       <section id="tokens-latency">
         <h2 style={S.h2}>Tokens, Latency and Throughput</h2>
         <p style={S.p}>
-          OpenAI API ke saath kaam karne ke liye tokens samajhna fundamental hai — yeh billing, performance, aur infrastructure design sab affect karta hai.
+          Understanding tokens is fundamental to working with the OpenAI API — it affects billing, performance, and infrastructure design.
         </p>
-        <p style={S.p}><strong>What is a token?</strong> Token language model ka basic unit of processing hai. English text mein roughly 1 token ≈ 4 characters ya ~0.75 words. Exact tokenization model-specific hoti hai — OpenAI ka tiktoken library use karo accurate counts ke liye. "Infrastructure" = approximately 4 tokens. "Hello!" = 2 tokens.</p>
-        <p style={S.p}><strong>Billing:</strong> OpenAI input tokens aur output tokens alag charge karta hai (output typically more expensive). Context window = maximum tokens (input + output combined) ek request mein. Models ka context window vary karta hai — current context window specifications official model documentation se verify karo: <a href="https://platform.openai.com/docs/models" style={{ color: "#2563eb" }}>platform.openai.com/docs/models</a>. Large context = more expensive per request + higher latency.</p>
+        <p style={S.p}><strong>What is a token?</strong> A token is the basic unit of processing for a language model. In English text, roughly 1 token ≈ 4 characters or ~0.75 words. Exact tokenization is model-specific — use OpenAI's tiktoken library for accurate counts. "Infrastructure" = approximately 4 tokens. "Hello!" = 2 tokens.</p>
+        <p style={S.p}><strong>Billing:</strong> OpenAI charges input tokens and output tokens differently (output is typically more expensive). Context window = maximum tokens (input + output combined) in one request. The context window varies by model — verify current context window specifications from official model documentation: <a href="https://platform.openai.com/docs/models" style={{ color: "#2563eb" }}>platform.openai.com/docs/models</a>. A large context = more expensive per request + higher latency.</p>
         <ComparisonTable
           title="Key Latency Metrics for AI APIs"
           headers={["Metric", "Definition", "Why It Matters"]}
           rows={[
-            ["TTFT (Time to First Token)", "First output token aane mein time", "Perceived responsiveness — streaming UX ke liye critical"],
+            ["TTFT (Time to First Token)", "Time until the first output token arrives", "Perceived responsiveness — critical for streaming UX"],
             ["TPS (Tokens per Second)", "Output generation speed", "Throughput metric — affects completion time for long outputs"],
-            ["Total latency", "Complete response time (last token)", "Non-streaming applications ke liye relevant"],
+            ["Total latency", "Complete response time (last token)", "Relevant for non-streaming applications"],
             ["P50 / P95 / P99 latency", "Median / 95th / 99th percentile latency", "Tail latency — worst-case user experience"],
             ["Context window", "Max tokens (input + output) per request", "Determines max conversation length, document size"],
           ]}
         />
         <p style={S.p}>
-          Infrastructure pe latency factors: model size (larger = slower generation), input token count (longer context = more attention computation), current server load, geographic distance, aur tier (shared vs dedicated capacity). OpenAI enterprise/dedicated tier typically more consistent latency provide karta hai kyunki capacity shared nahi hoti.
+          Latency factors at the infrastructure level: model size (larger = slower generation), input token count (longer context = more attention computation), current server load, geographic distance, and tier (shared vs dedicated capacity). OpenAI's enterprise/dedicated tier typically provides more consistent latency because capacity isn't shared.
         </p>
       </section>
 
@@ -262,15 +262,15 @@ export default function Content() {
       <section id="gpu-compute">
         <h2 style={S.h2}>GPU and Accelerator Compute</h2>
         <p style={S.p}>
-          OpenAI NVIDIA aur other infrastructure partners ke saath kaam karta hai. Exact production accelerator mix — specific GPU models, generations, aur configurations — publicly disclosed nahi hai. Various industry reports NVIDIA GPU use reference karte hain, lekin yeh OpenAI ki internally confirmed specifications nahi hain.
+          OpenAI works with NVIDIA and other infrastructure partners. The exact production accelerator mix — specific GPU models, generations, and configurations — is not publicly disclosed. Various industry reports reference NVIDIA GPU use, but these are not OpenAI's internally confirmed specifications.
         </p>
-        <p style={S.p}><strong>Why GPUs for AI:</strong> <TopicLink slug="ai-gpu" variant="inline" /> article mein detailed hai. Summary: GPU ki massively parallel architecture matrix multiplications (transformer models ka core operation) ke liye ideal hai. CPU se orders of magnitude faster for AI workloads.</p>
+        <p style={S.p}><strong>Why GPUs for AI:</strong> detailed in the <TopicLink slug="ai-gpu" variant="inline" /> article. Summary: the GPU's massively parallel architecture is ideal for matrix multiplications (the core operation of transformer models). Orders of magnitude faster than a CPU for AI workloads.</p>
         <p style={S.p}><strong>Training vs inference accelerator requirements differ</strong> (general AI infrastructure principles — not OpenAI-specific confirmed):</p>
         <ul style={S.ul}>
-          <li><strong>Training:</strong> Maximum memory bandwidth aur FP16/BF16 compute. Gradient storage ke liye large VRAM. High-speed multi-GPU interconnects critical.</li>
-          <li><strong>Inference:</strong> Fast generation, high concurrency, cost efficiency important. Quantization (INT8/FP8) enable karta hai more models per GPU. Memory capacity determines maximum model size per GPU.</li>
+          <li><strong>Training:</strong> maximum memory bandwidth and FP16/BF16 compute. Large VRAM for gradient storage. High-speed multi-GPU interconnects are critical.</li>
+          <li><strong>Inference:</strong> fast generation, high concurrency, cost efficiency matter. Quantization (INT8/FP8) enables more models per GPU. Memory capacity determines the maximum model size per GPU.</li>
         </ul>
-        <p style={S.p}><strong>Model parallelism at inference:</strong> Large models (GPT-4 class) single GPU mein fit nahi ho sakte — model multiple GPUs mein split hota hai (tensor parallelism, pipeline parallelism). Iska matlab hai ek single inference request multiple GPUs coordinate kar rahi hoti hain simultaneously.</p>
+        <p style={S.p}><strong>Model parallelism at inference:</strong> large models (GPT-4 class) can't fit on a single GPU — the model is split across multiple GPUs (tensor parallelism, pipeline parallelism). This means a single inference request is coordinating multiple GPUs simultaneously.</p>
       </section>
 
       {/* ── NETWORKING STORAGE ────────────────────────────── */}
@@ -278,15 +278,15 @@ export default function Content() {
         <h2 style={S.h2}>Networking and Storage at Scale</h2>
         <p style={S.p}><strong>Networking requirements:</strong></p>
         <ul style={S.ul}>
-          <li><strong>Training:</strong> High-speed GPU-to-GPU communication essential — AllReduce operations har training step pe. <TopicLink slug="ai-networking" variant="inline" /> article mein InfiniBand/RoCE aur collective communications detail mein covered hain. Training cluster mein network bottleneck directly training throughput affect karta hai.</li>
-          <li><strong>Inference:</strong> User traffic ke liye standard high-bandwidth internet connectivity. Internal cluster networking for model-parallel inference. CDN layer for API responses globally.</li>
-          <li><strong>External:</strong> OpenAI API globally accessible hai — external networking, CDN ya DDoS protection details publicly confirmed nahi hain.</li>
+          <li><strong>Training:</strong> high-speed GPU-to-GPU communication is essential — AllReduce operations at every training step. The <TopicLink slug="ai-networking" variant="inline" /> article covers InfiniBand/RoCE and collective communications in detail. A network bottleneck in the training cluster directly affects training throughput.</li>
+          <li><strong>Inference:</strong> standard high-bandwidth internet connectivity for user traffic. Internal cluster networking for model-parallel inference. A CDN layer for API responses globally.</li>
+          <li><strong>External:</strong> the OpenAI API is globally accessible — external networking, CDN, or DDoS protection details are not publicly confirmed.</li>
         </ul>
         <p style={S.p}><strong>Storage requirements:</strong></p>
         <ul style={S.ul}>
-          <li><strong>Training data:</strong> Internet-scale training datasets can create very large storage aur preprocessing requirements — OpenAI ki exact training-data storage scale publicly disclosed nahi hai. <TopicLink slug="ai-storage" variant="inline" /> article mein parallel file systems aur training data pipeline covered hain.</li>
-          <li><strong>Model checkpoints:</strong> Training ke dauran periodic saves — large models ke checkpoints hundreds of GBs. Multiple checkpoints maintained.</li>
-          <li><strong>Trained model weights:</strong> Production models storage pe — multiple versions, multiple model families.</li>
+          <li><strong>Training data:</strong> internet-scale training datasets can create very large storage and preprocessing requirements — OpenAI's exact training-data storage scale is not publicly disclosed. The <TopicLink slug="ai-storage" variant="inline" /> article covers parallel file systems and the training data pipeline.</li>
+          <li><strong>Model checkpoints:</strong> periodic saves during training — checkpoints for large models run into hundreds of GBs. Multiple checkpoints are maintained.</li>
+          <li><strong>Trained model weights:</strong> production models in storage — multiple versions, multiple model families.</li>
           <li><strong>User data:</strong> API request/response logs (for abuse monitoring), usage metrics, billing data.</li>
         </ul>
       </section>
@@ -295,14 +295,14 @@ export default function Content() {
       <section id="data-center-cooling">
         <h2 style={S.h2}>Data Center and Cooling Requirements</h2>
         <p style={S.p}>
-          OpenAI scale ke AI workloads data center requirements ko traditional enterprise computing se dramatically alag banate hain.
+          AI workloads at OpenAI's scale make data center requirements dramatically different from traditional enterprise computing.
         </p>
-        <p style={S.p}><strong>Power density:</strong> AI GPU clusters — especially training — very high rack power density create karte hain. <TopicLink slug="ai-cooling" variant="inline" /> article mein detailed hai: modern GPU servers individual units mein 10+ kW consume kar sakte hain, aur ek GPU rack 40–100+ kW reach kar sakta hai depending on configuration. Sufficiently high rack densities pe cooling requirements significantly increase hoti hain — actual cooling technology (air, liquid, hybrid) server OEM design, rack density, aur specific facility capability pe depend karti hai.</p>
-        <p style={S.p}><strong>AI-optimized data centers:</strong> Major cloud providers — Microsoft, AWS, Google — ne publicly stated hai ki AI workloads ke liye high-density power aur advanced cooling infrastructure invest kar rahe hain. Exact specifications per facility publicly documented nahi hain.</p>
-        <p style={S.p}><strong>Power consumption at scale:</strong> Large AI training runs substantial electricity consume karte hain. OpenAI ya Microsoft ke exact power figures publicly confirmed nahi hain for OpenAI workloads specifically. Industry broadly acknowledges ki frontier AI training runs significant energy consume karte hain.</p>
-        <p style={S.p}><strong>Geographic distribution:</strong> Inference ke liye global infrastructure capacity distributed hai — exact OpenAI production routing aur location architecture publicly disclosed nahi hai. OpenAI ke Stargate initiative ke through independent infrastructure build ho rahi hai alongside existing cloud partnerships.</p>
-        <Callout type="important" title="Specific Numbers Officially Confirmed Nahi">
-          OpenAI aur Microsoft ne publicly specific power consumption, exact GPU counts, ya data center locations for OpenAI workloads detail mein confirm nahi kiye. Koi bhi specific figures jo circulate karte hain estimates hain. AI cooling infrastructure ke general concepts <TopicLink slug="ai-cooling" variant="inline" /> article mein verified engineering information ke saath covered hain.
+        <p style={S.p}><strong>Power density:</strong> AI GPU clusters — especially training — create very high rack power density. Detailed in the <TopicLink slug="ai-cooling" variant="inline" /> article: modern GPU servers can individually consume 10+ kW, and a GPU rack can reach 40–100+ kW depending on configuration. At sufficiently high rack densities, cooling requirements increase significantly — the actual cooling technology (air, liquid, hybrid) depends on server OEM design, rack density, and specific facility capability.</p>
+        <p style={S.p}><strong>AI-optimized data centers:</strong> major cloud providers — Microsoft, AWS, Google — have publicly stated that they are investing in high-density power and advanced cooling infrastructure for AI workloads. Exact specifications per facility are not publicly documented.</p>
+        <p style={S.p}><strong>Power consumption at scale:</strong> large AI training runs consume substantial electricity. Exact power figures for OpenAI or Microsoft specifically for OpenAI workloads are not publicly confirmed. The industry broadly acknowledges that frontier AI training runs consume significant energy.</p>
+        <p style={S.p}><strong>Geographic distribution:</strong> global infrastructure capacity is distributed for inference — the exact OpenAI production routing and location architecture is not publicly disclosed. Independent infrastructure is being built through OpenAI's Stargate initiative alongside existing cloud partnerships.</p>
+        <Callout type="important" title="Specific Numbers Not Officially Confirmed">
+          OpenAI and Microsoft have not publicly confirmed specific power consumption, exact GPU counts, or data center locations for OpenAI workloads in detail. Any specific figures that circulate are estimates. The general concepts of AI cooling infrastructure are covered with verified engineering information in the <TopicLink slug="ai-cooling" variant="inline" /> article.
         </Callout>
       </section>
 
@@ -310,15 +310,15 @@ export default function Content() {
       <section id="model-serving">
         <h2 style={S.h2}>Model Serving and Inference Scaling</h2>
         <p style={S.p}>
-          Millions of simultaneous users ko low latency pe serve karna ek complex systems engineering problem hai. OpenAI ka scale yeh demonstrate karta hai ki modern AI inference serving traditional web application serving se alag kaise hai.
+          Serving millions of simultaneous users at low latency is a complex systems engineering problem. OpenAI's scale demonstrates how different modern AI inference serving is from traditional web application serving.
         </p>
         <p style={S.p}><strong>Key challenges at OpenAI's scale:</strong></p>
         <ul style={S.ul}>
-          <li><strong>Memory constraints:</strong> Large models substantial GPU VRAM use karte hain. GPT-4 class models bina quantization ke terabytes of VRAM require karte hain across multiple GPUs. Memory capacity directly limits how many models simultaneously loaded ho sakte hain.</li>
-          <li><strong>Concurrency:</strong> GPU per-token generation sequential hai for a single request, but multiple requests simultaneously process ho sakte hain (batching). Optimal batch size balance karta hai throughput vs latency.</li>
-          <li><strong>Cost economics:</strong> Per-token compute cost revenue se match karna hoga. Agar inference zyada expensive ho jata hai than charged, business unsustainable ho jaata hai. Yeh engineering innovation (quantization, distillation, efficient architectures) drive karta hai.</li>
-          <li><strong>Demand spikes:</strong> Viral moments ya product launches pe sudden traffic spikes. Graceful degradation ya rapid scaling zaruri hai.</li>
-          <li><strong>Multi-model serving:</strong> Multiple model categories simultaneously serve ho rahe hain — general-purpose, reasoning, embeddings, image generation, audio. Efficient resource sharing aur model-specific infrastructure critical hai.</li>
+          <li><strong>Memory constraints:</strong> large models use substantial GPU VRAM. GPT-4 class models require terabytes of VRAM across multiple GPUs without quantization. Memory capacity directly limits how many models can be loaded simultaneously.</li>
+          <li><strong>Concurrency:</strong> GPU per-token generation is sequential for a single request, but multiple requests can be processed simultaneously (batching). The optimal batch size balances throughput vs latency.</li>
+          <li><strong>Cost economics:</strong> per-token compute cost has to be matched against revenue. If inference becomes more expensive than what's charged, the business becomes unsustainable. This drives engineering innovation (quantization, distillation, efficient architectures).</li>
+          <li><strong>Demand spikes:</strong> sudden traffic spikes during viral moments or product launches. Graceful degradation or rapid scaling is necessary.</li>
+          <li><strong>Multi-model serving:</strong> multiple model categories are served simultaneously — general-purpose, reasoning, embeddings, image generation, audio. Efficient resource sharing and model-specific infrastructure are critical.</li>
         </ul>
       </section>
 
@@ -326,49 +326,49 @@ export default function Content() {
       <section id="rate-limits">
         <h2 style={S.h2}>Rate Limits, Quotas and Cost</h2>
         <p style={S.p}>
-          OpenAI API mein rate limits multiple dimensions mein exist karte hain — yeh infrastructure aur cost design decisions directly drive karte hain.
+          Rate limits on the OpenAI API exist across multiple dimensions — these directly drive infrastructure and cost design decisions.
         </p>
         <p style={S.p}><strong>Rate limit dimensions:</strong></p>
         <ul style={S.ul}>
-          <li><strong>RPM (Requests Per Minute):</strong> Kitne API calls per minute</li>
+          <li><strong>RPM (Requests Per Minute):</strong> how many API calls per minute</li>
           <li><strong>TPM (Tokens Per Minute):</strong> Total tokens (input + output) per minute</li>
-          <li><strong>RPD (Requests Per Day):</strong> Daily request cap (kuch tiers pe)</li>
-          <li><strong>TPD (Tokens Per Day):</strong> Daily token cap (kuch tiers pe)</li>
+          <li><strong>RPD (Requests Per Day):</strong> a daily request cap (on some tiers)</li>
+          <li><strong>TPD (Tokens Per Day):</strong> a daily token cap (on some tiers)</li>
         </ul>
-        <p style={S.p}><strong>Tier system:</strong> OpenAI account tier automatically upgrade hoti hai based on usage history aur payment. Higher tier = higher limits. Enterprise agreements custom limits provide karte hain. Current tier limits: <a href="https://platform.openai.com/docs/guides/rate-limits" style={{ color: "#2563eb" }}>platform.openai.com/docs/guides/rate-limits</a></p>
+        <p style={S.p}><strong>Tier system:</strong> OpenAI account tier upgrades automatically based on usage history and payment. Higher tier = higher limits. Enterprise agreements provide custom limits. Current tier limits: <a href="https://platform.openai.com/docs/guides/rate-limits" style={{ color: "#2563eb" }}>platform.openai.com/docs/guides/rate-limits</a></p>
         <p style={S.p}><strong>Application design implications:</strong></p>
         <ul style={S.ul}>
-          <li>Exponential backoff with jitter implement karo 429 (rate limit) errors ke liye</li>
-          <li>Token counting pehle karo (tiktoken) — unexpected overages avoid karo</li>
-          <li>Caching common responses se redundant API calls reduce karo</li>
-          <li>High-volume applications ke liye async processing (queue-based) consider karo</li>
-          <li>Cost monitoring setup karo — unexpectedly verbose outputs billing spike kar sakte hain</li>
+          <li>Implement exponential backoff with jitter for 429 (rate limit) errors</li>
+          <li>Count tokens beforehand (tiktoken) — avoid unexpected overages</li>
+          <li>Reduce redundant API calls by caching common responses</li>
+          <li>Consider async processing (queue-based) for high-volume applications</li>
+          <li>Set up cost monitoring — unexpectedly verbose outputs can spike billing</li>
         </ul>
-        <p style={S.p}><strong>Cost optimization:</strong> Model selection sabse big cost lever hai. Efficient/smaller models vs frontier vs reasoning — dramatically different pricing per token. Benchmark karo ki cheaper model acceptable quality deta hai ya nahi specific task pe. System prompt length minimize karo (repeated per request, adds to input tokens). <code style={S.code}>max_tokens</code> parameter se output length control karo.</p>
+        <p style={S.p}><strong>Cost optimization:</strong> model selection is the biggest cost lever. Efficient/smaller models vs frontier vs reasoning — dramatically different pricing per token. Benchmark whether a cheaper model gives acceptable quality for the specific task. Minimize system prompt length (repeated per request, adds to input tokens). Control output length with the <code style={S.code}>max_tokens</code> parameter.</p>
       </section>
 
       {/* ── RELIABILITY ───────────────────────────────────── */}
       <section id="reliability">
         <h2 style={S.h2}>Reliability, Availability and SLA</h2>
         <p style={S.p}>
-          OpenAI public status page maintain karta hai: <a href="https://status.openai.com" style={{ color: "#2563eb" }}>status.openai.com</a> — real-time aur historical incident information.
+          OpenAI maintains a public status page: <a href="https://status.openai.com" style={{ color: "#2563eb" }}>status.openai.com</a> — real-time and historical incident information.
         </p>
         <p style={S.p}><strong>What OpenAI publicly provides:</strong></p>
         <ul style={S.ul}>
           <li>Public status page with incident history</li>
-          <li>Enterprise tier customers ke liye specific SLA terms (API documentation aur enterprise agreements mein)</li>
-          <li>Azure OpenAI Service Microsoft Azure SLAs inherit karta hai — specific uptime guarantees Azure documentation mein</li>
+          <li>Specific SLA terms for enterprise tier customers (in API documentation and enterprise agreements)</li>
+          <li>Azure OpenAI Service inherits Microsoft Azure SLAs — specific uptime guarantees are in Azure documentation</li>
         </ul>
         <p style={S.p}><strong>Reliability considerations for applications:</strong></p>
         <ul style={S.ul}>
-          <li><strong>API outages:</strong> OpenAI occasional outages ya degraded performance experience karta hai — applications ko graceful degradation implement karni chahiye. Fallback options (cached responses, different model, user notification) plan karo.</li>
-          <li><strong>Retry logic:</strong> Transient errors (5xx responses) ke liye automatic retry with backoff.</li>
-          <li><strong>Timeout handling:</strong> Especially reasoning models ke liye — extended thinking responses minutes le sakte hain. Application timeouts accordingly set karo aur streaming use karo where possible.</li>
-          <li><strong>Circuit breaker pattern:</strong> Repeated failures pe API calls stop karo, degraded mode pe operate karo, periodically retry karo.</li>
-          <li><strong>Multi-region / multi-provider:</strong> Critical applications ke liye Azure OpenAI Service + direct OpenAI API dono configure karo failover ke liye.</li>
+          <li><strong>API outages:</strong> OpenAI occasionally experiences outages or degraded performance — applications should implement graceful degradation. Plan fallback options (cached responses, a different model, user notification).</li>
+          <li><strong>Retry logic:</strong> automatic retry with backoff for transient errors (5xx responses).</li>
+          <li><strong>Timeout handling:</strong> especially for reasoning models — extended thinking responses can take minutes. Set application timeouts accordingly and use streaming where possible.</li>
+          <li><strong>Circuit breaker pattern:</strong> stop making API calls on repeated failures, operate in degraded mode, retry periodically.</li>
+          <li><strong>Multi-region / multi-provider:</strong> for critical applications, configure both Azure OpenAI Service + direct OpenAI API for failover.</li>
         </ul>
-        <Callout type="best-practice" title="Mission-Critical Applications ke liye Design">
-          Agar application OpenAI API pe critically depend karta hai, yeh assume mat karo ki API always available rahegi. Status page subscribe karo notifications ke liye. Graceful degradation mandatory hai — agar AI unavailable ho toh application kaise behave karega?
+        <Callout type="best-practice" title="Design for Mission-Critical Applications">
+          If an application critically depends on the OpenAI API, don't assume the API will always be available. Subscribe to the status page for notifications. Graceful degradation is mandatory — how will the application behave if AI is unavailable?
         </Callout>
       </section>
 
@@ -376,21 +376,21 @@ export default function Content() {
       <section id="enterprise-ai">
         <h2 style={S.h2}>Enterprise AI Infrastructure</h2>
         <p style={S.p}>
-          Enterprise OpenAI deployment ek complete infrastructure decision hai — sirf API key generate karna nahi.
+          Enterprise OpenAI deployment is a complete infrastructure decision — not just generating an API key.
         </p>
         <p style={S.p}><strong>Enterprise deployment options:</strong></p>
         <ul style={S.ul}>
           <li><strong>Direct OpenAI API:</strong> Simple, latest models first, direct billing. Appropriate for startups, developers, moderate compliance requirements.</li>
           <li><strong>Azure OpenAI Service:</strong> Azure-native, compliance certifications, data residency, Private Link, enterprise agreement billing. Appropriate for regulated industries, large enterprises, strict data requirements.</li>
           <li><strong>ChatGPT Enterprise:</strong> Managed ChatGPT deployment with enterprise controls — SSO, admin dashboard, no training on data, dedicated capacity, higher context windows. For companies wanting ChatGPT internally with enterprise controls.</li>
-          <li><strong>Fine-tuned models:</strong> OpenAI platform pe custom fine-tuning possible — company-specific data pe model adapt karo. Fine-tuned model hosting aur deployment behavior supported model aur service configuration pe depend karta hai — current details official docs mein: <a href="https://platform.openai.com/docs/guides/fine-tuning" style={{ color: "#2563eb" }}>platform.openai.com/docs/guides/fine-tuning</a></li>
+          <li><strong>Fine-tuned models:</strong> custom fine-tuning is possible on the OpenAI platform — adapt the model to company-specific data. Fine-tuned model hosting and deployment behavior depend on the supported model and service configuration — current details are in official docs: <a href="https://platform.openai.com/docs/guides/fine-tuning" style={{ color: "#2563eb" }}>platform.openai.com/docs/guides/fine-tuning</a></li>
         </ul>
         <p style={S.p}><strong>Integration architecture patterns:</strong></p>
         <ul style={S.ul}>
-          <li><strong>Direct API integration:</strong> Application directly OpenAI API call karta hai — simplest lekin API key management, rate limiting, aur cost monitoring application pe hoti hai</li>
-          <li><strong>Proxy layer:</strong> Internal gateway jo OpenAI API ke saath interface karta hai — centralized auth, rate limiting, logging, cost allocation, aur potential caching. LangChain, LiteLLM, aur similar frameworks yeh pattern implement karte hain.</li>
-          <li><strong>RAG architecture:</strong> Vector database + embeddings + LLM — company-specific knowledge base ke saath LLM augment karna bina fine-tuning ke</li>
-          <li><strong>Multi-model routing:</strong> Different tasks ke liye different models automatically select karna — cost optimization aur performance balance</li>
+          <li><strong>Direct API integration:</strong> the application calls the OpenAI API directly — simplest but API key management, rate limiting, and cost monitoring fall on the application</li>
+          <li><strong>Proxy layer:</strong> an internal gateway that interfaces with the OpenAI API — centralized auth, rate limiting, logging, cost allocation, and potential caching. LangChain, LiteLLM, and similar frameworks implement this pattern.</li>
+          <li><strong>RAG architecture:</strong> vector database + embeddings + LLM — augmenting the LLM with a company-specific knowledge base without fine-tuning</li>
+          <li><strong>Multi-model routing:</strong> automatically selecting different models for different tasks — balancing cost optimization and performance</li>
         </ul>
       </section>
 
@@ -399,21 +399,21 @@ export default function Content() {
         <h2 style={S.h2}>Data Privacy and Security</h2>
         <p style={S.p}><strong>Official OpenAI data usage policy (API):</strong></p>
         <ul style={S.ul}>
-          <li>API ke through send kiya gaya data <strong>OpenAI ke models train karne ke liye use nahi hota</strong> by default — yeh official policy hai (verify at: <a href="https://openai.com/policies/privacy-policy" style={{ color: "#2563eb" }}>openai.com/policies/privacy-policy</a>)</li>
-          <li>Data 30 days ke liye abuse detection ke liye retain kiya ja sakta hai</li>
-          <li>Zero data retention (ZDR) option available hai kuch configurations mein — data stored bhi nahi hoti</li>
+          <li>Data sent through the API <strong>is not used to train OpenAI's models</strong> by default — this is official policy (verify at: <a href="https://openai.com/policies/privacy-policy" style={{ color: "#2563eb" }}>openai.com/policies/privacy-policy</a>)</li>
+          <li>Data may be retained for 30 days for abuse detection</li>
+          <li>A zero data retention (ZDR) option is available in some configurations — data isn't even stored</li>
         </ul>
         <p style={S.p}><strong>Security practices for OpenAI API integration:</strong></p>
         <ul style={S.ul}>
-          <li>API keys server-side rakhein — client-side code mein kabhi expose mat karo</li>
-          <li>Environment variables ya secrets management (AWS Secrets Manager, Azure Key Vault, etc.) use karo</li>
-          <li>API keys regularly rotate karo, especially agar exposed ho</li>
-          <li>API key per service/environment separate karo — monitoring aur revocation easy ho</li>
-          <li>Request logging implement karo audit trail ke liye — lekin sensitive data logging carefully handle karo</li>
-          <li>Prompt injection risks consider karo — user input directly system prompt mein mat inject karo without sanitization</li>
-          <li>Output validation implement karo — model outputs always trusted nahi hone chahiye without validation</li>
+          <li>Keep API keys server-side — never expose them in client-side code</li>
+          <li>Use environment variables or secrets management (AWS Secrets Manager, Azure Key Vault, etc.)</li>
+          <li>Rotate API keys regularly, especially if exposed</li>
+          <li>Keep separate API keys per service/environment — for easy monitoring and revocation</li>
+          <li>Implement request logging for an audit trail — but handle sensitive data logging carefully</li>
+          <li>Consider prompt injection risks — don't directly inject user input into the system prompt without sanitization</li>
+          <li>Implement output validation — model outputs shouldn't always be trusted without validation</li>
         </ul>
-        <p style={S.p}><strong>Compliance:</strong> Direct OpenAI API pe compliance certifications limited hain compared to Azure OpenAI Service. Regulated industries (healthcare, finance, government) ke liye Azure OpenAI Service typically better option hai — Azure compliance portfolio (HIPAA BAA, FedRAMP, SOC 2, ISO 27001) applicable hoti hai.</p>
+        <p style={S.p}><strong>Compliance:</strong> compliance certifications on the direct OpenAI API are limited compared to Azure OpenAI Service. For regulated industries (healthcare, finance, government), Azure OpenAI Service is typically the better option — the Azure compliance portfolio (HIPAA BAA, FedRAMP, SOC 2, ISO 27001) is applicable there.</p>
       </section>
 
       {/* ── TRAINING VS INFERENCE ─────────────────────────── */}
@@ -442,9 +442,9 @@ export default function Content() {
       <section id="embeddings">
         <h2 style={S.h2}>Embeddings and Vector Infrastructure</h2>
         <p style={S.p}>
-          OpenAI Embeddings API ek important infrastructure component hai jo often underestimated hai. Embeddings text ko numeric vectors mein convert karte hain jo semantic meaning capture karte hain.
+          The OpenAI Embeddings API is an important infrastructure component that's often underestimated. Embeddings convert text into numeric vectors that capture semantic meaning.
         </p>
-        <p style={S.p}><strong>Available models:</strong> <code style={S.code}>text-embedding-3-large</code> (3072 dimensions, highest capability), <code style={S.code}>text-embedding-3-small</code> (1536 dimensions, cost-efficient). Current models aur specifications: <a href="https://platform.openai.com/docs/guides/embeddings" style={{ color: "#2563eb" }}>platform.openai.com/docs/guides/embeddings</a></p>
+        <p style={S.p}><strong>Available models:</strong> <code style={S.code}>text-embedding-3-large</code> (3072 dimensions, highest capability), <code style={S.code}>text-embedding-3-small</code> (1536 dimensions, cost-efficient). Current models and specifications: <a href="https://platform.openai.com/docs/guides/embeddings" style={{ color: "#2563eb" }}>platform.openai.com/docs/guides/embeddings</a></p>
         <p style={S.p}><strong>RAG (Retrieval Augmented Generation) architecture:</strong></p>
         <ol style={S.ol}>
           <li>Documents → Embeddings API → Vectors</li>
@@ -455,10 +455,10 @@ export default function Content() {
         </ol>
         <p style={S.p}><strong>Infrastructure considerations for embeddings at scale:</strong></p>
         <ul style={S.ul}>
-          <li>Vector storage grows with corpus size, dimensions aur number of documents — actual storage scale aur cost project-specific hai. Example: million documents × 3072 dimensions × 4 bytes ≈ ~12 GB (sirf vectors) — lakhs ya crores of documents pe significantly more.</li>
+          <li>Vector storage grows with corpus size, dimensions, and number of documents — actual storage scale and cost are project-specific. Example: one million documents × 3072 dimensions × 4 bytes ≈ ~12 GB (vectors only) — significantly more at tens or hundreds of millions of documents.</li>
           <li>Index updates require re-embedding new/changed documents — batch processing for large corpora</li>
-          <li>Vector search latency vector database, index type (ANN algorithm), index size, aur hardware pe depend karta hai — milliseconds possible hai well-configured systems pe lekin guaranteed nahi hai universally</li>
-          <li>Embedding generation cost relatively low per token but large-scale indexing projects mein cumulative cost significant ho sakti hai</li>
+          <li>Vector search latency depends on the vector database, index type (ANN algorithm), index size, and hardware — milliseconds are possible on well-configured systems but not universally guaranteed</li>
+          <li>Embedding generation cost is relatively low per token but cumulative cost can be significant in large-scale indexing projects</li>
         </ul>
       </section>
 
@@ -466,19 +466,19 @@ export default function Content() {
       <section id="dc-perspective">
         <h2 style={S.h2}>Practical Data Center Perspective</h2>
         <p style={S.p}>
-          OpenAI aur similar AI platform companies data center industry pe broader implications rakhte hain jo facility engineers aur infrastructure professionals ke liye relevant hain.
+          OpenAI and similar AI platform companies have broader implications for the data center industry that are relevant to facility engineers and infrastructure professionals.
         </p>
-        <p style={S.p}><strong>Power demand impact:</strong> Large AI companies unprecedented electricity demand create kar rahe hain. Microsoft, Google, Amazon — sab ne data center power consumption mein significant increase report kiya hai AI workloads ki wajah se. Yeh local utility grids, power infrastructure planning, aur renewable energy procurement ko affect karta hai.</p>
-        <p style={S.p}><strong>Data center design evolution:</strong> Traditional data centers ~5–15 kW per rack ke liye design the. High-density AI GPU clusters 40–100+ kW per rack reach kar sakte hain depending on configuration. Yeh cooling infrastructure (higher density pe liquid cooling often necessary — exact technology server OEM design aur facility capability pe dependent), power distribution (higher amperage per rack), aur structural design (heavier equipment) sab affect karta hai.</p>
-        <p style={S.p}><strong>Water consumption:</strong> AI cooling infrastructure — especially evaporative cooling towers — significant water consume karte hain. OpenAI/Microsoft ne publicly ne water usage acknowledge kiya hai. Data center water usage increasingly under scrutiny hai especially water-scarce regions mein.</p>
-        <p style={S.p}><strong>GPU supply chain:</strong> NVIDIA GPU supply constraints AI company capacity directly limit karte hain. OpenAI aur Microsoft ke NVIDIA ke saath large procurement agreements hain. GPU allocation ek strategic resource planning element ban gaya hai AI infrastructure mein.</p>
-        <p style={S.p}><strong>Operational jobs:</strong> AI data centers human expertise require karte hain — data center technicians, cooling engineers, network engineers, security personnel. AI automation data center operations ko replace nahi karta; yeh new categories of infrastructure create karta hai jo humans ko manage karne padte hain.</p>
+        <p style={S.p}><strong>Power demand impact:</strong> large AI companies are creating unprecedented electricity demand. Microsoft, Google, Amazon — all have reported significant increases in data center power consumption due to AI workloads. This affects local utility grids, power infrastructure planning, and renewable energy procurement.</p>
+        <p style={S.p}><strong>Data center design evolution:</strong> traditional data centers were designed for ~5–15 kW per rack. High-density AI GPU clusters can reach 40–100+ kW per rack depending on configuration. This affects cooling infrastructure (liquid cooling is often necessary at higher density — exact technology depends on server OEM design and facility capability), power distribution (higher amperage per rack), and structural design (heavier equipment).</p>
+        <p style={S.p}><strong>Water consumption:</strong> AI cooling infrastructure — especially evaporative cooling towers — consumes significant water. OpenAI/Microsoft have publicly acknowledged water usage. Data center water usage is under increasing scrutiny, especially in water-scarce regions.</p>
+        <p style={S.p}><strong>GPU supply chain:</strong> NVIDIA GPU supply constraints directly limit AI company capacity. OpenAI and Microsoft have large procurement agreements with NVIDIA. GPU allocation has become a strategic resource planning element in AI infrastructure.</p>
+        <p style={S.p}><strong>Operational jobs:</strong> AI data centers require human expertise — data center technicians, cooling engineers, network engineers, security personnel. AI automation doesn't replace data center operations; it creates new categories of infrastructure that humans have to manage.</p>
       </section>
 
       {/* ── REFERENCES ────────────────────────────────────── */}
       <section id="references">
         <h2 style={S.h2}>Technical References</h2>
-        <p style={S.p}>Yeh official sources hain jo is article mein claims ko support karte hain:</p>
+        <p style={S.p}>These are official sources that support the claims in this article:</p>
         <ul style={S.ul}>
           <li>
             <strong>OpenAI Platform Documentation</strong><br />
@@ -553,16 +553,16 @@ export default function Content() {
       <section id="key-takeaways">
         <h2 style={S.h2}>Key Takeaways</h2>
         <ul style={S.ul}>
-          <li><strong>OpenAI sirf ChatGPT nahi hai:</strong> Ek research lab, consumer product, aur enterprise API platform simultaneously hai. Infrastructure perspective se yeh ek massive distributed AI serving system hai jo training aur inference ke alag paradigms run karta hai.</li>
-          <li><strong>Training aur inference fundamentally alag infrastructure hain:</strong> Training ek massive one-time GPU cluster job hai (weeks to months). Inference continuous globally distributed serving hai (millions of users simultaneously). Same company, same models — completely alag operational requirements.</li>
-          <li><strong>Microsoft OpenAI ka major cloud partner hai — lekin OpenAI infrastructure evolving hai:</strong> Significant training aur inference capacity Microsoft Azure ke saath hai. OpenAI Stargate initiative ke through independently owned infrastructure bhi build kar raha hai. Azure OpenAI Service enterprises ke liye Azure compliance aur networking benefits provide karta hai.</li>
-          <li><strong>ChatGPT vs API distinction enterprise ke liye critical hai:</strong> API data training ke liye use nahi hota (per current policy). ChatGPT consumer mein training on by default hai. Sensitive enterprise data handling ke liye yeh distinction important hai.</li>
-          <li><strong>Token economics architecture decisions drive karte hain:</strong> Model selection sabse big cost lever hai. System prompt length, output constraints, aur caching strategies significant cost impact karte hain. TTFT aur TPS latency metrics alag optimize karne ki zaroorat hai.</li>
-          <li><strong>Reasoning models (o-series) alag infrastructure pattern hain:</strong> Extended thinking = higher compute per request, higher latency, higher cost. Right model for right task select karna infrastructure efficiency aur cost optimization dono ke liye essential hai.</li>
-          <li><strong>AI scale data center industry ko transform kar raha hai:</strong> Unprecedented power density (40–100+ kW per rack), liquid cooling requirements, massive water consumption, aur GPU supply chain constraints — yeh sab traditional data center planning assumptions change kar rahe hain.</li>
-          <li><strong>Reliability ke liye graceful degradation design karo:</strong> OpenAI API mission-critical applications ke liye assume nahi karna chahiye ki always available rahegi. Status monitoring, retry logic, fallback strategies, aur circuit breakers production applications ke liye mandatory hain.</li>
-          <li><strong>Data privacy policy verify karo aur track karo:</strong> Policies change ho sakti hain. API data training policy, retention periods, aur enterprise commitments official OpenAI documentation se regularly verify karo.</li>
-          <li><strong>RAG aur embeddings production AI architecture ka core hain:</strong> OpenAI embeddings + vector databases + LLM combination ek powerful pattern hai company-specific knowledge ke saath AI augment karne ke liye bina expensive fine-tuning ke.</li>
+          <li><strong>OpenAI isn't just ChatGPT:</strong> it's simultaneously a research lab, a consumer product, and an enterprise API platform. From an infrastructure perspective, it's a massive distributed AI serving system that runs separate paradigms for training and inference.</li>
+          <li><strong>Training and inference are fundamentally different infrastructure:</strong> training is a massive one-time GPU cluster job (weeks to months). Inference is continuous, globally distributed serving (millions of users simultaneously). Same company, same models — completely different operational requirements.</li>
+          <li><strong>Microsoft is OpenAI's major cloud partner — but OpenAI's infrastructure is evolving:</strong> significant training and inference capacity runs with Microsoft Azure. OpenAI is also building independently owned infrastructure through the Stargate initiative. Azure OpenAI Service provides Azure compliance and networking benefits for enterprises.</li>
+          <li><strong>The ChatGPT vs API distinction is critical for enterprises:</strong> API data isn't used for training (per current policy). Training is on by default in the ChatGPT consumer product. This distinction matters for sensitive enterprise data handling.</li>
+          <li><strong>Token economics drive architecture decisions:</strong> model selection is the biggest cost lever. System prompt length, output constraints, and caching strategies have a significant cost impact. TTFT and TPS latency metrics need to be optimized separately.</li>
+          <li><strong>Reasoning models (o-series) are a different infrastructure pattern:</strong> extended thinking = higher compute per request, higher latency, higher cost. Selecting the right model for the right task is essential for both infrastructure efficiency and cost optimization.</li>
+          <li><strong>AI scale is transforming the data center industry:</strong> unprecedented power density (40–100+ kW per rack), liquid cooling requirements, massive water consumption, and GPU supply chain constraints — all of this is changing traditional data center planning assumptions.</li>
+          <li><strong>Design for graceful degradation for reliability:</strong> mission-critical applications shouldn't assume the OpenAI API will always be available. Status monitoring, retry logic, fallback strategies, and circuit breakers are mandatory for production applications.</li>
+          <li><strong>Verify and track the data privacy policy:</strong> policies can change. Regularly verify the API data training policy, retention periods, and enterprise commitments from official OpenAI documentation.</li>
+          <li><strong>RAG and embeddings are core to production AI architecture:</strong> the OpenAI embeddings + vector databases + LLM combination is a powerful pattern for augmenting AI with company-specific knowledge without expensive fine-tuning.</li>
         </ul>
       </section>
 
