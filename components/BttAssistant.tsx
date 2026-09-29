@@ -16,6 +16,7 @@ import {
   RotateCcw,
   Bot,
 } from "lucide-react";
+import { TOPICS, getTopicUrl } from "@/lib/topics";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // components/BttAssistant.tsx — Full visual rebuild
@@ -545,11 +546,24 @@ function MarkdownRenderer({ text, theme }: MarkdownProps) {
   return <div style={{ display: "flex", flexDirection: "column" }}>{elements}</div>;
 }
 
+// ─── Article URL ────────────────────────────────────────────────────────────
+// Resolves through topics.ts getTopicUrl() so "learn" track topics
+// (what-is-a-data-center, data-center-types, …) link to /learn/<slug>
+// instead of the non-existent /learn/learn/basics/<slug>.
+
+function articleHref(article: RelatedArticle): string {
+  const topic = TOPICS[article.slug];
+  if (topic) return getTopicUrl(topic);
+  return article.track === "learn"
+    ? `/learn/${article.slug}`
+    : `/learn/${article.track}/${article.category}/${article.slug}`;
+}
+
 // ─── Article chip (rebuilt visual) ──────────────────────────────────────────
 
 function ArticleChip({ article }: { article: RelatedArticle }) {
   const c = trackColour(article.track);
-  const href = `/learn/${article.track}/${article.category}/${article.slug}`;
+  const href = articleHref(article);
   return (
     <Link
       href={href}
@@ -661,7 +675,7 @@ function ChatMessage({ msg, theme: t, onFollowUp, onRetry, isLast }: ChatMessage
 
             {msg.continueLearning && (
               <Link
-                href={`/learn/${msg.continueLearning.track}/${msg.continueLearning.category}/${msg.continueLearning.slug}`}
+                href={articleHref(msg.continueLearning)}
                 style={{
                   display: "flex",
                   alignItems: "center",

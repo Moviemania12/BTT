@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { buildSocialMeta } from "@/lib/schemas";
 import UnitConverterClient from "./UnitConverterClient";
+import CalculatorGuide from "@/components/calculators/CalculatorGuide";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // app/tools/unit-converter/page.tsx
@@ -23,8 +25,23 @@ export const metadata: Metadata = {
     "engineering unit converter",
     "data center unit conversion",
   ],
+  ...buildSocialMeta({
+    title: "Unit Converter — Power, Temperature, Length, Pressure | Behind The Tech",
+    description:
+      "Free engineering unit converter for Data Center work — convert Power (kW, HP, BTU/hr, Tons), Temperature (°C, °F, K), Length (mm to feet), and Pressure (Pa, bar, PSI, atm) instantly.",
+    url: "https://behindthetech.in/tools/unit-converter",
+  }),
 };
 
 export default function UnitConverterPage() {
-  return <UnitConverterClient />;
+  return (
+    <>
+      <UnitConverterClient />
+      <div style={{ background: "#ffffff" }}>
+        <div style={{ maxWidth: "860px", margin: "0 auto", padding: "0 1.5rem 4rem" }}>
+          <CalculatorGuide slug="unit-converter" />
+        </div>
+      </div>
+    </>
+  );
 }

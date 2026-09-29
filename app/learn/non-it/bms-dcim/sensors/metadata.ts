@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
   title: "Sensors in Data Centers — Complete Engineering Guide | Behind The Tech",
   description: "Temperature, humidity, differential pressure, water leak, fuel level, current, voltage, energy, door contact, airflow, occupancy sensors — working principle, installation, BMS integration, calibration, troubleshooting. Engineer-level English guide.",
   keywords: ["data center sensors","temperature sensor","humidity sensor","water leak detection","4-20mA sensor","Modbus sensor","BMS sensor integration","differential pressure sensor","current transformer"],
-  openGraph: { title: "Sensors in Data Centers — Complete Engineering Guide", description: "All data center sensor types — working principle, signals, BMS integration, calibration, troubleshooting.", url: "https://behindthetech.in/learn/non-it/bms-dcim/sensors", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "Data Center Sensors — Behind The Tech", description: "Complete sensor guide for data center engineers." },
+  openGraph: { title: "Sensors in Data Centers — Complete Engineering Guide", description: "All data center sensor types — working principle, signals, BMS integration, calibration, troubleshooting.", url: "https://behindthetech.in/learn/non-it/bms-dcim/sensors", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },
+  twitter: { card: "summary_large_image", title: "Data Center Sensors — Behind The Tech", description: "Complete sensor guide for data center engineers.", images: [SITE_OG_IMAGE.url], },
   alternates: {
     canonical: "https://behindthetech.in/learn/non-it/bms-dcim/sensors",
     languages: {

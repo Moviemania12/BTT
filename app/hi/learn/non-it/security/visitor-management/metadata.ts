@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
   title: "Visitor Management in Data Centers — Complete Engineering Guide | Behind The Tech",
@@ -18,12 +19,12 @@ export const metadata: Metadata = {
     locale: "hi_IN",
     siteName: "Behind The Tech",
     type: "article",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Visitor Management in Data Centers — Behind The Tech",
-    description: "Data Center visitor management — registration, access, badge, audit trail aur troubleshooting.",
+    description: "Data Center visitor management — registration, access, badge, audit trail aur troubleshooting.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/hi/learn/non-it/security/visitor-management",

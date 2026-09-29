@@ -24,6 +24,7 @@ export default function TpuPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="tpu"
         headings={HEADINGS}
         readingTimeMinutes={tpuMetadata.readingTimeMinutes}

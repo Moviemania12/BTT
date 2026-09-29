@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
   title: "Biometric Authentication in Data Centers — Complete Engineering Guide | Behind The Tech",
@@ -18,12 +19,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Biometrics in Data Centers — Behind The Tech",
-    description: "Data Center biometric authentication — FAR/FRR, enrollment, troubleshooting and privacy.",
+    description: "Data Center biometric authentication — FAR/FRR, enrollment, troubleshooting and privacy.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/learn/non-it/security/biometrics",

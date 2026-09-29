@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
+const TITLE = "Cloud Infrastructure — Behind The Tech";
+const DESCRIPTION =
+  "AWS, Azure, GCP, hybrid cloud and multi-cloud — how cloud platforms connect to the data center.";
+const PAGE_URL = "https://behindthetech.in/learn/it/cloud";
+
 export const metadata: Metadata = {
-  title: "Cloud Infrastructure — Behind The Tech",
-  description: "Cloud computing, hybrid cloud, colocation — cloud aur data center integration.",
+  alternates: { canonical: PAGE_URL },
+  title: TITLE,
+  description: DESCRIPTION,
+  ...buildSocialMeta({ title: TITLE, description: DESCRIPTION, url: PAGE_URL }),
 };
 
 export default function CategoryPage() {
@@ -14,6 +23,17 @@ export default function CategoryPage() {
 
   return (
     <div data-homepage-theme="light" className="hp-page-root">
+      <JsonLd
+        data={buildCollectionPageSchema({ name: "Cloud Infrastructure", description: DESCRIPTION, url: PAGE_URL })}
+      />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", url: "https://behindthetech.in" },
+          { name: "Learn", url: "https://behindthetech.in/learn" },
+          { name: "IT Infrastructure", url: "https://behindthetech.in/learn/it" },
+          { name: "Cloud Infrastructure", url: PAGE_URL },
+        ])}
+      />
       <section className="hp-section hp-section--hero">
         <div className="hp-container hp-container--medium" style={{ textAlign: "center" }}>
           <p
@@ -33,7 +53,7 @@ export default function CategoryPage() {
             ☁️ Cloud Infrastructure
           </h1>
           <p className="hp-body" style={{ margin: "0 auto 20px" }}>
-            Cloud computing, hybrid cloud, colocation — cloud aur data center integration.
+            {DESCRIPTION}
           </p>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import { Clock, ChevronRight, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -13,10 +14,12 @@ export const metadata: Metadata = {
     description: "5G technology, latency, bandwidth aur data center connectivity pe iski impact.",
     url: "https://behindthetech.in/articles/5g-networks-connectivity",
     siteName: "Behind The Tech",
+    images: [SITE_OG_IMAGE],
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
+    images: [SITE_OG_IMAGE.url],
     title: "5G Networks aur Connectivity",
     description: "5G technology kya hai aur data centers pe iski kya impact hai.",
   },

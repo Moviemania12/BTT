@@ -7,10 +7,7 @@ export const metadata: Metadata = {
   description:
     "Real-world Data Center incident case studies — UPS failures, DG fault, CRAC overheating, water leakage, FM200 false discharge, ransomware, cloud outages. Full timeline, RCA, and lessons learned for every incident.",
   alternates: {
-    canonical: "https://behindthetech.in/hi/study/case-studies",
-    languages: {
-      "en": "https://behindthetech.in/study/case-studies",
-    },
+    canonical: "https://behindthetech.in/study/case-studies",
   },
 };
 

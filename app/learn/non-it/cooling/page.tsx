@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
+const TITLE = "Cooling Systems — Behind The Tech";
+const DESCRIPTION =
+  "PAC, CRAC, chillers, cooling towers, containment, airflow management and RCI — data center thermal management.";
+const PAGE_URL = "https://behindthetech.in/learn/non-it/cooling";
+
 export const metadata: Metadata = {
-  title: "Cooling Systems — Behind The Tech",
-  description: "CRAC, CRAH, chillers, cooling towers, liquid cooling — data center thermal management.",
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/cooling" },
+  alternates: { canonical: PAGE_URL },
+  title: TITLE,
+  description: DESCRIPTION,
+  ...buildSocialMeta({ title: TITLE, description: DESCRIPTION, url: PAGE_URL }),
 };
 
 export default function CategoryPage() {
@@ -15,6 +23,17 @@ export default function CategoryPage() {
 
   return (
     <div data-homepage-theme="light" className="hp-page-root">
+      <JsonLd
+        data={buildCollectionPageSchema({ name: "Cooling Systems", description: DESCRIPTION, url: PAGE_URL })}
+      />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", url: "https://behindthetech.in" },
+          { name: "Learn", url: "https://behindthetech.in/learn" },
+          { name: "Non-IT Infrastructure", url: "https://behindthetech.in/learn/non-it" },
+          { name: "Cooling Systems", url: PAGE_URL },
+        ])}
+      />
       <section className="hp-section hp-section--hero">
         <div className="hp-container hp-container--medium" style={{ textAlign: "center" }}>
           <p
@@ -34,7 +53,7 @@ export default function CategoryPage() {
             ❄️ Cooling Systems
           </h1>
           <p className="hp-body" style={{ margin: "0 auto 20px" }}>
-            CRAC, CRAH, chillers, cooling towers, liquid cooling — data center thermal management.
+            {DESCRIPTION}
           </p>
         </div>
       </section>
@@ -82,6 +101,36 @@ export default function CategoryPage() {
           </div>
         </section>
       )}
+
+      <section className="hp-section">
+        <div className="hp-container">
+          <h2 className="hp-h3" style={{ marginBottom: 16 }}>
+            Related calculators
+          </h2>
+          <ul className="hp-chip-row">
+              <li>
+                <Link href="/tools/cooling-calculator" className="hp-chip hp-chip--published">
+                  Cooling Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/rci-calculator" className="hp-chip hp-chip--published">
+                  RCI Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/pue-calculator" className="hp-chip hp-chip--published">
+                  PUE Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/unit-converter" className="hp-chip hp-chip--published">
+                  Unit Converter
+                </Link>
+              </li>
+          </ul>
+        </div>
+      </section>
 
       <section className="hp-section">
         <div className="hp-container" style={{ textAlign: "center" }}>

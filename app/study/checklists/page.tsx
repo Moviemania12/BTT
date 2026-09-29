@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildSocialMeta } from "@/lib/schemas";
 import { CHECKLISTS } from "@/content/study/checklists";
 import ChecklistsClient from "@/components/study/ChecklistsClient";
 
@@ -8,10 +9,13 @@ export const metadata: Metadata = {
     "Engineer-grade Data Center checklists — Daily, Weekly, Monthly, UPS, DG, Cooling, Fire, Network, Pre-Shutdown, Commissioning. Production-ready templates for DC operations teams.",
   alternates: {
     canonical: "https://behindthetech.in/study/checklists",
-    languages: {
-      "hi": "https://behindthetech.in/hi/study/checklists",
-    },
   },
+  ...buildSocialMeta({
+    title: "Data Center Checklists — Behind The Tech",
+    description:
+      "Engineer-grade Data Center checklists — Daily, Weekly, Monthly, UPS, DG, Cooling, Fire, Network, Pre-Shutdown, Commissioning. Production-ready templates for DC operations teams.",
+    url: "https://behindthetech.in/study/checklists",
+  }),
 };
 
 export default function ChecklistsPage() {

@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const aiCoolingMetadata: ArticleMetadata = {
   slug: "ai-cooling",
   title: "AI Cooling: Liquid Cooling, Immersion Cooling and AI Data Center Heat Management",
-  seoTitle: "What Is AI Cooling? Liquid Cooling, Immersion Cooling, CDU, Rear-Door HX — Complete English Guide",
+  seoTitle: "What Is AI Cooling? Liquid Cooling, Immersion Cooling, CDU",
   seoDescription:
     "A complete engineering guide to AI Cooling — air cooling vs liquid cooling vs immersion cooling, CDU architecture, direct liquid cooling (cold plates), rear-door heat exchangers, PUE and WUE metrics, AI rack power density challenges, cooling capacity planning, failure scenarios, and troubleshooting. For AI infrastructure engineers, DC professionals, and students.",
   canonicalUrl: "https://behindthetech.in/learn/ai/data-centers/ai-cooling",

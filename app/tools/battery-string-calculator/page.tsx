@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getCalculator } from "@/lib/engineering/registry";
 import { buildPageMetadata } from "@/lib/schemas";
 import BatteryStringCalculatorClient from "./BatteryStringCalculatorClient";
+import CalculatorGuide from "@/components/calculators/CalculatorGuide";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // app/tools/battery-string-calculator/page.tsx
@@ -62,6 +63,7 @@ export default function BatteryStringCalculatorPage() {
           {entry.description}
         </p>
         <BatteryStringCalculatorClient />
+        <CalculatorGuide slug="battery-string-calculator" />
       </div>
     </main>
   );

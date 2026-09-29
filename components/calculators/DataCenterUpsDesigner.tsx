@@ -182,11 +182,11 @@ export default function DataCenterUpsDesigner() {
           </div>
 
           <p style={{ fontSize: "0.78rem", color: "#6B7280", marginTop: "1rem", lineHeight: 1.5 }}>
-            ⚠️ Yeh sizing tool first-pass estimation deta hai using industry-standard rules of thumb
-            (192V DC bus, 100Ah VRLA units, 250kVA modular blocks, 4 A/mm² cable density). Actual
-            project design OEM datasheet, site survey, aur structural/electrical consultant verification
-            ke baad hi finalize karna chahiye — yeh calculator design ka starting point hai, final
-            answer nahi.
+            ⚠️ This sizing tool gives a first-pass estimate using industry-standard rules of thumb
+            (192V DC bus, 100Ah VRLA units, 250kVA modular blocks, 4 A/mm² cable density). Final
+            project design must be confirmed against OEM datasheets, a site survey and verification
+            by a structural/electrical consultant — this calculator is a starting point, not the
+            final answer.
           </p>
         </>
       )}

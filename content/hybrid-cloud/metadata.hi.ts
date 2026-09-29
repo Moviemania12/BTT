@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const hybridCloudMetadata: ArticleMetadata = {
   slug: "hybrid-cloud",
   title: "Hybrid Cloud Architecture Explained — Data Center to Cloud Engineering Guide",
-  seoTitle: "Hybrid Cloud Kya Hai? Architecture, Connectivity, DR, Security aur Migration — Complete Hinglish Guide",
+  seoTitle: "Hybrid Cloud Kya Hai? Architecture, Connectivity, DR",
   seoDescription:
     "Hybrid cloud architecture data center engineers ke liye — on-prem se cloud connectivity (VPN, Interconnect, ExpressRoute), identity federation, disaster recovery patterns, workload placement, zero trust security, aur migration strategies in Hinglish.",
   canonicalUrl: "https://behindthetech.in/hi/learn/it/cloud/hybrid-cloud",

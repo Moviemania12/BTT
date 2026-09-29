@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
+const TITLE = "Fire Protection — Behind The Tech";
+const DESCRIPTION =
+  "FM200, Novec, sprinkler, VESDA and hydrant systems — data center fire detection and suppression.";
+const PAGE_URL = "https://behindthetech.in/learn/non-it/fire";
+
 export const metadata: Metadata = {
-  title: "Fire Protection — Behind The Tech",
-  description: "FM200, NOVEC, Sprinkler, VESDA, Hydrant — data center fire suppression aur detection systems.",
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/fire" },
+  alternates: { canonical: PAGE_URL },
+  title: TITLE,
+  description: DESCRIPTION,
+  ...buildSocialMeta({ title: TITLE, description: DESCRIPTION, url: PAGE_URL }),
 };
 
 export default function CategoryPage() {
@@ -15,6 +23,17 @@ export default function CategoryPage() {
 
   return (
     <div data-homepage-theme="light" className="hp-page-root">
+      <JsonLd
+        data={buildCollectionPageSchema({ name: "Fire Protection", description: DESCRIPTION, url: PAGE_URL })}
+      />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", url: "https://behindthetech.in" },
+          { name: "Learn", url: "https://behindthetech.in/learn" },
+          { name: "Non-IT Infrastructure", url: "https://behindthetech.in/learn/non-it" },
+          { name: "Fire Protection", url: PAGE_URL },
+        ])}
+      />
       <section className="hp-section hp-section--hero">
         <div className="hp-container hp-container--medium" style={{ textAlign: "center" }}>
           <p
@@ -34,7 +53,7 @@ export default function CategoryPage() {
             🔥 Fire Protection
           </h1>
           <p className="hp-body" style={{ margin: "0 auto 20px" }}>
-            FM200, NOVEC, Sprinkler, VESDA, Hydrant — data center fire suppression aur detection systems.
+            {DESCRIPTION}
           </p>
         </div>
       </section>

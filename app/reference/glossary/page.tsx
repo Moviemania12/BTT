@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildSocialMeta } from "@/lib/schemas";
 import { GLOSSARY_SECTIONS, ALL_GLOSSARY_TERMS } from "@/content/reference/glossary";
 import GlossaryClient from "@/components/reference/GlossaryClient";
 
@@ -8,10 +9,13 @@ export const metadata: Metadata = {
     "Complete Data Center glossary — Power, Cooling, Networking, Storage, Cloud, IT terms with practical meanings, real-world context, common confusion, and related systems. The complete reference for a DC engineer.",
   alternates: {
     canonical: "https://behindthetech.in/reference/glossary",
-    languages: {
-      "hi": "https://behindthetech.in/hi/reference/glossary",
-    },
   },
+  ...buildSocialMeta({
+    title: "Data Center Glossary — Behind The Tech",
+    description:
+      "Complete Data Center glossary — Power, Cooling, Networking, Storage, Cloud, IT terms with practical meanings, real-world context, common confusion, and related systems. The complete reference for a DC engineer.",
+    url: "https://behindthetech.in/reference/glossary",
+  }),
 };
 
 export default function GlossaryPage() {
@@ -28,12 +32,6 @@ export default function GlossaryPage() {
           {ALL_GLOSSARY_TERMS.length} terms — Power, Cooling, Networking, Storage, Cloud, Safety, Monitoring. Every term includes meaning, practical importance, a real example, and common confusion. Navigate A-Z or search.
         </p>
         <GlossaryClient sections={GLOSSARY_SECTIONS} />
-        <div style={{ marginTop: "3rem", padding: "2rem", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: "12px" }}>
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#111827", marginBottom: "0.75rem" }}>Glossary Expanding Continuously</h3>
-          <p style={{ color: "#475569", fontSize: "0.95rem", lineHeight: 1.7, margin: 0 }}>
-            Phase 2 will add 200+ more terms — Electrical (HT/LT, Transformer types, RMU, Protection relays), Cooling (AHU, VRF, Economizer variants), Fire (Pre-action, Deluge, VESDA levels), IT (NVMe-oF, VXLAN, EVPN, BGP EVPN), Cloud (Azure specific, GCP specific, K8s ecosystem), Compliance (Tier I-IV, ISO 27001, PCI-DSS, ASHRAE classes).
-          </p>
-        </div>
       </div>
     </main>
   );

@@ -24,6 +24,7 @@ export default function AmdAiPlatformsPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="amd-ai-platforms"
         headings={HEADINGS}
         readingTimeMinutes={amdAiMetadata.readingTimeMinutes}

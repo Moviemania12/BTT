@@ -526,7 +526,7 @@ export const NAV_ITEMS: NavItem[] = [
   {
     id: "dc-map",
     label: "DC Map",
-    href: "/dc-map",
+    href: "/data-center-map",
     variant: "badge",      // renders as neon-blue pill, no dropdown
   },
   {
@@ -719,7 +719,6 @@ export const MOBILE_NAV: MobileSection[] = [
         label: "AI Fundamentals",
         icon: "🧠",
         children: [
-          { id: "what-is-ai",     label: "What is AI",     icon: "🧠", href: getTopicUrl(TOPICS["what-is-ai"]) },
           { id: "machine-learning", label: "Machine Learning", icon: "📈", href: getTopicUrl(TOPICS["machine-learning"]) },
           { id: "deep-learning",  label: "Deep Learning",  icon: "🔗", href: getTopicUrl(TOPICS["deep-learning"]) },
           { id: "generative-ai",  label: "Generative AI",  icon: "✨", href: getTopicUrl(TOPICS["generative-ai"]) },
@@ -759,27 +758,17 @@ export const MOBILE_NAV: MobileSection[] = [
           { id: "anthropic",     label: "Anthropic",     icon: "🔶", href: getTopicUrl(TOPICS["anthropic"]) },
           { id: "google-gemini", label: "Google Gemini", icon: "🔵", href: getTopicUrl(TOPICS["google-gemini"]) },
           { id: "meta-ai",       label: "Meta AI",       icon: "🔵", href: getTopicUrl(TOPICS["meta-ai"]) },
-          { id: "mistral",       label: "Mistral",       icon: "🌀", href: getTopicUrl(TOPICS["mistral"]) },
         ],
       },
-      {
-        id: "ai-operations",
-        label: "AI Operations",
-        icon: "🔧",
-        children: [
-          { id: "mlops",          label: "MLOps",          icon: "🔄", href: getTopicUrl(TOPICS["mlops"]) },
-          { id: "ai-monitoring",  label: "AI Monitoring",  icon: "📊", href: getTopicUrl(TOPICS["ai-monitoring"]) },
-          { id: "ai-security",    label: "AI Security",    icon: "🔒", href: getTopicUrl(TOPICS["ai-security"]) },
-          { id: "ai-governance",  label: "AI Governance",  icon: "⚖️", href: getTopicUrl(TOPICS["ai-governance"]) },
-        ],
-      },
+      // "AI Operations" (MLOps, AI Monitoring, AI Security, AI Governance) is
+      // omitted from the mobile menu until those articles are published.
     ],
   },
   {
     id: "dc-map",
     label: "DC Map",
     icon: "🗺️",
-    href: "/dc-map",
+    href: "/data-center-map",
     variant: "badge",
   },
   {
@@ -849,6 +838,7 @@ export function getActiveNavId(pathname: string): string | null {
     ["/learn/it",     "it-infra"],
     ["/learn/ai",     "ai-infra"],
     ["/learn",        "learn"],
+    ["/data-center-map", "dc-map"],
     ["/dc-map",       "dc-map"],
     ["/tools",        "tools"],
     ["/study",        "resources"],

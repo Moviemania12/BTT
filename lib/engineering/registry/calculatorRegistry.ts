@@ -63,7 +63,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     domain: "electrical",
     category: "calculator",
     title: "UPS Load Calculator",
-    description: "Aggregates rack/IT load components into a recommended UPS sizing in kVA.",
+    description: "Converts total connected load, demand factor, power factor and growth headroom into a recommended UPS size in kVA.",
     relatedTopics: ["ups"],
     relatedStandards: [],
     version: "1.0.0",
@@ -75,7 +75,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     route: "/tools/ups-load-calculator",
     seoTitle: "UPS Load Calculator — Data Center UPS Sizing Tool | Behind The Tech",
     seoDescription:
-      "Calculate the right UPS size for your Data Center load. Add servers, storage, network, and lighting load — get a final kVA recommendation with demand factor and growth headroom.",
+      "Calculate the right UPS size in kVA: enter total connected load (kW), demand factor, power factor and future growth headroom to get a recommended rating.",
     keywords: ["ups load calculator", "ups sizing calculator", "data center ups sizing", "ups kva calculator"],
   },
   {
@@ -143,7 +143,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     domain: "electrical",
     category: "calculator",
     title: "Data Center UPS Designer",
-    description: "Comprehensive first-pass sizing tool spanning UPS, battery, generator, transformer, PDU, and cabling.",
+    description: "First-pass UPS design chained from your IT load: module count for the chosen redundancy, battery string size, required battery Ah and UPS heat load.",
     relatedTopics: ["ups"],
     relatedStandards: ["Uptime Institute Tiers", "TIA-942", "IEEE 485"],
     version: "1.0.0",
@@ -161,7 +161,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     route: "/tools/data-center-ups-designer",
     seoTitle: "Data Center UPS Designer — Complete Sizing Tool | Behind The Tech",
     seoDescription:
-      "Full first-pass Data Center UPS design: enter rack count and Tier level, get UPS modules, battery count, generator size, transformer size, PDU quantity, and cable sizing.",
+      "First-pass data center UPS design: enter IT load, power factor and redundancy (N, N+1, N+2 or 2N) to get UPS module count, battery string size, required battery Ah and UPS heat load.",
     keywords: ["data center ups designer", "data center sizing tool", "ups design calculator", "tier iii ups sizing"],
   },
 ];

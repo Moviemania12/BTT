@@ -46,7 +46,7 @@ export default function UPSArticlePage() {
         />
       )}
 
-      <ArticleLayout slug="ups" headings={HEADINGS} readingTimeMinutes={upsMetadata.readingTimeMinutes} lang="en" alternateHref="/hi/learn/non-it/electrical/ups">
+      <ArticleLayout structuredData={false} slug="ups" headings={HEADINGS} readingTimeMinutes={upsMetadata.readingTimeMinutes} lang="en" alternateHref="/hi/learn/non-it/electrical/ups">
         <Basics />
         <Components />
         <SizingAndLoad />

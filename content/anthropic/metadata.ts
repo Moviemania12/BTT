@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const anthropicMetadata: ArticleMetadata = {
   slug: "anthropic",
   title: "Anthropic: Claude Models, API Platform, AI Safety and Infrastructure",
-  seoTitle: "What Is Anthropic? Claude API, Constitutional AI, AWS Partnership, Training vs Inference Infrastructure — Complete English Guide",
+  seoTitle: "What Is Anthropic? Claude API, Constitutional AI, AWS Partnership",
   seoDescription:
     "A complete AI infrastructure guide to Anthropic — the Claude model family (Claude 3.5, Claude 3 Opus/Sonnet/Haiku), the API platform, Constitutional AI, the Amazon AWS partnership, training vs inference infrastructure, enterprise deployment, reliability, data privacy, and the data center perspective. For AI infrastructure engineers and DC professionals.",
   canonicalUrl: "https://behindthetech.in/learn/ai/platforms/anthropic",

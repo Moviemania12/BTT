@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import PolicyLayout from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
@@ -11,12 +12,12 @@ export const metadata: Metadata = {
     title: "Accessibility Statement — Behind The Tech",
     url: "https://behindthetech.in/accessibility",
     siteName: "Behind The Tech",
-    type: "website",
+    type: "website", images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary",
     title: "Accessibility Statement — Behind The Tech",
-    description: "Our WCAG 2.1 AA commitment, current status, and improvement roadmap.",
+    description: "Our WCAG 2.1 AA commitment, current status, and improvement roadmap.", images: [SITE_OG_IMAGE.url],
   },
 };
 

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Image from "next/image";
 import ArticlePage, { type ArticleHeading } from "@/components/ArticlePage";
+import ArticleStructuredData from "@/components/ArticleStructuredData";
 import TopicLink from "@/components/TopicLink";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -27,17 +29,19 @@ export const metadata: Metadata = {
     siteName: "Behind The Tech",
     type: "article",
     publishedTime: "2024-11-12",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "How The Internet Works — Behind The Tech",
-    description: "How the Internet completes a request — from DNS all the way to the Data Center.",
+    description: "How the Internet completes a request — from DNS all the way to the Data Center.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/learn/how-the-internet-works",
     languages: {
+      "en": "https://behindthetech.in/learn/how-the-internet-works",
       "hi": "https://behindthetech.in/hi/learn/how-the-internet-works",
+      "x-default": "https://behindthetech.in/learn/how-the-internet-works",
     },
   },
 };
@@ -446,6 +450,7 @@ export default function HowTheInternetWorksPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
+      <ArticleStructuredData slug="how-the-internet-works" lang="en" />
       <ArticlePage
         slug="how-the-internet-works"
         prevSlug="data-center-types"

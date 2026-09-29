@@ -24,6 +24,7 @@ export default function AiGpuPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="ai-gpu"
         headings={HEADINGS}
         readingTimeMinutes={aiGpuMetadata.readingTimeMinutes}

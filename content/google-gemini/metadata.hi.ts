@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const googleGeminiMetadata: ArticleMetadata = {
   slug: "google-gemini",
   title: "Google Gemini: AI Infrastructure, TPU Architecture, Vertex AI aur Data Center Engineering",
-  seoTitle: "Google Gemini Kya Hai? TPU, Vertex AI, Google AI Infrastructure, Training vs Inference — Complete Hinglish Guide",
+  seoTitle: "Google Gemini Kya Hai? TPU, Vertex AI, Google AI Infrastructure",
   seoDescription:
     "Google Gemini ka complete AI infrastructure guide — Gemini model family (Ultra/Pro/Flash/Nano), Google AI Studio, Vertex AI, Google TPU architecture (HBM, interconnect, pods), training vs inference, distributed workloads, AI data center power/cooling, O&M perspective, reliability aur enterprise deployment. AI infrastructure engineers aur DC professionals ke liye.",
   canonicalUrl: "https://behindthetech.in/hi/learn/ai/platforms/google-gemini",

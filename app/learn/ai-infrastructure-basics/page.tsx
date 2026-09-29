@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Image from "next/image";
 import ArticlePage, { type ArticleHeading } from "@/components/ArticlePage";
+import ArticleStructuredData from "@/components/ArticleStructuredData";
 import TopicLink from "@/components/TopicLink";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -28,17 +30,19 @@ export const metadata: Metadata = {
     siteName: "Behind The Tech",
     type: "article",
     publishedTime: "2024-12-01",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Infrastructure Basics — Behind The Tech",
-    description: "From GPUs to cooling — the entire infrastructure behind AI, explained in simple English.",
+    description: "From GPUs to cooling — the entire infrastructure behind AI, explained in simple English.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/learn/ai-infrastructure-basics",
     languages: {
+      "en": "https://behindthetech.in/learn/ai-infrastructure-basics",
       "hi": "https://behindthetech.in/hi/learn/ai-infrastructure-basics",
+      "x-default": "https://behindthetech.in/learn/ai-infrastructure-basics",
     },
   },
 };
@@ -513,6 +517,7 @@ export default function AiInfrastructureBasicsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
+      <ArticleStructuredData slug="ai-infrastructure-basics" lang="en" />
       <ArticlePage
         slug="ai-infrastructure-basics"
         prevSlug="cloud-vs-data-center"

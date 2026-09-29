@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   description:
     "Download BTT Employee Manager for Windows and the BTT Employee App for Android. Free 3-day demo, unlimited employees.",
   alternates: { canonical: DOWNLOAD_ROUTE },
+  // Utility page (request form / installer downloads): useful to visitors who come
+  // from the product page, but thin as a search landing page — keep it out of the index.
+  robots: { index: false, follow: true },
 };
 
 export default function DownloadPage() {

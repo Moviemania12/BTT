@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getCalculator } from "@/lib/engineering/registry";
 import { buildPageMetadata } from "@/lib/schemas";
 import BatteryQuantityCalculatorClient from "./BatteryQuantityCalculatorClient";
+import CalculatorGuide from "@/components/calculators/CalculatorGuide";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // app/tools/battery-quantity-calculator/page.tsx
@@ -62,6 +63,7 @@ export default function BatteryQuantityCalculatorPage() {
           {entry.description}
         </p>
         <BatteryQuantityCalculatorClient />
+        <CalculatorGuide slug="battery-quantity-calculator" />
       </div>
     </main>
   );

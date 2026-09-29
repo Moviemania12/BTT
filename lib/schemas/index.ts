@@ -9,4 +9,5 @@ export { buildFaqSchema, type FaqItem } from "./faqSchema";
 export { buildHowToSchema, type HowToSchemaInput, type HowToStep } from "./howToSchema";
 export { buildSpeakableSchema, type SpeakableSchemaInput } from "./speakableSchema";
 export { buildOrganizationSchema, buildAuthorSchema, type OrganizationSchemaInput, type AuthorSchemaInput } from "./organizationSchema";
-export { buildRobotsMeta, buildOpenGraphMeta, buildTwitterMeta, buildPageMetadata } from "./metaTags";
+export { buildRobotsMeta, buildOpenGraphMeta, buildTwitterMeta, buildPageMetadata, buildSocialMeta, SITE_OG_IMAGE } from "./metaTags";
+export { buildCollectionPageSchema, type CollectionPageSchemaInput } from "./webPageSchema";

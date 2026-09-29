@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
   title: "Server Basics — What Is a Server, Rack Deployment & Data Center Use | Behind The Tech",
@@ -12,9 +13,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
-  twitter: { card: "summary_large_image", title: "Server Basics — Behind The Tech", description: "What a server is and how it is deployed in a rack — complete engineer guide." },
+  twitter: { card: "summary_large_image", title: "Server Basics — Behind The Tech", description: "What a server is and how it is deployed in a rack — complete engineer guide.", images: [SITE_OG_IMAGE.url], },
   alternates: {
     canonical: "https://behindthetech.in/learn/it/servers/server-basics",
     languages: {

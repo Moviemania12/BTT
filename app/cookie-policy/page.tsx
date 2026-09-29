@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function CookiePolicyPage() {
   return (
-    <PolicyLayout eyebrow="Legal" title="Cookie Policy" lastUpdated="July 2025">
+    <PolicyLayout eyebrow="Legal" title="Cookie Policy" lastUpdated="29 September 2026">
       <p>
         This policy explains which cookies <strong>behindthetech.in</strong> sets, why, and how you
         can control them. A cookie is a small text file stored in your browser that helps a website
@@ -31,59 +31,39 @@ export default function CookiePolicyPage() {
 
       <h2>Cookies We Use</h2>
 
-      <h3>Strictly Necessary Cookies</h3>
+      <h3>Cookies set by this site</h3>
       <p>
-        These are required for basic site functionality. Without them, features like the interactive
-        DC Map or tools pages may not work correctly. They do not track you across other sites and
-        cannot be turned off while still using the site.
-      </p>
-      <ul>
-        <li>Session management cookies set by Next.js</li>
-        <li>Security tokens where applicable</li>
-      </ul>
-
-      <h3>Analytics Cookies</h3>
-      <p>
-        We use Google Analytics to understand how readers navigate the site — which topics are most
-        read, what devices they use, and where they come from. This helps us prioritise what to write
-        next.
-      </p>
-      <ul>
-        <li>
-          <strong>_ga</strong> — Google Analytics main cookie. Distinguishes unique users. Expires
-          after 2 years.
-        </li>
-        <li>
-          <strong>_ga_*</strong> — Used to maintain session state. Expires after 2 years.
-        </li>
-      </ul>
-      <p>
-        Google Analytics data is anonymised where possible. IP addresses are not stored in full.
-        See{" "}
-        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-          Google&rsquo;s Privacy Policy
-        </a>{" "}
-        for details.
+        Behind The Tech does not require you to sign in to read articles or use the tools, and the
+        site&rsquo;s own code does not currently set cookies or use browser local storage for
+        analytics, tracking or preferences. The BTT Assistant does not save your chat in your browser.
       </p>
 
-      <h3>Advertising Cookies</h3>
+      <h3>Analytics</h3>
       <p>
-        This site may display advertisements through Google AdSense. Google uses cookies to serve
-        ads relevant to your interests based on your browsing history across sites.
+        We do not currently run a third-party analytics tool (such as Google Analytics) on this site,
+        so no analytics cookies are set. We will update this policy before adding one.
       </p>
-      <ul>
-        <li>
-          <strong>IDE</strong> — Google DoubleClick. Used to record ad interactions. Expires after
-          1 year.
-        </li>
-        <li>
-          <strong>DSID, FLC, AID, TAID</strong> — Google advertising identifiers.
-        </li>
-      </ul>
+
+      <h3>Advertising Cookies (Google AdSense)</h3>
+      <p>
+        This site uses Google AdSense to show ads. Google and its advertising partners may set cookies
+        or use similar identifiers to serve ads, limit how often you see an ad, measure ad performance
+        and, unless you opt out, personalise ads based on your browsing across sites. The exact cookies
+        are set by Google and can change; commonly seen names include those used by Google DoubleClick
+        (for example <strong>IDE</strong>). See{" "}
+        <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">
+          how Google uses information from sites that use its services
+        </a>
+        .
+      </p>
       <p>
         You can opt out of personalised advertising at{" "}
         <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">
           Google Ad Settings
+        </a>
+        ,{" "}
+        <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer">
+          aboutads.info
         </a>{" "}
         or{" "}
         <a href="https://www.youronlinechoices.com" target="_blank" rel="noopener noreferrer">
@@ -92,11 +72,13 @@ export default function CookiePolicyPage() {
         . Opting out means you may still see ads — just not personalised ones.
       </p>
 
-      <h3>Preference Cookies</h3>
+      <h3>Consent</h3>
       <p>
-        If we add features like dark mode or reading progress tracking in the future, we may use
-        local storage or cookies to remember your preferences. These never contain personal data.
-        We will update this policy before introducing them.
+        Where the law requires consent for advertising cookies (for example in the European Economic
+        Area, the United Kingdom and Switzerland), we rely on Google&rsquo;s own consent messaging for
+        AdSense rather than a custom system. Where that message is shown, you can accept, decline or
+        change your choice at any time. If we introduce any first-party cookies or local storage in the
+        future, we will update this policy first.
       </p>
 
       <h2>Managing Cookies</h2>
@@ -131,8 +113,8 @@ export default function CookiePolicyPage() {
         </li>
       </ul>
       <p>
-        Blocking all cookies may affect how the site functions. Strictly necessary cookies cannot be
-        disabled without breaking core features.
+        Blocking all cookies does not stop you from reading the site. It may limit how ads are shown
+        to you.
       </p>
 
       <h2>Contact</h2>

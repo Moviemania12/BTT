@@ -34,6 +34,7 @@ export default function EarthingArticlePage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="earthing"
         headings={HEADINGS}
         readingTimeMinutes={earthingMetadata.readingTimeMinutes} lang="en" alternateHref="/hi/learn/non-it/electrical/earthing">

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
   title: "CPU in Servers — Architecture, NUMA, Cores, Threads & Selection | Behind The Tech",
   description: "Server CPU kya hai, cores/threads/sockets, cache hierarchy, NUMA topology, TDP, x86 vs ARM concept, hardware virtualisation extensions, workload-based selection aur troubleshooting — Zero-to-Hero Hinglish guide.",
   keywords: ["server CPU","Intel Xeon","AMD EPYC","NUMA","CPU cores threads","cache L1 L2 L3","TDP","virtualisation extensions","CPU selection data center"],
-  openGraph: { title: "CPU in Servers — Architecture, NUMA & Selection", description: "CPU cores, threads, cache, NUMA, TDP, x86 vs ARM, virtualisation — complete guide.", url: "https://behindthetech.in/hi/learn/it/servers/cpu", locale: "hi_IN", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "CPU in Servers — Behind The Tech", description: "CPU architecture, NUMA, selection aur troubleshooting guide." },
+  openGraph: { title: "CPU in Servers — Architecture, NUMA & Selection", description: "CPU cores, threads, cache, NUMA, TDP, x86 vs ARM, virtualisation — complete guide.", url: "https://behindthetech.in/hi/learn/it/servers/cpu", locale: "hi_IN", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },
+  twitter: { card: "summary_large_image", title: "CPU in Servers — Behind The Tech", description: "CPU architecture, NUMA, selection aur troubleshooting guide.", images: [SITE_OG_IMAGE.url], },
   alternates: {
     canonical: "https://behindthetech.in/hi/learn/it/servers/cpu",
     languages: {

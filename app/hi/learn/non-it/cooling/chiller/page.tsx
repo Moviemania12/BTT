@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Image from "next/image";
 import ArticleLayout from "@/components/ArticleLayout";
 import { type ArticleHeading } from "@/components/ArticlePage";
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
   title: "Chiller in Data Centers — Complete Guide | Behind The Tech",
   description: "Chiller kya hai, kaise kaam karta hai, Data Center mein kyun use hota hai — chilled water system, types, components, maintenance aur troubleshooting complete guide.",
   keywords: ["chiller data center", "chilled water system", "data center cooling chiller", "screw chiller", "centrifugal chiller"],
-  openGraph: { title: "Chiller in Data Centers — Complete Guide", description: "Chilled water system ka heart — chiller kaise kaam karta hai aur large data centers mein kyun zaroori hai.", url: "https://behindthetech.in/hi/learn/non-it/cooling/chiller", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "Chiller Explained — Behind The Tech", description: "Chiller — large Data Center cooling ka central system. Complete guide." },
+  openGraph: { title: "Chiller in Data Centers — Complete Guide", description: "Chilled water system ka heart — chiller kaise kaam karta hai aur large data centers mein kyun zaroori hai.", url: "https://behindthetech.in/hi/learn/non-it/cooling/chiller", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },
+  twitter: { card: "summary_large_image", title: "Chiller Explained — Behind The Tech", description: "Chiller — large Data Center cooling ka central system. Complete guide.", images: [SITE_OG_IMAGE.url], },
   alternates: {
     canonical: "https://behindthetech.in/hi/learn/non-it/cooling/chiller",
     languages: {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import { Clock, ChevronRight, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -8,15 +9,20 @@ export const metadata: Metadata = {
     "Quantum computing kya hai, qubits kaise kaam karte hain, aur yeh classical computing aur data centers ke liye kya implications rakhta hai — complete overview Hinglish mein.",
   keywords: ["quantum computing kya hai", "quantum computing hindi", "qubits explained hindi", "quantum vs classical computing"],
   authors: [{ name: "Kumar Anil" }],
+  // No equivalent page in the new structure and the copy is still Hinglish-only:
+  // keep reachable, but out of the index.
+  robots: { index: false, follow: true },
   openGraph: {
     title: "Quantum Computing: Next Frontier of Computation — Behind The Tech",
     description: "Quantum computing fundamentals, qubits, superposition aur data center implications.",
     url: "https://behindthetech.in/articles/quantum-computing-frontier",
     siteName: "Behind The Tech",
+    images: [SITE_OG_IMAGE],
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
+    images: [SITE_OG_IMAGE.url],
     title: "Quantum Computing: Next Frontier",
     description: "Quantum computing kya hai aur yeh future computing ko kaise change karega.",
   },

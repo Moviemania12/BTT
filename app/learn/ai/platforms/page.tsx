@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
+const TITLE = "AI Platforms — Behind The Tech";
+const DESCRIPTION =
+  "OpenAI, Anthropic, Google Gemini and Meta AI — the infrastructure behind the frontier AI platforms.";
+const PAGE_URL = "https://behindthetech.in/learn/ai/platforms";
+
 export const metadata: Metadata = {
-  title: "AI Platforms — Behind The Tech",
-  description: "OpenAI, Anthropic, Google Gemini, Meta AI — frontier AI platforms ka infrastructure guide.",
+  alternates: { canonical: PAGE_URL },
+  title: TITLE,
+  description: DESCRIPTION,
+  ...buildSocialMeta({ title: TITLE, description: DESCRIPTION, url: PAGE_URL }),
 };
 
 export default function CategoryPage() {
@@ -14,6 +23,17 @@ export default function CategoryPage() {
 
   return (
     <div data-homepage-theme="light" className="hp-page-root">
+      <JsonLd
+        data={buildCollectionPageSchema({ name: "AI Platforms", description: DESCRIPTION, url: PAGE_URL })}
+      />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", url: "https://behindthetech.in" },
+          { name: "Learn", url: "https://behindthetech.in/learn" },
+          { name: "AI Infrastructure", url: "https://behindthetech.in/learn/ai" },
+          { name: "AI Platforms", url: PAGE_URL },
+        ])}
+      />
       <section className="hp-section hp-section--hero">
         <div className="hp-container hp-container--medium" style={{ textAlign: "center" }}>
           <p
@@ -33,7 +53,7 @@ export default function CategoryPage() {
             🤖 AI Platforms
           </h1>
           <p className="hp-body" style={{ margin: "0 auto 20px" }}>
-            OpenAI, Anthropic, Google Gemini, Meta AI — frontier AI platforms ka infrastructure guide.
+            {DESCRIPTION}
           </p>
         </div>
       </section>

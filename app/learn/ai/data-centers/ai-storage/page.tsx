@@ -24,6 +24,7 @@ export default function AiStoragePage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="ai-storage"
         headings={HEADINGS}
         readingTimeMinutes={aiStorageMetadata.readingTimeMinutes}

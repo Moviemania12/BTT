@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const awsMetadata: ArticleMetadata = {
   slug: "aws",
   title: "AWS Infrastructure Explained — Cloud for Data Center Engineers",
-  seoTitle: "What Is AWS? VPC, EC2, EBS, IAM, HA and Hybrid Connectivity — Complete English Guide",
+  seoTitle: "What Is AWS? VPC, EC2, EBS, IAM, HA and Hybrid Connectivity",
   seoDescription:
     "AWS infrastructure for data center engineers — VPC networking, public/private subnets, Security Groups vs NACLs, EC2, EBS/S3/EFS, Load Balancer, Auto Scaling, IAM, Multi-AZ HA, Direct Connect, and an AWS troubleshooting guide in English.",
   canonicalUrl: "https://behindthetech.in/learn/it/cloud/aws",

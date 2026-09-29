@@ -24,6 +24,7 @@ export default function AnthropicPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="anthropic"
         headings={HEADINGS}
         readingTimeMinutes={anthropicMetadata.readingTimeMinutes}

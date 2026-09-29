@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const aiInfraMetadata: ArticleMetadata = {
   slug: "what-is-ai-infrastructure",
   title: "What is AI Infrastructure — The Complete Engineering Guide",
-  seoTitle: "AI Infrastructure Kya Hai? GPU Clusters, AI Data Centers, Networking, Cooling — Complete Hinglish Guide",
+  seoTitle: "AI Infrastructure Kya Hai? GPU Clusters, AI Data Centers, Networking",
   seoDescription:
     "AI Infrastructure ka complete engineering guide — GPU clusters, NVLink, InfiniBand, liquid cooling, AI data centers, training vs inference, Blackwell GB200, NVL72, DPU, CXL, power planning aur sustainability. DC engineers, IT engineers aur AI engineers ke liye.",
   canonicalUrl: "https://behindthetech.in/hi/learn/ai/fundamentals/what-is-ai-infrastructure",

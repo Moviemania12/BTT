@@ -15,6 +15,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import type { Metadata } from "next";
+import { buildSocialMeta } from "@/lib/schemas";
 import Image from "next/image";
 import ArticleLayout from "@/components/ArticleLayout";
 import { type ArticleHeading } from "@/components/ArticlePage";
@@ -34,6 +35,7 @@ export const metadata: Metadata = {
       "x-default": "https://behindthetech.in/learn/non-it/electrical/transformer",
     },
   },
+  ...buildSocialMeta({ title: "Transformer in Data Centers — Behind The Tech", description: "A transformer converts 11kV into 433V — oil vs dry type, Buchholz relay, DGA test, Tier III/IV design, a Data Center engineer guide in English.", url: "https://behindthetech.in/learn/non-it/electrical/transformer" }),
 };
 
 // ─── TOC headings (QuickSummary + FAQ excluded) ───────────────────────────────

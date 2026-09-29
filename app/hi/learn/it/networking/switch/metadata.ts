@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
   title: "Enterprise Network Switch — Complete Engineer Guide | Behind The Tech",
@@ -19,12 +20,12 @@ export const metadata: Metadata = {
     locale: "hi_IN",
     siteName: "Behind The Tech",
     type: "article",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Enterprise Network Switch | Behind The Tech",
-    description: "Complete switch guide — VLAN, STP, LACP, MLAG, Spine-Leaf, PoE, QoS, troubleshooting — beginner to engineer level.",
+    description: "Complete switch guide — VLAN, STP, LACP, MLAG, Spine-Leaf, PoE, QoS, troubleshooting — beginner to engineer level.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/hi/learn/it/networking/switch",

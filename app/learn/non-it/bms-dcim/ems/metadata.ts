@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
   title: "Energy Management System (EMS) — Complete Guide for Data Center Engineers | Behind The Tech",
   description: "What EMS is, energy meters integration, kW/kWh/PUE tracking, Modbus/BACnet data acquisition, dashboards, troubleshooting — complete English guide for data center engineers.",
   keywords: ["energy management system","EMS data center","energy meter Modbus","PUE calculation","power factor","kWh monitoring","data center energy"],
-  openGraph: { title: "Energy Management System (EMS) — Complete Data Center Guide", description: "EMS architecture, meter integration, PUE analysis, troubleshooting.", url: "https://behindthetech.in/learn/non-it/bms-dcim/ems", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "EMS Complete Guide — Behind The Tech", description: "Energy Management System for data centers." },
+  openGraph: { title: "Energy Management System (EMS) — Complete Data Center Guide", description: "EMS architecture, meter integration, PUE analysis, troubleshooting.", url: "https://behindthetech.in/learn/non-it/bms-dcim/ems", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },
+  twitter: { card: "summary_large_image", title: "EMS Complete Guide — Behind The Tech", description: "Energy Management System for data centers.", images: [SITE_OG_IMAGE.url], },
   alternates: {
     canonical: "https://behindthetech.in/learn/non-it/bms-dcim/ems",
     languages: {

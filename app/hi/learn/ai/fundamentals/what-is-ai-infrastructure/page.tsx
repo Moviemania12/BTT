@@ -24,6 +24,7 @@ export default function WhatIsAiInfrastructurePage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="what-is-ai-infrastructure"
         headings={HEADINGS}
         readingTimeMinutes={aiInfraMetadata.readingTimeMinutes}

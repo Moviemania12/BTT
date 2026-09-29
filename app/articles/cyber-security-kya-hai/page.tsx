@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import { Clock, ChevronRight, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -8,15 +9,20 @@ export const metadata: Metadata = {
     "Cyber security kya hai, common threats kaise kaam karte hain, aur data centers aur enterprises apni digital assets kaise protect karte hain — complete guide Hinglish mein.",
   keywords: ["cyber security kya hai", "cybersecurity hindi", "internet security hindi", "data protection hindi", "firewall vpn encryption"],
   authors: [{ name: "Kumar Anil" }],
+  // No equivalent page in the new structure and the copy is still Hinglish-only:
+  // keep reachable, but out of the index.
+  robots: { index: false, follow: true },
   openGraph: {
     title: "Cyber Security Kya Hai? — Behind The Tech",
     description: "Cyber security fundamentals, common threats aur enterprise protection strategies Hinglish mein.",
     url: "https://behindthetech.in/articles/cyber-security-kya-hai",
     siteName: "Behind The Tech",
+    images: [SITE_OG_IMAGE],
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
+    images: [SITE_OG_IMAGE.url],
     title: "Cyber Security Kya Hai?",
     description: "Cyber security kya hai aur internet par apna data kaise bachate hain.",
   },

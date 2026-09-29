@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   description:
     "Request a 3-day demo of BTT Employee Manager with unlimited employees: roster generation, attendance, leave, coverage and the Android employee app.",
   alternates: { canonical: PRODUCT.demoRoute },
+  // Utility page (request form / installer downloads): useful to visitors who come
+  // from the product page, but thin as a search landing page — keep it out of the index.
+  robots: { index: false, follow: true },
 };
 
 export default function DemoPage() {

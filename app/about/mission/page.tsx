@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 
@@ -16,10 +17,12 @@ export const metadata: Metadata = {
       "Free, depth-first data center education for engineers across India. No paywalls, no campus required.",
     url: PAGE_URL,
     siteName: "Behind The Tech",
+    images: [SITE_OG_IMAGE],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
+    images: [SITE_OG_IMAGE.url],
     title: "Mission — Behind The Tech",
     description: "Free, practical data center education for every engineer in India.",
   },
@@ -204,7 +207,7 @@ export default function MissionPage() {
                   context: "International resources exist, but they rarely address the Indian regulatory context, OEM landscape, or practical field conditions.",
                 },
                 {
-                  stat: "84+",
+                  stat: "75+",
                   label: "Topics published on Behind The Tech — growing weekly",
                   context: "Each article goes beyond definitions — it covers working principles, failure modes, commissioning, and real-world application.",
                 },

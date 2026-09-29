@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const nvidiaArchMetadata: ArticleMetadata = {
   slug: "nvidia-architecture",
   title: "NVIDIA Architecture — Tesla to Blackwell Complete Engineering Guide",
-  seoTitle: "What Is NVIDIA GPU Architecture? Tesla to Blackwell, SM, Tensor Core, NVLink, MIG, DGX — Complete English Guide",
+  seoTitle: "What Is NVIDIA GPU Architecture? Tesla to Blackwell, Tensor Core, NVLink",
   seoDescription:
     "A complete engineering guide to NVIDIA GPU architecture — evolution from Tesla to Blackwell, GPC/TPC/SM internals, CUDA Cores, Tensor Cores, the Warp and Thread model, memory hierarchy, NVLink/NVSwitch, MIG virtualization, DGX/HGX platforms, the CUDA ecosystem, TensorRT, NCCL, data center power/cooling, and enterprise deployment. For AI engineers, DC engineers, and architects.",
   canonicalUrl: "https://behindthetech.in/learn/ai/hardware/nvidia-architecture",

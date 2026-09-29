@@ -24,6 +24,7 @@ export default function DeepLearningPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="deep-learning"
         headings={HEADINGS}
         readingTimeMinutes={dlMetadata.readingTimeMinutes}

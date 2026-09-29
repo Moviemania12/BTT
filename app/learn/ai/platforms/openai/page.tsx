@@ -24,6 +24,7 @@ export default function OpenAiPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="openai"
         headings={HEADINGS}
         readingTimeMinutes={openaiMetadata.readingTimeMinutes}

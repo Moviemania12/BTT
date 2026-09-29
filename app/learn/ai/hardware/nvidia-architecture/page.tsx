@@ -24,6 +24,7 @@ export default function NvidiaArchitecturePage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="nvidia-architecture"
         headings={HEADINGS}
         readingTimeMinutes={nvidiaArchMetadata.readingTimeMinutes}

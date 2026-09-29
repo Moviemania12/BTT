@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const aiDcMetadata: ArticleMetadata = {
   slug: "ai-data-center-basics",
   title: "AI Data Center Basics — Complete Engineering Foundation Guide",
-  seoTitle: "What Is an AI Data Center? Training vs Inference, GPU Cluster, AI Pod, AI Factory — Complete English Guide",
+  seoTitle: "What Is an AI Data Center? Training vs Inference, GPU Cluster, AI Pod",
   seoDescription:
     "A complete beginner-to-engineer guide to the AI Data Center — comparison with traditional DC, AI training vs inference infrastructure, GPU compute nodes, AI networking, storage, cooling, power chain, AI Pod and AI Factory concepts, data flow, software stack, enterprise vs hyperscale, capacity planning, reliability, monitoring, and best practices. For DC engineers, AI engineers, and architects.",
   canonicalUrl: "https://behindthetech.in/learn/ai/data-centers/ai-data-center-basics",

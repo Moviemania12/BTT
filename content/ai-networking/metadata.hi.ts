@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const aiNetworkingMetadata: ArticleMetadata = {
   slug: "ai-networking",
   title: "AI Networking: GPU Clusters, RDMA, InfiniBand, RoCE & Data Center Networks",
-  seoTitle: "AI Networking Kya Hai? RDMA, InfiniBand, RoCE, NCCL, Leaf-Spine — Complete Hinglish Guide",
+  seoTitle: "AI Networking Kya Hai? RDMA, InfiniBand, RoCE, NCCL, Leaf-Spine",
   seoDescription:
     "AI Networking ka complete engineering guide — GPU-to-GPU communication, collective operations (AllReduce, AllGather), NCCL, RDMA, InfiniBand, RoCE (v1/v2), PFC, ECN, leaf-spine topology, ECMP, PCIe bottlenecks, NUMA affinity, optics (DAC/AOC), AI network monitoring, troubleshooting aur capacity planning. AI infrastructure engineers, DC professionals aur students ke liye.",
   canonicalUrl: "https://behindthetech.in/hi/learn/ai/data-centers/ai-networking",

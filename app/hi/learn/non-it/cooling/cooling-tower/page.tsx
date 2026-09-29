@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Image from "next/image";
 import ArticleLayout from "@/components/ArticleLayout";
 import { type ArticleHeading } from "@/components/ArticlePage";
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
   title: "Cooling Tower in Data Centers — Complete Guide | Behind The Tech",
   description: "Cooling tower kya hai, kaise kaam karta hai, Data Center mein chiller ke saath kaise connect hota hai — evaporative cooling, types, maintenance aur safety guide.",
   keywords: ["cooling tower data center", "cooling tower chiller", "evaporative cooling data center", "cooling tower maintenance"],
-  openGraph: { title: "Cooling Tower in Data Centers", description: "Cooling tower — chiller plant ka heat rejection component. Complete guide.", url: "https://behindthetech.in/hi/learn/non-it/cooling/cooling-tower", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "Cooling Tower Explained — Behind The Tech", description: "Cooling tower — Data Center chiller ka heat rejection system. Complete guide." },
+  openGraph: { title: "Cooling Tower in Data Centers", description: "Cooling tower — chiller plant ka heat rejection component. Complete guide.", url: "https://behindthetech.in/hi/learn/non-it/cooling/cooling-tower", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },
+  twitter: { card: "summary_large_image", title: "Cooling Tower Explained — Behind The Tech", description: "Cooling tower — Data Center chiller ka heat rejection system. Complete guide.", images: [SITE_OG_IMAGE.url], },
   alternates: {
     canonical: "https://behindthetech.in/hi/learn/non-it/cooling/cooling-tower",
     languages: {

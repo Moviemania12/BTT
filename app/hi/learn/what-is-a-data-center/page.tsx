@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import ArticlePage, { type ArticleHeading } from "@/components/ArticlePage";
+import ArticleStructuredData from "@/components/ArticleStructuredData";
 import TopicLink from "@/components/TopicLink";
 import RequestJourneyDiagram from "@/components/diagrams/RequestJourneyDiagram";
 
@@ -23,21 +25,23 @@ export const metadata: Metadata = {
     title: "What is a Data Center? Har Click Ke Peeche Chhupa Digital Powerhouse",
     description:
       "Data Center kya hota hai? Servers, UPS, cooling aur networking — sab kuch simple Hinglish mein samjho.",
-    url: "https://behindthetech.in/learn/what-is-a-data-center",
+    url: "https://behindthetech.in/hi/learn/what-is-a-data-center",
     siteName: "Behind The Tech",
     type: "article",
     publishedTime: "2024-11-01",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "What is a Data Center? — Behind The Tech",
-    description: "Data Center kya hota hai? Simple Hinglish mein samjho.",
+    description: "Data Center kya hota hai? Simple Hinglish mein samjho.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/hi/learn/what-is-a-data-center",
     languages: {
       "en": "https://behindthetech.in/learn/what-is-a-data-center",
+      "hi": "https://behindthetech.in/hi/learn/what-is-a-data-center",
+      "x-default": "https://behindthetech.in/learn/what-is-a-data-center",
     },
   },
 };
@@ -578,6 +582,8 @@ function AppGrid({ items }: { items: { icon: string; label: string }[] }) {
 
 export default function WhatIsADataCenterPage() {
   return (
+    <>
+      <ArticleStructuredData slug="what-is-a-data-center" lang="hi" />
     <ArticlePage
       slug="what-is-a-data-center"
       prevSlug={undefined}
@@ -889,5 +895,6 @@ export default function WhatIsADataCenterPage() {
       `}</style>
 
     </ArticlePage>
+    </>
   );
 }

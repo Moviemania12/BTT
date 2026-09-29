@@ -7,10 +7,7 @@ export const metadata: Metadata = {
   description:
     "Engineer-grade Data Center checklists — Daily, Weekly, Monthly, UPS, DG, Cooling, Fire, Network, Pre-Shutdown, Commissioning. Production-ready templates for DC operations teams.",
   alternates: {
-    canonical: "https://behindthetech.in/hi/study/checklists",
-    languages: {
-      "en": "https://behindthetech.in/study/checklists",
-    },
+    canonical: "https://behindthetech.in/study/checklists",
   },
 };
 

@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
+const TITLE = "Electrical Systems — Behind The Tech";
+const DESCRIPTION =
+  "Grid supply, HT yard, RMU, transformers, DG sets, UPS, batteries, STS, PDUs, earthing and lightning protection — data center power infrastructure.";
+const PAGE_URL = "https://behindthetech.in/learn/non-it/electrical";
+
 export const metadata: Metadata = {
-  title: "Electrical Systems — Behind The Tech",
-  description: "UPS, DG, transformers, switchgear, PDUs — data center power infrastructure.",
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/electrical" },
+  alternates: { canonical: PAGE_URL },
+  title: TITLE,
+  description: DESCRIPTION,
+  ...buildSocialMeta({ title: TITLE, description: DESCRIPTION, url: PAGE_URL }),
 };
 
 export default function CategoryPage() {
@@ -15,6 +23,17 @@ export default function CategoryPage() {
 
   return (
     <div data-homepage-theme="light" className="hp-page-root">
+      <JsonLd
+        data={buildCollectionPageSchema({ name: "Electrical Systems", description: DESCRIPTION, url: PAGE_URL })}
+      />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", url: "https://behindthetech.in" },
+          { name: "Learn", url: "https://behindthetech.in/learn" },
+          { name: "Non-IT Infrastructure", url: "https://behindthetech.in/learn/non-it" },
+          { name: "Electrical Systems", url: PAGE_URL },
+        ])}
+      />
       <section className="hp-section hp-section--hero">
         <div className="hp-container hp-container--medium" style={{ textAlign: "center" }}>
           <p
@@ -34,7 +53,7 @@ export default function CategoryPage() {
             ⚡ Electrical Systems
           </h1>
           <p className="hp-body" style={{ margin: "0 auto 20px" }}>
-            UPS, DG, transformers, switchgear, PDUs — data center power infrastructure.
+            {DESCRIPTION}
           </p>
         </div>
       </section>
@@ -82,6 +101,56 @@ export default function CategoryPage() {
           </div>
         </section>
       )}
+
+      <section className="hp-section">
+        <div className="hp-container">
+          <h2 className="hp-h3" style={{ marginBottom: 16 }}>
+            Related calculators
+          </h2>
+          <ul className="hp-chip-row">
+              <li>
+                <Link href="/tools/ups-load-calculator" className="hp-chip hp-chip--published">
+                  UPS Load Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/ups-redundancy-calculator" className="hp-chip hp-chip--published">
+                  UPS Redundancy Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/ups-runtime-calculator" className="hp-chip hp-chip--published">
+                  UPS Runtime Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/battery-ah-calculator" className="hp-chip hp-chip--published">
+                  Battery Ah Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/battery-string-calculator" className="hp-chip hp-chip--published">
+                  Battery String Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/battery-quantity-calculator" className="hp-chip hp-chip--published">
+                  Battery Quantity Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/data-center-ups-designer" className="hp-chip hp-chip--published">
+                  UPS Designer
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/pue-calculator" className="hp-chip hp-chip--published">
+                  PUE Calculator
+                </Link>
+              </li>
+          </ul>
+        </div>
+      </section>
 
       <section className="hp-section">
         <div className="hp-container" style={{ textAlign: "center" }}>

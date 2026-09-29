@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
   title: "Virtualisation — Hypervisors, VMs, HA, Live Migration & Containers | Behind The Tech",
   description: "What virtualisation is, Type 1/2 hypervisors, VM architecture, overcommit, live migration, HA clusters, snapshots vs backups, RPO/RTO, VM vs containers — a Zero-to-Hero English guide.",
   keywords: ["virtualisation","hypervisor","VMware ESXi","Hyper-V","KVM","VM","vCPU vRAM","live migration","vMotion","HA cluster","snapshots backups","VM vs container"],
-  openGraph: { title: "Virtualisation — Hypervisors, VMs, HA & Live Migration", description: "Type 1/2 hypervisors, VM architecture, overcommit, HA, live migration, containers.", url: "https://behindthetech.in/learn/it/servers/virtualization", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "Virtualisation — Behind The Tech", description: "Hypervisors, VMs, HA and live migration complete guide." },
+  openGraph: { title: "Virtualisation — Hypervisors, VMs, HA & Live Migration", description: "Type 1/2 hypervisors, VM architecture, overcommit, HA, live migration, containers.", url: "https://behindthetech.in/learn/it/servers/virtualization", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },
+  twitter: { card: "summary_large_image", title: "Virtualisation — Behind The Tech", description: "Hypervisors, VMs, HA and live migration complete guide.", images: [SITE_OG_IMAGE.url], },
   alternates: {
     canonical: "https://behindthetech.in/learn/it/servers/virtualization",
     languages: {

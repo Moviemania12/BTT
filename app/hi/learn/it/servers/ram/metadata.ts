@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
   title: "RAM in Servers — ECC, RDIMM, Channels, NUMA & Troubleshooting | Behind The Tech",
   description: "Server RAM kya hai, DRAM basics, ECC, RDIMM/LRDIMM, DDR generations, memory channels, NUMA relationship, DIMM population rules, RAS, scrubbing aur fault isolation — Zero-to-Hero Hinglish guide.",
   keywords: ["server RAM","ECC RAM","RDIMM LRDIMM","DDR4 DDR5","memory channels","NUMA RAM","DIMM population","memory scrubbing","server memory troubleshooting"],
-  openGraph: { title: "RAM in Servers — ECC, Channels & Troubleshooting", description: "ECC, RDIMM, DDR generations, NUMA, DIMM population aur troubleshooting.", url: "https://behindthetech.in/hi/learn/it/servers/ram", locale: "hi_IN", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "RAM in Servers — Behind The Tech", description: "Server memory complete guide." },
+  openGraph: { title: "RAM in Servers — ECC, Channels & Troubleshooting", description: "ECC, RDIMM, DDR generations, NUMA, DIMM population aur troubleshooting.", url: "https://behindthetech.in/hi/learn/it/servers/ram", locale: "hi_IN", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },
+  twitter: { card: "summary_large_image", title: "RAM in Servers — Behind The Tech", description: "Server memory complete guide.", images: [SITE_OG_IMAGE.url], },
   alternates: {
     canonical: "https://behindthetech.in/hi/learn/it/servers/ram",
     languages: {

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
   title: "Blade Servers — Architecture, Chassis, Shared Infrastructure & Deployment | Behind The Tech",
   description: "What is a blade server, chassis architecture, shared failure domain, I/O modules, chassis fabric, oversubscription, redundancy, blade vs rack vs composable — Zero-to-Hero English guide.",
   keywords: ["blade server","blade chassis","blade vs rack server","HPE blade","Dell blade","blade server architecture","shared failure domain","composable infrastructure"],
-  openGraph: { title: "Blade Servers — Architecture & Data Center Deployment", description: "Blade chassis, shared failure domain, I/O modules, redundancy and deployment.", url: "https://behindthetech.in/learn/it/servers/blade-server", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "Blade Servers — Behind The Tech", description: "Blade server architecture and deployment guide." },
+  openGraph: { title: "Blade Servers — Architecture & Data Center Deployment", description: "Blade chassis, shared failure domain, I/O modules, redundancy and deployment.", url: "https://behindthetech.in/learn/it/servers/blade-server", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },
+  twitter: { card: "summary_large_image", title: "Blade Servers — Behind The Tech", description: "Blade server architecture and deployment guide.", images: [SITE_OG_IMAGE.url], },
   alternates: {
     canonical: "https://behindthetech.in/learn/it/servers/blade-server",
     languages: {

@@ -7,10 +7,7 @@ export const metadata: Metadata = {
   description:
     "Complete Data Center glossary — Power, Cooling, Networking, Storage, Cloud, IT terms with practical meanings, real-world context, common confusion, aur related systems. DC engineer ka complete reference.",
   alternates: {
-    canonical: "https://behindthetech.in/hi/reference/glossary",
-    languages: {
-      "en": "https://behindthetech.in/reference/glossary",
-    },
+    canonical: "https://behindthetech.in/reference/glossary",
   },
 };
 

@@ -26,6 +26,8 @@ export default function ContactForm() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [honeypot, setHoneypot] = useState(""); // spam trap — real users never see or fill it
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -33,14 +35,27 @@ export default function ContactForm() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    // No backend — simulate submission delay
-    setTimeout(() => {
-      setLoading(false);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, website: honeypot }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { message?: string };
+      if (!res.ok) {
+        setError(data.message || "Something went wrong. Please try again.");
+        return;
+      }
       setSubmitted(true);
-    }, 800);
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -59,7 +74,7 @@ export default function ContactForm() {
           Message Received!
         </h2>
         <p style={{ fontSize: "15px", color: "var(--hp-text-secondary)", marginBottom: "24px" }}>
-          Shukriya — hum jald hi reply karenge. LinkedIn pe bhi connect kar sakte ho faster response ke liye.
+          Thank you — we will reply as soon as possible. You can also connect on LinkedIn for a quicker response.
         </p>
         <button
           type="button"
@@ -105,7 +120,7 @@ export default function ContactForm() {
           autoComplete="name"
           value={form.name}
           onChange={handleChange}
-          placeholder="Aapka naam"
+          placeholder="Your name"
           style={{
             width: "100%",
             padding: "10px 14px",
@@ -137,7 +152,7 @@ export default function ContactForm() {
           autoComplete="email"
           value={form.email}
           onChange={handleChange}
-          placeholder="aap@email.com"
+          placeholder="your@email.com"
           style={{
             width: "100%",
             padding: "10px 14px",
@@ -204,7 +219,7 @@ export default function ContactForm() {
           rows={5}
           value={form.message}
           onChange={handleChange}
-          placeholder="Aapka message yahan likhein..."
+          placeholder="Write your message here..."
           style={{
             width: "100%",
             padding: "10px 14px",
@@ -222,6 +237,26 @@ export default function ContactForm() {
         />
       </div>
 
+      {/* Honeypot: hidden from people and assistive tech, bots tend to fill it */}
+      <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+        <label htmlFor="cf-website">Website</label>
+        <input
+          id="cf-website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
+      </div>
+
+      {error && (
+        <p role="alert" style={{ fontSize: "13px", color: "var(--hp-danger, #ef4444)", margin: 0 }}>
+          {error}
+        </p>
+      )}
+
       <button
         type="submit"
         disabled={loading || !form.name || !form.email || !form.message}
@@ -232,7 +267,9 @@ export default function ContactForm() {
       </button>
 
       <p style={{ fontSize: "12px", color: "var(--hp-text-muted)", margin: 0 }}>
-        Your data is not stored or shared. This form is for contact purposes only.
+        Your message is emailed to us through our email provider (Resend) and is not stored in a
+        database on this site. It is used only to reply to you. See our{" "}
+        <a href="/privacy-policy" className="hp-link">Privacy Policy</a>.
       </p>
     </form>
   );

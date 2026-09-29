@@ -24,6 +24,7 @@ export default function GpuClusterPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="gpu-cluster"
         headings={HEADINGS}
         readingTimeMinutes={gpuClusterMetadata.readingTimeMinutes}

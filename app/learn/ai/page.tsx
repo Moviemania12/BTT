@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import {
   getTrackSummary,
   getTopicUrl,
@@ -20,10 +22,16 @@ import TrackExplorer from "@/components/homepage/TrackExplorer";
 // design stays consistent with the rest of the homepage.
 // ═══════════════════════════════════════════════════════════════════════════
 
+const TITLE = "AI Infrastructure — Behind The Tech";
+const DESCRIPTION =
+  "Learn AI Infrastructure from scratch — GPU clusters, LLMs, Tensor Cores, HBM, NVLink, AI Data Centers, and the hardware powering the AI revolution.";
+const PAGE_URL = "https://behindthetech.in/learn/ai";
+
 export const metadata: Metadata = {
-  title: "AI Infrastructure — Behind The Tech",
-  description:
-    "Learn AI Infrastructure from scratch — GPU clusters, LLMs, Tensor Cores, HBM, NVLink, AI Data Centers, and the hardware powering the AI revolution.",
+  alternates: { canonical: PAGE_URL },
+  title: TITLE,
+  description: DESCRIPTION,
+  ...buildSocialMeta({ title: TITLE, description: DESCRIPTION, url: PAGE_URL }),
 };
 
 // Category display config — icon only; label comes from CATEGORY_LABELS.
@@ -65,6 +73,16 @@ export default function AiTrackPage() {
 
   return (
     <div data-homepage-theme="light" className="hp-page-root">
+      <JsonLd
+        data={buildCollectionPageSchema({ name: "AI Infrastructure", description: DESCRIPTION, url: PAGE_URL })}
+      />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", url: "https://behindthetech.in" },
+          { name: "Learn", url: "https://behindthetech.in/learn" },
+          { name: "AI Infrastructure", url: PAGE_URL },
+        ])}
+      />
       {/* ── Hero ── */}
       <section className="hp-section hp-section--hero">
         <div className="hp-container hp-container--medium" style={{ textAlign: "center" }}>
@@ -152,7 +170,22 @@ export default function AiTrackPage() {
                     )}
                   </ul>
 
-
+                  {publishedCount > 0 && (
+                    <p style={{ marginTop: 14 }}>
+                      <Link
+                        href={`/learn/ai/${cat.key}`}
+                        style={{
+                          fontFamily: "var(--hp-font-mono)",
+                          fontSize: 12,
+                          letterSpacing: "0.08em",
+                          color: "var(--hp-accent)",
+                          textDecoration: "none",
+                        }}
+                      >
+                        View all {cat.label} →
+                      </Link>
+                    </p>
+                  )}
                 </div>
               );
             })}

@@ -24,6 +24,7 @@ export default function GoogleGeminiPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="google-gemini"
         headings={HEADINGS}
         readingTimeMinutes={googleGeminiMetadata.readingTimeMinutes}

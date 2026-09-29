@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const aiStorageMetadata: ArticleMetadata = {
   slug: "ai-storage",
   title: "AI Storage: How Storage Works in AI Data Centers",
-  seoTitle: "AI Storage Kya Hai? Parallel File Systems, Object Storage, NVMe, Checkpointing — Complete Hinglish Guide",
+  seoTitle: "AI Storage Kya Hai? Parallel File Systems, Object Storage, NVMe",
   seoDescription:
     "AI Storage ka complete engineering guide — storage hierarchy (HBM se object storage tak), parallel file systems (Lustre, GPFS), object storage, NVMe-oF, checkpoint storage, GPU starvation, small files problem, IOPS vs throughput vs latency, storage networking, bottleneck troubleshooting aur capacity planning. AI infrastructure engineers, DC professionals aur students ke liye.",
   canonicalUrl: "https://behindthetech.in/hi/learn/ai/data-centers/ai-storage",

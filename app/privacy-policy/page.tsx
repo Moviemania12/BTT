@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
     <PolicyLayout
       eyebrow="Legal"
       title="Privacy Policy"
-      lastUpdated="July 2025"
+      lastUpdated="29 September 2026"
     >
       <p>
         Behind The Tech (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) is a free educational
@@ -42,74 +42,123 @@ export default function PrivacyPolicyPage() {
       <h3>Information you give us directly</h3>
       <ul>
         <li>
-          <strong>Contact form submissions</strong> — name, email address, and message content when you
-          use the contact form on <em>/about/contact</em>. This goes directly to our email inbox and
-          is not stored in a database.
+          <strong>Contact form</strong> — name, email address, enquiry type and message when you use
+          the form on <a href="/about/contact">/about/contact</a>. The message is sent by email to our
+          inbox through our email provider, <strong>Resend</strong>. It is not saved in a database on
+          this site.
         </li>
         <li>
-          <strong>Newsletter sign-ups</strong> — email address only, if and when we add a newsletter
-          subscription feature. We will update this policy before activating that feature.
+          <strong>BTT Employee Manager demo requests</strong> — name, company, email address, mobile
+          number and employee-count range when you request a demo on the product page. We generate a
+          temporary demo login, show it to you on the page and email it to you through Resend, and the
+          request details are emailed to our inbox through Resend. They are not saved in a database on
+          this site.
+        </li>
+        <li>
+          <strong>Newsletter sign-ups</strong> — this site does not currently collect newsletter
+          sign-ups itself. We will update this policy before adding that feature.
         </li>
       </ul>
+
+      <h3>BTT Assistant (AI chat)</h3>
+      <p>
+        The BTT Assistant answers questions about the site&rsquo;s topics. When you send a message, the
+        text you type, the recent messages of that conversation, and the article and section you are
+        currently reading are sent to <strong>Google&rsquo;s Gemini API</strong> to generate the reply.
+        Our site does not store your conversations in a database, and it does not save the chat in
+        cookies or local storage. Our server briefly keeps your IP address in memory to limit abuse
+        (rate limiting). Please do not type personal, confidential or sensitive information into the
+        chat. Google processes this data under its own terms; see the Google Privacy Policy linked
+        below.
+      </p>
 
       <h3>Information collected automatically</h3>
       <ul>
         <li>
-          <strong>Usage analytics</strong> — We use analytics tools (such as Google Analytics) to
-          understand how pages are read: which articles are most useful, where readers drop off, and
-          what devices they use. This data is aggregated and does not identify individual users.
+          <strong>Server and hosting logs</strong> — like any web server, our hosting provider
+          (Vercel) processes standard request information such as IP address, browser type, requested
+          page and referring page, for delivering the site, security and debugging. Retention is
+          controlled by the hosting provider&rsquo;s settings.
         </li>
         <li>
-          <strong>Log data</strong> — Like any web server, ours logs standard request information:
-          IP address, browser type, referring page, and pages visited. Logs are retained for a limited
-          period for security and debugging purposes.
+          <strong>Analytics</strong> — we do not currently run a third-party analytics tool (such as
+          Google Analytics) on this site. If we add one, we will update this policy first.
         </li>
         <li>
-          <strong>Cookies</strong> — See our{" "}
-          <a href="/cookie-policy">Cookie Policy</a> for a full breakdown of the cookies this site
-          sets and why.
+          <strong>Cookies and advertising identifiers</strong> — see the section on advertising below
+          and our <a href="/cookie-policy">Cookie Policy</a>.
         </li>
       </ul>
 
       <h2>How We Use This Information</h2>
       <ul>
-        <li>To respond to contact form messages</li>
-        <li>To improve article quality and site navigation based on usage patterns</li>
-        <li>To detect and prevent abuse or security issues</li>
+        <li>To reply to contact-form messages and to process demo requests</li>
+        <li>To generate answers in the BTT Assistant</li>
+        <li>To keep the site secure and to detect and prevent abuse</li>
         <li>To comply with legal obligations</li>
       </ul>
       <p>
-        We do <strong>not</strong> sell your personal data. We do not share it with third parties
-        for their marketing purposes.
+        We do <strong>not</strong> sell your personal data. We do not share it with third parties for
+        their own marketing purposes. The service providers named on this page process data only to
+        provide the service described.
       </p>
 
-      <h2>Third-Party Services</h2>
+      <h2>Advertising (Google AdSense)</h2>
       <p>
-        This site may use third-party services including Google Analytics, Google AdSense, and YouTube
-        embeds. Each service operates under its own privacy policy:
+        This site uses <strong>Google AdSense</strong> to show ads. Google and its advertising partners
+        may use cookies and similar identifiers on your device to serve and measure ads, and, unless you
+        opt out, to personalise ads based on your visits to this and other websites.
       </p>
       <ul>
         <li>
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-            Google Privacy Policy
+          <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">
+            How Google uses information from sites that use its services
           </a>
+        </li>
+        <li>
+          <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">
+            Google Ad Settings
+          </a>{" "}
+          — manage or turn off personalised ads
+        </li>
+        <li>
+          <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer">
+            aboutads.info
+          </a>{" "}
+          and{" "}
+          <a href="https://www.youronlinechoices.com" target="_blank" rel="noopener noreferrer">
+            Your Online Choices
+          </a>{" "}
+          — opt out of interest-based advertising from participating companies
         </li>
       </ul>
       <p>
-        Google AdSense may display personalised advertisements based on your browsing history using
-        cookies. You can opt out via{" "}
-        <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">
-          Google Ad Settings
+        <strong>Consent.</strong> Where the law requires consent for ads and cookies (for example in the
+        European Economic Area, the United Kingdom and Switzerland), we rely on Google&rsquo;s own consent
+        messaging for AdSense rather than a custom system. Where that message is shown, you can accept,
+        decline or change your choice, and you can always clear cookies in your browser.
+      </p>
+
+      <h2>Other Third-Party Services</h2>
+      <ul>
+        <li><strong>Google (Gemini API)</strong> — generates BTT Assistant replies, as described above.</li>
+        <li><strong>Resend</strong> — delivers the emails produced by the contact and demo-request forms.</li>
+        <li><strong>Vercel</strong> — hosts the site.</li>
+      </ul>
+      <p>
+        Each service operates under its own privacy policy, for example the{" "}
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+          Google Privacy Policy
         </a>
-        .
+        . Links from this site to YouTube, LinkedIn, Instagram and other websites lead to services we
+        do not control; their policies apply once you leave our site.
       </p>
 
       <h2>Data Retention</h2>
       <p>
-        Contact form emails are retained in our inbox for as long as they remain relevant to ongoing
-        correspondence. Analytics data is retained per the default retention period of the analytics
-        provider (typically 26 months for Google Analytics). Server logs are typically purged after
-        90 days.
+        Contact-form and demo-request emails stay in our inbox for as long as they remain relevant to
+        ongoing correspondence. Our site does not keep BTT Assistant conversations. Hosting
+        logs and Google&rsquo;s advertising data are retained by those providers under their own policies.
       </p>
 
       <h2>Your Rights</h2>
@@ -124,7 +173,7 @@ export default function PrivacyPolicyPage() {
       <p>
         This site is intended for engineering students, professionals, and technically curious adults.
         We do not knowingly collect personal data from children under 13. If you believe a child has
-        submitted data through our contact form, contact us and we will delete it promptly.
+        submitted data through our contact form or demo form, contact us and we will delete it promptly.
       </p>
 
       <h2>Changes to This Policy</h2>

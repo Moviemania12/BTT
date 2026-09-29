@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
+const TITLE = "BMS & DCIM — Behind The Tech";
+const DESCRIPTION =
+  "BMS, EMS, DCIM, SCADA and sensors — monitoring and automation for data center infrastructure.";
+const PAGE_URL = "https://behindthetech.in/learn/non-it/bms-dcim";
+
 export const metadata: Metadata = {
-  title: "BMS & DCIM — Behind The Tech",
-  description: "Building Management System aur Data Center Infrastructure Management — monitoring aur automation.",
-  alternates: { canonical: "https://behindthetech.in/learn/non-it/bms-dcim" },
+  alternates: { canonical: PAGE_URL },
+  title: TITLE,
+  description: DESCRIPTION,
+  ...buildSocialMeta({ title: TITLE, description: DESCRIPTION, url: PAGE_URL }),
 };
 
 export default function CategoryPage() {
@@ -15,6 +23,17 @@ export default function CategoryPage() {
 
   return (
     <div data-homepage-theme="light" className="hp-page-root">
+      <JsonLd
+        data={buildCollectionPageSchema({ name: "BMS & DCIM", description: DESCRIPTION, url: PAGE_URL })}
+      />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", url: "https://behindthetech.in" },
+          { name: "Learn", url: "https://behindthetech.in/learn" },
+          { name: "Non-IT Infrastructure", url: "https://behindthetech.in/learn/non-it" },
+          { name: "BMS & DCIM", url: PAGE_URL },
+        ])}
+      />
       <section className="hp-section hp-section--hero">
         <div className="hp-container hp-container--medium" style={{ textAlign: "center" }}>
           <p
@@ -34,7 +53,7 @@ export default function CategoryPage() {
             📡 BMS & DCIM
           </h1>
           <p className="hp-body" style={{ margin: "0 auto 20px" }}>
-            Building Management System aur Data Center Infrastructure Management — monitoring aur automation.
+            {DESCRIPTION}
           </p>
         </div>
       </section>

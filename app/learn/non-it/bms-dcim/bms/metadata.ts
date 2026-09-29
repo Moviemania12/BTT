@@ -3,6 +3,7 @@
 // ═══════════════════════════════════════════════════════════════════════════
 
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
   title: "Building Management System (BMS) — Complete Guide for Data Center Engineers | Behind The Tech",
@@ -27,12 +28,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "BMS Complete Guide — Behind The Tech",
-    description: "Building Management System — a complete engineering guide for Data Center engineers.",
+    description: "Building Management System — a complete engineering guide for Data Center engineers.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/learn/non-it/bms-dcim/bms",

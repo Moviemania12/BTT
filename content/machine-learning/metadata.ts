@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const mlMetadata: ArticleMetadata = {
   slug: "machine-learning",
   title: "Machine Learning — The Complete Engineering Guide",
-  seoTitle: "What Is Machine Learning? Supervised, Unsupervised, ML Pipeline, Infrastructure — Complete English Guide",
+  seoTitle: "What Is Machine Learning? Supervised, Unsupervised, ML Pipeline",
   seoDescription:
     "A complete engineering guide to Machine Learning — supervised learning, unsupervised learning, reinforcement learning, ML infrastructure, distributed training, MLOps, feature stores, model deployment, the enterprise ML pipeline, and industry examples. For DC engineers, IT engineers, and AI engineers.",
   canonicalUrl: "https://behindthetech.in/learn/ai/fundamentals/machine-learning",

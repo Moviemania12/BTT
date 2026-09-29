@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Image from "next/image";
 import ArticleLayout from "@/components/ArticleLayout";
 import { type ArticleHeading } from "@/components/ArticlePage";
@@ -16,12 +17,12 @@ export const metadata: Metadata = {
     locale: "hi_IN",
     siteName: "Behind The Tech",
     type: "article",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Novec Fluids Explained — Behind The Tech",
-    description: "3M Novec fluid family — suppression aur cooling dono, simple language mein.",
+    description: "3M Novec fluid family — suppression aur cooling dono, simple language mein.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/hi/learn/non-it/fire/novec",

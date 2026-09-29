@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const amdAiMetadata: ArticleMetadata = {
   slug: "amd-ai-platforms",
   title: "AMD AI Architecture — CDNA, MI300X, ROCm Complete Engineering Guide",
-  seoTitle: "AMD AI Architecture Kya Hai? CDNA, MI300X, ROCm, HIP, Instinct — Complete Hinglish Guide",
+  seoTitle: "AMD AI Architecture Kya Hai? CDNA, MI300X, ROCm, HIP, Instinct",
   seoDescription:
     "AMD AI Architecture ka complete engineering guide — GCN se CDNA 4 tak evolution, Compute Units, Matrix Cores, Infinity Cache, HBM3, Infinity Fabric, Chiplet Design, MI100 MI200 MI300X Instinct series, ROCm ecosystem, HIP programming, RCCL, training aur inference workflows, AMD vs NVIDIA comparison, data center deployment, power cooling aur enterprise best practices. AI engineers, DC engineers aur architects ke liye.",
   canonicalUrl: "https://behindthetech.in/hi/learn/ai/hardware/amd-ai-platforms",

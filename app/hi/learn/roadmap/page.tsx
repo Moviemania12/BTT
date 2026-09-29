@@ -6,10 +6,7 @@ export const metadata: Metadata = {
   description:
     "Data Center Engineer banne ka complete learning roadmap — Non-IT, IT aur AI Infrastructure step by step.",
   alternates: {
-    canonical: "https://behindthetech.in/hi/learn/roadmap",
-    languages: {
-      "en": "https://behindthetech.in/learn/roadmap",
-    },
+    canonical: "https://behindthetech.in/learn/roadmap",
   },
 };
 

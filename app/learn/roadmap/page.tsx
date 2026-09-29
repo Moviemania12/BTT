@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildSocialMeta } from "@/lib/schemas";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -7,10 +8,13 @@ export const metadata: Metadata = {
     "The complete learning roadmap to becoming a Data Center Engineer — Non-IT, IT and AI Infrastructure, step by step.",
   alternates: {
     canonical: "https://behindthetech.in/learn/roadmap",
-    languages: {
-      "hi": "https://behindthetech.in/hi/learn/roadmap",
-    },
   },
+  ...buildSocialMeta({
+    title: "Learning Roadmap — Behind The Tech",
+    description:
+      "The complete learning roadmap to becoming a Data Center Engineer — Non-IT, IT and AI Infrastructure, step by step.",
+    url: "https://behindthetech.in/learn/roadmap",
+  }),
 };
 
 export default function RoadmapPage() {

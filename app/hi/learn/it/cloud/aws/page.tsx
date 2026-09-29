@@ -24,6 +24,7 @@ export default function AwsArticlePage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="aws"
         headings={HEADINGS}
         readingTimeMinutes={awsMetadata.readingTimeMinutes}

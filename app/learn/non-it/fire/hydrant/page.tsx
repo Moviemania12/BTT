@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Image from "next/image";
 import ArticleLayout from "@/components/ArticleLayout";
 import { type ArticleHeading } from "@/components/ArticlePage";
@@ -16,12 +17,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Fire Hydrant System Explained — Behind The Tech",
-    description: "Fire hydrant system — Data Center firefighting infrastructure, in simple language.",
+    description: "Fire hydrant system — Data Center firefighting infrastructure, in simple language.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/learn/non-it/fire/hydrant",

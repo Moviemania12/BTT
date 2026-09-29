@@ -7,10 +7,7 @@ export const metadata: Metadata = {
   description:
     "Free Data Center engineering templates — UPS maintenance reports, DG test records, battery inspection forms, rack audit sheets, incident report templates, RCA templates, change management forms, capacity planning worksheets. Print-ready PDF generation.",
   alternates: {
-    canonical: "https://behindthetech.in/hi/reference/downloads",
-    languages: {
-      "en": "https://behindthetech.in/reference/downloads",
-    },
+    canonical: "https://behindthetech.in/reference/downloads",
   },
 };
 

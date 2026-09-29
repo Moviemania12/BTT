@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildSocialMeta } from "@/lib/schemas";
 import { TROUBLESHOOTING_GUIDES, TROUBLESHOOTING_CATEGORIES } from "@/content/study/troubleshooting.hi";
 import TroubleshootingClient from "@/components/study/TroubleshootingClient";
 
@@ -10,8 +11,11 @@ export const metadata: Metadata = {
     canonical: "https://behindthetech.in/hi/study/troubleshooting",
     languages: {
       "en": "https://behindthetech.in/study/troubleshooting",
+      "hi": "https://behindthetech.in/hi/study/troubleshooting",
+      "x-default": "https://behindthetech.in/study/troubleshooting",
     },
   },
+  ...buildSocialMeta({ title: "Data Center Troubleshooting Guides — Behind The Tech", description: "Practical Data Center troubleshooting guides — Power, Cooling, UPS, DG, Networking, Storage, Cloud. Real symptoms, root causes, step-by-step resolution, aur prevention. DC engineer ke liye field-ready reference.", url: "https://behindthetech.in/hi/study/troubleshooting" }),
 };
 
 export default function TroubleshootingPage() {
@@ -31,12 +35,6 @@ export default function TroubleshootingPage() {
           guides={TROUBLESHOOTING_GUIDES}
           categories={TROUBLESHOOTING_CATEGORIES}
         />
-        <div style={{ marginTop: "3rem", padding: "2rem", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: "12px" }}>
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#111827", marginBottom: "0.75rem" }}>More Guides Coming</h3>
-          <p style={{ color: "#475569", fontSize: "0.95rem", lineHeight: 1.7, margin: 0 }}>
-            Phase 2: BMS alarm troubleshooting, Fire suppression faults, CRAC refrigerant issues, PAC maintenance, SAN fabric congestion, Security access control failures, DCIM data accuracy, Server kernel panics, Hypervisor cluster failures.
-          </p>
-        </div>
       </div>
     </main>
   );

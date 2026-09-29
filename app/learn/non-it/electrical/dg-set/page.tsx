@@ -5,6 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import type { Metadata } from "next";
+import { buildSocialMeta } from "@/lib/schemas";
 import Image from "next/image";
 import ArticleLayout from "@/components/ArticleLayout";
 import { type ArticleHeading } from "@/components/ArticlePage";
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
       "x-default": "https://behindthetech.in/learn/non-it/electrical/dg-set",
     },
   },
+  ...buildSocialMeta({ title: "DG Set in Data Centers — Behind The Tech", description: "What is a DG Set, AMF panel, sync room, PLC automation, fuel system, A/B/C/D maintenance, Tier III/IV — the complete engineer guide to Data Center backup power.", url: "https://behindthetech.in/learn/non-it/electrical/dg-set" }),
 };
 
 // ─── TOC (QuickSummary + FAQ excluded) ────────────────────────────────────────

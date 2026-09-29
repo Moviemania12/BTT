@@ -161,8 +161,8 @@ export default function ContactPage() {
             <span className="hp-eyebrow">Stay Updated</span>
             <h2 id="newsletter-heading" className="hp-h2 hp-h2--spaced">Newsletter</h2>
             <p className="hp-body">
-              New articles, tools, and updates — no spam, no frequency pressure. Follow on
-              LinkedIn for immediate notifications while the newsletter is being set up.
+              New articles, tools, and updates — no spam, no frequency pressure. Follow us on
+              LinkedIn to be notified when new content is published.
             </p>
             <a
               href="https://linkedin.com/company/behindthetech"

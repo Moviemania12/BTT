@@ -64,7 +64,7 @@ export default function Footer() {
   return (
     <footer
       data-homepage-theme="light"
-      className="relative border-t border-[var(--hp-border)] overflow-hidden"
+      className="btt-footer relative border-t border-[var(--hp-border)] overflow-hidden"
       style={{ background: "var(--hp-bg-subtle)" }}
     >
       {/* Top accent line */}

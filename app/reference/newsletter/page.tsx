@@ -6,10 +6,9 @@ export const metadata: Metadata = {
     "Behind The Tech weekly newsletter — Data Center engineering insights, incident case studies, new article alerts, industry news, and learning roadmap updates. For DC engineers, with DC engineers.",
   alternates: {
     canonical: "https://behindthetech.in/reference/newsletter",
-    languages: {
-      "hi": "https://behindthetech.in/hi/reference/newsletter",
-    },
   },
+  // Held out of the index until the newsletter (subscribe flow + real issue archive) is live.
+  robots: { index: false, follow: true },
 };
 
 const S = {

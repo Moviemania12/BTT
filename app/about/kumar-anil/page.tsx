@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 
@@ -16,10 +17,12 @@ export const metadata: Metadata = {
       "Data center infrastructure and operations professional with 10+ years of field experience. Founder of Behind The Tech.",
     url: PAGE_URL,
     siteName: "Behind The Tech",
+    images: [SITE_OG_IMAGE],
     type: "profile",
   },
   twitter: {
     card: "summary_large_image",
+    images: [SITE_OG_IMAGE.url],
     title: "Kumar Anil — Behind The Tech",
     description: "Data Center Infrastructure & Operations Professional. Founder of Behind The Tech.",
   },
@@ -325,7 +328,7 @@ export default function KumarAnilPage() {
             <h2 className="hp-h2 hp-h2--spaced">Articles &amp; Learning Content</h2>
             <p className="hp-body">
               All articles on Behind The Tech draw directly from field experience across data center
-              projects. Over 84 published topics covering Non-IT, IT, and AI infrastructure.
+              projects. Over 75 published topics covering Non-IT, IT, and AI infrastructure.
             </p>
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/learn/non-it" className="hp-btn hp-btn--primary">Browse Articles</Link>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Image from "next/image";
 import ArticlePage, { type ArticleHeading } from "@/components/ArticlePage";
+import ArticleStructuredData from "@/components/ArticleStructuredData";
 import TopicLink from "@/components/TopicLink";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -24,21 +26,23 @@ export const metadata: Metadata = {
     title: "AI Infrastructure Basics: ChatGPT Aur Modern AI Ke Peeche Kya Infrastructure Kaam Karta Hai?",
     description:
       "AI sirf software nahi hai — GPUs, Data Centers, power aur cooling ka poora ecosystem. Simple Hinglish mein samjho.",
-    url: "https://behindthetech.in/learn/ai-infrastructure-basics",
+    url: "https://behindthetech.in/hi/learn/ai-infrastructure-basics",
     siteName: "Behind The Tech",
     type: "article",
     publishedTime: "2024-12-01",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Infrastructure Basics — Behind The Tech",
-    description: "GPUs se lekar cooling tak — AI ke peeche ka poora infrastructure simple Hinglish mein.",
+    description: "GPUs se lekar cooling tak — AI ke peeche ka poora infrastructure simple Hinglish mein.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/hi/learn/ai-infrastructure-basics",
     languages: {
       "en": "https://behindthetech.in/learn/ai-infrastructure-basics",
+      "hi": "https://behindthetech.in/hi/learn/ai-infrastructure-basics",
+      "x-default": "https://behindthetech.in/learn/ai-infrastructure-basics",
     },
   },
 };
@@ -513,6 +517,7 @@ export default function AiInfrastructureBasicsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
+      <ArticleStructuredData slug="ai-infrastructure-basics" lang="hi" />
       <ArticlePage
         slug="ai-infrastructure-basics"
         prevSlug="cloud-vs-data-center"

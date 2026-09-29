@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildSocialMeta } from "@/lib/schemas";
 import { CASE_STUDIES, CASE_STUDY_CATEGORIES } from "@/content/study/case-studies";
 import CaseStudiesClient from "@/components/study/CaseStudiesClient";
 
@@ -8,10 +9,13 @@ export const metadata: Metadata = {
     "Real-world Data Center incident case studies — UPS failures, DG fault, CRAC overheating, water leakage, FM200 false discharge, ransomware, cloud outages. Full timeline, RCA, and lessons learned for every incident.",
   alternates: {
     canonical: "https://behindthetech.in/study/case-studies",
-    languages: {
-      "hi": "https://behindthetech.in/hi/study/case-studies",
-    },
   },
+  ...buildSocialMeta({
+    title: "Data Center Case Studies — Behind The Tech",
+    description:
+      "Real-world Data Center incident case studies — UPS failures, DG fault, CRAC overheating, water leakage, FM200 false discharge, ransomware, cloud outages. Full timeline, RCA, and lessons learned for every incident.",
+    url: "https://behindthetech.in/study/case-studies",
+  }),
 };
 
 export default function CaseStudiesPage() {
@@ -28,12 +32,6 @@ export default function CaseStudiesPage() {
           {CASE_STUDIES.length} real-world incidents — each one with a full timeline, investigation steps, root cause analysis, and lessons learned. Straight from production experience. Click any case to expand.
         </p>
         <CaseStudiesClient cases={CASE_STUDIES} categories={CASE_STUDY_CATEGORIES} />
-        <div style={{ marginTop: "3rem", padding: "2rem", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: "12px" }}>
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#111827", marginBottom: "0.75rem" }}>More Case Studies Coming</h3>
-          <p style={{ color: "#475569", fontSize: "0.95rem", lineHeight: 1.7, margin: 0 }}>
-            Phase 2: Storage controller failure, battery thermal runaway, VESDA false alarm cascade, DG parallel operation failure, BGP routing loop, hybrid cloud latency event, PDU busbar failure, and post-earthquake DC recovery case studies.
-          </p>
-        </div>
       </div>
     </main>
   );

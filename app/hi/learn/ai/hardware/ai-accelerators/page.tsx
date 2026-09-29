@@ -24,6 +24,7 @@ export default function AiAcceleratorsPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="ai-accelerators"
         headings={HEADINGS}
         readingTimeMinutes={aiAcceleratorsMetadata.readingTimeMinutes}

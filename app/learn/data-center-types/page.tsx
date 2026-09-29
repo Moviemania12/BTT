@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Image from "next/image";
 import ArticlePage, { type ArticleHeading } from "@/components/ArticlePage";
+import ArticleStructuredData from "@/components/ArticleStructuredData";
 import TopicLink from "@/components/TopicLink";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -29,17 +31,19 @@ export const metadata: Metadata = {
     siteName: "Behind The Tech",
     type: "article",
     publishedTime: "2026-06-21",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Data Center Types Explained — Behind The Tech",
-    description: "Enterprise, Cloud, Hyperscale and other Data Center types explained in simple English.",
+    description: "Enterprise, Cloud, Hyperscale and other Data Center types explained in simple English.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/learn/data-center-types",
     languages: {
+      "en": "https://behindthetech.in/learn/data-center-types",
       "hi": "https://behindthetech.in/hi/learn/data-center-types",
+      "x-default": "https://behindthetech.in/learn/data-center-types",
     },
   },
 };
@@ -563,6 +567,7 @@ export default function DataCenterTypesPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
+      <ArticleStructuredData slug="data-center-types" lang="en" />
       <ArticlePage
         slug="data-center-types"
         prevSlug="what-is-a-data-center"

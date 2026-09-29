@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
   title: "SCADA — Supervisory Control and Data Acquisition Complete Guide | Behind The Tech",
   description: "What SCADA is, architecture, PLC/RTU/HMI, industrial protocols (Modbus/DNP3/IEC 61850/OPC UA), monitoring vs control, cybersecurity, data center applications — engineer-level English guide.",
   keywords: ["SCADA","supervisory control data acquisition","PLC RTU HMI","SCADA vs BMS","industrial protocols Modbus DNP3","SCADA cybersecurity","data center SCADA"],
-  openGraph: { title: "SCADA — Supervisory Control and Data Acquisition", description: "SCADA architecture, PLC/RTU, protocols, control, historian, cybersecurity.", url: "https://behindthetech.in/learn/non-it/bms-dcim/scada", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "SCADA Complete Guide — Behind The Tech", description: "SCADA for engineers — architecture, protocols, troubleshooting." },
+  openGraph: { title: "SCADA — Supervisory Control and Data Acquisition", description: "SCADA architecture, PLC/RTU, protocols, control, historian, cybersecurity.", url: "https://behindthetech.in/learn/non-it/bms-dcim/scada", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },
+  twitter: { card: "summary_large_image", title: "SCADA Complete Guide — Behind The Tech", description: "SCADA for engineers — architecture, protocols, troubleshooting.", images: [SITE_OG_IMAGE.url], },
   alternates: {
     canonical: "https://behindthetech.in/learn/non-it/bms-dcim/scada",
     languages: {

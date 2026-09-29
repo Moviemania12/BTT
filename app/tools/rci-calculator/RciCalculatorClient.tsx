@@ -167,9 +167,9 @@ export default function RciCalculatorClient() {
           RCI Calculator
         </h1>
         <p style={{ fontSize: "1.05rem", color: "#374151", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "680px" }}>
-          Rack Cooling Index (RCI) ASHRAE ka standard metric hai jo batata hai ki rack inlet
-          temperatures recommended/allowable envelope ke andar kitni acchi tarah rehti hain — hot
-          spots aur over-cooling dono track karta hai.
+          Rack Cooling Index (RCI) is an ASHRAE-based metric that shows how well rack inlet
+          temperatures stay within the recommended and allowable envelope — it tracks both hot
+          spots and over-cooling.
         </p>
 
         <div

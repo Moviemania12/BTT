@@ -24,6 +24,7 @@ export default function GcpArticlePage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="gcp"
         headings={HEADINGS}
         readingTimeMinutes={gcpMetadata.readingTimeMinutes}

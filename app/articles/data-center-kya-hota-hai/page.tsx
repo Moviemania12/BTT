@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import { Clock, User, Calendar, ChevronRight, ArrowLeft, Database, Zap, Server, Cpu, BookOpen, Share2, Tag } from "lucide-react";
 import Link from "next/link";
 
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Data Center Kya Hota Hai?",
-    description: "Internet ka dil — Data Centers ke andar ki poori kahani.",
+    description: "Internet ka dil — Data Centers ke andar ki poori kahani.", images: [SITE_OG_IMAGE.url],
   },
 };
 

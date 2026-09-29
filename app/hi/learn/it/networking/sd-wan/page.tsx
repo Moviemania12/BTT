@@ -24,6 +24,7 @@ export default function SdWanArticlePage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="sd-wan"
         headings={HEADINGS}
         readingTimeMinutes={sdWanMetadata.readingTimeMinutes}

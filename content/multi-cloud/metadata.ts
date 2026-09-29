@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const multiCloudMetadata: ArticleMetadata = {
   slug: "multi-cloud",
   title: "Multi-Cloud Architecture Explained — Engineering Guide for Cloud Professionals",
-  seoTitle: "What Is Multi-Cloud? AWS + Azure + GCP Architecture, Networking, Identity, FinOps — Complete English Guide",
+  seoTitle: "What Is Multi-Cloud? AWS + Azure + GCP Architecture, Networking",
   seoDescription:
     "Multi-cloud architecture for engineers — cross-cloud networking, federated identity, Kubernetes multi-cluster, storage replication, unified monitoring, FinOps, governance, and an AWS vs Azure vs GCP decision matrix in English.",
   canonicalUrl: "https://behindthetech.in/learn/it/cloud/multi-cloud",

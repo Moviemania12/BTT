@@ -24,6 +24,7 @@ export default function AiCoolingPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="ai-cooling"
         headings={HEADINGS}
         readingTimeMinutes={aiCoolingMetadata.readingTimeMinutes}

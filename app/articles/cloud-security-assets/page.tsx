@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import { Clock, ChevronRight, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -13,10 +14,12 @@ export const metadata: Metadata = {
     description: "Cloud security fundamentals, shared responsibility model aur enterprise cloud asset protection.",
     url: "https://behindthetech.in/articles/cloud-security-assets",
     siteName: "Behind The Tech",
+    images: [SITE_OG_IMAGE],
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
+    images: [SITE_OG_IMAGE.url],
     title: "Cloud Security: Assets aur Infrastructure Ko Secure Karo",
     description: "Cloud security kya hai aur assets kaise protect karte hain.",
   },

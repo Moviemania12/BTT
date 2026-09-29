@@ -7,10 +7,7 @@ export const metadata: Metadata = {
   description:
     "Complete Data Center standards reference — Uptime Institute Tier, TIA-942, ISO 27001, ISO 20000, ISO 22301, PCI-DSS, SOC 2, EN 50600, ASHRAE TC9.9, NFPA 75, NFPA 76, IEC 60364. What each standard requires and how DCs implement it.",
   alternates: {
-    canonical: "https://behindthetech.in/hi/reference/standards",
-    languages: {
-      "en": "https://behindthetech.in/reference/standards",
-    },
+    canonical: "https://behindthetech.in/reference/standards",
   },
 };
 

@@ -4,6 +4,9 @@ import { Bebas_Neue, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import BttAssistant from "@/components/BttAssistant";
+import Footer from "@/components/Footer";
+import SiteFooterGate from "@/components/SiteFooterGate";
+import HtmlLang from "@/components/HtmlLang";
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
@@ -62,12 +65,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Behind The Tech",
     description: "Technology that powers the modern world.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
     follow: true,
   },
-  metadataBase: new URL("https://www.behindthetech.in"),
+  metadataBase: new URL("https://behindthetech.in"),
+  other: {
+    "google-adsense-account": "ca-pub-5030370713635578",
+  },
 };
 
 export default function RootLayout({
@@ -78,9 +85,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${bebasNeue.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
       <head>
+        {/* /hi/* pages: set <html lang="hi"> before first paint (see components/HtmlLang.tsx). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              '(function(){var p=location.pathname;document.documentElement.lang=(p==="/hi"||p.indexOf("/hi/")===0)?"hi":"en"})()',
+          }}
+        />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
@@ -93,8 +108,14 @@ export default function RootLayout({
       </head>
 
       <body className="antialiased" data-homepage-theme="light">
+        <HtmlLang />
         <Navbar />
         {children}
+        {/* Shared footer (Privacy / Terms / Contact / About) for every page that
+            does not render its own — see SiteFooterGate. */}
+        <SiteFooterGate>
+          <Footer />
+        </SiteFooterGate>
         <BttAssistant />
       </body>
     </html>

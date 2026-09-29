@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getCalculator } from "@/lib/engineering/registry";
 import { buildPageMetadata } from "@/lib/schemas";
 import BatteryAhCalculatorClient from "./BatteryAhCalculatorClient";
+import CalculatorGuide from "@/components/calculators/CalculatorGuide";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // app/tools/battery-ah-calculator/page.tsx
@@ -62,6 +63,7 @@ export default function BatteryAhCalculatorPage() {
           {entry.description}
         </p>
         <BatteryAhCalculatorClient />
+        <CalculatorGuide slug="battery-ah-calculator" />
       </div>
     </main>
   );

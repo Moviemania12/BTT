@@ -32,6 +32,7 @@ export default function PduArticlePage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="pdu"
         headings={HEADINGS}
         readingTimeMinutes={pduMetadata.readingTimeMinutes} lang="en" alternateHref="/hi/learn/non-it/electrical/pdu">

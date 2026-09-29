@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Image from "next/image";
 import ArticleLayout from "@/components/ArticleLayout";
 import { type ArticleHeading } from "@/components/ArticlePage";
@@ -53,12 +54,12 @@ export const metadata: Metadata = {
     siteName: "Behind The Tech",
     type: "article",
     publishedTime: "2025-01-05",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "HT Yard Explained — Behind The Tech",
-    description: "The Data Center's high tension switching and protection station — complete engineer guide.",
+    description: "The Data Center's high tension switching and protection station — complete engineer guide.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/learn/non-it/electrical/ht-yard",

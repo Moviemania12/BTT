@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Image from "next/image";
 import ArticleLayout from "@/components/ArticleLayout";
 import { type ArticleHeading } from "@/components/ArticlePage";
@@ -29,12 +30,12 @@ export const metadata: Metadata = {
     siteName: "Behind The Tech",
     type: "article",
     publishedTime: "2025-01-01",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Grid Supply Explained — Behind The Tech",
-    description: "Data Center tak electricity ka safar — Grid se server rack tak, simple Hinglish mein.",
+    description: "Data Center tak electricity ka safar — Grid se server rack tak, simple Hinglish mein.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/hi/learn/non-it/electrical/grid-supply",

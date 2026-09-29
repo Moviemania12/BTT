@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const openaiMetadata: ArticleMetadata = {
   slug: "openai",
   title: "OpenAI: AI Infrastructure, Models, API Platform and Data Center Architecture",
-  seoTitle: "OpenAI Kya Hai? ChatGPT, API, GPU Compute, Training vs Inference Infrastructure — Complete Hinglish Guide",
+  seoTitle: "OpenAI Kya Hai? ChatGPT, API, GPU Compute",
   seoDescription:
     "OpenAI ka complete AI infrastructure guide — GPT-4o, o3, ChatGPT vs API platform, inference scaling, Microsoft Azure partnership, training vs inference GPU requirements, model serving architecture, enterprise deployment, reliability aur data center perspective. AI infrastructure engineers aur DC professionals ke liye.",
   canonicalUrl: "https://behindthetech.in/hi/learn/ai/platforms/openai",

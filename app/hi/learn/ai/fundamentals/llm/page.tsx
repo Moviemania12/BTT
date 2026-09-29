@@ -24,6 +24,7 @@ export default function LargeLanguageModelsPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="llm"
         headings={HEADINGS}
         readingTimeMinutes={llmMetadata.readingTimeMinutes}

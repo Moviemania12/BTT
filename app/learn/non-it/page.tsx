@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import {
   getTrackSummary,
   getTopicUrl,
@@ -16,11 +18,16 @@ import TrackExplorer from "@/components/homepage/TrackExplorer";
 // Matches the pattern of app/learn/ai/page.tsx exactly.
 // ═══════════════════════════════════════════════════════════════════════════
 
+const TITLE = "Non-IT Infrastructure — Behind The Tech";
+const DESCRIPTION =
+  "Learn Non-IT Data Center Infrastructure — Power systems, UPS, cooling, fire protection, physical security, and BMS/DCIM — from beginner to engineer level.";
+const PAGE_URL = "https://behindthetech.in/learn/non-it";
+
 export const metadata: Metadata = {
-  title: "Non-IT Infrastructure — Behind The Tech",
-  description:
-    "Learn Non-IT Data Center Infrastructure — Power systems, UPS, cooling, fire protection, physical security, and BMS/DCIM — from beginner to engineer level.",
-  alternates: { canonical: "https://behindthetech.in/learn/non-it" },
+  alternates: { canonical: PAGE_URL },
+  title: TITLE,
+  description: DESCRIPTION,
+  ...buildSocialMeta({ title: TITLE, description: DESCRIPTION, url: PAGE_URL }),
 };
 
 const CATEGORY_ICONS: Record<string, string> = {
@@ -53,6 +60,16 @@ export default function NonItTrackPage() {
 
   return (
     <div data-homepage-theme="light" className="hp-page-root">
+      <JsonLd
+        data={buildCollectionPageSchema({ name: "Non-IT Infrastructure", description: DESCRIPTION, url: PAGE_URL })}
+      />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", url: "https://behindthetech.in" },
+          { name: "Learn", url: "https://behindthetech.in/learn" },
+          { name: "Non-IT Infrastructure", url: PAGE_URL },
+        ])}
+      />
       {/* ── Hero ── */}
       <section className="hp-section hp-section--hero">
         <div className="hp-container hp-container--medium" style={{ textAlign: "center" }}>
@@ -139,6 +156,23 @@ export default function NonItTrackPage() {
                       )
                     )}
                   </ul>
+
+                  {publishedCount > 0 && (
+                    <p style={{ marginTop: 14 }}>
+                      <Link
+                        href={`/learn/non-it/${cat.key}`}
+                        style={{
+                          fontFamily: "var(--hp-font-mono)",
+                          fontSize: 12,
+                          letterSpacing: "0.08em",
+                          color: "var(--hp-accent)",
+                          textDecoration: "none",
+                        }}
+                      >
+                        View all {cat.label} →
+                      </Link>
+                    </p>
+                  )}
                 </div>
               );
             })}

@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const aiAcceleratorsMetadata: ArticleMetadata = {
   slug: "ai-accelerators",
   title: "AI Accelerators — NPU, DPU, FPGA, ASIC & Custom AI Chips Complete Guide",
-  seoTitle: "AI Accelerators Kya Hain? NPU, DPU, FPGA, ASIC, AWS Trainium, Intel Gaudi, Cerebras — Complete Hinglish Guide",
+  seoTitle: "AI Accelerators Kya Hain? NPU, DPU, FPGA, ASIC, AWS Trainium",
   seoDescription:
     "AI Accelerators ka complete engineering guide — NPU vs GPU vs TPU, DPU (Data Processing Unit), FPGA programming for AI, ASIC design, AWS Trainium & Inferentia, Intel Gaudi, Cerebras WSE, SambaNova, Graphcore IPU, custom silicon strategy, data center deployment, power, cooling, cost analysis aur future roadmap. AI engineers, DC engineers aur architects ke liye.",
   canonicalUrl: "https://behindthetech.in/hi/learn/ai/hardware/ai-accelerators",

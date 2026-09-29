@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import PolicyLayout from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
@@ -11,10 +12,12 @@ export const metadata: Metadata = {
     title: "Fact-Checking Policy — Behind The Tech",
     url: "https://behindthetech.in/fact-checking-policy",
     siteName: "Behind The Tech",
+    images: [SITE_OG_IMAGE],
     type: "website",
   },
   twitter: {
     card: "summary",
+    images: [SITE_OG_IMAGE.url],
     title: "Fact-Checking Policy — Behind The Tech",
     description: "How we verify technical claims — sources, standards, and process.",
   },

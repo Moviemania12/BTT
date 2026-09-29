@@ -98,7 +98,7 @@ export function customerEmail(d: DemoData, c: DemoCredentials) {
     `  Temporary password: ${c.temporaryPassword}`,
     "",
     "We will verify your request and email your 3-day licence key. Then:",
-    "  1. Download the Windows application from https://www.behindthetech.in/products/btt-employee-manager/download",
+    "  1. Download the Windows application from https://behindthetech.in/products/btt-employee-manager/download",
     "  2. Open it and enter the username, temporary password and licence key.",
     "  3. Set your own password.",
     "",

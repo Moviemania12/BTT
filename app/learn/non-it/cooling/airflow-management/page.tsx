@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Image from "next/image";
 import ArticleLayout from "@/components/ArticleLayout";
 import { type ArticleHeading } from "@/components/ArticlePage";
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
   title: "Airflow Management in Data Centers — Complete Guide | Behind The Tech",
   description: "How airflow management is done in a Data Center — hot/cold aisle, blanking panels, raised floor, perforated tiles, bypass air, recirculation — complete practical guide.",
   keywords: ["airflow management data center", "data center airflow", "cold aisle hot aisle", "bypass air data center", "perforated tiles raised floor"],
-  openGraph: { title: "Airflow Management in Data Centers", description: "How cool air reaches the right place — complete airflow management guide.", url: "https://behindthetech.in/learn/non-it/cooling/airflow-management", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "Airflow Management — Behind The Tech", description: "Data Center airflow management — practical guide." },
+  openGraph: { title: "Airflow Management in Data Centers", description: "How cool air reaches the right place — complete airflow management guide.", url: "https://behindthetech.in/learn/non-it/cooling/airflow-management", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },
+  twitter: { card: "summary_large_image", title: "Airflow Management — Behind The Tech", description: "Data Center airflow management — practical guide.", images: [SITE_OG_IMAGE.url], },
   alternates: {
     canonical: "https://behindthetech.in/learn/non-it/cooling/airflow-management",
     languages: {

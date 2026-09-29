@@ -35,6 +35,7 @@ export default function StsArticlePage() {
       )}
 
       <ArticleLayout
+        structuredData={false}
         slug="sts"
         headings={HEADINGS}
         readingTimeMinutes={stsMetadata.readingTimeMinutes} lang="en" alternateHref="/hi/learn/non-it/electrical/sts">

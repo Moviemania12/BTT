@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
   title: "DCIM — Data Center Infrastructure Management Complete Guide | Behind The Tech",
   description: "What DCIM is, architecture, asset management, power chain, capacity planning, SNMP/Modbus/API integration, Vertiv Trellis, Athenta, Sunbird, Nlyte — a deep engineer-level English guide.",
   keywords: ["DCIM data center","data center infrastructure management","Vertiv Trellis","Athenta DCIM","SNMP PDU monitoring","rack capacity planning","DCIM vs BMS"],
-  openGraph: { title: "DCIM — Data Center Infrastructure Management", description: "DCIM architecture, asset management, power chain, integration, troubleshooting.", url: "https://behindthetech.in/learn/non-it/bms-dcim/dcim", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "DCIM Complete Guide — Behind The Tech", description: "Data Center Infrastructure Management for engineers." },
+  openGraph: { title: "DCIM — Data Center Infrastructure Management", description: "DCIM architecture, asset management, power chain, integration, troubleshooting.", url: "https://behindthetech.in/learn/non-it/bms-dcim/dcim", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },
+  twitter: { card: "summary_large_image", title: "DCIM Complete Guide — Behind The Tech", description: "Data Center Infrastructure Management for engineers.", images: [SITE_OG_IMAGE.url], },
   alternates: {
     canonical: "https://behindthetech.in/learn/non-it/bms-dcim/dcim",
     languages: {

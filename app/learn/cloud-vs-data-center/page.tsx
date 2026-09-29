@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Image from "next/image";
 import ArticlePage, { type ArticleHeading } from "@/components/ArticlePage";
+import ArticleStructuredData from "@/components/ArticleStructuredData";
 import TopicLink from "@/components/TopicLink";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -27,17 +29,19 @@ export const metadata: Metadata = {
     siteName: "Behind The Tech",
     type: "article",
     publishedTime: "2024-11-20",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cloud vs Data Center — Behind The Tech",
-    description: "Ownership model vs consumption model — the real difference between the two, explained in simple English.",
+    description: "Ownership model vs consumption model — the real difference between the two, explained in simple English.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/learn/cloud-vs-data-center",
     languages: {
+      "en": "https://behindthetech.in/learn/cloud-vs-data-center",
       "hi": "https://behindthetech.in/hi/learn/cloud-vs-data-center",
+      "x-default": "https://behindthetech.in/learn/cloud-vs-data-center",
     },
   },
 };
@@ -431,6 +435,7 @@ export default function CloudVsDataCenterPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
+      <ArticleStructuredData slug="cloud-vs-data-center" lang="en" />
       <ArticlePage
         slug="cloud-vs-data-center"
         prevSlug="how-the-internet-works"

@@ -24,6 +24,7 @@ export default function AiNetworkingPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="ai-networking"
         headings={HEADINGS}
         readingTimeMinutes={aiNetworkingMetadata.readingTimeMinutes}

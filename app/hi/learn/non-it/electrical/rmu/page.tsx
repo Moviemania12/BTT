@@ -22,6 +22,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import type { Metadata } from "next";
+import { buildSocialMeta } from "@/lib/schemas";
 import Image from "next/image";
 import ArticleLayout from "@/components/ArticleLayout";
 import { type ArticleHeading } from "@/components/ArticlePage";
@@ -35,12 +36,11 @@ export const metadata: Metadata = {
     "RMU ki complete engineer guide: ring topology, components, fuse protection, SCADA monitoring, Tier III/IV design aur safety — Data Center context mein.",
   alternates: {
     canonical: "https://behindthetech.in/hi/learn/non-it/electrical/rmu",
-    languages: {
-      en: "https://behindthetech.in/learn/non-it/electrical/rmu",
-      hi: "https://behindthetech.in/hi/learn/non-it/electrical/rmu",
-      "x-default": "https://behindthetech.in/learn/non-it/electrical/rmu",
-    },
+    // No hreflang: RMU has no real translated counterpart yet (the English URL serves
+    // the same Hinglish text and canonicalises here). Restore en/hi/x-default after
+    // RMU is translated — same as the other bilingual articles.
   },
+  ...buildSocialMeta({ title: "RMU (Ring Main Unit) in Data Centers — Behind The Tech", description: "RMU ki complete engineer guide: ring topology, components, fuse protection, SCADA monitoring, Tier III/IV design aur safety — Data Center context mein.", url: "https://behindthetech.in/hi/learn/non-it/electrical/rmu" }),
 };
 
 // ─── TOC headings (QuickSummary + FAQ excluded per gold-standard pattern) ─────

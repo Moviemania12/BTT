@@ -82,8 +82,12 @@ export async function generateMetadata(props: PageProps) {
     return {};
   }
 
+  // This template only ever renders the "coming soon" / placeholder view
+  // (real articles have their own static page.tsx), so it must never be
+  // indexed — thin placeholder pages hurt search quality and AdSense review.
   return {
     title: `${topic.title} — Behind The Tech`,
     description: topic.description,
+    robots: { index: false, follow: true },
   };
 }

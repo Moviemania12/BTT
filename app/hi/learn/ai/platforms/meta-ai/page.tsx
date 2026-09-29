@@ -24,6 +24,7 @@ export default function MetaAiPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="meta-ai"
         headings={HEADINGS}
         readingTimeMinutes={metaAiMetadata.readingTimeMinutes}

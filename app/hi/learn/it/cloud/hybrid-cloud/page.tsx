@@ -24,6 +24,7 @@ export default function HybridCloudArticlePage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="hybrid-cloud"
         headings={HEADINGS}
         readingTimeMinutes={hybridCloudMetadata.readingTimeMinutes}

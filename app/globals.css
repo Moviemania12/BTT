@@ -1388,3 +1388,36 @@ img[loading="lazy"] {
     margin: 0 auto;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Footer spacing fix (Phase 3)
+   The global reset `* { margin: 0; padding: 0 }` above is UNLAYERED, so it
+   beats Tailwind v4's layered utilities (px-6, py-24, mx-auto, mb-*, space-y-*).
+   The shared <Footer /> relies on those utilities, so it rendered flush against
+   the left edge with no vertical spacing. These rules restore the spacing the
+   Footer component was written with (values identical to the Tailwind classes).
+   Scoped to .btt-footer only — nothing else is affected.
+   ───────────────────────────────────────────────────────────────────────── */
+.btt-footer .max-w-7xl {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.btt-footer .py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+.btt-footer .py-9 {
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
+}
+.btt-footer .mb-7 {
+  margin-bottom: 1.75rem;
+}
+.btt-footer .mb-9 {
+  margin-bottom: 2.25rem;
+}
+.btt-footer .space-y-4 > :not(:last-child) {
+  margin-bottom: 1rem;
+}

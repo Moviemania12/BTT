@@ -47,6 +47,7 @@ export default function BatteryBankPageHi() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="battery-bank"
         headings={HEADINGS}
         readingTimeMinutes={batteryBankMetadata.readingTimeMinutes} lang="hi" alternateHref="/learn/non-it/electrical/battery-bank">

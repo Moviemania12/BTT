@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
   title: "CCTV in Data Centers — Complete Engineering Guide | Behind The Tech",
@@ -20,12 +21,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "CCTV in Data Centers — Behind The Tech",
-    description: "Data Center CCTV system — IP cameras, NVR, NAS, RAID, troubleshooting and cybersecurity.",
+    description: "Data Center CCTV system — IP cameras, NVR, NAS, RAID, troubleshooting and cybersecurity.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/learn/non-it/security/cctv",

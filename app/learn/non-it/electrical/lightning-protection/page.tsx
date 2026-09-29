@@ -32,6 +32,7 @@ export default function LightningProtectionArticlePage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="lightning-protection"
         headings={HEADINGS}
         readingTimeMinutes={lightningProtectionMetadata.readingTimeMinutes} lang="en" alternateHref="/hi/learn/non-it/electrical/lightning-protection">

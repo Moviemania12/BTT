@@ -24,6 +24,7 @@ export default function AiDataCenterBasicsPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="ai-data-center-basics"
         headings={HEADINGS}
         readingTimeMinutes={aiDcMetadata.readingTimeMinutes}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import DownloadCards from "@/components/btt-employee-manager/DownloadCards";
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: "/images/btt-employee-manager/monthly-roster.webp", width: 1480, height: 900, alt: "BTT Employee Manager — Monthly Roster screen" }],
   },
-  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: [SITE_OG_IMAGE.url], },
 };
 
 const GROUP_LABEL = { plan: "Plan", run: "Run", control: "Control", mobile: "Mobile" } as const;
@@ -46,15 +47,15 @@ function jsonLd() {
     description: DESCRIPTION,
     applicationCategory: "BusinessApplication",
     operatingSystem: "Windows, Android",
-    url: `https://www.behindthetech.in${PRODUCT.route}`,
-    screenshot: SCREENS.slice(0, 4).map((s) => `https://www.behindthetech.in${s.src}`),
-    publisher: { "@type": "Organization", name: "Behind The Tech", url: "https://www.behindthetech.in" },
+    url: `https://behindthetech.in${PRODUCT.route}`,
+    screenshot: SCREENS.slice(0, 4).map((s) => `https://behindthetech.in${s.src}`),
+    publisher: { "@type": "Organization", name: "Behind The Tech", url: "https://behindthetech.in" },
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "INR",
       description: "3-day demo with unlimited employees",
-      url: `https://www.behindthetech.in${PRODUCT.demoRoute}`,
+      url: `https://behindthetech.in${PRODUCT.demoRoute}`,
     },
   };
 }

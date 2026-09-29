@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import PolicyLayout from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
@@ -11,10 +12,12 @@ export const metadata: Metadata = {
     title: "Disclaimer — Behind The Tech",
     url: "https://behindthetech.in/disclaimer",
     siteName: "Behind The Tech",
+    images: [SITE_OG_IMAGE],
     type: "website",
   },
   twitter: {
     card: "summary",
+    images: [SITE_OG_IMAGE.url],
     title: "Disclaimer — Behind The Tech",
     description: "Educational content disclaimer — what this site is and isn't.",
   },

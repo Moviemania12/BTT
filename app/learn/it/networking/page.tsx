@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
+const TITLE = "IT Networking — Behind The Tech";
+const DESCRIPTION =
+  "Switches, routers, firewalls, load balancers and SD-WAN — data center networking infrastructure.";
+const PAGE_URL = "https://behindthetech.in/learn/it/networking";
+
 export const metadata: Metadata = {
-  title: "IT Networking — Behind The Tech",
-  description: "Switches, routers, firewalls, SDN — data center networking infrastructure.",
+  alternates: { canonical: PAGE_URL },
+  title: TITLE,
+  description: DESCRIPTION,
+  ...buildSocialMeta({ title: TITLE, description: DESCRIPTION, url: PAGE_URL }),
 };
 
 export default function CategoryPage() {
@@ -14,6 +23,17 @@ export default function CategoryPage() {
 
   return (
     <div data-homepage-theme="light" className="hp-page-root">
+      <JsonLd
+        data={buildCollectionPageSchema({ name: "IT Networking", description: DESCRIPTION, url: PAGE_URL })}
+      />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", url: "https://behindthetech.in" },
+          { name: "Learn", url: "https://behindthetech.in/learn" },
+          { name: "IT Infrastructure", url: "https://behindthetech.in/learn/it" },
+          { name: "IT Networking", url: PAGE_URL },
+        ])}
+      />
       <section className="hp-section hp-section--hero">
         <div className="hp-container hp-container--medium" style={{ textAlign: "center" }}>
           <p
@@ -33,7 +53,7 @@ export default function CategoryPage() {
             🌐 IT Networking
           </h1>
           <p className="hp-body" style={{ margin: "0 auto 20px" }}>
-            Switches, routers, firewalls, SDN — data center networking infrastructure.
+            {DESCRIPTION}
           </p>
         </div>
       </section>

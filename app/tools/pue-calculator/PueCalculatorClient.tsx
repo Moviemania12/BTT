@@ -116,9 +116,9 @@ export default function PueCalculatorClient() {
           PUE Calculator
         </h1>
         <p style={{ fontSize: "1.05rem", color: "#374151", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "680px" }}>
-          Power Usage Effectiveness (PUE) batati hai ki aapka Data Center kitna efficient hai —
-          total facility power mein se kitna IT equipment tak pahunch raha hai. Uptime Institute ke
-          standard formula par based.
+          Power Usage Effectiveness (PUE) shows how efficiently a data center uses power — how much
+          of the total facility power actually reaches the IT equipment. Based on the Uptime
+          Institute standard formula.
         </p>
 
         <div

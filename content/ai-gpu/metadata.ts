@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const aiGpuMetadata: ArticleMetadata = {
   slug: "ai-gpu",
   title: "AI GPU — The Complete Engineering Guide",
-  seoTitle: "What Is an AI GPU? CUDA Cores, Tensor Cores, HBM, NVLink, DGX, H100, B200 — Complete English Guide",
+  seoTitle: "What Is an AI GPU? CUDA Cores, Tensor Cores, HBM, NVLink, DGX, H100",
   seoDescription:
     "AI GPU's complete engineering guide — CPU vs GPU, CUDA Cores, Tensor Cores, HBM memory, NVLink, NVSwitch, MIG, DGX, HGX, GPU Cluster, AI Factory, cooling, power, monitoring, troubleshooting and enterprise deployment. For DC engineers, AI engineers and infrastructure architects.",
   canonicalUrl: "https://behindthetech.in/learn/ai/hardware/ai-gpu",

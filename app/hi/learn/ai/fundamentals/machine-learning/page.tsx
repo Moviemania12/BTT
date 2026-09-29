@@ -24,6 +24,7 @@ export default function MachineLearningPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="machine-learning"
         headings={HEADINGS}
         readingTimeMinutes={mlMetadata.readingTimeMinutes}

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import HeroV2 from "@/components/homepage/HeroV2";
 import LearningTracks from "@/components/homepage/LearningTracks";
@@ -18,6 +19,12 @@ import FeaturedProduct from "@/components/btt-employee-manager/FeaturedProduct";
 // HowItWorks (the process explainer) — both exist, neither replaces the
 // other. All other sections and their import names are unchanged from V1.
 // ═══════════════════════════════════════════════════════════════════════════
+
+// Canonical for the homepage (the root layout does not set one; child pages that
+// define their own `alternates` override it entirely).
+export const metadata: Metadata = {
+  alternates: { canonical: "https://behindthetech.in" },
+};
 
 export default function Home() {
   return (

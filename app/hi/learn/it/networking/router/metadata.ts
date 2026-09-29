@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
   title: "Enterprise Router — Complete Data Center & Enterprise Guide | Behind The Tech",
@@ -20,12 +21,12 @@ export const metadata: Metadata = {
     locale: "hi_IN",
     siteName: "Behind The Tech",
     type: "article",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Enterprise Router | Behind The Tech",
-    description: "Complete router guide — BGP, OSPF, VRF, MPLS, NAT, IPsec, VRRP, BFD, troubleshooting — beginner to engineer level.",
+    description: "Complete router guide — BGP, OSPF, VRF, MPLS, NAT, IPsec, VRRP, BFD, troubleshooting — beginner to engineer level.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/hi/learn/it/networking/router",

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getCalculator } from "@/lib/engineering/registry";
 import { buildPageMetadata } from "@/lib/schemas";
 import UpsRuntimeCalculatorClient from "./UpsRuntimeCalculatorClient";
+import CalculatorGuide from "@/components/calculators/CalculatorGuide";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // app/tools/ups-runtime-calculator/page.tsx
@@ -62,6 +63,7 @@ export default function UpsRuntimeCalculatorPage() {
           {entry.description}
         </p>
         <UpsRuntimeCalculatorClient />
+        <CalculatorGuide slug="ups-runtime-calculator" />
       </div>
     </main>
   );

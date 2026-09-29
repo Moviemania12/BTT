@@ -24,6 +24,7 @@ export default function AzureArticlePage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="azure"
         headings={HEADINGS}
         readingTimeMinutes={azureMetadata.readingTimeMinutes}

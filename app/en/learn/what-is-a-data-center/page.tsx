@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import ArticlePage, { type ArticleHeading } from "@/components/ArticlePage";
 import TopicLink from "@/components/TopicLink";
 import RequestJourneyDiagram from "@/components/diagrams/RequestJourneyDiagram";
@@ -27,12 +28,12 @@ export const metadata: Metadata = {
     siteName: "Behind The Tech",
     type: "article",
     publishedTime: "2024-11-01",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "What is a Data Center? — Behind The Tech",
-    description: "Data Center kya hota hai? Simple Hinglish mein samjho.",
+    description: "Data Center kya hota hai? Simple Hinglish mein samjho.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/learn/what-is-a-data-center",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
   title: "Backup — Data Protection Engineering Handbook | Behind The Tech",
@@ -17,12 +18,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "Behind The Tech",
     type: "article",
-    authors: ["Kumar Anil"],
+    authors: ["Kumar Anil"], images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Backup — Data Protection | Behind The Tech",
-    description: "Complete backup engineer guide in English — from strategy to production O&M.",
+    description: "Complete backup engineer guide in English — from strategy to production O&M.", images: [SITE_OG_IMAGE.url],
   },
   alternates: {
     canonical: "https://behindthetech.in/learn/it/storage/backup",

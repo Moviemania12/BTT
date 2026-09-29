@@ -24,6 +24,7 @@ export default function GenerativeAiPage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="generative-ai"
         headings={HEADINGS}
         readingTimeMinutes={genAiMetadata.readingTimeMinutes}

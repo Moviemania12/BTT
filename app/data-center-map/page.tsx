@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildSocialMeta } from "@/lib/schemas";
 import DcMapExperience from "@/components/dc-map/DcMapExperience";
 import "@/components/dc-map/dc-map.css";
 import DcMapPlateActivator from "@/components/dc-map/DcMapPlateActivator";
@@ -20,25 +21,13 @@ import DcMapPlateActivator from "@/components/dc-map/DcMapPlateActivator";
 const PAGE_URL = "https://behindthetech.in/data-center-map";
 const PAGE_TITLE = "Interactive Data Center Map — Explore Every System | Behind The Tech";
 const PAGE_DESCRIPTION =
-  "Ek complete data center ko andar se explore karein — utility grid se server racks tak. Power, cooling, network, fire, security aur monitoring systems ke animated flows ke saath, har component par click karke seekhein.";
+  "Explore a complete data center from the inside — from the utility grid to the server racks. Animated power, cooling, network, fire, security and monitoring flows, with a learning panel for every component.";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   alternates: { canonical: PAGE_URL },
-  openGraph: {
-    title: PAGE_TITLE,
-    description: PAGE_DESCRIPTION,
-    url: PAGE_URL,
-    siteName: "Behind The Tech",
-    type: "website",
-    locale: "en_IN",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: PAGE_TITLE,
-    description: PAGE_DESCRIPTION,
-  },
+  ...buildSocialMeta({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, url: PAGE_URL }),
 };
 
 const LEARNING_RESOURCE_SCHEMA = {

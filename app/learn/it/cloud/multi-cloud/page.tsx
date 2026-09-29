@@ -24,6 +24,7 @@ export default function MultiCloudArticlePage() {
         />
       )}
       <ArticleLayout
+        structuredData={false}
         slug="multi-cloud"
         headings={HEADINGS}
         readingTimeMinutes={multiCloudMetadata.readingTimeMinutes}

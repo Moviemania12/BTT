@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 
@@ -16,10 +17,12 @@ export const metadata: Metadata = {
       "Free, depth-first data center education covering Non-IT, IT, and AI Infrastructure — built for engineers, by an engineer.",
     url: PAGE_URL,
     siteName: "Behind The Tech",
+    images: [SITE_OG_IMAGE],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
+    images: [SITE_OG_IMAGE.url],
     title: "About Behind The Tech",
     description: "Free, depth-first data center education — built for engineers, by an engineer.",
   },
@@ -164,7 +167,7 @@ export default function AboutPage() {
               <div>
                 <ul className="hp-grid" style={{ gridTemplateColumns: "1fr" }}>
                   {[
-                    { n: "84+", l: "Published Topics" },
+                    { n: "75+", l: "Published Topics" },
                     { n: "4", l: "Learning Tracks" },
                     { n: "46", l: "Interactive Map Components" },
                     { n: "0", l: "Paywalls — Everything Free" },

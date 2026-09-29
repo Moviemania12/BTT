@@ -14,8 +14,11 @@
 import Link from "next/link";
 import type { CalculatorRegistryEntry } from "@/types/engineering/registry";
 
+/** Only what the card shows — lets standalone tools that are not in the registry reuse it. */
+export type CalculatorLinkItem = Pick<CalculatorRegistryEntry, "route" | "title" | "description">;
+
 export interface CalculatorLinkProps {
-  calculator: CalculatorRegistryEntry;
+  calculator: CalculatorLinkItem;
 }
 
 export function CalculatorLink({ calculator }: CalculatorLinkProps) {

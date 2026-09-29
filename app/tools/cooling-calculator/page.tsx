@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { buildSocialMeta } from "@/lib/schemas";
 import CoolingCalculatorClient from "./CoolingCalculatorClient";
+import CalculatorGuide from "@/components/calculators/CalculatorGuide";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // app/tools/cooling-calculator/page.tsx
@@ -24,8 +26,23 @@ export const metadata: Metadata = {
     "data center HVAC sizing",
     "sensible heat load",
   ],
+  ...buildSocialMeta({
+    title: "Cooling Calculator — Data Center Heat Load Sizing | Behind The Tech",
+    description:
+      "Free Data Center cooling calculator — convert IT/heat load (kW) into Tons of Refrigeration, BTU/hr, and required supply airflow (CFM) using standard sensible-heat formulas.",
+    url: "https://behindthetech.in/tools/cooling-calculator",
+  }),
 };
 
 export default function CoolingCalculatorPage() {
-  return <CoolingCalculatorClient />;
+  return (
+    <>
+      <CoolingCalculatorClient />
+      <div style={{ background: "#ffffff" }}>
+        <div style={{ maxWidth: "860px", margin: "0 auto", padding: "0 1.5rem 4rem" }}>
+          <CalculatorGuide slug="cooling-calculator" />
+        </div>
+      </div>
+    </>
+  );
 }

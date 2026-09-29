@@ -3,7 +3,7 @@ import type { ArticleMetadata } from "@/types/engineering/content";
 export const gcpMetadata: ArticleMetadata = {
   slug: "gcp",
   title: "Google Cloud Platform (GCP) Explained — Cloud for Data Center Engineers",
-  seoTitle: "What Is GCP? VPC, Compute Engine, GKE, IAM, HA and Hybrid Connectivity — Complete English Guide",
+  seoTitle: "What Is GCP? VPC, Compute Engine, GKE, IAM, HA and Hybrid Connectivity",
   seoDescription:
     "Google Cloud Platform infrastructure for data center engineers — Global VPC, Firewall Rules, Compute Engine, GKE, Cloud Storage, Cloud IAM, Interconnect, Operations Suite, and GCP vs AWS vs Azure comparison in English.",
   canonicalUrl: "https://behindthetech.in/learn/it/cloud/gcp",

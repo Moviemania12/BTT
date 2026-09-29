@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
   title: "GPU in Data Centers — Architecture, VRAM, AI Workloads & Deployment | Behind The Tech",
   description: "GPU kya hai, CPU vs GPU design philosophy, VRAM, PCIe, AI training vs inference, multi-GPU networking, GPU server architecture, air vs liquid cooling — Zero-to-Hero Hinglish guide.",
   keywords: ["GPU data center","NVIDIA GPU","GPU AI training","VRAM","PCIe GPU","GPU server","AI infrastructure GPU","NVLink","GPU cooling"],
-  openGraph: { title: "GPU in Data Centers — Architecture & AI Workloads", description: "GPU architecture, VRAM, training vs inference, multi-GPU, server deployment.", url: "https://behindthetech.in/hi/learn/it/servers/gpu", locale: "hi_IN", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"] },
-  twitter: { card: "summary_large_image", title: "GPU in Data Centers — Behind The Tech", description: "GPU architecture, AI workloads, deployment guide." },
+  openGraph: { title: "GPU in Data Centers — Architecture & AI Workloads", description: "GPU architecture, VRAM, training vs inference, multi-GPU, server deployment.", url: "https://behindthetech.in/hi/learn/it/servers/gpu", locale: "hi_IN", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },
+  twitter: { card: "summary_large_image", title: "GPU in Data Centers — Behind The Tech", description: "GPU architecture, AI workloads, deployment guide.", images: [SITE_OG_IMAGE.url], },
   alternates: {
     canonical: "https://behindthetech.in/hi/learn/it/servers/gpu",
     languages: {
