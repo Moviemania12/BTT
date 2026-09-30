@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendSmtpMail, smtpConfigured } from "@/lib/smtp";
 import {
   customerEmail,
   makeDemoCredentials,
@@ -44,7 +45,13 @@ function rateLimited(ip: string) {
   return recent.length > 5;
 }
 
+// Mail is sent straight from Gmail (SMTP) when GMAIL_USER + GMAIL_APP_PASSWORD are set;
+// otherwise it falls back to Resend if that is configured.
 async function sendEmail(to: string, subject: string, text: string, replyTo?: string) {
+  if (smtpConfigured()) {
+    await sendSmtpMail({ to, subject, text, replyTo });
+    return;
+  }
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },
@@ -67,9 +74,10 @@ async function sendEmail(to: string, subject: string, text: string, replyTo?: st
 
 async function notifyOwner(data: DemoData, creds: DemoCredentials, requestedAt: string): Promise<boolean> {
   let delivered = false;
-  if (process.env.RESEND_API_KEY && process.env.DEMO_NOTIFY_TO) {
+  const ownerTo = process.env.DEMO_NOTIFY_TO || (smtpConfigured() ? process.env.GMAIL_USER : undefined);
+  if ((smtpConfigured() || process.env.RESEND_API_KEY) && ownerTo) {
     const m = ownerEmail(data, creds, requestedAt);
-    await sendEmail(process.env.DEMO_NOTIFY_TO, m.subject, m.text, data.email);
+    await sendEmail(ownerTo, m.subject, m.text, data.email);
     delivered = true;
   }
   const webhook = process.env.DEMO_REQUEST_WEBHOOK_URL;
@@ -123,7 +131,9 @@ export async function POST(req: Request) {
   }
 
   const configured = Boolean(
-    (process.env.RESEND_API_KEY && process.env.DEMO_NOTIFY_TO) || process.env.DEMO_REQUEST_WEBHOOK_URL,
+    (smtpConfigured() && (process.env.DEMO_NOTIFY_TO || process.env.GMAIL_USER)) ||
+      (process.env.RESEND_API_KEY && process.env.DEMO_NOTIFY_TO) ||
+      process.env.DEMO_REQUEST_WEBHOOK_URL,
   );
   if (!configured) {
     return NextResponse.json({ message: "Online demo requests are not switched on yet." }, { status: 503 });
@@ -140,7 +150,7 @@ export async function POST(req: Request) {
   }
 
   let emailed = false;
-  if (process.env.RESEND_API_KEY) {
+  if (smtpConfigured() || process.env.RESEND_API_KEY) {
     try {
       const m = customerEmail(data, creds);
       await sendEmail(data.email, m.subject, m.text);
