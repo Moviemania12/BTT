@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  poweredByHeader: false,
   async redirects() {
     return [
       // ── /dc-map → /data-center-map ─────────────────────────────────────────
@@ -157,6 +158,17 @@ const nextConfig = {
   // components/HtmlLang.tsx): /hi/* is Hindi, all other pages are English.
   async headers() {
     return [
+      // Baseline security headers for every response. (HSTS is added by Vercel itself.)
+      // No Content-Security-Policy on purpose: a strict CSP would block Google AdSense.
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=()" },
+        ],
+      },
       { source: "/", headers: [{ key: "Content-Language", value: "en" }] },
       { source: "/hi", headers: [{ key: "Content-Language", value: "hi" }] },
       { source: "/hi/:path*", headers: [{ key: "Content-Language", value: "hi" }] },

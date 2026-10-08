@@ -50,8 +50,8 @@ export default function PrivacyPolicyPage() {
         <li>
           <strong>BTT Employee Manager demo requests</strong> — name, company, email address, mobile
           number and employee-count range when you request a demo on the product page. We generate a
-          temporary demo login, show it to you on the page and email it to you through Resend, and the
-          request details are emailed to our inbox through Resend. They are not saved in a database on
+          temporary demo login, show it to you on the page and email it to you through Gmail (Google), and the
+          request details are emailed to our inbox through Gmail (Google). They are not saved in a database on
           this site.
         </li>
         <li>
@@ -142,7 +142,8 @@ export default function PrivacyPolicyPage() {
       <h2>Other Third-Party Services</h2>
       <ul>
         <li><strong>Google (Gemini API)</strong> — generates BTT Assistant replies, as described above.</li>
-        <li><strong>Resend</strong> — delivers the emails produced by the contact and demo-request forms.</li>
+        <li><strong>Resend</strong> — delivers the emails produced by the contact form.</li>
+        <li><strong>Google (Gmail)</strong> — delivers the emails produced by the demo-request form.</li>
         <li><strong>Vercel</strong> — hosts the site.</li>
       </ul>
       <p>

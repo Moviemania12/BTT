@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sendSmtpMail, smtpConfigured } from "@/lib/smtp";
+import { env, sendSmtpMail, smtpConfigured } from "@/lib/smtp";
 import {
   customerEmail,
   makeDemoCredentials,
@@ -33,6 +33,9 @@ import {
 // ═══════════════════════════════════════════════════════════════════════════
 
 export const runtime = "nodejs";
+// Two mails are sent per request (owner + customer); the default 10s function limit is too
+// tight for two Gmail SMTP sessions, so allow more time.
+export const maxDuration = 30;
 
 // Very small in-memory rate limit (per server instance) — a first line of
 // defence against form spam.
@@ -49,8 +52,25 @@ function rateLimited(ip: string) {
 // otherwise it falls back to Resend if that is configured.
 async function sendEmail(to: string, subject: string, text: string, replyTo?: string) {
   if (smtpConfigured()) {
-    await sendSmtpMail({ to, subject, text, replyTo });
-    return;
+    try {
+      await sendSmtpMail({ to, subject, text, replyTo });
+      return;
+    } catch (err) {
+      // eslint-disable-next-line no-console -- diagnostic only: the real SMTP reason (never any secret)
+      console.error(`[demo-request] Gmail SMTP send to ${to} failed:`, err instanceof Error ? err.message : err);
+      // A wrong GMAIL_USER / GMAIL_APP_PASSWORD will not fix itself on retry; anything else may.
+      const authFailed = err instanceof Error && /login|535|534|auth/i.test(err.message);
+      if (!authFailed) {
+        try {
+          await sendSmtpMail({ to, subject, text, replyTo });
+          return;
+        } catch {
+          /* fall through to Resend */
+        }
+      }
+      if (!process.env.RESEND_API_KEY) throw err;
+      // Resend fallback below.
+    }
   }
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -74,7 +94,7 @@ async function sendEmail(to: string, subject: string, text: string, replyTo?: st
 
 async function notifyOwner(data: DemoData, creds: DemoCredentials, requestedAt: string): Promise<boolean> {
   let delivered = false;
-  const ownerTo = process.env.DEMO_NOTIFY_TO || (smtpConfigured() ? process.env.GMAIL_USER : undefined);
+  const ownerTo = env("DEMO_NOTIFY_TO") || (smtpConfigured() ? env("GMAIL_USER") : undefined);
   if ((smtpConfigured() || process.env.RESEND_API_KEY) && ownerTo) {
     const m = ownerEmail(data, creds, requestedAt);
     await sendEmail(ownerTo, m.subject, m.text, data.email);
@@ -130,9 +150,15 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: "Too many requests. Please try again later." }, { status: 429 });
   }
 
+  // Also limit per recipient address: the customer confirmation goes to whatever address was typed,
+  // so without this the form could be used to mail one person repeatedly.
+  if (rateLimited(`email:${data.email}`)) {
+    return NextResponse.json({ message: "Too many requests. Please try again later." }, { status: 429 });
+  }
+
   const configured = Boolean(
-    (smtpConfigured() && (process.env.DEMO_NOTIFY_TO || process.env.GMAIL_USER)) ||
-      (process.env.RESEND_API_KEY && process.env.DEMO_NOTIFY_TO) ||
+    (smtpConfigured() && (env("DEMO_NOTIFY_TO") || env("GMAIL_USER"))) ||
+      (process.env.RESEND_API_KEY && env("DEMO_NOTIFY_TO")) ||
       process.env.DEMO_REQUEST_WEBHOOK_URL,
   );
   if (!configured) {

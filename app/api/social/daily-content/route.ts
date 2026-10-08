@@ -1,5 +1,6 @@
 ﻿import { NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
+import { requireCronSecret } from "@/lib/apiAuth";
 
 import { getDailyPostForDate } from "@/content/social/daily-post-engine";
 
@@ -24,7 +25,10 @@ function extractJson(text: string) {
   return JSON.parse(cleaned);
 }
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = requireCronSecret(req);
+  if (denied) return denied;
+
   try {
     // -----------------------------------------
     // GET TODAY'S POST FROM 30-DAY PLAN

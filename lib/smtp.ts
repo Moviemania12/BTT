@@ -13,8 +13,14 @@ import tls from "node:tls";
 //   SMTP_HOST / SMTP_PORT  optional overrides (default smtp.gmail.com : 465)
 // ═══════════════════════════════════════════════════════════════════════════
 
+// Vercel / .env values are often pasted with a trailing space, newline or surrounding
+// quotes. Any of those makes Gmail reject the login (535), so normalise them here.
+export function env(name: string): string {
+  return (process.env[name] ?? "").trim().replace(/^["']|["']$/g, "").trim();
+}
+
 export function smtpConfigured(): boolean {
-  return Boolean(process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD);
+  return Boolean(env("GMAIL_USER") && env("GMAIL_APP_PASSWORD"));
 }
 
 const clean = (s: string) => s.replace(/[\r\n]+/g, " ").trim();
@@ -27,10 +33,10 @@ export async function sendSmtpMail(opts: {
   text: string;
   replyTo?: string;
 }): Promise<void> {
-  const user = process.env.GMAIL_USER as string;
-  const pass = (process.env.GMAIL_APP_PASSWORD as string).replace(/\s+/g, "");
-  const host = process.env.SMTP_HOST || "smtp.gmail.com";
-  const port = Number(process.env.SMTP_PORT || 465);
+  const user = env("GMAIL_USER");
+  const pass = env("GMAIL_APP_PASSWORD").replace(/\s+/g, "");
+  const host = env("SMTP_HOST") || "smtp.gmail.com";
+  const port = Number(env("SMTP_PORT") || 465);
   const to = clean(opts.to);
   const fromName = "BTT Employee Manager";
 
@@ -40,6 +46,7 @@ export async function sendSmtpMail(opts: {
     `Subject: =?UTF-8?B?${b64(clean(opts.subject))}?=`,
     ...(opts.replyTo ? [`Reply-To: ${clean(opts.replyTo)}`] : []),
     `Date: ${new Date().toUTCString()}`,
+    `Message-ID: <${Date.now().toString(36)}.${Math.random().toString(36).slice(2)}@behindthetech.in>`,
     "MIME-Version: 1.0",
     "Content-Type: text/plain; charset=UTF-8",
     "Content-Transfer-Encoding: base64",
@@ -48,7 +55,7 @@ export async function sendSmtpMail(opts: {
 
   await new Promise<void>((resolve, reject) => {
     const socket = tls.connect({ host, port, servername: host });
-    socket.setTimeout(15000, () => fail(new Error("smtp timeout")));
+    socket.setTimeout(8000, () => fail(new Error("smtp timeout")));
     let buf = "";
     let waiter: ((code: number, text: string) => void) | null = null;
     let done = false;

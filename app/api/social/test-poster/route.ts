@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { requireCronSecret } from "@/lib/apiAuth";
 import { getDailyPostForDate } from "@/content/social/daily-post-engine";
 import fs from "fs";
 import path from "path";
@@ -73,7 +74,10 @@ function wrapText(text: string, maxChars = 32): string[] {
   return lines.slice(0, 3);
 }
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = requireCronSecret(req);
+  if (denied) return denied;
+
   try {
     const { default: sharp } = await import("sharp");
     // --------------------------------------------------
@@ -502,4 +506,4 @@ no watermarks and no typography.
       }
     );
   }
-}
+}

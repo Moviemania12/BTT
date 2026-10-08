@@ -284,9 +284,22 @@ export async function POST(req: NextRequest): Promise<Response> {
     return errorStream("Invalid request format.");
   }
 
-  const rawMessages: IncomingMessage[] = body.messages ?? [];
-  const currentSlug = body.currentSlug;
-  const currentHeading = body.currentHeading;
+  // ── Sanitise untrusted input (types, sizes) before it reaches the model ──
+  const rawMessages: IncomingMessage[] = Array.isArray(body.messages)
+    ? body.messages
+        .filter(
+          (m): m is IncomingMessage =>
+            !!m &&
+            (m.role === "user" || m.role === "assistant") &&
+            typeof m.content === "string"
+        )
+        .slice(-MAX_HISTORY_MESSAGES)
+        .map((m) => ({ role: m.role, content: m.content.slice(0, 2000) }))
+    : [];
+  const oneLine = (v: unknown, max: number) =>
+    typeof v === "string" ? v.replace(/[\r\n"`]+/g, " ").trim().slice(0, max) || undefined : undefined;
+  const currentSlug = oneLine(body.currentSlug, 120);
+  const currentHeading = oneLine(body.currentHeading, 200);
 
   // ── Filter UI-only greeting ──
   const cleanedMessages = rawMessages.filter(
