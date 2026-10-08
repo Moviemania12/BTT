@@ -20,11 +20,13 @@ import {
 
 // ─── Client ────────────────────────────────────────────────────────────────────
 
-if (!process.env.GEMINI_API_KEY) {
-  throw new Error("[BTT] GEMINI_API_KEY environment variable is not set.");
+// Created lazily so a missing key never breaks `next build`; the route
+// answers 503 at request time instead.
+let aiClient: GoogleGenAI | null = null;
+function getAi(): GoogleGenAI {
+  if (!aiClient) aiClient = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  return aiClient;
 }
-
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 const MODEL = "gemini-2.5-flash";
 const MAX_OUTPUT_TOKENS = 1024;
@@ -256,6 +258,13 @@ ACCURACY & SAFETY RULES
 // ─── Route ────────────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest): Promise<Response> {
+  if (!process.env.GEMINI_API_KEY) {
+    console.error("[BTT] GEMINI_API_KEY environment variable is not set.");
+    return new Response(JSON.stringify({ error: "BTT Assistant is not available right now." }), {
+      status: 503,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
   // ── Rate limit check ──
   const clientIp =
     req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
@@ -376,7 +385,7 @@ export async function POST(req: NextRequest): Promise<Response> {
         // 2. Call Gemini with streaming + auto-retry
         const geminiStream = await withRetry(
           () =>
-            ai.models.generateContentStream({
+            getAi().models.generateContentStream({
               model: MODEL,
               contents: geminiContents,
               config: {
