@@ -6,7 +6,7 @@ import { type ArticleHeading } from "@/components/ArticlePage";
 import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
-  title: "Cooling Tower in Data Centers — Complete Guide | Behind The Tech",
+  title: "Cooling Tower Kya Hai? Data Center Chiller ke saath Guide | Behind The Tech",
   description: "Cooling tower kya hai, kaise kaam karta hai, Data Center mein chiller ke saath kaise connect hota hai — evaporative cooling, types, maintenance aur safety guide.",
   keywords: ["cooling tower data center", "cooling tower chiller", "evaporative cooling data center", "cooling tower maintenance"],
   openGraph: { title: "Cooling Tower in Data Centers", description: "Cooling tower — chiller plant ka heat rejection component. Complete guide.", url: "https://behindthetech.in/hi/learn/non-it/cooling/cooling-tower", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },

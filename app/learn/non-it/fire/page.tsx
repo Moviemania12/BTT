@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
+import HubGuide from "@/components/HubGuide";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
 const TITLE = "Fire Protection — Behind The Tech";
@@ -57,6 +58,8 @@ export default function CategoryPage() {
           </p>
         </div>
       </section>
+
+      <HubGuide track="non-it" category="fire" intro={'Data center fire protection must detect a fire early and put it out without destroying the equipment. Read about very early smoke detection (VESDA), clean-agent suppression with FM-200 and Novec, pre-action sprinklers and hydrant systems, and how they work together.'} />
 
       {published.length > 0 && (
         <section className="hp-section hp-section--subtle">

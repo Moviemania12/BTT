@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Load Balancer — Complete Data Center & Enterprise Guide | Behind The Tech",
+  title: "Load Balancer Kya Hai? VIP, Algorithms, L7, GSLB aur HA | Behind The Tech",
   description:
     "Load Balancer kya hai — VIP, backend pools, health monitoring, algorithms, persistence, L7 content switching, TLS offload, GSLB, HA, troubleshooting aur data center integration — complete Hinglish Data Center engineer handbook.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "HTTP/2 load balancing", "load balancer certificate", "load balancer failover",
   ],
   openGraph: {
-    title: "Load Balancer — Complete Data Center & Enterprise Guide",
+    title: "Load Balancer Kya Hai? VIP, Algorithms, L7, GSLB aur HA",
     description:
       "VIP, backend pools, health monitoring, algorithms, persistence, L7 routing, TLS offload, GSLB, HA, troubleshooting — complete load balancer handbook.",
     url: "https://behindthetech.in/hi/learn/it/networking/load-balancer",

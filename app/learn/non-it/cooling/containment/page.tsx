@@ -6,7 +6,7 @@ import { type ArticleHeading } from "@/components/ArticlePage";
 import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
-  title: "Containment — Hot Aisle & Cold Aisle Containment in Data Centers | Behind The Tech",
+  title: "Hot & Cold Aisle Containment in Data Centers | Behind The Tech",
   description: "What is aisle containment, HAC vs CAC, how is it implemented, why is it essential — the most effective method to improve Data Center cooling efficiency.",
   keywords: ["aisle containment data center", "hot aisle containment", "cold aisle containment", "HAC CAC data center", "data center cooling efficiency"],
   openGraph: { title: "Containment — Aisle Containment in Data Centers", description: "Hot aisle and cold aisle containment — the most practical improvement in Data Center cooling efficiency.", url: "https://behindthetech.in/learn/non-it/cooling/containment", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },

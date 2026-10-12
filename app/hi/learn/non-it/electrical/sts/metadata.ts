@@ -17,6 +17,7 @@ const EN_URL = "https://behindthetech.in/learn/non-it/electrical/sts";
 
 const metaHi = {
   ...stsMetadata,
+  seoTitle: "STS Kya Hai? Static Transfer Switch Working aur Dual Bus Design",
   seoDescription:
     "Static Transfer Switch (STS) kya hai? SCR switching, 4ms transfer time, dual UPS architecture, A/B power path, maintenance bypass — complete Hinglish guide for Data Center engineers.",
   canonicalUrl: HI_URL,

@@ -189,7 +189,7 @@ export const CALCULATOR_GUIDES: Record<string, CalculatorGuideData> = {
       "A 100 kW load with a 10 °C differential is about 28.4 tons, 341,214 BTU/hr and roughly 17,550 CFM of supply air.",
     note:
       "These are sensible-heat figures at standard air conditions. Real cooling design also accounts for humidity, altitude, fan and pump heat, redundancy and airflow management, so treat the result as a starting point.",
-    topics: ["chiller", "crac", "containment"],
+    topics: ["chiller", "crac", "pac", "containment", "cooling-tower", "airflow-management"],
     alsoTry: [
       { href: "/tools/rci-calculator", label: "RCI Calculator" },
       { href: "/tools/pue-calculator", label: "PUE Calculator" },
@@ -212,7 +212,7 @@ export const CALCULATOR_GUIDES: Record<string, CalculatorGuideData> = {
       "Four inlet readings of 24, 26, 28 and 29 °C with the default ranges: the readings exceed the 27 °C limit by 1 °C and 2 °C, a total of 3. RCI_HI = [1 − 3 ÷ ((32 − 27) × 4)] × 100 = 85%, and RCI_LO = 100%.",
     note:
       "The calculator rates 100% as ideal, 96% or above as good, 91% or above as acceptable, and anything lower as poor, with hot or cold spots likely. RCI depends on where and how many readings you take, so measure consistently across the room.",
-    topics: ["rci", "containment", "airflow-management"],
+    topics: ["rci", "containment", "airflow-management", "crac", "sensors"],
     alsoTry: [
       { href: "/tools/cooling-calculator", label: "Cooling Calculator" },
       { href: "/tools/pue-calculator", label: "PUE Calculator" },
@@ -230,7 +230,7 @@ export const CALCULATOR_GUIDES: Record<string, CalculatorGuideData> = {
       "A site drawing 1,600 kW in total with 1,000 kW of IT load has a PUE of 1.60 and a DCiE of 62.5%. The other 600 kW (37.5% of the total) is overhead.",
     note:
       "The calculator labels a PUE of 1.2 or lower as excellent, up to 1.5 as good, up to 1.8 as average and anything higher as needing improvement. Compare like with like: PUE should be measured over a consistent period, at the same metering points.",
-    topics: ["chiller", "airflow-management", "ups"],
+    topics: ["chiller", "cooling-tower", "airflow-management", "dcim", "ems", "ups"],
     alsoTry: [
       { href: "/tools/cooling-calculator", label: "Cooling Calculator" },
       { href: "/tools/rci-calculator", label: "RCI Calculator" },

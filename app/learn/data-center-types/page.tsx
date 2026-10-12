@@ -8,7 +8,7 @@ import TopicLink from "@/components/TopicLink";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Data Center Types Explained: Enterprise, Cloud, Hyperscale & More — Behind The Tech",
+  title: "Data Center Types: Enterprise, Colo, Cloud & Hyperscale | Behind The Tech",
   description:
     "Not every Data Center is the same. A complete comparison of Enterprise, Colocation, Cloud, Hyperscale, Edge, Managed and Hybrid Data Centers — in simple English.",
   keywords: [

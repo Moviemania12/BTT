@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
+import HubGuide from "@/components/HubGuide";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
 const TITLE = "Servers — Behind The Tech";
@@ -57,6 +58,8 @@ export default function CategoryPage() {
           </p>
         </div>
       </section>
+
+      <HubGuide track="it" category="servers" intro={'Servers are the compute layer that every data center exists to host. Start with server basics, then CPU, RAM and GPU hardware, blade servers for high density, and finally virtualization, which lets many virtual machines share one physical server.'} />
 
       {published.length > 0 && (
         <section className="hp-section hp-section--subtle">

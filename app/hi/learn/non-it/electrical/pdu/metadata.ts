@@ -17,6 +17,7 @@ const EN_URL = "https://behindthetech.in/learn/non-it/electrical/pdu";
 
 const metaHi = {
   ...pduMetadata,
+  seoTitle: "PDU Kya Hai? Types, iPDU, SNMP aur DCIM Integration | Behind The Tech",
   seoDescription:
     "PDU kya hota hai? Basic se Intelligent PDU (iPDU) tak — types, internal construction, outlet monitoring, SNMP/Modbus/DCIM integration, OEM comparison aur real Data Center example. Complete Hinglish guide.",
   canonicalUrl: HI_URL,

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
-  title: "Blade Servers — Architecture, Chassis, Shared Infrastructure & Deployment | Behind The Tech",
+  title: "Blade Server Kya Hai? Chassis, Midplane aur Deployment Guide | Behind The Tech",
   description: "Data center engineers ke liye blade server handbook — chassis architecture, blade anatomy, midplane, I/O modules, network path, oversubscription, storage aur boot options, shared failure domain, redundancy, power aur cooling planning, management, cross-chassis HA, installation, testing, troubleshooting, Tier III/IV view aur OEM families.",
   keywords: ["blade server","blade chassis","blade vs rack server","blade I/O module","oversubscription","shared failure domain","cross-chassis HA","blade server architecture","midplane","composable infrastructure","HPE BladeSystem","Dell PowerEdge MX","Cisco UCS blade","chassis redundancy"],
   openGraph: { title: "Blade Servers — Architecture & Data Center Deployment", description: "Blade chassis, shared failure domain, I/O modules, redundancy aur deployment.", url: "https://behindthetech.in/hi/learn/it/servers/blade-server", locale: "hi_IN", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Disaster Recovery (DR) — Complete Engineer Guide | Behind The Tech",
+  title: "Disaster Recovery Kya Hai? RPO, RTO, Hot/Warm/Cold Site | Behind The Tech",
   description:
     "Disaster Recovery kya hai, RPO, RTO, MTD, WRT, hot/warm/cold sites, sync/async replication, VMware DR, cloud DR, ransomware recovery, failover, failback, split-brain, DR testing, runbooks, O&M checklist — complete Hinglish Data Center engineer handbook.",
   keywords: [
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "data center DR", "active passive DR", "pilot light", "clean room recovery",
   ],
   openGraph: {
-    title: "Disaster Recovery (DR) — Complete Engineer Guide",
+    title: "Disaster Recovery Kya Hai? RPO, RTO, Hot/Warm/Cold Site",
     description: "RPO, RTO, site types, replication, VMware, cloud DR, ransomware recovery, failover, failback — complete DR handbook.",
     url: "https://behindthetech.in/hi/learn/it/storage/disaster-recovery",
     locale: "hi_IN",

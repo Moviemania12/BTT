@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
-  title: "DCIM — Data Center Infrastructure Management Complete Guide | Behind The Tech",
+  title: "DCIM Kya Hai? Asset, Power Chain aur Capacity Planning | Behind The Tech",
   description: "DCIM kya hai, architecture, asset management, power chain, capacity planning, SNMP/Modbus/API integration, Vertiv Trellis, Athenta, Sunbird, Nlyte — deep engineer-level Hinglish guide.",
   keywords: ["DCIM data center","data center infrastructure management","Vertiv Trellis","Athenta DCIM","SNMP PDU monitoring","rack capacity planning","DCIM vs BMS"],
   openGraph: { title: "DCIM — Data Center Infrastructure Management", description: "DCIM architecture, asset management, power chain, integration, troubleshooting.", url: "https://behindthetech.in/hi/learn/non-it/bms-dcim/dcim", locale: "hi_IN", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },

@@ -6,7 +6,7 @@ import { type ArticleHeading } from "@/components/ArticlePage";
 import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
-  title: "RCI — Rack Cooling Index in Data Centers | Behind The Tech",
+  title: "RCI Kya Hai? Rack Cooling Index Calculate Kaise Karein | Behind The Tech",
   description:
     "RCI kya hai, kaise calculate karte hain, good RCI kya hota hai — Rack Cooling Index Data Center cooling effectiveness ka metric hai. Simple Hinglish mein complete guide.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "rci rhi data center",
   ],
   openGraph: {
-    title: "RCI — Rack Cooling Index in Data Centers",
+    title: "RCI Kya Hai? Rack Cooling Index Calculate Kaise Karein",
     description:
       "RCI aur RHI — Data Center cooling ka report card. Kaise calculate hota hai, kya achha score hai, aur kaise improve karo.",
     url: "https://behindthetech.in/hi/learn/non-it/cooling/rci",

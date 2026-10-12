@@ -17,6 +17,7 @@ const EN_URL = "https://behindthetech.in/learn/non-it/electrical/battery-bank";
 
 const metaHi = {
   ...batteryBankMetadata,
+  seoTitle: "Battery Bank Kya Hai? VRLA vs LFP, Sizing aur Room Design",
   seoDescription:
     "Battery bank kya hota hai? VRLA vs Lithium-ion, battery sizing formula, string design, Tier III/IV architecture, room engineering calculations — complete Hinglish guide with 40 tables, 26 SVGs, 7 live calculators aur 50 interview questions.",
   canonicalUrl: HI_URL,

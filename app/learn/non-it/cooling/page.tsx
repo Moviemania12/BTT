@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
+import HubGuide from "@/components/HubGuide";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
 const TITLE = "Cooling Systems — Behind The Tech";
@@ -57,6 +58,8 @@ export default function CategoryPage() {
           </p>
         </div>
       </section>
+
+      <HubGuide track="non-it" category="cooling" intro={'Almost every watt an IT load draws turns into heat, so cooling is the second pillar after power. These guides cover precision air conditioners (PAC and CRAC), chillers and cooling towers, aisle containment, airflow management and the RCI metric used to check rack inlet temperatures.'} />
 
       {published.length > 0 && (
         <section className="hp-section hp-section--subtle">

@@ -17,6 +17,7 @@ const EN_URL = "https://behindthetech.in/learn/non-it/electrical/earthing";
 
 const metaHi = {
   ...earthingMetadata,
+  seoTitle: "Earthing Kya Hai? Data Center Earth Resistance Testing | Behind The Tech",
   seoDescription:
     "Data Center earthing kya hota hai? Earth pit se earth grid tak, IS 3043 standards, earth resistance testing (3-pole, clamp method), common faults aur complete O&M guide. Practical Hinglish guide for Data Center engineers.",
   canonicalUrl: HI_URL,

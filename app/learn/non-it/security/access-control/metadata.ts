@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Access Control Systems in Data Centers — Complete Engineering Guide | Behind The Tech",
+  title: "Data Center Access Control — RFID, Locks, Anti-Passback | Behind The Tech",
   description:
     "How an access control system works in a Data Center — controller, RFID reader, EM lock, door contact, REX, anti-passback, alarms, troubleshooting. From beginner to O&M engineer.",
   keywords: [
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "data center physical security",
   ],
   openGraph: {
-    title: "Access Control Systems in Data Centers — Complete Engineering Guide",
+    title: "Data Center Access Control — RFID, Locks, Anti-Passback",
     description: "From controller to EM lock, from RFID to anti-passback — the complete engineering guide to Data Center access control.",
     url: "https://behindthetech.in/learn/non-it/security/access-control",
     locale: "en_US",

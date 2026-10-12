@@ -8,7 +8,7 @@ import RequestJourneyDiagram from "@/components/diagrams/RequestJourneyDiagram";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "What is a Data Center? — Behind The Tech",
+  title: "Data Center Kya Hota Hai? Servers, Power aur Cooling Samjho | Behind The Tech",
   description:
     "Data Center kya hota hai? Har click ke peeche chhupa digital powerhouse. Servers, power, cooling aur networking — sab kuch simple Hinglish mein samjho.",
   keywords: [

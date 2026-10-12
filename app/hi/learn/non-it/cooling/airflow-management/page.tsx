@@ -6,7 +6,7 @@ import { type ArticleHeading } from "@/components/ArticlePage";
 import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
-  title: "Airflow Management in Data Centers — Complete Guide | Behind The Tech",
+  title: "Airflow Management: Hot/Cold Aisle, Blanking Panels, Raised Floor | Behind The Tech",
   description: "Data Center mein airflow management kaise karte hain — hot/cold aisle, blanking panels, raised floor, perforated tiles, bypass air, recirculation — complete practical guide.",
   keywords: ["airflow management data center", "data center airflow", "cold aisle hot aisle", "bypass air data center", "perforated tiles raised floor"],
   openGraph: { title: "Airflow Management in Data Centers", description: "Cool air sahi jagah kaise pahunche — complete airflow management guide.", url: "https://behindthetech.in/hi/learn/non-it/cooling/airflow-management", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },

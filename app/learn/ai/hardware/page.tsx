@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
+import HubGuide from "@/components/HubGuide";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
 const TITLE = "AI Hardware — Behind The Tech";
@@ -57,6 +58,8 @@ export default function CategoryPage() {
           </p>
         </div>
       </section>
+
+      <HubGuide track="ai" category="hardware" intro={'AI workloads run on accelerators rather than ordinary CPUs. This section covers AI GPUs, NVIDIA and AMD architectures, TPUs and other accelerators such as NPUs, DPUs and FPGAs.'} />
 
       {published.length > 0 && (
         <section className="hp-section hp-section--subtle">

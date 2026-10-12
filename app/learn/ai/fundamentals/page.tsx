@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
+import HubGuide from "@/components/HubGuide";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
 const TITLE = "AI Fundamentals — Behind The Tech";
@@ -57,6 +58,8 @@ export default function CategoryPage() {
           </p>
         </div>
       </section>
+
+      <HubGuide track="ai" category="fundamentals" intro={'Understand the concepts behind modern AI before looking at the hardware: AI infrastructure, machine learning, deep learning, large language models and generative AI, and why they need so much compute.'} />
 
       {published.length > 0 && (
         <section className="hp-section hp-section--subtle">

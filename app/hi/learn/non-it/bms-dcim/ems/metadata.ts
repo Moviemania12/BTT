@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
-  title: "Energy Management System (EMS) — Complete Guide for Data Center Engineers | Behind The Tech",
+  title: "EMS Kya Hai? Energy Meters, PUE aur Modbus/BACnet Tracking | Behind The Tech",
   description: "EMS kya hai, energy meters integration, kW/kWh/PUE tracking, Modbus/BACnet data acquisition, dashboards, troubleshooting — complete Hinglish guide for data center engineers.",
   keywords: ["energy management system","EMS data center","energy meter Modbus","PUE calculation","power factor","kWh monitoring","data center energy"],
   openGraph: { title: "Energy Management System (EMS) — Complete Data Center Guide", description: "EMS architecture, meter integration, PUE analysis, troubleshooting.", url: "https://behindthetech.in/hi/learn/non-it/bms-dcim/ems", locale: "hi_IN", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },

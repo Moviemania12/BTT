@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { buildSocialMeta, buildOrganizationSchema } from "@/lib/schemas";
 import Footer from "@/components/Footer";
 import HeroV2 from "@/components/homepage/HeroV2";
 import LearningTracks from "@/components/homepage/LearningTracks";
@@ -22,13 +24,45 @@ import FeaturedProduct from "@/components/btt-employee-manager/FeaturedProduct";
 
 // Canonical for the homepage (the root layout does not set one; child pages that
 // define their own `alternates` override it entirely).
+const HOME_TITLE = "Data Center Engineering Guides & Calculators | Behind The Tech";
+const HOME_DESCRIPTION =
+  "Learn data center engineering in English and Hindi: UPS, cooling, electrical, servers, networking and AI infrastructure — with free engineering calculators.";
+
 export const metadata: Metadata = {
+  title: HOME_TITLE,
+  description: HOME_DESCRIPTION,
   alternates: { canonical: "https://behindthetech.in" },
+  ...buildSocialMeta({ title: HOME_TITLE, description: HOME_DESCRIPTION, url: "https://behindthetech.in" }),
+};
+
+const ORGANIZATION_SCHEMA = {
+  ...buildOrganizationSchema({
+    name: "Behind The Tech",
+    url: "https://behindthetech.in",
+    logoUrl: "https://behindthetech.in/apple-touch-icon.png",
+  }),
+  sameAs: [
+    "https://youtube.com/@behindthe_tech",
+    "https://instagram.com/_behindthetech",
+    "https://linkedin.com/company/behindthetech",
+  ],
+};
+
+const WEBSITE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Behind The Tech",
+  url: "https://behindthetech.in",
+  inLanguage: ["en", "hi"],
+  description: HOME_DESCRIPTION,
+  publisher: { "@type": "Organization", name: "Behind The Tech", url: "https://behindthetech.in" },
 };
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={ORGANIZATION_SCHEMA} />
+      <JsonLd data={WEBSITE_SCHEMA} />
       <main>
         <HeroV2 />
         {/* Featured product: BTT Employee Manager (components/btt-employee-manager/FeaturedProduct) */}

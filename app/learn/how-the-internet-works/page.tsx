@@ -8,7 +8,7 @@ import TopicLink from "@/components/TopicLink";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "How The Internet Works: How the Internet Actually Works — Behind The Tech",
+  title: "How the Internet Works: From DNS to the Data Center | Behind The Tech",
   description:
     "DNS, routers, submarine cables and Data Centers — what happens behind the scenes when you search on Google or watch YouTube. The complete journey in simple English.",
   keywords: [
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "behind the tech",
   ],
   openGraph: {
-    title: "How The Internet Works: How the Internet Actually Works",
+    title: "How the Internet Works: From DNS to the Data Center",
     description:
       "DNS, routers, submarine cables and Data Centers — understand every request's journey, in simple English.",
     url: "https://behindthetech.in/learn/how-the-internet-works",

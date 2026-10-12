@@ -6,11 +6,11 @@ import { type ArticleHeading } from "@/components/ArticlePage";
 import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
-  title: "CRAC — Computer Room Air Conditioner in Data Centers | Behind The Tech",
+  title: "CRAC Kya Hai? PAC se Difference aur Working Guide | Behind The Tech",
   description: "CRAC kya hota hai, PAC se kaise alag hai, kaise kaam karta hai — refrigeration cycle, components, types, maintenance aur troubleshooting. Simple language mein.",
   keywords: ["crac data center", "computer room air conditioner", "crac vs crah", "crac unit cooling", "data center cooling"],
   openGraph: {
-    title: "CRAC — Computer Room Air Conditioner in Data Centers",
+    title: "CRAC Kya Hai? PAC se Difference aur Working Guide",
     description: "CRAC unit kaise kaam karta hai aur PAC se kaise alag hai — Data Center cooling ka complete guide.",
     url: "https://behindthetech.in/hi/learn/non-it/cooling/crac",
     locale: "hi_IN",

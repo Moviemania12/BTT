@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Enterprise Firewall — Complete Data Center & Enterprise Guide | Behind The Tech",
+  title: "Enterprise Firewall — Stateful, NAT, VPN & NGFW Guide | Behind The Tech",
   description:
     "What is an enterprise firewall — stateful inspection, session table, security zones, NAT, VPN, IPsec, IKEv2, NGFW, TLS inspection, HA, failover, troubleshooting, commissioning and design — the complete English Data Center engineer handbook.",
   keywords: [
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "north south firewalling", "firewall hindi", "firewall interview questions",
   ],
   openGraph: {
-    title: "Enterprise Firewall — Complete Data Center & Enterprise Guide",
+    title: "Enterprise Firewall — Stateful, NAT, VPN & NGFW Guide",
     description: "Stateful inspection, session table, zones, NAT, VPN, IPsec, IKEv2, NGFW, TLS inspection, HA, failover, troubleshooting, design — complete firewall handbook.",
     url: "https://behindthetech.in/learn/it/networking/firewall",
     locale: "en_US",

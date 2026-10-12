@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
-  title: "CPU in Servers — Architecture, NUMA, Cores, Threads & Selection | Behind The Tech",
+  title: "Server CPU Kya Hai? Cores, NUMA, Cache aur Selection Guide | Behind The Tech",
   description: "Data center engineers ke liye server CPU handbook — instruction pipeline, CPU package aur chiplets, cores/threads/SMT, turbo aur power states, cache, memory channels, PCIe lanes, NUMA, RAS, TDP aur rack power, security, virtualisation aur vCPU overcommit, BIOS settings, installation, commissioning, troubleshooting, Tier III/IV view aur selection — Hinglish guide.",
   keywords: ["server CPU","Intel Xeon","AMD EPYC","NUMA","CPU cores threads","cache L1 L2 L3","TDP","virtualisation extensions","CPU selection data center","CPU troubleshooting","vCPU overcommit","CPU throttling","PCIe lanes","memory channels","Xeon vs EPYC"],
   openGraph: { title: "CPU in Servers — Architecture, NUMA & Selection", description: "CPU cores, threads, cache, NUMA, TDP, x86 vs ARM, virtualisation — complete guide.", url: "https://behindthetech.in/hi/learn/it/servers/cpu", locale: "hi_IN", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },

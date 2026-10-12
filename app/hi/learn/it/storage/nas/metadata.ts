@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "NAS — Network Attached Storage: Complete Engineer Guide | Behind The Tech",
+  title: "NAS Kya Hai? SMB, NFS, Snapshots aur HA Complete Guide | Behind The Tech",
   description:
     "NAS kya hai, SMB aur NFS protocols, enterprise architecture, HA, snapshots, capacity management, Windows/Linux commands, troubleshooting, OEM reference, monitoring aur interview tips — complete Hinglish Data Center engineer handbook.",
   keywords: [
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "SMB share", "NFS export", "NAS monitoring", "data center storage",
   ],
   openGraph: {
-    title: "NAS — Network Attached Storage: Complete Engineer Guide",
+    title: "NAS Kya Hai? SMB, NFS, Snapshots aur HA Complete Guide",
     description: "NAS architecture, SMB/NFS protocols, HA, snapshots, capacity, troubleshooting aur production operations — complete guide.",
     url: "https://behindthetech.in/hi/learn/it/storage/nas",
     locale: "hi_IN",

@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import ArticlePage, { type ArticleHeading } from "@/components/ArticlePage";
 import { TOPICS, getPrevTopic, getNextTopic } from "@/lib/topics";
 import ArticleStructuredData from "@/components/ArticleStructuredData";
+import RelatedCalculators from "@/components/calculators/RelatedCalculators";
 
 interface ArticleLayoutProps {
   slug: string;
@@ -49,6 +50,7 @@ export default function ArticleLayout({
         alternateHref={alternateHref}
       >
         {children}
+        <RelatedCalculators slug={slug} lang={lang} />
       </ArticlePage>
     </>
   );

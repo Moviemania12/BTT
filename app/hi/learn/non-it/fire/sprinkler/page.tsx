@@ -6,12 +6,12 @@ import { type ArticleHeading } from "@/components/ArticlePage";
 import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
-  title: "Sprinkler System in Data Centers — Pre-Action Design | Behind The Tech",
+  title: "Sprinkler System Kya Hai? Pre-Action vs Wet Pipe Data Center | Behind The Tech",
   description:
     "Data Center mein sprinkler system kaise kaam karta hai — pre-action, double interlock, dry pipe, deluge. Why wet pipe never in server halls. Maintenance aur testing guide. Simple Hinglish mein.",
   keywords: ["sprinkler data center", "pre-action sprinkler", "double interlock sprinkler", "fire sprinkler data center", "dry pipe sprinkler"],
   openGraph: {
-    title: "Sprinkler System in Data Centers — Pre-Action Design",
+    title: "Sprinkler System Kya Hai? Pre-Action vs Wet Pipe Data Center",
     description: "Data Center mein wet pipe sprinkler kabhi nahi — pre-action system kyun zaroori hai aur kaise kaam karta hai.",
     url: "https://behindthetech.in/hi/learn/non-it/fire/sprinkler",
     locale: "hi_IN",

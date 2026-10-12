@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
+import HubGuide from "@/components/HubGuide";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
 const TITLE = "BMS & DCIM — Behind The Tech";
@@ -57,6 +58,8 @@ export default function CategoryPage() {
           </p>
         </div>
       </section>
+
+      <HubGuide track="non-it" category="bms-dcim" intro={'Monitoring and control systems tie the facility together. These articles explain BMS, EMS, SCADA, DCIM and sensors: what each system watches, which protocols they use (such as Modbus, BACnet and SNMP) and how alarms and data reach the operations team.'} />
 
       {published.length > 0 && (
         <section className="hp-section hp-section--subtle">

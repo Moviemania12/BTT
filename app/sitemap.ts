@@ -14,6 +14,13 @@ import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://behindthetech.in";
 
+// <lastmod> must reflect when content really changed. A new Date() on every build
+// marks every page as "modified today", which Google learns to ignore. Update this
+// date only when page content changes in a meaningful way (new or revised
+// articles, calculators, trust pages). Last change: server topics rewrite (EN + HI),
+// calculator schema and article-to-calculator links.
+const CONTENT_LAST_UPDATED = new Date("2026-10-12T00:00:00.000Z");
+
 // Foundation articles + roadmap — EN at the path, HI at /hi + path
 const FOUNDATION_PAIRS: string[] = [
   "/learn/what-is-a-data-center",
@@ -202,7 +209,7 @@ function bilingual(enPath: string, lastModified: Date): MetadataRoute.Sitemap {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const now = CONTENT_LAST_UPDATED;
 
   return [
     { url: SITE_URL, lastModified: now, changeFrequency: "weekly", priority: 1 },

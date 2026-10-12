@@ -31,7 +31,7 @@ import TopicLink from "@/components/TopicLink";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "HT Yard in Data Centers — Behind The Tech",
+  title: "HT Yard Kya Hai? CT, PT, VCB aur Protection Relays Guide | Behind The Tech",
   description:
     "HT Yard ki complete engineer guide: CT, PT, VCB, protection relays, SCADA, Tier III/IV design aur safety — Data Center context mein.",
   keywords: [

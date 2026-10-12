@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Enterprise Network Switch — Complete Engineer Guide | Behind The Tech",
+  title: "Enterprise Network Switch — VLAN, STP, LACP & Spine-Leaf | Behind The Tech",
   description:
     "What is an enterprise network switch — MAC learning, CAM table, ASIC, VLAN, STP, RSTP, LACP, MLAG, Spine-Leaf, PoE, QoS, 802.1Q, inter-VLAN routing, fiber, transceivers, physical installation, troubleshooting and interview tips — the complete English Data Center engineer handbook.",
   keywords: [
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "fiber optic transceiver SFP QSFP", "DAC AOC cable", "network switch hindi",
   ],
   openGraph: {
-    title: "Enterprise Network Switch — Complete Engineer Guide",
+    title: "Enterprise Network Switch — VLAN, STP, LACP & Spine-Leaf",
     description: "MAC learning, VLAN, STP, LACP, MLAG, Spine-Leaf, PoE, QoS, transceivers, physical installation — complete switch handbook.",
     url: "https://behindthetech.in/learn/it/networking/switch",
     locale: "en_US",

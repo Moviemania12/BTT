@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { TOPICS, getTopicUrl } from "@/lib/topics";
 import { CALCULATOR_GUIDES } from "./calculatorGuides";
+import { CALCULATOR_META } from "./calculatorMeta";
+import JsonLd from "@/components/JsonLd";
+import { buildBreadcrumbSchema } from "@/lib/schemas";
+
+const SITE_URL = "https://behindthetech.in";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // components/calculators/CalculatorGuide.tsx
@@ -19,6 +24,9 @@ export default function CalculatorGuide({ slug }: { slug: string }) {
   const g = CALCULATOR_GUIDES[slug];
   if (!g) return null;
 
+  const meta = CALCULATOR_META[slug];
+  const pageUrl = `${SITE_URL}/tools/${slug}`;
+
   const topics = g.topics
     .map((s) => TOPICS[s])
     .filter((t) => t && t.status === "published");
@@ -28,6 +36,33 @@ export default function CalculatorGuide({ slug }: { slug: string }) {
       aria-labelledby="calc-guide-heading"
       style={{ borderTop: "1px solid #E5E7EB", marginTop: "3rem", paddingTop: "2rem" }}
     >
+      {meta && (
+        <>
+          <JsonLd
+            data={{
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              name: meta.title,
+              description: meta.description,
+              url: pageUrl,
+              applicationCategory: "UtilitiesApplication",
+              operatingSystem: "Any (web browser)",
+              browserRequirements: "Requires JavaScript",
+              inLanguage: "en",
+              isAccessibleForFree: true,
+              offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+              publisher: { "@type": "Organization", name: "Behind The Tech", url: SITE_URL },
+            }}
+          />
+          <JsonLd
+            data={buildBreadcrumbSchema([
+              { name: "Home", url: SITE_URL },
+              { name: "Tools", url: `${SITE_URL}/tools` },
+              { name: meta.title, url: pageUrl },
+            ])}
+          />
+        </>
+      )}
       <h2 id="calc-guide-heading" style={h2}>
         About this calculator
       </h2>

@@ -17,6 +17,7 @@ const EN_URL = "https://behindthetech.in/learn/non-it/electrical/lightning-prote
 
 const metaHi = {
   ...lightningProtectionMetadata,
+  seoTitle: "Lightning Protection Kya Hai? IEC 62305 aur SPD Guide | Behind The Tech",
   seoDescription:
     "Lightning Protection System kya hota hai Data Center mein? Air termination, down conductors, SPD Type 1/2/3, IEC 62305 protection levels, aur real strike example — practical Hinglish guide for Data Center engineers.",
   canonicalUrl: HI_URL,

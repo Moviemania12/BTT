@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Mantrap (Airlock) in Data Centers — Complete Engineering Guide | Behind The Tech",
+  title: "Mantrap Kya Hai? Interlock, Anti-Tailgating Data Center Guide | Behind The Tech",
   description:
     "Data Center mantrap kaise kaam karta hai — door interlock, occupancy detection, anti-tailgating, emergency release, fire integration, troubleshooting. Beginner se O&M engineer tak.",
   keywords: [
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "data center physical security",
   ],
   openGraph: {
-    title: "Mantrap (Airlock) in Data Centers — Complete Engineering Guide",
+    title: "Mantrap Kya Hai? Interlock, Anti-Tailgating Data Center Guide",
     description: "Door interlock se occupancy detection tak — Data Center mantrap ka complete engineering guide.",
     url: "https://behindthetech.in/hi/learn/non-it/security/mantrap",
     locale: "hi_IN",

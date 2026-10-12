@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Biometric Authentication in Data Centers — Complete Engineering Guide | Behind The Tech",
+  title: "Biometric Authentication in Data Centers — FAR/FRR Guide | Behind The Tech",
   description:
     "How biometric systems work in a Data Center — fingerprint, face recognition, iris, FAR/FRR, enrollment, liveness, access control integration, troubleshooting and privacy. Engineer guide.",
   keywords: [
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "biometric authentication",
   ],
   openGraph: {
-    title: "Biometric Authentication in Data Centers — Complete Engineering Guide",
+    title: "Biometric Authentication in Data Centers — FAR/FRR Guide",
     description: "From fingerprint to iris — the complete engineering guide to Data Center biometric systems.",
     url: "https://behindthetech.in/learn/non-it/security/biometrics",
     locale: "en_US",

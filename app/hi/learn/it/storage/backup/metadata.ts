@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Backup — Data Protection Engineering Handbook | Behind The Tech",
+  title: "Backup Kya Hai? 3-2-1, RPO/RTO aur Ransomware Recovery | Behind The Tech",
   description:
     "Backup kya hai, snapshot vs replication vs DR, RPO/RTO, full/incremental/differential, 3-2-1 strategy, immutable backup, ransomware recovery, VSS, VMware/Hyper-V, database backup, tape, cloud, restore testing aur O&M — complete Hinglish Data Center engineer handbook.",
   keywords: [
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "backup restore testing", "data center backup", "backup O&M",
   ],
   openGraph: {
-    title: "Backup — Data Protection Engineering Handbook",
+    title: "Backup Kya Hai? 3-2-1, RPO/RTO aur Ransomware Recovery",
     description: "Backup types, strategy, immutability, ransomware recovery, VMware/database/tape/cloud — complete engineer guide.",
     url: "https://behindthetech.in/hi/learn/it/storage/backup",
     locale: "hi_IN",

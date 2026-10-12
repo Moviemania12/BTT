@@ -6,12 +6,12 @@ import { type ArticleHeading } from "@/components/ArticlePage";
 import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
-  title: "Fire Hydrant System in Data Centers | Behind The Tech",
+  title: "Fire Hydrant System Kya Hai? Pump Room, Riser aur Testing | Behind The Tech",
   description:
     "Fire hydrant system kya hota hai, Data Center mein kaise kaam karta hai — pump room, jockey pump, diesel pump, wet riser, dry riser, testing aur maintenance. Simple Hinglish mein.",
   keywords: ["fire hydrant data center", "hydrant system", "jockey pump", "fire pump room", "wet riser dry riser"],
   openGraph: {
-    title: "Fire Hydrant System in Data Centers",
+    title: "Fire Hydrant System Kya Hai? Pump Room, Riser aur Testing",
     description: "Data Center ka external firefighting backbone — hydrant system kaise kaam karta hai, pump room se hose cabinet tak.",
     url: "https://behindthetech.in/hi/learn/non-it/fire/hydrant",
     locale: "hi_IN",

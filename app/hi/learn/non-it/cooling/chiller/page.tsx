@@ -6,7 +6,7 @@ import { type ArticleHeading } from "@/components/ArticlePage";
 import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
-  title: "Chiller in Data Centers — Complete Guide | Behind The Tech",
+  title: "Chiller Kya Hai? Data Center Chilled Water System Guide | Behind The Tech",
   description: "Chiller kya hai, kaise kaam karta hai, Data Center mein kyun use hota hai — chilled water system, types, components, maintenance aur troubleshooting complete guide.",
   keywords: ["chiller data center", "chilled water system", "data center cooling chiller", "screw chiller", "centrifugal chiller"],
   openGraph: { title: "Chiller in Data Centers — Complete Guide", description: "Chilled water system ka heart — chiller kaise kaam karta hai aur large data centers mein kyun zaroori hai.", url: "https://behindthetech.in/hi/learn/non-it/cooling/chiller", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },

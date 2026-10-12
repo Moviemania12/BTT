@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "SAN — Storage Area Network: Complete Engineer Guide | Behind The Tech",
+  title: "SAN Kya Hai? Fibre Channel, iSCSI, Zoning aur LUN Masking | Behind The Tech",
   description:
     "SAN kya hai, Fibre Channel, iSCSI, LUN, zoning, LUN masking, multipathing, ALUA, dual fabric, Windows/Linux/VMware practical, troubleshooting, OEM escalation aur interview tips — complete Hinglish Data Center engineer handbook.",
   keywords: [
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "ALUA", "VMware SAN", "enterprise storage", "data center storage",
   ],
   openGraph: {
-    title: "SAN — Storage Area Network: Complete Engineer Guide",
+    title: "SAN Kya Hai? Fibre Channel, iSCSI, Zoning aur LUN Masking",
     description: "Fibre Channel, iSCSI, LUN, zoning, multipathing, ALUA, dual fabric, troubleshooting — complete SAN handbook.",
     url: "https://behindthetech.in/hi/learn/it/storage/san",
     locale: "hi_IN",

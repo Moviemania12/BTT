@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "DAS — Direct Attached Storage: Complete Engineer Guide | Behind The Tech",
+  title: "DAS Kya Hai? Direct Attached Storage, RAID aur SAS/NVMe | Behind The Tech",
   description:
     "DAS kya hai, architecture, types (internal/JBOD/NVMe), interfaces (SAS/SATA/NVMe), RAID, TLER/ERC, production lifecycle (planning se decommissioning tak), troubleshooting, OEM reference aur interview tips — complete Hinglish engineer handbook.",
   keywords: [
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "storage troubleshooting", "perccli", "ssacli", "smartctl", "data center storage",
   ],
   openGraph: {
-    title: "DAS — Direct Attached Storage: Complete Engineer Guide",
+    title: "DAS Kya Hai? Direct Attached Storage, RAID aur SAS/NVMe",
     description: "DAS architecture, types, interfaces, RAID, production lifecycle, OEM reference aur troubleshooting — complete guide.",
     url: "https://behindthetech.in/hi/learn/it/storage/das",
     locale: "hi_IN",

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
+import HubGuide from "@/components/HubGuide";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
 const TITLE = "IT Networking — Behind The Tech";
@@ -57,6 +58,8 @@ export default function CategoryPage() {
           </p>
         </div>
       </section>
+
+      <HubGuide track="it" category="networking" intro={'Networking connects servers to each other and to users. Read about switches, routers, firewalls, load balancers and SD-WAN, including VLANs, routing, security zones and high-availability design in a data center.'} />
 
       {published.length > 0 && (
         <section className="hp-section hp-section--subtle">

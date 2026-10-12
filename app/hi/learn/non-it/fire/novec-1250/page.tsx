@@ -6,12 +6,12 @@ import { type ArticleHeading } from "@/components/ArticlePage";
 import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
-  title: "Novec 1250 Fire Suppression in Data Centers | Behind The Tech",
+  title: "Novec 1250 Kya Hai? FM200 se Difference aur Use Guide | Behind The Tech",
   description:
     "Novec 1250 kya hai, FM200 se kyun better hai, Data Center mein kaise use hota hai — 3M FK-5-1-12, clean agent, environmental impact aur practical guide. Simple Hinglish mein.",
   keywords: ["novec 1250 data center", "3m novec 1250", "fk-5-1-12", "clean agent suppression", "novec vs fm200"],
   openGraph: {
-    title: "Novec 1250 Fire Suppression in Data Centers",
+    title: "Novec 1250 Kya Hai? FM200 se Difference aur Use Guide",
     description: "FM200 ka green alternative — Novec 1250 kya hai aur Data Center mein kyun use karte hain.",
     url: "https://behindthetech.in/hi/learn/non-it/fire/novec-1250",
     locale: "hi_IN",

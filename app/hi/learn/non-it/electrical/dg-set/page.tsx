@@ -14,7 +14,7 @@ import TopicLink from "@/components/TopicLink";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "DG Set in Data Centers — Behind The Tech",
+  title: "DG Set Kya Hai? AMF Panel, Sync aur Data Center Backup Power | Behind The Tech",
   description:
     "DG Set kya hai, AMF panel, sync room, PLC automation, fuel system, A/B/C/D maintenance, Tier III/IV — Data Center backup power ka complete engineer guide.",
   alternates: {

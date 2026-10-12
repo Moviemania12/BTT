@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
-  title: "Virtualisation — Hypervisors, VMs, HA, Live Migration & Containers | Behind The Tech",
+  title: "Virtualisation — Hypervisors, VMs, HA & Live Migration | Behind The Tech",
   description: "Virtualisation from basics to data center practice: hypervisors, vCPU scheduling, overcommit, storage and networking, live migration, HA/DRS, sizing, BIOS settings, DR, security, troubleshooting and Tier III/IV design — with 10 diagrams explained.",
   keywords: ["virtualisation","hypervisor","VMware ESXi","Hyper-V","KVM","VM","vCPU vRAM","live migration","vMotion","HA cluster","snapshots backups","VM vs container","CPU ready","SR-IOV passthrough","cluster sizing","RPO RTO"],
   openGraph: { title: "Virtualisation — Hypervisors, VMs, HA & Live Migration", description: "Type 1/2 hypervisors, VM architecture, overcommit, HA, live migration, containers.", url: "https://behindthetech.in/learn/it/servers/virtualization", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },

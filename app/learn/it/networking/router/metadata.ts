@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Enterprise Router — Complete Data Center & Enterprise Guide | Behind The Tech",
+  title: "Enterprise Router — OSPF, BGP, VRF & DC Design | Behind The Tech",
   description:
     "What is an enterprise router — packet forwarding, RIB, FIB, LPM, OSPF, BGP, IS-IS, VRF, MPLS, NAT, IPsec, GRE, FHRP, VRRP, BFD, QoS, dual-ISP architecture, DC border router, commissioning, troubleshooting and interview tips — the complete English Data Center engineer handbook.",
   keywords: [
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "network router hindi", "router interview questions", "router commissioning checklist",
   ],
   openGraph: {
-    title: "Enterprise Router — Complete Data Center & Enterprise Guide",
+    title: "Enterprise Router — OSPF, BGP, VRF & DC Design",
     description: "Packet forwarding, RIB/FIB, OSPF, BGP, VRF, MPLS, NAT, IPsec, VRRP, BFD, dual-ISP, DC border router — complete router handbook.",
     url: "https://behindthetech.in/learn/it/networking/router",
     locale: "en_US",

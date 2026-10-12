@@ -24,7 +24,7 @@ import TopicLink from "@/components/TopicLink";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Transformer in Data Centers — Behind The Tech",
+  title: "Transformer Kya Hai? Oil vs Dry Type, Buchholz, DGA Guide | Behind The Tech",
   description:
     "Transformer 11kV ko 433V me convert karta hai — oil vs dry type, Buchholz relay, DGA test, Tier III/IV design, Data Center engineer guide Hinglish mein.",
   alternates: {

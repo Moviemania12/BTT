@@ -17,6 +17,7 @@ const EN_URL = "https://behindthetech.in/learn/non-it/electrical/ups";
 
 const upsMetadataHi = {
   ...upsMetadata,
+  seoTitle: "UPS Kya Hai? Working, Types, Sizing aur Data Center Design",
   seoDescription:
     "UPS kaise kaam karta hai? Online vs Offline vs Line Interactive, battery sizing, N+1 vs 2N redundancy, Tier III/IV design — complete Hinglish guide with 60+ diagrams, 18 calculators aur 100 FAQs.",
   canonicalUrl: HI_URL,

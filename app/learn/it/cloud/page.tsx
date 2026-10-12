@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
+import HubGuide from "@/components/HubGuide";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
 const TITLE = "Cloud Infrastructure — Behind The Tech";
@@ -57,6 +58,8 @@ export default function CategoryPage() {
           </p>
         </div>
       </section>
+
+      <HubGuide track="it" category="cloud" intro={'Cloud platforms provide computing, storage and networking as a service. These articles cover AWS, Azure and GCP, then hybrid and multi-cloud designs that combine public cloud with an on-premise data center.'} />
 
       {published.length > 0 && (
         <section className="hp-section hp-section--subtle">

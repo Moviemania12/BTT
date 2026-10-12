@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
+import HubGuide from "@/components/HubGuide";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
 const TITLE = "Physical Security — Behind The Tech";
@@ -57,6 +58,8 @@ export default function CategoryPage() {
           </p>
         </div>
       </section>
+
+      <HubGuide track="non-it" category="security" intro={'Physical security protects the servers from people. This section covers access control, biometrics, mantraps, visitor management and CCTV, and how they combine into layered security from the site boundary to the server hall.'} />
 
       {published.length > 0 && (
         <section className="hp-section hp-section--subtle">

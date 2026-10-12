@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
-  title: "RAM in Servers — ECC, RDIMM, Channels, NUMA & Troubleshooting | Behind The Tech",
+  title: "Server RAM Kya Hai? ECC, RDIMM, Channels aur Troubleshooting | Behind The Tech",
   description: "Data center engineers ke liye server RAM handbook — DRAM cell aur refresh, timings, ECC aur chipkill, RDIMM/LRDIMM, DIMM anatomy aur label decoding, DDR4 vs DDR5, memory channels aur bandwidth, population rules, NUMA, RAS (scrubbing, sparing, mirroring), Linux memory, virtualisation overcommit, capacity planning, power aur cooling, BIOS settings, installation, testing, troubleshooting aur Tier III/IV view — Hinglish guide.",
   keywords: ["server RAM","ECC RAM","RDIMM LRDIMM","DDR4 DDR5","memory channels","NUMA RAM","DIMM population","memory scrubbing","server memory troubleshooting","DDR5 vs DDR4","memory bandwidth","DIMM label","CXL memory","memory overcommit","MemAvailable"],
   openGraph: { title: "RAM in Servers — ECC, Channels & Troubleshooting", description: "ECC, RDIMM, DDR generations, NUMA, DIMM population aur troubleshooting.", url: "https://behindthetech.in/hi/learn/it/servers/ram", locale: "hi_IN", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },

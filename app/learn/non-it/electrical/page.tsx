@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
+import HubGuide from "@/components/HubGuide";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
 const TITLE = "Electrical Systems — Behind The Tech";
@@ -57,6 +58,8 @@ export default function CategoryPage() {
           </p>
         </div>
       </section>
+
+      <HubGuide track="non-it" category="electrical" intro={'Electrical infrastructure decides whether a data center stays online. This section follows the power path from the utility grid and HT yard through RMU, transformers, UPS, batteries, STS and PDUs, with DG set backup, earthing and lightning protection alongside.'} />
 
       {published.length > 0 && (
         <section className="hp-section hp-section--subtle">

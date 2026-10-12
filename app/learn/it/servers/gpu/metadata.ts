@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
-  title: "GPU in Data Centers — Architecture, VRAM, AI Workloads & Deployment | Behind The Tech",
+  title: "GPU in Data Centers — Architecture, VRAM & AI Workloads | Behind The Tech",
   description: "GPU handbook for data center engineers — CPU vs GPU, SM and tensor cores, HBM and memory math, precision formats, PCIe/SXM/OAM, NVLink and NVSwitch, multi-GPU parallelism, rail-optimised networking, capacity planning, power density, air and direct liquid cooling, MIG and vGPU, software stack, BIOS, installation, DCGM monitoring, XID troubleshooting and Tier III/IV view.",
   keywords: ["GPU data center","GPU server","HBM memory","NVLink NVSwitch","SXM vs PCIe","HGX DGX","GPU cooling","direct liquid cooling","GPU power density","MIG GPU","DCGM monitoring","XID errors","nvidia-smi topo","AI training memory","GPU cluster networking","rail optimised network"],
   openGraph: { title: "GPU in Data Centers — Architecture & AI Workloads", description: "GPU architecture, VRAM, training vs inference, multi-GPU, server deployment.", url: "https://behindthetech.in/learn/it/servers/gpu", locale: "en_US", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },

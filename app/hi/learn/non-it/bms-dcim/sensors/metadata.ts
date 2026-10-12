@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 export const metadata: Metadata = {
-  title: "Sensors in Data Centers — Complete Engineering Guide | Behind The Tech",
+  title: "Data Center Sensors: Temperature, Humidity, Leak aur Airflow | Behind The Tech",
   description: "Temperature, humidity, differential pressure, water leak, fuel level, current, voltage, energy, door contact, airflow, occupancy sensors — working principle, installation, BMS integration, calibration, troubleshooting. Engineer-level Hinglish guide.",
   keywords: ["data center sensors","temperature sensor","humidity sensor","water leak detection","4-20mA sensor","Modbus sensor","BMS sensor integration","differential pressure sensor","current transformer"],
   openGraph: { title: "Sensors in Data Centers — Complete Engineering Guide", description: "All data center sensor types — working principle, signals, BMS integration, calibration, troubleshooting.", url: "https://behindthetech.in/hi/learn/non-it/bms-dcim/sensors", locale: "hi_IN", siteName: "Behind The Tech", type: "article", authors: ["Kumar Anil"], images: [SITE_OG_IMAGE], },

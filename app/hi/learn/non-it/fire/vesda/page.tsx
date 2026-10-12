@@ -8,7 +8,7 @@ import TopicLink from "@/components/TopicLink";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "VESDA — Very Early Smoke Detection in Data Centers | Behind The Tech",
+  title: "VESDA Kya Hai? Aspirating Smoke Detection Data Center Guide | Behind The Tech",
   description:
     "VESDA kya hota hai, kaise kaam karta hai, Data Center mein kyun zaroori hai — aspirating smoke detection, working principle, components, maintenance aur troubleshooting. Simple Hinglish mein.",
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "fire detection data center",
   ],
   openGraph: {
-    title: "VESDA — Very Early Smoke Detection in Data Centers",
+    title: "VESDA Kya Hai? Aspirating Smoke Detection Data Center Guide",
     description:
       "Data Center fire protection ka pehla step — VESDA kaise kaam karta hai, normal smoke detector se kyun alag hai, aur ye kyun life-saving hai.",
     url: "https://behindthetech.in/hi/learn/non-it/fire/vesda",

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
+import HubGuide from "@/components/HubGuide";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
 const TITLE = "IT Storage — Behind The Tech";
@@ -57,6 +58,8 @@ export default function CategoryPage() {
           </p>
         </div>
       </section>
+
+      <HubGuide track="it" category="storage" intro={"Storage is where an organisation's data lives, and how it is attached decides performance and recovery options. These guides cover DAS, NAS and SAN, followed by backup and disaster recovery, including RPO and RTO."} />
 
       {published.length > 0 && (
         <section className="hp-section hp-section--subtle">

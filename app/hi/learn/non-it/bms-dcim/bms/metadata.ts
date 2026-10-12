@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Building Management System (BMS) — Complete Guide for Data Center Engineers | Behind The Tech",
+  title: "BMS Kya Hai? Modbus, BACnet aur Data Center Integration | Behind The Tech",
   description:
     "BMS kya hai, kaise kaam karta hai, Data Center mein kyun zaroori hai — architecture, protocols (Modbus, BACnet, SNMP), UPS integration, data flow, alarm management, troubleshooting. Engineer-level Hinglish guide.",
   keywords: [
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "EcoStruxure Desigo Metasys",
   ],
   openGraph: {
-    title: "Building Management System (BMS) — Complete Guide for Data Center Engineers",
+    title: "BMS Kya Hai? Modbus, BACnet aur Data Center Integration",
     description: "BMS architecture, protocols, UPS integration, alarm management aur troubleshooting — engineer-level guide.",
     url: "https://behindthetech.in/hi/learn/non-it/bms-dcim/bms",
     locale: "hi_IN",

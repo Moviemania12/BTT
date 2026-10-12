@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "CCTV in Data Centers — Complete Engineering Guide | Behind The Tech",
+  title: "CCTV System Kya Hai? IP Camera, NVR aur Data Center Placement | Behind The Tech",
   description:
     "CCTV system Data Center mein kaise kaam karta hai — IP cameras, NVR/VMS, PoE switch, NAS storage, RAID, camera placement, troubleshooting aur cybersecurity. Beginner se O&M engineer level tak.",
   keywords: [
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "data center physical security",
   ],
   openGraph: {
-    title: "CCTV in Data Centers — Complete Engineering Guide",
+    title: "CCTV System Kya Hai? IP Camera, NVR aur Data Center Placement",
     description:
       "IP cameras se NVR/VMS tak, PoE switch se NAS storage tak — Data Center CCTV ka complete engineering guide.",
     url: "https://behindthetech.in/hi/learn/non-it/security/cctv",

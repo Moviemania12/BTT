@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Server Basics — What Is a Server, Rack Deployment & Data Center Use | Behind The Tech",
+  title: "Server Kya Hota Hai? Rack Deployment aur Data Center Use | Behind The Tech",
   description:
     "Server kya hota hai, PC se kyun alag hai, form factors, server ke andar ke components, rack deployment, A/B power aur cooling math, cabling, boot flow, BMC, redundancy, Tier III/IV view, installation, operations, maintenance, troubleshooting, real failure scenarios, safety, OEMs aur interview questions — complete Hinglish engineer guide.",
   keywords: ["server basics","what is a server","rack server","1U 2U 4U server","server vs PC","ECC RAM","BMC iDRAC","rack PDU","data center server","server deployment","A/B power","rack planning","server troubleshooting","Tier III server","server commissioning"],

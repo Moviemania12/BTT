@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import { buildSocialMeta, buildCollectionPageSchema, buildBreadcrumbSchema } from "@/lib/schemas";
 import Link from "next/link";
+import HubGuide from "@/components/HubGuide";
 import { getTopicsByCategory, getTopicUrl } from "@/lib/topics";
 
 const TITLE = "AI Data Centers — Behind The Tech";
@@ -57,6 +58,8 @@ export default function CategoryPage() {
           </p>
         </div>
       </section>
+
+      <HubGuide track="ai" category="data-centers" intro={'AI data centers differ from traditional ones in rack power, cooling, networking and storage. These articles explain AI data center basics, GPU clusters, AI networking, AI storage and AI cooling.'} />
 
       {published.length > 0 && (
         <section className="hp-section hp-section--subtle">

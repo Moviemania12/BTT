@@ -6,12 +6,12 @@ import { type ArticleHeading } from "@/components/ArticlePage";
 import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
-  title: "Novec Fluids in Data Centers — Fire Suppression & Cooling | Behind The Tech",
+  title: "Novec Fluids Kya Hain? Fire Suppression aur Immersion Cooling | Behind The Tech",
   description:
     "Novec fluid family kya hai, Data Center mein kaise use hota hai — Novec 1230, Novec 649, immersion cooling aur fire suppression. 3M PFAS phaseout ka impact. Simple Hinglish mein.",
   keywords: ["novec data center", "novec 1230", "novec 649", "3m novec fluids", "immersion cooling novec"],
   openGraph: {
-    title: "Novec Fluids in Data Centers — Fire Suppression & Cooling",
+    title: "Novec Fluids Kya Hain? Fire Suppression aur Immersion Cooling",
     description: "3M Novec — fire suppression se immersion cooling tak, Data Center mein Novec fluids ka complete guide.",
     url: "https://behindthetech.in/hi/learn/non-it/fire/novec",
     locale: "hi_IN",

@@ -6,12 +6,12 @@ import { type ArticleHeading } from "@/components/ArticlePage";
 import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
-  title: "PAC — Precision Air Conditioner in Data Centers | Behind The Tech",
+  title: "PAC Kya Hai? Precision AC Working aur Data Center Use | Behind The Tech",
   description:
     "PAC kya hota hai, kaise kaam karta hai, Data Center mein kyun use hota hai — working principle, components, types, maintenance aur troubleshooting. Simple Hinglish mein.",
   keywords: ["pac data center", "precision air conditioner", "data center cooling", "pac vs crac", "data center hvac"],
   openGraph: {
-    title: "PAC — Precision Air Conditioner in Data Centers",
+    title: "PAC Kya Hai? Precision AC Working aur Data Center Use",
     description: "Data Center cooling ka pehla step — PAC kaise kaam karta hai, kahan lagta hai, aur kyun normal AC se alag hota hai.",
     url: "https://behindthetech.in/hi/learn/non-it/cooling/pac",
     locale: "hi_IN",

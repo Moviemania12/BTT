@@ -6,12 +6,12 @@ import { type ArticleHeading } from "@/components/ArticlePage";
 import TopicLink from "@/components/TopicLink";
 
 export const metadata: Metadata = {
-  title: "FM200 Fire Suppression in Data Centers | Behind The Tech",
+  title: "FM200 Kya Hai? Clean Agent Fire Suppression Data Center Guide | Behind The Tech",
   description:
     "FM200 kya hai, kaise kaam karta hai, Data Center mein kyun use hota hai — clean agent suppression, HFC-227ea, cylinder sizing, discharge aur maintenance. Simple Hinglish mein.",
   keywords: ["fm200 data center", "fm200 fire suppression", "hfc-227ea", "clean agent suppression", "fire suppression data center"],
   openGraph: {
-    title: "FM200 Fire Suppression in Data Centers",
+    title: "FM200 Kya Hai? Clean Agent Fire Suppression Data Center Guide",
     description: "Data Center mein fire lagi — FM200 kya karta hai, kaise bujhaata hai, aur servers ko damage kyun nahi hota.",
     url: "https://behindthetech.in/hi/learn/non-it/fire/fm200",
     locale: "hi_IN",

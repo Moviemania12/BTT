@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_OG_IMAGE } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Visitor Management in Data Centers — Complete Engineering Guide | Behind The Tech",
+  title: "Visitor Management System Kya Hai? Data Center Access Process | Behind The Tech",
   description:
     "Data Center mein visitor management system kaise kaam karta hai — pre-registration, identity verification, temporary badge, access provisioning, audit trail, integration aur troubleshooting.",
   keywords: [
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "data center physical security",
   ],
   openGraph: {
-    title: "Visitor Management in Data Centers — Complete Engineering Guide",
+    title: "Visitor Management System Kya Hai? Data Center Access Process",
     description: "Pre-registration se checkout tak — Data Center visitor management ka complete engineering guide.",
     url: "https://behindthetech.in/hi/learn/non-it/security/visitor-management",
     locale: "hi_IN",
