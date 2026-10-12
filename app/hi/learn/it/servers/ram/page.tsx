@@ -8,7 +8,7 @@ export default function RamPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="ram" headings={HEADINGS} readingTimeMinutes={18} lang="hi" alternateHref="/learn/it/servers/ram">
+      <ArticleLayout slug="ram" headings={HEADINGS} readingTimeMinutes={40} lang="hi" alternateHref="/learn/it/servers/ram">
         <Content />
       </ArticleLayout>
     </>

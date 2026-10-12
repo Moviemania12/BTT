@@ -8,7 +8,7 @@ export default function ServerBasicsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="server-basics" headings={HEADINGS} readingTimeMinutes={22} lang="hi" alternateHref="/learn/it/servers/server-basics">
+      <ArticleLayout slug="server-basics" headings={HEADINGS} readingTimeMinutes={38} lang="hi" alternateHref="/learn/it/servers/server-basics">
         <Content />
       </ArticleLayout>
     </>

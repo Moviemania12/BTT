@@ -8,7 +8,7 @@ export default function VirtualizationPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="virtualization" headings={HEADINGS} readingTimeMinutes={24} lang="en" alternateHref="/hi/learn/it/servers/virtualization">
+      <ArticleLayout slug="virtualization" headings={HEADINGS} readingTimeMinutes={40} lang="en" alternateHref="/hi/learn/it/servers/virtualization">
         <Content />
       </ArticleLayout>
     </>

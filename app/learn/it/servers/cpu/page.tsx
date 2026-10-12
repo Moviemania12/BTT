@@ -8,7 +8,7 @@ export default function CpuPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="cpu" headings={HEADINGS} readingTimeMinutes={20} lang="en" alternateHref="/hi/learn/it/servers/cpu">
+      <ArticleLayout slug="cpu" headings={HEADINGS} readingTimeMinutes={42} lang="en" alternateHref="/hi/learn/it/servers/cpu">
         <Content />
       </ArticleLayout>
     </>

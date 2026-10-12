@@ -8,7 +8,7 @@ export default function GpuPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ArticleLayout slug="gpu" headings={HEADINGS} readingTimeMinutes={20} lang="hi" alternateHref="/learn/it/servers/gpu">
+      <ArticleLayout slug="gpu" headings={HEADINGS} readingTimeMinutes={40} lang="hi" alternateHref="/learn/it/servers/gpu">
         <Content />
       </ArticleLayout>
     </>

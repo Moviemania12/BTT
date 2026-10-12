@@ -1,6 +1,7 @@
 export { Callout, type CalloutProps } from "@/components/engineering/Callout";
 export { EngineeringTable as ComparisonTable } from "@/components/engineering/EngineeringTable";
 export { SvgFigure as Figure } from "@/components/engineering/SvgFigure";
+export { CodeBlock } from "@/components/engineering/CodeBlock";
 export type { CalloutType } from "@/lib/engineering/core/colors";
 export const S = {
   h2: { fontSize: "1.9rem", fontWeight: 800, color: "#111827", marginTop: "3rem", marginBottom: "1rem", letterSpacing: "-0.01em" } as const,
