@@ -3,6 +3,7 @@ import ArticlePage, { type ArticleHeading } from "@/components/ArticlePage";
 import { TOPICS, getPrevTopic, getNextTopic } from "@/lib/topics";
 import ArticleStructuredData from "@/components/ArticleStructuredData";
 import RelatedCalculators from "@/components/calculators/RelatedCalculators";
+import RelatedAnswers from "@/components/answers/RelatedAnswers";
 
 interface ArticleLayoutProps {
   slug: string;
@@ -50,6 +51,7 @@ export default function ArticleLayout({
         alternateHref={alternateHref}
       >
         {children}
+        {lang !== "hi" && <RelatedAnswers slug={slug} />}
         <RelatedCalculators slug={slug} lang={lang} />
       </ArticlePage>
     </>

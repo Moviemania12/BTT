@@ -530,6 +530,12 @@ export const NAV_ITEMS: NavItem[] = [
     variant: "badge",      // renders as neon-blue pill, no dropdown
   },
   {
+    id: "answers",
+    label: "Answers",
+    href: "/answers",
+    variant: "badge",      // same lightweight style as DC Map — no mega menu
+  },
+  {
     id: "tools",
     label: "Tools",
     megaMenu: TOOLS_MENU,
@@ -772,6 +778,13 @@ export const MOBILE_NAV: MobileSection[] = [
     variant: "badge",
   },
   {
+    id: "answers",
+    label: "Answers",
+    icon: "🛠️",
+    href: "/answers",
+    variant: "badge",
+  },
+  {
     id: "tools",
     label: "Tools",
     icon: "🔢",
@@ -840,6 +853,7 @@ export function getActiveNavId(pathname: string): string | null {
     ["/learn",        "learn"],
     ["/data-center-map", "dc-map"],
     ["/dc-map",       "dc-map"],
+    ["/answers",      "answers"],
     ["/tools",        "tools"],
     ["/study",        "resources"],
     ["/reference",    "resources"],

@@ -17,9 +17,9 @@ const SITE_URL = "https://behindthetech.in";
 // <lastmod> must reflect when content really changed. A new Date() on every build
 // marks every page as "modified today", which Google learns to ignore. Update this
 // date only when page content changes in a meaningful way (new or revised
-// articles, calculators, trust pages). Last change: server topics rewrite (EN + HI),
-// calculator schema and article-to-calculator links.
-const CONTENT_LAST_UPDATED = new Date("2026-10-12T00:00:00.000Z");
+// articles, calculators, trust pages). Last change: Answer Desk launch
+// (/answers hub + 6 Fix pages) plus the SEO metadata/schema/hub-guide work.
+const CONTENT_LAST_UPDATED = new Date("2026-10-13T00:00:00.000Z");
 
 // Foundation articles + roadmap — EN at the path, HI at /hi + path
 const FOUNDATION_PAIRS: string[] = [
@@ -158,6 +158,19 @@ const HUB_PAGES: string[] = [
   "/learn/ai/platforms",
 ];
 
+// Answer Desk — direct-answer Fix pages (English only for this launch;
+// see content/answers/fix.ts FIX_ANSWER_SLUGS, kept in sync by hand since
+// this list is small and reviewed per page, not auto-generated).
+const ANSWER_PAGES: string[] = [
+  "/answers",
+  "/answers/fix/ups-bypass-load-unprotected",
+  "/answers/fix/dg-set-wont-start",
+  "/answers/fix/crac-unit-fault-offline",
+  "/answers/fix/vlan-servers-cant-reach-gateway",
+  "/answers/fix/server-wont-post",
+  "/answers/fix/vesda-alarm-what-to-do",
+];
+
 // Engineering calculators + interactive tools (English only)
 const TOOL_PAGES: string[] = [
   "/tools",
@@ -222,6 +235,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...IT_PAIRS.flatMap((p) => bilingual(p, now)),
     ...AI_PAIRS.flatMap((p) => bilingual(p, now)),
     ...STUDY_PAIRS.flatMap((p) => bilingual(p, now)),
+    ...ANSWER_PAGES.map((p) => single(p, now)),
     ...TOOL_PAGES.map((p) => single(p, now)),
     ...SITE_PAGES.map((p) => single(p, now)),
 
